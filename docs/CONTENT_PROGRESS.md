@@ -81,6 +81,15 @@
 - 要件ごとの不足、再開手順、実装済み機能の確認範囲は `IMPLEMENTATION_STATUS.md` と `VERIFICATION.md` に整理した。全章・全機能の完成とはしない。
 - GitHubは公開設定。追加の本文・原図・翻訳は `.gitignore` でローカルに保持し、アプリ本体・確認コード・出典メタデータ・進捗記録を反映する。
 
+### GitHubへの反映（2026-10-20）
+
+- 作業ブランチ：`codex/quality-audit-local-pack`。
+- 下書きPull Request：[学習アプリの品質改善と教材照合・進捗台帳の整備 #1](https://github.com/minkohno-hub/heat-transfer-study-ja/pull/1)。mainへのマージは行っていない。
+- 23ファイルのアプリ修正・自動確認・出典メタデータ・進捗台帳を反映。GitHubのファイル一式の識別値（tree SHA）が、確認したローカルのコミットと一致することを照合した。
+- 通常のgit pushは、この実行環境で認証用のsh.exeが起動できず失敗した（NtCreateDirectoryObject、0xC0000022）。GitHub連携の標準Git Data APIで同じファイル一式・親コミットのブランチを作成し、Pull Requestを提出した。ローカルのブランチも同じ内容のGitHubコミットへ同期した。
+- 書籍由来の追加本文・翻訳・8図は `data/drafts/` と `data/local/` に保持し、送信していない。既存の `data/glossary.json` の未確認の追加分も、このPCの作業内容として保持し、今回のコミットに含めていない。
+- 全体は未完成。上の比率と確認結果は、この時点の進捗であり、全文翻訳・全機能の完成報告ではない。
+
 ## 過去の作成記録
 
 以下は作成時点の記録。現在の収録状態と確認結果は上表・全ページ台帳・再照合記録を優先する。
