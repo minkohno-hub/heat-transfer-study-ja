@@ -61,16 +61,104 @@
           "sourceTitle": "Modes of heat transfer",
           "pdfStart": 25,
           "bookStart": 11,
-          "pdfEnd": 47,
-          "bookEnd": 33,
-          "translationStatus": "not_started",
-          "reviewStatus": "not_started",
+          "pdfEnd": 48,
+          "bookEnd": 34,
+          "translationStatus": "draft_complete",
+          "reviewStatus": "needs_review",
+          "translationProgress": {
+            "draftBookPages": "10–34",
+            "draftPdfPages": "24–48",
+            "draftComplete": true,
+            "draftFiles": [
+              "data/drafts/1-3-ja.json",
+              "data/drafts/1-3-en.json"
+            ],
+            "availableInApp": false
+          },
           "figures": [
             {
               "figureNumber": "1.3",
               "bookPage": 10,
               "pdfPage": 24,
               "caption": "熱移動の三つの形態の類推。"
+            },
+            {
+              "figureNumber": "1.4",
+              "bookPage": 12,
+              "pdfPage": 26,
+              "caption": "ジョゼフ・フーリエ（1768–1830）の肖像。"
+            },
+            {
+              "figureNumber": "1.5",
+              "bookPage": 14,
+              "pdfPage": 28,
+              "caption": "二つの固体壁の間にある気体を通る熱伝導。"
+            },
+            {
+              "figureNumber": "1.6",
+              "bookPage": 15,
+              "pdfPage": 29,
+              "caption": "さまざまな物質の熱伝導率のおおよその範囲。"
+            },
+            {
+              "figureNumber": "1.7",
+              "bookPage": 16,
+              "pdfPage": 30,
+              "caption": "異なる熱伝導率の層を通る熱流。"
+            },
+            {
+              "figureNumber": "1.8",
+              "bookPage": 18,
+              "pdfPage": 32,
+              "caption": "微小要素を通る一次元熱伝導。"
+            },
+            {
+              "figureNumber": "1.9",
+              "bookPage": 19,
+              "pdfPage": 33,
+              "caption": "加熱された物体の対流冷却。"
+            },
+            {
+              "figureNumber": "1.10",
+              "bookPage": 23,
+              "pdfPage": 37,
+              "caption": "ビオ数が小さい物体の冷却。"
+            },
+            {
+              "figureNumber": "1.11",
+              "bookPage": 24,
+              "pdfPage": 38,
+              "caption": "ビオ数が大きい物体の冷却。"
+            },
+            {
+              "figureNumber": "1.12",
+              "bookPage": 25,
+              "pdfPage": 39,
+              "caption": "高温ガス流に対する熱電対の応答。"
+            },
+            {
+              "figureNumber": "1.13",
+              "bookPage": 29,
+              "pdfPage": 43,
+              "caption": "球形ホールラウムの断面。"
+            },
+            {
+              "figureNumber": "1.14",
+              "bookPage": 29,
+              "pdfPage": 43,
+              "caption": "半透明板に入射するエネルギーの分配。"
+            },
+            {
+              "figureNumber": "1.15",
+              "bookPage": 31,
+              "pdfPage": 45,
+              "caption": "ルンマーとプリングスハイムによる黒体データ。"
+            },
+            {
+              "figureNumber": "1.16",
+              "bookPage": 32,
+              "pdfPage": 46,
+              "caption": "物体間の正味放射熱移動。"
             }
           ]
         },
@@ -80,10 +168,20 @@
           "sourceTitle": "A look ahead",
           "pdfStart": 48,
           "bookStart": 34,
-          "pdfEnd": 48,
-          "bookEnd": 34,
-          "translationStatus": "not_started",
-          "reviewStatus": "not_started",
+          "pdfEnd": 49,
+          "bookEnd": 35,
+          "translationStatus": "draft_complete",
+          "reviewStatus": "needs_review",
+          "translationProgress": {
+            "draftBookPages": "34–35",
+            "draftPdfPages": "48–49",
+            "draftComplete": true,
+            "draftFiles": [
+              "data/drafts/1-4-ja.json",
+              "data/drafts/1-4-en.json"
+            ],
+            "availableInApp": false
+          },
           "figures": []
         },
         {
@@ -94,8 +192,18 @@
           "bookStart": 35,
           "pdfEnd": 49,
           "bookEnd": 35,
-          "translationStatus": "not_started",
-          "reviewStatus": "not_started",
+          "translationStatus": "draft_complete",
+          "reviewStatus": "needs_review",
+          "translationProgress": {
+            "draftBookPages": "35",
+            "draftPdfPages": "49",
+            "draftComplete": true,
+            "draftFiles": [
+              "data/drafts/1-5-ja.json",
+              "data/drafts/1-5-en.json"
+            ],
+            "availableInApp": false
+          },
           "figures": []
         }
       ],
@@ -105,11 +213,22 @@
           "title": "章末問題",
           "sourceTitle": "Problems",
           "bookStart": 36,
-          "bookEnd": 46,
+          "bookEnd": 47,
           "pdfStart": 50,
-          "pdfEnd": 60,
-          "translationStatus": "not_started",
-          "reviewStatus": "not_started"
+          "pdfEnd": 61,
+          "translationStatus": "draft_complete",
+          "reviewStatus": "needs_review",
+          "translationProgress": {
+            "draftBookPages": "36–47",
+            "draftPdfPages": "50–61",
+            "draftComplete": true,
+            "draftFiles": [
+              "data/drafts/ch1-problems-ja.json",
+              "data/drafts/ch1-problems-en.json"
+            ],
+            "problems": "1.1–1.46",
+            "availableInApp": false
+          }
         },
         {
           "id": "references",
@@ -119,8 +238,19 @@
           "bookEnd": 48,
           "pdfStart": 61,
           "pdfEnd": 62,
-          "translationStatus": "not_started",
-          "reviewStatus": "not_started"
+          "translationStatus": "draft_complete",
+          "reviewStatus": "needs_review",
+          "translationProgress": {
+            "draftBookPages": "47–48",
+            "draftPdfPages": "61–62",
+            "draftComplete": true,
+            "draftFiles": [
+              "data/drafts/ch1-references-ja.json",
+              "data/drafts/ch1-references-en.json"
+            ],
+            "referenceCount": 22,
+            "availableInApp": false
+          }
         }
       ]
     },
@@ -137,35 +267,334 @@
           "title": "熱伝導方程式",
           "sourceTitle": "The heat conduction equation",
           "pdfStart": 63,
-          "bookStart": 49
+          "pdfEnd": 71,
+          "bookStart": 49,
+          "bookEnd": 57,
+          "translationStatus": "draft_complete",
+          "reviewStatus": "needs_review",
+          "translationProgress": {
+            "draftBookPages": "49–57",
+            "draftPdfPages": "63–71",
+            "draftComplete": true,
+            "draftFiles": [
+              "data/drafts/2-1-ja.json",
+              "data/drafts/2-1-en.json"
+            ],
+            "availableInApp": false,
+            "pageBoundaryNote": "書籍p.56／PDF p.70の節境界をまたぎ、式（2.11）〜（2.14b）は§2.1、同ページ下部の§2.2見出し以降は次節。図2.5は書籍p.57／PDF p.71。"
+          },
+          "figures": [
+            {
+              "figureNumber": "2.1",
+              "bookPage": 50,
+              "pdfPage": 64,
+              "caption": "三次元の非定常温度場。"
+            },
+            {
+              "figureNumber": "2.2",
+              "bookPage": 52,
+              "pdfPage": 66,
+              "caption": "金属固体の熱伝導率の温度依存性。"
+            },
+            {
+              "figureNumber": "2.3",
+              "bookPage": 53,
+              "pdfPage": 67,
+              "caption": "飽和状態または圧力1 atmの液体・気体の熱伝導率の温度依存性。"
+            },
+            {
+              "figureNumber": "2.4",
+              "bookPage": 54,
+              "pdfPage": 68,
+              "caption": "熱流れ場の検査体積。"
+            },
+            {
+              "figureNumber": "2.5",
+              "bookPage": 57,
+              "pdfPage": 71,
+              "caption": "円筒座標系と球座標系。"
+            }
+          ]
         },
         {
           "id": "2.2",
           "title": "平板の定常熱伝導：解法",
           "sourceTitle": "Steady heat conduction in a slab: method",
           "pdfStart": 70,
-          "bookStart": 56
+          "pdfEnd": 76,
+          "bookStart": 56,
+          "bookEnd": 62,
+          "translationStatus": "draft_complete",
+          "reviewStatus": "needs_review",
+          "translationProgress": {
+            "draftBookPages": "56–62",
+            "draftPdfPages": "70–76",
+            "draftComplete": true,
+            "draftFiles": [
+              "data/drafts/2-2-ja.json",
+              "data/drafts/2-2-en.json"
+            ],
+            "availableInApp": false,
+            "pageBoundaryNote": "§2.2の見出しは書籍p.56／PDF p.70、本文はp.58／PDF p.72から。図2.5は前節に属する。"
+          },
+          "figures": [
+            {
+              "figureNumber": "2.6",
+              "bookPage": 60,
+              "pdfPage": 74,
+              "caption": "凝結中のコンクリート平板内の温度分布（例題2.1）。"
+            },
+            {
+              "figureNumber": "2.7",
+              "bookPage": 61,
+              "pdfPage": 75,
+              "caption": "平板の熱伝導（例題2.2）。"
+            },
+            {
+              "figureNumber": "2.8",
+              "bookPage": 62,
+              "pdfPage": 76,
+              "caption": "平板内の熱伝導とオームの法則の類推。"
+            }
+          ]
         },
         {
           "id": "2.3",
           "title": "熱抵抗と電気回路の類推",
           "sourceTitle": "Thermal resistance and the electrical analogy",
           "pdfStart": 77,
-          "bookStart": 63
+          "pdfEnd": 91,
+          "bookStart": 63,
+          "bookEnd": 77,
+          "translationStatus": "draft_complete",
+          "reviewStatus": "needs_review",
+          "translationProgress": {
+            "draftBookPages": "63–77",
+            "draftPdfPages": "77–91",
+            "draftComplete": true,
+            "draftFiles": [
+              "data/drafts/2-3-ja.json",
+              "data/drafts/2-3-en.json"
+            ],
+            "availableInApp": false
+          },
+          "figures": [
+            {
+              "figureNumber": "2.9",
+              "bookPage": 63,
+              "pdfPage": 77,
+              "caption": "一方向の電流。"
+            },
+            {
+              "figureNumber": "2.10",
+              "bookPage": 65,
+              "pdfPage": 79,
+              "caption": "壁面温度を指定した円筒の熱移動（例題2.4）。"
+            },
+            {
+              "figureNumber": "2.11",
+              "bookPage": 67,
+              "pdfPage": 81,
+              "caption": "対流境界条件のある円筒の熱移動（例題2.5）。"
+            },
+            {
+              "figureNumber": "2.12",
+              "bookPage": 69,
+              "pdfPage": 83,
+              "caption": "二つの抵抗をもつ熱回路。"
+            },
+            {
+              "figureNumber": "2.13",
+              "bookPage": 70,
+              "pdfPage": 84,
+              "caption": "断熱材を巻いた管の熱回路。"
+            },
+            {
+              "figureNumber": "2.14",
+              "bookPage": 71,
+              "pdfPage": 85,
+              "caption": "円筒の伝導・対流抵抗と断熱材の臨界半径（例題2.6）。"
+            },
+            {
+              "figureNumber": "2.15",
+              "bookPage": 73,
+              "pdfPage": 87,
+              "caption": "対流と放射で冷却される電気抵抗器。"
+            },
+            {
+              "figureNumber": "2.16",
+              "bookPage": 75,
+              "pdfPage": 89,
+              "caption": "二つの固体表面の接触面を通る熱移動。"
+            },
+            {
+              "figureNumber": "2.17",
+              "bookPage": 77,
+              "pdfPage": 91,
+              "caption": "単位面積の二枚の平板を通る熱伝導と接触抵抗。"
+            }
+          ],
+          "tables": [
+            {
+              "tableNumber": "2.1",
+              "bookPage": 76,
+              "pdfPage": 90,
+              "caption": "代表的な界面熱コンダクタンス。"
+            }
+          ]
         },
         {
           "id": "2.4",
           "title": "総括熱伝達係数 U",
           "sourceTitle": "Overall heat transfer coefficient, U",
           "pdfStart": 92,
-          "bookStart": 78
+          "pdfEnd": 99,
+          "bookStart": 78,
+          "bookEnd": 85,
+          "translationStatus": "draft_complete",
+          "reviewStatus": "needs_review",
+          "translationProgress": {
+            "draftBookPages": "78–85",
+            "draftPdfPages": "92–99",
+            "draftComplete": true,
+            "draftFiles": [
+              "data/drafts/2-4-ja.json",
+              "data/drafts/2-4-en.json"
+            ],
+            "availableInApp": false,
+            "pageBoundaryNote": "例題2.13は書籍p.85／PDF p.99の§2.5見出しより前にあるため§2.4に含める。図2.21は書籍p.83／PDF p.97。"
+          },
+          "figures": [
+            {
+              "figureNumber": "2.18",
+              "bookPage": 78,
+              "pdfPage": 92,
+              "caption": "多数の熱抵抗を直列に接続した熱回路。"
+            },
+            {
+              "figureNumber": "2.19",
+              "bookPage": 79,
+              "pdfPage": 93,
+              "caption": "やかんの底を通る熱移動。"
+            },
+            {
+              "figureNumber": "2.20",
+              "bookPage": 81,
+              "pdfPage": 95,
+              "caption": "松材とおがくずの複合壁を通る熱移動。"
+            },
+            {
+              "figureNumber": "2.21",
+              "bookPage": 83,
+              "pdfPage": 97,
+              "caption": "管の汚れ。"
+            }
+          ],
+          "tables": [
+            {
+              "tableNumber": "2.2",
+              "bookPage": 82,
+              "pdfPage": 96,
+              "caption": "総括熱伝達係数Uの代表値。"
+            },
+            {
+              "tableNumber": "2.3",
+              "bookPage": 84,
+              "pdfPage": 98,
+              "caption": "単位面積あたりの代表的な汚れ熱抵抗。"
+            }
+          ]
         },
         {
           "id": "2.5",
           "title": "まとめ",
           "sourceTitle": "Summary",
           "pdfStart": 99,
-          "bookStart": 85
+          "pdfEnd": 100,
+          "bookStart": 85,
+          "bookEnd": 86,
+          "translationStatus": "draft_complete",
+          "reviewStatus": "needs_review",
+          "translationProgress": {
+            "draftBookPages": "85–86",
+            "draftPdfPages": "99–100",
+            "draftComplete": true,
+            "draftFiles": [
+              "data/drafts/2-5-ja.json",
+              "data/drafts/2-5-en.json"
+            ],
+            "availableInApp": false,
+            "pageBoundaryNote": "書籍p.85／PDF p.99で例題2.13の後から始まり、p.86／PDF p.100の章末問題見出しで終わる。"
+          },
+          "figures": []
+        }
+      ],
+      "backMatter": [
+        {
+          "id": "problems",
+          "title": "章末問題",
+          "sourceTitle": "Problems",
+          "bookStart": 86,
+          "bookEnd": 97,
+          "pdfStart": 100,
+          "pdfEnd": 111,
+          "translationStatus": "draft_complete",
+          "reviewStatus": "needs_review",
+          "translationProgress": {
+            "draftBookPages": "86–97",
+            "draftPdfPages": "100–111",
+            "draftComplete": true,
+            "draftFiles": [
+              "data/drafts/ch2-problems-ja.json",
+              "data/drafts/ch2-problems-en.json"
+            ],
+            "problems": "2.1–2.49",
+            "availableInApp": false,
+            "pageBoundaryNote": "問題2.49と参考文献見出しが書籍p.97／PDF p.111に同居する。問題2.49の図2.24も同ページ。"
+          },
+          "figures": [
+            {
+              "figureNumber": "2.22",
+              "bookPage": 88,
+              "pdfPage": 102,
+              "caption": "問題2.8の配置。"
+            },
+            {
+              "figureNumber": "2.23",
+              "bookPage": 89,
+              "pdfPage": 103,
+              "caption": "問題2.9の配置。"
+            },
+            {
+              "figureNumber": "2.24",
+              "bookPage": 97,
+              "pdfPage": 111,
+              "caption": "問題2.49の配置。"
+            }
+          ]
+        },
+        {
+          "id": "references",
+          "title": "参考文献",
+          "sourceTitle": "References",
+          "bookStart": 97,
+          "bookEnd": 98,
+          "pdfStart": 111,
+          "pdfEnd": 112,
+          "translationStatus": "draft_complete",
+          "reviewStatus": "needs_review",
+          "translationProgress": {
+            "draftBookPages": "97–98",
+            "draftPdfPages": "111–112",
+            "draftComplete": true,
+            "draftFiles": [
+              "data/drafts/ch2-references-ja.json",
+              "data/drafts/ch2-references-en.json"
+            ],
+            "referenceCount": 10,
+            "availableInApp": false,
+            "pageBoundaryNote": "参考文献見出しは問題2.49と同じ書籍p.97／PDF p.111にあり、p.98／PDF p.112まで続く。"
+          }
         }
       ]
     },
@@ -182,28 +611,270 @@
           "title": "熱交換器の機能と構成",
           "sourceTitle": "Function and configuration of heat exchangers",
           "pdfStart": 113,
-          "bookStart": 99
+          "pdfEnd": 117,
+          "bookStart": 99,
+          "bookEnd": 103,
+          "translationStatus": "draft_complete",
+          "reviewStatus": "needs_review",
+          "translationProgress": {
+            "draftBookPages": "99–103; figure plates 104–107",
+            "draftPdfPages": "113–117; figure plates 118–121",
+            "draftComplete": true,
+            "draftFiles": [
+              "data/drafts/3-1-ja.json",
+              "data/drafts/3-1-en.json"
+            ],
+            "availableInApp": false,
+            "pageBoundaryNote": "本文はp.103／PDF p.117で§3.2見出しと同居。図3.5–3.7は本文の後のページに配置されているため、図版ページを別記。図3.7は2ページ続き。"
+          },
+          "figures": [
+            {
+              "figureNumber": "3.1",
+              "bookPage": 100,
+              "pdfPage": 114,
+              "caption": "熱交換器の基本概念と一般的な用途。"
+            },
+            {
+              "figureNumber": "3.2",
+              "bookPage": 100,
+              "pdfPage": 114,
+              "caption": "直接接触式熱交換器。"
+            },
+            {
+              "figureNumber": "3.3",
+              "bookPage": 101,
+              "pdfPage": 115,
+              "caption": "三つの基本的な熱交換器形式。"
+            },
+            {
+              "figureNumber": "3.4",
+              "bookPage": 102,
+              "pdfPage": 116,
+              "caption": "Heliflow小型向流熱交換器。"
+            },
+            {
+              "figureNumber": "3.5",
+              "bookPage": 104,
+              "pdfPage": 118,
+              "caption": "代表的な商用の単シェルパス・二管パス熱交換器。"
+            },
+            {
+              "figureNumber": "3.6",
+              "bookPage": 105,
+              "pdfPage": 119,
+              "caption": "商用交差流熱交換器の例。"
+            },
+            {
+              "figureNumber": "3.7",
+              "bookPage": 106,
+              "pdfPage": 120,
+              "caption": "代表的な熱交換器構成（前半）。"
+            },
+            {
+              "figureNumber": "3.7",
+              "bookPage": 107,
+              "pdfPage": 121,
+              "caption": "代表的な熱交換器構成（続き）。"
+            }
+          ]
         },
         {
           "id": "3.2",
           "title": "熱交換器の平均温度差の評価",
           "sourceTitle": "Evaluation of the mean temperature difference in a heat exchanger",
           "pdfStart": 117,
-          "bookStart": 103
+          "bookStart": 103,
+          "bookEnd": 119,
+          "pdfEnd": 133,
+          "translationStatus": "draft_complete",
+          "reviewStatus": "needs_review",
+          "translationProgress": {
+            "draftBookPages": "103–119",
+            "draftPdfPages": "117–133",
+            "draftComplete": true,
+            "draftFiles": [
+              "data/drafts/3-2-ja.json",
+              "data/drafts/3-2-en.json"
+            ],
+            "availableInApp": false,
+            "blocksPerLanguage": 65,
+            "pageBoundaryNote": "§3.2は書籍p.103／PDF p.117下部から始まり、p.119／PDF p.133で終わる。§3.3は書籍p.120／PDF p.134から。"
+          },
+          "figures": [
+            {
+              "figureNumber": "3.8",
+              "bookPage": 108,
+              "pdfPage": 122,
+              "caption": "単一パス熱交換器における温度変化。"
+            },
+            {
+              "figureNumber": "3.9",
+              "bookPage": 109,
+              "pdfPage": 123,
+              "caption": "凝縮器内の温度分布。"
+            },
+            {
+              "figureNumber": "3.10",
+              "bookPage": 112,
+              "pdfPage": 126,
+              "caption": "管の熱伝導における平均半径の計算。"
+            },
+            {
+              "figureNumber": "3.11",
+              "bookPage": 114,
+              "pdfPage": 128,
+              "caption": "流動沸騰とドライアウトに伴うUの変化。"
+            },
+            {
+              "figureNumber": "3.12",
+              "bookPage": 115,
+              "pdfPage": 129,
+              "caption": "伝熱面積4560 m²のパッケージボイラー。"
+            },
+            {
+              "figureNumber": "3.13",
+              "bookPage": 117,
+              "pdfPage": 131,
+              "caption": "多パス熱交換器における補正前LMTDの基準。"
+            },
+            {
+              "figureNumber": "3.14",
+              "bookPage": 118,
+              "pdfPage": 132,
+              "caption": "多パス熱交換器のLMTD補正係数（a、b）。"
+            },
+            {
+              "figureNumber": "3.14",
+              "bookPage": 119,
+              "pdfPage": 133,
+              "caption": "交差流熱交換器のLMTD補正係数（c、d）。"
+            }
+          ]
         },
         {
           "id": "3.3",
           "title": "熱交換器の有効度",
           "sourceTitle": "Heat exchanger effectiveness",
           "pdfStart": 134,
-          "bookStart": 120
+          "bookStart": 120,
+          "bookEnd": 127,
+          "pdfEnd": 141,
+          "translationStatus": "draft_complete",
+          "reviewStatus": "needs_review",
+          "translationProgress": {
+            "draftBookPages": "120–127",
+            "draftPdfPages": "134–141",
+            "draftComplete": true,
+            "draftFiles": [
+              "data/drafts/3-3-ja.json",
+              "data/drafts/3-3-en.json"
+            ],
+            "availableInApp": false,
+            "blocksPerLanguage": 53,
+            "pageBoundaryNote": "§3.3は書籍p.120／PDF p.134で§3.2末尾の例題3.4の後に始まり、p.127／PDF p.141で§3.4見出しの直前に終わる。同じp.127／PDF p.141に§3.4見出しもある。"
+          },
+          "figures": [
+            {
+              "figureNumber": "3.15",
+              "bookPage": 121,
+              "pdfPage": 135,
+              "caption": "LMTDを事前に計算できない設計問題。"
+            },
+            {
+              "figureNumber": "3.16",
+              "bookPage": 123,
+              "pdfPage": 137,
+              "caption": "平行流および向流熱交換器の有効度。"
+            },
+            {
+              "figureNumber": "3.17",
+              "bookPage": 124,
+              "pdfPage": 138,
+              "caption": "他の熱交換器構成に対する有効度。"
+            }
+          ],
+          "tables": [
+            {
+              "tableNumber": "3.1",
+              "bookPage": 125,
+              "pdfPage": 139,
+              "caption": "図3.17の構成に対する有効度–NTU関係。"
+            }
+          ]
         },
         {
           "id": "3.4",
           "title": "熱交換器の設計",
           "sourceTitle": "Heat exchanger design",
           "pdfStart": 141,
-          "bookStart": 127
+          "bookStart": 127,
+          "bookEnd": 130,
+          "pdfEnd": 144,
+          "translationStatus": "draft_complete",
+          "reviewStatus": "needs_review",
+          "translationProgress": {
+            "draftBookPages": "127–130",
+            "draftPdfPages": "141–144",
+            "draftComplete": true,
+            "draftFiles": [
+              "data/drafts/3-4-ja.json",
+              "data/drafts/3-4-en.json"
+            ],
+            "availableInApp": false,
+            "blocksPerLanguage": 15,
+            "pageBoundaryNote": "§3.4は書籍p.127／PDF p.141で§3.3の後に始まり、p.130／PDF p.144の章末本文まで続く。同じp.130／PDF p.144の本文直後にProblemsが始まる。"
+          },
+          "tables": [],
+          "figures": []
+        }
+      ],
+      "backMatter": [
+        {
+          "id": "problems",
+          "title": "章末問題",
+          "sourceTitle": "Problems",
+          "bookStart": 130,
+          "bookEnd": 137,
+          "pdfStart": 144,
+          "pdfEnd": 151,
+          "translationStatus": "draft_complete",
+          "reviewStatus": "needs_review",
+          "translationProgress": {
+            "draftBookPages": "130–137",
+            "draftPdfPages": "144–151",
+            "draftComplete": true,
+            "draftFiles": [
+              "data/drafts/ch3-problems-ja.json",
+              "data/drafts/ch3-problems-en.json"
+            ],
+            "problems": "3.1–3.44",
+            "problemCount": 44,
+            "availableInApp": false,
+            "pageBoundaryNote": "問題3.13と3.20、3.43はページをまたぐ。問題3.44と参考文献見出しは書籍p.137／PDF p.151に同居。§3.4の末尾とProblems見出しは書籍p.130／PDF p.144に同居。"
+          }
+        },
+        {
+          "id": "references",
+          "title": "参考文献",
+          "sourceTitle": "References",
+          "bookStart": 137,
+          "bookEnd": 138,
+          "pdfStart": 151,
+          "pdfEnd": 152,
+          "translationStatus": "draft_complete",
+          "reviewStatus": "needs_review",
+          "translationProgress": {
+            "draftBookPages": "137–138",
+            "draftPdfPages": "151–152",
+            "draftComplete": true,
+            "draftFiles": [
+              "data/drafts/ch3-references-ja.json",
+              "data/drafts/ch3-references-en.json"
+            ],
+            "availableInApp": false,
+            "pageBoundaryNote": "References 3.1–3.3 begin on book p.137 / PDF p.151 where Problem 3.44 also ends. References 3.4–3.13 continue on book p.138 / PDF p.152.",
+            "referenceCount": 13
+          }
         }
       ]
     },
@@ -220,35 +891,252 @@
           "title": "適切に設定された問題",
           "sourceTitle": "The well-posed problem",
           "pdfStart": 155,
-          "bookStart": 141
+          "bookStart": 141,
+          "bookEnd": 143,
+          "pdfEnd": 157,
+          "translationStatus": "draft_complete",
+          "reviewStatus": "needs_review",
+          "translationProgress": {
+            "draftBookPages": "141–143",
+            "draftPdfPages": "155–157",
+            "draftComplete": true,
+            "draftFiles": [
+              "data/drafts/4-1-ja.json",
+              "data/drafts/4-1-en.json"
+            ],
+            "availableInApp": false,
+            "blocksPerLanguage": 25,
+            "pageBoundaryNote": "章題・フーリエの引用は書籍p.141／PDF p.155で§4.1の前に置かれる。§4.1はp.143／PDF p.157で終わり、同じページに§4.2見出しがある。図4.1は後続ページp.143／PDF p.157に掲載。"
+          },
+          "figures": [
+            {
+              "figureNumber": "4.1",
+              "bookPage": 143,
+              "pdfPage": 157,
+              "caption": "第一種、第二種、第三種境界条件のもとで起こり得る物体の非定常冷却。"
+            }
+          ]
         },
         {
           "id": "4.2",
           "title": "熱伝導方程式の一般解",
           "sourceTitle": "General solution of the heat conduction equation",
           "pdfStart": 157,
-          "bookStart": 143
+          "bookStart": 143,
+          "bookEnd": 150,
+          "pdfEnd": 164,
+          "translationStatus": "draft_complete",
+          "reviewStatus": "needs_review",
+          "translationProgress": {
+            "draftBookPages": "143–150",
+            "draftPdfPages": "157–164",
+            "draftComplete": true,
+            "draftFiles": [
+              "data/drafts/4-2-ja.json",
+              "data/drafts/4-2-en.json"
+            ],
+            "availableInApp": false,
+            "blocksPerLanguage": 68,
+            "pageBoundaryNote": "§4.2は書籍p.143／PDF p.157で§4.1の後に始まり、p.150／PDF p.164で終わる。同じp.150／PDF p.164で§4.3が始まる。図4.2はp.145／PDF p.159、図4.3はp.148／PDF p.162。"
+          },
+          "figures": [
+            {
+              "figureNumber": "4.2",
+              "bookPage": 145,
+              "pdfPage": 159,
+              "caption": "円環における一次元熱伝導。"
+            },
+            {
+              "figureNumber": "4.3",
+              "bookPage": 148,
+              "pdfPage": 162,
+              "caption": "側面温度を一定に保ち、一方の面に正弦状の温度変化を与えた二次元平板。"
+            }
+          ]
         },
         {
           "id": "4.3",
           "title": "次元解析",
           "sourceTitle": "Dimensional analysis",
           "pdfStart": 164,
-          "bookStart": 150
+          "bookStart": 150,
+          "bookEnd": 159,
+          "pdfEnd": 173,
+          "translationStatus": "draft_complete",
+          "reviewStatus": "needs_review",
+          "translationProgress": {
+            "draftBookPages": "150–159",
+            "draftPdfPages": "164–173",
+            "draftComplete": true,
+            "draftFiles": [
+              "data/drafts/4-3-ja.json",
+              "data/drafts/4-3-en.json"
+            ],
+            "availableInApp": false,
+            "blocksPerLanguage": 78,
+            "pageBoundaryNote": "§4.3 begins on book p.150 / PDF p.164 after the final §4.2 bullet on that page and ends on p.159 / PDF p.173 before §4.4 begins on the same page."
+          },
+          "figures": [
+            {
+              "figureNumber": "4.4",
+              "bookPage": 157,
+              "pdfPage": 171,
+              "caption": "タンクからの液体流出。"
+            }
+          ]
         },
         {
           "id": "4.4",
           "title": "複雑な定常熱伝導問題における次元解析の例",
           "sourceTitle": "Illustrative use of dimensional analysis in a complex steady conduction problem",
           "pdfStart": 173,
-          "bookStart": 159
+          "bookStart": 159,
+          "bookEnd": 162,
+          "pdfEnd": 176,
+          "translationStatus": "draft_complete",
+          "reviewStatus": "needs_review",
+          "translationProgress": {
+            "draftBookPages": "159–162",
+            "draftPdfPages": "173–176",
+            "draftComplete": true,
+            "draftFiles": [
+              "data/drafts/4-4-ja.json",
+              "data/drafts/4-4-en.json"
+            ],
+            "availableInApp": false,
+            "blocksPerLanguage": 37,
+            "pageBoundaryNote": "§4.4 begins on book p.159 / PDF p.173 after the final paragraph of §4.3 on that page. It ends on p.162 / PDF p.176; §4.5 begins on p.163 / PDF p.177."
+          },
+          "figures": [
+            {
+              "figureNumber": "4.5",
+              "bookPage": 160,
+              "pdfPage": 174,
+              "caption": "非対称な境界条件をもつ発熱平板内の熱伝導。"
+            }
+          ]
         },
         {
           "id": "4.5",
           "title": "フィン設計",
           "sourceTitle": "Fin design",
           "pdfStart": 177,
-          "bookStart": 163
+          "bookStart": 163,
+          "bookEnd": 183,
+          "pdfEnd": 197,
+          "translationStatus": "draft_complete",
+          "reviewStatus": "needs_review",
+          "translationProgress": {
+            "draftBookPages": "163–183",
+            "draftPdfPages": "177–197",
+            "draftComplete": true,
+            "draftFiles": [
+              "data/drafts/4-5-ja.json",
+              "data/drafts/4-5-en.json"
+            ],
+            "availableInApp": false,
+            "blocksPerLanguage": 181,
+            "pageBoundaryNote": "§4.5 begins on book p.163 / PDF p.177 and ends with Example 4.11 on p.183 / PDF p.197. Chapter 4 problems begin on the same page after the example. Figures 4.6–4.13 and their book/PDF page references are listed below."
+          },
+          "figures": [
+            {
+              "figureNumber": "4.6",
+              "bookPage": 164,
+              "pdfPage": 178,
+              "caption": "フィン付き管に見られる多様な形状の例。"
+            },
+            {
+              "figureNumber": "4.7",
+              "bookPage": 165,
+              "pdfPage": 179,
+              "caption": "冷却フィンだった可能性のある背板をもつステゴサウルス。"
+            },
+            {
+              "figureNumber": "4.8",
+              "bookPage": 166,
+              "pdfPage": 180,
+              "caption": "一様断面の一次元フィンの解析モデル。"
+            },
+            {
+              "figureNumber": "4.9",
+              "bookPage": 170,
+              "pdfPage": 184,
+              "caption": "断熱先端をもつ直線一次元フィンの温度分布、先端温度、熱流束。"
+            },
+            {
+              "figureNumber": "4.10",
+              "bookPage": 177,
+              "pdfPage": 191,
+              "caption": "コンピュータ部品冷却用のフィン配列。"
+            },
+            {
+              "figureNumber": "4.11",
+              "bookPage": 178,
+              "pdfPage": 192,
+              "caption": "断面積が位置によって変わる一般的なフィン。"
+            },
+            {
+              "figureNumber": "4.12",
+              "bookPage": 179,
+              "pdfPage": 193,
+              "caption": "二次元のくさび形フィン。"
+            },
+            {
+              "figureNumber": "4.13",
+              "bookPage": 181,
+              "pdfPage": 195,
+              "caption": "断面形状が変化する複数のフィンの効率。"
+            }
+          ]
+        }
+      ],
+      "backMatter": [
+        {
+          "id": "problems",
+          "title": "章末問題",
+          "sourceTitle": "Problems",
+          "bookStart": 183,
+          "bookEnd": 192,
+          "pdfStart": 197,
+          "pdfEnd": 206,
+          "translationStatus": "draft_complete",
+          "reviewStatus": "needs_review",
+          "translationProgress": {
+            "draftBookPages": "183–192",
+            "draftPdfPages": "197–206",
+            "draftComplete": true,
+            "draftFiles": [
+              "data/drafts/ch4-problems-ja.json",
+              "data/drafts/ch4-problems-en.json"
+            ],
+            "problems": "4.1–4.45",
+            "problemCount": 45,
+            "availableInApp": false,
+            "pageBoundaryNote": "問題4.42は書籍pp.190–191／PDF pp.204–205、4.45はpp.191–192／pp.205–206にまたがる。問題4.7では図4.14（p.184／PDF p.198）を参照する。"
+          }
+        },
+        {
+          "id": "references",
+          "title": "参考文献",
+          "sourceTitle": "References",
+          "bookStart": 192,
+          "bookEnd": 192,
+          "pdfStart": 206,
+          "pdfEnd": 206,
+          "translationStatus": "draft_complete",
+          "reviewStatus": "needs_review",
+          "translationProgress": {
+            "draftBookPages": "192",
+            "draftPdfPages": "206",
+            "draftComplete": true,
+            "draftFiles": [
+              "data/drafts/ch4-references-ja.json",
+              "data/drafts/ch4-references-en.json"
+            ],
+            "referenceCount": 10,
+            "availableInApp": false,
+            "pageBoundaryNote": "参考文献4.1–4.10は書籍p.192／PDF p.206にあり、問題4.45の続きと同じページに掲載。"
+          }
         }
       ]
     },
@@ -265,56 +1153,451 @@
           "title": "導入",
           "sourceTitle": "Introduction",
           "pdfStart": 207,
-          "bookStart": 193
+          "bookStart": 193,
+          "bookEnd": 194,
+          "pdfEnd": 208,
+          "translationStatus": "draft_complete",
+          "reviewStatus": "needs_review",
+          "translationProgress": {
+            "draftBookPages": "193–194",
+            "draftPdfPages": "207–208",
+            "draftComplete": true,
+            "draftFiles": [
+              "data/drafts/5-1-ja.json",
+              "data/drafts/5-1-en.json"
+            ],
+            "availableInApp": false,
+            "blocksPerLanguage": 8,
+            "pageBoundaryNote": "Chapter title and epigraph start on book p.193 / PDF p.207. Section 5.1 continues on p.194 / PDF p.208 and ends immediately before §5.2, which begins on the same page."
+          }
         },
         {
           "id": "5.2",
           "title": "集中熱容量の解",
           "sourceTitle": "Lumped-capacity solutions",
           "pdfStart": 208,
-          "bookStart": 194
+          "bookStart": 194,
+          "bookEnd": 202,
+          "pdfEnd": 216,
+          "translationStatus": "draft_complete",
+          "reviewStatus": "needs_review",
+          "translationProgress": {
+            "draftBookPages": "194–202",
+            "draftPdfPages": "208–216",
+            "draftComplete": true,
+            "draftFiles": [
+              "data/drafts/5-2-ja.json",
+              "data/drafts/5-2-en.json"
+            ],
+            "availableInApp": false,
+            "blocksPerLanguage": 96,
+            "pageBoundaryNote": "§5.2 starts on book p.194 / PDF p.208 after the end of §5.1 and ends on p.202 / PDF p.216. §5.3 begins on book p.203 / PDF p.217. Figures 5.1–5.5 appear on book pp.196–201 / PDF pp.210–215."
+          },
+          "figures": [
+            {
+              "figureNumber": "5.1",
+              "bookPage": 196,
+              "pdfPage": 210,
+              "caption": "単純な抵抗・容量回路。"
+            },
+            {
+              "figureNumber": "5.2",
+              "bookPage": 197,
+              "pdfPage": 211,
+              "caption": "外力を受けるばね・質量・ダンパー系。"
+            },
+            {
+              "figureNumber": "5.3",
+              "bookPage": 198,
+              "pdfPage": 212,
+              "caption": "初速度を与えた、外力のないばね・質量・ダンパー系の応答。"
+            },
+            {
+              "figureNumber": "5.4",
+              "bookPage": 199,
+              "pdfPage": 213,
+              "caption": "周囲温度が直線的に上昇するときの温度計の応答。"
+            },
+            {
+              "figureNumber": "5.5",
+              "bookPage": 201,
+              "pdfPage": 215,
+              "caption": "接触抵抗を介して直列に熱を伝える二枚の平板。"
+            }
+          ]
         },
         {
           "id": "5.3",
           "title": "一次元平板の非定常熱伝導",
           "sourceTitle": "Transient conduction in a one-dimensional slab",
           "pdfStart": 217,
-          "bookStart": 203
+          "bookStart": 203,
+          "bookEnd": 207,
+          "pdfEnd": 221,
+          "translationStatus": "draft_complete",
+          "reviewStatus": "needs_review",
+          "translationProgress": {
+            "draftBookPages": "203–207",
+            "draftPdfPages": "217–221",
+            "draftComplete": true,
+            "draftFiles": [
+              "data/drafts/5-3-ja.json",
+              "data/drafts/5-3-en.json"
+            ],
+            "availableInApp": false,
+            "blocksPerLanguage": 50,
+            "pageBoundaryNote": "Main text is on book pp.203–207 / PDF pp.217–221. §5.4 begins partway through book p.207 / PDF p.221. Figure 5.6 is on p.203 / PDF p.217; Table 5.1 is printed on p.206 / PDF p.220."
+          },
+          "figures": [
+            {
+              "figureNumber": "5.6",
+              "bookPage": 203,
+              "pdfPage": 217,
+              "caption": "平板の過渡冷却；ξ = (x/L) + 1。"
+            }
+          ],
+          "tables": [
+            {
+              "tableNumber": "5.1",
+              "bookPage": 206,
+              "pdfPage": 220,
+              "caption": "平板、円柱、球の級数解に用いる項。"
+            }
+          ],
+          "pageBoundaryNote": "Main text is on book pp.203–207 / PDF pp.217–221. §5.4 begins partway through book p.207 / PDF p.221. Figure 5.6 is on p.203 / PDF p.217; Table 5.1 is printed on p.206 / PDF p.220."
         },
         {
           "id": "5.4",
           "title": "温度応答線図",
           "sourceTitle": "Temperature-response charts",
           "pdfStart": 221,
-          "bookStart": 207
+          "bookStart": 207,
+          "bookEnd": 216,
+          "pdfEnd": 230,
+          "translationStatus": "draft_complete",
+          "reviewStatus": "needs_review",
+          "translationProgress": {
+            "draftBookPages": "207–216; related figures 217–218",
+            "draftPdfPages": "221–230; related figures 231–232",
+            "draftComplete": true,
+            "draftFiles": [
+              "data/drafts/5-4-ja.json",
+              "data/drafts/5-4-en.json"
+            ],
+            "availableInApp": false,
+            "blocksPerLanguage": 50,
+            "pageBoundaryNote": "Main text is on book pp.207–216 / PDF pp.221–230. Figs. 5.11 and 5.12 referenced in Example 5.3 are on book pp.217–218 / PDF pp.231–232. §5.5 begins partway through p.216 / PDF p.230."
+          },
+          "pageBoundaryNote": "Main text is on book pp.207–216 / PDF pp.221–230. Figs. 5.11 and 5.12 referenced in Example 5.3 are on book pp.217–218 / PDF pp.231–232. §5.5 begins partway through p.216 / PDF p.230.",
+          "figures": [
+            {
+              "figureNumber": "5.7",
+              "bookPage": 209,
+              "pdfPage": 223,
+              "caption": "平板内の4位置における過渡温度分布。"
+            },
+            {
+              "figureNumber": "5.8",
+              "bookPage": 210,
+              "pdfPage": 224,
+              "caption": "長い円柱内の4位置における過渡温度分布。"
+            },
+            {
+              "figureNumber": "5.9",
+              "bookPage": 211,
+              "pdfPage": 225,
+              "caption": "球内の4位置における過渡温度分布。"
+            },
+            {
+              "figureNumber": "5.10",
+              "bookPage": 213,
+              "pdfPage": 227,
+              "caption": "急冷される物体からの除熱量を、h̄ と時間の関数として示す。"
+            },
+            {
+              "figureNumber": "5.11",
+              "bookPage": 217,
+              "pdfPage": 231,
+              "caption": "交流で加熱した平板表面の温度変動。"
+            },
+            {
+              "figureNumber": "5.12",
+              "bookPage": 218,
+              "pdfPage": 232,
+              "caption": "交流で加熱した円柱表面の温度変動。"
+            }
+          ]
         },
         {
           "id": "5.5",
           "title": "一項近似解",
           "sourceTitle": "One-term solutions",
           "pdfStart": 230,
-          "bookStart": 216
+          "bookStart": 216,
+          "bookEnd": 219,
+          "pdfEnd": 233,
+          "translationStatus": "draft_complete",
+          "reviewStatus": "needs_review",
+          "translationProgress": {
+            "draftBookPages": "216–219",
+            "draftPdfPages": "230–233",
+            "draftComplete": true,
+            "draftFiles": [
+              "data/drafts/5-5-ja.json",
+              "data/drafts/5-5-en.json"
+            ],
+            "availableInApp": false,
+            "blocksPerLanguage": 9,
+            "tableRows": 41,
+            "pageBoundaryNote": "§5.5 starts partway through book p.216 / PDF p.230 and ends on p.219 / PDF p.233. Table 5.2 has 41 Bi rows and appears on p.219 / PDF p.233."
+          },
+          "pageBoundaryNote": "§5.5 starts partway through book p.216 / PDF p.230 and ends on p.219 / PDF p.233. §5.6 begins on book p.220 / PDF p.234.",
+          "tables": [
+            {
+              "tableNumber": "5.2",
+              "bookPage": 219,
+              "pdfPage": 233,
+              "caption": "表面対流を伴う非定常伝導の一項近似係数［5.1］。",
+              "rows": 41
+            }
+          ]
         },
         {
           "id": "5.6",
           "title": "半無限領域への非定常熱伝導",
           "sourceTitle": "Transient heat conduction to a semi-infinite region",
           "pdfStart": 234,
-          "bookStart": 220
+          "bookStart": 220,
+          "bookEnd": 235,
+          "pdfEnd": 249,
+          "translationStatus": "draft_complete",
+          "reviewStatus": "needs_review",
+          "translationProgress": {
+            "draftBookPages": "220–235",
+            "draftPdfPages": "234–249",
+            "draftComplete": true,
+            "draftFiles": [
+              "data/drafts/5-6-ja.json",
+              "data/drafts/5-6-en.json"
+            ],
+            "availableInApp": false,
+            "blocksPerLanguage": 91,
+            "tableRows": 13,
+            "pageBoundaryNote": "§5.6 is on book pp.220–235 / PDF pp.234–249. Its final example and the start of §5.7 share p.235 / PDF p.249. Figures 5.13–5.19 and Table 5.3 are included."
+          },
+          "pageBoundaryNote": "§5.6 is on book pp.220–235 / PDF pp.234–249. §5.7 starts partway through p.235 / PDF p.249, where Example 5.7 also concludes. Figure pages: 5.13 p.220/PDF 234; 5.14 p.221/PDF 235; 5.15 p.225/PDF 239; 5.16 p.227/PDF 241; 5.17 p.230/PDF 244; 5.18 p.232/PDF 246; 5.19 p.234/PDF 248. Table 5.3 is on p.224/PDF 238.",
+          "figures": [
+            {
+              "figureNumber": "5.13",
+              "bookPage": 220,
+              "pdfPage": 234,
+              "caption": "武士刀の儀式的な表面硬化。"
+            },
+            {
+              "figureNumber": "5.14",
+              "bookPage": 221,
+              "pdfPage": 235,
+              "caption": "薄い刃の初期冷却。"
+            },
+            {
+              "figureNumber": "5.15",
+              "bookPage": 225,
+              "pdfPage": 239,
+              "caption": "半無限領域内の温度分布。"
+            },
+            {
+              "figureNumber": "5.16",
+              "bookPage": 227,
+              "pdfPage": 241,
+              "caption": "熱伝達係数hを通じた半無限領域の冷却。"
+            },
+            {
+              "figureNumber": "5.17",
+              "bookPage": 230,
+              "pdfPage": 244,
+              "caption": "過熱液体中で成長する気泡。"
+            },
+            {
+              "figureNumber": "5.18",
+              "bookPage": 232,
+              "pdfPage": 246,
+              "caption": "蒸気泡の成長予測と測定値。"
+            },
+            {
+              "figureNumber": "5.19",
+              "bookPage": 234,
+              "pdfPage": 248,
+              "caption": "境界温度が調和的に変化する半無限領域内の温度変動。"
+            }
+          ],
+          "tables": [
+            {
+              "tableNumber": "5.3",
+              "bookPage": 224,
+              "pdfPage": 238,
+              "caption": "誤差関数と相補誤差関数。",
+              "rows": 13
+            }
+          ]
         },
         {
           "id": "5.7",
           "title": "定常多次元熱伝導",
           "sourceTitle": "Steady multidimensional heat conduction",
           "pdfStart": 249,
-          "bookStart": 235
+          "bookStart": 235,
+          "bookEnd": 247,
+          "pdfEnd": 261,
+          "translationStatus": "draft_complete",
+          "reviewStatus": "needs_review",
+          "translationProgress": {
+            "draftBookPages": "235–247",
+            "draftPdfPages": "249–261",
+            "draftComplete": true,
+            "draftFiles": [
+              "data/drafts/5-7-ja.json",
+              "data/drafts/5-7-en.json"
+            ],
+            "availableInApp": false,
+            "blocksPerLanguage": 78,
+            "tableRows": 13,
+            "pageBoundaryNote": "§5.7 begins on p.235 / PDF p.249 where §5.6 also ends. It ends on p.247 / PDF p.261 before §5.8 at p.248 / PDF p.262. Table 5.4 is physically printed on pp.246–247 / PDF pp.260–261 after its earlier textual references."
+          },
+          "pageBoundaryNote": "§5.7 spans book pp.235–247 / PDF pp.249–261. Figures: 5.20 p.236/PDF 250; 5.21 p.238/PDF 252; 5.22 p.240/PDF 254; 5.23 p.241/PDF 255; 5.24 p.242/PDF 256; 5.25 p.243/PDF 257; 5.26 p.245/PDF 259. Table 5.4 is printed on pp.246–247 / PDF pp.260–261 after forward references in the text. Example 5.10 contains a printed boundary-condition constant flagged for verification; Example 5.11 has a small printed arithmetic discrepancy flagged for verification.",
+          "figures": [
+            {
+              "figureNumber": "5.20",
+              "bookPage": 236,
+              "pdfPage": 250,
+              "caption": "二つの等温壁の間を流れる二次元熱流。"
+            },
+            {
+              "figureNumber": "5.21",
+              "bookPage": 238,
+              "pdfPage": 252,
+              "caption": "熱流線図を段階的に作成する手順。"
+            },
+            {
+              "figureNumber": "5.22",
+              "bookPage": 240,
+              "pdfPage": 254,
+              "caption": "対称軸を利用できない熱流線図。"
+            },
+            {
+              "figureNumber": "5.23",
+              "bookPage": 241,
+              "pdfPage": 255,
+              "caption": "等温リブのある壁を通る熱移動。"
+            },
+            {
+              "figureNumber": "5.24",
+              "bookPage": 242,
+              "pdfPage": 256,
+              "caption": "大きさの異なる相似な二つの物体の形状係数。"
+            },
+            {
+              "figureNumber": "5.25",
+              "bookPage": 243,
+              "pdfPage": 257,
+              "caption": "厚肉中空球を通る熱移動。"
+            },
+            {
+              "figureNumber": "5.26",
+              "bookPage": 245,
+              "pdfPage": 259,
+              "caption": "二つの等温境界が交わる場所で抵抗が消失する。"
+            }
+          ],
+          "tables": [
+            {
+              "tableNumber": "5.4",
+              "bookPage": "246–247",
+              "pdfPage": "260–261",
+              "caption": "伝導の形状係数：Q=SkΔT、R_t=1/(kS)。",
+              "rows": 13
+            }
+          ]
         },
         {
           "id": "5.8",
           "title": "非定常多次元熱伝導",
           "sourceTitle": "Transient multidimensional heat conduction",
           "pdfStart": 262,
-          "bookStart": 248
+          "bookStart": 248,
+          "bookEnd": 252,
+          "pdfEnd": 266,
+          "translationStatus": "draft_complete",
+          "reviewStatus": "needs_review",
+          "translationProgress": {
+            "draftBookPages": "248–252",
+            "draftPdfPages": "262–266",
+            "draftComplete": true,
+            "draftFiles": [
+              "data/drafts/5-8-ja.json",
+              "data/drafts/5-8-en.json"
+            ],
+            "availableInApp": false,
+            "blocksPerLanguage": 34,
+            "pageBoundaryNote": "§5.8 starts on book p.248 / PDF p.262 and ends on book p.252 / PDF p.266; Chapter 5 problems start on p.252 after Example 5.13. Figure 5.27 is on book p.249 / PDF p.263. Eq. (5.70a) is transcribed as printed and flagged for dimensional inconsistency with Eq. (5.70b)."
+          },
+          "pageBoundaryNote": "§5.8 spans book pp.248–252 / PDF pp.262–266. Chapter 5 problems begin later on book p.252 / PDF p.266, on the same page as the end of Example 5.13. Figure 5.27 is on book p.249 / PDF p.263. Eq. (5.70a) is flagged for a dimensional inconsistency.",
+          "figures": [
+            {
+              "figureNumber": "5.27",
+              "bookPage": 249,
+              "pdfPage": 263,
+              "caption": "非定常冷却を一次元解の積として扱えるさまざまな立体。"
+            }
+          ]
+        }
+      ],
+      "backMatter": [
+        {
+          "id": "problems",
+          "title": "章末問題",
+          "sourceTitle": "Problems",
+          "bookStart": 252,
+          "bookEnd": 266,
+          "pdfStart": 266,
+          "pdfEnd": 280,
+          "translationStatus": "draft_complete",
+          "reviewStatus": "needs_review",
+          "translationProgress": {
+            "draftBookPages": "252–266",
+            "draftPdfPages": "266–280",
+            "draftComplete": true,
+            "draftFiles": [
+              "data/drafts/ch5-problems-ja.json",
+              "data/drafts/ch5-problems-en.json"
+            ],
+            "problems": "5.1–5.66",
+            "problemCount": 66,
+            "availableInApp": false,
+            "pageBoundaryNote": "問題5.3、5.32、5.38、5.43、5.47はページをまたぐ。図5.30は書籍pp.257–258／PDF pp.271–272、図5.31はp.266／PDF p.280。"
+          }
+        },
+        {
+          "id": "references",
+          "title": "参考文献",
+          "sourceTitle": "References",
+          "bookStart": 267,
+          "bookEnd": 268,
+          "pdfStart": 281,
+          "pdfEnd": 282,
+          "translationStatus": "draft_complete",
+          "reviewStatus": "needs_review",
+          "translationProgress": {
+            "draftBookPages": "267–268",
+            "draftPdfPages": "281–282",
+            "draftComplete": true,
+            "draftFiles": [
+              "data/drafts/ch5-references-ja.json",
+              "data/drafts/ch5-references-en.json"
+            ],
+            "referenceCount": 25,
+            "availableInApp": false,
+            "pageBoundaryNote": "参考文献5.1–5.14は書籍p.267／PDF p.281、5.15–5.25は書籍p.268／PDF p.282。"
+          }
         }
       ]
     },
@@ -331,63 +1614,897 @@
           "title": "導入となる考え方",
           "sourceTitle": "Some introductory ideas",
           "pdfStart": 285,
-          "bookStart": 271
+          "bookStart": 271,
+          "bookEnd": 277,
+          "pdfEnd": 291,
+          "translationStatus": "draft_complete",
+          "reviewStatus": "needs_review",
+          "translationProgress": {
+            "draftBookPages": "271–277",
+            "draftPdfPages": "285–291",
+            "draftComplete": true,
+            "draftFiles": [
+              "data/drafts/6-1-ja.json",
+              "data/drafts/6-1-en.json"
+            ],
+            "blocksPerLanguage": 48,
+            "availableInApp": false,
+            "pageBoundaryNote": "Figure 6.6 is cited by the final paragraph of §6.1 but is printed on book p.278/PDF p.292 with the opening of §6.2."
+          },
+          "pageBoundaryNote": "§6.1は書籍pp.271–277／PDF pp.285–291。末尾で参照する図6.6は§6.2冒頭と同じ書籍p.278／PDF p.292に掲載。",
+          "figures": [
+            {
+              "figureNumber": "6.1",
+              "bookPage": 272,
+              "pdfPage": 286,
+              "caption": "厚さδの境界層。"
+            },
+            {
+              "figureNumber": "6.2",
+              "bookPage": 273,
+              "pdfPage": 287,
+              "caption": "ルートヴィヒ・プラントル（1875–1953）。"
+            },
+            {
+              "figureNumber": "6.3",
+              "bookPage": 274,
+              "pdfPage": 288,
+              "caption": "オズボーン・レイノルズと層流–乱流遷移の実験。"
+            },
+            {
+              "figureNumber": "6.4",
+              "bookPage": 275,
+              "pdfPage": 289,
+              "caption": "鋭い前縁を持つ長い平板上の境界層。"
+            },
+            {
+              "figureNumber": "6.5",
+              "bookPage": 277,
+              "pdfPage": 291,
+              "caption": "温かい平板上を流れる冷たい流体の温度境界層。"
+            },
+            {
+              "figureNumber": "6.6",
+              "bookPage": 278,
+              "pdfPage": 292,
+              "caption": "エルンスト・クラフト・ヴィルヘルム・ヌセルト（1882–1957）。",
+              "sectionBoundaryReference": true
+            }
+          ]
         },
         {
           "id": "6.2",
           "title": "平板上の非圧縮性層流境界層",
           "sourceTitle": "Laminar incompressible boundary layer on a flat surface",
           "pdfStart": 292,
-          "bookStart": 278
+          "bookStart": 278,
+          "bookEnd": 293,
+          "pdfEnd": 307,
+          "translationStatus": "draft_complete",
+          "reviewStatus": "needs_review",
+          "translationProgress": {
+            "draftBookPages": "278–293",
+            "draftPdfPages": "292–307",
+            "draftComplete": true,
+            "draftFiles": [
+              "data/drafts/6-2-ja.json",
+              "data/drafts/6-2-en.json"
+            ],
+            "blocksPerLanguage": 120,
+            "availableInApp": false,
+            "questionDraftFiles": [
+              "data/drafts/ch6-2-questions-ja.json",
+              "data/drafts/ch6-2-questions-en.json"
+            ],
+            "questionCount": 5,
+            "pageStatuses": [
+              {
+                "bookPage": 278,
+                "pdfPage": 292,
+                "translationStatus": "draft_complete",
+                "reviewStatus": "needs_review"
+              },
+              {
+                "bookPage": 279,
+                "pdfPage": 293,
+                "translationStatus": "draft_complete",
+                "reviewStatus": "needs_review"
+              },
+              {
+                "bookPage": 280,
+                "pdfPage": 294,
+                "translationStatus": "draft_complete",
+                "reviewStatus": "needs_review"
+              },
+              {
+                "bookPage": 281,
+                "pdfPage": 295,
+                "translationStatus": "draft_complete",
+                "reviewStatus": "needs_review"
+              },
+              {
+                "bookPage": 282,
+                "pdfPage": 296,
+                "translationStatus": "draft_complete",
+                "reviewStatus": "needs_review"
+              },
+              {
+                "bookPage": 283,
+                "pdfPage": 297,
+                "translationStatus": "draft_complete",
+                "reviewStatus": "needs_review"
+              },
+              {
+                "bookPage": 284,
+                "pdfPage": 298,
+                "translationStatus": "draft_complete",
+                "reviewStatus": "needs_review"
+              },
+              {
+                "bookPage": 285,
+                "pdfPage": 299,
+                "translationStatus": "draft_complete",
+                "reviewStatus": "needs_review"
+              },
+              {
+                "bookPage": 286,
+                "pdfPage": 300,
+                "translationStatus": "draft_complete",
+                "reviewStatus": "needs_review"
+              },
+              {
+                "bookPage": 287,
+                "pdfPage": 301,
+                "translationStatus": "draft_complete",
+                "reviewStatus": "needs_review"
+              },
+              {
+                "bookPage": 288,
+                "pdfPage": 302,
+                "translationStatus": "draft_complete",
+                "reviewStatus": "needs_review"
+              },
+              {
+                "bookPage": 289,
+                "pdfPage": 303,
+                "translationStatus": "draft_complete",
+                "reviewStatus": "needs_review"
+              },
+              {
+                "bookPage": 290,
+                "pdfPage": 304,
+                "translationStatus": "draft_complete",
+                "reviewStatus": "needs_review"
+              },
+              {
+                "bookPage": 291,
+                "pdfPage": 305,
+                "translationStatus": "draft_complete",
+                "reviewStatus": "needs_review"
+              },
+              {
+                "bookPage": 292,
+                "pdfPage": 306,
+                "translationStatus": "draft_complete",
+                "reviewStatus": "needs_review"
+              },
+              {
+                "bookPage": 293,
+                "pdfPage": 307,
+                "translationStatus": "draft_complete",
+                "reviewStatus": "needs_review"
+              }
+            ],
+            "pageBoundaryNote": "書籍p.293／PDF p.307の冒頭に例題6.3の続きがあり、その後同じページから§6.3が始まる。例題の最後までを§6.2に収録。"
+          },
+          "pageBoundaryNote": "§6.2は書籍pp.278–293／PDF pp.292–307。p.293／PDF p.307では例題6.3の最後の計算後に§6.3が始まる。",
+          "figures": [
+            {
+              "figureNumber": "6.6",
+              "bookPage": 278,
+              "pdfPage": 292,
+              "caption": "エルンスト・クラフト・ヴィルヘルム・ヌセルト（1882–1957）。学生G. Lückが提供した写真で、1912年にケッセルベルクの滝のそばにいるヌセルトを写す。ヌセルトは熱心な登山家だった。",
+              "alt": "滝を背景に、登山服姿で立つヴィルヘルム・ヌセルトの全身写真。",
+              "src": "data/drafts/figures/fig6-6-278.png"
+            },
+            {
+              "figureNumber": "6.7",
+              "bookPage": 279,
+              "pdfPage": 293,
+              "caption": "定常・非圧縮・二次元の流れ場を、流線すなわち流れ関数ψが一定の線で表す。",
+              "alt": "曲線が流線を表す。局所速度ベクトルu⃗とx・y成分、流線間の微小面積dA、流線上の面積dAsが示されている。",
+              "src": "data/drafts/figures/fig6-7-279.png"
+            },
+            {
+              "figureNumber": "6.8",
+              "bookPage": 281,
+              "pdfPage": 295,
+              "caption": "ψ=u∞yで表される一様な水平流れの流線。",
+              "alt": "x方向へ流れる一様流を示す。流線は水平で、ψの値は壁面からの距離に比例する。",
+              "src": "data/drafts/figures/fig6-8-281.png"
+            },
+            {
+              "figureNumber": "6.9",
+              "bookPage": 282,
+              "pdfPage": 296,
+              "caption": "二次元非圧縮性境界層に作用する力。",
+              "alt": "平板上の境界層と微小要素Aを拡大して示す。要素の辺に圧力、せん断応力、x・y方向の運動量流束が作用する。",
+              "src": "data/drafts/figures/fig6-9-282.png"
+            },
+            {
+              "figureNumber": "6.10",
+              "bookPage": 286,
+              "pdfPage": 300,
+              "caption": "層流境界層内の無次元速度成分。",
+              "alt": "Blasius解の無次元速度分布。η=4.92の位置に境界層端δが示され、x方向・y方向の速度成分が別々の曲線で描かれる。",
+              "src": "data/drafts/figures/fig6-10-286.png"
+            },
+            {
+              "figureNumber": "6.11",
+              "bookPage": 291,
+              "pdfPage": 305,
+              "caption": "式（6.29）の三次多項式近似と厳密な境界層速度分布の比較。近似解ではy=δでu/u∞=1とし、厳密解の0.99とは異なる。",
+              "alt": "縦軸u/u∞、横軸y/δの二曲線を比較する。y=δで近似値は1、厳密解は約0.99となる。",
+              "src": "data/drafts/figures/fig6-11-291.png"
+            }
+          ]
         },
         {
           "id": "6.3",
           "title": "エネルギー方程式",
           "sourceTitle": "The energy equation",
           "pdfStart": 307,
-          "bookStart": 293
+          "bookStart": 293,
+          "bookEnd": 298,
+          "pdfEnd": 312,
+          "translationStatus": "draft_complete",
+          "reviewStatus": "needs_review",
+          "pageBoundaryNote": "§6.3は書籍pp.293–298／PDF pp.307–312。p.298／PDF p.312では例題6.4の計算が完了した後、同じページから§6.4が始まる。",
+          "translationProgress": {
+            "draftBookPages": "293–298",
+            "draftPdfPages": "307–312",
+            "draftComplete": true,
+            "draftFiles": [
+              "data/drafts/6-3-ja.json",
+              "data/drafts/6-3-en.json"
+            ],
+            "blocksPerLanguage": 44,
+            "availableInApp": false,
+            "questionDraftFiles": [
+              "data/drafts/ch6-3-questions-ja.json",
+              "data/drafts/ch6-3-questions-en.json"
+            ],
+            "questionCount": 5,
+            "pageStatuses": [
+              {
+                "bookPage": 293,
+                "pdfPage": 307,
+                "translationStatus": "draft_complete",
+                "reviewStatus": "needs_review"
+              },
+              {
+                "bookPage": 294,
+                "pdfPage": 308,
+                "translationStatus": "draft_complete",
+                "reviewStatus": "needs_review"
+              },
+              {
+                "bookPage": 295,
+                "pdfPage": 309,
+                "translationStatus": "draft_complete",
+                "reviewStatus": "needs_review"
+              },
+              {
+                "bookPage": 296,
+                "pdfPage": 310,
+                "translationStatus": "draft_complete",
+                "reviewStatus": "needs_review"
+              },
+              {
+                "bookPage": 297,
+                "pdfPage": 311,
+                "translationStatus": "draft_complete",
+                "reviewStatus": "needs_review"
+              },
+              {
+                "bookPage": 298,
+                "pdfPage": 312,
+                "translationStatus": "draft_complete",
+                "reviewStatus": "needs_review"
+              }
+            ]
+          },
+          "figures": [
+            {
+              "figureNumber": "6.12",
+              "bookPage": 294,
+              "pdfPage": 308,
+              "caption": "熱流と流れがある場の検査体積。",
+              "alt": "領域Rの体積要素dRと境界面S上の面積要素dSを示す。外向き法線n⃗、流体速度u⃗、熱流束q⃗、単位体積当たりの発熱q̇（W/m³）が描かれている。",
+              "src": "data/drafts/figures/fig6-12-294.png"
+            }
+          ]
         },
         {
           "id": "6.4",
           "title": "プラントル数と境界層厚さ",
           "sourceTitle": "The Prandtl number and the boundary layer thicknesses",
           "pdfStart": 312,
-          "bookStart": 298
+          "bookStart": 298,
+          "bookEnd": 301,
+          "pdfEnd": 315,
+          "translationStatus": "draft_complete",
+          "reviewStatus": "needs_review",
+          "pageBoundaryNote": "§6.4は書籍p.298／PDF p.312から始まり、p.298には§6.3の例題6.4の終わりも同居する。§6.4は書籍p.301／PDF p.315で終わり、次節§6.5はp.302／PDF p.316から始まる。",
+          "translationProgress": {
+            "draftBookPages": "298–301",
+            "draftPdfPages": "312–315",
+            "draftComplete": true,
+            "draftFiles": [
+              "data/drafts/6-4-ja.json",
+              "data/drafts/6-4-en.json"
+            ],
+            "blocksPerLanguage": 33,
+            "availableInApp": false,
+            "questionDraftFiles": [
+              "data/drafts/ch6-4-questions-ja.json",
+              "data/drafts/ch6-4-questions-en.json"
+            ],
+            "questionCount": 5,
+            "pageStatuses": [
+              {
+                "bookPage": 298,
+                "pdfPage": 312,
+                "translationStatus": "draft_complete",
+                "reviewStatus": "needs_review"
+              },
+              {
+                "bookPage": 299,
+                "pdfPage": 313,
+                "translationStatus": "draft_complete",
+                "reviewStatus": "needs_review"
+              },
+              {
+                "bookPage": 300,
+                "pdfPage": 314,
+                "translationStatus": "draft_complete",
+                "reviewStatus": "needs_review"
+              },
+              {
+                "bookPage": 301,
+                "pdfPage": 315,
+                "translationStatus": "draft_complete",
+                "reviewStatus": "needs_review"
+              }
+            ]
+          },
+          "figures": [
+            {
+              "bookPage": 299,
+              "pdfPage": 313,
+              "figureNumber": "6.13",
+              "caption": "速度または温度勾配がある気体中での運動量・エネルギー移動。",
+              "alt": "y方向に速度または温度の勾配がある気体を示す。y面を横切る分子は、平均自由行程ℓ程度離れた隣の層から来て衝突し、運動量とエネルギーを移送する。",
+              "src": "data/drafts/figures/fig6-13-299.png"
+            }
+          ]
         },
         {
           "id": "6.5",
           "title": "平板上の層流・非圧縮流の熱伝達係数",
           "sourceTitle": "Heat transfer coefficient for laminar, incompressible flow over a flat surface",
           "pdfStart": 316,
-          "bookStart": 302
+          "bookStart": 302,
+          "bookEnd": 312,
+          "pdfEnd": 326,
+          "translationStatus": "draft_complete",
+          "reviewStatus": "needs_review",
+          "pageBoundaryNote": "§6.5は書籍p.302／PDF p.316で始まり、同じページ上端に§6.4の末尾がある。例題6.6の終わりまで書籍p.312／PDF p.326を含む。§6.6はp.313／PDF p.327から始まる。",
+          "translationProgress": {
+            "draftBookPages": "302–312",
+            "draftPdfPages": "316–326",
+            "draftComplete": true,
+            "draftFiles": [
+              "data/drafts/6-5-ja.json",
+              "data/drafts/6-5-en.json"
+            ],
+            "blocksPerLanguage": 118,
+            "availableInApp": false,
+            "questionDraftFiles": [
+              "data/drafts/ch6-5-questions-ja.json",
+              "data/drafts/ch6-5-questions-en.json"
+            ],
+            "questionCount": 5,
+            "pageStatuses": [
+              {
+                "bookPage": 302,
+                "pdfPage": 316,
+                "translationStatus": "draft_complete",
+                "reviewStatus": "needs_review"
+              },
+              {
+                "bookPage": 303,
+                "pdfPage": 317,
+                "translationStatus": "draft_complete",
+                "reviewStatus": "needs_review"
+              },
+              {
+                "bookPage": 304,
+                "pdfPage": 318,
+                "translationStatus": "draft_complete",
+                "reviewStatus": "needs_review"
+              },
+              {
+                "bookPage": 305,
+                "pdfPage": 319,
+                "translationStatus": "draft_complete",
+                "reviewStatus": "needs_review"
+              },
+              {
+                "bookPage": 306,
+                "pdfPage": 320,
+                "translationStatus": "draft_complete",
+                "reviewStatus": "needs_review"
+              },
+              {
+                "bookPage": 307,
+                "pdfPage": 321,
+                "translationStatus": "draft_complete",
+                "reviewStatus": "needs_review"
+              },
+              {
+                "bookPage": 308,
+                "pdfPage": 322,
+                "translationStatus": "draft_complete",
+                "reviewStatus": "needs_review"
+              },
+              {
+                "bookPage": 309,
+                "pdfPage": 323,
+                "translationStatus": "draft_complete",
+                "reviewStatus": "needs_review"
+              },
+              {
+                "bookPage": 310,
+                "pdfPage": 324,
+                "translationStatus": "draft_complete",
+                "reviewStatus": "needs_review"
+              },
+              {
+                "bookPage": 311,
+                "pdfPage": 325,
+                "translationStatus": "draft_complete",
+                "reviewStatus": "needs_review"
+              },
+              {
+                "bookPage": 312,
+                "pdfPage": 326,
+                "translationStatus": "draft_complete",
+                "reviewStatus": "needs_review"
+              }
+            ],
+            "reviewNotes": [
+              {
+                "kind": "source_dimensional_consistency",
+                "bookPage": 307,
+                "pdfPage": 321,
+                "note": "Equation (6.61) is preserved as printed. Its displayed equality between u∞x/α and ρcp u∞ΔT/(kΔT) appears dimensionally inconsistent because the second ratio has no explicit length x; verify whether a factor is missing or implicit in the source notation."
+              },
+              {
+                "kind": "source_arithmetic_inconsistency",
+                "bookPage": 312,
+                "pdfPage": 326,
+                "note": "Equation (6.72) prints 0.688 in the denominator, while Example 6.6 prints 0.6795 in the ratio 0.4587/0.6795=60.5°C. Preserve both printed values; independent subject-matter review is required."
+              }
+            ]
+          },
+          "figures": [
+            {
+              "bookPage": 305,
+              "pdfPage": 319,
+              "figureNumber": "6.14",
+              "caption": "Tw一定の場合の境界層厚さ比に対するPrの影響：厳密解と近似解。",
+              "alt": "横軸はPr（対数目盛）、縦軸はφ=δt/δ。式（6.54）、Pr^(−1/3)の近似、厳密計算の曲線を比較し、Prが増すと厚さ比が減る。",
+              "src": "data/drafts/figures/fig6-14-305.png"
+            },
+            {
+              "bookPage": 307,
+              "pdfPage": 321,
+              "figureNumber": "6.15",
+              "caption": "低Pr液体中の層流境界層。速度境界層が非常に薄いため、温度境界層のほぼ全域でu≈u∞となる。",
+              "alt": "平板上の低Pr液体で、速度境界層δは温度境界層δtより薄い。温度境界層内の大部分で速度uは主流速度u∞に近い。",
+              "src": "data/drafts/figures/fig6-15-307.png"
+            },
+            {
+              "bookPage": 308,
+              "pdfPage": 322,
+              "figureNumber": "6.16",
+              "caption": "前縁に非加熱区間をもつ境界層。加熱面はx₀から始まる。",
+              "alt": "平板の前縁からx₀までは非加熱で、その先を一定温度Twに保つ。速度境界層δと温度境界層δtは下流へ発達し、加熱区間はx₀から始まる。",
+              "src": "data/drafts/figures/fig6-16-308.png"
+            }
+          ]
         },
         {
           "id": "6.6",
           "title": "プラントル・コルバーンの類推",
           "sourceTitle": "The Reynolds-Colburn analogy",
           "pdfStart": 327,
-          "bookStart": 313
+          "bookStart": 313,
+          "bookEnd": 314,
+          "pdfEnd": 328,
+          "translationStatus": "draft_complete",
+          "reviewStatus": "needs_review",
+          "pageBoundaryNote": "§6.6は書籍p.313／PDF p.327から始まり、p.314／PDF p.328の脚注9まで続く。同じp.314／PDF p.328に§6.7の見出しがある。",
+          "translationProgress": {
+            "draftBookPages": "313–314",
+            "draftPdfPages": "327–328",
+            "draftComplete": true,
+            "draftFiles": [
+              "data/drafts/6-6-ja.json",
+              "data/drafts/6-6-en.json"
+            ],
+            "blocksPerLanguage": 19,
+            "availableInApp": false,
+            "questionDraftFiles": [
+              "data/drafts/ch6-6-questions-ja.json",
+              "data/drafts/ch6-6-questions-en.json"
+            ],
+            "questionCount": 4,
+            "pageStatuses": [
+              {
+                "bookPage": 313,
+                "pdfPage": 327,
+                "translationStatus": "draft_complete",
+                "reviewStatus": "needs_review"
+              },
+              {
+                "bookPage": 314,
+                "pdfPage": 328,
+                "translationStatus": "draft_complete",
+                "reviewStatus": "needs_review"
+              }
+            ],
+            "reviewNotes": [
+              "専門家校閲前。一定壁温の平板層流など、類推を使う際は前提条件を確認する。"
+            ]
+          }
         },
         {
           "id": "6.7",
           "title": "乱流境界層",
           "sourceTitle": "Turbulent boundary layers",
           "pdfStart": 328,
-          "bookStart": 314
+          "bookStart": 314,
+          "bookEnd": 322,
+          "pdfEnd": 336,
+          "translationStatus": "draft_complete",
+          "reviewStatus": "needs_review",
+          "pageBoundaryNote": "§6.7は書籍p.314／PDF p.328に始まり、式（6.102）と脚注11があるp.322／PDF p.336まで。p.314上端には前節§6.6の続き、p.322下部には§6.8の開始がある。",
+          "translationProgress": {
+            "draftBookPages": "314–322",
+            "draftPdfPages": "328–336",
+            "draftComplete": true,
+            "draftFiles": [
+              "data/drafts/6-7-ja.json",
+              "data/drafts/6-7-en.json"
+            ],
+            "blocksPerLanguage": 78,
+            "availableInApp": false,
+            "questionDraftFiles": [
+              "data/drafts/ch6-7-questions-ja.json",
+              "data/drafts/ch6-7-questions-en.json"
+            ],
+            "questionCount": 6,
+            "pageStatuses": [
+              {
+                "bookPage": 314,
+                "pdfPage": 328,
+                "translationStatus": "draft_complete",
+                "reviewStatus": "needs_review"
+              },
+              {
+                "bookPage": 315,
+                "pdfPage": 329,
+                "translationStatus": "draft_complete",
+                "reviewStatus": "needs_review"
+              },
+              {
+                "bookPage": 316,
+                "pdfPage": 330,
+                "translationStatus": "draft_complete",
+                "reviewStatus": "needs_review"
+              },
+              {
+                "bookPage": 317,
+                "pdfPage": 331,
+                "translationStatus": "draft_complete",
+                "reviewStatus": "needs_review"
+              },
+              {
+                "bookPage": 318,
+                "pdfPage": 332,
+                "translationStatus": "draft_complete",
+                "reviewStatus": "needs_review"
+              },
+              {
+                "bookPage": 319,
+                "pdfPage": 333,
+                "translationStatus": "draft_complete",
+                "reviewStatus": "needs_review"
+              },
+              {
+                "bookPage": 320,
+                "pdfPage": 334,
+                "translationStatus": "draft_complete",
+                "reviewStatus": "needs_review"
+              },
+              {
+                "bookPage": 321,
+                "pdfPage": 335,
+                "translationStatus": "draft_complete",
+                "reviewStatus": "needs_review"
+              },
+              {
+                "bookPage": 322,
+                "pdfPage": 336,
+                "translationStatus": "draft_complete",
+                "reviewStatus": "needs_review"
+              }
+            ],
+            "reviewNotes": [
+              "数式と図の掲載ページを原本画像で確認。専門家校閲前。"
+            ]
+          },
+          "figures": [
+            {
+              "type": "figure",
+              "bookPage": 315,
+              "pdfPage": 329,
+              "sourceType": "book",
+              "figureNumber": "6.17",
+              "caption": "乱流管内流れにおけるuなどの変動。",
+              "captionEn": "Fluctuation of u and other quantities in a turbulent pipe flow.",
+              "alt": "管内の乱流渦と、管断面に沿った速度分布の平均値・瞬時値を示す。別のグラフは一点での瞬時速度uが時間とともに平均速度ūの周りで変動する様子を示す。左にはu、v、w、T、ρなどを平均値と変動成分の和に分ける関係がある。",
+              "altEn": "The figure shows eddies in a pipe and mean and instantaneous velocity profiles across the pipe. A second plot shows the instantaneous velocity u fluctuating around the local mean ū over time. The left side lists decompositions of u, v, w, T, and ρ into mean and fluctuating parts.",
+              "src": "data/drafts/figures/fig6-17-315.png"
+            },
+            {
+              "type": "figure",
+              "bookPage": 317,
+              "pdfPage": 331,
+              "sourceType": "book",
+              "figureNumber": "6.18",
+              "caption": "層流または乱流におけるせん断応力τyx。",
+              "captionEn": "The shear stress, τyx, in a laminar or turbulent flow.",
+              "alt": "平板と座標軸x、yを示す。層流ではτyx=μ∂u/∂yと注記され、流れの矢印・速度分布がy方向に描かれている。乱流側には変動する速度分布が示される。",
+              "altEn": "A plate and the x and y axes are shown. The laminar side is labeled τyx=μ∂u/∂y, with flow arrows and a velocity profile across y; a fluctuating velocity profile is shown for turbulent flow.",
+              "src": "data/drafts/figures/fig6-18-317.png"
+            }
+          ]
         },
         {
           "id": "6.8",
           "title": "乱流境界層の熱伝達",
           "sourceTitle": "Heat transfer in turbulent boundary layers",
           "pdfStart": 336,
-          "bookStart": 322
+          "bookStart": 322,
+          "bookEnd": 328,
+          "pdfEnd": 342,
+          "translationStatus": "draft_complete",
+          "reviewStatus": "needs_review",
+          "pageBoundaryNote": "§6.8は書籍p.322／PDF p.336から始まり、例題6.7の解答が終わるp.328／PDF p.342まで。p.322上部には§6.7の続き、p.328では例題の直後に§6.9が始まる。",
+          "translationProgress": {
+            "draftBookPages": "322–328",
+            "draftPdfPages": "336–342",
+            "draftComplete": true,
+            "draftFiles": [
+              "data/drafts/6-8-ja.json",
+              "data/drafts/6-8-en.json"
+            ],
+            "blocksPerLanguage": 55,
+            "availableInApp": false,
+            "questionDraftFiles": [
+              "data/drafts/ch6-8-questions-ja.json",
+              "data/drafts/ch6-8-questions-en.json"
+            ],
+            "questionCount": 6,
+            "pageStatuses": [
+              {
+                "bookPage": 322,
+                "pdfPage": 336,
+                "translationStatus": "draft_complete",
+                "reviewStatus": "needs_review"
+              },
+              {
+                "bookPage": 323,
+                "pdfPage": 337,
+                "translationStatus": "draft_complete",
+                "reviewStatus": "needs_review"
+              },
+              {
+                "bookPage": 324,
+                "pdfPage": 338,
+                "translationStatus": "draft_complete",
+                "reviewStatus": "needs_review"
+              },
+              {
+                "bookPage": 325,
+                "pdfPage": 339,
+                "translationStatus": "draft_complete",
+                "reviewStatus": "needs_review"
+              },
+              {
+                "bookPage": 326,
+                "pdfPage": 340,
+                "translationStatus": "draft_complete",
+                "reviewStatus": "needs_review"
+              },
+              {
+                "bookPage": 327,
+                "pdfPage": 341,
+                "translationStatus": "draft_complete",
+                "reviewStatus": "needs_review"
+              },
+              {
+                "bookPage": 328,
+                "pdfPage": 342,
+                "translationStatus": "draft_complete",
+                "reviewStatus": "needs_review"
+              }
+            ],
+            "reviewNotes": [
+              "式と図を原本ページ画像で確認。例題6.7は式（6.111）の結果と近似式（6.113）の結果を区別。専門家校閲前。"
+            ]
+          },
+          "figures": [
+            {
+              "type": "figure",
+              "bookPage": 326,
+              "pdfPage": 340,
+              "sourceType": "book",
+              "figureNumber": "6.19",
+              "caption": "式（6.111）と空気の実験データの比較。一定Twと一定qwのデータを示す。u′rは主流中の乱流速度変動の二乗平均平方根。",
+              "captionEn": "Comparison of Eq. (6.111) to air data from several investigators. Both constant Tw and constant qw data are shown. u′r is the root-mean-square turbulent fluctuation in the free-stream flow.",
+              "alt": "両対数グラフ。横軸はReₓ（約10⁵〜10⁷）、縦軸はNuₓ（約10²〜10⁴）。Pr=0.71の空気について式（6.111）と式（6.102）による予測線、複数研究者の実験点、予測から±15%の帯を比較する。Tw一定とqw一定の両データを含む。",
+              "altEn": "Log-log plot of Reₓ (about 10⁵–10⁷) versus Nuₓ (about 10²–10⁴) for air at Pr=0.71. It compares the prediction from Eqs. (6.111) and (6.102), data from several investigators, and ±15% bands. Both constant-Tw and constant-qw data are included.",
+              "src": "data/drafts/figures/fig6-19-326.png"
+            }
+          ]
         },
         {
           "id": "6.9",
-          "title": "乱流への遷移と総括熱伝達",
+          "title": "乱流への遷移と全体の熱伝達",
           "sourceTitle": "Turbulent transition and overall heat transfer",
           "pdfStart": 342,
-          "bookStart": 328
+          "bookStart": 328,
+          "bookEnd": 336,
+          "pdfEnd": 350,
+          "translationStatus": "draft_complete",
+          "reviewStatus": "needs_review",
+          "pageBoundaryNote": "§6.9は書籍p.328／PDF p.342の§6.9見出しから始まり、書籍p.336／PDF p.350で終わる。p.328上部には§6.8例題6.7の続きがある。次章は書籍p.351／PDF p.365から始まる。",
+          "translationProgress": {
+            "draftBookPages": "328–336",
+            "draftPdfPages": "342–350",
+            "draftComplete": true,
+            "draftFiles": [
+              "data/drafts/6-9-ja.json",
+              "data/drafts/6-9-en.json"
+            ],
+            "blocksPerLanguage": 62,
+            "availableInApp": false,
+            "questionDraftFiles": [
+              "data/drafts/ch6-9-questions-ja.json",
+              "data/drafts/ch6-9-questions-en.json"
+            ],
+            "questionCount": 8,
+            "pageStatuses": [
+              {
+                "bookPage": 328,
+                "pdfPage": 342,
+                "translationStatus": "draft_complete",
+                "reviewStatus": "needs_review"
+              },
+              {
+                "bookPage": 329,
+                "pdfPage": 343,
+                "translationStatus": "draft_complete",
+                "reviewStatus": "needs_review"
+              },
+              {
+                "bookPage": 330,
+                "pdfPage": 344,
+                "translationStatus": "draft_complete",
+                "reviewStatus": "needs_review"
+              },
+              {
+                "bookPage": 331,
+                "pdfPage": 345,
+                "translationStatus": "draft_complete",
+                "reviewStatus": "needs_review"
+              },
+              {
+                "bookPage": 332,
+                "pdfPage": 346,
+                "translationStatus": "draft_complete",
+                "reviewStatus": "needs_review"
+              },
+              {
+                "bookPage": 333,
+                "pdfPage": 347,
+                "translationStatus": "draft_complete",
+                "reviewStatus": "needs_review"
+              },
+              {
+                "bookPage": 334,
+                "pdfPage": 348,
+                "translationStatus": "draft_complete",
+                "reviewStatus": "needs_review"
+              },
+              {
+                "bookPage": 335,
+                "pdfPage": 349,
+                "translationStatus": "draft_complete",
+                "reviewStatus": "needs_review"
+              },
+              {
+                "bookPage": 336,
+                "pdfPage": 350,
+                "translationStatus": "draft_complete",
+                "reviewStatus": "needs_review"
+              }
+            ],
+            "sourceNotes": [
+              {
+                "type": "arithmetic_check",
+                "bookPage": 335,
+                "pdfPage": 349,
+                "reference": "Example 6.9",
+                "note": "原文の印刷値はQ=756.0 W。原文に示された2.0×1.0×18.92×(310−290)を計算すると756.8 Wとなるため、最終値に不一致がある。本文は印刷値を保持。"
+              }
+            ],
+            "reviewNotes": [
+              "式（6.114a）〜（6.120）、式の代入、図6.20〜6.22、脚注12・13を原本ページ画像で確認。例題6.9の印刷値756.0 Wと表示値からの積756.8 Wの不一致を記録。専門家校閲前。"
+            ]
+          },
+          "figures": [
+            {
+              "type": "figure",
+              "sourceType": "book",
+              "figureNumber": "6.20",
+              "bookPage": 329,
+              "pdfPage": 343,
+              "caption": "一定熱流束の平板上を流れる水の遷移域ヌセルト数。データはŽukauskasとŠlančiauskas［6.23］、原図は［6.6］を改変。",
+              "captionEn": "Nusselt number across the transition region for water flowing over a constant heat-flux plate. Data from Žukauskas and Šlančiauskas [6.23]; adapted from [6.6].",
+              "alt": "横軸Reₓ、縦軸Nuₓの両対数グラフ。Pr=6.6の水、熱流束一定の条件で、層流相関、乱流相関、遷移相関（Re_l=68,000、c=1.75）と実験データを比較する。遷移域の実験点は層流線から乱流線へ急に移る。",
+              "altEn": "Log-log plot of Reₓ versus Nuₓ for water at Pr=6.6 over a constant heat-flux plate. It compares laminar and turbulent correlations, a transition correlation with Re_l=68,000 and c=1.75, and experimental data. The data rise rapidly from the laminar line toward the turbulent line.",
+              "src": "data/drafts/figures/fig6-20-329.png"
+            },
+            {
+              "type": "figure",
+              "sourceType": "book",
+              "figureNumber": "6.21",
+              "bookPage": 330,
+              "pdfPage": 344,
+              "caption": "一定壁温の平板上を流れる空気の遷移域ヌセルト数。データは文献［6.27–6.29、6.32］、原図は［6.6］を改変。",
+              "captionEn": "Nusselt numbers measured across the transition region for air flowing over constant-temperature plates. Data from [6.27–6.29, 6.32]; adapted from [6.6].",
+              "alt": "横軸Reₓ、縦軸Nuₓの両対数グラフ。Pr=0.71の空気、壁温一定の条件で、Re_l=60,000・140,000・235,000、c=1.7・2・2.5の3本の遷移相関と複数の実験系列を比較する。遷移の開始位置と進み方はデータ系列ごとに異なる。",
+              "altEn": "Log-log plot of Reₓ versus Nuₓ for air at Pr=0.71 over constant-temperature plates. It compares three transition correlations (Re_l=60,000, 140,000, and 235,000; c=1.7, 2, and 2.5) with several experimental data sets. The onset and rate of transition vary among the data sets.",
+              "src": "data/drafts/figures/fig6-21-330.png"
+            },
+            {
+              "type": "figure",
+              "sourceType": "book",
+              "figureNumber": "6.22",
+              "bookPage": 332,
+              "pdfPage": 346,
+              "caption": "Blair［6.30］による自由流乱流強度3条件の空気データと、式（6.111）、（6.112）、（6.116）の比較。原図は［6.6］を改変。",
+              "captionEn": "Comparison of Blair’s [6.30] air data at three free-stream turbulence levels with Eqs. (6.111), (6.112), and (6.116); adapted from [6.6].",
+              "alt": "横軸Reₓ、縦軸Nuₓの両対数グラフ。Pr=0.71の空気、熱流束一定、主流速度30.3 m/s、主流温度22°Cで、乱流強度u′r/u∞が0.25%、1.0%、2.0%の測定値を比較する。乱流強度が大きい系列ほど遷移がより低いReₓから始まる。未加熱始動長さによる層流域の熱伝達係数上昇も図示されている。",
+              "altEn": "Log-log plot of Reₓ versus Nuₓ for air at Pr=0.71 with constant wall heat flux, free-stream speed 30.3 m/s, and free-stream temperature 22°C. Measurements are shown for turbulence intensities u′r/u∞ of 0.25%, 1.0%, and 2.0%. The more turbulent cases begin transition at lower Reₓ. The plot also marks the increase in laminar heat transfer caused by an unheated starting length.",
+              "src": "data/drafts/figures/fig6-22-332.png"
+            }
+          ]
         }
       ]
     },
@@ -404,49 +2521,822 @@
           "title": "導入",
           "sourceTitle": "Introduction",
           "pdfStart": 365,
-          "bookStart": 351
+          "bookStart": 351,
+          "bookEnd": 352,
+          "pdfEnd": 366,
+          "translationStatus": "draft_complete",
+          "reviewStatus": "needs_review",
+          "pageBoundaryNote": "§7.1は書籍p.351／PDF p.365から書籍p.352／PDF p.366の途中まで。後者のページに§7.2見出しが続く。本文で参照する図3.5は書籍p.104／PDF p.118に掲載。",
+          "translationProgress": {
+            "draftBookPages": "351–352 (p.352 partial)",
+            "draftPdfPages": "365–366 (p.366 partial)",
+            "draftComplete": true,
+            "draftFiles": [
+              "data/drafts/7-1-ja.json",
+              "data/drafts/7-1-en.json"
+            ],
+            "blocksPerLanguage": 11,
+            "availableInApp": false,
+            "questionDraftFiles": [
+              "data/drafts/ch7-1-questions-ja.json",
+              "data/drafts/ch7-1-questions-en.json"
+            ],
+            "questionCount": 4,
+            "pageStatuses": [
+              {
+                "bookPage": 351,
+                "pdfPage": 365,
+                "translationStatus": "draft_complete",
+                "reviewStatus": "needs_review"
+              },
+              {
+                "bookPage": 352,
+                "pdfPage": 366,
+                "translationStatus": "draft_complete",
+                "reviewStatus": "needs_review",
+                "partialSectionPage": true
+              }
+            ],
+            "pageBoundaryNote": "§7.1 ends before the §7.2 heading on book p.352 / PDF p.366.",
+            "reviewNotes": [
+              "Chapter title and epigraph, both paragraphs on p.351, the p.352 introductory text and both complication bullets were checked against the source images. Fig. 3.5 is a cross-reference on book p.104 / PDF p.118. Expert review remains pending."
+            ]
+          },
+          "figures": [
+            {
+              "type": "figure",
+              "figureNumber": "3.5",
+              "bookPage": 104,
+              "pdfPage": 118,
+              "sourceType": "book",
+              "src": "data/drafts/figures/fig3-5-118.png",
+              "caption": "図3.5　代表的な商用の単シェルパス・二管パス熱交換器。",
+              "alt": "給水予熱器から引き出した管束、バッフルを挿入する前後の管束、シェルから取り外した小型Swinglok熱交換器を写す。"
+            }
+          ]
         },
         {
           "id": "7.2",
           "title": "管内層流の加熱・冷却",
           "sourceTitle": "Heat transfer to or from laminar flows in pipes",
           "pdfStart": 366,
-          "bookStart": 352
+          "bookStart": 352,
+          "bookEnd": 364,
+          "pdfEnd": 378,
+          "translationStatus": "draft_complete",
+          "reviewStatus": "needs_review",
+          "pageBoundaryNote": "§7.2 begins on book p.352 / PDF p.366 and ends on book p.364 / PDF p.378 immediately before §7.3.",
+          "translationProgress": {
+            "draftBookPages": "352–364 (p.352 and p.364 partial)",
+            "draftPdfPages": "366–378 (p.366 and p.378 partial)",
+            "draftComplete": true,
+            "draftFiles": [
+              "data/drafts/7-2-ja.json",
+              "data/drafts/7-2-en.json"
+            ],
+            "blocksPerLanguage": 88,
+            "availableInApp": false,
+            "questionDraftFiles": [
+              "data/drafts/ch7-2-questions-ja.json",
+              "data/drafts/ch7-2-questions-en.json"
+            ],
+            "questionCount": 11,
+            "pageStatuses": [
+              {
+                "bookPage": 352,
+                "pdfPage": 366,
+                "translationStatus": "draft_complete",
+                "reviewStatus": "needs_review",
+                "partialSectionPage": true
+              },
+              {
+                "bookPage": 353,
+                "pdfPage": 367,
+                "translationStatus": "draft_complete",
+                "reviewStatus": "needs_review"
+              },
+              {
+                "bookPage": 354,
+                "pdfPage": 368,
+                "translationStatus": "draft_complete",
+                "reviewStatus": "needs_review"
+              },
+              {
+                "bookPage": 355,
+                "pdfPage": 369,
+                "translationStatus": "draft_complete",
+                "reviewStatus": "needs_review"
+              },
+              {
+                "bookPage": 356,
+                "pdfPage": 370,
+                "translationStatus": "draft_complete",
+                "reviewStatus": "needs_review"
+              },
+              {
+                "bookPage": 357,
+                "pdfPage": 371,
+                "translationStatus": "draft_complete",
+                "reviewStatus": "needs_review"
+              },
+              {
+                "bookPage": 358,
+                "pdfPage": 372,
+                "translationStatus": "draft_complete",
+                "reviewStatus": "needs_review"
+              },
+              {
+                "bookPage": 359,
+                "pdfPage": 373,
+                "translationStatus": "draft_complete",
+                "reviewStatus": "needs_review"
+              },
+              {
+                "bookPage": 360,
+                "pdfPage": 374,
+                "translationStatus": "draft_complete",
+                "reviewStatus": "needs_review"
+              },
+              {
+                "bookPage": 361,
+                "pdfPage": 375,
+                "translationStatus": "draft_complete",
+                "reviewStatus": "needs_review"
+              },
+              {
+                "bookPage": 362,
+                "pdfPage": 376,
+                "translationStatus": "draft_complete",
+                "reviewStatus": "needs_review"
+              },
+              {
+                "bookPage": 363,
+                "pdfPage": 377,
+                "translationStatus": "draft_complete",
+                "reviewStatus": "needs_review"
+              },
+              {
+                "bookPage": 364,
+                "pdfPage": 378,
+                "translationStatus": "draft_complete",
+                "reviewStatus": "needs_review",
+                "partialSectionPage": true
+              }
+            ],
+            "pageBoundaryNote": "§7.2 starts on book p.352 / PDF p.366 and ends before §7.3 on book p.364 / PDF p.378.",
+            "reviewNotes": [
+              "Figures 7.1–7.4, equations 7.1–7.30, footnotes 1–5, and Examples 7.1–7.2 were checked against rendered source pages. Expert review remains pending."
+            ]
+          },
+          "figures": [
+            {
+              "type": "figure",
+              "figureNumber": "7.1",
+              "bookPage": 353,
+              "pdfPage": 367,
+              "sourceType": "book",
+              "src": "data/drafts/figures/fig7-1-367.png",
+              "caption": "図7.1　管内における層流速度分布の発達。",
+              "captionEn": "Figure 7.1. Development of a laminar velocity profile in a pipe.",
+              "alt": "入口でほぼ一様な速度分布から始まり、壁面境界層が成長して中心部へ広がる。合流位置 x_e より下流では放物線状の十分発達した分布となり、中心速度は断面平均速度の2倍。",
+              "altEn": "A nearly uniform inlet profile develops as wall boundary layers grow toward the center. Downstream of their meeting point x_e, the profile is fully developed and parabolic, with centerline speed twice the average."
+            },
+            {
+              "type": "figure",
+              "figureNumber": "7.2",
+              "bookPage": 355,
+              "pdfPage": 369,
+              "sourceType": "book",
+              "src": "data/drafts/figures/fig7-2-355.png",
+              "caption": "図7.2　壁面熱流束が一様な場合と壁面温度が一様な場合の、管内流れの熱的発達（入口領域）。",
+              "captionEn": "Figure 7.2. Thermal development in tubes with uniform wall heat flux and uniform wall temperature (the entrance region).",
+              "alt": "左は壁面熱流束 q_w が一定、右は壁面温度 T_w が一定の入口領域を示す。上段には T_b、T_w、q_w の軸方向変化、下段には温度分布の発達を示す。",
+              "altEn": "The left panel shows an entrance region with constant wall heat flux q_w; the right panel has constant wall temperature T_w. The upper plots show how T_b, T_w, and q_w vary downstream, and the lower sketches show developing temperature profiles."
+            },
+            {
+              "type": "figure",
+              "figureNumber": "7.3",
+              "bookPage": 356,
+              "pdfPage": 370,
+              "sourceType": "book",
+              "src": "data/drafts/figures/fig7-3-356.png",
+              "caption": "図7.3　壁面熱流束が一様な場合と壁面温度が一様な場合の、管内流れの熱的挙動（熱的発達領域）。",
+              "captionEn": "Figure 7.3. Thermal behavior in tubes with uniform wall heat flux and uniform wall temperature (the thermally developed region).",
+              "alt": "十分発達した領域の温度分布を比較する。一定 q_w では全温度が一定の割合で上がり、一定 T_w では分布形状を保ちながら振幅と q_w が下がる。",
+              "altEn": "Compares fully developed temperature profiles. With constant q_w all temperatures rise at a constant rate; with constant T_w the profile shape remains while its amplitude and q_w decrease."
+            },
+            {
+              "type": "figure",
+              "figureNumber": "7.4",
+              "bookPage": 363,
+              "pdfPage": 377,
+              "sourceType": "book",
+              "src": "data/drafts/figures/fig7-4-363.png",
+              "caption": "図7.4　流体力学的に発達した円管層流の熱的入口領域における、局所および平均ヌセルト数。",
+              "captionEn": "Figure 7.4. Local and average Nusselt numbers in the thermal entry region of a hydrodynamically developed laminar pipe flow.",
+              "alt": "横軸は 2/Gz=x/(R Re_D Pr)、縦軸は局所 Nu_D と、壁面温度一定の場合の平均 Nu_D。q_w一定の局所値と、T_w一定の局所・平均値の三曲線が示される。",
+              "altEn": "The horizontal axis is 2/Gz=x/(R Re_D Pr); the vertical axis shows local Nu_D and average Nu_D for constant wall temperature. The three curves represent local constant-q_w, and local and average constant-T_w cases."
+            }
+          ]
         },
         {
           "id": "7.3",
           "title": "管内乱流",
           "sourceTitle": "Turbulent pipe flow",
           "pdfStart": 378,
-          "bookStart": 364
+          "bookStart": 364,
+          "bookEnd": 379,
+          "pdfEnd": 393,
+          "translationStatus": "draft_complete",
+          "reviewStatus": "needs_review",
+          "pageBoundaryNote": "§7.3 begins on book p.364 / PDF p.378 and ends on book p.379 / PDF p.393 after Example 7.5, before §7.4.",
+          "translationProgress": {
+            "draftBookPages": "364–379 (both boundary pages partial)",
+            "draftPdfPages": "378–393 (both boundary pages partial)",
+            "draftComplete": true,
+            "draftFiles": [
+              "data/drafts/7-3-ja.json",
+              "data/drafts/7-3-en.json"
+            ],
+            "blocksPerLanguage": 89,
+            "availableInApp": false,
+            "questionDraftFiles": [
+              "data/drafts/ch7-3-questions-ja.json",
+              "data/drafts/ch7-3-questions-en.json"
+            ],
+            "questionCount": 14,
+            "pageStatuses": [
+              {
+                "bookPage": 364,
+                "pdfPage": 378,
+                "translationStatus": "draft_complete",
+                "reviewStatus": "needs_review",
+                "partialSectionPage": true
+              },
+              {
+                "bookPage": 365,
+                "pdfPage": 379,
+                "translationStatus": "draft_complete",
+                "reviewStatus": "needs_review"
+              },
+              {
+                "bookPage": 366,
+                "pdfPage": 380,
+                "translationStatus": "draft_complete",
+                "reviewStatus": "needs_review"
+              },
+              {
+                "bookPage": 367,
+                "pdfPage": 381,
+                "translationStatus": "draft_complete",
+                "reviewStatus": "needs_review"
+              },
+              {
+                "bookPage": 368,
+                "pdfPage": 382,
+                "translationStatus": "draft_complete",
+                "reviewStatus": "needs_review"
+              },
+              {
+                "bookPage": 369,
+                "pdfPage": 383,
+                "translationStatus": "draft_complete",
+                "reviewStatus": "needs_review"
+              },
+              {
+                "bookPage": 370,
+                "pdfPage": 384,
+                "translationStatus": "draft_complete",
+                "reviewStatus": "needs_review"
+              },
+              {
+                "bookPage": 371,
+                "pdfPage": 385,
+                "translationStatus": "draft_complete",
+                "reviewStatus": "needs_review"
+              },
+              {
+                "bookPage": 372,
+                "pdfPage": 386,
+                "translationStatus": "draft_complete",
+                "reviewStatus": "needs_review"
+              },
+              {
+                "bookPage": 373,
+                "pdfPage": 387,
+                "translationStatus": "draft_complete",
+                "reviewStatus": "needs_review"
+              },
+              {
+                "bookPage": 374,
+                "pdfPage": 388,
+                "translationStatus": "draft_complete",
+                "reviewStatus": "needs_review"
+              },
+              {
+                "bookPage": 375,
+                "pdfPage": 389,
+                "translationStatus": "draft_complete",
+                "reviewStatus": "needs_review"
+              },
+              {
+                "bookPage": 376,
+                "pdfPage": 390,
+                "translationStatus": "draft_complete",
+                "reviewStatus": "needs_review"
+              },
+              {
+                "bookPage": 377,
+                "pdfPage": 391,
+                "translationStatus": "draft_complete",
+                "reviewStatus": "needs_review"
+              },
+              {
+                "bookPage": 378,
+                "pdfPage": 392,
+                "translationStatus": "draft_complete",
+                "reviewStatus": "needs_review"
+              },
+              {
+                "bookPage": 379,
+                "pdfPage": 393,
+                "translationStatus": "draft_complete",
+                "reviewStatus": "needs_review",
+                "partialSectionPage": true
+              }
+            ],
+            "pageBoundaryNote": "§7.3 starts on book p.364 / PDF p.378 and ends after Example 7.5 before §7.4 on book p.380 / PDF p.394.",
+            "reviewNotes": [
+              "Tables 7.1–7.3, Figures 7.5–7.9, equations 7.31–7.55, and Examples 7.3–7.5 were checked against rendered source pages. Expert review remains pending."
+            ]
+          },
+          "figures": [
+            {
+              "type": "figure",
+              "figureNumber": "7.5",
+              "bookPage": 367,
+              "pdfPage": 381,
+              "sourceType": "book",
+              "src": "data/drafts/figures/fig7-5-367.png",
+              "caption": "図7.5　内径1 in、長さ60 inの管を流れる空気への熱伝達。Kreith [7.10] による。",
+              "captionEn": "Figure 7.5. Heat transfer to air flowing in a 1 in. I.D., 60 in. long pipe, after Kreith [7.10].",
+              "alt": "空気 Pr=0.71 の平均ヌセルト数とレイノルズ数のデータ。Re_D=750付近では Nū_D≈3.66、遷移域で急増し、Re_D≈5000以上で乱流相関 Nū_D∝Re_D^0.8 に沿う。",
+              "altEn": "Average Nusselt number versus Reynolds number for air at Pr=0.71. Near Re_D=750, Nū_D≈3.66; it rises steeply through transition and follows Nū_D∝Re_D^0.8 above Re_D≈5000."
+            },
+            {
+              "type": "figure",
+              "figureNumber": "7.6",
+              "bookPage": 370,
+              "pdfPage": 384,
+              "sourceType": "book",
+              "src": "data/drafts/figures/fig7-6-370.png",
+              "caption": "図7.6　管の摩擦係数。粗面管の曲線は式（7.50）、滑面管の曲線は式（7.42）に従う。破線は漸近値から1%以内に入る摩擦係数を示す。高 Re_D では摩擦係数は ε/D だけで決まる。この図はMoody線図と呼ばれる。",
+              "captionEn": "Figure 7.6. Pipe friction factors. Rough-wall curves follow Eq. (7.50), and the smooth-pipe curve follows Eq. (7.42). The dashed curve marks friction factors within 1% of the limiting value. At high Re_D, friction factor depends only on ε/D. This is the Moody diagram.",
+              "alt": "横軸は Re_D、縦軸は Darcy–Weisbach 摩擦係数 f。層流域の f=64/Re_D、滑面管の曲線、粗さごとの曲線、遷移開始と粗さ支配域が示される。",
+              "altEn": "The horizontal axis is Re_D and the vertical axis is Darcy–Weisbach friction factor f. The chart shows f=64/Re_D in laminar flow, the smooth-pipe curve, curves for different roughnesses, onset of turbulence, and the roughness-dominated region."
+            },
+            {
+              "type": "figure",
+              "figureNumber": "7.7",
+              "bookPage": 376,
+              "pdfPage": 390,
+              "sourceType": "book",
+              "src": "data/drafts/figures/fig7-7-376.png",
+              "caption": "図7.7　十分発達した乱流管内流れの速度・温度分布。",
+              "captionEn": "Figure 7.7. Velocity and temperature profiles during fully developed turbulent flow in a pipe.",
+              "alt": "Pr≫1では温度分布が壁近くの粘性サブレイヤーに集中し、Pr≈1では中間的、Pr≪1では温度の影響が管中心近くまで広がる。",
+              "altEn": "For Pr≫1 the temperature profile is concentrated in the near-wall viscous sublayer; Pr≈1 is intermediate; for Pr≪1 the thermal influence extends toward the pipe center."
+            },
+            {
+              "type": "figure",
+              "figureNumber": "7.8",
+              "bookPage": 377,
+              "pdfPage": 391,
+              "sourceType": "book",
+              "src": "data/drafts/figures/fig7-8-377.png",
+              "caption": "図7.8　一様壁面熱流束で長管加熱された液体金属の、測定値と予測値の歴史的比較。",
+              "captionEn": "Figure 7.8. Historical comparison of measured and predicted Nusselt numbers for liquid metals heated in long tubes with uniform wall heat flux.",
+              "alt": "横軸は Pe_D、縦軸は Nu_D。多くの測定値は経験式 Nu_D=0.625Pe_D^0.4 の近くにあるが、特に低めのデータには大きな散らばりが見える。",
+              "altEn": "The axes are Pe_D and Nu_D. Many measurements lie near Nu_D=0.625Pe_D^0.4, while substantial scatter remains, especially among lower data."
+            },
+            {
+              "type": "figure",
+              "figureNumber": "7.9",
+              "bookPage": 378,
+              "pdfPage": 392,
+              "sourceType": "book",
+              "src": "data/drafts/figures/fig7-9-378.png",
+              "caption": "図7.9　一様壁面熱流束に対する複数研究者の液体金属データ。",
+              "captionEn": "Figure 7.9. Liquid-metal data from several investigators for uniform wall heat flux.",
+              "alt": "NaK、Na、PbBi、Hgのデータと、式（7.52）、（7.54）、（7.55）の比較。点の多くは Pe_D が増えるほど Nu_D が増加する曲線群に沿う。",
+              "altEn": "Compares data for NaK, Na, PbBi, and Hg with Eqs. (7.52), (7.54), and (7.55). Most points follow rising Nu_D trends as Pe_D increases."
+            }
+          ]
         },
         {
           "id": "7.4",
           "title": "熱交換器として見た熱伝達面",
           "sourceTitle": "Heat transfer surface viewed as a heat exchanger",
           "pdfStart": 394,
-          "bookStart": 380
+          "bookStart": 380,
+          "bookEnd": 382,
+          "pdfEnd": 396,
+          "translationStatus": "draft_complete",
+          "reviewStatus": "needs_review",
+          "pageBoundaryNote": "§7.4 begins on book p.380 / PDF p.394 and includes Example 7.6 through its completion before the §7.5 heading on book p.382 / PDF p.396.",
+          "translationProgress": {
+            "draftBookPages": "380–382 (p.382 partial; ends before §7.5 heading)",
+            "draftPdfPages": "394–396 (p.396 partial; ends before §7.5 heading)",
+            "draftComplete": true,
+            "draftFiles": [
+              "data/drafts/7-4-ja.json",
+              "data/drafts/7-4-en.json"
+            ],
+            "blocksPerLanguage": 30,
+            "availableInApp": false,
+            "questionDraftFiles": [
+              "data/drafts/ch7-4-questions-ja.json",
+              "data/drafts/ch7-4-questions-en.json"
+            ],
+            "questionCount": 5,
+            "pageStatuses": [
+              {
+                "bookPage": 380,
+                "pdfPage": 394,
+                "translationStatus": "draft_complete",
+                "reviewStatus": "needs_review"
+              },
+              {
+                "bookPage": 381,
+                "pdfPage": 395,
+                "translationStatus": "draft_complete",
+                "reviewStatus": "needs_review"
+              },
+              {
+                "bookPage": 382,
+                "pdfPage": 396,
+                "translationStatus": "draft_complete",
+                "reviewStatus": "needs_review",
+                "partialSectionPage": true
+              }
+            ],
+            "pageBoundaryNote": "Example 7.6 starts on book p.381 / PDF p.395 and finishes on p.382 / p.396 immediately before §7.5.",
+            "reviewNotes": [
+              "Equations 7.56–7.59b and Example 7.6 were checked against rendered PDF pages 394–396. Expert review remains pending.",
+              "As printed, Eq. (7.56) gives negative A for heating when T_w>T_b,out>T_b,in; verify a sign or logarithm-order error against an authoritative erratum before using it.",
+              "Example 7.6 prints Re_D=417 on book p.381, though 0.7×0.01/(1.69×10^-5) is about 414.2; book p.382 then uses Re_D=421 and prints Gz=11.8, though that substitution gives about 11.94 (11.9 to three significant figures). Values are preserved and flagged."
+            ]
+          },
+          "figures": []
         },
         {
           "id": "7.5",
           "title": "非円形ダクトの熱伝達係数",
           "sourceTitle": "Heat transfer coefficients for noncircular ducts",
           "pdfStart": 396,
-          "bookStart": 382
+          "bookStart": 382,
+          "bookEnd": 387,
+          "pdfEnd": 401,
+          "translationStatus": "draft_complete",
+          "reviewStatus": "needs_review",
+          "pageBoundaryNote": "§7.5 begins on book p.382 / PDF p.396 after the end of Example 7.6, and ends after Table 7.4 before §7.6 on book p.387 / PDF p.401.",
+          "translationProgress": {
+            "draftBookPages": "382–387 (both boundary pages partial)",
+            "draftPdfPages": "396–401 (both boundary pages partial)",
+            "draftComplete": true,
+            "draftFiles": [
+              "data/drafts/7-5-ja.json",
+              "data/drafts/7-5-en.json"
+            ],
+            "blocksPerLanguage": 37,
+            "availableInApp": false,
+            "questionDraftFiles": [
+              "data/drafts/ch7-5-questions-ja.json",
+              "data/drafts/ch7-5-questions-en.json"
+            ],
+            "questionCount": 7,
+            "pageStatuses": [
+              {
+                "bookPage": 382,
+                "pdfPage": 396,
+                "translationStatus": "draft_complete",
+                "reviewStatus": "needs_review",
+                "partialSectionPage": true
+              },
+              {
+                "bookPage": 383,
+                "pdfPage": 397,
+                "translationStatus": "draft_complete",
+                "reviewStatus": "needs_review"
+              },
+              {
+                "bookPage": 384,
+                "pdfPage": 398,
+                "translationStatus": "draft_complete",
+                "reviewStatus": "needs_review"
+              },
+              {
+                "bookPage": 385,
+                "pdfPage": 399,
+                "translationStatus": "draft_complete",
+                "reviewStatus": "needs_review"
+              },
+              {
+                "bookPage": 386,
+                "pdfPage": 400,
+                "translationStatus": "draft_complete",
+                "reviewStatus": "needs_review"
+              },
+              {
+                "bookPage": 387,
+                "pdfPage": 401,
+                "translationStatus": "draft_complete",
+                "reviewStatus": "needs_review",
+                "partialSectionPage": true
+              }
+            ],
+            "pageBoundaryNote": "Start p.382 contains the end of Example 7.6 from §7.4 before §7.5. End p.387 includes Table 7.4 and stops before the §7.6 heading.",
+            "reviewNotes": [
+              "Equations 7.60–7.63, Table 7.4, Figure 7.10, and Example 7.7 were checked against rendered PDF pages 396–401. The Fig. 7.10 crop was visually checked for labels A_c, P, D_h, and the complete caption. Expert review remains pending.",
+              "Example 7.7 prints h=(49.82)(0.02623)/0.3=4.371 W/(m² K); direct multiplication gives about 4.356. The printed value is preserved because subsequent U and outlet-temperature results use it; verify in expert review."
+            ]
+          },
+          "figures": [
+            {
+              "type": "figure",
+              "figureNumber": "7.10",
+              "bookPage": 383,
+              "pdfPage": 397,
+              "sourceType": "book",
+              "src": "data/drafts/figures/fig7-10-383.png",
+              "caption": "図7.10　非円形ダクト内の流れ。",
+              "captionEn": "Figure 7.10. Flow in a noncircular duct.",
+              "alt": "非円形ダクトの断面積 A_c と濡れ縁長さ P を示す。",
+              "altEn": "Shows flow area A_c and wetted perimeter P for a noncircular duct."
+            }
+          ]
         },
         {
           "id": "7.6",
-          "title": "円柱周りの横流れにおける熱伝達",
+          "title": "円柱横流れの熱伝達",
           "sourceTitle": "Heat transfer during cross flow over cylinders",
           "pdfStart": 401,
-          "bookStart": 387
+          "bookStart": 387,
+          "pdfEnd": 411,
+          "bookEnd": 397,
+          "translationStatus": "draft_complete",
+          "reviewStatus": "needs_review",
+          "pageBoundaryNote": "§7.6 starts on book p.387 / PDF p.401 after §7.5 and ends on book p.397 / PDF p.411 immediately before §7.7; both boundary pages are partial.",
+          "translationProgress": {
+            "draftBookPages": "387–397 (both boundary pages partial)",
+            "draftPdfPages": "401–411 (both boundary pages partial)",
+            "draftComplete": true,
+            "draftFiles": [
+              "data/drafts/7-6-ja.json",
+              "data/drafts/7-6-en.json"
+            ],
+            "blocksPerLanguage": 65,
+            "availableInApp": false,
+            "questionDraftFiles": [
+              "data/drafts/ch7-6-questions-ja.json",
+              "data/drafts/ch7-6-questions-en.json"
+            ],
+            "questionCount": 10,
+            "pageStatuses": [
+              {
+                "bookPage": 387,
+                "pdfPage": 401,
+                "translationStatus": "draft_complete",
+                "reviewStatus": "needs_review",
+                "partialSectionPage": true,
+                "sourceReviewStatus": "source_checked",
+                "expertReviewStatus": "not_reviewed"
+              },
+              {
+                "bookPage": 388,
+                "pdfPage": 402,
+                "translationStatus": "draft_complete",
+                "reviewStatus": "needs_review",
+                "partialSectionPage": false,
+                "sourceReviewStatus": "source_checked",
+                "expertReviewStatus": "not_reviewed"
+              },
+              {
+                "bookPage": 389,
+                "pdfPage": 403,
+                "translationStatus": "draft_complete",
+                "reviewStatus": "needs_review",
+                "partialSectionPage": false,
+                "sourceReviewStatus": "source_checked",
+                "expertReviewStatus": "not_reviewed"
+              },
+              {
+                "bookPage": 390,
+                "pdfPage": 404,
+                "translationStatus": "draft_complete",
+                "reviewStatus": "needs_review",
+                "partialSectionPage": false,
+                "sourceReviewStatus": "source_checked",
+                "expertReviewStatus": "not_reviewed"
+              },
+              {
+                "bookPage": 391,
+                "pdfPage": 405,
+                "translationStatus": "draft_complete",
+                "reviewStatus": "needs_review",
+                "partialSectionPage": false,
+                "sourceReviewStatus": "source_checked",
+                "expertReviewStatus": "not_reviewed"
+              },
+              {
+                "bookPage": 392,
+                "pdfPage": 406,
+                "translationStatus": "draft_complete",
+                "reviewStatus": "needs_review",
+                "partialSectionPage": false,
+                "sourceReviewStatus": "source_checked",
+                "expertReviewStatus": "not_reviewed"
+              },
+              {
+                "bookPage": 393,
+                "pdfPage": 407,
+                "translationStatus": "draft_complete",
+                "reviewStatus": "needs_review",
+                "partialSectionPage": false,
+                "sourceReviewStatus": "source_checked",
+                "expertReviewStatus": "not_reviewed"
+              },
+              {
+                "bookPage": 394,
+                "pdfPage": 408,
+                "translationStatus": "draft_complete",
+                "reviewStatus": "needs_review",
+                "partialSectionPage": false,
+                "sourceReviewStatus": "source_checked",
+                "expertReviewStatus": "not_reviewed"
+              },
+              {
+                "bookPage": 395,
+                "pdfPage": 409,
+                "translationStatus": "draft_complete",
+                "reviewStatus": "needs_review",
+                "partialSectionPage": false,
+                "sourceReviewStatus": "source_checked",
+                "expertReviewStatus": "not_reviewed"
+              },
+              {
+                "bookPage": 396,
+                "pdfPage": 410,
+                "translationStatus": "draft_complete",
+                "reviewStatus": "needs_review",
+                "partialSectionPage": false,
+                "sourceReviewStatus": "source_checked",
+                "expertReviewStatus": "not_reviewed"
+              },
+              {
+                "bookPage": 397,
+                "pdfPage": 411,
+                "translationStatus": "draft_complete",
+                "reviewStatus": "needs_review",
+                "partialSectionPage": true,
+                "sourceReviewStatus": "source_checked",
+                "expertReviewStatus": "not_reviewed"
+              }
+            ],
+            "localPackAvailable": true,
+            "publicPackAvailable": false
+          },
+          "figures": [
+            {
+              "figureNumber": "7.11",
+              "bookPage": 388,
+              "pdfPage": 402,
+              "src": "data/drafts/figures/fig7.11-388.png",
+              "reviewStatus": "needs_review"
+            },
+            {
+              "figureNumber": "7.12",
+              "bookPage": 389,
+              "pdfPage": 403,
+              "src": "data/drafts/figures/fig7.12-389.png",
+              "reviewStatus": "needs_review"
+            },
+            {
+              "figureNumber": "7.13",
+              "bookPage": 390,
+              "pdfPage": 404,
+              "src": "data/drafts/figures/fig7.13-390.png",
+              "reviewStatus": "needs_review"
+            },
+            {
+              "figureNumber": "7.14",
+              "bookPage": 392,
+              "pdfPage": 406,
+              "src": "data/drafts/figures/fig7.14-392.png",
+              "reviewStatus": "needs_review"
+            },
+            {
+              "figureNumber": "7.15",
+              "bookPage": 394,
+              "pdfPage": 408,
+              "src": "data/drafts/figures/fig7.15-394.png",
+              "reviewStatus": "needs_review"
+            },
+            {
+              "figureNumber": "7.16",
+              "bookPage": 396,
+              "pdfPage": 410,
+              "src": "data/drafts/figures/fig7.16-396.png",
+              "reviewStatus": "needs_review"
+            },
+            {
+              "figureNumber": "7.17",
+              "bookPage": 396,
+              "pdfPage": 410,
+              "src": "data/drafts/figures/fig7.17-396.png",
+              "reviewStatus": "needs_review"
+            },
+            {
+              "figureNumber": "7.18",
+              "bookPage": 397,
+              "pdfPage": 411,
+              "src": "data/drafts/figures/fig7.18-397.png",
+              "reviewStatus": "needs_review"
+            }
+          ],
+          "sourceReview": {
+            "status": "source_checked",
+            "date": "2026-10-20",
+            "method": "原本ページ画像・数式・図・単位・参照を作業者が照合",
+            "expertReviewed": false,
+            "record": "docs/reviews/2026-10-20-ch7-source-audit.md"
+          }
         },
         {
           "id": "7.7",
           "title": "その他の形状に対する相関式の選定と評価",
           "sourceTitle": "Finding and assessing correlations for other configurations",
           "pdfStart": 411,
-          "bookStart": 397
+          "bookStart": 397,
+          "pdfEnd": 413,
+          "bookEnd": 399,
+          "translationStatus": "draft_complete",
+          "reviewStatus": "needs_review",
+          "pageBoundaryNote": "Begins after §7.6 on book p.397 / PDF p.411; checklist continues through book p.399 / PDF p.413 before the Problems heading.",
+          "translationProgress": {
+            "draftBookPages": "397–399 (first and last partial)",
+            "draftPdfPages": "411–413 (first and last partial)",
+            "draftComplete": true,
+            "draftFiles": [
+              "data/drafts/7-7-ja.json",
+              "data/drafts/7-7-en.json"
+            ],
+            "blocksPerLanguage": 11,
+            "availableInApp": false,
+            "questionDraftFiles": [
+              "data/drafts/ch7-7-questions-ja.json",
+              "data/drafts/ch7-7-questions-en.json"
+            ],
+            "questionCount": 8,
+            "pageStatuses": [
+              {
+                "bookPage": 397,
+                "pdfPage": 411,
+                "translationStatus": "draft_complete",
+                "reviewStatus": "needs_review",
+                "partialSectionPage": true,
+                "sourceReviewStatus": "source_checked",
+                "expertReviewStatus": "not_reviewed"
+              },
+              {
+                "bookPage": 398,
+                "pdfPage": 412,
+                "translationStatus": "draft_complete",
+                "reviewStatus": "needs_review",
+                "partialSectionPage": false,
+                "sourceReviewStatus": "source_checked",
+                "expertReviewStatus": "not_reviewed"
+              },
+              {
+                "bookPage": 399,
+                "pdfPage": 413,
+                "translationStatus": "draft_complete",
+                "reviewStatus": "needs_review",
+                "partialSectionPage": true,
+                "sourceReviewStatus": "source_checked",
+                "expertReviewStatus": "not_reviewed"
+              }
+            ],
+            "localPackAvailable": true,
+            "publicPackAvailable": false
+          },
+          "sourceReview": {
+            "status": "source_checked",
+            "date": "2026-10-20",
+            "method": "原本ページ画像・数式・図・単位・参照を作業者が照合",
+            "expertReviewed": false,
+            "record": "docs/reviews/2026-10-20-ch7-source-audit.md"
+          }
         }
       ]
     },

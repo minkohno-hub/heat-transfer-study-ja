@@ -1,3 +1,16 @@
 .DS_Store
 Thumbs.db
 Desktop.ini
+
+# Local PDF extraction and content-authoring scratch files
+.work-*
+__pycache__/
+
+# Book-derived translations and original figures remain a local educational pack.
+data/drafts/
+data/local/
+data/local-content-manifest.json
+tmp/
+test-results/
+playwright-report/
+node_modules/
