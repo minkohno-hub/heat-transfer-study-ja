@@ -3,75 +3,754 @@
   "edition": "第6版",
   "version": "6.00",
   "year": 2024,
-  "authors": ["John H. Lienhard V", "John H. Lienhard IV"],
+  "authors": [
+    "John H. Lienhard V",
+    "John H. Lienhard IV"
+  ],
   "source": "AHTTv600.pdf",
   "pdfPageCount": 810,
   "pdfPageOffset": 14,
   "chapters": [
-    {"id":"ch1","part":"I 熱交換の一般問題","title":"序論","sourceTitle":"Introduction","pdfStart":17,"bookStart":3,"sections":[
-      {"id":"1.1","title":"熱移動","sourceTitle":"Heat transfer","pdfStart":17,"bookStart":3,"pdfEnd":20,"bookEnd":6,"translationStatus":"translated","reviewStatus":"needs_review","blocks":[
-        {"type":"heading","text":"1. 序論"},
-        {"type":"quote","text":"太陽の放射が絶えず降り注ぐ地球では、それが空気、大地、水に入り込み、その成分は分かれ、あらゆる方向へ向きを変える。地球の内部へ浸透した熱は、表面のあらゆる場所から光線として逃げ、空へ広がる熱によってちょうど釣り合わされなければ、地球の温度をますます上げてしまうだろう。","attribution":"ジョゼフ・フーリエ『熱の解析的理論』より（本文中の引用）"},
-        {"type":"heading","text":"1.1 熱移動"},
-        {"type":"paragraph","text":"人々は昔から、熱い物体から冷たい物体へ何かが流れることを知っていた。その流れを熱と呼ぶ。18世紀後半の科学者たちは、すべての物体が「カロリック」と呼ばれる目に見えない流体を含んでいると考えるようになった。カロリックにはさまざまな性質が与えられたが、たとえば重さがあり、生成も消滅もしないといった、自然と矛盾する性質もあった。それでも最も重要な性質は、カロリックが熱い物体から冷たい物体へ流れるという考えだった。カロリックは熱を考えるためのとても有用な見方だった。後で、より現代的な考え方に沿って熱の流れを説明する。しかしそれまでは、熱い物体から冷たい物体へカロリックが流れると想像しても、ほとんどの場合、大きな誤りにはならない。"},
-        {"type":"paragraph","text":"熱の流れは、あらゆるところに存在する。程度の差はあっても、熱はすべてのものに関わっている。熱は絶えず血液から周囲の空気へ流れ、温められた空気は浮力によって体から上昇し、部屋を暖める。部屋を出た後も、壁の温度が完全に一様になることはないため、浮力に駆動された小さな空気の流れ、すなわち対流が続く。こうした過程は、あらゆる植物や動物の生命、そしてその周囲の空気の中で起きている。内部が熱く表面が冷やされている地球全体でも起きている。熱の流れがないと考えられる場所があるとすれば、温度が一様で、ほかのすべての領域から完全に隔離された場所だけだろう。それはあらゆる過程が存在しないという意味で、完全な意味で「死んだ」状態である。"},
-        {"type":"paragraph","text":"これらの熱の流れを生み出す全体的な駆動力は、温度勾配が弱まり、温度がならされていくことである。太陽が冷えていくことに伴う熱の流れは、私たちが自然界で経験する主要な過程だ。地球の表面は地球内部の冷却によっても温められ、私たちの生活への影響はごく小さいものの、遠方の星々からの放射でも温められる。"},
-        {"type":"paragraph","text":"地球上の生命は、こうしたエネルギーの流れの大きさに合うよう進化してきた。多くの動物はこれらの流れと釣り合っているが、人間は知恵、労力、意志を使って、自然界で経験するものよりはるかに強いエネルギーの流れを利用し、制御してきた。この点を強調するため、次の実験を提案する。"},
-        {"type":"experiment","title":"実験1.1　自分が生み出せる動力を測る","text":"自分の仕事率を測定できる方法で、できるだけ大きな動力を生み出してみよう。重りを持ち上げる、あるいはストップウォッチで時間を測りながら階段を駆け上がる方法が考えられる。結果をワット（W）で表す。クラスで結果を集めてもよい。一般に、仕事率は1 kW、あるいは1馬力（746 W）より小さいはずだ。実際にどれほど小さいかは、意外に思えるかもしれない。"},
-        {"type":"paragraph","text":"したがって、150 Wの電球を点灯するという小さな行為でさえ、人が持続的な努力で生み出せる量をかなり上回る仕事率を扱っている。オーブン、トースター、給湯器が消費する仕事率は、人の能力を一桁上回る。自動車の仕事率は、人の能力の千倍に達することもある。米国の全住民がガレー船の奴隷のように休みなく働いたとしても、たった一つの都市の発電所の出力にようやく匹敵する程度だろう。"},
-        {"type":"paragraph","text":"人間の旺盛なエネルギー需要は、実際の熱移動過程の強さを、地球上の生命で通常見られる水準よりも着実に高めてきた。13世紀半ばまで、私たちが使うエネルギーは、動物の力、風力、水力、薪を燃やすことなど、比較的穏やかな過程を通じて間接的に太陽から得ていた。その後、人口増加と森林減少によって、イングランドでは石炭が使われるようになった。17世紀末までに、イングランドでは薪に代わって石炭がほぼ全面的に使われるようになった。18世紀初頭には最初の商用蒸気機関が開発され、石炭消費が大幅に増える土台ができた。ヨーロッパとアメリカもこれに続いた。"},
-        {"type":"paragraph","text":"化石エネルギー源の開発は、競争に勝つために蒸気機関を動かそうと船の内部を燃やしたという、ジュール・ヴェルヌの『八十日間世界一周』の描写に少し似ている。再生不可能な化石エネルギー源の燃焼、そしてより最近ではウランの核分裂によって、発電設備では非常に大きなエネルギーが放出されるようになった。原子炉で熱として移動するエネルギーは、面積1 m²あたり約100万ワットの規模である。"},
-        {"type":"paragraph","text":"このように集中したエネルギーを人間が扱える水準まで下げるには、熱と仕事の移動を複雑に組み合わせた仕組みが欠かせない。強い熱の流れを分割し、拡散させ、人間が関われる水準まで弱める過程を理解し、制御する必要がある。具体例として、石炭を燃料ガスとコークスに加工する町に住んでいるとしよう。（家庭でコークスを使う習慣はかつて広く見られたが、現在ではほとんどなくなっている。）アイスティーを一杯飲むまでに解決しなければならない、プロセスに関する熱移動の問題をいくつか挙げる。"},
-        {"type":"list","items":[
-          "ガス化装置そのものでは、燃焼と化学反応に伴うさまざまな高強度の熱移動が起きる。",
-          "ガスは精製や配管による供給の各過程を経てコンロに届く。これらの段階で起きる熱移動は、一般にそれほど強くない。",
-          "コンロでガスを燃やし、炎からやかんの底へ熱を移す。この過程は規模こそ小さいが、沸騰は熱を非常に効率よく取り去るため、強度は高い。",
-          "コークスは蒸気発電所で燃やされる。燃焼室からボイラーへの熱移動率も、ボイラー壁から内部の水への熱移動率も、非常に高い。",
-          "蒸気はタービンを通過し、その間に多くの熱移動過程が関わる。タービン後段のいくつかでは凝縮が起こる場合もある。使用済みの蒸気は、さまざまな熱交換器のいずれかで凝縮される。",
-          "発電機の巻線や軸受、変圧器、スイッチ、送電線、家庭内の配線など、電力供給システムの各段階で冷却が必要である。",
-          "アイスティー用の氷は電気冷蔵庫で作られる。冷媒が室温で凝縮して熱を外へ捨てること、冷媒が蒸発して冷蔵庫内から熱を吸収すること、室内から内部へ熱が漏れ込むことが、主な熱交換過程である。",
-          "アイスティーは早めに飲もう。部屋から水へ、さらに水から氷へ熱が移るため、時間を置くと、まずお茶が薄まり、その後温まってしまう。"
-        ]},
-        {"type":"paragraph","text":"動力技術に支えられた社会には、熱移動の問題があふれている。熱移動の原理を学ぶ目的は、こうした問題を解き、ある物質から別の物質へ熱エネルギーを移す装置を設計できるようになることだ。広い意味では、これらの問題は、人が使えるよう大量のエネルギーを集めて集中させ、その後、人間の小さな規模で使えるように分配し、接続することに行き着く。熱移動の学習は、熱力学で扱った熱移動を振り返るところから始める。そして、熱移動の問題を解くうえで熱力学だけでは不十分な理由を見る。"},
-        {"type":"footnote","marker":"1","text":"人類学者の中には、人間を動物と区別する言葉として、古くからの「賢い人」を意味する Homo sapiens よりも、技術を使う者を意味する Homo technologicus のほうが適切だと考える人もいる。動物よりはるかに賢いわけではないかもしれないが、道具を作り続けるのは人間だけである。"}
-      ],"figures":[]}
-    ]},
-    {"id":"ch2","part":"I 熱交換の一般問題","title":"熱伝導の概念、熱抵抗、総括熱伝達係数","sourceTitle":"Heat conduction concepts, thermal resistance, and the overall heat transfer coefficient","pdfStart":63,"bookStart":49,"sections":[
-      {"id":"2.1","title":"熱伝導方程式","sourceTitle":"The heat conduction equation","pdfStart":63,"bookStart":49}, {"id":"2.2","title":"平板の定常熱伝導：解法","sourceTitle":"Steady heat conduction in a slab: method","pdfStart":70,"bookStart":56}, {"id":"2.3","title":"熱抵抗と電気回路の類推","sourceTitle":"Thermal resistance and the electrical analogy","pdfStart":77,"bookStart":63}, {"id":"2.4","title":"総括熱伝達係数 U","sourceTitle":"Overall heat transfer coefficient, U","pdfStart":92,"bookStart":78}, {"id":"2.5","title":"まとめ","sourceTitle":"Summary","pdfStart":99,"bookStart":85}
-    ]},
-    {"id":"ch3","part":"I 熱交換の一般問題","title":"熱交換器の設計","sourceTitle":"Heat exchanger design","pdfStart":113,"bookStart":99,"sections":[
-      {"id":"3.1","title":"熱交換器の機能と構成","sourceTitle":"Function and configuration of heat exchangers","pdfStart":113,"bookStart":99}, {"id":"3.2","title":"熱交換器の平均温度差の評価","sourceTitle":"Evaluation of the mean temperature difference in a heat exchanger","pdfStart":117,"bookStart":103}, {"id":"3.3","title":"熱交換器の有効度","sourceTitle":"Heat exchanger effectiveness","pdfStart":134,"bookStart":120}, {"id":"3.4","title":"熱交換器の設計","sourceTitle":"Heat exchanger design","pdfStart":141,"bookStart":127}
-    ]},
-    {"id":"ch4","part":"II 熱伝導の解析","title":"熱伝導解析、次元解析、フィン設計","sourceTitle":"Conduction analysis, dimensional analysis, and fin design","pdfStart":155,"bookStart":141,"sections":[
-      {"id":"4.1","title":"適切に設定された問題","sourceTitle":"The well-posed problem","pdfStart":155,"bookStart":141}, {"id":"4.2","title":"熱伝導方程式の一般解","sourceTitle":"General solution of the heat conduction equation","pdfStart":157,"bookStart":143}, {"id":"4.3","title":"次元解析","sourceTitle":"Dimensional analysis","pdfStart":164,"bookStart":150}, {"id":"4.4","title":"複雑な定常熱伝導問題における次元解析の例","sourceTitle":"Illustrative use of dimensional analysis in a complex steady conduction problem","pdfStart":173,"bookStart":159}, {"id":"4.5","title":"フィン設計","sourceTitle":"Fin design","pdfStart":177,"bookStart":163}
-    ]},
-    {"id":"ch5","part":"II 熱伝導の解析","title":"非定常および多次元熱伝導","sourceTitle":"Transient and multidimensional heat conduction","pdfStart":207,"bookStart":193,"sections":[
-      {"id":"5.1","title":"導入","sourceTitle":"Introduction","pdfStart":207,"bookStart":193}, {"id":"5.2","title":"集中熱容量の解","sourceTitle":"Lumped-capacity solutions","pdfStart":208,"bookStart":194}, {"id":"5.3","title":"一次元平板の非定常熱伝導","sourceTitle":"Transient conduction in a one-dimensional slab","pdfStart":217,"bookStart":203}, {"id":"5.4","title":"温度応答線図","sourceTitle":"Temperature-response charts","pdfStart":221,"bookStart":207}, {"id":"5.5","title":"一項近似解","sourceTitle":"One-term solutions","pdfStart":230,"bookStart":216}, {"id":"5.6","title":"半無限領域への非定常熱伝導","sourceTitle":"Transient heat conduction to a semi-infinite region","pdfStart":234,"bookStart":220}, {"id":"5.7","title":"定常多次元熱伝導","sourceTitle":"Steady multidimensional heat conduction","pdfStart":249,"bookStart":235}, {"id":"5.8","title":"非定常多次元熱伝導","sourceTitle":"Transient multidimensional heat conduction","pdfStart":262,"bookStart":248}
-    ]},
-    {"id":"ch6","part":"III 対流熱伝達","title":"層流境界層と乱流境界層","sourceTitle":"Laminar and turbulent boundary layers","pdfStart":285,"bookStart":271,"sections":[
-      {"id":"6.1","title":"導入となる考え方","sourceTitle":"Some introductory ideas","pdfStart":285,"bookStart":271}, {"id":"6.2","title":"平板上の非圧縮性層流境界層","sourceTitle":"Laminar incompressible boundary layer on a flat surface","pdfStart":292,"bookStart":278}, {"id":"6.3","title":"エネルギー方程式","sourceTitle":"The energy equation","pdfStart":307,"bookStart":293}, {"id":"6.4","title":"プラントル数と境界層厚さ","sourceTitle":"The Prandtl number and the boundary layer thicknesses","pdfStart":312,"bookStart":298}, {"id":"6.5","title":"平板上の層流・非圧縮流の熱伝達係数","sourceTitle":"Heat transfer coefficient for laminar, incompressible flow over a flat surface","pdfStart":316,"bookStart":302}, {"id":"6.6","title":"プラントル・コルバーンの類推","sourceTitle":"The Reynolds-Colburn analogy","pdfStart":327,"bookStart":313}, {"id":"6.7","title":"乱流境界層","sourceTitle":"Turbulent boundary layers","pdfStart":328,"bookStart":314}, {"id":"6.8","title":"乱流境界層の熱伝達","sourceTitle":"Heat transfer in turbulent boundary layers","pdfStart":336,"bookStart":322}, {"id":"6.9","title":"乱流への遷移と総括熱伝達","sourceTitle":"Turbulent transition and overall heat transfer","pdfStart":342,"bookStart":328}
-    ]},
-    {"id":"ch7","part":"III 対流熱伝達","title":"さまざまな形状における強制対流","sourceTitle":"Forced convection in a variety of configurations","pdfStart":365,"bookStart":351,"sections":[
-      {"id":"7.1","title":"導入","sourceTitle":"Introduction","pdfStart":365,"bookStart":351}, {"id":"7.2","title":"管内層流の加熱・冷却","sourceTitle":"Heat transfer to or from laminar flows in pipes","pdfStart":366,"bookStart":352}, {"id":"7.3","title":"管内乱流","sourceTitle":"Turbulent pipe flow","pdfStart":378,"bookStart":364}, {"id":"7.4","title":"熱交換器として見た熱伝達面","sourceTitle":"Heat transfer surface viewed as a heat exchanger","pdfStart":394,"bookStart":380}, {"id":"7.5","title":"非円形ダクトの熱伝達係数","sourceTitle":"Heat transfer coefficients for noncircular ducts","pdfStart":396,"bookStart":382}, {"id":"7.6","title":"円柱周りの横流れにおける熱伝達","sourceTitle":"Heat transfer during cross flow over cylinders","pdfStart":401,"bookStart":387}, {"id":"7.7","title":"その他の形状に対する相関式の選定と評価","sourceTitle":"Finding and assessing correlations for other configurations","pdfStart":411,"bookStart":397}
-    ]},
-    {"id":"ch8","part":"III 対流熱伝達","title":"単相流体の自然対流と膜状凝縮","sourceTitle":"Natural convection in single-phase fluids and during film condensation","pdfStart":427,"bookStart":413,"sections":[
-      {"id":"8.1","title":"対象範囲","sourceTitle":"Scope","pdfStart":427,"bookStart":413}, {"id":"8.2","title":"膜状凝縮と自然対流の性質","sourceTitle":"The nature of film condensation and of natural convection","pdfStart":428,"bookStart":414}, {"id":"8.3","title":"等温垂直面上の層流自然対流","sourceTitle":"Laminar natural convection on a vertical isothermal surface","pdfStart":431,"bookStart":417}, {"id":"8.4","title":"その他の状況における自然対流","sourceTitle":"Natural convection in other situations","pdfStart":444,"bookStart":430}, {"id":"8.5","title":"膜状凝縮","sourceTitle":"Film condensation","pdfStart":455,"bookStart":441}
-    ]},
-    {"id":"ch9","part":"III 対流熱伝達","title":"沸騰とその他の相変化における熱伝達","sourceTitle":"Heat transfer in boiling and other phase-change configurations","pdfStart":485,"bookStart":471,"sections":[
-      {"id":"9.1","title":"ヌキヤマの実験とプール沸騰曲線","sourceTitle":"Nukiyama's experiment and the pool boiling curve","pdfStart":485,"bookStart":471}, {"id":"9.2","title":"核沸騰","sourceTitle":"Nucleate boiling","pdfStart":492,"bookStart":478}, {"id":"9.3","title":"プール沸騰の限界熱流束","sourceTitle":"Peak pool boiling heat flux","pdfStart":499,"bookStart":485}, {"id":"9.4","title":"膜沸騰","sourceTitle":"Film boiling","pdfStart":514,"bookStart":500}, {"id":"9.5","title":"最小熱流束","sourceTitle":"Minimum heat flux","pdfStart":516,"bookStart":502}, {"id":"9.6","title":"遷移沸騰","sourceTitle":"Transition boiling","pdfStart":517,"bookStart":503}, {"id":"9.7","title":"その他の系の影響","sourceTitle":"Other system influences","pdfStart":520,"bookStart":506}, {"id":"9.8","title":"管内強制対流沸騰","sourceTitle":"Forced convection boiling in tubes","pdfStart":526,"bookStart":512}, {"id":"9.9","title":"強制対流凝縮熱伝達","sourceTitle":"Forced convective condensation heat transfer","pdfStart":535,"bookStart":521}, {"id":"9.10","title":"滴状凝縮","sourceTitle":"Dropwise condensation","pdfStart":536,"bookStart":522}, {"id":"9.11","title":"ヒートパイプ","sourceTitle":"The heat pipe","pdfStart":539,"bookStart":525}
-    ]},
-    {"id":"ch10","part":"IV 熱放射による熱移動","title":"放射熱移動","sourceTitle":"Radiative heat transfer","pdfStart":557,"bookStart":543,"sections":[
-      {"id":"10.1","title":"放射交換の問題","sourceTitle":"The problem of radiative exchange","pdfStart":557,"bookStart":543}, {"id":"10.2","title":"キルヒホッフの法則","sourceTitle":"Kirchhoff's law","pdfStart":565,"bookStart":551}, {"id":"10.3","title":"有限な二つの黒体間の放射熱交換","sourceTitle":"Radiant heat exchange between two finite black bodies","pdfStart":569,"bookStart":555}, {"id":"10.4","title":"灰色体間の熱移動","sourceTitle":"Heat transfer among gray bodies","pdfStart":581,"bookStart":567}, {"id":"10.5","title":"気体の放射","sourceTitle":"Gaseous radiation","pdfStart":595,"bookStart":581}, {"id":"10.6","title":"太陽エネルギー","sourceTitle":"Solar energy","pdfStart":608,"bookStart":594}
-    ]},
-    {"id":"ch11","part":"V 物質移動","title":"物質移動の導入","sourceTitle":"An introduction to mass transfer","pdfStart":635,"bookStart":621,"sections":[
-      {"id":"11.1","title":"導入","sourceTitle":"Introduction","pdfStart":635,"bookStart":621}, {"id":"11.2","title":"混合物の組成と成分流束","sourceTitle":"Mixture compositions and species fluxes","pdfStart":638,"bookStart":624}, {"id":"11.3","title":"二成分混合物におけるフィックの拡散法則","sourceTitle":"Fick's law of diffusion in binary mixtures","pdfStart":646,"bookStart":632}, {"id":"11.4","title":"成分保存方程式","sourceTitle":"The equation of species conservation","pdfStart":652,"bookStart":638}, {"id":"11.5","title":"静止媒体中の物質移動","sourceTitle":"Mass transfer through a stationary medium","pdfStart":661,"bookStart":647}, {"id":"11.6","title":"低速の対流物質移動","sourceTitle":"Convective mass transfer at low rates","pdfStart":669,"bookStart":655}, {"id":"11.7","title":"低速における熱・物質同時移動","sourceTitle":"Simultaneous heat and mass transfer at low rates","pdfStart":676,"bookStart":662}, {"id":"11.8","title":"クエット流れ、または停滞膜モデル","sourceTitle":"The Couette flow, or stagnant film, model","pdfStart":684,"bookStart":670}, {"id":"11.9","title":"高速の物質移動における熱伝達","sourceTitle":"Heat transfer at high mass transfer rates","pdfStart":690,"bookStart":676}, {"id":"11.10","title":"混合物の輸送物性","sourceTitle":"Transport properties of mixtures","pdfStart":700,"bookStart":686}, {"id":"11.11","title":"多成分・非理想混合物の拡散","sourceTitle":"Diffusion in multicomponent and nonideal mixtures","pdfStart":713,"bookStart":699}
-    ]}
+    {
+      "id": "ch1",
+      "part": "I 熱交換の一般問題",
+      "title": "序論",
+      "sourceTitle": "Introduction",
+      "pdfStart": 17,
+      "bookStart": 3,
+      "sections": [
+        {
+          "id": "1.1",
+          "title": "熱移動",
+          "sourceTitle": "Heat transfer",
+          "pdfStart": 17,
+          "bookStart": 3,
+          "pdfEnd": 20,
+          "bookEnd": 6,
+          "translationStatus": "translated",
+          "reviewStatus": "needs_review"
+        },
+        {
+          "id": "1.2",
+          "title": "熱移動と熱力学の関係",
+          "sourceTitle": "Relation of heat transfer to thermodynamics",
+          "pdfStart": 20,
+          "bookStart": 6,
+          "pdfEnd": 23,
+          "bookEnd": 9,
+          "translationStatus": "translated",
+          "reviewStatus": "needs_review",
+          "figures": [
+            {
+              "figureNumber": "1.1",
+              "bookPage": 7,
+              "pdfPage": 21,
+              "caption": "閉じた系に対する熱力学第1法則。"
+            },
+            {
+              "figureNumber": "1.2",
+              "bookPage": 9,
+              "pdfPage": 23,
+              "caption": "介在する壁を通じた、二つの熱だめの間の不可逆な熱移動。"
+            }
+          ]
+        },
+        {
+          "id": "1.3",
+          "title": "熱移動の形態",
+          "sourceTitle": "Modes of heat transfer",
+          "pdfStart": 25,
+          "bookStart": 11,
+          "pdfEnd": 47,
+          "bookEnd": 33,
+          "translationStatus": "not_started",
+          "reviewStatus": "not_started",
+          "figures": [
+            {
+              "figureNumber": "1.3",
+              "bookPage": 10,
+              "pdfPage": 24,
+              "caption": "熱移動の三つの形態の類推。"
+            }
+          ]
+        },
+        {
+          "id": "1.4",
+          "title": "この先の見通し",
+          "sourceTitle": "A look ahead",
+          "pdfStart": 48,
+          "bookStart": 34,
+          "pdfEnd": 48,
+          "bookEnd": 34,
+          "translationStatus": "not_started",
+          "reviewStatus": "not_started",
+          "figures": []
+        },
+        {
+          "id": "1.5",
+          "title": "章末問題について",
+          "sourceTitle": "About the end-of-chapter problems",
+          "pdfStart": 49,
+          "bookStart": 35,
+          "pdfEnd": 49,
+          "bookEnd": 35,
+          "translationStatus": "not_started",
+          "reviewStatus": "not_started",
+          "figures": []
+        }
+      ],
+      "backMatter": [
+        {
+          "id": "problems",
+          "title": "章末問題",
+          "sourceTitle": "Problems",
+          "bookStart": 36,
+          "bookEnd": 46,
+          "pdfStart": 50,
+          "pdfEnd": 60,
+          "translationStatus": "not_started",
+          "reviewStatus": "not_started"
+        },
+        {
+          "id": "references",
+          "title": "参考文献",
+          "sourceTitle": "References",
+          "bookStart": 47,
+          "bookEnd": 48,
+          "pdfStart": 61,
+          "pdfEnd": 62,
+          "translationStatus": "not_started",
+          "reviewStatus": "not_started"
+        }
+      ]
+    },
+    {
+      "id": "ch2",
+      "part": "I 熱交換の一般問題",
+      "title": "熱伝導の概念、熱抵抗、総括熱伝達係数",
+      "sourceTitle": "Heat conduction concepts, thermal resistance, and the overall heat transfer coefficient",
+      "pdfStart": 63,
+      "bookStart": 49,
+      "sections": [
+        {
+          "id": "2.1",
+          "title": "熱伝導方程式",
+          "sourceTitle": "The heat conduction equation",
+          "pdfStart": 63,
+          "bookStart": 49
+        },
+        {
+          "id": "2.2",
+          "title": "平板の定常熱伝導：解法",
+          "sourceTitle": "Steady heat conduction in a slab: method",
+          "pdfStart": 70,
+          "bookStart": 56
+        },
+        {
+          "id": "2.3",
+          "title": "熱抵抗と電気回路の類推",
+          "sourceTitle": "Thermal resistance and the electrical analogy",
+          "pdfStart": 77,
+          "bookStart": 63
+        },
+        {
+          "id": "2.4",
+          "title": "総括熱伝達係数 U",
+          "sourceTitle": "Overall heat transfer coefficient, U",
+          "pdfStart": 92,
+          "bookStart": 78
+        },
+        {
+          "id": "2.5",
+          "title": "まとめ",
+          "sourceTitle": "Summary",
+          "pdfStart": 99,
+          "bookStart": 85
+        }
+      ]
+    },
+    {
+      "id": "ch3",
+      "part": "I 熱交換の一般問題",
+      "title": "熱交換器の設計",
+      "sourceTitle": "Heat exchanger design",
+      "pdfStart": 113,
+      "bookStart": 99,
+      "sections": [
+        {
+          "id": "3.1",
+          "title": "熱交換器の機能と構成",
+          "sourceTitle": "Function and configuration of heat exchangers",
+          "pdfStart": 113,
+          "bookStart": 99
+        },
+        {
+          "id": "3.2",
+          "title": "熱交換器の平均温度差の評価",
+          "sourceTitle": "Evaluation of the mean temperature difference in a heat exchanger",
+          "pdfStart": 117,
+          "bookStart": 103
+        },
+        {
+          "id": "3.3",
+          "title": "熱交換器の有効度",
+          "sourceTitle": "Heat exchanger effectiveness",
+          "pdfStart": 134,
+          "bookStart": 120
+        },
+        {
+          "id": "3.4",
+          "title": "熱交換器の設計",
+          "sourceTitle": "Heat exchanger design",
+          "pdfStart": 141,
+          "bookStart": 127
+        }
+      ]
+    },
+    {
+      "id": "ch4",
+      "part": "II 熱伝導の解析",
+      "title": "熱伝導解析、次元解析、フィン設計",
+      "sourceTitle": "Conduction analysis, dimensional analysis, and fin design",
+      "pdfStart": 155,
+      "bookStart": 141,
+      "sections": [
+        {
+          "id": "4.1",
+          "title": "適切に設定された問題",
+          "sourceTitle": "The well-posed problem",
+          "pdfStart": 155,
+          "bookStart": 141
+        },
+        {
+          "id": "4.2",
+          "title": "熱伝導方程式の一般解",
+          "sourceTitle": "General solution of the heat conduction equation",
+          "pdfStart": 157,
+          "bookStart": 143
+        },
+        {
+          "id": "4.3",
+          "title": "次元解析",
+          "sourceTitle": "Dimensional analysis",
+          "pdfStart": 164,
+          "bookStart": 150
+        },
+        {
+          "id": "4.4",
+          "title": "複雑な定常熱伝導問題における次元解析の例",
+          "sourceTitle": "Illustrative use of dimensional analysis in a complex steady conduction problem",
+          "pdfStart": 173,
+          "bookStart": 159
+        },
+        {
+          "id": "4.5",
+          "title": "フィン設計",
+          "sourceTitle": "Fin design",
+          "pdfStart": 177,
+          "bookStart": 163
+        }
+      ]
+    },
+    {
+      "id": "ch5",
+      "part": "II 熱伝導の解析",
+      "title": "非定常および多次元熱伝導",
+      "sourceTitle": "Transient and multidimensional heat conduction",
+      "pdfStart": 207,
+      "bookStart": 193,
+      "sections": [
+        {
+          "id": "5.1",
+          "title": "導入",
+          "sourceTitle": "Introduction",
+          "pdfStart": 207,
+          "bookStart": 193
+        },
+        {
+          "id": "5.2",
+          "title": "集中熱容量の解",
+          "sourceTitle": "Lumped-capacity solutions",
+          "pdfStart": 208,
+          "bookStart": 194
+        },
+        {
+          "id": "5.3",
+          "title": "一次元平板の非定常熱伝導",
+          "sourceTitle": "Transient conduction in a one-dimensional slab",
+          "pdfStart": 217,
+          "bookStart": 203
+        },
+        {
+          "id": "5.4",
+          "title": "温度応答線図",
+          "sourceTitle": "Temperature-response charts",
+          "pdfStart": 221,
+          "bookStart": 207
+        },
+        {
+          "id": "5.5",
+          "title": "一項近似解",
+          "sourceTitle": "One-term solutions",
+          "pdfStart": 230,
+          "bookStart": 216
+        },
+        {
+          "id": "5.6",
+          "title": "半無限領域への非定常熱伝導",
+          "sourceTitle": "Transient heat conduction to a semi-infinite region",
+          "pdfStart": 234,
+          "bookStart": 220
+        },
+        {
+          "id": "5.7",
+          "title": "定常多次元熱伝導",
+          "sourceTitle": "Steady multidimensional heat conduction",
+          "pdfStart": 249,
+          "bookStart": 235
+        },
+        {
+          "id": "5.8",
+          "title": "非定常多次元熱伝導",
+          "sourceTitle": "Transient multidimensional heat conduction",
+          "pdfStart": 262,
+          "bookStart": 248
+        }
+      ]
+    },
+    {
+      "id": "ch6",
+      "part": "III 対流熱伝達",
+      "title": "層流境界層と乱流境界層",
+      "sourceTitle": "Laminar and turbulent boundary layers",
+      "pdfStart": 285,
+      "bookStart": 271,
+      "sections": [
+        {
+          "id": "6.1",
+          "title": "導入となる考え方",
+          "sourceTitle": "Some introductory ideas",
+          "pdfStart": 285,
+          "bookStart": 271
+        },
+        {
+          "id": "6.2",
+          "title": "平板上の非圧縮性層流境界層",
+          "sourceTitle": "Laminar incompressible boundary layer on a flat surface",
+          "pdfStart": 292,
+          "bookStart": 278
+        },
+        {
+          "id": "6.3",
+          "title": "エネルギー方程式",
+          "sourceTitle": "The energy equation",
+          "pdfStart": 307,
+          "bookStart": 293
+        },
+        {
+          "id": "6.4",
+          "title": "プラントル数と境界層厚さ",
+          "sourceTitle": "The Prandtl number and the boundary layer thicknesses",
+          "pdfStart": 312,
+          "bookStart": 298
+        },
+        {
+          "id": "6.5",
+          "title": "平板上の層流・非圧縮流の熱伝達係数",
+          "sourceTitle": "Heat transfer coefficient for laminar, incompressible flow over a flat surface",
+          "pdfStart": 316,
+          "bookStart": 302
+        },
+        {
+          "id": "6.6",
+          "title": "プラントル・コルバーンの類推",
+          "sourceTitle": "The Reynolds-Colburn analogy",
+          "pdfStart": 327,
+          "bookStart": 313
+        },
+        {
+          "id": "6.7",
+          "title": "乱流境界層",
+          "sourceTitle": "Turbulent boundary layers",
+          "pdfStart": 328,
+          "bookStart": 314
+        },
+        {
+          "id": "6.8",
+          "title": "乱流境界層の熱伝達",
+          "sourceTitle": "Heat transfer in turbulent boundary layers",
+          "pdfStart": 336,
+          "bookStart": 322
+        },
+        {
+          "id": "6.9",
+          "title": "乱流への遷移と総括熱伝達",
+          "sourceTitle": "Turbulent transition and overall heat transfer",
+          "pdfStart": 342,
+          "bookStart": 328
+        }
+      ]
+    },
+    {
+      "id": "ch7",
+      "part": "III 対流熱伝達",
+      "title": "さまざまな形状における強制対流",
+      "sourceTitle": "Forced convection in a variety of configurations",
+      "pdfStart": 365,
+      "bookStart": 351,
+      "sections": [
+        {
+          "id": "7.1",
+          "title": "導入",
+          "sourceTitle": "Introduction",
+          "pdfStart": 365,
+          "bookStart": 351
+        },
+        {
+          "id": "7.2",
+          "title": "管内層流の加熱・冷却",
+          "sourceTitle": "Heat transfer to or from laminar flows in pipes",
+          "pdfStart": 366,
+          "bookStart": 352
+        },
+        {
+          "id": "7.3",
+          "title": "管内乱流",
+          "sourceTitle": "Turbulent pipe flow",
+          "pdfStart": 378,
+          "bookStart": 364
+        },
+        {
+          "id": "7.4",
+          "title": "熱交換器として見た熱伝達面",
+          "sourceTitle": "Heat transfer surface viewed as a heat exchanger",
+          "pdfStart": 394,
+          "bookStart": 380
+        },
+        {
+          "id": "7.5",
+          "title": "非円形ダクトの熱伝達係数",
+          "sourceTitle": "Heat transfer coefficients for noncircular ducts",
+          "pdfStart": 396,
+          "bookStart": 382
+        },
+        {
+          "id": "7.6",
+          "title": "円柱周りの横流れにおける熱伝達",
+          "sourceTitle": "Heat transfer during cross flow over cylinders",
+          "pdfStart": 401,
+          "bookStart": 387
+        },
+        {
+          "id": "7.7",
+          "title": "その他の形状に対する相関式の選定と評価",
+          "sourceTitle": "Finding and assessing correlations for other configurations",
+          "pdfStart": 411,
+          "bookStart": 397
+        }
+      ]
+    },
+    {
+      "id": "ch8",
+      "part": "III 対流熱伝達",
+      "title": "単相流体の自然対流と膜状凝縮",
+      "sourceTitle": "Natural convection in single-phase fluids and during film condensation",
+      "pdfStart": 427,
+      "bookStart": 413,
+      "sections": [
+        {
+          "id": "8.1",
+          "title": "対象範囲",
+          "sourceTitle": "Scope",
+          "pdfStart": 427,
+          "bookStart": 413
+        },
+        {
+          "id": "8.2",
+          "title": "膜状凝縮と自然対流の性質",
+          "sourceTitle": "The nature of film condensation and of natural convection",
+          "pdfStart": 428,
+          "bookStart": 414
+        },
+        {
+          "id": "8.3",
+          "title": "等温垂直面上の層流自然対流",
+          "sourceTitle": "Laminar natural convection on a vertical isothermal surface",
+          "pdfStart": 431,
+          "bookStart": 417
+        },
+        {
+          "id": "8.4",
+          "title": "その他の状況における自然対流",
+          "sourceTitle": "Natural convection in other situations",
+          "pdfStart": 444,
+          "bookStart": 430
+        },
+        {
+          "id": "8.5",
+          "title": "膜状凝縮",
+          "sourceTitle": "Film condensation",
+          "pdfStart": 455,
+          "bookStart": 441
+        }
+      ]
+    },
+    {
+      "id": "ch9",
+      "part": "III 対流熱伝達",
+      "title": "沸騰とその他の相変化における熱伝達",
+      "sourceTitle": "Heat transfer in boiling and other phase-change configurations",
+      "pdfStart": 485,
+      "bookStart": 471,
+      "sections": [
+        {
+          "id": "9.1",
+          "title": "ヌキヤマの実験とプール沸騰曲線",
+          "sourceTitle": "Nukiyama's experiment and the pool boiling curve",
+          "pdfStart": 485,
+          "bookStart": 471
+        },
+        {
+          "id": "9.2",
+          "title": "核沸騰",
+          "sourceTitle": "Nucleate boiling",
+          "pdfStart": 492,
+          "bookStart": 478
+        },
+        {
+          "id": "9.3",
+          "title": "プール沸騰の限界熱流束",
+          "sourceTitle": "Peak pool boiling heat flux",
+          "pdfStart": 499,
+          "bookStart": 485
+        },
+        {
+          "id": "9.4",
+          "title": "膜沸騰",
+          "sourceTitle": "Film boiling",
+          "pdfStart": 514,
+          "bookStart": 500
+        },
+        {
+          "id": "9.5",
+          "title": "最小熱流束",
+          "sourceTitle": "Minimum heat flux",
+          "pdfStart": 516,
+          "bookStart": 502
+        },
+        {
+          "id": "9.6",
+          "title": "遷移沸騰",
+          "sourceTitle": "Transition boiling",
+          "pdfStart": 517,
+          "bookStart": 503
+        },
+        {
+          "id": "9.7",
+          "title": "その他の系の影響",
+          "sourceTitle": "Other system influences",
+          "pdfStart": 520,
+          "bookStart": 506
+        },
+        {
+          "id": "9.8",
+          "title": "管内強制対流沸騰",
+          "sourceTitle": "Forced convection boiling in tubes",
+          "pdfStart": 526,
+          "bookStart": 512
+        },
+        {
+          "id": "9.9",
+          "title": "強制対流凝縮熱伝達",
+          "sourceTitle": "Forced convective condensation heat transfer",
+          "pdfStart": 535,
+          "bookStart": 521
+        },
+        {
+          "id": "9.10",
+          "title": "滴状凝縮",
+          "sourceTitle": "Dropwise condensation",
+          "pdfStart": 536,
+          "bookStart": 522
+        },
+        {
+          "id": "9.11",
+          "title": "ヒートパイプ",
+          "sourceTitle": "The heat pipe",
+          "pdfStart": 539,
+          "bookStart": 525
+        }
+      ]
+    },
+    {
+      "id": "ch10",
+      "part": "IV 熱放射による熱移動",
+      "title": "放射熱移動",
+      "sourceTitle": "Radiative heat transfer",
+      "pdfStart": 557,
+      "bookStart": 543,
+      "sections": [
+        {
+          "id": "10.1",
+          "title": "放射交換の問題",
+          "sourceTitle": "The problem of radiative exchange",
+          "pdfStart": 557,
+          "bookStart": 543
+        },
+        {
+          "id": "10.2",
+          "title": "キルヒホッフの法則",
+          "sourceTitle": "Kirchhoff's law",
+          "pdfStart": 565,
+          "bookStart": 551
+        },
+        {
+          "id": "10.3",
+          "title": "有限な二つの黒体間の放射熱交換",
+          "sourceTitle": "Radiant heat exchange between two finite black bodies",
+          "pdfStart": 569,
+          "bookStart": 555
+        },
+        {
+          "id": "10.4",
+          "title": "灰色体間の熱移動",
+          "sourceTitle": "Heat transfer among gray bodies",
+          "pdfStart": 581,
+          "bookStart": 567
+        },
+        {
+          "id": "10.5",
+          "title": "気体の放射",
+          "sourceTitle": "Gaseous radiation",
+          "pdfStart": 595,
+          "bookStart": 581
+        },
+        {
+          "id": "10.6",
+          "title": "太陽エネルギー",
+          "sourceTitle": "Solar energy",
+          "pdfStart": 608,
+          "bookStart": 594
+        }
+      ]
+    },
+    {
+      "id": "ch11",
+      "part": "V 物質移動",
+      "title": "物質移動の導入",
+      "sourceTitle": "An introduction to mass transfer",
+      "pdfStart": 635,
+      "bookStart": 621,
+      "sections": [
+        {
+          "id": "11.1",
+          "title": "導入",
+          "sourceTitle": "Introduction",
+          "pdfStart": 635,
+          "bookStart": 621
+        },
+        {
+          "id": "11.2",
+          "title": "混合物の組成と成分流束",
+          "sourceTitle": "Mixture compositions and species fluxes",
+          "pdfStart": 638,
+          "bookStart": 624
+        },
+        {
+          "id": "11.3",
+          "title": "二成分混合物におけるフィックの拡散法則",
+          "sourceTitle": "Fick's law of diffusion in binary mixtures",
+          "pdfStart": 646,
+          "bookStart": 632
+        },
+        {
+          "id": "11.4",
+          "title": "成分保存方程式",
+          "sourceTitle": "The equation of species conservation",
+          "pdfStart": 652,
+          "bookStart": 638
+        },
+        {
+          "id": "11.5",
+          "title": "静止媒体中の物質移動",
+          "sourceTitle": "Mass transfer through a stationary medium",
+          "pdfStart": 661,
+          "bookStart": 647
+        },
+        {
+          "id": "11.6",
+          "title": "低速の対流物質移動",
+          "sourceTitle": "Convective mass transfer at low rates",
+          "pdfStart": 669,
+          "bookStart": 655
+        },
+        {
+          "id": "11.7",
+          "title": "低速における熱・物質同時移動",
+          "sourceTitle": "Simultaneous heat and mass transfer at low rates",
+          "pdfStart": 676,
+          "bookStart": 662
+        },
+        {
+          "id": "11.8",
+          "title": "クエット流れ、または停滞膜モデル",
+          "sourceTitle": "The Couette flow, or stagnant film, model",
+          "pdfStart": 684,
+          "bookStart": 670
+        },
+        {
+          "id": "11.9",
+          "title": "高速の物質移動における熱伝達",
+          "sourceTitle": "Heat transfer at high mass transfer rates",
+          "pdfStart": 690,
+          "bookStart": 676
+        },
+        {
+          "id": "11.10",
+          "title": "混合物の輸送物性",
+          "sourceTitle": "Transport properties of mixtures",
+          "pdfStart": 700,
+          "bookStart": 686
+        },
+        {
+          "id": "11.11",
+          "title": "多成分・非理想混合物の拡散",
+          "sourceTitle": "Diffusion in multicomponent and nonideal mixtures",
+          "pdfStart": 713,
+          "bookStart": 699
+        }
+      ]
+    }
   ],
   "appendices": [
-    {"id":"A","title":"選定材料の熱物性","pdfStart":745,"bookStart":731,"translationStatus":"not_started"},
-    {"id":"B","title":"単位と換算係数","pdfStart":775,"bookStart":761,"translationStatus":"not_started"},
-    {"id":"C","title":"記号一覧","pdfStart":781,"bookStart":767,"translationStatus":"not_started"},
-    {"id":"index","title":"引用文献索引・事項索引","pdfStart":791,"bookStart":777,"translationStatus":"not_started"}
+    {
+      "id": "A",
+      "title": "選定材料の熱物性",
+      "pdfStart": 745,
+      "bookStart": 731,
+      "translationStatus": "not_started"
+    },
+    {
+      "id": "B",
+      "title": "単位と換算係数",
+      "pdfStart": 775,
+      "bookStart": 761,
+      "translationStatus": "not_started"
+    },
+    {
+      "id": "C",
+      "title": "記号一覧",
+      "pdfStart": 781,
+      "bookStart": 767,
+      "translationStatus": "not_started"
+    },
+    {
+      "id": "index",
+      "title": "引用文献索引・事項索引",
+      "pdfStart": 791,
+      "bookStart": 777,
+      "translationStatus": "not_started"
+    }
   ],
   "contentPolicy": "翻訳済みの節だけ本文を表示する。未翻訳のページ、図、表、脚注を推測で補わない。"
 }

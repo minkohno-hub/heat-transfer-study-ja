@@ -1,0 +1,85 @@
+{
+  "sectionId": "1.1",
+  "language": "en",
+  "source": "A Heat Transfer Textbook, Sixth Edition, §1.1",
+  "bookPages": "3–6",
+  "pdfPages": "17–20",
+  "blocks": [
+    {
+      "type": "heading",
+      "text": "1. Introduction"
+    },
+    {
+      "type": "quote",
+      "text": "The radiation of the sun in which the planet is incessantly plunged, penetrates the air, the earth, and the waters; its elements are divided, change direction in every way, and, penetrating the mass of the globe, would raise its temperature more and more, if the heat acquired were not exactly balanced by that which escapes in rays from all points of the surface and expands through the sky.",
+      "attribution": "The Analytical Theory of Heat, J. Fourier"
+    },
+    {
+      "type": "heading",
+      "text": "1.1 Heat transfer"
+    },
+    {
+      "type": "paragraph",
+      "text": "People have always understood that something flows from hot objects to cold ones. We call that flow heat. Scientists of the late eighteenth century finally decided that all bodies must contain an invisible fluid which they called caloric. Caloric was assigned a variety of properties, some of which proved to be inconsistent with nature—for example, caloric had weight and could not be created or eliminated. But the most important property was that caloric flowed from hot bodies into cold ones. Caloric provided a very useful way to think about heat. Later we shall explain the flow of heat in terms more satisfactory to the modern ear; however, it will seldom be wrong to imagine caloric flowing from a hot body to a cold one."
+    },
+    {
+      "type": "paragraph",
+      "text": "The flow of heat is all-pervasive. It is active to some degree or another in everything. Heat flows constantly from your bloodstream to the air around you. The warmed air buoys off your body to warm the room you are in. If you leave the room, some small buoyancy-driven (or convective) motion of the air will continue because the walls can never be perfectly isothermal. Such processes go on in all plant and animal life and in the air around us. They occur throughout the earth, which is hot at its core and cooled around its surface. The only conceivable domain free from heat flow would have to be isothermal and totally isolated from any other region. It would be “dead” in the fullest sense of the word—devoid of any process of any kind."
+    },
+    {
+      "type": "paragraph",
+      "text": "The overall driving force for these heat flow processes is the cooling (or leveling) of any temperature gradients. The heat flows that result from the cooling of the sun are the primary processes that we experience naturally. Earth’s surface is also warmed by the cooling of its core, and even by radiation from the distant stars, however little those processes influence our lives."
+    },
+    {
+      "type": "paragraph",
+      "text": "The life forms on our planet have necessarily evolved to match the magnitude of these energy flows. But while most animals are in balance with these heat flows, we humans have used our minds, our backs, and our wills to harness and control energy flows that are far more intense than those we experience naturally. To emphasize this point we suggest that the reader do the following experiment."
+    },
+    {
+      "type": "experiment",
+      "title": "Experiment 1.1",
+      "text": "Generate as much power as you can, in some way that permits you to measure your own work output. You might lift a weight, or run your own weight up a stairwell, against a stopwatch. Express the result in watts (W). Perhaps you might collect the results in your class. They should generally be less than 1 kW or even 1 horsepower (746 W). How much less might be surprising."
+    },
+    {
+      "type": "paragraph",
+      "text": "Thus, when we do so small a thing as turning on a 150 W light bulb, we are manipulating a quantity of energy substantially greater than a human being could produce in sustained effort. The power consumed by an oven, toaster, or hot water heater is an order of magnitude beyond our capacity. The power consumed by an automobile can easily be three orders of magnitude greater. If all the people in the United States worked continuously like galley slaves, they could barely equal the output of even a single city power plant."
+    },
+    {
+      "type": "paragraph",
+      "text": "Our voracious appetite for energy has steadily driven the intensity of actual heat transfer processes upward until they are far greater than those normally involved with life forms on earth. Until the middle of the thirteenth century, the energy we use was drawn indirectly from the sun using comparatively gentle processes—animal power, wind and water power, and burning wood. Then population growth and deforestation drove the English to using coal. By the end of the seventeenth century, England had almost completely converted to coal in place of wood. At the turn of the eighteenth century, the first commercial steam engines were developed, and that set the stage for enormously increased consumption of coal. Europe and America followed England in these developments."
+    },
+    {
+      "type": "paragraph",
+      "text": "The development of fossil energy sources has been a bit like Jules Verne’s description in Around the World in Eighty Days in which, to win a race, a crew burns the inside of a ship to power the steam engine. The combustion of nonrenewable fossil energy sources (and, more recently, the fission of uranium) has led to remarkably intense energy releases in power-generating equipment. The energy transferred as heat in a nuclear reactor is on the order of one million watts per square meter."
+    },
+    {
+      "type": "paragraph",
+      "text": "A complex system of heat and work transfer processes is invariably needed to bring these concentrations of energy back down to human proportions. We must understand and control the processes that divide and diffuse intense heat flows down to the level on which we can interact with them. To see how this works, consider a specific situation. Suppose we live in a town where coal is processed into fuel-gas and coke. (This domestic use of coked coal was once widespread. It has now almost vanished.) Let us list a few of the process heat transfer problems that must be solved before we can drink a glass of iced tea."
+    },
+    {
+      "type": "list",
+      "items": [
+        "A variety of high-intensity heat transfer processes are involved with combustion and chemical reaction in the gasifier unit itself.",
+        "The gas goes through various cleanup and pipe-delivery processes to get to our stoves. The heat transfer processes involved in these stages are generally less intense.",
+        "The gas is burned in the stove. Heat is transferred from the flame to the bottom of the teakettle. While this process is small, it is intense because boiling is a very efficient way to remove heat.",
+        "The coke is burned in a steam power plant. The heat transfer rates from the combustion chamber to the boiler, and from the wall of the boiler to the water inside, are very intense.",
+        "The steam passes through a turbine where it is involved with many heat transfer processes, possibly including some condensation in the last turbine stages. The spent steam is then condensed in any of a variety of heat transfer devices.",
+        "Cooling must be provided in each stage of the electrical supply system: the winding and bearings of the generator, the transformers, the switches, the power lines, and the wiring in our houses.",
+        "The ice cubes for our tea are made in an electrical refrigerator. It involves three major heat exchange processes and several lesser ones. The major ones are the condensation of refrigerant at room temperature to reject heat, the absorption of heat from within the refrigerator by evaporating the refrigerant, and the balancing heat leakage from the room to the inside.",
+        "Let’s drink our iced tea quickly because heat transfer from the room to the water and from the water to the ice will first dilute, and then warm, our tea if we linger."
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": "A society based on power technology teems with heat transfer problems. Our aim is to learn the principles of heat transfer so we can solve these problems and design the equipment needed to transfer thermal energy from one substance to another. In a broad sense, all these problems resolve themselves into collecting and focusing large quantities of energy for the use of people, and then distributing and interfacing this energy with people in such a way that they can use it on their own puny level."
+    },
+    {
+      "type": "paragraph",
+      "text": "We begin our study by recollecting how heat transfer was treated in the study of thermodynamics and by seeing why thermodynamics is not adequate to the task of solving heat transfer problems."
+    },
+    {
+      "type": "footnote",
+      "marker": "1",
+      "text": "Some anthropologists think that the term Homo technologicus (those who use technology) serves to define human beings, as apart from animals, better than the older term Homo sapiens (those who are wise). We may not be as much wiser than the animals as we think we are, but only we do serious sustained tool making."
+    }
+  ]
+}

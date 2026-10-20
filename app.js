@@ -1,4 +1,4 @@
-const DATA_FILES = ['./data/book.json', './data/questions.json', './data/glossary.json', './data/english-1-1.json'];
+const CORE_DATA_FILES = ['./data/book.json', './data/questions.json', './data/glossary.json', './data/content-manifest.json'];
 const STORAGE_KEY = 'heat-study-ja:v1';
 const root = document.querySelector('#app');
 const systemDark = window.matchMedia?.('(prefers-color-scheme: dark)');
@@ -14,7 +14,7 @@ let state = loadState();
 let book;
 let questionBank;
 let glossary;
-let englishSection;
+let contentManifest;
 let ui = {
   route: location.hash.slice(1) || 'home',
   readerSection: state.lastSection,
@@ -60,7 +60,8 @@ function highlight(value, query) {
 function sourceLabel(source = {}) {
   if (source.type === 'supplement') return `補足説明・${escapeHTML(source.reference || '出典を確認中')}`;
   const section = source.section ? `第${escapeHTML(source.section)}節` : '';
-  return `本書 ${section}／書籍 p.${escapeHTML(source.bookPages || '未記録')}・PDF p.${escapeHTML(source.pdfPages || '未記録')}`;
+  const evidence = [source.figure ? `図${escapeHTML(source.figure)}` : '', source.equation ? `式（${escapeHTML(source.equation)}）` : ''].filter(Boolean).join(' · ');
+  return `本書 ${section}／書籍 p.${escapeHTML(source.bookPages || '未記録')}・PDF p.${escapeHTML(source.pdfPages || '未記録')}${evidence ? ` · ${evidence}` : ''}`;
 }
 function setRoute(route) {
   ui.route = route;
@@ -78,12 +79,20 @@ const NAV_ITEMS = [
 
 async function startApp() {
   try {
-    [book, questionBank, glossary, englishSection] = await Promise.all(DATA_FILES.map(path => fetch(path).then(response => {
+    [book, questionBank, glossary, contentManifest] = await Promise.all(CORE_DATA_FILES.map(path => fetch(path).then(response => {
       if (!response.ok) throw new Error(`教材データを読み込めません（${path}）`);
       return response.json();
     })));
-    const firstSection = book.chapters.flatMap(chapter => chapter.sections).find(section => section.id === englishSection.sectionId);
-    if (firstSection) firstSection.blocksEn = englishSection.blocks;
+    const contentFiles = await Promise.all((contentManifest.files || []).map(path => fetch(path).then(response => {
+      if (!response.ok) throw new Error(`章別教材データを読み込めません（${path}）`);
+      return response.json();
+    })));
+    for (const content of contentFiles) {
+      const section = book.chapters.flatMap(chapter => chapter.sections).find(item => item.id === content.sectionId);
+      if (!section || !Array.isArray(content.blocks)) continue;
+      if (content.language === 'ja') section.blocks = content.blocks;
+      else if (content.language === 'en') section.blocksEn = content.blocks;
+    }
     if ('serviceWorker' in navigator && location.protocol.startsWith('http')) navigator.serviceWorker.register('./sw.js').catch(() => showStatus('オフライン保存の準備に失敗しました。ネット接続中にページを再読み込みしてください。'));
     window.addEventListener('hashchange', () => { ui.route = location.hash.slice(1) || 'home'; render(); });
     root.addEventListener('click', onClick);
@@ -128,7 +137,7 @@ function render() {
         </nav>
         <main class="main-content" id="main-content" tabindex="-1">${routeView}</main>
       </div>
-      <footer class="app-footer"><span>学習データはこのブラウザー内に保存されます。</span><span>教材進捗：第1章1.1節のみ翻訳済み</span></footer>
+      <footer class="app-footer"><span>学習データはこのブラウザー内に保存されます。</span><span>教材進捗：${translatedSectionCount()}節の日本語訳を収録</span></footer>
     </div>`;
 }
 
@@ -188,7 +197,7 @@ function renderHome() {
       <section class="surface-card recent-card"><div class="card-heading"><div><p class="eyebrow">最近の学習</p><h2>${recentSession ? '前回のふり返り' : '記録がここに並びます'}</h2></div><a href="#calendar" class="text-link">すべて見る →</a></div>
         ${recentSession ? `<p class="recent-date">${formatDate(recentSession.date)}</p><div class="recent-stats"><div><strong>${recentSession.total}</strong><span>問</span></div><div><strong>${recentSession.correct}</strong><span>正解</span></div><div><strong>${recentSession.total ? Math.round(recentSession.correct / recentSession.total * 100) : 0}%</strong><span>正答率</span></div></div><a class="text-link" href="#quiz">間違えた問題にもう一度挑戦 →</a>` : '<div class="empty-state compact"><span class="empty-mark">✦</span><p>学習を始めると、取り組んだ分野や復習予定をここで振り返れます。</p></div>'}
       </section>
-      <section class="surface-card focus-card"><div class="card-heading"><div><p class="eyebrow">教材の進み具合</p><h2>全訳までの道のり</h2></div><a href="#reader" class="text-link">目次を見る →</a></div><div class="progress-line"><span style="width:${Math.max(readPercent, translated ? 1 : 0)}%"></span></div><p class="progress-caption"><strong>1節 / ${allSections().length}節</strong>の本文を収録。未翻訳の本文は表示していません。</p><p class="small-note">第1章1.1節：翻訳済み・専門家校閲待ち</p></section>
+    <section class="surface-card focus-card"><div class="card-heading"><div><p class="eyebrow">教材の進み具合</p><h2>全訳までの道のり</h2></div><a href="#reader" class="text-link">目次を見る →</a></div><div class="progress-line"><span style="width:${Math.max(readPercent, translated ? 1 : 0)}%"></span></div><p class="progress-caption"><strong>${translatedSectionCount()}節 / ${allSections().length}節</strong>の本文を収録。未翻訳の本文は表示していません。</p><p class="small-note">翻訳済みの節も専門家校閲は未実施です。</p></section>
     </div>`;
 }
 
@@ -209,7 +218,7 @@ function renderReader() {
   return `${pageHeading('読書モード', '章・節をたどって読む', '本文の段落、数式、図、表を分けて表示します。読んだ場所と読了状態はこの端末に保存されます。', '<a class="button secondary" href="#search">本文を検索</a>')}
     <div class="reader-layout">
       <aside class="reader-toc surface-card"><div class="toc-heading"><span class="eyebrow">目次</span><strong>A Heat Transfer Textbook</strong></div>
-        ${book.chapters.map(item => `<details ${item.id === section.chapterId ? 'open' : ''}><summary><span>${escapeHTML(item.title)}</span><small>第${item.id.slice(2)}章</small></summary><div class="toc-items">${item.sections.map(sec => `<button class="toc-item ${sec.id === section.id ? 'selected' : ''} ${sectionIsTranslated(sec) ? '' : 'not-ready'}" type="button" data-section="${sec.id}"><span class="toc-number">${sec.id}</span><span>${escapeHTML(sec.title)}</span><i>${sectionIsTranslated(sec) ? '読める' : '未着手'}</i></button>`).join('')}</div></details>`).join('')}
+        ${book.chapters.map(item => `<details ${item.id === section.chapterId ? 'open' : ''}><summary><span>${escapeHTML(item.title)}</span><small>第${item.id.slice(2)}章</small></summary><div class="toc-items">${item.sections.map(sec => `<button class="toc-item ${sec.id === section.id ? 'selected' : ''} ${sectionIsTranslated(sec) ? '' : 'not-ready'}" type="button" data-section="${sec.id}"><span class="toc-number">${escapeHTML(sec.id)}</span><span>${escapeHTML(sec.title)}</span><i>${sectionIsTranslated(sec) ? '読める' : '未着手'}</i></button>`).join('')}${(item.backMatter || []).map(entry => `<div class="toc-item not-ready" aria-label="${escapeHTML(entry.title)}、未着手"><span class="toc-number">—</span><span>${escapeHTML(entry.title)}</span><i>未着手</i></div>`).join('')}</div></details>`).join('')}
         <div class="appendix-list"><span class="eyebrow">付録・索引</span>${book.appendices.map(item => `<div class="appendix-row"><span>${escapeHTML(item.title)}</span>${statusPill('未着手')}</div>`).join('')}</div>
       </aside>
       <article class="reader-panel surface-card" id="reader-article">
@@ -230,11 +239,12 @@ function renderReader() {
 function renderBookBlock(block, language = 'ja') {
   const text = escapeHTML(block.text || '').replaceAll('\n', '<br>');
   if (block.type === 'heading') return `<h3 class="book-subheading">${text}</h3>`;
+  if (block.type === 'subheading') return `<h4 class="book-subheading book-subheading-minor">${text}</h4>`;
   if (block.type === 'quote') return `<blockquote class="book-quote"><p>${text}</p><cite>${escapeHTML(block.attribution || '')}</cite></blockquote>`;
   if (block.type === 'experiment') return `<section class="experiment"><div class="experiment-label">${language === 'en' ? 'Experiment' : '実験'}</div><h3>${escapeHTML(block.title)}</h3><p>${text}</p></section>`;
   if (block.type === 'footnote') return `<aside class="footnote"><sup>${escapeHTML(block.marker)}</sup><p>${text}</p></aside>`;
-  if (block.type === 'formula') return `<div class="formula-block" aria-label="${escapeHTML(block.alt || block.expression)}"><div class="formula">${escapeHTML(block.expression)}</div><p>${escapeHTML(block.explanation || '')}</p></div>`;
-  if (block.type === 'figure') return `<figure class="book-figure"><div class="figure-placeholder">${escapeHTML(block.alt || '図の代替説明')}</div><figcaption>${escapeHTML(block.caption || '')}</figcaption></figure>`;
+  if (block.type === 'formula') return `<figure class="formula-block" aria-label="${escapeHTML(block.alt || block.expression)}"><div class="formula">${escapeHTML(block.expression)}</div>${block.number ? `<figcaption>式（${escapeHTML(block.number)}）</figcaption>` : ''}${block.explanation ? `<p>${escapeHTML(block.explanation)}</p>` : ''}</figure>`;
+  if (block.type === 'figure') return `<figure class="book-figure">${block.src ? `<img src="${escapeHTML(block.src)}" alt="${escapeHTML(block.alt || '図の代替説明')}" loading="lazy"/>` : `<div class="figure-placeholder">${escapeHTML(block.alt || '図の代替説明')}</div>`}<figcaption><strong>${escapeHTML(block.caption || '')}</strong>${block.description ? `<span>${escapeHTML(block.description)}</span>` : ''}<small>出典：本書 図${escapeHTML(block.figureNumber || '')} · 書籍 p.${escapeHTML(block.bookPage ?? '未記録')} · PDF p.${escapeHTML(block.pdfPage ?? '未記録')}</small></figcaption></figure>`;
   if (block.type === 'table') return `<div class="table-wrap"><table><caption>${escapeHTML(block.caption || '')}</caption><thead><tr>${block.headers.map(item => `<th scope="col">${escapeHTML(item)}</th>`).join('')}</tr></thead><tbody>${block.rows.map(row => `<tr>${row.map(item => `<td>${escapeHTML(item)}</td>`).join('')}</tr>`).join('')}</tbody></table></div>`;
   if (block.type === 'list') return `<ul class="book-list">${block.items.map(item => `<li>${escapeHTML(item)}</li>`).join('')}</ul>`;
   if (block.type === 'paragraph') return `<p class="book-paragraph">${text}</p>`;
@@ -256,8 +266,8 @@ function buildSearchIndex() {
   for (const section of allSections()) if (section.blocks) {
     const chapter = book.chapters.find(item => item.id === section.chapterId);
     const languageSets = [['ja', section.blocks], ['en', section.blocksEn]].filter(([, blocks]) => Array.isArray(blocks));
-    for (const [language, blocks] of languageSets) for (const block of blocks) if (block.text || block.items || block.title) {
-      const text = [block.title, block.text, ...(block.items || [])].filter(Boolean).join(' ');
+    for (const [language, blocks] of languageSets) for (const block of blocks) if (block.text || block.items || block.title || block.expression || block.caption) {
+      const text = [block.title, block.text, block.expression, block.explanation, block.caption, block.alt, block.description, ...(block.items || [])].filter(Boolean).join(' ');
       if (text) entries.push({ kind: 'book', kindLabel: language === 'en' ? '本文 · English' : '本文 · 日本語', chapter: section.chapterId, title: `${section.id} ${language === 'en' ? section.sourceTitle || section.title : section.title}`, text, target: { route: 'reader', section: section.id, language }, source: `書籍 p.${section.bookStart}–${section.bookEnd} · PDF p.${section.pdfStart}–${section.pdfEnd}`, chapterTitle: chapter.title });
     }
   }
@@ -309,7 +319,7 @@ function renderSettings() {
         <label class="range-setting">本文の行間 <strong>${Number(state.settings.lineHeight).toFixed(1)}</strong><input type="range" min="1.5" max="2.2" step="0.1" name="lineHeight" value="${state.settings.lineHeight}"/><span class="range-ends"><small>標準</small><small>広め</small></span></label><div class="preview-text">熱は高温側から低温側へ移ります。読みやすい大きさと行間に調整してください。</div>
       </section>
       <section class="surface-card settings-card"><p class="eyebrow">学習データ</p><h2>保存と持ち運び</h2><p>学習履歴、回答、自信度、メモ、しおり、計画、設定をJSONで書き出します。書籍本文や問題本文は含まれません。</p><div class="button-stack"><button class="button primary" type="button" data-action="export-data">JSONを書き出す</button><label class="button secondary file-button">JSONを取り込む<input type="file" id="import-file" accept="application/json,.json"/></label></div><div id="import-feedback" class="import-feedback">${renderImportDraft()}</div><div class="notice-card compact-notice"><span class="notice-icon">i</span><p>ファイル形式が正しい場合も、取り込み前に内容を確認できます。壊れたファイルでは現在の記録を変更しません。</p></div></section>
-      <section class="surface-card settings-card"><p class="eyebrow">教材</p><h2>翻訳と確認の状況</h2><div class="content-progress"><div><strong>第1章1.1節</strong><span>${statusPill('翻訳済み', 'green')} ${statusPill('専門家校閲待ち', 'amber')}</span></div><small>書籍 p.3–6 · PDF p.17–20</small><div class="progress-line"><span style="width:${percent}%"></span></div><p>${translatedSectionCount()}節 / ${allSections().length}節を収録。残りの本文・図表・脚注・付録・索引は未着手です。</p></div><a class="text-link" href="#reader">翻訳進捗を目次で見る →</a><p class="small-note">PDFはこのアプリに同梱していません。出典と著作権情報はリポジトリの LICENSE-BOOK.md に記録しています。</p></section>
+      <section class="surface-card settings-card"><p class="eyebrow">教材</p><h2>翻訳と確認の状況</h2><div class="content-progress"><div><strong>第1章1.1・1.2節</strong><span>${statusPill('翻訳済み', 'green')} ${statusPill('専門家校閲待ち', 'amber')}</span></div><small>書籍 pp.3–9 · PDF pp.17–23</small><div class="progress-line"><span style="width:${percent}%"></span></div><p>${translatedSectionCount()}節 / ${allSections().length}節を収録。第1章1.3–1.5節・章末問題・参考文献と、それ以降の本文・図表・脚注・付録・索引は未着手です。</p></div><a class="text-link" href="#reader">翻訳進捗を目次で見る →</a><p class="small-note">PDFはこのアプリに同梱していません。出典と著作権情報はリポジトリの LICENSE-BOOK.md に記録しています。</p></section>
       <section class="surface-card settings-card"><p class="eyebrow">対応状況</p><h2>オフライン・読み上げ・操作</h2><ul class="capability-list"><li><span>${navigator.onLine ? '●' : '○'}</span> ${navigator.onLine ? 'オンライン接続中' : 'オフライン中'}。初回の教材読み込み後は、アプリと収録済み教材を利用できます。</li><li><span>▶</span> 読み上げは端末の音声合成機能を使用します。未対応のブラウザーでは利用できません。</li><li><span>⌨</span> 問題演習中は数字キー1〜4で選択、Enterで回答できます。入力欄にフォーカスがある間は操作を奪いません。</li><li><span>▣</span> 読書位置、読了、問題回答、復習予定はこのブラウザーに保存します。</li></ul></section>
     </div>`;
 }
@@ -331,6 +341,8 @@ function renderPlan() {
   const plan = state.plan;
   const remaining = plan.targetDate ? Math.max(0, Math.ceil((new Date(`${plan.targetDate}T00:00:00`) - new Date(`${todayISO()}T00:00:00`)) / 86400000)) : null;
   const todayDue = dueReviewCount();
+  const translatedSections = allSections().filter(sectionIsTranslated);
+  const readingSuggestion = translatedSections.find(section => !state.readSections[section.id]) || translatedSections[0];
   return `${pageHeading('学習計画', '続けられる予定をつくる。', '目標日と1日の時間から、読書・演習・復習を組み合わせて提案します。内容はいつでも変えたり、停止したりできます。')}
     <div class="plan-layout">
       <section class="surface-card plan-form-card"><p class="eyebrow">あなたの目標</p><h2>何をいつまでに学びたい？</h2><form id="plan-form" class="stack-form">
@@ -339,7 +351,7 @@ function renderPlan() {
         <div class="button-row"><button class="button primary" type="submit">計画を保存</button>${plan.active ? '<button class="button secondary" type="button" data-action="stop-plan">計画を停止</button>' : ''}</div>
       </form></section>
       <section class="surface-card suggestion-card"><p class="eyebrow">今日の提案</p><h2>${plan.active ? 'この順番で進めましょう' : 'まずは学習を始めましょう'}</h2>
-        <ol class="suggested-steps"><li><span>1</span><div><strong>${state.readSections['1.1'] ? '熱移動の節を読み返す' : '第1章1.1節を読む'}</strong><small>目安 ${Math.max(5, Math.round((Number(plan.minutesPerDay) || 15) * 0.4))} 分 · 翻訳済みの本文</small></div><a href="#reader">開く</a></li><li><span>2</span><div><strong>関連する問題に挑戦する</strong><small>目安 ${Math.max(3, Math.round((Number(plan.minutesPerDay) || 15) * 0.35))} 分 · 回答履歴を記録</small></div><a href="#quiz">始める</a></li><li><span>3</span><div><strong>${todayDue ? `${todayDue}問の復習候補を確認する` : '復習の準備をする'}</strong><small>目安 ${Math.max(2, Math.round((Number(plan.minutesPerDay) || 15) * 0.25))} 分 · 自信度も考慮</small></div><a href="#review">確認</a></li></ol>
+        <ol class="suggested-steps"><li><span>1</span><div><strong>${readingSuggestion ? `${state.readSections[readingSuggestion.id] ? '読み返す' : '読む'}：第${readingSuggestion.chapterId.slice(2)}章${readingSuggestion.id}節「${escapeHTML(readingSuggestion.title)}」` : '読める本文はまだありません'}</strong><small>目安 ${Math.max(5, Math.round((Number(plan.minutesPerDay) || 15) * 0.4))} 分 · 翻訳済みの本文</small></div><a href="#reader" ${readingSuggestion ? `data-section="${readingSuggestion.id}"` : 'aria-disabled="true"'}>開く</a></li><li><span>2</span><div><strong>関連する問題に挑戦する</strong><small>目安 ${Math.max(3, Math.round((Number(plan.minutesPerDay) || 15) * 0.35))} 分 · 回答履歴を記録</small></div><a href="#quiz">始める</a></li><li><span>3</span><div><strong>${todayDue ? `${todayDue}問の復習候補を確認する` : '復習の準備をする'}</strong><small>目安 ${Math.max(2, Math.round((Number(plan.minutesPerDay) || 15) * 0.25))} 分 · 自信度も考慮</small></div><a href="#review">確認</a></li></ol>
         <p class="small-note">提案は収録済み教材と回答履歴に基づきます。全文の学習所要時間や、未翻訳範囲の完了日は推定していません。</p>
       </section>
       <section class="surface-card plan-summary-card"><p class="eyebrow">計画の見通し</p>${plan.active ? `<div class="summary-highlight"><strong>${remaining === null ? '—' : remaining}</strong><span>${remaining === 1 ? '日後まで' : '日間の予定'}</span></div><p>目標日：${formatDate(plan.targetDate)}　·　1日 ${Number(plan.minutesPerDay) || 15} 分</p><p class="muted">目標：${escapeHTML(plan.goal || '未入力')}</p>` : '<div class="empty-state compact"><span class="empty-mark">▦</span><p>計画を保存すると、目標と1日の学習時間がここに表示されます。</p></div>'}</section>
@@ -482,13 +494,14 @@ function renderQuizSetup() {
 }
 
 function renderQuestionFigure(figure) {
+  if (figure.kind === 'book') return `<figure class="question-figure"><img src="${escapeHTML(figure.src)}" alt="${escapeHTML(figure.alt)}" loading="lazy"/><figcaption><strong>${escapeHTML(figure.caption)}</strong><span>${escapeHTML(figure.description || figure.alt)}</span><small>出典：本書 図${escapeHTML(figure.figureNumber)} · 書籍 p.${escapeHTML(figure.bookPage)} · PDF p.${escapeHTML(figure.pdfPage)}</small></figcaption></figure>`;
   if (figure.kind === 'app-created') return `<figure class="question-figure"><div class="wall-diagram" role="img" aria-label="${escapeHTML(figure.alt)}"><div class="wall-temp hot"><span>Tₕ</span><small>高温</small></div><div class="wall-body"><span class="heat-arrow">Q̇　→</span><span class="wall-label">平板</span><span class="wall-thickness">L</span><span class="wall-gradient">Tₕ　····→　T𝑐</span></div><div class="wall-temp cold"><span>T𝑐</span><small>低温</small></div><div class="wall-delta">ΔT = Tₕ − T𝑐</div></div><figcaption>${escapeHTML(figure.caption)}<span>${escapeHTML(figure.alt)}</span></figcaption></figure>`;
   return `<figure class="question-figure"><div class="figure-placeholder" role="img" aria-label="${escapeHTML(figure.alt)}">図の説明を表示しています</div><figcaption>${escapeHTML(figure.caption)}<span>${escapeHTML(figure.alt)}</span></figcaption></figure>`;
 }
 
 function renderAnswerFeedback(question, answer, existingNote) {
   const correct = answer.correct;
-  const sourceAction = question.source.type === 'book' ? `<button type="button" class="text-link" data-section="${escapeHTML(question.source.section)}">第${escapeHTML(question.source.section)}節の本文へ（書籍 p.${escapeHTML(question.source.bookPages)} / PDF p.${escapeHTML(question.source.pdfPages)}）→</button>` : `<div class="source-ref">${sourceLabel(question.source)}<br>該当箇所のページと式番号は原本照合待ちです。書籍の記述としては扱っていません。</div>`;
+  const sourceAction = question.source.type === 'book' ? `<button type="button" class="text-link" data-section="${escapeHTML(question.source.section)}">出典：${sourceLabel(question.source)}（本文へ）→</button>` : `<div class="source-ref">${sourceLabel(question.source)}<br>該当箇所のページと式番号は原本照合待ちです。書籍の記述としては扱っていません。</div>`;
   const reasons = question.distractors.map((text,index) => `<li class="${index === question.answer ? 'is-correct' : ''}"><strong>${String.fromCharCode(65 + index)} ${index === question.answer ? '正解' : '誤答'}</strong><p>${escapeHTML(text)}</p></li>`).join('');
   return `<section class="answer-feedback ${correct ? 'feedback-correct' : 'feedback-wrong'}" aria-live="polite"><div class="feedback-title"><span class="feedback-symbol">${correct ? '✓' : '!'}</span><div><strong>${correct ? '正解です' : '今回は不正解です'}</strong><small>自信度：${confidenceLabel(answer.confidence)} · ${formatTime(answer.at)}</small></div></div>
     <div class="explanation-block"><h3>何を問う問題だった？</h3><p>${escapeHTML(question.prompt)}</p><h3>正解へ至る考え方</h3><p>${escapeHTML(question.explanation)}</p></div>
@@ -692,7 +705,7 @@ function speakSection() {
   const language = state.settings.contentLanguage === 'en' && Array.isArray(section?.blocksEn) ? 'en' : 'ja';
   const blocks = language === 'en' ? section.blocksEn : section?.blocks;
   if (!blocks) { showStatus('この節にはまだ読み上げ可能な本文がありません。'); return; }
-  const text=blocks.map(block=>[block.text,block.title,...(block.items||[])].filter(Boolean).join(' ')).join(' ');
+  const text=blocks.map(block=>[block.text,block.title,block.expression,block.explanation,block.caption,block.alt,block.description,...(block.items||[])].filter(Boolean).join(' ')).join(' ');
   if (!text.trim()) { showStatus('読み上げる本文がありません。'); return; }
   window.speechSynthesis.cancel(); const utterance=new SpeechSynthesisUtterance(text); utterance.lang=language === 'en' ? 'en-US' : 'ja-JP'; utterance.rate=0.92;
   utterance.onerror=()=>showStatus('読み上げを開始できませんでした。端末の音声機能を確認してください。');

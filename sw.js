@@ -1,7 +1,9 @@
-const CACHE_NAME = 'heat-study-ja-v2';
+const CACHE_NAME = 'heat-study-ja-v3';
 const APP_SHELL = [
   './', './index.html', './styles.css', './app.js', './manifest.json',
-  './data/book.json', './data/questions.json', './data/glossary.json', './data/english-1-1.json'
+  './data/book.json', './data/questions.json', './data/glossary.json', './data/content-manifest.json',
+  './data/sections/1-1-ja.json', './data/sections/1-1-en.json', './data/sections/1-2-ja.json', './data/sections/1-2-en.json',
+  './data/figures/fig1-1-021.png', './data/figures/fig1-2-023.png'
 ];
 self.addEventListener('install', event => {
   event.waitUntil(caches.open(CACHE_NAME).then(cache => cache.addAll(APP_SHELL)));
