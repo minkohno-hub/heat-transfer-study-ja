@@ -1,0 +1,10 @@
+{
+  "name": "熱移動を学ぶ",
+  "short_name": "熱移動",
+  "lang": "ja",
+  "start_url": ".",
+  "display": "standalone",
+  "background_color": "#f7f5ef",
+  "theme_color": "#f7f5ef",
+  "description": "熱移動の読書・演習・復習を支える日本語学習アプリ"
+}
