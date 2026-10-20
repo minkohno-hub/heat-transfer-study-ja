@@ -3353,21 +3353,51 @@
           "title": "対象範囲",
           "sourceTitle": "Scope",
           "pdfStart": 427,
-          "bookStart": 413
+          "bookStart": 413,
+          "pdfEnd": 427,
+          "bookEnd": 413,
+          "translationStatus": "draft_complete",
+          "reviewStatus": "source_checked",
+          "sourceReview": {
+            "status": "source_checked",
+            "record": "docs/reviews/2026-10-20-ch8-opening-source-audit.md",
+            "expertReviewed": false,
+            "scope": "当該節の段落・脚注・式と図を原本ページ画像および抽出本文と作業者が照合。独立した第二者確認は未実施。"
+          }
         },
         {
           "id": "8.2",
           "title": "膜状凝縮と自然対流の性質",
           "sourceTitle": "The nature of film condensation and of natural convection",
           "pdfStart": 428,
-          "bookStart": 414
+          "bookStart": 414,
+          "pdfEnd": 430,
+          "bookEnd": 416,
+          "translationStatus": "draft_complete",
+          "reviewStatus": "source_checked",
+          "sourceReview": {
+            "status": "source_checked",
+            "record": "docs/reviews/2026-10-20-ch8-opening-source-audit.md",
+            "expertReviewed": false,
+            "scope": "当該節の段落・脚注・式と図を原本ページ画像および抽出本文と作業者が照合。独立した第二者確認は未実施。"
+          }
         },
         {
           "id": "8.3",
           "title": "等温垂直面上の層流自然対流",
           "sourceTitle": "Laminar natural convection on a vertical isothermal surface",
           "pdfStart": 431,
-          "bookStart": 417
+          "bookStart": 417,
+          "pdfEnd": 443,
+          "bookEnd": 429,
+          "translationStatus": "draft_complete",
+          "reviewStatus": "source_checked",
+          "sourceReview": {
+            "status": "source_checked",
+            "record": "docs/reviews/2026-10-20-ch8-3-source-audit.md",
+            "expertReviewed": false,
+            "scope": "書籍pp.417–429の段落・式・図・脚注を作業者が照合。原本の図参照・括弧・算術差を要確認として保持。第二者確認は未実施。"
+          }
         },
         {
           "id": "8.4",

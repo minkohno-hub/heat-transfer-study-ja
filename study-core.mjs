@@ -4,7 +4,7 @@ export function createEmptyState() {
   return { schemaVersion: 1, settings: { theme: 'system', contentLanguage: 'ja', fontScale: 1, lineHeight: 1.8, width: 'reading' },
     lastSection: '1.1', readerPositions: {}, readSections: {}, bookmarks: [], questionBookmarks: [], attempts: [],
     mistakeNotes: {}, questionReports: {}, notes: [], reviews: {}, completedReviews: {}, sessions: [],
-    plan: { active: false, goal: '', targetDate: '', minutesPerDay: 15 }, simComparisons: {} };
+    plan: { active: false, goal: '', targetDate: '', minutesPerDay: 15 }, simComparisons: {}, activities: [], quizDraft: null };
 }
 const record = v => v !== null && typeof v === 'object' && !Array.isArray(v);
 const text = v => typeof v === 'string';
@@ -45,7 +45,7 @@ export function validateLearningData(data, {stored=false}={}) {
   if (!data.attempts.every(attemptOK)) return invalid('回答履歴の日時・選択肢・自信度を確認してください。');
   if (!data.bookmarks.every(b=>record(b)&&text(b.id)&&text(b.sectionId)&&text(b.note)&&time(b.createdAt)&&optional(b,'position',v=>finite(v)&&v>=0)&&optional(b,'blockId',text)&&optional(b,'language',v=>['ja','en'].includes(v)))) return invalid('しおりの形式が正しくありません。');
   if (!data.questionBookmarks.every(text)) return invalid('問題ブックマークの形式が正しくありません。');
-  if (!data.sessions.every(s=>record(s)&&validDay(s.date)&&Number.isInteger(s.total)&&s.total>=0&&Number.isInteger(s.correct)&&s.correct>=0&&s.correct<=s.total&&time(s.startedAt)&&optional(s,'finishedAt',time)&&optional(s,'answers',v=>Array.isArray(v)&&v.every(attemptOK)))) return invalid('学習セッションの形式が正しくありません。');
+  if (!data.sessions.every(s=>record(s)&&validDay(s.date)&&Number.isInteger(s.total)&&s.total>=0&&Number.isInteger(s.correct)&&s.correct>=0&&s.correct<=s.total&&time(s.startedAt)&&optional(s,'finishedAt',time)&&optional(s,'activeSeconds',v=>finite(v)&&v>=0)&&optional(s,'answers',v=>Array.isArray(v)&&v.every(attemptOK)))) return invalid('学習セッションの形式が正しくありません。');
   const s=data.settings;
   if (!optional(s,'theme',v=>['system','light','dark'].includes(v)) || !optional(s,'contentLanguage',v=>['ja','en'].includes(v)) || !optional(s,'fontScale',v=>finite(v)&&v>=0.7&&v<=2) || !optional(s,'lineHeight',v=>finite(v)&&v>=1.2&&v<=3) || !optional(s,'width',v=>['reading','wide'].includes(v))) return invalid('表示設定の値が正しくありません。');
   const p=data.plan;
@@ -59,15 +59,19 @@ export function validateLearningData(data, {stored=false}={}) {
   if (!optional(data,'readSections',v=>record(v)&&Object.values(v).every(x=>typeof x==='boolean'))) return invalid('読了記録の形式が正しくありません。');
   if (!optional(data,'lastSection',text)) return invalid('最後に読んだ節の形式が正しくありません。');
   if (!optional(data,'simComparisons',v=>record(v)&&Object.entries(v).every(([mode,values])=>record(values)&&!calculateHeatTransfer(mode,values).error))) return invalid('比較用シミュレーター条件が正しくありません。');
+  if (!optional(data,'activities',v=>Array.isArray(v)&&v.length<=100000&&v.every(a=>record(a)&&text(a.id)&&validDay(a.date)&&['reading','practice','review','simulation','glossary'].includes(a.kind)&&finite(a.seconds)&&a.seconds>=0&&a.seconds<=86400&&time(a.updatedAt)&&['sectionId','sessionId','field'].every(k=>optional(a,k,text))))) return invalid('学習時間の記録の形式が正しくありません。');
+  if (!optional(data,'quizDraft',v=>v===null||quizDraftOK(v))) return invalid('中断した演習の形式が正しくありません。');
   return '';
 }
 export function normalizeLearningData(data) {
   const out=createEmptyState();
   for (const k of Object.keys(out)) if (data[k]!==undefined) out[k]=structuredClone(data[k]);
   out.settings={...createEmptyState().settings,...out.settings}; out.plan={...createEmptyState().plan,...out.plan};
+  out.attempts.sort((a,b)=>new Date(a.at).getTime()-new Date(b.at).getTime());
+  out.sessions.sort((a,b)=>new Date(a.finishedAt??a.startedAt).getTime()-new Date(b.finishedAt??b.startedAt).getTime());
   return out;
 }
-const updated = v => record(v) ? [v.updatedAt,v.at,v.createdAt,v.lastReviewedAt,v.lastAnsweredAt].filter(text).sort().at(-1)||'' : '';
+const updated = v => record(v) ? Math.max(-Infinity,...[v.updatedAt,v.at,v.createdAt,v.lastReviewedAt,v.lastAnsweredAt].filter(x=>text(x)||finite(x)).map(x=>new Date(x).getTime()).filter(Number.isFinite)) : -Infinity;
 function newest(a,b) { return updated(b)>updated(a) ? b : a; }
 function mergeMap(a,b) { const out={...a}; for(const [k,v] of Object.entries(b)) out[k]=k in out ? newest(out[k],v) : v; return out; }
 function mergeRows(a,b) {
@@ -80,13 +84,64 @@ export function mergeLearningData(current, incoming) {
   const out={...a,settings:{...a.settings,...incoming.settings},plan:{...a.plan,...incoming.plan}};
   for(const k of ['attempts','sessions','bookmarks','notes']) out[k]=mergeRows(a[k],b[k]);
   out.attempts.sort((x,y)=>Date.parse(x.at)-Date.parse(y.at));
+  out.sessions.sort((x,y)=>new Date(x.finishedAt??x.startedAt).getTime()-new Date(y.finishedAt??y.startedAt).getTime());
   out.questionBookmarks=[...new Set([...a.questionBookmarks,...b.questionBookmarks])];
   for(const k of ['mistakeNotes','readerPositions','reviews']) out[k]=mergeMap(a[k],b[k]);
   out.readSections={...a.readSections}; for(const [k,v] of Object.entries(b.readSections)) out.readSections[k]=Boolean(a.readSections[k]||v);
   out.questionReports={...a.questionReports}; for(const [k,v] of Object.entries(b.questionReports)) out.questionReports[k]=mergeRows(a.questionReports[k]||[],v);
-  out.completedReviews={...a.completedReviews}; for(const [k,v] of Object.entries(b.completedReviews)) if(!out.completedReviews[k]||v>out.completedReviews[k]) out.completedReviews[k]=v;
+  out.completedReviews={...a.completedReviews}; for(const [k,v] of Object.entries(b.completedReviews)) if(!out.completedReviews[k]||Date.parse(v)>Date.parse(out.completedReviews[k])) out.completedReviews[k]=v;
   out.simComparisons={...a.simComparisons,...b.simComparisons};
+  out.activities=mergeRows(a.activities,b.activities);
+  out.quizDraft=a.quizDraft&&b.quizDraft?newest(a.quizDraft,b.quizDraft):a.quizDraft||b.quizDraft;
+  if(out.quizDraft&&out.sessions.some(s=>s.id===out.quizDraft.id))out.quizDraft=null;
   return out;
+}
+
+export function questionFingerprint(question) {
+  return JSON.stringify([question.id,question.prompt,question.choices,question.answer,question.figure||null,question.solutionSteps||question.hints||[],question.revision||'initial']);
+}
+export function quizDraftOK(q) {
+  return record(q)&&text(q.id)&&Array.isArray(q.ids)&&q.ids.length>0&&q.ids.length<=500&&q.ids.every(text)&&new Set(q.ids).size===q.ids.length
+    &&Number.isInteger(q.index)&&q.index>=0&&q.index<q.ids.length&&finite(q.startedAt)&&time(q.startedAt)&&time(q.updatedAt)
+    &&record(q.signatures)&&q.ids.every(id=>text(q.signatures[id]))&&Array.isArray(q.answers)&&q.answers.length<=q.index+1
+    &&q.answers.every((a,i)=>a===null||a===undefined||(attemptOK(a)&&a.questionId===q.ids[i]))
+    &&q.ids.slice(0,q.index).every((id,i)=>q.answers[i]?.questionId===id)
+    &&(q.selected===null||(Number.isInteger(q.selected)&&q.selected>=0&&q.selected<4))
+    &&['high','medium','low','unsure'].includes(q.confidence)&&Number.isInteger(q.hintCount)&&q.hintCount>=0;
+}
+export function quizResumeIssue(draft,questions) {
+  if(!quizDraftOK(draft))return '中断した演習の形式を読み取れません。回答履歴は保持しています。';
+  const byId=new Map(questions.map(q=>[q.id,q]));
+  if(draft.ids.some(id=>!byId.has(id)))return 'このセットの問題が現在の教材にありません。該当する教材を読み込むと再開できます。';
+  if(draft.ids.some(id=>questionFingerprint(byId.get(id))!==draft.signatures[id]))return '問題の内容が更新されています。以前の回答履歴を保持し、新しいセットで解き直してください。';
+  return '';
+}
+export function splitStudyInterval(from,to) {
+  if(!finite(from)||!finite(to)||to<=from||to-from>30000)return [];
+  const result=[];let cursor=from;
+  while(cursor<to){const d=new Date(cursor),midnight=new Date(d.getFullYear(),d.getMonth(),d.getDate()+1).getTime(),end=Math.min(to,midnight);result.push({date:localDay(d),seconds:(end-cursor)/1000});cursor=end;}
+  return result;
+}
+export function recordStudyActivity(records,context,from,to,pageId) {
+  if(!context)return records;
+  const result=records.map(a=>({...a}));
+  for(const interval of splitStudyInterval(from,to)){
+    const id=JSON.stringify([pageId,interval.date,context.kind,context.sectionId||'',context.sessionId||'',context.field||'']);
+    const prior=result.find(a=>a.id===id),updatedAt=new Date(to).toISOString();
+    if(prior){prior.seconds+=interval.seconds;prior.updatedAt=updatedAt;}
+    else result.push({id,...context,...interval,updatedAt});
+  }
+  return result;
+}
+export function fieldProgress(questions,attempts) {
+  const ids=new Set(questions.map(q=>q.id)),latest=new Map();
+  for(const a of attempts)if(ids.has(a.questionId)&&(!latest.has(a.questionId)||Date.parse(a.at)>=Date.parse(latest.get(a.questionId).at)))latest.set(a.questionId,a);
+  const answered=latest.size,correct=[...latest.values()].filter(a=>a.correct).length;
+  return {answered,correct,enough:answered>=3,ratio:answered?correct/answered:0,total:questions.length};
+}
+export function studyDuration(seconds) {
+  const numeric=Number(seconds),value=Number.isFinite(numeric)?Math.max(0,Math.round(numeric)):0;
+  return value<60?`${value}秒`:`${Math.floor(value/60)}分${value%60?`${value%60}秒`:''}`;
 }
 export function chapterKey(value) {
   if (value==='supplement'||!value) return 'supplement';
@@ -122,7 +177,7 @@ export function planMinutes(total) {
 }
 export const STEFAN_BOLTZMANN_VALUE=5.670374419e-8;
 export function calculateHeatTransfer(mode,values) {
-  const fields={conduction:['k','area','thickness','hot','cold'],convection:['h','area','surface','fluid'],radiation:['emissivity','area','surface','surrounding']}[mode];
+  const fields={conduction:['k','area','thickness','hot','cold'],convection:['h','area','surface','fluid'],radiation:['emissivity','area','surface','surrounding'],resistance:['area','hot','cold','hHot','hCold','k1','k2','L1','L2']}[mode];
   if(!fields||!record(values))return {error:'計算の種類と入力項目を確認してください。'};
   const numeric={};
   for(const k of fields) {
@@ -130,12 +185,20 @@ export function calculateHeatTransfer(mode,values) {
     numeric[k]=Number(v);
   }
   if(numeric.area<=0)return {error:'面積 A は0より大きい値にしてください。'};
-  const temperatures=mode==='conduction'?['hot','cold']:mode==='convection'?['surface','fluid']:['surface','surrounding'];
+  const temperatures=['conduction','resistance'].includes(mode)?['hot','cold']:mode==='convection'?['surface','fluid']:['surface','surrounding'];
   if(temperatures.some(k=>numeric[k]<=-273.15))return {error:'温度は絶対零度（−273.15 ℃）より高い値にしてください。'};
   let watts,delta,extra={};
   if(mode==='conduction') {if(numeric.k<=0||numeric.thickness<=0)return {error:'熱伝導率 k と厚さ L は0より大きい値にしてください。'};delta=numeric.hot-numeric.cold;watts=numeric.k*numeric.area*delta/numeric.thickness;}
   if(mode==='convection') {if(numeric.h<=0)return {error:'対流熱伝達率 h は0より大きい値にしてください。'};delta=numeric.surface-numeric.fluid;watts=numeric.h*numeric.area*delta;}
   if(mode==='radiation') {if(numeric.emissivity<0||numeric.emissivity>1)return {error:'放射率 ε は0〜1で入力してください。'};const surfaceK=numeric.surface+273.15,surroundingK=numeric.surrounding+273.15;delta=numeric.surface-numeric.surrounding;watts=numeric.emissivity*STEFAN_BOLTZMANN_VALUE*numeric.area*(surfaceK**4-surroundingK**4);extra={surfaceK,surroundingK};}
+  if(mode==='resistance'){
+    if(['hHot','hCold','k1','k2','L1','L2'].some(k=>numeric[k]<=0))return {error:'両側の熱伝達率・各層の熱伝導率・厚さは0より大きい値にしてください。'};
+    const resistances=[1/(numeric.hHot*numeric.area),numeric.L1/(numeric.k1*numeric.area),numeric.L2/(numeric.k2*numeric.area),1/(numeric.hCold*numeric.area)],totalResistance=resistances.reduce((n,r)=>n+r,0);
+    if(!Number.isFinite(totalResistance)||totalResistance<=0)return {error:'熱抵抗を計算できる数値範囲を超えました。入力値を見直してください。'};
+    delta=numeric.hot-numeric.cold;watts=delta/totalResistance;
+    const temperatures=[numeric.hot];for(const r of resistances)temperatures.push(temperatures.at(-1)-watts*r);
+    extra={resistances,totalResistance,temperatures,overallU:1/(totalResistance*numeric.area)};
+  }
   if(!Number.isFinite(watts)||!Number.isFinite(delta))return {error:'計算できる数値範囲を超えました。入力値を小さくしてください。'};
   return {watts,delta,values:numeric,...extra};
 }

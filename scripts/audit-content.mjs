@@ -5,6 +5,10 @@ import {validateQuestion} from '../study-core.mjs';
 const root=resolve(dirname(fileURLToPath(import.meta.url)),'..'),read=async p=>JSON.parse(await readFile(resolve(root,p),'utf8'));
 const exists=async p=>{try{await access(resolve(root,p));return true;}catch{return false;}};
 const book=await read('data/book.json'),warnings=[],errors=[],drafts=new Map(),pages=Array.from({length:book.pdfPageCount},(_,i)=>({pdfPage:i+1,bookPage:i+1>14?i+1-14:null,draftSections:[],draftBackMatter:[],sourceCheckedSections:[],availableSections:[],status:'未処理'}));
+if(await exists('data/source/source-manifest.json')){
+  const extracted=await read('data/source/source-manifest.json'),flagged=new Set(extracted.needsVisualReviewPages||[]);
+  for(const page of pages)page.extraction={status:flagged.has(page.pdfPage)?'needs_visual_review':'page_text_extracted',formulaFidelity:'not_verified',wholePageTranslation:'not_verified',sourceSha256:extracted.sha256};
+}
 const blocksOf=d=>Array.isArray(d)?d:Array.isArray(d.blocks)?d.blocks:[];
 let files=[];try{files=(await readdir(resolve(root,'data/drafts'))).filter(n=>n.endsWith('.json'));}catch{}
 for(const file of files) {

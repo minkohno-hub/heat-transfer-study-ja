@@ -10,6 +10,7 @@ __pycache__/
 data/drafts/
 data/local/
 data/local-content-manifest.json
+data/source/
 tmp/
 test-results/
 playwright-report/

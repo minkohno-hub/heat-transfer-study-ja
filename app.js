@@ -1,4 +1,4 @@
-import { createEmptyState, validateLearningData, normalizeLearningData, mergeLearningData, calculateHeatTransfer, chapterKey, searchEntries, searchSnippet, searchRanges, localDay, validDay, shiftMonth, nextReviewDays, planMinutes, validateQuestion, speechChunks } from './study-core.mjs';
+import { createEmptyState, validateLearningData, normalizeLearningData, mergeLearningData, calculateHeatTransfer, chapterKey, searchEntries, searchSnippet, searchRanges, localDay, validDay, shiftMonth, nextReviewDays, planMinutes, validateQuestion, speechChunks, questionFingerprint, quizResumeIssue, recordStudyActivity, fieldProgress, studyDuration } from './study-core.mjs';
 const CORE_DATA_FILES = ['./data/book.json', './data/questions.json', './data/glossary.json', './data/content-manifest.json'];
 const STORAGE_KEY = 'heat-study-ja:v1';
 const root = document.querySelector('#app');
@@ -11,6 +11,8 @@ let questionBank;
 let glossary;
 let contentManifest;
 let speechRun = 0;
+const activityPageId=makeId();
+let activityTick=Date.now(),lastInteractionAt=activityTick,activityWasVisible=document.visibilityState!=='hidden'&&(!document.hasFocus||document.hasFocus());
 let ui = {
   route: location.hash.slice(1) || 'home',
   readerSection: state.lastSection,
@@ -26,7 +28,8 @@ let ui = {
   simValues: {
     conduction: { k: 15, area: 0.5, thickness: 0.08, hot: 80, cold: 20 },
     convection: { h: 25, area: 1, surface: 80, fluid: 20 },
-    radiation: { emissivity: 0.85, area: 1, surface: 150, surrounding: 25 }
+    radiation: { emissivity: 0.85, area: 1, surface: 150, surrounding: 25 },
+    resistance:{area:1,hot:80,cold:20,hHot:10,hCold:20,k1:0.5,k2:0.1,L1:0.1,L2:0.05}
   }
 };
 
@@ -67,11 +70,22 @@ function getSection(id) { return allSections().find(section => section.id === id
 function getQuestion(id) { return questionBank.find(question => question.id === id); }
 function sectionIsTranslated(section) { return Array.isArray(section?.blocks); }
 function sectionProgressLabel(section) { return sectionIsTranslated(section) ? '読める' : section?.translationStatus === 'draft_complete' ? '確認待ち' : section?.translationStatus === 'in_progress' ? '翻訳中' : '未着手'; }
+function blockSourceLabel(block){
+  const range=(first,last)=>`${first??'未記録'}${last&&last!==first?'–'+last:''}`;
+  return `書籍 p.${range(block.bookPage,block.endBookPage)} · PDF p.${range(block.pdfPage,block.endPdfPage)}`;
+}
 function escapeRegExp(value) { return value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'); }
 function highlight(value, query) {
   const text=String(value||'');let result='',end=0;
   for(const [start,stop] of searchRanges(text,query)){result+=escapeHTML(text.slice(end,start))+`<mark>${escapeHTML(text.slice(start,stop))}</mark>`;end=stop;}
   return result+escapeHTML(text.slice(end));
+}
+function renderMathText(value,query=''){
+  return highlight(value,query)
+    .replace(/(?:\p{L}\u0305)+/gu,s=>`<span class="math-overline">${s.replaceAll('\u0305','')}</span>`)
+    .replace(/_([A-Za-zΑ-Ωα-ω0-9∞]+)/gu,'<sub>$1</sub>')
+    .replace(/\^\(([−+\-0-9./]+)\)/gu,'<sup>$1</sup>')
+    .replace(/\^([−+\-]?\d+(?:\.\d+)?)/gu,'<sup>$1</sup>');
 }
 function sourceLabel(source = {}) {
   if (source.type === 'supplement') return `補足説明・${escapeHTML(source.reference || '出典を確認中')}`;
@@ -81,12 +95,16 @@ function sourceLabel(source = {}) {
   return `本書 ${section}／書籍 p.${escapeHTML(source.bookPages || '未記録')}・PDF p.${escapeHTML(source.pdfPages || '未記録')}${evidence ? ` · ${evidence}` : ''}`;
 }
 function setRoute(route) {
+  flushLearningTime();
+  if(ui.route==='reader'&&route!=='reader')captureReaderPosition();
   if(ui.route==='reader'&&route!=='reader')stopSpeech(false);
   ui.route = route;
   if (location.hash !== `#${route}`) location.hash = route;
   render();
-  window.scrollTo({ top: 0, behavior: 'smooth' });
+  window.scrollTo({ top: 0, behavior: 'instant' });
+  focusPageHeading();
 }
+function focusPageHeading(){const heading=document.querySelector('.page-heading h1');if(heading){heading.tabIndex=-1;heading.focus({preventScroll:true});}}
 function updateState(change) { state = typeof change === 'function' ? change(state) : { ...state, ...change }; saveState(); render(); }
 
 const NAV_ITEMS = [
@@ -142,7 +160,12 @@ async function startApp() {
       navigator.serviceWorker.addEventListener('message',event=>{if(event.data?.type==='CONTENT_CACHE_RESULT'&&!event.data.ok)showStatus('追加教材のオフライン保存が完了しませんでした。ネット接続中に再読み込みしてください。');});
       navigator.serviceWorker.register('./sw.js').then(()=>navigator.serviceWorker.ready).then(registration=>registration.active?.postMessage({type:'CACHE_CONTENT',urls:ui.localCacheFiles||[]})).catch(()=>showStatus('オフライン保存の準備に失敗しました。ネット接続中に再読み込みしてください。'));
     }
-    window.addEventListener('hashchange', () => { const next=location.hash.slice(1)||'home';if(ui.route==='reader'&&next!=='reader')stopSpeech(false);ui.route=next;render(); });
+    window.addEventListener('hashchange', () => {
+      const next=location.hash.slice(1)||'home';if(next===ui.route)return;
+      flushLearningTime();if(ui.route==='reader'){captureReaderPosition();stopSpeech(false);}persistQuiz();
+      ui.route=next;render();window.scrollTo({top:0,behavior:'instant'});focusPageHeading();
+      if(next==='reader')setTimeout(()=>restoreReaderPosition(state.readerPositions[ui.readerSection]),100);
+    });
     root.addEventListener('click', onClick);
     root.addEventListener('submit', onSubmit);
     root.addEventListener('change', onChange);
@@ -151,6 +174,12 @@ async function startApp() {
     window.addEventListener('offline', render);
     window.addEventListener('scroll', saveReaderPosition, { passive: true });
     window.addEventListener('keydown', onKeyDown);
+    for(const event of ['pointerdown','keydown','scroll'])window.addEventListener(event,()=>{flushLearningTime();lastInteractionAt=Date.now();},{passive:true});
+    document.addEventListener('visibilitychange',()=>{flushLearningTime(true);activityTick=Date.now();if(document.visibilityState==='visible')lastInteractionAt=activityTick;});
+    window.addEventListener('blur',()=>{flushLearningTime(true);activityWasVisible=false;});
+    window.addEventListener('focus',()=>{flushLearningTime();lastInteractionAt=Date.now();activityWasVisible=document.visibilityState!=='hidden';});
+    window.addEventListener('pagehide',()=>{flushLearningTime(true);if(ui.route==='reader'){clearTimeout(saveReaderPosition.timer);state.readerPositions[ui.readerSection]=readerPosition();}persistQuiz();saveState();});
+    setInterval(()=>flushLearningTime(true),5000);
     systemDark?.addEventListener?.('change', () => { if (state.settings.theme === 'system') render(); });
     render();
     if(ui.route==='reader')setTimeout(()=>restoreReaderPosition(state.readerPositions[ui.readerSection]),100);
@@ -195,6 +224,39 @@ function routeContent() {
   const routes = { home: renderHome, reader: renderReader, search: renderSearch, glossary: renderGlossary, quiz: renderQuiz, review: renderReview, plan: renderPlan, calendar: renderCalendar, map: renderMap, simulator: renderSimulator, settings: renderSettings };
   return (routes[ui.route] || renderHome)();
 }
+
+function learningContext(){
+  if(ui.route==='reader'&&sectionIsTranslated(getSection(ui.readerSection)))return {kind:'reading',sectionId:ui.readerSection,field:getSection(ui.readerSection)?.chapterTitle||''};
+  if(ui.route==='quiz'&&ui.quiz)return {kind:'practice',sessionId:ui.quiz.id||'',field:getQuestion(ui.quiz.ids[ui.quiz.index])?.field||''};
+  if(ui.route==='review')return {kind:'review'};
+  if(ui.route==='simulator')return {kind:'simulation',field:SIM_META[ui.simMode]?.title||''};
+  if(ui.route==='glossary')return {kind:'glossary'};
+  return null;
+}
+function flushLearningTime(save=false){
+  const now=Date.now(),visible=document.visibilityState!=='hidden'&&(!document.hasFocus||document.hasFocus());
+  const until=Math.min(now,lastInteractionAt+90000),context=book&&activityWasVisible?learningContext():null;
+  if(context&&until>activityTick)state.activities=recordStudyActivity(state.activities,context,activityTick,until,activityPageId);
+  activityTick=now;activityWasVisible=visible;if(save){persistQuiz();saveState();}
+}
+function persistQuiz(){
+  if(!ui.quiz)return;
+  const q=ui.quiz;
+  q.id ||= makeId();q.startedAt ||= Date.now();q.hintCount ||= 0;q.confidence ||= 'medium';
+  q.signatures ||= Object.fromEntries(q.ids.map(id=>[id,questionFingerprint(getQuestion(id)||{id})]));
+  state.quizDraft={...structuredClone(q),updatedAt:new Date().toISOString()};
+}
+function resumeQuiz(){
+  const issue=quizResumeIssue(state.quizDraft,questionBank);
+  if(issue){showStatus(issue);return;}
+  flushLearningTime();
+  ui.quiz=structuredClone(state.quizDraft);ui.quizResult=null;lastInteractionAt=Date.now();setRoute('quiz');
+}
+function renderQuizResume(){
+  if(!state.quizDraft)return '';
+  const issue=quizResumeIssue(state.quizDraft,questionBank);
+  return `<aside class="notice-card quiz-resume"><div><strong>中断した演習があります</strong><p>${state.quizDraft.index+1} / ${state.quizDraft.ids.length}問目 · 回答履歴は保存されています。</p>${issue?`<p role="status">${escapeHTML(issue)}</p>`:''}<div class="button-row"><button class="button primary" type="button" data-action="resume-quiz" ${issue?'disabled':''}>中断した演習を再開</button><button class="text-button" type="button" data-action="discard-quiz">この中断セットを破棄</button></div></div></aside>`;
+}
 function pageHeading(eyebrow, title, description = '', actions = '') {
   return `<div class="page-heading"><div><p class="eyebrow">${eyebrow}</p><h1>${title}</h1>${description ? `<p class="page-description">${description}</p>` : ''}</div>${actions ? `<div class="heading-actions">${actions}</div>` : ''}</div>`;
 }
@@ -227,6 +289,7 @@ function reviewCandidates() {
 }
 function renderHome() {
   const recentSession = state.sessions.at(-1);
+  const recentWrong=(recentSession?.answers||[]).filter(a=>!a.correct).map(a=>a.questionId);
   const plan = state.plan;
   const readPercent = translatedSectionCount() ? Math.round(countReadSections() / translatedSectionCount() * 100) : 0;
   const todayAttempts = state.attempts.filter(attempt => localDay(attempt.at) === todayISO()).length;
@@ -237,7 +300,7 @@ function renderHome() {
         <div class="hero-actions"><a class="button primary" href="#reader" data-open-section="${escapeHTML(state.lastSection)}">読む続きを開く <span aria-hidden="true">→</span></a><a class="button secondary" href="#quiz">問題を解く</a></div>
       </div><div class="hero-side"><div class="ring-progress" style="--progress:${readPercent}%"><div><strong>${readPercent}%</strong><span>翻訳済み節の読了</span></div></div><small>${countReadSections()} / ${translatedSectionCount()} 節を読了</small></div>
     </section>
-    <div class="home-grid">
+    ${renderQuizResume()}<div class="home-grid">
       <section class="surface-card today-card"><div class="card-heading"><div><p class="eyebrow">今日の学習</p><h2>無理のない一歩から</h2></div>${statusPill(`${todayAttempts}問回答`, 'blue')}</div>
         <div class="today-action-list"><a href="#review" class="today-action"><span class="action-icon amber">↻</span><span><strong>復習する</strong><small>${dueReviewCount() ? `${dueReviewCount()}問が復習時期です` : '復習候補を確認できます'}</small></span><b>→</b></a><a href="#quiz" data-quick-minutes="5" class="today-action"><span class="action-icon green">5</span><span><strong>5分だけ演習</strong><small>短い問題セットを始める</small></span><b>→</b></a><a href="#reader" class="today-action"><span class="action-icon violet">▤</span><span><strong>本文を読む</strong><small>前回の場所から再開</small></span><b>→</b></a></div>
       </section>
@@ -245,7 +308,7 @@ function renderHome() {
         ${plan.active && plan.goal ? `<p class="plan-summary">目標日：${formatDate(plan.targetDate)}　·　1日 ${Number(plan.minutesPerDay) || 15} 分</p><p class="muted">今日の学習内容は、学習記録と復習予定をもとに提案します。</p>` : '<p class="muted">目標と1日の時間を決めると、読書・演習・復習の進め方を提案できます。</p>'}<a class="text-link" href="#plan">計画を${plan.active ? '見直す' : '設定する'} <span aria-hidden="true">→</span></a>
       </section>
       <section class="surface-card recent-card"><div class="card-heading"><div><p class="eyebrow">最近の学習</p><h2>${recentSession ? '前回のふり返り' : '記録がここに並びます'}</h2></div><a href="#calendar" class="text-link">すべて見る →</a></div>
-        ${recentSession ? `<p class="recent-date">${formatDate(recentSession.date)}</p><div class="recent-stats"><div><strong>${recentSession.total}</strong><span>問</span></div><div><strong>${recentSession.correct}</strong><span>正解</span></div><div><strong>${recentSession.total ? Math.round(recentSession.correct / recentSession.total * 100) : 0}%</strong><span>正答率</span></div></div><a class="text-link" href="#quiz">間違えた問題にもう一度挑戦 →</a>` : '<div class="empty-state compact"><span class="empty-mark">✦</span><p>学習を始めると、取り組んだ分野や復習予定をここで振り返れます。</p></div>'}
+        ${recentSession ? `<p class="recent-date">${formatDate(recentSession.date)}</p><div class="recent-stats"><div><strong>${recentSession.total}</strong><span>問</span></div><div><strong>${recentSession.correct}</strong><span>正解</span></div><div><strong>${recentSession.total ? Math.round(recentSession.correct / recentSession.total * 100) : 0}%</strong><span>正答率</span></div></div>${recentWrong.length?`<button class="text-link" type="button" data-start-ids='${escapeHTML(JSON.stringify(recentWrong))}'>間違えた問題にもう一度挑戦 →</button>`:'<a class="text-link" href="#quiz">次の演習を始める →</a>'}` : '<div class="empty-state compact"><span class="empty-mark">✦</span><p>学習を始めると、取り組んだ分野や復習予定をここで振り返れます。</p></div>'}
       </section>
     <section class="surface-card focus-card"><div class="card-heading"><div><p class="eyebrow">教材の進み具合</p><h2>全訳までの道のり</h2></div><a href="#reader" class="text-link">目次を見る →</a></div><div class="progress-line"><span style="width:${contentPercent}%"></span></div><p class="progress-caption"><strong>${translatedSectionCount()}節 / ${allSections().length}節</strong>の本文を収録。未翻訳の本文は表示していません。</p><p class="small-note">収録節数の比率です。ページ全体の翻訳・確認完了率ではありません。専門家校閲は未実施です。</p></section>
     </div>`;
@@ -266,8 +329,9 @@ function renderReader() {
   const draftLabel = draftComplete ? '下書き完成' : inProgress ? '翻訳中' : '未着手';
   const draftHeading = draftComplete ? '翻訳下書きが完成しました' : inProgress ? 'この節は翻訳作業中です' : 'この節の日本語訳は、まだ用意されていません';
   const draftDescription = draftComplete ? `書籍 pp.${escapeHTML(progress?.draftBookPages || '確認中')}（PDF pp.${escapeHTML(progress?.draftPdfPages || '確認中')}）の日英下書きを作成しました。内容確認と専門家校閲が終わるまで、教材本文としては表示しません。` : inProgress ? `書籍 pp.${escapeHTML(progress?.draftBookPages || '確認中')}（PDF pp.${escapeHTML(progress?.draftPdfPages || '確認中')}）の下書きを作成しています。節全体の翻訳と確認が終わるまで、教材本文としては表示しません。` : '内容を推測して表示することはしていません。原本の対応ページと翻訳進捗を確認してください。';
-  const blocks = available ? section[contentLanguage === 'en' ? 'blocksEn' : 'blocks'].map((block,index) => `<div class="source-block" id="reader-block-${escapeHTML(block.id || `${section.id}-b${index}`)}" data-block-id="${escapeHTML(block.id || `${section.id}-b${index}`)}" data-book-page="${block.bookPage || ''}"><small class="block-source">書籍 p.${block.bookPage ?? '未記録'} · PDF p.${block.pdfPage ?? '未記録'}</small>${renderBookBlock(block,contentLanguage)}</div>`).join('') : `<div class="not-translated"><span class="large-status">${draftLabel}</span><h2>${draftHeading}</h2><p>${draftDescription}</p><div class="source-reference">原本：${escapeHTML(section.sourceTitle || section.title)}<br>書籍 p.${section.bookStart ?? '台帳未記録'}–${section.bookEnd ?? '未確認'} · PDF p.${section.pdfStart ?? '台帳未記録'}–${section.pdfEnd ?? '未確認'}</div><a class="button secondary" href="#settings">教材の進捗を見る</a></div>`;
+  const blocks = available ? section[contentLanguage === 'en' ? 'blocksEn' : 'blocks'].map((block,index) => `<div class="source-block" id="reader-block-${escapeHTML(block.id || `${section.id}-b${index}`)}" data-block-id="${escapeHTML(block.id || `${section.id}-b${index}`)}" data-book-page="${escapeHTML(block.bookPage || '')}"><small class="block-source">${escapeHTML(blockSourceLabel(block))}</small>${renderBookBlock(block,contentLanguage)}</div>`).join('') : `<div class="not-translated"><span class="large-status">${draftLabel}</span><h2>${draftHeading}</h2><p>${draftDescription}</p><div class="source-reference">原本：${escapeHTML(section.sourceTitle || section.title)}<br>書籍 p.${section.bookStart ?? '台帳未記録'}–${section.bookEnd ?? '未確認'} · PDF p.${section.pdfStart ?? '台帳未記録'}–${section.pdfEnd ?? '未確認'}</div><a class="button secondary" href="#settings">教材の進捗を見る</a></div>`;
   const sectionBookmarks = state.bookmarks.filter(bookmark => bookmark.sectionId === section.id);
+  const editingNote=state.notes.find(n=>n.id===ui.noteEditId&&n.sectionId===section.id);
   const prevNext = allSections(); const index = prevNext.findIndex(item => item.id === section.id);
   const prev = prevNext.slice(0, index).reverse().find(sectionIsTranslated);
   const next = prevNext.slice(index + 1).find(sectionIsTranslated);
@@ -284,8 +348,8 @@ function renderReader() {
         <div class="reader-status-row">${statusPill(available ? (section.localSourceChecked ? '原本照合済み（作業者）' : '翻訳済み') : draftComplete ? '下書き完成' : inProgress ? '翻訳中' : '未着手', available ? 'green' : 'neutral')}${statusPill(available ? '専門家校閲待ち' : draftComplete ? '確認待ち・アプリ未収録' : inProgress ? '下書きはアプリ未収録' : '内容未収録', 'amber')}</div>
         ${available ? `<div class="book-content" lang="${contentLanguage}">${blocks}</div>
           <div class="reader-actions"><button type="button" class="button ${state.readSections[section.id] ? 'secondary' : 'primary'}" data-action="toggle-read">${state.readSections[section.id] ? '✓ 読了に記録済み' : 'この節を読了にする'}</button><form class="bookmark-form" id="bookmark-form"><label for="bookmark-note">しおりのメモ（任意）</label><div class="inline-form"><input id="bookmark-note" name="note" type="text" maxlength="180" placeholder="あとで見返したい点"/><button class="button secondary" type="submit">しおりを付ける</button></div></form></div>
-          <form class="reader-personal-note" id="reader-note-form"><p class="eyebrow">自分の学習メモ</p><div class="form-two"><label>見出し<input name="title" type="text" maxlength="100" placeholder="例：大事な考え方"/></label><label>メモ<textarea name="text" rows="2" maxlength="1000" placeholder="自分の言葉で整理しておく"></textarea></label></div><button class="button ghost" type="submit">この節にメモを保存</button></form>
-          ${state.notes.filter(note => note.sectionId === section.id).map(note => `<div class="reader-note-entry"><strong>${escapeHTML(note.title || '学習メモ')}</strong><p>${escapeHTML(note.text)}</p><small>${formatDate(localDay(note.createdAt))}</small><button type="button" class="text-button" data-delete-note="${escapeHTML(note.id)}">削除</button></div>`).join('')}
+          <form class="reader-personal-note" id="reader-note-form"><p class="eyebrow">自分の学習メモ</p><div class="form-two"><label>見出し<input name="title" type="text" maxlength="100" value="${escapeHTML(editingNote?.title||'')}" placeholder="例：大事な考え方"/></label><label>メモ<textarea name="text" rows="2" maxlength="1000" placeholder="自分の言葉で整理しておく">${escapeHTML(editingNote?.text||'')}</textarea></label></div><button class="button ghost" type="submit">${editingNote?'メモの変更を保存':'この節にメモを保存'}</button>${editingNote?'<button type="button" class="text-button" data-action="cancel-note-edit">編集を取り消す</button>':''}</form>
+          ${state.notes.filter(note => note.sectionId === section.id).map(note => `<div class="reader-note-entry"><strong>${escapeHTML(note.title || '学習メモ')}</strong><p>${escapeHTML(note.text)}</p><small>${formatDate(localDay(note.createdAt))}</small><button type="button" class="text-button" data-edit-note="${escapeHTML(note.id)}">編集</button><button type="button" class="text-button" data-delete-note="${escapeHTML(note.id)}">削除</button></div>`).join('')}
           ${sectionBookmarks.length ? `<div class="bookmark-list"><h3>この節のしおり</h3>${sectionBookmarks.map(bookmark => `<div class="bookmark-row"><label>しおりのメモ<input type="text" maxlength="180" data-bookmark-note="${escapeHTML(bookmark.id)}" value="${escapeHTML(bookmark.note)}"/><small>${formatDate(localDay(bookmark.createdAt))} · 書籍 p.${bookmark.bookPage || '未記録'}</small></label><button type="button" class="text-button" data-bookmark="${escapeHTML(bookmark.id)}">この位置へ</button><button type="button" class="text-button" data-delete-bookmark="${escapeHTML(bookmark.id)}">削除</button></div>`).join('')}</div>` : ''}` : blocks}
         <div class="reader-pager"><button class="button ghost" type="button" ${prev ? `data-section="${prev.id}"` : 'disabled'}>← 前の翻訳済み節${prev ? ` · ${escapeHTML(prev.title)}` : ''}</button><button class="button ghost" type="button" ${next ? `data-section="${next.id}"` : 'disabled'}>次の翻訳済み節${next ? ` · ${escapeHTML(next.title)}` : ''} →</button></div>
       </article>
@@ -300,10 +364,10 @@ function renderBookBlock(block, language = 'ja') {
   if (block.type === 'quote') return `<blockquote class="book-quote"><p>${text}</p><cite>${escapeHTML(block.attribution || '')}</cite></blockquote>`;
   if (block.type === 'experiment') return `<section class="experiment"><div class="experiment-label">${language === 'en' ? 'Experiment' : '実験'}</div><h3>${escapeHTML(block.title)}</h3><p>${text}</p></section>`;
   if (block.type === 'footnote') return `<aside class="footnote"><sup>${escapeHTML(block.marker)}</sup><p>${text}</p></aside>`;
-  if (block.type === 'formula') return `<figure class="formula-block" aria-label="${escapeHTML(block.alt || block.expression)}"><div class="formula">${highlight(block.expression,ui.readerQuery||'').replaceAll('\n', '<br>')}</div>${block.number ? `<figcaption>${language === 'en' ? 'Eq. (' + escapeHTML(block.number) + ')' : '式（' + escapeHTML(block.number) + '）'}</figcaption>` : ''}${block.explanation || block.text ? `<p>${highlight(block.explanation || block.text, ui.readerQuery || '')}</p>` : ''}</figure>`;
+  if (block.type === 'formula') return `<figure class="formula-block" aria-label="${escapeHTML(block.alt || block.expression)}"><div class="formula">${renderMathText(block.expression,ui.readerQuery||'').replaceAll('\n', '<br>')}</div>${block.number ? `<figcaption>${language === 'en' ? 'Eq. (' + escapeHTML(block.number) + ')' : '式（' + escapeHTML(block.number) + '）'}</figcaption>` : ''}${block.explanation || block.text ? `<p>${highlight(block.explanation || block.text, ui.readerQuery || '')}</p>` : ''}</figure>`;
   if (block.type === 'supplement') return `<aside class="book-supplement"><div class="book-supplement-label">${language === 'en' ? 'App-created explanation' : '補足説明'}</div><h4>${escapeHTML(block.title || (language === 'en' ? 'Supplement' : '補足説明'))}</h4><p>${text}</p>${block.reference ? `<small>${language === 'en' ? 'Basis and scope: ' : '根拠・位置付け：'}${escapeHTML(block.reference)}</small>` : ''}</aside>`;
   if (block.type === 'sourceNote') return `<aside class="book-source-note"><div class="book-source-note-label">${language === 'en' ? 'Source notation to verify' : '原本表記の確認事項'}</div><p>${text}</p>${block.bookPage ? `<small>${language === 'en' ? 'Source: book p.' : '出典：書籍 p.'}${escapeHTML(block.bookPage)} · PDF p.${escapeHTML(block.pdfPage ?? '')}</small>` : ''}</aside>`;
-  if (block.type === 'figure') return `<figure class="book-figure">${block.src ? `<img src="${escapeHTML(block.src)}" alt="${escapeHTML(block.alt || (language === 'en' ? 'Figure description' : '図の代替説明'))}" loading="lazy" ${block.width ? `width="${block.width}" height="${block.height}"` : ''}/>` : `<div class="figure-placeholder">${escapeHTML(block.alt || (language === 'en' ? 'Figure description' : '図の代替説明'))}</div>`}<figcaption><strong>${escapeHTML(block.caption || '')}</strong>${block.description || block.text ? `<span>${highlight(block.description || block.text, ui.readerQuery || '')}</span>` : ''}<small>${language === 'en' ? 'Source: book' : '出典：本書'} Fig. ${escapeHTML(block.figureNumber || '')} · ${language === 'en' ? 'book p.' : '書籍 p.'}${escapeHTML(block.bookPage ?? 'unrecorded')} · PDF p.${escapeHTML(block.pdfPage ?? 'unrecorded')}</small></figcaption></figure>`;
+  if (block.type === 'figure') return `<figure class="book-figure">${block.src ? `<img src="${escapeHTML(block.src)}" alt="${escapeHTML(block.alt || (language === 'en' ? 'Figure description' : '図の代替説明'))}" loading="lazy" ${block.width ? `width="${block.width}" height="${block.height}"` : ''}/>` : `<div class="figure-placeholder">${escapeHTML(block.alt || (language === 'en' ? 'Figure description' : '図の代替説明'))}</div>`}<figcaption>${figureZoomLink(block.src)}<strong>${escapeHTML(block.caption || '')}</strong>${block.description || block.text ? `<span>${highlight(block.description || block.text, ui.readerQuery || '')}</span>` : ''}<small>${language === 'en' ? 'Source: book' : '出典：本書'} Fig. ${escapeHTML(block.figureNumber || '')} · ${language === 'en' ? 'book p.' : '書籍 p.'}${escapeHTML(block.bookPage ?? 'unrecorded')} · PDF p.${escapeHTML(block.pdfPage ?? 'unrecorded')}</small></figcaption></figure>`;
   if (block.type === 'table') {
     const note = language === 'en' ? (block.noteEn || block.note) : (block.noteJa || block.note);
     return `<div class="table-wrap"><table><caption>${escapeHTML(block.caption || '')}</caption><thead><tr>${block.headers.map(item => `<th scope="col">${escapeHTML(item)}</th>`).join('')}</tr></thead><tbody>${block.rows.map(row => `<tr>${row.map(item => `<td>${escapeHTML(item)}</td>`).join('')}</tr>`).join('')}</tbody></table>${note ? `<p class="table-note">${escapeHTML(note)}</p>` : ''}</div>`;
@@ -342,6 +406,10 @@ function saveReaderPosition() {
   const section=ui.readerSection,position=readerPosition();
   saveReaderPosition.timer=setTimeout(()=>{state.readerPositions[section]=position;state.lastSection=section;saveState();},300);
 }
+function captureReaderPosition(){
+  if(ui.route!=='reader'||!ui.readerSection||!document.querySelector('#reader-article'))return;
+  clearTimeout(saveReaderPosition.timer);state.readerPositions[ui.readerSection]=readerPosition();state.lastSection=ui.readerSection;saveState();
+}
 function restoreReaderPosition(position) {
   if(!position)return;
   const value=typeof position==='number'?{scrollY:position}:position;
@@ -350,6 +418,7 @@ function restoreReaderPosition(position) {
 }
 function openReader(section, options={}) {
   if(!getSection(section))return;
+  flushLearningTime();persistQuiz();captureReaderPosition();
   clearTimeout(saveReaderPosition.timer);
   ui.readerSection=section;state.lastSection=section;ui.readerQuery=options.query||'';
   if(['ja','en'].includes(options.language))state.settings.contentLanguage=options.language;
@@ -431,7 +500,7 @@ function renderSettings() {
         <label class="range-setting">本文の文字サイズ <strong>${Math.round(state.settings.fontScale * 100)}%</strong><input type="range" min="0.9" max="1.4" step="0.05" name="fontScale" value="${state.settings.fontScale}"/><span class="range-ends"><small>小さめ</small><small>大きめ</small></span></label>
         <label class="range-setting">本文の行間 <strong>${Number(state.settings.lineHeight).toFixed(1)}</strong><input type="range" min="1.5" max="2.2" step="0.1" name="lineHeight" value="${state.settings.lineHeight}"/><span class="range-ends"><small>標準</small><small>広め</small></span></label><div class="preview-text">熱は高温側から低温側へ移ります。読みやすい大きさと行間に調整してください。</div>
       </section>
-      <section class="surface-card settings-card"><p class="eyebrow">学習データ</p><h2>保存と持ち運び</h2><p>学習履歴、回答、自信度、メモ、しおり、計画、設定をJSONで書き出します。書籍本文は含みません。回答時の選択肢の文言は履歴として含まれます。</p><div class="button-stack"><button class="button primary" type="button" data-action="export-data">JSONを書き出す</button><label class="button secondary file-button">JSONを取り込む<input type="file" id="import-file" accept="application/json,.json"/></label></div>${renderExportPreview()}<div id="import-feedback" class="import-feedback">${renderImportDraft()}</div><div class="notice-card compact-notice"><span class="notice-icon">i</span><p>ファイル形式が正しい場合も、取り込み前に内容を確認できます。壊れたファイルでは現在の記録を変更しません。</p></div></section>
+      <section class="surface-card settings-card"><p class="eyebrow">学習データ</p><h2>保存と持ち運び</h2><p>学習履歴、回答、自信度、メモ、しおり、計画、設定をJSONで書き出します。書籍本文は含みません。回答時の選択肢の文言は履歴として含まれます。</p><div class="button-stack"><button class="button primary" type="button" data-action="export-data">JSONを書き出す</button><label class="button secondary file-button">JSONを取り込む<input type="file" id="import-file" accept="application/json,.json"/></label></div>${renderExportPreview()}${renderBackupControls()}<div id="import-feedback" class="import-feedback">${renderImportDraft()}</div><div class="notice-card compact-notice"><span class="notice-icon">i</span><p>ファイル形式が正しい場合も、取り込み前に内容を確認できます。壊れたファイルでは現在の記録を変更しません。</p></div></section>
       <section class="surface-card settings-card"><p class="eyebrow">教材</p><h2>翻訳と確認の状況</h2><div class="content-progress"><div><strong>この端末で読める本文</strong>${statusPill('専門家校閲は未実施', 'amber')}</div><div class="progress-line"><span style="width:${percent}%"></span></div><p>${readable.length}節 / ${sections.length}節を収録。下書きの進捗と、この端末で読める範囲は別に管理しています。全文の翻訳・確認は完了していません。</p><ul>${readable.map(s=>`<li>第${escapeHTML(s.id)}節「${escapeHTML(s.title)}」<br><small>書籍 pp.${s.bookStart}–${s.bookEnd} · PDF pp.${s.pdfStart}–${s.pdfEnd}${s.localSourceChecked?' · 原本照合済み（作業者）・ローカル教材':''}</small></li>`).join('')}</ul><p>目次台帳では${drafted}節に本文または翻訳下書きの記録があります。下書きのある節も、図表・式・脚注の網羅性と内容の確認を継続しています。詳細は目次と教材台帳を参照してください。</p></div><a class="text-link" href="#reader">翻訳進捗を目次で見る →</a><p class="small-note">PDFは810ページ。このアプリには同梱していません。公開リポジトリと、この端末の学習用教材には収録範囲の違いがあります。出典は LICENSE-BOOK.md に記録しています。</p></section>
       <section class="surface-card settings-card"><p class="eyebrow">対応状況</p><h2>オフライン・読み上げ・操作</h2><ul class="capability-list"><li><span>${navigator.onLine ? '●' : '○'}</span> ${navigator.onLine ? 'オンライン接続中' : 'オフライン中'}。初回の教材読み込み後は、アプリと収録済み教材を利用できます。</li><li><span>▶</span> 読み上げは端末の音声合成機能を使用します。未対応のブラウザーでは利用できません。</li><li><span>⌨</span> 問題演習中は数字キー1〜4で選択、Enterで回答できます。入力欄にフォーカスがある間は操作を奪いません。</li><li><span>▣</span> 読書位置、読了、問題回答、復習予定はこのブラウザーに保存します。</li></ul></section>
     </div>`;
@@ -441,6 +510,28 @@ function renderImportDraft() {
   if (ui.importDraft.error) return `<div class="inline-error" role="alert">${escapeHTML(ui.importDraft.error)}</div>`;
   const parsed = ui.importDraft.data;
   return `<div class="import-preview"><strong>取り込み可能なデータです</strong><p>${parsed.attempts.length}件の回答 · ${parsed.bookmarks.length}件のしおり · ${Object.keys(parsed.mistakeNotes).length}件の間違いノート</p><div class="button-row"><button type="button" class="button primary" data-action="import-merge">今の記録に追加・更新</button><button type="button" class="text-button danger-text" data-action="import-replace">すべて置き換える</button></div></div>`;
+}
+
+function storedBackup(kind){try{return localStorage.getItem(`${STORAGE_KEY}:${kind}`)||'';}catch{return '';}}
+function renderBackupControls(){
+  const before=storedBackup('before-import'),recovery=storedBackup('recovery');
+  if(!before&&!recovery)return '';
+  return `<details class="backup-controls"><summary>保管したデータの控え</summary><p class="small-note">控えはこのブラウザー内に保存されています。取り込み直す前に内容を確認できます。端末やブラウザーを変えても自動同期されません。</p><div class="button-row">${before?'<button type="button" class="button secondary" data-action="export-before-import">取り込み前の控えを書き出す</button><button type="button" class="text-button" data-action="preview-backup">控えの復元内容を確認</button>':''}${recovery?'<button type="button" class="button secondary" data-action="export-stored-recovery">読み取れなかった元データを書き出す</button>':''}</div></details>`;
+}
+function exportBackup(kind){
+  const raw=storedBackup(kind);if(!raw){showStatus('書き出せる控えがありません。');return;}
+  downloadJSON(raw,`heat-study-${kind}-${todayISO()}.json`);showStatus('控えの書き出しを開始しました。ダウンロードを確認してください。');
+}
+function previewBackup(){
+  try{const data=JSON.parse(storedBackup('before-import')),issue=validateLearningData(data,{stored:true});if(issue)throw new Error(issue);ui.importDraft={data:{...data,format:'heat-study-ja-learning-data'}};}
+  catch{ui.importDraft={error:'この控えの形式を読み取れません。控えを書き出して確認してください。現在の記録は変更していません。'};}
+  render();
+}
+function renderDayActivity(day){
+  const entries=state.activities.filter(a=>a.date===day),total=entries.reduce((n,a)=>n+a.seconds,0),labels={reading:'読書',practice:'問題演習',review:'復習',simulation:'シミュレーター',glossary:'用語集'};
+  const kinds=Object.entries(labels).map(([key,label])=>[label,entries.filter(a=>a.kind===key).reduce((n,a)=>n+a.seconds,0)]).filter(([,seconds])=>seconds>0);
+  const readings=[...new Set(entries.filter(a=>a.kind==='reading'&&a.sectionId).map(a=>a.sectionId))],due=Object.entries(state.reviews).filter(([,r])=>r.dueDate===day);
+  return `<section class="day-learning-time"><strong>記録した学習時間：${studyDuration(total)}</strong><ul>${kinds.map(([label,seconds])=>`<li>${label}：${studyDuration(seconds)}</li>`).join('')||'<li>この日の時間記録はありません。過去の記録から時間を推定していません。</li>'}</ul>${readings.map(id=>`<button class="text-link" type="button" data-section="${escapeHTML(id)}">第${escapeHTML(id)}節「${escapeHTML(getSection(id)?.title||'記録した本文')}」を開く</button>`).join('')}<p class="small-note">前面の学習画面を表示している時間の目安です。90秒操作がないと計測を停止し、非表示・PC休止中は加算しません。理解度を示す値ではありません。</p>${due.length?`<details><summary>この日の復習予定：${due.length}問</summary>${due.map(([id])=>{const q=getQuestion(id);return q?`<button class="text-link" type="button" data-start-question="${escapeHTML(id)}">${escapeHTML(q.prompt)}</button>`:'<p>未収録教材の復習予定があります。</p>';}).join('')}</details>`:''}</section>`;
 }
 
 function showStatus(message) {
@@ -479,7 +570,7 @@ function renderCalendar() {
   const days = Array.from({ length: 42 }, (_, index) => new Date(firstCell.getFullYear(), firstCell.getMonth(), firstCell.getDate() + index));
   const monthName = new Intl.DateTimeFormat('ja-JP', { year: 'numeric', month: 'long' }).format(anchor);
   const selected = ui.calendarDate;
-  const activityDates = new Set([...state.attempts.map(item => localDay(item.at)), ...state.sessions.map(item => item.date)]);
+  const activityDates = new Set([...state.attempts.map(item => localDay(item.at)), ...state.sessions.map(item => item.date),...state.activities.map(a=>a.date)]);
   const dueDates = new Set(Object.values(state.reviews).map(item => item.dueDate).filter(Boolean));
   const selectedAttempts = state.attempts.filter(item => localDay(item.at) === selected);
   const selectedSessions = state.sessions.filter(item => item.date === selected);
@@ -490,31 +581,50 @@ function renderCalendar() {
       <div class="calendar-grid calendar-weekdays">${['日','月','火','水','木','金','土'].map(day => `<span>${day}</span>`).join('')}</div>
       <div class="calendar-grid">${days.map(date => { const iso = todayISO(date); const inMonth = date.getMonth() === anchor.getMonth(); return `<button type="button" class="calendar-day ${inMonth ? '' : 'outside'} ${iso === todayISO() ? 'today' : ''} ${iso === selected ? 'selected' : ''}" data-date="${iso}" aria-label="${formatDate(iso)}${activityDates.has(iso) ? ' 学習記録あり' : ''}${dueDates.has(iso) ? ' 復習予定あり' : ''}"><span>${date.getDate()}</span><i class="day-markers">${activityDates.has(iso) ? '<b class="activity-dot" title="学習記録"></b>' : ''}${dueDates.has(iso) ? '<b class="due-dot" title="復習予定"></b>' : ''}</i></button>`; }).join('')}</div>
       <div class="calendar-legend"><span><i class="activity-dot"></i>学習記録</span><span><i class="due-dot"></i>復習予定</span></div></section>
-      <aside class="surface-card day-detail"><p class="eyebrow">選択した日</p><h2>${formatDate(selected)}</h2>${selectedAttempts.length || selectedSessions.length ? `<div class="day-stats"><div><strong>${selectedAttempts.length}</strong><span>回答数</span></div><div><strong>${selectedAttempts.filter(a => a.correct).length}</strong><span>正解</span></div></div><h3>取り組んだ分野</h3><ul class="field-breakdown">${[...fields.entries()].map(([field, count]) => `<li><span>${escapeHTML(field)}</span><strong>${count}問</strong></li>`).join('') || '<li><span>この日の演習記録はありません</span></li>'}</ul>${selectedSessions.map(session => `<div class="session-entry"><strong>${formatTime(session.startedAt)}　学習セッション</strong><span>${session.total}問 · 正解 ${session.correct}問</span></div>`).join('')}` : `<div class="empty-state compact"><span class="empty-mark">▣</span><p>この日の学習記録はありません。復習予定は日付の印で確認できます。</p></div>`}<a class="text-link" href="#quiz">短い問題セットを始める →</a></aside></div>`;
+      <aside class="surface-card day-detail"><p class="eyebrow">選択した日</p><h2>${formatDate(selected)}</h2>${renderDayActivity(selected)}${selectedAttempts.length || selectedSessions.length ? `<div class="day-stats"><div><strong>${selectedAttempts.length}</strong><span>回答数</span></div><div><strong>${selectedAttempts.filter(a => a.correct).length}</strong><span>正解</span></div></div><h3>取り組んだ分野</h3><ul class="field-breakdown">${[...fields.entries()].map(([field, count]) => `<li><span>${escapeHTML(field)}</span><strong>${count}問</strong></li>`).join('') || '<li><span>この日の演習記録はありません</span></li>'}</ul>${selectedSessions.map(session => `<div class="session-entry"><strong>${formatTime(session.startedAt)}　学習セッション</strong><span>${session.total}問 · 正解 ${session.correct}問</span></div>`).join('')}` : `<div class="empty-state compact"><span class="empty-mark">▣</span><p>この日の学習記録はありません。復習予定は日付の印で確認できます。</p></div>`}<a class="text-link" href="#quiz">短い問題セットを始める →</a></aside></div>`;
 }
 
 function renderMap() {
   const fields = [...questionsByField().entries()];
   return `${pageHeading('分野マップ', 'わかるところと、次の一歩。', '理解度は問題への回答から算出します。回答数が少ない分野は、理解度を決めつけず「記録不足」と表示します。')}
-    <div class="map-grid">${fields.map(([field, total]) => { const qs = questionBank.filter(q => q.field === field); const attempts = state.attempts.filter(a => qs.some(q => q.id === a.questionId)); const correct = attempts.filter(a => a.correct).length; const enough = attempts.length >= 3; const ratio = attempts.length ? correct / attempts.length : 0; const label = enough ? `${Math.round(ratio * 100)}%` : '記録不足'; const tone = enough ? ratio >= 0.75 ? 'strong' : ratio >= 0.5 ? 'middle' : 'needs-work' : 'not-enough'; return `<article class="map-card surface-card"><div class="map-card-heading"><span class="map-symbol ${tone}" aria-hidden="true">${enough ? ratio >= 0.75 ? '●' : ratio >= 0.5 ? '◐' : '○' : '—'}</span><div><h2>${escapeHTML(field)}</h2><small>${attempts.length}回答 / 収録${total}問</small></div></div><div class="map-meter"><span class="${tone}" style="width:${enough ? Math.max(3, ratio * 100) : 0}%"></span></div><div class="map-card-foot"><strong>${label}</strong><span>${enough ? `${correct}問正解` : '判定には3回答以上が目安'}</span></div><a class="text-link" href="#quiz" data-map-field="${escapeHTML(field)}">${enough && ratio < 0.6 ? 'この分野を復習する' : 'この分野の問題を解く'} →</a></article>`; }).join('')}</div>
-    <section class="notice-card map-method"><span class="notice-icon">i</span><div><strong>理解度の計算方法</strong><p>直近の回答だけに限定せず、この分野の正解数 ÷ 回答数で表示します。3回答未満は割合を出さず「記録不足」とします。自信度と復習日の提案は別に管理します。</p></div></section>`;
+    <div class="map-grid">${fields.map(([field, total]) => { const qs = questionBank.filter(q => q.field === field); const attempts = state.attempts.filter(a => qs.some(q => q.id === a.questionId)); const progress=fieldProgress(qs,attempts),{correct,enough,ratio}=progress; const label = enough ? `${Math.round(ratio * 100)}%` : '記録不足'; const tone = enough ? ratio >= 0.75 ? 'strong' : ratio >= 0.5 ? 'middle' : 'needs-work' : 'not-enough'; return `<article class="map-card surface-card"><div class="map-card-heading"><span class="map-symbol ${tone}" aria-hidden="true">${enough ? ratio >= 0.75 ? '●' : ratio >= 0.5 ? '◐' : '○' : '—'}</span><div><h2>${escapeHTML(field)}</h2><small>${progress.answered}問に回答 / 収録${total}問</small></div></div><div class="map-meter"><span class="${tone}" style="width:${enough ? Math.max(3, ratio * 100) : 0}%"></span></div><div class="map-card-foot"><strong>${label}</strong><span>${enough ? `${correct}問正解` : '判定には異なる3問以上が目安'}</span></div><a class="text-link" href="#quiz" data-map-field="${escapeHTML(field)}">${enough && ratio < 0.6 ? 'この分野を復習する' : 'この分野の問題を解く'} →</a></article>`; }).join('')}</div>
+    <section class="notice-card map-method"><span class="notice-icon">i</span><div><strong>理解度の計算方法</strong><p>この分野の各問題について、最新の回答を一つだけ使います。その正解数 ÷ 回答した異なる問題数で表示します。異なる3問未満では割合を出さず「記録不足」とします。同じ問題を反復した回数で割合は増えません。自信度と復習予定は別に管理します。</p></div></section>`;
 }
 
 const SIM_META = {
+  resistance:{title:'熱抵抗の組み合わせ',description:'二つの平板と両側の対流を、直列の熱抵抗として計算します。',formula:'Q̇ = (Tₕ − T𝑐) / (Rₕ + R₁ + R₂ + R𝑐)',note:'均質な二層の平板、等しい面積、一次元・定常、各物性と熱伝達率一定。界面の接触抵抗・内部発熱・放射・側面の熱漏れは含みません。'},
   conduction: { title: '熱伝導', description: '固体の内部などで、温度差により熱が移動するモデルです。', formula: 'Q̇ = k A (Tₕ − T𝑐) / L', note: '均質な平板、一次元、定常状態、熱伝導率一定、側面からの熱漏れなし。接触熱抵抗や端部効果は含みません。' },
   convection: { title: '対流', description: '固体表面と、その近くを動く流体との間の熱移動を扱います。', formula: 'Q̇ = h A (Tₛ − T∞)', note: 'ニュートンの冷却法則を使う集中モデルです。h は流れや形状に依存する入力値で、ここでは一定とします。流れ場や温度依存性は解いていません。' },
-  radiation: { title: '熱放射', description: '表面間で電磁波として移る熱を、単純化した灰色面モデルで見ます。', formula: 'Q̇ = ε σ A (Tₛ,K⁴ − Tsur,K⁴)', note: '大きな黒い周囲を見込む不透明な灰色面、形態係数1、周囲からの一様な照射を仮定。対流・反射・波長依存性は含みません。温度は必ずKへ換算します。' }
+  radiation: { title: '熱放射', description: '表面間で電磁波として移る熱を、単純化した灰色面モデルで見ます。', formula: 'Q̇ = ε σ A (Tₛ,K⁴ − Tsur,K⁴)', note: '大きな黒い周囲を見込む不透明な灰色面、形態係数1、周囲からの一様な照射を仮定。吸収率と放射率を等しいとします。対流、複数面間の反射の連成、波長による特性の変化は解いていません。温度は必ずKへ換算します。' }
 };
 const STEFAN_BOLTZMANN = 5.670374419e-8;
+function figureZoomLink(src) {
+  if(typeof src!=='string'||src.includes('..')||!/^data\/(?:figures|local\/figures|drafts)\/[a-zA-Z0-9_./-]+\.(?:png|jpe?g|svg|webp)$/i.test(src))return '';
+  return `<a class="figure-zoom text-link" href="${escapeHTML(src)}" target="_blank" rel="noopener noreferrer">図を別のタブで拡大する ↗</a>`;
+}
+function renderSimulationSteps(mode,result) {
+  const v=result.values,n=value=>Number(value).toLocaleString('ja-JP',{maximumSignificantDigits:7});
+  const formulas={conduction:`${n(v.k)} W/(m·K) × ${n(v.area)} m² × (${n(v.hot)} − ${n(v.cold)}) K ÷ ${n(v.thickness)} m`,convection:`${n(v.h)} W/(m²·K) × ${n(v.area)} m² × (${n(v.surface)} − ${n(v.fluid)}) K`,radiation:`${n(v.emissivity)} × 5.670374419 × 10⁻⁸ W/(m²·K⁴) × ${n(v.area)} m² × [${n(result.surfaceK)}⁴ − ${n(result.surroundingK)}⁴] K⁴`};
+  const principles={conduction:'熱は平板を厚さ方向に通ります。面積と温度差が大きいほど熱移動率は大きく、厚いほど小さくなります。',convection:'表面と流体の温度差に、熱伝達率と面積を掛けます。熱伝達率は温度差だけでは決まらず、流れや形状にも依存します。',radiation:'四乗する前に、摂氏温度に273.15を加えて絶対温度Kに換算します。温度差だけを四乗する計算にはなりません。',resistance:'各層と両側の対流を直列につなぎます。定常状態では同じ熱移動率が全要素を通り、各要素の温度降下は Q̇R です。'};
+  let calculation=formulas[mode]||'',extra='';
+  if(mode==='resistance'){
+    const names=['高温側の対流','第1層の熱伝導','第2層の熱伝導','低温側の対流'];
+    calculation=`R合計 = 1/(hₕA) + L₁/(k₁A) + L₂/(k₂A) + 1/(h𝑐A) = ${result.resistances.map(n).join(' + ')} = ${n(result.totalResistance)} K/W。Q̇ = (${n(v.hot)} − ${n(v.cold)}) K ÷ ${n(result.totalResistance)} K/W`;
+    extra=`<div class="table-scroll"><table><caption>熱抵抗と各要素の両端温度（入力した順序）</caption><thead><tr><th scope="col">要素</th><th scope="col">熱抵抗 K/W</th><th scope="col">入口側 ℃</th><th scope="col">出口側 ℃</th></tr></thead><tbody>${names.map((name,i)=>`<tr><th scope="row">${name}</th><td>${n(result.resistances[i])}</td><td>${n(result.temperatures[i])}</td><td>${n(result.temperatures[i+1])}</td></tr>`).join('')}</tbody></table></div><p>共通面積基準の熱通過率 U = 1/(R合計 A) = ${n(result.overallU)} W/(m²·K)。接触抵抗はこの計算に含めていません。</p>`;
+  }
+  return `<div class="simulation-steps"><p><strong>補足説明：式と計算の手順</strong></p><details><summary>1. 現象と式の選び方</summary><p>${principles[mode]}</p></details><details><summary>2. 数値と単位を代入する</summary><p class="calculation-line">${calculation}</p><p>温度差1 ℃は温度差1 Kと同じ大きさです。放射の四乗には温度差ではなく絶対温度を使います。</p></details><details><summary>3. 答えと途中の値を確認する</summary><p>Q̇ = ${n(result.watts)} W。1 Wは1秒あたり1 Jの熱エネルギー移動を表します。内部計算は丸めず、途中の表示は有効数字7桁、主結果は小数第3位までです。</p>${extra}</details><small>アプリ作成の補足説明。根拠：フーリエの法則、ニュートンの冷却法則、ステファン・ボルツマンの法則と定常エネルギー収支。本書の翻訳とは区別しています。</small></div>`;
+}
 function simRead(mode) { return ui.simValues[mode]; }
 function calculateSimulation(mode, values) { return calculateHeatTransfer(mode, values); }
 function renderSimInputs(mode, values) {
   const field = (name, label, unit, min = '', step = 'any', help = '') => `<label class="sim-field">${label}<span class="input-unit"><input type="number" name="${name}" value="${escapeHTML(values[name])}" min="${min}" step="${step}" inputmode="decimal" required/><i>${unit}</i></span>${help ? `<small>${help}</small>` : ''}</label>`;
+  if(mode==='resistance')return `${field('area','共通の面積 A','m²','0.000001')}${field('hot','高温側の流体 Tₕ','℃')}${field('cold','低温側の流体 T𝑐','℃')}${field('hHot','高温側の熱伝達率 hₕ','W/(m²·K)','0.000001')}${field('hCold','低温側の熱伝達率 h𝑐','W/(m²·K)','0.000001')}${field('k1','第1層の熱伝導率 k₁','W/(m·K)','0.000001')}${field('L1','第1層の厚さ L₁','m','0.000001')}${field('k2','第2層の熱伝導率 k₂','W/(m·K)','0.000001')}${field('L2','第2層の厚さ L₂','m','0.000001')}`;
   if (mode === 'conduction') return `${field('k','熱伝導率 k','W/(m·K)','0.000001','any','材料の熱の伝わりやすさ')}${field('area','面積 A','m²','0.000001','any')}${field('thickness','厚さ L','m','0.000001','any','熱が通る距離')}${field('hot','高温側 Tₕ','℃','','any')}${field('cold','低温側 T𝑐','℃','','any')}`;
   if (mode === 'convection') return `${field('h','対流熱伝達率 h','W/(m²·K)','0.000001','any','流れの影響をまとめた係数')}${field('area','面積 A','m²','0.000001','any')}${field('surface','表面温度 Tₛ','℃','','any')}${field('fluid','流体温度 T∞','℃','','any')}`;
   return `${field('emissivity','放射率 ε','無次元','0','0.01','0〜1の範囲')}${field('area','面積 A','m²','0.000001','any')}${field('surface','表面温度 Tₛ','℃','','any')}${field('surrounding','周囲温度 Tsur','℃','','any','内部で絶対温度に変換します')}`;
 }
 function simValueAt(mode, values, delta) {
+  if(mode==='resistance')return delta/(1/(values.hHot*values.area)+values.L1/(values.k1*values.area)+values.L2/(values.k2*values.area)+1/(values.hCold*values.area));
   if (mode === 'conduction') return values.k * values.area * delta / values.thickness;
   if (mode === 'convection') return values.h * values.area * delta;
   const surroundings = Number(values.surrounding) + 273.15;
@@ -539,13 +649,14 @@ function renderSimulator() {
   const mode = ui.simMode; const values = simRead(mode); const result = calculateSimulation(mode, values); const baseline = state.simComparisons[mode]; const meta = SIM_META[mode];
   const resultView = result.error ? `<div class="sim-error" role="alert"><strong>計算できませんでした</strong><p>${escapeHTML(result.error)}</p></div>` : `<div class="result-number"><span>計算結果（理想化モデル）</span><strong>${result.watts.toLocaleString('ja-JP', { maximumFractionDigits: 3, minimumFractionDigits: 0 })}<i>W</i></strong><small>${Math.abs(result.delta) < 1e-12 ? '温度差がないため、このモデルでは熱移動率は0 Wです。' : result.watts > 0 ? '高温側・表面から低温側・周囲へ熱が移動します。' : '入力した温度関係に従い、逆向きに熱が移動します。'}${mode === 'radiation' && !result.error ? ` 温度換算：${result.surfaceK.toFixed(2)} K と ${result.surroundingK.toFixed(2)} K` : ''}</small></div>`;
   const comparison = baseline && !result.error ? calculateSimulation(mode, baseline) : null;
+  const related=getSection(['conduction','resistance'].includes(mode)?'2.2':mode==='convection'?'6.1':'10.1');
   return `${pageHeading('簡易シミュレーター', '条件を変えて、熱の動きを見る。', '入力値を変えると計算結果とグラフが更新されます。設計値を決めるためのものではなく、基本式の動きを試す学習用モデルです。')}
     <div class="sim-tabs" role="tablist" aria-label="熱移動の種類">${Object.entries(SIM_META).map(([key,item]) => `<button type="button" role="tab" aria-selected="${mode === key}" class="sim-tab ${mode === key ? 'selected' : ''}" data-sim-mode="${key}"><span>${key === 'conduction' ? '▥' : key === 'convection' ? '↝' : '☼'}</span>${item.title}</button>`).join('')}</div>
     <div class="sim-layout"><section class="surface-card sim-input-card"><div class="sim-intro"><p class="eyebrow">${meta.title}</p><h2>${meta.description}</h2></div><form id="sim-form" class="sim-form"><div class="sim-fields">${renderSimInputs(mode, values)}</div></form><div class="formula-card"><span>使用する式</span><strong>${meta.formula}</strong><p>正の値は、入力欄の「高温側」または「表面」から反対側へ移る向きを表します。負の値なら向きが逆です。</p></div><div class="assumption-card"><strong>前提と適用範囲</strong><p>${meta.note}</p></div></section>
-      <section class="surface-card sim-output-card"><div class="card-heading"><div><p class="eyebrow">現在の条件</p><h2>熱移動率</h2></div>${statusPill(mode === 'radiation' ? '℃からKへ換算' : '定常モデル', 'blue')}</div>${resultView}
-        ${!result.error ? `<div class="chart-heading"><h3>温度差を変えたとき</h3><span>比較範囲は現在の温度差の約2倍</span></div>${simGraph(mode, result, baseline)}<div class="chart-legend"><span><i class="legend-current"></i>現在の条件</span>${baseline ? '<span><i class="legend-baseline"></i>保存した比較条件</span>' : ''}</div>` : ''}
+      <section class="surface-card sim-output-card"><div class="card-heading"><div><p class="eyebrow">現在の条件</p><h2>熱移動率</h2></div>${statusPill(mode === 'radiation' ? '℃からKへ換算' : '定常モデル', 'blue')}</div>${resultView}${!result.error?renderSimulationSteps(mode,result):''}
+        ${!result.error ? `<div class="chart-heading"><h3>温度差を変えたとき</h3><span>現在・保存条件の温度差を含む範囲</span></div>${simGraph(mode, result, baseline)}<div class="chart-legend"><span><i class="legend-current"></i>現在の条件</span>${baseline ? '<span><i class="legend-baseline"></i>保存した比較条件</span>' : ''}</div>` : ''}
         <div class="comparison-controls"><button type="button" class="button secondary" data-action="save-comparison">この条件を比較用に保存</button>${baseline ? '<button type="button" class="text-button" data-action="clear-comparison">比較条件を削除</button>' : ''}${comparison && !comparison.error ? `<small>保存条件の結果：${comparison.watts.toLocaleString('ja-JP', { maximumFractionDigits: 3 })} W</small>` : ''}</div>
-        <div class="related-reading"><strong>関連する本書の範囲</strong><a href="#reader" data-section="${mode === 'conduction' ? '2.2' : mode === 'convection' ? '6.1' : '10.1'}">${mode === 'conduction' ? '第2章2.2節：平板の定常熱伝導' : mode === 'convection' ? '第6章：境界層と対流' : '第10章：放射熱移動'} <span>${statusPill('未翻訳', 'amber')}</span></a><small>対応する本文は現在未翻訳です。原本ページのみ目次台帳に記録しています。</small></div>
+        <div class="related-reading"><strong>関連する本書の範囲</strong><a href="#reader" data-section="${related.id}">第${escapeHTML(related.id)}節：${escapeHTML(related.title)} <span>${statusPill(sectionProgressLabel(related),sectionIsTranslated(related)?'blue':'amber')}</span></a><small>${sectionIsTranslated(related)?'本文と計算の前提をあわせて確認できます。':'本文の照合・取り込みは完了していません。現在の状態は目次に表示しています。'}</small><button type="button" class="text-button" data-sim-practice="${mode==='radiation'?'熱放射':mode==='convection'?'対流':'熱伝導'}">関連する分野の問題を選ぶ →</button></div>
       </section></div>`;
 }
 
@@ -562,7 +673,7 @@ function renderQuiz() {
   return `${pageHeading('問題演習', `${session.index + 1} / ${session.ids.length} 問`, 'まず自分で考え、必要ならヒントを少しずつ見てから回答しましょう。', '<button type="button" class="text-button" data-action="exit-quiz">演習を中断</button>')}
     <div class="quiz-progress"><div class="progress-line"><span style="width:${progress}%"></span></div><div class="quiz-progress-label"><span>${escapeHTML(question.field)} · ${escapeHTML(question.difficulty)}</span><span>${session.mode === 'quick' ? `${session.quickMinutes}分セット` : modeLabel(session.mode)}</span></div></div>
     <article class="question-card surface-card"><div class="question-meta"><div>${statusPill(`問題 ${session.index + 1}`, 'blue')} ${statusPill(reviewStatusLabel(question.reviewStatus), 'amber')}</div><div class="question-actions"><button type="button" class="icon-button ${state.questionBookmarks.includes(question.id) ? 'is-bookmarked' : ''}" data-question-bookmark="${escapeHTML(question.id)}" aria-label="問題をブックマーク">${state.questionBookmarks.includes(question.id) ? '★' : '☆'}</button><button type="button" class="text-button" data-action="open-report" data-report-id="${escapeHTML(question.id)}">問題を報告</button></div></div>
-      <h2>${escapeHTML(question.prompt)}</h2>
+      <h2>${renderMathText(question.prompt)}</h2>
       ${figure}
       <p class="think-prompt"><span aria-hidden="true">✦</span> まずは自分で考えてみましょう。迷ったら、ヒントを一つずつ開けます。</p>
       ${session.hintCount ? `<div class="hint-box"><strong>${question.solutionSteps ? '考え方のステップ' : 'ヒント'}</strong><ol>${hints.slice(0, session.hintCount).map(hint => `<li>${escapeHTML(hint)}</li>`).join('')}</ol></div>` : ''}
@@ -578,7 +689,7 @@ function renderQuiz() {
 function modeLabel(mode) { return ({ all: 'すべて', unanswered: '未回答', wrong: '誤答', bookmarked: 'ブックマーク', due: '復習候補', weak: '苦手候補', single: '選択した問題', quick: '短時間学習' })[mode] || '問題演習'; }
 function renderQuizSetup() {
   const due = reviewCandidates();
-  return `${pageHeading('問題演習', '一問ずつ、考え方を確かめる。', '回答、自信度、正誤を記録し、間違えた理由や次の復習につなげます。')}
+  return `${renderQuizResume()}${pageHeading('問題演習', '一問ずつ、考え方を確かめる。', '回答、自信度、正誤を記録し、間違えた理由や次の復習につなげます。')}
     <div class="quiz-setup-layout"><section class="surface-card quiz-setup-card"><p class="eyebrow">出題内容を選ぶ</p><h2>今日の練習を決めましょう</h2><form id="quiz-start-form" class="stack-form">
       <label>出題対象<select name="mode"><option value="all">すべての問題</option><option value="unanswered">未回答</option><option value="wrong">一度でも間違えた問題</option><option value="bookmarked">ブックマークした問題</option><option value="due">復習候補</option><option value="weak">苦手候補</option></select></label>
       <div class="form-two"><label>分野<select name="field"><option value="all">すべて</option>${[...questionsByField().keys()].map(field => `<option>${escapeHTML(field)}</option>`).join('')}</select></label><label>難易度<select name="difficulty"><option value="all">すべて</option>${[...new Set(questionBank.map(q => q.difficulty))].map(value => `<option>${escapeHTML(value)}</option>`).join('')}</select></label></div>
@@ -591,7 +702,7 @@ function renderQuizSetup() {
 }
 
 function renderQuestionFigure(figure) {
-  if (figure.kind === 'book') return `<figure class="question-figure"><img src="${escapeHTML(figure.src)}" alt="${escapeHTML(figure.alt)}" loading="lazy" ${figure.width ? `width="${figure.width}" height="${figure.height}"` : ''}/><figcaption><strong>${escapeHTML(figure.caption)}</strong><span>${escapeHTML(figure.description || figure.alt)}</span><small>出典：本書 図${escapeHTML(figure.figureNumber)} · 書籍 p.${escapeHTML(figure.bookPage)} · PDF p.${escapeHTML(figure.pdfPage)}</small></figcaption></figure>`;
+  if (figure.kind === 'book') return `<figure class="question-figure"><img src="${escapeHTML(figure.src)}" alt="${escapeHTML(figure.alt)}" loading="lazy" ${figure.width ? `width="${figure.width}" height="${figure.height}"` : ''}/><figcaption>${figureZoomLink(figure.src)}<strong>${escapeHTML(figure.caption)}</strong><span>${escapeHTML(figure.description || figure.alt)}</span><small>出典：本書 図${escapeHTML(figure.figureNumber)} · 書籍 p.${escapeHTML(figure.bookPage)} · PDF p.${escapeHTML(figure.pdfPage)}</small></figcaption></figure>`;
   if (figure.kind === 'app-created') return `<figure class="question-figure"><div class="wall-diagram" role="img" aria-label="${escapeHTML(figure.alt)}"><div class="wall-temp hot"><span>Tₕ</span><small>高温</small></div><div class="wall-body"><span class="heat-arrow">Q̇　→</span><span class="wall-label">平板</span><span class="wall-thickness">L</span><span class="wall-gradient">Tₕ　····→　T𝑐</span></div><div class="wall-temp cold"><span>T𝑐</span><small>低温</small></div><div class="wall-delta">ΔT = Tₕ − T𝑐</div></div><figcaption>${escapeHTML(figure.caption)}<span>${escapeHTML(figure.alt)}</span></figcaption></figure>`;
   return `<figure class="question-figure"><div class="figure-placeholder" role="img" aria-label="${escapeHTML(figure.alt)}">図の説明を表示しています</div><figcaption>${escapeHTML(figure.caption)}<span>${escapeHTML(figure.alt)}</span></figcaption></figure>`;
 }
@@ -617,7 +728,7 @@ function renderQuizResult() {
   const wrong = result.answers.filter(answer => !answer.correct);
   const fields = new Map();
   for (const answer of result.answers) { const q = getQuestion(answer.questionId); if (!q) continue; const current = fields.get(q.field) || { total: 0, correct: 0 }; current.total++; current.correct += answer.correct ? 1 : 0; fields.set(q.field, current); }
-  return `${pageHeading('学習のふり返り', '一回分の記録を確認する。', `${formatDate(result.date)}　·　${Math.round((result.finishedAt - result.startedAt) / 60000)}分`) }
+  return `${pageHeading('学習のふり返り', '一回分の記録を確認する。', `${formatDate(result.date)}　·　学習時間 ${studyDuration(result.activeSeconds??(result.finishedAt-result.startedAt)/1000)}`) }
     <section class="surface-card session-result"><div class="result-score"><div class="score-circle" style="--score:${percent}%"><strong>${percent}%</strong><span>正答率</span></div><div><p class="eyebrow">今回の演習</p><h2>${result.total}問に回答しました</h2><p>${result.correct}問正解 · ${result.total - result.correct}問不正解 · 自信が低い回答 ${result.answers.filter(item => ['low','unsure'].includes(item.confidence)).length}問</p></div></div>
       <div class="session-field-list"><h3>分野別の結果</h3>${[...fields.entries()].map(([field,value]) => `<div class="field-result-row"><span>${escapeHTML(field)}</span><div class="mini-bar"><i style="width:${Math.round(value.correct/value.total*100)}%"></i></div><strong>${value.correct}/${value.total}</strong></div>`).join('')}</div>
       <div class="next-review-callout"><span class="action-icon amber">↻</span><div><strong>次の復習予定</strong><p>正誤と自信度に応じて、問題ごとに復習日を提案しています。予定は復習画面で変更できます。</p></div><a class="button secondary" href="#review">復習を確認</a></div>
@@ -655,9 +766,10 @@ function startQuiz(options = {}) {
   const count = Math.max(1, Math.min(Number(options.count || candidates.length || 1), candidates.length));
   const selected = candidates.slice(0, count).map(q => q.id);
   if (!selected.length) { showStatus('この条件に合う問題はありません。対象や分野を広げてください。'); return; }
-  ui.quizResult = null;
-  ui.quiz = { ids: selected, index: 0, mode, field: options.field || 'all', difficulty: options.difficulty || 'all', startedAt: Date.now(), answers: [], selected: null, confidence: 'medium', hintCount: 0, quickMinutes: options.quickMinutes || null };
-  setRoute('quiz');
+  if(state.quizDraft&&!window.confirm('中断している演習を新しいセットに置き換えます。保存済みの回答履歴は保持します。続けますか？'))return;
+  flushLearningTime();ui.quizResult = null;
+  ui.quiz = { id:makeId(),ids: selected, index: 0, mode, field: options.field || 'all', difficulty: options.difficulty || 'all', startedAt: Date.now(), answers: [], selected: null, confidence: 'medium', hintCount: 0, quickMinutes: options.quickMinutes || null };
+  persistQuiz();saveState();setRoute('quiz');
 }
 function shuffle(values) { const result = [...values]; for (let i = result.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [result[i], result[j]] = [result[j], result[i]]; } return result; }
 function startQuickSession(minutes) {
@@ -679,20 +791,21 @@ function submitQuizAnswer(form) {
   session.answers[session.index] = answer;
   state.attempts.push({ ...answer, id: makeId() });
   state.reviews[question.id] = { ...(state.reviews[question.id] || {}), dueDate: addDaysISO(todayISO(), interval), suggestedDays: interval, lastAnsweredAt: answer.at };
-  saveState(); ui.reportMessage = ''; render();
+  persistQuiz();saveState(); ui.reportMessage = ''; render();
 }
 function moveToNextQuestion() {
   if (!ui.quiz || !ui.quiz.answers[ui.quiz.index]) return;
   if (ui.quiz.index < ui.quiz.ids.length - 1) {
     ui.quiz.index++;
     ui.quiz.selected = null; ui.quiz.confidence = 'medium'; ui.quiz.hintCount = 0;
-    render(); window.scrollTo({ top: 0, behavior: 'smooth' });
+    persistQuiz();saveState();render(); window.scrollTo({ top: 0, behavior: 'smooth' });
     return;
   }
-  const session = ui.quiz;
+  flushLearningTime();const session = ui.quiz;
   const answers = session.answers.filter(Boolean);
   const result = { date: todayISO(), startedAt: session.startedAt, finishedAt: Date.now(), total: answers.length, correct: answers.filter(item => item.correct).length, answers };
-  state.sessions.push({ ...result, id: makeId() }); saveState();
+  result.activeSeconds=state.activities.filter(a=>a.sessionId===session.id).reduce((n,a)=>n+a.seconds,0);
+  if(!state.sessions.some(s=>s.id===session.id))state.sessions.push({ ...result, id: session.id||makeId() });state.quizDraft=null;saveState();
   ui.quiz = null; ui.quizResult = result; render(); window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 function makeId() { return globalThis.crypto?.randomUUID?.() || `${Date.now()}-${Math.random().toString(36).slice(2,9)}`; }
@@ -719,6 +832,8 @@ function onClick(event) {
   }
   const mapTrigger = event.target.closest('[data-map-field]');
   if (mapTrigger) { event.preventDefault(); startQuiz({ mode: 'all', field: mapTrigger.dataset.mapField, count: 8 }); return; }
+  const simPractice=event.target.closest('[data-sim-practice]');
+  if(simPractice){event.preventDefault();flushLearningTime();persistQuiz();ui.quiz=null;ui.quizResult=null;setRoute('quiz');const select=document.querySelector('#quiz-start-form [name="field"]');if(select){const option=[...select.options].find(o=>o.value!=='all'&&o.textContent.includes(simPractice.dataset.simPractice));if(option)select.value=option.value;}showStatus('分野と問題数を確認して演習を始めてください。');return;}
   const openBookmark=event.target.closest('[data-bookmark]');
   if(openBookmark){event.preventDefault();const b=state.bookmarks.find(item=>item.id===openBookmark.dataset.bookmark);if(b)openReader(b.sectionId,{blockId:b.blockId,position:b.position,language:b.language,offset:b.offset});return;}
   const openSection = event.target.closest('[data-open-section]');
@@ -729,6 +844,7 @@ function onClick(event) {
   const target = event.target.closest('[data-search-target]'); if (target) { event.preventDefault(); try { const item=JSON.parse(target.dataset.searchTarget); if (item.section) ui.readerSection=item.section; if (item.language && ['ja','en'].includes(item.language)) { state.settings.contentLanguage=item.language; saveState(); } if (item.question) { startQuiz({ mode:'single', questionId:item.question, count:1 }); return; } if (item.term) { ui.glossaryQuery=''; setRoute('glossary'); setTimeout(()=>document.getElementById(`term-${item.term}`)?.scrollIntoView({behavior:'smooth',block:'center'}),80); return; } if(item.route==='reader'&&item.section){openReader(item.section,{...item,query:ui.search.query});return;} if (item.route) setRoute(item.route); } catch { showStatus('検索先を開けませんでした。'); } return; }
   const bookmarkToggle = event.target.closest('[data-question-bookmark]'); if (bookmarkToggle) { const id=bookmarkToggle.dataset.questionBookmark; state.questionBookmarks = state.questionBookmarks.includes(id) ? state.questionBookmarks.filter(item=>item!==id) : [...state.questionBookmarks,id]; saveState(); render(); showStatus(state.questionBookmarks.includes(id) ? '問題をブックマークしました。' : '問題ブックマークを外しました。'); return; }
   const deleteBookmark = event.target.closest('[data-delete-bookmark]'); if (deleteBookmark) { state.bookmarks=state.bookmarks.filter(item=>item.id!==deleteBookmark.dataset.deleteBookmark); saveState(); render(); return; }
+  const editNote=event.target.closest('[data-edit-note]');if(editNote){ui.noteEditId=editNote.dataset.editNote;render();document.querySelector('#reader-note-form textarea')?.focus();return;}
   const deleteNote = event.target.closest('[data-delete-note]'); if (deleteNote) { state.notes=state.notes.filter(item=>item.id!==deleteNote.dataset.deleteNote); saveState(); render(); showStatus('学習メモを削除しました。'); return; }
   const calendarDay = event.target.closest('[data-date]'); if (calendarDay) { ui.calendarDate=calendarDay.dataset.date; render(); return; }
   const completeReview = event.target.closest('[data-complete-review]'); if (completeReview) { const id=completeReview.dataset.completeReview; state.completedReviews[id]=new Date().toISOString(); state.reviews[id]={...(state.reviews[id]||{}), lastReviewedAt:state.completedReviews[id], dueDate:addDaysISO(todayISO(),3), suggestedDays:3}; saveState(); render(); showStatus('復習を記録しました。次の予定は3日後です。'); return; }
@@ -745,17 +861,23 @@ function onClick(event) {
   else if (action === 'speak') speakSection();
   else if (action === 'stop-speech') stopSpeech();
   else if (action === 'clear-search') { ui.search.query=''; ui.searchResults=[]; render(); document.querySelector('#search-query')?.focus(); }
-  else if (action === 'reveal-hint') { if (ui.quiz) { const q=getQuestion(ui.quiz.ids[ui.quiz.index]); const max=(q.solutionSteps||q.hints||[]).length; ui.quiz.hintCount=Math.min(max,ui.quiz.hintCount+1); render(); } }
+  else if (action === 'reveal-hint') { if (ui.quiz) { const q=getQuestion(ui.quiz.ids[ui.quiz.index]); const max=(q.solutionSteps||q.hints||[]).length; ui.quiz.hintCount=Math.min(max,ui.quiz.hintCount+1);persistQuiz();saveState();render(); } }
   else if (action === 'next-question') moveToNextQuestion();
   else if (action === 'open-report') { ui.reportId=actionButton.dataset.reportId || getQuestion(ui.quiz?.ids[ui.quiz.index])?.id; render(); }
   else if (action === 'close-report') closeReport();
-  else if (action === 'exit-quiz') { ui.quiz=null; ui.quizResult=null; setRoute('quiz'); }
+  else if (action === 'exit-quiz') { flushLearningTime();persistQuiz();saveState();ui.quiz=null;ui.quizResult=null;setRoute('quiz');showStatus('中断した演習を保存しました。再読み込み後も再開できます。'); }
+  else if(action==='resume-quiz')resumeQuiz();
+  else if(action==='discard-quiz'){state.quizDraft=null;saveState();render();showStatus('中断セットを破棄しました。回答履歴は保持しています。');}
   else if (action === 'start-review') startQuiz({ mode:'review', count:8 });
   else if (action === 'again-quiz') { ui.quizResult=null; setRoute('quiz'); }
   else if (action === 'stop-plan') { state.plan.active=false; saveState(); render(); showStatus('学習計画を停止しました。'); }
   else if (action === 'calendar-prev' || action === 'calendar-next') { const date=new Date(`${ui.calendarDate}T12:00:00`); ui.calendarDate=shiftMonth(ui.calendarDate,action==='calendar-prev'?-1:1); render(); }
   else if (action === 'save-comparison') { const result=calculateSimulation(ui.simMode,simRead(ui.simMode)); if(result.error){showStatus(result.error);return;} state.simComparisons[ui.simMode]={...simRead(ui.simMode)}; saveState(); render(); showStatus('比較用の条件を保存しました。'); }
   else if (action === 'clear-comparison') { delete state.simComparisons[ui.simMode]; saveState(); render(); }
+  else if(action==='cancel-note-edit'){ui.noteEditId=null;render();}
+  else if(action==='export-before-import')exportBackup('before-import');
+  else if(action==='export-stored-recovery')exportBackup('recovery');
+  else if(action==='preview-backup')previewBackup();
   else if (action === 'export-data') exportData();
   else if (action === 'export-preview') { ui.exportJSON=JSON.stringify(exportPayload(),null,2);render();document.querySelector('#export-json')?.focus(); }
   else if (action === 'select-export') document.querySelector('#export-json')?.select();
@@ -781,20 +903,20 @@ function onSubmit(event) {
 function onChange(event) {
   const target=event.target;
   if(target.dataset.bookmarkNote){const b=state.bookmarks.find(b=>b.id===target.dataset.bookmarkNote);if(b){b.note=target.value;b.updatedAt=new Date().toISOString();saveState();showStatus('しおりのメモを保存しました。');}return;}
-  if (target.name === 'choice' && ui.quiz) { ui.quiz.selected=Number(target.value); render();document.querySelector(`input[name="choice"][value="${target.value}"]`)?.focus(); }
-  else if (target.name === 'confidence' && ui.quiz) { ui.quiz.confidence=target.value; render();document.querySelector(`input[name="confidence"][value="${target.value}"]`)?.focus(); }
+  if (target.name === 'choice' && ui.quiz) { ui.quiz.selected=Number(target.value);persistQuiz();saveState();render();document.querySelector(`input[name="choice"][value="${target.value}"]`)?.focus(); }
+  else if (target.name === 'confidence' && ui.quiz) { ui.quiz.confidence=target.value;persistQuiz();saveState();render();document.querySelector(`input[name="confidence"][value="${target.value}"]`)?.focus(); }
   else if (target.name === 'theme') { state.settings.theme=target.value; saveState(); render(); }
   else if (target.name === 'fontScale') { state.settings.fontScale=Number(target.value); saveState(); document.documentElement.style.setProperty('--reader-scale',String(state.settings.fontScale)); const label=target.parentElement.querySelector('strong'); if(label)label.textContent=`${Math.round(state.settings.fontScale*100)}%`; }
   else if (target.name === 'lineHeight') { state.settings.lineHeight=Number(target.value); saveState(); document.documentElement.style.setProperty('--reader-line-height',String(state.settings.lineHeight)); const label=target.parentElement.querySelector('strong'); if(label)label.textContent=Number(state.settings.lineHeight).toFixed(1); }
   else if (target.dataset.reviewDate) setReviewDate(target.dataset.reviewDate,target.value);
   else if (target.dataset.date) { ui.calendarDate=target.dataset.date; render(); }
   else if (target.id === 'import-file' && target.files?.[0]) readImportFile(target.files[0]);
-  else if (target.name && ['k','area','thickness','hot','cold','h','surface','fluid','emissivity','surrounding'].includes(target.name)) { ui.simValues[ui.simMode][target.name]=target.value; renderSimulatorOutputsOnly(); }
+  else if (target.name && ['k','area','thickness','hot','cold','h','surface','fluid','emissivity','surrounding','hHot','hCold','k1','k2','L1','L2'].includes(target.name)) { ui.simValues[ui.simMode][target.name]=target.value; renderSimulatorOutputsOnly(); }
 }
 function onInput(event) {
   const target=event.target;
   if (target.id === 'glossary-query') { ui.glossaryQuery=target.value; const at=target.selectionStart; render(); const field=document.getElementById('glossary-query'); field?.focus(); field?.setSelectionRange(at,at); }
-  else if (target.name && ['k','area','thickness','hot','cold','h','surface','fluid','emissivity','surrounding'].includes(target.name)) { ui.simValues[ui.simMode][target.name]=target.value; renderSimulatorOutputsOnly(); }
+  else if (target.name && ['k','area','thickness','hot','cold','h','surface','fluid','emissivity','surrounding','hHot','hCold','k1','k2','L1','L2'].includes(target.name)) { ui.simValues[ui.simMode][target.name]=target.value; renderSimulatorOutputsOnly(); }
 }
 function renderSimulatorOutputsOnly() {
   if (ui.route !== 'simulator') return;
@@ -843,7 +965,9 @@ function saveBookmark(form) {
 function saveReaderNote(form) {
   const data=new FormData(form); const text=String(data.get('text')||'').trim();
   if(!text){showStatus('メモの本文を入力してください。');return;}
-  state.notes.push({id:makeId(),title:String(data.get('title')||'').trim(),text,sectionId:ui.readerSection,chapter:ui.readerSection.split('.')[0],createdAt:new Date().toISOString()});
+  const old=state.notes.find(n=>n.id===ui.noteEditId&&n.sectionId===ui.readerSection),title=String(data.get('title')||'').trim(),now=new Date().toISOString();
+  if(old)Object.assign(old,{title,text,updatedAt:now});else state.notes.push({id:makeId(),title,text,sectionId:ui.readerSection,chapter:ui.readerSection.split('.')[0],createdAt:now,updatedAt:now});
+  ui.noteEditId=null;
   saveState(); render(); showStatus('学習メモを保存しました。');
 }
 function saveMistakeNote(form) {
@@ -901,7 +1025,7 @@ function importData(replace) {
     ui.importDraft={error:'端末に保存できないため復元を中止しました。現在の記録は変更していません。先にJSONを書き出し、空き容量を確認してください。'};
     render(); return;
   }
-  state=next; storageIssue=''; storageBlocked=false; ui.importDraft=null; render();
+  state=next; storageIssue=''; storageBlocked=false; ui.importDraft=null;ui.quiz=null;ui.quizResult=null;render();
   showStatus(replace?'学習データを復元しました。復元前の控えも端末内に保存しました。':'既存の履歴を保持して学習データを追加しました。');
 }
 function mergeById(existing,incoming) { const map=new Map(); for(const item of [...existing,...incoming]) map.set(item.id||JSON.stringify(item),item); return [...map.values()]; }
@@ -920,7 +1044,7 @@ function onKeyDown(event) {
   const target=event.target; if(target && ((target.matches('input,textarea,select,[contenteditable="true"]') && !target.matches('input[name="choice"]')) || target.isContentEditable)) return;
   if(event.key==='Enter' && target?.closest?.('button,a'))return;
   const session=ui.quiz; const answered=Boolean(session.answers[session.index]);
-  if(!answered && /^[1-4]$/.test(event.key)){event.preventDefault();session.selected=Number(event.key)-1;render();document.querySelectorAll('.answer-choice input')[session.selected]?.focus();}
+  if(!answered && /^[1-4]$/.test(event.key)){event.preventDefault();session.selected=Number(event.key)-1;persistQuiz();saveState();render();document.querySelectorAll('.answer-choice input')[session.selected]?.focus();}
   else if(event.key==='Enter' && !answered && session.selected!==null){event.preventDefault();document.querySelector('#quiz-answer-form')?.requestSubmit();}
 }
 

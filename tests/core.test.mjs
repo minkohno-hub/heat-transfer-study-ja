@@ -41,6 +41,19 @@ test('radiation uses kelvin to the fourth power and accepts emissivity zero',()=
   assert.equal(r.surfaceK,423.15);assert.ok(Math.abs(r.watts-.85*5.670374419e-8*(423.15**4-298.15**4))<1e-9);
   assert.equal(calculateHeatTransfer('radiation',{emissivity:0,area:1,surface:150,surrounding:25}).watts,0);
 });
+test('series thermal resistance conserves heat and returns interface temperatures and overall U',()=>{
+  const v={area:1,hot:80,cold:20,hHot:10,hCold:20,k1:.5,k2:.1,L1:.1,L2:.05};
+  const r=calculateHeatTransfer('resistance',v);
+  assert.deepEqual(r.resistances,[.1,.2,.5,.05]);assert.ok(Math.abs(r.totalResistance-.85)<1e-12);assert.ok(Math.abs(r.watts-60/.85)<1e-10);
+  assert.equal(r.temperatures[0],80);assert.ok(Math.abs(r.temperatures.at(-1)-20)<1e-12);assert.ok(Math.abs(r.overallU-1/.85)<1e-12);
+  for(let i=0;i<4;i++)assert.ok(Math.abs((r.temperatures[i]-r.temperatures[i+1])/r.resistances[i]-r.watts)<1e-10);
+  assert.equal(calculateHeatTransfer('resistance',{...v,hot:20,cold:80}).watts,-r.watts);
+  assert.equal(calculateHeatTransfer('resistance',{...v,hot:20}).watts,0);
+  for(const field of ['area','hHot','hCold','k1','k2','L1','L2'])assert.ok(calculateHeatTransfer('resistance',{...v,[field]:0}).error);
+  assert.ok(calculateHeatTransfer('resistance',{...v,hot:-273.15}).error);
+  assert.ok(calculateHeatTransfer('resistance',{...v,k1:1e-320}).error);
+  const exportedData=exported();exportedData.simComparisons.resistance=v;assert.equal(validateLearningData(exportedData),'');
+});
 test('simulation rejects blanks, missing fields, nonnumbers, impossible temperatures, and overflow',()=>{
   const base={h:25,area:1,surface:80,fluid:20};
   for(const value of ['', '  ',null,true,undefined,NaN,Infinity])assert.ok(calculateHeatTransfer('convection',{...base,fluid:value}).error,String(value));

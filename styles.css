@@ -301,6 +301,12 @@ input[type="range"] { width: 100%; accent-color: var(--accent); }
 .related-reading a { color: var(--accent-strong); }
 .related-reading small { color: var(--muted); }
 .answer-choice { grid-template-columns: 29px minmax(0,1fr) auto; }
+.quiz-resume { margin: 0 0 22px; }
+.backup-controls { margin: 20px 0; border-top: 1px solid var(--line); padding-top: 15px; }
+.backup-controls summary,.day-learning-time summary { cursor: pointer; min-height: 44px; padding: 8px 0; }
+.day-learning-time { padding: 16px; margin: 15px 0; background: var(--surface-soft); border-radius: 9px; font-size: 12px; }
+.day-learning-time ul { padding-left: 18px; }
+.day-learning-time .text-link { display: block; width: 100%; text-align: left; border: 0; background: transparent; overflow-wrap: anywhere; }
 :root[data-reader-width="reading"] .book-content { max-width: 40em; }
 :root[data-reader-width="wide"] .book-content { max-width: none; }
 .load-error { max-width: 640px; margin: 12vh auto; padding: 28px; }
@@ -371,3 +377,13 @@ input[type="range"] { width: 100%; accent-color: var(--accent); }
   .sim-input-card,.sim-output-card,.settings-card,.plan-form-card,.suggestion-card,.day-detail { padding: 21px; }
   .report-modal { padding: 23px 18px; }
 }
+.simulation-steps { margin: 1.25rem 0; padding: 1rem; border: 1px solid var(--line); border-radius: 12px; min-width: 0; }
+.simulation-steps details { border-top: 1px solid var(--line); padding: .65rem 0; }
+.simulation-steps summary { cursor: pointer; min-height: 44px; display: flex; align-items: center; font-weight: 600; }
+.simulation-steps p, .calculation-line { overflow-wrap: anywhere; line-height: 1.85; }
+.simulation-steps .table-scroll { overflow-x: auto; max-width: 100%; }
+.simulation-steps table { width: 100%; min-width: 380px; border-collapse: collapse; }
+.simulation-steps th, .simulation-steps td { padding: .55rem; border-bottom: 1px solid var(--line); text-align: left; }
+.figure-zoom { display: block; min-height: 44px; padding: .5rem 0; }
+.math-overline { text-decoration: overline; text-decoration-thickness: 1px; }
+.formula sub,.formula sup { font-size: .7em; line-height: 0; }

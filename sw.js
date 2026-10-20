@@ -1,4 +1,4 @@
-const CACHE_NAME='heat-study-ja-v4';
+const CACHE_NAME='heat-study-ja-v5';
 const APP_SHELL=['./','./index.html','./styles.css','./app.js','./study-core.mjs','./manifest.json',
   './data/book.json','./data/questions.json','./data/glossary.json','./data/content-manifest.json',
   './data/sections/1-1-ja.json','./data/sections/1-1-en.json','./data/sections/1-2-ja.json','./data/sections/1-2-en.json',
