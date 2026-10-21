@@ -1,8 +1,3 @@
 {
-  "files": [
-    "./data/sections/1-1-ja.json",
-    "./data/sections/1-1-en.json",
-    "./data/sections/1-2-ja.json",
-    "./data/sections/1-2-en.json"
-  ]
+  "files": []
 }
