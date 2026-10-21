@@ -219,6 +219,8 @@ input:not([type="radio"]):not([type="checkbox"]):not([type="range"]):not([type="
 textarea { resize: vertical; line-height: 1.7; }
 input[type="range"] { width: 100%; accent-color: var(--accent); }
 .button-row,.button-stack { display: flex; flex-wrap: wrap; gap: 9px; align-items: center; }
+.reader-pdf-actions { display: flex; flex-wrap: wrap; gap: 9px; margin: 14px 0 6px; }
+.reader-pdf-actions .button,.not-translated .button-row .button { max-width: 100%; white-space: normal; text-align: center; }
 .file-button { position: relative; cursor: pointer; }
 .file-button input { position: absolute; inset: 0; width: 100%; opacity: 0; cursor: pointer; }
 .file-button:has(input:focus-visible) { outline: 3px solid var(--accent); outline-offset: 3px; }

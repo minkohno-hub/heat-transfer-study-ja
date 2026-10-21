@@ -8,14 +8,16 @@ import {startServer} from '../scripts/serve.mjs';
 const require=createRequire(import.meta.url);
 const {chromium}=require(process.env.PLAYWRIGHT_MODULE||'playwright');
 const root=join(dirname(fileURLToPath(import.meta.url)),'../dist');
-const server=await startServer({root,port:0});
+const liveBase=process.env.PUBLIC_BASE_URL;
+const ignoreCert=process.env.BROWSER_IGNORE_CERT_ERRORS==='1';
+const server=liveBase?null:await startServer({root,port:0});
 let browser;
 try {
-  browser=await chromium.launch({headless:true,executablePath:process.env.BROWSER_EXECUTABLE||'/usr/bin/chromium',args:['--no-sandbox']});
-  const context=await browser.newContext({viewport:{width:390,height:844}});
+  browser=await chromium.launch({headless:true,executablePath:process.env.BROWSER_EXECUTABLE||'/usr/bin/chromium',args:['--no-sandbox',...(ignoreCert?['--ignore-certificate-errors']:[])]});
+  const context=await browser.newContext({viewport:{width:390,height:844},ignoreHTTPSErrors:ignoreCert});
   const page=await context.newPage();
   const errors=[],external=[];
-  const base=`http://127.0.0.1:${server.address().port}`;
+  const base=liveBase?new URL(liveBase).href:`http://127.0.0.1:${server.address().port}`;
   page.on('pageerror',error=>errors.push(error.message));
   page.on('request',request=>{if(!request.url().startsWith(base))external.push(request.url());});
   const nav=route=>page.locator(`.main-nav a[href="#${route}"]`).click();
@@ -25,11 +27,13 @@ try {
   await nav('reader');
   assert.equal(await page.locator('.reader-toc .toc-item:not(.not-ready)').count(),0);
   assert.match(await page.locator('.not-translated').innerText(),/公開していません/);
+  assert.match(await page.locator('.not-translated a[href*="AHTTv600.pdf"]').getAttribute('href'),/AHTTv600\.pdf#page=17$/);
   for(const path of ['data/sections/1-1-en.json','data/sections/1-1-ja.json','data/figures/fig1-1-021.png']){
     const status=await page.evaluate(async path=>(await fetch(path)).status,path);
     assert.equal(status,404,path);
   }
   await nav('guide');
+  await page.locator('.guide-section').first().waitFor();
   assert.equal(await page.locator('.guide-section').count(),17);
   await page.locator('#guide-query').fill('放射率');
   await page.locator('#guide-search-form button').click();
@@ -56,12 +60,23 @@ try {
     }
   }
   await page.evaluate(()=>navigator.serviceWorker.ready);
+  await nav('reader');
+  const pdfSaved=page.evaluate(()=>new Promise(resolve=>{const handler=event=>{if(event.data?.type!=='PDF_CACHE_RESULT')return;navigator.serviceWorker.removeEventListener('message',handler);resolve(event.data.ok);};navigator.serviceWorker.addEventListener('message',handler);}));
+  await page.locator('[data-action="cache-pdf"]').click();
+  assert.equal(await pdfSaved,true);
+  assert.ok(await page.evaluate(async()=>Boolean(await(await caches.open('heat-study-ja-pdf-v1')).match('./book/AHTTv600.pdf'))));
   await context.setOffline(true);
   await page.reload();
   await page.locator('.app-shell').waitFor();
+  const pdfRange=await page.evaluate(async()=>{const response=await fetch('./book/AHTTv600.pdf',{headers:{Range:'bytes=0-3'}});return {status:response.status,range:response.headers.get('content-range'),signature:await response.text()};});
+  assert.equal(pdfRange.status,206);
+  assert.equal(pdfRange.range,'bytes 0-3/32472182');
+  assert.equal(pdfRange.signature,'%PDF');
+  const pdfEnd=await page.evaluate(async()=>{const tail=await fetch('./book/AHTTv600.pdf',{headers:{Range:'bytes=-4'}});const invalid=await fetch('./book/AHTTv600.pdf',{headers:{Range:'bytes=32472182-'}});return {tailStatus:tail.status,tailRange:tail.headers.get('content-range'),tailBytes:(await tail.arrayBuffer()).byteLength,invalidStatus:invalid.status};});
+  assert.deepEqual(pdfEnd,{tailStatus:206,tailRange:'bytes 32472178-32472181/32472182',tailBytes:4,invalidStatus:416});
   await nav('guide');
   assert.ok(await page.locator('#guide-sim-radiation').count());
   assert.deepEqual(errors,[]);
   assert.deepEqual(external,[]);
-  console.log('公開配信物：本文・原図なし、ガイド・演習・計算・保存・画面幅・オフラインを確認。');
-} finally {await browser?.close();await new Promise(resolve=>server.close(resolve));}
+  console.log('公開配信物：原本PDFとオフラインの範囲取得、訳文・原図なし、ガイド・演習・計算・保存・画面幅を確認。');
+} finally {await browser?.close();if(server)await new Promise(resolve=>server.close(resolve));}

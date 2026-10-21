@@ -1,6 +1,7 @@
 import {readFile,copyFile,mkdir,rm,stat,writeFile} from 'node:fs/promises';
 import {resolve,dirname,join} from 'node:path';
 import {fileURLToPath} from 'node:url';
+import {createHash} from 'node:crypto';
 
 const root=resolve(dirname(fileURLToPath(import.meta.url)),'..');
 const output=join(root,'dist');
@@ -10,6 +11,9 @@ catch(error) { if(error.code!=='ENOENT')throw error; try { await stat(output); t
 
 const book=JSON.parse(await readFile(join(root,'data/book.json'),'utf8'));
 const questions=JSON.parse(await readFile(join(root,'data/questions.json'),'utf8'));
+const pdf=await readFile(join(root,'book/AHTTv600.pdf'));
+const pdfHash=createHash('sha256').update(pdf).digest('hex');
+if(pdf.length!==32472182||pdfHash!=='d318176a9cac997d415ec5ee95b30979dcdaed0392705185393735c7d59a447a')throw new Error('原本PDFのサイズまたはSHA-256が引き継ぎ記録と一致しません。');
 if(!Array.isArray(book.chapters)||!Array.isArray(questions))throw new Error('公開用データの形式を確認してください。');
 // The checked-out repository contains preexisting book-derived paragraphs and figures.
 // A public URL does not grant permission to redistribute them, so the site omits them.
@@ -24,8 +28,10 @@ for(const path of new Set(files)){
   await mkdir(dirname(target),{recursive:true});await copyFile(source,target);
 }
 await mkdir(join(output,'data'),{recursive:true});
+await mkdir(join(output,'book'),{recursive:true});
+await writeFile(join(output,'book/AHTTv600.pdf'),pdf);
 for(const [name,value] of Object.entries({'book.json':book,'questions.json':questions,'content-manifest.json':{files:[]}})){
   await writeFile(join(output,'data',name),JSON.stringify(value,null,2)+'\n');
 }
 await writeFile(marker,'公開対象だけを列挙して作成した配信物です。\n');
-console.log('公開配信物：アプリ・独自ガイド・問題・用語・書籍の目次情報。書籍本文・翻訳・原図は含めていません。');
+console.log('公開配信物：許諾済みの原本PDF、アプリ・独自ガイド・問題・用語・書籍の目次情報。翻訳・原図・抽出本文は含めていません。');
