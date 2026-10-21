@@ -146,7 +146,7 @@ function formatTime(value) { return new Intl.DateTimeFormat('ja-JP', { hour: '2-
 function allSections() { return book.chapters.flatMap(chapter => chapter.sections.map(section => ({ ...section, chapterId: chapter.id, chapterTitle: chapter.title, part: chapter.part }))); }
 function getSection(id) { return allSections().find(section => section.id === id); }
 function getQuestion(id) { return questionBank.find(question => question.id === id); }
-function sectionIsTranslated(section) { return Array.isArray(section?.blocks); }
+function sectionIsTranslated(section) { return Array.isArray(section?.blocks) && section.blocks.length > 0; }
 function sectionProgressLabel(section) { return sectionIsTranslated(section) ? '読める' : section?.translationStatus === 'draft_complete' ? '確認待ち' : section?.translationStatus === 'in_progress' ? '翻訳中' : '未着手'; }
 function blockSourceLabel(block){
   const range=(first,last)=>`${first??'未記録'}${last&&last!==first?'–'+last:''}`;
@@ -171,6 +171,28 @@ function sourceLabel(source = {}) {
   const figure=source.figure||(source.figures||[]).join('、'),equation=source.equation||(source.equations||[]).join('、');
   const evidence = [figure ? `図${escapeHTML(figure)}` : '', equation ? `式（${escapeHTML(equation)}）` : ''].filter(Boolean).join(' · ');
   return `本書 ${section}／書籍 p.${escapeHTML(source.bookPages || '未記録')}・PDF p.${escapeHTML(source.pdfPages || '未記録')}${evidence ? ` · ${evidence}` : ''}`;
+}
+const BOOK_BLOCK_TYPES = new Set(['heading','subheading','example','quote','experiment','footnote','formula','supplement','sourceNote','figure','table','list','problem','reference','paragraph']);
+function validBookFigure(figure) {
+  return figure && typeof figure === 'object' && !Array.isArray(figure) && typeof figure.alt === 'string' && !!figure.alt.trim() && (figure.src === undefined || typeof figure.src === 'string');
+}
+function validBookBlocks(blocks) {
+  if (!Array.isArray(blocks) || !blocks.length) return false;
+  const ids = new Set();
+  return blocks.every(block => {
+    if (!block || typeof block !== 'object' || Array.isArray(block) || !BOOK_BLOCK_TYPES.has(block.type)) return false;
+    if (block.id !== undefined) {
+      if (typeof block.id !== 'string' || !block.id || ids.has(block.id)) return false;
+      ids.add(block.id);
+    }
+    if (['heading','subheading','example','quote','experiment','footnote','supplement','sourceNote','paragraph'].includes(block.type) && typeof block.text !== 'string') return false;
+    if (block.type === 'formula' && typeof block.expression !== 'string') return false;
+    if (block.type === 'figure' && !validBookFigure(block)) return false;
+    if (block.type === 'list' && (!Array.isArray(block.items) || !block.items.every(item => typeof item === 'string'))) return false;
+    if (block.type === 'table' && (!Array.isArray(block.headers) || !block.headers.every(item => typeof item === 'string') || !Array.isArray(block.rows) || !block.rows.every(row => Array.isArray(row) && row.every(item => typeof item === 'string')))) return false;
+    if (block.type === 'problem' && ((block.items !== undefined && (!Array.isArray(block.items) || !block.items.every(item => typeof item === 'string'))) || (block.figureRefs !== undefined && (!Array.isArray(block.figureRefs) || !block.figureRefs.every(item => typeof item === 'string'))) || (block.formulaBlocks !== undefined && (!Array.isArray(block.formulaBlocks) || !block.formulaBlocks.every(item => item && typeof item === 'object' && typeof item.expression === 'string'))) || (block.figure !== undefined && !validBookFigure(block.figure)))) return false;
+    return true;
+  });
 }
 function setRoute(route) {
   flushLearningTime();
@@ -202,8 +224,9 @@ async function startApp() {
       return response.json();
     })));
     for (const content of contentFiles) {
+      if (!content || typeof content !== 'object') throw new Error('収録済みの章別教材データの構造を確認してください。');
       const section = book.chapters.flatMap(chapter => chapter.sections).find(item => item.id === content.sectionId);
-      if (!section || !Array.isArray(content.blocks)) continue;
+      if (!section || !['ja','en'].includes(content.language) || !validBookBlocks(content.blocks)) throw new Error('収録済みの章別教材データの構造を確認してください。');
       if (content.language === 'ja') section.blocks = content.blocks;
       else if (content.language === 'en') section.blocksEn = content.blocks;
     }
@@ -222,12 +245,12 @@ async function startApp() {
         // Commit the whole pack only after every referenced file has loaded.
         for (const entry of content) {
           const section = book.chapters.flatMap(c => c.sections).find(s => s.id === entry.sectionId);
-          if (!section || !Array.isArray(entry.blocks) || !['ja','en'].includes(entry.language)) throw new Error('local-format');
+          if (!section || !validBookBlocks(entry.blocks) || !['ja','en'].includes(entry.language) || entry.sourceReview !== 'source_checked') throw new Error('local-format');
         }
         for (const entry of content) {
           const section = book.chapters.flatMap(c => c.sections).find(s => s.id === entry.sectionId);
           section[entry.language === 'en' ? 'blocksEn' : 'blocks'] = entry.blocks;
-          section.localSourceChecked = entry.sourceReview === 'source_checked';
+          if (entry.language === 'ja') section.localSourceChecked = true;
         }
         questionBank = [...new Map([...questionBank, ...questions.flat()].map(q => [q.id,q])).values()];
         glossary = [...new Map([...glossary, ...terms.flat()].map(t => [t.id,t])).values()];

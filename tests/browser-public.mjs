@@ -171,6 +171,20 @@ try {
   await page.locator('.reader-title').waitFor();
   assert.equal((await stored()).attempts.length, 1);
   check('オフライン再読込と学習記録');
+
+  const invalidContext = await browser.newContext({serviceWorkers: 'block'});
+  const invalidPage = await invalidContext.newPage();
+  invalidPage.on('pageerror', error => errors.push(error.message));
+  await invalidPage.route('**/data/local-content-manifest.json', route => route.fulfill({contentType: 'application/json', body: JSON.stringify({files: ['./data/local/sections/invalid.json']})}));
+  await invalidPage.route('**/data/local/sections/invalid.json', route => route.fulfill({contentType: 'application/json', body: JSON.stringify({sectionId: '1.1', language: 'ja', sourceReview: 'source_checked', blocks: [{type: 'unknown', text: '検査用の不正なブロック'}]})}));
+  await invalidPage.goto(`${base}/#reader`);
+  await invalidPage.locator('.reader-title').waitFor();
+  assert.match(await invalidPage.locator('.storage-warning, .notice-card').first().innerText(), /追加のローカル教材/);
+  assert.match(await invalidPage.locator('.app-footer').innerText(), /2節/);
+  assert.ok(await invalidPage.locator('.book-paragraph').count() > 0);
+  assert.doesNotMatch(await invalidPage.locator('.reader-status-row').innerText(), /原本照合済み/);
+  await invalidContext.close();
+  check('不正な追加教材を拒否し、収録済み本文を保持');
   assert.deepEqual(errors, []);
   console.log(`結果: ${passed.length}組成功、ブラウザー実行時エラー0件`);
 } finally {
