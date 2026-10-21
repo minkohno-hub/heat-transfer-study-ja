@@ -12,7 +12,7 @@ function harness(initial) {
   const context=vm.createContext({...core,structuredClone,JSON,Date,Math,Intl,Map,Set,Number,String,Array,Boolean,RegExp,Blob,URL,crypto:{randomUUID:()=> '11111111-1111-4111-8111-111111111111'},document,window:{matchMedia:()=>({matches:false}),scrollTo(){},confirm:()=>true,location:{reload(){reloaded++;}}},location:{hash:''},navigator:{onLine:true},setTimeout:()=>1,clearTimeout(){},localStorage:{getItem:k=>store.get(k)||null,setItem(k,v){if((fail&&k===key)||k===failKey)throw Error('quota');store.set(k,v);},removeItem(k){store.delete(k);}},FormData:class{constructor(v){this.values=v.values??v;}get(k){return this.values[k]??null;}}});
   vm.runInContext(source.replace(/^import .*?;\s*/,'').replace(/\nstartApp\(\);\s*$/,'')+`
     render=()=>{globalThis.renderCount=(globalThis.renderCount||0)+1;};showStatus=message=>{globalThis.statusMessage=message;};
-    globalThis.api={get state(){return state;},set state(v){state=v;},get ui(){return ui;},set ui(v){ui={...ui,...v};},set questions(v){questionBank=v;},set book(v){book=v;},set terms(v){glossary=v;},submitQuizAnswer,reviewCandidates,validateImport,importData,saveState,setReviewDate,buildSearchIndex,onKeyDown,renderBookBlock,blockSourceLabel,figureZoomLink,renderSimulationSteps,simGraph,createProfile,get warning(){return storageIssue;}};`,context);
+    globalThis.api={get state(){return state;},set state(v){state=v;},get ui(){return ui;},set ui(v){ui={...ui,...v};},set questions(v){questionBank=v;},set book(v){book=v;},set terms(v){glossary=v;},submitQuizAnswer,reviewCandidates,validateImport,importData,saveState,setReviewDate,buildSearchIndex,onKeyDown,renderBookBlock,renderQuestionFigure,blockSourceLabel,figureZoomLink,renderSimulationSteps,simGraph,createProfile,get warning(){return storageIssue;}};`,context);
   const api=context.api;api.questions=[question];api.book={chapters:[{id:'ch1',title:'章',sections:[{id:'1.1',title:'本文',bookStart:3,bookEnd:4,pdfStart:17,pdfEnd:18,blocks:[{id:'b1',type:'paragraph',text:'検索する語',bookPage:3,pdfPage:17}]}]}]};api.terms=[{id:'term',ja:'熱',en:'heat',meaning:'温度による移動',source:{section:'1.1'}}];
   return {api,store,context,setFail:v=>fail=v,setFailKey:v=>failKey=v,get submitted(){return submitted;},get reloaded(){return reloaded;}};
 }
@@ -27,6 +27,15 @@ test('incorrect and invalid selections cannot become correct records',()=>{
 });
 test('one successful high-confidence answer is not called a weak area',()=>{
   const h=harness();h.api.state.attempts=[{questionId:'q1',correct:true,confidence:'high',at:new Date().toISOString()}];assert.equal(h.api.reviewCandidates().length,0);
+});
+test('review completion is compared by instant across time zones',()=>{
+  const h=harness();
+  h.api.state.attempts=[{questionId:'q1',correct:false,confidence:'low',at:'2026-10-21T09:00:00+09:00'}];
+  h.api.state.reviews.q1={dueDate:'2099-10-21',lastReviewedAt:'2026-10-20T20:00:00-05:00'};
+  assert.equal(h.api.reviewCandidates().length,0);
+  h.api.state.attempts=[{questionId:'q1',correct:false,confidence:'low',at:'2026-10-20T23:00:00-05:00'}];
+  h.api.state.reviews.q1.lastReviewedAt='2026-10-21T01:00:00Z';
+  assert.ok(h.api.reviewCandidates()[0].reasons.includes('直近の誤答'));
 });
 
 test('clearing a review date preserves valid saved data, and valid changes have a merge timestamp',()=>{
@@ -78,7 +87,14 @@ test('formula meanings and Japanese figure descriptions appear in the reader',()
 test('source ranges distinguish book and PDF pages, and figure links reject external or unsafe paths',()=>{
   const h=harness();assert.equal(h.api.blockSourceLabel({bookPage:418,endBookPage:419,pdfPage:432,endPdfPage:433}),'書籍 p.418–419 · PDF p.432–433');
   assert.match(h.api.figureZoomLink('data/local/figures/fig8-4-439.png'),/noopener noreferrer/);
+  assert.match(h.api.figureZoomLink('./data/figures/fig1-1-021.png'),/href="\.\/data\/figures\/fig1-1-021\.png"/);
   for(const src of ['https://example.com/a.png','javascript:alert(1)','data/local/figures/../../a.png','data/local/figures/a.png" onload="x'])assert.equal(h.api.figureZoomLink(src),'');
+});
+test('figure dimensions from content files cannot inject image attributes',()=>{
+  const h=harness(),figure={src:'./data/figures/fig1-1-021.png',alt:'図',caption:'図1.1',width:'50" onerror="alert(1)',height:30};
+  for(const html of [h.api.renderBookBlock({type:'figure',...figure}),h.api.renderQuestionFigure({kind:'book',...figure})])assert.doesNotMatch(html,/\sonerror=/);
+  const sized=h.api.renderBookBlock({type:'figure',...figure,width:'640',height:'480'});
+  assert.match(sized,/width="640" height="480"/);
 });
 test('all simulator step displays retain finite values, units and supplemental labels',()=>{
   const h=harness(),inputs={conduction:{k:15,area:.5,thickness:.08,hot:80,cold:20},convection:{h:25,area:1,surface:80,fluid:20},radiation:{emissivity:.85,area:1,surface:150,surrounding:25},resistance:{area:1,hot:80,cold:20,hHot:10,hCold:20,k1:.5,k2:.1,L1:.1,L2:.05}};

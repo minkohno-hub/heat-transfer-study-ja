@@ -43,6 +43,18 @@ try {
   assert.equal((await stored()).readSections['1.1'], true);
   check('収録2節、日英切り替え、読了記録の再読込');
 
+  await page.locator('.reader-toc [data-section="1.2"]').click();
+  await page.locator('.book-figure img').first().waitFor();
+  assert.equal(await page.locator('.book-figure img').count(), 2);
+  assert.equal(await page.locator('.book-figure .figure-zoom').count(), 2);
+  assert.ok(await page.locator('.book-figure img').first().evaluate(image => image.complete && image.naturalWidth > 0));
+  const [figurePage] = await Promise.all([page.waitForEvent('popup'), page.locator('.book-figure .figure-zoom').first().click()]);
+  await figurePage.waitForLoadState('load');
+  assert.match(figurePage.url(),/fig1-1-021\.png$/);
+  await figurePage.close();
+  await page.locator('.reader-toc [data-section="1.1"]').click();
+  check('書籍図の表示と別タブ拡大');
+
   await nav('search');
   await page.locator('#search-query').fill('熱移動');
   await page.locator('#search-form button[type="submit"]').click();
