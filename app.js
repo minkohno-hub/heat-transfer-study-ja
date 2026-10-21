@@ -720,8 +720,10 @@ function simGraph(mode,current,baseline) {
   const prior=baseline?calculateSimulation(mode,baseline):null,base=prior&&!prior.error?prior:null;
   let minDelta=Math.min(0,current.delta*2,base?base.delta*2:0),maxDelta=Math.max(0,current.delta*2,base?base.delta*2:0);
   if(maxDelta===minDelta)maxDelta=minDelta+10;
-  if(mode==='radiation')minDelta=Math.max(minDelta,-current.values.surrounding-273.15+1e-6,base?-base.values.surrounding-273.15+1e-6:-Infinity);
-  const samples=values=>Array.from({length:41},(_,i)=>{const d=minDelta+(maxDelta-minDelta)*i/40;return [d,simValueAt(mode,values,d)];}).filter(p=>Number.isFinite(p[1]));
+  const samples=values=>{
+    const start=mode==='radiation'?Math.max(minDelta,-values.surrounding-273.15+1e-6):minDelta;
+    return Array.from({length:41},(_,i)=>{const d=start+(maxDelta-start)*i/40;return [d,simValueAt(mode,values,d)];}).filter(p=>Number.isFinite(p[1]));
+  };
   const points=samples(current.values),basePoints=base?samples(base.values):[];
   let low=Math.min(0,current.watts,...points.map(p=>p[1]),...basePoints.map(p=>p[1])),high=Math.max(0,current.watts,...points.map(p=>p[1]),...basePoints.map(p=>p[1]));
   if(low===high)high=low+1;
@@ -740,7 +742,7 @@ function renderSimulator() {
     <div class="sim-tabs" role="tablist" aria-label="熱移動の種類">${Object.entries(SIM_META).map(([key,item]) => `<button type="button" role="tab" aria-selected="${mode === key}" class="sim-tab ${mode === key ? 'selected' : ''}" data-sim-mode="${key}"><span>${key === 'conduction' ? '▥' : key === 'convection' ? '↝' : '☼'}</span>${item.title}</button>`).join('')}</div>
     <div class="sim-layout"><section class="surface-card sim-input-card"><div class="sim-intro"><p class="eyebrow">${meta.title}</p><h2>${meta.description}</h2></div><form id="sim-form" class="sim-form"><div class="sim-fields">${renderSimInputs(mode, values)}</div></form><div class="formula-card"><span>使用する式</span><strong>${meta.formula}</strong><p>正の値は、入力欄の「高温側」または「表面」から反対側へ移る向きを表します。負の値なら向きが逆です。</p></div><div class="assumption-card"><strong>前提と適用範囲</strong><p>${meta.note}</p></div></section>
       <section class="surface-card sim-output-card"><div class="card-heading"><div><p class="eyebrow">現在の条件</p><h2>熱移動率</h2></div>${statusPill(mode === 'radiation' ? '℃からKへ換算' : '定常モデル', 'blue')}</div>${resultView}${!result.error?renderSimulationSteps(mode,result):''}
-        ${!result.error ? `<div class="chart-heading"><h3>温度差を変えたとき</h3><span>現在・保存条件の温度差を含む範囲</span></div>${simGraph(mode, result, baseline)}<div class="chart-legend"><span><i class="legend-current"></i>現在の条件</span>${baseline ? '<span><i class="legend-baseline"></i>保存した比較条件</span>' : ''}</div>` : ''}
+        ${!result.error ? `<div class="chart-heading"><h3>温度差を変えたとき</h3><span>現在・保存条件の温度差を含む範囲${mode==='radiation'?'。各曲線は表面温度が0 Kより高い範囲のみ表示':''}</span></div>${simGraph(mode, result, baseline)}<div class="chart-legend"><span><i class="legend-current"></i>現在の条件</span>${baseline ? '<span><i class="legend-baseline"></i>保存した比較条件</span>' : ''}</div>` : ''}
         <div class="comparison-controls"><button type="button" class="button secondary" data-action="save-comparison">この条件を比較用に保存</button>${baseline ? '<button type="button" class="text-button" data-action="clear-comparison">比較条件を削除</button>' : ''}${comparison && !comparison.error ? `<small>保存条件の結果：${comparison.watts.toLocaleString('ja-JP', { maximumFractionDigits: 3 })} W</small>` : ''}</div>
         <div class="related-reading"><strong>関連する本書の範囲</strong><a href="#reader" data-section="${related.id}">第${escapeHTML(related.id)}節：${escapeHTML(related.title)} <span>${statusPill(sectionProgressLabel(related),sectionIsTranslated(related)?'blue':'amber')}</span></a><small>${sectionIsTranslated(related)?'本文と計算の前提をあわせて確認できます。':'本文の照合・取り込みは完了していません。現在の状態は目次に表示しています。'}</small><button type="button" class="text-button" data-sim-practice="${mode==='radiation'?'熱放射':mode==='convection'?'対流':'熱伝導'}">関連する分野の問題を選ぶ →</button></div>
       </section></div>`;
