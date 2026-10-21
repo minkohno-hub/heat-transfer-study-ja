@@ -36,7 +36,7 @@ self.addEventListener('fetch',event=>{
     const isPdf=new URL(event.request.url).pathname.endsWith('/book/AHTTv600.pdf');
     const pdfCache=isPdf?await caches.open(PDF_CACHE_NAME):null;
     const range=event.request.headers.get('range');
-    if(isPdf&&range){const stored=await pdfCache.match(PDF_URL);if(stored)return cachedPdfRange(stored,range);}
+    if(isPdf&&range&&/^bytes=(\d*)-(\d*)$/.test(range)){const stored=await pdfCache.match(PDF_URL);if(stored)return cachedPdfRange(stored,range);}
     try {
       const response=await fetch(event.request);
       if(!isPdf&&response.status===200)try{await cache.put(event.request,response.clone());}catch{}

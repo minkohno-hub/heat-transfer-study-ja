@@ -93,5 +93,5 @@ try {
   assert.ok(await page.locator('#guide-sim-radiation').count());
   assert.deepEqual(errors,[]);
   assert.deepEqual(external,[]);
-  console.log('公開配信物：原本PDFとオフラインの範囲取得、訳文・原図なし、ガイド・演習・計算・保存・画面幅を確認。');
+  console.log('公開配信物：原本PDFとオフラインの範囲取得、訳文・抽出原図なし、ガイド・演習・計算・保存・画面幅を確認。');
 } finally {await browser?.close();if(server)await new Promise(resolve=>server.close(resolve));}
