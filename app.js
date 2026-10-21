@@ -390,7 +390,7 @@ function renderGuide() {
 }
 function statusPill(text, tone = 'neutral') { return `<span class="status-pill tone-${tone}">${text}</span>`; }
 function translatedSectionCount() { return allSections().filter(sectionIsTranslated).length; }
-function countReadSections() { return allSections().filter(s=>sectionIsTranslated(s)&&state.readSections[s.id]).length; }
+function countReadSections() { return allSections().filter(s=>state.readSections[s.id]).length; }
 function lastSectionLabel() { const section = getSection(state.lastSection); return section ? `第${section.id}節「${escapeHTML(section.title)}」` : '第1章1.1節「熱移動」'; }
 function getAttemptStats(id) { const attempts = state.attempts.filter(attempt => attempt.questionId === id); const correct = attempts.filter(attempt => attempt.correct).length; return { attempts, correct, accuracy: attempts.length ? correct / attempts.length : null }; }
 function questionsByField() { const fields = new Map(); for (const q of questionBank) { const field = q.field || 'その他'; fields.set(field, (fields.get(field) || 0) + 1); } return fields; }
@@ -420,14 +420,14 @@ function renderHome() {
   const recentSession = state.sessions.at(-1);
   const recentWrong=(recentSession?.answers||[]).filter(a=>!a.correct).map(a=>a.questionId);
   const plan = state.plan;
-  const readPercent = translatedSectionCount() ? Math.round(countReadSections() / translatedSectionCount() * 100) : 0;
+  const readPercent = allSections().length ? Math.round(countReadSections() / allSections().length * 100) : 0;
   const todayAttempts = state.attempts.filter(attempt => localDay(attempt.at) === todayISO()).length;
   const contentPercent = translatedSectionCount() / allSections().length * 100;
   return `${pageHeading('学習ホーム', '次に進むことが、ひと目でわかる。', '読んで、問題を解いて、あとで振り返る。今日のペースで始めましょう。')}
     <section class="hero-card">
       <div class="hero-copy"><p class="eyebrow">学習の続き</p><h2>${lastSectionLabel()}</h2><p>節の目次から原本PDFの対応ページを開けます。日本語訳が収録された節では、前回の読書位置から再開できます。</p>
         <div class="hero-actions"><a class="button primary" href="#reader" data-open-section="${escapeHTML(state.lastSection)}">原本と目次を開く <span aria-hidden="true">→</span></a><a class="button secondary" href="#quiz">問題を解く</a></div>
-      </div><div class="hero-side"><div class="ring-progress" style="--progress:${readPercent}%"><div><strong>${readPercent}%</strong><span>翻訳済み節の読了</span></div></div><small>${countReadSections()} / ${translatedSectionCount()} 節を読了</small></div>
+      </div><div class="hero-side"><div class="ring-progress" style="--progress:${readPercent}%"><div><strong>${readPercent}%</strong><span>読了した節</span></div></div><small>${countReadSections()} / ${allSections().length} 節を読了（自己記録）</small></div>
     </section>
     ${renderQuizResume()}<div class="home-grid">
       <section class="surface-card today-card"><div class="card-heading"><div><p class="eyebrow">今日の学習</p><h2>無理のない一歩から</h2></div>${statusPill(`${todayAttempts}問回答`, 'blue')}</div>
@@ -475,17 +475,18 @@ function renderReader() {
         <details class="all-bookmarks"><summary>すべてのしおり（${state.bookmarks.length}件）</summary>${state.bookmarks.map(b=>`<button type="button" class="toc-item" data-bookmark="${escapeHTML(b.id)}"><span>第${escapeHTML(b.sectionId)}節 · 書籍 p.${b.bookPage||'未記録'}</span><span>${escapeHTML(b.note||'メモなし')}</span></button>`).join('')||'<p>しおりはまだありません。</p>'}</details><div class="appendix-list"><span class="eyebrow">付録・索引</span>${book.appendices.map(item => `<div class="appendix-row"><span>${escapeHTML(item.title)}</span>${statusPill('未着手')}</div>`).join('')}</div>
       </aside>
       <article class="reader-panel surface-card" id="reader-article">
-        <div class="reader-toolbar"><div class="language-toggle" role="group" aria-label="本文の表示言語"><button type="button" class="${contentLanguage === 'ja' ? 'selected' : ''}" data-language="ja" aria-pressed="${contentLanguage === 'ja'}">日本語</button><button type="button" class="${contentLanguage === 'en' ? 'selected' : ''}" data-language="en" ${hasEnglish ? '' : 'disabled'} aria-pressed="${contentLanguage === 'en'}">英語</button></div><span class="language-note">${hasEnglish ? (contentLanguage === 'ja' ? '日本語訳' : '英語版') : '英語原文はこの節に未収録'}</span><button class="icon-button" type="button" data-action="reader-width" title="本文の幅を切り替え" aria-label="本文の幅を切り替え">↔</button><button class="icon-button" type="button" data-action="reader-font-down" aria-label="文字を小さくする">A−</button><button class="icon-button" type="button" data-action="reader-font-up" aria-label="文字を大きくする">A＋</button><button class="icon-button" type="button" data-action="reader-line" aria-label="行間を調整">↕</button><button class="icon-button" type="button" data-action="speak" ${available ? '' : 'disabled'} aria-label="本文を読み上げる">▶ 読み上げ</button><button class="icon-button" type="button" data-action="stop-speech" aria-label="読み上げを停止">■ 停止</button><button class="button secondary" type="button" data-action="prepare-bookmark" ${available ? '' : 'disabled'}>この位置にしおり</button></div>
+        <div class="reader-toolbar"><div class="language-toggle" role="group" aria-label="本文の表示言語"><button type="button" class="${contentLanguage === 'ja' ? 'selected' : ''}" data-language="ja" aria-pressed="${contentLanguage === 'ja'}">日本語</button><button type="button" class="${contentLanguage === 'en' ? 'selected' : ''}" data-language="en" ${hasEnglish ? '' : 'disabled'} aria-pressed="${contentLanguage === 'en'}">英語</button></div><span class="language-note">${hasEnglish ? (contentLanguage === 'ja' ? '日本語訳' : '英語版') : '英語原文はこの節に未収録'}</span><button class="icon-button" type="button" data-action="reader-width" title="本文の幅を切り替え" aria-label="本文の幅を切り替え">↔</button><button class="icon-button" type="button" data-action="reader-font-down" aria-label="文字を小さくする">A−</button><button class="icon-button" type="button" data-action="reader-font-up" aria-label="文字を大きくする">A＋</button><button class="icon-button" type="button" data-action="reader-line" aria-label="行間を調整">↕</button><button class="icon-button" type="button" data-action="speak" ${available ? '' : 'disabled'} aria-label="本文を読み上げる">▶ 読み上げ</button><button class="icon-button" type="button" data-action="stop-speech" aria-label="読み上げを停止">■ 停止</button><button class="button secondary" type="button" data-action="prepare-bookmark">この位置にしおり</button></div>
         <div class="reader-meta"><span>${escapeHTML(chapter.part)} · 第${section.chapterId.slice(2)}章</span><span>書籍 p.${section.bookStart}–${section.bookEnd ?? '未確認'} · PDF p.${section.pdfStart}–${section.pdfEnd ?? '未確認'}</span></div>
         <div class="reader-pdf-actions">${available?pdfLink:''}<a class="button secondary" href="./book/AHTTv600.pdf" download="AHTTv600.pdf">原本PDFをダウンロード · 約31MB</a><button class="button secondary" type="button" data-action="cache-pdf">原本PDFをオフライン保存</button></div>
         <p class="small-note">原本PDFは英語版です。翻訳本文・原図の再利用とは権利を分けて扱います。PDFビューアーによっては指定ページへ自動移動しません。オフライン保存には空き容量と対応ブラウザーが必要です。</p>
         <h2 class="reader-title">${escapeHTML(section.id)}　${escapeHTML(displayTitle)}</h2>
         <div class="reader-status-row">${statusPill(available ? (section.localSourceChecked ? '原本照合済み（作業者）' : '翻訳済み') : draftLabel, available ? 'green' : 'neutral')}${statusPill(available ? '専門家校閲待ち' : privateOnly ? '訳文等の公開範囲を確認中' : draftComplete ? '確認待ち・アプリ未収録' : inProgress ? '下書きはアプリ未収録' : '日本語訳は未収録', 'amber')}</div>
-        ${available ? `<div class="book-content" lang="${contentLanguage}">${blocks}</div>
+        ${available ? `<div class="book-content" lang="${contentLanguage}">${blocks}</div>` : blocks}
+          <p class="small-note">原本PDFを読んだ後の読了・しおり・メモは自分で記録してください。PDFビューアー内の位置は自動取得できません。</p>
           <div class="reader-actions"><button type="button" class="button ${state.readSections[section.id] ? 'secondary' : 'primary'}" data-action="toggle-read">${state.readSections[section.id] ? '✓ 読了に記録済み' : 'この節を読了にする'}</button><form class="bookmark-form" id="bookmark-form"><label for="bookmark-note">しおりのメモ（任意）</label><div class="inline-form"><input id="bookmark-note" name="note" type="text" maxlength="180" placeholder="あとで見返したい点"/><button class="button secondary" type="submit">しおりを付ける</button></div></form></div>
           <form class="reader-personal-note" id="reader-note-form"><p class="eyebrow">自分の学習メモ</p><div class="form-two"><label>見出し<input name="title" type="text" maxlength="100" value="${escapeHTML(editingNote?.title||'')}" placeholder="例：大事な考え方"/></label><label>メモ<textarea name="text" rows="2" maxlength="1000" placeholder="自分の言葉で整理しておく">${escapeHTML(editingNote?.text||'')}</textarea></label></div><button class="button ghost" type="submit">${editingNote?'メモの変更を保存':'この節にメモを保存'}</button>${editingNote?'<button type="button" class="text-button" data-action="cancel-note-edit">編集を取り消す</button>':''}</form>
           ${state.notes.filter(note => note.sectionId === section.id).map(note => `<div class="reader-note-entry"><strong>${escapeHTML(note.title || '学習メモ')}</strong><p>${escapeHTML(note.text)}</p><small>${formatDate(localDay(note.createdAt))}</small><button type="button" class="text-button" data-edit-note="${escapeHTML(note.id)}">編集</button><button type="button" class="text-button" data-delete-note="${escapeHTML(note.id)}">削除</button></div>`).join('')}
-          ${sectionBookmarks.length ? `<div class="bookmark-list"><h3>この節のしおり</h3>${sectionBookmarks.map(bookmark => `<div class="bookmark-row"><label>しおりのメモ<input type="text" maxlength="180" data-bookmark-note="${escapeHTML(bookmark.id)}" value="${escapeHTML(bookmark.note)}"/><small>${formatDate(localDay(bookmark.createdAt))} · 書籍 p.${bookmark.bookPage || '未記録'}</small></label><button type="button" class="text-button" data-bookmark="${escapeHTML(bookmark.id)}">この位置へ</button><button type="button" class="text-button" data-delete-bookmark="${escapeHTML(bookmark.id)}">削除</button></div>`).join('')}</div>` : ''}` : blocks}
+          ${sectionBookmarks.length ? `<div class="bookmark-list"><h3>この節のしおり</h3>${sectionBookmarks.map(bookmark => `<div class="bookmark-row"><label>しおりのメモ<input type="text" maxlength="180" data-bookmark-note="${escapeHTML(bookmark.id)}" value="${escapeHTML(bookmark.note)}"/><small>${formatDate(localDay(bookmark.createdAt))} · 書籍 p.${bookmark.bookPage || '未記録'}${bookmark.blockId?'':'（節の開始）'}</small></label><button type="button" class="text-button" data-bookmark="${escapeHTML(bookmark.id)}">${bookmark.blockId?'この位置へ':'この節へ'}</button><button type="button" class="text-button" data-delete-bookmark="${escapeHTML(bookmark.id)}">削除</button></div>`).join('')}</div>` : ''}
         <div class="reader-pager"><button class="button ghost" type="button" ${prev ? `data-section="${prev.id}"` : 'disabled'}>← 前の節${prev ? ` · ${escapeHTML(prev.title)}` : ''}</button><button class="button ghost" type="button" ${next ? `data-section="${next.id}"` : 'disabled'}>次の節${next ? ` · ${escapeHTML(next.title)}` : ''} →</button></div>
       </article>
     </div>`;
@@ -533,7 +534,7 @@ function renderBookBlock(block, language = 'ja') {
 function readerPosition() {
   const blocks=[...document.querySelectorAll('#reader-article .source-block')];
   const block=blocks.filter(b=>b.getBoundingClientRect().top<=150).at(-1)||blocks[0];
-  return {scrollY:Math.max(0,window.scrollY),blockId:block?.dataset.blockId||'',offset:block?-block.getBoundingClientRect().top:0,bookPage:Number(block?.dataset.bookPage)||null,language:state.settings.contentLanguage,updatedAt:new Date().toISOString()};
+  return {scrollY:Math.max(0,window.scrollY),blockId:block?.dataset.blockId||'',offset:block?-block.getBoundingClientRect().top:0,bookPage:Number(block?.dataset.bookPage)||Number(getSection(ui.readerSection)?.bookStart)||null,language:state.settings.contentLanguage,updatedAt:new Date().toISOString()};
 }
 function saveReaderPosition() {
   if(ui.route!=='reader'||!ui.readerSection)return;
@@ -682,8 +683,8 @@ function renderPlan() {
   const plan = state.plan;
   const remaining = plan.targetDate ? Math.max(0, Math.ceil((new Date(`${plan.targetDate}T00:00:00`) - new Date(`${todayISO()}T00:00:00`)) / 86400000)) : null;
   const todayDue = dueReviewCount();
-  const translatedSections = allSections().filter(sectionIsTranslated);
-  const readingSuggestion = translatedSections.find(section => !state.readSections[section.id]) || translatedSections[0];
+  const readingSections = allSections();
+  const readingSuggestion = readingSections.find(section => !state.readSections[section.id]) || readingSections[0];
   return `${pageHeading('学習計画', '続けられる予定をつくる。', '目標日と1日の時間から、読書・演習・復習を組み合わせて提案します。内容はいつでも変えたり、停止したりできます。')}
     <div class="plan-layout">
       <section class="surface-card plan-form-card"><p class="eyebrow">あなたの目標</p><h2>何をいつまでに学びたい？</h2><form id="plan-form" class="stack-form">
@@ -692,7 +693,7 @@ function renderPlan() {
         <div class="button-row"><button class="button primary" type="submit">計画を保存</button>${plan.active ? '<button class="button secondary" type="button" data-action="stop-plan">計画を停止</button>' : ''}</div>
       </form></section>
       <section class="surface-card suggestion-card"><p class="eyebrow">今日の提案</p><h2>${plan.active ? 'この順番で進めましょう' : 'まずは学習を始めましょう'}</h2>
-        <ol class="suggested-steps"><li><span>1</span><div><strong>${readingSuggestion ? `${state.readSections[readingSuggestion.id] ? '読み返す' : '読む'}：第${readingSuggestion.chapterId.slice(2)}章${readingSuggestion.id}節「${escapeHTML(readingSuggestion.title)}」` : '読める本文はまだありません'}</strong><small>目安 ${planMinutes(plan.minutesPerDay)[0]} 分 · 翻訳済みの本文</small></div><a href="#reader" ${readingSuggestion ? `data-section="${readingSuggestion.id}"` : 'aria-disabled="true"'}>開く</a></li><li><span>2</span><div><strong>関連する問題に挑戦する</strong><small>目安 ${planMinutes(plan.minutesPerDay)[1]} 分 · 回答履歴を記録</small></div><a href="#quiz">始める</a></li><li><span>3</span><div><strong>${todayDue ? `${todayDue}問の復習候補を確認する` : '復習の準備をする'}</strong><small>目安 ${planMinutes(plan.minutesPerDay)[2]} 分 · 自信度も考慮</small></div><a href="#review">確認</a></li></ol>
+        <ol class="suggested-steps"><li><span>1</span><div><strong>${readingSuggestion ? `${state.readSections[readingSuggestion.id] ? '読み返す' : '読む'}：第${readingSuggestion.chapterId.slice(2)}章${readingSuggestion.id}節「${escapeHTML(readingSuggestion.title)}」` : '節の目次を確認してください'}</strong><small>目安 ${planMinutes(plan.minutesPerDay)[0]} 分 · ${readingSuggestion&&sectionIsTranslated(readingSuggestion)?'日本語訳または英語原本':'英語原本PDF'}</small></div><a href="#reader" ${readingSuggestion ? `data-section="${readingSuggestion.id}"` : 'aria-disabled="true"'}>開く</a></li><li><span>2</span><div><strong>関連する問題に挑戦する</strong><small>目安 ${planMinutes(plan.minutesPerDay)[1]} 分 · 回答履歴を記録</small></div><a href="#quiz">始める</a></li><li><span>3</span><div><strong>${todayDue ? `${todayDue}問の復習候補を確認する` : '復習の準備をする'}</strong><small>目安 ${planMinutes(plan.minutesPerDay)[2]} 分 · 自信度も考慮</small></div><a href="#review">確認</a></li></ol>
         <p class="small-note">提案は収録済み教材と回答履歴に基づきます。全文の学習所要時間や、未翻訳範囲の完了日は推定していません。</p>
       </section>
       <section class="surface-card plan-summary-card"><p class="eyebrow">計画の見通し</p>${plan.active ? `<div class="summary-highlight"><strong>${remaining === null ? '—' : remaining}</strong><span>${remaining === 1 ? '日後まで' : '日間の予定'}</span></div><p>目標日：${formatDate(plan.targetDate)}　·　1日 ${Number(plan.minutesPerDay) || 15} 分</p><p class="muted">目標：${escapeHTML(plan.goal || '未入力')}</p>` : '<div class="empty-state compact"><span class="empty-mark">▦</span><p>計画を保存すると、目標と1日の学習時間がここに表示されます。</p></div>'}</section>
@@ -996,7 +997,7 @@ function onClick(event) {
   const simMode = event.target.closest('[data-sim-mode]'); if (simMode) { ui.simMode=simMode.dataset.simMode; render(); return; }
   const actionButton = event.target.closest('[data-action]'); if (!actionButton) return;
   const action = actionButton.dataset.action;
-  if(action==='prepare-bookmark'){ui.bookmarkPosition=readerPosition();document.querySelector('#bookmark-note')?.focus();showStatus('この位置をしおりにします。メモを入力して「しおりを付ける」を押してください。');return;}
+  if(action==='prepare-bookmark'){ui.bookmarkPosition=readerPosition();document.querySelector('#bookmark-note')?.focus();showStatus(sectionIsTranslated(getSection(ui.readerSection))?'この位置をしおりにします。メモを入力して「しおりを付ける」を押してください。':'この節の開始ページをしおりにします。必要ならメモを入力してください。');return;}
   if (action === 'toggle-theme') { const effective = state.settings.theme === 'system' ? (systemDark?.matches?'dark':'light') : state.settings.theme; state.settings.theme=effective==='dark'?'light':'dark'; saveState(); render(); }
   else if (action === 'reader-font-up') { state.settings.fontScale=Math.min(1.4,Number((state.settings.fontScale+0.05).toFixed(2))); saveState(); render(); }
   else if (action === 'reader-font-down') { state.settings.fontScale=Math.max(0.9,Number((state.settings.fontScale-0.05).toFixed(2))); saveState(); render(); }
@@ -1113,7 +1114,7 @@ function speakSection() {
 function saveBookmark(form) {
   const note=String(new FormData(form).get('note')||'').trim(),position=ui.bookmarkPosition||readerPosition();
   state.bookmarks.push({id:makeId(),sectionId:ui.readerSection,note,createdAt:new Date().toISOString(),position:position.scrollY,blockId:position.blockId,offset:position.offset,bookPage:position.bookPage,language:position.language});
-  ui.bookmarkPosition=null;const saved=saveState();render();showStatus(saved?'本文の位置としおりのメモを保存しました。':'端末に保存できませんでした。JSONを書き出してください。');
+  ui.bookmarkPosition=null;const saved=saveState();render();showStatus(saved?(sectionIsTranslated(getSection(ui.readerSection))?'本文の位置としおりのメモを保存しました。':'原本PDFの節としおりのメモを保存しました。'):'端末に保存できませんでした。JSONを書き出してください。');
 }
 function saveReaderNote(form) {
   const data=new FormData(form); const text=String(data.get('text')||'').trim();

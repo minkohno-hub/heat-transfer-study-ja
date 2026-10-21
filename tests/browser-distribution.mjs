@@ -28,6 +28,21 @@ try {
   assert.equal(await page.locator('.reader-toc .toc-item:not(.not-ready)').count(),0);
   assert.match(await page.locator('.not-translated').innerText(),/公開していません/);
   assert.match(await page.locator('.not-translated a[href*="AHTTv600.pdf"]').getAttribute('href'),/AHTTv600\.pdf#page=17$/);
+  await page.locator('[data-action="toggle-read"]').click();
+  await page.locator('#bookmark-note').fill('原本の対応箇所');
+  await page.locator('#bookmark-form button[type="submit"]').click();
+  await page.locator('#reader-note-form textarea').fill('原本を読んだ後に自分で確認する。');
+  await page.locator('#reader-note-form button[type="submit"]').click();
+  const readingRecord=await page.evaluate(()=>{const s=JSON.parse(localStorage.getItem('heat-study-ja:v1'));return {read:s.readSections['1.1'],bookmark:s.bookmarks[0],note:s.notes[0]};});
+  assert.equal(readingRecord.read,true);
+  assert.equal(readingRecord.bookmark.bookPage,3);
+  assert.equal(readingRecord.note.sectionId,'1.1');
+  await page.locator('.reader-pager [data-section="1.2"]').click();
+  assert.match(await page.locator('.not-translated a[href*="AHTTv600.pdf"]').getAttribute('href'),/AHTTv600\.pdf#page=20$/);
+  await nav('home');
+  assert.match(await page.locator('.hero-side').innerText(),/1 \/ 76 節を読了/);
+  await nav('plan');
+  assert.match(await page.locator('.suggested-steps li').first().innerText(),/1\.2.*英語原本PDF/s);
   for(const path of ['data/sections/1-1-en.json','data/sections/1-1-ja.json','data/figures/fig1-1-021.png']){
     const status=await page.evaluate(async path=>(await fetch(path)).status,path);
     assert.equal(status,404,path);
