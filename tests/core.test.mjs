@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {createEmptyState,validateLearningData,normalizeLearningData,mergeLearningData,calculateHeatTransfer,chapterKey,searchEntries,searchSnippet,nextReviewDays,shiftMonth,localDay,planMinutes,DATA_FORMAT,speechChunks,quizChoiceOrder} from '../study-core.mjs';
+import {createEmptyState,validateLearningData,normalizeLearningData,mergeLearningData,calculateHeatTransfer,chapterKey,searchEntries,searchSnippet,nextReviewDays,shiftMonth,localDay,planMinutes,fieldProgress,DATA_FORMAT,speechChunks,quizChoiceOrder} from '../study-core.mjs';
 const exported=()=>({...createEmptyState(),format:DATA_FORMAT});
 const attempt=(extra={})=>({id:'a1',questionId:'q1',selected:0,correct:true,confidence:'high',at:'2026-10-19T15:15:00.000Z',...extra});
 
@@ -38,6 +38,18 @@ test('merge is idempotent, retains newer notes, combines reports, and preserves 
   const r1={category:'other',message:'one',at:'2026-10-19T00:00:00Z'},r2={...r1,message:'two'};a.questionReports.q1=[r1];b.questionReports.q1=[r1,r2];
   const merged=mergeLearningData(a,b),again=mergeLearningData(merged,b);
   assert.equal(merged.attempts.length,2);assert.equal(merged.mistakeNotes.q1.reason,'new');assert.equal(merged.questionReports.q1.length,2);assert.deepEqual(merged.readSections,{'1.1':true,'1.2':true});assert.deepEqual(merged.readerPositions,{'1.1':200,'1.2':300});assert.deepEqual(again,merged);
+});
+test('numeric and ISO timestamps keep their actual order in restore, review records and field progress',()=>{
+  const older='2026-10-20T00:00:00Z',later=Date.UTC(2026,9,21);
+  const a=createEmptyState(),b=exported();
+  a.attempts=[attempt({id:'later',at:later,correct:true})];
+  b.attempts=[attempt({id:'older',at:older,correct:false})];
+  a.completedReviews.q1=older;b.completedReviews.q1=later;
+  assert.equal(validateLearningData(b),'');
+  const merged=mergeLearningData(a,b);
+  assert.deepEqual(merged.attempts.map(item=>item.id),['older','later']);
+  assert.equal(merged.completedReviews.q1,later);
+  assert.equal(fieldProgress([{id:'q1'}],merged.attempts).correct,1);
 });
 test('conduction and convection preserve units, zero temperature difference, and heat-flow sign',()=>{
   assert.equal(calculateHeatTransfer('conduction',{k:15,area:.5,thickness:.08,hot:80,cold:20}).watts,5625);

@@ -37,6 +37,15 @@ test('review completion is compared by instant across time zones',()=>{
   h.api.state.reviews.q1.lastReviewedAt='2026-10-21T01:00:00Z';
   assert.ok(h.api.reviewCandidates()[0].reasons.includes('直近の誤答'));
 });
+test('numeric legacy timestamps retain the correct review day and completion order',()=>{
+  const h=harness(),answeredAt=Date.UTC(2026,9,21,9),completedAt=answeredAt+3600000;
+  h.api.state.attempts=[{questionId:'q1',correct:false,confidence:'low',at:answeredAt}];
+  assert.equal(h.api.reviewCandidates()[0].due,core.localDay(new Date(answeredAt+86400000)));
+  h.api.state.reviews.q1={dueDate:'2099-10-21',lastReviewedAt:completedAt};
+  assert.equal(h.api.reviewCandidates().length,0);
+  h.api.state.reviews.q1.lastReviewedAt=answeredAt-3600000;
+  assert.ok(h.api.reviewCandidates()[0].reasons.includes('直近の誤答'));
+});
 
 test('clearing a review date preserves valid saved data, and valid changes have a merge timestamp',()=>{
   const h=harness();h.api.state.reviews.q1={dueDate:'2026-10-22',suggestedDays:3};h.api.saveState();const before=JSON.stringify(h.api.state);

@@ -9,7 +9,8 @@ export function createEmptyState() {
 const record = v => v !== null && typeof v === 'object' && !Array.isArray(v);
 const text = v => typeof v === 'string';
 const finite = v => typeof v === 'number' && Number.isFinite(v);
-const time = v => (text(v) || finite(v)) && Number.isFinite(new Date(v).getTime());
+const instant = v => new Date(v).getTime();
+const time = v => (text(v) || finite(v)) && Number.isFinite(instant(v));
 export function validDay(v) {
   if (!text(v) || !/^\d{4}-\d{2}-\d{2}$/.test(v)) return false;
   const d = new Date(`${v}T12:00:00Z`);
@@ -67,11 +68,11 @@ export function normalizeLearningData(data) {
   const out=createEmptyState();
   for (const k of Object.keys(out)) if (data[k]!==undefined) out[k]=structuredClone(data[k]);
   out.settings={...createEmptyState().settings,...out.settings}; out.plan={...createEmptyState().plan,...out.plan};
-  out.attempts.sort((a,b)=>new Date(a.at).getTime()-new Date(b.at).getTime());
-  out.sessions.sort((a,b)=>new Date(a.finishedAt??a.startedAt).getTime()-new Date(b.finishedAt??b.startedAt).getTime());
+  out.attempts.sort((a,b)=>instant(a.at)-instant(b.at));
+  out.sessions.sort((a,b)=>instant(a.finishedAt??a.startedAt)-instant(b.finishedAt??b.startedAt));
   return out;
 }
-const updated = v => record(v) ? Math.max(-Infinity,...[v.updatedAt,v.at,v.createdAt,v.lastReviewedAt,v.lastAnsweredAt].filter(x=>text(x)||finite(x)).map(x=>new Date(x).getTime()).filter(Number.isFinite)) : -Infinity;
+const updated = v => record(v) ? Math.max(-Infinity,...[v.updatedAt,v.at,v.createdAt,v.lastReviewedAt,v.lastAnsweredAt].filter(x=>text(x)||finite(x)).map(instant).filter(Number.isFinite)) : -Infinity;
 function newest(a,b) { return updated(b)>updated(a) ? b : a; }
 function mergeMap(a,b) { const out={...a}; for(const [k,v] of Object.entries(b)) out[k]=k in out ? newest(out[k],v) : v; return out; }
 function mergeRows(a,b) {
@@ -83,13 +84,13 @@ export function mergeLearningData(current, incoming) {
   const a=normalizeLearningData(current), b=normalizeLearningData(incoming);
   const out={...a,settings:{...a.settings,...incoming.settings},plan:{...a.plan,...incoming.plan}};
   for(const k of ['attempts','sessions','bookmarks','notes']) out[k]=mergeRows(a[k],b[k]);
-  out.attempts.sort((x,y)=>Date.parse(x.at)-Date.parse(y.at));
-  out.sessions.sort((x,y)=>new Date(x.finishedAt??x.startedAt).getTime()-new Date(y.finishedAt??y.startedAt).getTime());
+  out.attempts.sort((x,y)=>instant(x.at)-instant(y.at));
+  out.sessions.sort((x,y)=>instant(x.finishedAt??x.startedAt)-instant(y.finishedAt??y.startedAt));
   out.questionBookmarks=[...new Set([...a.questionBookmarks,...b.questionBookmarks])];
   for(const k of ['mistakeNotes','readerPositions','reviews']) out[k]=mergeMap(a[k],b[k]);
   out.readSections={...a.readSections}; for(const [k,v] of Object.entries(b.readSections)) out.readSections[k]=Boolean(a.readSections[k]||v);
   out.questionReports={...a.questionReports}; for(const [k,v] of Object.entries(b.questionReports)) out.questionReports[k]=mergeRows(a.questionReports[k]||[],v);
-  out.completedReviews={...a.completedReviews}; for(const [k,v] of Object.entries(b.completedReviews)) if(!out.completedReviews[k]||Date.parse(v)>Date.parse(out.completedReviews[k])) out.completedReviews[k]=v;
+  out.completedReviews={...a.completedReviews}; for(const [k,v] of Object.entries(b.completedReviews)) if(!out.completedReviews[k]||instant(v)>instant(out.completedReviews[k])) out.completedReviews[k]=v;
   out.simComparisons={...a.simComparisons,...b.simComparisons};
   out.activities=mergeRows(a.activities,b.activities);
   out.quizDraft=a.quizDraft&&b.quizDraft?newest(a.quizDraft,b.quizDraft):a.quizDraft||b.quizDraft;
@@ -143,7 +144,7 @@ export function recordStudyActivity(records,context,from,to,pageId) {
 }
 export function fieldProgress(questions,attempts) {
   const ids=new Set(questions.map(q=>q.id)),latest=new Map();
-  for(const a of attempts)if(ids.has(a.questionId)&&(!latest.has(a.questionId)||Date.parse(a.at)>=Date.parse(latest.get(a.questionId).at)))latest.set(a.questionId,a);
+  for(const a of attempts)if(ids.has(a.questionId)&&(!latest.has(a.questionId)||instant(a.at)>=instant(latest.get(a.questionId).at)))latest.set(a.questionId,a);
   const answered=latest.size,correct=[...latest.values()].filter(a=>a.correct).length;
   return {answered,correct,enough:answered>=3,ratio:answered?correct/answered:0,total:questions.length};
 }

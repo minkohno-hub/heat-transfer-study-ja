@@ -359,9 +359,10 @@ function reviewCandidates() {
     const wrong = attempts.filter(a => !a.correct);
     const recent = attempts.at(-1);
     const review = state.reviews[q.id];
-    const due = review?.dueDate || (recent ? todayISO(new Date(Date.parse(recent.at) + (recent.correct ? 3 : 1) * 86400000)) : '9999-12-31');
+    const recentAt=recent?new Date(recent.at).getTime():null;
+    const due = review?.dueDate || (recent ? todayISO(new Date(recentAt + (recent.correct ? 3 : 1) * 86400000)) : '9999-12-31');
     const reasons = [];
-    const reviewedAfterLastAttempt = Boolean(review?.lastReviewedAt && recent && Date.parse(review.lastReviewedAt) >= Date.parse(recent.at));
+    const reviewedAfterLastAttempt = Boolean(review?.lastReviewedAt && recent && new Date(review.lastReviewedAt).getTime() >= recentAt);
     if (!reviewedAfterLastAttempt && recent && !recent.correct) reasons.push('直近の誤答');
     if (!reviewedAfterLastAttempt && wrong.length >= 2) reasons.push(`誤答${wrong.length}回`);
     if (!reviewedAfterLastAttempt && attempts.length >= 3 && accuracy !== null && accuracy < 0.6) reasons.push(`正答率${Math.round(accuracy * 100)}%（3回以上）`);
