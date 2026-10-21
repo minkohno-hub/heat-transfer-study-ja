@@ -3,14 +3,15 @@ import assert from 'node:assert/strict';
 import vm from 'node:vm';
 import {readFile} from 'node:fs/promises';
 import * as core from '../study-core.mjs';
+import * as guide from '../guide.mjs';
 const source=await readFile(new URL('../app.js',import.meta.url),'utf8');
 const key='heat-study-ja:v1';
 const question={id:'q1',prompt:'テスト用に作成した問題',choices:['答え','誤答1','誤答2','誤答3'],answer:0,field:'伝導',difficulty:'基礎',source:{section:'1.1'},explanation:'説明',distractors:['正解','理由1','理由2','理由3']};
 function harness(initial) {
   const store=new Map(initial?[[key,initial]]:[]);let fail=false,failKey='',rendered=0,submitted=0,reloaded=0;
   const root={innerHTML:''},document={querySelector:s=>s==='#app'?root:s==='#quiz-answer-form'?{requestSubmit(){submitted++;}}:null,querySelectorAll:()=>Array.from({length:4},()=>({focus(){}})),documentElement:{dataset:{},style:{setProperty(){}}},body:{append(){}},createElement:()=>({setAttribute(){},remove(){}})};
-  const context=vm.createContext({...core,structuredClone,JSON,Date,Math,Intl,Map,Set,Number,String,Array,Boolean,RegExp,Blob,URL,crypto:{randomUUID:()=> '11111111-1111-4111-8111-111111111111'},document,window:{matchMedia:()=>({matches:false}),scrollTo(){},confirm:()=>true,location:{reload(){reloaded++;}}},location:{hash:''},navigator:{onLine:true},setTimeout:()=>1,clearTimeout(){},localStorage:{getItem:k=>store.get(k)||null,setItem(k,v){if((fail&&k===key)||k===failKey)throw Error('quota');store.set(k,v);},removeItem(k){store.delete(k);}},FormData:class{constructor(v){this.values=v.values??v;}get(k){return this.values[k]??null;}}});
-  vm.runInContext(source.replace(/^import .*?;\s*/,'').replace(/\nstartApp\(\);\s*$/,'')+`
+  const context=vm.createContext({...core,...guide,structuredClone,JSON,Date,Math,Intl,Map,Set,Number,String,Array,Boolean,RegExp,Blob,URL,crypto:{randomUUID:()=> '11111111-1111-4111-8111-111111111111'},document,window:{matchMedia:()=>({matches:false}),scrollTo(){},confirm:()=>true,location:{reload(){reloaded++;}}},location:{hash:''},navigator:{onLine:true},setTimeout:()=>1,clearTimeout(){},localStorage:{getItem:k=>store.get(k)||null,setItem(k,v){if((fail&&k===key)||k===failKey)throw Error('quota');store.set(k,v);},removeItem(k){store.delete(k);}},FormData:class{constructor(v){this.values=v.values??v;}get(k){return this.values[k]??null;}}});
+  vm.runInContext(source.replace(/^import .*?;\s*/gm,'').replace(/\nstartApp\(\);\s*$/,'')+`
     render=()=>{globalThis.renderCount=(globalThis.renderCount||0)+1;};showStatus=message=>{globalThis.statusMessage=message;};
     globalThis.api={get state(){return state;},set state(v){state=v;},get ui(){return ui;},set ui(v){ui={...ui,...v};},set questions(v){questionBank=v;},set book(v){book=v;},set terms(v){glossary=v;},submitQuizAnswer,reviewCandidates,validateImport,importData,saveState,setReviewDate,buildSearchIndex,onKeyDown,renderBookBlock,renderQuestionFigure,blockSourceLabel,figureZoomLink,renderSimulationSteps,simGraph,validBookBlocks,sectionIsTranslated,createProfile,get warning(){return storageIssue;}};`,context);
   const api=context.api;api.questions=[question];api.book={chapters:[{id:'ch1',title:'章',sections:[{id:'1.1',title:'本文',bookStart:3,bookEnd:4,pdfStart:17,pdfEnd:18,blocks:[{id:'b1',type:'paragraph',text:'検索する語',bookPage:3,pdfPage:17}]}]}]};api.terms=[{id:'term',ja:'熱',en:'heat',meaning:'温度による移動',source:{section:'1.1'}}];

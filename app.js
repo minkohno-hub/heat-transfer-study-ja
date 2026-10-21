@@ -1,4 +1,5 @@
 import { createEmptyState, validateLearningData, normalizeLearningData, mergeLearningData, calculateHeatTransfer, chapterKey, searchEntries, searchSnippet, searchRanges, localDay, validDay, shiftMonth, nextReviewDays, planMinutes, validateQuestion, safeLocalFigurePath, speechChunks, questionFingerprint, quizChoiceOrder, quizResumeIssue, recordStudyActivity, fieldProgress, studyDuration } from './study-core.mjs';
+import { GUIDE_SECTIONS, searchGuide } from './guide.mjs';
 const CORE_DATA_FILES = ['./data/book.json', './data/questions.json', './data/glossary.json', './data/content-manifest.json'];
 const LEGACY_STORAGE_KEY = 'heat-study-ja:v1';
 const PROFILES_KEY = 'heat-study-ja:profiles:v1';
@@ -17,10 +18,14 @@ let questionBank;
 let glossary;
 let contentManifest;
 let speechRun = 0;
+function routeFromHash() { return location.hash.slice(1).split('/')[0] || 'home'; }
+function guideTargetFromHash() { const id=location.hash.slice(1).split('/')[1]; return GUIDE_SECTIONS.some(section=>section.id===id)?id:''; }
 const activityPageId=makeId();
 let activityTick=Date.now(),lastInteractionAt=activityTick,activityWasVisible=document.visibilityState!=='hidden'&&(!document.hasFocus||document.hasFocus());
 let ui = {
-  route: location.hash.slice(1) || 'home',
+  route: routeFromHash(),
+  guideTarget: guideTargetFromHash(),
+  guideQuery: '',
   readerSection: state.lastSection,
   search: { query: '', kind: 'all', chapter: 'all' },
   quiz: null,
@@ -147,7 +152,7 @@ function allSections() { return book.chapters.flatMap(chapter => chapter.section
 function getSection(id) { return allSections().find(section => section.id === id); }
 function getQuestion(id) { return questionBank.find(question => question.id === id); }
 function sectionIsTranslated(section) { return Array.isArray(section?.blocks) && section.blocks.length > 0; }
-function sectionProgressLabel(section) { return sectionIsTranslated(section) ? '読める' : section?.translationStatus === 'draft_complete' ? '確認待ち' : section?.translationStatus === 'in_progress' ? '翻訳中' : '未着手'; }
+function sectionProgressLabel(section) { return sectionIsTranslated(section) ? '読める' : section?.translationStatus === 'private_only' ? '公開版に未収録' : section?.translationStatus === 'draft_complete' ? '確認待ち' : section?.translationStatus === 'in_progress' ? '翻訳中' : '未着手'; }
 function blockSourceLabel(block){
   const range=(first,last)=>`${first??'未記録'}${last&&last!==first?'–'+last:''}`;
   return `書籍 p.${range(block.bookPage,block.endBookPage)} · PDF p.${range(block.pdfPage,block.endPdfPage)}`;
@@ -199,6 +204,7 @@ function setRoute(route) {
   if(ui.route==='reader'&&route!=='reader')captureReaderPosition();
   if(ui.route==='reader'&&route!=='reader')stopSpeech(false);
   ui.route = route;
+  ui.guideTarget = '';
   if (location.hash !== `#${route}`) location.hash = route;
   render();
   window.scrollTo({ top: 0, behavior: 'instant' });
@@ -210,7 +216,7 @@ function updateState(change) { state = typeof change === 'function' ? change(sta
 const NAV_ITEMS = [
   ['home', 'ホーム', '⌂'], ['reader', '読む', '▤'], ['quiz', '問題', '◉'], ['review', '復習', '↻'],
   ['search', '検索', '⌕'], ['glossary', '用語集', 'あ'], ['map', '分野マップ', '◫'],
-  ['simulator', 'シミュレーター', '≈'], ['plan', '学習計画', '▦'], ['calendar', 'カレンダー', '▣'], ['settings', '設定', '⚙']
+  ['simulator', 'シミュレーター', '≈'], ['plan', '学習計画', '▦'], ['calendar', 'カレンダー', '▣'], ['settings', '設定', '⚙'], ['guide', '使い方・学習ガイド', '?']
 ];
 
 async function startApp() {
@@ -262,10 +268,11 @@ async function startApp() {
       navigator.serviceWorker.register('./sw.js').then(()=>navigator.serviceWorker.ready).then(registration=>registration.active?.postMessage({type:'CACHE_CONTENT',urls:ui.localCacheFiles||[]})).catch(()=>showStatus('オフライン保存の準備に失敗しました。ネット接続中に再読み込みしてください。'));
     }
     window.addEventListener('hashchange', () => {
-      const next=location.hash.slice(1)||'home';if(next===ui.route)return;
+      const next=routeFromHash(),guideTarget=guideTargetFromHash();if(next===ui.route&&guideTarget===ui.guideTarget)return;
       flushLearningTime();if(ui.route==='reader'){captureReaderPosition();stopSpeech(false);}persistQuiz();
-      ui.route=next;render();window.scrollTo({top:0,behavior:'instant'});focusPageHeading();
+      ui.route=next;ui.guideTarget=guideTarget;if(guideTarget)ui.guideQuery='';render();window.scrollTo({top:0,behavior:'instant'});focusPageHeading();
       if(next==='reader')setTimeout(()=>restoreReaderPosition(state.readerPositions[ui.readerSection]),100);
+      if(next==='guide'&&guideTarget)setTimeout(()=>focusGuideSection(guideTarget),0);
     });
     root.addEventListener('click', onClick);
     root.addEventListener('submit', onSubmit);
@@ -291,8 +298,9 @@ async function startApp() {
     systemDark?.addEventListener?.('change', () => { if (state.settings.theme === 'system') render(); });
     render();
     if(ui.route==='reader')setTimeout(()=>restoreReaderPosition(state.readerPositions[ui.readerSection]),100);
+    if(ui.route==='guide'&&ui.guideTarget)setTimeout(()=>focusGuideSection(ui.guideTarget),0);
   } catch (error) {
-    root.innerHTML = `<main class="load-error"><div class="error-icon">!</div><h1>教材を読み込めませんでした</h1><p>${escapeHTML(error.message || '教材データを確認してください。')}</p><p>ローカルサーバーから開いているか、<code>data</code> フォルダーがそろっているか確認してください。</p></main>`;
+    root.innerHTML = `<main class="load-error"><div class="error-icon">!</div><h1>教材を読み込めませんでした</h1><p>${escapeHTML(error.message || '教材データを確認してください。')}</p><p>ネット接続を確認して再読み込みしてください。解決しない場合は、配信ファイルの不足を確認してください。</p></main>`;
   }
 }
 
@@ -329,7 +337,7 @@ function render() {
 }
 
 function routeContent() {
-  const routes = { home: renderHome, reader: renderReader, search: renderSearch, glossary: renderGlossary, quiz: renderQuiz, review: renderReview, plan: renderPlan, calendar: renderCalendar, map: renderMap, simulator: renderSimulator, settings: renderSettings };
+  const routes = { home: renderHome, reader: renderReader, search: renderSearch, glossary: renderGlossary, quiz: renderQuiz, review: renderReview, plan: renderPlan, calendar: renderCalendar, map: renderMap, simulator: renderSimulator, settings: renderSettings, guide: renderGuide };
   return (routes[ui.route] || renderHome)();
 }
 
@@ -366,7 +374,16 @@ function renderQuizResume(){
   return `<aside class="notice-card quiz-resume"><div><strong>中断した演習があります</strong><p>${state.quizDraft.index+1} / ${state.quizDraft.ids.length}問目 · 回答履歴は保存されています。</p>${issue?`<p role="status">${escapeHTML(issue)}</p>`:''}<div class="button-row"><button class="button primary" type="button" data-action="resume-quiz" ${issue?'disabled':''}>中断した演習を再開</button><button class="text-button" type="button" data-action="discard-quiz">この中断セットを破棄</button></div></div></aside>`;
 }
 function pageHeading(eyebrow, title, description = '', actions = '') {
-  return `<div class="page-heading"><div><p class="eyebrow">${eyebrow}</p><h1>${title}</h1>${description ? `<p class="page-description">${description}</p>` : ''}</div>${actions ? `<div class="heading-actions">${actions}</div>` : ''}</div>`;
+  const guideLink={home:'start',reader:'reader',quiz:'quiz',review:'review',search:'search',glossary:'search',map:'progress',simulator:'simulator',plan:'plan',calendar:'plan',settings:'data'}[ui.route];
+  const help=guideLink?`<a class="text-link page-help" href="#guide/${guideLink}">この画面の使い方 →</a>`:'';
+  return `<div class="page-heading"><div><p class="eyebrow">${eyebrow}</p><h1>${title}</h1>${description ? `<p class="page-description">${description}</p>` : ''}</div>${actions||help ? `<div class="heading-actions">${actions}${help}</div>` : ''}</div>`;
+}
+function focusGuideSection(id){const section=document.getElementById(`guide-${id}`);section?.scrollIntoView({block:'start'});section?.focus({preventScroll:true});}
+function renderGuide() {
+  const matches=searchGuide(ui.guideQuery);
+  return `${pageHeading('使い方・学習ガイド','操作と熱移動の考え方を学ぶ','基本操作から4つのシミュレーターの式・前提・手計算例まで、アプリ内で確認できます。')}
+    <div class="guide-layout"><aside class="surface-card guide-toc" aria-label="ガイドの目次"><h2>目次</h2><form id="guide-search-form" role="search"><label for="guide-query">ガイド内を検索</label><div class="guide-search-row"><input id="guide-query" name="query" type="search" value="${escapeHTML(ui.guideQuery)}" placeholder="例：放射率、復元、復習"/><button type="submit" class="button secondary">探す</button></div></form><nav aria-label="ガイドの項目">${GUIDE_SECTIONS.map(section=>`<a href="#guide/${section.id}">${escapeHTML(section.title)}</a>`).join('')}</nav></aside>
+    <div class="guide-results"><p class="guide-count" role="status">${ui.guideQuery?`「${escapeHTML(ui.guideQuery)}」の検索結果：${matches.length}項目`:`全${GUIDE_SECTIONS.length}項目 · アプリ作成の説明`}</p>${matches.length?matches.map(section=>`<section class="surface-card guide-section" id="guide-${section.id}" tabindex="-1"><p class="eyebrow">使い方・学習ガイド</p><h2>${escapeHTML(section.title)}</h2><p class="guide-summary">${escapeHTML(section.summary)}</p><div class="guide-body">${section.html}</div><a class="text-link" href="#guide">ガイドの先頭へ ↑</a></section>`).join(''):'<div class="surface-card guide-empty"><p>該当する説明が見つかりませんでした。別の言葉で検索してください。</p></div>'}</div></div>`;
 }
 function statusPill(text, tone = 'neutral') { return `<span class="status-pill tone-${tone}">${text}</span>`; }
 function translatedSectionCount() { return allSections().filter(sectionIsTranslated).length; }
@@ -435,9 +452,10 @@ function renderReader() {
   const progress = section.translationProgress;
   const inProgress = section.translationStatus === 'in_progress';
   const draftComplete = section.translationStatus === 'draft_complete';
-  const draftLabel = draftComplete ? '下書き完成' : inProgress ? '翻訳中' : '未着手';
-  const draftHeading = draftComplete ? '翻訳下書きが完成しました' : inProgress ? 'この節は翻訳作業中です' : 'この節の日本語訳は、まだ用意されていません';
-  const draftDescription = draftComplete ? `書籍 pp.${escapeHTML(progress?.draftBookPages || '確認中')}（PDF pp.${escapeHTML(progress?.draftPdfPages || '確認中')}）の日英下書きを作成しました。内容確認と専門家校閲が終わるまで、教材本文としては表示しません。` : inProgress ? `書籍 pp.${escapeHTML(progress?.draftBookPages || '確認中')}（PDF pp.${escapeHTML(progress?.draftPdfPages || '確認中')}）の下書きを作成しています。節全体の翻訳と確認が終わるまで、教材本文としては表示しません。` : '内容を推測して表示することはしていません。原本の対応ページと翻訳進捗を確認してください。';
+  const privateOnly = section.translationStatus === 'private_only';
+  const draftLabel = privateOnly ? '公開版に未収録' : draftComplete ? '下書き完成' : inProgress ? '翻訳中' : '未着手';
+  const draftHeading = privateOnly ? 'この節の書籍由来の本文は公開していません' : draftComplete ? '翻訳下書きが完成しました' : inProgress ? 'この節は翻訳作業中です' : 'この節の日本語訳は、まだ用意されていません';
+  const draftDescription = privateOnly ? '学習用の下書きがあっても、不特定多数への再配布が確認できていないため、この公開版には本文・翻訳・原図を含めません。使い方・学習ガイドと独自の問題・シミュレーターを利用できます。' : draftComplete ? `書籍 pp.${escapeHTML(progress?.draftBookPages || '確認中')}（PDF pp.${escapeHTML(progress?.draftPdfPages || '確認中')}）の日英下書きを作成しました。内容確認と専門家校閲が終わるまで、教材本文としては表示しません。` : inProgress ? `書籍 pp.${escapeHTML(progress?.draftBookPages || '確認中')}（PDF pp.${escapeHTML(progress?.draftPdfPages || '確認中')}）の下書きを作成しています。節全体の翻訳と確認が終わるまで、教材本文としては表示しません。` : '内容を推測して表示することはしていません。原本の対応ページと翻訳進捗を確認してください。';
   const blocks = available ? section[contentLanguage === 'en' ? 'blocksEn' : 'blocks'].map((block,index) => `<div class="source-block" id="reader-block-${escapeHTML(block.id || `${section.id}-b${index}`)}" data-block-id="${escapeHTML(block.id || `${section.id}-b${index}`)}" data-book-page="${escapeHTML(block.bookPage || '')}"><small class="block-source">${escapeHTML(blockSourceLabel(block))}</small>${renderBookBlock(block,contentLanguage)}</div>`).join('') : `<div class="not-translated"><span class="large-status">${draftLabel}</span><h2>${draftHeading}</h2><p>${draftDescription}</p><div class="source-reference">原本：${escapeHTML(section.sourceTitle || section.title)}<br>書籍 p.${section.bookStart ?? '台帳未記録'}–${section.bookEnd ?? '未確認'} · PDF p.${section.pdfStart ?? '台帳未記録'}–${section.pdfEnd ?? '未確認'}</div><a class="button secondary" href="#settings">教材の進捗を見る</a></div>`;
   const sectionBookmarks = state.bookmarks.filter(bookmark => bookmark.sectionId === section.id);
   const editingNote=state.notes.find(n=>n.id===ui.noteEditId&&n.sectionId===section.id);
@@ -454,7 +472,7 @@ function renderReader() {
         <div class="reader-toolbar"><div class="language-toggle" role="group" aria-label="本文の表示言語"><button type="button" class="${contentLanguage === 'ja' ? 'selected' : ''}" data-language="ja" aria-pressed="${contentLanguage === 'ja'}">日本語</button><button type="button" class="${contentLanguage === 'en' ? 'selected' : ''}" data-language="en" ${hasEnglish ? '' : 'disabled'} aria-pressed="${contentLanguage === 'en'}">英語</button></div><span class="language-note">${hasEnglish ? (contentLanguage === 'ja' ? '日本語訳' : '英語版') : '英語原文はこの節に未収録'}</span><button class="icon-button" type="button" data-action="reader-width" title="本文の幅を切り替え" aria-label="本文の幅を切り替え">↔</button><button class="icon-button" type="button" data-action="reader-font-down" aria-label="文字を小さくする">A−</button><button class="icon-button" type="button" data-action="reader-font-up" aria-label="文字を大きくする">A＋</button><button class="icon-button" type="button" data-action="reader-line" aria-label="行間を調整">↕</button><button class="icon-button" type="button" data-action="speak" ${available ? '' : 'disabled'} aria-label="本文を読み上げる">▶ 読み上げ</button><button class="icon-button" type="button" data-action="stop-speech" aria-label="読み上げを停止">■ 停止</button><button class="button secondary" type="button" data-action="prepare-bookmark" ${available ? '' : 'disabled'}>この位置にしおり</button></div>
         <div class="reader-meta"><span>${escapeHTML(chapter.part)} · 第${section.chapterId.slice(2)}章</span><span>書籍 p.${section.bookStart}–${section.bookEnd ?? '未確認'} · PDF p.${section.pdfStart}–${section.pdfEnd ?? '未確認'}</span></div>
         <h2 class="reader-title">${escapeHTML(section.id)}　${escapeHTML(displayTitle)}</h2>
-        <div class="reader-status-row">${statusPill(available ? (section.localSourceChecked ? '原本照合済み（作業者）' : '翻訳済み') : draftComplete ? '下書き完成' : inProgress ? '翻訳中' : '未着手', available ? 'green' : 'neutral')}${statusPill(available ? '専門家校閲待ち' : draftComplete ? '確認待ち・アプリ未収録' : inProgress ? '下書きはアプリ未収録' : '内容未収録', 'amber')}</div>
+        <div class="reader-status-row">${statusPill(available ? (section.localSourceChecked ? '原本照合済み（作業者）' : '翻訳済み') : draftLabel, available ? 'green' : 'neutral')}${statusPill(available ? '専門家校閲待ち' : privateOnly ? '公開範囲の確認待ち' : draftComplete ? '確認待ち・アプリ未収録' : inProgress ? '下書きはアプリ未収録' : '内容未収録', 'amber')}</div>
         ${available ? `<div class="book-content" lang="${contentLanguage}">${blocks}</div>
           <div class="reader-actions"><button type="button" class="button ${state.readSections[section.id] ? 'secondary' : 'primary'}" data-action="toggle-read">${state.readSections[section.id] ? '✓ 読了に記録済み' : 'この節を読了にする'}</button><form class="bookmark-form" id="bookmark-form"><label for="bookmark-note">しおりのメモ（任意）</label><div class="inline-form"><input id="bookmark-note" name="note" type="text" maxlength="180" placeholder="あとで見返したい点"/><button class="button secondary" type="submit">しおりを付ける</button></div></form></div>
           <form class="reader-personal-note" id="reader-note-form"><p class="eyebrow">自分の学習メモ</p><div class="form-two"><label>見出し<input name="title" type="text" maxlength="100" value="${escapeHTML(editingNote?.title||'')}" placeholder="例：大事な考え方"/></label><label>メモ<textarea name="text" rows="2" maxlength="1000" placeholder="自分の言葉で整理しておく">${escapeHTML(editingNote?.text||'')}</textarea></label></div><button class="button ghost" type="submit">${editingNote?'メモの変更を保存':'この節にメモを保存'}</button>${editingNote?'<button type="button" class="text-button" data-action="cancel-note-edit">編集を取り消す</button>':''}</form>
@@ -768,7 +786,7 @@ function renderSimulator() {
   const related=getSection(['conduction','resistance'].includes(mode)?'2.2':mode==='convection'?'6.1':'10.1');
   return `${pageHeading('簡易シミュレーター', '条件を変えて、熱の動きを見る。', '入力値を変えると計算結果とグラフが更新されます。設計値を決めるためのものではなく、基本式の動きを試す学習用モデルです。')}
     <div class="sim-tabs" role="tablist" aria-label="熱移動の種類">${Object.entries(SIM_META).map(([key,item]) => `<button type="button" role="tab" aria-selected="${mode === key}" class="sim-tab ${mode === key ? 'selected' : ''}" data-sim-mode="${key}"><span>${key === 'conduction' ? '▥' : key === 'convection' ? '↝' : '☼'}</span>${item.title}</button>`).join('')}</div>
-    <div class="sim-layout"><section class="surface-card sim-input-card"><div class="sim-intro"><p class="eyebrow">${meta.title}</p><h2>${meta.description}</h2></div><form id="sim-form" class="sim-form"><div class="sim-fields">${renderSimInputs(mode, values)}</div></form><div class="formula-card"><span>使用する式</span><strong>${meta.formula}</strong><p>正の値は、入力欄の「高温側」または「表面」から反対側へ移る向きを表します。負の値なら向きが逆です。</p></div><div class="assumption-card"><strong>前提と適用範囲</strong><p>${meta.note}</p></div></section>
+    <div class="sim-layout"><section class="surface-card sim-input-card"><div class="sim-intro"><p class="eyebrow">${meta.title}</p><h2>${meta.description}</h2><a class="text-link" href="#guide/sim-${mode}">このモデルの理論・単位・手計算例 →</a></div><form id="sim-form" class="sim-form"><div class="sim-fields">${renderSimInputs(mode, values)}</div></form><div class="formula-card"><span>使用する式</span><strong>${meta.formula}</strong><p>正の値は、入力欄の「高温側」または「表面」から反対側へ移る向きを表します。負の値なら向きが逆です。</p></div><div class="assumption-card"><strong>前提と適用範囲</strong><p>${meta.note}</p></div></section>
       <section class="surface-card sim-output-card"><div class="card-heading"><div><p class="eyebrow">現在の条件</p><h2>熱移動率</h2></div>${statusPill(mode === 'radiation' ? '℃からKへ換算' : '定常モデル', 'blue')}</div>${resultView}${!result.error?renderSimulationSteps(mode,result):''}
         ${!result.error ? `<div class="chart-heading"><h3>温度差を変えたとき</h3><span>現在・保存条件の温度差を含む範囲${mode==='radiation'?'。各曲線は表面温度が0 Kより高い範囲のみ表示':''}</span></div>${simGraph(mode, result, baseline)}<div class="chart-legend"><span><i class="legend-current"></i>現在の条件</span>${baseline ? '<span><i class="legend-baseline"></i>保存した比較条件</span>' : ''}</div>` : ''}
         <div class="comparison-controls"><button type="button" class="button secondary" data-action="save-comparison">この条件を比較用に保存</button>${baseline ? '<button type="button" class="text-button" data-action="clear-comparison">比較条件を削除</button>' : ''}${comparison && !comparison.error ? `<small>保存条件の結果：${comparison.watts.toLocaleString('ja-JP', { maximumFractionDigits: 3 })} W</small>` : ''}</div>
@@ -815,7 +833,7 @@ function renderQuizSetup() {
       <p class="small-note">候補が少ないときは、条件を広げて問題を選びます。回答数の少なさだけで苦手と判定しません。</p>
     </form></section>
     <aside class="surface-card quick-session-card"><p class="eyebrow">短時間学習</p><h2>5分・10分だけ取り組む</h2><p>未回答や復習候補から、短い問題セットを作ります。回答のたびに履歴が保存されます。</p><div class="quick-buttons"><button type="button" class="button secondary" data-short-session="5">5分 · 3問まで</button><button type="button" class="button secondary" data-short-session="10">10分 · 6問まで</button></div><div class="quick-divider"></div><p class="eyebrow">今の復習候補</p><div class="quick-stat"><strong>${due.length}</strong><span>問</span><small>${due.length ? '直近の誤答・自信度・予定日をもとに抽出' : '回答後に候補が表示されます'}</small></div><a class="text-link" href="#review">抽出理由を見る →</a></aside></div>
-    <section class="surface-card question-bank-card"><div class="card-heading"><div><p class="eyebrow">収録中の問題</p><h2>${questionBank.length}問</h2></div>${statusPill('専門家校閲なし', 'amber')}</div><div class="question-bank-list">${questionBank.map(q => `<button type="button" class="bank-item" data-start-question="${escapeHTML(q.id)}"><span class="bank-item-index">${escapeHTML(q.id.replace('q-',''))}</span><span><strong>${escapeHTML(q.prompt)}</strong><small>${escapeHTML(q.field)} · ${escapeHTML(q.difficulty)} · ${sourceLabel(q.source)}</small></span><b>→</b></button>`).join('')}</div><p class="small-note">本書に直接基づく問題と、出典を明示した補足問題を分けています。</p></section>`;
+    <section class="surface-card question-bank-card"><div class="card-heading"><div><p class="eyebrow">収録中の問題</p><h2>${questionBank.length}問</h2></div>${statusPill('専門家校閲なし', 'amber')}</div><div class="question-bank-list">${questionBank.map(q => `<button type="button" class="bank-item" data-start-question="${escapeHTML(q.id)}"><span class="bank-item-index">${escapeHTML(q.id.replace('q-',''))}</span><span><strong>${escapeHTML(q.prompt)}</strong><small>${escapeHTML(q.field)} · ${escapeHTML(q.difficulty)} · ${sourceLabel(q.source)}</small></span><b>→</b></button>`).join('')}</div><p class="small-note">公開版の問題はアプリ作成の補足説明です。書籍の本文や原図は公開版に含めていません。</p></section>`;
 }
 
 function renderQuestionFigure(figure) {
@@ -826,11 +844,13 @@ function renderQuestionFigure(figure) {
 
 function renderAnswerFeedback(question, answer, existingNote, choiceOrder) {
   const correct = answer.correct;
-  const sourceAction = question.source.type === 'book' ? `<button type="button" class="text-link" data-section="${escapeHTML(question.source.section)}">出典：${sourceLabel(question.source)}（本文へ）→</button>` : `<div class="source-ref">${sourceLabel(question.source)}<br>該当箇所のページと式番号は原本照合待ちです。書籍の記述としては扱っていません。</div>`;
+  const sourceSection=getSection(question.source.section);
+  const guideId=question.source.guideId;
+  const sourceAction = question.source.type === 'book' ? sectionIsTranslated(sourceSection) ? `<button type="button" class="text-link" data-section="${escapeHTML(question.source.section)}">出典：${sourceLabel(question.source)}（本文へ）→</button>` : `<div class="source-ref">出典：${sourceLabel(question.source)}。この節の本文は公開版に未収録です。</div>` : `<div class="source-ref">${sourceLabel(question.source)}。書籍本文ではなくアプリ作成の説明です。${GUIDE_SECTIONS.some(section=>section.id===guideId)?`<a class="text-link" href="#guide/${guideId}">関連する学習ガイドへ →</a>`:''}</div>`;
   const reasons = choiceOrder.map((index,position) => `<li class="${index === question.answer ? 'is-correct' : ''}"><strong>${String.fromCharCode(65 + position)} ${index === question.answer ? '正解' : '誤答'}</strong><p>${escapeHTML(question.distractors[index])}</p></li>`).join('');
   return `<section class="answer-feedback ${correct ? 'feedback-correct' : 'feedback-wrong'}" aria-live="polite"><div class="feedback-title"><span class="feedback-symbol">${correct ? '✓' : '!'}</span><div><strong>${correct ? '正解です' : '今回は不正解です'}</strong><small>自信度：${confidenceLabel(answer.confidence)} · ${formatTime(answer.at)}</small></div></div>
     <div class="explanation-block"><h3>何を問う問題だった？</h3><p>${escapeHTML(question.prompt)}</p><h3>正解へ至る考え方</h3><p>${escapeHTML(question.explanation)}</p></div>
-    ${question.beginnerPitfall ? `<aside class="notice-card"><p><strong>間違えやすい点：</strong>${escapeHTML(question.beginnerPitfall)}</p></aside>` : ''}<details class="distractor-details" open><summary>4つの選択肢を確認する</summary><ol>${reasons}</ol></details><div class="answer-source"><strong>関連する出典</strong>${sourceAction}</div>
+    ${question.beginnerPitfall ? `<aside class="notice-card"><p><strong>間違えやすい点：</strong>${escapeHTML(question.beginnerPitfall)}</p></aside>` : ''}${question.solutionSteps?.length?`<details class="solution-steps" open><summary>式と計算を順に確認する</summary><ol>${question.solutionSteps.map(step=>`<li>${escapeHTML(step)}</li>`).join('')}</ol></details>`:''}<details class="distractor-details" open><summary>4つの選択肢を確認する</summary><ol>${reasons}</ol></details><div class="answer-source"><strong>関連する出典</strong>${sourceAction}</div>
     <form class="mistake-note-form" id="mistake-note-form"><p class="eyebrow">間違いノート</p><h3>次に同じ問題を解くときのために</h3><div class="form-two"><label>間違えた理由（任意）<textarea name="reason" rows="2" maxlength="500" placeholder="例：分母にある量を見落とした">${escapeHTML(existingNote.reason || '')}</textarea></label><label>自分向けの覚え方（任意）<textarea name="memory" rows="2" maxlength="500" placeholder="例：厚さが増えると熱の通り道が長くなる">${escapeHTML(existingNote.memory || '')}</textarea></label></div><label>次に注意すること（任意）<textarea name="nextTime" rows="2" maxlength="500" placeholder="例：式を書いてから選択肢を見る">${escapeHTML(existingNote.nextTime || '')}</textarea></label><button type="submit" class="button secondary">間違いノートを保存</button>${existingNote.updatedAt ? `<small>保存済み · ${formatDate(existingNote.updatedAt.slice(0,10))}</small>` : ''}</form></section>`;
 }
 function confidenceLabel(value) { return ({ high: '自信あり', medium: '少し迷う', low: '自信が低い', unsure: '迷った' })[value] || '未記録'; }
@@ -1007,6 +1027,7 @@ function onSubmit(event) {
   const form=event.target;
   if (!form.id) return;
   if (form.id === 'profile-switch-form') { event.preventDefault(); switchProfile(String(new FormData(form).get('profileId')||'')); }
+  else if (form.id === 'guide-search-form') { event.preventDefault(); ui.guideQuery=String(new FormData(form).get('query')||'').trim();ui.guideTarget='';render();document.getElementById('guide-query')?.focus(); }
   else if (form.id === 'profile-create-form') { event.preventDefault(); createProfile(form); }
   else if (form.id === 'search-form') { event.preventDefault(); searchNow(form); }
   else if (form.id === 'quiz-start-form') { event.preventDefault(); const data=new FormData(form); startQuiz({mode:String(data.get('mode')),field:String(data.get('field')),difficulty:String(data.get('difficulty')),count:Number(data.get('count'))}); }

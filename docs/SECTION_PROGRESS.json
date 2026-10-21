@@ -5,6 +5,7 @@
   "sourceSha256": "d318176a9cac997d415ec5ee95b30979dcdaed0392705185393735c7d59a447a",
   "pdfPages": 810,
   "scopeNote": "原文の抽出、下書きの存在、部分的な照合記録、アプリ収録を分ける。全ページの翻訳・照合完了率ではない。",
+  "currentPublicRelease": {"checkedAt":"2026-10-21","availableBookSections":[],"note":"以前の§1.1・§1.2は非公開教材リポジトリへ保全。以下の節ごとの旧PCの作成・収録記録と公開配信状態を区別する。"},
   "sections": [
     {
       "id": "1.1",

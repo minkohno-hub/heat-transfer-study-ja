@@ -27,7 +27,7 @@
           "bookStart": 3,
           "pdfEnd": 20,
           "bookEnd": 6,
-          "translationStatus": "translated",
+          "translationStatus": "private_only",
           "reviewStatus": "needs_review"
         },
         {
@@ -38,7 +38,7 @@
           "bookStart": 6,
           "pdfEnd": 23,
           "bookEnd": 9,
-          "translationStatus": "translated",
+          "translationStatus": "private_only",
           "reviewStatus": "needs_review",
           "figures": [
             {

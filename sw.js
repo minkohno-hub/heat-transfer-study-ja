@@ -1,8 +1,6 @@
-const CACHE_NAME='heat-study-ja-v5';
-const APP_SHELL=['./','./index.html','./styles.css','./app.js','./study-core.mjs','./manifest.json',
-  './data/book.json','./data/questions.json','./data/glossary.json','./data/content-manifest.json',
-  './data/sections/1-1-ja.json','./data/sections/1-1-en.json','./data/sections/1-2-ja.json','./data/sections/1-2-en.json',
-  './data/figures/fig1-1-021.png','./data/figures/fig1-2-023.png'];
+const CACHE_NAME='heat-study-ja-v6';
+const APP_SHELL=['./','./index.html','./styles.css','./app.js','./study-core.mjs','./guide.mjs','./manifest.json',
+  './data/book.json','./data/questions.json','./data/glossary.json','./data/content-manifest.json'];
 self.addEventListener('install',event=>{event.waitUntil(caches.open(CACHE_NAME).then(cache=>cache.addAll(APP_SHELL)));self.skipWaiting();});
 self.addEventListener('activate',event=>{event.waitUntil(caches.keys().then(keys=>Promise.all(keys.filter(k=>k.startsWith('heat-study-ja-')&&k!==CACHE_NAME).map(k=>caches.delete(k)))));self.clients.claim();});
 self.addEventListener('message',event=>{

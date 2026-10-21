@@ -220,8 +220,8 @@ export function validateQuestion(q) {
   if(!record(q)||!text(q.id)||!text(q.prompt)||!Array.isArray(q.choices)||q.choices.length!==4||!q.choices.every(text)||new Set(q.choices).size!==4||!Number.isInteger(q.answer)||q.answer<0||q.answer>3)return '問題文・4つの選択肢・正解の形式を確認してください。';
   if(!text(q.explanation)||!Array.isArray(q.distractors)||q.distractors.length!==4||!q.distractors.every(v=>text(v)&&v.trim()))return '4つの選択肢それぞれの理由が必要です。';
   if(!record(q.source)||(!text(q.source.section)&&!(q.source.type==='supplement'&&text(q.source.reference))))return '問題の出典を確認してください。';
-  if(q.figure&&((!text(q.figure.src)&&q.figure.kind!=='app-created')||!text(q.figure.alt)||!q.figure.alt.trim()))return '図の場所と代替説明が必要です。';
-  if(q.figure?.kind==='book'&&!safeLocalFigurePath(q.figure.src))return '書籍図は端末内の教材画像を参照してください。';
+  if(q.figure&&(!text(q.figure.alt)||!q.figure.alt.trim()))return '図の代替説明が必要です。';
+  if(q.figure?.kind==='book'&&q.figure.src!==undefined&&!safeLocalFigurePath(q.figure.src))return '書籍図は端末内の教材画像を参照してください。';
   return '';
 }
 

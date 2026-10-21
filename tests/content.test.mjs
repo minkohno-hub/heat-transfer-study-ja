@@ -1,12 +1,31 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {readFile,access} from 'node:fs/promises';
-import {validateQuestion,searchRanges} from '../study-core.mjs';
+import {validateQuestion,searchRanges,calculateHeatTransfer} from '../study-core.mjs';
+import {GUIDE_SECTIONS} from '../guide.mjs';
 const root=new URL('../',import.meta.url),read=async p=>JSON.parse(await readFile(new URL(p,root),'utf8'));
 let hasLocal=true;try{await access(new URL('data/local-content-manifest.json',root));}catch{hasLocal=false;}
-test('core question records have four distinct choices and reasons, and point to available images',async()=>{
+test('public questions are self-contained without book figure files',async()=>{
   const qs=await read('data/questions.json');assert.equal(new Set(qs.map(q=>q.id)).size,qs.length);
-  for(const q of qs){assert.equal(validateQuestion(q),'',q.id);if(q.figure?.src)await access(new URL(q.figure.src,root));}
+  const guideIds=new Set(GUIDE_SECTIONS.map(section=>section.id));
+  for(const q of qs){assert.equal(validateQuestion(q),'',q.id);assert.equal(q.source.type,'supplement');assert.ok(guideIds.has(q.source.guideId),q.id);assert.equal(q.distractors.length,4);assert.ok(q.solutionSteps.length>=3);assert.equal(q.figure?.kind==='book',false);}
+  assert.deepEqual((await read('data/content-manifest.json')).files,[]);
+});
+test('numeric public answer keys agree with independent simulator calculations and stated rounding',async()=>{
+  const qs=await read('data/questions.json'),byId=id=>qs.find(q=>q.id===id);
+  const cases=[
+    ['supp-flat-numeric','conduction',{k:10,area:2,thickness:.1,hot:40,cold:20},0],
+    ['supp-convection-numeric','convection',{h:20,area:2,surface:40,fluid:20},0],
+    ['supp-radiation-numeric','radiation',{emissivity:.5,area:1,surface:26.85,surrounding:-73.15},1],
+    ['supp-resistance-flow','resistance',{area:1,hot:80,cold:20,hHot:10,hCold:20,k1:.5,k2:.1,L1:.1,L2:.05},1]
+  ];
+  for(const [id,mode,values,digits] of cases){
+    const q=byId(id),result=calculateHeatTransfer(mode,values);
+    assert.ok(q&&result&&!result.error,id);
+    const printed=Number(q.choices[q.answer].replace(/[^0-9.]/g,''));
+    assert.equal(printed,Number(result.watts.toFixed(digits)),id);
+    assert.equal(q.choices.filter(choice=>Number(choice.replace(/[^0-9.]/g,''))===printed).length,1,id);
+  }
 });
 test('normalized highlighting retains Unicode text and literal punctuation',()=>{
   assert.deepEqual(searchRanges('😀カ\u3099ラス１０[','ガラス10['),[[2,9]]);

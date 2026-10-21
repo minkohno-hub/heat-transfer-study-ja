@@ -1,0 +1,31 @@
+import {readFile,copyFile,mkdir,rm,stat,writeFile} from 'node:fs/promises';
+import {resolve,dirname,join} from 'node:path';
+import {fileURLToPath} from 'node:url';
+
+const root=resolve(dirname(fileURLToPath(import.meta.url)),'..');
+const output=join(root,'dist');
+const marker=join(output,'.public-site-build');
+try { await stat(output); await stat(marker); await rm(output,{recursive:true,force:true}); }
+catch(error) { if(error.code!=='ENOENT')throw error; try { await stat(output); throw new Error('出力先に既存のファイルがあります。公開ビルドによる上書きを中止しました。'); } catch(inner) { if(inner.code!=='ENOENT')throw inner; } }
+
+const book=JSON.parse(await readFile(join(root,'data/book.json'),'utf8'));
+const questions=JSON.parse(await readFile(join(root,'data/questions.json'),'utf8'));
+if(!Array.isArray(book.chapters)||!Array.isArray(questions))throw new Error('公開用データの形式を確認してください。');
+// The checked-out repository contains preexisting book-derived paragraphs and figures.
+// A public URL does not grant permission to redistribute them, so the site omits them.
+for(const chapter of book.chapters)for(const section of chapter.sections){
+  if(section.translationStatus==='translated')section.translationStatus='private_only';
+  delete section.blocks;delete section.blocksEn;delete section.figures;delete section.sourceReview;
+}
+for(const question of questions)if(question.figure?.kind==='book')delete question.figure.src;
+const files=['index.html','styles.css','app.js','study-core.mjs','guide.mjs','sw.js','manifest.json','data/glossary.json'];
+for(const path of new Set(files)){
+  const source=join(root,path),target=join(output,path);
+  await mkdir(dirname(target),{recursive:true});await copyFile(source,target);
+}
+await mkdir(join(output,'data'),{recursive:true});
+for(const [name,value] of Object.entries({'book.json':book,'questions.json':questions,'content-manifest.json':{files:[]}})){
+  await writeFile(join(output,'data',name),JSON.stringify(value,null,2)+'\n');
+}
+await writeFile(marker,'公開対象だけを列挙して作成した配信物です。\n');
+console.log('公開配信物：アプリ・独自ガイド・問題・用語・書籍の目次情報。書籍本文・翻訳・原図は含めていません。');
