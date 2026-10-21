@@ -61,7 +61,7 @@ node scripts/serve.mjs
 
 学習データはブラウザーのローカルストレージに保存し、外部へ送信しません。URL・ポート・ブラウザーを変えると別の保存先になります。ブラウザーのデータ削除やプライベートモードの終了に備え、設定からJSONを書き出してください。書き出しには回答時の選択肢の文言が含まれます。書籍の全文は含まれません。
 
-取り込みは形式を確認してから利用者が実行します。壊れた形式や保存不能の場合は既存データを保持します。取り込み前の控えは端末内に保存し、設定画面で内容を確認・書き出し・復元できます。時差のある日時は実際の時刻で比較します。自動の端末間同期はありません。
+取り込みは形式を確認してから利用者が実行します。壊れた形式や保存不能の場合は既存データを保持します。取り込み前の控えは端末内に保存し、設定画面で内容を確認・書き出し・復元できます。時差のある日時は実際の時刻で比較します。同じブラウザーの同じサイト・同じプロファイルを使う人には学習記録が共有されます。共用端末ではブラウザーの利用者プロファイルを分けてください。自動の端末間同期はありません。
 
 ## 教材データの構成
 
@@ -85,9 +85,10 @@ node scripts/build-local-pack.mjs
 ```powershell
 node --test tests/*.test.mjs
 node scripts/audit-content.mjs --check
+node tests/browser-public.mjs
 ```
 
-実ブラウザー確認は `tests/browser.mjs` です。PlaywrightとChrome、上記のローカル教材が必要です。`PLAYWRIGHT_MODULE` にPlaywrightの場所、`BROWSER_EXECUTABLE` にブラウザーの実行ファイルを設定して `node tests/browser.mjs` を実行します。利用者の学習データには触れない確認専用の一時環境を使います。実施結果と未確認範囲は [VERIFICATION.md](docs/VERIFICATION.md) に記録しています。
+公開側だけの実ブラウザー確認は `tests/browser-public.mjs` です。PlaywrightとChromiumが必要です。既存のローカル教材を使う総合確認は `tests/browser.mjs` です。ローカル教材がある環境で、`PLAYWRIGHT_MODULE` にPlaywrightの場所、`BROWSER_EXECUTABLE` にブラウザーの実行ファイルを設定して実行します。確認専用の一時プロファイルを使います。実施結果と未確認範囲は [VERIFICATION.md](docs/VERIFICATION.md) に記録しています。クラウドでの引き継ぎ状態は [CLOUD_HANDOFF.md](docs/CLOUD_HANDOFF.md) を参照してください。
 
 ## 出典と残作業
 
