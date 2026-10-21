@@ -137,6 +137,20 @@ try {
   }
   check('ライト・ダーク、320〜1365pxの主要画面の横はみ出し');
 
+  const secondPage = await context.newPage();
+  secondPage.on('pageerror', error => errors.push(error.message));
+  await secondPage.goto(`${base}/#settings`);
+  await secondPage.locator('#profile-switch-form').waitFor();
+  await nav('reader');
+  await page.locator('[data-action="toggle-read"]').click();
+  assert.equal((await stored()).readSections['1.1'], false);
+  await secondPage.locator('input[name="theme"][value="light"]').check();
+  assert.equal((await stored()).readSections['1.1'], false);
+  assert.match(await secondPage.locator('.storage-warning').innerText(), /別のタブ/);
+  await secondPage.close();
+  await page.locator('[data-action="toggle-read"]').click();
+  check('複数タブで古い記録からの上書きを拒否');
+
   await page.evaluate(() => navigator.serviceWorker.ready);
   await context.setOffline(true);
   await page.reload();

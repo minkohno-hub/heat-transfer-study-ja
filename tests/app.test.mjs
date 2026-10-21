@@ -40,6 +40,21 @@ test('restore is atomic when storage fails and malformed nested data are rejecte
   h.api.ui.importDraft={data:{...core.createEmptyState(),format:core.DATA_FORMAT,mistakeNotes:{q1:{reason:'replace'}}}};h.setFail(true);h.api.importData(true);
   assert.equal(JSON.stringify(h.api.state),before);assert.equal(h.store.get(key),before);assert.ok(h.api.ui.importDraft.error.includes('中止'));
 });
+test('a stale tab cannot overwrite another tab through normal saving or JSON restore',()=>{
+  const h=harness();
+  h.api.state.notes=[{id:'local',text:'このタブのメモ',sectionId:'1.1',createdAt:new Date().toISOString()}];
+  const remote={...core.createEmptyState(),readSections:{'1.1':true}};
+  const remoteRaw=JSON.stringify(remote);
+  h.store.set(key,remoteRaw);
+  assert.equal(h.api.saveState(),false);
+  assert.equal(h.store.get(key),remoteRaw);
+  assert.match(h.api.warning,/別のタブ/);
+  h.api.ui.importDraft={data:{...core.createEmptyState(),format:core.DATA_FORMAT}};
+  h.api.importData(true);
+  assert.equal(h.store.get(key),remoteRaw);
+  assert.match(h.api.ui.importDraft.error,/別のタブ/);
+  assert.equal(h.api.state.notes[0].text,'このタブのメモ');
+});
 test('corrupt persisted data are retained for recovery rather than silently discarded',()=>{
   const h=harness('{bad-json');assert.equal(h.store.get(`${key}:recovery`),'{bad-json');assert.equal(h.store.get(key),'{bad-json');assert.ok(h.api.warning.includes('元データ'));
 });

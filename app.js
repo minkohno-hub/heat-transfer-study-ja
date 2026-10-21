@@ -10,7 +10,7 @@ const STORAGE_KEY = activeProfileId === 'legacy' ? LEGACY_STORAGE_KEY : `heat-st
 const root = document.querySelector('#app');
 const systemDark = window.matchMedia?.('(prefers-color-scheme: dark)');
 const emptyState = createEmptyState;
-let storageIssue = '', recoveryRaw = '', storageBlocked = false;
+let storageIssue = '', recoveryRaw = '', storageBlocked = false, lastSavedRaw = null;
 let state = loadState();
 let book;
 let questionBank;
@@ -108,6 +108,7 @@ function loadState() {
   let raw;
   try {
     raw = localStorage.getItem(STORAGE_KEY);
+    lastSavedRaw = raw;
     if (!raw) return emptyState();
     const parsed = JSON.parse(raw);
     if (validateLearningData(parsed, { stored: true })) throw new Error('invalid');
@@ -125,7 +126,13 @@ function loadState() {
 function saveState(next = state) {
   try {
     if (storageBlocked) throw new Error('recovery-not-preserved');
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(next));
+    if (localStorage.getItem(STORAGE_KEY) !== lastSavedRaw) {
+      storageIssue = '別のタブで学習記録が更新されました。このタブの変更は保存していません。必要ならJSONを書き出し、再読み込みしてから続けてください。';
+      return false;
+    }
+    const raw=JSON.stringify(next);
+    localStorage.setItem(STORAGE_KEY, raw);
+    lastSavedRaw = raw;
     return true;
   } catch {
     storageIssue = '端末への保存に失敗しています。画面上の変更は一時的です。設定からJSONを書き出し、空き容量やブラウザーの保存設定を確認してください。';
@@ -243,6 +250,13 @@ async function startApp() {
     root.addEventListener('input', onInput);
     window.addEventListener('online', render);
     window.addEventListener('offline', render);
+    window.addEventListener('storage',event=>{
+      if(event.key===STORAGE_KEY&&event.newValue!==lastSavedRaw){
+        storageIssue='別のタブで学習記録が更新されました。このタブの変更は保存していません。必要ならJSONを書き出し、再読み込みしてから続けてください。';
+        showStatus('別のタブで学習記録が更新されました。再読み込み前に、このタブで必要な記録をJSONに書き出してください。');
+      }
+      if(event.key===ACTIVE_PROFILE_KEY&&event.newValue!==activeProfileId)showStatus('別のタブで利用者が切り替わりました。このタブも再読み込みして利用者を確認してください。');
+    });
     window.addEventListener('scroll', saveReaderPosition, { passive: true });
     window.addEventListener('keydown', onKeyDown);
     for(const event of ['pointerdown','keydown','scroll'])window.addEventListener(event,()=>{flushLearningTime();lastInteractionAt=Date.now();},{passive:true});
@@ -607,7 +621,7 @@ function renderDayActivity(day){
 }
 
 function showStatus(message) {
-  if(storageIssue && /保存しました|記録しました|変更しました/.test(message)) message='端末に保存できていません。画面上の変更は一時的です。設定から学習データを書き出してください。';
+  if(storageIssue && /保存しました|記録しました|変更しました|ブックマークしました|外しました|削除しました|破棄しました|停止しました/.test(message)) message=storageIssue;
   const existing = document.querySelector('.toast');
   existing?.remove();
   const toast = document.createElement('div'); toast.className = 'toast'; toast.setAttribute('role', 'status'); toast.textContent = message;
@@ -1094,8 +1108,11 @@ function importData(replace) {
   const next=replace ? normalizeLearningData(data) : mergeLearningData(state,data);
   try {
     const previous=localStorage.getItem(STORAGE_KEY);
+    if(previous!==lastSavedRaw){ui.importDraft={error:'別のタブで学習記録が更新されたため、復元を中止しました。現在の記録は変更していません。再読み込みしてから取り込み直してください。'};render();return;}
     if(previous) localStorage.setItem(`${STORAGE_KEY}:before-import`,previous);
-    localStorage.setItem(STORAGE_KEY,JSON.stringify(next));
+    const raw=JSON.stringify(next);
+    localStorage.setItem(STORAGE_KEY,raw);
+    lastSavedRaw=raw;
   } catch {
     ui.importDraft={error:'端末に保存できないため復元を中止しました。現在の記録は変更していません。先にJSONを書き出し、空き容量を確認してください。'};
     render(); return;
