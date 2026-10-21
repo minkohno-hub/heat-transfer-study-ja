@@ -108,8 +108,10 @@ test('figure dimensions from content files cannot inject image attributes',()=>{
 test('an empty, unknown or malformed section cannot be counted as readable content',()=>{
   const h=harness();
   assert.equal(h.api.sectionIsTranslated({blocks:[]}),false);
-  for(const blocks of [[],[null],[{type:'unknown',text:'本文'}],[{type:'paragraph',id:'same',text:'一'},{type:'paragraph',id:'same',text:'二'}],[{type:'table',headers:['列'],rows:[null]}],[{type:'figure',src:'./data/figures/a.png',alt:''}],[{type:'problem',text:'問題',figure:{src:'./data/figures/a.png'}}]])assert.equal(h.api.validBookBlocks(blocks),false);
+  for(const blocks of [[],[null],[{type:'unknown',text:'本文'}],[{type:'paragraph',id:'same',text:'一'},{type:'paragraph',id:'same',text:'二'}],[{type:'table',headers:['列'],rows:[null]}],[{type:'figure',src:'./data/figures/a.png',alt:''}],[{type:'figure',src:'https://example.com/a.png',alt:'図'}],[{type:'problem',text:'問題',figure:{src:'./data/figures/a.png'}}]])assert.equal(h.api.validBookBlocks(blocks),false);
   assert.equal(h.api.validBookBlocks([{type:'paragraph',text:'本文'},{type:'table',headers:['列'],rows:[['値']]}]),true);
+  assert.match(core.validateQuestion({...question,figure:{kind:'book',src:'https://example.com/a.png',alt:'図'}}),/端末内/);
+  assert.doesNotMatch(h.api.renderQuestionFigure({kind:'book',src:'https://example.com/a.png',alt:'図',caption:'図'}),/<img/);
 });
 test('all simulator step displays retain finite values, units and supplemental labels',()=>{
   const h=harness(),inputs={conduction:{k:15,area:.5,thickness:.08,hot:80,cold:20},convection:{h:25,area:1,surface:80,fluid:20},radiation:{emissivity:.85,area:1,surface:150,surrounding:25},resistance:{area:1,hot:80,cold:20,hHot:10,hCold:20,k1:.5,k2:.1,L1:.1,L2:.05}};

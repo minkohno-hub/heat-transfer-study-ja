@@ -1,4 +1,4 @@
-import { createEmptyState, validateLearningData, normalizeLearningData, mergeLearningData, calculateHeatTransfer, chapterKey, searchEntries, searchSnippet, searchRanges, localDay, validDay, shiftMonth, nextReviewDays, planMinutes, validateQuestion, speechChunks, questionFingerprint, quizChoiceOrder, quizResumeIssue, recordStudyActivity, fieldProgress, studyDuration } from './study-core.mjs';
+import { createEmptyState, validateLearningData, normalizeLearningData, mergeLearningData, calculateHeatTransfer, chapterKey, searchEntries, searchSnippet, searchRanges, localDay, validDay, shiftMonth, nextReviewDays, planMinutes, validateQuestion, safeLocalFigurePath, speechChunks, questionFingerprint, quizChoiceOrder, quizResumeIssue, recordStudyActivity, fieldProgress, studyDuration } from './study-core.mjs';
 const CORE_DATA_FILES = ['./data/book.json', './data/questions.json', './data/glossary.json', './data/content-manifest.json'];
 const LEGACY_STORAGE_KEY = 'heat-study-ja:v1';
 const PROFILES_KEY = 'heat-study-ja:profiles:v1';
@@ -174,7 +174,7 @@ function sourceLabel(source = {}) {
 }
 const BOOK_BLOCK_TYPES = new Set(['heading','subheading','example','quote','experiment','footnote','formula','supplement','sourceNote','figure','table','list','problem','reference','paragraph']);
 function validBookFigure(figure) {
-  return figure && typeof figure === 'object' && !Array.isArray(figure) && typeof figure.alt === 'string' && !!figure.alt.trim() && (figure.src === undefined || typeof figure.src === 'string');
+  return figure && typeof figure === 'object' && !Array.isArray(figure) && typeof figure.alt === 'string' && !!figure.alt.trim() && (figure.src === undefined || figure.src === '' || safeLocalFigurePath(figure.src));
 }
 function validBookBlocks(blocks) {
   if (!Array.isArray(blocks) || !blocks.length) return false;
@@ -709,9 +709,7 @@ const SIM_META = {
 };
 const STEFAN_BOLTZMANN = 5.670374419e-8;
 function figureZoomLink(src) {
-  if(typeof src!=='string')return '';
-  const relative=src.startsWith('./')?src.slice(2):src;
-  if(relative.includes('..')||!/^data\/(?:figures|local\/figures|drafts)\/[a-zA-Z0-9_./-]+\.(?:png|jpe?g|svg|webp)$/i.test(relative))return '';
+  if(!safeLocalFigurePath(src))return '';
   return `<a class="figure-zoom text-link" href="${escapeHTML(src)}" target="_blank" rel="noopener noreferrer">図を別のタブで拡大する ↗</a>`;
 }
 function figureSizeAttributes(figure) {
@@ -821,7 +819,7 @@ function renderQuizSetup() {
 }
 
 function renderQuestionFigure(figure) {
-  if (figure.kind === 'book') return `<figure class="question-figure"><img src="${escapeHTML(figure.src)}" alt="${escapeHTML(figure.alt)}" loading="lazy" ${figureSizeAttributes(figure)}/><figcaption>${figureZoomLink(figure.src)}<strong>${escapeHTML(figure.caption)}</strong><span>${escapeHTML(figure.description || figure.alt)}</span><small>出典：本書 図${escapeHTML(figure.figureNumber)} · 書籍 p.${escapeHTML(figure.bookPage)} · PDF p.${escapeHTML(figure.pdfPage)}</small></figcaption></figure>`;
+  if (figure.kind === 'book') return `<figure class="question-figure">${safeLocalFigurePath(figure.src) ? `<img src="${escapeHTML(figure.src)}" alt="${escapeHTML(figure.alt)}" loading="lazy" ${figureSizeAttributes(figure)}/>` : `<div class="figure-placeholder" role="img" aria-label="${escapeHTML(figure.alt)}">図の画像を表示できません。教材の参照先を確認してください。</div>`}<figcaption>${figureZoomLink(figure.src)}<strong>${escapeHTML(figure.caption)}</strong><span>${escapeHTML(figure.description || figure.alt)}</span><small>出典：本書 図${escapeHTML(figure.figureNumber)} · 書籍 p.${escapeHTML(figure.bookPage)} · PDF p.${escapeHTML(figure.pdfPage)}</small></figcaption></figure>`;
   if (figure.kind === 'app-created') return `<figure class="question-figure"><div class="wall-diagram" role="img" aria-label="${escapeHTML(figure.alt)}"><div class="wall-temp hot"><span>Tₕ</span><small>高温</small></div><div class="wall-body"><span class="heat-arrow">Q̇　→</span><span class="wall-label">平板</span><span class="wall-thickness">L</span><span class="wall-gradient">Tₕ　····→　T𝑐</span></div><div class="wall-temp cold"><span>T𝑐</span><small>低温</small></div><div class="wall-delta">ΔT = Tₕ − T𝑐</div></div><figcaption>${escapeHTML(figure.caption)}<span>${escapeHTML(figure.alt)}</span></figcaption></figure>`;
   return `<figure class="question-figure"><div class="figure-placeholder" role="img" aria-label="${escapeHTML(figure.alt)}">図の説明を表示しています</div><figcaption>${escapeHTML(figure.caption)}<span>${escapeHTML(figure.alt)}</span></figcaption></figure>`;
 }
