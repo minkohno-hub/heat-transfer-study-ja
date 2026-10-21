@@ -100,6 +100,14 @@ export function mergeLearningData(current, incoming) {
 export function questionFingerprint(question) {
   return JSON.stringify([question.id,question.prompt,question.choices,question.answer,question.figure||null,question.solutionSteps||question.hints||[],question.revision||'initial']);
 }
+export function quizChoiceOrder(sessionId, questionId) {
+  const order=[0,1,2,3];
+  if(!sessionId||!questionId)return order;
+  let seed=2166136261;
+  for(const char of `${sessionId}:${questionId}`)seed=Math.imul(seed^char.charCodeAt(0),16777619)>>>0;
+  for(let i=3;i>0;i--){seed^=seed<<13;seed^=seed>>>17;seed^=seed<<5;const j=(seed>>>0)%(i+1);[order[i],order[j]]=[order[j],order[i]];}
+  return order;
+}
 export function quizDraftOK(q) {
   return record(q)&&text(q.id)&&Array.isArray(q.ids)&&q.ids.length>0&&q.ids.length<=500&&q.ids.every(text)&&new Set(q.ids).size===q.ids.length
     &&Number.isInteger(q.index)&&q.index>=0&&q.index<q.ids.length&&finite(q.startedAt)&&time(q.startedAt)&&time(q.updatedAt)

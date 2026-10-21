@@ -1,4 +1,4 @@
-import { createEmptyState, validateLearningData, normalizeLearningData, mergeLearningData, calculateHeatTransfer, chapterKey, searchEntries, searchSnippet, searchRanges, localDay, validDay, shiftMonth, nextReviewDays, planMinutes, validateQuestion, speechChunks, questionFingerprint, quizResumeIssue, recordStudyActivity, fieldProgress, studyDuration } from './study-core.mjs';
+import { createEmptyState, validateLearningData, normalizeLearningData, mergeLearningData, calculateHeatTransfer, chapterKey, searchEntries, searchSnippet, searchRanges, localDay, validDay, shiftMonth, nextReviewDays, planMinutes, validateQuestion, speechChunks, questionFingerprint, quizChoiceOrder, quizResumeIssue, recordStudyActivity, fieldProgress, studyDuration } from './study-core.mjs';
 const CORE_DATA_FILES = ['./data/book.json', './data/questions.json', './data/glossary.json', './data/content-manifest.json'];
 const LEGACY_STORAGE_KEY = 'heat-study-ja:v1';
 const PROFILES_KEY = 'heat-study-ja:profiles:v1';
@@ -737,6 +737,7 @@ function renderQuiz() {
   if (!ui.quiz) return renderQuizSetup();
   const session = ui.quiz; const question = getQuestion(session.ids[session.index]);
   if (!question) { ui.quiz = null; return renderQuizSetup(); }
+  const choiceOrder=quizChoiceOrder(session.id,question.id);
   const answer = session.answers[session.index];
   const note = state.mistakeNotes[question.id] || {};
   const hints = question.solutionSteps || question.hints || [];
@@ -750,10 +751,10 @@ function renderQuiz() {
       <p class="think-prompt"><span aria-hidden="true">✦</span> まずは自分で考えてみましょう。迷ったら、ヒントを一つずつ開けます。</p>
       ${session.hintCount ? `<div class="hint-box"><strong>${question.solutionSteps ? '考え方のステップ' : 'ヒント'}</strong><ol>${hints.slice(0, session.hintCount).map(hint => `<li>${escapeHTML(hint)}</li>`).join('')}</ol></div>` : ''}
       ${!answer ? `<button type="button" class="text-button hint-trigger" data-action="reveal-hint" ${session.hintCount >= hints.length ? 'disabled' : ''}>${session.hintCount < hints.length ? `ヒントを${session.hintCount ? 'もう一つ' : '見る'}（${session.hintCount + 1}/${hints.length}）` : 'すべてのヒントを表示しました'}</button>` : ''}
-      <form id="quiz-answer-form"><fieldset class="answer-options" ${answer ? 'disabled' : ''}><legend>最も適切な答えを一つ選んでください</legend>${question.choices.map((choice,index) => `<label class="answer-choice ${session.selected === index ? 'selected' : ''} ${answer && index === question.answer ? 'correct-choice' : ''} ${answer && session.selected === index && !answer.correct ? 'wrong-choice' : ''}"><input type="radio" name="choice" value="${index}" ${session.selected === index ? 'checked' : ''} ${answer ? 'disabled' : ''}/><span class="choice-letter">${String.fromCharCode(65 + index)}</span><span>${escapeHTML(choice)}</span>${answer && index === question.answer ? '<b class="choice-mark">正解</b>' : answer && session.selected === index ? '<b class="choice-mark">選択</b>' : ''}</label>`).join('')}</fieldset>
+      <form id="quiz-answer-form"><fieldset class="answer-options" ${answer ? 'disabled' : ''}><legend>最も適切な答えを一つ選んでください</legend>${choiceOrder.map((index,position) => `<label class="answer-choice ${session.selected === index ? 'selected' : ''} ${answer && index === question.answer ? 'correct-choice' : ''} ${answer && session.selected === index && !answer.correct ? 'wrong-choice' : ''}"><input type="radio" name="choice" value="${index}" ${session.selected === index ? 'checked' : ''} ${answer ? 'disabled' : ''}/><span class="choice-letter">${String.fromCharCode(65 + position)}</span><span>${escapeHTML(question.choices[index])}</span>${answer && index === question.answer ? '<b class="choice-mark">正解</b>' : answer && session.selected === index ? '<b class="choice-mark">選択</b>' : ''}</label>`).join('')}</fieldset>
       <fieldset class="confidence-field" ${answer ? 'disabled' : ''}><legend>今の自信は？</legend><div class="confidence-options">${[['high','自信あり'],['medium','少し迷う'],['low','自信が低い'],['unsure','迷った']].map(([value,label]) => `<label><input type="radio" name="confidence" value="${value}" ${session.confidence === value ? 'checked' : ''} ${answer ? 'disabled' : ''}/><span>${label}</span></label>`).join('')}</div></fieldset>
       ${!answer ? `<button class="button primary answer-submit" type="submit" ${session.selected === null ? 'disabled' : ''}>回答する <span aria-hidden="true">↵</span></button>` : '<button type="button" class="button primary answer-submit" data-action="next-question">次の問題へ →</button>'}</form>
-      ${answer ? renderAnswerFeedback(question, answer, note) : ''}
+      ${answer ? renderAnswerFeedback(question, answer, note, choiceOrder) : ''}
     </article>
     ${ui.reportId === question.id ? renderReportForm(question) : ''}`;
 }
@@ -779,10 +780,10 @@ function renderQuestionFigure(figure) {
   return `<figure class="question-figure"><div class="figure-placeholder" role="img" aria-label="${escapeHTML(figure.alt)}">図の説明を表示しています</div><figcaption>${escapeHTML(figure.caption)}<span>${escapeHTML(figure.alt)}</span></figcaption></figure>`;
 }
 
-function renderAnswerFeedback(question, answer, existingNote) {
+function renderAnswerFeedback(question, answer, existingNote, choiceOrder) {
   const correct = answer.correct;
   const sourceAction = question.source.type === 'book' ? `<button type="button" class="text-link" data-section="${escapeHTML(question.source.section)}">出典：${sourceLabel(question.source)}（本文へ）→</button>` : `<div class="source-ref">${sourceLabel(question.source)}<br>該当箇所のページと式番号は原本照合待ちです。書籍の記述としては扱っていません。</div>`;
-  const reasons = question.distractors.map((text,index) => `<li class="${index === question.answer ? 'is-correct' : ''}"><strong>${String.fromCharCode(65 + index)} ${index === question.answer ? '正解' : '誤答'}</strong><p>${escapeHTML(text)}</p></li>`).join('');
+  const reasons = choiceOrder.map((index,position) => `<li class="${index === question.answer ? 'is-correct' : ''}"><strong>${String.fromCharCode(65 + position)} ${index === question.answer ? '正解' : '誤答'}</strong><p>${escapeHTML(question.distractors[index])}</p></li>`).join('');
   return `<section class="answer-feedback ${correct ? 'feedback-correct' : 'feedback-wrong'}" aria-live="polite"><div class="feedback-title"><span class="feedback-symbol">${correct ? '✓' : '!'}</span><div><strong>${correct ? '正解です' : '今回は不正解です'}</strong><small>自信度：${confidenceLabel(answer.confidence)} · ${formatTime(answer.at)}</small></div></div>
     <div class="explanation-block"><h3>何を問う問題だった？</h3><p>${escapeHTML(question.prompt)}</p><h3>正解へ至る考え方</h3><p>${escapeHTML(question.explanation)}</p></div>
     ${question.beginnerPitfall ? `<aside class="notice-card"><p><strong>間違えやすい点：</strong>${escapeHTML(question.beginnerPitfall)}</p></aside>` : ''}<details class="distractor-details" open><summary>4つの選択肢を確認する</summary><ol>${reasons}</ol></details><div class="answer-source"><strong>関連する出典</strong>${sourceAction}</div>
@@ -1118,7 +1119,7 @@ function onKeyDown(event) {
   const target=event.target; if(target && ((target.matches('input,textarea,select,[contenteditable="true"]') && !target.matches('input[name="choice"]')) || target.isContentEditable)) return;
   if(event.key==='Enter' && target?.closest?.('button,a'))return;
   const session=ui.quiz; const answered=Boolean(session.answers[session.index]);
-  if(!answered && /^[1-4]$/.test(event.key)){event.preventDefault();session.selected=Number(event.key)-1;persistQuiz();saveState();render();document.querySelectorAll('.answer-choice input')[session.selected]?.focus();}
+  if(!answered && /^[1-4]$/.test(event.key)){event.preventDefault();const position=Number(event.key)-1,question=getQuestion(session.ids[session.index]);session.selected=quizChoiceOrder(session.id,question?.id)[position];persistQuiz();saveState();render();document.querySelectorAll('.answer-choice input')[position]?.focus();}
   else if(event.key==='Enter' && !answered && session.selected!==null){event.preventDefault();document.querySelector('#quiz-answer-form')?.requestSubmit();}
 }
 

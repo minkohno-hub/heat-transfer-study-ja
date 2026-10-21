@@ -56,12 +56,24 @@ try {
   await page.locator('#quiz-start-form [name="count"]').selectOption('3');
   await page.locator('#quiz-start-form button[type="submit"]').click();
   await page.locator('.answer-choice input').first().focus();
+  const secondValue = Number(await page.locator('.answer-choice input').nth(1).getAttribute('value'));
   await page.keyboard.press('2');
-  assert.equal(await page.locator('input[name="choice"][value="1"]').isChecked(), true);
+  assert.equal(await page.locator('.answer-choice input').nth(1).isChecked(), true);
+  await page.reload();
+  await page.locator('[data-action="resume-quiz"]').click();
+  assert.equal(Number(await page.locator('.answer-choice input').nth(1).getAttribute('value')), secondValue);
+  assert.equal(await page.locator('.answer-choice input').nth(1).isChecked(), true);
   await page.keyboard.press('Enter');
   assert.equal((await stored()).attempts.length, 1);
+  assert.equal((await stored()).attempts[0].selected, secondValue);
   assert.equal(typeof (await stored()).attempts[0].correct, 'boolean');
   assert.equal(await page.locator('.distractor-details li').count(), 4);
+  const attempt = (await stored()).attempts[0];
+  const question = await page.evaluate(async id => (await (await fetch('./data/questions.json')).json()).find(item => item.id === id), attempt.questionId);
+  for (let position = 0; position < 4; position++) {
+    const index = Number(await page.locator('.answer-choice input').nth(position).getAttribute('value'));
+    assert.match(await page.locator('.distractor-details li').nth(position).innerText(), new RegExp(question.distractors[index].replace(/[.*+?^${}()|[\]\\]/g, '\\$&')));
+  }
   await nav('review');
   assert.ok((await page.locator('#main-content').innerText()).includes('復習'));
   check('キーボード回答、正誤保存、全4択理由、復習');

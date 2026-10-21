@@ -1,8 +1,16 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {createEmptyState,validateLearningData,normalizeLearningData,mergeLearningData,calculateHeatTransfer,chapterKey,searchEntries,searchSnippet,nextReviewDays,shiftMonth,localDay,planMinutes,DATA_FORMAT,speechChunks} from '../study-core.mjs';
+import {createEmptyState,validateLearningData,normalizeLearningData,mergeLearningData,calculateHeatTransfer,chapterKey,searchEntries,searchSnippet,nextReviewDays,shiftMonth,localDay,planMinutes,DATA_FORMAT,speechChunks,quizChoiceOrder} from '../study-core.mjs';
 const exported=()=>({...createEmptyState(),format:DATA_FORMAT});
 const attempt=(extra={})=>({id:'a1',questionId:'q1',selected:0,correct:true,confidence:'high',at:'2026-10-19T15:15:00.000Z',...extra});
+
+test('choice order is stable for a resumed set and varies the correct position across sets',()=>{
+  const order=quizChoiceOrder('round-a','q1');
+  assert.deepEqual([...order].sort(),[0,1,2,3]);
+  assert.deepEqual(quizChoiceOrder('round-a','q1'),order);
+  assert.deepEqual(quizChoiceOrder('', 'q1'),[0,1,2,3]);
+  assert.ok(new Set(Array.from({length:40},(_,i)=>quizChoiceOrder(`round-${i}`,'q1').indexOf(0))).size>=3);
+});
 
 test('speech uses figure and formula alternatives, table cells, and bounded chunks',()=>{
   const chunks=speechChunks([{type:'formula',alt:'熱流束の式',expression:'q=-kΔT',text:'記号の意味'},{type:'table',caption:'物性',headers:['温度','熱伝導率'],rows:[['300 K','1.05']]},{type:'figure',alt:'円柱の後流'},{type:'supplement',text:'補足の本文。'.repeat(100)}]);
