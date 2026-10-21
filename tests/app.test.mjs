@@ -7,14 +7,14 @@ const source=await readFile(new URL('../app.js',import.meta.url),'utf8');
 const key='heat-study-ja:v1';
 const question={id:'q1',prompt:'テスト用に作成した問題',choices:['答え','誤答1','誤答2','誤答3'],answer:0,field:'伝導',difficulty:'基礎',source:{section:'1.1'},explanation:'説明',distractors:['正解','理由1','理由2','理由3']};
 function harness(initial) {
-  const store=new Map(initial?[[key,initial]]:[]);let fail=false,rendered=0,submitted=0;
+  const store=new Map(initial?[[key,initial]]:[]);let fail=false,failKey='',rendered=0,submitted=0,reloaded=0;
   const root={innerHTML:''},document={querySelector:s=>s==='#app'?root:s==='#quiz-answer-form'?{requestSubmit(){submitted++;}}:null,querySelectorAll:()=>Array.from({length:4},()=>({focus(){}})),documentElement:{dataset:{},style:{setProperty(){}}},body:{append(){}},createElement:()=>({setAttribute(){},remove(){}})};
-  const context=vm.createContext({...core,structuredClone,JSON,Date,Math,Intl,Map,Set,Number,String,Array,Boolean,RegExp,Blob,URL,document,window:{matchMedia:()=>({matches:false}),scrollTo(){},confirm:()=>true},location:{hash:''},navigator:{onLine:true},setTimeout:()=>1,clearTimeout(){},localStorage:{getItem:k=>store.get(k)||null,setItem(k,v){if(fail&&k===key)throw Error('quota');store.set(k,v);}},FormData:class{constructor(v){this.values=v;}get(k){return this.values[k]??null;}}});
+  const context=vm.createContext({...core,structuredClone,JSON,Date,Math,Intl,Map,Set,Number,String,Array,Boolean,RegExp,Blob,URL,crypto:{randomUUID:()=> '11111111-1111-4111-8111-111111111111'},document,window:{matchMedia:()=>({matches:false}),scrollTo(){},confirm:()=>true,location:{reload(){reloaded++;}}},location:{hash:''},navigator:{onLine:true},setTimeout:()=>1,clearTimeout(){},localStorage:{getItem:k=>store.get(k)||null,setItem(k,v){if((fail&&k===key)||k===failKey)throw Error('quota');store.set(k,v);},removeItem(k){store.delete(k);}},FormData:class{constructor(v){this.values=v.values??v;}get(k){return this.values[k]??null;}}});
   vm.runInContext(source.replace(/^import .*?;\s*/,'').replace(/\nstartApp\(\);\s*$/,'')+`
     render=()=>{globalThis.renderCount=(globalThis.renderCount||0)+1;};showStatus=message=>{globalThis.statusMessage=message;};
-    globalThis.api={get state(){return state;},set state(v){state=v;},get ui(){return ui;},set ui(v){ui={...ui,...v};},set questions(v){questionBank=v;},set book(v){book=v;},set terms(v){glossary=v;},submitQuizAnswer,reviewCandidates,validateImport,importData,saveState,setReviewDate,buildSearchIndex,onKeyDown,renderBookBlock,blockSourceLabel,figureZoomLink,renderSimulationSteps,get warning(){return storageIssue;}};`,context);
+    globalThis.api={get state(){return state;},set state(v){state=v;},get ui(){return ui;},set ui(v){ui={...ui,...v};},set questions(v){questionBank=v;},set book(v){book=v;},set terms(v){glossary=v;},submitQuizAnswer,reviewCandidates,validateImport,importData,saveState,setReviewDate,buildSearchIndex,onKeyDown,renderBookBlock,blockSourceLabel,figureZoomLink,renderSimulationSteps,createProfile,get warning(){return storageIssue;}};`,context);
   const api=context.api;api.questions=[question];api.book={chapters:[{id:'ch1',title:'章',sections:[{id:'1.1',title:'本文',bookStart:3,bookEnd:4,pdfStart:17,pdfEnd:18,blocks:[{id:'b1',type:'paragraph',text:'検索する語',bookPage:3,pdfPage:17}]}]}]};api.terms=[{id:'term',ja:'熱',en:'heat',meaning:'温度による移動',source:{section:'1.1'}}];
-  return {api,store,context,setFail:v=>fail=v,get submitted(){return submitted;}};
+  return {api,store,context,setFail:v=>fail=v,setFailKey:v=>failKey=v,get submitted(){return submitted;},get reloaded(){return reloaded;}};
 }
 test('answer handling stores correctness, chosen text, confidence and next review exactly once',()=>{
   const h=harness();h.api.ui={quiz:{ids:['q1'],index:0,answers:[],selected:0,confidence:'low',mode:'single'}};
@@ -42,6 +42,14 @@ test('restore is atomic when storage fails and malformed nested data are rejecte
 });
 test('corrupt persisted data are retained for recovery rather than silently discarded',()=>{
   const h=harness('{bad-json');assert.equal(h.store.get(`${key}:recovery`),'{bad-json');assert.equal(h.store.get(key),'{bad-json');assert.ok(h.api.warning.includes('元データ'));
+});
+test('failed profile activation keeps the legacy learning record and rolls back the profile list',()=>{
+  const h=harness();h.api.state.notes=[{id:'n1',text:'元のメモ',sectionId:'1.1',createdAt:new Date().toISOString()}];
+  h.setFailKey('heat-study-ja:active-profile:v1');
+  h.api.createProfile({values:{profileName:'別の学習者'}});
+  assert.equal(JSON.parse(h.store.get(key)).notes[0].text,'元のメモ');
+  assert.equal(h.store.has('heat-study-ja:profiles:v1'),false);
+  assert.equal(h.reloaded,0);
 });
 test('search index gives book blocks, terms, questions and notes consistent chapter keys',()=>{
   const h=harness();h.api.state.notes=[{id:'n',sectionId:'1.1',text:'熱のメモ',title:'メモ',createdAt:new Date().toISOString()}];const entries=h.api.buildSearchIndex();

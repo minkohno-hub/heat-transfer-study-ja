@@ -79,6 +79,31 @@ try {
   assert.equal((await stored()).attempts.length, 1);
   check('JSON書き出し、不正復元の拒否、重複しない追加復元');
 
+  await page.locator('#profile-create-form [name="profileName"]').fill('別の学習者');
+  await Promise.all([page.waitForEvent('load'), page.locator('#profile-create-form button[type="submit"]').click()]);
+  await page.locator('#profile-switch-form').waitFor();
+  const profile = await page.evaluate(() => {
+    const id = localStorage.getItem('heat-study-ja:active-profile:v1');
+    return {id, data: JSON.parse(localStorage.getItem(`heat-study-ja:profile:${id}:v1`))};
+  });
+  assert.notEqual(profile.id, 'legacy');
+  assert.equal(profile.data.attempts.length, 0);
+  assert.deepEqual(profile.data.readSections, {});
+  assert.equal((await stored()).attempts.length, 1);
+  await nav('reader');
+  await page.locator('#bookmark-note').fill('別の利用者のメモ');
+  await page.locator('#bookmark-form button[type="submit"]').click();
+  assert.equal(await page.evaluate(id => JSON.parse(localStorage.getItem(`heat-study-ja:profile:${id}:v1`)).bookmarks.length, profile.id), 1);
+  assert.equal((await stored()).bookmarks.length, 0);
+  await nav('settings');
+  await page.locator('#profile-switch-form select').selectOption('legacy');
+  await Promise.all([page.waitForEvent('load'), page.locator('#profile-switch-form button[type="submit"]').click()]);
+  await page.locator('#profile-switch-form').waitFor();
+  assert.equal((await stored()).attempts.length, 1);
+  assert.equal((await stored()).readSections['1.1'], true);
+  assert.equal((await stored()).bookmarks.length, 0);
+  check('既存記録を保持した利用者追加と記録の分離・切り替え');
+
   await nav('simulator');
   assert.match(await page.locator('.result-number').innerText(), /5,625|5625/);
   await page.locator('[data-sim-mode="radiation"]').click();

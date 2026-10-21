@@ -1,6 +1,12 @@
 import { createEmptyState, validateLearningData, normalizeLearningData, mergeLearningData, calculateHeatTransfer, chapterKey, searchEntries, searchSnippet, searchRanges, localDay, validDay, shiftMonth, nextReviewDays, planMinutes, validateQuestion, speechChunks, questionFingerprint, quizResumeIssue, recordStudyActivity, fieldProgress, studyDuration } from './study-core.mjs';
 const CORE_DATA_FILES = ['./data/book.json', './data/questions.json', './data/glossary.json', './data/content-manifest.json'];
-const STORAGE_KEY = 'heat-study-ja:v1';
+const LEGACY_STORAGE_KEY = 'heat-study-ja:v1';
+const PROFILES_KEY = 'heat-study-ja:profiles:v1';
+const ACTIVE_PROFILE_KEY = 'heat-study-ja:active-profile:v1';
+let profileIssue = '';
+const profiles = loadProfiles();
+const activeProfileId = loadActiveProfileId();
+const STORAGE_KEY = activeProfileId === 'legacy' ? LEGACY_STORAGE_KEY : `heat-study-ja:profile:${activeProfileId}:v1`;
 const root = document.querySelector('#app');
 const systemDark = window.matchMedia?.('(prefers-color-scheme: dark)');
 const emptyState = createEmptyState;
@@ -32,6 +38,71 @@ let ui = {
     resistance:{area:1,hot:80,cold:20,hHot:10,hCold:20,k1:0.5,k2:0.1,L1:0.1,L2:0.05}
   }
 };
+
+function loadProfiles() {
+  const fallback = [{id: 'legacy', name: '既存の記録'}];
+  try {
+    const raw = localStorage.getItem(PROFILES_KEY);
+    if (!raw) return fallback;
+    const parsed = JSON.parse(raw);
+    if (!Array.isArray(parsed) || !parsed.length || parsed.length > 20 || parsed[0]?.id !== 'legacy' || parsed[0]?.name !== '既存の記録'
+      || parsed.some(p => !p || typeof p.name !== 'string' || !p.name.trim() || p.name.length > 40
+        || typeof p.id !== 'string' || (p.id !== 'legacy' && !/^[0-9a-f-]{36}$/.test(p.id)))
+      || new Set(parsed.map(p => p.id)).size !== parsed.length) throw new Error('invalid-profile-list');
+    return parsed;
+  } catch {
+    profileIssue = '利用者の一覧を読み取れませんでした。新しい利用者の追加を止めています。記録をJSONで書き出し、保存状態を確認してください。';
+    return fallback;
+  }
+}
+function loadActiveProfileId() {
+  try {
+    const id = localStorage.getItem(ACTIVE_PROFILE_KEY) || 'legacy';
+    if (profiles.some(profile => profile.id === id)) return id;
+  } catch { /* Existing record remains accessible with the legacy key. */ }
+  profileIssue ||= '前回の利用者を読み取れませんでした。既存の記録を表示しています。';
+  return 'legacy';
+}
+function saveCurrentProfile() {
+  flushLearningTime(true);
+  if (ui.route === 'reader') captureReaderPosition();
+  persistQuiz();
+  if (!saveState()) { showStatus('今の記録を保存できないため、利用者を切り替えていません。JSONを書き出してください。'); return false; }
+  return true;
+}
+function switchProfile(id) {
+  if (id === activeProfileId || !profiles.some(profile => profile.id === id) || profileIssue) return;
+  if (!saveCurrentProfile()) return;
+  try { localStorage.setItem(ACTIVE_PROFILE_KEY, id); }
+  catch { showStatus('利用者を切り替えられませんでした。ブラウザーの保存設定を確認してください。'); return; }
+  window.location.reload();
+}
+function createProfile(form) {
+  if (profileIssue || profiles.length >= 20) { showStatus(profileIssue || '利用者は20人まで登録できます。'); return; }
+  const name = String(new FormData(form).get('profileName') || '').trim();
+  if (!name || name.length > 40 || profiles.some(profile => profile.name === name)) { showStatus('1〜40文字で、既存と異なる利用者名を入力してください。'); return; }
+  if (!globalThis.crypto?.randomUUID) { showStatus('このブラウザーでは安全に利用者を追加できません。'); return; }
+  let priorList;
+  try { priorList = localStorage.getItem(PROFILES_KEY); }
+  catch { showStatus('利用者一覧を確認できませんでした。ブラウザーの保存設定を確認してください。'); return; }
+  if (priorList && priorList !== JSON.stringify(profiles)) { showStatus('別のタブで利用者一覧が変わりました。再読み込みしてから追加してください。'); return; }
+  if (!saveCurrentProfile()) return;
+  const id = globalThis.crypto.randomUUID(), key = `heat-study-ja:profile:${id}:v1`;
+  let listWritten = false;
+  try {
+    localStorage.setItem(key, JSON.stringify(emptyState()));
+    localStorage.setItem(PROFILES_KEY, JSON.stringify([...profiles, {id, name}]));
+    listWritten = true;
+    localStorage.setItem(ACTIVE_PROFILE_KEY, id);
+  } catch {
+    if (listWritten) try {
+      if (priorList === null) localStorage.removeItem(PROFILES_KEY);
+      else localStorage.setItem(PROFILES_KEY, priorList);
+    } catch { /* Keep the newly created profile reachable if rollback also fails. */ }
+    showStatus('利用者を追加できませんでした。既存の記録は保持しています。空き容量と保存設定を確認してください。'); return;
+  }
+  window.location.reload();
+}
 
 function loadState() {
   let raw;
@@ -496,11 +567,12 @@ function renderSettings() {
   const drafted=sections.filter(s=>['translated','draft_complete'].includes(s.translationStatus)).length;
   return `${pageHeading('設定とデータ', '学び方を、自分に合わせる。', '表示の調整、端末への保存、学習データの入出力を行います。')}
     <div class="settings-grid">
+      <section class="surface-card settings-card"><p class="eyebrow">利用者</p><h2>学習記録を分ける</h2><p>現在の利用者：<strong>${escapeHTML(profiles.find(p=>p.id===activeProfileId)?.name||'既存の記録')}</strong></p>${profileIssue?`<p class="inline-error" role="alert">${escapeHTML(profileIssue)}</p>`:''}<form id="profile-switch-form" class="stack-form"><label>利用者を選ぶ<select name="profileId">${profiles.map(p=>`<option value="${escapeHTML(p.id)}" ${p.id===activeProfileId?'selected':''}>${escapeHTML(p.name)}</option>`).join('')}</select></label><button class="button secondary" type="submit" ${profileIssue?'disabled':''}>この利用者に切り替える</button></form><form id="profile-create-form" class="stack-form"><label>新しい利用者名<input name="profileName" maxlength="40" autocomplete="off" required/></label><button class="button secondary" type="submit" ${profileIssue?'disabled':''}>新しい利用者を作る</button></form><p class="small-note">以前の学習記録は「既存の記録」に残します。利用者ごとに回答・メモ・しおり・設定と復元前の控えを保存します。パスワードによる保護はなく、このブラウザーを使う人は利用者を切り替えられます。端末間の自動同期はありません。</p></section>
       <section class="surface-card settings-card"><p class="eyebrow">表示</p><h2>画面の見やすさ</h2><fieldset class="choice-field"><legend>表示モード</legend><div class="segmented-control"><label><input type="radio" name="theme" value="system" ${state.settings.theme === 'system' ? 'checked' : ''}/><span>端末に合わせる</span></label><label><input type="radio" name="theme" value="light" ${state.settings.theme === 'light' ? 'checked' : ''}/><span>ライト</span></label><label><input type="radio" name="theme" value="dark" ${state.settings.theme === 'dark' ? 'checked' : ''}/><span>ダーク</span></label></div></fieldset>
         <label class="range-setting">本文の文字サイズ <strong>${Math.round(state.settings.fontScale * 100)}%</strong><input type="range" min="0.9" max="1.4" step="0.05" name="fontScale" value="${state.settings.fontScale}"/><span class="range-ends"><small>小さめ</small><small>大きめ</small></span></label>
         <label class="range-setting">本文の行間 <strong>${Number(state.settings.lineHeight).toFixed(1)}</strong><input type="range" min="1.5" max="2.2" step="0.1" name="lineHeight" value="${state.settings.lineHeight}"/><span class="range-ends"><small>標準</small><small>広め</small></span></label><div class="preview-text">熱は高温側から低温側へ移ります。読みやすい大きさと行間に調整してください。</div>
       </section>
-      <section class="surface-card settings-card"><p class="eyebrow">学習データ</p><h2>保存と持ち運び</h2><p>学習履歴、回答、自信度、メモ、しおり、計画、設定をJSONで書き出します。書籍本文は含みません。回答時の選択肢の文言は履歴として含まれます。</p><p class="small-note">記録はこのブラウザーの同じサイト・同じプロファイルを使う人に共有されます。共用端末ではブラウザーの利用者プロファイルを分けてください。端末間の自動同期はありません。</p><div class="button-stack"><button class="button primary" type="button" data-action="export-data">JSONを書き出す</button><label class="button secondary file-button">JSONを取り込む<input type="file" id="import-file" accept="application/json,.json"/></label></div>${renderExportPreview()}${renderBackupControls()}<div id="import-feedback" class="import-feedback">${renderImportDraft()}</div><div class="notice-card compact-notice"><span class="notice-icon">i</span><p>ファイル形式が正しい場合も、取り込み前に内容を確認できます。壊れたファイルでは現在の記録を変更しません。</p></div></section>
+      <section class="surface-card settings-card"><p class="eyebrow">学習データ</p><h2>保存と持ち運び</h2><p>現在の利用者の学習履歴、回答、自信度、メモ、しおり、計画、設定をJSONで書き出します。書籍本文は含みません。回答時の選択肢の文言は履歴として含まれます。</p><div class="button-stack"><button class="button primary" type="button" data-action="export-data">JSONを書き出す</button><label class="button secondary file-button">JSONを取り込む<input type="file" id="import-file" accept="application/json,.json"/></label></div>${renderExportPreview()}${renderBackupControls()}<div id="import-feedback" class="import-feedback">${renderImportDraft()}</div><div class="notice-card compact-notice"><span class="notice-icon">i</span><p>ファイル形式が正しい場合も、取り込み前に内容を確認できます。壊れたファイルでは現在の記録を変更しません。</p></div></section>
       <section class="surface-card settings-card"><p class="eyebrow">教材</p><h2>翻訳と確認の状況</h2><div class="content-progress"><div><strong>この端末で読める本文</strong>${statusPill('専門家校閲は未実施', 'amber')}</div><div class="progress-line"><span style="width:${percent}%"></span></div><p>${readable.length}節 / ${sections.length}節を収録。下書きの進捗と、この端末で読める範囲は別に管理しています。全文の翻訳・確認は完了していません。</p><ul>${readable.map(s=>`<li>第${escapeHTML(s.id)}節「${escapeHTML(s.title)}」<br><small>書籍 pp.${s.bookStart}–${s.bookEnd} · PDF pp.${s.pdfStart}–${s.pdfEnd}${s.localSourceChecked?' · 原本照合済み（作業者）・ローカル教材':''}</small></li>`).join('')}</ul><p>目次台帳では${drafted}節に本文または翻訳下書きの記録があります。下書きのある節も、図表・式・脚注の網羅性と内容の確認を継続しています。詳細は目次と教材台帳を参照してください。</p></div><a class="text-link" href="#reader">翻訳進捗を目次で見る →</a><p class="small-note">PDFは810ページ。このアプリには同梱していません。公開リポジトリと、この端末の学習用教材には収録範囲の違いがあります。出典は LICENSE-BOOK.md に記録しています。</p></section>
       <section class="surface-card settings-card"><p class="eyebrow">対応状況</p><h2>オフライン・読み上げ・操作</h2><ul class="capability-list"><li><span>${navigator.onLine ? '●' : '○'}</span> ${navigator.onLine ? 'オンライン接続中' : 'オフライン中'}。初回の教材読み込み後は、アプリと収録済み教材を利用できます。</li><li><span>▶</span> 読み上げは端末の音声合成機能を使用します。未対応のブラウザーでは利用できません。</li><li><span>⌨</span> 問題演習中は数字キー1〜4で選択、Enterで回答できます。入力欄にフォーカスがある間は操作を奪いません。</li><li><span>▣</span> 読書位置、読了、問題回答、復習予定はこのブラウザーに保存します。</li></ul></section>
     </div>`;
@@ -889,7 +961,9 @@ function onClick(event) {
 function onSubmit(event) {
   const form=event.target;
   if (!form.id) return;
-  if (form.id === 'search-form') { event.preventDefault(); searchNow(form); }
+  if (form.id === 'profile-switch-form') { event.preventDefault(); switchProfile(String(new FormData(form).get('profileId')||'')); }
+  else if (form.id === 'profile-create-form') { event.preventDefault(); createProfile(form); }
+  else if (form.id === 'search-form') { event.preventDefault(); searchNow(form); }
   else if (form.id === 'quiz-start-form') { event.preventDefault(); const data=new FormData(form); startQuiz({mode:String(data.get('mode')),field:String(data.get('field')),difficulty:String(data.get('difficulty')),count:Number(data.get('count'))}); }
   else if (form.id === 'quiz-answer-form') { event.preventDefault(); submitQuizAnswer(form); }
   else if (form.id === 'mistake-note-form') { event.preventDefault(); saveMistakeNote(form); }
