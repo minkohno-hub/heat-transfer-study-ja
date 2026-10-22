@@ -27,6 +27,14 @@ test('numeric public answer keys agree with independent simulator calculations a
     assert.equal(q.choices.filter(choice=>Number(choice.replace(/[^0-9.]/g,''))===printed).length,1,id);
   }
 });
+test('glossary practice links lead only to available public questions',async()=>{
+  const questions=await read('data/questions.json'),ids=new Set(questions.map(q=>q.id));
+  const terms=await read('data/glossary.json');
+  for(const term of terms)for(const link of term.relatedQuestions||[]){
+    assert.ok(ids.has(link.id),`${term.id}: ${link.id}`);
+    assert.ok(typeof link.label==='string'&&link.label.trim(),term.id);
+  }
+});
 test('normalized highlighting retains Unicode text and literal punctuation',()=>{
   assert.deepEqual(searchRanges('😀カ\u3099ラス１０[','ガラス10['),[[2,9]]);
 });

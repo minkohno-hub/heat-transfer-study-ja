@@ -39,6 +39,9 @@ try {
   assert.equal(readingRecord.note.sectionId,'1.1');
   await page.locator('.reader-pager [data-section="1.2"]').click();
   assert.match(await page.locator('.not-translated a[href*="AHTTv600.pdf"]').getAttribute('href'),/AHTTv600\.pdf#page=20$/);
+  await page.locator('.reader-toc [data-section="1.3"]').click();
+  assert.match(await page.locator('.not-translated').innerText(),/旧PC.*下書き.*未移行/s);
+  assert.match(await page.locator('.not-translated a[href*="AHTTv600.pdf"]').getAttribute('href'),/AHTTv600\.pdf#page=25$/);
   await nav('home');
   assert.match(await page.locator('.hero-side').innerText(),/1 \/ 76 節を読了/);
   await nav('plan');
@@ -53,8 +56,15 @@ try {
   await page.locator('#guide-query').fill('放射率');
   await page.locator('#guide-search-form button').click();
   assert.ok(await page.locator('#guide-sim-radiation').count());
+  await nav('glossary');
+  assert.match(await page.locator('#term-heat .term-links a').getAttribute('href'),/AHTTv600\.pdf#page=17$/);
+  await page.locator('#term-thermal-conductivity [data-start-question="supp-flat-thickness"]').click();
+  assert.match(await page.locator('.question-card').innerText(),/厚さ L/);
+  await page.locator('[data-action="exit-quiz"]').click();
+  await page.locator('[data-action="discard-quiz"]').click();
   await nav('simulator');
   assert.match(await page.locator('.result-number').innerText(),/5,625/);
+  assert.match(await page.locator('.related-reading a[href*="AHTTv600.pdf"]').getAttribute('href'),/AHTTv600\.pdf#page=\d+$/);
   await page.locator('[data-sim-mode="radiation"]').click();
   assert.match(await page.locator('.result-number').innerText(),/W/);
   await nav('quiz');
@@ -69,7 +79,7 @@ try {
   assert.equal(JSON.parse(await page.locator('#export-json').inputValue()).attempts.length,1);
   for(const width of [320,390,760,1365]){
     await page.setViewportSize({width,height:844});
-    for(const route of ['home','reader','guide','quiz','simulator','settings']){
+    for(const route of ['home','reader','guide','glossary','quiz','simulator','settings']){
       await nav(route);
       assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth)<=width+2,`${route}@${width}`);
     }
