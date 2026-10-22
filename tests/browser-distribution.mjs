@@ -58,6 +58,9 @@ try {
   assert.ok(await page.locator('#guide-sim-radiation').count());
   await nav('glossary');
   assert.match(await page.locator('#term-heat .term-links a').getAttribute('href'),/AHTTv600\.pdf#page=17$/);
+  await page.locator('#term-thermal-conductivity .term-links a').click();
+  assert.match(page.url(),/#guide\/sim-conduction$/);
+  await nav('glossary');
   await page.locator('#term-thermal-conductivity [data-start-question="supp-flat-thickness"]').click();
   assert.match(await page.locator('.question-card').innerText(),/厚さ L/);
   await page.locator('[data-action="exit-quiz"]').click();

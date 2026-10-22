@@ -623,7 +623,8 @@ function renderGlossary() {
     const primaryLanguage=language==='en'&&term.en?'en':'ja';
     const meaningLanguage=language==='en'&&term.meaningEn?'en':'ja';
     const section=getSection(term.source.section);
-    const sourceLink = term.source.type === 'supplement' ? statusPill('補足説明', 'violet') : `<div class="term-links">${sectionIsTranslated(section)&&term.availableInApp!==false?`<button type="button" class="text-link" data-section="${escapeHTML(term.source.section)}">アプリ内の本文を開く →</button>`:'<small>アプリ内の日本語訳は未収録です。</small>'}${sourcePdfLink(term.source,section)}</div>`;
+    const guideId=term.source.guideId;
+    const sourceLink = term.source.type === 'supplement' ? `<div class="term-links">${statusPill('補足説明', 'violet')}${GUIDE_SECTIONS.some(item=>item.id===guideId)?`<a class="text-link" href="#guide/${escapeHTML(guideId)}">詳しい説明を読む →</a>`:''}</div>` : `<div class="term-links">${sectionIsTranslated(section)&&term.availableInApp!==false?`<button type="button" class="text-link" data-section="${escapeHTML(term.source.section)}">アプリ内の本文を開く →</button>`:'<small>アプリ内の日本語訳は未収録です。</small>'}${sourcePdfLink(term.source,section)}</div>`;
     const relatedQuestions=(Array.isArray(term.relatedQuestions)?term.relatedQuestions:[]).filter(item=>item&&typeof item.id==='string'&&typeof item.label==='string'&&getQuestion(item.id));
     const questionLinks=relatedQuestions.length?`<div class="term-related"><strong>関連する問題</strong>${relatedQuestions.map(item=>`<button type="button" class="text-link" data-start-question="${escapeHTML(item.id)}">${escapeHTML(item.label)} →</button>`).join('')}</div>`:'';
     const reviewTag = term.reviewStatus === 'needs_review' ? statusPill('校閲前', 'amber') : '';

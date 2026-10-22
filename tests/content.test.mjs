@@ -30,9 +30,13 @@ test('numeric public answer keys agree with independent simulator calculations a
 test('glossary practice links lead only to available public questions',async()=>{
   const questions=await read('data/questions.json'),ids=new Set(questions.map(q=>q.id));
   const terms=await read('data/glossary.json');
-  for(const term of terms)for(const link of term.relatedQuestions||[]){
-    assert.ok(ids.has(link.id),`${term.id}: ${link.id}`);
-    assert.ok(typeof link.label==='string'&&link.label.trim(),term.id);
+  const guideIds=new Set(GUIDE_SECTIONS.map(section=>section.id));
+  for(const term of terms){
+    if(term.source.guideId)assert.ok(guideIds.has(term.source.guideId),term.id);
+    for(const link of term.relatedQuestions||[]){
+      assert.ok(ids.has(link.id),`${term.id}: ${link.id}`);
+      assert.ok(typeof link.label==='string'&&link.label.trim(),term.id);
+    }
   }
 });
 test('normalized highlighting retains Unicode text and literal punctuation',()=>{
