@@ -69,14 +69,28 @@ try {
   assert.match(await page.locator('.result-number').innerText(),/W/);
   await nav('quiz');
   await page.locator('#quiz-start-form button[type="submit"]').click();
-  await page.locator('.answer-choice input').first().check();
-  await page.locator('#quiz-answer-form button[type="submit"]').click();
+  await page.keyboard.press('1');
+  assert.equal(await page.locator('.answer-choice input:checked').count(),1);
+  await page.keyboard.press('Enter');
   assert.equal(await page.evaluate(()=>JSON.parse(localStorage.getItem('heat-study-ja:v1')).attempts.length),1);
   assert.ok(await page.locator('.solution-steps li').count()>=3);
   assert.match(await page.locator('.answer-source a').getAttribute('href'),/^#guide\//);
   await nav('settings');
   await page.locator('[data-action="export-preview"]').click();
   assert.equal(JSON.parse(await page.locator('#export-json').inputValue()).attempts.length,1);
+  await page.locator('input[name="theme"][value="dark"]').check();
+  assert.equal(await page.evaluate(()=>document.documentElement.dataset.theme),'dark');
+  await page.reload();
+  await page.locator('.app-shell').waitFor();
+  assert.equal(await page.evaluate(()=>document.documentElement.dataset.theme),'dark');
+  await page.locator('input[name="theme"][value="light"]').check();
+  assert.equal(await page.evaluate(()=>document.documentElement.dataset.theme),'light');
+  await page.emulateMedia({colorScheme:'dark'});
+  await page.locator('input[name="theme"][value="system"]').check();
+  assert.equal(await page.evaluate(()=>document.documentElement.dataset.theme),'dark');
+  await page.emulateMedia({colorScheme:'light'});
+  await page.waitForFunction(()=>document.documentElement.dataset.theme==='light',null,{timeout:3000});
+  assert.equal(await page.evaluate(()=>document.documentElement.dataset.theme),'light');
   for(const width of [320,390,760,1365]){
     await page.setViewportSize({width,height:844});
     for(const route of ['home','reader','guide','glossary','quiz','simulator','settings']){
@@ -103,5 +117,5 @@ try {
   assert.ok(await page.locator('#guide-sim-radiation').count());
   assert.deepEqual(errors,[]);
   assert.deepEqual(external,[]);
-  console.log('公開配信物：原本PDFとオフラインの範囲取得、訳文・抽出原図なし、ガイド・演習・計算・保存・画面幅を確認。');
+  console.log('公開配信物：原本PDFとオフラインの範囲取得、訳文・抽出原図なし、ガイド・演習・計算・保存・画面幅・数字キーとEnter・3種類の表示モードを確認。');
 } finally {await browser?.close();if(server)await new Promise(resolve=>server.close(resolve));}
