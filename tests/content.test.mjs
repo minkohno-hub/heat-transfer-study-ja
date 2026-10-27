@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {readFile,access} from 'node:fs/promises';
-import {validateQuestion,searchRanges,calculateHeatTransfer} from '../study-core.mjs';
+import {validateQuestion,searchRanges,searchSnippet,calculateHeatTransfer} from '../study-core.mjs';
 import {GUIDE_SECTIONS} from '../guide.mjs';
 const root=new URL('../',import.meta.url),read=async p=>JSON.parse(await readFile(new URL(p,root),'utf8'));
 let hasLocal=true;try{await access(new URL('data/local-content-manifest.json',root));}catch{hasLocal=false;}
@@ -97,6 +97,14 @@ test('glossary practice links lead only to available public questions',async()=>
 });
 test('normalized highlighting retains Unicode text and literal punctuation',()=>{
   assert.deepEqual(searchRanges('😀カ\u3099ラス１０[','ガラス10['),[[2,9]]);
+});
+test('search excerpts keep whole emoji and Japanese combining characters at both edges',()=>{
+  const hasLoneSurrogate=value=>Array.from(value).some(point=>point.length===1&&point.codePointAt(0)>=0xd800&&point.codePointAt(0)<=0xdfff);
+  const emoji=searchSnippet('😀'.repeat(50)+'a'+'needle','needle');
+  assert.ok(!hasLoneSurrogate(emoji));assert.ok(emoji.includes('needle'));
+  assert.ok(!hasLoneSurrogate(searchSnippet('a'.repeat(239)+'😀tail','absent')));
+  const accents=searchSnippet('a\u0301'.repeat(50)+'xneedle','needle');
+  assert.ok(accents.startsWith('…a\u0301'));assert.ok(accents.includes('needle'));
 });
 test('reviewed local sections retain original page locations, both languages, and figure descriptions',{skip:!hasLocal},async()=>{
   const expected={'7.64':387,'7.65':390,'7.66':391,'7.67':391,'7.68':391,'7.69':393,'7.70':393,'7.71':393,'7.72':393,'7.73a':395,'7.73h':395,'7.74':396};
