@@ -28,7 +28,7 @@ test('public questions are self-contained and book references remain in the cite
       assert.equal(q.reviewStatus,'source_checked');assert.equal(q.expertReviewed,false);
     }
   }
-  assert.equal(qs.filter(q=>q.source.type==='supplement').length,8);
+  assert.equal(qs.filter(q=>q.source.type==='supplement').length,20);
   const boiling=qs.find(q=>q.id==='book-9-1-transition-flux');
   assert.equal(boiling.source.bookPages,'476');assert.equal(boiling.source.pdfPages,'490');
   const beforeInception=qs.find(q=>q.id==='book-9-1-before-inception');
@@ -155,4 +155,55 @@ test('vertical natural convection retains source caveats, mean-value overbars, a
   const qs=await read('data/local/questions/8.3-ja.json');assert.equal(qs.length,10);
   for(const q of qs){assert.equal(validateQuestion(q),'',q.id);assert.equal(q.source.section,'8.3');assert.equal(q.expertReviewed,false);assert.ok(q.beginnerPitfall);assert.ok(q.solutionSteps.length>=3);if(q.figure)await access(new URL(q.figure.src,root));}
   assert.equal(qs.find(q=>q.id==='ch8-3-mean-h-calculation').answer,3);
+});
+
+test('independent application questions have unique answer keys and independently recomputed physical values',async()=>{
+  const questions=await read('data/questions.json');
+  const added=questions.filter(q=>q.id.startsWith('supp-audit-'));
+  assert.equal(added.length,12);
+  assert.equal(new Set(added.map(q=>q.id)).size,12);
+  for(const field of ['熱伝導','対流','熱放射','熱抵抗'])
+    assert.equal(added.filter(q=>q.field===field).length,3,field);
+  const correct=Object.fromEntries(added.map(q=>[q.id.replace('supp-audit-',''),q.choices[q.answer]]));
+  for(const q of added){
+    assert.equal(q.source.type,'supplement',q.id);
+    assert.equal(q.expertReviewed,false,q.id);
+    assert.equal(q.reviewStatus.includes('専門家校閲なし'),true,q.id);
+    assert.equal(q.distractors.filter(reason=>reason.startsWith('正解。')).length,1,q.id);
+    assert.equal(q.distractors[q.answer].startsWith('正解。'),true,q.id);
+    assert.ok(q.hints.length>=2&&q.solutionSteps.length>=3,q.id);
+  }
+  const equal=(key,value,expected)=>{
+    assert.ok(Math.abs(value-expected)<=1e-10*Math.max(1,Math.abs(expected)),key);
+    assert.equal(typeof correct[key],'string',key);
+  };
+  // Independent calculations: no app simulator output is used for these answer checks.
+  equal('conduction-compensation',(2*3)/(2*4)/(3/4),1);
+  equal('conduction-reversed-sign',10*1*(20-50)/1,-300);
+  equal('conduction-inverse-k',60*.2/(.5*30),.8);
+  equal('convection-negative-direction',25*2*(0-20),-1000);
+  equal('convection-inverse-h',400/(1.6*(35-25)),25);
+  equal('convection-compensating-inputs',(2*15)*(10/2)/(15*10),1);
+  equal('radiation-equal-temperatures',300**4-300**4,0);
+  equal('radiation-emissivity-scale',.90/.30,3);
+  const radiationRatio=(400**4-300**4)/(300**4-200**4);
+  equal('radiation-same-delta-different-level',radiationRatio,17.5/6.5);
+  assert.ok(radiationRatio>1);
+  equal('resistance-layer-temp-drop',80*.5,40);
+  equal('resistance-overall-u',1/(.25*2),2);
+  equal('resistance-one-layer-doubled',(.1+.2+.5+.1)/(.1+.4+.5+.1),9/11);
+  for(const [key,label] of Object.entries({
+    'conduction-compensation':'変わらない',
+    'conduction-reversed-sign':'−300 W',
+    'conduction-inverse-k':'0.80 W/(m·K)',
+    'convection-negative-direction':'−1,000 W',
+    'convection-inverse-h':'25 W/(m²·K)',
+    'convection-compensating-inputs':'変わらない',
+    'radiation-equal-temperatures':'0 W',
+    'radiation-emissivity-scale':'3倍',
+    'radiation-same-delta-different-level':'Aのほうが大きい',
+    'resistance-layer-temp-drop':'40 K',
+    'resistance-overall-u':'2.0 W/(m²·K)',
+    'resistance-one-layer-doubled':'9/11倍'
+  }))assert.equal(correct[key],label,key);
 });
