@@ -1,6 +1,7 @@
 // Checks the exact public Pages artifact, where book text and original figures are absent.
 import assert from 'node:assert/strict';
 import {createRequire} from 'node:module';
+import {existsSync} from 'node:fs';
 import {join,dirname} from 'node:path';
 import {fileURLToPath} from 'node:url';
 import {startServer} from '../scripts/serve.mjs';
@@ -16,7 +17,7 @@ const server=liveBase?null:await startServer({root,port:0});
 let browser;
 try {
   browser=await engines[engine].launch({headless:true,
-    ...(process.env.BROWSER_EXECUTABLE?{executablePath:process.env.BROWSER_EXECUTABLE}:engine==='chromium'?{executablePath:'/usr/bin/chromium'}:{}),
+    ...(process.env.BROWSER_EXECUTABLE?{executablePath:process.env.BROWSER_EXECUTABLE}:engine==='chromium'&&existsSync('/usr/bin/chromium')?{executablePath:'/usr/bin/chromium'}:{}),
     args:engine==='chromium'?['--no-sandbox',...(ignoreCert?['--ignore-certificate-errors']:[])]:[]});
   const context=await browser.newContext({viewport:{width:390,height:844},ignoreHTTPSErrors:ignoreCert});
   const page=await context.newPage();
