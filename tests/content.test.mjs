@@ -192,6 +192,7 @@ test('independent application questions have unique answer keys and independentl
   equal('resistance-layer-temp-drop',80*.5,40);
   equal('resistance-overall-u',1/(.25*2),2);
   equal('resistance-one-layer-doubled',(.1+.2+.5+.1)/(.1+.4+.5+.1),9/11);
+  assert.match(added.find(q=>q.id==='supp-audit-resistance-one-layer-doubled').prompt,/第1固体層（0\.20 K\/W）/);
   for(const [key,label] of Object.entries({
     'conduction-compensation':'変わらない',
     'conduction-reversed-sign':'−300 W',
