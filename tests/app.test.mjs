@@ -56,8 +56,12 @@ test('clearing a review date preserves valid saved data, and valid changes have 
 test('restore is atomic when storage fails and malformed nested data are rejected again',()=>{
   const h=harness();h.api.state.mistakeNotes.q1={reason:'keep'};const before=JSON.stringify(h.api.state);h.api.saveState();
   h.api.ui.importDraft={data:{...core.createEmptyState(),format:core.DATA_FORMAT,notes:null}};h.api.importData(false);assert.equal(JSON.stringify(h.api.state),before);
+  h.store.set(`${key}:before-import`,'previous-backup');
   h.api.ui.importDraft={data:{...core.createEmptyState(),format:core.DATA_FORMAT,mistakeNotes:{q1:{reason:'replace'}}}};h.setFail(true);h.api.importData(true);
   assert.equal(JSON.stringify(h.api.state),before);assert.equal(h.store.get(key),before);assert.ok(h.api.ui.importDraft.error.includes('中止'));
+  assert.equal(h.store.get(`${key}:before-import`),'previous-backup');
+  h.store.delete(`${key}:before-import`);h.api.ui.importDraft={data:{...core.createEmptyState(),format:core.DATA_FORMAT}};h.api.importData(true);
+  assert.equal(h.store.has(`${key}:before-import`),false);
 });
 test('a stale tab cannot overwrite another tab through normal saving or JSON restore',()=>{
   const h=harness();

@@ -1213,15 +1213,19 @@ function importData(replace) {
   if(problem) { ui.importDraft={error:problem}; render(); return; }
   if(replace && !window.confirm('この端末の学習記録を、選択したファイルの内容に置き換えます。現在の記録は復元前の控えとして保管します。続けますか？')) return;
   const next=replace ? normalizeLearningData(data) : mergeLearningData(state,data);
+  const backupKey=`${STORAGE_KEY}:before-import`;
+  let priorBackup=null, backupWritten=false, backupRollbackFailed=false;
   try {
     const previous=localStorage.getItem(STORAGE_KEY);
     if(previous!==lastSavedRaw){ui.importDraft={error:'別のタブで学習記録が更新されたため、復元を中止しました。現在の記録は変更していません。再読み込みしてから取り込み直してください。'};render();return;}
-    if(previous) localStorage.setItem(`${STORAGE_KEY}:before-import`,previous);
+    priorBackup=localStorage.getItem(backupKey);
+    if(previous){localStorage.setItem(backupKey,previous);backupWritten=true;}
     const raw=JSON.stringify(next);
     localStorage.setItem(STORAGE_KEY,raw);
     lastSavedRaw=raw;
   } catch {
-    ui.importDraft={error:'端末に保存できないため復元を中止しました。現在の記録は変更していません。先にJSONを書き出し、空き容量を確認してください。'};
+    if(backupWritten)try{if(priorBackup===null)localStorage.removeItem(backupKey);else localStorage.setItem(backupKey,priorBackup);}catch{backupRollbackFailed=true;}
+    ui.importDraft={error:`端末に保存できないため復元を中止しました。現在の記録は変更していません。先にJSONを書き出し、空き容量を確認してください。${backupRollbackFailed?'復元前の控えも変更された可能性があります。控えを確認してください。':''}`};
     render(); return;
   }
   state=next; storageIssue=''; storageBlocked=false; ui.importDraft=null;ui.quiz=null;ui.quizResult=null;render();
