@@ -1126,7 +1126,8 @@ function renderSimulatorOutputsOnly() {
 }
 
 function formatHeatRate(watts) {
-  if(watts!==0&&(Math.abs(watts)<0.001||Math.abs(watts)>=1e9)) {
+  if(watts===0)return '0';
+  if(Math.abs(watts)<0.001||Math.abs(watts)>=1e9) {
     const [coefficient,exponent]=watts.toExponential(3).split('e');
     const superscript=Object.fromEntries([...'0123456789+-'].map((char,index)=>[char,[...'⁰¹²³⁴⁵⁶⁷⁸⁹⁺⁻'][index]]));
     return `${coefficient}×10${[...String(Number(exponent))].map(char=>superscript[char]).join('')}`;

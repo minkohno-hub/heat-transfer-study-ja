@@ -108,6 +108,11 @@ try {
   assert.match(await page.locator('.result-number').innerText(),/W/);
   await page.locator('#sim-form input[name="emissivity"]').fill('0');
   assert.match(await page.locator('.result-number').innerText(),/モデル計算結果は0 W/);
+  await page.locator('#sim-form input[name="surface"]').fill('20');
+  await page.locator('#sim-form input[name="surrounding"]').fill('80');
+  assert.equal((await page.locator('.result-number strong').innerText()).replace(/\s/g,''),'0W');
+  await page.locator('#sim-form input[name="surface"]').fill('150');
+  await page.locator('#sim-form input[name="surrounding"]').fill('25');
   await page.locator('#sim-form input[name="emissivity"]').fill('0.85');
   await nav('quiz');
   assert.equal(Number(await page.locator('#quiz-start-form select[name="count"] option').last().getAttribute('value')),await page.locator('.bank-item').count());

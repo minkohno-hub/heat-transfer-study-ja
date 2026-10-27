@@ -65,6 +65,7 @@ test('an impossible plan date cannot poison the saved learning record',()=>{
 test('a nonzero but small simulator result is not rounded to zero on screen',()=>{
   const h=harness();
   assert.equal(h.api.formatHeatRate(0),'0');
+  assert.equal(h.api.formatHeatRate(-0),'0');
   assert.equal(h.api.formatHeatRate(0.0005),'5.000×10⁻⁴');
   assert.equal(h.api.formatHeatRate(-0.0005),'-5.000×10⁻⁴');
   assert.equal(h.api.formatHeatRate(1e9),'1.000×10⁹');
