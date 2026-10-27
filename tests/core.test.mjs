@@ -81,6 +81,8 @@ test('simulation rejects blanks, missing fields, nonnumbers, impossible temperat
   assert.ok(calculateHeatTransfer('conduction',{k:1,area:1,thickness:0,hot:10,cold:0}).error);
   assert.ok(calculateHeatTransfer('radiation',{emissivity:1.01,area:1,surface:50,surrounding:20}).error);
   assert.ok(calculateHeatTransfer('convection',{...base,h:1e308,area:1e308}).error);
+  assert.match(calculateHeatTransfer('conduction',{k:1e-323,area:.1,thickness:1,hot:40,cold:20}).error,/計算精度/);
+  assert.match(calculateHeatTransfer('radiation',{emissivity:1,area:1,surface:20.00000000000001,surrounding:20}).error,/計算精度/);
   assert.ok(calculateHeatTransfer('unknown',base).error);
 });
 test('search includes question titles, Japanese substrings, normalized numbers, and chapter filters',()=>{

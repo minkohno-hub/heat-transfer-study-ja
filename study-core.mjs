@@ -214,6 +214,7 @@ export function calculateHeatTransfer(mode,values) {
     extra={resistances,totalResistance,temperatures,overallU:1/(totalResistance*numeric.area)};
   }
   if(!Number.isFinite(watts)||!Number.isFinite(delta))return {error:'計算できる数値範囲を超えました。入力値を小さくしてください。'};
+  if(watts===0&&delta!==0&&!(mode==='radiation'&&numeric.emissivity===0))return {error:'入力値の差や係数が小さすぎて計算精度を保てません。差や係数を大きくして試してください。'};
   return {watts,delta,values:numeric,...extra};
 }
 export function safeLocalFigurePath(src) {
