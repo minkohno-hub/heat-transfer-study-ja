@@ -175,6 +175,11 @@ try {
   assert.equal(await page.evaluate(()=>localStorage.getItem('heat-study-ja:v1:before-import')),beforeImport);
   await page.locator('.backup-controls summary').click();
   assert.match(await page.locator('.backup-controls').innerText(),/控えは一つだけ/);
+  await page.evaluate(()=>{window.__originalCreateObjectURL=URL.createObjectURL;URL.createObjectURL=()=>{throw new Error('download-unavailable');};});
+  await page.locator('[data-action="export-data"]').first().click();
+  assert.match(await page.locator('.toast').innerText(),/ダウンロードを開始できませんでした/);
+  assert.equal(JSON.parse(await page.locator('#export-json').inputValue()).plan.goal,'取り込み動作の確認');
+  await page.evaluate(()=>{URL.createObjectURL=window.__originalCreateObjectURL;delete window.__originalCreateObjectURL;});
   await page.locator('input[name="theme"][value="dark"]').check();
   assert.equal(await page.evaluate(()=>document.documentElement.dataset.theme),'dark');
   await nav('reader');

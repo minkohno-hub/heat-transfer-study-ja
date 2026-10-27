@@ -13,7 +13,7 @@ function harness(initial) {
   const context=vm.createContext({...core,...guide,structuredClone,JSON,Date,Math,Intl,Map,Set,Number,String,Array,Boolean,RegExp,Blob,URL,crypto:{randomUUID:()=> '11111111-1111-4111-8111-111111111111'},document,window:{matchMedia:()=>({matches:false}),scrollTo(){},confirm:()=>true,location:{reload(){reloaded++;}}},location:{hash:''},navigator:{onLine:true},setTimeout:()=>1,clearTimeout(){},localStorage:{getItem:k=>store.get(k)||null,setItem(k,v){if((fail&&k===key)||k===failKey)throw Error('quota');store.set(k,v);},removeItem(k){store.delete(k);}},FormData:class{constructor(v){this.values=v.values??v;}get(k){return this.values[k]??null;}}});
   vm.runInContext(source.replace(/^import .*?;\s*/gm,'').replace(/\nstartApp\(\);\s*$/,'')+`
     render=()=>{globalThis.renderCount=(globalThis.renderCount||0)+1;};showStatus=message=>{globalThis.statusMessage=message;};
-    globalThis.api={get state(){return state;},set state(v){state=v;},get ui(){return ui;},set ui(v){ui={...ui,...v};},set questions(v){questionBank=v;},set book(v){book=v;},set terms(v){glossary=v;},submitQuizAnswer,reviewCandidates,validateImport,importData,saveState,setReviewDate,buildSearchIndex,onKeyDown,renderBookBlock,renderQuestionFigure,renderGlossary,renderAnswerFeedback,sourcePdfPage,sourcePdfLink,blockSourceLabel,figureZoomLink,renderSimulationSteps,simGraph,validBookBlocks,sectionIsTranslated,createProfile,get warning(){return storageIssue;}};`,context);
+    globalThis.api={get state(){return state;},set state(v){state=v;},get ui(){return ui;},set ui(v){ui={...ui,...v};},set questions(v){questionBank=v;},set book(v){book=v;},set terms(v){glossary=v;},submitQuizAnswer,reviewCandidates,validateImport,importData,exportData,exportBackup,saveState,setReviewDate,buildSearchIndex,onKeyDown,renderBookBlock,renderQuestionFigure,renderGlossary,renderAnswerFeedback,sourcePdfPage,sourcePdfLink,blockSourceLabel,figureZoomLink,renderSimulationSteps,simGraph,validBookBlocks,sectionIsTranslated,createProfile,get warning(){return storageIssue;},get status(){return globalThis.statusMessage;}};`,context);
   const api=context.api;api.questions=[question];api.book={pdfPageCount:810,chapters:[{id:'ch1',title:'章',sections:[{id:'1.1',title:'本文',bookStart:3,bookEnd:4,pdfStart:17,pdfEnd:18,blocks:[{id:'b1',type:'paragraph',text:'検索する語',bookPage:3,pdfPage:17}]}]}]};api.terms=[{id:'term',ja:'熱',en:'heat',meaning:'温度による移動',source:{section:'1.1'}}];
   return {api,store,context,setFail:v=>fail=v,setFailKey:v=>failKey=v,get submitted(){return submitted;},get reloaded(){return reloaded;}};
 }
@@ -62,6 +62,17 @@ test('restore is atomic when storage fails and malformed nested data are rejecte
   assert.equal(h.store.get(`${key}:before-import`),'previous-backup');
   h.store.delete(`${key}:before-import`);h.api.ui.importDraft={data:{...core.createEmptyState(),format:core.DATA_FORMAT}};h.api.importData(true);
   assert.equal(h.store.has(`${key}:before-import`),false);
+});
+test('failed JSON download offers the current record or saved recovery text for copying',()=>{
+  const h=harness();h.context.URL={createObjectURL(){throw Error('download-unavailable');}};
+  h.api.state.plan.goal='手動で保管する計画';
+  h.api.exportData();
+  assert.equal(JSON.parse(h.api.ui.exportJSON).plan.goal,'手動で保管する計画');
+  assert.match(h.api.status,/ダウンロードを開始できませんでした/);
+  h.store.set(`${key}:recovery`,'{damaged-json');
+  h.api.exportBackup('recovery');
+  assert.equal(h.api.ui.exportJSON,'{damaged-json');
+  assert.match(h.api.status,/コピーして保管/);
 });
 test('a stale tab cannot overwrite another tab through normal saving or JSON restore',()=>{
   const h=harness();

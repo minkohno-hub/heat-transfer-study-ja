@@ -693,7 +693,8 @@ function renderBackupControls(){
 }
 function exportBackup(kind){
   const raw=storedBackup(kind);if(!raw){showStatus('書き出せる控えがありません。');return;}
-  downloadJSON(raw,`heat-study-${kind}-${todayISO()}.json`);showStatus('控えの書き出しを開始しました。ダウンロードを確認してください。');
+  if(downloadJSON(raw,`heat-study-${kind}-${todayISO()}.json`))showStatus('控えの書き出しを開始しました。ダウンロードを確認してください。');
+  else offerManualExport(raw);
 }
 function previewBackup(){
   try{const data=JSON.parse(storedBackup('before-import')),issue=validateLearningData(data,{stored:true});if(issue)throw new Error(issue);ui.importDraft={data:{...data,format:'heat-study-ja-learning-data'}};}
@@ -1187,12 +1188,14 @@ function savePlan(form) {
 
 function exportData() {
   const payload=exportPayload();
-  downloadJSON(JSON.stringify(payload,null,2),`heat-study-ja-${todayISO()}.json`);
-  showStatus('JSONの書き出しを開始しました。ブラウザーのダウンロードを確認してください。');
+  const raw=JSON.stringify(payload,null,2);
+  if(downloadJSON(raw,`heat-study-ja-${todayISO()}.json`))showStatus('JSONの書き出しを開始しました。ブラウザーのダウンロードを確認してください。');
+  else offerManualExport(raw);
 }
 function renderExportPreview() {
-  return `<button class="button secondary" type="button" data-action="export-preview">JSON内容を表示する</button>${ui.exportJSON ? `<div class="export-preview"><label for="export-json">書き出すJSON（外部には送信しません）</label><textarea id="export-json" rows="10" readonly>${escapeHTML(ui.exportJSON)}</textarea><button class="text-button" type="button" data-action="select-export">全文を選択</button><p class="small-note">ダウンロードを利用できない場合は、全文をコピーし、テキストエディターでUTF-8の.jsonファイルとして保存できます。</p></div>` : ''}`;
+  return `<button class="button secondary" type="button" data-action="export-preview">JSON内容を表示する</button>${ui.exportJSON ? `<div class="export-preview"><label for="export-json">書き出すデータ（外部には送信しません）</label><textarea id="export-json" rows="10" readonly>${escapeHTML(ui.exportJSON)}</textarea><button class="text-button" type="button" data-action="select-export">全文を選択</button><p class="small-note">ダウンロードを利用できない場合は、全文をコピーし、テキストエディターでUTF-8の.jsonファイルとして保存できます。読み取れなかった元データはJSON形式として壊れている場合があります。</p></div>` : ''}`;
 }
+function offerManualExport(raw){ui.exportJSON=raw;render();document.querySelector('#export-json')?.focus();showStatus('ダウンロードを開始できませんでした。画面に表示した内容をコピーして保管してください。');}
 
 function exportPayload() { return {...state,schemaVersion:1,exportedAt:new Date().toISOString(),format:'heat-study-ja-learning-data'}; }
 function readImportFile(file) {
@@ -1257,8 +1260,16 @@ function reviewStatusLabel(status) {
   return ({source_checked:'原本照合済み（作業者）',needs_review:'確認中',reviewed:'確認済み',draft:'下書き'})[status] || String(status || '確認中');
 }
 function downloadJSON(text, filename) {
-  const url=URL.createObjectURL(new Blob([text],{type:'application/json'}));
-  const link=document.createElement('a'); link.href=url; link.download=filename; document.body.append(link); link.click(); setTimeout(()=>{link.remove();URL.revokeObjectURL(url);},30000);
+  let url,link;
+  try{
+    url=URL.createObjectURL(new Blob([text],{type:'application/json'}));
+    link=document.createElement('a');link.href=url;link.download=filename;document.body.append(link);link.click();
+    setTimeout(()=>{link.remove();URL.revokeObjectURL(url);},30000);
+    return true;
+  }catch{
+    link?.remove();if(url)try{URL.revokeObjectURL(url);}catch{/* The failed download does not depend on revocation. */}
+    return false;
+  }
 }
 
 startApp();
