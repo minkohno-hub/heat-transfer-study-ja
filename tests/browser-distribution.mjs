@@ -25,10 +25,23 @@ try {
   page.on('pageerror',error=>errors.push(error.message));
   page.on('request',request=>{if(!request.url().startsWith(base))external.push(request.url());});
   const nav=route=>page.locator(`.main-nav a[href="#${route}"]`).click();
+  const readerContrast=()=>page.evaluate(()=>{
+    const rgb=value=>(value.match(/\d+(?:\.\d+)?/g)||[]).slice(0,3).map(Number);
+    const luminance=color=>rgb(color).map(channel=>{const x=channel/255;return x<=.04045?x/12.92:((x+.055)/1.055)**2.4;}).reduce((sum,value,index)=>sum+value*[.2126,.7152,.0722][index],0);
+    const item=document.querySelector('.reader-toc .toc-item.selected'),background=luminance(getComputedStyle(item).backgroundColor);
+    return [...item.querySelectorAll('.toc-number, span:nth-child(2), i')].map(element=>{const foreground=luminance(getComputedStyle(element).color);return (Math.max(foreground,background)+.05)/(Math.min(foreground,background)+.05);});
+  });
   await page.goto(base);
   await page.locator('.app-shell').waitFor();
   assert.match(await page.locator('.app-footer').innerText(),/0節/);
   await nav('reader');
+  assert.ok((await readerContrast()).every(value=>value>=4.5),'目次の選択行の文字コントラスト');
+  assert.ok((await page.locator('.brand').getAttribute('aria-label')).includes('熱移動を学ぶ'));
+  assert.ok((await page.locator('.not-translated a[href*="AHTTv600.pdf"]').getAttribute('aria-label')).includes('原本PDFを開く'));
+  for(const action of ['reader-font-down','reader-font-up']){
+    const button=page.locator(`[data-action="${action}"]`);
+    assert.ok((await button.getAttribute('aria-label')).includes(await button.innerText()));
+  }
   assert.equal(await page.locator('.reader-toc .toc-item:not(.not-ready)').count(),0);
   assert.match(await page.locator('.not-translated').innerText(),/公開していません/);
   assert.match(await page.locator('.not-translated a[href*="AHTTv600.pdf"]').getAttribute('href'),/AHTTv600\.pdf#page=17$/);
@@ -145,6 +158,9 @@ try {
   assert.equal(JSON.parse(await page.locator('#export-json').inputValue()).attempts.length,7);
   await page.locator('input[name="theme"][value="dark"]').check();
   assert.equal(await page.evaluate(()=>document.documentElement.dataset.theme),'dark');
+  await nav('reader');
+  assert.ok((await readerContrast()).every(value=>value>=4.5),'暗色目次の選択行の文字コントラスト');
+  await nav('settings');
   await page.reload();
   await page.locator('.app-shell').waitFor();
   assert.equal(await page.evaluate(()=>document.documentElement.dataset.theme),'dark');
