@@ -184,6 +184,22 @@ try {
       }
     }
   }
+  await nav('plan');
+  const beforeFailedSave=await page.evaluate(()=>localStorage.getItem('heat-study-ja:v1'));
+  await page.evaluate(()=>{
+    window.__originalSetItem=Storage.prototype.setItem;
+    Storage.prototype.setItem=function(key,value){
+      if(key==='heat-study-ja:v1')throw new DOMException('容量不足','QuotaExceededError');
+      return window.__originalSetItem.call(this,key,value);
+    };
+  });
+  await page.locator('#plan-form [name="goal"]').fill('保存失敗時の通知確認');
+  await page.locator('#plan-form button[type="submit"]').click();
+  assert.match(await page.locator('.toast').innerText(),/端末に保存できませんでした/);
+  assert.equal(await page.evaluate(()=>localStorage.getItem('heat-study-ja:v1')),beforeFailedSave);
+  await page.reload();
+  await page.locator('.app-shell').waitFor();
+  assert.notEqual(await page.evaluate(()=>JSON.parse(localStorage.getItem('heat-study-ja:v1')).plan.goal),'保存失敗時の通知確認');
   await page.evaluate(()=>navigator.serviceWorker.ready);
   await nav('reader');
   const pdfSaved=page.evaluate(()=>new Promise(resolve=>{const handler=event=>{if(event.data?.type!=='PDF_CACHE_RESULT')return;navigator.serviceWorker.removeEventListener('message',handler);resolve(event.data.ok);};navigator.serviceWorker.addEventListener('message',handler);}));

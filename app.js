@@ -1028,12 +1028,12 @@ function onClick(event) {
   const startQuestion = event.target.closest('[data-start-question]'); if (startQuestion) { event.preventDefault(); startQuiz({ mode: 'single', questionId: startQuestion.dataset.startQuestion, count: 1 }); return; }
   const startIds = event.target.closest('[data-start-ids]'); if (startIds) { event.preventDefault(); try { startQuiz({ mode: 'wrong', questionIds: JSON.parse(startIds.dataset.startIds), count: 8 }); } catch { showStatus('問題セットを読み込めませんでした。'); } return; }
   const target = event.target.closest('[data-search-target]'); if (target) { event.preventDefault(); try { const item=JSON.parse(target.dataset.searchTarget); if (item.section) ui.readerSection=item.section; if (item.language && ['ja','en'].includes(item.language)) { state.settings.contentLanguage=item.language; saveState(); } if (item.question) { startQuiz({ mode:'single', questionId:item.question, count:1 }); return; } if (item.term) { ui.glossaryQuery=''; setRoute('glossary'); setTimeout(()=>document.getElementById(`term-${item.term}`)?.scrollIntoView({behavior:'smooth',block:'center'}),80); return; } if(item.route==='reader'&&item.section){openReader(item.section,{...item,query:ui.search.query});return;} if (item.route) setRoute(item.route); } catch { showStatus('検索先を開けませんでした。'); } return; }
-  const bookmarkToggle = event.target.closest('[data-question-bookmark]'); if (bookmarkToggle) { const id=bookmarkToggle.dataset.questionBookmark; state.questionBookmarks = state.questionBookmarks.includes(id) ? state.questionBookmarks.filter(item=>item!==id) : [...state.questionBookmarks,id]; saveState(); render(); showStatus(state.questionBookmarks.includes(id) ? '問題をブックマークしました。' : '問題ブックマークを外しました。'); return; }
+  const bookmarkToggle = event.target.closest('[data-question-bookmark]'); if (bookmarkToggle) { const id=bookmarkToggle.dataset.questionBookmark; state.questionBookmarks = state.questionBookmarks.includes(id) ? state.questionBookmarks.filter(item=>item!==id) : [...state.questionBookmarks,id]; const saved=saveState(); render(); showStatus(saved?(state.questionBookmarks.includes(id) ? '問題をブックマークしました。' : '問題ブックマークを外しました。'):'問題ブックマークを端末に保存できませんでした。JSONを書き出してください。'); return; }
   const deleteBookmark = event.target.closest('[data-delete-bookmark]'); if (deleteBookmark) { state.bookmarks=state.bookmarks.filter(item=>item.id!==deleteBookmark.dataset.deleteBookmark); saveState(); render(); return; }
   const editNote=event.target.closest('[data-edit-note]');if(editNote){ui.noteEditId=editNote.dataset.editNote;render();document.querySelector('#reader-note-form textarea')?.focus();return;}
-  const deleteNote = event.target.closest('[data-delete-note]'); if (deleteNote) { state.notes=state.notes.filter(item=>item.id!==deleteNote.dataset.deleteNote); saveState(); render(); showStatus('学習メモを削除しました。'); return; }
+  const deleteNote = event.target.closest('[data-delete-note]'); if (deleteNote) { state.notes=state.notes.filter(item=>item.id!==deleteNote.dataset.deleteNote); const saved=saveState(); render(); showStatus(saved?'学習メモを削除しました。':'学習メモの削除を端末に保存できませんでした。JSONを書き出してください。'); return; }
   const calendarDay = event.target.closest('[data-date]'); if (calendarDay) { ui.calendarDate=calendarDay.dataset.date; render(); return; }
-  const completeReview = event.target.closest('[data-complete-review]'); if (completeReview) { const id=completeReview.dataset.completeReview; state.completedReviews[id]=new Date().toISOString(); state.reviews[id]={...(state.reviews[id]||{}), lastReviewedAt:state.completedReviews[id], dueDate:addDaysISO(todayISO(),3), suggestedDays:3}; saveState(); render(); showStatus('復習を記録しました。次の予定は3日後です。'); return; }
+  const completeReview = event.target.closest('[data-complete-review]'); if (completeReview) { const id=completeReview.dataset.completeReview; state.completedReviews[id]=new Date().toISOString(); state.reviews[id]={...(state.reviews[id]||{}), lastReviewedAt:state.completedReviews[id], dueDate:addDaysISO(todayISO(),3), suggestedDays:3}; const saved=saveState(); render(); showStatus(saved?'復習を記録しました。次の予定は3日後です。':'復習を端末に保存できませんでした。JSONを書き出してください。'); return; }
   const simMode = event.target.closest('[data-sim-mode]'); if (simMode) { ui.simMode=simMode.dataset.simMode; render(); return; }
   const actionButton = event.target.closest('[data-action]'); if (!actionButton) return;
   const action = actionButton.dataset.action;
@@ -1051,14 +1051,14 @@ function onClick(event) {
   else if (action === 'next-question') moveToNextQuestion();
   else if (action === 'open-report') { ui.reportId=actionButton.dataset.reportId || getQuestion(ui.quiz?.ids[ui.quiz.index])?.id; render(); }
   else if (action === 'close-report') closeReport();
-  else if (action === 'exit-quiz') { flushLearningTime();persistQuiz();saveState();ui.quiz=null;ui.quizResult=null;setRoute('quiz');showStatus('中断した演習を保存しました。再読み込み後も再開できます。'); }
+  else if (action === 'exit-quiz') { flushLearningTime();persistQuiz();const saved=saveState();ui.quiz=null;ui.quizResult=null;setRoute('quiz');showStatus(saved?'中断した演習を保存しました。再読み込み後も再開できます。':'中断した演習を端末に保存できませんでした。JSONを書き出してください。'); }
   else if(action==='resume-quiz')resumeQuiz();
-  else if(action==='discard-quiz'){state.quizDraft=null;saveState();render();showStatus('中断セットを破棄しました。回答履歴は保持しています。');}
+  else if(action==='discard-quiz'){state.quizDraft=null;const saved=saveState();render();showStatus(saved?'中断セットを破棄しました。回答履歴は保持しています。':'中断セットの破棄を端末に保存できませんでした。JSONを書き出してください。');}
   else if (action === 'start-review') startQuiz({ mode:'review', count:8 });
   else if (action === 'again-quiz') { ui.quizResult=null; setRoute('quiz'); }
-  else if (action === 'stop-plan') { state.plan.active=false; saveState(); render(); showStatus('学習計画を停止しました。'); }
+  else if (action === 'stop-plan') { state.plan.active=false; const saved=saveState(); render(); showStatus(saved?'学習計画を停止しました。':'学習計画の停止を端末に保存できませんでした。JSONを書き出してください。'); }
   else if (action === 'calendar-prev' || action === 'calendar-next') { const date=new Date(`${ui.calendarDate}T12:00:00`); ui.calendarDate=shiftMonth(ui.calendarDate,action==='calendar-prev'?-1:1); render(); }
-  else if (action === 'save-comparison') { const result=calculateSimulation(ui.simMode,simRead(ui.simMode)); if(result.error){showStatus(result.error);return;} state.simComparisons[ui.simMode]={...simRead(ui.simMode)}; saveState(); render(); showStatus('比較用の条件を保存しました。'); }
+  else if (action === 'save-comparison') { const result=calculateSimulation(ui.simMode,simRead(ui.simMode)); if(result.error){showStatus(result.error);return;} state.simComparisons[ui.simMode]={...simRead(ui.simMode)}; const saved=saveState(); render(); showStatus(saved?'比較用の条件を保存しました。':'比較用の条件を端末に保存できませんでした。JSONを書き出してください。'); }
   else if (action === 'clear-comparison') { delete state.simComparisons[ui.simMode]; saveState(); render(); }
   else if(action==='cache-pdf'){
     if(!('serviceWorker' in navigator)){setPdfCacheStatus('unsupported');showStatus('このブラウザーではアプリ内のオフライン保存を利用できません。PDFのダウンロードを利用してください。');return;}
@@ -1123,7 +1123,7 @@ function renderSimulatorOutputsOnly() {
 function setReviewDate(id,day){
   if(!validDay(day)){showStatus('復習日は日付を選んでください。これまでの予定は保持しています。');return;}
   state.reviews[id]={...(state.reviews[id]||{}),dueDate:day,suggestedDays:null,updatedAt:new Date().toISOString()};
-  saveState();render();showStatus(`復習日を${formatDate(day)}に変更しました。`);
+  const saved=saveState();render();showStatus(saved?`復習日を${formatDate(day)}に変更しました。`:'復習日を端末に保存できませんでした。JSONを書き出してください。');
 }
 
 function stopSpeech(announce = true) {
@@ -1163,25 +1163,25 @@ function saveReaderNote(form) {
   const old=state.notes.find(n=>n.id===ui.noteEditId&&n.sectionId===ui.readerSection),title=String(data.get('title')||'').trim(),now=new Date().toISOString();
   if(old)Object.assign(old,{title,text,updatedAt:now});else state.notes.push({id:makeId(),title,text,sectionId:ui.readerSection,chapter:ui.readerSection.split('.')[0],createdAt:now,updatedAt:now});
   ui.noteEditId=null;
-  saveState(); render(); showStatus('学習メモを保存しました。');
+  const saved=saveState(); render(); showStatus(saved?'学習メモを保存しました。':'学習メモを端末に保存できませんでした。JSONを書き出してください。');
 }
 function saveMistakeNote(form) {
   const questionId=ui.quiz?.ids[ui.quiz.index]; if(!questionId)return;
   const data=new FormData(form);
   state.mistakeNotes[questionId]={reason:String(data.get('reason')||'').trim(),memory:String(data.get('memory')||'').trim(),nextTime:String(data.get('nextTime')||'').trim(),updatedAt:new Date().toISOString()};
-  saveState(); render(); showStatus('間違いノートを保存しました。');
+  const saved=saveState(); render(); showStatus(saved?'間違いノートを保存しました。':'間違いノートを端末に保存できませんでした。JSONを書き出してください。');
 }
 function saveQuestionReport(form) {
   const id=ui.reportId; if(!id)return;
   const data=new FormData(form); const report={category:String(data.get('category')),message:String(data.get('message')||'').trim(),at:new Date().toISOString()};
   if(!report.message){showStatus('具体的な内容を入力してください。');return;}
-  state.questionReports[id]=[...(state.questionReports[id]||[]),report]; saveState(); ui.reportId=null; render(); showStatus('報告をこの端末に保存しました。外部へは送信していません。');
+  state.questionReports[id]=[...(state.questionReports[id]||[]),report]; const saved=saveState(); ui.reportId=null; render(); showStatus(saved?'報告をこの端末に保存しました。外部へは送信していません。':'報告を端末に保存できませんでした。外部へは送信していません。JSONを書き出してください。');
 }
 function savePlan(form) {
   const data=new FormData(form); const goal=String(data.get('goal')||'').trim(); const targetDate=String(data.get('targetDate')||''); const minutesPerDay=Number(data.get('minutesPerDay'));
   if(!goal){showStatus('学習目標を入力してください。');return;}
   if(targetDate && targetDate<todayISO()){showStatus('目標日は今日以降の日付を選んでください。');return;}
-  state.plan={goal,targetDate,minutesPerDay:Math.max(5,Math.min(60,minutesPerDay||15)),active:true,updatedAt:new Date().toISOString()}; saveState(); render(); showStatus('学習計画を保存しました。');
+  state.plan={goal,targetDate,minutesPerDay:Math.max(5,Math.min(60,minutesPerDay||15)),active:true,updatedAt:new Date().toISOString()}; const saved=saveState(); render(); showStatus(saved?'学習計画を保存しました。':'学習計画を端末に保存できませんでした。JSONを書き出してください。');
 }
 
 function exportData() {
