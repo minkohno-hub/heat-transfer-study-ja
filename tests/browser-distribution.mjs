@@ -100,9 +100,15 @@ try {
   await page.locator('[data-action="discard-quiz"]').click();
   await nav('simulator');
   assert.match(await page.locator('.result-number').innerText(),/5,625/);
+  await page.locator('#sim-form input[name="k"]').fill('0.000001');
+  assert.match(await page.locator('.result-number').innerText(),/3\.750×10⁻⁴/);
+  await page.locator('#sim-form input[name="k"]').fill('15');
   assert.match(await page.locator('.related-reading a[href*="AHTTv600.pdf"]').getAttribute('href'),/AHTTv600\.pdf#page=\d+$/);
   await page.locator('[data-sim-mode="radiation"]').click();
   assert.match(await page.locator('.result-number').innerText(),/W/);
+  await page.locator('#sim-form input[name="emissivity"]').fill('0');
+  assert.match(await page.locator('.result-number').innerText(),/モデル計算結果は0 W/);
+  await page.locator('#sim-form input[name="emissivity"]').fill('0.85');
   await nav('quiz');
   assert.equal(Number(await page.locator('#quiz-start-form select[name="count"] option').last().getAttribute('value')),await page.locator('.bank-item').count());
   await page.locator('[data-start-question="book-9-1-transition-flux"]').click();

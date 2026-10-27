@@ -827,7 +827,7 @@ function simGraph(mode,current,baseline) {
 }
 function renderSimulator() {
   const mode = ui.simMode; const values = simRead(mode); const result = calculateSimulation(mode, values); const baseline = state.simComparisons[mode]; const meta = SIM_META[mode];
-  const resultView = result.error ? `<div class="sim-error" role="alert"><strong>計算できませんでした</strong><p>${escapeHTML(result.error)}</p></div>` : `<div class="result-number"><span>計算結果（理想化モデル）</span><strong>${result.watts.toLocaleString('ja-JP', { maximumFractionDigits: 3, minimumFractionDigits: 0 })}<i>W</i></strong><small>${Math.abs(result.delta) < 1e-12 ? '温度差がないため、このモデルでは熱移動率は0 Wです。' : result.watts > 0 ? '高温側・表面から低温側・周囲へ熱が移動します。' : '入力した温度関係に従い、逆向きに熱が移動します。'}${mode === 'radiation' && !result.error ? ` 温度換算：${result.surfaceK.toFixed(2)} K と ${result.surroundingK.toFixed(2)} K` : ''}</small></div>`;
+  const resultView = result.error ? `<div class="sim-error" role="alert"><strong>計算できませんでした</strong><p>${escapeHTML(result.error)}</p></div>` : `<div class="result-number"><span>計算結果（理想化モデル）</span><strong>${formatHeatRate(result.watts)}<i>W</i></strong><small>${result.delta===0 ? '温度差がないため、このモデルでは熱移動率は0 Wです。' : result.watts===0 ? 'この条件でのモデル計算結果は0 Wです。' : result.watts > 0 ? '高温側・表面から低温側・周囲へ熱が移動します。' : '入力した温度関係に従い、逆向きに熱が移動します。'}${mode === 'radiation' && !result.error ? ` 温度換算：${result.surfaceK.toFixed(2)} K と ${result.surroundingK.toFixed(2)} K` : ''}</small></div>`;
   const comparison = baseline && !result.error ? calculateSimulation(mode, baseline) : null;
   const related=getSection(['conduction','resistance'].includes(mode)?'2.2':mode==='convection'?'6.1':'10.1');
   return `${pageHeading('簡易シミュレーター', '条件を変えて、熱の動きを見る。', '入力値を変えると計算結果とグラフが更新されます。設計値を決めるためのものではなく、基本式の動きを試す学習用モデルです。')}
@@ -1123,6 +1123,15 @@ function renderSimulatorOutputsOnly() {
   const temporary=document.createElement('div'); temporary.innerHTML=renderSimulator();
   const output=temporary.querySelector('.sim-output-card'); const current=document.querySelector('.sim-output-card');
   if(output&&current) current.replaceWith(output);
+}
+
+function formatHeatRate(watts) {
+  if(watts!==0&&(Math.abs(watts)<0.001||Math.abs(watts)>=1e9)) {
+    const [coefficient,exponent]=watts.toExponential(3).split('e');
+    const superscript=Object.fromEntries([...'0123456789+-'].map((char,index)=>[char,[...'⁰¹²³⁴⁵⁶⁷⁸⁹⁺⁻'][index]]));
+    return `${coefficient}×10${[...String(Number(exponent))].map(char=>superscript[char]).join('')}`;
+  }
+  return watts.toLocaleString('ja-JP',{maximumFractionDigits:3,minimumFractionDigits:0});
 }
 
 function setReviewDate(id,day){
