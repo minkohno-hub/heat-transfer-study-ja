@@ -881,7 +881,12 @@ function renderQuizSetup() {
 }
 
 function renderQuestionFigure(figure) {
-  if (figure.kind === 'book') return `<figure class="question-figure">${safeLocalFigurePath(figure.src) ? `<img src="${escapeHTML(figure.src)}" alt="${escapeHTML(figure.alt)}" loading="lazy" ${figureSizeAttributes(figure)}/>` : `<div class="figure-placeholder" role="img" aria-label="${escapeHTML(figure.alt)}">図の画像を表示できません。教材の参照先を確認してください。</div>`}<figcaption>${figureZoomLink(figure.src)}<strong>${escapeHTML(figure.caption)}</strong><span>${escapeHTML(figure.description || figure.alt)}</span><small>出典：本書 図${escapeHTML(figure.figureNumber)} · 書籍 p.${escapeHTML(figure.bookPage)} · PDF p.${escapeHTML(figure.pdfPage)}</small></figcaption></figure>`;
+  if (figure.kind === 'book') {
+    const hasLocalImage=safeLocalFigurePath(figure.src);
+    const visual=hasLocalImage?`<img src="${escapeHTML(figure.src)}" alt="${escapeHTML(figure.alt)}" loading="lazy" ${figureSizeAttributes(figure)}/>`:`<div class="figure-placeholder original-only" role="img" aria-label="${escapeHTML(figure.alt)}">原図は英語原本PDFで確認できます。下に図の説明と出典ページを示します。</div>`;
+    const original=sourcePdfLink({pdfPages:figure.pdfPage});
+    return `<figure class="question-figure">${visual}<figcaption>${hasLocalImage?figureZoomLink(figure.src):''}<strong>${escapeHTML(figure.caption)}</strong><span>${escapeHTML(figure.description || figure.alt)}</span><small>出典：本書 図${escapeHTML(figure.figureNumber)} · 書籍 p.${escapeHTML(figure.bookPage)} · PDF p.${escapeHTML(figure.pdfPage)}</small>${original}</figcaption></figure>`;
+  }
   if (figure.kind === 'app-created') return `<figure class="question-figure"><div class="wall-diagram" role="img" aria-label="${escapeHTML(figure.alt)}"><div class="wall-temp hot"><span>Tₕ</span><small>高温</small></div><div class="wall-body"><span class="heat-arrow">Q̇　→</span><span class="wall-label">平板</span><span class="wall-thickness">L</span><span class="wall-gradient">Tₕ　····→　T𝑐</span></div><div class="wall-temp cold"><span>T𝑐</span><small>低温</small></div><div class="wall-delta">ΔT = Tₕ − T𝑐</div></div><figcaption>${escapeHTML(figure.caption)}<span>${escapeHTML(figure.alt)}</span></figcaption></figure>`;
   return `<figure class="question-figure"><div class="figure-placeholder" role="img" aria-label="${escapeHTML(figure.alt)}">図の説明を表示しています</div><figcaption>${escapeHTML(figure.caption)}<span>${escapeHTML(figure.alt)}</span></figcaption></figure>`;
 }

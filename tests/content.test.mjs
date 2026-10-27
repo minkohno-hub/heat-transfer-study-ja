@@ -10,7 +10,14 @@ test('public questions are self-contained and book references remain in the cite
   const guideIds=new Set(GUIDE_SECTIONS.map(section=>section.id));
   const sections=(await read('data/book.json')).chapters.flatMap(chapter=>chapter.sections);
   for(const q of qs){
-    assert.equal(validateQuestion(q),'',q.id);assert.equal(q.distractors.length,4);assert.ok(q.solutionSteps.length>=3);assert.equal(q.figure?.kind==='book',false);
+    assert.equal(validateQuestion(q),'',q.id);assert.equal(q.distractors.length,4);assert.ok(q.solutionSteps.length>=3);
+    if(q.figure?.kind==='book'){
+      assert.equal(q.figure.src,undefined,`公開用の原図を含めない: ${q.id}`);
+      assert.equal(q.figure.figureNumber,q.source.figure,q.id);
+      assert.equal(q.figure.bookPage,Number(q.source.bookPages),q.id);
+      assert.equal(q.figure.pdfPage,Number(q.source.pdfPages),q.id);
+      assert.ok(q.figure.caption&&q.figure.alt,q.id);
+    }
     if(q.source.type==='supplement')assert.ok(guideIds.has(q.source.guideId),q.id);
     else{
       assert.equal(q.source.type,'book',q.id);
@@ -33,7 +40,12 @@ test('public questions are self-contained and book references remain in the cite
   const peakRisk=qs.find(q=>q.id==='book-9-1-peak-flux-risk');
   assert.equal(peakRisk.source.bookPages,'476');assert.equal(peakRisk.source.pdfPages,'490');
   assert.equal(peakRisk.choices[peakRisk.answer],'壁面温度が急激に上昇する');
-  assert.equal(qs.filter(q=>q.source.type==='book').length,4);
+  const wireFlux=qs.find(q=>q.id==='book-9-1-wire-flux');
+  assert.equal(wireFlux.source.bookPages,'472');assert.equal(wireFlux.source.pdfPages,'486');
+  assert.equal(wireFlux.figure.figureNumber,'9.1');
+  assert.equal(10*2/(200*1e-4),1000);
+  assert.equal(wireFlux.choices[wireFlux.answer],'1.0×10³ W/m²');
+  assert.equal(qs.filter(q=>q.source.type==='book').length,5);
   const ledger=await read('docs/SECTION_PROGRESS.json');
   for(const section of ledger.sections){
     const publicIds=qs.filter(q=>q.source.type==='book'&&q.source.section===section.id).map(q=>q.id).sort();
