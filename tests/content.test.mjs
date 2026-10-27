@@ -5,10 +5,25 @@ import {validateQuestion,searchRanges,calculateHeatTransfer} from '../study-core
 import {GUIDE_SECTIONS} from '../guide.mjs';
 const root=new URL('../',import.meta.url),read=async p=>JSON.parse(await readFile(new URL(p,root),'utf8'));
 let hasLocal=true;try{await access(new URL('data/local-content-manifest.json',root));}catch{hasLocal=false;}
-test('public questions are self-contained without book figure files',async()=>{
+test('public questions are self-contained and book references remain in the cited section',async()=>{
   const qs=await read('data/questions.json');assert.equal(new Set(qs.map(q=>q.id)).size,qs.length);
   const guideIds=new Set(GUIDE_SECTIONS.map(section=>section.id));
-  for(const q of qs){assert.equal(validateQuestion(q),'',q.id);assert.equal(q.source.type,'supplement');assert.ok(guideIds.has(q.source.guideId),q.id);assert.equal(q.distractors.length,4);assert.ok(q.solutionSteps.length>=3);assert.equal(q.figure?.kind==='book',false);}
+  const sections=(await read('data/book.json')).chapters.flatMap(chapter=>chapter.sections);
+  for(const q of qs){
+    assert.equal(validateQuestion(q),'',q.id);assert.equal(q.distractors.length,4);assert.ok(q.solutionSteps.length>=3);assert.equal(q.figure?.kind==='book',false);
+    if(q.source.type==='supplement')assert.ok(guideIds.has(q.source.guideId),q.id);
+    else{
+      assert.equal(q.source.type,'book',q.id);
+      const section=sections.find(s=>s.id===q.source.section);
+      const nextSection=sections.filter(s=>Number(s.pdfStart)>Number(section?.pdfStart)).sort((a,b)=>Number(a.pdfStart)-Number(b.pdfStart))[0];
+      assert.ok(section,q.id);assert.equal(Number(q.source.pdfPages)-Number(q.source.bookPages),14,q.id);
+      assert.ok(Number(q.source.pdfPages)>=section.pdfStart&&(!nextSection||Number(q.source.pdfPages)<nextSection.pdfStart),q.id);
+      assert.equal(q.reviewStatus,'source_checked');assert.equal(q.expertReviewed,false);
+    }
+  }
+  assert.equal(qs.filter(q=>q.source.type==='supplement').length,8);
+  const boiling=qs.find(q=>q.id==='book-9-1-transition-flux');
+  assert.equal(boiling.source.bookPages,'476');assert.equal(boiling.source.pdfPages,'490');
   assert.deepEqual((await read('data/content-manifest.json')).files,[]);
 });
 test('numeric public answer keys agree with independent simulator calculations and stated rounding',async()=>{

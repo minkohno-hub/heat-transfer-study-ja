@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-20T12:46:10.565147+00:00",
+  "updatedAt": "2026-10-27T06:50:22+00:00",
   "sourceExtractedAt": "2026-10-20T12:09:01.745528+00:00",
   "source": "AHTTv600.pdf",
   "sourceSha256": "d318176a9cac997d415ec5ee95b30979dcdaed0392705185393735c7d59a447a",
@@ -2367,8 +2367,9 @@
         "completeCheck": "not_verified"
       },
       "questions": {
-        "count": 0,
-        "sourceCheckedCount": 0,
+        "count": 1,
+        "sourceCheckedCount": 1,
+        "publicQuestionIds": ["book-9-1-transition-flux"],
         "expertReviewed": false
       },
       "app": {
@@ -2380,7 +2381,7 @@
         "日本語訳を作成する",
         "逐文の網羅性と訳語の統一を確認する",
         "節の境界、図・式・表・脚注・ページ参照を確認する",
-        "4択問題と全選択肢の理由を作成・確認する",
+        "節全体を学べる十分な4択問題と全選択肢の理由を追加・確認する",
         "確認後にローカル教材パックへ取り込む"
       ]
     },
