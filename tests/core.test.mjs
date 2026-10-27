@@ -60,6 +60,10 @@ test('radiation uses kelvin to the fourth power and accepts emissivity zero',()=
   const r=calculateHeatTransfer('radiation',{emissivity:'0.85',area:'1',surface:'150',surrounding:'25'});
   assert.equal(r.surfaceK,423.15);assert.ok(Math.abs(r.watts-.85*5.670374419e-8*(423.15**4-298.15**4))<1e-9);
   assert.equal(calculateHeatTransfer('radiation',{emissivity:0,area:1,surface:150,surrounding:25}).watts,0);
+  const surface=20.0000000000001,surrounding=20,delta=surface-surrounding;
+  const tiny=calculateHeatTransfer('radiation',{emissivity:1,area:1,surface,surrounding});
+  const linearLimit=4*5.670374419e-8*(surrounding+273.15)**3*delta;
+  assert.ok(Math.abs(tiny.watts/linearLimit-1)<1e-10,'近接した温度では四乗差の桁落ちを避ける');
 });
 test('series thermal resistance conserves heat and returns interface temperatures and overall U',()=>{
   const v={area:1,hot:80,cold:20,hHot:10,hCold:20,k1:.5,k2:.1,L1:.1,L2:.05};
@@ -82,7 +86,7 @@ test('simulation rejects blanks, missing fields, nonnumbers, impossible temperat
   assert.ok(calculateHeatTransfer('radiation',{emissivity:1.01,area:1,surface:50,surrounding:20}).error);
   assert.ok(calculateHeatTransfer('convection',{...base,h:1e308,area:1e308}).error);
   assert.match(calculateHeatTransfer('conduction',{k:1e-323,area:.1,thickness:1,hot:40,cold:20}).error,/計算精度/);
-  assert.match(calculateHeatTransfer('radiation',{emissivity:1,area:1,surface:20.00000000000001,surrounding:20}).error,/計算精度/);
+  assert.match(calculateHeatTransfer('radiation',{emissivity:1e-323,area:1,surface:20.00000000000001,surrounding:20}).error,/計算精度/);
   assert.ok(calculateHeatTransfer('unknown',base).error);
 });
 test('search includes question titles, Japanese substrings, normalized numbers, and chapter filters',()=>{

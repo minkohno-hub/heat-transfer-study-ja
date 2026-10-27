@@ -806,7 +806,8 @@ function simValueAt(mode, values, delta) {
   if (mode === 'conduction') return values.k * values.area * delta / values.thickness;
   if (mode === 'convection') return values.h * values.area * delta;
   const surroundings = Number(values.surrounding) + 273.15;
-  return values.emissivity * STEFAN_BOLTZMANN * values.area * ((surroundings + delta) ** 4 - surroundings ** 4);
+  const surface=surroundings+delta;
+  return values.emissivity * STEFAN_BOLTZMANN * values.area * delta * (surface+surroundings) * (surface**2+surroundings**2);
 }
 function simGraph(mode,current,baseline) {
   const prior=baseline?calculateSimulation(mode,baseline):null,base=prior&&!prior.error?prior:null;

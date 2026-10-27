@@ -204,7 +204,7 @@ export function calculateHeatTransfer(mode,values) {
   let watts,delta,extra={};
   if(mode==='conduction') {if(numeric.k<=0||numeric.thickness<=0)return {error:'熱伝導率 k と厚さ L は0より大きい値にしてください。'};delta=numeric.hot-numeric.cold;watts=numeric.k*numeric.area*delta/numeric.thickness;}
   if(mode==='convection') {if(numeric.h<=0)return {error:'対流熱伝達率 h は0より大きい値にしてください。'};delta=numeric.surface-numeric.fluid;watts=numeric.h*numeric.area*delta;}
-  if(mode==='radiation') {if(numeric.emissivity<0||numeric.emissivity>1)return {error:'放射率 ε は0〜1で入力してください。'};const surfaceK=numeric.surface+273.15,surroundingK=numeric.surrounding+273.15;delta=numeric.surface-numeric.surrounding;watts=numeric.emissivity*STEFAN_BOLTZMANN_VALUE*numeric.area*(surfaceK**4-surroundingK**4);extra={surfaceK,surroundingK};}
+  if(mode==='radiation') {if(numeric.emissivity<0||numeric.emissivity>1)return {error:'放射率 ε は0〜1で入力してください。'};const surfaceK=numeric.surface+273.15,surroundingK=numeric.surrounding+273.15;delta=numeric.surface-numeric.surrounding;watts=numeric.emissivity*STEFAN_BOLTZMANN_VALUE*numeric.area*delta*(surfaceK+surroundingK)*(surfaceK**2+surroundingK**2);extra={surfaceK,surroundingK};}
   if(mode==='resistance'){
     if(['hHot','hCold','k1','k2','L1','L2'].some(k=>numeric[k]<=0))return {error:'両側の熱伝達率・各層の熱伝導率・厚さは0より大きい値にしてください。'};
     const resistances=[1/(numeric.hHot*numeric.area),numeric.L1/(numeric.k1*numeric.area),numeric.L2/(numeric.k2*numeric.area),1/(numeric.hCold*numeric.area)],totalResistance=resistances.reduce((n,r)=>n+r,0);

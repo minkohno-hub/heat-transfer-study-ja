@@ -114,6 +114,11 @@ try {
   await page.locator('#sim-form input[name="surface"]').fill('150');
   await page.locator('#sim-form input[name="surrounding"]').fill('25');
   await page.locator('#sim-form input[name="emissivity"]').fill('0.85');
+  await page.locator('#sim-form input[name="surface"]').fill('20.0000000000001');
+  await page.locator('#sim-form input[name="surrounding"]').fill('20');
+  assert.match(await page.locator('.result-number strong').innerText(),/×10⁻¹³/);
+  await page.locator('#sim-form input[name="surface"]').fill('150');
+  await page.locator('#sim-form input[name="surrounding"]').fill('25');
   await nav('quiz');
   assert.equal(Number(await page.locator('#quiz-start-form select[name="count"] option').last().getAttribute('value')),await page.locator('.bank-item').count());
   await page.locator('[data-start-question="book-9-1-transition-flux"]').click();
