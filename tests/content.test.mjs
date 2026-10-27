@@ -28,7 +28,7 @@ test('public questions are self-contained and book references remain in the cite
       assert.equal(q.reviewStatus,'source_checked');assert.equal(q.expertReviewed,false);
     }
   }
-  assert.equal(qs.filter(q=>q.source.type==='supplement').length,20);
+  assert.equal(qs.filter(q=>q.source.type==='supplement').length,32);
   const boiling=qs.find(q=>q.id==='book-9-1-transition-flux');
   assert.equal(boiling.source.bookPages,'476');assert.equal(boiling.source.pdfPages,'490');
   const beforeInception=qs.find(q=>q.id==='book-9-1-before-inception');
@@ -207,4 +207,54 @@ test('independent application questions have unique answer keys and independentl
     'resistance-overall-u':'2.0 W/(m²·K)',
     'resistance-one-layer-doubled':'9/11倍'
   }))assert.equal(correct[key],label,key);
+});
+
+
+test('four new original lessons have twelve consistent questions with independently derived physical answers',async()=>{
+  const qs=await read('data/questions.json');
+  const added=qs.filter(q=>q.id.startsWith('supp-expanded-'));
+  assert.equal(qs.length,39);
+  assert.equal(added.length,12);
+  const lessonIds=['learn-dimensionless-transient','learn-lumped-cooling','learn-convection-dimensionless','learn-heat-exchanger'];
+  for(const guideId of lessonIds){
+    assert.ok(GUIDE_SECTIONS.some(g=>g.id===guideId),guideId);
+    assert.equal(added.filter(q=>q.source.guideId===guideId).length,3,guideId);
+  }
+  const get=suffix=>added.find(q=>q.id==='supp-expanded-'+suffix);
+  const verified={
+    'bi-calc':{label:'0.040',calculation:40*(.002/.10)/20,expected:.040},
+    'fo-calc':{label:'1.0',calculation:1e-5*40/(.020**2),expected:1},
+    'alpha-calc':{label:'5.0×10⁻⁶ m²/s',calculation:10/(1000*2000),expected:5e-6},
+    'tau-calc':{label:'2,000 s',calculation:1000*.001*4000/(20*.10),expected:2000},
+    'lumped-temp':{label:'34.7 ℃',calculation:20+(60-20)*Math.exp(-1),expected:34.7151776469},
+    'lumped-double-time':{label:'6.8 K',calculation:50*Math.exp(-2),expected:6.7667641618},
+    're-calc':{label:'10,000',calculation:1000*.2*.05/.001,expected:10000},
+    'pr-calc':{label:'8.0',calculation:.001*4000/.5,expected:8},
+    'nu-calc':{label:'10.0',calculation:100*.05/.5,expected:10},
+    'hx-energy':{label:'8,000 W',calculation:.20*2000*(80-60),expected:8000},
+    'hx-lmtd-equal':{label:'40 K',calculation:(80-40+60-20)/2,expected:40},
+    'hx-area':{label:'2.0 m²',calculation:8000/(100*40),expected:2}
+  };
+  for(const [suffix,v] of Object.entries(verified)){
+    const q=get(suffix);
+    assert.ok(q,suffix);
+    assert.equal(validateQuestion(q),'',suffix);
+    assert.equal(q.choices[q.answer],v.label,suffix);
+    assert.ok(Math.abs(v.calculation-v.expected)<=.0001*Math.max(1,Math.abs(v.expected)),suffix);
+    assert.equal(q.distractors.filter(reason=>reason.startsWith('正解。')).length,1,suffix);
+    assert.ok(q.distractors[q.answer].startsWith('正解。'),suffix);
+    assert.ok(q.hints.length>=2&&q.solutionSteps.length>=3,suffix);
+    assert.equal(q.expertReviewed,false,suffix);
+    assert.match(q.reviewStatus,/専門家校閲なし/,suffix);
+    assert.equal(q.source.type,'supplement',suffix);
+  }
+  const glossary=await read('data/glossary.json');
+  const ids=new Set(glossary.map(x=>x.id));
+  assert.equal(ids.size,glossary.length);
+  for(const id of ['thermal-diffusivity','biot-number','fourier-number','lumped-capacitance','thermal-time-constant','reynolds-number','prandtl-number','nusselt-number','heat-exchanger-balance','log-mean-temperature-difference'])assert.ok(ids.has(id),id);
+  const studied=new Set(qs.map(q=>q.id));
+  for(const term of glossary.filter(t=>t.source?.guideId?.startsWith('learn-'))){
+    assert.ok(lessonIds.includes(term.source.guideId),term.id);
+    for(const link of term.relatedQuestions||[])assert.ok(studied.has(link.id),link.id);
+  }
 });
