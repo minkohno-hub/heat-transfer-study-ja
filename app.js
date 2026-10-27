@@ -1216,6 +1216,11 @@ function importData(replace) {
   if(problem) { ui.importDraft={error:problem}; render(); return; }
   if(replace && !window.confirm('この端末の学習記録を、選択したファイルの内容に置き換えます。現在の記録は復元前の控えとして保管します。続けますか？')) return;
   const next=replace ? normalizeLearningData(data) : mergeLearningData(state,data);
+  const combinedProblem=validateLearningData({...next,format:'heat-study-ja-learning-data'});
+  if(combinedProblem){
+    ui.importDraft={error:`取り込み後の記録が保存可能な形式・件数の範囲を超えるため、中止しました。${combinedProblem}必要な記録をJSONで書き出し、別の利用者として分けてください。`};
+    render();return;
+  }
   const backupKey=`${STORAGE_KEY}:before-import`;
   let priorBackup=null, backupWritten=false, backupRollbackFailed=false;
   try {

@@ -63,6 +63,19 @@ test('restore is atomic when storage fails and malformed nested data are rejecte
   h.store.delete(`${key}:before-import`);h.api.ui.importDraft={data:{...core.createEmptyState(),format:core.DATA_FORMAT}};h.api.importData(true);
   assert.equal(h.store.has(`${key}:before-import`),false);
 });
+test('adding two valid backups cannot exceed the saved-record limit or alter the current record',()=>{
+  const h=harness(),at='2026-10-20T00:00:00Z';
+  const bookmarks=(prefix)=>Array.from({length:10001},(_,i)=>({id:`${prefix}-${i}`,sectionId:'1.1',note:'',createdAt:at}));
+  h.api.state.bookmarks=bookmarks('existing');h.api.saveState();
+  const before=h.store.get(key),backup='older-backup';h.store.set(`${key}:before-import`,backup);
+  const incoming={...core.createEmptyState(),format:core.DATA_FORMAT,bookmarks:bookmarks('incoming')};
+  assert.equal(core.validateLearningData(incoming),'');
+  h.api.ui.importDraft={data:incoming};h.api.importData(false);
+  assert.match(h.api.ui.importDraft.error,/件数の範囲を超える/);
+  assert.equal(h.api.state.bookmarks.length,10001);
+  assert.equal(h.store.get(key),before);
+  assert.equal(h.store.get(`${key}:before-import`),backup);
+});
 test('failed JSON download offers the current record or saved recovery text for copying',()=>{
   const h=harness();h.context.URL={createObjectURL(){throw Error('download-unavailable');}};
   h.api.state.plan.goal='手動で保管する計画';
