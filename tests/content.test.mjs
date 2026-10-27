@@ -24,6 +24,10 @@ test('public questions are self-contained and book references remain in the cite
   assert.equal(qs.filter(q=>q.source.type==='supplement').length,8);
   const boiling=qs.find(q=>q.id==='book-9-1-transition-flux');
   assert.equal(boiling.source.bookPages,'476');assert.equal(boiling.source.pdfPages,'490');
+  const beforeInception=qs.find(q=>q.id==='book-9-1-before-inception');
+  assert.equal(beforeInception.source.bookPages,'473');assert.equal(beforeInception.source.pdfPages,'487');
+  assert.equal(beforeInception.choices[beforeInception.answer],'自然対流が主となる');
+  assert.equal(qs.filter(q=>q.source.type==='book').length,2);
   assert.deepEqual((await read('data/content-manifest.json')).files,[]);
 });
 test('numeric public answer keys agree with independent simulator calculations and stated rounding',async()=>{

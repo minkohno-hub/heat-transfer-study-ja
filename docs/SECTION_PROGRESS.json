@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-27T06:50:22+00:00",
+  "updatedAt": "2026-10-27T06:59:37+00:00",
   "sourceExtractedAt": "2026-10-20T12:09:01.745528+00:00",
   "source": "AHTTv600.pdf",
   "sourceSha256": "d318176a9cac997d415ec5ee95b30979dcdaed0392705185393735c7d59a447a",
@@ -2367,9 +2367,9 @@
         "completeCheck": "not_verified"
       },
       "questions": {
-        "count": 1,
-        "sourceCheckedCount": 1,
-        "publicQuestionIds": ["book-9-1-transition-flux"],
+        "count": 2,
+        "sourceCheckedCount": 2,
+        "publicQuestionIds": ["book-9-1-transition-flux", "book-9-1-before-inception"],
         "expertReviewed": false
       },
       "app": {

@@ -3,7 +3,7 @@
   {"id":"heat-transfer","ja":"熱移動","en":"heat transfer","meaning":"温度差などに関わる仕組みによって、熱エネルギーが場所や物質の間を移る現象。書籍は伝導・対流・放射を扱う。","source":{"section":"1.1","bookPages":"3–6","pdfPages":"17–20"}},
   {"id":"caloric","ja":"カロリック説","en":"caloric theory","meaning":"熱を、熱い物体から冷たい物体へ流れる目に見えない流体（カロリック）として説明した歴史的な考え方。書籍では自然と矛盾する性質が含まれていたと説明している。","source":{"section":"1.1","bookPages":"3","pdfPages":"17"}},
   {"id":"temperature-gradient","ja":"温度勾配","en":"temperature gradient","meaning":"場所によって温度がどの向きに、どれほどの割合で変化するかを表す量。熱伝導では、温度差だけでなく、距離あたりの変化が重要になる。後半は補足説明。","source":{"section":"1.1","bookPages":"4","pdfPages":"18"}},
-  {"id":"convection","ja":"対流","en":"convection","meaning":"流体（液体や気体）のまとまった運動によって、熱が運ばれる現象。温められた空気が浮力で上昇する例がある。","source":{"section":"1.1","bookPages":"3","pdfPages":"17"}},
+  {"id":"convection","ja":"対流","en":"convection","meaning":"流体（液体や気体）のまとまった運動によって、熱が運ばれる現象。温められた空気が浮力で上昇する例がある。","source":{"section":"1.1","bookPages":"3","pdfPages":"17"},"relatedQuestions":[{"id":"book-9-1-before-inception","label":"気泡発生前の伝熱を考える"}]},
   {"id":"power","ja":"仕事率（動力）","en":"power","meaning":"一定時間あたりに移動・変換されるエネルギー。単位はワット（W）で、1 W = 1 J/s。1馬力は本文の記述で746 W。","source":{"section":"1.1","bookPages":"4","pdfPages":"18"}},
   {"id":"heat-rate","ja":"熱移動率","en":"heat transfer rate","meaning":"単位時間あたりに移動する熱エネルギー。記号や正負の約束は、使う式や対象の説明に従う。","source":{"section":"1.1","bookPages":"5–6","pdfPages":"19–20"},"relatedQuestions":[{"id":"supp-flat-numeric","label":"平板の熱移動率を計算する"}]},
   {"id":"heat-flux","ja":"熱流束","en":"heat flux","meaning":"熱移動率を単位面積あたりで表した量。単位は W/m²。向きを表すときは符号の約束を確認する。補足例（アプリ作成）：一様に100 Wが2 m²を通る場合、大きさは50 W/m²。","source":{"section":"1.3","bookPages":"11","pdfPages":"25"},"relatedQuestions":[{"id":"book-9-1-transition-flux","label":"沸騰中の熱流束の変化"}]},
