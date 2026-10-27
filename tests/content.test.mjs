@@ -28,6 +28,13 @@ test('public questions are self-contained and book references remain in the cite
   assert.equal(beforeInception.source.bookPages,'473');assert.equal(beforeInception.source.pdfPages,'487');
   assert.equal(beforeInception.choices[beforeInception.answer],'自然対流が主となる');
   assert.equal(qs.filter(q=>q.source.type==='book').length,2);
+  const ledger=await read('docs/SECTION_PROGRESS.json');
+  for(const section of ledger.sections){
+    const publicIds=qs.filter(q=>q.source.type==='book'&&q.source.section===section.id).map(q=>q.id).sort();
+    assert.deepEqual([...(section.questions.publicQuestionIds||[])].sort(),publicIds,`進捗台帳: ${section.id}`);
+    assert.ok(section.questions.count>=publicIds.length,`問題数: ${section.id}`);
+    assert.ok(section.questions.sourceCheckedCount>=publicIds.length,`出典照合数: ${section.id}`);
+  }
   assert.deepEqual((await read('data/content-manifest.json')).files,[]);
 });
 test('numeric public answer keys agree with independent simulator calculations and stated rounding',async()=>{
