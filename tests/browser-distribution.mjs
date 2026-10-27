@@ -114,6 +114,7 @@ try {
   assert.equal(await page.locator('.question-figure img').count(),0);
   assert.match(await page.locator('.question-figure .figure-placeholder').innerText(),/原本PDF/);
   assert.match(await page.locator('.question-figure figcaption a[href*="AHTTv600.pdf"]').getAttribute('href'),/AHTTv600\.pdf#page=486$/);
+  assert.ok(await page.locator('.question-figure figcaption span').first().evaluate(element=>parseFloat(getComputedStyle(element).fontSize)>=12));
   await page.keyboard.press('1');
   await page.keyboard.press('Enter');
   assert.match(await page.locator('.answer-source a[href*="AHTTv600.pdf"]').getAttribute('href'),/AHTTv600\.pdf#page=486$/);
