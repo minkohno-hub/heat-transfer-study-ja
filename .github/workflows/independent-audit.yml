@@ -32,7 +32,7 @@ jobs:
     # Browser tests use the generated public site only. They do not deploy it.
     if: github.event_name == 'pull_request'
     needs: test-and-audit
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     timeout-minutes: 20
     steps:
       - uses: actions/checkout@v4
