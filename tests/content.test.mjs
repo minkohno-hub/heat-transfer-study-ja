@@ -90,7 +90,7 @@ test('glossary practice links lead only to available public questions',async()=>
       assert.ok(typeof link.label==='string'&&link.label.trim(),term.id);
     }
   }
-  for(const [id,bookPage,pdfPage] of [['pool-boiling','471','485'],['wall-superheat','473','487'],['nucleate-boiling','474','488'],['transition-boiling','476','490'],['film-boiling','476','490'],['peak-heat-flux','476','490']]){
+  for(const [id,bookPage,pdfPage] of [['pool-boiling','471','485'],['electrical-resistance','472','486'],['wall-superheat','473','487'],['nucleate-boiling','474','488'],['transition-boiling','476','490'],['film-boiling','476','490'],['peak-heat-flux','476','490']]){
     const term=terms.find(item=>item.id===id);
     assert.ok(term,id);assert.equal(term.source.section,'9.1');assert.equal(term.source.bookPages,bookPage);assert.equal(term.source.pdfPages,pdfPage);
   }

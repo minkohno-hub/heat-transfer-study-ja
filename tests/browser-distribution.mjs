@@ -63,6 +63,8 @@ try {
   assert.match(await page.locator('#term-pool-boiling .term-links a').getAttribute('href'),/AHTTv600\.pdf#page=485$/);
   assert.match(await page.locator('#term-pool-boiling').innerText(),/外部から強制的に流していない液体/);
   assert.ok(await page.locator('#term-pool-boiling [data-start-question="book-9-1-wire-flux"]').count());
+  assert.match(await page.locator('#term-electrical-resistance .term-links a').getAttribute('href'),/AHTTv600\.pdf#page=486$/);
+  assert.ok(await page.locator('#term-electrical-resistance [data-start-question="book-9-1-wire-temperature"]').count());
   assert.match(await page.locator('#term-wall-superheat .term-links a').getAttribute('href'),/AHTTv600\.pdf#page=487$/);
   assert.match(await page.locator('#term-peak-heat-flux .term-links a').getAttribute('href'),/AHTTv600\.pdf#page=490$/);
   assert.ok(await page.locator('#term-heat-flux [data-start-question="book-9-1-transition-flux"]').count());
