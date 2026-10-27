@@ -46,7 +46,14 @@ test('public questions are self-contained and book references remain in the cite
   assert.match(wireFlux.prompt,/10\.0 V.*2\.0 A.*2\.0 cm².*有効数字2桁/);
   assert.equal(10*2/(2*1e-4),100000);
   assert.equal(wireFlux.choices[wireFlux.answer],'1.0×10⁵ W/m²');
-  assert.equal(qs.filter(q=>q.source.type==='book').length,5);
+  const wireTemperature=qs.find(q=>q.id==='book-9-1-wire-temperature');
+  assert.equal(wireTemperature.source.bookPages,'472');assert.equal(wireTemperature.source.pdfPages,'486');
+  assert.equal(wireTemperature.figure.figureNumber,'9.1');
+  const fraction=(4.10/2.00-2.00)/(2.10-2.00);
+  assert.ok(Math.abs(fraction-.5)<1e-12);
+  assert.equal(Math.round(100+fraction*(200-100)),150);
+  assert.equal(wireTemperature.choices[wireTemperature.answer],'150 ℃');
+  assert.equal(qs.filter(q=>q.source.type==='book').length,6);
   const ledger=await read('docs/SECTION_PROGRESS.json');
   for(const section of ledger.sections){
     const publicIds=qs.filter(q=>q.source.type==='book'&&q.source.section===section.id).map(q=>q.id).sort();

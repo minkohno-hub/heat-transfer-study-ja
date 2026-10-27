@@ -2367,9 +2367,9 @@
         "completeCheck": "not_verified"
       },
       "questions": {
-        "count": 5,
-        "sourceCheckedCount": 5,
-        "publicQuestionIds": ["book-9-1-transition-flux", "book-9-1-before-inception", "book-9-1-film-flux", "book-9-1-peak-flux-risk", "book-9-1-wire-flux"],
+        "count": 6,
+        "sourceCheckedCount": 6,
+        "publicQuestionIds": ["book-9-1-transition-flux", "book-9-1-before-inception", "book-9-1-film-flux", "book-9-1-peak-flux-risk", "book-9-1-wire-flux", "book-9-1-wire-temperature"],
         "expertReviewed": false
       },
       "app": {
