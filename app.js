@@ -26,6 +26,7 @@ let ui = {
   route: routeFromHash(),
   guideTarget: guideTargetFromHash(),
   guideQuery: '',
+  pdfCacheStatus: 'checking',
   readerSection: state.lastSection,
   search: { query: '', kind: 'all', chapter: 'all' },
   quiz: null,
@@ -188,6 +189,16 @@ function sourcePdfLink(source, section) {
   const page=sourcePdfPage(source,section);
   return page?`<a class="text-link" href="./book/AHTTv600.pdf#page=${page}" target="_blank" rel="noopener" aria-label="英語原本PDFの${page}ページを別タブで開く">英語原本PDF p.${page}を開く ↗</a>`:'';
 }
+function pdfCacheStatusLabel() {
+  return ({checking:'原本PDFのオフライン保存状態を確認中です。',saving:'原本PDFをオフライン用に保存しています。',saved:'原本PDFはこのブラウザーに保存済みです。保存領域が消えると再取得が必要です。','not-saved':'原本PDFはオフライン用に未保存です。必要ならオンライン中に保存してください。',unknown:'原本PDFの保存状態を確認できませんでした。ネット接続と空き容量を確認してください。',unsupported:'このブラウザーではアプリ内のオフライン保存状態を確認できません。PDFのダウンロードを利用してください。'})[ui.pdfCacheStatus];
+}
+function setPdfCacheStatus(status) {
+  ui.pdfCacheStatus=status;
+  const indicator=document.querySelector('#pdf-cache-status');
+  if(indicator)indicator.textContent=pdfCacheStatusLabel();
+  const saveButton=document.querySelector('[data-action="cache-pdf"]');
+  if(saveButton)saveButton.disabled=status==='saving';
+}
 const BOOK_BLOCK_TYPES = new Set(['heading','subheading','example','quote','experiment','footnote','formula','supplement','sourceNote','figure','table','list','problem','reference','paragraph']);
 function validBookFigure(figure) {
   return figure && typeof figure === 'object' && !Array.isArray(figure) && typeof figure.alt === 'string' && !!figure.alt.trim() && (figure.src === undefined || figure.src === '' || safeLocalFigurePath(figure.src));
@@ -277,10 +288,17 @@ async function startApp() {
     if ('serviceWorker' in navigator && location.protocol.startsWith('http')) {
       navigator.serviceWorker.addEventListener('message',event=>{
         if(event.data?.type==='CONTENT_CACHE_RESULT'&&!event.data.ok)showStatus('追加教材のオフライン保存が完了しませんでした。ネット接続中に再読み込みしてください。');
-        if(event.data?.type==='PDF_CACHE_RESULT')showStatus(event.data.ok?'原本PDFをオフライン用に保存しました。このブラウザーの保存領域が消えると再取得が必要です。':'原本PDFのオフライン保存が完了しませんでした。空き容量とネット接続を確認してください。');
+        if(event.data?.type==='PDF_CACHE_STATUS')setPdfCacheStatus(event.data.error?'unknown':event.data.cached?'saved':'not-saved');
+        if(event.data?.type==='PDF_CACHE_RESULT'){
+          setPdfCacheStatus(event.data.ok?'saved':'unknown');
+          showStatus(event.data.ok?'原本PDFをオフライン用に保存しました。このブラウザーの保存領域が消えると再取得が必要です。':'原本PDFのオフライン保存が完了しませんでした。空き容量とネット接続を確認してください。');
+        }
       });
-      navigator.serviceWorker.register('./sw.js').then(()=>navigator.serviceWorker.ready).then(registration=>registration.active?.postMessage({type:'CACHE_CONTENT',urls:ui.localCacheFiles||[]})).catch(()=>showStatus('オフライン保存の準備に失敗しました。ネット接続中に再読み込みしてください。'));
-    }
+      navigator.serviceWorker.register('./sw.js').then(()=>navigator.serviceWorker.ready).then(registration=>{
+        registration.active?.postMessage({type:'CACHE_CONTENT',urls:ui.localCacheFiles||[]});
+        registration.active?.postMessage({type:'CHECK_PDF_CACHE'});
+      }).catch(()=>{setPdfCacheStatus('unsupported');showStatus('オフライン保存の準備に失敗しました。ネット接続中に再読み込みしてください。');});
+    } else setPdfCacheStatus('unsupported');
     window.addEventListener('hashchange', () => {
       const next=routeFromHash(),guideTarget=guideTargetFromHash();if(next===ui.route&&guideTarget===ui.guideTarget)return;
       flushLearningTime();if(ui.route==='reader'){captureReaderPosition();stopSpeech(false);}persistQuiz();
@@ -488,7 +506,7 @@ function renderReader() {
       <article class="reader-panel surface-card" id="reader-article">
         <div class="reader-toolbar"><div class="language-toggle" role="group" aria-label="本文の表示言語"><button type="button" class="${contentLanguage === 'ja' ? 'selected' : ''}" data-language="ja" aria-pressed="${contentLanguage === 'ja'}">日本語</button><button type="button" class="${contentLanguage === 'en' ? 'selected' : ''}" data-language="en" ${hasEnglish ? '' : 'disabled'} aria-pressed="${contentLanguage === 'en'}">英語</button></div><span class="language-note">${hasEnglish ? (contentLanguage === 'ja' ? '日本語訳' : '英語版') : '英語原文は原本PDFで閲覧'}</span><button class="icon-button" type="button" data-action="reader-width" title="本文の幅を切り替え" aria-label="本文の幅を切り替え">↔</button><button class="icon-button" type="button" data-action="reader-font-down" aria-label="文字を小さくする">A−</button><button class="icon-button" type="button" data-action="reader-font-up" aria-label="文字を大きくする">A＋</button><button class="icon-button" type="button" data-action="reader-line" aria-label="行間を調整">↕</button><button class="icon-button" type="button" data-action="speak" ${available ? '' : 'disabled'} aria-label="本文を読み上げる">▶ 読み上げ</button><button class="icon-button" type="button" data-action="stop-speech" aria-label="読み上げを停止">■ 停止</button><button class="button secondary" type="button" data-action="prepare-bookmark">この位置にしおり</button></div>
         <div class="reader-meta"><span>${escapeHTML(chapter.part)} · 第${section.chapterId.slice(2)}章</span><span>書籍 p.${section.bookStart}–${section.bookEnd ?? '未確認'} · PDF p.${section.pdfStart}–${section.pdfEnd ?? '未確認'}</span></div>
-        <div class="reader-pdf-actions">${available?pdfLink:''}<a class="button secondary" href="./book/AHTTv600.pdf" download="AHTTv600.pdf">原本PDFをダウンロード · 約31MB</a><button class="button secondary" type="button" data-action="cache-pdf">原本PDFをオフライン保存</button></div>
+        <div class="reader-pdf-actions">${available?pdfLink:''}<a class="button secondary" href="./book/AHTTv600.pdf" download="AHTTv600.pdf">原本PDFをダウンロード · 約31MB</a><button class="button secondary" type="button" data-action="cache-pdf" ${ui.pdfCacheStatus==='saving'?'disabled':''}>原本PDFをオフライン保存</button></div><p class="small-note" id="pdf-cache-status" role="status">${pdfCacheStatusLabel()}</p>
         <p class="small-note">原本PDFは英語版です。翻訳本文・原図の再利用とは権利を分けて扱います。PDFビューアーによっては指定ページへ自動移動しません。オフライン保存には空き容量と対応ブラウザーが必要です。</p>
         <h2 class="reader-title">${escapeHTML(section.id)}　${escapeHTML(displayTitle)}</h2>
         <div class="reader-status-row">${statusPill(available ? (section.localSourceChecked ? '原本照合済み（作業者）' : '翻訳済み') : draftLabel, available ? 'green' : 'neutral')}${statusPill(available ? '専門家校閲待ち' : privateOnly ? '訳文等の公開範囲を確認中' : draftComplete ? '確認待ち・アプリ未収録' : inProgress ? '下書きはアプリ未収録' : '日本語訳は未収録', 'amber')}</div>
@@ -1038,9 +1056,10 @@ function onClick(event) {
   else if (action === 'save-comparison') { const result=calculateSimulation(ui.simMode,simRead(ui.simMode)); if(result.error){showStatus(result.error);return;} state.simComparisons[ui.simMode]={...simRead(ui.simMode)}; saveState(); render(); showStatus('比較用の条件を保存しました。'); }
   else if (action === 'clear-comparison') { delete state.simComparisons[ui.simMode]; saveState(); render(); }
   else if(action==='cache-pdf'){
-    if(!('serviceWorker' in navigator)){showStatus('このブラウザーではアプリ内のオフライン保存を利用できません。PDFのダウンロードを利用してください。');return;}
+    if(!('serviceWorker' in navigator)){setPdfCacheStatus('unsupported');showStatus('このブラウザーではアプリ内のオフライン保存を利用できません。PDFのダウンロードを利用してください。');return;}
+    setPdfCacheStatus('saving');
     showStatus('原本PDF（約31MB）の保存を開始します。完了の通知までネット接続を保ってください。');
-    navigator.serviceWorker.ready.then(registration=>registration.active?.postMessage({type:'CACHE_PDF'})).catch(()=>showStatus('オフライン保存を開始できませんでした。ネット接続とブラウザー設定を確認してください。'));
+    navigator.serviceWorker.ready.then(registration=>{if(!registration.active)throw Error('no-active-worker');registration.active.postMessage({type:'CACHE_PDF'});}).catch(()=>{setPdfCacheStatus('unknown');showStatus('オフライン保存を開始できませんでした。ネット接続とブラウザー設定を確認してください。');});
   }
   else if(action==='cancel-note-edit'){ui.noteEditId=null;render();}
   else if(action==='export-before-import')exportBackup('before-import');

@@ -1,4 +1,4 @@
-const CACHE_NAME='heat-study-ja-v7';
+const CACHE_NAME='heat-study-ja-v8';
 const PDF_CACHE_NAME='heat-study-ja-pdf-v1';
 const PDF_URL='./book/AHTTv600.pdf';
 const APP_SHELL=['./','./index.html','./styles.css','./app.js','./study-core.mjs','./guide.mjs','./manifest.json',
@@ -6,6 +6,10 @@ const APP_SHELL=['./','./index.html','./styles.css','./app.js','./study-core.mjs
 self.addEventListener('install',event=>{event.waitUntil(caches.open(CACHE_NAME).then(cache=>cache.addAll(APP_SHELL)));self.skipWaiting();});
 self.addEventListener('activate',event=>{event.waitUntil(caches.keys().then(keys=>Promise.all(keys.filter(k=>k.startsWith('heat-study-ja-')&&k!==CACHE_NAME&&k!==PDF_CACHE_NAME).map(k=>caches.delete(k)))));self.clients.claim();});
 self.addEventListener('message',event=>{
+  if(event.data?.type==='CHECK_PDF_CACHE'){
+    event.waitUntil(caches.open(PDF_CACHE_NAME).then(cache=>cache.match(PDF_URL)).then(response=>event.source?.postMessage({type:'PDF_CACHE_STATUS',cached:Boolean(response)})).catch(()=>event.source?.postMessage({type:'PDF_CACHE_STATUS',cached:false,error:true})));
+    return;
+  }
   if(event.data?.type==='CACHE_PDF'){
     event.waitUntil((async()=>{
       try {const cache=await caches.open(PDF_CACHE_NAME);if(!await cache.match(PDF_URL))await cache.add(PDF_URL);event.source?.postMessage({type:'PDF_CACHE_RESULT',ok:true});}

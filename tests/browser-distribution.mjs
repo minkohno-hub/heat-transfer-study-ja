@@ -42,6 +42,7 @@ try {
   await page.locator('.reader-toc [data-section="1.3"]').click();
   assert.match(await page.locator('.not-translated').innerText(),/旧PC.*下書き.*未移行/s);
   assert.match(await page.locator('.not-translated a[href*="AHTTv600.pdf"]').getAttribute('href'),/AHTTv600\.pdf#page=25$/);
+  await page.waitForFunction(()=>document.querySelector('#pdf-cache-status')?.textContent.includes('未保存'));
   await nav('home');
   assert.match(await page.locator('.hero-side').innerText(),/1 \/ 76 節を読了/);
   await nav('plan');
@@ -106,10 +107,12 @@ try {
   const pdfSaved=page.evaluate(()=>new Promise(resolve=>{const handler=event=>{if(event.data?.type!=='PDF_CACHE_RESULT')return;navigator.serviceWorker.removeEventListener('message',handler);resolve(event.data.ok);};navigator.serviceWorker.addEventListener('message',handler);}));
   await page.locator('[data-action="cache-pdf"]').click();
   assert.equal(await pdfSaved,true);
+  assert.match(await page.locator('#pdf-cache-status').innerText(),/保存済み/);
   assert.ok(await page.evaluate(async()=>Boolean(await(await caches.open('heat-study-ja-pdf-v1')).match('./book/AHTTv600.pdf'))));
   await context.setOffline(true);
   await page.reload();
   await page.locator('.app-shell').waitFor();
+  await page.waitForFunction(()=>document.querySelector('#pdf-cache-status')?.textContent.includes('保存済み'));
   const pdfRange=await page.evaluate(async()=>{const response=await fetch('./book/AHTTv600.pdf',{headers:{Range:'bytes=0-3'}});return {status:response.status,range:response.headers.get('content-range'),signature:await response.text()};});
   assert.equal(pdfRange.status,206);
   assert.equal(pdfRange.range,'bytes 0-3/32472182');
@@ -119,6 +122,14 @@ try {
   await nav('guide');
   await page.locator('#guide-sim-radiation').waitFor({state:'visible'});
   assert.match(await page.locator('#guide-sim-radiation').innerText(),/熱放射/);
+  await page.evaluate(async()=>{const cache=await caches.open('heat-study-ja-pdf-v1');await cache.delete('./book/AHTTv600.pdf');});
+  await page.reload();
+  await page.locator('.app-shell').waitFor();
+  await nav('reader');
+  await page.waitForFunction(()=>document.querySelector('#pdf-cache-status')?.textContent.includes('未保存'));
+  const missingPdf=await page.evaluate(async()=>{const response=await fetch('./book/AHTTv600.pdf',{headers:{Range:'bytes=0-3'}});return {status:response.status,message:await response.text()};});
+  assert.equal(missingPdf.status,503);
+  assert.match(missingPdf.message,/オフライン保存されていません/);
   assert.deepEqual(errors,[]);
   assert.deepEqual(external,[]);
   console.log('公開配信物：原本PDFとオフラインの範囲取得、訳文・抽出原図なし、ガイド・演習・計算・保存・画面幅・数字キーとEnter・3種類の表示モードを確認。');
