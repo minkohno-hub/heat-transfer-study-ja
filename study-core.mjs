@@ -168,7 +168,7 @@ export function searchRanges(value,query) {
 }
 export function searchSnippet(value, query, limit=240) {
   const s=String(value||''),first=searchRanges(s,query)[0];
-  let start=Math.max(0,(first?.[0]??0)-Math.floor(limit/3)), end=Math.min(s.length,start+limit);
+  let start=Math.max(0,(first?.[0]??0)-Math.floor(limit/3)), end=Math.min(s.length,Math.max(start+limit,first?.[1]??0));
   const boundaries=new Set([0,s.length]);
   if(typeof Intl.Segmenter==='function')for(const {index} of new Intl.Segmenter('ja',{granularity:'grapheme'}).segment(s))boundaries.add(index);
   else {let index=0;for(const point of s){index+=point.length;boundaries.add(index);}}

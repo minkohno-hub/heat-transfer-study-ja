@@ -88,6 +88,8 @@ test('search includes question titles, Japanese substrings, normalized numbers, 
   assert.equal(chapterKey('7.6'),'ch7');assert.equal(searchEntries(entries,{query:'温度',chapter:'ch7'}).length,1);
   assert.equal(searchEntries(entries,{query:'10',chapter:'ch7'}).length,1);assert.equal(searchEntries(entries,{query:'風速',chapter:'7'}).length,1);
   const snippet=searchSnippet('前'.repeat(500)+'熱抵抗'+'後'.repeat(500),'熱抵抗');assert.ok(snippet.includes('熱抵抗'));assert.ok(snippet.length<245);
+  const longTerm='熱移動'.repeat(100),longSnippet=searchSnippet('前'.repeat(500)+longTerm+'後'.repeat(500),longTerm);
+  assert.ok(longSnippet.includes(longTerm),'長い一致語も途中で切らずに表示する');
 });
 test('review spacing uses confidence and consecutive correct history',()=>{
   assert.equal(nextReviewDays([],attempt()),7);assert.equal(nextReviewDays([attempt()],attempt()),14);assert.equal(nextReviewDays([attempt(),attempt()],attempt()),30);
