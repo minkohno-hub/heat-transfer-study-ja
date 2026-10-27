@@ -53,7 +53,12 @@ test('public questions are self-contained and book references remain in the cite
   assert.ok(Math.abs(fraction-.5)<1e-12);
   assert.equal(Math.round(100+fraction*(200-100)),150);
   assert.equal(wireTemperature.choices[wireTemperature.answer],'150 ℃');
-  assert.equal(qs.filter(q=>q.source.type==='book').length,6);
+  const bubble=qs.find(q=>q.id==='book-9-2-bubble-radius');
+  assert.equal(bubble.source.section,'9.2');assert.equal(bubble.source.bookPages,'478');assert.equal(bubble.source.pdfPages,'492');assert.equal(bubble.source.equation,'9.1');
+  const radiusMicrometres=(2*0.060)/(3.0*1000)*1_000_000;
+  assert.ok(Math.abs(radiusMicrometres-40)<1e-12);
+  assert.equal(bubble.choices[bubble.answer],'4.0×10¹ μm');
+  assert.equal(qs.filter(q=>q.source.type==='book').length,7);
   const ledger=await read('docs/SECTION_PROGRESS.json');
   for(const section of ledger.sections){
     const publicIds=qs.filter(q=>q.source.type==='book'&&q.source.section===section.id).map(q=>q.id).sort();
