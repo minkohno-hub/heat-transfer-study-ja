@@ -200,6 +200,21 @@ try {
   await page.reload();
   await page.locator('.app-shell').waitFor();
   assert.notEqual(await page.evaluate(()=>JSON.parse(localStorage.getItem('heat-study-ja:v1')).plan.goal),'保存失敗時の通知確認');
+  await page.evaluate(()=>{
+    window.__originalSetItem=Storage.prototype.setItem;
+    Storage.prototype.setItem=function(key,value){
+      if(key==='heat-study-ja:v1')throw new DOMException('容量不足','QuotaExceededError');
+      return window.__originalSetItem.call(this,key,value);
+    };
+  });
+  await page.locator('#plan-form [name="goal"]').fill('保存回復を確認する');
+  await page.locator('#plan-form button[type="submit"]').click();
+  assert.ok(await page.locator('.storage-warning').count());
+  await page.evaluate(()=>{Storage.prototype.setItem=window.__originalSetItem;delete window.__originalSetItem;});
+  await page.locator('#plan-form button[type="submit"]').click();
+  assert.match(await page.locator('.toast').innerText(),/学習計画を保存しました/);
+  assert.equal(await page.locator('.storage-warning').count(),0);
+  assert.equal(await page.evaluate(()=>JSON.parse(localStorage.getItem('heat-study-ja:v1')).plan.goal),'保存回復を確認する');
   await page.evaluate(()=>navigator.serviceWorker.ready);
   await nav('reader');
   const pdfSaved=page.evaluate(()=>new Promise(resolve=>{const handler=event=>{if(event.data?.type!=='PDF_CACHE_RESULT')return;navigator.serviceWorker.removeEventListener('message',handler);resolve(event.data.ok);};navigator.serviceWorker.addEventListener('message',handler);}));

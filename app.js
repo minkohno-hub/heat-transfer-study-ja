@@ -139,6 +139,7 @@ function saveState(next = state) {
     const raw=JSON.stringify(next);
     localStorage.setItem(STORAGE_KEY, raw);
     lastSavedRaw = raw;
+    if (!recoveryRaw) storageIssue = '';
     return true;
   } catch {
     storageIssue = '端末への保存に失敗しています。画面上の変更は一時的です。設定からJSONを書き出し、空き容量やブラウザーの保存設定を確認してください。';
