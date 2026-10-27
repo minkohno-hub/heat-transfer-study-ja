@@ -1075,7 +1075,10 @@ function onClick(event) {
   else if (action === 'export-data') exportData();
   else if (action === 'export-preview') { ui.exportJSON=JSON.stringify(exportPayload(),null,2);render();document.querySelector('#export-json')?.focus(); }
   else if (action === 'select-export') document.querySelector('#export-json')?.select();
-  else if (action === 'export-recovery') downloadJSON(recoveryRaw,'heat-study-original-recovery.json');
+  else if (action === 'export-recovery') {
+    if(downloadJSON(recoveryRaw,'heat-study-original-recovery.json'))showStatus('保管した元データの書き出しを開始しました。ブラウザーのダウンロードを確認してください。');
+    else offerManualExport(recoveryRaw);
+  }
   else if (action === 'import-merge') importData(false);
   else if (action === 'import-replace') importData(true);
 }
@@ -1099,7 +1102,7 @@ function onSubmit(event) {
 
 function onChange(event) {
   const target=event.target;
-  if(target.dataset.bookmarkNote){const b=state.bookmarks.find(b=>b.id===target.dataset.bookmarkNote);if(b){b.note=target.value;b.updatedAt=new Date().toISOString();saveState();showStatus('しおりのメモを保存しました。');}return;}
+  if(target.dataset.bookmarkNote){const b=state.bookmarks.find(b=>b.id===target.dataset.bookmarkNote);if(b){b.note=target.value;b.updatedAt=new Date().toISOString();const saved=saveState();showStatus(saved?'しおりのメモを保存しました。':'しおりのメモを端末に保存できませんでした。JSONを書き出してください。');}return;}
   if (target.name === 'choice' && ui.quiz) { ui.quiz.selected=Number(target.value);persistQuiz();saveState();render();document.querySelector(`input[name="choice"][value="${target.value}"]`)?.focus(); }
   else if (target.name === 'confidence' && ui.quiz) { ui.quiz.confidence=target.value;persistQuiz();saveState();render();document.querySelector(`input[name="confidence"][value="${target.value}"]`)?.focus(); }
   else if (target.name === 'theme') { state.settings.theme=target.value; saveState(); render(); }
@@ -1182,6 +1185,7 @@ function saveQuestionReport(form) {
 function savePlan(form) {
   const data=new FormData(form); const goal=String(data.get('goal')||'').trim(); const targetDate=String(data.get('targetDate')||''); const minutesPerDay=Number(data.get('minutesPerDay'));
   if(!goal){showStatus('学習目標を入力してください。');return;}
+  if(targetDate && !validDay(targetDate)){showStatus('目標日は実在する日付を選んでください。現在の計画は変更していません。');return;}
   if(targetDate && targetDate<todayISO()){showStatus('目標日は今日以降の日付を選んでください。');return;}
   state.plan={goal,targetDate,minutesPerDay:Math.max(5,Math.min(60,minutesPerDay||15)),active:true,updatedAt:new Date().toISOString()}; const saved=saveState(); render(); showStatus(saved?'学習計画を保存しました。':'学習計画を端末に保存できませんでした。JSONを書き出してください。');
 }

@@ -13,7 +13,7 @@ function harness(initial) {
   const context=vm.createContext({...core,...guide,structuredClone,JSON,Date,Math,Intl,Map,Set,Number,String,Array,Boolean,RegExp,Blob,URL,crypto:{randomUUID:()=> '11111111-1111-4111-8111-111111111111'},document,window:{matchMedia:()=>({matches:false}),scrollTo(){},confirm:()=>true,location:{reload(){reloaded++;}}},location:{hash:''},navigator:{onLine:true},setTimeout:()=>1,clearTimeout(){},localStorage:{getItem:k=>store.get(k)||null,setItem(k,v){if((fail&&k===key)||k===failKey)throw Error('quota');store.set(k,v);},removeItem(k){store.delete(k);}},FormData:class{constructor(v){this.values=v.values??v;}get(k){return this.values[k]??null;}}});
   vm.runInContext(source.replace(/^import .*?;\s*/gm,'').replace(/\nstartApp\(\);\s*$/,'')+`
     render=()=>{globalThis.renderCount=(globalThis.renderCount||0)+1;};showStatus=message=>{globalThis.statusMessage=message;};
-    globalThis.api={get state(){return state;},set state(v){state=v;},get ui(){return ui;},set ui(v){ui={...ui,...v};},set questions(v){questionBank=v;},set book(v){book=v;},set terms(v){glossary=v;},submitQuizAnswer,reviewCandidates,validateImport,importData,exportData,exportBackup,saveState,setReviewDate,buildSearchIndex,onKeyDown,renderBookBlock,renderQuestionFigure,renderGlossary,renderAnswerFeedback,sourcePdfPage,sourcePdfLink,blockSourceLabel,figureZoomLink,renderSimulationSteps,simGraph,validBookBlocks,sectionIsTranslated,createProfile,get warning(){return storageIssue;},get status(){return globalThis.statusMessage;}};`,context);
+    globalThis.api={get state(){return state;},set state(v){state=v;},get ui(){return ui;},set ui(v){ui={...ui,...v};},set questions(v){questionBank=v;},set book(v){book=v;},set terms(v){glossary=v;},submitQuizAnswer,reviewCandidates,validateImport,importData,exportData,exportBackup,saveState,savePlan,setReviewDate,onClick,onChange,buildSearchIndex,onKeyDown,renderBookBlock,renderQuestionFigure,renderGlossary,renderAnswerFeedback,sourcePdfPage,sourcePdfLink,blockSourceLabel,figureZoomLink,renderSimulationSteps,simGraph,validBookBlocks,sectionIsTranslated,createProfile,get warning(){return storageIssue;},get status(){return globalThis.statusMessage;}};`,context);
   const api=context.api;api.questions=[question];api.book={pdfPageCount:810,chapters:[{id:'ch1',title:'章',sections:[{id:'1.1',title:'本文',bookStart:3,bookEnd:4,pdfStart:17,pdfEnd:18,blocks:[{id:'b1',type:'paragraph',text:'検索する語',bookPage:3,pdfPage:17}]}]}]};api.terms=[{id:'term',ja:'熱',en:'heat',meaning:'温度による移動',source:{section:'1.1'}}];
   return {api,store,context,setFail:v=>fail=v,setFailKey:v=>failKey=v,get submitted(){return submitted;},get reloaded(){return reloaded;}};
 }
@@ -53,6 +53,15 @@ test('clearing a review date preserves valid saved data, and valid changes have 
   h.api.setReviewDate('q1','');assert.equal(JSON.stringify(h.api.state),before);assert.equal(h.store.get(key),before);
   h.api.setReviewDate('q1','2026-10-30');assert.equal(h.api.state.reviews.q1.dueDate,'2026-10-30');assert.ok(h.api.state.reviews.q1.updatedAt);assert.equal(core.validateLearningData({...h.api.state,format:core.DATA_FORMAT}),'');
 });
+test('an impossible plan date cannot poison the saved learning record',()=>{
+  const h=harness();h.api.state.plan.goal='以前の目標';h.api.saveState();const before=h.store.get(key);
+  h.api.savePlan({values:{goal:'新しい目標',targetDate:'2099-02-30',minutesPerDay:'15'}});
+  assert.equal(h.store.get(key),before);assert.equal(h.api.state.plan.goal,'以前の目標');
+  assert.match(h.api.status,/実在する日付/);
+  h.api.savePlan({values:{goal:'新しい目標',targetDate:'2099-02-28',minutesPerDay:'15'}});
+  assert.equal(JSON.parse(h.store.get(key)).plan.targetDate,'2099-02-28');
+  assert.equal(core.validateLearningData(JSON.parse(h.store.get(key)),{stored:true}),'');
+});
 test('restore is atomic when storage fails and malformed nested data are rejected again',()=>{
   const h=harness();h.api.state.mistakeNotes.q1={reason:'keep'};const before=JSON.stringify(h.api.state);h.api.saveState();
   h.api.ui.importDraft={data:{...core.createEmptyState(),format:core.DATA_FORMAT,notes:null}};h.api.importData(false);assert.equal(JSON.stringify(h.api.state),before);
@@ -86,6 +95,19 @@ test('failed JSON download offers the current record or saved recovery text for 
   h.api.exportBackup('recovery');
   assert.equal(h.api.ui.exportJSON,'{damaged-json');
   assert.match(h.api.status,/コピーして保管/);
+});
+test('corrupt original data also has a manual-copy path when its download is blocked',()=>{
+  const h=harness('{damaged-original');h.context.URL={createObjectURL(){throw Error('download-unavailable');}};
+  h.api.onClick({target:{closest:selector=>selector==='[data-action]'?{dataset:{action:'export-recovery'}}:null}});
+  assert.equal(h.api.ui.exportJSON,'{damaged-original');
+  assert.match(h.api.status,/コピーして保管/);
+  assert.equal(h.store.get(key),'{damaged-original');
+});
+test('a failed bookmark-note save cannot claim the note was stored',()=>{
+  const h=harness();h.api.state.bookmarks=[{id:'b1',sectionId:'1.1',note:'以前のメモ',createdAt:'2026-10-20T00:00:00Z'}];h.api.saveState();
+  const before=h.store.get(key);h.setFail(true);
+  h.api.onChange({target:{dataset:{bookmarkNote:'b1'},value:'新しいメモ'}});
+  assert.match(h.api.status,/保存できませんでした/);assert.equal(h.store.get(key),before);
 });
 test('a stale tab cannot overwrite another tab through normal saving or JSON restore',()=>{
   const h=harness();
