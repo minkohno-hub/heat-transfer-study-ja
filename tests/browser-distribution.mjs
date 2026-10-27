@@ -78,17 +78,8 @@ try {
   await page.locator('#guide-search-form button').click();
   assert.ok(await page.locator('#guide-sim-radiation').count());
   await nav('glossary');
-  const glossaryDiagnostics=await page.evaluate(async()=>{
-    const qs=await (await fetch('./data/questions.json')).json();
-    const terms=await (await fetch('./data/glossary.json')).json();
-    return {questionCount:qs.length,glossaryCount:terms.length,
-      targetQuestion:qs.some(q=>q.id==='supp-expanded-bi-calc'),
-      targetTerm:terms.find(t=>t.id==='biot-number'),
-      renderedIds:[...document.querySelectorAll('.term-card')].map(node=>node.id)};
-  });
-  console.log('GLOSSARY_DIAGNOSTICS',JSON.stringify(glossaryDiagnostics));
-  assert.ok(await page.locator('#term-biot-number [data-start-question="supp-expanded-bi-calc"]').count());
-  assert.ok(await page.locator('#term-log-mean-temperature-difference [data-start-question="supp-expanded-hx-lmtd-equal"]').count());
+  await page.locator('#term-biot-number [data-start-question="supp-expanded-bi-calc"]').waitFor({state:'attached'});
+  await page.locator('#term-log-mean-temperature-difference [data-start-question="supp-expanded-hx-lmtd-equal"]').waitFor({state:'attached'});
   assert.match(await page.locator('#term-heat .term-links a').getAttribute('href'),/AHTTv600\.pdf#page=17$/);
   assert.match(await page.locator('#term-heat-flux .term-links a').getAttribute('href'),/AHTTv600\.pdf#page=25$/);
   assert.match(await page.locator('#term-pool-boiling .term-links a').getAttribute('href'),/AHTTv600\.pdf#page=485$/);
@@ -215,6 +206,7 @@ try {
   await page.locator('input[name="theme"][value="dark"]').check();
   assert.equal(await page.evaluate(()=>document.documentElement.dataset.theme),'dark');
   await nav('reader');
+  await page.locator('.reader-toc .toc-item.selected').waitFor({state:'attached'});
   assert.ok((await readerContrast()).every(value=>value>=4.5),'暗色目次の選択行の文字コントラスト');
   await nav('settings');
   await page.reload();
