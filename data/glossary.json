@@ -1,23 +1,543 @@
 [
-  {"id":"heat","ja":"熱","en":"heat","meaning":"温度差があるために、ある物体や領域から別の物体や領域へ移るエネルギー。熱は物体に蓄えられた物質ではなく、エネルギーの移動として扱う。","source":{"section":"1.1","bookPages":"3–6","pdfPages":"17–20"}},
-  {"id":"heat-transfer","ja":"熱移動","en":"heat transfer","meaning":"温度差などに関わる仕組みによって、熱エネルギーが場所や物質の間を移る現象。書籍は伝導・対流・放射を扱う。","source":{"section":"1.1","bookPages":"3–6","pdfPages":"17–20"}},
-  {"id":"caloric","ja":"カロリック説","en":"caloric theory","meaning":"熱を、熱い物体から冷たい物体へ流れる目に見えない流体（カロリック）として説明した歴史的な考え方。書籍では自然と矛盾する性質が含まれていたと説明している。","source":{"section":"1.1","bookPages":"3","pdfPages":"17"}},
-  {"id":"temperature-gradient","ja":"温度勾配","en":"temperature gradient","meaning":"場所によって温度がどの向きに、どれほどの割合で変化するかを表す量。熱伝導では、温度差だけでなく、距離あたりの変化が重要になる。後半は補足説明。","source":{"section":"1.1","bookPages":"4","pdfPages":"18"}},
-  {"id":"convection","ja":"対流","en":"convection","meaning":"流体（液体や気体）のまとまった運動によって、熱が運ばれる現象。温められた空気が浮力で上昇する例がある。","source":{"section":"1.1","bookPages":"3","pdfPages":"17"},"relatedQuestions":[{"id":"book-9-1-before-inception","label":"気泡発生前の伝熱を考える"}]},
-  {"id":"power","ja":"仕事率（動力）","en":"power","meaning":"一定時間あたりに移動・変換されるエネルギー。単位はワット（W）で、1 W = 1 J/s。1馬力は本文の記述で746 W。","source":{"section":"1.1","bookPages":"4","pdfPages":"18"},"relatedQuestions":[{"id":"book-9-1-wire-flux","label":"電力から熱流束を計算"}]},
-  {"id":"heat-rate","ja":"熱移動率","en":"heat transfer rate","meaning":"単位時間あたりに移動する熱エネルギー。記号や正負の約束は、使う式や対象の説明に従う。","source":{"section":"1.1","bookPages":"5–6","pdfPages":"19–20"},"relatedQuestions":[{"id":"supp-flat-numeric","label":"平板の熱移動率を計算する"}]},
-  {"id":"heat-flux","ja":"熱流束","en":"heat flux","meaning":"熱移動率を単位面積あたりで表した量。単位は W/m²。向きを表すときは符号の約束を確認する。補足例（アプリ作成）：一様に100 Wが2 m²を通る場合、大きさは50 W/m²。","source":{"section":"1.3","bookPages":"11","pdfPages":"25"},"relatedQuestions":[{"id":"book-9-1-transition-flux","label":"遷移沸騰中の熱流束"},{"id":"book-9-1-film-flux","label":"膜沸騰中の熱流束"},{"id":"book-9-1-peak-flux-risk","label":"ピーク熱流束の危険"},{"id":"book-9-1-wire-flux","label":"加熱線の熱流束を計算"}]},
-  {"id":"pool-boiling","ja":"プール沸騰","en":"pool boiling","meaning":"静止した加熱面から、外部から強制的に流していない液体へ熱が移るときの沸騰。液体の内部まで全く動かないという意味ではない。気泡や温度差による流動は起こり得る。後半は誤解を避けるための補足説明。","source":{"section":"9.1","bookPages":"471","pdfPages":"485"},"relatedQuestions":[{"id":"book-9-1-before-inception","label":"泡が出る前の状態"},{"id":"book-9-1-wire-flux","label":"加熱線の熱流束を計算"},{"id":"book-9-1-wire-temperature","label":"加熱線の温度を校正する"}]},
-  {"id":"electrical-resistance","ja":"電気抵抗","en":"electrical resistance","meaning":"電流の流れに対する抵抗を表す量。単位はオーム（Ω）。図9.1の加熱線では、電流 I が0でなければ測定した電圧 E と電流 I から R = E/I を求め、事前の抵抗–温度校正曲線から線温度を読み取る。一般的な定義と単位の説明は補足説明。","source":{"section":"9.1","bookPages":"472","pdfPages":"486"},"relatedQuestions":[{"id":"book-9-1-wire-temperature","label":"抵抗から線温度を求める"}]},
-  {"id":"wall-superheat","ja":"壁面過熱度","en":"wall superheat","meaning":"加熱面の温度 T_w と接する液体の飽和温度 T_sat の差 ΔT = T_w − T_sat。温度差なので 1 K と 1 ℃ は同じ大きさ。補足例（アプリ作成）：T_w が 110 ℃、T_sat が 100 ℃ なら ΔT は 10 K。","source":{"section":"9.1","bookPages":"473","pdfPages":"487"},"relatedQuestions":[{"id":"book-9-1-before-inception","label":"泡発生前の伝熱"},{"id":"book-9-1-transition-flux","label":"遷移沸騰中の変化"}]},
-  {"id":"nucleate-boiling","ja":"核沸騰","en":"nucleate boiling","meaning":"加熱面の気泡が生じる場所から気泡が発生する沸騰。書籍のプール沸騰曲線では、泡発生点から最初の遷移点までに、孤立気泡の領域と気泡が合体して柱状になる領域がある。","source":{"section":"9.1","bookPages":"474","pdfPages":"488"},"relatedQuestions":[{"id":"book-9-1-peak-flux-risk","label":"核沸騰上限の危険"}]},
-  {"id":"transition-boiling","ja":"遷移沸騰","en":"transition boiling","meaning":"ピーク熱流束 qmax から最小熱流束 qmin へ向かうプール沸騰の領域。壁面過熱度を独立に増やす曲線では、蒸気の被覆が進むにつれて熱流束が下がる。","source":{"section":"9.1","bookPages":"476","pdfPages":"490"},"relatedQuestions":[{"id":"book-9-1-transition-flux","label":"遷移沸騰の熱流束"}]},
-  {"id":"film-boiling","ja":"膜沸騰","en":"film boiling","meaning":"安定した蒸気膜が加熱面を覆い、熱が膜を通って伝わる沸騰。最小熱流束 qmin を過ぎた領域では、壁面過熱度を増やすと熱流束は再び増える。","source":{"section":"9.1","bookPages":"476","pdfPages":"490"},"relatedQuestions":[{"id":"book-9-1-film-flux","label":"膜沸騰の熱流束"}]},
-  {"id":"peak-heat-flux","ja":"ピーク熱流束","en":"peak heat flux","meaning":"核沸騰域の上限にあたる熱流束 qmax。熱流束を独立に増やす系でこの境界を越えると、壁面温度が突然大きく上がり得るため、運転上の危険に注意する。","source":{"section":"9.1","bookPages":"476","pdfPages":"490"},"relatedQuestions":[{"id":"book-9-1-peak-flux-risk","label":"ピーク熱流束の危険"}]},
-  {"id":"thermal-energy","ja":"熱エネルギー","en":"thermal energy","meaning":"温度や物質の状態に関わる内部エネルギーの一部を説明するときに使う言葉。熱（移動）と物体の中にあるエネルギーは区別する。","source":{"section":"1.1","bookPages":"6","pdfPages":"20"}},
-  {"id":"thermal-conductivity","ja":"熱伝導率","en":"thermal conductivity","meaning":"材料の中を熱が伝わりやすい度合いを表す物性値。単位は W/(m·K)。均質な平板の一次元定常熱伝導のモデルで用いる。","source":{"type":"supplement","reference":"Fourierの法則（一般的な伝熱の定義）","guideId":"sim-conduction"},"relatedQuestions":[{"id":"supp-flat-thickness","label":"平板の厚さと熱移動率"},{"id":"supp-flat-numeric","label":"平板の熱移動率を計算する"}]},
-  {"id":"convection-coefficient","ja":"対流熱伝達率","en":"convective heat transfer coefficient","meaning":"固体表面と隣接する流体の間の熱移動を結び付ける係数。流速、流れの状態、流体の性質などに左右され、単純な材料定数ではない。","source":{"type":"supplement","reference":"Newtonの冷却法則（一般的な伝熱の定義）","guideId":"sim-convection"},"relatedQuestions":[{"id":"supp-convection-h","label":"熱伝達率を変えたときの変化"},{"id":"supp-convection-numeric","label":"対流の熱移動率を計算する"}]},
-  {"id":"emissivity","ja":"放射率","en":"emissivity","meaning":"実在表面が黒体放射と比べてどれほど熱放射するかを表す比。モデルでは0から1の範囲を取る。","source":{"type":"supplement","reference":"Stefan–Boltzmannの法則（一般的な伝熱の定義）","guideId":"sim-radiation"},"relatedQuestions":[{"id":"supp-radiation-numeric","label":"放射率を使った熱放射の計算"}]},
-  {"id":"kelvin","ja":"絶対温度","en":"absolute temperature","meaning":"絶対零度を0とする温度。放射の温度4乗の計算では絶対温度 K を使う。℃を使う式と取り違えない。","source":{"type":"supplement","reference":"熱放射の計算に必要な基礎知識","guideId":"sim-radiation"},"relatedQuestions":[{"id":"supp-radiation-temperature","label":"摂氏温度を絶対温度に換算する"}]},
-  {"id":"surface-tension","ja":"表面張力","en":"surface tension","meaning":"液体と蒸気の界面に働く張力を、界面上の長さあたりで表す量。単位は N/m。本書の理想化した球形蒸気泡では、表面張力に対応する泡内外の圧力差が 2σ/R_b となる。後半は式（9.1）を読み解くための補足説明。","source":{"section":"9.2","bookPages":"478–479","pdfPages":"492–493"},"relatedQuestions":[{"id":"book-9-2-bubble-radius","label":"平衡泡の半径を計算する"}]}
+  {
+    "id": "heat",
+    "ja": "熱",
+    "en": "heat",
+    "meaning": "温度差があるために、ある物体や領域から別の物体や領域へ移るエネルギー。熱は物体に蓄えられた物質ではなく、エネルギーの移動として扱う。",
+    "source": {
+      "section": "1.1",
+      "bookPages": "3–6",
+      "pdfPages": "17–20"
+    }
+  },
+  {
+    "id": "heat-transfer",
+    "ja": "熱移動",
+    "en": "heat transfer",
+    "meaning": "温度差などに関わる仕組みによって、熱エネルギーが場所や物質の間を移る現象。書籍は伝導・対流・放射を扱う。",
+    "source": {
+      "section": "1.1",
+      "bookPages": "3–6",
+      "pdfPages": "17–20"
+    }
+  },
+  {
+    "id": "caloric",
+    "ja": "カロリック説",
+    "en": "caloric theory",
+    "meaning": "熱を、熱い物体から冷たい物体へ流れる目に見えない流体（カロリック）として説明した歴史的な考え方。書籍では自然と矛盾する性質が含まれていたと説明している。",
+    "source": {
+      "section": "1.1",
+      "bookPages": "3",
+      "pdfPages": "17"
+    }
+  },
+  {
+    "id": "temperature-gradient",
+    "ja": "温度勾配",
+    "en": "temperature gradient",
+    "meaning": "場所によって温度がどの向きに、どれほどの割合で変化するかを表す量。熱伝導では、温度差だけでなく、距離あたりの変化が重要になる。後半は補足説明。",
+    "source": {
+      "section": "1.1",
+      "bookPages": "4",
+      "pdfPages": "18"
+    }
+  },
+  {
+    "id": "convection",
+    "ja": "対流",
+    "en": "convection",
+    "meaning": "流体（液体や気体）のまとまった運動によって、熱が運ばれる現象。温められた空気が浮力で上昇する例がある。",
+    "source": {
+      "section": "1.1",
+      "bookPages": "3",
+      "pdfPages": "17"
+    },
+    "relatedQuestions": [
+      {
+        "id": "book-9-1-before-inception",
+        "label": "気泡発生前の伝熱を考える"
+      }
+    ]
+  },
+  {
+    "id": "power",
+    "ja": "仕事率（動力）",
+    "en": "power",
+    "meaning": "一定時間あたりに移動・変換されるエネルギー。単位はワット（W）で、1 W = 1 J/s。1馬力は本文の記述で746 W。",
+    "source": {
+      "section": "1.1",
+      "bookPages": "4",
+      "pdfPages": "18"
+    },
+    "relatedQuestions": [
+      {
+        "id": "book-9-1-wire-flux",
+        "label": "電力から熱流束を計算"
+      }
+    ]
+  },
+  {
+    "id": "heat-rate",
+    "ja": "熱移動率",
+    "en": "heat transfer rate",
+    "meaning": "単位時間あたりに移動する熱エネルギー。記号や正負の約束は、使う式や対象の説明に従う。",
+    "source": {
+      "section": "1.1",
+      "bookPages": "5–6",
+      "pdfPages": "19–20"
+    },
+    "relatedQuestions": [
+      {
+        "id": "supp-flat-numeric",
+        "label": "平板の熱移動率を計算する"
+      }
+    ]
+  },
+  {
+    "id": "heat-flux",
+    "ja": "熱流束",
+    "en": "heat flux",
+    "meaning": "熱移動率を単位面積あたりで表した量。単位は W/m²。向きを表すときは符号の約束を確認する。補足例（アプリ作成）：一様に100 Wが2 m²を通る場合、大きさは50 W/m²。",
+    "source": {
+      "section": "1.3",
+      "bookPages": "11",
+      "pdfPages": "25"
+    },
+    "relatedQuestions": [
+      {
+        "id": "book-9-1-transition-flux",
+        "label": "遷移沸騰中の熱流束"
+      },
+      {
+        "id": "book-9-1-film-flux",
+        "label": "膜沸騰中の熱流束"
+      },
+      {
+        "id": "book-9-1-peak-flux-risk",
+        "label": "ピーク熱流束の危険"
+      },
+      {
+        "id": "book-9-1-wire-flux",
+        "label": "加熱線の熱流束を計算"
+      }
+    ]
+  },
+  {
+    "id": "pool-boiling",
+    "ja": "プール沸騰",
+    "en": "pool boiling",
+    "meaning": "静止した加熱面から、外部から強制的に流していない液体へ熱が移るときの沸騰。液体の内部まで全く動かないという意味ではない。気泡や温度差による流動は起こり得る。後半は誤解を避けるための補足説明。",
+    "source": {
+      "section": "9.1",
+      "bookPages": "471",
+      "pdfPages": "485"
+    },
+    "relatedQuestions": [
+      {
+        "id": "book-9-1-before-inception",
+        "label": "泡が出る前の状態"
+      },
+      {
+        "id": "book-9-1-wire-flux",
+        "label": "加熱線の熱流束を計算"
+      },
+      {
+        "id": "book-9-1-wire-temperature",
+        "label": "加熱線の温度を校正する"
+      }
+    ]
+  },
+  {
+    "id": "electrical-resistance",
+    "ja": "電気抵抗",
+    "en": "electrical resistance",
+    "meaning": "電流の流れに対する抵抗を表す量。単位はオーム（Ω）。図9.1の加熱線では、電流 I が0でなければ測定した電圧 E と電流 I から R = E/I を求め、事前の抵抗–温度校正曲線から線温度を読み取る。一般的な定義と単位の説明は補足説明。",
+    "source": {
+      "section": "9.1",
+      "bookPages": "472",
+      "pdfPages": "486"
+    },
+    "relatedQuestions": [
+      {
+        "id": "book-9-1-wire-temperature",
+        "label": "抵抗から線温度を求める"
+      }
+    ]
+  },
+  {
+    "id": "wall-superheat",
+    "ja": "壁面過熱度",
+    "en": "wall superheat",
+    "meaning": "加熱面の温度 T_w と接する液体の飽和温度 T_sat の差 ΔT = T_w − T_sat。温度差なので 1 K と 1 ℃ は同じ大きさ。補足例（アプリ作成）：T_w が 110 ℃、T_sat が 100 ℃ なら ΔT は 10 K。",
+    "source": {
+      "section": "9.1",
+      "bookPages": "473",
+      "pdfPages": "487"
+    },
+    "relatedQuestions": [
+      {
+        "id": "book-9-1-before-inception",
+        "label": "泡発生前の伝熱"
+      },
+      {
+        "id": "book-9-1-transition-flux",
+        "label": "遷移沸騰中の変化"
+      }
+    ]
+  },
+  {
+    "id": "nucleate-boiling",
+    "ja": "核沸騰",
+    "en": "nucleate boiling",
+    "meaning": "加熱面の気泡が生じる場所から気泡が発生する沸騰。書籍のプール沸騰曲線では、泡発生点から最初の遷移点までに、孤立気泡の領域と気泡が合体して柱状になる領域がある。",
+    "source": {
+      "section": "9.1",
+      "bookPages": "474",
+      "pdfPages": "488"
+    },
+    "relatedQuestions": [
+      {
+        "id": "book-9-1-peak-flux-risk",
+        "label": "核沸騰上限の危険"
+      }
+    ]
+  },
+  {
+    "id": "transition-boiling",
+    "ja": "遷移沸騰",
+    "en": "transition boiling",
+    "meaning": "ピーク熱流束 qmax から最小熱流束 qmin へ向かうプール沸騰の領域。壁面過熱度を独立に増やす曲線では、蒸気の被覆が進むにつれて熱流束が下がる。",
+    "source": {
+      "section": "9.1",
+      "bookPages": "476",
+      "pdfPages": "490"
+    },
+    "relatedQuestions": [
+      {
+        "id": "book-9-1-transition-flux",
+        "label": "遷移沸騰の熱流束"
+      }
+    ]
+  },
+  {
+    "id": "film-boiling",
+    "ja": "膜沸騰",
+    "en": "film boiling",
+    "meaning": "安定した蒸気膜が加熱面を覆い、熱が膜を通って伝わる沸騰。最小熱流束 qmin を過ぎた領域では、壁面過熱度を増やすと熱流束は再び増える。",
+    "source": {
+      "section": "9.1",
+      "bookPages": "476",
+      "pdfPages": "490"
+    },
+    "relatedQuestions": [
+      {
+        "id": "book-9-1-film-flux",
+        "label": "膜沸騰の熱流束"
+      }
+    ]
+  },
+  {
+    "id": "peak-heat-flux",
+    "ja": "ピーク熱流束",
+    "en": "peak heat flux",
+    "meaning": "核沸騰域の上限にあたる熱流束 qmax。熱流束を独立に増やす系でこの境界を越えると、壁面温度が突然大きく上がり得るため、運転上の危険に注意する。",
+    "source": {
+      "section": "9.1",
+      "bookPages": "476",
+      "pdfPages": "490"
+    },
+    "relatedQuestions": [
+      {
+        "id": "book-9-1-peak-flux-risk",
+        "label": "ピーク熱流束の危険"
+      }
+    ]
+  },
+  {
+    "id": "thermal-energy",
+    "ja": "熱エネルギー",
+    "en": "thermal energy",
+    "meaning": "温度や物質の状態に関わる内部エネルギーの一部を説明するときに使う言葉。熱（移動）と物体の中にあるエネルギーは区別する。",
+    "source": {
+      "section": "1.1",
+      "bookPages": "6",
+      "pdfPages": "20"
+    }
+  },
+  {
+    "id": "thermal-conductivity",
+    "ja": "熱伝導率",
+    "en": "thermal conductivity",
+    "meaning": "材料の中を熱が伝わりやすい度合いを表す物性値。単位は W/(m·K)。均質な平板の一次元定常熱伝導のモデルで用いる。",
+    "source": {
+      "type": "supplement",
+      "reference": "Fourierの法則（一般的な伝熱の定義）",
+      "guideId": "sim-conduction"
+    },
+    "relatedQuestions": [
+      {
+        "id": "supp-flat-thickness",
+        "label": "平板の厚さと熱移動率"
+      },
+      {
+        "id": "supp-flat-numeric",
+        "label": "平板の熱移動率を計算する"
+      }
+    ]
+  },
+  {
+    "id": "convection-coefficient",
+    "ja": "対流熱伝達率",
+    "en": "convective heat transfer coefficient",
+    "meaning": "固体表面と隣接する流体の間の熱移動を結び付ける係数。流速、流れの状態、流体の性質などに左右され、単純な材料定数ではない。",
+    "source": {
+      "type": "supplement",
+      "reference": "Newtonの冷却法則（一般的な伝熱の定義）",
+      "guideId": "sim-convection"
+    },
+    "relatedQuestions": [
+      {
+        "id": "supp-convection-h",
+        "label": "熱伝達率を変えたときの変化"
+      },
+      {
+        "id": "supp-convection-numeric",
+        "label": "対流の熱移動率を計算する"
+      }
+    ]
+  },
+  {
+    "id": "emissivity",
+    "ja": "放射率",
+    "en": "emissivity",
+    "meaning": "実在表面が黒体放射と比べてどれほど熱放射するかを表す比。モデルでは0から1の範囲を取る。",
+    "source": {
+      "type": "supplement",
+      "reference": "Stefan–Boltzmannの法則（一般的な伝熱の定義）",
+      "guideId": "sim-radiation"
+    },
+    "relatedQuestions": [
+      {
+        "id": "supp-radiation-numeric",
+        "label": "放射率を使った熱放射の計算"
+      }
+    ]
+  },
+  {
+    "id": "kelvin",
+    "ja": "絶対温度",
+    "en": "absolute temperature",
+    "meaning": "絶対零度を0とする温度。放射の温度4乗の計算では絶対温度 K を使う。℃を使う式と取り違えない。",
+    "source": {
+      "type": "supplement",
+      "reference": "熱放射の計算に必要な基礎知識",
+      "guideId": "sim-radiation"
+    },
+    "relatedQuestions": [
+      {
+        "id": "supp-radiation-temperature",
+        "label": "摂氏温度を絶対温度に換算する"
+      }
+    ]
+  },
+  {
+    "id": "surface-tension",
+    "ja": "表面張力",
+    "en": "surface tension",
+    "meaning": "液体と蒸気の界面に働く張力を、界面上の長さあたりで表す量。単位は N/m。本書の理想化した球形蒸気泡では、表面張力に対応する泡内外の圧力差が 2σ/R_b となる。後半は式（9.1）を読み解くための補足説明。",
+    "source": {
+      "section": "9.2",
+      "bookPages": "478–479",
+      "pdfPages": "492–493"
+    },
+    "relatedQuestions": [
+      {
+        "id": "book-9-2-bubble-radius",
+        "label": "平衡泡の半径を計算する"
+      }
+    ]
+  },
+  {
+    "id": "thermal-diffusivity",
+    "ja": "熱拡散率",
+    "en": "thermal diffusivity",
+    "meaning": "固体内で温度変化が広がる速さの時間尺度に関わる物性。α=k/(ρc)で単位はm²/s。熱伝導率だけでなく密度と比熱容量も関係する。",
+    "source": {
+      "type": "supplement",
+      "reference": "アプリ独自の応用学習ガイド。",
+      "guideId": "learn-dimensionless-transient"
+    },
+    "relatedQuestions": [
+      {
+        "id": "supp-expanded-alpha-calc",
+        "label": "熱拡散率を逆算する"
+      }
+    ]
+  },
+  {
+    "id": "biot-number",
+    "ja": "ビオ数",
+    "en": "Biot number",
+    "meaning": "固体内部の伝導抵抗と表面対流抵抗の相対比。集中熱容量法の判定ではBi=h(V/Aₛ)/kₛを用いる。0.1未満は近似を検討する目安で、普遍的な保証ではない。",
+    "source": {
+      "type": "supplement",
+      "reference": "アプリ独自の応用学習ガイド。",
+      "guideId": "learn-dimensionless-transient"
+    },
+    "relatedQuestions": [
+      {
+        "id": "supp-expanded-bi-calc",
+        "label": "ビオ数を計算する"
+      }
+    ]
+  },
+  {
+    "id": "fourier-number",
+    "ja": "フーリエ数",
+    "en": "Fourier number",
+    "meaning": "非定常伝熱における熱拡散の時間尺度を表す無次元数。Fo=αt/L²。用いる特性長さの定義と境界条件を確認する。",
+    "source": {
+      "type": "supplement",
+      "reference": "アプリ独自の応用学習ガイド。",
+      "guideId": "learn-dimensionless-transient"
+    },
+    "relatedQuestions": [
+      {
+        "id": "supp-expanded-fo-calc",
+        "label": "フーリエ数を計算する"
+      }
+    ]
+  },
+  {
+    "id": "lumped-capacitance",
+    "ja": "集中熱容量法",
+    "en": "lumped capacitance method",
+    "meaning": "物体内部の温度差を無視できる条件下で、全体を一つの温度としてエネルギー収支を解く近似。Biや物性・境界条件の確認が必要。",
+    "source": {
+      "type": "supplement",
+      "reference": "アプリ独自の応用学習ガイド。",
+      "guideId": "learn-lumped-cooling"
+    },
+    "relatedQuestions": [
+      {
+        "id": "supp-expanded-tau-calc",
+        "label": "集中熱容量モデルの時定数"
+      },
+      {
+        "id": "supp-expanded-lumped-temp",
+        "label": "時定数後の温度"
+      }
+    ]
+  },
+  {
+    "id": "thermal-time-constant",
+    "ja": "冷却時定数",
+    "en": "thermal time constant",
+    "meaning": "一定周囲温度の集中熱容量モデルにおいて、周囲との温度差が初期値の1/eになる時間。τ=ρVc/(hAₛ)。物体温度そのものが1/eになる時間ではない。",
+    "source": {
+      "type": "supplement",
+      "reference": "アプリ独自の応用学習ガイド。",
+      "guideId": "learn-lumped-cooling"
+    },
+    "relatedQuestions": [
+      {
+        "id": "supp-expanded-tau-calc",
+        "label": "冷却時定数を計算する"
+      },
+      {
+        "id": "supp-expanded-lumped-double-time",
+        "label": "2時定数後の温度差"
+      }
+    ]
+  },
+  {
+    "id": "reynolds-number",
+    "ja": "レイノルズ数",
+    "en": "Reynolds number",
+    "meaning": "流体の慣性と粘性の相対的な大きさを示す無次元数。Re=ρuL/μ。形状や境界条件により流れの遷移条件が異なる。",
+    "source": {
+      "type": "supplement",
+      "reference": "アプリ独自の応用学習ガイド。",
+      "guideId": "learn-convection-dimensionless"
+    },
+    "relatedQuestions": [
+      {
+        "id": "supp-expanded-re-calc",
+        "label": "Reの計算"
+      }
+    ]
+  },
+  {
+    "id": "prandtl-number",
+    "ja": "プラントル数",
+    "en": "Prandtl number",
+    "meaning": "流体の運動量拡散と熱拡散の比を表す無次元数。Pr=ν/αᶠ=μcₚ/kᶠ。流体物性の評価条件を確かめる。",
+    "source": {
+      "type": "supplement",
+      "reference": "アプリ独自の応用学習ガイド。",
+      "guideId": "learn-convection-dimensionless"
+    },
+    "relatedQuestions": [
+      {
+        "id": "supp-expanded-pr-calc",
+        "label": "Prの計算"
+      }
+    ]
+  },
+  {
+    "id": "nusselt-number",
+    "ja": "ヌセルト数",
+    "en": "Nusselt number",
+    "meaning": "対流熱伝達の強さを流体の伝導スケールと比較する無次元数。Nu=hL/kᶠ。流体の熱伝導率kᶠを使用し、Biに使う固体kₛとは区別する。",
+    "source": {
+      "type": "supplement",
+      "reference": "アプリ独自の応用学習ガイド。",
+      "guideId": "learn-convection-dimensionless"
+    },
+    "relatedQuestions": [
+      {
+        "id": "supp-expanded-nu-calc",
+        "label": "Nuの計算"
+      }
+    ]
+  },
+  {
+    "id": "heat-exchanger-balance",
+    "ja": "熱交換器の熱収支",
+    "en": "heat exchanger energy balance",
+    "meaning": "定常かつ外部熱損失が小さい熱交換器では、温側流体の失うエネルギー率と冷側が得るエネルギー率が等しい。相変化なし・比熱一定ならQ̇=ṁcₚΔTを使用できる。",
+    "source": {
+      "type": "supplement",
+      "reference": "アプリ独自の応用学習ガイド。",
+      "guideId": "learn-heat-exchanger"
+    },
+    "relatedQuestions": [
+      {
+        "id": "supp-expanded-hx-energy",
+        "label": "温側の熱移動率"
+      }
+    ]
+  },
+  {
+    "id": "log-mean-temperature-difference",
+    "ja": "対数平均温度差",
+    "en": "log mean temperature difference",
+    "meaning": "熱交換器の両端で異なる温度差を平均化した駆動温度差。正の端末温度差ΔT₁,ΔT₂についてΔTₗₘ=(ΔT₁−ΔT₂)/ln(ΔT₁/ΔT₂)。等しいときはその値を用いる。",
+    "source": {
+      "type": "supplement",
+      "reference": "アプリ独自の応用学習ガイド。",
+      "guideId": "learn-heat-exchanger"
+    },
+    "relatedQuestions": [
+      {
+        "id": "supp-expanded-hx-lmtd-equal",
+        "label": "等しい端末温度差のLMTD"
+      },
+      {
+        "id": "supp-expanded-hx-area",
+        "label": "必要伝熱面積"
+      }
+    ]
+  }
 ]
