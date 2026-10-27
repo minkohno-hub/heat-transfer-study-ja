@@ -149,3 +149,5 @@ Firefox 157（Playwright）の実行環境を追加し、公開配信物の総�
 Playwright WebKit 27.2はダウンロードしたが、このクラウド環境には `libgtk-4.so.1`、`libgraphene-1.0.so.0`、`libharfbuzz-icu.so.0`、`libmanette-0.2.so.0`、`libhyphen.so.0`、`libGLESv2.so.2` がなく、起動前に停止した。SafariまたはWebKitの画面・操作は未確認。実機iPhone・Android、支援技術と外部専門家校閲も未実施。
 
 検索結果の抜粋がUTF-16の途中で絵文字を切り、壊れた文字を表示し得る問題を修正した。絵文字・結合アクセントの先頭と末尾を跨ぐ例で、抜粋が文字単位の境界を保つことをNodeテストに追加。修正後の `npm test` は51件成功・旧PCパック依存4件スキップ・失敗0、監査は解析エラー0・構造警告44。公開ビルド、ローカルChromiumとFirefoxの総合試験、`git diff --check` は成功した。更新後の実URL確認は配信後に記録する。
+
+検索抜粋修正 `a37eb76` はPR #1にpush済み。Pages実行 `40524196821` は成功し、実URLの `study-core.mjs` はローカル公開ビルドとSHA-256が一致した。実URLのChromium・Firefox総合試験も両方成功。WebKitと実機・支援技術・外部専門家校閲は未確認。
