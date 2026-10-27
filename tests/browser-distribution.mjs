@@ -288,9 +288,23 @@ try {
   await page.locator('.app-shell').waitFor();
   await nav('reader');
   await page.waitForFunction(()=>document.querySelector('#pdf-cache-status')?.textContent.includes('未保存'));
-  const missingPdf=await page.evaluate(async()=>{try{const response=await fetch('./book/AHTTv600.pdf',{headers:{Range:'bytes=0-3'},cache:'no-store'});return {status:response.status,message:await response.text()};}catch{return {status:'network-error'};}});
-  assert.ok(missingPdf.status===503||(engine==='firefox'&&missingPdf.status==='network-error'),`未保存PDFの応答: ${JSON.stringify(missingPdf)}`);
+  // Explicit Cache Storage was deleted. Chromium may still serve the PDF
+  // from its separate HTTP cache offline; a 503 is not universally guaranteed.
+  assert.equal(await page.evaluate(async()=>Boolean(await (await caches.open('heat-study-ja-pdf-v1')).match('./book/AHTTv600.pdf'))),false);
+  const missingPdf=await page.evaluate(async()=>{
+    try{
+      const response=await fetch('./book/AHTTv600.pdf',{headers:{Range:'bytes=0-3'},cache:'no-store'});
+      if(response.status===200||response.status===206){
+        const reader=response.body.getReader(),first=await reader.read();
+        await reader.cancel();
+        return {status:response.status,signature:String.fromCharCode(...(first.value||new Uint8Array()).slice(0,4))};
+      }
+      return {status:response.status,message:(await response.text()).slice(0,200)};
+    }catch{return {status:'network-error'};}
+  });
+  assert.ok(missingPdf.status===503||[200,206].includes(missingPdf.status)||(engine==='firefox'&&missingPdf.status==='network-error'),'未保存PDFの応答: '+JSON.stringify(missingPdf));
   if(missingPdf.status===503)assert.match(missingPdf.message,/オフライン保存されていません/);
+  if([200,206].includes(missingPdf.status))assert.equal(missingPdf.signature,'%PDF','別領域のHTTPキャッシュがPDFを返した場合も署名を確認する');
   assert.deepEqual(errors,[]);
   assert.deepEqual(external,[]);
   console.log(`${engine}で公開配信物：原本PDFとオフラインの範囲取得、訳文・抽出原図なし、ガイド・演習・計算・保存・画面幅・数字キーとEnter・3種類の表示モードを確認。`);
