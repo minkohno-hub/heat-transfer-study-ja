@@ -117,7 +117,8 @@ try {
   const pdfEnd=await page.evaluate(async()=>{const tail=await fetch('./book/AHTTv600.pdf',{headers:{Range:'bytes=-4'}});const invalid=await fetch('./book/AHTTv600.pdf',{headers:{Range:'bytes=32472182-'}});return {tailStatus:tail.status,tailRange:tail.headers.get('content-range'),tailBytes:(await tail.arrayBuffer()).byteLength,invalidStatus:invalid.status};});
   assert.deepEqual(pdfEnd,{tailStatus:206,tailRange:'bytes 32472178-32472181/32472182',tailBytes:4,invalidStatus:416});
   await nav('guide');
-  assert.ok(await page.locator('#guide-sim-radiation').count());
+  await page.locator('#guide-sim-radiation').waitFor({state:'visible'});
+  assert.match(await page.locator('#guide-sim-radiation').innerText(),/熱放射/);
   assert.deepEqual(errors,[]);
   assert.deepEqual(external,[]);
   console.log('公開配信物：原本PDFとオフラインの範囲取得、訳文・抽出原図なし、ガイド・演習・計算・保存・画面幅・数字キーとEnter・3種類の表示モードを確認。');
