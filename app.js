@@ -689,7 +689,7 @@ function storedBackup(kind){try{return localStorage.getItem(`${STORAGE_KEY}:${ki
 function renderBackupControls(){
   const before=storedBackup('before-import'),recovery=storedBackup('recovery');
   if(!before&&!recovery)return '';
-  return `<details class="backup-controls"><summary>保管したデータの控え</summary><p class="small-note">控えはこのブラウザー内に保存されています。取り込み直す前に内容を確認できます。端末やブラウザーを変えても自動同期されません。</p><div class="button-row">${before?'<button type="button" class="button secondary" data-action="export-before-import">取り込み前の控えを書き出す</button><button type="button" class="text-button" data-action="preview-backup">控えの復元内容を確認</button>':''}${recovery?'<button type="button" class="button secondary" data-action="export-stored-recovery">読み取れなかった元データを書き出す</button>':''}</div></details>`;
+  return `<details class="backup-controls"><summary>保管したデータの控え</summary><p class="small-note">控えはこのブラウザー内に保存されています。取り込み直す前に内容を確認できます。取り込み前の控えは一つだけで、次の取り込みに成功すると更新されます。必要なら先に書き出してください。端末やブラウザーを変えても自動同期されません。</p><div class="button-row">${before?'<button type="button" class="button secondary" data-action="export-before-import">取り込み前の控えを書き出す</button><button type="button" class="text-button" data-action="preview-backup">控えの復元内容を確認</button>':''}${recovery?'<button type="button" class="button secondary" data-action="export-stored-recovery">読み取れなかった元データを書き出す</button>':''}</div></details>`;
 }
 function exportBackup(kind){
   const raw=storedBackup(kind);if(!raw){showStatus('書き出せる控えがありません。');return;}

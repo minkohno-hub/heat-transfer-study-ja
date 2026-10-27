@@ -156,6 +156,15 @@ try {
   await nav('settings');
   await page.locator('[data-action="export-preview"]').click();
   assert.equal(JSON.parse(await page.locator('#export-json').inputValue()).attempts.length,7);
+  const beforeImport=await page.evaluate(()=>localStorage.getItem('heat-study-ja:v1'));
+  const importPayload=JSON.parse(await page.locator('#export-json').inputValue());
+  importPayload.plan={...importPayload.plan,goal:'取り込み動作の確認',active:true,updatedAt:new Date().toISOString()};
+  await page.locator('#import-file').setInputFiles({name:'learning-data.json',mimeType:'application/json',buffer:Buffer.from(JSON.stringify(importPayload))});
+  await page.locator('[data-action="import-merge"]').click();
+  assert.equal(await page.evaluate(()=>JSON.parse(localStorage.getItem('heat-study-ja:v1')).plan.goal),'取り込み動作の確認');
+  assert.equal(await page.evaluate(()=>localStorage.getItem('heat-study-ja:v1:before-import')),beforeImport);
+  await page.locator('.backup-controls summary').click();
+  assert.match(await page.locator('.backup-controls').innerText(),/控えは一つだけ/);
   await page.locator('input[name="theme"][value="dark"]').check();
   assert.equal(await page.evaluate(()=>document.documentElement.dataset.theme),'dark');
   await nav('reader');
