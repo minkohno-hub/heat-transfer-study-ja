@@ -30,7 +30,10 @@ test('public questions are self-contained and book references remain in the cite
   const film=qs.find(q=>q.id==='book-9-1-film-flux');
   assert.equal(film.source.bookPages,'476');assert.equal(film.source.pdfPages,'490');
   assert.equal(film.choices[film.answer],'熱流束は増加する');
-  assert.equal(qs.filter(q=>q.source.type==='book').length,3);
+  const peakRisk=qs.find(q=>q.id==='book-9-1-peak-flux-risk');
+  assert.equal(peakRisk.source.bookPages,'476');assert.equal(peakRisk.source.pdfPages,'490');
+  assert.equal(peakRisk.choices[peakRisk.answer],'壁面温度が急激に上昇する');
+  assert.equal(qs.filter(q=>q.source.type==='book').length,4);
   const ledger=await read('docs/SECTION_PROGRESS.json');
   for(const section of ledger.sections){
     const publicIds=qs.filter(q=>q.source.type==='book'&&q.source.section===section.id).map(q=>q.id).sort();

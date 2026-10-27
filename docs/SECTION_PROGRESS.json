@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-27T07:10:43+00:00",
+  "updatedAt": "2026-10-27T07:14:45+00:00",
   "sourceExtractedAt": "2026-10-20T12:09:01.745528+00:00",
   "source": "AHTTv600.pdf",
   "sourceSha256": "d318176a9cac997d415ec5ee95b30979dcdaed0392705185393735c7d59a447a",
@@ -2367,9 +2367,9 @@
         "completeCheck": "not_verified"
       },
       "questions": {
-        "count": 3,
-        "sourceCheckedCount": 3,
-        "publicQuestionIds": ["book-9-1-transition-flux", "book-9-1-before-inception", "book-9-1-film-flux"],
+        "count": 4,
+        "sourceCheckedCount": 4,
+        "publicQuestionIds": ["book-9-1-transition-flux", "book-9-1-before-inception", "book-9-1-film-flux", "book-9-1-peak-flux-risk"],
         "expertReviewed": false
       },
       "app": {
