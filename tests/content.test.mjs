@@ -43,6 +43,7 @@ test('public questions are self-contained and book references remain in the cite
   const wireFlux=qs.find(q=>q.id==='book-9-1-wire-flux');
   assert.equal(wireFlux.source.bookPages,'472');assert.equal(wireFlux.source.pdfPages,'486');
   assert.equal(wireFlux.figure.figureNumber,'9.1');
+  assert.match(wireFlux.prompt,/10\.0 V.*2\.0 A.*2\.0 cm².*有効数字2桁/);
   assert.equal(10*2/(2*1e-4),100000);
   assert.equal(wireFlux.choices[wireFlux.answer],'1.0×10⁵ W/m²');
   assert.equal(qs.filter(q=>q.source.type==='book').length,5);
