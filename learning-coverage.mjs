@@ -21,7 +21,7 @@ export function learningCoverage({book,questions,glossary,guides,contentManifest
     oldPcDraftOnlyRecordSections:sections.filter(s=>s.translationStatus==='draft_complete').length,
     protectedPriorSections:sections.filter(s=>s.translationStatus==='private_only').length,
     publicChapterManifestFiles:publishedFilePaths.length,
-    publicJapaneseSections:0, // Assigned by CLI only after inspecting each manifested content file.
+    publicJapaneseSections:publishedFilePaths.length===0?0:null, // Must inspect manifested files before assigning a nonzero count.
     totalQuestions:questions.length,
     appCreatedQuestions:original.length,
     bookCitedQuestions:bookBased.length,
