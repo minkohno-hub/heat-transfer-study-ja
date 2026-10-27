@@ -78,6 +78,15 @@ try {
   await page.locator('#guide-search-form button').click();
   assert.ok(await page.locator('#guide-sim-radiation').count());
   await nav('glossary');
+  const glossaryDiagnostics=await page.evaluate(async()=>{
+    const qs=await (await fetch('./data/questions.json')).json();
+    const terms=await (await fetch('./data/glossary.json')).json();
+    return {questionCount:qs.length,glossaryCount:terms.length,
+      targetQuestion:qs.some(q=>q.id==='supp-expanded-bi-calc'),
+      targetTerm:terms.find(t=>t.id==='biot-number'),
+      renderedIds:[...document.querySelectorAll('.term-card')].map(node=>node.id)};
+  });
+  console.log('GLOSSARY_DIAGNOSTICS',JSON.stringify(glossaryDiagnostics));
   assert.ok(await page.locator('#term-biot-number [data-start-question="supp-expanded-bi-calc"]').count());
   assert.ok(await page.locator('#term-log-mean-temperature-difference [data-start-question="supp-expanded-hx-lmtd-equal"]').count());
   assert.match(await page.locator('#term-heat .term-links a').getAttribute('href'),/AHTTv600\.pdf#page=17$/);
