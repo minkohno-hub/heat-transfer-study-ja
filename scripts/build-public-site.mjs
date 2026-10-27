@@ -2,6 +2,8 @@ import {readFile,copyFile,mkdir,rm,stat,writeFile} from 'node:fs/promises';
 import {resolve,dirname,join} from 'node:path';
 import {fileURLToPath} from 'node:url';
 import {createHash} from 'node:crypto';
+import {checkPublicContent} from '../public-content-contract.mjs';
+import {GUIDE_SECTIONS} from '../guide.mjs';
 
 const root=resolve(dirname(fileURLToPath(import.meta.url)),'..');
 const output=join(root,'dist');
@@ -22,6 +24,11 @@ for(const chapter of book.chapters)for(const section of chapter.sections){
   delete section.blocks;delete section.blocksEn;delete section.figures;delete section.sourceReview;
 }
 for(const question of questions)if(question.figure?.kind==='book')delete question.figure.src;
+// Validate the actual allowlisted data after source sanitization, before writing any public files.
+const glossary=JSON.parse(await readFile(join(root,'data/glossary.json'),'utf8'));
+const issues=checkPublicContent({book,questions,glossary,guides:GUIDE_SECTIONS});
+if(issues.length)throw new Error('公開教材の整合性検査に失敗しました:\n'+issues.join('\n'));
+
 const files=['index.html','styles.css','app.js','study-core.mjs','guide.mjs','sw.js','manifest.json','data/glossary.json'];
 for(const path of new Set(files)){
   const source=join(root,path),target=join(output,path);
