@@ -94,7 +94,7 @@ node scripts/build-public-site.mjs
 node tests/browser-distribution.mjs
 ```
 
-`build-public-site.mjs` は許可したファイルだけを `dist/` へ出力し、原本PDFを含めます。翻訳・抽出本文・原図単体は含めません。`tests/browser-distribution.mjs` はその配信物を確認します。PlaywrightとChromiumが必要です。既存のローカル教材を使う総合確認は `tests/browser.mjs` です。ローカル教材がある環境で、`PLAYWRIGHT_MODULE` にPlaywrightの場所、`BROWSER_EXECUTABLE` にブラウザーの実行ファイルを設定して実行します。確認専用の一時プロファイルを使います。実施結果と未確認範囲は [VERIFICATION.md](docs/VERIFICATION.md) に記録しています。クラウドでの引き継ぎ状態は [CLOUD_HANDOFF.md](docs/CLOUD_HANDOFF.md) を参照してください。
+`build-public-site.mjs` は許可したファイルだけを `dist/` へ出力し、原本PDFを含めます。翻訳・抽出本文・原図単体は含めません。`tests/browser-distribution.mjs` はその配信物を確認します。既定はPlaywrightとChromiumで、`BROWSER_ENGINE=firefox` または `webkit` を指定すると、対応ブラウザーが入っている開発環境では同じ確認を実行できます。既存のローカル教材を使う総合確認は `tests/browser.mjs` です。ローカル教材がある環境で、`PLAYWRIGHT_MODULE` にPlaywrightの場所、`BROWSER_EXECUTABLE` にブラウザーの実行ファイルを設定して実行します。確認専用の一時プロファイルを使います。実施結果と未確認範囲は [VERIFICATION.md](docs/VERIFICATION.md) に記録しています。クラウドでの引き継ぎ状態は [CLOUD_HANDOFF.md](docs/CLOUD_HANDOFF.md) を参照してください。
 
 ## 出典と残作業
 

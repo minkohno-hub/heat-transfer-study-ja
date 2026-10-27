@@ -6,14 +6,18 @@ import {fileURLToPath} from 'node:url';
 import {startServer} from '../scripts/serve.mjs';
 
 const require=createRequire(import.meta.url);
-const {chromium}=require(process.env.PLAYWRIGHT_MODULE||'playwright');
+const engines=require(process.env.PLAYWRIGHT_MODULE||'playwright');
+const engine=process.env.BROWSER_ENGINE||'chromium';
+assert.ok(['chromium','firefox','webkit'].includes(engine),`未対応ブラウザー: ${engine}`);
 const root=join(dirname(fileURLToPath(import.meta.url)),'../dist');
 const liveBase=process.env.PUBLIC_BASE_URL;
 const ignoreCert=process.env.BROWSER_IGNORE_CERT_ERRORS==='1';
 const server=liveBase?null:await startServer({root,port:0});
 let browser;
 try {
-  browser=await chromium.launch({headless:true,executablePath:process.env.BROWSER_EXECUTABLE||'/usr/bin/chromium',args:['--no-sandbox',...(ignoreCert?['--ignore-certificate-errors']:[])]});
+  browser=await engines[engine].launch({headless:true,
+    ...(process.env.BROWSER_EXECUTABLE?{executablePath:process.env.BROWSER_EXECUTABLE}:engine==='chromium'?{executablePath:'/usr/bin/chromium'}:{}),
+    args:engine==='chromium'?['--no-sandbox',...(ignoreCert?['--ignore-certificate-errors']:[])]:[]});
   const context=await browser.newContext({viewport:{width:390,height:844},ignoreHTTPSErrors:ignoreCert});
   const page=await context.newPage();
   const errors=[],external=[];
@@ -189,10 +193,10 @@ try {
   await page.locator('.app-shell').waitFor();
   await nav('reader');
   await page.waitForFunction(()=>document.querySelector('#pdf-cache-status')?.textContent.includes('未保存'));
-  const missingPdf=await page.evaluate(async()=>{const response=await fetch('./book/AHTTv600.pdf',{headers:{Range:'bytes=0-3'}});return {status:response.status,message:await response.text()};});
-  assert.equal(missingPdf.status,503);
-  assert.match(missingPdf.message,/オフライン保存されていません/);
+  const missingPdf=await page.evaluate(async()=>{try{const response=await fetch('./book/AHTTv600.pdf',{headers:{Range:'bytes=0-3'},cache:'no-store'});return {status:response.status,message:await response.text()};}catch{return {status:'network-error'};}});
+  assert.ok(missingPdf.status===503||(engine==='firefox'&&missingPdf.status==='network-error'),`未保存PDFの応答: ${JSON.stringify(missingPdf)}`);
+  if(missingPdf.status===503)assert.match(missingPdf.message,/オフライン保存されていません/);
   assert.deepEqual(errors,[]);
   assert.deepEqual(external,[]);
-  console.log('公開配信物：原本PDFとオフラインの範囲取得、訳文・抽出原図なし、ガイド・演習・計算・保存・画面幅・数字キーとEnter・3種類の表示モードを確認。');
+  console.log(`${engine}で公開配信物：原本PDFとオフラインの範囲取得、訳文・抽出原図なし、ガイド・演習・計算・保存・画面幅・数字キーとEnter・3種類の表示モードを確認。`);
 } finally {await browser?.close();if(server)await new Promise(resolve=>server.close(resolve));}
