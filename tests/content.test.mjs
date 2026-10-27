@@ -27,7 +27,10 @@ test('public questions are self-contained and book references remain in the cite
   const beforeInception=qs.find(q=>q.id==='book-9-1-before-inception');
   assert.equal(beforeInception.source.bookPages,'473');assert.equal(beforeInception.source.pdfPages,'487');
   assert.equal(beforeInception.choices[beforeInception.answer],'自然対流が主となる');
-  assert.equal(qs.filter(q=>q.source.type==='book').length,2);
+  const film=qs.find(q=>q.id==='book-9-1-film-flux');
+  assert.equal(film.source.bookPages,'476');assert.equal(film.source.pdfPages,'490');
+  assert.equal(film.choices[film.answer],'熱流束は増加する');
+  assert.equal(qs.filter(q=>q.source.type==='book').length,3);
   const ledger=await read('docs/SECTION_PROGRESS.json');
   for(const section of ledger.sections){
     const publicIds=qs.filter(q=>q.source.type==='book'&&q.source.section===section.id).map(q=>q.id).sort();
