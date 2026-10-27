@@ -1,0 +1,27 @@
+name: Independent learning-content checks
+on:
+  push:
+    branches:
+      - 'chatgpt/**'
+  pull_request:
+    branches:
+      - codex/quality-audit-local-pack
+
+permissions:
+  contents: read
+
+jobs:
+  test-and-audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Run unit and content tests
+        run: npm test
+      - name: Audit published material
+        run: npm run audit -- --check
+      - name: Build allowlisted public distribution
+        run: npm run build:public
