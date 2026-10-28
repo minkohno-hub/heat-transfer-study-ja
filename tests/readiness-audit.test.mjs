@@ -9,7 +9,8 @@ test('short Japanese notes and unreviewed problems cannot be reported as complet
   ].map(read));
   const report=auditFullCurriculumReadiness({book,originalNotes,questions,...evidence});
   assert.equal(report.sectionCount,76);
-  assert.equal(report.questionCount,questions.length);\n  assert.ok(report.questionCount>=210);
+  assert.equal(report.questionCount,questions.length);
+  assert.ok(report.questionCount>=210);
   assert.equal(report.originalConceptNotes,76);
   assert.equal(report.independentlyReviewedSections,0);
   assert.equal(report.verifiedRightsSections,0);
