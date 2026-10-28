@@ -38,7 +38,7 @@ try {
   await nav('reader');
   await page.locator('.reader-toc .toc-item.selected').waitFor({state:'attached'});
   assert.ok((await readerContrast()).every(value=>value>=4.5),'目次の選択行の文字コントラスト');
-  await page.locator('#reader-article a[href="#guide/chapter1-energy-balance"]').waitFor({state:"attached"});
+  await page.locator('#reader-article a[href="#guide/chapter1-energy-balance"]').first().waitFor({state:"attached"});
   await page.locator('#reader-original-note').waitFor({state:'visible'});
   assert.match(await page.locator('#reader-original-note').innerText(),/独立執筆・学術校閲前/);
   assert.match(await page.locator('#reader-original-note').innerText(),/原本の翻訳、節の全文掲載、図表の転載ではありません/);
