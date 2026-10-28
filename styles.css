@@ -498,6 +498,8 @@ input[type="range"] { width: 100%; accent-color: var(--accent); }
 .sim-physical-svg .diagram-figure-heading { fill:var(--muted); font-size:12px; font-weight:650; }
 .sim-physical-svg .diagram-neutral { fill:var(--muted); font-size:15px; font-weight:700; }
 .sim-physical-svg .diagram-reservoir { fill:var(--surface); stroke:var(--line); stroke-width:2; }
+.sim-physical-svg .diagram-hot-side { fill:#e6aa91; stroke:#b26b4d; stroke-width:2; }
+.sim-physical-svg .diagram-cold-side { fill:#a7d7dc; stroke:#45868c; stroke-width:2; }
 .sim-physical-svg .diagram-solid { fill:#e6aa91; stroke:#b26b4d; stroke-width:2; }
 .sim-physical-svg .diagram-fluid { fill:#a7d7dc; stroke:#45868c; stroke-width:2; }
 .sim-physical-svg .diagram-enclosure { fill:#b0c3d3; stroke:#61758f; stroke-width:2; }
