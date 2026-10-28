@@ -14,7 +14,7 @@ jobs:
           node-version: '22'
       - run: npm test
       - run: npm run build:public
-  browser-webkit:
+  browser-webkit-online:
     runs-on: ubuntu-24.04
     timeout-minutes: 20
     steps:
@@ -26,7 +26,7 @@ jobs:
       - name: Install WebKit and runtime dependencies
         run: npx playwright install --with-deps webkit
       - run: npm run build:public
-      - name: Check the public distribution in WebKit
+      - name: Check online UI and PDF cache ranges in WebKit
         run: npm run test:browser:public
         env:
           BROWSER_ENGINE: webkit
