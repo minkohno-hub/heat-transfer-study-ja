@@ -14079,5 +14079,677 @@
       "同じ無次元条件で初めて温度場の相似を検討できると判断する。"
     ],
     "beginnerPitfall": "BiとFoの数値だけが同じならすべての熱伝導問題に同じ温度分布が当てはまるという誤解を避ける。"
+  },
+  {
+    "id": "supp-batch3-neumann-grad-v1",
+    "revision": "v1",
+    "field": "境界値問題・熱流束の符号",
+    "prerequisites": [
+      "熱伝導方程式",
+      "指定温度・熱流束・エネルギー保存"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "§4.1に関する独立執筆の学習教材・仮想条件から作成。原本の翻訳・本文・図・章末問題は転載しない。",
+      "chapterId": "ch4",
+      "focusSectionId": "4.1",
+      "guideId": "chapter4-fin-design"
+    },
+    "createdStatus": "独立作問",
+    "reviewStatus": "保存則・式の内部確認済み／外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [],
+    "prompt": "一次元平板で右面の外向き熱流束q″=+200 W/m²、k=2 W/(mK)である。右面の温度勾配dT/dxは？",
+    "choices": [
+      "−50 K/m",
+      "−100 K/m",
+      "+100 K/m",
+      "+200 K/m"
+    ],
+    "answer": 1,
+    "difficulty": "標準・計算と概念",
+    "explanation": "右面で外向き法線は+x。q″=−k dT/dx=+200だからdT/dx=−100 K/m。",
+    "distractors": [
+      "kを二重に掛けた誤り。",
+      "正解。右面で外向き法線は+x。q″=−k dT/dx=+200だからdT/dx=−100 K/m。",
+      "Fourier則の負号を落としている。",
+      "kと流束の積と勾配を混同。"
+    ],
+    "hints": [
+      "右面の法線は+x向き。",
+      "q″=−k dT/dxを解く。"
+    ],
+    "solutionSteps": [
+      "右面の法線は+x向き。",
+      "q″=−k dT/dxを解く。",
+      "右面で外向き法線は+x。q″=−k dT/dx=+200だからdT/dx=−100 K/m。"
+    ],
+    "beginnerPitfall": "外向き法線、境界と初期条件、内部発熱率の単位、半厚さと全厚さを区別する。"
+  },
+  {
+    "id": "supp-batch3-neumann-right-temperature-v1",
+    "revision": "v1",
+    "field": "境界値問題・熱流束の符号",
+    "prerequisites": [
+      "熱伝導方程式",
+      "指定温度・熱流束・エネルギー保存"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "§4.1に関する独立執筆の学習教材・仮想条件から作成。原本の翻訳・本文・図・章末問題は転載しない。",
+      "chapterId": "ch4",
+      "focusSectionId": "4.1",
+      "guideId": "chapter4-fin-design"
+    },
+    "createdStatus": "独立作問",
+    "reviewStatus": "保存則・式の内部確認済み／外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [],
+    "prompt": "厚さ0.10 m、k=2 W/(mK)の発熱なし定常平板で、左面100℃、右面から外向きに200 W/m²放熱する。右面温度は？",
+    "choices": [
+      "80 ℃",
+      "90 ℃",
+      "95 ℃",
+      "100 ℃"
+    ],
+    "answer": 1,
+    "difficulty": "標準・計算と概念",
+    "explanation": "dT/dx=−200/2=−100 K/m。右面温度T(L)=100−100×0.10=90℃。",
+    "distractors": [
+      "温度低下を20Kと誤算。",
+      "正解。dT/dx=−200/2=−100 K/m。右面温度T(L)=100−100×0.10=90℃。",
+      "温度低下を5Kと誤算。",
+      "右面の熱流束を無視。"
+    ],
+    "hints": [
+      "平板内温度は定常一様kなら線形。",
+      "T(L)=T(0)−q″L/kを使う。"
+    ],
+    "solutionSteps": [
+      "平板内温度は定常一様kなら線形。",
+      "T(L)=T(0)−q″L/kを使う。",
+      "dT/dx=−200/2=−100 K/m。右面温度T(L)=100−100×0.10=90℃。"
+    ],
+    "beginnerPitfall": "外向き法線、境界と初期条件、内部発熱率の単位、半厚さと全厚さを区別する。"
+  },
+  {
+    "id": "supp-batch3-left-boundary-outward-flux-v1",
+    "revision": "v1",
+    "field": "境界値問題・熱流束の符号",
+    "prerequisites": [
+      "熱伝導方程式",
+      "指定温度・熱流束・エネルギー保存"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "§4.1に関する独立執筆の学習教材・仮想条件から作成。原本の翻訳・本文・図・章末問題は転載しない。",
+      "chapterId": "ch4",
+      "focusSectionId": "4.1",
+      "guideId": "chapter4-fin-design"
+    },
+    "createdStatus": "独立作問",
+    "reviewStatus": "保存則・式の内部確認済み／外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [],
+    "prompt": "右向き熱流束q_x″=+200 W/m²で一定の平板。左面の外向き法線は−x向きである。左面の外向き熱流束成分は？",
+    "choices": [
+      "−200 W/m²",
+      "−100 W/m²",
+      "+100 W/m²",
+      "+200 W/m²"
+    ],
+    "answer": 0,
+    "difficulty": "標準・計算と概念",
+    "explanation": "外向き流束はq″·n。左面はn=−xなのでq_out,left=−200 W/m²で、物体へ流入することを表す。",
+    "distractors": [
+      "正解。外向き流束はq″·n。左面はn=−xなのでq_out,left=−200 W/m²で、物体へ流入することを表す。",
+      "熱流率を半分と誤認。",
+      "左面の法線と向きを混同している。",
+      "左面を右面と同じ外向きで扱う誤り。"
+    ],
+    "hints": [
+      "左面の外向き法線は右面と逆向き。",
+      "q_out=q_x″n_xを計算。"
+    ],
+    "solutionSteps": [
+      "左面の外向き法線は右面と逆向き。",
+      "q_out=q_x″n_xを計算。",
+      "外向き流束はq″·n。左面はn=−xなのでq_out,left=−200 W/m²で、物体へ流入することを表す。"
+    ],
+    "beginnerPitfall": "外向き法線、境界と初期条件、内部発熱率の単位、半厚さと全厚さを区別する。"
+  },
+  {
+    "id": "supp-batch3-dirichlet-and-robin-v1",
+    "revision": "v1",
+    "field": "境界値問題・熱流束の符号",
+    "prerequisites": [
+      "熱伝導方程式",
+      "指定温度・熱流束・エネルギー保存"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "conceptual",
+    "source": {
+      "type": "supplement",
+      "reference": "§4.1に関する独立執筆の学習教材・仮想条件から作成。原本の翻訳・本文・図・章末問題は転載しない。",
+      "chapterId": "ch4",
+      "focusSectionId": "4.1",
+      "guideId": "chapter4-fin-design"
+    },
+    "createdStatus": "独立作問",
+    "reviewStatus": "保存則・式の内部確認済み／外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [],
+    "prompt": "流体温度T∞が既知で、固体表面温度T_sが未知、対流熱伝達率hが有限とする。壁の境界条件はどれが適切か。",
+    "choices": [
+      "固体表面温度T_sをT∞と等しいと常に固定する",
+      "固体内部の温度勾配をどこでも0と指定する",
+      "固体と流体の伝熱をRobin条件で連成する",
+      "固体内の発熱率をhの値と等しいとする"
+    ],
+    "answer": 2,
+    "difficulty": "標準・計算と概念",
+    "explanation": "表面温度T_sが未知で有限のhなら−k∂T/∂n=h(T_s−T∞)という対流Robin条件を用いる。T_s=T∞の決めつけは不適切。",
+    "distractors": [
+      "流体温度と壁面温度を無条件に同じとしている。",
+      "有限の対流があっても伝導勾配は一般に0でない。",
+      "正解。表面温度T_sが未知で有限のhなら−k∂T/∂n=h(T_s−T∞)という対流Robin条件を用いる。T_s=T∞の決めつけは不適切。",
+      "体積発熱率とhの単位が一致しない。"
+    ],
+    "hints": [
+      "壁面の伝導熱流と対流熱流を釣り合わせる。",
+      "T_sは結果として求まる未知数。"
+    ],
+    "solutionSteps": [
+      "壁面の伝導熱流と対流熱流を釣り合わせる。",
+      "T_sは結果として求まる未知数。",
+      "表面温度T_sが未知で有限のhなら−k∂T/∂n=h(T_s−T∞)という対流Robin条件を用いる。T_s=T∞の決めつけは不適切。"
+    ],
+    "beginnerPitfall": "外向き法線、境界と初期条件、内部発熱率の単位、半厚さと全厚さを区別する。"
+  },
+  {
+    "id": "supp-batch3-insulated-boundary-v1",
+    "revision": "v1",
+    "field": "境界値問題・熱流束の符号",
+    "prerequisites": [
+      "熱伝導方程式",
+      "指定温度・熱流束・エネルギー保存"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "conceptual",
+    "source": {
+      "type": "supplement",
+      "reference": "§4.1に関する独立執筆の学習教材・仮想条件から作成。原本の翻訳・本文・図・章末問題は転載しない。",
+      "chapterId": "ch4",
+      "focusSectionId": "4.1",
+      "guideId": "chapter4-fin-design"
+    },
+    "createdStatus": "独立作問",
+    "reviewStatus": "保存則・式の内部確認済み／外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [],
+    "prompt": "熱伝導率が正の固体の断熱面について、内部発熱なし・伝導のみのモデルで成立する境界条件は？",
+    "choices": [
+      "法線温度勾配が0であり伝導流束が0である",
+      "断熱面の温度は必ず0℃に固定される",
+      "断熱面の温度は必ず周囲温度に等しい",
+      "断熱面へは正の熱流束が必ず流入する"
+    ],
+    "answer": 0,
+    "difficulty": "標準・計算と概念",
+    "explanation": "断熱面は法線熱流束q_out″=−k∂T/∂n=0であり、k>0なら∂T/∂n=0。温度の絶対値を固定する条件ではない。",
+    "distractors": [
+      "正解。断熱面は法線熱流束q_out″=−k∂T/∂n=0であり、k>0なら∂T/∂n=0。温度の絶対値を固定する条件ではない。",
+      "断熱は温度指定ではない。",
+      "流体温度との一致を意味しない。",
+      "断熱なら法線方向の伝導熱流束は0。"
+    ],
+    "hints": [
+      "断熱は熱の出入りを禁止する境界。",
+      "−k∂T/∂n=0を解釈。"
+    ],
+    "solutionSteps": [
+      "断熱は熱の出入りを禁止する境界。",
+      "−k∂T/∂n=0を解釈。",
+      "断熱面は法線熱流束q_out″=−k∂T/∂n=0であり、k>0なら∂T/∂n=0。温度の絶対値を固定する条件ではない。"
+    ],
+    "beginnerPitfall": "外向き法線、境界と初期条件、内部発熱率の単位、半厚さと全厚さを区別する。"
+  },
+  {
+    "id": "supp-batch3-pure-neumann-unique-v1",
+    "revision": "v1",
+    "field": "境界値問題・熱流束の符号",
+    "prerequisites": [
+      "熱伝導方程式",
+      "指定温度・熱流束・エネルギー保存"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "applied",
+    "source": {
+      "type": "supplement",
+      "reference": "§4.1に関する独立執筆の学習教材・仮想条件から作成。原本の翻訳・本文・図・章末問題は転載しない。",
+      "chapterId": "ch4",
+      "focusSectionId": "4.1",
+      "guideId": "chapter4-fin-design"
+    },
+    "createdStatus": "独立作問",
+    "reviewStatus": "保存則・式の内部確認済み／外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [],
+    "prompt": "発熱なしの定常熱伝導で全境界の熱流束だけを指定し、全体の入出熱は整合している。温度の絶対値を一意に求めるには？",
+    "choices": [
+      "指定された流束だけから温度の基準値は常に定まる",
+      "どの面でも熱流束を0にすれば温度は必ず0℃",
+      "熱伝導率だけが分かれば温度の定数項も決まる",
+      "ある一点の温度など追加の基準条件が必要となる"
+    ],
+    "answer": 3,
+    "difficulty": "応用・物理判断",
+    "explanation": "全境界でNeumann条件だけを課す定常伝導では、解に任意の定数を加えても温度勾配は変わらない。適合条件を満たしても温度の基準を追加指定する必要がある。",
+    "distractors": [
+      "絶対温度へ任意の定数を加えられる。",
+      "流束ゼロは温度ゼロの条件ではない。",
+      "kだけでは温度の基準は決まらない。",
+      "正解。全境界でNeumann条件だけを課す定常伝導では、解に任意の定数を加えても温度勾配は変わらない。適合条件を満たしても温度の基準を追加指定する必要がある。"
+    ],
+    "hints": [
+      "熱流束は温度の勾配を指定する。",
+      "T+Cも同じ勾配を持つ。"
+    ],
+    "solutionSteps": [
+      "熱流束は温度の勾配を指定する。",
+      "T+Cも同じ勾配を持つ。",
+      "全境界でNeumann条件だけを課す定常伝導では、解に任意の定数を加えても温度勾配は変わらない。適合条件を満たしても温度の基準を追加指定する必要がある。"
+    ],
+    "beginnerPitfall": "外向き法線、境界と初期条件、内部発熱率の単位、半厚さと全厚さを区別する。"
+  },
+  {
+    "id": "supp-batch3-initial-condition-necessity-v1",
+    "revision": "v1",
+    "field": "境界値問題・熱流束の符号",
+    "prerequisites": [
+      "熱伝導方程式",
+      "指定温度・熱流束・エネルギー保存"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "applied",
+    "source": {
+      "type": "supplement",
+      "reference": "§4.1に関する独立執筆の学習教材・仮想条件から作成。原本の翻訳・本文・図・章末問題は転載しない。",
+      "chapterId": "ch4",
+      "focusSectionId": "4.1",
+      "guideId": "chapter4-fin-design"
+    },
+    "createdStatus": "独立作問",
+    "reviewStatus": "保存則・式の内部確認済み／外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [],
+    "prompt": "同じ平板の境界温度と物性が分かっているが、加熱開始直後の非定常温度分布を求めたい。何が追加で必要か。",
+    "choices": [
+      "定常の境界値だけで非定常の初期値も決まる",
+      "初期温度分布T(x,0)を指定する必要がある",
+      "物体の色だけを追加で指定すれば必ず十分",
+      "熱流束の符号を省略して温度だけを指定する"
+    ],
+    "answer": 1,
+    "difficulty": "応用・物理判断",
+    "explanation": "非定常熱方程式は時間微分を含むため、初期温度T(x,0)と適切な境界条件が必要。境界値だけでは一般に過渡解を一意に定められない。",
+    "distractors": [
+      "初期温度が異なる物体では過渡解も異なる。",
+      "正解。非定常熱方程式は時間微分を含むため、初期温度T(x,0)と適切な境界条件が必要。境界値だけでは一般に過渡解を一意に定められない。",
+      "色だけでは熱容量や初期条件が決まらない。",
+      "法線方向と符号の条件は依然として重要。"
+    ],
+    "hints": [
+      "定常方程式と非定常方程式を比較する。",
+      "過渡現象ではt=0の状態が必要。"
+    ],
+    "solutionSteps": [
+      "定常方程式と非定常方程式を比較する。",
+      "過渡現象ではt=0の状態が必要。",
+      "非定常熱方程式は時間微分を含むため、初期温度T(x,0)と適切な境界条件が必要。境界値だけでは一般に過渡解を一意に定められない。"
+    ],
+    "beginnerPitfall": "外向き法線、境界と初期条件、内部発熱率の単位、半厚さと全厚さを区別する。"
+  },
+  {
+    "id": "supp-batch3-generated-center-rise-v1",
+    "revision": "v1",
+    "field": "内部発熱・熱伝導支配式",
+    "prerequisites": [
+      "熱伝導方程式",
+      "指定温度・熱流束・エネルギー保存"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "§4.2に関する独立執筆の学習教材・仮想条件から作成。原本の翻訳・本文・図・章末問題は転載しない。",
+      "chapterId": "ch4",
+      "focusSectionId": "4.2",
+      "guideId": "chapter4-fin-design"
+    },
+    "createdStatus": "独立作問",
+    "reviewStatus": "保存則・式の内部確認済み／外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [],
+    "prompt": "全厚さ0.10 mの両面を20℃に保持する対称平板。半厚さL=.050 m、q‴=20000 W/m³、k=10 W/(mK)。中心温度の上昇幅は？",
+    "choices": [
+      "1.25 K",
+      "2.00 K",
+      "2.50 K",
+      "5.00 K"
+    ],
+    "answer": 2,
+    "difficulty": "標準・計算と概念",
+    "explanation": "中心上昇はΔT=q‴L²/(2k)=20000×.050²/(2×10)=2.50 K。Lは半厚さ。",
+    "distractors": [
+      "半厚さを誤った値。",
+      "分母2kの扱いが不正確。",
+      "正解。中心上昇はΔT=q‴L²/(2k)=20000×.050²/(2×10)=2.50 K。Lは半厚さ。",
+      "分母の2を忘れた値。"
+    ],
+    "hints": [
+      "左右対称で中心が最大。",
+      "ΔT_center=q‴L²/(2k)。"
+    ],
+    "solutionSteps": [
+      "左右対称で中心が最大。",
+      "ΔT_center=q‴L²/(2k)。",
+      "中心上昇はΔT=q‴L²/(2k)=20000×.050²/(2×10)=2.50 K。Lは半厚さ。"
+    ],
+    "beginnerPitfall": "外向き法線、境界と初期条件、内部発熱率の単位、半厚さと全厚さを区別する。"
+  },
+  {
+    "id": "supp-batch3-generated-center-temp-v1",
+    "revision": "v1",
+    "field": "内部発熱・熱伝導支配式",
+    "prerequisites": [
+      "熱伝導方程式",
+      "指定温度・熱流束・エネルギー保存"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "§4.2に関する独立執筆の学習教材・仮想条件から作成。原本の翻訳・本文・図・章末問題は転載しない。",
+      "chapterId": "ch4",
+      "focusSectionId": "4.2",
+      "guideId": "chapter4-fin-design"
+    },
+    "createdStatus": "独立作問",
+    "reviewStatus": "保存則・式の内部確認済み／外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [],
+    "prompt": "両面温度20℃、半厚さ0.050 m、q‴=20000 W/m³、k=10 W/(mK)の発熱あり平板。中心温度は？",
+    "choices": [
+      "20.0 ℃",
+      "21.25 ℃",
+      "22.5 ℃",
+      "25.0 ℃"
+    ],
+    "answer": 2,
+    "difficulty": "標準・計算と概念",
+    "explanation": "ΔT_center=2.5 KだからT_center=20+2.5=22.5℃。",
+    "distractors": [
+      "内部発熱を無視。",
+      "温度上昇を半分と誤認。",
+      "正解。ΔT_center=2.5 KだからT_center=20+2.5=22.5℃。",
+      "温度上昇を2倍と誤認。"
+    ],
+    "hints": [
+      "中心上昇と絶対温度を分ける。",
+      "表面温度にΔTを足す。"
+    ],
+    "solutionSteps": [
+      "中心上昇と絶対温度を分ける。",
+      "表面温度にΔTを足す。",
+      "ΔT_center=2.5 KだからT_center=20+2.5=22.5℃。"
+    ],
+    "beginnerPitfall": "外向き法線、境界と初期条件、内部発熱率の単位、半厚さと全厚さを区別する。"
+  },
+  {
+    "id": "supp-batch3-generated-surface-flux-v1",
+    "revision": "v1",
+    "field": "内部発熱・熱伝導支配式",
+    "prerequisites": [
+      "熱伝導方程式",
+      "指定温度・熱流束・エネルギー保存"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "§4.2に関する独立執筆の学習教材・仮想条件から作成。原本の翻訳・本文・図・章末問題は転載しない。",
+      "chapterId": "ch4",
+      "focusSectionId": "4.2",
+      "guideId": "chapter4-fin-design"
+    },
+    "createdStatus": "独立作問",
+    "reviewStatus": "保存則・式の内部確認済み／外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [],
+    "prompt": "両面等温の対称平板、半厚さL=.050 m、正の体積発熱率q‴=20000 W/m³。各表面の外向き熱流束の大きさは？",
+    "choices": [
+      "500 W/m²",
+      "750 W/m²",
+      "1000 W/m²",
+      "2000 W/m²"
+    ],
+    "answer": 2,
+    "difficulty": "標準・計算と概念",
+    "explanation": "各側の外向き熱流束はq_out″=q‴L=20000×.050=1000 W/m²。両側の合計とは区別。",
+    "distractors": [
+      "Lを.025mと誤算。",
+      "Lを.0375mと誤算。",
+      "正解。各側の外向き熱流束はq_out″=q‴L=20000×.050=1000 W/m²。両側の合計とは区別。",
+      "両面分を1面の流束と混同。"
+    ],
+    "hints": [
+      "全厚さ2Lの発熱が左右へ半分ずつ出る。",
+      "q″_out=q‴L。"
+    ],
+    "solutionSteps": [
+      "全厚さ2Lの発熱が左右へ半分ずつ出る。",
+      "q″_out=q‴L。",
+      "各側の外向き熱流束はq_out″=q‴L=20000×.050=1000 W/m²。両側の合計とは区別。"
+    ],
+    "beginnerPitfall": "外向き法線、境界と初期条件、内部発熱率の単位、半厚さと全厚さを区別する。"
+  },
+  {
+    "id": "supp-batch3-generated-total-power-v1",
+    "revision": "v1",
+    "field": "内部発熱・熱伝導支配式",
+    "prerequisites": [
+      "熱伝導方程式",
+      "指定温度・熱流束・エネルギー保存"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "§4.2に関する独立執筆の学習教材・仮想条件から作成。原本の翻訳・本文・図・章末問題は転載しない。",
+      "chapterId": "ch4",
+      "focusSectionId": "4.2",
+      "guideId": "chapter4-fin-design"
+    },
+    "createdStatus": "独立作問",
+    "reviewStatus": "保存則・式の内部確認済み／外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [],
+    "prompt": "全厚さ0.10 m、平面面積A=1.0 m²の平板で一様q‴=20000 W/m³の発熱がある。総発熱率は？",
+    "choices": [
+      "500 W",
+      "1000 W",
+      "2000 W",
+      "4000 W"
+    ],
+    "answer": 2,
+    "difficulty": "標準・計算と概念",
+    "explanation": "Q̇_gen=q‴V=20000×(0.10×1.0)=2000 W。両面から各1000Wが出る。",
+    "distractors": [
+      "体積を1/4に評価。",
+      "片面の放熱率だけにした。",
+      "正解。Q̇_gen=q‴V=20000×(0.10×1.0)=2000 W。両面から各1000Wが出る。",
+      "体積を2倍にしている。"
+    ],
+    "hints": [
+      "体積発熱の単位はW/m³。",
+      "板体積=全厚さ×平面面積。"
+    ],
+    "solutionSteps": [
+      "体積発熱の単位はW/m³。",
+      "板体積=全厚さ×平面面積。",
+      "Q̇_gen=q‴V=20000×(0.10×1.0)=2000 W。両面から各1000Wが出る。"
+    ],
+    "beginnerPitfall": "外向き法線、境界と初期条件、内部発熱率の単位、半厚さと全厚さを区別する。"
+  },
+  {
+    "id": "supp-batch3-generation-thickness-squared-v1",
+    "revision": "v1",
+    "field": "内部発熱・熱伝導支配式",
+    "prerequisites": [
+      "熱伝導方程式",
+      "指定温度・熱流束・エネルギー保存"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "§4.2に関する独立執筆の学習教材・仮想条件から作成。原本の翻訳・本文・図・章末問題は転載しない。",
+      "chapterId": "ch4",
+      "focusSectionId": "4.2",
+      "guideId": "chapter4-fin-design"
+    },
+    "createdStatus": "独立作問",
+    "reviewStatus": "保存則・式の内部確認済み／外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [],
+    "prompt": "両面温度を固定し、同じkと体積発熱率q‴で平板の半厚さLを2倍にする。中心温度上昇幅は何倍か。",
+    "choices": [
+      "2倍",
+      "3倍",
+      "4倍",
+      "8倍"
+    ],
+    "answer": 2,
+    "difficulty": "標準・計算と概念",
+    "explanation": "ΔT_center=q‴L²/(2k)なので、他条件一定でLが2倍なら中心温度上昇は4倍。",
+    "distractors": [
+      "長さへの一次比例と誤認。",
+      "L²の倍率を3と誤認。",
+      "正解。ΔT_center=q‴L²/(2k)なので、他条件一定でLが2倍なら中心温度上昇は4倍。",
+      "L³への比例と誤認。"
+    ],
+    "hints": [
+      "中心温度上昇はLの二乗に比例。",
+      "2²を計算する。"
+    ],
+    "solutionSteps": [
+      "中心温度上昇はLの二乗に比例。",
+      "2²を計算する。",
+      "ΔT_center=q‴L²/(2k)なので、他条件一定でLが2倍なら中心温度上昇は4倍。"
+    ],
+    "beginnerPitfall": "外向き法線、境界と初期条件、内部発熱率の単位、半厚さと全厚さを区別する。"
+  },
+  {
+    "id": "supp-batch3-laplace-vs-poisson-v1",
+    "revision": "v1",
+    "field": "内部発熱・熱伝導支配式",
+    "prerequisites": [
+      "熱伝導方程式",
+      "指定温度・熱流束・エネルギー保存"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "applied",
+    "source": {
+      "type": "supplement",
+      "reference": "§4.2に関する独立執筆の学習教材・仮想条件から作成。原本の翻訳・本文・図・章末問題は転載しない。",
+      "chapterId": "ch4",
+      "focusSectionId": "4.2",
+      "guideId": "chapter4-fin-design"
+    },
+    "createdStatus": "独立作問",
+    "reviewStatus": "保存則・式の内部確認済み／外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [],
+    "prompt": "一定物性の定常固体で内部体積発熱q‴を0にした。正しい支配方程式の変化は？",
+    "choices": [
+      "発熱なしでも常に∇²T=1が成り立つ",
+      "発熱がなくなると定常温度場は必ず0℃",
+      "内部発熱なしのLaplace方程式∇²T=0になる",
+      "定常でも時間微分は必ず大きな正の値になる"
+    ],
+    "answer": 2,
+    "difficulty": "応用・物理判断",
+    "explanation": "一定kの定常式k∇²T+q‴=0でq‴=0とすると∇²T=0。温度の値は境界条件から決まる。",
+    "distractors": [
+      "発熱なしのLaplace式と異なる。",
+      "Laplace式は温度ゼロを強制しない。",
+      "正解。一定kの定常式k∇²T+q‴=0でq‴=0とすると∇²T=0。温度の値は境界条件から決まる。",
+      "定常は∂T/∂t=0。"
+    ],
+    "hints": [
+      "定常では蓄熱項が0。",
+      "発熱項q‴も0と置く。"
+    ],
+    "solutionSteps": [
+      "定常では蓄熱項が0。",
+      "発熱項q‴も0と置く。",
+      "一定kの定常式k∇²T+q‴=0でq‴=0とすると∇²T=0。温度の値は境界条件から決まる。"
+    ],
+    "beginnerPitfall": "外向き法線、境界と初期条件、内部発熱率の単位、半厚さと全厚さを区別する。"
+  },
+  {
+    "id": "supp-batch3-variable-k-equation-v1",
+    "revision": "v1",
+    "field": "内部発熱・熱伝導支配式",
+    "prerequisites": [
+      "熱伝導方程式",
+      "指定温度・熱流束・エネルギー保存"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "applied",
+    "source": {
+      "type": "supplement",
+      "reference": "§4.2に関する独立執筆の学習教材・仮想条件から作成。原本の翻訳・本文・図・章末問題は転載しない。",
+      "chapterId": "ch4",
+      "focusSectionId": "4.2",
+      "guideId": "chapter4-fin-design"
+    },
+    "createdStatus": "独立作問",
+    "reviewStatus": "保存則・式の内部確認済み／外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [],
+    "prompt": "定常熱伝導で熱伝導率kが温度依存する場合、一般に正しい方程式の取り扱いは？",
+    "choices": [
+      "kをどこでも一定と置き∇²T=0と決める",
+      "熱伝導率が変化すると保存則は成立しない",
+      "熱流率と温度場は無関係なので微分不要",
+      "kを微分の内側に置いた∇·(k∇T)を用いる"
+    ],
+    "answer": 3,
+    "difficulty": "応用・物理判断",
+    "explanation": "温度依存のkについては保存式に∇·(k∇T)+q‴=0を使う。kを一定と仮定してk∇²Tへ置き換えると不適切な場合がある。",
+    "distractors": [
+      "kが変化しても一般にLaplaceにはならない。",
+      "熱伝導率の温度依存と保存則は両立する。",
+      "熱移動は温度勾配とkに依存する。",
+      "正解。温度依存のkについては保存式に∇·(k∇T)+q‴=0を使う。kを一定と仮定してk∇²Tへ置き換えると不適切な場合がある。"
+    ],
+    "hints": [
+      "一般化したFourier則を保存則へ代入。",
+      "微分の積の法則を考える。"
+    ],
+    "solutionSteps": [
+      "一般化したFourier則を保存則へ代入。",
+      "微分の積の法則を考える。",
+      "温度依存のkについては保存式に∇·(k∇T)+q‴=0を使う。kを一定と仮定してk∇²Tへ置き換えると不適切な場合がある。"
+    ],
+    "beginnerPitfall": "外向き法線、境界と初期条件、内部発熱率の単位、半厚さと全厚さを区別する。"
   }
 ]
