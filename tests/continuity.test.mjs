@@ -40,9 +40,9 @@ test('learning time splits at the browser-local midnight and excludes suspended-
   const first=recordStudyActivity([],{kind:'reading',sectionId:'1.1'},from,to,'page1');const second=recordStudyActivity(first,{kind:'reading',sectionId:'1.1'},to,to+5000,'page1');assert.equal(second.reduce((n,a)=>n+a.seconds,0),10);assert.equal(first.reduce((n,a)=>n+a.seconds,0),5);
 });
 test('repeating a single question cannot make a whole field look mastered',()=>{
-  const qs=Array.from({length:4},(_,i)=>({...question,id:`q${i}`})),rows=Array.from({length:8},(_,i)=>({questionId:'q0',correct:true,at:new Date(i*1000).toISOString()}));
-  assert.deepEqual(fieldProgress(qs,rows),{answered:1,correct:1,enough:false,ratio:1,total:4});
-  rows.push({questionId:'q1',correct:false,at:new Date(9000).toISOString()},{questionId:'q2',correct:true,at:new Date(9000).toISOString()});assert.equal(fieldProgress(qs,rows).enough,true);assert.equal(fieldProgress(qs,rows).ratio,2/3);
+  const qs=Array.from({length:4},(_,i)=>({...question,id:`q${i}`})),rows=Array.from({length:8},(_,i)=>({questionId:'q0',correct:true,questionRevision:'r1',at:new Date(i*1000).toISOString()}));
+  assert.deepEqual(fieldProgress(qs,rows),{answered:1,correct:1,enough:false,ratio:1,total:4,outdated:0});
+  rows.push({questionId:'q1',correct:false,questionRevision:'r1',at:new Date(9000).toISOString()},{questionId:'q2',correct:true,questionRevision:'r1',at:new Date(9000).toISOString()});assert.equal(fieldProgress(qs,rows).enough,true);assert.equal(fieldProgress(qs,rows).ratio,2/3);
 });
 test('duration labels preserve short sessions rather than rounding them to zero minutes',()=>{
   assert.equal(studyDuration(45),'45秒');assert.equal(studyDuration(65),'1分5秒');assert.equal(studyDuration(120),'2分');

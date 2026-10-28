@@ -35,7 +35,8 @@ function unsafeKeys(v, depth=0) {
 const optional = (o,k,check) => o[k] === undefined || check(o[k]);
 const attemptOK = a => record(a) && text(a.questionId) && a.questionId.length>0 && typeof a.correct==='boolean' && time(a.at)
   && optional(a,'id',text) && optional(a,'selected',v=>Number.isInteger(v)&&v>=0&&v<4)
-  && optional(a,'confidence',v=>['high','medium','low','unsure'].includes(v)) && optional(a,'mode',text);
+  && optional(a,'confidence',v=>['high','medium','low','unsure'].includes(v)) && optional(a,'mode',text)
+  && optional(a,'questionRevision',v=>text(v)&&/^[A-Za-z0-9][A-Za-z0-9._-]{0,47}$/.test(v));
 export function validateLearningData(data, {stored=false}={}) {
   const invalid = message => `${message}現在の記録は変更していません。`;
   if (!record(data) || data.schemaVersion!==1 || (!stored && data.format!==DATA_FORMAT)) return invalid('対応する学習データ形式ではありません。');
@@ -142,11 +143,17 @@ export function recordStudyActivity(records,context,from,to,pageId) {
   }
   return result;
 }
+// A stored score for an older question must never count as a correct response
+// to a newly revised question. Legacy records without a revision are 'initial'.
+export function isCurrentQuestionAnswer(question,answer) {
+  return Boolean(question&&answer&&(answer.questionRevision??'initial')===(question.revision??'initial'));
+}
 export function fieldProgress(questions,attempts) {
-  const ids=new Set(questions.map(q=>q.id)),latest=new Map();
-  for(const a of attempts)if(ids.has(a.questionId)&&(!latest.has(a.questionId)||instant(a.at)>=instant(latest.get(a.questionId).at)))latest.set(a.questionId,a);
-  const answered=latest.size,correct=[...latest.values()].filter(a=>a.correct).length;
-  return {answered,correct,enough:answered>=3,ratio:answered?correct/answered:0,total:questions.length};
+  const byId=new Map(questions.map(q=>[q.id,q])),latest=new Map();
+  for(const a of attempts)if(byId.has(a.questionId)&&(!latest.has(a.questionId)||instant(a.at)>=instant(latest.get(a.questionId).at)))latest.set(a.questionId,a);
+  const current=[...latest.entries()].filter(([id,a])=>isCurrentQuestionAnswer(byId.get(id),a));
+  const answered=current.length,correct=current.filter(([,a])=>a.correct===true).length;
+  return {answered,correct,enough:answered>=3,ratio:answered?correct/answered:0,total:questions.length,outdated:latest.size-answered};
 }
 export function studyDuration(seconds) {
   const numeric=Number(seconds),value=Number.isFinite(numeric)?Math.max(0,Math.round(numeric)):0;

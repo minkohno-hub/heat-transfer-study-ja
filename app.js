@@ -1,4 +1,4 @@
-import { createEmptyState, validateLearningData, normalizeLearningData, mergeLearningData, calculateHeatTransfer, chapterKey, searchEntries, searchSnippet, searchRanges, localDay, validDay, shiftMonth, nextReviewDays, planMinutes, validateQuestion, safeLocalFigurePath, speechChunks, questionFingerprint, quizChoiceOrder, quizResumeIssue, recordStudyActivity, fieldProgress, studyDuration } from './study-core.mjs';
+import { createEmptyState, validateLearningData, normalizeLearningData, mergeLearningData, calculateHeatTransfer, chapterKey, searchEntries, searchSnippet, searchRanges, localDay, validDay, shiftMonth, nextReviewDays, planMinutes, validateQuestion, safeLocalFigurePath, speechChunks, questionFingerprint, quizChoiceOrder, quizResumeIssue, recordStudyActivity, fieldProgress, studyDuration, isCurrentQuestionAnswer } from './study-core.mjs';
 import { GUIDE_SECTIONS, searchGuide } from './guide.mjs';
 import {questionChapter,questionsForChapter,chapterLearningOverview} from './chapter-curriculum.mjs';
 const CORE_DATA_FILES = ['./data/book.json', './data/questions.json', './data/glossary.json', './data/content-manifest.json'];
@@ -426,19 +426,21 @@ function statusPill(text, tone = 'neutral') { return `<span class="status-pill t
 function translatedSectionCount() { return allSections().filter(sectionIsTranslated).length; }
 function countReadSections() { return allSections().filter(s=>state.readSections[s.id]).length; }
 function lastSectionLabel() { const section = getSection(state.lastSection); return section ? `第${section.id}節「${escapeHTML(section.title)}」` : '第1章1.1節「熱移動」'; }
-function getAttemptStats(id) { const attempts = state.attempts.filter(attempt => attempt.questionId === id); const correct = attempts.filter(attempt => attempt.correct).length; return { attempts, correct, accuracy: attempts.length ? correct / attempts.length : null }; }
+function getAttemptStats(id) { const question=getQuestion(id); const attempts = state.attempts.filter(attempt => attempt.questionId === id && isCurrentQuestionAnswer(question,attempt)); const correct = attempts.filter(attempt => attempt.correct).length; return { attempts, correct, accuracy: attempts.length ? correct / attempts.length : null }; }
 function questionsByField() { const fields = new Map(); for (const q of questionBank) { const field = q.field || 'その他'; fields.set(field, (fields.get(field) || 0) + 1); } return fields; }
 function dueReviewCount() { return reviewCandidates().filter(item => item.due <= todayISO()).length; }
 function reviewCandidates() {
   const items = [];
   for (const q of questionBank) {
     const { attempts, accuracy } = getAttemptStats(q.id);
+    const hasOutdatedAnswer=state.attempts.some(a=>a.questionId===q.id&&!isCurrentQuestionAnswer(q,a));
     const wrong = attempts.filter(a => !a.correct);
     const recent = attempts.at(-1);
     const review = state.reviews[q.id];
     const recentAt=recent?new Date(recent.at).getTime():null;
-    const due = review?.dueDate || (recent ? todayISO(new Date(recentAt + (recent.correct ? 3 : 1) * 86400000)) : '9999-12-31');
+    const due = !recent && hasOutdatedAnswer ? todayISO() : review?.dueDate || (recent ? todayISO(new Date(recentAt + (recent.correct ? 3 : 1) * 86400000)) : '9999-12-31');
     const reasons = [];
+    if(!recent&&hasOutdatedAnswer)reasons.push('問題改訂後の再回答が必要');
     const reviewedAfterLastAttempt = Boolean(review?.lastReviewedAt && recent && new Date(review.lastReviewedAt).getTime() >= recentAt);
     if (!reviewedAfterLastAttempt && recent && !recent.correct) reasons.push('直近の誤答');
     if (!reviewedAfterLastAttempt && wrong.length >= 2) reasons.push(`誤答${wrong.length}回`);
@@ -776,18 +778,21 @@ function renderCalendar() {
 function renderMap() {
   const fields = [...questionsByField().entries()];
   return `${pageHeading('分野マップ', 'わかるところと、次の一歩。', '理解度は問題への回答から算出します。回答数が少ない分野は、理解度を決めつけず「記録不足」と表示します。')}
-    <div class="map-grid">${fields.map(([field, total]) => { const qs = questionBank.filter(q => q.field === field); const attempts = state.attempts.filter(a => qs.some(q => q.id === a.questionId)); const progress=fieldProgress(qs,attempts),{correct,enough,ratio}=progress; const label = enough ? `${Math.round(ratio * 100)}%` : '記録不足'; const tone = enough ? ratio >= 0.75 ? 'strong' : ratio >= 0.5 ? 'middle' : 'needs-work' : 'not-enough'; return `<article class="map-card surface-card"><div class="map-card-heading"><span class="map-symbol ${tone}" aria-hidden="true">${enough ? ratio >= 0.75 ? '●' : ratio >= 0.5 ? '◐' : '○' : '—'}</span><div><h2>${escapeHTML(field)}</h2><small>${progress.answered}問に回答 / 収録${total}問</small></div></div><div class="map-meter"><span class="${tone}" style="width:${enough ? Math.max(3, ratio * 100) : 0}%"></span></div><div class="map-card-foot"><strong>${label}</strong><span>${enough ? `${correct}問正解` : '判定には異なる3問以上が目安'}</span></div><a class="text-link" href="#quiz" data-map-field="${escapeHTML(field)}">${enough && ratio < 0.6 ? 'この分野を復習する' : 'この分野の問題を解く'} →</a></article>`; }).join('')}</div>
+    <div class="map-grid">${fields.map(([field, total]) => { const qs = questionBank.filter(q => q.field === field); const attempts = state.attempts.filter(a => qs.some(q => q.id === a.questionId)); const progress=fieldProgress(qs,attempts),{correct,enough,ratio}=progress; const label = enough ? `${Math.round(ratio * 100)}%` : '記録不足'; const tone = enough ? ratio >= 0.75 ? 'strong' : ratio >= 0.5 ? 'middle' : 'needs-work' : 'not-enough'; return `<article class="map-card surface-card"><div class="map-card-heading"><span class="map-symbol ${tone}" aria-hidden="true">${enough ? ratio >= 0.75 ? '●' : ratio >= 0.5 ? '◐' : '○' : '—'}</span><div><h2>${escapeHTML(field)}</h2><small>${progress.answered}問に回答（現行版） / 収録${total}問${progress.outdated ? ` · 改訂前の回答${progress.outdated}問` : ''}</small></div></div><div class="map-meter"><span class="${tone}" style="width:${enough ? Math.max(3, ratio * 100) : 0}%"></span></div><div class="map-card-foot"><strong>${label}</strong><span>${enough ? `${correct}問正解` : '判定には異なる3問以上が目安'}</span></div><a class="text-link" href="#quiz" data-map-field="${escapeHTML(field)}">${enough && ratio < 0.6 ? 'この分野を復習する' : 'この分野の問題を解く'} →</a></article>`; }).join('')}</div>
     <section aria-labelledby="chapter-roadmap-title" class="chapter-curriculum">
       <h2 id="chapter-roadmap-title">章別学習ロードマップ（独自補助講座）</h2>
       <p class="small-note">以下の数値は<strong>収録済み演習への回答</strong>と、本人が付けた<strong>原本節の読了記録</strong>です。未配布の日本語訳や原本全内容の達成率ではありません。</p>
       <div class="map-grid">${chapterLearningOverview(book,questionBank,GUIDE_SECTIONS,state.attempts,state.readSections).map(item=>`<article class="map-card surface-card" data-chapter-card="${escapeHTML(item.chapter)}"><div class="map-card-heading"><div><p class="eyebrow">第${escapeHTML(item.chapter.slice(2))}章</p><h3>${escapeHTML(item.title)}</h3></div></div>
         <p>収録問題：${item.practiceQuestionCount}問（書籍の節出典あり：${item.bookCitedQuestionCount}問）</p>
-        <p>回答済み：${item.attemptedQuestions}/${item.practiceQuestionCount}問 · 各問の最新回答で正解：${item.latestCorrect}問</p>
+        <p>回答済み（現行版）：${item.attemptedQuestions}/${item.practiceQuestionCount}問 · 各問の最新回答で正解：${item.latestCorrect}問</p>
+        <p>未回答：${item.unansweredQuestions}問 · 最新の誤答：${item.latestIncorrect}問${item.outdatedQuestions ? ` · 改訂前の回答：${item.outdatedQuestions}問（現行版は再回答が必要）` : ''}</p>
         <p>原本の節を読了に記録：${item.sectionsMarkedRead}/${item.sectionCount}節</p>
-        <div class="button-row">${item.guideId?`<a class="text-link" href="#guide/${escapeHTML(item.guideId)}">独立した日本語補助講座を読む →</a>`:''}<button type="button" class="button secondary" data-chapter-practice="${escapeHTML(item.chapter)}">この章の演習を始める</button></div>
+        <div class="button-row">${item.guideId?`<a class="text-link" href="#guide/${escapeHTML(item.guideId)}">独立した日本語補助講座を読む →</a>`:''}
+        ${item.recommendedQuestionIds.length ? `<button type="button" class="button primary" data-chapter-practice="${escapeHTML(item.chapter)}" data-chapter-practice-mode="priority">未正解・未回答を優先（${item.recommendedQuestionIds.length}問）</button>`:''}
+        <button type="button" class="button secondary" data-chapter-practice="${escapeHTML(item.chapter)}">この章の全問題を解く</button></div>
       </article>`).join('')}</div>
     </section>
-    <section class="notice-card map-method"><span class="notice-icon">i</span><div><strong>理解度の計算方法</strong><p>この分野の各問題について、最新の回答を一つだけ使います。その正解数 ÷ 回答した異なる問題数で表示します。異なる3問未満では割合を出さず「記録不足」とします。同じ問題を反復した回数で割合は増えません。自信度と復習予定は別に管理します。</p></div></section>`;
+    <section class="notice-card map-method"><span class="notice-icon">i</span><div><strong>理解度の計算方法</strong><p>この分野の各問題について、現行の問題版での最新回答を一つだけ使います。その正解数 ÷ 回答した異なる問題数で表示します。異なる3問未満では割合を出さず「記録不足」とします。問題が改訂された場合、旧版の回答は残しますが現行版の正解に数えず、再回答の候補にします。同じ問題を反復した回数で割合は増えません。自信度と復習予定は別に管理します。</p></div></section>`;
 }
 
 const SIM_META = {
@@ -978,6 +983,9 @@ function startQuiz(options = {}) {
   if (mode === 'due' || mode === 'weak' || mode === 'review') {
     const rank = new Map(reviewCandidates().map((item,index) => [item.question.id,index]));
     candidates.sort((a,b) => (rank.get(a.id) ?? 999) - (rank.get(b.id) ?? 999));
+  } else if(options.preserveOrder && Array.isArray(options.questionIds)) {
+    const priority=new Map(options.questionIds.map((id,index)=>[id,index]));
+    candidates.sort((a,b)=>(priority.get(a.id)??Infinity)-(priority.get(b.id)??Infinity));
   } else candidates = shuffle(candidates);
   const count = Math.max(1, Math.min(Number(options.count || candidates.length || 1), candidates.length));
   const selected = candidates.slice(0, count).map(q => q.id);
@@ -1003,7 +1011,7 @@ function submitQuizAnswer(form) {
   const question = getQuestion(session.ids[session.index]);
   if (!question || !Number.isInteger(session.selected) || session.selected < 0 || session.selected > 3) { showStatus('選択肢を一つ選んでから回答してください。'); return; }
   const answer = { questionId: question.id, selected: session.selected, selectedText: question.choices[session.selected], correctText: question.choices[question.answer], questionRevision: question.revision || 'initial', correct: session.selected === question.answer, confidence: session.confidence || 'medium', at: new Date().toISOString(), mode: session.mode };
-  const interval = nextReviewDays(state.attempts.filter(a=>a.questionId===question.id),answer);
+  const interval = nextReviewDays(state.attempts.filter(a=>a.questionId===question.id&&isCurrentQuestionAnswer(question,a)),answer);
   session.answers[session.index] = answer;
   state.attempts.push({ ...answer, id: makeId() });
   state.reviews[question.id] = { ...(state.reviews[question.id] || {}), dueDate: addDaysISO(todayISO(), interval), suggestedDays: interval, lastAnsweredAt: answer.at };
@@ -1051,6 +1059,12 @@ function onClick(event) {
     const chapter=chapterTrigger.dataset.chapterPractice;
     const matching=questionsForChapter(questionBank,chapter,GUIDE_SECTIONS);
     if(!matching.length){showStatus('この章に収録された問題はありません。');return;}
+    if(chapterTrigger.dataset.chapterPracticeMode==='priority'){
+      const item=chapterLearningOverview(book,questionBank,GUIDE_SECTIONS,state.attempts,state.readSections).find(c=>c.chapter===chapter);
+      const ids=item?.recommendedQuestionIds||[];
+      if(!ids.length){showStatus('この章に未正解・未回答の問題はありません。');return;}
+      startQuiz({mode:'all',chapter,questionIds:ids,preserveOrder:true,count:Math.min(10,ids.length)});return;
+    }
     startQuiz({mode:'all',chapter,count:matching.length});return;
   }
   const mapTrigger = event.target.closest('[data-map-field]');

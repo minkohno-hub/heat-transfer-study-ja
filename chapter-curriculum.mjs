@@ -1,3 +1,4 @@
+import { isCurrentQuestionAnswer } from './study-core.mjs';
 // This curriculum tracks *available, independently authored* study aids,
 // not completion of the source book, translation, or professional competence.
 const chapterId = value => /^ch(?:[1-9]|10|11)$/.test(String(value||'')) ? value : null;
@@ -28,13 +29,18 @@ export function chapterLearningOverview(book,questions,guides,attempts=[],readSe
     const at=typeof attempt.at==='number'?attempt.at:Date.parse(String(attempt.at||''));
     if(!Number.isFinite(at))continue;
     const existing=last.get(attempt.questionId);
-    if(!existing||at>=existing.time)last.set(attempt.questionId,{time:at,correct:attempt.correct===true});
+    if(!existing||at>=existing.time)last.set(attempt.questionId,{time:at,correct:attempt.correct===true,questionRevision:attempt.questionRevision});
   }
   return book.chapters.map(chapter=>{
     const qs=questionsForChapter(questions,chapter.id,guides);
     const guide=guides.find(g=>g.bookChapter===chapter.id)||null;
-    const answered=qs.filter(q=>last.has(q.id));
+    const historical=qs.filter(q=>last.has(q.id));
+    const answered=historical.filter(q=>isCurrentQuestionAnswer(q,last.get(q.id)));
+    const outdated=historical.filter(q=>!isCurrentQuestionAnswer(q,last.get(q.id)));
+    const incorrect=answered.filter(q=>!last.get(q.id).correct);
+    const unseen=qs.filter(q=>!last.has(q.id));
     const correct=answered.filter(q=>last.get(q.id).correct).length;
+    const recommendedQuestionIds=[...outdated,...incorrect,...unseen].map(q=>q.id);
     return {
       chapter:chapter.id,
       title:chapter.title,
@@ -44,7 +50,12 @@ export function chapterLearningOverview(book,questions,guides,attempts=[],readSe
       practiceQuestionCount:qs.length,
       bookCitedQuestionCount:qs.filter(q=>q.source?.type==='book').length,
       attemptedQuestions:answered.length,
+      historicalAttemptedQuestions:historical.length,
+      outdatedQuestions:outdated.length,
+      unansweredQuestions:unseen.length,
+      latestIncorrect:incorrect.length,
       latestCorrect:correct,
+      recommendedQuestionIds,
       practiceQuestionIds:qs.map(q=>q.id)
     };
   });
