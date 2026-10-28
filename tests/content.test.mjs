@@ -1,11 +1,21 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {readFile,access} from 'node:fs/promises';
+import {execFileSync} from 'node:child_process';
 import {validateQuestion,searchRanges,searchSnippet,calculateHeatTransfer} from '../study-core.mjs';
 import {GUIDE_SECTIONS} from '../guide.mjs';
 const root=new URL('../',import.meta.url),read=async p=>JSON.parse(await readFile(new URL(p,root),'utf8'));
 let hasLocal=true;try{for(const id of ['7.6','7.7','8.1','8.2','8.3'])await access(new URL(`data/local/sections/${id}-ja.json`,root));}catch{hasLocal=false;}
 let hasLegacyDraft=true;try{for(const id of ['1.1','1.2'])await access(new URL(`data/local/sections/${id}-ja.json`,root));}catch{hasLegacyDraft=false;}
+test('content audit keeps local-only drafts out of public availability',async()=>{
+  const output=execFileSync(process.execPath,[new URL('../scripts/audit-content.mjs',import.meta.url).pathname,'--check'],{encoding:'utf8'});
+  const report=JSON.parse(output.trim());
+  const manifest=await read('data/content-manifest.json');
+  const publicSections=[];
+  for(const path of manifest.files){const section=await read(path);if(section.language==='ja')publicSections.push(section.sectionId);}
+  assert.deepEqual(report.availableSections,[...new Set(publicSections)]);
+  if(hasLegacyDraft){assert.ok(report.localDraftSections>=2);for(const id of ['1.1','1.2'])if(!publicSections.includes(id))assert.ok(!report.availableSections.includes(id));}
+});
 test('private legacy Japanese drafts remain labeled unverified in a local pack',{skip:!hasLegacyDraft},async()=>{
   const manifest=await read('data/local-content-manifest.json');
   for(const id of ['1.1','1.2']){
