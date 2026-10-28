@@ -562,7 +562,7 @@ try {
   await page.locator('#reader-deep-lesson').waitFor({state:'visible'});
   assert.match(await page.locator('#reader-deep-lesson').innerText(),/膜状凝縮の液膜抵抗/);
   assert.match(await page.locator('#reader-deep-lesson').innerText(),/1\.724 kW/);
-  assert.match(await page.locator('#reader-deep-lesson').innerText(),/Re_f≈21\.9/);
+  assert.match(await page.locator('#reader-deep-lesson').innerText(),/Ref≈21\.9/);
   assert.equal(await page.locator('#reader-deep-lesson .deep-worked-example li').count(),6);
   assert.deepEqual(errors,[]);
   assert.deepEqual(external,[]);
