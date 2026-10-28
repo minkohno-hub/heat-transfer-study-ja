@@ -3,13 +3,13 @@ import assert from 'node:assert/strict';
 import {readFile} from 'node:fs/promises';
 import {auditFullCurriculumReadiness} from '../curriculum-readiness.mjs';
 const read=async file=>JSON.parse(await readFile(new URL('../'+file,import.meta.url),'utf8'));
-test('short Japanese notes and 182 unreviewed problems cannot be reported as complete',async()=>{
+test('short Japanese notes and 190 unreviewed problems cannot be reported as complete',async()=>{
   const [book,originalNotes,questions,evidence]=await Promise.all([
     'data/book.json','data/original-notes.json','data/questions.json','data/readiness-evidence.json'
   ].map(read));
   const report=auditFullCurriculumReadiness({book,originalNotes,questions,...evidence});
   assert.equal(report.sectionCount,76);
-  assert.equal(report.questionCount,182);
+  assert.equal(report.questionCount,190);
   assert.equal(report.originalConceptNotes,76);
   assert.equal(report.independentlyReviewedSections,0);
   assert.equal(report.verifiedRightsSections,0);
