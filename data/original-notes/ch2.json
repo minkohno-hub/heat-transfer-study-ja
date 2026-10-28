@@ -13,7 +13,7 @@
       "example": "k=10 W/(m·K)、ρ=1000 kg/m³、c=2000 J/(kg·K)ならα=5×10⁻⁶ m²/s。kが同じでもρcが大きいほど温度変化の広がりは遅くなる。",
       "limits": "異方性材料や温度依存物性では上記の単純な一定k式は使えない。境界温度だけでなく初期温度と発熱条件も確認する。",
       "selfCheck": "定常・発熱なしなら一定物性の伝導方程式の右辺はどうなるか。",
-      "answer": "∇²T=0（ラプラス方程式）。",
+      "answer": "∇²T=0。",
       "reviewStatus": "AI_drafted_pending_independent_expert_review"
     },
     {
