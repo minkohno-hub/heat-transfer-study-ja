@@ -1,5 +1,6 @@
 import { createEmptyState, validateLearningData, normalizeLearningData, mergeLearningData, calculateHeatTransfer, chapterKey, searchEntries, searchSnippet, searchRanges, localDay, validDay, shiftMonth, nextReviewDays, planMinutes, validateQuestion, safeLocalFigurePath, speechChunks, questionFingerprint, quizChoiceOrder, quizResumeIssue, recordStudyActivity, fieldProgress, studyDuration } from './study-core.mjs';
 import { GUIDE_SECTIONS, searchGuide } from './guide.mjs';
+import {questionChapter,questionsForChapter,chapterLearningOverview} from './chapter-curriculum.mjs';
 const CORE_DATA_FILES = ['./data/book.json', './data/questions.json', './data/glossary.json', './data/content-manifest.json'];
 const LEGACY_STORAGE_KEY = 'heat-study-ja:v1';
 const PROFILES_KEY = 'heat-study-ja:profiles:v1';
@@ -416,7 +417,7 @@ function renderGuide() {
   const matches=searchGuide(ui.guideQuery);
   return `${pageHeading('使い方・学習ガイド','操作と熱移動の考え方を学ぶ','基本操作、4つのシミュレーターのモデル、書籍11章に対応する独立作成の日本語補助講座を学べます。原本の翻訳ではありません。')}
     <div class="guide-layout"><aside class="surface-card guide-toc" aria-label="ガイドの目次"><h2>目次</h2><form id="guide-search-form" role="search"><label for="guide-query">ガイド内を検索</label><div class="guide-search-row"><input id="guide-query" name="query" type="search" value="${escapeHTML(ui.guideQuery)}" placeholder="例：放射率、復元、復習"/><button type="submit" class="button secondary">探す</button></div></form><nav aria-label="ガイドの項目">${GUIDE_SECTIONS.map(section=>`<a href="#guide/${section.id}">${escapeHTML(section.title)}</a>`).join('')}</nav></aside>
-    <div class="guide-results"><p class="guide-count" role="status">${ui.guideQuery?`「${escapeHTML(ui.guideQuery)}」の検索結果：${matches.length}項目`:`全${GUIDE_SECTIONS.length}項目 · アプリ作成の説明`}</p>${matches.length?matches.map(section=>`<section class="surface-card guide-section" id="guide-${section.id}" tabindex="-1"><p class="eyebrow">${section.bookChapter ? `独立作成の章別補助講座 · 第${escapeHTML(section.bookChapter.slice(2))}章` : `使い方・学習ガイド`}</p><h2>${escapeHTML(section.title)}</h2><p class="guide-summary">${escapeHTML(section.summary)}</p><div class="guide-body">${section.html}</div><a class="text-link" href="#guide">ガイドの先頭へ ↑</a></section>`).join(''):'<div class="surface-card guide-empty"><p>該当する説明が見つかりませんでした。別の言葉で検索してください。</p></div>'}</div></div>`;
+    <div class="guide-results"><p class="guide-count" role="status">${ui.guideQuery?`「${escapeHTML(ui.guideQuery)}」の検索結果：${matches.length}項目`:`全${GUIDE_SECTIONS.length}項目 · アプリ作成の説明`}</p>${matches.length?matches.map(section=>`<section class="surface-card guide-section" id="guide-${section.id}" tabindex="-1"><p class="eyebrow">${section.bookChapter ? `独立作成の章別補助講座 · 第${escapeHTML(section.bookChapter.slice(2))}章` : `使い方・学習ガイド`}</p><h2>${escapeHTML(section.title)}</h2><p class="guide-summary">${escapeHTML(section.summary)}</p><div class="guide-body">${section.html}</div>${section.bookChapter ? `<div class="button-row"><button type="button" class="button secondary" data-chapter-practice="${escapeHTML(section.bookChapter)}">第${escapeHTML(section.bookChapter.slice(2))}章の問題に挑戦 →</button><small>収録済みの独自・書籍出典問題に限ります。原本全節の理解度評価ではありません。</small></div>` : ''}<a class="text-link" href="#guide">ガイドの先頭へ ↑</a></section>`).join(''):'<div class="surface-card guide-empty"><p>該当する説明が見つかりませんでした。別の言葉で検索してください。</p></div>'}</div></div>`;
 }
 function statusPill(text, tone = 'neutral') { return `<span class="status-pill tone-${tone}">${text}</span>`; }
 function translatedSectionCount() { return allSections().filter(sectionIsTranslated).length; }
@@ -608,28 +609,36 @@ function buildSearchIndex() {
       });
     }
   }
+  // Search independent original explanations without claiming they are translated book chapters.
+  for(const guide of GUIDE_SECTIONS) {
+    entries.push({kind:'guide',kindLabel:guide.bookChapter?'独立作成の章別講座':'学習ガイド',
+      chapter:guide.bookChapter||'supplement',field:'独立学習ガイド',
+      title:guide.title,text:guide.summary+' '+guide.html.replace(/<[^>]*>/g,' '),
+      source:guide.bookChapter?'アプリ独自講座・第'+guide.bookChapter.slice(2)+'章':'アプリ独自ガイド',
+      target:{route:'guide',guideId:guide.id}});
+  }
   for(const term of glossary) {
     entries.push({kind:'glossary',kindLabel:'用語集',chapter:chapterKey(term.source.section),field:'用語集',title:`${term.ja} ${term.en||''}`,text:`${term.meaning} ${term.meaningEn||''}`,source:sourceLabel(term.source),target:{route:'glossary',term:term.id,language:'ja'}});
   }
   for(const q of questionBank) {
-    const base={chapter:chapterKey(q.source.section),field:q.field,source:sourceLabel(q.source),target:{route:'quiz',question:q.id}};
+    const base={chapter:questionChapter(q,GUIDE_SECTIONS)||'supplement',field:q.field,source:sourceLabel(q.source),target:{route:'quiz',question:q.id}};
     entries.push({...base,kind:'question',kindLabel:'問題・解説',title:q.prompt,text:[q.explanation,...q.choices,...(q.distractors||[]),...(q.solutionSteps||[])].join(' ')});
     const n=state.mistakeNotes[q.id];
     if(n)entries.push({...base,kind:'memo',kindLabel:'間違いノート',title:`問題メモ：${q.prompt}`,text:`${n.reason||''} ${n.memory||''} ${n.nextTime||''}`});
   }
   for(const n of state.notes)entries.push({kind:'memo',kindLabel:'学習メモ',chapter:chapterKey(n.sectionId),field:'メモ',title:n.title||'学習メモ',text:n.text,source:`第${n.sectionId}節`,target:{route:'reader',section:n.sectionId,blockId:n.blockId}});
   for(const b of state.bookmarks)entries.push({kind:'memo',kindLabel:'本文のしおり',chapter:chapterKey(b.sectionId),field:'しおり',title:`しおり：第${b.sectionId}節`,text:b.note,source:'利用者のしおり',target:{route:'reader',section:b.sectionId,blockId:b.blockId,position:b.position,language:b.language}});
-  for(const id of state.questionBookmarks){const q=getQuestion(id);if(q)entries.push({kind:'memo',kindLabel:'問題ブックマーク',chapter:chapterKey(q.source.section),field:q.field,title:q.prompt,text:q.explanation,source:sourceLabel(q.source),target:{route:'quiz',question:id}});}
+  for(const id of state.questionBookmarks){const q=getQuestion(id);if(q)entries.push({kind:'memo',kindLabel:'問題ブックマーク',chapter:questionChapter(q,GUIDE_SECTIONS)||'supplement',field:q.field,title:q.prompt,text:q.explanation,source:sourceLabel(q.source),target:{route:'quiz',question:id}});}
   return entries;
 }
 function renderSearch() {
   const results = ui.searchResults || [];
-  return `${pageHeading('横断検索', '探したい言葉から、学びへ。', '翻訳済み本文、見出し、用語、問題、解説、あなたのメモをまとめて検索します。')}
+  return `${pageHeading('横断検索', '探したい言葉から、学びへ。', '収録済みの見出し、独立学習ガイド、用語、問題、解説、メモを横断検索します。未収録の原本本文は検索対象ではありません。')}
     <form id="search-form" class="search-form surface-card"><label for="search-query">検索語</label><div class="search-input-row"><div class="search-input-wrap"><span aria-hidden="true">⌕</span><input id="search-query" name="query" type="search" value="${escapeHTML(ui.search.query)}" placeholder="例：温度勾配、対流、熱抵抗" autocomplete="off"/><button type="button" class="clear-search" data-action="clear-search" aria-label="検索語を消去">×</button></div><button class="button primary" type="submit">検索</button></div>
-      <div class="filter-row"><label>対象<select name="kind"><option value="all" ${ui.search.kind === 'all' ? 'selected' : ''}>すべて</option><option value="book" ${ui.search.kind === 'book' ? 'selected' : ''}>本文・見出し</option><option value="glossary" ${ui.search.kind === 'glossary' ? 'selected' : ''}>用語集</option><option value="question" ${ui.search.kind === 'question' ? 'selected' : ''}>問題・解説</option><option value="memo" ${ui.search.kind === 'memo' ? 'selected' : ''}>メモ・しおり</option></select></label><label>章<select name="chapter"><option value="all">すべての章</option>${book.chapters.map(ch => `<option value="${ch.id}" ${ui.search.chapter === ch.id ? 'selected' : ''}>第${ch.id.slice(2)}章 ${escapeHTML(ch.title)}</option>`).join('')}<option value="supplement" ${ui.search.chapter === 'supplement' ? 'selected' : ''}>補足説明</option></select></label><label>分野<select name="field"><option value="all">すべての分野</option>${[...new Set(buildSearchIndex().map(e=>e.field).filter(Boolean))].map(field=>`<option value="${escapeHTML(field)}" ${ui.search.field===field?'selected':''}>${escapeHTML(field)}</option>`).join('')}</select></label><span class="search-hint">日本語の一部だけでも検索できます</span></div>
+      <div class="filter-row"><label>対象<select name="kind"><option value="all" ${ui.search.kind === 'all' ? 'selected' : ''}>すべて</option><option value="book" ${ui.search.kind === 'book' ? 'selected' : ''}>本文・見出し</option><option value="glossary" ${ui.search.kind === 'glossary' ? 'selected' : ''}>用語集</option><option value="guide" ${ui.search.kind === 'guide' ? 'selected' : ''}>学習ガイド</option><option value="question" ${ui.search.kind === 'question' ? 'selected' : ''}>問題・解説</option><option value="memo" ${ui.search.kind === 'memo' ? 'selected' : ''}>メモ・しおり</option></select></label><label>章<select name="chapter"><option value="all">すべての章</option>${book.chapters.map(ch => `<option value="${ch.id}" ${ui.search.chapter === ch.id ? 'selected' : ''}>第${ch.id.slice(2)}章 ${escapeHTML(ch.title)}</option>`).join('')}<option value="supplement" ${ui.search.chapter === 'supplement' ? 'selected' : ''}>補足説明</option></select></label><label>分野<select name="field"><option value="all">すべての分野</option>${[...new Set(buildSearchIndex().map(e=>e.field).filter(Boolean))].map(field=>`<option value="${escapeHTML(field)}" ${ui.search.field===field?'selected':''}>${escapeHTML(field)}</option>`).join('')}</select></label><span class="search-hint">日本語の一部だけでも検索できます</span></div>
     </form>
     <section class="search-results"><div class="results-heading"><h2>${ui.search.query ? `「${escapeHTML(ui.search.query)}」の検索結果` : '検索結果'}</h2>${ui.search.query ? `<span>${results.length}件</span>` : ''}</div>
-      ${!ui.search.query ? `<div class="empty-state"><span class="empty-mark">⌕</span><h3>見つけたい言葉を入力してください</h3><p>翻訳済み本文と用語集、問題、あなたが保存したメモを検索できます。</p></div>` : !results.length ? `<div class="empty-state"><span class="empty-mark">…</span><h3>一致する内容がありません</h3><p>別の言葉や短い表現で検索してみてください。未翻訳本文は検索対象に含まれません。</p></div>` : `<div class="result-list">${results.map(entry => `<article class="result-card"><div class="result-meta">${statusPill(entry.kindLabel, entry.kind === 'book' ? 'blue' : entry.kind === 'memo' ? 'amber' : 'green')}<span>${escapeHTML(entry.chapterTitle || '')}</span></div><h3><button type="button" class="result-link" data-search-target='${escapeHTML(JSON.stringify(entry.target))}'>${highlight(entry.title, ui.search.query)}</button></h3><p>${highlight(searchSnippet(entry.text, ui.search.query), ui.search.query)}</p><small>${escapeHTML(entry.source)}</small></article>`).join('')}</div>`}
+      ${!ui.search.query ? `<div class="empty-state"><span class="empty-mark">⌕</span><h3>見つけたい言葉を入力してください</h3><p>原本の節見出し、独立学習ガイド、用語、問題、保存したメモを検索できます。</p></div>` : !results.length ? `<div class="empty-state"><span class="empty-mark">…</span><h3>一致する内容がありません</h3><p>別の言葉や短い表現で検索してみてください。未翻訳本文は検索対象に含まれません。</p></div>` : `<div class="result-list">${results.map(entry => `<article class="result-card"><div class="result-meta">${statusPill(entry.kindLabel, entry.kind === 'book' ? 'blue' : entry.kind === 'memo' ? 'amber' : 'green')}<span>${escapeHTML(entry.chapterTitle || '')}</span></div><h3><button type="button" class="result-link" data-search-target='${escapeHTML(JSON.stringify(entry.target))}'>${highlight(entry.title, ui.search.query)}</button></h3><p>${highlight(searchSnippet(entry.text, ui.search.query), ui.search.query)}</p><small>${escapeHTML(entry.source)}</small></article>`).join('')}</div>`}
     </section>`;
 }
 
@@ -764,6 +773,16 @@ function renderMap() {
   const fields = [...questionsByField().entries()];
   return `${pageHeading('分野マップ', 'わかるところと、次の一歩。', '理解度は問題への回答から算出します。回答数が少ない分野は、理解度を決めつけず「記録不足」と表示します。')}
     <div class="map-grid">${fields.map(([field, total]) => { const qs = questionBank.filter(q => q.field === field); const attempts = state.attempts.filter(a => qs.some(q => q.id === a.questionId)); const progress=fieldProgress(qs,attempts),{correct,enough,ratio}=progress; const label = enough ? `${Math.round(ratio * 100)}%` : '記録不足'; const tone = enough ? ratio >= 0.75 ? 'strong' : ratio >= 0.5 ? 'middle' : 'needs-work' : 'not-enough'; return `<article class="map-card surface-card"><div class="map-card-heading"><span class="map-symbol ${tone}" aria-hidden="true">${enough ? ratio >= 0.75 ? '●' : ratio >= 0.5 ? '◐' : '○' : '—'}</span><div><h2>${escapeHTML(field)}</h2><small>${progress.answered}問に回答 / 収録${total}問</small></div></div><div class="map-meter"><span class="${tone}" style="width:${enough ? Math.max(3, ratio * 100) : 0}%"></span></div><div class="map-card-foot"><strong>${label}</strong><span>${enough ? `${correct}問正解` : '判定には異なる3問以上が目安'}</span></div><a class="text-link" href="#quiz" data-map-field="${escapeHTML(field)}">${enough && ratio < 0.6 ? 'この分野を復習する' : 'この分野の問題を解く'} →</a></article>`; }).join('')}</div>
+    <section aria-labelledby="chapter-roadmap-title" class="chapter-curriculum">
+      <h2 id="chapter-roadmap-title">章別学習ロードマップ（独自補助講座）</h2>
+      <p class="small-note">以下の数値は<strong>収録済み演習への回答</strong>と、本人が付けた<strong>原本節の読了記録</strong>です。未配布の日本語訳や原本全内容の達成率ではありません。</p>
+      <div class="map-grid">${chapterLearningOverview(book,questionBank,GUIDE_SECTIONS,state.attempts,state.readSections).map(item=>`<article class="map-card surface-card" data-chapter-card="${escapeHTML(item.chapter)}"><div class="map-card-heading"><div><p class="eyebrow">第${escapeHTML(item.chapter.slice(2))}章</p><h3>${escapeHTML(item.title)}</h3></div></div>
+        <p>収録問題：${item.practiceQuestionCount}問（書籍の節出典あり：${item.bookCitedQuestionCount}問）</p>
+        <p>回答済み：${item.attemptedQuestions}/${item.practiceQuestionCount}問 · 各問の最新回答で正解：${item.latestCorrect}問</p>
+        <p>原本の節を読了に記録：${item.sectionsMarkedRead}/${item.sectionCount}節</p>
+        <div class="button-row">${item.guideId?`<a class="text-link" href="#guide/${escapeHTML(item.guideId)}">独立した日本語補助講座を読む →</a>`:''}<button type="button" class="button secondary" data-chapter-practice="${escapeHTML(item.chapter)}">この章の演習を始める</button></div>
+      </article>`).join('')}</div>
+    </section>
     <section class="notice-card map-method"><span class="notice-icon">i</span><div><strong>理解度の計算方法</strong><p>この分野の各問題について、最新の回答を一つだけ使います。その正解数 ÷ 回答した異なる問題数で表示します。異なる3問未満では割合を出さず「記録不足」とします。同じ問題を反復した回数で割合は増えません。自信度と復習予定は別に管理します。</p></div></section>`;
 }
 
@@ -876,7 +895,8 @@ function renderQuizSetup() {
   return `${renderQuizResume()}${pageHeading('問題演習', '一問ずつ、考え方を確かめる。', '回答、自信度、正誤を記録し、間違えた理由や次の復習につなげます。')}
     <div class="quiz-setup-layout"><section class="surface-card quiz-setup-card"><p class="eyebrow">出題内容を選ぶ</p><h2>今日の練習を決めましょう</h2><form id="quiz-start-form" class="stack-form">
       <label>出題対象<select name="mode"><option value="all">すべての問題</option><option value="unanswered">未回答</option><option value="wrong">一度でも間違えた問題</option><option value="bookmarked">ブックマークした問題</option><option value="due">復習候補</option><option value="weak">苦手候補</option></select></label>
-      <div class="form-two"><label>分野<select name="field"><option value="all">すべて</option>${[...questionsByField().keys()].map(field => `<option>${escapeHTML(field)}</option>`).join('')}</select></label><label>難易度<select name="difficulty"><option value="all">すべて</option>${[...new Set(questionBank.map(q => q.difficulty))].map(value => `<option>${escapeHTML(value)}</option>`).join('')}</select></label></div>
+      <label>章（独立補助講座に関連する問題）<select name="chapter"><option value="all">すべての章と共通補足問題</option>${book.chapters.map(ch=>`<option value="${ch.id}">第${ch.id.slice(2)}章 ${escapeHTML(ch.title)}（${questionsForChapter(questionBank,ch.id,GUIDE_SECTIONS).length}問）</option>`).join('')}</select></label>
+       <div class="form-two"><label>分野<select name="field"><option value="all">すべて</option>${[...questionsByField().keys()].map(field => `<option>${escapeHTML(field)}</option>`).join('')}</select></label><label>難易度<select name="difficulty"><option value="all">すべて</option>${[...new Set(questionBank.map(q => q.difficulty))].map(value => `<option>${escapeHTML(value)}</option>`).join('')}</select></label></div>
       <label>問題数<select name="count"><option value="3">3問</option><option value="5" selected>5問</option><option value="${questionBank.length}">すべて（${questionBank.length}問）</option></select></label>
       <button class="button primary" type="submit">この条件で始める →</button>
       <p class="small-note">候補が少ないときは、条件を広げて問題を選びます。回答数の少なさだけで苦手と判定しません。</p>
@@ -947,6 +967,7 @@ function startQuiz(options = {}) {
     const ids = new Set(reviewCandidates().filter(item => mode !== 'due' || item.due <= todayISO()).map(item => item.question.id));
     candidates = candidates.filter(q => ids.has(q.id));
   }
+  if (options.chapter && options.chapter !== 'all') candidates = candidates.filter(q => questionChapter(q,GUIDE_SECTIONS)===options.chapter);
   if (options.field && options.field !== 'all') candidates = candidates.filter(q => q.field === options.field);
   if (options.difficulty && options.difficulty !== 'all') candidates = candidates.filter(q => q.difficulty === options.difficulty);
   if (options.questionId) candidates = candidates.filter(q => q.id === options.questionId);
@@ -1021,6 +1042,13 @@ function onClick(event) {
     openReader(sectionTrigger.dataset.section);
     return;
   }
+  const chapterTrigger=event.target.closest('[data-chapter-practice]');
+  if(chapterTrigger){event.preventDefault();
+    const chapter=chapterTrigger.dataset.chapterPractice;
+    const matching=questionsForChapter(questionBank,chapter,GUIDE_SECTIONS);
+    if(!matching.length){showStatus('この章に収録された問題はありません。');return;}
+    startQuiz({mode:'all',chapter,count:matching.length});return;
+  }
   const mapTrigger = event.target.closest('[data-map-field]');
   if (mapTrigger) { event.preventDefault(); startQuiz({ mode: 'all', field: mapTrigger.dataset.mapField, count: 8 }); return; }
   const simPractice=event.target.closest('[data-sim-practice]');
@@ -1032,7 +1060,7 @@ function onClick(event) {
   const short = event.target.closest('[data-short-session]'); if (short) { event.preventDefault(); startQuickSession(Number(short.dataset.shortSession)); return; }
   const startQuestion = event.target.closest('[data-start-question]'); if (startQuestion) { event.preventDefault(); startQuiz({ mode: 'single', questionId: startQuestion.dataset.startQuestion, count: 1 }); return; }
   const startIds = event.target.closest('[data-start-ids]'); if (startIds) { event.preventDefault(); try { startQuiz({ mode: 'wrong', questionIds: JSON.parse(startIds.dataset.startIds), count: 8 }); } catch { showStatus('問題セットを読み込めませんでした。'); } return; }
-  const target = event.target.closest('[data-search-target]'); if (target) { event.preventDefault(); try { const item=JSON.parse(target.dataset.searchTarget); if (item.section) ui.readerSection=item.section; if (item.language && ['ja','en'].includes(item.language)) { state.settings.contentLanguage=item.language; saveState(); } if (item.question) { startQuiz({ mode:'single', questionId:item.question, count:1 }); return; } if (item.term) { ui.glossaryQuery=''; setRoute('glossary'); setTimeout(()=>document.getElementById(`term-${item.term}`)?.scrollIntoView({behavior:'smooth',block:'center'}),80); return; } if(item.route==='reader'&&item.section){openReader(item.section,{...item,query:ui.search.query});return;} if (item.route) setRoute(item.route); } catch { showStatus('検索先を開けませんでした。'); } return; }
+  const target = event.target.closest('[data-search-target]'); if (target) { event.preventDefault(); try { const item=JSON.parse(target.dataset.searchTarget); if (item.section) ui.readerSection=item.section; if (item.language && ['ja','en'].includes(item.language)) { state.settings.contentLanguage=item.language; saveState(); } if (item.question) { startQuiz({ mode:'single', questionId:item.question, count:1 }); return; } if(item.guideId&&GUIDE_SECTIONS.some(g=>g.id===item.guideId)){location.hash='#guide/'+item.guideId;return;} if (item.term) { ui.glossaryQuery=''; setRoute('glossary'); setTimeout(()=>document.getElementById(`term-${item.term}`)?.scrollIntoView({behavior:'smooth',block:'center'}),80); return; } if(item.route==='reader'&&item.section){openReader(item.section,{...item,query:ui.search.query});return;} if (item.route) setRoute(item.route); } catch { showStatus('検索先を開けませんでした。'); } return; }
   const bookmarkToggle = event.target.closest('[data-question-bookmark]'); if (bookmarkToggle) { const id=bookmarkToggle.dataset.questionBookmark; state.questionBookmarks = state.questionBookmarks.includes(id) ? state.questionBookmarks.filter(item=>item!==id) : [...state.questionBookmarks,id]; const saved=saveState(); render(); showStatus(saved?(state.questionBookmarks.includes(id) ? '問題をブックマークしました。' : '問題ブックマークを外しました。'):'問題ブックマークを端末に保存できませんでした。JSONを書き出してください。'); return; }
   const deleteBookmark = event.target.closest('[data-delete-bookmark]'); if (deleteBookmark) { state.bookmarks=state.bookmarks.filter(item=>item.id!==deleteBookmark.dataset.deleteBookmark); saveState(); render(); return; }
   const editNote=event.target.closest('[data-edit-note]');if(editNote){ui.noteEditId=editNote.dataset.editNote;render();document.querySelector('#reader-note-form textarea')?.focus();return;}
@@ -1093,7 +1121,7 @@ function onSubmit(event) {
   else if (form.id === 'guide-search-form') { event.preventDefault(); ui.guideQuery=String(new FormData(form).get('query')||'').trim();ui.guideTarget='';render();document.getElementById('guide-query')?.focus(); }
   else if (form.id === 'profile-create-form') { event.preventDefault(); createProfile(form); }
   else if (form.id === 'search-form') { event.preventDefault(); searchNow(form); }
-  else if (form.id === 'quiz-start-form') { event.preventDefault(); const data=new FormData(form); startQuiz({mode:String(data.get('mode')),field:String(data.get('field')),difficulty:String(data.get('difficulty')),count:Number(data.get('count'))}); }
+  else if (form.id === 'quiz-start-form') { event.preventDefault(); const data=new FormData(form); startQuiz({mode:String(data.get('mode')),chapter:String(data.get('chapter')||'all'),field:String(data.get('field')),difficulty:String(data.get('difficulty')),count:Number(data.get('count'))}); }
   else if (form.id === 'quiz-answer-form') { event.preventDefault(); submitQuizAnswer(form); }
   else if (form.id === 'mistake-note-form') { event.preventDefault(); saveMistakeNote(form); }
   else if (form.id === 'report-form') { event.preventDefault(); saveQuestionReport(form); }
