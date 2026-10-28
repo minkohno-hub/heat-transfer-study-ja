@@ -10518,5 +10518,789 @@
       "温度差固定なら総Q̇=ΔT/R_eqは増える。"
     ],
     "beginnerPitfall": "指定した温度境界、熱流の方向、面積基準が一致しているか点検する。"
+  },
+  {
+    "id": "supp-found-ntu-def-v1",
+    "revision": "v1",
+    "field": "熱交換器・有効度",
+    "prerequisites": [
+      "エネルギー保存",
+      "物性と境界条件"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "§3.3独立執筆の詳細教材に基づく新規問題。原文・原図・原本の設問を転載しない。",
+      "chapterId": "ch3",
+      "focusSectionId": "3.3",
+      "guideId": "chapter3-effectiveness-ntu"
+    },
+    "createdStatus": "独立作問",
+    "reviewStatus": "式と単位の内部計算確認済み／外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [],
+    "prompt": "UA=300 W/K、C_min=300 W/Kの熱交換器でNTUは？",
+    "choices": [
+      "0.50",
+      "1.00",
+      "2.00",
+      "3.00"
+    ],
+    "answer": 1,
+    "difficulty": "基礎・標準・適用判断",
+    "explanation": "NTU=UA/C_min=300/300=1.00で、両者の単位W/Kが相殺する。",
+    "distractors": [
+      "熱容量流量を2倍としている。",
+      "正解。無次元で1.00。",
+      "C_minの値を半分にしている。",
+      "熱交換率とNTUを混同している。"
+    ],
+    "hints": [
+      "最初に問題の量の単位と代表長さを特定してください。",
+      "条件に合う式を選び、適用限界と矛盾しないか点検してください。"
+    ],
+    "solutionSteps": [
+      "対象系・境界条件を特定する。",
+      "該当する熱移動・流体・相変化の式を選ぶ。",
+      "物性値と単位、または条件判断を計算する。",
+      "他の選択肢との違いと適用限界を確認する。"
+    ],
+    "beginnerPitfall": "無次元数と温度、熱移動率Wと熱流束W/m²、適用条件の違いを整理する。"
+  },
+  {
+    "id": "supp-found-ntu-thermal-v1",
+    "revision": "v1",
+    "field": "熱交換器・有効度",
+    "prerequisites": [
+      "エネルギー保存",
+      "物性と境界条件"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "§3.3独立執筆の詳細教材に基づく新規問題。原文・原図・原本の設問を転載しない。",
+      "chapterId": "ch3",
+      "focusSectionId": "3.3",
+      "guideId": "chapter3-effectiveness-ntu"
+    },
+    "createdStatus": "独立作問",
+    "reviewStatus": "式と単位の内部計算確認済み／外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [],
+    "prompt": "高温側がほぼ60℃一定、冷側入口20℃、C_min=300 W/K、UA=300 W/K、C_r≈0。ε=1−exp(−NTU)を用いた熱移動率は約？",
+    "choices": [
+      "4.415 kW",
+      "6.000 kW",
+      "7.585 kW",
+      "12.00 kW"
+    ],
+    "answer": 2,
+    "difficulty": "基礎・標準・適用判断",
+    "explanation": "NTU=1、ε≈0.63212、Q_max=300×40=12000 W。Q≈7585 W。",
+    "distractors": [
+      "εでなく残りの指数項0.368を掛けている。",
+      "有効度0.5と誤認している。",
+      "正解。12×0.63212≈7.585 kW。",
+      "理想上限を実際値としている。"
+    ],
+    "hints": [
+      "最初に問題の量の単位と代表長さを特定してください。",
+      "条件に合う式を選び、適用限界と矛盾しないか点検してください。"
+    ],
+    "solutionSteps": [
+      "対象系・境界条件を特定する。",
+      "該当する熱移動・流体・相変化の式を選ぶ。",
+      "物性値と単位、または条件判断を計算する。",
+      "他の選択肢との違いと適用限界を確認する。"
+    ],
+    "beginnerPitfall": "無次元数と温度、熱移動率Wと熱流束W/m²、適用条件の違いを整理する。"
+  },
+  {
+    "id": "supp-found-ntu-qmax-v1",
+    "revision": "v1",
+    "field": "熱交換器・有効度",
+    "prerequisites": [
+      "エネルギー保存",
+      "物性と境界条件"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "§3.3独立執筆の詳細教材に基づく新規問題。原文・原図・原本の設問を転載しない。",
+      "chapterId": "ch3",
+      "focusSectionId": "3.3",
+      "guideId": "chapter3-effectiveness-ntu"
+    },
+    "createdStatus": "独立作問",
+    "reviewStatus": "式と単位の内部計算確認済み／外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [],
+    "prompt": "温側C_h=400 W/K、冷側C_c=800 W/K、入口が100℃と20℃の熱交換器。Q_maxは？",
+    "choices": [
+      "16 kW",
+      "24 kW",
+      "32 kW",
+      "64 kW"
+    ],
+    "answer": 2,
+    "difficulty": "基礎・標準・適用判断",
+    "explanation": "C_min=400 W/K、入口温度差80 KだからQ_max=32000 W。",
+    "distractors": [
+      "入口温度差を40 Kとしている。",
+      "C_minまたは温度差を誤っている。",
+      "正解。400×80=32000 W。",
+      "C_maxを使っている。"
+    ],
+    "hints": [
+      "最初に問題の量の単位と代表長さを特定してください。",
+      "条件に合う式を選び、適用限界と矛盾しないか点検してください。"
+    ],
+    "solutionSteps": [
+      "対象系・境界条件を特定する。",
+      "該当する熱移動・流体・相変化の式を選ぶ。",
+      "物性値と単位、または条件判断を計算する。",
+      "他の選択肢との違いと適用限界を確認する。"
+    ],
+    "beginnerPitfall": "無次元数と温度、熱移動率Wと熱流束W/m²、適用条件の違いを整理する。"
+  },
+  {
+    "id": "supp-found-ntu-config-v1",
+    "revision": "v1",
+    "field": "熱交換器・有効度",
+    "prerequisites": [
+      "エネルギー保存",
+      "物性と境界条件"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "conceptual",
+    "source": {
+      "type": "supplement",
+      "reference": "§3.3独立執筆の詳細教材に基づく新規問題。原文・原図・原本の設問を転載しない。",
+      "chapterId": "ch3",
+      "focusSectionId": "3.3",
+      "guideId": "chapter3-effectiveness-ntu"
+    },
+    "createdStatus": "独立作問",
+    "reviewStatus": "式と単位の内部計算確認済み／外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [],
+    "prompt": "同じNTUとC_rで熱交換器の配置を並流から向流に変えた。正しい判断は？",
+    "choices": [
+      "流路が変わっても有効度は必ず同じになる",
+      "有効度はNTUだけ分かれば一意に決まる",
+      "熱容量流量比は向流になると消えてしまう",
+      "有効度は流路配置に応じた関係式で求める"
+    ],
+    "answer": 3,
+    "difficulty": "基礎・標準・適用判断",
+    "explanation": "並流と向流は温度差分布が違うため、ε–NTUの関係式も異なる。",
+    "distractors": [
+      "温度差分布の違いを無視。",
+      "C_rや配置が必要。",
+      "熱容量比は向流でも残る。",
+      "正解。配置に合う式を選ぶ。"
+    ],
+    "hints": [
+      "最初に問題の量の単位と代表長さを特定してください。",
+      "条件に合う式を選び、適用限界と矛盾しないか点検してください。"
+    ],
+    "solutionSteps": [
+      "対象系・境界条件を特定する。",
+      "該当する熱移動・流体・相変化の式を選ぶ。",
+      "物性値と単位、または条件判断を計算する。",
+      "他の選択肢との違いと適用限界を確認する。"
+    ],
+    "beginnerPitfall": "無次元数と温度、熱移動率Wと熱流束W/m²、適用条件の違いを整理する。"
+  },
+  {
+    "id": "supp-found-slab-biot-v1",
+    "revision": "v1",
+    "field": "非定常・平板伝導",
+    "prerequisites": [
+      "エネルギー保存",
+      "物性と境界条件"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "§5.3独立執筆の詳細教材に基づく新規問題。原文・原図・原本の設問を転載しない。",
+      "chapterId": "ch5",
+      "focusSectionId": "5.3",
+      "guideId": "chapter5-semi-infinite"
+    },
+    "createdStatus": "独立作問",
+    "reviewStatus": "式と単位の内部計算確認済み／外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [],
+    "prompt": "両面が同条件の厚さ0.040 mの平板。半厚さL=0.020 m、h=50 W/(m²·K)、k=5 W/(m·K)のBiは？",
+    "choices": [
+      "0.050",
+      "0.100",
+      "0.200",
+      "0.400"
+    ],
+    "answer": 2,
+    "difficulty": "基礎・標準・適用判断",
+    "explanation": "Bi=hL/k=50×0.020/5=0.20。",
+    "distractors": [
+      "Lをさらに半分としている。",
+      "hかLの係数を半減。",
+      "正解。半厚さを使う。",
+      "全厚さを使った値。"
+    ],
+    "hints": [
+      "最初に問題の量の単位と代表長さを特定してください。",
+      "条件に合う式を選び、適用限界と矛盾しないか点検してください。"
+    ],
+    "solutionSteps": [
+      "対象系・境界条件を特定する。",
+      "該当する熱移動・流体・相変化の式を選ぶ。",
+      "物性値と単位、または条件判断を計算する。",
+      "他の選択肢との違いと適用限界を確認する。"
+    ],
+    "beginnerPitfall": "無次元数と温度、熱移動率Wと熱流束W/m²、適用条件の違いを整理する。"
+  },
+  {
+    "id": "supp-found-slab-fourier-v1",
+    "revision": "v1",
+    "field": "非定常・平板伝導",
+    "prerequisites": [
+      "エネルギー保存",
+      "物性と境界条件"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "§5.3独立執筆の詳細教材に基づく新規問題。原文・原図・原本の設問を転載しない。",
+      "chapterId": "ch5",
+      "focusSectionId": "5.3",
+      "guideId": "chapter5-semi-infinite"
+    },
+    "createdStatus": "独立作問",
+    "reviewStatus": "式と単位の内部計算確認済み／外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [],
+    "prompt": "平板半厚さL=0.020 m、α=1.0×10⁻⁶ m²/s、経過時間100 sのFoは？",
+    "choices": [
+      "0.025",
+      "0.100",
+      "0.250",
+      "1.000"
+    ],
+    "answer": 2,
+    "difficulty": "基礎・標準・適用判断",
+    "explanation": "Fo=αt/L²=0.0001/0.0004=0.25。",
+    "distractors": [
+      "L²またはαの桁違い。",
+      "代表長さを間違えている。",
+      "正解。0.25で無次元。",
+      "分子と分母を等しいとみなす。"
+    ],
+    "hints": [
+      "最初に問題の量の単位と代表長さを特定してください。",
+      "条件に合う式を選び、適用限界と矛盾しないか点検してください。"
+    ],
+    "solutionSteps": [
+      "対象系・境界条件を特定する。",
+      "該当する熱移動・流体・相変化の式を選ぶ。",
+      "物性値と単位、または条件判断を計算する。",
+      "他の選択肢との違いと適用限界を確認する。"
+    ],
+    "beginnerPitfall": "無次元数と温度、熱移動率Wと熱流束W/m²、適用条件の違いを整理する。"
+  },
+  {
+    "id": "supp-found-slab-solve-v1",
+    "revision": "v1",
+    "field": "非定常・平板伝導",
+    "prerequisites": [
+      "エネルギー保存",
+      "物性と境界条件"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "conceptual",
+    "source": {
+      "type": "supplement",
+      "reference": "§5.3独立執筆の詳細教材に基づく新規問題。原文・原図・原本の設問を転載しない。",
+      "chapterId": "ch5",
+      "focusSectionId": "5.3",
+      "guideId": "chapter5-semi-infinite"
+    },
+    "createdStatus": "独立作問",
+    "reviewStatus": "式と単位の内部計算確認済み／外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [],
+    "prompt": "ある平板のBi=0.20、Fo=0.25だけが分かった。中心温度の数値を求めるには何が必要か？",
+    "choices": [
+      "初期温度と周囲温度などの境界条件が必要",
+      "Biが0.20なら内部は必ず一様温度である",
+      "Foが0.25なら中心温度は25℃と決まる",
+      "経過時間が分かれば全ての温度が求まる"
+    ],
+    "answer": 0,
+    "difficulty": "基礎・標準・適用判断",
+    "explanation": "BiとFoは無次元の物理指標であり、温度基準、初期・境界条件および解が必要。",
+    "distractors": [
+      "正解。無次元数は温度そのものではない。",
+      "一様温度近似を保証しない。",
+      "Foを℃と誤認している。",
+      "経過時間だけでは不足。"
+    ],
+    "hints": [
+      "最初に問題の量の単位と代表長さを特定してください。",
+      "条件に合う式を選び、適用限界と矛盾しないか点検してください。"
+    ],
+    "solutionSteps": [
+      "対象系・境界条件を特定する。",
+      "該当する熱移動・流体・相変化の式を選ぶ。",
+      "物性値と単位、または条件判断を計算する。",
+      "他の選択肢との違いと適用限界を確認する。"
+    ],
+    "beginnerPitfall": "無次元数と温度、熱移動率Wと熱流束W/m²、適用条件の違いを整理する。"
+  },
+  {
+    "id": "supp-found-slab-symmetry-v1",
+    "revision": "v1",
+    "field": "非定常・平板伝導",
+    "prerequisites": [
+      "エネルギー保存",
+      "物性と境界条件"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "conceptual",
+    "source": {
+      "type": "supplement",
+      "reference": "§5.3独立執筆の詳細教材に基づく新規問題。原文・原図・原本の設問を転載しない。",
+      "chapterId": "ch5",
+      "focusSectionId": "5.3",
+      "guideId": "chapter5-semi-infinite"
+    },
+    "createdStatus": "独立作問",
+    "reviewStatus": "式と単位の内部計算確認済み／外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [],
+    "prompt": "初期温度・両面の境界が対称な平板で、中心x=0の温度勾配は？",
+    "choices": [
+      "dT/dx=+h/k",
+      "dT/dx=−h/k",
+      "dT/dx=0",
+      "T=0 K"
+    ],
+    "answer": 2,
+    "difficulty": "基礎・標準・適用判断",
+    "explanation": "中心は対称面なので法線方向の熱流束がゼロ、温度勾配dT/dx=0。",
+    "distractors": [
+      "h/kは中心温度勾配の値ではない。",
+      "負号を付けても対称面条件にならない。",
+      "正解。中心勾配ゼロ。",
+      "中心温度が絶対零度とは限らない。"
+    ],
+    "hints": [
+      "最初に問題の量の単位と代表長さを特定してください。",
+      "条件に合う式を選び、適用限界と矛盾しないか点検してください。"
+    ],
+    "solutionSteps": [
+      "対象系・境界条件を特定する。",
+      "該当する熱移動・流体・相変化の式を選ぶ。",
+      "物性値と単位、または条件判断を計算する。",
+      "他の選択肢との違いと適用限界を確認する。"
+    ],
+    "beginnerPitfall": "無次元数と温度、熱移動率Wと熱流束W/m²、適用条件の違いを整理する。"
+  },
+  {
+    "id": "supp-found-re-flat-v1",
+    "revision": "v1",
+    "field": "対流・境界層",
+    "prerequisites": [
+      "エネルギー保存",
+      "物性と境界条件"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "§6.1独立執筆の詳細教材に基づく新規問題。原文・原図・原本の設問を転載しない。",
+      "chapterId": "ch6",
+      "focusSectionId": "6.1",
+      "guideId": "chapter6-flat-boundary"
+    },
+    "createdStatus": "独立作問",
+    "reviewStatus": "式と単位の内部計算確認済み／外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [],
+    "prompt": "主流速度U=2.0 m/s、長さL=0.50 m、流体動粘度ν=1.5×10⁻⁵ m²/s。Re_Lは？",
+    "choices": [
+      "6.67×10³",
+      "6.67×10⁴",
+      "6.67×10⁵",
+      "6.67×10⁶"
+    ],
+    "answer": 1,
+    "difficulty": "基礎・標準・適用判断",
+    "explanation": "Re=UL/ν=1/(1.5×10⁻⁵)≈6.67×10⁴。",
+    "distractors": [
+      "動粘度の指数を1桁間違えた。",
+      "正解。約66667。",
+      "動粘度を10分の1とした。",
+      "動粘度を100分の1とした。"
+    ],
+    "hints": [
+      "最初に問題の量の単位と代表長さを特定してください。",
+      "条件に合う式を選び、適用限界と矛盾しないか点検してください。"
+    ],
+    "solutionSteps": [
+      "対象系・境界条件を特定する。",
+      "該当する熱移動・流体・相変化の式を選ぶ。",
+      "物性値と単位、または条件判断を計算する。",
+      "他の選択肢との違いと適用限界を確認する。"
+    ],
+    "beginnerPitfall": "無次元数と温度、熱移動率Wと熱流束W/m²、適用条件の違いを整理する。"
+  },
+  {
+    "id": "supp-found-pr-fluid-v1",
+    "revision": "v1",
+    "field": "対流・境界層",
+    "prerequisites": [
+      "エネルギー保存",
+      "物性と境界条件"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "§6.1独立執筆の詳細教材に基づく新規問題。原文・原図・原本の設問を転載しない。",
+      "chapterId": "ch6",
+      "focusSectionId": "6.1",
+      "guideId": "chapter6-flat-boundary"
+    },
+    "createdStatus": "独立作問",
+    "reviewStatus": "式と単位の内部計算確認済み／外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [],
+    "prompt": "流体動粘度ν=1.5×10⁻⁵ m²/s、流体熱拡散率α_f=2.0×10⁻⁵ m²/s。Prは？",
+    "choices": [
+      "0.50",
+      "0.75",
+      "1.00",
+      "1.50"
+    ],
+    "answer": 1,
+    "difficulty": "基礎・標準・適用判断",
+    "explanation": "Pr=ν/α_f=1.5/2.0=0.75。",
+    "distractors": [
+      "粘性拡散率を小さく見積もる。",
+      "正解。無次元物性比。",
+      "二つの値が等しいと誤認。",
+      "逆比に近い値を選んでいる。"
+    ],
+    "hints": [
+      "最初に問題の量の単位と代表長さを特定してください。",
+      "条件に合う式を選び、適用限界と矛盾しないか点検してください。"
+    ],
+    "solutionSteps": [
+      "対象系・境界条件を特定する。",
+      "該当する熱移動・流体・相変化の式を選ぶ。",
+      "物性値と単位、または条件判断を計算する。",
+      "他の選択肢との違いと適用限界を確認する。"
+    ],
+    "beginnerPitfall": "無次元数と温度、熱移動率Wと熱流束W/m²、適用条件の違いを整理する。"
+  },
+  {
+    "id": "supp-found-nu-average-v1",
+    "revision": "v1",
+    "field": "対流・境界層",
+    "prerequisites": [
+      "エネルギー保存",
+      "物性と境界条件"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "§6.1独立執筆の詳細教材に基づく新規問題。原文・原図・原本の設問を転載しない。",
+      "chapterId": "ch6",
+      "focusSectionId": "6.1",
+      "guideId": "chapter6-flat-boundary"
+    },
+    "createdStatus": "独立作問",
+    "reviewStatus": "式と単位の内部計算確認済み／外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [],
+    "prompt": "平板上の平均h=20 W/(m²·K)、L=0.50 m、流体熱伝導率k_f=0.025 W/(m·K)。平均Nuは？",
+    "choices": [
+      "100",
+      "200",
+      "400",
+      "800"
+    ],
+    "answer": 2,
+    "difficulty": "基礎・標準・適用判断",
+    "explanation": "Nu=hL/k_f=20×0.50/0.025=400。",
+    "distractors": [
+      "分子のhLを過小評価。",
+      "分母k_fを過大評価。",
+      "正解。無次元400。",
+      "k_fを半分とした結果。"
+    ],
+    "hints": [
+      "最初に問題の量の単位と代表長さを特定してください。",
+      "条件に合う式を選び、適用限界と矛盾しないか点検してください。"
+    ],
+    "solutionSteps": [
+      "対象系・境界条件を特定する。",
+      "該当する熱移動・流体・相変化の式を選ぶ。",
+      "物性値と単位、または条件判断を計算する。",
+      "他の選択肢との違いと適用限界を確認する。"
+    ],
+    "beginnerPitfall": "無次元数と温度、熱移動率Wと熱流束W/m²、適用条件の違いを整理する。"
+  },
+  {
+    "id": "supp-found-nu-fluid-k-v1",
+    "revision": "v1",
+    "field": "対流・境界層",
+    "prerequisites": [
+      "エネルギー保存",
+      "物性と境界条件"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "conceptual",
+    "source": {
+      "type": "supplement",
+      "reference": "§6.1独立執筆の詳細教材に基づく新規問題。原文・原図・原本の設問を転載しない。",
+      "chapterId": "ch6",
+      "focusSectionId": "6.1",
+      "guideId": "chapter6-flat-boundary"
+    },
+    "createdStatus": "独立作問",
+    "reviewStatus": "式と単位の内部計算確認済み／外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [],
+    "prompt": "Nu=hL/k_fを評価するとき、k_fとして用いる物性は？",
+    "choices": [
+      "固体壁の熱伝導率を直接そのまま使う",
+      "流体の熱伝導率を0と仮定して求める",
+      "固体と流体の熱伝導率を必ず足し合わせる",
+      "境界層を形成する流体側の熱伝導率を使う"
+    ],
+    "answer": 3,
+    "difficulty": "基礎・標準・適用判断",
+    "explanation": "Nuは流体の対流と熱伝導を比べる無次元数であり、流体のk_fが必要。",
+    "distractors": [
+      "固体のk_sでは別の量になる。",
+      "流体静止で熱伝導率はゼロにならない。",
+      "k_sとk_fを足す一般式ではない。",
+      "正解。流体側の物性を使う。"
+    ],
+    "hints": [
+      "最初に問題の量の単位と代表長さを特定してください。",
+      "条件に合う式を選び、適用限界と矛盾しないか点検してください。"
+    ],
+    "solutionSteps": [
+      "対象系・境界条件を特定する。",
+      "該当する熱移動・流体・相変化の式を選ぶ。",
+      "物性値と単位、または条件判断を計算する。",
+      "他の選択肢との違いと適用限界を確認する。"
+    ],
+    "beginnerPitfall": "無次元数と温度、熱移動率Wと熱流束W/m²、適用条件の違いを整理する。"
+  },
+  {
+    "id": "supp-found-boil-flux-v1",
+    "revision": "v1",
+    "field": "沸騰・相変化",
+    "prerequisites": [
+      "エネルギー保存",
+      "物性と境界条件"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "§9.1独立執筆の詳細教材に基づく新規問題。原文・原図・原本の設問を転載しない。",
+      "chapterId": "ch9",
+      "focusSectionId": "9.1",
+      "guideId": "chapter9-latent-boiling"
+    },
+    "createdStatus": "独立作問",
+    "reviewStatus": "式と単位の内部計算確認済み／外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [],
+    "prompt": "面積0.010 m²の加熱面が液体へ200 Wを伝える。平均熱流束は？",
+    "choices": [
+      "2 kW/m²",
+      "10 kW/m²",
+      "20 kW/m²",
+      "200 kW/m²"
+    ],
+    "answer": 2,
+    "difficulty": "基礎・標準・適用判断",
+    "explanation": "q″=200/0.010=20000 W/m²=20 kW/m²。",
+    "distractors": [
+      "桁換算が不適切。",
+      "面積を二倍としている。",
+      "正解。面積で割る。",
+      "10倍の桁違い。"
+    ],
+    "hints": [
+      "最初に問題の量の単位と代表長さを特定してください。",
+      "条件に合う式を選び、適用限界と矛盾しないか点検してください。"
+    ],
+    "solutionSteps": [
+      "対象系・境界条件を特定する。",
+      "該当する熱移動・流体・相変化の式を選ぶ。",
+      "物性値と単位、または条件判断を計算する。",
+      "他の選択肢との違いと適用限界を確認する。"
+    ],
+    "beginnerPitfall": "無次元数と温度、熱移動率Wと熱流束W/m²、適用条件の違いを整理する。"
+  },
+  {
+    "id": "supp-found-boil-h-v1",
+    "revision": "v1",
+    "field": "沸騰・相変化",
+    "prerequisites": [
+      "エネルギー保存",
+      "物性と境界条件"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "§9.1独立執筆の詳細教材に基づく新規問題。原文・原図・原本の設問を転載しない。",
+      "chapterId": "ch9",
+      "focusSectionId": "9.1",
+      "guideId": "chapter9-latent-boiling"
+    },
+    "createdStatus": "独立作問",
+    "reviewStatus": "式と単位の内部計算確認済み／外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [],
+    "prompt": "平均熱流束20 kW/m²、壁温120℃、飽和温度100℃の見かけのh=q″/ΔT_satは？",
+    "choices": [
+      "100 W/(m²·K)",
+      "500 W/(m²·K)",
+      "1000 W/(m²·K)",
+      "2000 W/(m²·K)"
+    ],
+    "answer": 2,
+    "difficulty": "基礎・標準・適用判断",
+    "explanation": "20 kW/m²は20000 W/m²、過熱度20 Kなのでh=1000 W/(m²·K)。",
+    "distractors": [
+      "熱流束の桁違い。",
+      "過熱度を40 Kとした。",
+      "正解。単位をWへ揃える。",
+      "過熱度を10 Kとした。"
+    ],
+    "hints": [
+      "最初に問題の量の単位と代表長さを特定してください。",
+      "条件に合う式を選び、適用限界と矛盾しないか点検してください。"
+    ],
+    "solutionSteps": [
+      "対象系・境界条件を特定する。",
+      "該当する熱移動・流体・相変化の式を選ぶ。",
+      "物性値と単位、または条件判断を計算する。",
+      "他の選択肢との違いと適用限界を確認する。"
+    ],
+    "beginnerPitfall": "無次元数と温度、熱移動率Wと熱流束W/m²、適用条件の違いを整理する。"
+  },
+  {
+    "id": "supp-found-boil-chf-v1",
+    "revision": "v1",
+    "field": "沸騰・相変化",
+    "prerequisites": [
+      "エネルギー保存",
+      "物性と境界条件"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "conceptual",
+    "source": {
+      "type": "supplement",
+      "reference": "§9.1独立執筆の詳細教材に基づく新規問題。原文・原図・原本の設問を転載しない。",
+      "chapterId": "ch9",
+      "focusSectionId": "9.1",
+      "guideId": "chapter9-latent-boiling"
+    },
+    "createdStatus": "独立作問",
+    "reviewStatus": "式と単位の内部計算確認済み／外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [],
+    "prompt": "運転熱流束20 kW/m²が分かったが、同条件でのCHFが不明。正しい判断は？",
+    "choices": [
+      "20 kW/m²なら必ずCHFを超えている",
+      "比較できるCHFがなく超過は判定できない",
+      "核沸騰には限界熱流束という概念がない",
+      "液体の沸点だけでCHFは一意に決定できる"
+    ],
+    "answer": 1,
+    "difficulty": "基礎・標準・適用判断",
+    "explanation": "CHFは液体、圧力、表面状態、流動・配置条件などに依存する。",
+    "distractors": [
+      "不明な限界値と比較できない。",
+      "正解。条件に合うCHFが必要。",
+      "核沸騰にはCHFがある。",
+      "沸点だけで決まる定数ではない。"
+    ],
+    "hints": [
+      "最初に問題の量の単位と代表長さを特定してください。",
+      "条件に合う式を選び、適用限界と矛盾しないか点検してください。"
+    ],
+    "solutionSteps": [
+      "対象系・境界条件を特定する。",
+      "該当する熱移動・流体・相変化の式を選ぶ。",
+      "物性値と単位、または条件判断を計算する。",
+      "他の選択肢との違いと適用限界を確認する。"
+    ],
+    "beginnerPitfall": "無次元数と温度、熱移動率Wと熱流束W/m²、適用条件の違いを整理する。"
+  },
+  {
+    "id": "supp-found-boil-regime-v1",
+    "revision": "v1",
+    "field": "沸騰・相変化",
+    "prerequisites": [
+      "エネルギー保存",
+      "物性と境界条件"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "conceptual",
+    "source": {
+      "type": "supplement",
+      "reference": "§9.1独立執筆の詳細教材に基づく新規問題。原文・原図・原本の設問を転載しない。",
+      "chapterId": "ch9",
+      "focusSectionId": "9.1",
+      "guideId": "chapter9-latent-boiling"
+    },
+    "createdStatus": "独立作問",
+    "reviewStatus": "式と単位の内部計算確認済み／外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [],
+    "prompt": "プール沸騰で核沸騰からCHFの領域に近づく際、適切な説明は？",
+    "choices": [
+      "加熱面の温度はいつでも一定に保たれる",
+      "熱流束を増しても温度上昇は起こり得ない",
+      "核沸騰と膜沸騰の熱伝達率は常に等しい",
+      "濡れ状態が変わり壁温が急激に変化する危険がある"
+    ],
+    "answer": 3,
+    "difficulty": "基礎・標準・適用判断",
+    "explanation": "CHF付近で冷却機構が変わり、壁温が急上昇する条件があり得る。",
+    "distractors": [
+      "熱負荷で壁温は変わる。",
+      "壁温急変は起こりうる。",
+      "蒸気膜形成でhは変化し得る。",
+      "正解。過渡的な不安定性に注意。"
+    ],
+    "hints": [
+      "最初に問題の量の単位と代表長さを特定してください。",
+      "条件に合う式を選び、適用限界と矛盾しないか点検してください。"
+    ],
+    "solutionSteps": [
+      "対象系・境界条件を特定する。",
+      "該当する熱移動・流体・相変化の式を選ぶ。",
+      "物性値と単位、または条件判断を計算する。",
+      "他の選択肢との違いと適用限界を確認する。"
+    ],
+    "beginnerPitfall": "無次元数と温度、熱移動率Wと熱流束W/m²、適用条件の違いを整理する。"
   }
 ]
