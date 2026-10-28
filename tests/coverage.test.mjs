@@ -26,13 +26,14 @@ test('coverage report separates original problems from verified book citation an
   assert.equal(coverage.chapters.reduce((a,b)=>a+b.citedPracticeQuestions,0),8);
   assert.equal(coverage.originalChapterGuides,11);
   assert.equal(coverage.chaptersWithOriginalPractice,11);
-  assert.equal(coverage.chapters.reduce((a,b)=>a+b.originalPracticeQuestions,0),162);
+  assert.equal(coverage.chapters.reduce((a,b)=>a+b.originalPracticeQuestions,0),170);
   assert.equal(coverage.chapters.reduce((a,b)=>a+b.originalGuideEntries,0),11);
-  assert.ok(coverage.chapters.every(c=>c.originalPracticeQuestions===6+c.sectionCount+(['ch2','ch4','ch5','ch10','ch11'].includes(c.chapter)?4:0)&&c.originalGuideEntries===1));
+  assert.ok(coverage.chapters.every(c=>c.originalPracticeQuestions===6+c.sectionCount+(['ch2','ch4','ch5','ch10','ch11'].includes(c.chapter)?4:0)+(['ch1','ch3'].includes(c.chapter)?4:0)&&c.originalGuideEntries===1));
   assert.equal(coverage.independentlyAuthoredJapaneseNotes,76);
-  assert.equal(coverage.originalDeepLessons,9);
+  assert.equal(coverage.originalDeepLessons,11);
+  assert.equal(coverage.chapters.find(x=>x.chapter==='ch1').originalDeepLessonCount,1);
   assert.equal(coverage.chapters.find(x=>x.chapter==='ch8').originalDeepLessonCount,2);
-  assert.equal(coverage.chapters.find(x=>x.chapter==='ch3').originalDeepLessonCount,1);
+  assert.equal(coverage.chapters.find(x=>x.chapter==='ch3').originalDeepLessonCount,2);
   assert.equal(coverage.chapters.find(x=>x.chapter==='ch4').originalDeepLessonCount,1);
   assert.equal(coverage.chapters.find(x=>x.chapter==='ch5').originalDeepLessonCount,2);
   assert.equal(coverage.chapters.find(x=>x.chapter==='ch2').originalDeepLessonCount,1);
