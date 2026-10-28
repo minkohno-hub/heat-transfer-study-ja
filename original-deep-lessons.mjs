@@ -1,6 +1,6 @@
 // Original, advanced Japanese teaching materials: not translations of the book.
 // The external references ground physical relations, not a claim of expert review.
-export const DEEP_LESSON_IDS=Object.freeze(['1.1','1.2','1.3','2.1','2.2','2.3','2.4','3.1','3.2','3.3','3.4','4.1','4.2','4.3','4.5','5.2','5.3','5.6','6.1','7.2','8.4','8.5','9.1','9.2','10.1','10.3','11.3']);
+export const DEEP_LESSON_IDS=Object.freeze(['1.1','1.2','1.3','2.1','2.2','2.3','2.4','3.1','3.2','3.3','3.4','4.1','4.2','4.3','4.5','5.2','5.3','5.6','6.1','7.2','8.4','8.5','9.1','9.2','9.3','10.1','10.3','11.3']);
 const nonempty=value=>typeof value==='string'&&value.trim().length>0;
 const object=value=>value!==null&&typeof value==='object'&&!Array.isArray(value);
 export function validateDeepLessons(book,document){

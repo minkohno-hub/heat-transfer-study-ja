@@ -171,7 +171,7 @@ try {
   await page.locator('[data-chapter-card="ch2"]').waitFor({state:'visible'});
   assert.match(await page.locator('[data-chapter-card="ch2"]').innerText(),/収録問題：36問/);
   assert.match(await page.locator('[data-chapter-card="ch1"]').innerText(),/原本の節を読了に記録：1\/5節/);
-  assert.match(await page.locator('[data-chapter-card="ch9"]').innerText(),/収録問題：34問/);
+  assert.match(await page.locator('[data-chapter-card="ch9"]').innerText(),/収録問題：40問/);
   assert.match(await page.locator('[data-chapter-card="ch2"]').innerText(),/未回答：36問/);
   await page.locator('[data-chapter-card="ch2"] [data-chapter-practice-mode="priority"]').click();
   await page.locator('.question-card').waitFor({state:'visible'});
@@ -189,10 +189,10 @@ try {
   await page.locator('[data-action="exit-quiz"]').click();
   await page.locator('[data-action="discard-quiz"]').click();
   await page.locator('#quiz-start-form select[name="chapter"]').selectOption('ch9');
-  await page.locator('#quiz-start-form select[name="count"]').selectOption('318');
+  await page.locator('#quiz-start-form select[name="count"]').selectOption('324');
   await page.locator('#quiz-start-form button[type="submit"]').click();
   await page.locator('.question-card').waitFor({state:'visible'});
-  assert.match(await page.locator('.page-heading h1').innerText(),/1 \/ 34 問/);
+  assert.match(await page.locator('.page-heading h1').innerText(),/1 \/ 40 問/);
   await page.locator('[data-action="exit-quiz"]').click();
   await page.locator('[data-action="discard-quiz"]').click();
   await nav('guide');

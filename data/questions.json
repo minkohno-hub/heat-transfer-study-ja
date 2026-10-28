@@ -15044,5 +15044,299 @@
       "実際の開始温度もCHFも決まらないと判断する。"
     ],
     "beginnerPitfall": "理想平衡式の計算可能性と、沸騰運転の安全判定を混同しない。"
+  },
+  {
+    "id": "supp-chf-capillary-length-v1",
+    "revision": "v1",
+    "field": "沸騰・相変化",
+    "prerequisites": [
+      "表面張力",
+      "密度差",
+      "平方根と単位換算"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "アプリ独立執筆の限界熱流束学習講義 §9.3 と仮想条件から作成。原本の翻訳・本文・図・章末問題は転載しない。",
+      "chapterId": "ch9",
+      "focusSectionId": "9.3",
+      "guideId": "chapter9-latent-boiling"
+    },
+    "createdStatus": "独立作問",
+    "reviewStatus": "式・単位と適用条件を内部検算／外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [],
+    "prompt": "界面張力σ=0.060 N/m、g=10 m/s²、液体と蒸気の密度差ρ_l−ρ_v=1000 kg/m³とする。毛管長の尺度ℓ_c=√[σ/{g(ρ_l−ρ_v)}]はいくらか。有効数字3桁でmmに直す。",
+    "choices": [
+      "0.245 mm",
+      "2.45 mm",
+      "24.5 mm",
+      "245 mm"
+    ],
+    "answer": 1,
+    "difficulty": "標準・数値計算",
+    "explanation": "根号内は0.060/(10×1000)=6.0×10⁻⁶ m²。平方根は2.449×10⁻³ m=2.45 mm。これは界面張力と重力を比べる尺度で、実際の気泡径ではない。",
+    "distractors": [
+      "長さを10分の1に換算している。",
+      "正解。平方根を取り、mからmmへ直した。",
+      "平方根後の長さを10倍に換算している。",
+      "根号内の次元m²を長さとして扱った。"
+    ],
+    "hints": [
+      "σ/{gΔρ}の次元はm²。",
+      "6.0×10⁻⁶ m²の平方根を取り、1000 mm/mを掛ける。"
+    ],
+    "solutionSteps": [
+      "密度差とgを掛けて、σ/(gΔρ)=6.0×10⁻⁶ m²を得る。",
+      "平方根からℓ_c=2.449×10⁻³ mを得る。",
+      "2.449×10⁻³ m=2.45 mmと有効数字3桁で示す。"
+    ],
+    "beginnerPitfall": "毛管長の尺度を気泡径や蒸気柱の正確な間隔と同一視しない。"
+  },
+  {
+    "id": "supp-chf-ideal-correlation-v1",
+    "revision": "v1",
+    "field": "沸騰・相変化",
+    "prerequisites": [
+      "飽和プール沸騰",
+      "4乗根",
+      "限界熱流束"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "アプリ独立執筆の限界熱流束学習講義 §9.3 と仮想条件から作成。原本の翻訳・本文・図・章末問題は転載しない。",
+      "chapterId": "ch9",
+      "focusSectionId": "9.3",
+      "guideId": "chapter9-latent-boiling"
+    },
+    "createdStatus": "独立作問",
+    "reviewStatus": "式・単位と適用条件を内部検算／外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [],
+    "prompt": "大きな水平面の飽和プール沸騰を理想化し、q″_CHF≈C h_fg√ρ_v[σg(ρ_l−ρ_v)]^(1/4)を使う。C=0.13、h_fg=2.0×10⁶ J/kg、ρ_v=0.64 kg/m³、σ=0.0625 N/m、g=10 m/s²、ρ_l−ρ_v=1000 kg/m³なら約いくらか。有効数字3桁。",
+    "choices": [
+      "0.520 MW/m²",
+      "2.08 MW/m²",
+      "1.04 MW/m²",
+      "4.16 MW/m²"
+    ],
+    "answer": 2,
+    "difficulty": "発展・数値計算",
+    "explanation": "√ρ_v=0.8、σgΔρ=0.0625×10×1000=625、その4乗根は5。したがってq″_CHF≈0.13×2.0×10⁶×0.8×5=1.04×10⁶ W/m²=1.04 MW/m²。仮想の理想化値であり設計許容値ではない。",
+    "distractors": [
+      "係数または物性因子を半分にしている。",
+      "相関の結果を2倍にしている。",
+      "正解。平方根と4乗根を別々に計算した。",
+      "相関の結果を4倍にしている。"
+    ],
+    "hints": [
+      "ρ_vの平方根は0.8、625の4乗根は5。",
+      "C×h_fg×0.8×5を計算し、10⁶ W=1 MWを使う。"
+    ],
+    "solutionSteps": [
+      "√0.64=0.8、[0.0625×10×1000]^(1/4)=625^(1/4)=5。",
+      "0.13×2.0×10⁶×0.8×5=1.04×10⁶ W/m²。",
+      "1.04 MW/m²とし、この相関が大きな水平面の近似であることを確認する。"
+    ],
+    "beginnerPitfall": "C=0.13を全ての加熱面の安全係数とみなさない。"
+  },
+  {
+    "id": "supp-chf-surface-tension-scale-v1",
+    "revision": "v1",
+    "field": "沸騰・相変化",
+    "prerequisites": [
+      "CHF相関の指数",
+      "4乗根",
+      "適用条件"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "applied",
+    "source": {
+      "type": "supplement",
+      "reference": "アプリ独立執筆の限界熱流束学習講義 §9.3 と仮想条件から作成。原本の翻訳・本文・図・章末問題は転載しない。",
+      "chapterId": "ch9",
+      "focusSectionId": "9.3",
+      "guideId": "chapter9-latent-boiling"
+    },
+    "createdStatus": "独立作問",
+    "reviewStatus": "式・単位と適用条件を内部検算／外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [],
+    "prompt": "理想化CHF相関で、C、h_fg、ρ_v、g、密度差を固定し、表面張力σだけを16倍にした。式が適用できる仮想比較ではq″_CHFは元の何倍か。",
+    "choices": [
+      "16倍",
+      "4倍",
+      "1/2倍",
+      "2倍"
+    ],
+    "answer": 3,
+    "difficulty": "応用・感度分析",
+    "explanation": "この相関ではq″_CHF∝σ^(1/4)。σだけを16倍にすると16^(1/4)=2倍。実流体では表面張力だけを独立に変えることは難しく、圧力変化で他の物性も変わる。",
+    "distractors": [
+      "4乗根を取らずに比例とした。",
+      "平方根と4乗根を混同した。",
+      "逆比例と誤認した。",
+      "正解。16の4乗根は2である。"
+    ],
+    "hints": [
+      "σは角括弧全体の4乗根の中にある。",
+      "16^(1/4)=2を計算する。"
+    ],
+    "solutionSteps": [
+      "式の他の因子を一定として比を取る。",
+      "q_new/q_old=(σ_new/σ_old)^(1/4)。",
+      "16^(1/4)=2より2倍。"
+    ],
+    "beginnerPitfall": "流体の圧力変更をσだけの独立変更として扱わない。"
+  },
+  {
+    "id": "supp-chf-uncertain-bound-v1",
+    "revision": "v1",
+    "field": "沸騰・相変化",
+    "prerequisites": [
+      "限界熱流束",
+      "不確かさ",
+      "局所熱流束"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "applied",
+    "source": {
+      "type": "supplement",
+      "reference": "アプリ独立執筆の限界熱流束学習講義 §9.3 と仮想条件から作成。原本の翻訳・本文・図・章末問題は転載しない。",
+      "chapterId": "ch9",
+      "focusSectionId": "9.3",
+      "guideId": "chapter9-latent-boiling"
+    },
+    "createdStatus": "独立作問",
+    "reviewStatus": "式・単位と適用条件を内部検算／外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [],
+    "prompt": "ある条件のCHFはモデルと測定の不確かさを含め0.70～1.20 MW/m²と見積もられ、平均運転熱流束は0.80 MW/m²である。この情報だけからの判断はどれか。",
+    "choices": [
+      "CHF下限0.70を上回るため、安全とは断定できない",
+      "CHF上限1.20を下回るので、局所も必ず安全と言える",
+      "CHF範囲の中央値より低いため、必ず安全と言える",
+      "推定幅があっても運転熱流束との比較は不要になる"
+    ],
+    "answer": 0,
+    "difficulty": "応用・不確かさ",
+    "explanation": "運転0.80 MW/m²は推定下限0.70 MW/m²を上回る。上限値だけを選んで安全と断定できず、局所流束・過渡応答や相関の適用条件も必要。推定幅の意味を明確にした追加評価が必要である。",
+    "distractors": [
+      "正解。下限を超える運転値に安全保証はできない。",
+      "不確かさを無視して都合のよい上限だけを採用している。",
+      "中央値との比較だけでは低いCHFの可能性を消せない。",
+      "推定幅があっても比較と追加評価は必要である。"
+    ],
+    "hints": [
+      "運転値を範囲の下限と上限の両方に比べる。",
+      "0.80は0.70より大きい。"
+    ],
+    "solutionSteps": [
+      "q″_op=0.80、推定CHF下限=0.70 MW/m²を同じ単位で比較する。",
+      "0.80>0.70なので、下限が妥当なら運転値は超過する。",
+      "安全と断定せず、測定・適用条件・局所値を追加確認する。"
+    ],
+    "beginnerPitfall": "平均値が推定上限を下回るだけで安全保証としない。"
+  },
+  {
+    "id": "supp-chf-power-control-v1",
+    "revision": "v1",
+    "field": "沸騰・相変化",
+    "prerequisites": [
+      "プール沸騰曲線",
+      "限界熱流束",
+      "熱容量"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "conceptual",
+    "source": {
+      "type": "supplement",
+      "reference": "アプリ独立執筆の限界熱流束学習講義 §9.3 と仮想条件から作成。原本の翻訳・本文・図・章末問題は転載しない。",
+      "chapterId": "ch9",
+      "focusSectionId": "9.3",
+      "guideId": "chapter9-latent-boiling"
+    },
+    "createdStatus": "独立作問",
+    "reviewStatus": "式・単位と適用条件を内部検算／外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [],
+    "prompt": "飽和プール沸騰の加熱器で、液体へ渡る熱をほぼ一定電力で増やす。CHF付近を超えるとき壁面温度について適切なのはどれか。",
+    "choices": [
+      "一定電力ならCHF後も壁温は一定に保たれる",
+      "冷却が弱まり壁温が急上昇する場合がある",
+      "壁温制御でも熱流束は単調増加する",
+      "制御方式によらず沸騰曲線が同じ安定経路になる"
+    ],
+    "answer": 1,
+    "difficulty": "標準・物理解釈",
+    "explanation": "一定電力で核沸騰域の上限を超えると、液体の面への補給が悪化し、同じ熱入力を除去できず壁温が急に上がる場合がある。温度制御の場合の経路は異なり得る。",
+    "distractors": [
+      "冷却機構の変化を無視している。",
+      "正解。熱流束制御と壁温制御を分けた。",
+      "沸騰曲線には最大付近があり単調増加ではない。",
+      "不安定域の通過は制御方式にも依存する。"
+    ],
+    "hints": [
+      "沸騰曲線の最大熱流束を考える。",
+      "入力電力を維持して冷却能力が落ちたら蓄熱はどうなるか。"
+    ],
+    "solutionSteps": [
+      "CHFは核沸騰域の熱流束上限の尺度と確認する。",
+      "冷却が入力に追いつかなければ壁へ蓄熱する。",
+      "一定電力下では壁温急上昇があり得ると判断する。"
+    ],
+    "beginnerPitfall": "CHFを超えたときの温度応答は装置と制御条件に依存するため、必然ではなく可能性として述べる。"
+  },
+  {
+    "id": "supp-chf-model-selection-v1",
+    "revision": "v1",
+    "field": "沸騰・相変化",
+    "prerequisites": [
+      "プール沸騰",
+      "強制流",
+      "相関式の適用条件"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "applied",
+    "source": {
+      "type": "supplement",
+      "reference": "アプリ独立執筆の限界熱流束学習講義 §9.3 と仮想条件から作成。原本の翻訳・本文・図・章末問題は転載しない。",
+      "chapterId": "ch9",
+      "focusSectionId": "9.3",
+      "guideId": "chapter9-latent-boiling"
+    },
+    "createdStatus": "独立作問",
+    "reviewStatus": "式・単位と適用条件を内部検算／外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [],
+    "prompt": "大きな水平面の飽和プール沸騰で得た理想CHF相関を、小さな曲面を通る強制流の冷却装置に使いたい。適切な扱いはどれか。",
+    "choices": [
+      "平板用相関の数値を曲面にもそのまま安全限界として使う",
+      "平板用相関を流速に応じてそのまま外挿して使う",
+      "面の向きだけ合えば流動や表面条件の差を無視する",
+      "曲面・流動・圧力に合う根拠や実験を別に確認する"
+    ],
+    "answer": 3,
+    "difficulty": "応用・設計判断",
+    "explanation": "大きな水平面の飽和プール沸騰相関は、小さな曲面や強制流へそのまま適用できない。形状、流動、圧力、表面、流体の条件に合う相関・実験と不確かさ評価が必要である。",
+    "distractors": [
+      "幾何と流動の違いを無視している。",
+      "流速の有無は流動様式を変える。",
+      "向きだけ一致しても他の条件は一致しない。",
+      "正解。適用条件と独立根拠を確認する。"
+    ],
+    "hints": [
+      "元の相関がどの幾何・流動条件で成立するか確認する。",
+      "小さな曲面と強制流は大きな水平面の飽和プールと違う。"
+    ],
+    "solutionSteps": [
+      "元のモデルは大きな水平面の飽和プール沸騰と特定する。",
+      "対象は小曲面・強制流であり幾何と流動が一致しない。",
+      "対象条件に合う相関や実験を別に確認すると判断する。"
+    ],
+    "beginnerPitfall": "数値が計算できることと、実機に適用できることを区別する。"
   }
 ]
