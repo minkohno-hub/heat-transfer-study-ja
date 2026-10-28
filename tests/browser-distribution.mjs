@@ -39,6 +39,12 @@ try {
   await page.locator('.reader-toc .toc-item.selected').waitFor({state:'attached'});
   assert.ok((await readerContrast()).every(value=>value>=4.5),'目次の選択行の文字コントラスト');
   await page.locator('#reader-article a[href="#guide/chapter1-energy-balance"]').waitFor({state:"attached"});
+  await page.locator('#reader-original-note').waitFor({state:'visible'});
+  assert.match(await page.locator('#reader-original-note').innerText(),/独立執筆・学術校閲前/);
+  assert.match(await page.locator('#reader-original-note').innerText(),/原本の翻訳、節の全文掲載、図表の転載ではありません/);
+  await page.locator('#reader-original-note summary').click();
+  assert.match(await page.locator('#reader-original-note').innerText(),/熱移動率はW/);
+
   assert.match(await page.locator('#reader-article').innerText(),/原本の翻訳・節本文ではありません/);
   assert.ok((await page.locator('.brand').getAttribute('aria-label')).includes('熱移動を学ぶ'));
   assert.ok((await page.locator('.not-translated a[href*="AHTTv600.pdf"]').getAttribute('aria-label')).includes('原本PDFを開く'));
@@ -144,6 +150,15 @@ try {
   assert.ok(await page.locator('.result-card').count()>=1);
   await page.locator('.result-card .result-link').first().click();
   assert.match(page.url(),/#guide\/chapter8-buoyancy$/);
+  await nav('search');
+  await page.locator('#search-query').fill('多成分混合物');
+  await page.locator('#search-form select[name="kind"]').selectOption('original-note');
+  await page.locator('#search-form select[name="chapter"]').selectOption('ch11');
+  await page.locator('#search-form button[type="submit"]').click();
+  assert.ok(await page.locator('.result-card').count()>=1);
+  await page.locator('.result-card .result-link').first().click();
+  await page.locator('#reader-original-note').waitFor({state:'visible'});
+  assert.match(await page.locator('#reader-original-note').innerText(),/独立執筆・学術校閲前/);
   await nav('simulator');
   assert.match(await page.locator('.result-number').innerText(),/5,625/);
   await page.locator('#sim-form input[name="k"]').fill('0.000001');
