@@ -384,6 +384,23 @@ try {
   if([200,206].includes(missingPdf.status))assert.equal(missingPdf.signature,'%PDF','別領域のHTTPキャッシュがPDFを返した場合も署名を確認する');
   }
   await nav('reader');
+  // In-depth original Japanese lessons must be accessible on both fresh and
+  // previously cached distributions, independently of copyrighted book text.
+  await page.locator('.reader-toc [data-section="3.2"]').evaluate(element=>{
+    for(let n=element.parentElement;n;n=n.parentElement)if(n.tagName==='DETAILS')n.open=true;
+  });
+  await page.locator('.reader-toc [data-section="3.2"]').click();
+  await page.locator('#reader-deep-lesson').waitFor({state:'visible'});
+  assert.match(await page.locator('#reader-deep-lesson').innerText(),/対数平均温度差の導出/);
+  assert.match(await page.locator('#reader-deep-lesson').innerText(),/202\.73 W\/K/);
+  assert.equal(await page.locator('#reader-deep-lesson .deep-lesson-block').count(),6);
+  await page.locator('.reader-toc [data-section="5.2"]').evaluate(element=>{
+    for(let n=element.parentElement;n;n=n.parentElement)if(n.tagName==='DETAILS')n.open=true;
+  });
+  await page.locator('.reader-toc [data-section="5.2"]').click();
+  await page.locator('#reader-deep-lesson').waitFor({state:'visible'});
+  assert.match(await page.locator('#reader-deep-lesson').innerText(),/集中熱容量法の支配方程式/);
+  assert.match(await page.locator('#reader-deep-lesson').innerText(),/49\.43/);
   await page.locator('.reader-toc [data-section="8.4"]').evaluate(element=>{
     for(let n=element.parentElement;n;n=n.parentElement)if(n.tagName==='DETAILS')n.open=true;
   });
