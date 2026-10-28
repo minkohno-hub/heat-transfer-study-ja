@@ -2,6 +2,7 @@
 // This does not prove source accuracy or grant redistribution permissions.
 import {validateQuestion} from './study-core.mjs';
 import {validateOriginalNotes} from './original-notes.mjs';
+import {validateDeepLessons} from './original-deep-lessons.mjs';
 
 const object = value => value !== null && typeof value === 'object' && !Array.isArray(value);
 const present = value => typeof value === 'string' && value.trim().length > 0;
@@ -17,7 +18,7 @@ const pageRange = value => {
  * Returns explicit errors. Never conflate passing structure checks with
  * original-source verification, expert review or full textbook coverage.
  */
-export function checkPublicContent({book, questions, glossary, guides,originalNotes=null}) {
+export function checkPublicContent({book, questions, glossary, guides,originalNotes=null,deepLessons=null}) {
   const errors = [];
   const error = message => errors.push(message);
   if (!object(book) || !Number.isInteger(book.pdfPageCount) || book.pdfPageCount < 1 ||
@@ -177,5 +178,6 @@ export function checkPublicContent({book, questions, glossary, guides,originalNo
     }
 
   }
+  if(deepLessons!==null)errors.push(...validateDeepLessons(book,deepLessons));
   return errors;
 }
