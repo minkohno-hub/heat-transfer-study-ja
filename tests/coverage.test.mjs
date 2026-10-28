@@ -6,8 +6,8 @@ import {learningCoverage} from '../learning-coverage.mjs';
 const read=async name=>JSON.parse(await readFile(new URL('../'+name,import.meta.url),'utf8'));
 
 test('coverage report separates original problems from verified book citation and public Japanese lessons',async()=>{
-  const [book,questions,glossary,contentManifest,originalNotes]=await Promise.all(['data/book.json','data/questions.json','data/glossary.json','data/content-manifest.json','data/original-notes.json'].map(read));
-  const coverage=learningCoverage({book,questions,glossary,guides:GUIDE_SECTIONS,contentManifest,originalNotes});
+  const [book,questions,glossary,contentManifest,originalNotes,deepLessons]=await Promise.all(['data/book.json','data/questions.json','data/glossary.json','data/content-manifest.json','data/original-notes.json','data/original-deep-lessons.json'].map(read));
+  const coverage=learningCoverage({book,questions,glossary,guides:GUIDE_SECTIONS,contentManifest,originalNotes,deepLessons});
   assert.equal(coverage.pdfPages,810);
   assert.equal(coverage.textbookSections,76);
   assert.equal(coverage.chapterCount,11);
@@ -30,6 +30,9 @@ test('coverage report separates original problems from verified book citation an
   assert.equal(coverage.chapters.reduce((a,b)=>a+b.originalGuideEntries,0),11);
   assert.ok(coverage.chapters.every(c=>c.originalPracticeQuestions===6+c.sectionCount&&c.originalGuideEntries===1));
   assert.equal(coverage.independentlyAuthoredJapaneseNotes,76);
+  assert.equal(coverage.originalDeepLessons,2);
+  assert.equal(coverage.chapters.find(x=>x.chapter==='ch8').originalDeepLessonCount,2);
+  assert.equal(coverage.publicJapaneseSections,0,'Independent advanced lessons are not book translations');
   assert.equal(coverage.sectionsWithIndependentCheckQuestions,76);
   assert.equal(coverage.publicJapaneseSections,0,'Section notes do not count as full textbook translations');
   assert.ok(coverage.chapters.every(c=>c.independentSectionNotes===c.sectionCount&&c.independentSectionQuestions===c.sectionCount));
