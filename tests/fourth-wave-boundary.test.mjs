@@ -69,6 +69,6 @@ test('boundary signs, stationary Poisson profile, and two-sided energy rate inde
  assert.ok(Math.abs(g*(2*half)**2/(2*ks)-4*rise)<1e-10);
  // Laplace equation is the special case of the Poisson model with zero generation.
  const laplace=(qgen)=>-qgen/ks;
- assert.equal(laplace(0),0);
+ assert.ok(Math.abs(laplace(0))<1e-12,'zero generation reduces to Laplace equation');
  assert.ok(laplace(g)<0);
 });
