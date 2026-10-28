@@ -36,6 +36,7 @@ try {
   await page.locator('.app-shell').waitFor();
   assert.match(await page.locator('.app-footer').innerText(),/0節/);
   await nav('reader');
+  await page.locator('.reader-toc .toc-item.selected').waitFor({state:'attached'});
   assert.ok((await readerContrast()).every(value=>value>=4.5),'目次の選択行の文字コントラスト');
   await page.locator('#reader-article a[href="#guide/chapter1-energy-balance"]').waitFor({state:"attached"});
   assert.match(await page.locator('#reader-article').innerText(),/原本の翻訳・節本文ではありません/);
