@@ -42,6 +42,14 @@ self.addEventListener('fetch',event=>{
     const pdfCache=isPdf?await caches.open(PDF_CACHE_NAME):null;
     const range=event.request.headers.get('range');
     if(isPdf&&range&&/^bytes=(\d*)-(\d*)$/.test(range)){const stored=await pdfCache.match(PDF_URL);if(stored)return cachedPdfRange(stored,range);}
+    if(!isPdf&&self.navigator.onLine===false){
+      const saved=await cache.match(event.request);
+      if(saved)return saved;
+      if(event.request.mode==='navigate'){
+        const shell=await cache.match('./index.html');
+        if(shell)return shell;
+      }
+    }
     try {
       const response=await fetch(event.request);
       if(!isPdf&&response.status===200)try{await cache.put(event.request,response.clone());}catch{}
