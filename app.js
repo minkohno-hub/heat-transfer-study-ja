@@ -1,7 +1,8 @@
 import { createEmptyState, validateLearningData, normalizeLearningData, mergeLearningData, calculateHeatTransfer, chapterKey, searchEntries, searchSnippet, searchRanges, localDay, validDay, shiftMonth, nextReviewDays, planMinutes, validateQuestion, safeLocalFigurePath, speechChunks, questionFingerprint, quizChoiceOrder, quizResumeIssue, recordStudyActivity, fieldProgress, studyDuration } from './study-core.mjs';
 import { GUIDE_SECTIONS, searchGuide } from './guide.mjs';
 import {questionChapter,questionsForChapter,chapterLearningOverview} from './chapter-curriculum.mjs';
-const CORE_DATA_FILES = ['./data/book.json', './data/questions.json', './data/glossary.json', './data/content-manifest.json'];
+import {validateOriginalNotes,independentNoteForSection} from './original-notes.mjs';
+const CORE_DATA_FILES = ['./data/book.json', './data/questions.json', './data/glossary.json', './data/content-manifest.json', './data/original-notes.json'];
 const LEGACY_STORAGE_KEY = 'heat-study-ja:v1';
 const PROFILES_KEY = 'heat-study-ja:profiles:v1';
 const ACTIVE_PROFILE_KEY = 'heat-study-ja:active-profile:v1';
@@ -18,6 +19,7 @@ let book;
 let questionBank;
 let glossary;
 let contentManifest;
+let originalNotes;
 let speechRun = 0;
 function routeFromHash() { return location.hash.slice(1).split('/')[0] || 'home'; }
 function guideTargetFromHash() { const id=location.hash.slice(1).split('/')[1]; return GUIDE_SECTIONS.some(section=>section.id===id)?id:''; }
@@ -245,10 +247,12 @@ const NAV_ITEMS = [
 
 async function startApp() {
   try {
-    [book, questionBank, glossary, contentManifest] = await Promise.all(CORE_DATA_FILES.map(path => fetch(path).then(response => {
+    [book, questionBank, glossary, contentManifest, originalNotes] = await Promise.all(CORE_DATA_FILES.map(path => fetch(path).then(response => {
       if (!response.ok) throw new Error(`教材データを読み込めません（${path}）`);
       return response.json();
     })));
+    const independentIssues=validateOriginalNotes(book,originalNotes);
+    if(independentIssues.length)throw new Error('独立作成の日本語節別ノートの整合性を確認してください: '+independentIssues[0]);
     const contentFiles = await Promise.all((contentManifest.files || []).map(path => fetch(path).then(response => {
       if (!response.ok) throw new Error(`章別教材データを読み込めません（${path}）`);
       return response.json();
@@ -483,6 +487,7 @@ function renderReader() {
   state.lastSection = section.id; saveState();
   const chapter = book.chapters.find(item => item.id === section.chapterId);
   const independentChapterGuide = GUIDE_SECTIONS.find(item=>item.bookChapter===section.chapterId);
+  const independentNote=independentNoteForSection(originalNotes,section.id);
   const available = sectionIsTranslated(section);
   const hasEnglish = Array.isArray(section.blocksEn);
   const contentLanguage = hasEnglish && state.settings.contentLanguage === 'en' ? 'en' : 'ja';
@@ -517,6 +522,20 @@ function renderReader() {
         <h2 class="reader-title">${escapeHTML(section.id)}　${escapeHTML(displayTitle)}</h2>
         <div class="reader-status-row">${statusPill(available ? (section.localDraft ? '訳文下書き・未照合' : section.localSourceChecked ? '原本照合済み（作業者）' : '翻訳済み') : draftLabel, available ? section.localDraft ? 'amber' : 'green' : 'neutral')}${statusPill(available ? section.localDraft ? '文章・式・図表の照合待ち' : '専門家校閲待ち' : privateOnly ? '訳文等の公開範囲を確認中' : draftComplete ? '確認待ち・アプリ未収録' : inProgress ? '下書きはアプリ未収録' : '日本語訳は未収録', 'amber')}</div>
         ${section.localDraft ? '<aside class="notice-card compact-notice"><p>この訳文は以前のPCで作成した下書きです。原本との文章・数式・図表・ページの網羅性を再確認していません。学習時は英語原本PDFと照らし合わせてください。</p></aside>' : ''}
+        ${independentNote ? `<section class="reader-original-note surface-card" id="reader-original-note" aria-labelledby="original-note-heading" lang="ja">
+        <p class="eyebrow">第${escapeHTML(section.chapterId.slice(2))}章 · 第${escapeHTML(section.id)}節に関連する独自日本語ノート</p>
+        <h3 id="original-note-heading">${escapeHTML(independentNote.objective)}</h3>
+        <p class="small-note"><strong>独立執筆・学術校閲前。</strong>原本の翻訳、節の全文掲載、図表の転載ではありません。原本の節との逐文対応は未検証です。</p>
+        <dl class="original-note-fields">
+          <dt>考え方</dt><dd>${escapeHTML(independentNote.explanation)}</dd>
+          <dt>代表式・用語</dt><dd>${escapeHTML(independentNote.relation)}</dd>
+          <dt>具体例</dt><dd>${escapeHTML(independentNote.example)}</dd>
+          <dt>適用条件と注意点</dt><dd>${escapeHTML(independentNote.limits)}</dd>
+          <dt>理解度チェック</dt><dd>${escapeHTML(independentNote.selfCheck)}</dd>
+          <dt>考え方・答え</dt><dd><details><summary>答えを確認する</summary><p>${escapeHTML(independentNote.answer)}</p></details></dd>
+        </dl>
+        <div class="button-row"><a class="text-link" href="#guide/${escapeHTML(independentChapterGuide?.id||'start')}">章別の独立補助講座を読む →</a></div>
+        </section>` : ''}
         ${independentChapterGuide ? `<aside class="notice-card" aria-label="独立作成の章別補助講座"><span class="notice-icon" aria-hidden="true">i</span><div><strong>この章の日本語補助講座</strong><p>原本の翻訳・節本文ではありません。伝熱・物質移動の考え方を独立した例と式で説明します。</p><a class="text-link" href="#guide/${escapeHTML(independentChapterGuide.id)}"> ${escapeHTML(independentChapterGuide.title)} を開く →</a></div></aside>` : ''}
         ${available ? `<div class="book-content" lang="${contentLanguage}">${blocks}</div>` : blocks}
           <p class="small-note">原本PDFを読んだ後の読了・しおり・メモは自分で記録してください。PDFビューアー内の位置は自動取得できません。</p>
@@ -613,6 +632,15 @@ function buildSearchIndex() {
       });
     }
   }
+  // Every section has a short independently authored learning note; not a book translation.
+  for(const note of originalNotes?.notes||[]){
+    entries.push({kind:'original-note',kindLabel:'独立作成の日本語節別ノート',chapter:note.chapterId,
+      field:'節別の独立日本語学習ノート',
+      title:note.sectionId+' '+note.title+' · '+note.objective,
+      text:[note.explanation,note.relation,note.example,note.limits,note.selfCheck,note.answer].join(' '),
+      source:'節別の独立執筆教材 · 原本PDF p.'+note.pdfStart+'から関連事項を確認可能（原本の訳文ではない）',
+      target:{route:'reader',section:note.sectionId,language:'ja'}});
+  }
   // Search independent original explanations without claiming they are translated book chapters.
   for(const guide of GUIDE_SECTIONS) {
     entries.push({kind:'guide',kindLabel:guide.bookChapter?'独立作成の章別講座':'学習ガイド',
@@ -637,9 +665,9 @@ function buildSearchIndex() {
 }
 function renderSearch() {
   const results = ui.searchResults || [];
-  return `${pageHeading('横断検索', '探したい言葉から、学びへ。', '収録済みの見出し、独立学習ガイド、用語、問題、解説、メモを横断検索します。未収録の原本本文は検索対象ではありません。')}
+  return `${pageHeading('横断検索', '探したい言葉から、学びへ。', '収録済みの目次見出し、独自の日本語節別ノート76項目、学習ガイド、用語、問題、メモを検索します。未収録の原本訳文は検索できません。')}
     <form id="search-form" class="search-form surface-card"><label for="search-query">検索語</label><div class="search-input-row"><div class="search-input-wrap"><span aria-hidden="true">⌕</span><input id="search-query" name="query" type="search" value="${escapeHTML(ui.search.query)}" placeholder="例：温度勾配、対流、熱抵抗" autocomplete="off"/><button type="button" class="clear-search" data-action="clear-search" aria-label="検索語を消去">×</button></div><button class="button primary" type="submit">検索</button></div>
-      <div class="filter-row"><label>対象<select name="kind"><option value="all" ${ui.search.kind === 'all' ? 'selected' : ''}>すべて</option><option value="book" ${ui.search.kind === 'book' ? 'selected' : ''}>本文・見出し</option><option value="glossary" ${ui.search.kind === 'glossary' ? 'selected' : ''}>用語集</option><option value="guide" ${ui.search.kind === 'guide' ? 'selected' : ''}>学習ガイド</option><option value="question" ${ui.search.kind === 'question' ? 'selected' : ''}>問題・解説</option><option value="memo" ${ui.search.kind === 'memo' ? 'selected' : ''}>メモ・しおり</option></select></label><label>章<select name="chapter"><option value="all">すべての章</option>${book.chapters.map(ch => `<option value="${ch.id}" ${ui.search.chapter === ch.id ? 'selected' : ''}>第${ch.id.slice(2)}章 ${escapeHTML(ch.title)}</option>`).join('')}<option value="supplement" ${ui.search.chapter === 'supplement' ? 'selected' : ''}>補足説明</option></select></label><label>分野<select name="field"><option value="all">すべての分野</option>${[...new Set(buildSearchIndex().map(e=>e.field).filter(Boolean))].map(field=>`<option value="${escapeHTML(field)}" ${ui.search.field===field?'selected':''}>${escapeHTML(field)}</option>`).join('')}</select></label><span class="search-hint">日本語の一部だけでも検索できます</span></div>
+      <div class="filter-row"><label>対象<select name="kind"><option value="all" ${ui.search.kind === 'all' ? 'selected' : ''}>すべて</option><option value="book" ${ui.search.kind === 'book' ? 'selected' : ''}>本文・見出し</option><option value="glossary" ${ui.search.kind === 'glossary' ? 'selected' : ''}>用語集</option><option value="guide" ${ui.search.kind === 'guide' ? 'selected' : ''}>学習ガイド</option><option value="original-note" ${ui.search.kind === 'original-note' ? 'selected' : ''}>独自の日本語節別ノート</option><option value="question" ${ui.search.kind === 'question' ? 'selected' : ''}>問題・解説</option><option value="memo" ${ui.search.kind === 'memo' ? 'selected' : ''}>メモ・しおり</option></select></label><label>章<select name="chapter"><option value="all">すべての章</option>${book.chapters.map(ch => `<option value="${ch.id}" ${ui.search.chapter === ch.id ? 'selected' : ''}>第${ch.id.slice(2)}章 ${escapeHTML(ch.title)}</option>`).join('')}<option value="supplement" ${ui.search.chapter === 'supplement' ? 'selected' : ''}>補足説明</option></select></label><label>分野<select name="field"><option value="all">すべての分野</option>${[...new Set(buildSearchIndex().map(e=>e.field).filter(Boolean))].map(field=>`<option value="${escapeHTML(field)}" ${ui.search.field===field?'selected':''}>${escapeHTML(field)}</option>`).join('')}</select></label><span class="search-hint">日本語の一部だけでも検索できます</span></div>
     </form>
     <section class="search-results"><div class="results-heading"><h2>${ui.search.query ? `「${escapeHTML(ui.search.query)}」の検索結果` : '検索結果'}</h2>${ui.search.query ? `<span>${results.length}件</span>` : ''}</div>
       ${!ui.search.query ? `<div class="empty-state"><span class="empty-mark">⌕</span><h3>見つけたい言葉を入力してください</h3><p>原本の節見出し、独立学習ガイド、用語、問題、保存したメモを検索できます。</p></div>` : !results.length ? `<div class="empty-state"><span class="empty-mark">…</span><h3>一致する内容がありません</h3><p>別の言葉や短い表現で検索してみてください。未翻訳本文は検索対象に含まれません。</p></div>` : `<div class="result-list">${results.map(entry => `<article class="result-card"><div class="result-meta">${statusPill(entry.kindLabel, entry.kind === 'book' ? 'blue' : entry.kind === 'memo' ? 'amber' : 'green')}<span>${escapeHTML(entry.chapterTitle || '')}</span></div><h3><button type="button" class="result-link" data-search-target='${escapeHTML(JSON.stringify(entry.target))}'>${highlight(entry.title, ui.search.query)}</button></h3><p>${highlight(searchSnippet(entry.text, ui.search.query), ui.search.query)}</p><small>${escapeHTML(entry.source)}</small></article>`).join('')}</div>`}
