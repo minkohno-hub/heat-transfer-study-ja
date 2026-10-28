@@ -59,7 +59,7 @@ test('chapter roadmap distinguishes stale old-revision scores, wrong responses a
   const questions=all.map(q=>q.id==='supp-chapter-ch2-series'?{...q,revision:'v2'}:q);
   const attempts=[
     {questionId:'supp-chapter-ch2-series',at:'2026-10-27T09:00:00Z',correct:true,questionRevision:'initial'},
-    {questionId:'supp-chapter-ch2-cylindrical',at:'2026-10-28T08:00:00Z',correct:false,questionRevision:'initial'}
+    {questionId:'supp-chapter-ch2-cylinder-watts',at:'2026-10-28T08:00:00Z',correct:false,questionRevision:'initial'}
   ];
   const overview=chapterLearningOverview(book,questions,GUIDE_SECTIONS,attempts);
   const ch2=overview.find(c=>c.chapter==='ch2');
