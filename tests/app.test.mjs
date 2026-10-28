@@ -176,7 +176,7 @@ test('search indexes published advanced Japanese physics lessons including deriv
  h.api.book=await read('data/book.json');
  h.api.deepLessons=await read('data/original-deep-lessons.json');
  const entries=h.api.buildSearchIndex().filter(x=>x.kind==='deep-lesson');
- assert.equal(entries.length,8);
+ assert.equal(entries.length,9);
  const diffusion=core.searchEntries(entries,{query:'Stefan流',kind:'deep-lesson',chapter:'ch11'});
  assert.equal(diffusion.length,1);
  assert.equal(diffusion[0].target.section,'11.3');
