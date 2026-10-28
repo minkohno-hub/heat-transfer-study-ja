@@ -98,7 +98,7 @@ try {
   }
   await nav('guide');
   await page.locator('.guide-section').first().waitFor();
-  assert.equal(await page.locator('.guide-section').count(),32);
+  assert.equal(await page.locator('.guide-section').count(),33);
   for(const id of ['learn-dimensionless-transient','learn-lumped-cooling','learn-convection-dimensionless','learn-heat-exchanger'])
     assert.equal(await page.locator('#guide-'+id).count(),1,'発展学習ガイド: '+id);
   for(let ch=1;ch<=11;ch++){
@@ -227,6 +227,33 @@ try {
   assert.match(await page.locator('.result-number strong').innerText(),/×10⁻¹³/);
   await page.locator('#sim-form input[name="surface"]').fill('150');
   await page.locator('#sim-form input[name="surrounding"]').fill('25');
+  // Full interactive time-dependent cooling, validity warning, heat-flow sign
+  // and mobile chart are checked on the exact allowlisted public distribution.
+  await page.locator('[data-sim-mode="transient"]').click();
+  assert.match(await page.locator('.result-number strong').innerText(),/34\.715/);
+  assert.match(await page.locator('.sim-output-card').innerText(),/Bi = 0\.02/);
+  assert.match(await page.locator('.sim-chart').getAttribute('aria-label'),/横軸は秒/);
+  assert.match(await page.locator('.sim-output-card').innerText(),/101,139/);
+  await page.locator('#sim-form input[name="k"]').fill('1');
+  assert.match(await page.locator('.sim-output-card').innerText(),/保証できません/);
+  await page.locator('#sim-form input[name="k"]').fill('10');
+  await page.locator('#sim-form input[name="time"]').fill('0');
+  assert.match(await page.locator('.result-number strong').innerText(),/60/);
+  await page.locator('#sim-form input[name="time"]').fill('2000');
+  await page.locator('[data-action="save-comparison"]').click();
+  await page.locator('#sim-form input[name="h"]').fill('40');
+  assert.match(await page.locator('.sim-chart').getAttribute('aria-label'),/温度履歴/);
+  assert.equal(await page.locator('.sim-chart .chart-baseline').count(),1);
+  await page.locator('#sim-form input[name="h"]').fill('0');
+  assert.match(await page.locator('.sim-error').innerText(),/0より大きく/);
+  await page.locator('#sim-form input[name="h"]').fill('20');
+  await page.locator('#sim-form input[name="initial"]').fill('-273.15');
+  assert.match(await page.locator('.sim-error').innerText(),/絶対零度/);
+  await page.locator('#sim-form input[name="initial"]').fill('60');
+  await page.locator('.sim-intro a[href="#guide/sim-transient"]').click();
+  assert.match(await page.locator('#guide-sim-transient').innerText(),/集中熱容量法/);
+  await nav('simulator');
+  await page.locator('[data-sim-mode="transient"]').click();
   await nav('quiz');
   assert.equal(Number(await page.locator('#quiz-start-form select[name="count"] option').last().getAttribute('value')),await page.locator('.bank-item').count());
   await page.locator('[data-start-question="book-9-1-transition-flux"]').click();

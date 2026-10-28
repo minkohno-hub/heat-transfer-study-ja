@@ -1,8 +1,9 @@
-import { createEmptyState, validateLearningData, normalizeLearningData, mergeLearningData, calculateHeatTransfer, chapterKey, searchEntries, searchSnippet, searchRanges, localDay, validDay, shiftMonth, nextReviewDays, planMinutes, validateQuestion, safeLocalFigurePath, speechChunks, questionFingerprint, quizChoiceOrder, quizResumeIssue, recordStudyActivity, fieldProgress, studyDuration, isCurrentQuestionAnswer } from './study-core.mjs';
+import { createEmptyState, validateLearningData, normalizeLearningData, mergeLearningData, calculateHeatTransfer, calculateLumpedCooling, chapterKey, searchEntries, searchSnippet, searchRanges, localDay, validDay, shiftMonth, nextReviewDays, planMinutes, validateQuestion, safeLocalFigurePath, speechChunks, questionFingerprint, quizChoiceOrder, quizResumeIssue, recordStudyActivity, fieldProgress, studyDuration, isCurrentQuestionAnswer } from './study-core.mjs';
 import { GUIDE_SECTIONS, searchGuide } from './guide.mjs';
 import {questionChapter,questionsForChapter,chapterLearningOverview} from './chapter-curriculum.mjs';
 import {validateOriginalNotes,independentNoteForSection} from './original-notes.mjs';
 import {validateDeepLessons,deepLessonForSection} from './original-deep-lessons.mjs';
+import {renderTransientFields,renderTransientSteps,transientGraph,transientFieldNames} from './transient-ui.mjs';
 const CORE_DATA_FILES = ['./data/book.json', './data/questions.json', './data/glossary.json', './data/content-manifest.json', './data/original-notes.json', './data/original-deep-lessons.json'];
 const LEGACY_STORAGE_KEY = 'heat-study-ja:v1';
 const PROFILES_KEY = 'heat-study-ja:profiles:v1';
@@ -46,7 +47,8 @@ let ui = {
     conduction: { k: 15, area: 0.5, thickness: 0.08, hot: 80, cold: 20 },
     convection: { h: 25, area: 1, surface: 80, fluid: 20 },
     radiation: { emissivity: 0.85, area: 1, surface: 150, surrounding: 25 },
-    resistance:{area:1,hot:80,cold:20,hHot:10,hCold:20,k1:0.5,k2:0.1,L1:0.1,L2:0.05}
+    resistance:{area:1,hot:80,cold:20,hHot:10,hCold:20,k1:0.5,k2:0.1,L1:0.1,L2:0.05},
+    transient:{h:20,area:0.1,volume:0.001,density:1000,cp:4000,k:10,initial:60,ambient:20,time:2000}
   }
 };
 
@@ -881,6 +883,10 @@ const SIM_META = {
   resistance:{title:'熱抵抗の組み合わせ',description:'二つの平板と両側の対流を、直列の熱抵抗として計算します。',formula:'Q̇ = (Tₕ − T𝑐) / (Rₕ + R₁ + R₂ + R𝑐)',note:'均質な二層の平板、等しい面積、一次元・定常、各物性と熱伝達率一定。界面の接触抵抗・内部発熱・放射・側面の熱漏れは含みません。'},
   conduction: { title: '熱伝導', description: '固体の内部などで、温度差により熱が移動するモデルです。', formula: 'Q̇ = k A (Tₕ − T𝑐) / L', note: '均質な平板、一次元、定常状態、熱伝導率一定、側面からの熱漏れなし。接触熱抵抗や端部効果は含みません。' },
   convection: { title: '対流', description: '固体表面と、その近くを動く流体との間の熱移動を扱います。', formula: 'Q̇ = h A (Tₛ − T∞)', note: 'ニュートンの冷却法則を使う集中モデルです。h は流れや形状に依存する入力値で、ここでは一定とします。流れ場や温度依存性は解いていません。' },
+  transient:{title:'非定常冷却（集中熱容量法）',
+    description:'物体温度が時間とともに変わる様子を、内部温度が一様と仮定して学びます。',
+    formula:'T(t) = T∞ + (T₀ − T∞) exp(−t/τ), τ = ρVcₚ/(hA)',
+    note:'物体内部の温度がほぼ均一、周囲流体の温度とh・物性は一定、放射・内部発熱・相変化なし。Bi=h(V/A)/k＜0.1は近似検討の目安です。'}, 
   radiation: { title: '熱放射', description: '表面間で電磁波として移る熱を、単純化した灰色面モデルで見ます。', formula: 'Q̇ = ε σ A (Tₛ,K⁴ − Tsur,K⁴)', note: '大きな黒い周囲を見込む不透明な灰色面、形態係数1、周囲からの一様な照射を仮定。吸収率と放射率を等しいとします。対流、複数面間の反射の連成、波長による特性の変化は解いていません。温度は必ずKへ換算します。' }
 };
 const STEFAN_BOLTZMANN = 5.670374419e-8;
@@ -905,7 +911,7 @@ function renderSimulationSteps(mode,result) {
   return `<div class="simulation-steps"><p><strong>補足説明：式と計算の手順</strong></p><details><summary>1. 現象と式の選び方</summary><p>${principles[mode]}</p></details><details><summary>2. 数値と単位を代入する</summary><p class="calculation-line">${calculation}</p><p>温度差1 ℃は温度差1 Kと同じ大きさです。放射の四乗には温度差ではなく絶対温度を使います。</p></details><details><summary>3. 答えと途中の値を確認する</summary><p>Q̇ = ${n(result.watts)} W。1 Wは1秒あたり1 Jの熱エネルギー移動を表します。内部計算は丸めず、途中の表示は有効数字7桁、主結果は小数第3位までです。</p>${extra}</details><small>アプリ作成の補足説明。根拠：フーリエの法則、ニュートンの冷却法則、ステファン・ボルツマンの法則と定常エネルギー収支。本書の翻訳とは区別しています。</small></div>`;
 }
 function simRead(mode) { return ui.simValues[mode]; }
-function calculateSimulation(mode, values) { return calculateHeatTransfer(mode, values); }
+function calculateSimulation(mode, values) { return mode==='transient'?calculateLumpedCooling(values):calculateHeatTransfer(mode, values); }
 function renderSimInputs(mode, values) {
   const field = (name, label, unit, min = '', step = 'any', help = '') => `<label class="sim-field">${label}<span class="input-unit"><input type="number" name="${name}" value="${escapeHTML(values[name])}" min="${min}" step="${step}" inputmode="decimal" required/><i>${unit}</i></span>${help ? `<small>${help}</small>` : ''}</label>`;
   if(mode==='resistance')return `${field('area','共通の面積 A','m²','0.000001')}${field('hot','高温側の流体 Tₕ','℃')}${field('cold','低温側の流体 T𝑐','℃')}${field('hHot','高温側の熱伝達率 hₕ','W/(m²·K)','0.000001')}${field('hCold','低温側の熱伝達率 h𝑐','W/(m²·K)','0.000001')}${field('k1','第1層の熱伝導率 k₁','W/(m·K)','0.000001')}${field('L1','第1層の厚さ L₁','m','0.000001')}${field('k2','第2層の熱伝導率 k₂','W/(m·K)','0.000001')}${field('L2','第2層の厚さ L₂','m','0.000001')}`;
@@ -938,7 +944,47 @@ function simGraph(mode,current,baseline) {
   const ticks=[0,.5,1].map(f=>{const q=low+(high-low)*f;return `<line x1="${left}" y1="${y(q)}" x2="${width-right}" y2="${y(q)}" class="chart-grid"/><text x="${left-8}" y="${y(q)+4}" text-anchor="end" class="chart-label">${q.toPrecision(2)}</text>`;}).join('');
   return `<svg class="sim-chart" viewBox="0 0 ${width} ${height}" role="img" aria-label="温度差と熱移動率の関係。現在の点は温度差${current.delta.toPrecision(3)} K、熱移動率${current.watts.toPrecision(3)} W。負の値は基準方向と逆向き。"><title>温度差と熱移動率</title>${ticks}<line x1="${left}" y1="${y(0)}" x2="${width-right}" y2="${y(0)}" class="chart-axis"/><path d="${path(points)}" class="chart-current"/>${base?`<path d="${path(basePoints)}" class="chart-baseline"/>`:''}<circle cx="${x(current.delta)}" cy="${y(current.watts)}" r="5" class="chart-current-point"/><text x="${left}" y="${height-29}" class="chart-label">${minDelta.toPrecision(2)}</text><text x="${width-right}" y="${height-29}" text-anchor="end" class="chart-label">${maxDelta.toPrecision(2)}</text><text x="${left+w/2}" y="${height-7}" text-anchor="middle" class="chart-label">温度差 ΔT（K または ℃差）</text><text x="14" y="${top+h/2}" transform="rotate(-90 14 ${top+h/2})" text-anchor="middle" class="chart-label">熱移動率 Q̇（W）</text></svg>`;
 }
+function renderTransientSimulator(){
+  const v=ui.simValues.transient,x=calculateLumpedCooling(v),old=state.simComparisons.transient,
+    prior=old?calculateLumpedCooling(old):null,
+    compare=prior&&!prior.error?prior:null,
+    mode='transient',meta=SIM_META.transient,related=getSection('5.1');
+  const result=x.error
+    ? `<div class="sim-error" role="alert"><strong>計算できませんでした</strong><p>${escapeHTML(x.error)}</p></div>`
+    : `<div class="result-number"><span>経過 ${Number(x.values.time).toLocaleString('ja-JP')} 秒後の物体温度</span>
+       <strong>${formatHeatRate(x.temperature)}<i>℃</i></strong>
+       <small>外向き熱移動率：${formatHeatRate(x.watts)} W。累積放熱量：${formatHeatRate(x.energyJ)} J。負の値なら吸熱します。</small></div>
+       <div class="assumption-card" role="status"><strong>適用性：ビオ数 Bi = ${x.biot.toPrecision(4)}</strong><p>${escapeHTML(x.applicability)}</p></div>`;
+  return `${pageHeading('簡易シミュレーター','時間とともに変わる物体温度','物体・周囲の条件を変えて、非定常の冷却と加熱を比較します。')}
+    <div class="sim-tabs" role="tablist" aria-label="熱移動の種類">
+      ${Object.entries(SIM_META).map(([key,item])=>`<button type="button" role="tab" aria-selected="${mode===key}" class="sim-tab ${mode===key?'selected':''}" data-sim-mode="${key}"><span aria-hidden="true">${key==='transient'?'◷':key==='conduction'?'▥':key==='convection'?'↝':'☼'}</span>${item.title}</button>`).join('')}</div>
+    <div class="sim-layout"><section class="surface-card sim-input-card">
+      <div class="sim-intro"><p class="eyebrow">${meta.title}</p><h2>${meta.description}</h2>
+      <a class="text-link" href="#guide/sim-transient">物理的背景・単位・手計算例 →</a></div>
+      <form id="sim-form" class="sim-form"><div class="sim-fields">${renderTransientFields(v)}</div></form>
+      <div class="formula-card"><span>使用する式</span><strong>${meta.formula}</strong>
+        <p>物体温度の正負と熱移動方向は別です。放熱を正とします。</p></div>
+      <div class="assumption-card"><strong>モデルの前提と限界</strong><p>${meta.note}</p></div>
+    </section><section class="surface-card sim-output-card">
+      <div class="card-heading"><div><p class="eyebrow">現在の条件</p><h2>物体温度</h2></div>
+        ${statusPill('非定常・Biを確認','amber')}</div>
+      ${result}
+      ${x.error?'':renderTransientSteps(x)}
+      ${x.error?'':`<div class="chart-heading"><h3>時間に対する物体温度</h3><span>横軸：秒 ／ 縦軸：℃。内部温度を一様とした近似です。</span></div>
+        ${transientGraph(x,compare)}
+        <div class="chart-legend"><span><i class="legend-current"></i>現在の条件</span>
+          ${compare?'<span><i class="legend-baseline"></i>保存した比較条件</span>':''}</div>`}
+      <div class="comparison-controls"><button type="button" class="button secondary" data-action="save-comparison">この条件を比較用に保存</button>
+        ${old?'<button type="button" class="text-button" data-action="clear-comparison">比較条件を削除</button>':''}
+        ${compare?`<small>保存条件の結果：${formatHeatRate(compare.temperature)} ℃</small>`:''}</div>
+      <div class="related-reading"><strong>関連する本書の範囲</strong>
+        ${related?`<a href="#reader" data-section="${escapeHTML(related.id)}">第${escapeHTML(related.id)}節：${escapeHTML(related.title)}</a>${sourcePdfLink({},related)}`:''}
+        <small>日本語の計算説明はアプリ独自の補足モデルです。原本の翻訳ではありません。</small>
+        <button type="button" class="text-button" data-sim-practice="熱伝導">熱伝導の練習問題に挑戦 →</button></div>
+      </section></div>`;
+}
 function renderSimulator() {
+  if(ui.simMode==='transient')return renderTransientSimulator();
   const mode = ui.simMode; const values = simRead(mode); const result = calculateSimulation(mode, values); const baseline = state.simComparisons[mode]; const meta = SIM_META[mode];
   const resultView = result.error ? `<div class="sim-error" role="alert"><strong>計算できませんでした</strong><p>${escapeHTML(result.error)}</p></div>` : `<div class="result-number"><span>計算結果（理想化モデル）</span><strong>${formatHeatRate(result.watts)}<i>W</i></strong><small>${result.delta===0 ? '温度差がないため、このモデルでは熱移動率は0 Wです。' : result.watts===0 ? 'この条件でのモデル計算結果は0 Wです。' : result.watts > 0 ? '高温側・表面から低温側・周囲へ熱が移動します。' : '入力した温度関係に従い、逆向きに熱が移動します。'}${mode === 'radiation' && !result.error ? ` 温度換算：${result.surfaceK.toFixed(2)} K と ${result.surroundingK.toFixed(2)} K` : ''}</small></div>`;
   const comparison = baseline && !result.error ? calculateSimulation(mode, baseline) : null;
@@ -1242,12 +1288,12 @@ function onChange(event) {
   else if (target.dataset.reviewDate) setReviewDate(target.dataset.reviewDate,target.value);
   else if (target.dataset.date) { ui.calendarDate=target.dataset.date; render(); }
   else if (target.id === 'import-file' && target.files?.[0]) readImportFile(target.files[0]);
-  else if (target.name && ['k','area','thickness','hot','cold','h','surface','fluid','emissivity','surrounding','hHot','hCold','k1','k2','L1','L2'].includes(target.name)) { ui.simValues[ui.simMode][target.name]=target.value; renderSimulatorOutputsOnly(); }
+  else if (target.name && [...transientFieldNames,'thickness','hot','cold','surface','fluid','emissivity','surrounding','hHot','hCold','k1','k2','L1','L2'].includes(target.name)) { ui.simValues[ui.simMode][target.name]=target.value; renderSimulatorOutputsOnly(); }
 }
 function onInput(event) {
   const target=event.target;
   if (target.id === 'glossary-query') { ui.glossaryQuery=target.value; const at=target.selectionStart; render(); const field=document.getElementById('glossary-query'); field?.focus(); field?.setSelectionRange(at,at); }
-  else if (target.name && ['k','area','thickness','hot','cold','h','surface','fluid','emissivity','surrounding','hHot','hCold','k1','k2','L1','L2'].includes(target.name)) { ui.simValues[ui.simMode][target.name]=target.value; renderSimulatorOutputsOnly(); }
+  else if (target.name && [...transientFieldNames,'thickness','hot','cold','surface','fluid','emissivity','surrounding','hHot','hCold','k1','k2','L1','L2'].includes(target.name)) { ui.simValues[ui.simMode][target.name]=target.value; renderSimulatorOutputsOnly(); }
 }
 function renderSimulatorOutputsOnly() {
   if (ui.route !== 'simulator') return;
