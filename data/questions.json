@@ -11378,5 +11378,485 @@
       "他の選択肢との違いと適用限界を確認する。"
     ],
     "beginnerPitfall": "無次元数と温度、熱移動率Wと熱流束W/m²、適用条件の違いを整理する。"
+  },
+  {
+    "id": "supp-next-time-energy-out-v1",
+    "revision": "v1",
+    "field": "基本熱移動・保存則",
+    "prerequisites": [
+      "熱移動率とエネルギー",
+      "境界条件と単位"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "§1.1の独立詳説教材と仮想数値に基づく新規演習。原本の文章・設問・図版は転載しない。",
+      "chapterId": "ch1",
+      "focusSectionId": "1.1",
+      "guideId": "chapter1-energy-balance"
+    },
+    "createdStatus": "独立作問",
+    "reviewStatus": "保存則・算術の内部確認済み／外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [],
+    "prompt": "一定の熱移動率90 Wで、熱が系から45 sの間外へ移る。外へ移った総エネルギーは？",
+    "choices": [
+      "405 J",
+      "4050 J",
+      "4500 J",
+      "9000 J"
+    ],
+    "answer": 1,
+    "difficulty": "標準・応用",
+    "explanation": "エネルギーはQ=Q̇t=90×45=4050 J。WはJ/sである。",
+    "distractors": [
+      "時間を4.5 sと取り違えている。",
+      "正解。45秒間で4050 J。",
+      "90×50と計算した値。",
+      "移動時間を100 sと誤認している。"
+    ],
+    "hints": [
+      "Q̇はJ/sです。",
+      "90 W×45 sを計算します。"
+    ],
+    "solutionSteps": [
+      "熱移動率90 J/sを確認する。",
+      "Q=Q̇tを使う。",
+      "90×45=4050 J。"
+    ],
+    "beginnerPitfall": "熱流束W/m²と熱移動率W、面積・時間積分の範囲、モデルの仮定を混同しない。"
+  },
+  {
+    "id": "supp-next-signed-net-flux-v1",
+    "revision": "v1",
+    "field": "基本熱移動・保存則",
+    "prerequisites": [
+      "熱移動率とエネルギー",
+      "境界条件と単位"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "applied",
+    "source": {
+      "type": "supplement",
+      "reference": "§1.1の独立詳説教材と仮想数値に基づく新規演習。原本の文章・設問・図版は転載しない。",
+      "chapterId": "ch1",
+      "focusSectionId": "1.1",
+      "guideId": "chapter1-energy-balance"
+    },
+    "createdStatus": "独立作問",
+    "reviewStatus": "保存則・算術の内部確認済み／外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [],
+    "prompt": "仕事・質量出入りのない閉じた系に140 Wの熱が入り、100 Wが外へ出ている。内部エネルギーの変化率は？",
+    "choices": [
+      "+40 W",
+      "+100 W",
+      "+140 W",
+      "+240 W"
+    ],
+    "answer": 0,
+    "difficulty": "標準・応用",
+    "explanation": "保存則でdU/dt=Q̇_in−Q̇_out=140−100=+40 W。エネルギーの時間変化なので単位W。",
+    "distractors": [
+      "正解。正味入熱40 W。",
+      "外向き熱だけ計上した値。",
+      "流入だけ計上した値。",
+      "流入と流出を加えてしまった値。"
+    ],
+    "hints": [
+      "正味の流入が正です。",
+      "140 Wから100 Wを差し引きます。"
+    ],
+    "solutionSteps": [
+      "流入を+140 Wとする。",
+      "流出を−100 Wとする。",
+      "正味蓄熱率は+40 W。"
+    ],
+    "beginnerPitfall": "熱流束W/m²と熱移動率W、面積・時間積分の範囲、モデルの仮定を混同しない。"
+  },
+  {
+    "id": "supp-next-open-enthalpy-jump-v1",
+    "revision": "v1",
+    "field": "基本熱移動・保存則",
+    "prerequisites": [
+      "熱移動率とエネルギー",
+      "境界条件と単位"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "§1.2の独立詳説教材と仮想数値に基づく新規演習。原本の文章・設問・図版は転載しない。",
+      "chapterId": "ch1",
+      "focusSectionId": "1.2",
+      "guideId": "chapter1-energy-balance"
+    },
+    "createdStatus": "独立作問",
+    "reviewStatus": "保存則・算術の内部確認済み／外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [],
+    "prompt": "定常の単相流体がṁ=0.25 kg/sで流れ、出口・入口の比エンタルピー差が+50 kJ/kgである。仕事と運動・位置エネルギー変化を無視した流体の受熱率は？",
+    "choices": [
+      "2.5 kW",
+      "5.0 kW",
+      "12.5 kW",
+      "25.0 kW"
+    ],
+    "answer": 2,
+    "difficulty": "標準・応用",
+    "explanation": "Q̇=ṁΔh=0.25 kg/s×50 kJ/kg=12.5 kJ/s=12.5 kW。",
+    "distractors": [
+      "質量流量を0.05 kg/sとしている。",
+      "温度差のみで推定し過小評価。",
+      "正解。kg/sとkJ/kgが相殺する。",
+      "質量流量を0.50 kg/sとしている。"
+    ],
+    "hints": [
+      "流れる物質のエンタルピー差を使います。",
+      "0.25×50の単位はkJ/sです。"
+    ],
+    "solutionSteps": [
+      "ṁ=0.25 kg/s。",
+      "Δh=50 kJ/kg。",
+      "Q̇=12.5 kW。"
+    ],
+    "beginnerPitfall": "熱流束W/m²と熱移動率W、面積・時間積分の範囲、モデルの仮定を混同しない。"
+  },
+  {
+    "id": "supp-next-combined-surface-loss-v1",
+    "revision": "v1",
+    "field": "基本熱移動・保存則",
+    "prerequisites": [
+      "熱移動率とエネルギー",
+      "境界条件と単位"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "§1.3の独立詳説教材と仮想数値に基づく新規演習。原本の文章・設問・図版は転載しない。",
+      "chapterId": "ch1",
+      "focusSectionId": "1.3",
+      "guideId": "chapter1-energy-balance"
+    },
+    "createdStatus": "独立作問",
+    "reviewStatus": "保存則・算術の内部確認済み／外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [],
+    "prompt": "ある一様面A=0.50 m²が320 K、流体と十分大きな黒体囲いがともに300 Kである。h=10 W/(m²·K)、ε=0.8、σ=5.670374419×10⁻⁸で、対流・放射の外向き熱移動率の合計は約？",
+    "choices": [
+      "54.1 W",
+      "100.0 W",
+      "154.1 W",
+      "200.0 W"
+    ],
+    "answer": 2,
+    "difficulty": "標準・応用",
+    "explanation": "対流=10×0.5×20=100 W。放射=0.8σ×0.5(320⁴−300⁴)≈54.11 W。両者は同じ表面温度を使うため合計約154.1 W。",
+    "distractors": [
+      "放射だけを計上している。",
+      "対流だけを計上している。",
+      "正解。同じ外表面からの2経路を合計する。",
+      "別の伝導モデルの値を混同している。"
+    ],
+    "hints": [
+      "対流と放射は同じ表面から外向きに流れます。",
+      "hAΔTとεσA(T_s⁴−T_sur⁴)を別々に計算します。"
+    ],
+    "solutionSteps": [
+      "対流の外向き熱移動率100 W。",
+      "放射の外向き熱移動率約54.11 W。",
+      "合計約154.11 W。"
+    ],
+    "beginnerPitfall": "熱流束W/m²と熱移動率W、面積・時間積分の範囲、モデルの仮定を混同しない。"
+  },
+  {
+    "id": "supp-next-slab-flux-unit-v1",
+    "revision": "v1",
+    "field": "基本熱移動・保存則",
+    "prerequisites": [
+      "熱移動率とエネルギー",
+      "境界条件と単位"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "§1.3の独立詳説教材と仮想数値に基づく新規演習。原本の文章・設問・図版は転載しない。",
+      "chapterId": "ch1",
+      "focusSectionId": "1.3",
+      "guideId": "chapter1-energy-balance"
+    },
+    "createdStatus": "独立作問",
+    "reviewStatus": "保存則・算術の内部確認済み／外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [],
+    "prompt": "厚さ0.10 mの均質平板、熱伝導率2 W/(m·K)、両面温度差20 K。一次元定常・発熱なしの場合、熱流束の大きさは？",
+    "choices": [
+      "40 W/m²",
+      "100 W/m²",
+      "200 W/m²",
+      "400 W/m²"
+    ],
+    "answer": 3,
+    "difficulty": "標準・応用",
+    "explanation": "q″=kΔT/L=2×20/0.10=400 W/m²。熱移動率を求めるときだけ面積を掛ける。",
+    "distractors": [
+      "厚さを1mと誤認した値。",
+      "kや温度差を誤用した値。",
+      "面積0.5m²を追加して200 Wと取り違えた値。",
+      "正解。面積に依存しない熱流束400 W/m²。"
+    ],
+    "hints": [
+      "問われているのはW/m²です。",
+      "Fourier則の平板近似を用いてください。"
+    ],
+    "solutionSteps": [
+      "温度差20 K。",
+      "q″=2×20/0.10。",
+      "400 W/m²。"
+    ],
+    "beginnerPitfall": "熱流束W/m²と熱移動率W、面積・時間積分の範囲、モデルの仮定を混同しない。"
+  },
+  {
+    "id": "supp-next-radiation-zero-emissivity-v1",
+    "revision": "v1",
+    "field": "基本熱移動・保存則",
+    "prerequisites": [
+      "熱移動率とエネルギー",
+      "境界条件と単位"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "applied",
+    "source": {
+      "type": "supplement",
+      "reference": "§1.3の独立詳説教材と仮想数値に基づく新規演習。原本の文章・設問・図版は転載しない。",
+      "chapterId": "ch1",
+      "focusSectionId": "1.3",
+      "guideId": "chapter1-energy-balance"
+    },
+    "createdStatus": "独立作問",
+    "reviewStatus": "保存則・算術の内部確認済み／外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [],
+    "prompt": "灰色面と大きな黒体囲いの放射交換モデルQ̇=εσA(T_s⁴−T_sur⁴)で、放射率εを0に近づけると、このモデルの正味交換は？",
+    "choices": [
+      "必ず無限大に発散する",
+      "常に対流熱伝達率と等しくなる",
+      "温度差にかかわらず放射交換は0に近づく",
+      "絶対温度の4乗差とは無関係になる"
+    ],
+    "answer": 2,
+    "difficulty": "標準・応用",
+    "explanation": "この灰色面近似では放射交換はεに比例するため、ε→0でQ̇_rad→0。ただし物理的な表面の全機構がゼロになる意味ではない。",
+    "distractors": [
+      "式のεへの比例に反する。",
+      "hとの単位・機構を混同している。",
+      "正解。放射のみ0へ近づく。",
+      "式にはT⁴差も関係する。"
+    ],
+    "hints": [
+      "式のεの位置を見てください。",
+      "放射だけであり対流は別の機構です。"
+    ],
+    "solutionSteps": [
+      "式のεを0に近づける。",
+      "他の係数を有限と仮定する。",
+      "Q̇_radが0へ近づく。"
+    ],
+    "beginnerPitfall": "熱流束W/m²と熱移動率W、面積・時間積分の範囲、モデルの仮定を混同しない。"
+  },
+  {
+    "id": "supp-next-inverse-delta-temperature-v1",
+    "revision": "v1",
+    "field": "定常熱伝導・熱抵抗",
+    "prerequisites": [
+      "熱移動率とエネルギー",
+      "境界条件と単位"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "§2.2の独立詳説教材と仮想数値に基づく新規演習。原本の文章・設問・図版は転載しない。",
+      "chapterId": "ch2",
+      "focusSectionId": "2.2",
+      "guideId": "chapter2-cylindrical-conduction"
+    },
+    "createdStatus": "独立作問",
+    "reviewStatus": "保存則・算術の内部確認済み／外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [],
+    "prompt": "厚さ0.050 m、k=2 W/(m·K)、面積1.0 m²の一様平板で定常伝導の熱移動率が200 Wである。両表面温度差の大きさは？",
+    "choices": [
+      "2 K",
+      "5 K",
+      "10 K",
+      "20 K"
+    ],
+    "answer": 1,
+    "difficulty": "標準・応用",
+    "explanation": "ΔT=Q̇L/(kA)=200×0.050/(2×1)=5 K。熱移動率から逆算する場合も単位を保つ。",
+    "distractors": [
+      "kAの値を過大にしている。",
+      "正解。熱抵抗0.025 K/W。",
+      "Lを0.10 mとしている。",
+      "面積と厚さを重複計上している。"
+    ],
+    "hints": [
+      "熱抵抗R=L/(kA)を使います。",
+      "ΔT=Q̇Rです。"
+    ],
+    "solutionSteps": [
+      "R=0.050/(2×1)=0.025 K/W。",
+      "ΔT=200×0.025。",
+      "5 K。"
+    ],
+    "beginnerPitfall": "熱流束W/m²と熱移動率W、面積・時間積分の範囲、モデルの仮定を混同しない。"
+  },
+  {
+    "id": "supp-next-linear-temperature-location-v1",
+    "revision": "v1",
+    "field": "定常熱伝導・熱抵抗",
+    "prerequisites": [
+      "熱移動率とエネルギー",
+      "境界条件と単位"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "§2.2の独立詳説教材と仮想数値に基づく新規演習。原本の文章・設問・図版は転載しない。",
+      "chapterId": "ch2",
+      "focusSectionId": "2.2",
+      "guideId": "chapter2-cylindrical-conduction"
+    },
+    "createdStatus": "独立作問",
+    "reviewStatus": "保存則・算術の内部確認済み／外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [],
+    "prompt": "一次元定常、内部発熱なしで、厚さ0.20 mの平板は左60℃、右20℃。左面から0.15 mの位置の温度は？",
+    "choices": [
+      "20 ℃",
+      "30 ℃",
+      "40 ℃",
+      "50 ℃"
+    ],
+    "answer": 1,
+    "difficulty": "標準・応用",
+    "explanation": "T(x)=60+(20−60)x/0.20。x=0.15なら60−40×0.75=30℃。",
+    "distractors": [
+      "右端x=0.20 mの温度を選んでいる。",
+      "正解。全厚さの75%位置。",
+      "全厚さの50%位置としている。",
+      "全厚さの25%位置としている。"
+    ],
+    "hints": [
+      "境界値を線形補間します。",
+      "x/L=0.15/0.20=0.75です。"
+    ],
+    "solutionSteps": [
+      "T(x)=60−40x/0.20。",
+      "x=0.15 mを代入。",
+      "30℃。"
+    ],
+    "beginnerPitfall": "熱流束W/m²と熱移動率W、面積・時間積分の範囲、モデルの仮定を混同しない。"
+  },
+  {
+    "id": "supp-next-three-series-v1",
+    "revision": "v1",
+    "field": "定常熱伝導・熱抵抗",
+    "prerequisites": [
+      "熱移動率とエネルギー",
+      "境界条件と単位"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "§2.3の独立詳説教材と仮想数値に基づく新規演習。原本の文章・設問・図版は転載しない。",
+      "chapterId": "ch2",
+      "focusSectionId": "2.3",
+      "guideId": "chapter2-cylindrical-conduction"
+    },
+    "createdStatus": "独立作問",
+    "reviewStatus": "保存則・算術の内部確認済み／外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [],
+    "prompt": "定常の熱移動経路に0.10、0.20、0.30 K/Wの3抵抗が直列接続されている。両端温度差が60 Kなら熱移動率は？",
+    "choices": [
+      "60 W",
+      "100 W",
+      "150 W",
+      "600 W"
+    ],
+    "answer": 1,
+    "difficulty": "標準・応用",
+    "explanation": "直列抵抗の和0.60 K/Wで、Q̇=60/0.60=100 W。",
+    "distractors": [
+      "全抵抗を1 K/Wとした値。",
+      "正解。全抵抗0.60 K/W。",
+      "抵抗の一部を見落とした値。",
+      "最小抵抗だけを使った値。"
+    ],
+    "hints": [
+      "直列では抵抗を合計します。",
+      "0.10+0.20+0.30=0.60 K/W。"
+    ],
+    "solutionSteps": [
+      "R_total=0.60 K/W。",
+      "Q̇=60/R_total。",
+      "100 W。"
+    ],
+    "beginnerPitfall": "熱流束W/m²と熱移動率W、面積・時間積分の範囲、モデルの仮定を混同しない。"
+  },
+  {
+    "id": "supp-next-parallel-extra-branch-v1",
+    "revision": "v1",
+    "field": "定常熱伝導・熱抵抗",
+    "prerequisites": [
+      "熱移動率とエネルギー",
+      "境界条件と単位"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "§2.3の独立詳説教材と仮想数値に基づく新規演習。原本の文章・設問・図版は転載しない。",
+      "chapterId": "ch2",
+      "focusSectionId": "2.3",
+      "guideId": "chapter2-cylindrical-conduction"
+    },
+    "createdStatus": "独立作問",
+    "reviewStatus": "保存則・算術の内部確認済み／外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [],
+    "prompt": "温度差60 Kの両端に、熱抵抗0.10 K/Wと0.20 K/Wの経路が並列にある。さらに0.30 K/Wの経路を並列追加すると、総熱移動率は？",
+    "choices": [
+      "600 W",
+      "900 W",
+      "1100 W",
+      "1500 W"
+    ],
+    "answer": 2,
+    "difficulty": "標準・応用",
+    "explanation": "各枝の熱流率は600、300、200 W。合計1100 W。枝を増やすとコンダクタンスが増える。",
+    "distractors": [
+      "第1枝しか考慮していない。",
+      "新経路を無視した元の並列値。",
+      "正解。600+300+200 W。",
+      "温度差を二重に掛けている。"
+    ],
+    "hints": [
+      "並列では全枝で同じ温度差です。",
+      "枝別の熱移動率を足してください。"
+    ],
+    "solutionSteps": [
+      "1枝目600 W。",
+      "2枝目300 W、3枝目200 W。",
+      "合計1100 W。"
+    ],
+    "beginnerPitfall": "熱流束W/m²と熱移動率W、面積・時間積分の範囲、モデルの仮定を混同しない。"
   }
 ]
