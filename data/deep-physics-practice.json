@@ -393,6 +393,202 @@
       "reviewStatus": "独立計算・内部構造監査済み／外部専門家校閲前",
       "expertReviewed": false,
       "reportHistory": []
+    },
+    {
+      "revision": "v1",
+      "field": "熱伝導・非定常",
+      "prerequisites": [
+        "熱拡散率とフーリエ則",
+        "無次元相似変数と半無限境界条件"
+      ],
+      "questionGroup": "original_independent_applied_v1",
+      "questionKind": "numerical",
+      "source": {
+        "type": "supplement",
+        "reference": "アプリ独自の半無限体の非定常伝導§5.6の詳説に基づく計算問題。原本の本文・図・演習問題を転載しない。",
+        "chapterId": "ch5",
+        "focusSectionId": "5.6",
+        "guideId": "chapter5-semi-infinite"
+      },
+      "createdStatus": "独立作問",
+      "reviewStatus": "独立計算・内部構造監査済み／外部専門家校閲前",
+      "expertReviewed": false,
+      "reportHistory": [],
+      "id": "supp-deep-semi-similarity-v1",
+      "prompt": "半無限固体でx=0.010 m、熱拡散率α=1.0×10⁻⁶ m²/s、時刻t=100 sとする。表面を一定温度に保つ解析解で使う相似変数η=x/(2√(αt))は？",
+      "choices": [
+        "0.25（無次元）",
+        "0.50（無次元）",
+        "1.00（無次元）",
+        "2.00（無次元）"
+      ],
+      "answer": 1,
+      "difficulty": "基礎・無次元化",
+      "explanation": "適用条件：半無限固体、一定物性、一次元、表面温度を時刻0に変更。√(αt)=√(1×10⁻⁶×100)=0.010 m。η=0.010/(2×0.010)=0.50（無次元）。mをmで割り単位は消える。",
+      "distractors": [
+        "正しい式の分母に4√(αt)を誤用した結果です。",
+        "正解。拡散長さは0.010 mで、2倍した長さでxを割ります。",
+        "式の分母2を落としたときの結果です。",
+        "2√(αt)/xと逆数で評価した結果です。"
+      ],
+      "hints": [
+        "√(αt)の単位はmです。",
+        "ηは深さxを2√(αt)で割った値です。"
+      ],
+      "solutionSteps": [
+        "熱拡散率α [m²/s]と時間t [s]を掛ける。",
+        "αt=10⁻⁴ m²より√(αt)=0.010 m。",
+        "相似変数η=0.010 m/(2×0.010 m)を求める。",
+        "η=0.50、無次元。温度解へはerf(η)を代入する。"
+      ],
+      "beginnerPitfall": "√αtを2倍する前に式を見直す。ηをmの単位付きの物理長さと呼ばない。"
+    },
+    {
+      "revision": "v1",
+      "field": "熱伝導・非定常",
+      "prerequisites": [
+        "熱拡散率とフーリエ則",
+        "無次元相似変数と半無限境界条件"
+      ],
+      "questionGroup": "original_independent_applied_v1",
+      "questionKind": "numerical",
+      "source": {
+        "type": "supplement",
+        "reference": "アプリ独自の半無限体の非定常伝導§5.6の詳説に基づく計算問題。原本の本文・図・演習問題を転載しない。",
+        "chapterId": "ch5",
+        "focusSectionId": "5.6",
+        "guideId": "chapter5-semi-infinite"
+      },
+      "createdStatus": "独立作問",
+      "reviewStatus": "独立計算・内部構造監査済み／外部専門家校閲前",
+      "expertReviewed": false,
+      "reportHistory": [],
+      "id": "supp-deep-semi-profile-v1",
+      "prompt": "半無限固体の初期温度Ti=20.0 ℃、時刻0以降の一定表面温度Ts=80.0 ℃、α=1.0×10⁻⁶ m²/sとする。100秒後、深さ0.010 mの温度は？ erfc(0.5)=0.47950012を使用する。",
+      "choices": [
+        "20.00 ℃",
+        "80.00 ℃",
+        "48.77 ℃",
+        "51.23 ℃"
+      ],
+      "answer": 2,
+      "difficulty": "標準・誤差関数",
+      "explanation": "適用条件：半無限・一定物性・指定表面温度・一次元。η=0.5。T=Ti+(Ts−Ti)erfc(η)=20+60×0.47950012=48.7700 ℃。t>0、x=0の境界はTsであり、内部点は初期と表面の間にある。",
+      "distractors": [
+        "内部のどこでも初期温度が変わらないと誤認した値です。",
+        "境界x=0の指定温度を深さ1 cmへそのまま適用した値です。",
+        "正解。補誤差関数0.47950012を温度差60Kに掛けます。",
+        "erfcとerfを入れ替えた計算です。"
+      ],
+      "hints": [
+        "まずη=x/(2√αt)=0.5を得ます。",
+        "表面温度との差でなく初期温度との差を使うならerfc(η)です。"
+      ],
+      "solutionSteps": [
+        "半無限一定表面温度の解 T=Ti+(Ts−Ti)erfc(η) を選ぶ。",
+        "η=0.010/(2√(10⁻⁶×100))=0.5。",
+        "T=20+60×0.47950012=48.7700 ℃と代入する。",
+        "20℃＜T＜80℃、深さが正なので表面温度80℃より低いことを確認する。"
+      ],
+      "beginnerPitfall": "erfc=1−erfを使用し、erf(0)=0から境界値を検算する。"
+    },
+    {
+      "revision": "v1",
+      "field": "熱伝導・非定常",
+      "prerequisites": [
+        "熱拡散率とフーリエ則",
+        "無次元相似変数と半無限境界条件"
+      ],
+      "questionGroup": "original_independent_applied_v1",
+      "questionKind": "numerical",
+      "source": {
+        "type": "supplement",
+        "reference": "アプリ独自の半無限体の非定常伝導§5.6の詳説に基づく計算問題。原本の本文・図・演習問題を転載しない。",
+        "chapterId": "ch5",
+        "focusSectionId": "5.6",
+        "guideId": "chapter5-semi-infinite"
+      },
+      "createdStatus": "独立作問",
+      "reviewStatus": "独立計算・内部構造監査済み／外部専門家校閲前",
+      "expertReviewed": false,
+      "reportHistory": [],
+      "id": "supp-deep-semi-surface-flux-v1",
+      "prompt": "半無限固体のTi=20.0 ℃、指定表面温度Ts=80.0 ℃、k=2.0 W/(m·K)、α=1.0×10⁻⁶ m²/s。t=100 sの表面熱流束q″を、固体の内部へ向かう+xを正として求める。π=3.14159265。",
+      "choices": [
+        "+3.39×10³ W/m²",
+        "+1.35×10⁴ W/m²",
+        "+6.77×10² W/m²",
+        "+6.77×10³ W/m²"
+      ],
+      "answer": 3,
+      "difficulty": "標準・符号と流束",
+      "explanation": "適用条件：半無限固体、表面温度の瞬間的な指定、一定物性、一次元。q_x″=k(Ts−Ti)/√(παt)=2×60/√(π×10⁻⁶×100)=+6.770×10³ W/m²。表面が内部より熱いため+xへ入る向きが正となる。",
+      "distractors": [
+        "分母の√tや係数の扱いを誤り、流束を半分とした値です。",
+        "式に不要な係数2を掛けて流束を2倍とした値です。",
+        "拡散率と時間の積の平方根を10倍で扱った誤差です。",
+        "正解。kΔT/√(παt)に単位をそろえて代入します。"
+      ],
+      "hints": [
+        "フーリエ則で表面流束はk(Ts−Ti)/√(παt)です。",
+        "√(παt)=√(3.1416×10⁻⁴)m≒0.0177245 m。"
+      ],
+      "solutionSteps": [
+        "境界は一定表面温度なのでq″=k(Ts−Ti)/√(παt)を選ぶ。",
+        "√(παt)=√(3.14159265×10⁻⁴)m=0.0177245m。",
+        "分子kΔT=2×60=120 W/m。",
+        "120/0.0177245=+6.77×10³ W/m²。固体への熱流入を正とする。"
+      ],
+      "beginnerPitfall": "時刻0で理想解が発散する特異性を現実の無限熱流束とみなさない。"
+    },
+    {
+      "revision": "v1",
+      "field": "熱伝導・非定常",
+      "prerequisites": [
+        "熱拡散率とフーリエ則",
+        "無次元相似変数と半無限境界条件"
+      ],
+      "questionGroup": "original_independent_applied_v1",
+      "questionKind": "numerical",
+      "source": {
+        "type": "supplement",
+        "reference": "アプリ独自の半無限体の非定常伝導§5.6の詳説に基づく計算問題。原本の本文・図・演習問題を転載しない。",
+        "chapterId": "ch5",
+        "focusSectionId": "5.6",
+        "guideId": "chapter5-semi-infinite"
+      },
+      "createdStatus": "独立作問",
+      "reviewStatus": "独立計算・内部構造監査済み／外部専門家校閲前",
+      "expertReviewed": false,
+      "reportHistory": [],
+      "id": "supp-deep-semi-energy-integral-v1",
+      "prompt": "同じ半無限固体（Ti=20 ℃、Ts=80 ℃、k=2 W/(m·K)、α=1.0×10⁻⁶ m²/s）の表面温度をt=0から一定に保つ。t=100 sまでの単位面積当たりの累積入熱は？ π=3.14159265。",
+      "choices": [
+        "+1.354×10⁶ J/m²",
+        "+6.770×10⁵ J/m²",
+        "+2.708×10⁶ J/m²",
+        "+1.354×10⁵ J/m²"
+      ],
+      "answer": 0,
+      "difficulty": "応用・時間積分",
+      "explanation": "適用条件：指定表面温度・半無限・一定物性・一次元。q_x″(t)=k(Ts−Ti)/√(παt)を0から100sまで時間積分するとE/A=2k(Ts−Ti)√[t/(πα)]=1.354×10⁶ J/m²。100s時点のq″にそのまま100sを掛けると半分になり誤る。",
+      "distractors": [
+        "正解。熱流束1/√tを時間積分し係数2を含む。",
+        "最終時刻の熱流束に経過秒数を掛け、初期ほど流束が大きい事実を落とした値です。",
+        "積分で余分に2倍する誤りです。",
+        "10分の1の時間または単位換算を混同した結果です。"
+      ],
+      "hints": [
+        "求める量は熱流束W/m²ではなく累積熱量J/m²です。",
+        "q″が1/√tに比例するので積分すると2√tが出ます。"
+      ],
+      "solutionSteps": [
+        "q″(s)=kΔT/√(παs)の時間積分 E/A=∫₀ᵗ q″(s)ds を立てる。",
+        "∫₀ᵗs⁻¹ᐟ² ds=2√t（特異点s=0でも積分は有限）を使用する。",
+        "E/A=2×2×60×√[100/(π×10⁻⁶)]を計算。",
+        "+1.354×10⁶ J/m²。q″(100)×100=6.77×10⁵ J/m²は誤り。"
+      ],
+      "beginnerPitfall": "瞬間熱流束と累積熱量を混同せず、積分後のJ/m²を確認する。"
     }
   ]
 }
