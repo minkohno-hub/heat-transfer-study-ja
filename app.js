@@ -494,7 +494,7 @@ function renderHome() {
 }
 
 function renderDeepLesson(lesson) {
-  const esc=escapeHTML, mark=value=>highlight(value,ui.readerQuery||'');
+  const esc=escapeHTML, mark=value=>ui.readerQuery?highlight(value,ui.readerQuery):linkedQuizText(value,3);
   const paragraphs=lesson.blocks.map(b=>'<section class="deep-lesson-block"><h4>'+mark(b.heading)+'</h4><p>'+mark(b.text)+'</p></section>').join('');
   const equations=lesson.equations.map(e=>'<div class="deep-equation"><strong>'+mark(e.label)+'</strong><p class="deep-expression">'+mark(e.expression)+'</p><p>'+mark(e.meaning)+'</p></div>').join('');
   const example=lesson.workedExample;
@@ -558,15 +558,15 @@ function renderReader() {
         ${section.localDraft ? '<aside class="notice-card compact-notice"><p>この訳文は以前のPCで作成した下書きです。原本との文章・数式・図表・ページの網羅性を再確認していません。学習時は英語原本PDFと照らし合わせてください。</p></aside>' : ''}
         ${independentNote ? `<section class="reader-original-note surface-card" id="reader-original-note" aria-labelledby="original-note-heading" lang="ja">
         <p class="eyebrow">第${escapeHTML(section.chapterId.slice(2))}章 · 第${escapeHTML(section.id)}節に関連する独自日本語ノート</p>
-        <h3 id="original-note-heading">${escapeHTML(independentNote.objective)}</h3>
+        <h3 id="original-note-heading">${linkedQuizText(independentNote.objective,4)}</h3>
         <p class="small-note"><strong>独立執筆・学術校閲前。</strong>原本の翻訳、節の全文掲載、図表の転載ではありません。原本の節との逐文対応は未検証です。</p>
         <dl class="original-note-fields">
-          <dt>考え方</dt><dd>${escapeHTML(independentNote.explanation)}</dd>
-          <dt>代表式・用語</dt><dd>${escapeHTML(independentNote.relation)}</dd>
-          <dt>具体例</dt><dd>${escapeHTML(independentNote.example)}</dd>
-          <dt>適用条件と注意点</dt><dd>${escapeHTML(independentNote.limits)}</dd>
-          <dt>理解度チェック</dt><dd>${escapeHTML(independentNote.selfCheck)}</dd>
-          <dt>考え方・答え</dt><dd><details><summary>答えを確認する</summary><p>${escapeHTML(independentNote.answer)}</p></details></dd>
+          <dt>考え方</dt><dd>${linkedQuizText(independentNote.explanation,4)}</dd>
+          <dt>代表式・用語</dt><dd>${linkedQuizText(independentNote.relation,4)}</dd>
+          <dt>具体例</dt><dd>${linkedQuizText(independentNote.example,4)}</dd>
+          <dt>適用条件と注意点</dt><dd>${linkedQuizText(independentNote.limits,4)}</dd>
+          <dt>理解度チェック</dt><dd>${linkedQuizText(independentNote.selfCheck,4)}</dd>
+          <dt>考え方・答え</dt><dd><details><summary>答えを確認する</summary><p>${linkedQuizText(independentNote.answer,4)}</p></details></dd>
         </dl>
         <div class="button-row">${independentQuestion?`<button type="button" class="button secondary" data-start-question="${escapeHTML(independentQuestion.id)}">この節の確認問題を解く →</button>`:''}${independentApplications.map(q=>`<button type="button" class="button secondary" data-start-question="${escapeHTML(q.id)}">この節の応用計算を解く →</button>`).join('')}<a class="text-link" href="#guide/${escapeHTML(independentChapterGuide?.id||'start')}">章別の独立補助講座を読む →</a></div>
         </section>` : ''}
@@ -584,7 +584,7 @@ function renderReader() {
 }
 
 function renderBookBlock(block, language = 'ja') {
-  const text = highlight(block.text || '', ui.readerQuery || '').replaceAll('\n', '<br>');
+  const text = (ui.readerQuery ? highlight(block.text || '',ui.readerQuery) : linkedQuizText(block.text||'',5)).replaceAll('\n', '<br>');
   if (block.type === 'heading') return `<h3 class="book-subheading">${text}</h3>`;
   if (block.type === 'subheading') return `<h4 class="book-subheading book-subheading-minor">${text}</h4>`;
   if (block.type === 'example') return `<section class="book-example"><h4>${escapeHTML(block.title || (language === 'en' ? 'Example' : '例題'))}</h4><p>${text}</p></section>`;
