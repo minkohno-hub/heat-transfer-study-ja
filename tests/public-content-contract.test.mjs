@@ -55,3 +55,15 @@ test('public build rejects incorrect book-page mapping and accidentally exported
   c.questions.find(q=>q.figure?.kind==='book').figure.src='./data/figures/figure.png';
   assert.match(find(checkPublicContent(c)),/原図の単独ファイル/);
 });
+
+test('public contract rejects mismatched chapter metadata for guides and independently authored practice',async()=>{
+  const a=await fixtures();
+  a.guides.find(g=>g.id==='chapter2-cylindrical-conduction').relatedSectionIds=['1.1'];
+  assert.match(find(checkPublicContent(a)),/章別独立講座の章ID・関連節/);
+  const b=await fixtures();
+  b.questions.find(q=>q.id==='supp-chapter-ch2-series').source.chapterId='ch11';
+  assert.match(find(checkPublicContent(b)),/章別問題の章ID/);
+  const c=await fixtures();
+  c.guides.find(g=>g.id==='chapter3-effectiveness-ntu').bookChapter='unknown';
+  assert.match(find(checkPublicContent(c)),/章別独立講座の章ID・関連節/);
+});
