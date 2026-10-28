@@ -489,6 +489,7 @@ function renderReader() {
   const independentChapterGuide = GUIDE_SECTIONS.find(item=>item.bookChapter===section.chapterId);
   const independentNote=independentNoteForSection(originalNotes,section.id);
   const independentQuestion=questionBank.find(q=>q.source?.sectionNoteId===section.id);
+  const independentApplications=questionBank.filter(q=>q.source?.focusSectionId===section.id);
   const available = sectionIsTranslated(section);
   const hasEnglish = Array.isArray(section.blocksEn);
   const contentLanguage = hasEnglish && state.settings.contentLanguage === 'en' ? 'en' : 'ja';
@@ -535,7 +536,7 @@ function renderReader() {
           <dt>理解度チェック</dt><dd>${escapeHTML(independentNote.selfCheck)}</dd>
           <dt>考え方・答え</dt><dd><details><summary>答えを確認する</summary><p>${escapeHTML(independentNote.answer)}</p></details></dd>
         </dl>
-        <div class="button-row">${independentQuestion?`<button type="button" class="button secondary" data-start-question="${escapeHTML(independentQuestion.id)}">この節の確認問題を解く →</button>`:''}<a class="text-link" href="#guide/${escapeHTML(independentChapterGuide?.id||'start')}">章別の独立補助講座を読む →</a></div>
+        <div class="button-row">${independentQuestion?`<button type="button" class="button secondary" data-start-question="${escapeHTML(independentQuestion.id)}">この節の確認問題を解く →</button>`:''}${independentApplications.map(q=>`<button type="button" class="button secondary" data-start-question="${escapeHTML(q.id)}">この節の応用計算を解く →</button>`).join('')}<a class="text-link" href="#guide/${escapeHTML(independentChapterGuide?.id||'start')}">章別の独立補助講座を読む →</a></div>
         </section>` : ''}
         ${independentChapterGuide ? `<aside class="notice-card" aria-label="独立作成の章別補助講座"><span class="notice-icon" aria-hidden="true">i</span><div><strong>この章の日本語補助講座</strong><p>原本の翻訳・節本文ではありません。伝熱・物質移動の考え方を独立した例と式で説明します。</p><a class="text-link" href="#guide/${escapeHTML(independentChapterGuide.id)}"> ${escapeHTML(independentChapterGuide.title)} を開く →</a></div></aside>` : ''}
         ${available ? `<div class="book-content" lang="${contentLanguage}">${blocks}</div>` : blocks}
@@ -953,7 +954,7 @@ function renderAnswerFeedback(question, answer, existingNote, choiceOrder) {
   const correct = answer.correct;
   const sourceSection=getSection(question.source.section);
   const guideId=question.source.guideId;
-  const sourceAction = question.source.type === 'book' ? `<div class="source-ref">出典：${sourceLabel(question.source)}。${sectionIsTranslated(sourceSection)?`<button type="button" class="text-link" data-section="${escapeHTML(question.source.section)}">アプリ内の本文を開く →</button>`:'アプリ内の日本語訳は未収録です。'}</div>${sourcePdfLink(question.source,sourceSection)}` : `<div class="source-ref">${sourceLabel(question.source)}。書籍本文ではなくアプリ作成の説明です。${GUIDE_SECTIONS.some(section=>section.id===guideId)?`<a class="text-link" href="#guide/${guideId}">関連する学習ガイドへ →</a>`:''}${question.source.sectionNoteId && independentNoteForSection(originalNotes,question.source.sectionNoteId)?`<button type="button" class="text-link" data-section="${escapeHTML(question.source.sectionNoteId)}">関連する独自日本語節別ノートを読む →</button>`:''}</div>`;
+  const sourceAction = question.source.type === 'book' ? `<div class="source-ref">出典：${sourceLabel(question.source)}。${sectionIsTranslated(sourceSection)?`<button type="button" class="text-link" data-section="${escapeHTML(question.source.section)}">アプリ内の本文を開く →</button>`:'アプリ内の日本語訳は未収録です。'}</div>${sourcePdfLink(question.source,sourceSection)}` : `<div class="source-ref">${sourceLabel(question.source)}。書籍本文ではなくアプリ作成の説明です。${GUIDE_SECTIONS.some(section=>section.id===guideId)?`<a class="text-link" href="#guide/${guideId}">関連する学習ガイドへ →</a>`:''}${(question.source.sectionNoteId||question.source.focusSectionId) && independentNoteForSection(originalNotes,question.source.sectionNoteId||question.source.focusSectionId)?`<button type="button" class="text-link" data-section="${escapeHTML(question.source.sectionNoteId||question.source.focusSectionId)}">関連する独自日本語節別ノートを読む →</button>`:''}</div>`;
   const reasons = choiceOrder.map((index,position) => `<li class="${index === question.answer ? 'is-correct' : ''}"><strong>${String.fromCharCode(65 + position)} ${index === question.answer ? '正解' : '誤答'}</strong><p>${escapeHTML(question.distractors[index])}</p></li>`).join('');
   return `<section class="answer-feedback ${correct ? 'feedback-correct' : 'feedback-wrong'}" aria-live="polite"><div class="feedback-title"><span class="feedback-symbol">${correct ? '✓' : '!'}</span><div><strong>${correct ? '正解です' : '今回は不正解です'}</strong><small>自信度：${confidenceLabel(answer.confidence)} · ${formatTime(answer.at)}</small></div></div>
     <div class="explanation-block"><h3>何を問う問題だった？</h3><p>${escapeHTML(question.prompt)}</p><h3>正解へ至る考え方</h3><p>${escapeHTML(question.explanation)}</p></div>
