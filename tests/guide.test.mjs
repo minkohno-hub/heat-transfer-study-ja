@@ -27,3 +27,22 @@ test('the four guide examples agree with independently calculated hand values',(
   assert.ok(Math.abs(resistance.overallU-1/.85)<1e-12);
   assert.ok(Math.abs(resistance.temperatures.at(-1)-20)<1e-10);
 });
+
+
+test('advanced self-authored lessons are searchable and explicit about approximations and limitations',()=>{
+  assert.equal(GUIDE_SECTIONS.length,32);
+  const keys={
+    'learn-dimensionless-transient':['Bi','Fo','0.1','L𝚌'],
+    'learn-lumped-cooling':['ρVc','2000 s','Bi','exp'],
+    'learn-convection-dimensionless':['Re','Pr','Nu','kᶠ'],
+    'learn-heat-exchanger':['ṁ','ΔTₗₘ','8000 W','向流']
+  };
+  for(const [id,tokens] of Object.entries(keys)){
+    const part=GUIDE_SECTIONS.find(guide=>guide.id===id);
+    assert.ok(part,id);
+    assert.ok(part.html.length>500,id);
+    for(const token of tokens)assert.ok(part.html.includes(token),id+': '+token);
+  }
+  assert.ok(searchGuide('フーリエ数').some(s=>s.id==='learn-dimensionless-transient'));
+  assert.ok(searchGuide('対数平均温度差').some(s=>s.id==='learn-heat-exchanger'));
+});

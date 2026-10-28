@@ -28,7 +28,7 @@ test('public questions are self-contained and book references remain in the cite
       assert.equal(q.reviewStatus,'source_checked');assert.equal(q.expertReviewed,false);
     }
   }
-  assert.equal(qs.filter(q=>q.source.type==='supplement').length,8);
+  assert.equal(qs.filter(q=>q.source.type==='supplement').length,65);
   const boiling=qs.find(q=>q.id==='book-9-1-transition-flux');
   assert.equal(boiling.source.bookPages,'476');assert.equal(boiling.source.pdfPages,'490');
   const beforeInception=qs.find(q=>q.id==='book-9-1-before-inception');
@@ -155,4 +155,114 @@ test('vertical natural convection retains source caveats, mean-value overbars, a
   const qs=await read('data/local/questions/8.3-ja.json');assert.equal(qs.length,10);
   for(const q of qs){assert.equal(validateQuestion(q),'',q.id);assert.equal(q.source.section,'8.3');assert.equal(q.expertReviewed,false);assert.ok(q.beginnerPitfall);assert.ok(q.solutionSteps.length>=3);if(q.figure)await access(new URL(q.figure.src,root));}
   assert.equal(qs.find(q=>q.id==='ch8-3-mean-h-calculation').answer,3);
+});
+
+test('independent application questions have unique answer keys and independently recomputed physical values',async()=>{
+  const questions=await read('data/questions.json');
+  const added=questions.filter(q=>q.id.startsWith('supp-audit-'));
+  assert.equal(added.length,12);
+  assert.equal(new Set(added.map(q=>q.id)).size,12);
+  for(const field of ['熱伝導','対流','熱放射','熱抵抗'])
+    assert.equal(added.filter(q=>q.field===field).length,3,field);
+  const correct=Object.fromEntries(added.map(q=>[q.id.replace('supp-audit-',''),q.choices[q.answer]]));
+  for(const q of added){
+    assert.equal(q.source.type,'supplement',q.id);
+    assert.equal(q.expertReviewed,false,q.id);
+    assert.equal(q.reviewStatus.includes('専門家校閲なし'),true,q.id);
+    assert.equal(q.distractors.filter(reason=>reason.startsWith('正解。')).length,1,q.id);
+    assert.equal(q.distractors[q.answer].startsWith('正解。'),true,q.id);
+    assert.ok(q.hints.length>=2&&q.solutionSteps.length>=3,q.id);
+  }
+  const equal=(key,value,expected)=>{
+    assert.ok(Math.abs(value-expected)<=1e-10*Math.max(1,Math.abs(expected)),key);
+    assert.equal(typeof correct[key],'string',key);
+  };
+  // Independent calculations: no app simulator output is used for these answer checks.
+  equal('conduction-compensation',(2*3)/(2*4)/(3/4),1);
+  equal('conduction-reversed-sign',10*1*(20-50)/1,-300);
+  equal('conduction-inverse-k',60*.2/(.5*30),.8);
+  equal('convection-negative-direction',25*2*(0-20),-1000);
+  equal('convection-inverse-h',400/(1.6*(35-25)),25);
+  equal('convection-compensating-inputs',(2*15)*(10/2)/(15*10),1);
+  equal('radiation-equal-temperatures',300**4-300**4,0);
+  equal('radiation-emissivity-scale',.90/.30,3);
+  const radiationRatio=(400**4-300**4)/(300**4-200**4);
+  equal('radiation-same-delta-different-level',radiationRatio,17.5/6.5);
+  assert.ok(radiationRatio>1);
+  equal('resistance-layer-temp-drop',80*.5,40);
+  equal('resistance-overall-u',1/(.25*2),2);
+  equal('resistance-one-layer-doubled',(.1+.2+.5+.1)/(.1+.4+.5+.1),9/11);
+  assert.match(added.find(q=>q.id==='supp-audit-resistance-one-layer-doubled').prompt,/第1固体層（0\.20 K\/W）/);
+  for(const [key,label] of Object.entries({
+    'conduction-compensation':'変わらない',
+    'conduction-reversed-sign':'−300 W',
+    'conduction-inverse-k':'0.80 W/(m·K)',
+    'convection-negative-direction':'−1,000 W',
+    'convection-inverse-h':'25 W/(m²·K)',
+    'convection-compensating-inputs':'変わらない',
+    'radiation-equal-temperatures':'正味の熱移動率は0 Wになる',
+    'radiation-emissivity-scale':'3倍',
+    'radiation-same-delta-different-level':'Aのほうが大きい',
+    'resistance-layer-temp-drop':'40 K',
+    'resistance-overall-u':'2.0 W/(m²·K)',
+    'resistance-one-layer-doubled':'9/11倍'
+  }))assert.equal(correct[key],label,key);
+});
+
+test('conceptual answers do not stand out solely by option length',async()=>{
+  const byId=new Map((await read('data/questions.json')).map(question=>[question.id,question]));
+  for(const id of ['supp-audit-radiation-equal-temperatures','supp-chapter-ch9-chf','supp-chapter-ch10-concept']){
+    const lengths=byId.get(id).choices.map(choice=>Array.from(choice).length);
+    assert.ok(Math.max(...lengths)-Math.min(...lengths)<=4,`${id}: ${lengths}`);
+  }
+});
+
+
+test('four new original lessons have twelve consistent questions with independently derived physical answers',async()=>{
+  const qs=await read('data/questions.json');
+  const added=qs.filter(q=>q.id.startsWith('supp-expanded-'));
+  assert.equal(qs.length,72);
+  assert.equal(added.length,12);
+  const lessonIds=['learn-dimensionless-transient','learn-lumped-cooling','learn-convection-dimensionless','learn-heat-exchanger'];
+  for(const guideId of lessonIds){
+    assert.ok(GUIDE_SECTIONS.some(g=>g.id===guideId),guideId);
+    assert.equal(added.filter(q=>q.source.guideId===guideId).length,3,guideId);
+  }
+  const get=suffix=>added.find(q=>q.id==='supp-expanded-'+suffix);
+  const verified={
+    'bi-calc':{label:'0.040',calculation:40*(.002/.10)/20,expected:.040},
+    'fo-calc':{label:'1.0',calculation:1e-5*40/(.020**2),expected:1},
+    'alpha-calc':{label:'5.0×10⁻⁶ m²/s',calculation:10/(1000*2000),expected:5e-6},
+    'tau-calc':{label:'2,000 s',calculation:1000*.001*4000/(20*.10),expected:2000},
+    'lumped-temp':{label:'34.7 ℃',calculation:20+(60-20)*Math.exp(-1),expected:34.7151776469},
+    'lumped-double-time':{label:'6.8 K',calculation:50*Math.exp(-2),expected:6.7667641618},
+    're-calc':{label:'10,000',calculation:1000*.2*.05/.001,expected:10000},
+    'pr-calc':{label:'8.0',calculation:.001*4000/.5,expected:8},
+    'nu-calc':{label:'10.0',calculation:100*.05/.5,expected:10},
+    'hx-energy':{label:'8,000 W',calculation:.20*2000*(80-60),expected:8000},
+    'hx-lmtd-equal':{label:'40 K',calculation:(80-40+60-20)/2,expected:40},
+    'hx-area':{label:'2.0 m²',calculation:8000/(100*40),expected:2}
+  };
+  for(const [suffix,v] of Object.entries(verified)){
+    const q=get(suffix);
+    assert.ok(q,suffix);
+    assert.equal(validateQuestion(q),'',suffix);
+    assert.equal(q.choices[q.answer],v.label,suffix);
+    assert.ok(Math.abs(v.calculation-v.expected)<=.0001*Math.max(1,Math.abs(v.expected)),suffix);
+    assert.equal(q.distractors.filter(reason=>reason.startsWith('正解。')).length,1,suffix);
+    assert.ok(q.distractors[q.answer].startsWith('正解。'),suffix);
+    assert.ok(q.hints.length>=2&&q.solutionSteps.length>=3,suffix);
+    assert.equal(q.expertReviewed,false,suffix);
+    assert.match(q.reviewStatus,/専門家校閲なし/,suffix);
+    assert.equal(q.source.type,'supplement',suffix);
+  }
+  const glossary=await read('data/glossary.json');
+  const ids=new Set(glossary.map(x=>x.id));
+  assert.equal(ids.size,glossary.length);
+  for(const id of ['thermal-diffusivity','biot-number','fourier-number','lumped-capacitance','thermal-time-constant','reynolds-number','prandtl-number','nusselt-number','heat-exchanger-balance','log-mean-temperature-difference'])assert.ok(ids.has(id),id);
+  const studied=new Set(qs.map(q=>q.id));
+  for(const term of glossary.filter(t=>t.source?.guideId?.startsWith('learn-'))){
+    assert.ok(lessonIds.includes(term.source.guideId),term.id);
+    for(const link of term.relatedQuestions||[])assert.ok(studied.has(link.id),link.id);
+  }
 });

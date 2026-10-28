@@ -2,6 +2,8 @@ import {readFile,copyFile,mkdir,rm,stat,writeFile} from 'node:fs/promises';
 import {resolve,dirname,join} from 'node:path';
 import {fileURLToPath} from 'node:url';
 import {createHash} from 'node:crypto';
+import {checkPublicContent} from '../public-content-contract.mjs';
+import {GUIDE_SECTIONS} from '../guide.mjs';
 
 const root=resolve(dirname(fileURLToPath(import.meta.url)),'..');
 const output=join(root,'dist');
@@ -22,7 +24,12 @@ for(const chapter of book.chapters)for(const section of chapter.sections){
   delete section.blocks;delete section.blocksEn;delete section.figures;delete section.sourceReview;
 }
 for(const question of questions)if(question.figure?.kind==='book')delete question.figure.src;
-const files=['index.html','styles.css','app.js','study-core.mjs','guide.mjs','sw.js','manifest.json','data/glossary.json'];
+// Validate the actual allowlisted data after source sanitization, before writing any public files.
+const glossary=JSON.parse(await readFile(join(root,'data/glossary.json'),'utf8'));
+const issues=checkPublicContent({book,questions,glossary,guides:GUIDE_SECTIONS});
+if(issues.length)throw new Error('公開教材の整合性検査に失敗しました:\n'+issues.join('\n'));
+
+const files=['index.html','styles.css','app.js','study-core.mjs','guide.mjs','chapter-curriculum.mjs','sw.js','manifest.json','data/glossary.json'];
 for(const path of new Set(files)){
   const source=join(root,path),target=join(output,path);
   await mkdir(dirname(target),{recursive:true});await copyFile(source,target);
@@ -32,6 +39,17 @@ await mkdir(join(output,'book'),{recursive:true});
 await writeFile(join(output,'book/AHTTv600.pdf'),pdf);
 for(const [name,value] of Object.entries({'book.json':book,'questions.json':questions,'content-manifest.json':{files:[]}})){
   await writeFile(join(output,'data',name),JSON.stringify(value,null,2)+'\n');
+}
+// A build that silently omits an imported module will crash for every user.
+// Fail before publishing instead of relying on browsers to discover a 404.
+for(const entry of files.filter(path=>/\.m?js$/.test(path))){
+  const code=await readFile(join(output,entry),'utf8');
+  for(const match of code.matchAll(/^\s*import\s+(?:[^;\n]*?\s+from\s+)?['"](\.[^'"]+)['"]/gm)){
+    const imported=match[1];
+    const target=resolve(dirname(join(output,entry)),imported);
+    if(!target.startsWith(output+'/'))throw new Error('公開JSのimportが配信ディレクトリ外を参照しています: '+entry+' -> '+imported);
+    try{await stat(target);}catch{throw new Error('公開JSの依存モジュールが配信ファイルから欠けています: '+entry+' -> '+imported);}
+  }
 }
 await writeFile(marker,'公開対象だけを列挙して作成した配信物です。\n');
 console.log('公開配信物：許諾済みの原本PDF、アプリ・独自ガイド・問題・用語・書籍の目次情報。翻訳・原図・抽出本文は含めていません。');

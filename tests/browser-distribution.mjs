@@ -1,6 +1,7 @@
 // Checks the exact public Pages artifact, where book text and original figures are absent.
 import assert from 'node:assert/strict';
 import {createRequire} from 'node:module';
+import {existsSync} from 'node:fs';
 import {join,dirname} from 'node:path';
 import {fileURLToPath} from 'node:url';
 import {startServer} from '../scripts/serve.mjs';
@@ -16,7 +17,7 @@ const server=liveBase?null:await startServer({root,port:0});
 let browser;
 try {
   browser=await engines[engine].launch({headless:true,
-    ...(process.env.BROWSER_EXECUTABLE?{executablePath:process.env.BROWSER_EXECUTABLE}:engine==='chromium'?{executablePath:'/usr/bin/chromium'}:{}),
+    ...(process.env.BROWSER_EXECUTABLE?{executablePath:process.env.BROWSER_EXECUTABLE}:engine==='chromium'&&existsSync('/usr/bin/chromium')?{executablePath:'/usr/bin/chromium'}:{}),
     args:engine==='chromium'?['--no-sandbox',...(ignoreCert?['--ignore-certificate-errors']:[])]:[]});
   const context=await browser.newContext({viewport:{width:390,height:844},ignoreHTTPSErrors:ignoreCert});
   const page=await context.newPage();
@@ -35,7 +36,10 @@ try {
   await page.locator('.app-shell').waitFor();
   assert.match(await page.locator('.app-footer').innerText(),/0節/);
   await nav('reader');
+  await page.locator('.reader-toc .toc-item.selected').waitFor({state:'attached'});
   assert.ok((await readerContrast()).every(value=>value>=4.5),'目次の選択行の文字コントラスト');
+  await page.locator('#reader-article a[href="#guide/chapter1-energy-balance"]').waitFor({state:"attached"});
+  assert.match(await page.locator('#reader-article').innerText(),/原本の翻訳・節本文ではありません/);
   assert.ok((await page.locator('.brand').getAttribute('aria-label')).includes('熱移動を学ぶ'));
   assert.ok((await page.locator('.not-translated a[href*="AHTTv600.pdf"]').getAttribute('aria-label')).includes('原本PDFを開く'));
   for(const action of ['reader-font-down','reader-font-up']){
@@ -70,11 +74,21 @@ try {
   }
   await nav('guide');
   await page.locator('.guide-section').first().waitFor();
-  assert.equal(await page.locator('.guide-section').count(),17);
+  assert.equal(await page.locator('.guide-section').count(),32);
+  for(const id of ['learn-dimensionless-transient','learn-lumped-cooling','learn-convection-dimensionless','learn-heat-exchanger'])
+    assert.equal(await page.locator('#guide-'+id).count(),1,'発展学習ガイド: '+id);
+  for(let ch=1;ch<=11;ch++){
+    const guideId=['chapter1-energy-balance','chapter2-cylindrical-conduction','chapter3-effectiveness-ntu','chapter4-fin-design','chapter5-semi-infinite','chapter6-flat-boundary','chapter7-internal-flow','chapter8-buoyancy','chapter9-latent-boiling','chapter10-view-factors','chapter11-fick-mass'][ch-1];
+    assert.equal(await page.locator('#guide-'+guideId).count(),1,'章別独立ガイド: '+guideId);
+  }
   await page.locator('#guide-query').fill('放射率');
   await page.locator('#guide-search-form button').click();
   assert.ok(await page.locator('#guide-sim-radiation').count());
   await nav('glossary');
+  await page.locator('#term-biot-number [data-start-question="supp-expanded-bi-calc"]').waitFor({state:'attached'});
+  await page.locator('#term-rayleigh-number [data-start-question="supp-chapter-ch8-ra"]').waitFor({state:'attached'});
+  await page.locator('#term-fick-diffusive-flux [data-start-question="supp-chapter-ch11-fick"]').waitFor({state:'attached'});
+  await page.locator('#term-log-mean-temperature-difference [data-start-question="supp-expanded-hx-lmtd-equal"]').waitFor({state:'attached'});
   assert.match(await page.locator('#term-heat .term-links a').getAttribute('href'),/AHTTv600\.pdf#page=17$/);
   assert.match(await page.locator('#term-heat-flux .term-links a').getAttribute('href'),/AHTTv600\.pdf#page=25$/);
   assert.match(await page.locator('#term-pool-boiling .term-links a').getAttribute('href'),/AHTTv600\.pdf#page=485$/);
@@ -98,6 +112,38 @@ try {
   assert.match(await page.locator('.question-card').innerText(),/厚さ L/);
   await page.locator('[data-action="exit-quiz"]').click();
   await page.locator('[data-action="discard-quiz"]').click();
+  await nav('map');
+  await page.locator('[data-chapter-card="ch2"]').waitFor({state:'visible'});
+  assert.match(await page.locator('[data-chapter-card="ch2"]').innerText(),/収録問題：3問/);
+  assert.match(await page.locator('[data-chapter-card="ch1"]').innerText(),/原本の節を読了に記録：1\/5節/);
+  assert.match(await page.locator('[data-chapter-card="ch9"]').innerText(),/収録問題：10問/);
+  await page.locator('[data-chapter-card="ch2"] [data-chapter-practice="ch2"]').click();
+  await page.locator('.question-card').waitFor({state:'visible'});
+  assert.match(await page.locator('.page-heading h1').innerText(),/1 \/ 3 問/);
+  assert.equal((await page.evaluate(()=>JSON.parse(localStorage.getItem('heat-study-ja:v1')).quizDraft.ids)).every(id=>id.startsWith('supp-chapter-ch2-')),true);
+  await page.locator('[data-action="exit-quiz"]').click();
+  await page.locator('[data-action="discard-quiz"]').click();
+  await page.locator('#quiz-start-form select[name="chapter"]').selectOption('ch9');
+  await page.locator('#quiz-start-form select[name="count"]').selectOption('72');
+  await page.locator('#quiz-start-form button[type="submit"]').click();
+  await page.locator('.question-card').waitFor({state:'visible'});
+  assert.match(await page.locator('.page-heading h1').innerText(),/1 \/ 10 問/);
+  await page.locator('[data-action="exit-quiz"]').click();
+  await page.locator('[data-action="discard-quiz"]').click();
+  await nav('guide');
+  await page.locator('#guide-chapter11-fick-mass [data-chapter-practice="ch11"]').click();
+  await page.locator('.question-card').waitFor({state:'visible'});
+  assert.match(await page.locator('.page-heading h1').innerText(),/1 \/ 3 問/);
+  await page.locator('[data-action="exit-quiz"]').click();
+  await page.locator('[data-action="discard-quiz"]').click();
+  await nav('search');
+  await page.locator('#search-query').fill('レイリー数');
+  await page.locator('#search-form select[name="kind"]').selectOption('guide');
+  await page.locator('#search-form select[name="chapter"]').selectOption('ch8');
+  await page.locator('#search-form button[type="submit"]').click();
+  assert.ok(await page.locator('.result-card').count()>=1);
+  await page.locator('.result-card .result-link').first().click();
+  assert.match(page.url(),/#guide\/chapter8-buoyancy$/);
   await nav('simulator');
   assert.match(await page.locator('.result-number').innerText(),/5,625/);
   await page.locator('#sim-form input[name="k"]').fill('0.000001');
@@ -201,6 +247,7 @@ try {
   await page.locator('input[name="theme"][value="dark"]').check();
   assert.equal(await page.evaluate(()=>document.documentElement.dataset.theme),'dark');
   await nav('reader');
+  await page.locator('.reader-toc .toc-item.selected').waitFor({state:'attached'});
   assert.ok((await readerContrast()).every(value=>value>=4.5),'暗色目次の選択行の文字コントラスト');
   await nav('settings');
   await page.reload();
@@ -282,9 +329,23 @@ try {
   await page.locator('.app-shell').waitFor();
   await nav('reader');
   await page.waitForFunction(()=>document.querySelector('#pdf-cache-status')?.textContent.includes('未保存'));
-  const missingPdf=await page.evaluate(async()=>{try{const response=await fetch('./book/AHTTv600.pdf',{headers:{Range:'bytes=0-3'},cache:'no-store'});return {status:response.status,message:await response.text()};}catch{return {status:'network-error'};}});
-  assert.ok(missingPdf.status===503||(engine==='firefox'&&missingPdf.status==='network-error'),`未保存PDFの応答: ${JSON.stringify(missingPdf)}`);
+  // Explicit Cache Storage was deleted. Chromium may still serve the PDF
+  // from its separate HTTP cache offline; a 503 is not universally guaranteed.
+  assert.equal(await page.evaluate(async()=>Boolean(await (await caches.open('heat-study-ja-pdf-v1')).match('./book/AHTTv600.pdf'))),false);
+  const missingPdf=await page.evaluate(async()=>{
+    try{
+      const response=await fetch('./book/AHTTv600.pdf',{headers:{Range:'bytes=0-3'},cache:'no-store'});
+      if(response.status===200||response.status===206){
+        const reader=response.body.getReader(),first=await reader.read();
+        await reader.cancel();
+        return {status:response.status,signature:String.fromCharCode(...(first.value||new Uint8Array()).slice(0,4))};
+      }
+      return {status:response.status,message:(await response.text()).slice(0,200)};
+    }catch{return {status:'network-error'};}
+  });
+  assert.ok(missingPdf.status===503||[200,206].includes(missingPdf.status)||(engine==='firefox'&&missingPdf.status==='network-error'),'未保存PDFの応答: '+JSON.stringify(missingPdf));
   if(missingPdf.status===503)assert.match(missingPdf.message,/オフライン保存されていません/);
+  if([200,206].includes(missingPdf.status))assert.equal(missingPdf.signature,'%PDF','別領域のHTTPキャッシュがPDFを返した場合も署名を確認する');
   assert.deepEqual(errors,[]);
   assert.deepEqual(external,[]);
   console.log(`${engine}で公開配信物：原本PDFとオフラインの範囲取得、訳文・抽出原図なし、ガイド・演習・計算・保存・画面幅・数字キーとEnter・3種類の表示モードを確認。`);
