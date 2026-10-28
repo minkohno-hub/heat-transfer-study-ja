@@ -46,7 +46,7 @@
       "example": "同じ幾何と温度差でkが2倍なら、定常線形伝導モデルの熱移動率は2倍。形状を拡大する場合はSの長さ次元と境界条件を確認する。",
       "limits": "Sの計算式を不明な形状へ流用しない。温度依存のk、内部発熱、複数材料、対流境界は追加の無次元条件が必要。",
       "selfCheck": "形状係数Sの単位は何か。",
-      "answer": "m（長さ）。",
+      "answer": "m。",
       "reviewStatus": "AI_drafted_pending_independent_expert_review"
     },
     {
@@ -57,7 +57,7 @@
       "example": "mL=1ならη_f≈0.7616。フィン長さを増やすと表面積は増える一方、効率は低下し得るので、総放熱量と効率を別々に評価する。",
       "limits": "この解は一定k・h、一次元、断熱先端、側面対流などの仮定を要する。放射や先端対流、接触抵抗が重要なら別の式を使う。",
       "selfCheck": "フィン効率が下がっただけで、総放熱量も必ず下がると言えるか。",
-      "answer": "言えない。面積増加で総放熱量が増える場合がある。",
+      "answer": "言えない。",
       "reviewStatus": "AI_drafted_pending_independent_expert_review"
     }
   ]
