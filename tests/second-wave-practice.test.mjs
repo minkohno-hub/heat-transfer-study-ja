@@ -16,7 +16,7 @@ const expected={
 };
 test('all 23 additional section-focused practice questions retain explicit keyed reasons and section links',async()=>{
  const bank=await read('data/questions.json');
- assert.ok(bank.length>=298);
+ assert.ok(bank.length>=312);
  const additions=bank.filter(q=>q.id.startsWith('supp-next-'));
  assert.equal(additions.length,23);
  for(const q of additions){
@@ -61,7 +61,7 @@ test('independently recompute new numerical exercises and separate draft status 
   'data/questions.json','data/readiness-evidence.json'
  ].map(read));
  const report=buildAuthoringQueue({book,originalNotes:notes,deepLessons:lessons,questions,evidence});
- assert.ok(report.draftAuthoringMinimumMet>=15);
+ assert.ok(report.draftAuthoringMinimumMet>=17);
  assert.equal(report.externallyAcceptedSections,0);
- assert.ok(report.remainingQuestionDraftMinimum<=392);
+ assert.ok(report.remainingQuestionDraftMinimum<=378);
 });
