@@ -183,6 +183,18 @@ try {
   assert.match(await page.locator('.question-card').innerText(),/独立学習ノート/);
   await page.locator('[data-action="exit-quiz"]').click();
   await page.locator('[data-action="discard-quiz"]').click();
+  await nav('search');
+  await page.locator('#search-query').fill('Stefan流');
+  await page.locator('#search-form select[name="kind"]').selectOption('deep-lesson');
+  await page.locator('#search-form select[name="chapter"]').selectOption('ch11');
+  await page.locator('#search-form button[type="submit"]').click();
+  await page.locator('.result-card').first().waitFor({state:'visible'});
+  assert.equal(await page.locator('.result-card').count(),1);
+  assert.match(await page.locator('.result-card').first().innerText(),/外部専門家校閲前/);
+  await page.locator('.result-card .result-link').first().click();
+  await page.locator('#reader-deep-lesson').waitFor({state:'visible'});
+  assert.match(await page.locator('#reader-deep-lesson').innerText(),/Fickの法則/);
+  assert.match(await page.locator('#reader-deep-lesson').innerText(),/Stefan流/);
   await nav('simulator');
   assert.match(await page.locator('.result-number').innerText(),/5,625/);
   await page.locator('#sim-form input[name="k"]').fill('0.000001');
