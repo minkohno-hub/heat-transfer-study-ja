@@ -488,20 +488,20 @@ function renderHome() {
 }
 
 function renderDeepLesson(lesson) {
-  const esc=escapeHTML;
-  const paragraphs=lesson.blocks.map(b=>'<section class="deep-lesson-block"><h4>'+esc(b.heading)+'</h4><p>'+esc(b.text)+'</p></section>').join('');
-  const equations=lesson.equations.map(e=>'<div class="deep-equation"><strong>'+esc(e.label)+'</strong><p class="deep-expression">'+esc(e.expression)+'</p><p>'+esc(e.meaning)+'</p></div>').join('');
+  const esc=escapeHTML, mark=value=>highlight(value,ui.readerQuery||'');
+  const paragraphs=lesson.blocks.map(b=>'<section class="deep-lesson-block"><h4>'+mark(b.heading)+'</h4><p>'+mark(b.text)+'</p></section>').join('');
+  const equations=lesson.equations.map(e=>'<div class="deep-equation"><strong>'+mark(e.label)+'</strong><p class="deep-expression">'+mark(e.expression)+'</p><p>'+mark(e.meaning)+'</p></div>').join('');
   const example=lesson.workedExample;
-  const steps=example.steps.map((line,i)=>'<li><strong>手順'+(i+1)+'</strong> '+esc(line)+'</li>').join('');
-  const pitfalls=lesson.pitfalls.map(text=>'<li>'+esc(text)+'</li>').join('');
+  const steps=example.steps.map((line,i)=>'<li><strong>手順'+(i+1)+'</strong> '+mark(line)+'</li>').join('');
+  const pitfalls=lesson.pitfalls.map(text=>'<li>'+mark(text)+'</li>').join('');
   const sources=lesson.references.map(ref=>'<li><a class="text-link" target="_blank" rel="noopener noreferrer" href="'+esc(ref.url)+'">'+esc(ref.title)+'</a></li>').join('');
   return '<section class="reader-deep-lesson surface-card" id="reader-deep-lesson" lang="ja" aria-labelledby="deep-lesson-heading">'
     +'<p class="eyebrow">第'+esc(lesson.sectionId)+'節：独立作成の発展学習教材</p>'
-    +'<h3 id="deep-lesson-heading">'+esc(lesson.title)+'</h3>'
+    +'<h3 id="deep-lesson-heading">'+mark(lesson.title)+'</h3>'
     +'<p class="small-note"><strong>原本の全文翻訳ではありません。外部専門家校閲前。</strong> 一般的な物理法則と確認可能な資料から独立執筆し、原本の表現・図版を転載していません。</p>'
-    +'<p><strong>到達目標：</strong>'+esc(lesson.objective)+'</p>'+paragraphs
+    +'<p><strong>到達目標：</strong>'+mark(lesson.objective)+'</p>'+paragraphs
     +'<h4>代表式・単位・適用条件</h4>'+equations
-    +'<section class="deep-worked-example"><h4>解き方を追う：'+esc(example.title)+'</h4><p>'+esc(example.problem)+'</p><ol>'+steps+'</ol><p><strong>計算結果：</strong>'+esc(example.answer)+'</p><p><strong>仮定と限界：</strong>'+esc(example.limitations)+'</p></section>'
+    +'<section class="deep-worked-example"><h4>解き方を追う：'+mark(example.title)+'</h4><p>'+mark(example.problem)+'</p><ol>'+steps+'</ol><p><strong>計算結果：</strong>'+mark(example.answer)+'</p><p><strong>仮定と限界：</strong>'+mark(example.limitations)+'</p></section>'
     +'<h4>誤用しやすいポイント</h4><ul>'+pitfalls+'</ul>'
     +'<h4>独立講義で確認した関連資料</h4><ul>'+sources+'</ul>'
     +'<p class="small-note">'+esc(lesson.reviewStatus)+'</p></section>';
@@ -645,7 +645,16 @@ function openReader(section, options={}) {
   if(['ja','en'].includes(options.language))state.settings.contentLanguage=options.language;
   saveState();ui.quiz=null;ui.quizResult=null;setRoute('reader');
   const position=options.blockId?{blockId:options.blockId,offset:options.offset??-100}:options.position!==undefined?options.position:state.readerPositions[section];
-  setTimeout(()=>restoreReaderPosition(position),100);
+  setTimeout(()=>{
+    // Search navigation should reveal the first matching phrase in the actual lesson,
+    // rather than opening the chapter at a stale bookmark or at the top.
+    const marked=options.query?document.querySelector('#reader-deep-lesson mark, #reader-article .book-content mark'):null;
+    if(marked){
+      window.scrollTo({top:Math.max(0,window.scrollY+marked.getBoundingClientRect().top-110),behavior:'instant'});
+      return;
+    }
+    restoreReaderPosition(position);
+  },100);
 }
 
 function buildSearchIndex() {
