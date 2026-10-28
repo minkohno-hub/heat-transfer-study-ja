@@ -22,6 +22,9 @@ test('five standalone independent lessons are registered, section-aligned and do
   assert.ok(l.pitfalls.length>=4&&l.references.length>=1,id);
   assert.ok(l.reviewStatus.includes('外部専門家校閲'),id);
  }
+ const radiation=deepLessonForSection(deep,'10.3');
+ assert.match(radiation.workedExample.steps.join(' '),/正味放射熱移動率Q̇_12=.*793\.8 W/);
+ assert.doesNotMatch(radiation.workedExample.steps.join(' '),/正味放射率Q̇_12/);
  assert.equal(deep.translation,false);
  assert.equal(deep.expertReviewed,false);
 });
