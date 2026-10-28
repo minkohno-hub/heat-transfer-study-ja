@@ -8,7 +8,12 @@
       "section": "1.1",
       "bookPages": "3–6",
       "pdfPages": "17–20"
-    }
+    },
+    "brief": "温度差があるために、ある物体や領域から別の物体や領域へ移るエネルギー。",
+    "beginner": "温度差があるために、ある物体や領域から別の物体や領域へ移るエネルギー。熱は物体に蓄えられた物質ではなく、エネルギーの移動として扱う。",
+    "detail": "温度差があるために、ある物体や領域から別の物体や領域へ移るエネルギー。熱は物体に蓄えられた物質ではなく、エネルギーの移動として扱う。",
+    "aliases": [],
+    "category": "既存の原本関連・補足用語"
   },
   {
     "id": "heat-transfer",
@@ -19,7 +24,12 @@
       "section": "1.1",
       "bookPages": "3–6",
       "pdfPages": "17–20"
-    }
+    },
+    "brief": "温度差などに関わる仕組みによって、熱エネルギーが場所や物質の間を移る現象。",
+    "beginner": "温度差などに関わる仕組みによって、熱エネルギーが場所や物質の間を移る現象。書籍は伝導・対流・放射を扱う。",
+    "detail": "温度差などに関わる仕組みによって、熱エネルギーが場所や物質の間を移る現象。書籍は伝導・対流・放射を扱う。",
+    "aliases": [],
+    "category": "既存の原本関連・補足用語"
   },
   {
     "id": "caloric",
@@ -30,7 +40,12 @@
       "section": "1.1",
       "bookPages": "3",
       "pdfPages": "17"
-    }
+    },
+    "brief": "熱を、熱い物体から冷たい物体へ流れる目に見えない流体（カロリック）として説明した歴史的な考え方。",
+    "beginner": "熱を、熱い物体から冷たい物体へ流れる目に見えない流体（カロリック）として説明した歴史的な考え方。書籍では自然と矛盾する性質が含まれていたと説明している。",
+    "detail": "熱を、熱い物体から冷たい物体へ流れる目に見えない流体（カロリック）として説明した歴史的な考え方。書籍では自然と矛盾する性質が含まれていたと説明している。",
+    "aliases": [],
+    "category": "既存の原本関連・補足用語"
   },
   {
     "id": "temperature-gradient",
@@ -41,7 +56,12 @@
       "section": "1.1",
       "bookPages": "4",
       "pdfPages": "18"
-    }
+    },
+    "brief": "場所によって温度がどの向きに、どれほどの割合で変化するかを表す量。",
+    "beginner": "場所によって温度がどの向きに、どれほどの割合で変化するかを表す量。熱伝導では、温度差だけでなく、距離あたりの変化が重要になる。後半は補足説明。",
+    "detail": "場所によって温度がどの向きに、どれほどの割合で変化するかを表す量。熱伝導では、温度差だけでなく、距離あたりの変化が重要になる。後半は補足説明。",
+    "aliases": [],
+    "category": "既存の原本関連・補足用語"
   },
   {
     "id": "convection",
@@ -58,7 +78,12 @@
         "id": "book-9-1-before-inception",
         "label": "気泡発生前の伝熱を考える"
       }
-    ]
+    ],
+    "brief": "流体（液体や気体）のまとまった運動によって、熱が運ばれる現象。",
+    "beginner": "流体（液体や気体）のまとまった運動によって、熱が運ばれる現象。温められた空気が浮力で上昇する例がある。",
+    "detail": "流体（液体や気体）のまとまった運動によって、熱が運ばれる現象。温められた空気が浮力で上昇する例がある。",
+    "aliases": [],
+    "category": "既存の原本関連・補足用語"
   },
   {
     "id": "power",
@@ -75,7 +100,12 @@
         "id": "book-9-1-wire-flux",
         "label": "電力から熱流束を計算"
       }
-    ]
+    ],
+    "brief": "一定時間あたりに移動・変換されるエネルギー。",
+    "beginner": "一定時間あたりに移動・変換されるエネルギー。単位はワット（W）で、1 W = 1 J/s。1馬力は本文の記述で746 W。",
+    "detail": "一定時間あたりに移動・変換されるエネルギー。単位はワット（W）で、1 W = 1 J/s。1馬力は本文の記述で746 W。",
+    "aliases": [],
+    "category": "既存の原本関連・補足用語"
   },
   {
     "id": "heat-rate",
@@ -92,7 +122,12 @@
         "id": "supp-flat-numeric",
         "label": "平板の熱移動率を計算する"
       }
-    ]
+    ],
+    "brief": "単位時間あたりに移動する熱エネルギー。",
+    "beginner": "単位時間あたりに移動する熱エネルギー。記号や正負の約束は、使う式や対象の説明に従う。",
+    "detail": "単位時間あたりに移動する熱エネルギー。記号や正負の約束は、使う式や対象の説明に従う。",
+    "aliases": [],
+    "category": "既存の原本関連・補足用語"
   },
   {
     "id": "heat-flux",
@@ -121,7 +156,12 @@
         "id": "book-9-1-wire-flux",
         "label": "加熱線の熱流束を計算"
       }
-    ]
+    ],
+    "brief": "熱移動率を単位面積あたりで表した量。",
+    "beginner": "熱移動率を単位面積あたりで表した量。単位は W/m²。向きを表すときは符号の約束を確認する。補足例（アプリ作成）：一様に100 Wが2 m²を通る場合、大きさは50 W/m²。",
+    "detail": "熱移動率を単位面積あたりで表した量。単位は W/m²。向きを表すときは符号の約束を確認する。補足例（アプリ作成）：一様に100 Wが2 m²を通る場合、大きさは50 W/m²。",
+    "aliases": [],
+    "category": "既存の原本関連・補足用語"
   },
   {
     "id": "pool-boiling",
@@ -146,7 +186,12 @@
         "id": "book-9-1-wire-temperature",
         "label": "加熱線の温度を校正する"
       }
-    ]
+    ],
+    "brief": "静止した加熱面から、外部から強制的に流していない液体へ熱が移るときの沸騰。",
+    "beginner": "静止した加熱面から、外部から強制的に流していない液体へ熱が移るときの沸騰。液体の内部まで全く動かないという意味ではない。気泡や温度差による流動は起こり得る。後半は誤解を避けるための補足説明。",
+    "detail": "静止した加熱面から、外部から強制的に流していない液体へ熱が移るときの沸騰。液体の内部まで全く動かないという意味ではない。気泡や温度差による流動は起こり得る。後半は誤解を避けるための補足説明。",
+    "aliases": [],
+    "category": "既存の原本関連・補足用語"
   },
   {
     "id": "electrical-resistance",
@@ -163,7 +208,12 @@
         "id": "book-9-1-wire-temperature",
         "label": "抵抗から線温度を求める"
       }
-    ]
+    ],
+    "brief": "電流の流れに対する抵抗を表す量。",
+    "beginner": "電流の流れに対する抵抗を表す量。単位はオーム（Ω）。図9.1の加熱線では、電流 I が0でなければ測定した電圧 E と電流 I から R = E/I を求め、事前の抵抗–温度校正曲線から線温度を読み取る。一般的な定義と単位の説明は補足説明。",
+    "detail": "電流の流れに対する抵抗を表す量。単位はオーム（Ω）。図9.1の加熱線では、電流 I が0でなければ測定した電圧 E と電流 I から R = E/I を求め、事前の抵抗–温度校正曲線から線温度を読み取る。一般的な定義と単位の説明は補足説明。",
+    "aliases": [],
+    "category": "既存の原本関連・補足用語"
   },
   {
     "id": "wall-superheat",
@@ -184,7 +234,12 @@
         "id": "book-9-1-transition-flux",
         "label": "遷移沸騰中の変化"
       }
-    ]
+    ],
+    "brief": "加熱面の温度 T_w と接する液体の飽和温度 T_sat の差 ΔT = T_w − T_sat。",
+    "beginner": "加熱面の温度 T_w と接する液体の飽和温度 T_sat の差 ΔT = T_w − T_sat。温度差なので 1 K と 1 ℃ は同じ大きさ。補足例（アプリ作成）：T_w が 110 ℃、T_sat が 100 ℃ なら ΔT は 10 K。",
+    "detail": "加熱面の温度 T_w と接する液体の飽和温度 T_sat の差 ΔT = T_w − T_sat。温度差なので 1 K と 1 ℃ は同じ大きさ。補足例（アプリ作成）：T_w が 110 ℃、T_sat が 100 ℃ なら ΔT は 10 K。",
+    "aliases": [],
+    "category": "既存の原本関連・補足用語"
   },
   {
     "id": "nucleate-boiling",
@@ -201,7 +256,12 @@
         "id": "book-9-1-peak-flux-risk",
         "label": "核沸騰上限の危険"
       }
-    ]
+    ],
+    "brief": "加熱面の気泡が生じる場所から気泡が発生する沸騰。",
+    "beginner": "加熱面の気泡が生じる場所から気泡が発生する沸騰。書籍のプール沸騰曲線では、泡発生点から最初の遷移点までに、孤立気泡の領域と気泡が合体して柱状になる領域がある。",
+    "detail": "加熱面の気泡が生じる場所から気泡が発生する沸騰。書籍のプール沸騰曲線では、泡発生点から最初の遷移点までに、孤立気泡の領域と気泡が合体して柱状になる領域がある。",
+    "aliases": [],
+    "category": "既存の原本関連・補足用語"
   },
   {
     "id": "transition-boiling",
@@ -218,7 +278,12 @@
         "id": "book-9-1-transition-flux",
         "label": "遷移沸騰の熱流束"
       }
-    ]
+    ],
+    "brief": "ピーク熱流束 qmax から最小熱流束 qmin へ向かうプール沸騰の領域。",
+    "beginner": "ピーク熱流束 qmax から最小熱流束 qmin へ向かうプール沸騰の領域。壁面過熱度を独立に増やす曲線では、蒸気の被覆が進むにつれて熱流束が下がる。",
+    "detail": "ピーク熱流束 qmax から最小熱流束 qmin へ向かうプール沸騰の領域。壁面過熱度を独立に増やす曲線では、蒸気の被覆が進むにつれて熱流束が下がる。",
+    "aliases": [],
+    "category": "既存の原本関連・補足用語"
   },
   {
     "id": "film-boiling",
@@ -235,7 +300,12 @@
         "id": "book-9-1-film-flux",
         "label": "膜沸騰の熱流束"
       }
-    ]
+    ],
+    "brief": "安定した蒸気膜が加熱面を覆い、熱が膜を通って伝わる沸騰。",
+    "beginner": "安定した蒸気膜が加熱面を覆い、熱が膜を通って伝わる沸騰。最小熱流束 qmin を過ぎた領域では、壁面過熱度を増やすと熱流束は再び増える。",
+    "detail": "安定した蒸気膜が加熱面を覆い、熱が膜を通って伝わる沸騰。最小熱流束 qmin を過ぎた領域では、壁面過熱度を増やすと熱流束は再び増える。",
+    "aliases": [],
+    "category": "既存の原本関連・補足用語"
   },
   {
     "id": "peak-heat-flux",
@@ -252,7 +322,12 @@
         "id": "book-9-1-peak-flux-risk",
         "label": "ピーク熱流束の危険"
       }
-    ]
+    ],
+    "brief": "核沸騰域の上限にあたる熱流束 qmax。",
+    "beginner": "核沸騰域の上限にあたる熱流束 qmax。熱流束を独立に増やす系でこの境界を越えると、壁面温度が突然大きく上がり得るため、運転上の危険に注意する。",
+    "detail": "核沸騰域の上限にあたる熱流束 qmax。熱流束を独立に増やす系でこの境界を越えると、壁面温度が突然大きく上がり得るため、運転上の危険に注意する。",
+    "aliases": [],
+    "category": "既存の原本関連・補足用語"
   },
   {
     "id": "thermal-energy",
@@ -263,7 +338,12 @@
       "section": "1.1",
       "bookPages": "6",
       "pdfPages": "20"
-    }
+    },
+    "brief": "温度や物質の状態に関わる内部エネルギーの一部を説明するときに使う言葉。",
+    "beginner": "温度や物質の状態に関わる内部エネルギーの一部を説明するときに使う言葉。熱（移動）と物体の中にあるエネルギーは区別する。",
+    "detail": "温度や物質の状態に関わる内部エネルギーの一部を説明するときに使う言葉。熱（移動）と物体の中にあるエネルギーは区別する。",
+    "aliases": [],
+    "category": "既存の原本関連・補足用語"
   },
   {
     "id": "thermal-conductivity",
@@ -284,7 +364,12 @@
         "id": "supp-flat-numeric",
         "label": "平板の熱移動率を計算する"
       }
-    ]
+    ],
+    "brief": "材料の中を熱が伝わりやすい度合いを表す物性値。",
+    "beginner": "材料の中を熱が伝わりやすい度合いを表す物性値。単位は W/(m·K)。均質な平板の一次元定常熱伝導のモデルで用いる。",
+    "detail": "材料の中を熱が伝わりやすい度合いを表す物性値。単位は W/(m·K)。均質な平板の一次元定常熱伝導のモデルで用いる。",
+    "aliases": [],
+    "category": "既存の原本関連・補足用語"
   },
   {
     "id": "convection-coefficient",
@@ -305,7 +390,14 @@
         "id": "supp-convection-numeric",
         "label": "対流の熱移動率を計算する"
       }
-    ]
+    ],
+    "brief": "固体表面と隣接する流体の間の熱移動を結び付ける係数。",
+    "beginner": "固体表面と隣接する流体の間の熱移動を結び付ける係数。流速、流れの状態、流体の性質などに左右され、単純な材料定数ではない。",
+    "detail": "固体表面と隣接する流体の間の熱移動を結び付ける係数。流速、流れの状態、流体の性質などに左右され、単純な材料定数ではない。",
+    "aliases": [
+      "熱伝達率"
+    ],
+    "category": "既存の原本関連・補足用語"
   },
   {
     "id": "emissivity",
@@ -322,7 +414,12 @@
         "id": "supp-radiation-numeric",
         "label": "放射率を使った熱放射の計算"
       }
-    ]
+    ],
+    "brief": "実在表面が黒体放射と比べてどれほど熱放射するかを表す比。",
+    "beginner": "実在表面が黒体放射と比べてどれほど熱放射するかを表す比。モデルでは0から1の範囲を取る。",
+    "detail": "実在表面が黒体放射と比べてどれほど熱放射するかを表す比。モデルでは0から1の範囲を取る。",
+    "aliases": [],
+    "category": "既存の原本関連・補足用語"
   },
   {
     "id": "kelvin",
@@ -339,7 +436,12 @@
         "id": "supp-radiation-temperature",
         "label": "摂氏温度を絶対温度に換算する"
       }
-    ]
+    ],
+    "brief": "絶対零度を0とする温度。",
+    "beginner": "絶対零度を0とする温度。放射の温度4乗の計算では絶対温度 K を使う。℃を使う式と取り違えない。",
+    "detail": "絶対零度を0とする温度。放射の温度4乗の計算では絶対温度 K を使う。℃を使う式と取り違えない。",
+    "aliases": [],
+    "category": "既存の原本関連・補足用語"
   },
   {
     "id": "surface-tension",
@@ -356,7 +458,12 @@
         "id": "book-9-2-bubble-radius",
         "label": "平衡泡の半径を計算する"
       }
-    ]
+    ],
+    "brief": "液体と蒸気の界面に働く張力を、界面上の長さあたりで表す量。",
+    "beginner": "液体と蒸気の界面に働く張力を、界面上の長さあたりで表す量。単位は N/m。本書の理想化した球形蒸気泡では、表面張力に対応する泡内外の圧力差が 2σ/R_b となる。後半は式（9.1）を読み解くための補足説明。",
+    "detail": "液体と蒸気の界面に働く張力を、界面上の長さあたりで表す量。単位は N/m。本書の理想化した球形蒸気泡では、表面張力に対応する泡内外の圧力差が 2σ/R_b となる。後半は式（9.1）を読み解くための補足説明。",
+    "aliases": [],
+    "category": "既存の原本関連・補足用語"
   },
   {
     "id": "thermal-diffusivity",
@@ -373,7 +480,12 @@
         "id": "supp-expanded-alpha-calc",
         "label": "熱拡散率を逆算する"
       }
-    ]
+    ],
+    "brief": "固体内で温度変化が広がる速さの時間尺度に関わる物性。",
+    "beginner": "固体内で温度変化が広がる速さの時間尺度に関わる物性。α=k/(ρc)で単位はm²/s。熱伝導率だけでなく密度と比熱容量も関係する。",
+    "detail": "固体内で温度変化が広がる速さの時間尺度に関わる物性。α=k/(ρc)で単位はm²/s。熱伝導率だけでなく密度と比熱容量も関係する。",
+    "aliases": [],
+    "category": "既存の原本関連・補足用語"
   },
   {
     "id": "biot-number",
@@ -390,7 +502,12 @@
         "id": "supp-expanded-bi-calc",
         "label": "ビオ数を計算する"
       }
-    ]
+    ],
+    "brief": "固体内部の伝導抵抗と表面対流抵抗の相対比。",
+    "beginner": "固体内部の伝導抵抗と表面対流抵抗の相対比。集中熱容量法の判定ではBi=h(V/Aₛ)/kₛを用いる。0.1未満は近似を検討する目安で、普遍的な保証ではない。",
+    "detail": "固体内部の伝導抵抗と表面対流抵抗の相対比。集中熱容量法の判定ではBi=h(V/Aₛ)/kₛを用いる。0.1未満は近似を検討する目安で、普遍的な保証ではない。",
+    "aliases": [],
+    "category": "既存の原本関連・補足用語"
   },
   {
     "id": "fourier-number",
@@ -407,7 +524,12 @@
         "id": "supp-expanded-fo-calc",
         "label": "フーリエ数を計算する"
       }
-    ]
+    ],
+    "brief": "非定常伝熱における熱拡散の時間尺度を表す無次元数。",
+    "beginner": "非定常伝熱における熱拡散の時間尺度を表す無次元数。Fo=αt/L²。用いる特性長さの定義と境界条件を確認する。",
+    "detail": "非定常伝熱における熱拡散の時間尺度を表す無次元数。Fo=αt/L²。用いる特性長さの定義と境界条件を確認する。",
+    "aliases": [],
+    "category": "既存の原本関連・補足用語"
   },
   {
     "id": "lumped-capacitance",
@@ -428,7 +550,12 @@
         "id": "supp-expanded-lumped-temp",
         "label": "時定数後の温度"
       }
-    ]
+    ],
+    "brief": "物体内部の温度差を無視できる条件下で、全体を一つの温度としてエネルギー収支を解く近似。",
+    "beginner": "物体内部の温度差を無視できる条件下で、全体を一つの温度としてエネルギー収支を解く近似。Biや物性・境界条件の確認が必要。",
+    "detail": "物体内部の温度差を無視できる条件下で、全体を一つの温度としてエネルギー収支を解く近似。Biや物性・境界条件の確認が必要。",
+    "aliases": [],
+    "category": "既存の原本関連・補足用語"
   },
   {
     "id": "thermal-time-constant",
@@ -449,7 +576,12 @@
         "id": "supp-expanded-lumped-double-time",
         "label": "2時定数後の温度差"
       }
-    ]
+    ],
+    "brief": "一定周囲温度の集中熱容量モデルにおいて、周囲との温度差が初期値の1/eになる時間。",
+    "beginner": "一定周囲温度の集中熱容量モデルにおいて、周囲との温度差が初期値の1/eになる時間。τ=ρVc/(hAₛ)。物体温度そのものが1/eになる時間ではない。",
+    "detail": "一定周囲温度の集中熱容量モデルにおいて、周囲との温度差が初期値の1/eになる時間。τ=ρVc/(hAₛ)。物体温度そのものが1/eになる時間ではない。",
+    "aliases": [],
+    "category": "既存の原本関連・補足用語"
   },
   {
     "id": "reynolds-number",
@@ -466,7 +598,12 @@
         "id": "supp-expanded-re-calc",
         "label": "Reの計算"
       }
-    ]
+    ],
+    "brief": "流体の慣性と粘性の相対的な大きさを示す無次元数。",
+    "beginner": "流体の慣性と粘性の相対的な大きさを示す無次元数。Re=ρuL/μ。形状や境界条件により流れの遷移条件が異なる。",
+    "detail": "流体の慣性と粘性の相対的な大きさを示す無次元数。Re=ρuL/μ。形状や境界条件により流れの遷移条件が異なる。",
+    "aliases": [],
+    "category": "既存の原本関連・補足用語"
   },
   {
     "id": "prandtl-number",
@@ -483,7 +620,12 @@
         "id": "supp-expanded-pr-calc",
         "label": "Prの計算"
       }
-    ]
+    ],
+    "brief": "流体の運動量拡散と熱拡散の比を表す無次元数。",
+    "beginner": "流体の運動量拡散と熱拡散の比を表す無次元数。Pr=ν/αᶠ=μcₚ/kᶠ。流体物性の評価条件を確かめる。",
+    "detail": "流体の運動量拡散と熱拡散の比を表す無次元数。Pr=ν/αᶠ=μcₚ/kᶠ。流体物性の評価条件を確かめる。",
+    "aliases": [],
+    "category": "既存の原本関連・補足用語"
   },
   {
     "id": "nusselt-number",
@@ -500,7 +642,12 @@
         "id": "supp-expanded-nu-calc",
         "label": "Nuの計算"
       }
-    ]
+    ],
+    "brief": "対流熱伝達の強さを流体の伝導スケールと比較する無次元数。",
+    "beginner": "対流熱伝達の強さを流体の伝導スケールと比較する無次元数。Nu=hL/kᶠ。流体の熱伝導率kᶠを使用し、Biに使う固体kₛとは区別する。",
+    "detail": "対流熱伝達の強さを流体の伝導スケールと比較する無次元数。Nu=hL/kᶠ。流体の熱伝導率kᶠを使用し、Biに使う固体kₛとは区別する。",
+    "aliases": [],
+    "category": "既存の原本関連・補足用語"
   },
   {
     "id": "heat-exchanger-balance",
@@ -517,7 +664,12 @@
         "id": "supp-expanded-hx-energy",
         "label": "温側の熱移動率"
       }
-    ]
+    ],
+    "brief": "定常かつ外部熱損失が小さい熱交換器では、温側流体の失うエネルギー率と冷側が得るエネルギー率が等しい。",
+    "beginner": "定常かつ外部熱損失が小さい熱交換器では、温側流体の失うエネルギー率と冷側が得るエネルギー率が等しい。相変化なし・比熱一定ならQ̇=ṁcₚΔTを使用できる。",
+    "detail": "定常かつ外部熱損失が小さい熱交換器では、温側流体の失うエネルギー率と冷側が得るエネルギー率が等しい。相変化なし・比熱一定ならQ̇=ṁcₚΔTを使用できる。",
+    "aliases": [],
+    "category": "既存の原本関連・補足用語"
   },
   {
     "id": "log-mean-temperature-difference",
@@ -538,7 +690,12 @@
         "id": "supp-expanded-hx-area",
         "label": "必要伝熱面積"
       }
-    ]
+    ],
+    "brief": "熱交換器の両端で異なる温度差を平均化した駆動温度差。",
+    "beginner": "熱交換器の両端で異なる温度差を平均化した駆動温度差。正の端末温度差ΔT₁,ΔT₂についてΔTₗₘ=(ΔT₁−ΔT₂)/ln(ΔT₁/ΔT₂)。等しいときはその値を用いる。",
+    "detail": "熱交換器の両端で異なる温度差を平均化した駆動温度差。正の端末温度差ΔT₁,ΔT₂についてΔTₗₘ=(ΔT₁−ΔT₂)/ln(ΔT₁/ΔT₂)。等しいときはその値を用いる。",
+    "aliases": [],
+    "category": "既存の原本関連・補足用語"
   },
   {
     "id": "heat-flux-area",
@@ -559,7 +716,12 @@
         "id": "supp-chapter-ch1-energy",
         "label": "章別演習：エネルギー収支 ch1-energy"
       }
-    ]
+    ],
+    "brief": "熱移動率Q̇[W]は単位時間当たりのエネルギー移動量。",
+    "beginner": "熱移動率Q̇[W]は単位時間当たりのエネルギー移動量。均一な熱流束q″[W/m²]ならQ̇=q″A。蓄熱量[J]や放熱時間[s]と区別する。",
+    "detail": "熱移動率Q̇[W]は単位時間当たりのエネルギー移動量。均一な熱流束q″[W/m²]ならQ̇=q″A。蓄熱量[J]や放熱時間[s]と区別する。",
+    "aliases": [],
+    "category": "既存の原本関連・補足用語"
   },
   {
     "id": "cylindrical-wall-resistance",
@@ -580,7 +742,12 @@
         "id": "supp-chapter-ch2-cylinder-watts",
         "label": "章別演習：円筒壁の熱伝導 ch2-cylinder-watts"
       }
-    ]
+    ],
+    "brief": "一方向・定常・一定熱伝導率の円筒壁では R=ln(r₂/r₁)/(2πkℓ) [K/W]。",
+    "beginner": "一方向・定常・一定熱伝導率の円筒壁では R=ln(r₂/r₁)/(2πkℓ) [K/W]。面積が半径によって変わるため、単純な平板R=L/kAとは異なる。",
+    "detail": "一方向・定常・一定熱伝導率の円筒壁では R=ln(r₂/r₁)/(2πkℓ) [K/W]。面積が半径によって変わるため、単純な平板R=L/kAとは異なる。",
+    "aliases": [],
+    "category": "既存の原本関連・補足用語"
   },
   {
     "id": "heat-capacity-rate",
@@ -601,7 +768,12 @@
         "id": "supp-chapter-ch3-outlet",
         "label": "章別演習：熱交換器 ch3-outlet"
       }
-    ]
+    ],
+    "brief": "流体の質量流量と比熱容量の積C=ṁcₚ[W/K]。",
+    "beginner": "流体の質量流量と比熱容量の積C=ṁcₚ[W/K]。相変化なし・比熱一定の熱交換器では、C_minと入口温度差から理想最大熱移動率を計算する。",
+    "detail": "流体の質量流量と比熱容量の積C=ṁcₚ[W/K]。相変化なし・比熱一定の熱交換器では、C_minと入口温度差から理想最大熱移動率を計算する。",
+    "aliases": [],
+    "category": "既存の原本関連・補足用語"
   },
   {
     "id": "fin-efficiency",
@@ -622,7 +794,12 @@
         "id": "supp-chapter-ch4-fin-eta",
         "label": "章別演習：フィン ch4-fin-eta"
       }
-    ]
+    ],
+    "brief": "フィン表面全体が基部温度で放熱した場合の理想熱移動率に対する実際のフィン放熱量の割合。",
+    "beginner": "フィン表面全体が基部温度で放熱した場合の理想熱移動率に対する実際のフィン放熱量の割合。一定断面・先端断熱の理想モデルではη_f=tanh(mL)/(mL)。",
+    "detail": "フィン表面全体が基部温度で放熱した場合の理想熱移動率に対する実際のフィン放熱量の割合。一定断面・先端断熱の理想モデルではη_f=tanh(mL)/(mL)。",
+    "aliases": [],
+    "category": "既存の原本関連・補足用語"
   },
   {
     "id": "semi-infinite-thermal-body",
@@ -643,7 +820,12 @@
         "id": "supp-chapter-ch5-time",
         "label": "章別演習：非定常熱伝導 ch5-time"
       }
-    ]
+    ],
+    "brief": "十分厚く反対面に温度変化が到達しない短時間の近似。",
+    "beginner": "十分厚く反対面に温度変化が到達しない短時間の近似。一定表面温度の条件なら温度変化の代表長さは√(αt)に比例する。",
+    "detail": "十分厚く反対面に温度変化が到達しない短時間の近似。一定表面温度の条件なら温度変化の代表長さは√(αt)に比例する。",
+    "aliases": [],
+    "category": "既存の原本関連・補足用語"
   },
   {
     "id": "local-and-average-nusselt",
@@ -664,7 +846,12 @@
         "id": "supp-chapter-ch6-local",
         "label": "章別演習：強制対流 ch6-local"
       }
-    ]
+    ],
+    "brief": "局所Nu_xは位置xでの対流熱伝達率に関わり、平均Nū_Lは全長Lで平均した熱伝達係数と対応する。",
+    "beginner": "局所Nu_xは位置xでの対流熱伝達率に関わり、平均Nū_Lは全長Lで平均した熱伝達係数と対応する。層流等温平板の代表的な係数はそれぞれ0.332と0.664。",
+    "detail": "局所Nu_xは位置xでの対流熱伝達率に関わり、平均Nū_Lは全長Lで平均した熱伝達係数と対応する。層流等温平板の代表的な係数はそれぞれ0.332と0.664。",
+    "aliases": [],
+    "category": "既存の原本関連・補足用語"
   },
   {
     "id": "hydraulic-diameter",
@@ -685,7 +872,12 @@
         "id": "supp-chapter-ch7-nu-boundary",
         "label": "章別演習：管内対流 ch7-nu-boundary"
       }
-    ]
+    ],
+    "brief": "非円形の流路断面積A_cと濡れ縁長さP_wからD_h=4A_c/P_wと定義する代表長さ。",
+    "beginner": "非円形の流路断面積A_cと濡れ縁長さP_wからD_h=4A_c/P_wと定義する代表長さ。形状が異なる場合に円管のNu式を無条件に流用できるわけではない。",
+    "detail": "非円形の流路断面積A_cと濡れ縁長さP_wからD_h=4A_c/P_wと定義する代表長さ。形状が異なる場合に円管のNu式を無条件に流用できるわけではない。",
+    "aliases": [],
+    "category": "既存の原本関連・補足用語"
   },
   {
     "id": "rayleigh-number",
@@ -706,7 +898,12 @@
         "id": "supp-chapter-ch8-length",
         "label": "章別演習：自然対流 ch8-length"
       }
-    ]
+    ],
+    "brief": "自然対流で浮力・粘性・熱拡散をまとめた無次元数。",
+    "beginner": "自然対流で浮力・粘性・熱拡散をまとめた無次元数。Ra=GrPr=gβ|ΔT|L³/(να)。物性と代表長さ・対象形状・境界条件を確認する。",
+    "detail": "自然対流で浮力・粘性・熱拡散をまとめた無次元数。Ra=GrPr=gβ|ΔT|L³/(να)。物性と代表長さ・対象形状・境界条件を確認する。",
+    "aliases": [],
+    "category": "既存の原本関連・補足用語"
   },
   {
     "id": "critical-heat-flux",
@@ -727,7 +924,12 @@
         "id": "supp-chapter-ch9-chf",
         "label": "章別演習：相変化 ch9-chf"
       }
-    ]
+    ],
+    "brief": "沸騰中に高い伝熱状態が維持できなくなる遷移に関わる熱流束の限界。",
+    "beginner": "沸騰中に高い伝熱状態が維持できなくなる遷移に関わる熱流束の限界。特定条件で壁温急上昇の危険があり、圧力・流動・表面条件で変わる。",
+    "detail": "沸騰中に高い伝熱状態が維持できなくなる遷移に関わる熱流束の限界。特定条件で壁温急上昇の危険があり、圧力・流動・表面条件で変わる。",
+    "aliases": [],
+    "category": "既存の原本関連・補足用語"
   },
   {
     "id": "radiation-view-factor",
@@ -748,7 +950,14 @@
         "id": "supp-chapter-ch10-enclosure",
         "label": "章別演習：放射熱移動 ch10-enclosure"
       }
-    ]
+    ],
+    "brief": "拡散放射面iから出るエネルギーのうち面jへ直接届く割合F_ij。",
+    "beginner": "拡散放射面iから出るエネルギーのうち面jへ直接届く割合F_ij。幾何形状に依存し、A_iF_ij=A_jF_jiという相反則を満たす。",
+    "detail": "拡散放射面iから出るエネルギーのうち面jへ直接届く割合F_ij。幾何形状に依存し、A_iF_ij=A_jF_jiという相反則を満たす。",
+    "aliases": [
+      "形態係数"
+    ],
+    "category": "既存の原本関連・補足用語"
   },
   {
     "id": "fick-diffusive-flux",
@@ -769,6 +978,1418 @@
         "id": "supp-chapter-ch11-sc",
         "label": "章別演習：物質移動 ch11-sc"
       }
-    ]
+    ],
+    "brief": "一定二成分拡散係数を仮定した単純モデルでJ_A=−D_AB dC_A/dx。",
+    "beginner": "一定二成分拡散係数を仮定した単純モデルでJ_A=−D_AB dC_A/dx。単位はmol/(m²·s)。混合物全体の対流を含む全モル流束とは異なる。",
+    "detail": "一定二成分拡散係数を仮定した単純モデルでJ_A=−D_AB dC_A/dx。単位はmol/(m²·s)。混合物全体の対流を含む全モル流束とは異なる。",
+    "aliases": [],
+    "category": "既存の原本関連・補足用語"
+  },
+  {
+    "id": "fourier-law",
+    "ja": "フーリエの法則",
+    "en": "Fourier's law",
+    "meaning": "温度が下がる方向へ熱が伝導することを示す法則。",
+    "brief": "温度が下がる方向へ熱が伝導することを示す法則。",
+    "beginner": "温度が下がる方向へ熱が伝導することを示す法則。",
+    "detail": "熱流束は温度勾配に熱伝導率を掛け符号を反転する。正方向の温度が低下する場合、熱流束は正になる。",
+    "unit": "W/m²",
+    "formula": "q″=−k∂T/∂x",
+    "aliases": [
+      "フーリエ則"
+    ],
+    "category": "熱伝導",
+    "source": {
+      "type": "supplement",
+      "reference": "熱移動・数学・単位系の一般定義についてアプリ独自に執筆した補足説明。原本の翻訳ではありません。",
+      "guideId": "sim-conduction"
+    },
+    "reviewStatus": "needs_review"
+  },
+  {
+    "id": "steady-state",
+    "ja": "定常状態",
+    "en": "steady state",
+    "meaning": "観測点の温度などが時間によらず変わらない状態。",
+    "brief": "観測点の温度などが時間によらず変わらない状態。",
+    "beginner": "観測点の温度などが時間によらず変わらない状態。",
+    "detail": "∂T/∂t=0だが、位置によって温度が異なってよい。定常と一様温度は別。",
+    "unit": "なし",
+    "formula": "∂T/∂t=0",
+    "aliases": [
+      "定常"
+    ],
+    "category": "熱伝導",
+    "source": {
+      "type": "supplement",
+      "reference": "熱移動・数学・単位系の一般定義についてアプリ独自に執筆した補足説明。原本の翻訳ではありません。",
+      "guideId": "sim-conduction"
+    },
+    "reviewStatus": "needs_review"
+  },
+  {
+    "id": "transient-state",
+    "ja": "非定常状態",
+    "en": "transient state",
+    "meaning": "温度などが時間とともに変わる状態。",
+    "brief": "温度などが時間とともに変わる状態。",
+    "beginner": "温度などが時間とともに変わる状態。",
+    "detail": "初期条件が必要になる。集中熱容量法は非定常の一例だが物体内部を一様温度と近似する。",
+    "unit": "なし",
+    "formula": "∂T/∂t≠0（一般例）",
+    "aliases": [
+      "非定常"
+    ],
+    "category": "熱伝導",
+    "source": {
+      "type": "supplement",
+      "reference": "熱移動・数学・単位系の一般定義についてアプリ独自に執筆した補足説明。原本の翻訳ではありません。",
+      "guideId": "sim-transient"
+    },
+    "reviewStatus": "needs_review"
+  },
+  {
+    "id": "heat-resistance",
+    "ja": "熱抵抗",
+    "en": "thermal resistance",
+    "meaning": "熱流を妨げる程度を温度差と熱移動率の比で表す。",
+    "brief": "熱流を妨げる程度を温度差と熱移動率の比で表す。",
+    "beginner": "熱流を妨げる程度を温度差と熱移動率の比で表す。",
+    "detail": "平板の定常伝導ではR=L/(kA)。面積を掛けた熱抵抗の単位m²K/Wと混同しない。",
+    "unit": "K/W",
+    "formula": "R=ΔT/Q̇",
+    "aliases": [
+      "伝熱抵抗"
+    ],
+    "category": "熱伝導",
+    "source": {
+      "type": "supplement",
+      "reference": "熱移動・数学・単位系の一般定義についてアプリ独自に執筆した補足説明。原本の翻訳ではありません。",
+      "guideId": "sim-resistance"
+    },
+    "reviewStatus": "needs_review"
+  },
+  {
+    "id": "slab",
+    "ja": "平板",
+    "en": "plane wall",
+    "meaning": "厚さ方向の伝熱を考える平らな壁のモデル。",
+    "brief": "厚さ方向の伝熱を考える平らな壁のモデル。",
+    "beginner": "厚さ方向の伝熱を考える平らな壁のモデル。",
+    "detail": "大きな平板の端部影響を無視できる場合に一次元伝導モデルが成立する。",
+    "unit": "m（厚さ）",
+    "formula": "Q̇=kAΔT/L",
+    "aliases": [
+      "平面壁"
+    ],
+    "category": "熱伝導",
+    "source": {
+      "type": "supplement",
+      "reference": "熱移動・数学・単位系の一般定義についてアプリ独自に執筆した補足説明。原本の翻訳ではありません。",
+      "guideId": "sim-conduction"
+    },
+    "reviewStatus": "needs_review"
+  },
+  {
+    "id": "cylinder",
+    "ja": "円筒壁",
+    "en": "cylindrical wall",
+    "meaning": "半径方向に熱が流れる円筒形状の壁。",
+    "brief": "半径方向に熱が流れる円筒形状の壁。",
+    "beginner": "半径方向に熱が流れる円筒形状の壁。",
+    "detail": "定常放射状伝導の熱抵抗はln(r₂/r₁)/(2πkL)。平板公式をそのまま当てない。",
+    "unit": "K/W",
+    "formula": "R=ln(r₂/r₁)/(2πkL)",
+    "aliases": [
+      "円管"
+    ],
+    "category": "熱伝導",
+    "source": {
+      "type": "supplement",
+      "reference": "熱移動・数学・単位系の一般定義についてアプリ独自に執筆した補足説明。原本の翻訳ではありません。",
+      "guideId": "chapter2-cylindrical-conduction"
+    },
+    "reviewStatus": "needs_review"
+  },
+  {
+    "id": "sphere",
+    "ja": "球殻",
+    "en": "spherical shell",
+    "meaning": "中心から半径方向へ熱が伝わる球形の層。",
+    "brief": "中心から半径方向へ熱が伝わる球形の層。",
+    "beginner": "中心から半径方向へ熱が伝わる球形の層。",
+    "detail": "半径によって熱が通る面積4πr²が変化し、平板の単純なL/(kA)とは異なる。",
+    "unit": "m",
+    "formula": "R=(1/r₁−1/r₂)/(4πk)",
+    "aliases": [
+      "球"
+    ],
+    "category": "熱伝導",
+    "source": {
+      "type": "supplement",
+      "reference": "熱移動・数学・単位系の一般定義についてアプリ独自に執筆した補足説明。原本の翻訳ではありません。",
+      "guideId": "sim-conduction"
+    },
+    "reviewStatus": "needs_review"
+  },
+  {
+    "id": "dirichlet",
+    "ja": "温度指定境界条件",
+    "en": "Dirichlet boundary condition",
+    "meaning": "物体表面の温度を既知の値として指定する条件。",
+    "brief": "物体表面の温度を既知の値として指定する条件。",
+    "beginner": "物体表面の温度を既知の値として指定する条件。",
+    "detail": "表面温度T(0,t)=Tsなど。熱流束を指定する条件や対流境界と区別する。",
+    "unit": "K または ℃",
+    "formula": "T|boundary=Ts",
+    "aliases": [
+      "ディリクレ境界条件"
+    ],
+    "category": "数学・解析",
+    "source": {
+      "type": "supplement",
+      "reference": "熱移動・数学・単位系の一般定義についてアプリ独自に執筆した補足説明。原本の翻訳ではありません。",
+      "guideId": "sim-conduction"
+    },
+    "reviewStatus": "needs_review"
+  },
+  {
+    "id": "neumann",
+    "ja": "熱流束指定境界条件",
+    "en": "Neumann boundary condition",
+    "meaning": "境界での温度勾配・熱流束を指定する条件。",
+    "brief": "境界での温度勾配・熱流束を指定する条件。",
+    "beginner": "境界での温度勾配・熱流束を指定する条件。",
+    "detail": "断熱はq″=0という特別な例。境界温度を固定しているわけではない。",
+    "unit": "W/m²",
+    "formula": "−k∂T/∂n=q″",
+    "aliases": [
+      "ノイマン境界条件"
+    ],
+    "category": "数学・解析",
+    "source": {
+      "type": "supplement",
+      "reference": "熱移動・数学・単位系の一般定義についてアプリ独自に執筆した補足説明。原本の翻訳ではありません。",
+      "guideId": "sim-conduction"
+    },
+    "reviewStatus": "needs_review"
+  },
+  {
+    "id": "robin",
+    "ja": "対流境界条件",
+    "en": "Robin boundary condition",
+    "meaning": "表面熱流束と流体温度差を結びつける条件。",
+    "brief": "表面熱流束と流体温度差を結びつける条件。",
+    "beginner": "表面熱流束と流体温度差を結びつける条件。",
+    "detail": "熱伝導での表面流束とh(Ts−T∞)を釣り合わせる。外向き法線の符号に注意する。",
+    "unit": "W/m²",
+    "formula": "−k∂T/∂n=h(Ts−T∞)",
+    "aliases": [
+      "ロビン境界条件"
+    ],
+    "category": "数学・解析",
+    "source": {
+      "type": "supplement",
+      "reference": "熱移動・数学・単位系の一般定義についてアプリ独自に執筆した補足説明。原本の翻訳ではありません。",
+      "guideId": "sim-convection"
+    },
+    "reviewStatus": "needs_review"
+  },
+  {
+    "id": "one-dimensional",
+    "ja": "一次元熱伝導",
+    "en": "one-dimensional conduction",
+    "meaning": "熱の流れを主に一方向だけで考える近似。",
+    "brief": "熱の流れを主に一方向だけで考える近似。",
+    "beginner": "熱の流れを主に一方向だけで考える近似。",
+    "detail": "端部効果や幅方向の温度差が十分小さいとき有用。次元は温度計測の数ではない。",
+    "unit": "なし",
+    "formula": "T=T(x,t)",
+    "aliases": [
+      "一次元"
+    ],
+    "category": "熱伝導",
+    "source": {
+      "type": "supplement",
+      "reference": "熱移動・数学・単位系の一般定義についてアプリ独自に執筆した補足説明。原本の翻訳ではありません。",
+      "guideId": "sim-conduction"
+    },
+    "reviewStatus": "needs_review"
+  },
+  {
+    "id": "multidimensional",
+    "ja": "多次元熱伝導",
+    "en": "multidimensional conduction",
+    "meaning": "二つ以上の空間方向に温度分布がある伝導。",
+    "brief": "二つ以上の空間方向に温度分布がある伝導。",
+    "beginner": "二つ以上の空間方向に温度分布がある伝導。",
+    "detail": "二次元や三次元では各方向の勾配と境界条件が必要になる。",
+    "unit": "なし",
+    "formula": "T=T(x,y,z,t)",
+    "aliases": [
+      "多次元"
+    ],
+    "category": "熱伝導",
+    "source": {
+      "type": "supplement",
+      "reference": "熱移動・数学・単位系の一般定義についてアプリ独自に執筆した補足説明。原本の翻訳ではありません。",
+      "guideId": "sim-conduction"
+    },
+    "reviewStatus": "needs_review"
+  },
+  {
+    "id": "internal-generation",
+    "ja": "内部発熱",
+    "en": "volumetric heat generation",
+    "meaning": "物体内部で単位体積・単位時間あたりに生じる熱。",
+    "brief": "物体内部で単位体積・単位時間あたりに生じる熱。",
+    "beginner": "物体内部で単位体積・単位時間あたりに生じる熱。",
+    "detail": "電気抵抗加熱など。熱流束W/m²と内部発熱W/m³は異なる。",
+    "unit": "W/m³",
+    "formula": "q‴",
+    "aliases": [
+      "体積発熱"
+    ],
+    "category": "熱伝導",
+    "source": {
+      "type": "supplement",
+      "reference": "熱移動・数学・単位系の一般定義についてアプリ独自に執筆した補足説明。原本の翻訳ではありません。",
+      "guideId": "sim-conduction"
+    },
+    "reviewStatus": "needs_review"
+  },
+  {
+    "id": "contact-resistance",
+    "ja": "接触熱抵抗",
+    "en": "thermal contact resistance",
+    "meaning": "接触した固体面の間で温度差が生じる原因になる抵抗。",
+    "brief": "接触した固体面の間で温度差が生じる原因になる抵抗。",
+    "beginner": "接触した固体面の間で温度差が生じる原因になる抵抗。",
+    "detail": "粗さや空隙、接触圧などに依存し、理想的な密着面として扱うと過小評価しやすい。",
+    "unit": "K/W",
+    "formula": "ΔT=Q̇Rcontact",
+    "aliases": [
+      "界面熱抵抗"
+    ],
+    "category": "熱伝導",
+    "source": {
+      "type": "supplement",
+      "reference": "熱移動・数学・単位系の一般定義についてアプリ独自に執筆した補足説明。原本の翻訳ではありません。",
+      "guideId": "sim-resistance"
+    },
+    "reviewStatus": "needs_review"
+  },
+  {
+    "id": "forced-convection",
+    "ja": "強制対流",
+    "en": "forced convection",
+    "meaning": "ポンプやファンなどが作る流れによる対流。",
+    "brief": "ポンプやファンなどが作る流れによる対流。",
+    "beginner": "ポンプやファンなどが作る流れによる対流。",
+    "detail": "流速や形状、流体物性が熱伝達率を左右する。自然対流が同時に起きる場合もある。",
+    "unit": "なし",
+    "formula": "Q̇=hA(Ts−T∞)",
+    "aliases": [
+      "強制流動対流"
+    ],
+    "category": "対流",
+    "source": {
+      "type": "supplement",
+      "reference": "熱移動・数学・単位系の一般定義についてアプリ独自に執筆した補足説明。原本の翻訳ではありません。",
+      "guideId": "sim-convection"
+    },
+    "reviewStatus": "needs_review"
+  },
+  {
+    "id": "natural-convection",
+    "ja": "自然対流",
+    "en": "natural convection",
+    "meaning": "温度による密度差と重力で生じる流れに伴う対流。",
+    "brief": "温度による密度差と重力で生じる流れに伴う対流。",
+    "beginner": "温度による密度差と重力で生じる流れに伴う対流。",
+    "detail": "浮力の大きさを示すレイリー数などを使う。必ずしも流体が静止するわけではない。",
+    "unit": "なし",
+    "formula": "Ra=GrPr",
+    "aliases": [
+      "自由対流"
+    ],
+    "category": "対流",
+    "source": {
+      "type": "supplement",
+      "reference": "熱移動・数学・単位系の一般定義についてアプリ独自に執筆した補足説明。原本の翻訳ではありません。",
+      "guideId": "chapter8-buoyancy"
+    },
+    "reviewStatus": "needs_review"
+  },
+  {
+    "id": "boundary-layer",
+    "ja": "境界層",
+    "en": "boundary layer",
+    "meaning": "壁近くで流速や温度が大きく変化する領域。",
+    "brief": "壁近くで流速や温度が大きく変化する領域。",
+    "beginner": "壁近くで流速や温度が大きく変化する領域。",
+    "detail": "速度境界層と温度境界層は厚さが一致するとは限らない。壁面熱伝達率の理解に必要。",
+    "unit": "m",
+    "formula": "q″=−k_f∂T/∂y|wall",
+    "aliases": [
+      "温度境界層"
+    ],
+    "category": "対流",
+    "source": {
+      "type": "supplement",
+      "reference": "熱移動・数学・単位系の一般定義についてアプリ独自に執筆した補足説明。原本の翻訳ではありません。",
+      "guideId": "chapter6-flat-boundary"
+    },
+    "reviewStatus": "needs_review"
+  },
+  {
+    "id": "viscous-layer",
+    "ja": "速度境界層",
+    "en": "velocity boundary layer",
+    "meaning": "壁の粘着条件により流速が変化する領域。",
+    "brief": "壁の粘着条件により流速が変化する領域。",
+    "beginner": "壁の粘着条件により流速が変化する領域。",
+    "detail": "壁面での流速0から主流速度へ近づく。温度境界層とは別。",
+    "unit": "m",
+    "formula": "u(y=0)=0",
+    "aliases": [
+      "運動量境界層"
+    ],
+    "category": "対流",
+    "source": {
+      "type": "supplement",
+      "reference": "熱移動・数学・単位系の一般定義についてアプリ独自に執筆した補足説明。原本の翻訳ではありません。",
+      "guideId": "chapter6-flat-boundary"
+    },
+    "reviewStatus": "needs_review"
+  },
+  {
+    "id": "newton-cooling",
+    "ja": "ニュートンの冷却法則",
+    "en": "Newton's law of cooling",
+    "meaning": "表面と流体の温度差を熱伝達率で結ぶモデル。",
+    "brief": "表面と流体の温度差を熱伝達率で結ぶモデル。",
+    "beginner": "表面と流体の温度差を熱伝達率で結ぶモデル。",
+    "detail": "hは自然定数ではなく流れや形状などによって変化する実効的な係数。",
+    "unit": "W",
+    "formula": "Q̇=hA(Ts−T∞)",
+    "aliases": [
+      "Newtonの冷却則"
+    ],
+    "category": "対流",
+    "source": {
+      "type": "supplement",
+      "reference": "熱移動・数学・単位系の一般定義についてアプリ独自に執筆した補足説明。原本の翻訳ではありません。",
+      "guideId": "sim-convection"
+    },
+    "reviewStatus": "needs_review"
+  },
+  {
+    "id": "grashof",
+    "ja": "グラスホフ数",
+    "en": "Grashof number",
+    "meaning": "自然対流で浮力と粘性力の相対的な大きさを表す。",
+    "brief": "自然対流で浮力と粘性力の相対的な大きさを表す。",
+    "beginner": "自然対流で浮力と粘性力の相対的な大きさを表す。",
+    "detail": "温度差、膨張係数、重力、長さ、動粘度から作る無次元数。",
+    "unit": "なし",
+    "formula": "Gr=gβΔTL³/ν²",
+    "aliases": [
+      "Gr数"
+    ],
+    "category": "対流",
+    "source": {
+      "type": "supplement",
+      "reference": "熱移動・数学・単位系の一般定義についてアプリ独自に執筆した補足説明。原本の翻訳ではありません。",
+      "guideId": "chapter8-buoyancy"
+    },
+    "reviewStatus": "needs_review"
+  },
+  {
+    "id": "peclet",
+    "ja": "ペクレ数",
+    "en": "Péclet number",
+    "meaning": "流れによる輸送と拡散による輸送の比を表す。",
+    "brief": "流れによる輸送と拡散による輸送の比を表す。",
+    "beginner": "流れによる輸送と拡散による輸送の比を表す。",
+    "detail": "熱の移流と熱拡散を比較する場合Pe=RePr。流れがあっても境界層や幾何を無視できるわけではない。",
+    "unit": "なし",
+    "formula": "Pe=UL/α",
+    "aliases": [
+      "Pe数"
+    ],
+    "category": "対流",
+    "source": {
+      "type": "supplement",
+      "reference": "熱移動・数学・単位系の一般定義についてアプリ独自に執筆した補足説明。原本の翻訳ではありません。",
+      "guideId": "learn-convection-dimensionless"
+    },
+    "reviewStatus": "needs_review"
+  },
+  {
+    "id": "laminar",
+    "ja": "層流",
+    "en": "laminar flow",
+    "meaning": "流体の運動が比較的整然とした流れ。",
+    "brief": "流体の運動が比較的整然とした流れ。",
+    "beginner": "流体の運動が比較的整然とした流れ。",
+    "detail": "層流でも速度勾配や熱交換はある。レイノルズ数のみで無条件に決まるわけではない。",
+    "unit": "なし",
+    "formula": "Re=ρUL/μ",
+    "aliases": [
+      "層流流れ"
+    ],
+    "category": "対流",
+    "source": {
+      "type": "supplement",
+      "reference": "熱移動・数学・単位系の一般定義についてアプリ独自に執筆した補足説明。原本の翻訳ではありません。",
+      "guideId": "chapter7-internal-flow"
+    },
+    "reviewStatus": "needs_review"
+  },
+  {
+    "id": "turbulent",
+    "ja": "乱流",
+    "en": "turbulent flow",
+    "meaning": "速度などが不規則に変動し混合の強い流れ。",
+    "brief": "速度などが不規則に変動し混合の強い流れ。",
+    "beginner": "速度などが不規則に変動し混合の強い流れ。",
+    "detail": "乱流は熱移動を促進しやすいが圧力損失も増える。使用する相関式の適用域が大切。",
+    "unit": "なし",
+    "formula": "Re=ρUL/μ",
+    "aliases": [
+      "乱流流れ"
+    ],
+    "category": "対流",
+    "source": {
+      "type": "supplement",
+      "reference": "熱移動・数学・単位系の一般定義についてアプリ独自に執筆した補足説明。原本の翻訳ではありません。",
+      "guideId": "chapter7-internal-flow"
+    },
+    "reviewStatus": "needs_review"
+  },
+  {
+    "id": "thermal-entrance",
+    "ja": "温度助走区間",
+    "en": "thermal entrance region",
+    "meaning": "管内流れの温度分布が発達する途中の区間。",
+    "brief": "管内流れの温度分布が発達する途中の区間。",
+    "beginner": "管内流れの温度分布が発達する途中の区間。",
+    "detail": "局所熱伝達率が長さ方向に変わり、完全発達流の定数Nuをそのまま使えない場合がある。",
+    "unit": "m",
+    "formula": "L_th（助走長さ）",
+    "aliases": [
+      "熱的入口領域"
+    ],
+    "category": "対流",
+    "source": {
+      "type": "supplement",
+      "reference": "熱移動・数学・単位系の一般定義についてアプリ独自に執筆した補足説明。原本の翻訳ではありません。",
+      "guideId": "chapter7-internal-flow"
+    },
+    "reviewStatus": "needs_review"
+  },
+  {
+    "id": "blackbody",
+    "ja": "黒体",
+    "en": "blackbody",
+    "meaning": "入射する放射をすべて吸収する理想化した物体。",
+    "brief": "入射する放射をすべて吸収する理想化した物体。",
+    "beginner": "入射する放射をすべて吸収する理想化した物体。",
+    "detail": "熱平衡では放射率1。黒く見えるという日常的な色と必ずしも一致しない。",
+    "unit": "なし",
+    "formula": "Eb=σT⁴",
+    "aliases": [
+      "完全黒体"
+    ],
+    "category": "熱放射",
+    "source": {
+      "type": "supplement",
+      "reference": "熱移動・数学・単位系の一般定義についてアプリ独自に執筆した補足説明。原本の翻訳ではありません。",
+      "guideId": "sim-radiation"
+    },
+    "reviewStatus": "needs_review"
+  },
+  {
+    "id": "emissive-power",
+    "ja": "放射発散度",
+    "en": "emissive power",
+    "meaning": "表面が自ら単位面積・単位時間あたり放出する放射エネルギー。",
+    "brief": "表面が自ら単位面積・単位時間あたり放出する放射エネルギー。",
+    "beginner": "表面が自ら単位面積・単位時間あたり放出する放射エネルギー。",
+    "detail": "熱工学で放射能と呼ばれることもあるが、放射性崩壊を示す『放射能』とは別の概念。",
+    "unit": "W/m²",
+    "formula": "E=εσT⁴",
+    "aliases": [
+      "全放射発散度"
+    ],
+    "category": "熱放射",
+    "source": {
+      "type": "supplement",
+      "reference": "熱移動・数学・単位系の一般定義についてアプリ独自に執筆した補足説明。原本の翻訳ではありません。",
+      "guideId": "sim-radiation"
+    },
+    "reviewStatus": "needs_review"
+  },
+  {
+    "id": "absorptivity",
+    "ja": "吸収率",
+    "en": "absorptivity",
+    "meaning": "入射放射のうち表面が吸収する割合。",
+    "brief": "入射放射のうち表面が吸収する割合。",
+    "beginner": "入射放射のうち表面が吸収する割合。",
+    "detail": "波長・方向に依存し得る。熱平衡の灰色面モデルでは放射率と結びつくが常に同一視しない。",
+    "unit": "なし",
+    "formula": "α_r+ρ_r+τ_r=1",
+    "aliases": [
+      "放射吸収率"
+    ],
+    "category": "熱放射",
+    "source": {
+      "type": "supplement",
+      "reference": "熱移動・数学・単位系の一般定義についてアプリ独自に執筆した補足説明。原本の翻訳ではありません。",
+      "guideId": "sim-radiation"
+    },
+    "reviewStatus": "needs_review"
+  },
+  {
+    "id": "reflectivity",
+    "ja": "反射率",
+    "en": "reflectivity",
+    "meaning": "入射放射のうち反射される割合。",
+    "brief": "入射放射のうち反射される割合。",
+    "beginner": "入射放射のうち反射される割合。",
+    "detail": "不透明な灰色面では透過率0で、吸収率と反射率の和が1になる。",
+    "unit": "なし",
+    "formula": "ρ_r=1−α_r（不透明）",
+    "aliases": [
+      "反射係数"
+    ],
+    "category": "熱放射",
+    "source": {
+      "type": "supplement",
+      "reference": "熱移動・数学・単位系の一般定義についてアプリ独自に執筆した補足説明。原本の翻訳ではありません。",
+      "guideId": "sim-radiation"
+    },
+    "reviewStatus": "needs_review"
+  },
+  {
+    "id": "transmissivity",
+    "ja": "透過率",
+    "en": "transmissivity",
+    "meaning": "入射放射のうち物体を透過する割合。",
+    "brief": "入射放射のうち物体を透過する割合。",
+    "beginner": "入射放射のうち物体を透過する割合。",
+    "detail": "不透明材料なら0。放射率と同じ種類の率ではなく、入射エネルギーの分配を表す。",
+    "unit": "なし",
+    "formula": "α_r+ρ_r+τ_r=1",
+    "aliases": [
+      "透過係数"
+    ],
+    "category": "熱放射",
+    "source": {
+      "type": "supplement",
+      "reference": "熱移動・数学・単位系の一般定義についてアプリ独自に執筆した補足説明。原本の翻訳ではありません。",
+      "guideId": "sim-radiation"
+    },
+    "reviewStatus": "needs_review"
+  },
+  {
+    "id": "stefan-constant",
+    "ja": "ステファン＝ボルツマン定数",
+    "en": "Stefan–Boltzmann constant",
+    "meaning": "黒体の放射発散度と絶対温度の四乗を結ぶ比例定数。",
+    "brief": "黒体の放射発散度と絶対温度の四乗を結ぶ比例定数。",
+    "beginner": "黒体の放射発散度と絶対温度の四乗を結ぶ比例定数。",
+    "detail": "値は約5.670374419×10⁻⁸ W/(m²·K⁴)。℃を直接四乗しない。",
+    "unit": "W/(m²·K⁴)",
+    "formula": "σ=5.670374419×10⁻⁸",
+    "aliases": [
+      "ステファン・ボルツマン定数"
+    ],
+    "category": "熱放射",
+    "source": {
+      "type": "supplement",
+      "reference": "熱移動・数学・単位系の一般定義についてアプリ独自に執筆した補足説明。原本の翻訳ではありません。",
+      "guideId": "sim-radiation"
+    },
+    "reviewStatus": "needs_review"
+  },
+  {
+    "id": "irradiation",
+    "ja": "照射量",
+    "en": "irradiation",
+    "meaning": "外部から表面へ入射する単位面積当たりの放射エネルギー。",
+    "brief": "外部から表面へ入射する単位面積当たりの放射エネルギー。",
+    "beginner": "外部から表面へ入射する単位面積当たりの放射エネルギー。",
+    "detail": "射度Jは外へ出る放射であり、照射量Gは入ってくる放射。正味流束はJ−G。",
+    "unit": "W/m²",
+    "formula": "G",
+    "aliases": [
+      "入射放射"
+    ],
+    "category": "熱放射",
+    "source": {
+      "type": "supplement",
+      "reference": "熱移動・数学・単位系の一般定義についてアプリ独自に執筆した補足説明。原本の翻訳ではありません。",
+      "guideId": "chapter10-view-factors"
+    },
+    "reviewStatus": "needs_review"
+  },
+  {
+    "id": "radiosity",
+    "ja": "射度",
+    "en": "radiosity",
+    "meaning": "表面から外へ出る自己放出と反射を合わせた放射。",
+    "brief": "表面から外へ出る自己放出と反射を合わせた放射。",
+    "beginner": "表面から外へ出る自己放出と反射を合わせた放射。",
+    "detail": "灰色拡散面ではJ=εσTs⁴+(1−ε)G。正味熱流束J−Gとは別。",
+    "unit": "W/m²",
+    "formula": "J=εσTs⁴+(1−ε)G",
+    "aliases": [
+      "ラジオシティ"
+    ],
+    "category": "熱放射",
+    "source": {
+      "type": "supplement",
+      "reference": "熱移動・数学・単位系の一般定義についてアプリ独自に執筆した補足説明。原本の翻訳ではありません。",
+      "guideId": "chapter10-view-factors"
+    },
+    "reviewStatus": "needs_review"
+  },
+  {
+    "id": "latent-heat",
+    "ja": "潜熱",
+    "en": "latent heat",
+    "meaning": "相変化の際に温度変化として現れず出入りするエネルギー。",
+    "brief": "相変化の際に温度変化として現れず出入りするエネルギー。",
+    "beginner": "相変化の際に温度変化として現れず出入りするエネルギー。",
+    "detail": "蒸発・凝縮などで使う。単位質量当たりの潜熱J/kgと総熱量Jを区別する。",
+    "unit": "J/kg",
+    "formula": "Q=mh_fg",
+    "aliases": [
+      "蒸発潜熱"
+    ],
+    "category": "相変化・物性",
+    "source": {
+      "type": "supplement",
+      "reference": "熱移動・数学・単位系の一般定義についてアプリ独自に執筆した補足説明。原本の翻訳ではありません。",
+      "guideId": "chapter9-latent-boiling"
+    },
+    "reviewStatus": "needs_review"
+  },
+  {
+    "id": "sensible-heat",
+    "ja": "顕熱",
+    "en": "sensible heat",
+    "meaning": "主に物質の温度変化として観測される熱量。",
+    "brief": "主に物質の温度変化として観測される熱量。",
+    "beginner": "主に物質の温度変化として観測される熱量。",
+    "detail": "相変化を伴わない場合、比熱が一定ならQ=mcΔTの近似が使える。",
+    "unit": "J",
+    "formula": "Q≈mcΔT",
+    "aliases": [
+      "顕熱量"
+    ],
+    "category": "相変化・物性",
+    "source": {
+      "type": "supplement",
+      "reference": "熱移動・数学・単位系の一般定義についてアプリ独自に執筆した補足説明。原本の翻訳ではありません。",
+      "guideId": "learn-heat-exchanger"
+    },
+    "reviewStatus": "needs_review"
+  },
+  {
+    "id": "specific-heat",
+    "ja": "比熱容量",
+    "en": "specific heat capacity",
+    "meaning": "物質1kgを1K温めるのに必要なエネルギー。",
+    "brief": "物質1kgを1K温めるのに必要なエネルギー。",
+    "beginner": "物質1kgを1K温めるのに必要なエネルギー。",
+    "detail": "定圧比熱cpと定積比熱cvは物質・条件によって異なる。温度依存性を無視する近似に注意。",
+    "unit": "J/(kg·K)",
+    "formula": "Q≈mcpΔT",
+    "aliases": [
+      "比熱"
+    ],
+    "category": "相変化・物性",
+    "source": {
+      "type": "supplement",
+      "reference": "熱移動・数学・単位系の一般定義についてアプリ独自に執筆した補足説明。原本の翻訳ではありません。",
+      "guideId": "sim-transient"
+    },
+    "reviewStatus": "needs_review"
+  },
+  {
+    "id": "heat-capacity",
+    "ja": "熱容量",
+    "en": "heat capacity",
+    "meaning": "物体全体の温度を1K変えるのに必要な熱量の目安。",
+    "brief": "物体全体の温度を1K変えるのに必要な熱量の目安。",
+    "beginner": "物体全体の温度を1K変えるのに必要な熱量の目安。",
+    "detail": "同じ物質でも質量が増えれば熱容量は増える。比熱と混同しない。",
+    "unit": "J/K",
+    "formula": "C=mcp",
+    "aliases": [
+      "蓄熱容量"
+    ],
+    "category": "相変化・物性",
+    "source": {
+      "type": "supplement",
+      "reference": "熱移動・数学・単位系の一般定義についてアプリ独自に執筆した補足説明。原本の翻訳ではありません。",
+      "guideId": "sim-transient"
+    },
+    "reviewStatus": "needs_review"
+  },
+  {
+    "id": "density",
+    "ja": "密度",
+    "en": "mass density",
+    "meaning": "体積あたりの質量。",
+    "brief": "体積あたりの質量。",
+    "beginner": "体積あたりの質量。",
+    "detail": "密度ρはkg/m³、放射反射率にもρ記号が使われるため同じ記号でも意味を区別する。",
+    "unit": "kg/m³",
+    "formula": "ρ=m/V",
+    "aliases": [
+      "質量密度"
+    ],
+    "category": "相変化・物性",
+    "source": {
+      "type": "supplement",
+      "reference": "熱移動・数学・単位系の一般定義についてアプリ独自に執筆した補足説明。原本の翻訳ではありません。",
+      "guideId": "sim-transient"
+    },
+    "reviewStatus": "needs_review"
+  },
+  {
+    "id": "dynamic-viscosity",
+    "ja": "粘度",
+    "en": "dynamic viscosity",
+    "meaning": "流体のずれ変形に対する抵抗の強さ。",
+    "brief": "流体のずれ変形に対する抵抗の強さ。",
+    "beginner": "流体のずれ変形に対する抵抗の強さ。",
+    "detail": "粘度μの単位はPa·s。動粘度ν=μ/ρはm²/sで別の量。",
+    "unit": "Pa·s",
+    "formula": "τ_xy=μ∂u/∂y",
+    "aliases": [
+      "粘性係数"
+    ],
+    "category": "相変化・物性",
+    "source": {
+      "type": "supplement",
+      "reference": "熱移動・数学・単位系の一般定義についてアプリ独自に執筆した補足説明。原本の翻訳ではありません。",
+      "guideId": "learn-convection-dimensionless"
+    },
+    "reviewStatus": "needs_review"
+  },
+  {
+    "id": "kinematic-viscosity",
+    "ja": "動粘度",
+    "en": "kinematic viscosity",
+    "meaning": "粘度を密度で割った物性値。",
+    "brief": "粘度を密度で割った物性値。",
+    "beginner": "粘度を密度で割った物性値。",
+    "detail": "運動量が拡散する程度を表し、熱拡散率αと比べるとプラントル数が得られる。",
+    "unit": "m²/s",
+    "formula": "ν=μ/ρ",
+    "aliases": [
+      "動粘性係数"
+    ],
+    "category": "相変化・物性",
+    "source": {
+      "type": "supplement",
+      "reference": "熱移動・数学・単位系の一般定義についてアプリ独自に執筆した補足説明。原本の翻訳ではありません。",
+      "guideId": "learn-convection-dimensionless"
+    },
+    "reviewStatus": "needs_review"
+  },
+  {
+    "id": "overall-heat-transfer",
+    "ja": "総括伝熱係数",
+    "en": "overall heat transfer coefficient",
+    "meaning": "壁と両側の流体をまとめた熱通過性能の係数。",
+    "brief": "壁と両側の流体をまとめた熱通過性能の係数。",
+    "beginner": "壁と両側の流体をまとめた熱通過性能の係数。",
+    "detail": "Uは面積の基準を明記する必要がある。一般にQ̇=UAΔT_lmの形で使う。",
+    "unit": "W/(m²·K)",
+    "formula": "Q̇=UAΔT_lm",
+    "aliases": [
+      "総括熱伝達率"
+    ],
+    "category": "熱交換器",
+    "source": {
+      "type": "supplement",
+      "reference": "熱移動・数学・単位系の一般定義についてアプリ独自に執筆した補足説明。原本の翻訳ではありません。",
+      "guideId": "learn-heat-exchanger"
+    },
+    "reviewStatus": "needs_review"
+  },
+  {
+    "id": "heat-exchanger",
+    "ja": "熱交換器",
+    "en": "heat exchanger",
+    "meaning": "温度の異なる流体どうしで熱を交換する装置。",
+    "brief": "温度の異なる流体どうしで熱を交換する装置。",
+    "beginner": "温度の異なる流体どうしで熱を交換する装置。",
+    "detail": "流体は必ずしも混合せず、壁を隔てて熱交換する方式もある。向流・並流など配置で性能が異なる。",
+    "unit": "なし",
+    "formula": "Q̇=ṁcpΔT",
+    "aliases": [
+      "熱交換装置"
+    ],
+    "category": "熱交換器",
+    "source": {
+      "type": "supplement",
+      "reference": "熱移動・数学・単位系の一般定義についてアプリ独自に執筆した補足説明。原本の翻訳ではありません。",
+      "guideId": "learn-heat-exchanger"
+    },
+    "reviewStatus": "needs_review"
+  },
+  {
+    "id": "counterflow",
+    "ja": "向流",
+    "en": "counterflow",
+    "meaning": "二つの流体が逆方向へ流れる配置。",
+    "brief": "二つの流体が逆方向へ流れる配置。",
+    "beginner": "二つの流体が逆方向へ流れる配置。",
+    "detail": "並流と比べて平均温度差や出口温度の制約が異なる。必ず同じUになるとは限らない。",
+    "unit": "なし",
+    "formula": "ΔT_lm",
+    "aliases": [
+      "逆向き流れ"
+    ],
+    "category": "熱交換器",
+    "source": {
+      "type": "supplement",
+      "reference": "熱移動・数学・単位系の一般定義についてアプリ独自に執筆した補足説明。原本の翻訳ではありません。",
+      "guideId": "learn-heat-exchanger"
+    },
+    "reviewStatus": "needs_review"
+  },
+  {
+    "id": "parallelflow",
+    "ja": "並流",
+    "en": "parallel flow",
+    "meaning": "二つの流体が同じ方向へ流れる配置。",
+    "brief": "二つの流体が同じ方向へ流れる配置。",
+    "beginner": "二つの流体が同じ方向へ流れる配置。",
+    "detail": "温度差は一般に入口から出口へ減り、向流とは温度分布が異なる。",
+    "unit": "なし",
+    "formula": "ΔT_lm",
+    "aliases": [
+      "同方向流れ"
+    ],
+    "category": "熱交換器",
+    "source": {
+      "type": "supplement",
+      "reference": "熱移動・数学・単位系の一般定義についてアプリ独自に執筆した補足説明。原本の翻訳ではありません。",
+      "guideId": "learn-heat-exchanger"
+    },
+    "reviewStatus": "needs_review"
+  },
+  {
+    "id": "effectiveness",
+    "ja": "熱交換器有効度",
+    "en": "heat exchanger effectiveness",
+    "meaning": "実際の熱交換量を理論上の最大熱交換量で割ったもの。",
+    "brief": "実際の熱交換量を理論上の最大熱交換量で割ったもの。",
+    "beginner": "実際の熱交換量を理論上の最大熱交換量で割ったもの。",
+    "detail": "分母は容量流量の小さい側と入口温度差から作る。フィン有効度とは別。",
+    "unit": "なし",
+    "formula": "ε=Q̇/Q̇max",
+    "aliases": [
+      "熱交換器効率"
+    ],
+    "category": "熱交換器",
+    "source": {
+      "type": "supplement",
+      "reference": "熱移動・数学・単位系の一般定義についてアプリ独自に執筆した補足説明。原本の翻訳ではありません。",
+      "guideId": "chapter3-effectiveness-ntu"
+    },
+    "reviewStatus": "needs_review"
+  },
+  {
+    "id": "ntumethod",
+    "ja": "NTU法",
+    "en": "effectiveness-NTU method",
+    "meaning": "温度差や流体出口温度が未知でも熱交換性能を評価する方法。",
+    "brief": "温度差や流体出口温度が未知でも熱交換性能を評価する方法。",
+    "beginner": "温度差や流体出口温度が未知でも熱交換性能を評価する方法。",
+    "detail": "NTU=UA/C_minを使う。流れの配置や容量流量比に応じて関係式が異なる。",
+    "unit": "なし",
+    "formula": "NTU=UA/Cmin",
+    "aliases": [
+      "有効度NTU法"
+    ],
+    "category": "熱交換器",
+    "source": {
+      "type": "supplement",
+      "reference": "熱移動・数学・単位系の一般定義についてアプリ独自に執筆した補足説明。原本の翻訳ではありません。",
+      "guideId": "chapter3-effectiveness-ntu"
+    },
+    "reviewStatus": "needs_review"
+  },
+  {
+    "id": "derivative",
+    "ja": "微分",
+    "en": "derivative",
+    "meaning": "ある量が別の量に対してどれほど速く変わるかを示す。",
+    "brief": "ある量が別の量に対してどれほど速く変わるかを示す。",
+    "beginner": "ある量が別の量に対してどれほど速く変わるかを示す。",
+    "detail": "温度の位置微分dT/dxは温度勾配を表す。有限のΔT/Δxの比と瞬間の微分は区別する。",
+    "unit": "例：K/m",
+    "formula": "dT/dx",
+    "aliases": [
+      "導関数"
+    ],
+    "category": "数学・解析",
+    "source": {
+      "type": "supplement",
+      "reference": "熱移動・数学・単位系の一般定義についてアプリ独自に執筆した補足説明。原本の翻訳ではありません。",
+      "guideId": "sim-conduction"
+    },
+    "reviewStatus": "needs_review"
+  },
+  {
+    "id": "partial-derivative",
+    "ja": "偏微分",
+    "en": "partial derivative",
+    "meaning": "複数の変数のうち一つだけを変化させたときの変化率。",
+    "brief": "複数の変数のうち一つだけを変化させたときの変化率。",
+    "beginner": "複数の変数のうち一つだけを変化させたときの変化率。",
+    "detail": "温度T(x,t)の∂T/∂tでは位置を固定して時間による変化を見る。",
+    "unit": "例：K/s",
+    "formula": "∂T/∂t",
+    "aliases": [
+      "偏導関数"
+    ],
+    "category": "数学・解析",
+    "source": {
+      "type": "supplement",
+      "reference": "熱移動・数学・単位系の一般定義についてアプリ独自に執筆した補足説明。原本の翻訳ではありません。",
+      "guideId": "sim-transient"
+    },
+    "reviewStatus": "needs_review"
+  },
+  {
+    "id": "integral",
+    "ja": "積分",
+    "en": "integral",
+    "meaning": "細かい変化や寄与を足し合わせ全体量を求める方法。",
+    "brief": "細かい変化や寄与を足し合わせ全体量を求める方法。",
+    "beginner": "細かい変化や寄与を足し合わせ全体量を求める方法。",
+    "detail": "熱流束の時間積分では累積熱量が得られる。微分の逆操作と面積の意味がある。",
+    "unit": "対象次第",
+    "formula": "E=∫Q̇dt",
+    "aliases": [
+      "積分計算"
+    ],
+    "category": "数学・解析",
+    "source": {
+      "type": "supplement",
+      "reference": "熱移動・数学・単位系の一般定義についてアプリ独自に執筆した補足説明。原本の翻訳ではありません。",
+      "guideId": "sim-transient"
+    },
+    "reviewStatus": "needs_review"
+  },
+  {
+    "id": "slope",
+    "ja": "傾き",
+    "en": "slope",
+    "meaning": "横方向の変化に対する縦方向の変化の割合。",
+    "brief": "横方向の変化に対する縦方向の変化の割合。",
+    "beginner": "横方向の変化に対する縦方向の変化の割合。",
+    "detail": "温度–位置グラフの傾きは温度勾配。図の傾きと熱流束の符号はフーリエ則で逆になる。",
+    "unit": "K/m（温度対位置）",
+    "formula": "ΔT/Δx",
+    "aliases": [
+      "勾配"
+    ],
+    "category": "数学・解析",
+    "source": {
+      "type": "supplement",
+      "reference": "熱移動・数学・単位系の一般定義についてアプリ独自に執筆した補足説明。原本の翻訳ではありません。",
+      "guideId": "sim-conduction"
+    },
+    "reviewStatus": "needs_review"
+  },
+  {
+    "id": "approximation",
+    "ja": "近似",
+    "en": "approximation",
+    "meaning": "複雑な実現象を一定の条件のもとで簡単に表すこと。",
+    "brief": "複雑な実現象を一定の条件のもとで簡単に表すこと。",
+    "beginner": "複雑な実現象を一定の条件のもとで簡単に表すこと。",
+    "detail": "計算ができることと近似が妥当なことは別。Biなどで適用範囲を点検する。",
+    "unit": "なし",
+    "formula": "Bi≪1（集中熱容量）",
+    "aliases": [
+      "近似モデル"
+    ],
+    "category": "数学・解析",
+    "source": {
+      "type": "supplement",
+      "reference": "熱移動・数学・単位系の一般定義についてアプリ独自に執筆した補足説明。原本の翻訳ではありません。",
+      "guideId": "sim-transient"
+    },
+    "reviewStatus": "needs_review"
+  },
+  {
+    "id": "proportionality",
+    "ja": "比例",
+    "en": "proportionality",
+    "meaning": "一方が一定倍になるともう一方も同じ倍率で変わる関係。",
+    "brief": "一方が一定倍になるともう一方も同じ倍率で変わる関係。",
+    "beginner": "一方が一定倍になるともう一方も同じ倍率で変わる関係。",
+    "detail": "比例定数が一定の範囲に限る。放射では絶対温度の四乗に比例し温度自体に単純比例しない。",
+    "unit": "なし",
+    "formula": "y=kx",
+    "aliases": [
+      "比例関係"
+    ],
+    "category": "数学・解析",
+    "source": {
+      "type": "supplement",
+      "reference": "熱移動・数学・単位系の一般定義についてアプリ独自に執筆した補足説明。原本の翻訳ではありません。",
+      "guideId": "sim-conduction"
+    },
+    "reviewStatus": "needs_review"
+  },
+  {
+    "id": "logarithm",
+    "ja": "対数",
+    "en": "logarithm",
+    "meaning": "指数を逆に求める関数。",
+    "brief": "指数を逆に求める関数。",
+    "beginner": "指数を逆に求める関数。",
+    "detail": "円筒壁の熱抵抗や対数平均温度差に自然対数lnが現れる。常用対数log₁₀と区別する。",
+    "unit": "なし",
+    "formula": "ln(e^x)=x",
+    "aliases": [
+      "自然対数"
+    ],
+    "category": "数学・解析",
+    "source": {
+      "type": "supplement",
+      "reference": "熱移動・数学・単位系の一般定義についてアプリ独自に執筆した補足説明。原本の翻訳ではありません。",
+      "guideId": "chapter2-cylindrical-conduction"
+    },
+    "reviewStatus": "needs_review"
+  },
+  {
+    "id": "exponential",
+    "ja": "指数関数",
+    "en": "exponential function",
+    "meaning": "変化率が現在の値に比例する過程に現れる関数。",
+    "brief": "変化率が現在の値に比例する過程に現れる関数。",
+    "beginner": "変化率が現在の値に比例する過程に現れる関数。",
+    "detail": "集中熱容量法で温度差はe^(−t/τ)の形で減衰する。t=τで温度差は約36.8%残る。",
+    "unit": "なし",
+    "formula": "θ/θ₀=e^(−t/τ)",
+    "aliases": [
+      "指数減衰"
+    ],
+    "category": "数学・解析",
+    "source": {
+      "type": "supplement",
+      "reference": "熱移動・数学・単位系の一般定義についてアプリ独自に執筆した補足説明。原本の翻訳ではありません。",
+      "guideId": "sim-transient"
+    },
+    "reviewStatus": "needs_review"
+  },
+  {
+    "id": "dimensionless",
+    "ja": "無次元化",
+    "en": "nondimensionalization",
+    "meaning": "単位を持つ量を組み合わせて無次元の比にすること。",
+    "brief": "単位を持つ量を組み合わせて無次元の比にすること。",
+    "beginner": "単位を持つ量を組み合わせて無次元の比にすること。",
+    "detail": "Fo、Bi、Nuなどは異なる現象でも比較しやすい。ただ数を消すだけではモデルの成立条件は保証されない。",
+    "unit": "なし",
+    "formula": "Bi=hLc/k",
+    "aliases": [
+      "無次元解析"
+    ],
+    "category": "数学・解析",
+    "source": {
+      "type": "supplement",
+      "reference": "熱移動・数学・単位系の一般定義についてアプリ独自に執筆した補足説明。原本の翻訳ではありません。",
+      "guideId": "learn-dimensionless-transient"
+    },
+    "reviewStatus": "needs_review"
+  },
+  {
+    "id": "error-function",
+    "ja": "誤差関数",
+    "en": "error function",
+    "meaning": "非定常熱伝導の半無限体の解に現れる特別な関数。",
+    "brief": "非定常熱伝導の半無限体の解に現れる特別な関数。",
+    "beginner": "非定常熱伝導の半無限体の解に現れる特別な関数。",
+    "detail": "erf(0)=0、erf(∞)=1で、erfc=1−erf。名前だけで測定誤差を表すとは限らない。",
+    "unit": "なし",
+    "formula": "erf(z)=(2/√π)∫₀ᶻe^(−u²)du",
+    "aliases": [
+      "erf"
+    ],
+    "category": "数学・解析",
+    "source": {
+      "type": "supplement",
+      "reference": "熱移動・数学・単位系の一般定義についてアプリ独自に執筆した補足説明。原本の翻訳ではありません。",
+      "guideId": "chapter5-semi-infinite"
+    },
+    "reviewStatus": "needs_review"
+  },
+  {
+    "id": "si",
+    "ja": "SI単位系",
+    "en": "International System of Units",
+    "meaning": "m、kg、s、Kなどを基準にした国際的な単位系。",
+    "brief": "m、kg、s、Kなどを基準にした国際的な単位系。",
+    "beginner": "m、kg、s、Kなどを基準にした国際的な単位系。",
+    "detail": "熱の単位Jと移動率W、温度差Kと絶対温度Kを確認する。",
+    "unit": "体系",
+    "formula": "W=J/s",
+    "aliases": [
+      "国際単位系"
+    ],
+    "category": "単位・記号",
+    "source": {
+      "type": "supplement",
+      "reference": "熱移動・数学・単位系の一般定義についてアプリ独自に執筆した補足説明。原本の翻訳ではありません。",
+      "guideId": "sim-conduction"
+    },
+    "reviewStatus": "needs_review"
+  },
+  {
+    "id": "watt",
+    "ja": "ワット",
+    "en": "watt",
+    "meaning": "単位時間あたりのエネルギー移動率を表すSI組立単位。",
+    "brief": "単位時間あたりのエネルギー移動率を表すSI組立単位。",
+    "beginner": "単位時間あたりのエネルギー移動率を表すSI組立単位。",
+    "detail": "熱移動率の単位W。熱流束はW/m²。Wは累積熱量Jと区別する。",
+    "unit": "W",
+    "formula": "1 W=1 J/s",
+    "aliases": [
+      "W"
+    ],
+    "category": "単位・記号",
+    "source": {
+      "type": "supplement",
+      "reference": "熱移動・数学・単位系の一般定義についてアプリ独自に執筆した補足説明。原本の翻訳ではありません。",
+      "guideId": "sim-conduction"
+    },
+    "reviewStatus": "needs_review"
+  },
+  {
+    "id": "joule",
+    "ja": "ジュール",
+    "en": "joule",
+    "meaning": "エネルギーや熱量を表すSI組立単位。",
+    "brief": "エネルギーや熱量を表すSI組立単位。",
+    "beginner": "エネルギーや熱量を表すSI組立単位。",
+    "detail": "1J=1W·s。累積の放熱量に使い、瞬間熱移動率Wと区別する。",
+    "unit": "J",
+    "formula": "1 J=1 W·s",
+    "aliases": [
+      "J"
+    ],
+    "category": "単位・記号",
+    "source": {
+      "type": "supplement",
+      "reference": "熱移動・数学・単位系の一般定義についてアプリ独自に執筆した補足説明。原本の翻訳ではありません。",
+      "guideId": "sim-transient"
+    },
+    "reviewStatus": "needs_review"
+  },
+  {
+    "id": "kelvin-unit",
+    "ja": "ケルビン",
+    "en": "kelvin",
+    "meaning": "熱力学温度のSI基本単位。",
+    "brief": "熱力学温度のSI基本単位。",
+    "beginner": "熱力学温度のSI基本単位。",
+    "detail": "放射ではKの絶対温度を四乗する。1Kの温度差は1℃の温度差に等しい。",
+    "unit": "K",
+    "formula": "T[K]=t[℃]+273.15",
+    "aliases": [
+      "K"
+    ],
+    "category": "単位・記号",
+    "source": {
+      "type": "supplement",
+      "reference": "熱移動・数学・単位系の一般定義についてアプリ独自に執筆した補足説明。原本の翻訳ではありません。",
+      "guideId": "sim-radiation"
+    },
+    "reviewStatus": "needs_review"
+  },
+  {
+    "id": "celsius",
+    "ja": "セルシウス温度",
+    "en": "degree Celsius",
+    "meaning": "日常で使う摂氏温度の尺度。",
+    "brief": "日常で使う摂氏温度の尺度。",
+    "beginner": "日常で使う摂氏温度の尺度。",
+    "detail": "零点は水の凝固点付近を基準に置く。−273.15℃=0Kであり放射計算ではKへ換算する。",
+    "unit": "℃",
+    "formula": "t[℃]=T[K]−273.15",
+    "aliases": [
+      "摂氏温度"
+    ],
+    "category": "単位・記号",
+    "source": {
+      "type": "supplement",
+      "reference": "熱移動・数学・単位系の一般定義についてアプリ独自に執筆した補足説明。原本の翻訳ではありません。",
+      "guideId": "sim-radiation"
+    },
+    "reviewStatus": "needs_review"
+  },
+  {
+    "id": "unit-k",
+    "ja": "熱伝導率の単位",
+    "en": "thermal conductivity unit",
+    "meaning": "W/(m·K)は1mあたりの温度勾配と熱流束を結ぶ単位。",
+    "brief": "W/(m·K)は1mあたりの温度勾配と熱流束を結ぶ単位。",
+    "beginner": "W/(m·K)は1mあたりの温度勾配と熱流束を結ぶ単位。",
+    "detail": "W/m·Kの曖昧な書き方を避けW/(m·K)と表示する。対流熱伝達率のW/(m²·K)と異なる。",
+    "unit": "W/(m·K)",
+    "formula": "q″=−k∂T/∂x",
+    "aliases": [
+      "W/m·K"
+    ],
+    "category": "単位・記号",
+    "source": {
+      "type": "supplement",
+      "reference": "熱移動・数学・単位系の一般定義についてアプリ独自に執筆した補足説明。原本の翻訳ではありません。",
+      "guideId": "sim-conduction"
+    },
+    "reviewStatus": "needs_review"
+  },
+  {
+    "id": "unit-h",
+    "ja": "熱伝達率の単位",
+    "en": "heat transfer coefficient unit",
+    "meaning": "W/(m²·K)は単位面積と温度差あたりの熱移動率を表す。",
+    "brief": "W/(m²·K)は単位面積と温度差あたりの熱移動率を表す。",
+    "beginner": "W/(m²·K)は単位面積と温度差あたりの熱移動率を表す。",
+    "detail": "熱伝導率kのW/(m·K)と混同しない。周囲への対流に使う。",
+    "unit": "W/(m²·K)",
+    "formula": "Q̇=hAΔT",
+    "aliases": [
+      "W/m²·K"
+    ],
+    "category": "単位・記号",
+    "source": {
+      "type": "supplement",
+      "reference": "熱移動・数学・単位系の一般定義についてアプリ独自に執筆した補足説明。原本の翻訳ではありません。",
+      "guideId": "sim-convection"
+    },
+    "reviewStatus": "needs_review"
+  },
+  {
+    "id": "fin-effectiveness",
+    "ja": "フィン有効度",
+    "en": "fin effectiveness",
+    "meaning": "フィン有無による伝熱増加を表す無次元比。",
+    "brief": "フィン有無による伝熱増加を表す無次元比。",
+    "beginner": "フィン有無による伝熱増加を表す無次元比。",
+    "detail": "ηf（フィン効率）はフィン側面がすべて基部温度だった場合と比較し、εf（有効度）はフィン無しの基部面積と比較する。",
+    "unit": "なし",
+    "formula": "εf=qfin/(hAcΔT)",
+    "aliases": [
+      "フィン有効率"
+    ],
+    "category": "熱伝導",
+    "source": {
+      "type": "supplement",
+      "reference": "熱移動・数学・単位系の一般定義についてアプリ独自に執筆した補足説明。原本の翻訳ではありません。",
+      "guideId": "chapter4-fin-design"
+    },
+    "reviewStatus": "needs_review"
+  },
+  {
+    "id": "semi-infinite",
+    "ja": "半無限固体",
+    "en": "semi-infinite solid",
+    "meaning": "熱が届く距離に比べて十分厚い固体の理想モデル。",
+    "brief": "熱が届く距離に比べて十分厚い固体の理想モデル。",
+    "beginner": "熱が届く距離に比べて十分厚い固体の理想モデル。",
+    "detail": "一定表面温度の解析解では誤差関数が現れる。有限厚みの裏面まで変化した後には使えない。",
+    "unit": "m（位置）",
+    "formula": "η=x/(2√αt)",
+    "aliases": [
+      "半無限体"
+    ],
+    "category": "熱伝導",
+    "source": {
+      "type": "supplement",
+      "reference": "熱移動・数学・単位系の一般定義についてアプリ独自に執筆した補足説明。原本の翻訳ではありません。",
+      "guideId": "chapter5-semi-infinite"
+    },
+    "reviewStatus": "needs_review"
+  },
+  {
+    "id": "view-factor",
+    "ja": "形態係数",
+    "en": "view factor",
+    "meaning": "放射がある表面から別の表面へ直接届く割合。",
+    "brief": "放射がある表面から別の表面へ直接届く割合。",
+    "beginner": "放射がある表面から別の表面へ直接届く割合。",
+    "detail": "幾何学配置で決まり無次元。反射が繰り返される場合は形態係数だけで正味熱交換が決まらない。",
+    "unit": "なし",
+    "formula": "Σj Fij=1（閉空間）",
+    "aliases": [
+      "放射形態係数"
+    ],
+    "category": "熱放射",
+    "source": {
+      "type": "supplement",
+      "reference": "熱移動・数学・単位系の一般定義についてアプリ独自に執筆した補足説明。原本の翻訳ではありません。",
+      "guideId": "chapter10-view-factors"
+    },
+    "reviewStatus": "needs_review"
+  },
+  {
+    "id": "heat-exchanger-ntu",
+    "ja": "伝熱単位数",
+    "en": "number of transfer units",
+    "meaning": "総括伝熱の強さを容量流量で割った無次元数。",
+    "brief": "総括伝熱の強さを容量流量で割った無次元数。",
+    "beginner": "総括伝熱の強さを容量流量で割った無次元数。",
+    "detail": "NTU=UA/Cmin。熱交換器の流路配置と有効度の関係を扱うとき使う。",
+    "unit": "なし",
+    "formula": "NTU=UA/Cmin",
+    "aliases": [
+      "NTU"
+    ],
+    "category": "熱交換器",
+    "source": {
+      "type": "supplement",
+      "reference": "熱移動・数学・単位系の一般定義についてアプリ独自に執筆した補足説明。原本の翻訳ではありません。",
+      "guideId": "chapter3-effectiveness-ntu"
+    },
+    "reviewStatus": "needs_review"
+  },
+  {
+    "id": "mass-diffusion",
+    "ja": "物質拡散",
+    "en": "mass diffusion",
+    "meaning": "濃度差などによって物質が移動する現象。",
+    "brief": "濃度差などによって物質が移動する現象。",
+    "beginner": "濃度差などによって物質が移動する現象。",
+    "detail": "熱の伝導と数学的に似た拡散方程式が使える場合があるが、熱流束とモル流束の単位は違う。",
+    "unit": "mol/(m²·s)（例）",
+    "formula": "JA=−cDAB∇yA",
+    "aliases": [
+      "分子拡散"
+    ],
+    "category": "相変化・物性",
+    "source": {
+      "type": "supplement",
+      "reference": "熱移動・数学・単位系の一般定義についてアプリ独自に執筆した補足説明。原本の翻訳ではありません。",
+      "guideId": "chapter11-fick-mass"
+    },
+    "reviewStatus": "needs_review"
   }
 ]
