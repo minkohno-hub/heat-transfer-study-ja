@@ -41,6 +41,11 @@ test('foundational lookalike quantities have distinct beginner and technical exp
  }
  assert.match(byId.get('heat-rate').detail,/面積積分/);
  assert.match(byId.get('heat-flux').detail,/W\/m²/);
+ for(const id of ['heat-rate','heat-flux']){
+  assert.ok(byId.get(id).source.section);
+  assert.match(byId.get(id).beginner,/^補足説明（アプリ作成）：/);
+  assert.match(byId.get(id).detail,/^補足説明（アプリ作成）：/);
+ }
  assert.match(byId.get('thermal-conductivity').detail,/対流熱伝達率/);
  assert.match(byId.get('convection-coefficient').detail,/熱伝導率/);
  assert.match(byId.get('emissivity').detail,/射度J/);

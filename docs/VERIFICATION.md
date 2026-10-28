@@ -292,3 +292,6 @@ Codex統合コミット `74c6bb2` の [Actions #40688335822](https://github.com/
 公開URL `https://minkohno-hub.github.io/heat-transfer-study-ja/` は2026-10-28 12:38 UTC時点でHTTP 200を返した。ただし同URLの`app.js`・`data/glossary.json`のSHA-256は最新のローカル許可リスト配信物と一致しない。よって**今回の用語109件、5図解、§10.1追加教材はまだ公開URL上で動作確認できていない**。PR #1は`main`への未マージのドラフトであり、URLが200であることだけで最新版の公開完了とは扱わない。
 
 §10.1の二黒体面の説明を含むコミット `3758e81` の [Actions #40689395198](https://github.com/minkohno-hub/heat-transfer-study-ja/actions/runs/40689395198) は Node/公開ビルドとWebKitオンライン試験の両方に成功。さらに用語集の旧語7件を初学者向け説明と詳細説明へ分け、熱流束対熱移動率、熱伝導率対対流熱伝達率、熱拡散率対物質拡散係数などを明確化した後、ローカルNode131件中127件成功・4件スキップ・失敗0、公開ビルドとChromium E2Eが成功。用語変更を含む次コミットのCIは別途判定する。
+
+用語7件の拡充を含むコミット `c7c820b` の [Actions #40690057525](https://github.com/minkohno-hub/heat-transfer-study-ja/actions/runs/40690057525) はNode/公開ビルドとWebKitオンライン試験の両方に成功した。追加で「熱移動率」「熱流束」の独自執筆の数値例・詳細説明を、原本節への参照と混同しないよう「補足説明（アプリ作成）」と表示し、検査を追加。ローカルNode131件中127件成功、旧PC教材依存4件スキップ、失敗0、公開ビルド成功。厳格readinessは0/76節の未達で終了コード1のまま維持した。
+同じ変更のChromium公開配信物E2Eも成功（ガイド、演習、計算、保存、画面幅、数字キーとEnter、表示モード、PDFのオフライン範囲取得）。これはiPhone Safari実機、利用者端末の既存キャッシュ更新、PR #1の未公開コードがPagesの実URLへ反映されたことを確認した結果ではない。
