@@ -503,3 +503,10 @@ input[type="range"] { width: 100%; accent-color: var(--accent); }
   .term-sheet {width:100%;border-radius:18px 18px 0 0;max-height:80dvh;max-height:80svh;padding:24px 22px 32px;padding-bottom:max(28px,env(safe-area-inset-bottom));}
   .term-sheet .button {width:100%;}
 }
+
+/* Glossary definitions remain comfortably readable on small screens. */
+.term-card p {font-size:14px;line-height:1.85;}
+.term-card .term-full p {font-size:13px;}
+.term-card .term-heading span {font-size:12px;}
+.term-card .term-unit,.term-card .term-formula {font-size:12px;line-height:1.7;}
+@media (max-width:540px){.inline-term{padding:1px 2px;min-height:1.55em;}.term-sheet p{font-size:14px;}.term-sheet .term-sheet-brief{font-size:16px;}}
