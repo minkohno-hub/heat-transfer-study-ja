@@ -63,6 +63,32 @@ test('LMTD and lumped transient Japanese worked examples are independently recal
   const alpha=ks/(rho*c),Fo=alpha*t/(Lc**2);
   assert.ok(Math.abs(Bi*Fo-t/tau)<1e-12);
 });
+
+test('semi-infinite constant-wall-temperature solution independently closes the heat equation and energy integral',async()=>{
+ const d=await read('data/original-deep-lessons.json');
+ const lesson=deepLessonForSection(d,'5.6');
+ assert.ok(lesson);
+ const Ti=20,Ts=80,k=2,alpha=1e-6,t=100,x=.01;
+ const eta=x/(2*Math.sqrt(alpha*t));
+ close(eta,.5,1e-12);
+ const erfHalf=.5204998778130465;
+ const temperature=Ts+(Ti-Ts)*erfHalf;
+ const flux=k*(Ts-Ti)/Math.sqrt(Math.PI*alpha*t);
+ const cumulative=2*k*(Ts-Ti)*Math.sqrt(t/(Math.PI*alpha));
+ close(temperature,48.7700073312,1e-10);
+ close(flux,6770.27500257,1e-9);
+ close(cumulative,1354055.0005,1e-9);
+ close(cumulative/(flux*t),2,1e-12);
+ // Analytically differentiate the complementary-error-function solution.
+ const amplitude=Ti-Ts,exp=Math.exp(-eta*eta),den=Math.sqrt(Math.PI*alpha*t);
+ const dTdt=-amplitude*x*exp/(2*t*den);
+ const secondX=-amplitude*x*exp/(2*alpha*t*den);
+ close(dTdt,alpha*secondX,1e-11);
+ assert.ok(lesson.workedExample.answer.includes('48.77'));
+ assert.ok(lesson.workedExample.answer.includes('1.354'));
+ assert.ok(lesson.pitfalls.some(p=>p.includes('発散')));
+ assert.ok(lesson.reviewStatus.includes('外部学術専門家校閲前'));
+});
 test('new heat-equation and binary-diffusion examples balance fluxes and use the correct frame',async()=>{
  const d=await read('data/original-deep-lessons.json');
  const slab=deepLessonForSection(d,'2.1');
