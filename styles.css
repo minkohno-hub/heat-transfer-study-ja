@@ -471,3 +471,19 @@ input[type="range"] { width: 100%; accent-color: var(--accent); }
  .reader-deep-lesson .deep-equation{padding:.6rem}
  .reader-deep-lesson h4{margin-top:1.15rem}
 }
+
+/* Question text remains readable. Inline terms open a focused, accessible definition sheet. */
+.quiz-question-heading { line-height:1.85; }
+.quiz-term-link { display:inline; padding:0 1px 1px; margin:0; border:0; border-bottom:2px dotted var(--accent); border-radius:0; background:transparent; color:inherit; font:inherit; font-weight:inherit; line-height:inherit; text-align:inherit; cursor:pointer; }
+.quiz-term-link:hover { color:var(--accent-strong); background:var(--accent-soft); }
+.quiz-term-link:focus-visible { outline:3px solid var(--accent); outline-offset:3px; border-radius:2px; }
+.quiz-term-backdrop { z-index:40; align-items:end; }
+.quiz-term-modal { position:relative; width:min(100%,640px); max-height:min(78dvh,660px); overflow-y:auto; overscroll-behavior:contain; padding:clamp(24px,4vw,34px); border-radius:20px 20px 0 0; background:var(--surface); box-shadow:0 -12px 50px rgba(0,0,0,.15); }
+.quiz-term-modal h2 { font-size:clamp(20px,3vw,26px); line-height:1.4; margin:5px 40px 4px 0; }
+.quiz-term-modal .quiz-term-english { margin:0 0 20px; color:var(--muted); font-size:13px; }
+.quiz-term-modal #quiz-term-definition { font-size:clamp(14px,2vw,16px); line-height:1.95; overflow-wrap:anywhere; }
+.quiz-term-source { margin:16px 0; color:var(--muted); font-size:11px; line-height:1.7; }
+.quiz-term-actions { display:flex; flex-wrap:wrap; gap:12px; align-items:center; margin-top:20px; }
+.quiz-term-actions .button { min-height:44px; }
+@media(min-width:760px) { .quiz-term-backdrop { align-items:center; } .quiz-term-modal { border-radius:18px; max-height:86vh; } }
+@media(max-width:759px) { .quiz-term-backdrop { padding:0; } .quiz-term-modal { width:100%; padding-bottom:max(26px,env(safe-area-inset-bottom)); } .quiz-term-actions .button { width:100%; } }
