@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {calculateLumpedCooling} from '../study-core.mjs';
+import {calculateLumpedCooling,createEmptyState,validateLearningData,normalizeLearningData,mergeLearningData,DATA_FORMAT} from '../study-core.mjs';
 import {transientFields,renderTransientFields,renderTransientSteps,transientGraph} from '../transient-ui.mjs';
 
 const defaults={h:20,area:0.1,volume:0.001,density:1000,cp:4000,k:10,initial:60,ambient:20,time:2000};
@@ -63,4 +63,22 @@ test('transient input controls, stepwise unit derivation and SVG graph are usabl
  assert.ok(!svg.includes('NaN'));assert.ok(!svg.includes('Infinity'));
  const injection=renderTransientFields({...defaults,ambient:'"><script>alert(1)</script>'});
  assert.ok(injection.includes('&quot;'));assert.ok(!injection.includes('<script>'));
+});
+
+test('saved transient comparisons survive reload, portable backup and merge, invalid data cannot overwrite',()=>{
+ const snapshot=createEmptyState();
+ snapshot.simComparisons.transient={...defaults};
+ snapshot.notes.push({id:'n1',text:'保存する学習メモ',sectionId:'5.1',createdAt:'2026-10-28T09:00:00Z'});
+ assert.equal(validateLearningData(snapshot,{stored:true}),'');
+ const exported={...snapshot,format:DATA_FORMAT};
+ assert.equal(validateLearningData(exported),'');
+ const restored=normalizeLearningData(JSON.parse(JSON.stringify(exported)));
+ close(calculateLumpedCooling(restored.simComparisons.transient).temperature,20+40/Math.E);
+ assert.equal(restored.notes[0].text,'保存する学習メモ');
+ const merged=mergeLearningData(createEmptyState(),restored);
+ assert.equal(validateLearningData(merged,{stored:true}),'');
+ const rejected=structuredClone(exported);
+ rejected.simComparisons.transient.time=-1;
+ assert.match(validateLearningData(rejected),/比較用シミュレーター条件/);
+ assert.equal(exported.simComparisons.transient.time,2000,'original stored object is not changed');
 });
