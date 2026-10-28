@@ -353,7 +353,7 @@
       "relation": "T(t)−T_∞=(T₀−T_∞)exp(−t/τ)、τ=ρVc/(hA_s)。通常、L_c=V/A_sでBi=hL_c/k_s<0.1程度が集中熱容量近似の検討目安。",
       "example": "T₀=70 ℃、周囲20 ℃、τ=100 sなら100秒後は20+50/e≈38.4 ℃。温度差は初期値の36.8%まで減ったが温度そのものが36.8%になったわけではない。",
       "limits": "表面対流h、周囲温度、比熱が一定で内部発熱・放射・相変化が無視できるモデル。Bi<0.1は普遍的な精度保証ではない。",
-      "selfCheck": "時刻t=τで何が1/eになるか。",
+      "selfCheck": "一定のhと周囲温度を仮定した集中熱容量法で、t=τに初期値の1/eとなる量はどれか。",
       "answer": "周囲温度との差",
       "reviewStatus": "AI_drafted_pending_independent_expert_review",
       "chapterId": "ch5",
