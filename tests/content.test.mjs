@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {readFile,access} from 'node:fs/promises';
-import {execFileSync} from 'node:child_process';
+import {execFileSync,spawnSync} from 'node:child_process';
 import {validateQuestion,searchRanges,searchSnippet,calculateHeatTransfer} from '../study-core.mjs';
 import {GUIDE_SECTIONS} from '../guide.mjs';
 const root=new URL('../',import.meta.url),read=async p=>JSON.parse(await readFile(new URL(p,root),'utf8'));
@@ -15,6 +15,16 @@ test('content audit keeps local-only drafts out of public availability',async()=
   for(const path of manifest.files){const section=await read(path);if(section.language==='ja')publicSections.push(section.sectionId);}
   assert.deepEqual(report.availableSections,[...new Set(publicSections)]);
   if(hasLegacyDraft){assert.ok(report.localDraftSections>=2);for(const id of ['1.1','1.2'])if(!publicSections.includes(id))assert.ok(!report.availableSections.includes(id));}
+});
+test('audit does not overwrite a historical inventory when local materials are missing',async()=>{
+  const previous=await readFile(new URL('docs/CONTENT_INVENTORY.json',root),'utf8');
+  const historical=JSON.parse(previous);
+  const current=JSON.parse(execFileSync(process.execPath,[new URL('../scripts/audit-content.mjs',import.meta.url).pathname,'--check'],{encoding:'utf8'}).trim());
+  if((historical.draftSectionCount||0)<=current.draftSections&&historical.availableSections.every(id=>current.availableSections.includes(id)))return;
+  const result=spawnSync(process.execPath,[new URL('../scripts/audit-content.mjs',import.meta.url).pathname],{encoding:'utf8'});
+  assert.notEqual(result.status,0);
+  assert.match(result.stderr,/上書きしません/);
+  assert.equal(await readFile(new URL('docs/CONTENT_INVENTORY.json',root),'utf8'),previous);
 });
 test('private legacy Japanese drafts remain labeled unverified in a local pack',{skip:!hasLegacyDraft},async()=>{
   const manifest=await read('data/local-content-manifest.json');
