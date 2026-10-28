@@ -8,7 +8,7 @@ const read=async path=>JSON.parse(await readFile(new URL('../'+path,import.meta.
 test('11 advanced numerical problems are unique, consistently explained and cover each chapter',async()=>{
   const [source,all]=await Promise.all([read('data/original-advanced-questions.json'),read('data/questions.json')]);
   assert.equal(source.questions.length,11);
-  assert.equal(all.length,242);
+  assert.equal(all.length,265);
   const seen=new Set();
   const expected={
     1:'3,000 W/m² と36,000 J',2:'150 W と15 K',3:'7.28 kW',4:'0.482',5:'138.6 s',
