@@ -129,6 +129,21 @@ try {
   assert.ok(await page.locator('#term-heat-flux [data-start-question="book-9-1-peak-flux-risk"]').count());
   assert.ok(await page.locator('#term-power [data-start-question="book-9-1-wire-flux"]').count());
   assert.ok(await page.locator('#term-convection [data-start-question="book-9-1-before-inception"]').count());
+
+  // Newly independently authored glossary entries must link to the exact public practice,
+  // including long technical names, without requiring a separate login or paid API.
+  for(const [term,question] of [
+    ['fouling-thermal-resistance','supp-batch2-fouling-loss-v1'],
+    ['lmtd-correction-factor','supp-batch2-f-area-ratio-v1'],
+    ['hydrodynamic-entry-length','supp-batch2-hydraulic-entry-length-v1'],
+    ['thermal-similarity','supp-batch2-similarity-condition-v1'],
+    ['view-factor-summation','supp-batch2-closed-view-sum-v1'],
+    ['graybody','supp-batch2-grey-surface-limit-v1']
+  ]){
+    const card=page.locator('#term-'+term);
+    await card.waitFor({state:'attached'});
+    assert.ok(await card.locator('[data-start-question="'+question+'"]').count(),term+' → '+question);
+  }
   await page.locator('#term-thermal-conductivity .term-links a').click();
   assert.match(page.url(),/#guide\/sim-conduction$/);
   await nav('glossary');
