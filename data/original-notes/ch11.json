@@ -24,7 +24,7 @@
       "example": "成分Aが2 mol、成分Bが3 molならy_A=0.4、y_B=0.6。分子量が違えば質量分率0.4とは限らない。",
       "limits": "モル平均速度基準と質量平均速度基準の拡散流束は定義が異なる。濃度とモル分率の換算には全モル濃度が必要。",
       "selfCheck": "Aが2 mol、Bが3 molのときy_Aは。",
-      "answer": "0.4。",
+      "answer": "0.4",
       "reviewStatus": "AI_drafted_pending_independent_expert_review"
     },
     {
@@ -46,7 +46,7 @@
       "example": "定常・反応なし・一次元ならdN_A/dx=0なので全モル流束は位置によらず一定になり得る。濃度勾配がなくなるとは限らない。",
       "limits": "反応、流体膨張、変化する全モル濃度、界面での不連続条件などはモデル化が必要。",
       "selfCheck": "定常・反応なしの一次元系で一定となるのは何か。",
-      "answer": "成分Aの全モル流束N_A。",
+      "answer": "全モル流束N_A。",
       "reviewStatus": "AI_drafted_pending_independent_expert_review"
     },
     {
@@ -57,7 +57,7 @@
       "example": "揮発成分Aが非揮発性成分B中を移動する場合、Aの蒸発がバルクの平均流れを生じさせるため、単純なJ_Aだけから全蒸発速度を決められないことがある。",
       "limits": "温度・圧力一定、二成分、定常の条件でも組成変化による対流成分があり得る。全モル流束を見落とさない。",
       "selfCheck": "N_B=0という条件からN_total=0と結論できるか。",
-      "answer": "できない。N_Aが0でなければ全流束N_total=N_Aとなる。",
+      "answer": "できない。",
       "reviewStatus": "AI_drafted_pending_independent_expert_review"
     },
     {
@@ -68,7 +68,7 @@
       "example": "ν=10⁻⁶ m²/s、D_AB=2×10⁻⁹ m²/sならSc=500。k_m=10⁻⁴ m/s、L=0.020 mならSh=1000。",
       "limits": "Re・Sc・Shの相関式は流速、流動状態、濃度境界条件の前提を確認する。係数の定義が異なる流束を混在させない。",
       "selfCheck": "Scが500とは何の比を表すか。",
-      "answer": "運動量拡散率が分子拡散係数の500倍であること。",
+      "answer": "ν/D_AB。",
       "reviewStatus": "AI_drafted_pending_independent_expert_review"
     },
     {
@@ -79,7 +79,7 @@
       "example": "同じ蒸発質量流量0.001 kg/sで潜熱2.3×10⁶ J/kgなら潜熱移動率は2300 W。このほか温度変化があるなら顕熱を追加する。",
       "limits": "Lewis関係を使う際には境界条件・物性・低速質量移動の近似などを確認する。顕熱の符号と相変化の潜熱を二重計上しない。",
       "selfCheck": "Leの定義に使う二つの拡散率は何か。",
-      "answer": "熱拡散率α_fと物質拡散係数D_AB。",
+      "answer": "α_fとD_AB。",
       "reviewStatus": "AI_drafted_pending_independent_expert_review"
     },
     {
@@ -101,7 +101,7 @@
       "example": "高濃度蒸気の吹き出しを伴う表面では、流体のバルク流が熱境界層を変え、同じ温度差でも熱流束が変わり得る。",
       "limits": "高速移動の補正式は系・流動条件により違う。StやShの低速相関を無条件に流用しない。",
       "selfCheck": "強い吹き出し流がある表面で単相低速相関を使う前に確認することは何か。",
-      "answer": "界面の質量流束とバルク流が熱・物質の境界層を変える程度。",
+      "answer": "界面質量流束とバルク流の影響。",
       "reviewStatus": "AI_drafted_pending_independent_expert_review"
     },
     {
@@ -112,7 +112,7 @@
       "example": "混合物のν=2×10⁻⁶ m²/s、D_AB=10⁻⁹ m²/sならSc=2000。温度で粘度が変わればScも変化し得る。",
       "limits": "多成分系では成分対ごとのD_ijやより一般の拡散モデルを要する。物性の単位と採用データの温度条件を明記する。",
       "selfCheck": "混合物のSchmidt数に必要な物性値は何か。",
-      "answer": "混合物の動粘度νと成分の拡散係数D_AB。",
+      "answer": "νとD_AB。",
       "reviewStatus": "AI_drafted_pending_independent_expert_review"
     },
     {
@@ -123,7 +123,7 @@
       "example": "三成分混合物A/B/CでAの濃度勾配が同じでも、B/Cの組成が変わるとAの拡散流束が変わり得る。単一の一定D_ABでは説明しきれない。",
       "limits": "非理想性や交差拡散、電場、化学反応を含む場合は専用モデル・実測値が必要。定量設計では簡易式の適用可能性を検証する。",
       "selfCheck": "多成分混合物で一成分の濃度勾配だけからその流束が決まるとは限らない理由は何か。",
-      "answer": "他成分との拡散相互作用や化学ポテンシャルが影響するため。",
+      "answer": "他成分との相互拡散のため。",
       "reviewStatus": "AI_drafted_pending_independent_expert_review"
     }
   ]
