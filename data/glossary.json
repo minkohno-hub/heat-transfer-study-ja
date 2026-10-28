@@ -1004,7 +1004,11 @@
       "reference": "熱移動・数学・単位系の一般定義についてアプリ独自に執筆した補足説明。原本の翻訳ではありません。",
       "guideId": "sim-conduction"
     },
-    "reviewStatus": "needs_review"
+    "reviewStatus": "needs_review",
+    "related": [
+      "熱流束",
+      "熱伝導率"
+    ]
   },
   {
     "id": "steady-state",
@@ -1025,7 +1029,11 @@
       "reference": "熱移動・数学・単位系の一般定義についてアプリ独自に執筆した補足説明。原本の翻訳ではありません。",
       "guideId": "sim-conduction"
     },
-    "reviewStatus": "needs_review"
+    "reviewStatus": "needs_review",
+    "related": [
+      "熱流束",
+      "熱伝導率"
+    ]
   },
   {
     "id": "transient-state",
@@ -1046,7 +1054,11 @@
       "reference": "熱移動・数学・単位系の一般定義についてアプリ独自に執筆した補足説明。原本の翻訳ではありません。",
       "guideId": "sim-transient"
     },
-    "reviewStatus": "needs_review"
+    "reviewStatus": "needs_review",
+    "related": [
+      "熱流束",
+      "熱伝導率"
+    ]
   },
   {
     "id": "heat-resistance",
@@ -1067,7 +1079,11 @@
       "reference": "熱移動・数学・単位系の一般定義についてアプリ独自に執筆した補足説明。原本の翻訳ではありません。",
       "guideId": "sim-resistance"
     },
-    "reviewStatus": "needs_review"
+    "reviewStatus": "needs_review",
+    "related": [
+      "熱流束",
+      "熱伝導率"
+    ]
   },
   {
     "id": "slab",
@@ -1088,7 +1104,11 @@
       "reference": "熱移動・数学・単位系の一般定義についてアプリ独自に執筆した補足説明。原本の翻訳ではありません。",
       "guideId": "sim-conduction"
     },
-    "reviewStatus": "needs_review"
+    "reviewStatus": "needs_review",
+    "related": [
+      "熱流束",
+      "熱伝導率"
+    ]
   },
   {
     "id": "cylinder",
@@ -1109,7 +1129,11 @@
       "reference": "熱移動・数学・単位系の一般定義についてアプリ独自に執筆した補足説明。原本の翻訳ではありません。",
       "guideId": "chapter2-cylindrical-conduction"
     },
-    "reviewStatus": "needs_review"
+    "reviewStatus": "needs_review",
+    "related": [
+      "熱流束",
+      "熱伝導率"
+    ]
   },
   {
     "id": "sphere",
@@ -1130,7 +1154,11 @@
       "reference": "熱移動・数学・単位系の一般定義についてアプリ独自に執筆した補足説明。原本の翻訳ではありません。",
       "guideId": "sim-conduction"
     },
-    "reviewStatus": "needs_review"
+    "reviewStatus": "needs_review",
+    "related": [
+      "熱流束",
+      "熱伝導率"
+    ]
   },
   {
     "id": "dirichlet",
@@ -1151,7 +1179,11 @@
       "reference": "熱移動・数学・単位系の一般定義についてアプリ独自に執筆した補足説明。原本の翻訳ではありません。",
       "guideId": "sim-conduction"
     },
-    "reviewStatus": "needs_review"
+    "reviewStatus": "needs_review",
+    "related": [
+      "微分",
+      "偏微分"
+    ]
   },
   {
     "id": "neumann",
@@ -1172,7 +1204,11 @@
       "reference": "熱移動・数学・単位系の一般定義についてアプリ独自に執筆した補足説明。原本の翻訳ではありません。",
       "guideId": "sim-conduction"
     },
-    "reviewStatus": "needs_review"
+    "reviewStatus": "needs_review",
+    "related": [
+      "微分",
+      "偏微分"
+    ]
   },
   {
     "id": "robin",
@@ -1193,7 +1229,11 @@
       "reference": "熱移動・数学・単位系の一般定義についてアプリ独自に執筆した補足説明。原本の翻訳ではありません。",
       "guideId": "sim-convection"
     },
-    "reviewStatus": "needs_review"
+    "reviewStatus": "needs_review",
+    "related": [
+      "微分",
+      "偏微分"
+    ]
   },
   {
     "id": "one-dimensional",
@@ -1214,7 +1254,11 @@
       "reference": "熱移動・数学・単位系の一般定義についてアプリ独自に執筆した補足説明。原本の翻訳ではありません。",
       "guideId": "sim-conduction"
     },
-    "reviewStatus": "needs_review"
+    "reviewStatus": "needs_review",
+    "related": [
+      "熱流束",
+      "熱伝導率"
+    ]
   },
   {
     "id": "multidimensional",
@@ -1235,7 +1279,11 @@
       "reference": "熱移動・数学・単位系の一般定義についてアプリ独自に執筆した補足説明。原本の翻訳ではありません。",
       "guideId": "sim-conduction"
     },
-    "reviewStatus": "needs_review"
+    "reviewStatus": "needs_review",
+    "related": [
+      "熱流束",
+      "熱伝導率"
+    ]
   },
   {
     "id": "internal-generation",
@@ -1256,7 +1304,11 @@
       "reference": "熱移動・数学・単位系の一般定義についてアプリ独自に執筆した補足説明。原本の翻訳ではありません。",
       "guideId": "sim-conduction"
     },
-    "reviewStatus": "needs_review"
+    "reviewStatus": "needs_review",
+    "related": [
+      "熱流束",
+      "熱伝導率"
+    ]
   },
   {
     "id": "contact-resistance",
@@ -1277,7 +1329,11 @@
       "reference": "熱移動・数学・単位系の一般定義についてアプリ独自に執筆した補足説明。原本の翻訳ではありません。",
       "guideId": "sim-resistance"
     },
-    "reviewStatus": "needs_review"
+    "reviewStatus": "needs_review",
+    "related": [
+      "熱流束",
+      "熱伝導率"
+    ]
   },
   {
     "id": "forced-convection",
@@ -1298,7 +1354,11 @@
       "reference": "熱移動・数学・単位系の一般定義についてアプリ独自に執筆した補足説明。原本の翻訳ではありません。",
       "guideId": "sim-convection"
     },
-    "reviewStatus": "needs_review"
+    "reviewStatus": "needs_review",
+    "related": [
+      "対流熱伝達率",
+      "レイノルズ数"
+    ]
   },
   {
     "id": "natural-convection",
@@ -1319,7 +1379,11 @@
       "reference": "熱移動・数学・単位系の一般定義についてアプリ独自に執筆した補足説明。原本の翻訳ではありません。",
       "guideId": "chapter8-buoyancy"
     },
-    "reviewStatus": "needs_review"
+    "reviewStatus": "needs_review",
+    "related": [
+      "対流熱伝達率",
+      "レイノルズ数"
+    ]
   },
   {
     "id": "boundary-layer",
@@ -1340,7 +1404,11 @@
       "reference": "熱移動・数学・単位系の一般定義についてアプリ独自に執筆した補足説明。原本の翻訳ではありません。",
       "guideId": "chapter6-flat-boundary"
     },
-    "reviewStatus": "needs_review"
+    "reviewStatus": "needs_review",
+    "related": [
+      "対流熱伝達率",
+      "レイノルズ数"
+    ]
   },
   {
     "id": "viscous-layer",
@@ -1361,7 +1429,11 @@
       "reference": "熱移動・数学・単位系の一般定義についてアプリ独自に執筆した補足説明。原本の翻訳ではありません。",
       "guideId": "chapter6-flat-boundary"
     },
-    "reviewStatus": "needs_review"
+    "reviewStatus": "needs_review",
+    "related": [
+      "対流熱伝達率",
+      "レイノルズ数"
+    ]
   },
   {
     "id": "newton-cooling",
@@ -1382,7 +1454,11 @@
       "reference": "熱移動・数学・単位系の一般定義についてアプリ独自に執筆した補足説明。原本の翻訳ではありません。",
       "guideId": "sim-convection"
     },
-    "reviewStatus": "needs_review"
+    "reviewStatus": "needs_review",
+    "related": [
+      "対流熱伝達率",
+      "レイノルズ数"
+    ]
   },
   {
     "id": "grashof",
@@ -1403,7 +1479,11 @@
       "reference": "熱移動・数学・単位系の一般定義についてアプリ独自に執筆した補足説明。原本の翻訳ではありません。",
       "guideId": "chapter8-buoyancy"
     },
-    "reviewStatus": "needs_review"
+    "reviewStatus": "needs_review",
+    "related": [
+      "対流熱伝達率",
+      "レイノルズ数"
+    ]
   },
   {
     "id": "peclet",
@@ -1424,7 +1504,11 @@
       "reference": "熱移動・数学・単位系の一般定義についてアプリ独自に執筆した補足説明。原本の翻訳ではありません。",
       "guideId": "learn-convection-dimensionless"
     },
-    "reviewStatus": "needs_review"
+    "reviewStatus": "needs_review",
+    "related": [
+      "対流熱伝達率",
+      "レイノルズ数"
+    ]
   },
   {
     "id": "laminar",
@@ -1445,7 +1529,11 @@
       "reference": "熱移動・数学・単位系の一般定義についてアプリ独自に執筆した補足説明。原本の翻訳ではありません。",
       "guideId": "chapter7-internal-flow"
     },
-    "reviewStatus": "needs_review"
+    "reviewStatus": "needs_review",
+    "related": [
+      "対流熱伝達率",
+      "レイノルズ数"
+    ]
   },
   {
     "id": "turbulent",
@@ -1466,7 +1554,11 @@
       "reference": "熱移動・数学・単位系の一般定義についてアプリ独自に執筆した補足説明。原本の翻訳ではありません。",
       "guideId": "chapter7-internal-flow"
     },
-    "reviewStatus": "needs_review"
+    "reviewStatus": "needs_review",
+    "related": [
+      "対流熱伝達率",
+      "レイノルズ数"
+    ]
   },
   {
     "id": "thermal-entrance",
@@ -1487,7 +1579,11 @@
       "reference": "熱移動・数学・単位系の一般定義についてアプリ独自に執筆した補足説明。原本の翻訳ではありません。",
       "guideId": "chapter7-internal-flow"
     },
-    "reviewStatus": "needs_review"
+    "reviewStatus": "needs_review",
+    "related": [
+      "対流熱伝達率",
+      "レイノルズ数"
+    ]
   },
   {
     "id": "blackbody",
@@ -1508,7 +1604,11 @@
       "reference": "熱移動・数学・単位系の一般定義についてアプリ独自に執筆した補足説明。原本の翻訳ではありません。",
       "guideId": "sim-radiation"
     },
-    "reviewStatus": "needs_review"
+    "reviewStatus": "needs_review",
+    "related": [
+      "放射率",
+      "形態係数"
+    ]
   },
   {
     "id": "emissive-power",
@@ -1529,7 +1629,11 @@
       "reference": "熱移動・数学・単位系の一般定義についてアプリ独自に執筆した補足説明。原本の翻訳ではありません。",
       "guideId": "sim-radiation"
     },
-    "reviewStatus": "needs_review"
+    "reviewStatus": "needs_review",
+    "related": [
+      "黒体",
+      "放射率"
+    ]
   },
   {
     "id": "absorptivity",
@@ -1550,7 +1654,11 @@
       "reference": "熱移動・数学・単位系の一般定義についてアプリ独自に執筆した補足説明。原本の翻訳ではありません。",
       "guideId": "sim-radiation"
     },
-    "reviewStatus": "needs_review"
+    "reviewStatus": "needs_review",
+    "related": [
+      "黒体",
+      "放射率"
+    ]
   },
   {
     "id": "reflectivity",
@@ -1571,7 +1679,11 @@
       "reference": "熱移動・数学・単位系の一般定義についてアプリ独自に執筆した補足説明。原本の翻訳ではありません。",
       "guideId": "sim-radiation"
     },
-    "reviewStatus": "needs_review"
+    "reviewStatus": "needs_review",
+    "related": [
+      "黒体",
+      "放射率"
+    ]
   },
   {
     "id": "transmissivity",
@@ -1592,7 +1704,11 @@
       "reference": "熱移動・数学・単位系の一般定義についてアプリ独自に執筆した補足説明。原本の翻訳ではありません。",
       "guideId": "sim-radiation"
     },
-    "reviewStatus": "needs_review"
+    "reviewStatus": "needs_review",
+    "related": [
+      "黒体",
+      "放射率"
+    ]
   },
   {
     "id": "stefan-constant",
@@ -1613,7 +1729,11 @@
       "reference": "熱移動・数学・単位系の一般定義についてアプリ独自に執筆した補足説明。原本の翻訳ではありません。",
       "guideId": "sim-radiation"
     },
-    "reviewStatus": "needs_review"
+    "reviewStatus": "needs_review",
+    "related": [
+      "黒体",
+      "放射率"
+    ]
   },
   {
     "id": "irradiation",
@@ -1634,7 +1754,11 @@
       "reference": "熱移動・数学・単位系の一般定義についてアプリ独自に執筆した補足説明。原本の翻訳ではありません。",
       "guideId": "chapter10-view-factors"
     },
-    "reviewStatus": "needs_review"
+    "reviewStatus": "needs_review",
+    "related": [
+      "黒体",
+      "放射率"
+    ]
   },
   {
     "id": "radiosity",
@@ -1655,7 +1779,11 @@
       "reference": "熱移動・数学・単位系の一般定義についてアプリ独自に執筆した補足説明。原本の翻訳ではありません。",
       "guideId": "chapter10-view-factors"
     },
-    "reviewStatus": "needs_review"
+    "reviewStatus": "needs_review",
+    "related": [
+      "黒体",
+      "放射率"
+    ]
   },
   {
     "id": "latent-heat",
@@ -1676,7 +1804,11 @@
       "reference": "熱移動・数学・単位系の一般定義についてアプリ独自に執筆した補足説明。原本の翻訳ではありません。",
       "guideId": "chapter9-latent-boiling"
     },
-    "reviewStatus": "needs_review"
+    "reviewStatus": "needs_review",
+    "related": [
+      "熱拡散率",
+      "比熱容量"
+    ]
   },
   {
     "id": "sensible-heat",
@@ -1697,7 +1829,11 @@
       "reference": "熱移動・数学・単位系の一般定義についてアプリ独自に執筆した補足説明。原本の翻訳ではありません。",
       "guideId": "learn-heat-exchanger"
     },
-    "reviewStatus": "needs_review"
+    "reviewStatus": "needs_review",
+    "related": [
+      "熱拡散率",
+      "比熱容量"
+    ]
   },
   {
     "id": "specific-heat",
@@ -1718,7 +1854,11 @@
       "reference": "熱移動・数学・単位系の一般定義についてアプリ独自に執筆した補足説明。原本の翻訳ではありません。",
       "guideId": "sim-transient"
     },
-    "reviewStatus": "needs_review"
+    "reviewStatus": "needs_review",
+    "related": [
+      "熱拡散率",
+      "潜熱"
+    ]
   },
   {
     "id": "heat-capacity",
@@ -1739,7 +1879,11 @@
       "reference": "熱移動・数学・単位系の一般定義についてアプリ独自に執筆した補足説明。原本の翻訳ではありません。",
       "guideId": "sim-transient"
     },
-    "reviewStatus": "needs_review"
+    "reviewStatus": "needs_review",
+    "related": [
+      "熱拡散率",
+      "比熱容量"
+    ]
   },
   {
     "id": "density",
@@ -1760,7 +1904,11 @@
       "reference": "熱移動・数学・単位系の一般定義についてアプリ独自に執筆した補足説明。原本の翻訳ではありません。",
       "guideId": "sim-transient"
     },
-    "reviewStatus": "needs_review"
+    "reviewStatus": "needs_review",
+    "related": [
+      "熱拡散率",
+      "比熱容量"
+    ]
   },
   {
     "id": "dynamic-viscosity",
@@ -1781,7 +1929,11 @@
       "reference": "熱移動・数学・単位系の一般定義についてアプリ独自に執筆した補足説明。原本の翻訳ではありません。",
       "guideId": "learn-convection-dimensionless"
     },
-    "reviewStatus": "needs_review"
+    "reviewStatus": "needs_review",
+    "related": [
+      "熱拡散率",
+      "比熱容量"
+    ]
   },
   {
     "id": "kinematic-viscosity",
@@ -1802,7 +1954,11 @@
       "reference": "熱移動・数学・単位系の一般定義についてアプリ独自に執筆した補足説明。原本の翻訳ではありません。",
       "guideId": "learn-convection-dimensionless"
     },
-    "reviewStatus": "needs_review"
+    "reviewStatus": "needs_review",
+    "related": [
+      "熱拡散率",
+      "比熱容量"
+    ]
   },
   {
     "id": "overall-heat-transfer",
@@ -1823,7 +1979,11 @@
       "reference": "熱移動・数学・単位系の一般定義についてアプリ独自に執筆した補足説明。原本の翻訳ではありません。",
       "guideId": "learn-heat-exchanger"
     },
-    "reviewStatus": "needs_review"
+    "reviewStatus": "needs_review",
+    "related": [
+      "熱交換器",
+      "対数平均温度差"
+    ]
   },
   {
     "id": "heat-exchanger",
@@ -1844,7 +2004,11 @@
       "reference": "熱移動・数学・単位系の一般定義についてアプリ独自に執筆した補足説明。原本の翻訳ではありません。",
       "guideId": "learn-heat-exchanger"
     },
-    "reviewStatus": "needs_review"
+    "reviewStatus": "needs_review",
+    "related": [
+      "対数平均温度差",
+      "総括伝熱係数"
+    ]
   },
   {
     "id": "counterflow",
@@ -1865,7 +2029,11 @@
       "reference": "熱移動・数学・単位系の一般定義についてアプリ独自に執筆した補足説明。原本の翻訳ではありません。",
       "guideId": "learn-heat-exchanger"
     },
-    "reviewStatus": "needs_review"
+    "reviewStatus": "needs_review",
+    "related": [
+      "熱交換器",
+      "対数平均温度差"
+    ]
   },
   {
     "id": "parallelflow",
@@ -1886,7 +2054,11 @@
       "reference": "熱移動・数学・単位系の一般定義についてアプリ独自に執筆した補足説明。原本の翻訳ではありません。",
       "guideId": "learn-heat-exchanger"
     },
-    "reviewStatus": "needs_review"
+    "reviewStatus": "needs_review",
+    "related": [
+      "熱交換器",
+      "対数平均温度差"
+    ]
   },
   {
     "id": "effectiveness",
@@ -1907,7 +2079,11 @@
       "reference": "熱移動・数学・単位系の一般定義についてアプリ独自に執筆した補足説明。原本の翻訳ではありません。",
       "guideId": "chapter3-effectiveness-ntu"
     },
-    "reviewStatus": "needs_review"
+    "reviewStatus": "needs_review",
+    "related": [
+      "熱交換器",
+      "対数平均温度差"
+    ]
   },
   {
     "id": "ntumethod",
@@ -1928,7 +2104,11 @@
       "reference": "熱移動・数学・単位系の一般定義についてアプリ独自に執筆した補足説明。原本の翻訳ではありません。",
       "guideId": "chapter3-effectiveness-ntu"
     },
-    "reviewStatus": "needs_review"
+    "reviewStatus": "needs_review",
+    "related": [
+      "熱交換器",
+      "対数平均温度差"
+    ]
   },
   {
     "id": "derivative",
@@ -1949,7 +2129,11 @@
       "reference": "熱移動・数学・単位系の一般定義についてアプリ独自に執筆した補足説明。原本の翻訳ではありません。",
       "guideId": "sim-conduction"
     },
-    "reviewStatus": "needs_review"
+    "reviewStatus": "needs_review",
+    "related": [
+      "偏微分",
+      "近似"
+    ]
   },
   {
     "id": "partial-derivative",
@@ -1970,7 +2154,11 @@
       "reference": "熱移動・数学・単位系の一般定義についてアプリ独自に執筆した補足説明。原本の翻訳ではありません。",
       "guideId": "sim-transient"
     },
-    "reviewStatus": "needs_review"
+    "reviewStatus": "needs_review",
+    "related": [
+      "微分",
+      "近似"
+    ]
   },
   {
     "id": "integral",
@@ -1991,7 +2179,11 @@
       "reference": "熱移動・数学・単位系の一般定義についてアプリ独自に執筆した補足説明。原本の翻訳ではありません。",
       "guideId": "sim-transient"
     },
-    "reviewStatus": "needs_review"
+    "reviewStatus": "needs_review",
+    "related": [
+      "微分",
+      "偏微分"
+    ]
   },
   {
     "id": "slope",
@@ -2012,7 +2204,11 @@
       "reference": "熱移動・数学・単位系の一般定義についてアプリ独自に執筆した補足説明。原本の翻訳ではありません。",
       "guideId": "sim-conduction"
     },
-    "reviewStatus": "needs_review"
+    "reviewStatus": "needs_review",
+    "related": [
+      "微分",
+      "偏微分"
+    ]
   },
   {
     "id": "approximation",
@@ -2033,7 +2229,11 @@
       "reference": "熱移動・数学・単位系の一般定義についてアプリ独自に執筆した補足説明。原本の翻訳ではありません。",
       "guideId": "sim-transient"
     },
-    "reviewStatus": "needs_review"
+    "reviewStatus": "needs_review",
+    "related": [
+      "微分",
+      "偏微分"
+    ]
   },
   {
     "id": "proportionality",
@@ -2054,7 +2254,11 @@
       "reference": "熱移動・数学・単位系の一般定義についてアプリ独自に執筆した補足説明。原本の翻訳ではありません。",
       "guideId": "sim-conduction"
     },
-    "reviewStatus": "needs_review"
+    "reviewStatus": "needs_review",
+    "related": [
+      "微分",
+      "偏微分"
+    ]
   },
   {
     "id": "logarithm",
@@ -2075,7 +2279,11 @@
       "reference": "熱移動・数学・単位系の一般定義についてアプリ独自に執筆した補足説明。原本の翻訳ではありません。",
       "guideId": "chapter2-cylindrical-conduction"
     },
-    "reviewStatus": "needs_review"
+    "reviewStatus": "needs_review",
+    "related": [
+      "微分",
+      "偏微分"
+    ]
   },
   {
     "id": "exponential",
@@ -2096,7 +2304,11 @@
       "reference": "熱移動・数学・単位系の一般定義についてアプリ独自に執筆した補足説明。原本の翻訳ではありません。",
       "guideId": "sim-transient"
     },
-    "reviewStatus": "needs_review"
+    "reviewStatus": "needs_review",
+    "related": [
+      "微分",
+      "偏微分"
+    ]
   },
   {
     "id": "dimensionless",
@@ -2117,7 +2329,11 @@
       "reference": "熱移動・数学・単位系の一般定義についてアプリ独自に執筆した補足説明。原本の翻訳ではありません。",
       "guideId": "learn-dimensionless-transient"
     },
-    "reviewStatus": "needs_review"
+    "reviewStatus": "needs_review",
+    "related": [
+      "微分",
+      "偏微分"
+    ]
   },
   {
     "id": "error-function",
@@ -2138,7 +2354,11 @@
       "reference": "熱移動・数学・単位系の一般定義についてアプリ独自に執筆した補足説明。原本の翻訳ではありません。",
       "guideId": "chapter5-semi-infinite"
     },
-    "reviewStatus": "needs_review"
+    "reviewStatus": "needs_review",
+    "related": [
+      "微分",
+      "偏微分"
+    ]
   },
   {
     "id": "si",
@@ -2159,7 +2379,11 @@
       "reference": "熱移動・数学・単位系の一般定義についてアプリ独自に執筆した補足説明。原本の翻訳ではありません。",
       "guideId": "sim-conduction"
     },
-    "reviewStatus": "needs_review"
+    "reviewStatus": "needs_review",
+    "related": [
+      "ワット",
+      "ジュール"
+    ]
   },
   {
     "id": "watt",
@@ -2180,7 +2404,11 @@
       "reference": "熱移動・数学・単位系の一般定義についてアプリ独自に執筆した補足説明。原本の翻訳ではありません。",
       "guideId": "sim-conduction"
     },
-    "reviewStatus": "needs_review"
+    "reviewStatus": "needs_review",
+    "related": [
+      "SI単位系",
+      "ジュール"
+    ]
   },
   {
     "id": "joule",
@@ -2201,7 +2429,11 @@
       "reference": "熱移動・数学・単位系の一般定義についてアプリ独自に執筆した補足説明。原本の翻訳ではありません。",
       "guideId": "sim-transient"
     },
-    "reviewStatus": "needs_review"
+    "reviewStatus": "needs_review",
+    "related": [
+      "SI単位系",
+      "ワット"
+    ]
   },
   {
     "id": "kelvin-unit",
@@ -2222,7 +2454,11 @@
       "reference": "熱移動・数学・単位系の一般定義についてアプリ独自に執筆した補足説明。原本の翻訳ではありません。",
       "guideId": "sim-radiation"
     },
-    "reviewStatus": "needs_review"
+    "reviewStatus": "needs_review",
+    "related": [
+      "SI単位系",
+      "ワット"
+    ]
   },
   {
     "id": "celsius",
@@ -2243,7 +2479,11 @@
       "reference": "熱移動・数学・単位系の一般定義についてアプリ独自に執筆した補足説明。原本の翻訳ではありません。",
       "guideId": "sim-radiation"
     },
-    "reviewStatus": "needs_review"
+    "reviewStatus": "needs_review",
+    "related": [
+      "SI単位系",
+      "ワット"
+    ]
   },
   {
     "id": "unit-k",
@@ -2264,7 +2504,11 @@
       "reference": "熱移動・数学・単位系の一般定義についてアプリ独自に執筆した補足説明。原本の翻訳ではありません。",
       "guideId": "sim-conduction"
     },
-    "reviewStatus": "needs_review"
+    "reviewStatus": "needs_review",
+    "related": [
+      "SI単位系",
+      "ワット"
+    ]
   },
   {
     "id": "unit-h",
@@ -2285,7 +2529,11 @@
       "reference": "熱移動・数学・単位系の一般定義についてアプリ独自に執筆した補足説明。原本の翻訳ではありません。",
       "guideId": "sim-convection"
     },
-    "reviewStatus": "needs_review"
+    "reviewStatus": "needs_review",
+    "related": [
+      "SI単位系",
+      "ワット"
+    ]
   },
   {
     "id": "fin-effectiveness",
@@ -2306,7 +2554,11 @@
       "reference": "熱移動・数学・単位系の一般定義についてアプリ独自に執筆した補足説明。原本の翻訳ではありません。",
       "guideId": "chapter4-fin-design"
     },
-    "reviewStatus": "needs_review"
+    "reviewStatus": "needs_review",
+    "related": [
+      "熱流束",
+      "熱伝導率"
+    ]
   },
   {
     "id": "semi-infinite",
@@ -2327,7 +2579,11 @@
       "reference": "熱移動・数学・単位系の一般定義についてアプリ独自に執筆した補足説明。原本の翻訳ではありません。",
       "guideId": "chapter5-semi-infinite"
     },
-    "reviewStatus": "needs_review"
+    "reviewStatus": "needs_review",
+    "related": [
+      "熱流束",
+      "熱伝導率"
+    ]
   },
   {
     "id": "view-factor",
@@ -2348,7 +2604,11 @@
       "reference": "熱移動・数学・単位系の一般定義についてアプリ独自に執筆した補足説明。原本の翻訳ではありません。",
       "guideId": "chapter10-view-factors"
     },
-    "reviewStatus": "needs_review"
+    "reviewStatus": "needs_review",
+    "related": [
+      "黒体",
+      "放射率"
+    ]
   },
   {
     "id": "heat-exchanger-ntu",
@@ -2369,7 +2629,11 @@
       "reference": "熱移動・数学・単位系の一般定義についてアプリ独自に執筆した補足説明。原本の翻訳ではありません。",
       "guideId": "chapter3-effectiveness-ntu"
     },
-    "reviewStatus": "needs_review"
+    "reviewStatus": "needs_review",
+    "related": [
+      "熱交換器",
+      "対数平均温度差"
+    ]
   },
   {
     "id": "mass-diffusion",
@@ -2390,6 +2654,10 @@
       "reference": "熱移動・数学・単位系の一般定義についてアプリ独自に執筆した補足説明。原本の翻訳ではありません。",
       "guideId": "chapter11-fick-mass"
     },
-    "reviewStatus": "needs_review"
+    "reviewStatus": "needs_review",
+    "related": [
+      "熱拡散率",
+      "比熱容量"
+    ]
   }
 ]
