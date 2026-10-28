@@ -69,7 +69,7 @@ test('eleven chapter-aligned original guides map to actual book chapter sections
 test('all 33 chapter exercises have correct single-choice keys and independent arithmetic checks',async()=>{
   const qs=await read('data/questions.json');
   const chapter=qs.filter(q=>q.id.startsWith('supp-chapter-'));
-  assert.equal(qs.length,210);
+  assert.equal(qs.length,242);
   assert.equal(chapter.length,33);
   assert.equal(new Set(chapter.map(q=>q.id)).size,33);
   assert.equal(Object.keys(answerLabels).length,33);
