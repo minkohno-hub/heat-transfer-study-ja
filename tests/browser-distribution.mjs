@@ -34,6 +34,15 @@ try {
   });
   await page.goto(base);
   await page.locator('.app-shell').waitFor();
+  if(!liveBase){
+    const workerResponse=await page.request.get(base+'/sw.js');
+    assert.equal(workerResponse.status(),200);
+    const workerSource=await workerResponse.text();
+    assert.match(workerSource,/const CACHE_NAME='heat-study-ja-app-[0-9a-f]{16}';/,
+      'newly published text and questions must give existing offline users a new worker version');
+    assert.match(workerSource,/const PDF_CACHE_NAME='heat-study-ja-pdf-v1';/,
+      'PDF explicitly cached by learners must survive ordinary app revisions');
+  }
   assert.match(await page.locator('.app-footer').innerText(),/0節/);
   await nav('reader');
   await page.locator('.reader-toc .toc-item.selected').waitFor({state:'attached'});
