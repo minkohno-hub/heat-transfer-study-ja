@@ -1,0 +1,398 @@
+{
+  "kind": "original_deep_physics_practice_v1",
+  "version": "1",
+  "questions": [
+    {
+      "id": "supp-deep-heat-generation-center-v1",
+      "revision": "v1",
+      "prompt": "内部発熱が一様な一次元定常平板で、両面温度30.0 ℃、厚さ0.040 m、熱伝導率20 W/(m·K)、発熱率8.0×10⁴ W/m³とする。面内均一・一定物性のとき中央の最高温度は？",
+      "choices": [
+        "30.4 ℃",
+        "30.8 ℃",
+        "31.6 ℃",
+        "30.0 ℃"
+      ],
+      "answer": 1,
+      "explanation": "内部発熱ありの両面等温平板でT(x)=T_s+q‴x(L−x)/(2k)。中心T_max=T_s+q‴L²/(8k)=30+80000×0.040²/(8×20)=30.8 ℃。適用条件：一次元定常、等方で一定k、両面等温、発熱均一。",
+      "distractors": [
+        "発熱項の分母を2倍にしたときの値。",
+        "正解。中央の発熱による上昇は0.8 K。",
+        "発熱寄与を2倍にした計算。",
+        "発熱を無視して全域等温とする誤り。"
+      ],
+      "hints": [
+        "最高温度は左右対称な平板の中央にある。",
+        "ΔT_max=q‴L²/(8k)を使い、Lはmで代入する。"
+      ],
+      "solutionSteps": [
+        "対称な定常平板としてd²T/dx²=−q‴/kを立てる。",
+        "両面温度T_sからT(x)=T_s+q‴x(L−x)/(2k)を得る。",
+        "中央x=L/2で上昇q‴L²/(8k)=0.8 Kを計算。",
+        "30.0+0.8=30.8 ℃。放熱は左右へ半分ずつ流れる。"
+      ],
+      "field": "熱伝導・内部発熱",
+      "difficulty": "標準・内部発熱",
+      "prerequisites": [
+        "Fourierの法則",
+        "熱伝導のエネルギー収支"
+      ],
+      "questionGroup": "original_independent_applied_v1",
+      "questionKind": "numerical",
+      "source": {
+        "type": "supplement",
+        "reference": "独立執筆の詳説§2.1に対応するオリジナル計算・適用条件判定問題。原本の問題・図を転載しない。",
+        "chapterId": "ch2",
+        "focusSectionId": "2.1",
+        "guideId": "chapter2-cylindrical-conduction"
+      },
+      "beginnerPitfall": "内部発熱の単位W/m³を熱流束W/m²と取り違えない。熱源を無視した線形分布を使わない。",
+      "createdStatus": "独立作問",
+      "reviewStatus": "独立計算・内部構造監査済み／外部専門家校閲前",
+      "expertReviewed": false,
+      "reportHistory": []
+    },
+    {
+      "id": "supp-deep-heat-conduction-direction-v1",
+      "revision": "v1",
+      "prompt": "発熱のない一様平板でx=0の温度が30 ℃、x=0.040 mの温度が50 ℃、熱伝導率k=20 W/(m·K)である。一次元定常・一定kのx正方向の符号付き熱流束q_x″は？",
+      "choices": [
+        "+10,000 W/m²",
+        "−1,000 W/m²",
+        "−10,000 W/m²",
+        "+1,000 W/m²"
+      ],
+      "answer": 2,
+      "explanation": "dT/dx=(50−30)/0.040=+500 K/m。Fourier則q_x″=−k dT/dx=−20×500=−10,000 W/m²。適用条件：温度勾配が直線でk一定・内部発熱なし。負号は左向きの熱流を示す。",
+      "distractors": [
+        "Fourierの法則の負号を落としている。",
+        "厚さ0.040 mの桁を取り違えた。",
+        "正解。正温度勾配に対する熱流は負のx方向。",
+        "符号と厚さの桁を両方取り違えた。"
+      ],
+      "hints": [
+        "熱は高温面から低温面へ進む。",
+        "q_x″=−k(T₂−T₁)/Lの符号を残して計算する。"
+      ],
+      "solutionSteps": [
+        "xが増す方向へ温度は30℃から50℃に上昇。",
+        "温度勾配は20 K/0.040 m=+500 K/m。",
+        "q_x″=−20×500=−10,000 W/m²。",
+        "負号はx負方向。熱流束の大きさは10,000 W/m²。"
+      ],
+      "field": "熱伝導・内部発熱",
+      "difficulty": "基礎〜標準・符号",
+      "prerequisites": [
+        "Fourierの法則",
+        "熱伝導のエネルギー収支"
+      ],
+      "questionGroup": "original_independent_applied_v1",
+      "questionKind": "numerical",
+      "source": {
+        "type": "supplement",
+        "reference": "独立執筆の詳説§2.1に対応するオリジナル計算・適用条件判定問題。原本の問題・図を転載しない。",
+        "chapterId": "ch2",
+        "focusSectionId": "2.1",
+        "guideId": "chapter2-cylindrical-conduction"
+      },
+      "beginnerPitfall": "熱移動率Wと単位面積当たりの熱流束W/m²を区別し、物理方向の負号を消さない。",
+      "createdStatus": "独立作問",
+      "reviewStatus": "独立計算・内部構造監査済み／外部専門家校閲前",
+      "expertReviewed": false,
+      "reportHistory": []
+    },
+    {
+      "id": "supp-deep-heat-symmetric-flux-v1",
+      "revision": "v1",
+      "prompt": "一様発熱q‴=2.0×10⁵ W/m³の厚さL=0.050 mの平板を、左右同じ温度に保つ。一定k・一次元定常のとき、片方の表面から外へ出る熱流束の大きさは？",
+      "choices": [
+        "10,000 W/m²",
+        "2,500 W/m²",
+        "20,000 W/m²",
+        "5,000 W/m²"
+      ],
+      "answer": 3,
+      "explanation": "単位投影面積当たりの全発熱はq‴L=2.0×10⁵×0.050=10,000 W/m²。左右が等温かつ材料・発熱分布が対称であれば各面へ半分ずつ移動し5,000 W/m²。適用条件：左右対称・定常・端面熱漏れなし。",
+      "distractors": [
+        "全発熱を一方だけに割り当てた値。",
+        "二表面で分けたあとさらに半分にする誤り。",
+        "発熱量に根拠なく2倍の係数を掛けた値。",
+        "正解。総発熱を両表面で等分する。"
+      ],
+      "hints": [
+        "発熱はW/m³、厚さを掛けるとW/m²。",
+        "左右対称なので各面の外向き流束は全発熱の半分。"
+      ],
+      "solutionSteps": [
+        "定常エネルギー収支を立てる。",
+        "q‴L=2.0×10⁵×0.050=10,000 W/m²。",
+        "対称な両面に分配し各面へ10,000/2=5,000 W/m²。",
+        "左右の外向き熱流束を足すと全発熱10,000 W/m²に一致。"
+      ],
+      "field": "熱伝導・内部発熱",
+      "difficulty": "標準・エネルギー収支",
+      "prerequisites": [
+        "Fourierの法則",
+        "熱伝導のエネルギー収支"
+      ],
+      "questionGroup": "original_independent_applied_v1",
+      "questionKind": "numerical",
+      "source": {
+        "type": "supplement",
+        "reference": "独立執筆の詳説§2.1に対応するオリジナル計算・適用条件判定問題。原本の問題・図を転載しない。",
+        "chapterId": "ch2",
+        "focusSectionId": "2.1",
+        "guideId": "chapter2-cylindrical-conduction"
+      },
+      "beginnerPitfall": "発熱の体積密度と表面流束を混同せず、左右が等温でなければ等分とは限らない。",
+      "createdStatus": "独立作問",
+      "reviewStatus": "独立計算・内部構造監査済み／外部専門家校閲前",
+      "expertReviewed": false,
+      "reportHistory": []
+    },
+    {
+      "id": "supp-deep-heat-generation-balance-v1",
+      "revision": "v1",
+      "prompt": "一定断面の一次元定常平板で厚さL=0.060 m、x正方向の符号付き熱流束がq_x″(0)=−2500 W/m²、q_x″(L)=+3500 W/m²である。内部の一様発熱率q‴は？",
+      "choices": [
+        "100,000 W/m³",
+        "120,000 W/m³",
+        "10,000 W/m³",
+        "60,000 W/m³"
+      ],
+      "answer": 0,
+      "explanation": "定常保存式dq_x″/dx=q‴を積分しq‴=[q_x″(L)−q_x″(0)]/L=[3500−(−2500)]/0.060=100,000 W/m³。適用条件：一次元定常、一様内部発熱、一定断面、側面損失なし。",
+      "distractors": [
+        "正解。右面と左面の符号付き差を厚さで除す。",
+        "流束の差を0.050 mで割った場合の値。",
+        "熱流束の差を厚さではなく別の値で割る誤り。",
+        "単位と温度ではなく単純な数値差を誤算。"
+      ],
+      "hints": [
+        "符号付き流束の収支はq_x″(L)−q_x″(0)=q‴L。",
+        "負の値を引く計算に気をつける。"
+      ],
+      "solutionSteps": [
+        "q‴L=q_x″(L)−q_x″(0)を積分保存則から得る。",
+        "+3500−(−2500)=6000 W/m²。",
+        "6000 W/m²÷0.060 m=100,000 W/m³。",
+        "単位はW/m³、発熱率は正。両面から外へ熱が出る。"
+      ],
+      "field": "熱伝導・内部発熱",
+      "difficulty": "発展・境界条件逆算",
+      "prerequisites": [
+        "Fourierの法則",
+        "熱伝導のエネルギー収支"
+      ],
+      "questionGroup": "original_independent_applied_v1",
+      "questionKind": "numerical",
+      "source": {
+        "type": "supplement",
+        "reference": "独立執筆の詳説§2.1に対応するオリジナル計算・適用条件判定問題。原本の問題・図を転載しない。",
+        "chapterId": "ch2",
+        "focusSectionId": "2.1",
+        "guideId": "chapter2-cylindrical-conduction"
+      },
+      "beginnerPitfall": "温度差の式ではなく熱流束の保存則を使う。片面の負号を絶対値へ先に変えない。",
+      "createdStatus": "独立作問",
+      "reviewStatus": "独立計算・内部構造監査済み／外部専門家校閲前",
+      "expertReviewed": false,
+      "reportHistory": []
+    },
+    {
+      "id": "supp-deep-fick-molar-concentration-v1",
+      "revision": "v1",
+      "prompt": "二成分理想気体が全圧101325 Pa、絶対温度300 Kにある。理想気体定数R=8.3144626 J/(mol·K)を使用する。全モル濃度c=P/(RT)はどれか？",
+      "choices": [
+        "4.06 mol/m³",
+        "0.406 mol/m³",
+        "40.6 mol/m³",
+        "406.0 mol/m³"
+      ],
+      "answer": 2,
+      "explanation": "c=101325/(8.3144626×300)=40.62 mol/m³で、有効桁に従って40.6 mol/m³。適用条件：混合物を理想気体とし、Pは絶対圧、TはKを用いる。",
+      "distractors": [
+        "濃度を10分の1とした桁違い。",
+        "濃度を100分の1とした桁違い。",
+        "正解。圧力をPa、温度をKで代入する。",
+        "濃度を10倍とした桁違い。"
+      ],
+      "hints": [
+        "気体定数の単位をPa·m³/(mol·K)にそろえる。",
+        "分母は約2494.34 Pa·m³/mol。"
+      ],
+      "solutionSteps": [
+        "理想気体の関係c=P/(RT)を確認。",
+        "RT=8.3144626×300≈2494.34 Pa·m³/mol。",
+        "101325/2494.34≈40.62 mol/m³。",
+        "表示有効桁で40.6 mol/m³。"
+      ],
+      "field": "物質移動・拡散",
+      "difficulty": "基礎計算・単位",
+      "prerequisites": [
+        "Fickの法則",
+        "モル流束・モル分率"
+      ],
+      "questionGroup": "original_independent_applied_v1",
+      "questionKind": "numerical",
+      "source": {
+        "type": "supplement",
+        "reference": "独立執筆の詳説§11.3に対応するオリジナル計算・適用条件判定問題。原本の問題・図を転載しない。",
+        "chapterId": "ch11",
+        "focusSectionId": "11.3",
+        "guideId": "chapter11-fick-mass"
+      },
+      "beginnerPitfall": "摂氏温度やゲージ圧を直接使わない。求めているのは質量濃度kg/m³ではなく全モル濃度。",
+      "createdStatus": "独立作問",
+      "reviewStatus": "独立計算・内部構造監査済み／外部専門家校閲前",
+      "expertReviewed": false,
+      "reportHistory": []
+    },
+    {
+      "id": "supp-deep-fick-equimolar-flux-v1",
+      "revision": "v1",
+      "prompt": "T=300 K、P=101325 Paの二成分理想気体で、D_AB=2.0×10⁻⁵ m²/s、層厚L=0.010 m、y_A(0)=0.20、y_A(L)=0.05。定常・一定D_AB・全モル流束0の等モル相互拡散におけるN_Aは？",
+      "choices": [
+        "+0.01219 mol/(m²·s)",
+        "−0.01219 mol/(m²·s)",
+        "+0.01396 mol/(m²·s)",
+        "+0.00122 mol/(m²·s)"
+      ],
+      "answer": 0,
+      "explanation": "c=P/(RT)=40.62 mol/m³。N_A=(cD_AB/L)(y_A1−y_A2)=40.62×2.0×10⁻⁵/0.010×0.15≈+0.01219 mol/(m²·s)。適用条件：N_A+N_B=0、等温等圧・二成分・一定係数。",
+      "distractors": [
+        "正解。Fickの相対流束がこの条件では全流束と一致。",
+        "モル分率勾配の符号を反転している。",
+        "Bが停滞する対数型の流束を混同。",
+        "層厚Lを10倍にして流束を小さくした値。"
+      ],
+      "hints": [
+        "等モル交換のときN_A=−N_B、全モル流束は0。",
+        "c=P/(RT)、N_A=(cD_AB/L)Δy_Aを順に求める。"
+      ],
+      "solutionSteps": [
+        "理想気体としてc≈40.62 mol/m³。",
+        "y_Aの左から右への減少量は0.15。",
+        "cD_AB/L≈0.08124 mol/(m²·s)。",
+        "0.08124×0.15≈0.01219 mol/(m²·s)。左から右へ正。"
+      ],
+      "field": "物質移動・拡散",
+      "difficulty": "標準計算・拡散",
+      "prerequisites": [
+        "Fickの法則",
+        "モル流束・モル分率"
+      ],
+      "questionGroup": "original_independent_applied_v1",
+      "questionKind": "numerical",
+      "source": {
+        "type": "supplement",
+        "reference": "独立執筆の詳説§11.3に対応するオリジナル計算・適用条件判定問題。原本の問題・図を転載しない。",
+        "chapterId": "ch11",
+        "focusSectionId": "11.3",
+        "guideId": "chapter11-fick-mass"
+      },
+      "beginnerPitfall": "成分Bの全流束が0の場合の対数式と、両成分が逆方向に動く等モル拡散の線形式を混同しない。",
+      "createdStatus": "独立作問",
+      "reviewStatus": "独立計算・内部構造監査済み／外部専門家校閲前",
+      "expertReviewed": false,
+      "reportHistory": []
+    },
+    {
+      "id": "supp-deep-fick-stefan-ratio-v1",
+      "revision": "v1",
+      "prompt": "一定c・D_ABの一次元定常二成分層でy_A(0)=0.20、y_A(L)=0.05とする。同一境界条件で成分Bが停滞（N_B=0）するAの全モル流束は、等モル相互拡散（N_A+N_B=0）のAの流束のおよそ何倍か？",
+      "choices": [
+        "1.00 倍",
+        "2.00 倍",
+        "0.87 倍",
+        "1.15 倍"
+      ],
+      "answer": 3,
+      "explanation": "比はln[(1−0.05)/(1−0.20)]/(0.20−0.05)=ln(0.95/0.80)/0.15≈0.17185/0.15≈1.146。適用条件：定常・等温・等圧・一定D_AB/cの二成分系。Stefan流により停滞BのA全流束は大きい。",
+      "distractors": [
+        "両モデルを区別せず同じ式にした結果。",
+        "境界値に根拠なく2倍を掛けた値。",
+        "比の逆数を取った値。",
+        "正解。Stefan流を含む対数式は約1.15倍。"
+      ],
+      "hints": [
+        "停滞BではN_A=(cD/L)ln[(1−y₂)/(1−y₁)]。",
+        "等モルではN_A=(cD/L)(y₁−y₂)。共通因子は比で消える。"
+      ],
+      "solutionSteps": [
+        "等モルの無次元係数は0.20−0.05=0.15。",
+        "停滞Bの無次元係数はln(0.95/0.80)≈0.17185。",
+        "二式の比をとると約0.17185/0.15≈1.146。",
+        "約1.15倍。N_B=0と全モル流束0の条件を区別。"
+      ],
+      "field": "物質移動・拡散",
+      "difficulty": "発展・モデル比較",
+      "prerequisites": [
+        "Fickの法則",
+        "モル流束・モル分率"
+      ],
+      "questionGroup": "original_independent_applied_v1",
+      "questionKind": "numerical",
+      "source": {
+        "type": "supplement",
+        "reference": "独立執筆の詳説§11.3に対応するオリジナル計算・適用条件判定問題。原本の問題・図を転載しない。",
+        "chapterId": "ch11",
+        "focusSectionId": "11.3",
+        "guideId": "chapter11-fick-mass"
+      },
+      "beginnerPitfall": "濃度勾配だけで全モル流束を決められると考えない。対数の引数は必ず無次元にする。",
+      "createdStatus": "独立作問",
+      "reviewStatus": "独立計算・内部構造監査済み／外部専門家校閲前",
+      "expertReviewed": false,
+      "reportHistory": []
+    },
+    {
+      "id": "supp-deep-fick-mass-flux-v1",
+      "revision": "v1",
+      "prompt": "成分Aの全モル流束がN_A=+0.01219 mol/(m²·s)、成分Aのモル質量がM_A=0.0280 kg/molとする。x正方向のAの質量流束m_A″は？（モル流束が与えられ、他の成分とは分けて評価する）",
+      "choices": [
+        "+3.41×10⁻⁵ kg/(m²·s)",
+        "+3.41×10⁻⁴ kg/(m²·s)",
+        "−3.41×10⁻⁴ kg/(m²·s)",
+        "+4.35×10⁻¹ kg/(m²·s)"
+      ],
+      "answer": 1,
+      "explanation": "m_A″=M_A N_A=(0.0280 kg/mol)(0.01219 mol/(m²·s))=3.4132×10⁻⁴ kg/(m²·s)。適用条件：成分Aのモル質量が定義され、同じ基準面・方向の全モル流束を変換する。",
+      "distractors": [
+        "モル質量の桁を1桁小さく扱った。",
+        "正解。molが相殺され質量流束になる。",
+        "正の輸送方向を負にしている。",
+        "モル質量とモル流束の積を大幅に誤算。"
+      ],
+      "hints": [
+        "質量流束=モル質量×モル流束。",
+        "0.0280×0.01219を計算し、mol単位を消す。"
+      ],
+      "solutionSteps": [
+        "モル流束N_A=+0.01219 mol/(m²·s)。",
+        "モル質量M_A=0.0280 kg/mol。",
+        "積は0.00034132 kg/(m²·s)。",
+        "有効3桁で+3.41×10⁻⁴ kg/(m²·s)。"
+      ],
+      "field": "物質移動・拡散",
+      "difficulty": "複合計算・モル質量変換",
+      "prerequisites": [
+        "Fickの法則",
+        "モル流束・モル分率"
+      ],
+      "questionGroup": "original_independent_applied_v1",
+      "questionKind": "numerical",
+      "source": {
+        "type": "supplement",
+        "reference": "独立執筆の詳説§11.3に対応するオリジナル計算・適用条件判定問題。原本の問題・図を転載しない。",
+        "chapterId": "ch11",
+        "focusSectionId": "11.3",
+        "guideId": "chapter11-fick-mass"
+      },
+      "beginnerPitfall": "二成分の合計質量流束を求める問題ではない。mol濃度と質量濃度、モル流束と質量流束の単位を確認する。",
+      "createdStatus": "独立作問",
+      "reviewStatus": "独立計算・内部構造監査済み／外部専門家校閲前",
+      "expertReviewed": false,
+      "reportHistory": []
+    }
+  ]
+}

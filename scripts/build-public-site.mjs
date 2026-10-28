@@ -3,6 +3,7 @@ import {resolve,dirname,join} from 'node:path';
 import {fileURLToPath} from 'node:url';
 import {createHash} from 'node:crypto';
 import {checkPublicContent} from '../public-content-contract.mjs';
+import {publicCacheName,stampServiceWorker} from './public-cache-version.mjs';
 import {GUIDE_SECTIONS} from '../guide.mjs';
 
 const root=resolve(dirname(fileURLToPath(import.meta.url)),'..');
@@ -42,6 +43,17 @@ await writeFile(join(output,'book/AHTTv600.pdf'),pdf);
 for(const [name,value] of Object.entries({'book.json':book,'questions.json':questions,'content-manifest.json':{files:[]},'original-notes.json':originalNotes,'original-deep-lessons.json':deepLessons})){
   await writeFile(join(output,'data',name),JSON.stringify(value,null,2)+'\n');
 }
+// Every new public content revision must produce a new service-worker script.
+// Otherwise an existing installation may keep old offline lessons and questions.
+const publicAssets=[...new Set([...files,
+  'data/book.json','data/questions.json','data/content-manifest.json',
+  'data/original-notes.json','data/original-deep-lessons.json'])];
+const cacheAssets=await Promise.all(publicAssets.map(async path=>({
+  path,content:await readFile(join(output,path))
+})));
+const workerPath=join(output,'sw.js');
+const cacheName=publicCacheName(cacheAssets,pdfHash);
+await writeFile(workerPath,stampServiceWorker(await readFile(workerPath,'utf8'),cacheName));
 // A build that silently omits an imported module will crash for every user.
 // Fail before publishing instead of relying on browsers to discover a 404.
 for(const entry of files.filter(path=>/\.m?js$/.test(path))){

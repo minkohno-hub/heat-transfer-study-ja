@@ -34,8 +34,8 @@ test('22 practical numericals are scientifically labeled, unique and correctly l
  const [bank,...fragments]=await Promise.all([
   'data/questions.json','data/applied-exercises-part1.json','data/applied-exercises-part2.json'
  ].map(read));
- assert.equal(bank.length,182);
- const published=bank.filter(q=>q.questionGroup==='original_independent_applied_v1');
+ assert.equal(bank.length,190);
+ const published=bank.filter(q=>q.id.startsWith('supp-applied-'));
  const authored=fragments.flatMap(doc=>doc.questions);
  assert.equal(published.length,22);
  assert.equal(authored.length,22);
