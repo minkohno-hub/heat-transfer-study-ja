@@ -17,5 +17,5 @@ test('section practice must not offer a strong correct-answer-length shortcut',a
     return q.choices.every((choice,i)=>i===q.answer||/[。．.!?！？]$/.test(choice)!==correct);
   });
   assert.equal(punctuationCue.length,0,'Correct answer must not be the only choice with different terminal punctuation');
-  assert.equal(questions.filter(q=>q.revision==='v2').length,40);
+  assert.equal(questions.filter(q=>['v2','v3'].includes(q.revision)).length,40);
 });
