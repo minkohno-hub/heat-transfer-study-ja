@@ -471,3 +471,35 @@ input[type="range"] { width: 100%; accent-color: var(--accent); }
  .reader-deep-lesson .deep-equation{padding:.6rem}
  .reader-deep-lesson h4{margin-top:1.15rem}
 }
+
+
+/* Small, accessible offline dictionary and responsive, nondecorative physics diagrams. */
+.inline-term {display:inline; padding:0 2px; margin:0 1px; border:0; border-bottom:2px dotted var(--accent); background:color-mix(in srgb,var(--accent-soft) 55%,transparent); color:var(--ink); border-radius:3px; cursor:help; font:inherit; line-height:inherit; text-underline-offset:3px; box-decoration-break:clone;}
+.inline-term:hover,.inline-term:focus-visible {color:var(--accent-strong);background:var(--accent-soft);}
+.inline-term:focus-visible {outline:3px solid var(--accent);outline-offset:3px;}
+.term-sheet {font-size:14px;line-height:1.8;overscroll-behavior:contain;}
+.term-sheet h2 {font-size:23px;line-height:1.5;padding-right:36px;margin:5px 0;}
+.term-sheet h3 {font-size:14px;margin:14px 0 4px;}
+.term-sheet p {margin:8px 0;}
+.term-sheet .term-english {color:var(--muted);font-size:13px;}
+.term-sheet .term-sheet-brief {font-size:16px;color:var(--ink);font-weight:600;}
+.term-sheet .term-formula {overflow-wrap:anywhere;font-family:ui-monospace,monospace;font-size:12px;}
+.term-sheet .button {margin-top:16px;}
+.term-full p {margin:5px 0 10px;line-height:1.8;}
+.term-full summary {color:var(--accent-strong);font-weight:650;cursor:pointer;}
+.term-unit,.term-formula {overflow-wrap:anywhere;}
+.simulation-figure {margin:12px 0 22px;padding:12px;border:1px solid var(--line);border-radius:10px;background:var(--surface-soft);overflow-x:auto;}
+.simulation-figure figcaption {font-size:11px;line-height:1.6;color:var(--muted);margin:8px 0 0;}
+.sim-physical-diagram {display:block;width:100%;min-width:410px;max-height:235px;color:var(--ink);}
+.sim-physical-diagram text {fill:var(--ink);font-family:inherit;font-size:13px;font-weight:600;}
+.sim-physical-diagram .diagram-solid {fill:var(--amber-soft);stroke:var(--amber);stroke-width:2;}
+.sim-physical-diagram .diagram-ambient {fill:var(--blue-soft);stroke:var(--blue);stroke-width:2;}
+.sim-physical-diagram .diagram-arrow {fill:none;stroke:var(--accent-strong);stroke-width:3;stroke-linecap:round;stroke-linejoin:round;}
+.sim-physical-diagram .diagram-boundary {fill:none;stroke:var(--blue);stroke-width:3;stroke-dasharray:6 6;}
+@media (max-width:540px) {.term-sheet {padding:23px 18px;max-height:85dvh;}.term-sheet h2{font-size:20px;}.simulation-figure{padding:8px;}.sim-physical-diagram{min-width:410px;}}
+
+@media (max-width: 540px) {
+  .term-backdrop {align-items:end;justify-items:stretch;padding:0;}
+  .term-sheet {width:100%;border-radius:18px 18px 0 0;max-height:80dvh;max-height:80svh;padding:24px 22px 32px;padding-bottom:max(28px,env(safe-area-inset-bottom));}
+  .term-sheet .button {width:100%;}
+}

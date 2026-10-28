@@ -1,0 +1,990 @@
+{
+  "kind": "original_deep_physics_practice_v1",
+  "version": "1",
+  "questions": [
+    {
+      "id": "supp-deep-heat-generation-center-v1",
+      "revision": "v1",
+      "prompt": "内部発熱が一様な一次元定常平板で、両面温度30.0 ℃、厚さ0.040 m、熱伝導率20 W/(m·K)、発熱率8.0×10⁴ W/m³とする。面内均一・一定物性のとき中央の最高温度は？",
+      "choices": [
+        "30.4 ℃",
+        "30.8 ℃",
+        "31.6 ℃",
+        "30.0 ℃"
+      ],
+      "answer": 1,
+      "explanation": "内部発熱ありの両面等温平板でT(x)=T_s+q‴x(L−x)/(2k)。中心T_max=T_s+q‴L²/(8k)=30+80000×0.040²/(8×20)=30.8 ℃。適用条件：一次元定常、等方で一定k、両面等温、発熱均一。",
+      "distractors": [
+        "発熱項の分母を2倍にしたときの値。",
+        "正解。中央の発熱による上昇は0.8 K。",
+        "発熱寄与を2倍にした計算。",
+        "発熱を無視して全域等温とする誤り。"
+      ],
+      "hints": [
+        "最高温度は左右対称な平板の中央にある。",
+        "ΔT_max=q‴L²/(8k)を使い、Lはmで代入する。"
+      ],
+      "solutionSteps": [
+        "対称な定常平板としてd²T/dx²=−q‴/kを立てる。",
+        "両面温度T_sからT(x)=T_s+q‴x(L−x)/(2k)を得る。",
+        "中央x=L/2で上昇q‴L²/(8k)=0.8 Kを計算。",
+        "30.0+0.8=30.8 ℃。放熱は左右へ半分ずつ流れる。"
+      ],
+      "field": "熱伝導・内部発熱",
+      "difficulty": "標準・内部発熱",
+      "prerequisites": [
+        "Fourierの法則",
+        "熱伝導のエネルギー収支"
+      ],
+      "questionGroup": "original_independent_applied_v1",
+      "questionKind": "numerical",
+      "source": {
+        "type": "supplement",
+        "reference": "独立執筆の詳説§2.1に対応するオリジナル計算・適用条件判定問題。原本の問題・図を転載しない。",
+        "chapterId": "ch2",
+        "focusSectionId": "2.1",
+        "guideId": "chapter2-cylindrical-conduction"
+      },
+      "beginnerPitfall": "内部発熱の単位W/m³を熱流束W/m²と取り違えない。熱源を無視した線形分布を使わない。",
+      "createdStatus": "独立作問",
+      "reviewStatus": "独立計算・内部構造監査済み／外部専門家校閲前",
+      "expertReviewed": false,
+      "reportHistory": []
+    },
+    {
+      "id": "supp-deep-heat-conduction-direction-v1",
+      "revision": "v1",
+      "prompt": "発熱のない一様平板でx=0の温度が30 ℃、x=0.040 mの温度が50 ℃、熱伝導率k=20 W/(m·K)である。一次元定常・一定kのx正方向の符号付き熱流束q_x″は？",
+      "choices": [
+        "+10,000 W/m²",
+        "−1,000 W/m²",
+        "−10,000 W/m²",
+        "+1,000 W/m²"
+      ],
+      "answer": 2,
+      "explanation": "dT/dx=(50−30)/0.040=+500 K/m。Fourier則q_x″=−k dT/dx=−20×500=−10,000 W/m²。適用条件：温度勾配が直線でk一定・内部発熱なし。負号は左向きの熱流を示す。",
+      "distractors": [
+        "Fourierの法則の負号を落としている。",
+        "厚さ0.040 mの桁を取り違えた。",
+        "正解。正温度勾配に対する熱流は負のx方向。",
+        "符号と厚さの桁を両方取り違えた。"
+      ],
+      "hints": [
+        "熱は高温面から低温面へ進む。",
+        "q_x″=−k(T₂−T₁)/Lの符号を残して計算する。"
+      ],
+      "solutionSteps": [
+        "xが増す方向へ温度は30℃から50℃に上昇。",
+        "温度勾配は20 K/0.040 m=+500 K/m。",
+        "q_x″=−20×500=−10,000 W/m²。",
+        "負号はx負方向。熱流束の大きさは10,000 W/m²。"
+      ],
+      "field": "熱伝導・内部発熱",
+      "difficulty": "基礎〜標準・符号",
+      "prerequisites": [
+        "Fourierの法則",
+        "熱伝導のエネルギー収支"
+      ],
+      "questionGroup": "original_independent_applied_v1",
+      "questionKind": "numerical",
+      "source": {
+        "type": "supplement",
+        "reference": "独立執筆の詳説§2.1に対応するオリジナル計算・適用条件判定問題。原本の問題・図を転載しない。",
+        "chapterId": "ch2",
+        "focusSectionId": "2.1",
+        "guideId": "chapter2-cylindrical-conduction"
+      },
+      "beginnerPitfall": "熱移動率Wと単位面積当たりの熱流束W/m²を区別し、物理方向の負号を消さない。",
+      "createdStatus": "独立作問",
+      "reviewStatus": "独立計算・内部構造監査済み／外部専門家校閲前",
+      "expertReviewed": false,
+      "reportHistory": []
+    },
+    {
+      "id": "supp-deep-heat-symmetric-flux-v1",
+      "revision": "v1",
+      "prompt": "一様発熱q‴=2.0×10⁵ W/m³の厚さL=0.050 mの平板を、左右同じ温度に保つ。一定k・一次元定常のとき、片方の表面から外へ出る熱流束の大きさは？",
+      "choices": [
+        "10,000 W/m²",
+        "2,500 W/m²",
+        "20,000 W/m²",
+        "5,000 W/m²"
+      ],
+      "answer": 3,
+      "explanation": "単位投影面積当たりの全発熱はq‴L=2.0×10⁵×0.050=10,000 W/m²。左右が等温かつ材料・発熱分布が対称であれば各面へ半分ずつ移動し5,000 W/m²。適用条件：左右対称・定常・端面熱漏れなし。",
+      "distractors": [
+        "全発熱を一方だけに割り当てた値。",
+        "二表面で分けたあとさらに半分にする誤り。",
+        "発熱量に根拠なく2倍の係数を掛けた値。",
+        "正解。総発熱を両表面で等分する。"
+      ],
+      "hints": [
+        "発熱はW/m³、厚さを掛けるとW/m²。",
+        "左右対称なので各面の外向き流束は全発熱の半分。"
+      ],
+      "solutionSteps": [
+        "定常エネルギー収支を立てる。",
+        "q‴L=2.0×10⁵×0.050=10,000 W/m²。",
+        "対称な両面に分配し各面へ10,000/2=5,000 W/m²。",
+        "左右の外向き熱流束を足すと全発熱10,000 W/m²に一致。"
+      ],
+      "field": "熱伝導・内部発熱",
+      "difficulty": "標準・エネルギー収支",
+      "prerequisites": [
+        "Fourierの法則",
+        "熱伝導のエネルギー収支"
+      ],
+      "questionGroup": "original_independent_applied_v1",
+      "questionKind": "numerical",
+      "source": {
+        "type": "supplement",
+        "reference": "独立執筆の詳説§2.1に対応するオリジナル計算・適用条件判定問題。原本の問題・図を転載しない。",
+        "chapterId": "ch2",
+        "focusSectionId": "2.1",
+        "guideId": "chapter2-cylindrical-conduction"
+      },
+      "beginnerPitfall": "発熱の体積密度と表面流束を混同せず、左右が等温でなければ等分とは限らない。",
+      "createdStatus": "独立作問",
+      "reviewStatus": "独立計算・内部構造監査済み／外部専門家校閲前",
+      "expertReviewed": false,
+      "reportHistory": []
+    },
+    {
+      "id": "supp-deep-heat-generation-balance-v1",
+      "revision": "v1",
+      "prompt": "一定断面の一次元定常平板で厚さL=0.060 m、x正方向の符号付き熱流束がq_x″(0)=−2500 W/m²、q_x″(L)=+3500 W/m²である。内部の一様発熱率q‴は？",
+      "choices": [
+        "100,000 W/m³",
+        "120,000 W/m³",
+        "10,000 W/m³",
+        "60,000 W/m³"
+      ],
+      "answer": 0,
+      "explanation": "定常保存式dq_x″/dx=q‴を積分しq‴=[q_x″(L)−q_x″(0)]/L=[3500−(−2500)]/0.060=100,000 W/m³。適用条件：一次元定常、一様内部発熱、一定断面、側面損失なし。",
+      "distractors": [
+        "正解。右面と左面の符号付き差を厚さで除す。",
+        "流束の差を0.050 mで割った場合の値。",
+        "熱流束の差を厚さではなく別の値で割る誤り。",
+        "単位と温度ではなく単純な数値差を誤算。"
+      ],
+      "hints": [
+        "符号付き流束の収支はq_x″(L)−q_x″(0)=q‴L。",
+        "負の値を引く計算に気をつける。"
+      ],
+      "solutionSteps": [
+        "q‴L=q_x″(L)−q_x″(0)を積分保存則から得る。",
+        "+3500−(−2500)=6000 W/m²。",
+        "6000 W/m²÷0.060 m=100,000 W/m³。",
+        "単位はW/m³、発熱率は正。両面から外へ熱が出る。"
+      ],
+      "field": "熱伝導・内部発熱",
+      "difficulty": "発展・境界条件逆算",
+      "prerequisites": [
+        "Fourierの法則",
+        "熱伝導のエネルギー収支"
+      ],
+      "questionGroup": "original_independent_applied_v1",
+      "questionKind": "numerical",
+      "source": {
+        "type": "supplement",
+        "reference": "独立執筆の詳説§2.1に対応するオリジナル計算・適用条件判定問題。原本の問題・図を転載しない。",
+        "chapterId": "ch2",
+        "focusSectionId": "2.1",
+        "guideId": "chapter2-cylindrical-conduction"
+      },
+      "beginnerPitfall": "温度差の式ではなく熱流束の保存則を使う。片面の負号を絶対値へ先に変えない。",
+      "createdStatus": "独立作問",
+      "reviewStatus": "独立計算・内部構造監査済み／外部専門家校閲前",
+      "expertReviewed": false,
+      "reportHistory": []
+    },
+    {
+      "id": "supp-deep-fick-molar-concentration-v1",
+      "revision": "v1",
+      "prompt": "二成分理想気体が全圧101325 Pa、絶対温度300 Kにある。理想気体定数R=8.3144626 J/(mol·K)を使用する。全モル濃度c=P/(RT)はどれか？",
+      "choices": [
+        "4.06 mol/m³",
+        "0.406 mol/m³",
+        "40.6 mol/m³",
+        "406.0 mol/m³"
+      ],
+      "answer": 2,
+      "explanation": "c=101325/(8.3144626×300)=40.62 mol/m³で、有効桁に従って40.6 mol/m³。適用条件：混合物を理想気体とし、Pは絶対圧、TはKを用いる。",
+      "distractors": [
+        "濃度を10分の1とした桁違い。",
+        "濃度を100分の1とした桁違い。",
+        "正解。圧力をPa、温度をKで代入する。",
+        "濃度を10倍とした桁違い。"
+      ],
+      "hints": [
+        "気体定数の単位をPa·m³/(mol·K)にそろえる。",
+        "分母は約2494.34 Pa·m³/mol。"
+      ],
+      "solutionSteps": [
+        "理想気体の関係c=P/(RT)を確認。",
+        "RT=8.3144626×300≈2494.34 Pa·m³/mol。",
+        "101325/2494.34≈40.62 mol/m³。",
+        "表示有効桁で40.6 mol/m³。"
+      ],
+      "field": "物質移動・拡散",
+      "difficulty": "基礎計算・単位",
+      "prerequisites": [
+        "Fickの法則",
+        "モル流束・モル分率"
+      ],
+      "questionGroup": "original_independent_applied_v1",
+      "questionKind": "numerical",
+      "source": {
+        "type": "supplement",
+        "reference": "独立執筆の詳説§11.3に対応するオリジナル計算・適用条件判定問題。原本の問題・図を転載しない。",
+        "chapterId": "ch11",
+        "focusSectionId": "11.3",
+        "guideId": "chapter11-fick-mass"
+      },
+      "beginnerPitfall": "摂氏温度やゲージ圧を直接使わない。求めているのは質量濃度kg/m³ではなく全モル濃度。",
+      "createdStatus": "独立作問",
+      "reviewStatus": "独立計算・内部構造監査済み／外部専門家校閲前",
+      "expertReviewed": false,
+      "reportHistory": []
+    },
+    {
+      "id": "supp-deep-fick-equimolar-flux-v1",
+      "revision": "v1",
+      "prompt": "T=300 K、P=101325 Paの二成分理想気体で、D_AB=2.0×10⁻⁵ m²/s、層厚L=0.010 m、y_A(0)=0.20、y_A(L)=0.05。定常・一定D_AB・全モル流束0の等モル相互拡散におけるN_Aは？",
+      "choices": [
+        "+0.01219 mol/(m²·s)",
+        "−0.01219 mol/(m²·s)",
+        "+0.01396 mol/(m²·s)",
+        "+0.00122 mol/(m²·s)"
+      ],
+      "answer": 0,
+      "explanation": "c=P/(RT)=40.62 mol/m³。N_A=(cD_AB/L)(y_A1−y_A2)=40.62×2.0×10⁻⁵/0.010×0.15≈+0.01219 mol/(m²·s)。適用条件：N_A+N_B=0、等温等圧・二成分・一定係数。",
+      "distractors": [
+        "正解。Fickの相対流束がこの条件では全流束と一致。",
+        "モル分率勾配の符号を反転している。",
+        "Bが停滞する対数型の流束を混同。",
+        "層厚Lを10倍にして流束を小さくした値。"
+      ],
+      "hints": [
+        "等モル交換のときN_A=−N_B、全モル流束は0。",
+        "c=P/(RT)、N_A=(cD_AB/L)Δy_Aを順に求める。"
+      ],
+      "solutionSteps": [
+        "理想気体としてc≈40.62 mol/m³。",
+        "y_Aの左から右への減少量は0.15。",
+        "cD_AB/L≈0.08124 mol/(m²·s)。",
+        "0.08124×0.15≈0.01219 mol/(m²·s)。左から右へ正。"
+      ],
+      "field": "物質移動・拡散",
+      "difficulty": "標準計算・拡散",
+      "prerequisites": [
+        "Fickの法則",
+        "モル流束・モル分率"
+      ],
+      "questionGroup": "original_independent_applied_v1",
+      "questionKind": "numerical",
+      "source": {
+        "type": "supplement",
+        "reference": "独立執筆の詳説§11.3に対応するオリジナル計算・適用条件判定問題。原本の問題・図を転載しない。",
+        "chapterId": "ch11",
+        "focusSectionId": "11.3",
+        "guideId": "chapter11-fick-mass"
+      },
+      "beginnerPitfall": "成分Bの全流束が0の場合の対数式と、両成分が逆方向に動く等モル拡散の線形式を混同しない。",
+      "createdStatus": "独立作問",
+      "reviewStatus": "独立計算・内部構造監査済み／外部専門家校閲前",
+      "expertReviewed": false,
+      "reportHistory": []
+    },
+    {
+      "id": "supp-deep-fick-stefan-ratio-v1",
+      "revision": "v1",
+      "prompt": "一定c・D_ABの一次元定常二成分層でy_A(0)=0.20、y_A(L)=0.05とする。同一境界条件で成分Bが停滞（N_B=0）するAの全モル流束は、等モル相互拡散（N_A+N_B=0）のAの流束のおよそ何倍か？",
+      "choices": [
+        "1.00 倍",
+        "2.00 倍",
+        "0.87 倍",
+        "1.15 倍"
+      ],
+      "answer": 3,
+      "explanation": "比はln[(1−0.05)/(1−0.20)]/(0.20−0.05)=ln(0.95/0.80)/0.15≈0.17185/0.15≈1.146。適用条件：定常・等温・等圧・一定D_AB/cの二成分系。Stefan流により停滞BのA全流束は大きい。",
+      "distractors": [
+        "両モデルを区別せず同じ式にした結果。",
+        "境界値に根拠なく2倍を掛けた値。",
+        "比の逆数を取った値。",
+        "正解。Stefan流を含む対数式は約1.15倍。"
+      ],
+      "hints": [
+        "停滞BではN_A=(cD/L)ln[(1−y₂)/(1−y₁)]。",
+        "等モルではN_A=(cD/L)(y₁−y₂)。共通因子は比で消える。"
+      ],
+      "solutionSteps": [
+        "等モルの無次元係数は0.20−0.05=0.15。",
+        "停滞Bの無次元係数はln(0.95/0.80)≈0.17185。",
+        "二式の比をとると約0.17185/0.15≈1.146。",
+        "約1.15倍。N_B=0と全モル流束0の条件を区別。"
+      ],
+      "field": "物質移動・拡散",
+      "difficulty": "発展・モデル比較",
+      "prerequisites": [
+        "Fickの法則",
+        "モル流束・モル分率"
+      ],
+      "questionGroup": "original_independent_applied_v1",
+      "questionKind": "numerical",
+      "source": {
+        "type": "supplement",
+        "reference": "独立執筆の詳説§11.3に対応するオリジナル計算・適用条件判定問題。原本の問題・図を転載しない。",
+        "chapterId": "ch11",
+        "focusSectionId": "11.3",
+        "guideId": "chapter11-fick-mass"
+      },
+      "beginnerPitfall": "濃度勾配だけで全モル流束を決められると考えない。対数の引数は必ず無次元にする。",
+      "createdStatus": "独立作問",
+      "reviewStatus": "独立計算・内部構造監査済み／外部専門家校閲前",
+      "expertReviewed": false,
+      "reportHistory": []
+    },
+    {
+      "id": "supp-deep-fick-mass-flux-v1",
+      "revision": "v1",
+      "prompt": "成分Aの全モル流束がN_A=+0.01219 mol/(m²·s)、成分Aのモル質量がM_A=0.0280 kg/molとする。x正方向のAの質量流束m_A″は？（モル流束が与えられ、他の成分とは分けて評価する）",
+      "choices": [
+        "+3.41×10⁻⁵ kg/(m²·s)",
+        "+3.41×10⁻⁴ kg/(m²·s)",
+        "−3.41×10⁻⁴ kg/(m²·s)",
+        "+4.35×10⁻¹ kg/(m²·s)"
+      ],
+      "answer": 1,
+      "explanation": "m_A″=M_A N_A=(0.0280 kg/mol)(0.01219 mol/(m²·s))=3.4132×10⁻⁴ kg/(m²·s)。適用条件：成分Aのモル質量が定義され、同じ基準面・方向の全モル流束を変換する。",
+      "distractors": [
+        "モル質量の桁を1桁小さく扱った。",
+        "正解。molが相殺され質量流束になる。",
+        "正の輸送方向を負にしている。",
+        "モル質量とモル流束の積を大幅に誤算。"
+      ],
+      "hints": [
+        "質量流束=モル質量×モル流束。",
+        "0.0280×0.01219を計算し、mol単位を消す。"
+      ],
+      "solutionSteps": [
+        "モル流束N_A=+0.01219 mol/(m²·s)。",
+        "モル質量M_A=0.0280 kg/mol。",
+        "積は0.00034132 kg/(m²·s)。",
+        "有効3桁で+3.41×10⁻⁴ kg/(m²·s)。"
+      ],
+      "field": "物質移動・拡散",
+      "difficulty": "複合計算・モル質量変換",
+      "prerequisites": [
+        "Fickの法則",
+        "モル流束・モル分率"
+      ],
+      "questionGroup": "original_independent_applied_v1",
+      "questionKind": "numerical",
+      "source": {
+        "type": "supplement",
+        "reference": "独立執筆の詳説§11.3に対応するオリジナル計算・適用条件判定問題。原本の問題・図を転載しない。",
+        "chapterId": "ch11",
+        "focusSectionId": "11.3",
+        "guideId": "chapter11-fick-mass"
+      },
+      "beginnerPitfall": "二成分の合計質量流束を求める問題ではない。mol濃度と質量濃度、モル流束と質量流束の単位を確認する。",
+      "createdStatus": "独立作問",
+      "reviewStatus": "独立計算・内部構造監査済み／外部専門家校閲前",
+      "expertReviewed": false,
+      "reportHistory": []
+    },
+    {
+      "revision": "v1",
+      "field": "熱伝導・非定常",
+      "prerequisites": [
+        "熱拡散率とフーリエ則",
+        "無次元相似変数と半無限境界条件"
+      ],
+      "questionGroup": "original_independent_applied_v1",
+      "questionKind": "numerical",
+      "source": {
+        "type": "supplement",
+        "reference": "アプリ独自の半無限体の非定常伝導§5.6の詳説に基づく計算問題。原本の本文・図・演習問題を転載しない。",
+        "chapterId": "ch5",
+        "focusSectionId": "5.6",
+        "guideId": "chapter5-semi-infinite"
+      },
+      "createdStatus": "独立作問",
+      "reviewStatus": "独立計算・内部構造監査済み／外部専門家校閲前",
+      "expertReviewed": false,
+      "reportHistory": [],
+      "id": "supp-deep-semi-similarity-v1",
+      "prompt": "半無限固体でx=0.010 m、熱拡散率α=1.0×10⁻⁶ m²/s、時刻t=100 sとする。表面を一定温度に保つ解析解で使う相似変数η=x/(2√(αt))は？",
+      "choices": [
+        "0.25（無次元）",
+        "0.50（無次元）",
+        "1.00（無次元）",
+        "2.00（無次元）"
+      ],
+      "answer": 1,
+      "difficulty": "基礎・無次元化",
+      "explanation": "適用条件：半無限固体、一定物性、一次元、表面温度を時刻0に変更。√(αt)=√(1×10⁻⁶×100)=0.010 m。η=0.010/(2×0.010)=0.50（無次元）。mをmで割り単位は消える。",
+      "distractors": [
+        "正しい式の分母に4√(αt)を誤用した結果です。",
+        "正解。拡散長さは0.010 mで、2倍した長さでxを割ります。",
+        "式の分母2を落としたときの結果です。",
+        "2√(αt)/xと逆数で評価した結果です。"
+      ],
+      "hints": [
+        "√(αt)の単位はmです。",
+        "ηは深さxを2√(αt)で割った値です。"
+      ],
+      "solutionSteps": [
+        "熱拡散率α [m²/s]と時間t [s]を掛ける。",
+        "αt=10⁻⁴ m²より√(αt)=0.010 m。",
+        "相似変数η=0.010 m/(2×0.010 m)を求める。",
+        "η=0.50、無次元。温度解へはerf(η)を代入する。"
+      ],
+      "beginnerPitfall": "√αtを2倍する前に式を見直す。ηをmの単位付きの物理長さと呼ばない。"
+    },
+    {
+      "revision": "v1",
+      "field": "熱伝導・非定常",
+      "prerequisites": [
+        "熱拡散率とフーリエ則",
+        "無次元相似変数と半無限境界条件"
+      ],
+      "questionGroup": "original_independent_applied_v1",
+      "questionKind": "numerical",
+      "source": {
+        "type": "supplement",
+        "reference": "アプリ独自の半無限体の非定常伝導§5.6の詳説に基づく計算問題。原本の本文・図・演習問題を転載しない。",
+        "chapterId": "ch5",
+        "focusSectionId": "5.6",
+        "guideId": "chapter5-semi-infinite"
+      },
+      "createdStatus": "独立作問",
+      "reviewStatus": "独立計算・内部構造監査済み／外部専門家校閲前",
+      "expertReviewed": false,
+      "reportHistory": [],
+      "id": "supp-deep-semi-profile-v1",
+      "prompt": "半無限固体の初期温度Ti=20.0 ℃、時刻0以降の一定表面温度Ts=80.0 ℃、α=1.0×10⁻⁶ m²/sとする。100秒後、深さ0.010 mの温度は？ erfc(0.5)=0.47950012を使用する。",
+      "choices": [
+        "20.00 ℃",
+        "80.00 ℃",
+        "48.77 ℃",
+        "51.23 ℃"
+      ],
+      "answer": 2,
+      "difficulty": "標準・誤差関数",
+      "explanation": "適用条件：半無限・一定物性・指定表面温度・一次元。η=0.5。T=Ti+(Ts−Ti)erfc(η)=20+60×0.47950012=48.7700 ℃。t>0、x=0の境界はTsであり、内部点は初期と表面の間にある。",
+      "distractors": [
+        "内部のどこでも初期温度が変わらないと誤認した値です。",
+        "境界x=0の指定温度を深さ1 cmへそのまま適用した値です。",
+        "正解。補誤差関数0.47950012を温度差60Kに掛けます。",
+        "erfcとerfを入れ替えた計算です。"
+      ],
+      "hints": [
+        "まずη=x/(2√αt)=0.5を得ます。",
+        "表面温度との差でなく初期温度との差を使うならerfc(η)です。"
+      ],
+      "solutionSteps": [
+        "半無限一定表面温度の解 T=Ti+(Ts−Ti)erfc(η) を選ぶ。",
+        "η=0.010/(2√(10⁻⁶×100))=0.5。",
+        "T=20+60×0.47950012=48.7700 ℃と代入する。",
+        "20℃＜T＜80℃、深さが正なので表面温度80℃より低いことを確認する。"
+      ],
+      "beginnerPitfall": "erfc=1−erfを使用し、erf(0)=0から境界値を検算する。"
+    },
+    {
+      "revision": "v1",
+      "field": "熱伝導・非定常",
+      "prerequisites": [
+        "熱拡散率とフーリエ則",
+        "無次元相似変数と半無限境界条件"
+      ],
+      "questionGroup": "original_independent_applied_v1",
+      "questionKind": "numerical",
+      "source": {
+        "type": "supplement",
+        "reference": "アプリ独自の半無限体の非定常伝導§5.6の詳説に基づく計算問題。原本の本文・図・演習問題を転載しない。",
+        "chapterId": "ch5",
+        "focusSectionId": "5.6",
+        "guideId": "chapter5-semi-infinite"
+      },
+      "createdStatus": "独立作問",
+      "reviewStatus": "独立計算・内部構造監査済み／外部専門家校閲前",
+      "expertReviewed": false,
+      "reportHistory": [],
+      "id": "supp-deep-semi-surface-flux-v1",
+      "prompt": "半無限固体のTi=20.0 ℃、指定表面温度Ts=80.0 ℃、k=2.0 W/(m·K)、α=1.0×10⁻⁶ m²/s。t=100 sの表面熱流束q″を、固体の内部へ向かう+xを正として求める。π=3.14159265。",
+      "choices": [
+        "+3.39×10³ W/m²",
+        "+1.35×10⁴ W/m²",
+        "+6.77×10² W/m²",
+        "+6.77×10³ W/m²"
+      ],
+      "answer": 3,
+      "difficulty": "標準・符号と流束",
+      "explanation": "適用条件：半無限固体、表面温度の瞬間的な指定、一定物性、一次元。q_x″=k(Ts−Ti)/√(παt)=2×60/√(π×10⁻⁶×100)=+6.770×10³ W/m²。表面が内部より熱いため+xへ入る向きが正となる。",
+      "distractors": [
+        "分母の√tや係数の扱いを誤り、流束を半分とした値です。",
+        "式に不要な係数2を掛けて流束を2倍とした値です。",
+        "拡散率と時間の積の平方根を10倍で扱った誤差です。",
+        "正解。kΔT/√(παt)に単位をそろえて代入します。"
+      ],
+      "hints": [
+        "フーリエ則で表面流束はk(Ts−Ti)/√(παt)です。",
+        "√(παt)=√(3.1416×10⁻⁴)m≒0.0177245 m。"
+      ],
+      "solutionSteps": [
+        "境界は一定表面温度なのでq″=k(Ts−Ti)/√(παt)を選ぶ。",
+        "√(παt)=√(3.14159265×10⁻⁴)m=0.0177245m。",
+        "分子kΔT=2×60=120 W/m。",
+        "120/0.0177245=+6.77×10³ W/m²。固体への熱流入を正とする。"
+      ],
+      "beginnerPitfall": "時刻0で理想解が発散する特異性を現実の無限熱流束とみなさない。"
+    },
+    {
+      "revision": "v1",
+      "field": "熱伝導・非定常",
+      "prerequisites": [
+        "熱拡散率とフーリエ則",
+        "無次元相似変数と半無限境界条件"
+      ],
+      "questionGroup": "original_independent_applied_v1",
+      "questionKind": "numerical",
+      "source": {
+        "type": "supplement",
+        "reference": "アプリ独自の半無限体の非定常伝導§5.6の詳説に基づく計算問題。原本の本文・図・演習問題を転載しない。",
+        "chapterId": "ch5",
+        "focusSectionId": "5.6",
+        "guideId": "chapter5-semi-infinite"
+      },
+      "createdStatus": "独立作問",
+      "reviewStatus": "独立計算・内部構造監査済み／外部専門家校閲前",
+      "expertReviewed": false,
+      "reportHistory": [],
+      "id": "supp-deep-semi-energy-integral-v1",
+      "prompt": "同じ半無限固体（Ti=20 ℃、Ts=80 ℃、k=2 W/(m·K)、α=1.0×10⁻⁶ m²/s）の表面温度をt=0から一定に保つ。t=100 sまでの単位面積当たりの累積入熱は？ π=3.14159265。",
+      "choices": [
+        "+1.354×10⁶ J/m²",
+        "+6.770×10⁵ J/m²",
+        "+2.708×10⁶ J/m²",
+        "+1.354×10⁵ J/m²"
+      ],
+      "answer": 0,
+      "difficulty": "応用・時間積分",
+      "explanation": "適用条件：指定表面温度・半無限・一定物性・一次元。q_x″(t)=k(Ts−Ti)/√(παt)を0から100sまで時間積分するとE/A=2k(Ts−Ti)√[t/(πα)]=1.354×10⁶ J/m²。100s時点のq″にそのまま100sを掛けると半分になり誤る。",
+      "distractors": [
+        "正解。熱流束1/√tを時間積分し係数2を含む。",
+        "最終時刻の熱流束に経過秒数を掛け、初期ほど流束が大きい事実を落とした値です。",
+        "積分で余分に2倍する誤りです。",
+        "10分の1の時間または単位換算を混同した結果です。"
+      ],
+      "hints": [
+        "求める量は熱流束W/m²ではなく累積熱量J/m²です。",
+        "q″が1/√tに比例するので積分すると2√tが出ます。"
+      ],
+      "solutionSteps": [
+        "q″(s)=kΔT/√(παs)の時間積分 E/A=∫₀ᵗ q″(s)ds を立てる。",
+        "∫₀ᵗs⁻¹ᐟ² ds=2√t（特異点s=0でも積分は有限）を使用する。",
+        "E/A=2×2×60×√[100/(π×10⁻⁶)]を計算。",
+        "+1.354×10⁶ J/m²。q″(100)×100=6.77×10⁵ J/m²は誤り。"
+      ],
+      "beginnerPitfall": "瞬間熱流束と累積熱量を混同せず、積分後のJ/m²を確認する。"
+    },
+    {
+      "revision": "v1",
+      "field": "熱放射・放射交換",
+      "prerequisites": [
+        "ステファン・ボルツマン則",
+        "絶対温度と放射率"
+      ],
+      "questionGroup": "original_independent_applied_v1",
+      "questionKind": "numerical",
+      "source": {
+        "type": "supplement",
+        "reference": "独立執筆の発展講義§10.1の放射交換に関するオリジナル演習。原本の本文・原図・章末問題を転載しない。",
+        "chapterId": "ch10",
+        "focusSectionId": "10.1",
+        "guideId": "chapter10-view-factors"
+      },
+      "createdStatus": "独立作問",
+      "reviewStatus": "独立計算・内部構造監査済み／外部専門家校閲前",
+      "expertReviewed": false,
+      "reportHistory": [],
+      "id": "supp-deep-rad-temperature-fourth-v1",
+      "prompt": "黒体の全半球放射発散度はE_b=σT⁴に従う。絶対温度300 Kと600 Kの2つの黒体について、放射発散度E_b(600K)/E_b(300K)は？相手面との正味交換ではなく自己放出のみを比較する。",
+      "choices": [
+        "2.0倍（温度一次比例）",
+        "4.0倍（温度二次）",
+        "16.0倍（温度四次）",
+        "8.0倍（温度三次）"
+      ],
+      "answer": 2,
+      "difficulty": "基礎・温度の四乗",
+      "explanation": "適用条件：両者は黒体で同じステファン・ボルツマン定数を用い、比較するのは自己放出の全半球放射発散度。比は(600 K/300 K)⁴=2⁴=16倍。摂氏の比や温度差の四乗ではない。",
+      "distractors": [
+        "四乗ではなく一次比例として誤計算した結果です。",
+        "温度比を二乗したときの結果です。",
+        "正解。放射発散度は絶対温度Kの四乗に比例します。",
+        "四乗の代わりに三乗に比例するとしたときの結果です。"
+      ],
+      "hints": [
+        "E_bの比ではσは約分できます。",
+        "温度比2を4乗する式です。"
+      ],
+      "solutionSteps": [
+        "自己放出なのでE_b=σT⁴を使う。",
+        "比E_b(600)/E_b(300)=(600/300)⁴。",
+        "2⁴=16.0倍と計算する。",
+        "正味熱交換には相手面温度や放射率が関わることを区別する。"
+      ],
+      "beginnerPitfall": "0℃が放射0の基準ではない。必ず絶対温度の比を取る。"
+    },
+    {
+      "revision": "v1",
+      "field": "熱放射・放射交換",
+      "prerequisites": [
+        "ステファン・ボルツマン則",
+        "絶対温度と放射率"
+      ],
+      "questionGroup": "original_independent_applied_v1",
+      "questionKind": "numerical",
+      "source": {
+        "type": "supplement",
+        "reference": "独立執筆の発展講義§10.1の放射交換に関するオリジナル演習。原本の本文・原図・章末問題を転載しない。",
+        "chapterId": "ch10",
+        "focusSectionId": "10.1",
+        "guideId": "chapter10-view-factors"
+      },
+      "createdStatus": "独立作問",
+      "reviewStatus": "独立計算・内部構造監査済み／外部専門家校閲前",
+      "expertReviewed": false,
+      "reportHistory": [],
+      "id": "supp-deep-rad-radiosity-v1",
+      "prompt": "不透明・拡散・灰色面（ε=0.80）が400 Kで、外部からの照射量G=459.300 W/m²を受ける。黒体発散度E_b=1451.616 W/m²のとき、射度J=εE_b+(1−ε)Gは？",
+      "choices": [
+        "1161.293 W/m²（灰色面の自己放出のみ）",
+        "1253.153 W/m²（自己放出＋反射）",
+        "793.852 W/m²（正味熱流束）",
+        "459.300 W/m²（照射量そのもの）"
+      ],
+      "answer": 1,
+      "difficulty": "標準・放射エネルギー収支",
+      "explanation": "適用条件：不透明で拡散・灰色面、反射率=1−ε。J=0.8×1451.616+0.2×459.300=1161.293+91.860=1253.153 W/m²。射度は外向き全放射であり、正味流束J−Gとは異なる。",
+      "distractors": [
+        "面からの自己放出のみを求め、反射を足していない値です。",
+        "正解。自己放出と入射照射の反射の和が射度です。",
+        "入射Gを差し引いた正味外向き熱流束との混同です。",
+        "外から入る照射量Gを射度Jと取り違えています。"
+      ],
+      "hints": [
+        "射度には自ら放つ成分に加えて反射成分が含まれます。",
+        "反射率は1−ε=0.20。J=0.8Eb+0.2Gです。"
+      ],
+      "solutionSteps": [
+        "指定条件に合わせて射度J=εEb+(1−ε)Gを選ぶ。",
+        "自己放出εEb=0.80×1451.616=1161.293 W/m²を計算。",
+        "反射成分(1−ε)G=0.20×459.300=91.860 W/m²を求める。",
+        "J=1253.153 W/m²。正味流束は別途J−Gで求める。"
+      ],
+      "beginnerPitfall": "射度Jと正味の熱流束を同じものと思い込まない。"
+    },
+    {
+      "revision": "v1",
+      "field": "熱放射・放射交換",
+      "prerequisites": [
+        "ステファン・ボルツマン則",
+        "絶対温度と放射率"
+      ],
+      "questionGroup": "original_independent_applied_v1",
+      "questionKind": "numerical",
+      "source": {
+        "type": "supplement",
+        "reference": "独立執筆の発展講義§10.1の放射交換に関するオリジナル演習。原本の本文・原図・章末問題を転載しない。",
+        "chapterId": "ch10",
+        "focusSectionId": "10.1",
+        "guideId": "chapter10-view-factors"
+      },
+      "createdStatus": "独立作問",
+      "reviewStatus": "独立計算・内部構造監査済み／外部専門家校閲前",
+      "expertReviewed": false,
+      "reportHistory": [],
+      "id": "supp-deep-rad-netflux-v1",
+      "prompt": "温度400 Kの灰色面（ε=0.8、面積に依存しない単位面積流束）が、300 Kの大きな黒体囲いを完全に見込む。σ=5.670374419×10⁻⁸ W/(m²·K⁴)。面から外向きを正とした正味流束q″は？",
+      "choices": [
+        "+1.452×10³ W/m²（400 K黒体発散度）",
+        "+4.593×10² W/m²（照射量）",
+        "+1.253×10³ W/m²（射度）",
+        "+7.939×10² W/m²（正味放熱）"
+      ],
+      "answer": 3,
+      "difficulty": "標準・流束と温度換算",
+      "explanation": "適用条件：不透明灰色拡散面、黒体の大きな等温囲い、形態係数F=1、非参加媒体。q″=εσ(Ts⁴−Tsur⁴)=0.8×5.670374419×10⁻⁸×(400⁴−300⁴)=+793.852 W/m²。外向き正が放熱を示す。",
+      "distractors": [
+        "灰色面の自己放出と囲いの入射を差し引いていません。",
+        "囲いからの照射量Gだけを答えた値です。",
+        "反射を含む射度Jと正味流束J−Gを混同しています。",
+        "正解。囲いへの熱交換は絶対温度の四乗差から計算します。"
+      ],
+      "hints": [
+        "σに掛ける温度はK、温度差を四乗してはいけません。",
+        "400⁴−300⁴=1.75×10¹⁰ K⁴。ε=0.8を掛けます。"
+      ],
+      "solutionSteps": [
+        "黒体囲いを完全に見込むのでG=σTsur⁴のモデルを選ぶ。",
+        "四乗差400⁴−300⁴=1.75×10¹⁰ K⁴を計算。",
+        "εσ×四乗差=0.8×5.670374419×10⁻⁸×1.75×10¹⁰を計算。",
+        "+793.852 W/m²を得る。Ts>Tsurなので正の放熱。"
+      ],
+      "beginnerPitfall": "W/m²の単位面積流束に、問題で与えられていない面積を勝手に掛けない。"
+    },
+    {
+      "revision": "v1",
+      "field": "熱放射・放射交換",
+      "prerequisites": [
+        "ステファン・ボルツマン則",
+        "絶対温度と放射率"
+      ],
+      "questionGroup": "original_independent_applied_v1",
+      "questionKind": "numerical",
+      "source": {
+        "type": "supplement",
+        "reference": "独立執筆の発展講義§10.1の放射交換に関するオリジナル演習。原本の本文・原図・章末問題を転載しない。",
+        "chapterId": "ch10",
+        "focusSectionId": "10.1",
+        "guideId": "chapter10-view-factors"
+      },
+      "createdStatus": "独立作問",
+      "reviewStatus": "独立計算・内部構造監査済み／外部専門家校閲前",
+      "expertReviewed": false,
+      "reportHistory": [],
+      "id": "supp-deep-rad-totalpower-v1",
+      "prompt": "灰色面ε=0.80、面積A=0.50 m²、表面400 K、十分大きな黒体囲い300 Kで、形態係数1・放射率一定とする。外向き正味流束q″=+793.852 W/m²が得られたとき、正味熱移動率Q̇は？",
+      "choices": [
+        "+396.926 W（面積を掛けた熱移動率）",
+        "+793.852 W（流束の数値のまま）",
+        "+1587.704 W（面積の逆数を掛けた値）",
+        "+1253.153 W（射度と混同した値）"
+      ],
+      "answer": 0,
+      "difficulty": "応用・面積と熱移動率",
+      "explanation": "適用条件：面積全体で放射率・表面温度・照射量が一様、黒体囲いF=1。Q̇=Aq″=0.50 m²×793.852 W/m²=+396.926 W。放熱なので外向き正。熱流束W/m²と総熱移動率Wを区別する。",
+      "distractors": [
+        "正解。熱流束に実際の放射面積0.50 m²を掛けます。",
+        "面積の掛け算を忘れて、W/m²をWと取り違えた値です。",
+        "面積で割ってしまった場合の数値です。",
+        "反射も含む射度Jを正味交換率と混同した数値です。"
+      ],
+      "hints": [
+        "Q̇の単位はW、q″はW/m²です。",
+        "Q̇=面積A×外向き正味流束q″を使います。"
+      ],
+      "solutionSteps": [
+        "正味熱流束の与えられた値は+793.852 W/m²と確認する。",
+        "放射する表面積A=0.50 m²を掛ける。",
+        "Q̇=0.50×793.852=396.926 W。",
+        "正の符号は周囲へ熱が移ることを意味し、放射率は既にq″へ含まれます。"
+      ],
+      "beginnerPitfall": "与えられたq″に放射率εをもう一度掛けない。"
+    },
+    {
+      "revision": "v1",
+      "field": "伝導・フィン設計",
+      "prerequisites": [
+        "一次元定常熱伝導",
+        "側面の対流境界",
+        "双曲線関数と無次元量"
+      ],
+      "questionGroup": "original_independent_applied_v1",
+      "questionKind": "numerical",
+      "source": {
+        "type": "supplement",
+        "reference": "§4.5フィン設計について独立執筆した学習教材と仮想数値例に基づく問題。原本の章末問題・原図・本文を転載しない。",
+        "chapterId": "ch4",
+        "focusSectionId": "4.5",
+        "guideId": "chapter4-fin-design"
+      },
+      "createdStatus": "独立作問",
+      "reviewStatus": "内部の独立計算・構造監査実施／外部専門家校閲前",
+      "expertReviewed": false,
+      "reportHistory": [],
+      "id": "supp-deep-fin-base-heat-v1",
+      "prompt": "断熱先端の一定断面フィンで、k=200 W/(m·K)、h=25 W/(m²·K)、P=0.040 m、Ac=1.0×10⁻⁴ m²、L=0.10 m、基部と周囲の温度差60 K。m=7.0711 m⁻¹、tanh(mL)=0.608859のとき、基部から入る熱移動率q_bは？",
+      "choices": [
+        "4.500 W",
+        "6.000 W",
+        "5.166 W",
+        "8.485 W"
+      ],
+      "answer": 2,
+      "difficulty": "標準・エネルギー収支",
+      "explanation": "適用条件：一定断面・一定物性・一次元定常・側面対流h一定・先端断熱。q_b=kAc m ΔT tanh(mL)=200×10⁻⁴×7.0711×60×0.608859=5.166 W。全側面が基部と同温なら6.0 Wだが、実際はフィン内部に温度低下がある。",
+      "distractors": [
+        "基部の温度差とフィン長の寄与を過小評価した値です。",
+        "側面全体が基部温度のままと仮定した理想上限hPLΔTです。",
+        "正解。基部からの流入熱と側面からの放熱が一致します。",
+        "L→∞の理想長フィン値kAc m ΔTと混同しています。"
+      ],
+      "hints": [
+        "断熱先端のフィン放熱はq_b=kAc m ΔT tanh(mL)。",
+        "mL=0.70711、kAc mΔT=8.485 Wにtanh=0.608859を掛けます。"
+      ],
+      "solutionSteps": [
+        "定常、断熱先端なのでq_b=kAc mΔT tanh(mL)を選ぶ。",
+        "kAc mΔT=200×0.0001×7.0711×60=8.4853 W。",
+        "tanh(mL)=0.608859を掛けてq_b=5.1663 W。",
+        "理想最大hPLΔT=6.000 Wより小さいことを検算する。"
+      ],
+      "beginnerPitfall": "断面積Acと側面積PLを取り違えず、ワットの単位にそろえる。"
+    },
+    {
+      "revision": "v1",
+      "field": "伝導・フィン設計",
+      "prerequisites": [
+        "一次元定常熱伝導",
+        "側面の対流境界",
+        "双曲線関数と無次元量"
+      ],
+      "questionGroup": "original_independent_applied_v1",
+      "questionKind": "numerical",
+      "source": {
+        "type": "supplement",
+        "reference": "§4.5フィン設計について独立執筆した学習教材と仮想数値例に基づく問題。原本の章末問題・原図・本文を転載しない。",
+        "chapterId": "ch4",
+        "focusSectionId": "4.5",
+        "guideId": "chapter4-fin-design"
+      },
+      "createdStatus": "独立作問",
+      "reviewStatus": "内部の独立計算・構造監査実施／外部専門家校閲前",
+      "expertReviewed": false,
+      "reportHistory": [],
+      "id": "supp-deep-fin-effectiveness-v1",
+      "prompt": "断熱先端フィンの基部放熱量が5.166 W、h=25 W/(m²·K)、基部断面積Ac=1.0×10⁻⁴ m²、基部と流体の温度差60 Kである。フィン無しの同じ基部面との比較で定義されるフィン有効度ε_fは？",
+      "choices": [
+        "0.861 倍",
+        "34.44 倍",
+        "6.000 倍",
+        "68.88 倍"
+      ],
+      "answer": 1,
+      "difficulty": "応用・基準面積の比較",
+      "explanation": "適用条件：比較対象はフィンを外して露出した断面Acの単純対流。分母はhAcΔT=25×10⁻⁴×60=0.150 W、有効度ε_f=5.166/0.150≈34.44。フィン効率η_f≈0.861と違い、実際の側面積全部が基部温度の場合との比ではありません。",
+      "distractors": [
+        "フィン効率η_f=tanh(mL)/(mL)と有効度を混同した値です。",
+        "正解。フィンがない同面積Acの放熱に対する比です。",
+        "側面の理想放熱量6.0 Wを比の分子または分母として誤用した値です。",
+        "基準となる面積を半分としてしまった場合の約2倍の値です。"
+      ],
+      "hints": [
+        "フィン効率は側面PL、フィン有効度は基部断面Acで正規化します。",
+        "フィンを外した基部の放熱はhAcΔT=0.150 Wです。"
+      ],
+      "solutionSteps": [
+        "フィン有効度ε_f=q_fin/(hAcΔT)を定義する。",
+        "フィンがない基部面の放熱量を25×0.0001×60=0.150 Wと求める。",
+        "放熱量の比5.166/0.150=34.44を求める。",
+        "無次元34.44倍はη_f≈86.1%と別であると説明する。"
+      ],
+      "beginnerPitfall": "フィン効率とフィン有効度の日本語が似ていても、分母の比較対象が違う。"
+    },
+    {
+      "revision": "v1",
+      "field": "伝導・フィン設計",
+      "prerequisites": [
+        "一次元定常熱伝導",
+        "側面の対流境界",
+        "双曲線関数と無次元量"
+      ],
+      "questionGroup": "original_independent_applied_v1",
+      "questionKind": "numerical",
+      "source": {
+        "type": "supplement",
+        "reference": "§4.5フィン設計について独立執筆した学習教材と仮想数値例に基づく問題。原本の章末問題・原図・本文を転載しない。",
+        "chapterId": "ch4",
+        "focusSectionId": "4.5",
+        "guideId": "chapter4-fin-design"
+      },
+      "createdStatus": "独立作問",
+      "reviewStatus": "内部の独立計算・構造監査実施／外部専門家校閲前",
+      "expertReviewed": false,
+      "reportHistory": [],
+      "id": "supp-deep-fin-tip-temperature-v1",
+      "prompt": "一定断面・先端断熱のフィンで基部温度Tb=80.0 ℃、周囲温度T∞=20.0 ℃、mL=0.70711、cosh(mL)=1.26059とする。断熱先端x=Lの温度T(L)は？",
+      "choices": [
+        "67.60 ℃",
+        "47.60 ℃",
+        "80.00 ℃",
+        "60.00 ℃"
+      ],
+      "answer": 0,
+      "difficulty": "標準・温度分布と境界",
+      "explanation": "適用条件：一次元定常・一定断面・一定物性・断熱先端・周囲温度一定。先端温度はT(L)=T∞+(Tb−T∞)/cosh(mL)=20+60/1.26059≈67.60 ℃。47.60 Kは周囲からの温度差であって絶対的な摂氏温度そのものではありません。",
+      "distractors": [
+        "正解。θ_tip=60/1.26059=47.60 Kに周囲温度20℃を加えます。",
+        "先端の超過温度47.60 Kを摂氏表示の温度と取り違えています。",
+        "フィン全体が基部温度のままと仮定しています。",
+        "基部と周囲の温度差60 Kを先端の摂氏温度と取り違えています。"
+      ],
+      "hints": [
+        "超過温度θ=T−T∞の比を求める式です。",
+        "断熱先端θ(L)=θb/cosh(mL)を計算し、最後に周囲温度20℃を戻します。"
+      ],
+      "solutionSteps": [
+        "θb=Tb−T∞=60 Kを計算。",
+        "θ(L)=60/1.26059=47.597 K。",
+        "T(L)=20+47.597=67.597 ℃。",
+        "先端温度は周囲20℃と基部80℃の間であることを確認。"
+      ],
+      "beginnerPitfall": "先端で温度勾配がゼロでも、先端温度が周囲温度や基部温度に等しいとは限らない。"
+    },
+    {
+      "revision": "v1",
+      "field": "伝導・フィン設計",
+      "prerequisites": [
+        "一次元定常熱伝導",
+        "側面の対流境界",
+        "双曲線関数と無次元量"
+      ],
+      "questionGroup": "original_independent_applied_v1",
+      "questionKind": "numerical",
+      "source": {
+        "type": "supplement",
+        "reference": "§4.5フィン設計について独立執筆した学習教材と仮想数値例に基づく問題。原本の章末問題・原図・本文を転載しない。",
+        "chapterId": "ch4",
+        "focusSectionId": "4.5",
+        "guideId": "chapter4-fin-design"
+      },
+      "createdStatus": "独立作問",
+      "reviewStatus": "内部の独立計算・構造監査実施／外部専門家校閲前",
+      "expertReviewed": false,
+      "reportHistory": [],
+      "id": "supp-deep-fin-convective-tip-v1",
+      "prompt": "直線フィンでk=200 W/(m·K)、Ac=1.0×10⁻⁴ m²、m=7.0711 m⁻¹、L=0.100 m、h=25 W/(m²·K)、基部超過温度θb=60 K。先端面積Atip=Acの対流境界β=h/(mk)=0.017678とすると、双曲線関数で求めた基部放熱量は約？",
+      "choices": [
+        "5.166 W",
+        "6.000 W",
+        "8.485 W",
+        "5.260 W"
+      ],
+      "answer": 3,
+      "difficulty": "発展・境界条件の切替",
+      "explanation": "適用条件：一定断面・定常・均一k,h、先端面積Atip=Ac、先端も流体へ対流。q_b=kAc m θb [sinh(mL)+βcosh(mL)]/[cosh(mL)+βsinh(mL)]、β=h/(mk)。mL≈0.70711とβ≈0.017678を代入すると約5.260 W。断熱先端の5.166 Wよりわずかに増える。",
+      "distractors": [
+        "先端を断熱したままの計算値で、先端からの追加放熱を含みません。",
+        "フィンの全側面が基部温度という理想上限に対応します。",
+        "断熱先端の無限長極限の値をそのまま使っています。",
+        "正解。先端面積Acからの追加対流を境界条件に入れた計算です。"
+      ],
+      "hints": [
+        "断熱先端とは異なり−kAc dT/dx|L=hAcθ(L)です。",
+        "β=h/(mk)とmLを先端対流の双曲線式へ代入します。"
+      ],
+      "solutionSteps": [
+        "先端の境界条件が断熱ではなく対流であることを確認。",
+        "β=25/(7.0711×200)=0.017678、mL=0.70711。",
+        "対流先端の係数F=[sinh(mL)+βcosh(mL)]/[cosh(mL)+βsinh(mL)]を計算。",
+        "q_b=kAc m θb F≈5.260 W。断熱先端の5.166 Wより大きいことを確認する。"
+      ],
+      "beginnerPitfall": "先端対流の式で断熱先端と同じtanh(mL)を無条件に使わない。"
+    }
+  ]
+}

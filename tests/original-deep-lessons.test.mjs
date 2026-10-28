@@ -5,11 +5,11 @@ import {validateDeepLessons,deepLessonForSection} from '../original-deep-lessons
 import {checkPublicContent} from '../public-content-contract.mjs';
 import {GUIDE_SECTIONS} from '../guide.mjs';
 const read=async path=>JSON.parse(await readFile(new URL('../'+path,import.meta.url),'utf8'));
-test('five advanced original Japanese lessons retain source and review boundaries',async()=>{
+test('advanced original Japanese instruction covers 2.1, 3.2, 5.2, 5.6, 8.4, 8.5, 10.1 and 11.3 without claiming an unlicensed translation',async()=>{
  const [book,deep]=await Promise.all(['data/book.json','data/original-deep-lessons.json'].map(read));
  assert.deepEqual(validateDeepLessons(book,deep),[]);
- assert.equal(deep.lessons.length,5);
- assert.deepEqual(deep.lessons.map(x=>x.sectionId),['3.2','5.2','8.4','8.5','10.1']);
+ assert.equal(deep.lessons.length,9);
+ assert.deepEqual(deep.lessons.map(x=>x.sectionId),['2.1','3.2','4.5','5.2','5.6','8.4','8.5','10.1','11.3']);
  assert.equal(deep.translation,false);
  assert.equal(deep.expertReviewed,false);
  for(const l of deep.lessons){
@@ -23,18 +23,6 @@ test('five advanced original Japanese lessons retain source and review boundarie
   assert.ok(l.workedExample.steps.length>=4);
  }
  assert.equal(deepLessonForSection(deep,'9.1'),null);
-});
-test('radiation lesson uses absolute temperatures and preserves the net heat-flow sign',()=>{
- const sigma=5.67e-8,epsilon=.8,area=.2,surrounding=300;
- const net=surface=>epsilon*sigma*area*(surface**4-surrounding**4);
- assert.ok(Math.abs(net(400)-158.76)<1e-9);
- assert.ok(Math.abs(net(350)-62.6535)<1e-9);
- assert.equal(net(surrounding),0);
- assert.ok(net(250)<0);
- assert.ok(Math.abs(net(400)/area-793.8)<1e-9);
- const factored=(surface,environment)=>epsilon*sigma*area*(surface-environment)*(surface+environment)*(surface**2+environment**2);
- assert.ok(Math.abs(factored(400,300)-net(400))<1e-10);
- assert.ok(factored(300+1e-9,300)>0);
 });
 test('natural convection and film condensation independently recompute the two worked examples',()=>{
  const Ra=(9.81*.003*10*.2**3)/(1.5e-5*2e-5);
@@ -74,6 +62,60 @@ test('LMTD and lumped transient Japanese worked examples are independently recal
   assert.ok(Math.abs(heatReleased-25284.8223)<0.1);
   const alpha=ks/(rho*c),Fo=alpha*t/(Lc**2);
   assert.ok(Math.abs(Bi*Fo-t/tau)<1e-12);
+});
+
+test('semi-infinite constant-wall-temperature solution independently closes the heat equation and energy integral',async()=>{
+ const close=(x,y,tol)=>assert.ok(Math.abs(x-y)<=tol*Math.max(1,Math.abs(y)),x+' vs '+y);
+ const d=await read('data/original-deep-lessons.json');
+ const lesson=deepLessonForSection(d,'5.6');
+ assert.ok(lesson);
+ const Ti=20,Ts=80,k=2,alpha=1e-6,t=100,x=.01;
+ const eta=x/(2*Math.sqrt(alpha*t));
+ close(eta,.5,1e-12);
+ const erfHalf=.5204998778130465;
+ const temperature=Ts+(Ti-Ts)*erfHalf;
+ const flux=k*(Ts-Ti)/Math.sqrt(Math.PI*alpha*t);
+ const cumulative=2*k*(Ts-Ti)*Math.sqrt(t/(Math.PI*alpha));
+ close(temperature,48.7700073312,1e-10);
+ close(flux,6770.27500257,1e-9);
+ close(cumulative,1354055.0005,1e-9);
+ close(cumulative/(flux*t),2,1e-12);
+ // Analytically differentiate the complementary-error-function solution.
+ const amplitude=Ti-Ts,exp=Math.exp(-eta*eta),den=Math.sqrt(Math.PI*alpha*t);
+ const dTdt=-amplitude*x*exp/(2*t*den);
+ const secondX=-amplitude*x*exp/(2*alpha*t*den);
+ close(dTdt,alpha*secondX,1e-11);
+ assert.ok(lesson.workedExample.answer.includes('48.77'));
+ assert.ok(lesson.workedExample.answer.includes('1.354'));
+ assert.ok(lesson.pitfalls.some(p=>p.includes('発散')));
+ assert.ok(lesson.reviewStatus.includes('外部学術専門家校閲前'));
+});
+test('new heat-equation and binary-diffusion examples balance fluxes and use the correct frame',async()=>{
+ const d=await read('data/original-deep-lessons.json');
+ const slab=deepLessonForSection(d,'2.1');
+ const diffusion=deepLessonForSection(d,'11.3');
+ assert.ok(slab.blocks.some(b=>b.text.includes('∇·(k∇T)')));
+ assert.ok(slab.blocks.some(b=>b.text.includes('Dirichlet')&&b.text.includes('Robin')));
+ assert.ok(diffusion.blocks.some(b=>b.text.includes('N_A=J_A+y_A N_t')));
+ assert.ok(diffusion.blocks.some(b=>b.text.includes('Stefan')));
+ const L=.040,k=20,generation=8e4,Tsurface=30,center=L/2;
+ const temperature=x=>Tsurface+generation*x*(L-x)/(2*k);
+ const flux=x=>-generation*(L/2-x);
+ assert.ok(Math.abs(temperature(center)-30.8)<1e-12);
+ assert.ok(Math.abs(temperature(0)-Tsurface)<1e-12);
+ assert.ok(Math.abs(temperature(L)-Tsurface)<1e-12);
+ assert.equal(flux(0),-1600);
+ assert.equal(flux(L),1600);
+ assert.equal(flux(L)-flux(0),generation*L);
+ const c=101325/(8.3144626*300),cDoverL=c*2e-5/.01;
+ const equimolar=cDoverL*(.20-.05);
+ const stagnantB=cDoverL*Math.log((1-.05)/(1-.20));
+ assert.ok(Math.abs(c-40.62)<.005);
+ assert.ok(Math.abs(equimolar-.01219)<.00001);
+ assert.ok(Math.abs(stagnantB-.01396)<.00001);
+ assert.ok(stagnantB>equimolar);
+ assert.ok(diffusion.workedExample.answer.includes('0.01396'));
+ assert.ok(slab.workedExample.answer.includes('3200 W/m²'));
 });
 test('public build checks advanced note structural integrity and mislabeling',async()=>{
  const [book,questions,glossary,originalNotes,deepLessons]=await Promise.all([

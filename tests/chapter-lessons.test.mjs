@@ -69,7 +69,7 @@ test('eleven chapter-aligned original guides map to actual book chapter sections
 test('all 33 chapter exercises have correct single-choice keys and independent arithmetic checks',async()=>{
   const qs=await read('data/questions.json');
   const chapter=qs.filter(q=>q.id.startsWith('supp-chapter-'));
-  assert.equal(qs.length,182);
+  assert.equal(qs.length,202);
   assert.equal(chapter.length,33);
   assert.equal(new Set(chapter.map(q=>q.id)).size,33);
   assert.equal(Object.keys(answerLabels).length,33);
@@ -101,8 +101,8 @@ test('all 33 chapter exercises have correct single-choice keys and independent a
 });
 test('new glossary links target valid chapter practice and public contract remains valid',async()=>{
   const [book,questions,glossary]=await Promise.all(['data/book.json','data/questions.json','data/glossary.json'].map(read));
-  assert.equal(glossary.length,42);
-  const chTerms=glossary.filter(t=>t.source?.guideId?.startsWith('chapter'));
+  assert.equal(glossary.length,109);
+  const chTerms=glossary.filter(t=>t.source?.guideId?.startsWith('chapter')&&t.relatedQuestions?.length);
   assert.equal(chTerms.length,11);
   for(const term of chTerms){
     assert.ok(term.relatedQuestions.length>=2,term.id);

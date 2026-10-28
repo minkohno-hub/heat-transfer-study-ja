@@ -3,6 +3,7 @@ import {resolve,dirname,join} from 'node:path';
 import {fileURLToPath} from 'node:url';
 import {createHash} from 'node:crypto';
 import {checkPublicContent} from '../public-content-contract.mjs';
+import {publicCacheName,stampServiceWorker} from './public-cache-version.mjs';
 import {GUIDE_SECTIONS} from '../guide.mjs';
 
 const root=resolve(dirname(fileURLToPath(import.meta.url)),'..');
@@ -31,7 +32,7 @@ const deepLessons=JSON.parse(await readFile(join(root,'data/original-deep-lesson
 const issues=checkPublicContent({book,questions,glossary,guides:GUIDE_SECTIONS,originalNotes,deepLessons});
 if(issues.length)throw new Error('公開教材の整合性検査に失敗しました:\n'+issues.join('\n'));
 
-const files=['index.html','styles.css','app.js','study-core.mjs','guide.mjs','chapter-curriculum.mjs','original-notes.mjs','original-deep-lessons.mjs','sw.js','manifest.json','data/glossary.json'];
+const files=['index.html','styles.css','app.js','study-core.mjs','guide.mjs','chapter-curriculum.mjs','original-notes.mjs','original-deep-lessons.mjs','transient-ui.mjs','term-links.mjs','sim-diagrams.mjs','sw.js','manifest.json','data/glossary.json'];
 for(const path of new Set(files)){
   const source=join(root,path),target=join(output,path);
   await mkdir(dirname(target),{recursive:true});await copyFile(source,target);
@@ -42,6 +43,17 @@ await writeFile(join(output,'book/AHTTv600.pdf'),pdf);
 for(const [name,value] of Object.entries({'book.json':book,'questions.json':questions,'content-manifest.json':{files:[]},'original-notes.json':originalNotes,'original-deep-lessons.json':deepLessons})){
   await writeFile(join(output,'data',name),JSON.stringify(value,null,2)+'\n');
 }
+// Every new public content revision must produce a new service-worker script.
+// Otherwise an existing installation may keep old offline lessons and questions.
+const publicAssets=[...new Set([...files,
+  'data/book.json','data/questions.json','data/content-manifest.json',
+  'data/original-notes.json','data/original-deep-lessons.json'])];
+const cacheAssets=await Promise.all(publicAssets.map(async path=>({
+  path,content:await readFile(join(output,path))
+})));
+const workerPath=join(output,'sw.js');
+const cacheName=publicCacheName(cacheAssets,pdfHash);
+await writeFile(workerPath,stampServiceWorker(await readFile(workerPath,'utf8'),cacheName));
 // A build that silently omits an imported module will crash for every user.
 // Fail before publishing instead of relying on browsers to discover a 404.
 for(const entry of files.filter(path=>/\.m?js$/.test(path))){

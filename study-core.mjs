@@ -60,7 +60,7 @@ export function validateLearningData(data, {stored=false}={}) {
   if (!optional(data,'readerPositions',v=>record(v)&&Object.values(v).every(p=>(finite(p)&&p>=0)||(record(p)&&finite(p.scrollY)&&p.scrollY>=0&&optional(p,'blockId',text)&&optional(p,'updatedAt',time))))) return invalid('読書位置の形式が正しくありません。');
   if (!optional(data,'readSections',v=>record(v)&&Object.values(v).every(x=>typeof x==='boolean'))) return invalid('読了記録の形式が正しくありません。');
   if (!optional(data,'lastSection',text)) return invalid('最後に読んだ節の形式が正しくありません。');
-  if (!optional(data,'simComparisons',v=>record(v)&&Object.entries(v).every(([mode,values])=>record(values)&&!calculateHeatTransfer(mode,values).error))) return invalid('比較用シミュレーター条件が正しくありません。');
+  if (!optional(data,'simComparisons',v=>record(v)&&Object.entries(v).every(([mode,values])=>record(values)&&!(mode==='transient'?calculateLumpedCooling(values):calculateHeatTransfer(mode,values)).error))) return invalid('比較用シミュレーター条件が正しくありません。');
   if (!optional(data,'activities',v=>Array.isArray(v)&&v.length<=100000&&v.every(a=>record(a)&&text(a.id)&&validDay(a.date)&&['reading','practice','review','simulation','glossary'].includes(a.kind)&&finite(a.seconds)&&a.seconds>=0&&a.seconds<=86400&&time(a.updatedAt)&&['sectionId','sessionId','field'].every(k=>optional(a,k,text))))) return invalid('学習時間の記録の形式が正しくありません。');
   if (!optional(data,'quizDraft',v=>v===null||quizDraftOK(v))) return invalid('中断した演習の形式が正しくありません。');
   return '';
@@ -224,6 +224,45 @@ export function calculateHeatTransfer(mode,values) {
   if(watts===0&&delta!==0&&!(mode==='radiation'&&numeric.emissivity===0))return {error:'入力値の差や係数が小さすぎて計算精度を保てません。差や係数を大きくして試してください。'};
   return {watts,delta,values:numeric,...extra};
 }
+// Temperature of a spatially uniform solid exchanging heat with a fixed fluid.
+// Independent teaching model; Biot validity must be assessed, not assumed.
+export function calculateLumpedCooling(values) {
+  const fields=['h','area','volume','density','cp','k','initial','ambient','time'];
+  if(!record(values))return {error:'入力データを確認してください。'};
+  const v={};
+  for(const field of fields){
+    const raw=values[field];
+    if(!['number','string'].includes(typeof raw)||String(raw).trim()===''||!Number.isFinite(Number(raw)))
+      return {error:'入力欄はすべて有限の数値で指定してください。'};
+    v[field]=Number(raw);
+  }
+  if(['h','area','volume','density','cp','k'].some(k=>v[k]<=0))
+    return {error:'熱伝達率、面積、体積、密度、比熱、熱伝導率はすべて0より大きくしてください。'};
+  if(v.time<0)return {error:'経過時間 t は0秒以上で指定してください。'};
+  if(v.initial<=-273.15||v.ambient<=-273.15)
+    return {error:'初期温度と周囲温度は絶対零度（−273.15 ℃）より高くしてください。'};
+  const capacity=v.density*v.volume*v.cp; // J/K
+  const conductance=v.h*v.area; // W/K
+  const characteristicLength=v.volume/v.area; // m = V/A_s
+  const biot=v.h*characteristicLength/v.k;
+  const tau=capacity/conductance; // seconds
+  if([capacity,conductance,characteristicLength,biot,tau].some(x=>!Number.isFinite(x)||x<=0))
+    return {error:'時間定数またはビオ数が計算可能範囲外です。値と単位を見直してください。'};
+  const exponent=-v.time/tau;
+  const fraction=Math.exp(exponent); // remaining difference / original difference
+  const delta0=v.initial-v.ambient;
+  const temperature=v.ambient+delta0*fraction;
+  const watts=conductance*delta0*fraction; // + means outward, cooling
+  const energyJ=-capacity*delta0*Math.expm1(exponent); // + means total heat lost
+  const delta=temperature-v.ambient;
+  if([exponent,fraction,temperature,watts,energyJ,delta].some(x=>!Number.isFinite(x)))
+    return {error:'計算可能な数値範囲を超えました。極端な値を見直してください。'};
+  return {values:v,temperature,watts,energyJ,delta,delta0,capacity,conductance,
+    characteristicLength,biot,tau,fraction,validLumpedApproximation:biot<0.1,
+    applicability:biot<0.1?'集中熱容量近似の目安 Bi＜0.1 を満たします。内部温度差を無視する近似は形状・物性・境界条件も確認してください。':
+      'Bi≧0.1 のため、内部温度を一様とする近似の精度を保証できません。温度分布を扱う非定常熱伝導モデルが必要です。'};
+}
+
 export function safeLocalFigurePath(src) {
   if(typeof src!=='string')return false;
   const relative=src.startsWith('./')?src.slice(2):src;
