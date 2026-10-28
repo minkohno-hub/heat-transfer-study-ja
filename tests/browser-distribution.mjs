@@ -312,7 +312,7 @@ try {
   assert.match(await page.locator('#pdf-cache-status').innerText(),/保存済み/);
   assert.ok(await page.evaluate(async()=>Boolean(await(await caches.open('heat-study-ja-pdf-v1')).match('./book/AHTTv600.pdf'))));
   await context.setOffline(true);
-  await page.reload({waitUntil:'domcontentloaded'});
+  await page.goto(new URL('./?offline-check=1#reader',base).href,{waitUntil:'domcontentloaded'});
   await page.locator('.app-shell').waitFor();
   await page.waitForFunction(()=>document.querySelector('#pdf-cache-status')?.textContent.includes('保存済み'));
   const pdfRange=await page.evaluate(async()=>{const response=await fetch('./book/AHTTv600.pdf',{headers:{Range:'bytes=0-3'}});return {status:response.status,range:response.headers.get('content-range'),signature:await response.text()};});
@@ -325,7 +325,7 @@ try {
   await page.locator('#guide-sim-radiation').waitFor({state:'visible'});
   assert.match(await page.locator('#guide-sim-radiation').innerText(),/熱放射/);
   await page.evaluate(async()=>{const cache=await caches.open('heat-study-ja-pdf-v1');await cache.delete('./book/AHTTv600.pdf');});
-  await page.reload({waitUntil:'domcontentloaded'});
+  await page.goto(new URL('./?offline-check=2#reader',base).href,{waitUntil:'domcontentloaded'});
   await page.locator('.app-shell').waitFor();
   await nav('reader');
   await page.waitForFunction(()=>document.querySelector('#pdf-cache-status')?.textContent.includes('未保存'));
