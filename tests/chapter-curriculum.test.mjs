@@ -14,7 +14,7 @@ test('all eleven chapters have distinct independently authored question sets wit
   assert.equal(classified.length,178); // Previously 170 chapter-linked questions, plus 8 new section-focused exercises
   for(const chapter of chapters){
     const qs=questionsForChapter(questions,chapter,GUIDE_SECTIONS);
-    assert.equal(qs.filter(q=>q.source.type==='supplement').length,6+chapterCounts[chapter]+(['ch2','ch4','ch5','ch10','ch11'].includes(chapter)?4:0),chapter);
+    assert.equal(qs.filter(q=>q.source.type==='supplement').length,6+chapterCounts[chapter]+(['ch2','ch4','ch5','ch10','ch11'].includes(chapter)?4:0)+(['ch1','ch3'].includes(chapter)?4:0),chapter);
     assert.equal(qs.filter(q=>q.source.type==='book').length,chapter==='ch9'?7:chapter==='ch1'?1:0,chapter);
   }
   assert.equal(questionsForChapter(questions,'unknown',GUIDE_SECTIONS).length,0);
