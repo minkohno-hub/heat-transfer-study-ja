@@ -1338,6 +1338,9 @@ function renderSimulatorOutputsOnly() {
   const temporary=document.createElement('div'); temporary.innerHTML=renderSimulator();
   const output=temporary.querySelector('.sim-output-card'); const current=document.querySelector('.sim-output-card');
   if(output&&current) current.replaceWith(output);
+  const liveFigure=document.querySelector('.sim-input-card .simulation-figure');
+  const newFigure=temporary.querySelector('.sim-input-card .simulation-figure');
+  if(liveFigure&&newFigure)liveFigure.replaceWith(newFigure);
 }
 
 function formatHeatRate(watts) {
