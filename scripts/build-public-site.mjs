@@ -40,5 +40,16 @@ await writeFile(join(output,'book/AHTTv600.pdf'),pdf);
 for(const [name,value] of Object.entries({'book.json':book,'questions.json':questions,'content-manifest.json':{files:[]}})){
   await writeFile(join(output,'data',name),JSON.stringify(value,null,2)+'\n');
 }
+// A build that silently omits an imported module will crash for every user.
+// Fail before publishing instead of relying on browsers to discover a 404.
+for(const entry of files.filter(path=>/\.m?js$/.test(path))){
+  const code=await readFile(join(output,entry),'utf8');
+  for(const match of code.matchAll(/^\s*import\s+(?:[^;\n]*?\s+from\s+)?['"](\.[^'"]+)['"]/gm)){
+    const imported=match[1];
+    const target=resolve(dirname(join(output,entry)),imported);
+    if(!target.startsWith(output+'/'))throw new Error('公開JSのimportが配信ディレクトリ外を参照しています: '+entry+' -> '+imported);
+    try{await stat(target);}catch{throw new Error('公開JSの依存モジュールが配信ファイルから欠けています: '+entry+' -> '+imported);}
+  }
+}
 await writeFile(marker,'公開対象だけを列挙して作成した配信物です。\n');
 console.log('公開配信物：許諾済みの原本PDF、アプリ・独自ガイド・問題・用語・書籍の目次情報。翻訳・原図・抽出本文は含めていません。');
