@@ -67,3 +67,15 @@ test('public contract rejects mismatched chapter metadata for guides and indepen
   c.guides.find(g=>g.id==='chapter3-effectiveness-ntu').bookChapter='unknown';
   assert.match(find(checkPublicContent(c)),/章別独立講座の章ID・関連節/);
 });
+
+test('public contract rejects malformed revision markers that would corrupt retest status',async()=>{
+  const a=await fixtures();
+  a.questions[0].revision={version:2};
+  assert.match(find(checkPublicContent(a)),/問題改訂番号の形式/);
+  const b=await fixtures();
+  b.questions[0].revision='  ';
+  assert.match(find(checkPublicContent(b)),/問題改訂番号の形式/);
+  const c=await fixtures();
+  c.questions[0].revision='v2-heatflow';
+  assert.deepEqual(checkPublicContent(c),[]);
+});
