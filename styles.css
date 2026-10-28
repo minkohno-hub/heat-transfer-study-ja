@@ -487,3 +487,32 @@ input[type="range"] { width: 100%; accent-color: var(--accent); }
 .quiz-term-actions .button { min-height:44px; }
 @media(min-width:760px) { .quiz-term-backdrop { align-items:center; } .quiz-term-modal { border-radius:18px; max-height:86vh; } }
 @media(max-width:759px) { .quiz-term-backdrop { padding:0; } .quiz-term-modal { width:100%; padding-bottom:max(26px,env(safe-area-inset-bottom)); } .quiz-term-actions .button { width:100%; } }
+
+/* Original simulation diagrams use the calculated temperatures and heat direction.
+   Contrast and text labels supplement color; figures never encode data only by hue. */
+.sim-physical-figure { margin:18px 0 24px; padding:13px 12px 10px; background:var(--surface-soft); border:1px solid var(--line); border-radius:13px; }
+.sim-physical-svg { display:block; width:100%; height:auto; max-height:270px; color:var(--text); overflow:visible; }
+.sim-physical-figure figcaption { margin:5px 3px 2px; color:var(--muted); font-size:11px; line-height:1.75; }
+.sim-physical-svg .diagram-label { fill:var(--text); font-size:14px; font-weight:650; }
+.sim-physical-svg .diagram-node-label { fill:var(--text); font-size:11px; font-weight:600; }
+.sim-physical-svg .diagram-figure-heading { fill:var(--muted); font-size:12px; font-weight:650; }
+.sim-physical-svg .diagram-neutral { fill:var(--muted); font-size:15px; font-weight:700; }
+.sim-physical-svg .diagram-reservoir { fill:var(--surface); stroke:var(--line); stroke-width:2; }
+.sim-physical-svg .diagram-solid { fill:#e6aa91; stroke:#b26b4d; stroke-width:2; }
+.sim-physical-svg .diagram-fluid { fill:#a7d7dc; stroke:#45868c; stroke-width:2; }
+.sim-physical-svg .diagram-enclosure { fill:#b0c3d3; stroke:#61758f; stroke-width:2; }
+.sim-physical-svg .diagram-connector { fill:#bfd4d5; stroke:#78959c; stroke-width:1.5; }
+.sim-physical-svg .diagram-layer-one { fill:#e6aa91; stroke:#b26b4d; stroke-width:2; }
+.sim-physical-svg .diagram-layer-two { fill:#d4bd92; stroke:#9b7e4b; stroke-width:2; }
+.sim-physical-svg .diagram-heat { stroke:#b54c32; fill:#b54c32; }
+.sim-physical-svg .diagram-flow-line { stroke-width:5; stroke-linecap:round; }
+.sim-physical-svg .diagram-fluid-lines { fill:none; stroke:#397881; stroke-width:2.5; stroke-linecap:round; }
+.sim-physical-svg .diagram-radiation-wave { stroke:#b54c32; stroke-width:3; stroke-linecap:round; }
+@media (max-width:420px) {
+  .sim-physical-figure { margin:16px 0; padding:9px 5px; }
+  .sim-physical-svg .diagram-label { font-size:15px; }
+  .sim-physical-figure figcaption { font-size:11px; }
+}
+@media (prefers-reduced-motion:reduce) {
+  .sim-physical-svg * { animation:none !important; }
+}
