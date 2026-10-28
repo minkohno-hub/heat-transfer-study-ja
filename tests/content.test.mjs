@@ -62,6 +62,14 @@ test('public questions are self-contained and book references remain in the cite
   }
   assert.equal(qs.filter(q=>q.source.type==='supplement').length,174);
   const boiling=qs.find(q=>q.id==='book-9-1-transition-flux');
+  const energy=qs.find(q=>q.id==='book-1-2-closed-energy-rate');
+  assert.equal(energy.source.section,'1.2');
+  assert.equal(energy.source.bookPages,'6');
+  assert.equal(energy.source.pdfPages,'20');
+  assert.equal(energy.source.equation,'1.1');
+  assert.equal(energy.choices[energy.answer],'+90 W');
+  assert.equal(120-30,90,'Heat into the closed system minus work out equals energy accumulation');
+  assert.ok(energy.distractors.every((reason,i)=>i===energy.answer||reason.length>20));
   assert.equal(boiling.source.bookPages,'476');assert.equal(boiling.source.pdfPages,'490');
   const beforeInception=qs.find(q=>q.id==='book-9-1-before-inception');
   assert.equal(beforeInception.source.bookPages,'473');assert.equal(beforeInception.source.pdfPages,'487');
@@ -90,7 +98,7 @@ test('public questions are self-contained and book references remain in the cite
   const radiusMicrometres=(2*0.060)/(3.0*1000)*1_000_000;
   assert.ok(Math.abs(radiusMicrometres-40)<1e-12);
   assert.equal(bubble.choices[bubble.answer],'4.0×10¹ μm');
-  assert.equal(qs.filter(q=>q.source.type==='book').length,7);
+  assert.equal(qs.filter(q=>q.source.type==='book').length,8);
   const ledger=await read('docs/SECTION_PROGRESS.json');
   for(const section of ledger.sections){
     const publicIds=qs.filter(q=>q.source.type==='book'&&q.source.section===section.id).map(q=>q.id).sort();
@@ -253,7 +261,7 @@ test('conceptual answers do not stand out solely by option length',async()=>{
 test('four new original lessons have twelve consistent questions with independently derived physical answers',async()=>{
   const qs=await read('data/questions.json');
   const added=qs.filter(q=>q.id.startsWith('supp-expanded-'));
-  assert.equal(qs.length,181);
+  assert.equal(qs.length,182);
   assert.equal(added.length,12);
   const lessonIds=['learn-dimensionless-transient','learn-lumped-cooling','learn-convection-dimensionless','learn-heat-exchanger'];
   for(const guideId of lessonIds){

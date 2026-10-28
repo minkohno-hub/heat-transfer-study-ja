@@ -11,11 +11,11 @@ test('all eleven chapters have distinct independently authored question sets wit
   const chapterCounts=Object.fromEntries(book.chapters.map(ch=>[ch.id,ch.sections.length]));
   assert.equal(chapters.size,11);
   const classified=questions.filter(q=>questionChapter(q,GUIDE_SECTIONS));
-  assert.equal(classified.length,149); // 33 chapter questions + 76 original section questions + 7 book-cited questions
+  assert.equal(classified.length,150); // 33 chapter questions + 76 original section questions + 8 book-cited questions
   for(const chapter of chapters){
     const qs=questionsForChapter(questions,chapter,GUIDE_SECTIONS);
     assert.equal(qs.filter(q=>q.source.type==='supplement').length,6+chapterCounts[chapter],chapter);
-    assert.equal(qs.filter(q=>q.source.type==='book').length,chapter==='ch9'?7:0,chapter);
+    assert.equal(qs.filter(q=>q.source.type==='book').length,chapter==='ch9'?7:chapter==='ch1'?1:0,chapter);
   }
   assert.equal(questionsForChapter(questions,'unknown',GUIDE_SECTIONS).length,0);
   const legacy=questions.find(q=>q.id==='supp-flat-thickness');
@@ -46,7 +46,7 @@ test('chapter overview uses most recent per-question answer and never implies fu
   const ch9=overview.find(ch=>ch.chapter==='ch9');
   assert.equal(ch9.practiceQuestionCount,24);
   assert.equal(ch9.bookCitedQuestionCount,7);
-  assert.equal(overview.reduce((sum,x)=>sum+x.practiceQuestionCount,0),149);
+  assert.equal(overview.reduce((sum,x)=>sum+x.practiceQuestionCount,0),150);
   const numerical=chapterLearningOverview(book,questions,GUIDE_SECTIONS,[
     {questionId:'supp-chapter-ch2-series',at:Date.UTC(2026,9,28,0),correct:true},
     {questionId:'supp-chapter-ch2-series',at:'2026-10-28T10:00:00+09:00',correct:false}
