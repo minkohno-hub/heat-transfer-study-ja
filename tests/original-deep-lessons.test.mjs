@@ -22,7 +22,7 @@ test('advanced original Japanese instruction includes 1.1 and 3.1 alongside the 
   assert.ok(l.reviewStatus.includes('外部学術専門家校閲前'));
   assert.ok(l.workedExample.steps.length>=4);
  }
- assert.equal(deepLessonForSection(deep,'9.1'),null);
+ assert.equal(deepLessonForSection(deep,'12.1'),null);
 });
 test('natural convection and film condensation independently recompute the two worked examples',()=>{
  const Ra=(9.81*.003*10*.2**3)/(1.5e-5*2e-5);
