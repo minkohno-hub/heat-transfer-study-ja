@@ -30,7 +30,7 @@ test('coverage report separates original problems from verified book citation an
   assert.equal(coverage.chapters.reduce((a,b)=>a+b.originalGuideEntries,0),11);
   assert.ok(coverage.chapters.every(c=>c.originalPracticeQuestions===6+c.sectionCount+(['ch2','ch11'].includes(c.chapter)?4:0)&&c.originalGuideEntries===1));
   assert.equal(coverage.independentlyAuthoredJapaneseNotes,76);
-  assert.equal(coverage.originalDeepLessons,6);
+  assert.equal(coverage.originalDeepLessons,7);
   assert.equal(coverage.chapters.find(x=>x.chapter==='ch8').originalDeepLessonCount,2);
   assert.equal(coverage.chapters.find(x=>x.chapter==='ch3').originalDeepLessonCount,1);
   assert.equal(coverage.chapters.find(x=>x.chapter==='ch5').originalDeepLessonCount,1);
