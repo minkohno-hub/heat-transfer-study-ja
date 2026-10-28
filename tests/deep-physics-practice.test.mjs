@@ -7,18 +7,19 @@ const read=async name=>JSON.parse(await readFile(new URL('../'+name,import.meta.
 const close=(value,expected,tolerance=1e-8)=>
  assert.ok(Math.abs(value-expected)<=tolerance, `${value} is not within ${tolerance} of ${expected}`);
 
-test('eight authored deep-physics numericals are published with matched keys, references and no answer-position bias',async()=>{
+test('twelve authored deep-physics numericals are published with matched keys, references and no answer-position bias',async()=>{
  const [bundle,bank,deep]=await Promise.all([
    'data/deep-physics-practice.json','data/questions.json','data/original-deep-lessons.json'
  ].map(read));
  const items=bundle.questions;
  assert.equal(bundle.kind,'original_deep_physics_practice_v1');
- assert.equal(items.length,8);
- assert.equal(bank.length,190);
- assert.equal(new Set(items.map(q=>q.id)).size,8);
- assert.deepEqual(items.map(q=>q.answer).sort(),[0,0,1,1,2,2,3,3]);
+ assert.equal(items.length,12);
+ assert.equal(bank.length,194);
+ assert.equal(new Set(items.map(q=>q.id)).size,12);
+ assert.deepEqual(items.map(q=>q.answer).sort(),[0,0,0,1,1,1,2,2,2,3,3,3]);
  assert.equal(items.filter(q=>q.source.focusSectionId==='2.1').length,4);
  assert.equal(items.filter(q=>q.source.focusSectionId==='11.3').length,4);
+ assert.equal(items.filter(q=>q.source.focusSectionId==='5.6').length,4);
  for(const q of items){
    assert.equal(validateQuestion(q),'',q.id);
    assert.deepEqual(bank.find(x=>x.id===q.id),q,q.id);
