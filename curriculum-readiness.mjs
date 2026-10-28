@@ -29,11 +29,20 @@ export function auditFullCurriculumReadiness({book,originalNotes,questions,publi
       &&iso(r.approvedAt)&&typeof r?.sourcePageEvidence==='string'&&r.sourcePageEvidence.trim()
       &&r?.scientificReview==='approved'&&r?.copyrightReview==='approved') approvals.set(r.sectionId,r);
   }
-  const rights=new Set(publicationPermissionEvidence.filter(r=>id(r?.sectionId)&&r?.scope==='japanese_section_text'
-    &&r?.status==='verified'&&typeof r?.evidenceId==='string'&&r.evidenceId.trim()).map(r=>r.sectionId));
-  const publicText=new Set(publishedSections.filter(r=>id(r?.sectionId)&&r?.language==='ja'
+  // An independently written comprehensive Japanese lesson is a valid
+  // alternative to a licensed translation, but both need traceable provenance.
+  // The permission for the ORIGINAL PDF is NEVER sufficient for a translation.
+  const approvedRights=(scope)=>new Set(publicationPermissionEvidence.filter(r=>id(r?.sectionId)
+    &&r?.scope===scope&&r?.status==='verified'&&typeof r?.evidenceId==='string'&&r.evidenceId.trim()).map(r=>r.sectionId));
+  const translationRights=approvedRights('japanese_section_text');
+  const originalityChecked=approvedRights('original_independent_full_lesson');
+  const validPublished=publishedSections.filter(r=>id(r?.sectionId)&&r?.language==='ja'
     &&r?.hasFullText===true&&r?.verifiedAgainstOriginal===true&&r?.copyrightStatus==='cleared'
-    &&typeof r?.sourcePageEvidence==='string'&&r.sourcePageEvidence.trim()).map(r=>r.sectionId));
+    &&typeof r?.sourcePageEvidence==='string'&&r.sourcePageEvidence.trim());
+  const translatedText=new Set(validPublished.filter(r=>r.contentOrigin==='licensed_translation'
+    &&translationRights.has(r.sectionId)).map(r=>r.sectionId));
+  const independentComprehensive=new Set(validPublished.filter(r=>r.contentOrigin==='independent_original'
+    &&originalityChecked.has(r.sectionId)).map(r=>r.sectionId));
   const questionApprovals=new Set(questionReviewEvidence.filter(r=>typeof r?.questionId==='string'
     &&r?.status==='approved'&&typeof r?.reviewer==='string'&&r.reviewer.trim()
     &&iso(r.approvedAt)&&typeof r?.calculationEvidence==='string'&&r.calculationEvidence.trim()
@@ -48,10 +57,14 @@ export function auditFullCurriculumReadiness({book,originalNotes,questions,publi
     const kinds=uniq(qs.map(q=>q.questionKind).filter(k=>typeof k==='string'&&k.trim()));
     const independentlyWritten=Boolean(note&&note.sourceType==='original_independent_japanese_notes'&&note.expertReviewed===false);
     const scientificallyApproved=approvals.has(s.id);
-    const cleared=rights.has(s.id),published=publicText.has(s.id)&&cleared;
+    const cleared=translationRights.has(s.id)||originalityChecked.has(s.id);
+    const translated=translatedText.has(s.id);
+    const independentFullLesson=independentComprehensive.has(s.id);
+    const published=translated||independentFullLesson;
     const questionReady=available>=nPerSection&&reviewed>=nPerSection&&kinds.length>=nKinds;
     return {id:s.id,chapterId:s.chapterId,title:s.title,originalConceptNote:independentlyWritten,
       independentlyReviewed:scientificallyApproved,fullJapaneseTextPublished:published,
+      verifiedLicensedTranslation:translated,verifiedIndependentComprehensiveLesson:independentFullLesson,
       fullTextPermissionVerified:cleared,
       sectionQuestionCount:available,expertReviewedQuestionCount:reviewed,
       distinctQuestionKinds:kinds.length,questionBankReady:questionReady,
@@ -64,6 +77,8 @@ export function auditFullCurriculumReadiness({book,originalNotes,questions,publi
     independentlyReviewedSections:count('independentlyReviewed'),
     verifiedRightsSections:count('fullTextPermissionVerified'),
     verifiedJapaneseFullTextSections:count('fullJapaneseTextPublished'),
+    verifiedPublishedTranslations:count('verifiedLicensedTranslation'),
+    verifiedComprehensiveIndependentLessons:count('verifiedIndependentComprehensiveLesson'),
     questionBankReadySections:count('questionBankReady'),
     fullyReadySections:count('sectionReady'),
     fullCompletion:errors.length===0&&rows.length===76&&rows.every(r=>r.sectionReady),
