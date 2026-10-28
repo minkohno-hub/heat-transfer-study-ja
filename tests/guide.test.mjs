@@ -3,13 +3,19 @@ import assert from 'node:assert/strict';
 import {GUIDE_SECTIONS,searchGuide} from '../guide.mjs';
 import {calculateHeatTransfer,STEFAN_BOLTZMANN_VALUE} from '../study-core.mjs';
 
-test('the in-app guide covers every screen and all four implemented models, including Japanese partial search',()=>{
+test('the in-app guide covers every screen and all five implemented models, including Japanese partial search',()=>{
   const ids=new Set(GUIDE_SECTIONS.map(section=>section.id));
-  for(const id of ['start','reader','quiz','progress','review','plan','notes','search','data','offline','accessibility','simulator','sim-conduction','sim-convection','sim-radiation','sim-resistance','faq'])assert.ok(ids.has(id),id);
+  for(const id of ['start','reader','quiz','progress','review','plan','notes','search','data','offline','accessibility','simulator','sim-conduction','sim-convection','sim-radiation','sim-resistance','sim-transient','faq'])assert.ok(ids.has(id),id);
   assert.equal(ids.size,GUIDE_SECTIONS.length);
   assert.ok(searchGuide('放射率').some(section=>section.id==='sim-radiation'));
   assert.ok(searchGuide('復元').some(section=>section.id==='data'));
   assert.equal(searchGuide('見つからない語句xyz').length,0);
+  for(const id of ['learn-dimensionless-transient','learn-lumped-cooling']){
+    const html=GUIDE_SECTIONS.find(section=>section.id===id).html;
+    assert.match(html,/#guide\/sim-transient/);
+    assert.doesNotMatch(html,/非定常温度の計算機能はありません|この指数式は既存の定常シミュレーターには未実装/);
+  }
+  assert.match(GUIDE_SECTIONS.find(section=>section.id==='simulator').html,/非定常モデルでは横軸が経過時間、縦軸が物体温度/);
 });
 
 test('the four guide examples agree with independently calculated hand values',()=>{
