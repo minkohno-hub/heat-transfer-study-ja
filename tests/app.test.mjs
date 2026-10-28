@@ -16,7 +16,7 @@ function harness(initial) {
   const context=vm.createContext({...core,...guide,...curriculum,...originalNotesModule,...deepNotesModule,structuredClone,JSON,Date,Math,Intl,Map,Set,Number,String,Array,Boolean,RegExp,Blob,URL,crypto:{randomUUID:()=> '11111111-1111-4111-8111-111111111111'},document,window:{matchMedia:()=>({matches:false}),scrollTo(){},confirm:()=>true,location:{reload(){reloaded++;}}},location:{hash:''},navigator:{onLine:true},setTimeout:()=>1,clearTimeout(){},localStorage:{getItem:k=>store.get(k)||null,setItem(k,v){if((fail&&k===key)||k===failKey)throw Error('quota');store.set(k,v);},removeItem(k){store.delete(k);}},FormData:class{constructor(v){this.values=v.values??v;}get(k){return this.values[k]??null;}}});
   vm.runInContext(source.replace(/^import .*?;\s*/gm,'').replace(/\nstartApp\(\);\s*$/,'')+`
     render=()=>{globalThis.renderCount=(globalThis.renderCount||0)+1;};showStatus=message=>{globalThis.statusMessage=message;};
-    globalThis.api={get state(){return state;},set state(v){state=v;},get ui(){return ui;},set ui(v){ui={...ui,...v};},set questions(v){questionBank=v;},set book(v){book=v;},set terms(v){glossary=v;},set deepLessons(v){deepLessons=v;},submitQuizAnswer,reviewCandidates,validateImport,importData,exportData,exportBackup,saveState,savePlan,setReviewDate,onClick,onChange,formatHeatRate,buildSearchIndex,onKeyDown,renderBookBlock,renderQuestionFigure,renderGlossary,renderAnswerFeedback,sourcePdfPage,sourcePdfLink,blockSourceLabel,figureZoomLink,renderSimulationSteps,simGraph,validBookBlocks,sectionIsTranslated,createProfile,get warning(){return storageIssue;},get status(){return globalThis.statusMessage;}};`,context);
+    globalThis.api={get state(){return state;},set state(v){state=v;},get ui(){return ui;},set ui(v){ui={...ui,...v};},set questions(v){questionBank=v;},set book(v){book=v;},set terms(v){glossary=v;},set deepLessons(v){deepLessons=v;},submitQuizAnswer,reviewCandidates,validateImport,importData,exportData,exportBackup,saveState,savePlan,setReviewDate,onClick,onChange,formatHeatRate,buildSearchIndex,onKeyDown,renderBookBlock,renderQuestionFigure,renderGlossary,renderAnswerFeedback,renderDeepLesson,sourcePdfPage,sourcePdfLink,blockSourceLabel,figureZoomLink,renderSimulationSteps,simGraph,validBookBlocks,sectionIsTranslated,createProfile,get warning(){return storageIssue;},get status(){return globalThis.statusMessage;}};`,context);
   const api=context.api;api.questions=[question];api.book={pdfPageCount:810,chapters:[{id:'ch1',title:'章',sections:[{id:'1.1',title:'本文',bookStart:3,bookEnd:4,pdfStart:17,pdfEnd:18,blocks:[{id:'b1',type:'paragraph',text:'検索する語',bookPage:3,pdfPage:17}]}]}]};api.terms=[{id:'term',ja:'熱',en:'heat',meaning:'温度による移動',source:{section:'1.1'}}];
   return {api,store,context,setFail:v=>fail=v,setFailKey:v=>failKey=v,get submitted(){return submitted;},get reloaded(){return reloaded;}};
 }
@@ -189,6 +189,21 @@ test('search indexes published advanced Japanese physics lessons including deriv
  assert.equal(conduction[0].target.section,'2.1');
  assert.equal(core.searchEntries(entries,{query:'Dirichlet',kind:'book'}).length,0,
    'independent instruction must not be represented as a translated source chapter');
+});
+test('reader highlights the exact independent lesson search match without treating it as book text',async()=>{
+ const h=harness();
+ const lessons=JSON.parse(await readFile(new URL('../data/original-deep-lessons.json',import.meta.url),'utf8'));
+ const target=lessons.lessons.find(l=>l.sectionId==='11.3');
+ assert.ok(target);
+ h.api.ui={readerQuery:'Stefan流'};
+ const rendered=h.api.renderDeepLesson(target);
+ assert.match(rendered,/<mark>Stefan流<\/mark>/);
+ assert.match(rendered,/原本の全文翻訳ではありません。外部専門家校閲前。/);
+ assert.match(rendered,/href="https:\/\//);
+ assert.ok(!rendered.includes('<script'),'No input can insert executable code into lesson');
+ h.api.ui={readerQuery:'<script>alert(1)</script>'};
+ const safe=h.api.renderDeepLesson(target);
+ assert.ok(!safe.includes('<script>'));
 });
 test('formula meanings and Japanese figure descriptions appear in the reader',()=>{
   const h=harness();assert.match(h.api.renderBookBlock({type:'formula',expression:'Q=kAΔT/L',text:'厚さと熱伝導率の説明'}),/厚さと熱伝導率/);
