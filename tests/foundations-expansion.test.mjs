@@ -29,7 +29,7 @@ test('32 added exercises refer to a real section/guide and retain four explained
   const [book,questions,glossary,originalNotes,deepLessons]=await Promise.all(
     ['data/book.json','data/questions.json','data/glossary.json','data/original-notes.json','data/original-deep-lessons.json'].map(read)
   );
-  assert.equal(questions.length,242);
+  assert.equal(questions.length,265);
   const newQuestions=questions.filter(q=>q.id.startsWith('supp-found-'));
   assert.equal(newQuestions.length,32);
   assert.equal(new Set(questions.map(q=>q.id)).size,questions.length);
