@@ -15,15 +15,21 @@ test('coverage report separates original problems from verified book citation an
   assert.equal(coverage.oldPcDraftOnlyRecordSections,44);
   assert.equal(coverage.protectedPriorSections,2);
   assert.equal(coverage.publicJapaneseSections,0);
-  assert.equal(coverage.totalQuestions,39);
-  assert.equal(coverage.appCreatedQuestions,32);
+  assert.equal(coverage.totalQuestions,72);
+  assert.equal(coverage.appCreatedQuestions,65);
   assert.equal(coverage.bookCitedQuestions,7);
   assert.equal(coverage.sectionsWithBookCitedQuestions,2);
-  assert.equal(coverage.guideEntries,21);
-  assert.equal(coverage.glossaryTerms,31);
-  assert.equal(Object.values(coverage.practiceByField).reduce((a,b)=>a+b,0),39);
+  assert.equal(coverage.guideEntries,32);
+  assert.equal(coverage.glossaryTerms,42);
+  assert.equal(Object.values(coverage.practiceByField).reduce((a,b)=>a+b,0),72);
   assert.equal(coverage.chapters.reduce((a,b)=>a+b.sectionCount,0),76);
   assert.equal(coverage.chapters.reduce((a,b)=>a+b.citedPracticeQuestions,0),7);
+  assert.equal(coverage.originalChapterGuides,11);
+  assert.equal(coverage.chaptersWithOriginalPractice,11);
+  assert.equal(coverage.chapters.reduce((a,b)=>a+b.originalPracticeQuestions,0),33);
+  assert.equal(coverage.chapters.reduce((a,b)=>a+b.originalGuideEntries,0),11);
+  assert.ok(coverage.chapters.every(c=>c.originalPracticeQuestions===3&&c.originalGuideEntries===1));
+
 });
 test('coverage never assigns public Japanese-translation progress from an unexamined manifest',async()=>{
   const [book,questions,glossary]=await Promise.all(['data/book.json','data/questions.json','data/glossary.json'].map(read));
