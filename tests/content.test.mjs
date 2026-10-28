@@ -4,7 +4,19 @@ import {readFile,access} from 'node:fs/promises';
 import {validateQuestion,searchRanges,searchSnippet,calculateHeatTransfer} from '../study-core.mjs';
 import {GUIDE_SECTIONS} from '../guide.mjs';
 const root=new URL('../',import.meta.url),read=async p=>JSON.parse(await readFile(new URL(p,root),'utf8'));
-let hasLocal=true;try{await access(new URL('data/local-content-manifest.json',root));}catch{hasLocal=false;}
+let hasLocal=true;try{for(const id of ['7.6','7.7','8.1','8.2','8.3'])await access(new URL(`data/local/sections/${id}-ja.json`,root));}catch{hasLocal=false;}
+let hasLegacyDraft=true;try{for(const id of ['1.1','1.2'])await access(new URL(`data/local/sections/${id}-ja.json`,root));}catch{hasLegacyDraft=false;}
+test('private legacy Japanese drafts remain labeled unverified in a local pack',{skip:!hasLegacyDraft},async()=>{
+  const manifest=await read('data/local-content-manifest.json');
+  for(const id of ['1.1','1.2']){
+    const ja=await read(`data/local/sections/${id}-ja.json`),en=await read(`data/local/sections/${id}-en.json`);
+    assert.equal(ja.sourceReview,'draft');assert.equal(ja.expertReviewed,false);
+    assert.equal(ja.sectionId,id);assert.equal(en.sectionId,id);
+    assert.ok(ja.blocks.length>0&&en.blocks.length>0);
+    assert.ok(manifest.files.includes(`./data/local/sections/${id}-ja.json`));
+    for(const figure of ja.blocks.filter(block=>block.type==='figure'))assert.match(figure.src,/^data\/local\/figures\/[\w.-]+\.(?:png|jpe?g|webp)$/);
+  }
+});
 test('public questions are self-contained and book references remain in the cited section',async()=>{
   const qs=await read('data/questions.json');assert.equal(new Set(qs.map(q=>q.id)).size,qs.length);
   const guideIds=new Set(GUIDE_SECTIONS.map(section=>section.id));

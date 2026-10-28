@@ -155,7 +155,7 @@ function allSections() { return book.chapters.flatMap(chapter => chapter.section
 function getSection(id) { return allSections().find(section => section.id === id); }
 function getQuestion(id) { return questionBank.find(question => question.id === id); }
 function sectionIsTranslated(section) { return Array.isArray(section?.blocks) && section.blocks.length > 0; }
-function sectionProgressLabel(section) { return sectionIsTranslated(section) ? '訳文あり' : section?.translationStatus === 'private_only' ? '訳文未収録' : section?.translationStatus === 'draft_complete' ? '下書き記録・未移行' : section?.translationStatus === 'in_progress' ? '作業記録・未移行' : '訳文未着手'; }
+function sectionProgressLabel(section) { return section?.localDraft ? '訳文下書き・未照合' : sectionIsTranslated(section) ? '訳文あり' : section?.translationStatus === 'private_only' ? '訳文未収録' : section?.translationStatus === 'draft_complete' ? '下書き記録・未移行' : section?.translationStatus === 'in_progress' ? '作業記録・未移行' : '訳文未着手'; }
 function blockSourceLabel(block){
   const range=(first,last)=>`${first??'未記録'}${last&&last!==first?'–'+last:''}`;
   return `書籍 p.${range(block.bookPage,block.endBookPage)} · PDF p.${range(block.pdfPage,block.endPdfPage)}`;
@@ -275,12 +275,15 @@ async function startApp() {
         // Commit the whole pack only after every referenced file has loaded.
         for (const entry of content) {
           const section = book.chapters.flatMap(c => c.sections).find(s => s.id === entry.sectionId);
-          if (!section || !validBookBlocks(entry.blocks) || !['ja','en'].includes(entry.language) || entry.sourceReview !== 'source_checked') throw new Error('local-format');
+          if (!section || !validBookBlocks(entry.blocks) || !['ja','en'].includes(entry.language) || !['source_checked','draft'].includes(entry.sourceReview)) throw new Error('local-format');
         }
         for (const entry of content) {
           const section = book.chapters.flatMap(c => c.sections).find(s => s.id === entry.sectionId);
           section[entry.language === 'en' ? 'blocksEn' : 'blocks'] = entry.blocks;
-          if (entry.language === 'ja') section.localSourceChecked = true;
+          if (entry.language === 'ja') {
+            section.localSourceChecked = entry.sourceReview === 'source_checked';
+            section.localDraft = entry.sourceReview === 'draft';
+          }
         }
         questionBank = [...new Map([...questionBank, ...questions.flat()].map(q => [q.id,q])).values()];
         glossary = [...new Map([...glossary, ...terms.flat()].map(t => [t.id,t])).values()];
@@ -365,7 +368,7 @@ function render() {
         </nav>
         <main class="main-content" id="main-content" tabindex="-1">${storageIssue ? `<aside class="notice-card storage-warning" role="alert"><p>${escapeHTML(storageIssue)}</p><button type="button" class="button secondary" data-action="export-data">学習データを書き出す</button>${recoveryRaw ? '<button type="button" class="button secondary" data-action="export-recovery">保管した元データを書き出す</button>' : ''}</aside>` : ''}${ui.contentWarning ? `<aside class="notice-card" role="alert"><p>${escapeHTML(ui.contentWarning)}</p></aside>` : ''}${routeView}</main>
       </div>
-      <footer class="app-footer"><span>学習データはこのブラウザー内に保存されます。</span><span>教材進捗：${translatedSectionCount()}節の日本語訳を収録</span></footer>
+      <footer class="app-footer"><span>学習データはこのブラウザー内に保存されます。</span><span>教材進捗：${translatedSectionCount()}節の日本語訳・下書きを収録</span></footer>
     </div>`;
   if(ui.reportId)document.querySelector('.report-modal button')?.focus();
 }
@@ -512,7 +515,8 @@ function renderReader() {
         <div class="reader-pdf-actions">${available?pdfLink:''}<a class="button secondary" href="./book/AHTTv600.pdf" download="AHTTv600.pdf">原本PDFをダウンロード · 約31MB</a><button class="button secondary" type="button" data-action="cache-pdf" ${ui.pdfCacheStatus==='saving'?'disabled':''}>原本PDFをオフライン保存</button></div><p class="small-note" id="pdf-cache-status" role="status">${pdfCacheStatusLabel()}</p>
         <p class="small-note">原本PDFは英語版です。翻訳本文・原図の再利用とは権利を分けて扱います。PDFビューアーによっては指定ページへ自動移動しません。オフライン保存には空き容量と対応ブラウザーが必要です。</p>
         <h2 class="reader-title">${escapeHTML(section.id)}　${escapeHTML(displayTitle)}</h2>
-        <div class="reader-status-row">${statusPill(available ? (section.localSourceChecked ? '原本照合済み（作業者）' : '翻訳済み') : draftLabel, available ? 'green' : 'neutral')}${statusPill(available ? '専門家校閲待ち' : privateOnly ? '訳文等の公開範囲を確認中' : draftComplete ? '確認待ち・アプリ未収録' : inProgress ? '下書きはアプリ未収録' : '日本語訳は未収録', 'amber')}</div>
+        <div class="reader-status-row">${statusPill(available ? (section.localDraft ? '訳文下書き・未照合' : section.localSourceChecked ? '原本照合済み（作業者）' : '翻訳済み') : draftLabel, available ? section.localDraft ? 'amber' : 'green' : 'neutral')}${statusPill(available ? section.localDraft ? '文章・式・図表の照合待ち' : '専門家校閲待ち' : privateOnly ? '訳文等の公開範囲を確認中' : draftComplete ? '確認待ち・アプリ未収録' : inProgress ? '下書きはアプリ未収録' : '日本語訳は未収録', 'amber')}</div>
+        ${section.localDraft ? '<aside class="notice-card compact-notice"><p>この訳文は旧版の下書きです。原本との文章・数式・図表・ページの網羅性を再確認していません。学習時は英語原本PDFと照らし合わせてください。</p></aside>' : ''}
         ${independentChapterGuide ? `<aside class="notice-card" aria-label="独立作成の章別補助講座"><span class="notice-icon" aria-hidden="true">i</span><div><strong>この章の日本語補助講座</strong><p>原本の翻訳・節本文ではありません。伝熱・物質移動の考え方を独立した例と式で説明します。</p><a class="text-link" href="#guide/${escapeHTML(independentChapterGuide.id)}"> ${escapeHTML(independentChapterGuide.title)} を開く →</a></div></aside>` : ''}
         ${available ? `<div class="book-content" lang="${contentLanguage}">${blocks}</div>` : blocks}
           <p class="small-note">原本PDFを読んだ後の読了・しおり・メモは自分で記録してください。PDFビューアー内の位置は自動取得できません。</p>
@@ -685,7 +689,7 @@ function renderSettings() {
         <label class="range-setting">本文の行間 <strong>${Number(state.settings.lineHeight).toFixed(1)}</strong><input type="range" min="1.5" max="2.2" step="0.1" name="lineHeight" value="${state.settings.lineHeight}"/><span class="range-ends"><small>標準</small><small>広め</small></span></label><div class="preview-text">熱は高温側から低温側へ移ります。読みやすい大きさと行間に調整してください。</div>
       </section>
       <section class="surface-card settings-card"><p class="eyebrow">学習データ</p><h2>保存と持ち運び</h2><p>現在の利用者の学習履歴、回答、自信度、メモ、しおり、計画、設定をJSONで書き出します。書籍本文は含みません。回答時の選択肢の文言は履歴として含まれます。</p><div class="button-stack"><button class="button primary" type="button" data-action="export-data">JSONを書き出す</button><label class="button secondary file-button">JSONを取り込む<input type="file" id="import-file" accept="application/json,.json"/></label></div>${renderExportPreview()}${renderBackupControls()}<div id="import-feedback" class="import-feedback">${renderImportDraft()}</div><div class="notice-card compact-notice"><span class="notice-icon">i</span><p>ファイル形式が正しい場合も、取り込み前に内容を確認できます。壊れたファイルでは現在の記録を変更しません。</p></div></section>
-      <section class="surface-card settings-card"><p class="eyebrow">教材</p><h2>翻訳と確認の状況</h2><div class="content-progress"><div><strong>この端末で読める日本語訳</strong>${statusPill('専門家校閲は未実施', 'amber')}</div><div class="progress-line"><span style="width:${percent}%"></span></div><p>${readable.length}節 / ${sections.length}節を収録。下書きの進捗と、この端末で読める範囲は別に管理しています。全文の翻訳・確認は完了していません。</p><ul>${readable.map(s=>`<li>第${escapeHTML(s.id)}節「${escapeHTML(s.title)}」<br><small>書籍 pp.${s.bookStart}–${s.bookEnd} · PDF pp.${s.pdfStart}–${s.pdfEnd}${s.localSourceChecked?' · 原本照合済み（作業者）・ローカル教材':''}</small></li>`).join('')}</ul><p>目次台帳では${drafted}節に本文または翻訳下書きの記録があります。下書きのある節も、図表・式・脚注の網羅性と内容の確認を継続しています。詳細は目次と教材台帳を参照してください。</p></div><a class="text-link" href="#reader">翻訳進捗を目次で見る →</a><p class="small-note">英語原本PDFは全810ページを公開しています。節の目次から対応ページを開けます。日本語訳・原図のアプリ内再利用は別に管理します。</p></section>
+      <section class="surface-card settings-card"><p class="eyebrow">教材</p><h2>翻訳と確認の状況</h2><div class="content-progress"><div><strong>この端末で読める日本語訳・下書き</strong>${statusPill('専門家校閲は未実施', 'amber')}</div><div class="progress-line"><span style="width:${percent}%"></span></div><p>${readable.length}節 / ${sections.length}節を収録。下書きの進捗と、この端末で読める範囲は別に管理しています。全文の翻訳・確認は完了していません。</p><ul>${readable.map(s=>`<li>第${escapeHTML(s.id)}節「${escapeHTML(s.title)}」<br><small>書籍 pp.${s.bookStart}–${s.bookEnd} · PDF pp.${s.pdfStart}–${s.pdfEnd}${s.localDraft?' · 下書き・原本再照合待ち':s.localSourceChecked?' · 原本照合済み（作業者）・ローカル教材':''}</small></li>`).join('')}</ul><p>目次台帳では${drafted}節に本文または翻訳下書きの記録があります。下書きのある節も、図表・式・脚注の網羅性と内容の確認を継続しています。詳細は目次と教材台帳を参照してください。</p></div><a class="text-link" href="#reader">翻訳進捗を目次で見る →</a><p class="small-note">英語原本PDFは全810ページを公開しています。節の目次から対応ページを開けます。日本語訳・原図のアプリ内再利用は別に管理します。</p></section>
       <section class="surface-card settings-card"><p class="eyebrow">対応状況</p><h2>オフライン・読み上げ・操作</h2><ul class="capability-list"><li><span>${navigator.onLine ? '●' : '○'}</span> ${navigator.onLine ? 'オンライン接続中' : 'オフライン中'}。初回の教材読み込み後は、アプリと収録済み教材を利用できます。</li><li><span>▶</span> 読み上げは端末の音声合成機能を使用します。未対応のブラウザーでは利用できません。</li><li><span>⌨</span> 問題演習中は数字キー1〜4で選択、Enterで回答できます。入力欄にフォーカスがある間は操作を奪いません。</li><li><span>▣</span> 読書位置、読了、問題回答、復習予定はこのブラウザーに保存します。</li></ul></section>
     </div>`;
 }
