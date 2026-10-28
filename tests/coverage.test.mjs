@@ -15,18 +15,18 @@ test('coverage report separates original problems from verified book citation an
   assert.equal(coverage.oldPcDraftOnlyRecordSections,44);
   assert.equal(coverage.protectedPriorSections,2);
   assert.equal(coverage.publicJapaneseSections,0);
-  assert.equal(coverage.totalQuestions,72);
-  assert.equal(coverage.appCreatedQuestions,65);
+  assert.equal(coverage.totalQuestions,148);
+  assert.equal(coverage.appCreatedQuestions,141);
   assert.equal(coverage.bookCitedQuestions,7);
   assert.equal(coverage.sectionsWithBookCitedQuestions,2);
   assert.equal(coverage.guideEntries,32);
   assert.equal(coverage.glossaryTerms,42);
-  assert.equal(Object.values(coverage.practiceByField).reduce((a,b)=>a+b,0),72);
+  assert.equal(Object.values(coverage.practiceByField).reduce((a,b)=>a+b,0),148);
   assert.equal(coverage.chapters.reduce((a,b)=>a+b.sectionCount,0),76);
   assert.equal(coverage.chapters.reduce((a,b)=>a+b.citedPracticeQuestions,0),7);
   assert.equal(coverage.originalChapterGuides,11);
   assert.equal(coverage.chaptersWithOriginalPractice,11);
-  assert.equal(coverage.chapters.reduce((a,b)=>a+b.originalPracticeQuestions,0),33);
+  assert.equal(coverage.chapters.reduce((a,b)=>a+b.originalPracticeQuestions,0),109);
   assert.equal(coverage.chapters.reduce((a,b)=>a+b.originalGuideEntries,0),11);
   assert.ok(coverage.chapters.every(c=>c.originalPracticeQuestions===3&&c.originalGuideEntries===1));
 
