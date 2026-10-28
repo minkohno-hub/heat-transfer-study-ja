@@ -129,10 +129,10 @@ try {
   await page.locator('[data-action="discard-quiz"]').click();
   await nav('map');
   await page.locator('[data-chapter-card="ch2"]').waitFor({state:'visible'});
-  assert.match(await page.locator('[data-chapter-card="ch2"]').innerText(),/収録問題：11問/);
+  assert.match(await page.locator('[data-chapter-card="ch2"]').innerText(),/収録問題：15問/);
   assert.match(await page.locator('[data-chapter-card="ch1"]').innerText(),/原本の節を読了に記録：1\/5節/);
   assert.match(await page.locator('[data-chapter-card="ch9"]').innerText(),/収録問題：24問/);
-  assert.match(await page.locator('[data-chapter-card="ch2"]').innerText(),/未回答：11問/);
+  assert.match(await page.locator('[data-chapter-card="ch2"]').innerText(),/未回答：15問/);
   await page.locator('[data-chapter-card="ch2"] [data-chapter-practice-mode="priority"]').click();
   await page.locator('.question-card').waitFor({state:'visible'});
   assert.match(await page.locator('.page-heading h1').innerText(),/1 \/ 10 問/);
