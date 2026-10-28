@@ -103,9 +103,10 @@ test('new glossary links target valid chapter practice and public contract remai
   const [book,questions,glossary]=await Promise.all(['data/book.json','data/questions.json','data/glossary.json'].map(read));
   assert.equal(glossary.length,125);
   const chTerms=glossary.filter(t=>t.source?.guideId?.startsWith('chapter')&&t.relatedQuestions?.length);
-  assert.equal(chTerms.length,11);
+  assert.equal(chTerms.length,27);
+  assert.equal(chTerms.filter(t=>t.relatedQuestions.length>=2).length,11,'Original chapter practice links must remain intact');
   for(const term of chTerms){
-    assert.ok(term.relatedQuestions.length>=2,term.id);
+    assert.ok(term.relatedQuestions.length>=1,term.id);
     for(const r of term.relatedQuestions){
       const q=questions.find(q=>q.id===r.id);
       assert.ok(q,term.id+' '+r.id);
