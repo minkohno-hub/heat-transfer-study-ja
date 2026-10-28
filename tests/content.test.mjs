@@ -60,7 +60,7 @@ test('public questions are self-contained and book references remain in the cite
       assert.equal(q.reviewStatus,'source_checked');assert.equal(q.expertReviewed,false);
     }
   }
-  assert.equal(qs.filter(q=>q.source.type==='supplement').length,152);
+  assert.equal(qs.filter(q=>q.source.type==='supplement').length,174);
   const boiling=qs.find(q=>q.id==='book-9-1-transition-flux');
   assert.equal(boiling.source.bookPages,'476');assert.equal(boiling.source.pdfPages,'490');
   const beforeInception=qs.find(q=>q.id==='book-9-1-before-inception');
@@ -253,7 +253,7 @@ test('conceptual answers do not stand out solely by option length',async()=>{
 test('four new original lessons have twelve consistent questions with independently derived physical answers',async()=>{
   const qs=await read('data/questions.json');
   const added=qs.filter(q=>q.id.startsWith('supp-expanded-'));
-  assert.equal(qs.length,159);
+  assert.equal(qs.length,181);
   assert.equal(added.length,12);
   const lessonIds=['learn-dimensionless-transient','learn-lumped-cooling','learn-convection-dimensionless','learn-heat-exchanger'];
   for(const guideId of lessonIds){
