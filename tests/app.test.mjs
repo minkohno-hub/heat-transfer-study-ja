@@ -7,16 +7,17 @@ import * as guide from '../guide.mjs';
 import * as curriculum from '../chapter-curriculum.mjs';
 import * as originalNotesModule from '../original-notes.mjs';
 import * as deepNotesModule from '../original-deep-lessons.mjs';
+import * as quizGlossaryModule from '../quiz-glossary.mjs';
 const source=await readFile(new URL('../app.js',import.meta.url),'utf8');
 const key='heat-study-ja:v1';
 const question={id:'q1',prompt:'テスト用に作成した問題',choices:['答え','誤答1','誤答2','誤答3'],answer:0,field:'伝導',difficulty:'基礎',source:{section:'1.1'},explanation:'説明',distractors:['正解','理由1','理由2','理由3']};
 function harness(initial) {
   const store=new Map(initial?[[key,initial]]:[]);let fail=false,failKey='',rendered=0,submitted=0,reloaded=0;
   const root={innerHTML:''},document={querySelector:s=>s==='#app'?root:s==='#quiz-answer-form'?{requestSubmit(){submitted++;}}:null,querySelectorAll:()=>Array.from({length:4},()=>({focus(){}})),documentElement:{dataset:{},style:{setProperty(){}}},body:{append(){}},createElement:()=>({setAttribute(){},remove(){}})};
-  const context=vm.createContext({...core,...guide,...curriculum,...originalNotesModule,...deepNotesModule,structuredClone,JSON,Date,Math,Intl,Map,Set,Number,String,Array,Boolean,RegExp,Blob,URL,crypto:{randomUUID:()=> '11111111-1111-4111-8111-111111111111'},document,window:{matchMedia:()=>({matches:false}),scrollTo(){},confirm:()=>true,location:{reload(){reloaded++;}}},location:{hash:''},navigator:{onLine:true},setTimeout:()=>1,clearTimeout(){},localStorage:{getItem:k=>store.get(k)||null,setItem(k,v){if((fail&&k===key)||k===failKey)throw Error('quota');store.set(k,v);},removeItem(k){store.delete(k);}},FormData:class{constructor(v){this.values=v.values??v;}get(k){return this.values[k]??null;}}});
+  const context=vm.createContext({...core,...guide,...curriculum,...originalNotesModule,...deepNotesModule,...quizGlossaryModule,structuredClone,JSON,Date,Math,Intl,Map,Set,Number,String,Array,Boolean,RegExp,Blob,URL,crypto:{randomUUID:()=> '11111111-1111-4111-8111-111111111111'},document,window:{matchMedia:()=>({matches:false}),scrollTo(){},confirm:()=>true,location:{reload(){reloaded++;}}},location:{hash:''},navigator:{onLine:true},setTimeout:()=>1,clearTimeout(){},localStorage:{getItem:k=>store.get(k)||null,setItem(k,v){if((fail&&k===key)||k===failKey)throw Error('quota');store.set(k,v);},removeItem(k){store.delete(k);}},FormData:class{constructor(v){this.values=v.values??v;}get(k){return this.values[k]??null;}}});
   vm.runInContext(source.replace(/^import .*?;\s*/gm,'').replace(/\nstartApp\(\);\s*$/,'')+`
     render=()=>{globalThis.renderCount=(globalThis.renderCount||0)+1;};showStatus=message=>{globalThis.statusMessage=message;};
-    globalThis.api={get state(){return state;},set state(v){state=v;},get ui(){return ui;},set ui(v){ui={...ui,...v};},set questions(v){questionBank=v;},set book(v){book=v;},set terms(v){glossary=v;},set deepLessons(v){deepLessons=v;},submitQuizAnswer,reviewCandidates,validateImport,importData,exportData,exportBackup,saveState,savePlan,setReviewDate,onClick,onChange,formatHeatRate,buildSearchIndex,onKeyDown,renderBookBlock,renderQuestionFigure,renderGlossary,renderAnswerFeedback,renderDeepLesson,sourcePdfPage,sourcePdfLink,blockSourceLabel,figureZoomLink,renderSimulationSteps,simGraph,validBookBlocks,sectionIsTranslated,createProfile,get warning(){return storageIssue;},get status(){return globalThis.statusMessage;}};`,context);
+    globalThis.api={get state(){return state;},set state(v){state=v;},get ui(){return ui;},set ui(v){ui={...ui,...v};},set questions(v){questionBank=v;},set book(v){book=v;},set terms(v){glossary=v;},set deepLessons(v){deepLessons=v;},submitQuizAnswer,reviewCandidates,validateImport,importData,exportData,exportBackup,saveState,savePlan,setReviewDate,onClick,onChange,formatHeatRate,buildSearchIndex,onKeyDown,renderBookBlock,renderQuestionFigure,renderGlossary,renderAnswerFeedback,renderDeepLesson,renderQuiz,renderQuizTermPopup,sourcePdfPage,sourcePdfLink,blockSourceLabel,figureZoomLink,renderSimulationSteps,simGraph,validBookBlocks,sectionIsTranslated,createProfile,get warning(){return storageIssue;},get status(){return globalThis.statusMessage;}};`,context);
   const api=context.api;api.questions=[question];api.book={pdfPageCount:810,chapters:[{id:'ch1',title:'章',sections:[{id:'1.1',title:'本文',bookStart:3,bookEnd:4,pdfStart:17,pdfEnd:18,blocks:[{id:'b1',type:'paragraph',text:'検索する語',bookPage:3,pdfPage:17}]}]}]};api.terms=[{id:'term',ja:'熱',en:'heat',meaning:'温度による移動',source:{section:'1.1'}}];
   return {api,store,context,setFail:v=>fail=v,setFailKey:v=>failKey=v,get submitted(){return submitted;},get reloaded(){return reloaded;}};
 }
@@ -272,4 +273,39 @@ test('quiz number keys work after focusing a choice and do not capture text edit
   h.api.onKeyDown(event);assert.equal(h.api.ui.quiz.selected,2);assert.equal(prevented,1);
   h.api.onKeyDown({...event,key:'1',target:{matches:s=>s==='input,textarea,select,[contenteditable="true"]'}});assert.equal(h.api.ui.quiz.selected,2);
   h.api.onKeyDown({...event,key:'Enter',target:{matches:()=>false,closest:()=>null}});assert.equal(h.submitted,1);
+});
+
+test('quiz uses in-text glossary buttons and a reversible definition sheet without changing its answer',()=>{
+ const h=harness();
+ h.api.questions=[{...question,prompt:'熱伝導率 k と温度差 ΔT の関係は？'}];
+ h.api.terms=[
+   {id:'thermal-conductivity',ja:'熱伝導率',en:'thermal conductivity',meaning:'温度勾配に対する熱の流れやすさ。',source:{type:'supplement',guideId:'sim-conduction',reference:'独立補足'}},
+   {id:'temperature-difference',ja:'温度差',en:'temperature difference',meaning:'2地点の温度を差し引いた量。',source:{type:'supplement',guideId:'sim-conduction',reference:'独立補足'}}
+ ];
+ h.api.ui={quiz:{id:'quiz1',ids:['q1'],index:0,answers:[],selected:2,confidence:'medium',mode:'single'},quizTermId:null};
+ const before=JSON.stringify(h.api.ui.quiz),beforeHistory=h.api.state.attempts.length;
+ const html=h.api.renderQuiz();
+ assert.match(html,/data-quiz-term="thermal-conductivity"/);
+ assert.match(html,/data-quiz-term="temperature-difference"/);
+ assert.match(html,/aria-haspopup="dialog"/);
+ const modal=h.api.renderQuizTermPopup('thermal-conductivity');
+ assert.match(modal,/role="dialog"/);assert.match(modal,/thermal conductivity/);
+ assert.match(modal,/温度勾配に対する熱の流れやすさ/);
+ assert.match(modal,/data-quiz-term-detail="thermal-conductivity"/);
+ assert.equal(h.api.renderQuizTermPopup('missing'), '');
+ assert.equal(JSON.stringify(h.api.ui.quiz),before);
+ assert.equal(h.api.state.attempts.length,beforeHistory);
+});
+
+test('glossary alias lookup finds the canonical definition and global search entry',async()=>{
+ const h=harness();
+ h.api.terms=JSON.parse(await readFile(new URL('../data/glossary.json',import.meta.url),'utf8'));
+ h.api.ui={glossaryQuery:'LMTD'};
+ const html=h.api.renderGlossary();
+ assert.match(html,/id="term-log-mean-temperature-difference"/);
+ assert.ok(!html.includes('id="term-heat-conduction"'),'glossary filter should actually limit displayed cards');
+ const entries=h.api.buildSearchIndex().filter(x=>x.kind==='glossary');
+ assert.ok(entries.some(x=>x.title.includes('対数平均温度差')&&x.text.includes('LMTD')));
+ h.api.ui={glossaryQuery:'Nu'};
+ assert.match(h.api.renderGlossary(),/id="term-nusselt-number"/);
 });

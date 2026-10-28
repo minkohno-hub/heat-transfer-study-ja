@@ -109,6 +109,10 @@ try {
   await page.locator('#guide-search-form button').click();
   assert.ok(await page.locator('#guide-sim-radiation').count());
   await nav('glossary');
+  await page.locator('#glossary-query').fill('LMTD');
+  await page.locator('#term-log-mean-temperature-difference').waitFor({state:'visible'});
+  assert.equal(await page.locator('.term-card').count(),1,'glossary aliases must work in its search field');
+  await page.locator('#glossary-query').fill('');
   await page.locator('#term-biot-number [data-start-question="supp-expanded-bi-calc"]').waitFor({state:'attached'});
   await page.locator('#term-rayleigh-number [data-start-question="supp-chapter-ch8-ra"]').waitFor({state:'attached'});
   await page.locator('#term-fick-diffusive-flux [data-start-question="supp-chapter-ch11-fick"]').waitFor({state:'attached'});
@@ -134,6 +138,26 @@ try {
   await nav('glossary');
   await page.locator('#term-thermal-conductivity [data-start-question="supp-flat-thickness"]').click();
   assert.match(await page.locator('.question-card').innerText(),/厚さ L/);
+  assert.ok(await page.locator('.quiz-question-heading [data-quiz-term="thermal-conductivity"]').count());
+  const draftBeforeTerm=await page.evaluate(()=>JSON.parse(localStorage.getItem('heat-study-ja:v1')).quizDraft);
+  await page.locator('.quiz-question-heading [data-quiz-term="thermal-conductivity"]').click();
+  await page.locator('.quiz-term-modal[role="dialog"]').waitFor({state:'visible'});
+  assert.match(await page.locator('#quiz-term-title').innerText(),/熱伝導率/);
+  assert.match(await page.locator('#quiz-term-definition').innerText(),/温度勾配/);
+  assert.match(await page.locator('.quiz-term-source').innerText(),/補足説明/);
+  assert.equal(await page.locator('.quiz-term-modal [data-action="close-quiz-term"]').evaluate(e=>document.activeElement===e),true);
+  await page.keyboard.press('Escape');
+  assert.equal(await page.locator('.quiz-term-modal').count(),0);
+  assert.equal(await page.locator('.quiz-question-heading [data-quiz-term="thermal-conductivity"]').evaluate(e=>document.activeElement===e),true);
+  const draftAfterTerm=await page.evaluate(()=>JSON.parse(localStorage.getItem('heat-study-ja:v1')).quizDraft);
+  assert.deepEqual(draftAfterTerm,draftBeforeTerm,'looking up a term must not answer or reset the current question');
+  await page.locator('.quiz-question-heading [data-quiz-term="thermal-conductivity"]').click();
+  await page.locator('[data-quiz-term-detail="thermal-conductivity"]').click();
+  assert.match(page.url(),/#glossary$/);
+  await page.locator('#term-thermal-conductivity').waitFor({state:'visible'});
+  await nav('quiz');
+  assert.match(await page.locator('.question-card').innerText(),/厚さ L/);
+
   await page.locator('[data-action="exit-quiz"]').click();
   await page.locator('[data-action="discard-quiz"]').click();
   await nav('map');
@@ -239,10 +263,21 @@ try {
   assert.match(await page.locator('#reader-deep-lesson').innerText(),/専門家校閲前/);
   await nav('simulator');
   assert.match(await page.locator('.result-number').innerText(),/5,625/);
+  assert.match(await page.locator('.sim-physical-svg').getAttribute('aria-label'),/左側 80 ℃、右側 20 ℃/);
+  assert.ok(await page.locator('.sim-physical-figure figcaption').count());
+  await page.locator('#sim-form input[name="hot"]').fill('10');
+  assert.match(await page.locator('.sim-physical-svg').getAttribute('aria-label'),/右側から左側へ/);
+  await page.locator('#sim-form input[name="hot"]').fill('80');
   await page.locator('#sim-form input[name="k"]').fill('0.000001');
   assert.match(await page.locator('.result-number').innerText(),/3\.750×10⁻⁴/);
   await page.locator('#sim-form input[name="k"]').fill('15');
   assert.match(await page.locator('.related-reading a[href*="AHTTv600.pdf"]').getAttribute('href'),/AHTTv600\.pdf#page=\d+$/);
+  await page.locator('[data-sim-mode="convection"]').click();
+  assert.match(await page.locator('.sim-physical-svg').getAttribute('aria-label'),/表面 80 ℃と流体 20 ℃/);
+  assert.match(await page.locator('.sim-physical-figure').innerText(),/対流熱伝達率/);
+  await page.locator('[data-sim-mode="resistance"]').click();
+  assert.match(await page.locator('.sim-physical-svg').getAttribute('aria-label'),/2層の壁と両側対流/);
+  assert.ok(await page.locator('.sim-physical-svg .diagram-node-label').count()===5);
   await page.locator('[data-sim-mode="radiation"]').click();
   assert.match(await page.locator('.result-number').innerText(),/W/);
   await page.locator('#sim-form input[name="emissivity"]').fill('0');
@@ -250,6 +285,8 @@ try {
   await page.locator('#sim-form input[name="surface"]').fill('20');
   await page.locator('#sim-form input[name="surrounding"]').fill('80');
   assert.equal((await page.locator('.result-number strong').innerText()).replace(/\s/g,''),'0W');
+  assert.match(await page.locator('.sim-physical-svg').getAttribute('aria-label'),/放射率 0/);
+  assert.match(await page.locator('.sim-physical-figure').innerText(),/熱移動なし/);
   await page.locator('#sim-form input[name="surface"]').fill('150');
   await page.locator('#sim-form input[name="surrounding"]').fill('25');
   await page.locator('#sim-form input[name="emissivity"]').fill('0.85');
@@ -262,6 +299,8 @@ try {
   // and mobile chart are checked on the exact allowlisted public distribution.
   await page.locator('[data-sim-mode="transient"]').click();
   assert.match(await page.locator('.result-number strong').innerText(),/34\.715/);
+  assert.match(await page.locator('.sim-physical-svg').getAttribute('aria-label'),/2,000 秒後の物体温度 34\.72 ℃/);
+  assert.match(await page.locator('.sim-physical-figure').innerText(),/物体内部は温度一様/);
   assert.match(await page.locator('.sim-output-card').innerText(),/Bi = 0\.02/);
   assert.match(await page.locator('.sim-chart').getAttribute('aria-label'),/横軸は秒/);
   assert.match(await page.locator('.sim-output-card').innerText(),/101,139/);
@@ -394,6 +433,11 @@ try {
     for(const route of ['home','reader','guide','glossary','quiz','simulator','settings']){
       await nav(route);
       assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth)<=width+2,`${route}@${width}`);
+      if(route==='simulator'){
+        assert.equal(await page.locator('.sim-physical-mini').isVisible(),width<=600,`mobile physical diagram visibility @${width}`);
+        assert.equal(await page.locator('.sim-physical-svg').isVisible(),width>600,`desktop physical diagram visibility @${width}`);
+        if(width<=390){const font=await page.locator('.sim-physical-mini .diagram-mini-temp').first().evaluate(e=>parseFloat(getComputedStyle(e).fontSize));assert.ok(font>=18,'mobile temperature labels must remain legible');}
+      }
       if(route==='reader'){
         const status=page.locator('.reader-toc .toc-item i').filter({hasText:'下書き記録・未移行'}).first();
         assert.ok(await status.evaluate(element=>element.getBoundingClientRect().height<=20&&element.scrollWidth<=element.clientWidth+1&&parseFloat(getComputedStyle(element).fontSize)>=10),`目次の進捗表示@${width}`);
@@ -401,6 +445,31 @@ try {
       }
     }
   }
+  // At phone widths, the bottom sheet must stay in the viewport and not
+  // capture answer-key shortcuts while the definition is open.
+  // Reload clears the ephemeral quiz result panel, so a saved draft can be discarded through the regular UI.
+  await page.reload();
+  await page.locator('.app-shell').waitFor();
+  await nav('quiz');
+  if(await page.locator('.question-card').count())await page.locator('[data-action="exit-quiz"]').click();
+  if(await page.locator('[data-action="discard-quiz"]').count())await page.locator('[data-action="discard-quiz"]').click();
+  assert.equal(await page.evaluate(()=>JSON.parse(localStorage.getItem('heat-study-ja:v1')).quizDraft),null);
+  for(const width of [320,390]){
+    await page.setViewportSize({width,height:844});
+    await nav('glossary');
+    await page.locator('#term-thermal-conductivity [data-start-question="supp-flat-thickness"]').click();
+    await page.locator('.quiz-term-link[data-quiz-term="thermal-conductivity"]').click();
+    const bounds=await page.locator('.quiz-term-modal').boundingBox();
+    assert.ok(bounds&&bounds.x>=-1&&bounds.x+bounds.width<=width+1,'definition sheet fits phone width '+width);
+    assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+2),'no horizontal scroll for '+width);
+    await page.keyboard.press('1');
+    assert.equal(await page.locator('input[name="choice"]:checked').count(),0,'answer key must not fire under open sheet');
+    await page.locator('.quiz-term-backdrop').click({position:{x:5,y:5}});
+    assert.equal(await page.locator('.quiz-term-modal').count(),0);
+    await page.locator('[data-action="exit-quiz"]').click();
+    await page.locator('[data-action="discard-quiz"]').click();
+  }
+  await page.setViewportSize({width:1365,height:844});
   await nav('plan');
   const beforeFailedSave=await page.evaluate(()=>localStorage.getItem('heat-study-ja:v1'));
   await page.evaluate(()=>{

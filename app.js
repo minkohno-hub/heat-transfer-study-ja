@@ -4,6 +4,8 @@ import {questionChapter,questionsForChapter,chapterLearningOverview} from './cha
 import {validateOriginalNotes,independentNoteForSection} from './original-notes.mjs';
 import {validateDeepLessons,deepLessonForSection} from './original-deep-lessons.mjs';
 import {renderTransientFields,renderTransientSteps,transientGraph,transientFieldNames} from './transient-ui.mjs';
+import {renderLinkedQuestion} from './quiz-glossary.mjs';
+import {renderSimulationVisual} from './sim-visuals.mjs';
 const CORE_DATA_FILES = ['./data/book.json', './data/questions.json', './data/glossary.json', './data/content-manifest.json', './data/original-notes.json', './data/original-deep-lessons.json'];
 const LEGACY_STORAGE_KEY = 'heat-study-ja:v1';
 const PROFILES_KEY = 'heat-study-ja:profiles:v1';
@@ -38,6 +40,7 @@ let ui = {
   quiz: null,
   quizResult: null,
   reportId: null,
+  quizTermId: null,
   reportMessage: '',
   searchResults: null,
   calendarDate: todayISO(),
@@ -234,6 +237,7 @@ function setRoute(route) {
   if(ui.route==='reader'&&route!=='reader')captureReaderPosition();
   if(ui.route==='reader'&&route!=='reader')stopSpeech(false);
   ui.route = route;
+  if(route!=='quiz')ui.quizTermId=null;
   ui.guideTarget = '';
   if (location.hash !== `#${route}`) location.hash = route;
   render();
@@ -317,7 +321,7 @@ async function startApp() {
     window.addEventListener('hashchange', () => {
       const next=routeFromHash(),guideTarget=guideTargetFromHash();if(next===ui.route&&guideTarget===ui.guideTarget)return;
       flushLearningTime();if(ui.route==='reader'){captureReaderPosition();stopSpeech(false);}persistQuiz();
-      ui.route=next;ui.guideTarget=guideTarget;if(guideTarget)ui.guideQuery='';render();window.scrollTo({top:0,behavior:'instant'});focusPageHeading();
+      ui.route=next;if(next!=='quiz')ui.quizTermId=null;ui.guideTarget=guideTarget;if(guideTarget)ui.guideQuery='';render();window.scrollTo({top:0,behavior:'instant'});focusPageHeading();
       if(next==='reader')setTimeout(()=>restoreReaderPosition(state.readerPositions[ui.readerSection]),100);
       if(next==='guide'&&guideTarget)setTimeout(()=>focusGuideSection(guideTarget),0);
     });
@@ -381,6 +385,7 @@ function render() {
       <footer class="app-footer"><span>学習データはこのブラウザー内に保存されます。</span><span>教材進捗：${translatedSectionCount()}節の日本語訳・下書きを収録</span></footer>
     </div>`;
   if(ui.reportId)document.querySelector('.report-modal button')?.focus();
+  if(ui.quizTermId)document.querySelector('.quiz-term-modal [data-action="close-quiz-term"]')?.focus();
 }
 
 function routeContent() {
@@ -708,7 +713,7 @@ function buildSearchIndex() {
       target:{route:'guide',guideId:guide.id}});
   }
   for(const term of glossary) {
-    entries.push({kind:'glossary',kindLabel:'用語集',chapter:chapterKey(term.source.section),field:'用語集',title:`${term.ja} ${term.en||''}`,text:`${term.meaning} ${term.meaningEn||''}`,source:sourceLabel(term.source),target:{route:'glossary',term:term.id,language:'ja'}});
+    entries.push({kind:'glossary',kindLabel:'用語集',chapter:chapterKey(term.source.section),field:'用語集',title:`${term.ja} ${term.en||''}`,text:`${term.meaning} ${term.meaningEn||''} ${(Array.isArray(term.aliases)?term.aliases:[]).join(' ')}`,source:sourceLabel(term.source),target:{route:'glossary',term:term.id,language:'ja'}});
   }
   for(const q of questionBank) {
     const base={chapter:questionChapter(q,GUIDE_SECTIONS)||'supplement',field:q.field,source:sourceLabel(q.source),target:{route:'quiz',question:q.id}};
@@ -735,7 +740,7 @@ function renderSearch() {
 function renderGlossary() {
   const query = ui.glossaryQuery || '';
   const language = state.settings.contentLanguage === 'en' ? 'en' : 'ja';
-  const filtered = glossary.filter(item => !query || (item.ja + ' ' + item.en + ' ' + item.meaning + ' ' + (item.meaningEn || '')).toLowerCase().includes(query.toLowerCase()));
+  const filtered = glossary.filter(item => !query || (item.ja + ' ' + item.en + ' ' + item.meaning + ' ' + (item.meaningEn || '') + ' ' + (Array.isArray(item.aliases)?item.aliases.join(' '):'')).toLowerCase().includes(query.toLowerCase()));
   const termCards = filtered.map(term => {
     const primary = language === 'en' ? (term.en || term.ja) : term.ja;
     const secondary = language === 'en' ? term.ja : term.en;
@@ -750,7 +755,7 @@ function renderGlossary() {
     const reviewTag = term.reviewStatus === 'needs_review' ? statusPill('校閲前', 'amber') : '';
     return `<article class="term-card surface-card" id="term-${escapeHTML(term.id)}" lang="ja"><div class="term-heading"><h2 lang="${primaryLanguage}">${escapeHTML(primary)}</h2>${secondary?`<span lang="${primaryLanguage==='en'?'ja':'en'}">${escapeHTML(secondary)}</span>`:''}</div><p lang="${meaningLanguage}">${escapeHTML(meaning)}</p><div class="term-source">${sourceLabel(term.source)}</div>${reviewTag}${sourceLink}${questionLinks}</article>`;
   }).join('') || '<div class="empty-state"><p>一致する用語がありません。</p></div>';
-  return `${pageHeading('用語集', '専門用語を、自分の言葉に。', '日本語の意味と英語の原語を確認できます。補足説明と本書に由来する内容を分けて表示します。')}
+  return `${pageHeading('用語集', '専門用語を、自分の言葉に。', `${glossary.length}語を収録。日本語の意味と英語の原語を確認できます。問題文の点線付き用語からも説明を開けます。補足説明と本書に由来する内容を区別します。`)}
     <div class="reader-toolbar glossary-language-toolbar"><div class="language-toggle" role="group" aria-label="用語の表示言語"><button type="button" class="${language === 'ja' ? 'selected' : ''}" data-language="ja" aria-pressed="${language === 'ja'}">日本語</button><button type="button" class="${language === 'en' ? 'selected' : ''}" data-language="en" aria-pressed="${language === 'en'}">英語</button></div><span class="language-note">${language === 'ja' ? '日本語の用語名' : '英語名を優先・説明は収録言語で表示'}</span></div>
     <div class="glossary-search surface-card"><label for="glossary-query">用語を探す</label><input id="glossary-query" type="search" value="${escapeHTML(query)}" placeholder="用語や英語名を入力"/></div>
     <div class="glossary-grid">${termCards}</div>
@@ -969,6 +974,7 @@ function renderTransientSimulator(){
       <div class="card-heading"><div><p class="eyebrow">現在の条件</p><h2>物体温度</h2></div>
         ${statusPill('非定常・Biを確認','amber')}</div>
       ${result}
+      ${x.error?'':renderSimulationVisual('transient',x)}
       ${x.error?'':renderTransientSteps(x)}
       ${x.error?'':`<div class="chart-heading"><h3>時間に対する物体温度</h3><span>横軸：秒 ／ 縦軸：℃。内部温度を一様とした近似です。</span></div>
         ${transientGraph(x,compare)}
@@ -992,7 +998,7 @@ function renderSimulator() {
   return `${pageHeading('簡易シミュレーター', '条件を変えて、熱の動きを見る。', '入力値を変えると計算結果とグラフが更新されます。設計値を決めるためのものではなく、基本式の動きを試す学習用モデルです。')}
     <div class="sim-tabs" role="tablist" aria-label="熱移動の種類">${Object.entries(SIM_META).map(([key,item]) => `<button type="button" role="tab" aria-selected="${mode === key}" class="sim-tab ${mode === key ? 'selected' : ''}" data-sim-mode="${key}"><span>${key === 'conduction' ? '▥' : key === 'convection' ? '↝' : '☼'}</span>${item.title}</button>`).join('')}</div>
     <div class="sim-layout"><section class="surface-card sim-input-card"><div class="sim-intro"><p class="eyebrow">${meta.title}</p><h2>${meta.description}</h2><a class="text-link" href="#guide/sim-${mode}">このモデルの理論・単位・手計算例 →</a></div><form id="sim-form" class="sim-form"><div class="sim-fields">${renderSimInputs(mode, values)}</div></form><div class="formula-card"><span>使用する式</span><strong>${meta.formula}</strong><p>正の値は、入力欄の「高温側」または「表面」から反対側へ移る向きを表します。負の値なら向きが逆です。</p></div><div class="assumption-card"><strong>前提と適用範囲</strong><p>${meta.note}</p></div></section>
-      <section class="surface-card sim-output-card"><div class="card-heading"><div><p class="eyebrow">現在の条件</p><h2>熱移動率</h2></div>${statusPill(mode === 'radiation' ? '℃からKへ換算' : '定常モデル', 'blue')}</div>${resultView}${!result.error?renderSimulationSteps(mode,result):''}
+      <section class="surface-card sim-output-card"><div class="card-heading"><div><p class="eyebrow">現在の条件</p><h2>熱移動率</h2></div>${statusPill(mode === 'radiation' ? '℃からKへ換算' : '定常モデル', 'blue')}</div>${resultView}${!result.error?renderSimulationVisual(mode,result):''}${!result.error?renderSimulationSteps(mode,result):''}
         ${!result.error ? `<div class="chart-heading"><h3>温度差を変えたとき</h3><span>現在・保存条件の温度差を含む範囲${mode==='radiation'?'。各曲線は表面温度が0 Kより高い範囲のみ表示':''}</span></div>${simGraph(mode, result, baseline)}<div class="chart-legend"><span><i class="legend-current"></i>現在の条件</span>${baseline ? '<span><i class="legend-baseline"></i>保存した比較条件</span>' : ''}</div>` : ''}
         <div class="comparison-controls"><button type="button" class="button secondary" data-action="save-comparison">この条件を比較用に保存</button>${baseline ? '<button type="button" class="text-button" data-action="clear-comparison">比較条件を削除</button>' : ''}${comparison && !comparison.error ? `<small>保存条件の結果：${comparison.watts.toLocaleString('ja-JP', { maximumFractionDigits: 3 })} W</small>` : ''}</div>
       <div class="related-reading"><strong>関連する本書の範囲</strong><a href="#reader" data-section="${related.id}">第${escapeHTML(related.id)}節：${escapeHTML(related.title)} <span>${statusPill(sectionProgressLabel(related),sectionIsTranslated(related)?'blue':'amber')}</span></a>${sourcePdfLink({},related)}<small>${sectionIsTranslated(related)?'本文と計算の前提をあわせて確認できます。':'アプリ内訳文は未収録です。英語原本PDFで確認できます。'}</small><button type="button" class="text-button" data-sim-practice="${mode==='radiation'?'熱放射':mode==='convection'?'対流':'熱伝導'}">関連する分野の問題を選ぶ →</button></div>
@@ -1013,7 +1019,7 @@ function renderQuiz() {
   return `${pageHeading('問題演習', `${session.index + 1} / ${session.ids.length} 問`, 'まず自分で考え、必要ならヒントを少しずつ見てから回答しましょう。', '<button type="button" class="text-button" data-action="exit-quiz">演習を中断</button>')}
     <div class="quiz-progress"><div class="progress-line"><span style="width:${progress}%"></span></div><div class="quiz-progress-label"><span>${escapeHTML(question.field)} · ${escapeHTML(question.difficulty)}</span><span>${session.mode === 'quick' ? `${session.quickMinutes}分セット` : modeLabel(session.mode)}</span></div></div>
     <article class="question-card surface-card"><div class="question-meta"><div>${statusPill(`問題 ${session.index + 1}`, 'blue')} ${statusPill(reviewStatusLabel(question.reviewStatus), 'amber')}</div><div class="question-actions"><button type="button" class="icon-button ${state.questionBookmarks.includes(question.id) ? 'is-bookmarked' : ''}" data-question-bookmark="${escapeHTML(question.id)}" aria-label="問題をブックマーク">${state.questionBookmarks.includes(question.id) ? '★' : '☆'}</button><button type="button" class="text-button" data-action="open-report" data-report-id="${escapeHTML(question.id)}">問題を報告</button></div></div>
-      <h2>${renderMathText(question.prompt)}</h2>
+      <h2 class="quiz-question-heading">${renderLinkedQuestion(question.prompt,glossary,chunk=>renderMathText(chunk))}</h2>
       ${figure}
       <p class="think-prompt"><span aria-hidden="true">✦</span> まずは自分で考えてみましょう。迷ったら、ヒントを一つずつ開けます。</p>
       ${session.hintCount ? `<div class="hint-box"><strong>${question.solutionSteps ? '考え方のステップ' : 'ヒント'}</strong><ol>${hints.slice(0, session.hintCount).map(hint => `<li>${escapeHTML(hint)}</li>`).join('')}</ol></div>` : ''}
@@ -1023,7 +1029,28 @@ function renderQuiz() {
       ${!answer ? `<button class="button primary answer-submit" type="submit" ${session.selected === null ? 'disabled' : ''}>回答する <span aria-hidden="true">↵</span></button>` : '<button type="button" class="button primary answer-submit" data-action="next-question">次の問題へ →</button>'}</form>
       ${answer ? renderAnswerFeedback(question, answer, note, choiceOrder) : ''}
     </article>
-    ${ui.reportId === question.id ? renderReportForm(question) : ''}`;
+    ${ui.reportId === question.id ? renderReportForm(question) : ''}
+    ${ui.quizTermId ? renderQuizTermPopup(ui.quizTermId) : ''}`;
+}
+
+function renderQuizTermPopup(id){
+  const term=glossary?.find(item=>item.id===id);
+  if(!term)return '';
+  const guide=term.source?.type==='supplement'&&GUIDE_SECTIONS.some(g=>g.id===term.source.guideId)
+    ? `<a class="text-link" href="#guide/${escapeHTML(term.source.guideId)}">関連する学習ガイドへ →</a>`:'';
+  return `<div class="modal-backdrop quiz-term-backdrop">
+    <section class="quiz-term-modal surface-card" role="dialog" aria-modal="true" aria-labelledby="quiz-term-title" aria-describedby="quiz-term-definition">
+      <button type="button" class="modal-close" data-action="close-quiz-term" aria-label="用語説明を閉じる">×</button>
+      <p class="eyebrow">用語の説明</p>
+      <h2 id="quiz-term-title">${escapeHTML(term.ja)}</h2>
+      ${term.en?`<p class="quiz-term-english" lang="en">${escapeHTML(term.en)}</p>`:''}
+      <p id="quiz-term-definition">${escapeHTML(term.meaning)}</p>
+      <p class="quiz-term-source">${term.source?.type==='supplement'?'アプリ独自の補足説明（外部専門家校閲前）':'書籍に関連する学習用語（アプリ内全文照合・専門家校閲とは別）'}</p>
+      <div class="quiz-term-actions">
+        <button type="button" class="button secondary" data-quiz-term-detail="${escapeHTML(term.id)}">用語集で詳しく見る →</button>
+        ${guide}
+      </div>
+    </section></div>`;
 }
 
 function modeLabel(mode) { return ({ all: 'すべて', unanswered: '未回答', wrong: '誤答', bookmarked: 'ブックマーク', due: '復習候補', weak: '苦手候補', single: '選択した問題', quick: '短時間学習' })[mode] || '問題演習'; }
@@ -1164,6 +1191,14 @@ function makeId() { return globalThis.crypto?.randomUUID?.() || `${Date.now()}-$
 function addDaysISO(day, count) { const date = new Date(`${day}T12:00:00`); date.setDate(date.getDate() + count); return todayISO(date); }
 
 function onClick(event) {
+  if(ui.quizTermId && event.target.matches('.quiz-term-backdrop')){event.preventDefault();closeQuizTerm();return;}
+  const termButton=event.target.closest('[data-quiz-term]');
+  if(termButton&&ui.quiz){event.preventDefault();if(!glossary?.some(t=>t.id===termButton.dataset.quizTerm))return;ui.quizTermId=termButton.dataset.quizTerm;render();return;}
+  const termDetail=event.target.closest('[data-quiz-term-detail]');
+  if(termDetail&&glossary?.some(t=>t.id===termDetail.dataset.quizTermDetail)){
+    event.preventDefault();const id=termDetail.dataset.quizTermDetail;ui.quizTermId=null;ui.glossaryQuery='';persistQuiz();saveState();setRoute('glossary');
+    setTimeout(()=>{const card=document.getElementById('term-'+id);card?.scrollIntoView({block:'center'});const heading=card?.querySelector('h2');if(heading){heading.tabIndex=-1;heading.focus({preventScroll:true});}},80);return;
+  }
   const languageButton = event.target.closest('[data-language]');
   if (languageButton) {
     if (languageButton.disabled || !['ja', 'en'].includes(languageButton.dataset.language)) return;
@@ -1216,6 +1251,7 @@ function onClick(event) {
   const simMode = event.target.closest('[data-sim-mode]'); if (simMode) { ui.simMode=simMode.dataset.simMode; render(); return; }
   const actionButton = event.target.closest('[data-action]'); if (!actionButton) return;
   const action = actionButton.dataset.action;
+  if(action==='close-quiz-term'){closeQuizTerm();return;}
   if(action==='prepare-bookmark'){ui.bookmarkPosition=readerPosition();document.querySelector('#bookmark-note')?.focus();showStatus(sectionIsTranslated(getSection(ui.readerSection))?'この位置をしおりにします。メモを入力して「しおりを付ける」を押してください。':'この節の開始ページをしおりにします。必要ならメモを入力してください。');return;}
   if (action === 'toggle-theme') { const effective = state.settings.theme === 'system' ? (systemDark?.matches?'dark':'light') : state.settings.theme; state.settings.theme=effective==='dark'?'light':'dark'; saveState(); render(); }
   else if (action === 'reader-font-up') { state.settings.fontScale=Math.min(1.4,Number((state.settings.fontScale+0.05).toFixed(2))); saveState(); render(); }
@@ -1433,6 +1469,15 @@ function importData(replace) {
 function mergeById(existing,incoming) { const map=new Map(); for(const item of [...existing,...incoming]) map.set(item.id||JSON.stringify(item),item); return [...map.values()]; }
 
 function onKeyDown(event) {
+  if(ui.quizTermId){
+    if(event.key==='Escape'){event.preventDefault();closeQuizTerm();return;}
+    if(event.key==='Tab'){
+      const items=[...document.querySelectorAll('.quiz-term-modal button,.quiz-term-modal a[href]')].filter(x=>!x.disabled);
+      const first=items[0],last=items.at(-1);
+      if((event.shiftKey&&document.activeElement===first)||(!event.shiftKey&&document.activeElement===last)){event.preventDefault();(event.shiftKey?last:first)?.focus();}
+    }
+    return;
+  }
   if(ui.reportId){
     if(event.key==='Escape'){event.preventDefault();closeReport();return;}
     if(event.key==='Tab'){
@@ -1450,6 +1495,7 @@ function onKeyDown(event) {
   else if(event.key==='Enter' && !answered && session.selected!==null){event.preventDefault();document.querySelector('#quiz-answer-form')?.requestSubmit();}
 }
 
+function closeQuizTerm(){const id=ui.quizTermId;ui.quizTermId=null;render();if(id)document.querySelector('[data-quiz-term="'+id+'"]')?.focus({preventScroll:true});}
 function closeReport(){ui.reportId=null;render();document.querySelector('[data-action="open-report"]')?.focus();}
 
 function reviewStatusLabel(status) {
