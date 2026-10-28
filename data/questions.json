@@ -12495,5 +12495,677 @@
       "各選択肢の誤りの原因を確認する。"
     ],
     "beginnerPitfall": "同一の数値でも温度差・流束・熱容量流量・局所値と平均値を混同しない。"
+  },
+  {
+    "id": "supp-batch2-plane-u-v1",
+    "revision": "v1",
+    "field": "総括熱伝達係数と円筒熱抵抗",
+    "prerequisites": [
+      "エネルギーの保存",
+      "伝熱の境界と単位"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "§2.4の独立日本語教材による新規設問。原本本文・設問・図の転載ではない。",
+      "chapterId": "ch2",
+      "focusSectionId": "2.4",
+      "guideId": "chapter2-cylindrical-conduction"
+    },
+    "createdStatus": "独立作問",
+    "reviewStatus": "内部で式・単位を検算／外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [],
+    "prompt": "内側h_i=100、外側h_o=25 W/(m²K)、壁厚L=0.020 m、壁k=2 W/(mK)の平板で総括Uは？",
+    "choices": [
+      "10.00 W/(m²K)",
+      "12.50 W/(m²K)",
+      "16.67 W/(m²K)",
+      "25.00 W/(m²K)"
+    ],
+    "answer": 2,
+    "difficulty": "標準・計算",
+    "explanation": "R″=1/100+.020/2+1/25=.060 m²K/W、U=1/.060≈16.67 W/(m²K)。",
+    "distractors": [
+      "熱抵抗を過大評価した。",
+      "R″=.080と誤計算した。",
+      "正解。R″=1/100+.020/2+1/25=.060 m²K/W、U=1/.060≈16.67 W/(m²K)。",
+      "外側のhだけをUにした。"
+    ],
+    "hints": [
+      "直列抵抗をm²K/Wへ統一する。",
+      "R″=1/h_i+L/k+1/h_o。"
+    ],
+    "solutionSteps": [
+      "直列抵抗をm²K/Wへ統一する。",
+      "R″=1/h_i+L/k+1/h_o。",
+      "R″=1/100+.020/2+1/25=.060 m²K/W、U=1/.060≈16.67 W/(m²K)。"
+    ],
+    "beginnerPitfall": "基準面積・温度差・定常状態・流体の流動条件を混同しない。"
+  },
+  {
+    "id": "supp-batch2-wall-rpp-v1",
+    "revision": "v1",
+    "field": "総括熱伝達係数と円筒熱抵抗",
+    "prerequisites": [
+      "エネルギーの保存",
+      "伝熱の境界と単位"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "§2.4の独立日本語教材による新規設問。原本本文・設問・図の転載ではない。",
+      "chapterId": "ch2",
+      "focusSectionId": "2.4",
+      "guideId": "chapter2-cylindrical-conduction"
+    },
+    "createdStatus": "独立作問",
+    "reviewStatus": "内部で式・単位を検算／外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [],
+    "prompt": "壁厚0.020 m、熱伝導率k=2.0 W/(mK)の平板で、面積当たりの熱抵抗R″は？",
+    "choices": [
+      "0.001 m²K/W",
+      "0.010 m²K/W",
+      "0.100 m²K/W",
+      "1.000 m²K/W"
+    ],
+    "answer": 1,
+    "difficulty": "標準・計算",
+    "explanation": "R″=L/k=.020/2=.010 m²K/W。全抵抗K/Wには面積が必要。",
+    "distractors": [
+      "壁厚を1桁過小評価。",
+      "正解。R″=L/k=.020/2=.010 m²K/W。全抵抗K/Wには面積が必要。",
+      "壁厚を1桁過大評価。",
+      "壁厚を2桁過大評価。"
+    ],
+    "hints": [
+      "面積当たりの抵抗と全抵抗を区別する。",
+      "R″=L/kを計算する。"
+    ],
+    "solutionSteps": [
+      "面積当たりの抵抗と全抵抗を区別する。",
+      "R″=L/kを計算する。",
+      "R″=L/k=.020/2=.010 m²K/W。全抵抗K/Wには面積が必要。"
+    ],
+    "beginnerPitfall": "基準面積・温度差・定常状態・流体の流動条件を混同しない。"
+  },
+  {
+    "id": "supp-batch2-tube-ratio-v1",
+    "revision": "v1",
+    "field": "総括熱伝達係数と円筒熱抵抗",
+    "prerequisites": [
+      "エネルギーの保存",
+      "伝熱の境界と単位"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "§2.4の独立日本語教材による新規設問。原本本文・設問・図の転載ではない。",
+      "chapterId": "ch2",
+      "focusSectionId": "2.4",
+      "guideId": "chapter2-cylindrical-conduction"
+    },
+    "createdStatus": "独立作問",
+    "reviewStatus": "内部で式・単位を検算／外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [],
+    "prompt": "円筒内半径r_i=.010 m、外半径r_o=.012 mで同じ管長のU_i/U_oは？",
+    "choices": [
+      "0.833",
+      "1.000",
+      "1.200",
+      "2.000"
+    ],
+    "answer": 2,
+    "difficulty": "標準・計算",
+    "explanation": "U_iA_i=U_oA_o、従ってU_i/U_o=A_o/A_i=r_o/r_i=1.2。",
+    "distractors": [
+      "内外面積比を逆にした。",
+      "面積基準の違いを無視。",
+      "正解。U_iA_i=U_oA_o、従ってU_i/U_o=A_o/A_i=r_o/r_i=1.2。",
+      "厚さと直径の比を誤った。"
+    ],
+    "hints": [
+      "UAは面積基準を変えても不変。",
+      "円筒側面積は半径に比例する。"
+    ],
+    "solutionSteps": [
+      "UAは面積基準を変えても不変。",
+      "円筒側面積は半径に比例する。",
+      "U_iA_i=U_oA_o、従ってU_i/U_o=A_o/A_i=r_o/r_i=1.2。"
+    ],
+    "beginnerPitfall": "基準面積・温度差・定常状態・流体の流動条件を混同しない。"
+  },
+  {
+    "id": "supp-batch2-g-times-dt-v1",
+    "revision": "v1",
+    "field": "総括熱伝達係数と円筒熱抵抗",
+    "prerequisites": [
+      "エネルギーの保存",
+      "伝熱の境界と単位"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "§2.4の独立日本語教材による新規設問。原本本文・設問・図の転載ではない。",
+      "chapterId": "ch2",
+      "focusSectionId": "2.4",
+      "guideId": "chapter2-cylindrical-conduction"
+    },
+    "createdStatus": "独立作問",
+    "reviewStatus": "内部で式・単位を検算／外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [],
+    "prompt": "全コンダクタンスUA=40 W/K、代表温度差15 Kの装置の熱移動率Q̇は？",
+    "choices": [
+      "400 W",
+      "500 W",
+      "600 W",
+      "800 W"
+    ],
+    "answer": 2,
+    "difficulty": "標準・計算",
+    "explanation": "Q̇=(UA)ΔT=40×15=600 W。UAに面積をもう一度掛けない。",
+    "distractors": [
+      "温度差10Kで計算。",
+      "温度差12.5Kとした。",
+      "正解。Q̇=(UA)ΔT=40×15=600 W。UAに面積をもう一度掛けない。",
+      "温度差20Kで計算。"
+    ],
+    "hints": [
+      "UAの単位はW/K。",
+      "Q̇=UAΔTを使う。"
+    ],
+    "solutionSteps": [
+      "UAの単位はW/K。",
+      "Q̇=UAΔTを使う。",
+      "Q̇=(UA)ΔT=40×15=600 W。UAに面積をもう一度掛けない。"
+    ],
+    "beginnerPitfall": "基準面積・温度差・定常状態・流体の流動条件を混同しない。"
+  },
+  {
+    "id": "supp-batch2-outer-base-u-v1",
+    "revision": "v1",
+    "field": "総括熱伝達係数と円筒熱抵抗",
+    "prerequisites": [
+      "エネルギーの保存",
+      "伝熱の境界と単位"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "§2.4の独立日本語教材による新規設問。原本本文・設問・図の転載ではない。",
+      "chapterId": "ch2",
+      "focusSectionId": "2.4",
+      "guideId": "chapter2-cylindrical-conduction"
+    },
+    "createdStatus": "独立作問",
+    "reviewStatus": "内部で式・単位を検算／外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [],
+    "prompt": "内側基準U_i=100 W/(m²K)、A_i=.50 m²、A_o=1.00 m²の装置でU_oはいくらか。",
+    "choices": [
+      "25 W/(m²K)",
+      "50 W/(m²K)",
+      "100 W/(m²K)",
+      "200 W/(m²K)"
+    ],
+    "answer": 1,
+    "difficulty": "標準・計算",
+    "explanation": "UA=U_iA_i=50 W/K、U_o=UA/A_o=50 W/(m²K)。",
+    "distractors": [
+      "基準面積を二重に適用した。",
+      "正解。UA=U_iA_i=50 W/K、U_o=UA/A_o=50 W/(m²K)。",
+      "内外のUを同じとした。",
+      "面積比を逆にした。"
+    ],
+    "hints": [
+      "G=U_iA_iをまず計算。",
+      "外面積でGを割る。"
+    ],
+    "solutionSteps": [
+      "G=U_iA_iをまず計算。",
+      "外面積でGを割る。",
+      "UA=U_iA_i=50 W/K、U_o=UA/A_o=50 W/(m²K)。"
+    ],
+    "beginnerPitfall": "基準面積・温度差・定常状態・流体の流動条件を混同しない。"
+  },
+  {
+    "id": "supp-batch2-fouling-loss-v1",
+    "revision": "v1",
+    "field": "総括熱伝達係数と円筒熱抵抗",
+    "prerequisites": [
+      "エネルギーの保存",
+      "伝熱の境界と単位"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "§2.4の独立日本語教材による新規設問。原本本文・設問・図の転載ではない。",
+      "chapterId": "ch2",
+      "focusSectionId": "2.4",
+      "guideId": "chapter2-cylindrical-conduction"
+    },
+    "createdStatus": "独立作問",
+    "reviewStatus": "内部で式・単位を検算／外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [],
+    "prompt": "全抵抗0.050 K/Wへ汚れ抵抗0.010 K/Wを追加した。温度差30 K固定ならQ̇は？",
+    "choices": [
+      "300 W",
+      "400 W",
+      "500 W",
+      "600 W"
+    ],
+    "answer": 2,
+    "difficulty": "標準・計算",
+    "explanation": "R_new=.050+.010=.060 K/W、Q̇=30/.060=500 W。",
+    "distractors": [
+      "全抵抗を0.10と誤認。",
+      "合成抵抗を過大評価。",
+      "正解。R_new=.050+.010=.060 K/W、Q̇=30/.060=500 W。",
+      "汚れのない値を用いた。"
+    ],
+    "hints": [
+      "汚れ抵抗は直列。",
+      "Q̇=ΔT/R_total。"
+    ],
+    "solutionSteps": [
+      "汚れ抵抗は直列。",
+      "Q̇=ΔT/R_total。",
+      "R_new=.050+.010=.060 K/W、Q̇=30/.060=500 W。"
+    ],
+    "beginnerPitfall": "基準面積・温度差・定常状態・流体の流動条件を混同しない。"
+  },
+  {
+    "id": "supp-batch2-outer-h-decrease-v1",
+    "revision": "v1",
+    "field": "総括熱伝達係数と円筒熱抵抗",
+    "prerequisites": [
+      "エネルギーの保存",
+      "伝熱の境界と単位"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "applied",
+    "source": {
+      "type": "supplement",
+      "reference": "§2.4の独立日本語教材による新規設問。原本本文・設問・図の転載ではない。",
+      "chapterId": "ch2",
+      "focusSectionId": "2.4",
+      "guideId": "chapter2-cylindrical-conduction"
+    },
+    "createdStatus": "独立作問",
+    "reviewStatus": "内部で式・単位を検算／外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [],
+    "prompt": "配管外側h_oだけが低下した。他の熱抵抗と温度差が不変なら全体のUAはどうなるか。",
+    "choices": [
+      "外側抵抗が減少し全体UAが必ず上昇する",
+      "外側の流速が変わっても全抵抗は不変である",
+      "外側h_oが下がると熱流率は必ず増える",
+      "外側対流抵抗が増え、全体UAは低下する"
+    ],
+    "answer": 3,
+    "difficulty": "応用・設計判断",
+    "explanation": "R_o=1/(h_oA_o)だからh_o減少でR_o増、R_total増、UA=1/R_total減。",
+    "distractors": [
+      "h_o減少なら抵抗は増える。",
+      "対流抵抗はh_oに依存。",
+      "h_o減少は通常熱流を抑える。",
+      "正解。R_o=1/(h_oA_o)だからh_o減少でR_o増、R_total増、UA=1/R_total減。"
+    ],
+    "hints": [
+      "h_oは抵抗の分母。",
+      "UAは総抵抗の逆数。"
+    ],
+    "solutionSteps": [
+      "h_oは抵抗の分母。",
+      "UAは総抵抗の逆数。",
+      "R_o=1/(h_oA_o)だからh_o減少でR_o増、R_total増、UA=1/R_total減。"
+    ],
+    "beginnerPitfall": "基準面積・温度差・定常状態・流体の流動条件を混同しない。"
+  },
+  {
+    "id": "supp-batch2-design-area-v1",
+    "revision": "v1",
+    "field": "熱交換器設計と流動",
+    "prerequisites": [
+      "エネルギーの保存",
+      "伝熱の境界と単位"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "§3.4の独立日本語教材による新規設問。原本本文・設問・図の転載ではない。",
+      "chapterId": "ch3",
+      "focusSectionId": "3.4",
+      "guideId": "chapter3-effectiveness-ntu"
+    },
+    "createdStatus": "独立作問",
+    "reviewStatus": "内部で式・単位を検算／外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [],
+    "prompt": "熱負荷12 kW、U=300 W/(m²K)、補正F=.80、LMTD=25Kの必要面積は？",
+    "choices": [
+      "1.00 m²",
+      "1.50 m²",
+      "2.00 m²",
+      "3.00 m²"
+    ],
+    "answer": 2,
+    "difficulty": "標準・計算",
+    "explanation": "A=12000/(300×.80×25)=2.00m²。全ての単位とFを合わせる。",
+    "distractors": [
+      "補正係数の適用が誤り。",
+      "分母を過大に見積もった。",
+      "正解。A=12000/(300×.80×25)=2.00m²。全ての単位とFを合わせる。",
+      "分母を過小に見積もった。"
+    ],
+    "hints": [
+      "熱負荷はWへ換算。",
+      "A=Q̇/(UFΔT_lm)。"
+    ],
+    "solutionSteps": [
+      "熱負荷はWへ換算。",
+      "A=Q̇/(UFΔT_lm)。",
+      "A=12000/(300×.80×25)=2.00m²。全ての単位とFを合わせる。"
+    ],
+    "beginnerPitfall": "基準面積・温度差・定常状態・流体の流動条件を混同しない。"
+  },
+  {
+    "id": "supp-batch2-fouling-area-v1",
+    "revision": "v1",
+    "field": "熱交換器設計と流動",
+    "prerequisites": [
+      "エネルギーの保存",
+      "伝熱の境界と単位"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "§3.4の独立日本語教材による新規設問。原本本文・設問・図の転載ではない。",
+      "chapterId": "ch3",
+      "focusSectionId": "3.4",
+      "guideId": "chapter3-effectiveness-ntu"
+    },
+    "createdStatus": "独立作問",
+    "reviewStatus": "内部で式・単位を検算／外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [],
+    "prompt": "同じ熱負荷・LMTD・FでUが300から150 W/(m²K)へ半減。元の面積2m²なら新しい面積は？",
+    "choices": [
+      "1.0 m²",
+      "2.0 m²",
+      "3.0 m²",
+      "4.0 m²"
+    ],
+    "answer": 3,
+    "difficulty": "標準・計算",
+    "explanation": "AはUの逆数に比例するため2×2=4 m²必要。",
+    "distractors": [
+      "U低下で面積が減ると誤認。",
+      "変更前の面積を使う。",
+      "倍率を1.5とした。",
+      "正解。AはUの逆数に比例するため2×2=4 m²必要。"
+    ],
+    "hints": [
+      "必要UAが同じ条件。",
+      "U_new A_new=U_old A_old。"
+    ],
+    "solutionSteps": [
+      "必要UAが同じ条件。",
+      "U_new A_new=U_old A_old。",
+      "AはUの逆数に比例するため2×2=4 m²必要。"
+    ],
+    "beginnerPitfall": "基準面積・温度差・定常状態・流体の流動条件を混同しない。"
+  },
+  {
+    "id": "supp-batch2-lmtd-v1",
+    "revision": "v1",
+    "field": "熱交換器設計と流動",
+    "prerequisites": [
+      "エネルギーの保存",
+      "伝熱の境界と単位"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "§3.4の独立日本語教材による新規設問。原本本文・設問・図の転載ではない。",
+      "chapterId": "ch3",
+      "focusSectionId": "3.4",
+      "guideId": "chapter3-effectiveness-ntu"
+    },
+    "createdStatus": "独立作問",
+    "reviewStatus": "内部で式・単位を検算／外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [],
+    "prompt": "端末温度差が40 Kと20 Kである。対応する対数平均温度差LMTDは約？",
+    "choices": [
+      "20.0 K",
+      "25.0 K",
+      "28.9 K",
+      "30.0 K"
+    ],
+    "answer": 2,
+    "difficulty": "標準・計算",
+    "explanation": "(40−20)/ln(40/20)=20/ln2≈28.85 K。算術平均の30Kとは異なる。",
+    "distractors": [
+      "小さい端末温度差の値。",
+      "自然対数の評価ミス。",
+      "正解。(40−20)/ln(40/20)=20/ln2≈28.85 K。算術平均の30Kとは異なる。",
+      "算術平均を使用した。"
+    ],
+    "hints": [
+      "自然対数を使用。",
+      "20/ln2を計算。"
+    ],
+    "solutionSteps": [
+      "自然対数を使用。",
+      "20/ln2を計算。",
+      "(40−20)/ln(40/20)=20/ln2≈28.85 K。算術平均の30Kとは異なる。"
+    ],
+    "beginnerPitfall": "基準面積・温度差・定常状態・流体の流動条件を混同しない。"
+  },
+  {
+    "id": "supp-batch2-max-heat-check-v1",
+    "revision": "v1",
+    "field": "熱交換器設計と流動",
+    "prerequisites": [
+      "エネルギーの保存",
+      "伝熱の境界と単位"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "applied",
+    "source": {
+      "type": "supplement",
+      "reference": "§3.4の独立日本語教材による新規設問。原本本文・設問・図の転載ではない。",
+      "chapterId": "ch3",
+      "focusSectionId": "3.4",
+      "guideId": "chapter3-effectiveness-ntu"
+    },
+    "createdStatus": "独立作問",
+    "reviewStatus": "内部で式・単位を検算／外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [],
+    "prompt": "単相熱交換器のC_min=400 W/K、高温側入口80℃、低温側入口30℃。要求22kWは理想上限内か。",
+    "choices": [
+      "面積を大きくすれば必ず22kWに到達する",
+      "向流なら必ず40kWに到達可能になる",
+      "上限が20kWのため与えた入口条件では実現不能",
+      "面積を増やせば入口温度差も自動的に増加"
+    ],
+    "answer": 2,
+    "difficulty": "応用・設計判断",
+    "explanation": "Q_max=400×(80−30)=20,000 W。22kWは上限を超える。",
+    "distractors": [
+      "面積では理想上界を越えない。",
+      "向流でもQ_maxは同じ。",
+      "正解。Q_max=400×(80−30)=20,000 W。22kWは上限を超える。",
+      "面積は入口温度差を変えない。"
+    ],
+    "hints": [
+      "入口温度差50Kを計算。",
+      "Q̇_max=C_minΔT_in。"
+    ],
+    "solutionSteps": [
+      "入口温度差50Kを計算。",
+      "Q̇_max=C_minΔT_in。",
+      "Q_max=400×(80−30)=20,000 W。22kWは上限を超える。"
+    ],
+    "beginnerPitfall": "基準面積・温度差・定常状態・流体の流動条件を混同しない。"
+  },
+  {
+    "id": "supp-batch2-pump-shaft-v1",
+    "revision": "v1",
+    "field": "熱交換器設計と流動",
+    "prerequisites": [
+      "エネルギーの保存",
+      "伝熱の境界と単位"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "§3.4の独立日本語教材による新規設問。原本本文・設問・図の転載ではない。",
+      "chapterId": "ch3",
+      "focusSectionId": "3.4",
+      "guideId": "chapter3-effectiveness-ntu"
+    },
+    "createdStatus": "独立作問",
+    "reviewStatus": "内部で式・単位を検算／外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [],
+    "prompt": "圧力損失50 kPa、体積流量.0010 m³/s、効率η=.50のポンプ必要軸動力は？",
+    "choices": [
+      "25 W",
+      "50 W",
+      "100 W",
+      "200 W"
+    ],
+    "answer": 2,
+    "difficulty": "標準・計算",
+    "explanation": "水力動力ΔpV̇=50 W、軸入力=50/.50=100 W。",
+    "distractors": [
+      "効率を掛けてしまった。",
+      "水力動力のまま。",
+      "正解。水力動力ΔpV̇=50 W、軸入力=50/.50=100 W。",
+      "効率を0.25と誤認。"
+    ],
+    "hints": [
+      "1Pa·m³/s=1W。",
+      "水力動力を効率で割る。"
+    ],
+    "solutionSteps": [
+      "1Pa·m³/s=1W。",
+      "水力動力を効率で割る。",
+      "水力動力ΔpV̇=50 W、軸入力=50/.50=100 W。"
+    ],
+    "beginnerPitfall": "基準面積・温度差・定常状態・流体の流動条件を混同しない。"
+  },
+  {
+    "id": "supp-batch2-f-area-ratio-v1",
+    "revision": "v1",
+    "field": "熱交換器設計と流動",
+    "prerequisites": [
+      "エネルギーの保存",
+      "伝熱の境界と単位"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "§3.4の独立日本語教材による新規設問。原本本文・設問・図の転載ではない。",
+      "chapterId": "ch3",
+      "focusSectionId": "3.4",
+      "guideId": "chapter3-effectiveness-ntu"
+    },
+    "createdStatus": "独立作問",
+    "reviewStatus": "内部で式・単位を検算／外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [],
+    "prompt": "熱負荷・U・LMTDを固定して補正係数Fを1.0から.80へ変更した。必要面積の倍率は？",
+    "choices": [
+      "0.80倍",
+      "1.00倍",
+      "1.25倍",
+      "1.80倍"
+    ],
+    "answer": 2,
+    "difficulty": "標準・計算",
+    "explanation": "A∝1/FなのでA_new/A_old=1/.8=1.25。",
+    "distractors": [
+      "Fに比例すると誤認。",
+      "Fの変化を無視。",
+      "正解。A∝1/FなのでA_new/A_old=1/.8=1.25。",
+      "Fの差を加算した値。"
+    ],
+    "hints": [
+      "Fは面積式の分母。",
+      "旧F/新Fを計算する。"
+    ],
+    "solutionSteps": [
+      "Fは面積式の分母。",
+      "旧F/新Fを計算する。",
+      "A∝1/FなのでA_new/A_old=1/.8=1.25。"
+    ],
+    "beginnerPitfall": "基準面積・温度差・定常状態・流体の流動条件を混同しない。"
+  },
+  {
+    "id": "supp-batch2-flow-tradeoff-v1",
+    "revision": "v1",
+    "field": "熱交換器設計と流動",
+    "prerequisites": [
+      "エネルギーの保存",
+      "伝熱の境界と単位"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "applied",
+    "source": {
+      "type": "supplement",
+      "reference": "§3.4の独立日本語教材による新規設問。原本本文・設問・図の転載ではない。",
+      "chapterId": "ch3",
+      "focusSectionId": "3.4",
+      "guideId": "chapter3-effectiveness-ntu"
+    },
+    "createdStatus": "独立作問",
+    "reviewStatus": "内部で式・単位を検算／外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [],
+    "prompt": "熱交換器の流速を上げてhを改善したい。設計判断として適切なのは？",
+    "choices": [
+      "伝熱改善と同時に圧力損失は必ずゼロになる",
+      "流速が上がれば必要ポンプ動力は必ず半減する",
+      "伝熱面積の削減で運転費は自動的に不要になる",
+      "熱性能に加え圧力損失・ポンプ動力も評価する"
+    ],
+    "answer": 3,
+    "difficulty": "応用・設計判断",
+    "explanation": "流速上昇でh改善の可能性がある一方、摩擦圧力損失とポンプ仕事も増え得る。",
+    "distractors": [
+      "流体摩擦は消えない。",
+      "流量増はポンプ負荷増の要因。",
+      "運転費は無視できない。",
+      "正解。流速上昇でh改善の可能性がある一方、摩擦圧力損失とポンプ仕事も増え得る。"
+    ],
+    "hints": [
+      "熱性能以外の制約も必要。",
+      "圧力損失と流速の関係を見る。"
+    ],
+    "solutionSteps": [
+      "熱性能以外の制約も必要。",
+      "圧力損失と流速の関係を見る。",
+      "流速上昇でh改善の可能性がある一方、摩擦圧力損失とポンプ仕事も増え得る。"
+    ],
+    "beginnerPitfall": "基準面積・温度差・定常状態・流体の流動条件を混同しない。"
   }
 ]
