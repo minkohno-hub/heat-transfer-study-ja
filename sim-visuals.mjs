@@ -10,14 +10,47 @@ const arrow=(from,to,y,color='diagram-heat')=>{
 };
 const heatArrow=(flux,from=196,to=385,y=125)=>flux>0?arrow(from,to,y):flux<0?arrow(to,from,y):`${label(290,132,'熱移動なし','diagram-neutral')}`;
 const marker=(x,y,num,fill)=>`<circle cx="${x}" cy="${y}" r="5" fill="${fill}"/>${label(x,y+19,num)}`;
-const svg=(name,desc,shapes,caption)=>`<figure class="sim-physical-figure"><svg class="sim-physical-svg" viewBox="0 0 580 214" role="img" aria-label="${desc}"><title>${name}</title><desc>${desc}</desc>${shapes}</svg><figcaption>${caption}。図形の大きさ・色は模式的な表現で、実物の温度分布や流体速度を数値解析したものではありません。</figcaption></figure>`;
+const compactSvg=(mode,result,desc)=>{
+  const v=result.values||{},q=Number(result.watts),hot=q>0,neutral=q===0;
+  const top=mode==='conduction'?['左側 Tₕ',finite(v.hot)]:
+    mode==='convection'?['固体表面',finite(v.surface)]:
+    mode==='radiation'?['放射面',finite(v.surface)]:
+    mode==='resistance'?['流体1',finite(v.hot)]:['物体',finite(result.temperature)];
+  const bottom=mode==='conduction'?['右側 T𝚌',finite(v.cold)]:
+    mode==='convection'?['周囲流体',finite(v.fluid)]:
+    mode==='radiation'?['大きな黒体囲い',finite(v.surrounding)]:
+    mode==='resistance'?['流体2',finite(v.cold)]:['周囲流体',finite(v.ambient)];
+  const colorA=neutral?'diagram-cold-side':hot?'diagram-hot-side':'diagram-cold-side';
+  const colorB=neutral?'diagram-cold-side':hot?'diagram-cold-side':'diagram-hot-side';
+  const mainTitle=mode==='conduction'?'熱伝導':
+    mode==='convection'?'対流':
+    mode==='radiation'?'熱放射':
+    mode==='resistance'?'熱抵抗':'時間変化';
+  const flowX=mode==='conduction'||mode==='resistance'?255:150;
+  const vector=neutral?label(flowX,161,'正味移動なし','diagram-neutral'):
+    q>0?`<line x1="${flowX}" y1="111" x2="${flowX}" y2="202" class="diagram-heat diagram-flow-line"/><polygon points="${flowX},210 ${flowX-8},194 ${flowX+8},194" class="diagram-heat"/>`:
+    `<line x1="${flowX}" y1="202" x2="${flowX}" y2="111" class="diagram-heat diagram-flow-line"/><polygon points="${flowX},103 ${flowX-8},119 ${flowX+8},119" class="diagram-heat"/>`;
+  const center=mode==='conduction'?
+    `${rect(72,138,148,38,'diagram-layer-one')}${label(146,162,'平板 L = '+finite(v.thickness)+' m','diagram-mini-main')}`:
+    mode==='resistance'?
+    `${rect(42,137,96,40,'diagram-layer-one')}${rect(140,137,96,40,'diagram-layer-two')}${label(90,162,'第1層','diagram-mini-main')}${label(190,162,'第2層','diagram-mini-main')}`:
+    mode==='radiation'?
+    `<path d="M70 135 q12 9 0 18 t0 18 M102 135 q12 9 0 18 t0 18 M198 135 q12 9 0 18 t0 18" class="diagram-radiation-wave" fill="none"/>`:
+    mode==='convection'? `<path d="M65 143 Q95 126 126 143 T190 143 M65 177 Q95 160 126 177 T190 177" class="diagram-fluid-lines"/>`:
+    `${label(150,154,'t = '+finite(v.time)+' 秒','diagram-figure-heading')}${label(150,175,'初期 '+finite(v.initial)+' ℃','diagram-figure-heading')}`;
+  const upper=`${rect(20,29,260,75,colorA)}${label(150,54,top[0],'diagram-mini-main')}${label(150,84,top[1]+' ℃','diagram-mini-temp')}`;
+  const lower=`${rect(20,220,260,66,colorB)}${label(150,242,bottom[0],'diagram-mini-main')}${label(150,271,bottom[1]+' ℃','diagram-mini-temp')}`;
+  const modelLabel=label(150,20,mainTitle,'diagram-figure-heading');
+  return `<svg class="sim-physical-mini" viewBox="0 0 300 300" role="img" aria-label="${desc} モバイル用の縦配置模式図。"><title>${mainTitle}・スマートフォン用図解</title><desc>${desc}</desc>${modelLabel}${upper}${center}${vector}${lower}</svg>`;
+};
+const svg=(name,desc,shapes,caption,mode,result)=>`<figure class="sim-physical-figure"><svg class="sim-physical-svg" viewBox="0 0 580 214" role="img" aria-label="${desc}"><title>${name}</title><desc>${desc}</desc>${shapes}</svg>${compactSvg(mode,result,desc)}<figcaption>${caption}。図形の大きさ・色は模式的な表現で、実物の温度分布や流体速度を数値解析したものではありません。</figcaption></figure>`;
 const rect=(x,y,w,h,cl)=>`<rect x="${x}" y="${y}" width="${w}" height="${h}" rx="7" class="${cl}"/>`;
 const waves=(x,cl)=>`<path d="M${x} 66 q -10 10 0 20 t0 20 t0 20" class="${cl} diagram-wave" fill="none"/>`;
 export function renderSimulationVisual(mode,result){
   if(!result||result.error)return '';
   const v=result.values||{},q=Number(result.watts);
   if(!Number.isFinite(q))return '';
-  const common=(title,desc,shapes,caption)=>svg(title,desc,shapes,caption);
+  const common=(title,desc,shapes,caption)=>svg(title,desc,shapes,caption,mode,result);
   if(mode==='conduction'){
     const direction=q>0?'左側から右側へ':q<0?'右側から左側へ':'熱移動なし';
     const desc=`平板の熱伝導。左側 ${finite(v.hot)} ℃、右側 ${finite(v.cold)} ℃、厚さ ${finite(v.thickness)} m。熱の向きは${direction}。`;
