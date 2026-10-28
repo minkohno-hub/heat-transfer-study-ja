@@ -134,6 +134,26 @@ try {
   await nav('glossary');
   await page.locator('#term-thermal-conductivity [data-start-question="supp-flat-thickness"]').click();
   assert.match(await page.locator('.question-card').innerText(),/厚さ L/);
+  assert.ok(await page.locator('.quiz-question-heading [data-quiz-term="thermal-conductivity"]').count());
+  const draftBeforeTerm=await page.evaluate(()=>JSON.parse(localStorage.getItem('heat-study-ja:v1')).quizDraft);
+  await page.locator('.quiz-question-heading [data-quiz-term="thermal-conductivity"]').click();
+  await page.locator('.quiz-term-modal[role="dialog"]').waitFor({state:'visible'});
+  assert.match(await page.locator('#quiz-term-title').innerText(),/熱伝導率/);
+  assert.match(await page.locator('#quiz-term-definition').innerText(),/温度勾配/);
+  assert.match(await page.locator('.quiz-term-source').innerText(),/補足説明/);
+  assert.equal(await page.locator('.quiz-term-modal [data-action="close-quiz-term"]').evaluate(e=>document.activeElement===e),true);
+  await page.keyboard.press('Escape');
+  assert.equal(await page.locator('.quiz-term-modal').count(),0);
+  assert.equal(await page.locator('.quiz-question-heading [data-quiz-term="thermal-conductivity"]').evaluate(e=>document.activeElement===e),true);
+  const draftAfterTerm=await page.evaluate(()=>JSON.parse(localStorage.getItem('heat-study-ja:v1')).quizDraft);
+  assert.deepEqual(draftAfterTerm,draftBeforeTerm,'looking up a term must not answer or reset the current question');
+  await page.locator('.quiz-question-heading [data-quiz-term="thermal-conductivity"]').click();
+  await page.locator('[data-quiz-term-detail="thermal-conductivity"]').click();
+  assert.match(page.url(),/#glossary$/);
+  await page.locator('#term-thermal-conductivity').waitFor({state:'visible'});
+  await nav('quiz');
+  assert.match(await page.locator('.question-card').innerText(),/厚さ L/);
+
   await page.locator('[data-action="exit-quiz"]').click();
   await page.locator('[data-action="discard-quiz"]').click();
   await nav('map');
