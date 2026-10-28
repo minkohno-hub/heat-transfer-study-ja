@@ -1,7 +1,7 @@
-const CACHE_NAME='heat-study-ja-v8';
+const CACHE_NAME='heat-study-ja-v9';
 const PDF_CACHE_NAME='heat-study-ja-pdf-v1';
 const PDF_URL='./book/AHTTv600.pdf';
-const APP_SHELL=['./','./index.html','./styles.css','./app.js','./study-core.mjs','./guide.mjs','./manifest.json',
+const APP_SHELL=['./','./index.html','./styles.css','./app.js','./study-core.mjs','./guide.mjs','./chapter-curriculum.mjs','./manifest.json',
   './data/book.json','./data/questions.json','./data/glossary.json','./data/content-manifest.json'];
 self.addEventListener('install',event=>{event.waitUntil(caches.open(CACHE_NAME).then(cache=>cache.addAll(APP_SHELL)));self.skipWaiting();});
 self.addEventListener('activate',event=>{event.waitUntil(caches.keys().then(keys=>Promise.all(keys.filter(k=>k.startsWith('heat-study-ja-')&&k!==CACHE_NAME&&k!==PDF_CACHE_NAME).map(k=>caches.delete(k)))));self.clients.claim();});
