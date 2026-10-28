@@ -97,4 +97,20 @@ test('model diagrams have live labels, accessible non-color arrows and distinct 
  const reverse=renderSimulationDiagram('conduction',{hot:80,cold:20,thickness:.1,area:1},{watts:-15});
  assert.match(reverse,/熱は右から左/,'result sign must override raw temperature order if a future solver has more constraints');
 
+ const invalidCases=[
+  ['conduction',{hot:80,cold:20,thickness:0,area:1}],
+  ['convection',{surface:80,fluid:20,h:-1}],
+  ['radiation',{surface:-300,surrounding:20,emissivity:.8}],
+  ['resistance',{hot:80,cold:20,L1:0,L2:.02}],
+  ['transient',{initial:80,ambient:20,time:-1}]
+ ];
+ for(const [mode,values] of invalidCases){
+  const diagram=renderSimulationDiagram(mode,values,{error:'入力が無効です'});
+  assert.match(diagram,/方向は判定できません|正味熱流は判定できません/,mode);
+  assert.doesNotMatch(diagram,/熱は移動しない|熱は出入りしない|正味の熱移動はゼロ|M296 104 L310 113|M182 104 L168 113/,mode);
+ }
+ const invalidTransient=renderSimulationDiagram('transient',{initial:80,ambient:20,time:-1},{error:'入力が無効です'});
+ assert.match(invalidTransient,/現在の物体温度は計算不能/);
+ assert.match(invalidTransient,/T\(t\)=—/);
+
 });
