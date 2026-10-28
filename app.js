@@ -357,6 +357,8 @@ async function startApp() {
 
 function render() {
   if (!book) return;
+  // Route/data re-render destroys the overlay; never leave a stale modal keyboard trap.
+  ui.termId=null;ui.termReturnFocus=null;
   const theme = state.settings.theme === 'system' ? (systemDark?.matches ? 'dark' : 'light') : state.settings.theme;
   document.documentElement.dataset.theme = theme;
   document.documentElement.style.setProperty('--reader-scale', String(state.settings.fontScale || 1));
