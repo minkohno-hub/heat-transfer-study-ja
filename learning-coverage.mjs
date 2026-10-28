@@ -10,7 +10,9 @@ export function learningCoverage({book,questions,glossary,guides,contentManifest
     return {
       chapter:ch.id,sectionCount:ch.sections.length,
       citedPracticeQuestions:bookBased.filter(q=>chapterIds.has(q.source.section)).length,
-      sectionsWithCitedPractice:new Set(bookBased.filter(q=>chapterIds.has(q.source.section)).map(q=>q.source.section)).size
+      sectionsWithCitedPractice:new Set(bookBased.filter(q=>chapterIds.has(q.source.section)).map(q=>q.source.section)).size,
+      originalPracticeQuestions:original.filter(q=>q.source.chapterId===ch.id).length,
+      originalGuideEntries:guides.filter(g=>g.bookChapter===ch.id).length
     };
   });
   return {
@@ -22,6 +24,8 @@ export function learningCoverage({book,questions,glossary,guides,contentManifest
     protectedPriorSections:sections.filter(s=>s.translationStatus==='private_only').length,
     publicChapterManifestFiles:publishedFilePaths.length,
     publicJapaneseSections:publishedFilePaths.length===0?0:null, // Must inspect manifested files before assigning a nonzero count.
+    originalChapterGuides:guides.filter(g=>g.bookChapter&&book.chapters.some(ch=>ch.id===g.bookChapter)).length,
+    chaptersWithOriginalPractice:new Set(original.map(q=>q.source.chapterId).filter(Boolean)).size,
     totalQuestions:questions.length,
     appCreatedQuestions:original.length,
     bookCitedQuestions:bookBased.length,
