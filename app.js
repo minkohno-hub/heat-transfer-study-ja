@@ -494,7 +494,7 @@ function renderHome() {
 }
 
 function renderDeepLesson(lesson) {
-  const esc=escapeHTML, mark=value=>ui.readerQuery?highlight(value,ui.readerQuery):linkedQuizText(value,3);
+  const esc=escapeHTML, mark=value=>ui.readerQuery?highlight(value,ui.readerQuery):renderTermLinks(value,glossary||[],{limit:3});
   const paragraphs=lesson.blocks.map(b=>'<section class="deep-lesson-block"><h4>'+mark(b.heading)+'</h4><p>'+mark(b.text)+'</p></section>').join('');
   const equations=lesson.equations.map(e=>'<div class="deep-equation"><strong>'+mark(e.label)+'</strong><p class="deep-expression">'+mark(e.expression)+'</p><p>'+mark(e.meaning)+'</p></div>').join('');
   const example=lesson.workedExample;
@@ -584,7 +584,7 @@ function renderReader() {
 }
 
 function renderBookBlock(block, language = 'ja') {
-  const text = (ui.readerQuery ? highlight(block.text || '',ui.readerQuery) : linkedQuizText(block.text||'',5)).replaceAll('\n', '<br>');
+  const text = (ui.readerQuery ? highlight(block.text || '',ui.readerQuery) : renderTermLinks(block.text||'',glossary||[],{limit:5})).replaceAll('\n', '<br>');
   if (block.type === 'heading') return `<h3 class="book-subheading">${text}</h3>`;
   if (block.type === 'subheading') return `<h4 class="book-subheading book-subheading-minor">${text}</h4>`;
   if (block.type === 'example') return `<section class="book-example"><h4>${escapeHTML(block.title || (language === 'en' ? 'Example' : '例題'))}</h4><p>${text}</p></section>`;
