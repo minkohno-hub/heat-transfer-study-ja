@@ -60,7 +60,7 @@ export function validateLearningData(data, {stored=false}={}) {
   if (!optional(data,'readerPositions',v=>record(v)&&Object.values(v).every(p=>(finite(p)&&p>=0)||(record(p)&&finite(p.scrollY)&&p.scrollY>=0&&optional(p,'blockId',text)&&optional(p,'updatedAt',time))))) return invalid('読書位置の形式が正しくありません。');
   if (!optional(data,'readSections',v=>record(v)&&Object.values(v).every(x=>typeof x==='boolean'))) return invalid('読了記録の形式が正しくありません。');
   if (!optional(data,'lastSection',text)) return invalid('最後に読んだ節の形式が正しくありません。');
-  if (!optional(data,'simComparisons',v=>record(v)&&Object.entries(v).every(([mode,values])=>record(values)&&!calculateHeatTransfer(mode,values).error))) return invalid('比較用シミュレーター条件が正しくありません。');
+  if (!optional(data,'simComparisons',v=>record(v)&&Object.entries(v).every(([mode,values])=>record(values)&&!(mode==='transient'?calculateLumpedCooling(values):calculateHeatTransfer(mode,values)).error))) return invalid('比較用シミュレーター条件が正しくありません。');
   if (!optional(data,'activities',v=>Array.isArray(v)&&v.length<=100000&&v.every(a=>record(a)&&text(a.id)&&validDay(a.date)&&['reading','practice','review','simulation','glossary'].includes(a.kind)&&finite(a.seconds)&&a.seconds>=0&&a.seconds<=86400&&time(a.updatedAt)&&['sectionId','sessionId','field'].every(k=>optional(a,k,text))))) return invalid('学習時間の記録の形式が正しくありません。');
   if (!optional(data,'quizDraft',v=>v===null||quizDraftOK(v))) return invalid('中断した演習の形式が正しくありません。');
   return '';
