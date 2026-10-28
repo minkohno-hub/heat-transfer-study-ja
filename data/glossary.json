@@ -2846,5 +2846,485 @@
       "熱拡散率",
       "比熱容量"
     ]
+  },
+  {
+    "id": "fouling-thermal-resistance",
+    "ja": "汚れ熱抵抗",
+    "en": "fouling thermal resistance",
+    "meaning": "伝熱面に汚れが付着することで増える熱の通りにくさ。",
+    "brief": "伝熱面に汚れが付着することで増える熱の通りにくさ。",
+    "beginner": "清浄な壁より熱が通りにくくなるため、同じ温度差なら熱移動率が下がる原因になります。",
+    "detail": "汚れの追加抵抗は定常の直列熱抵抗に加算します。全体のR_f[K/W]か単位面積当たりのR_f″[m²K/W]かを明示し、円管なら内外面積基準へ変換する必要があります。汚れによりUが低下しても圧力損失の変化は別途評価します。",
+    "unit": "m²·K/W または K/W",
+    "formula": "R_total=R_clean+R_f",
+    "aliases": [
+      "ファウリング抵抗"
+    ],
+    "category": "熱交換器",
+    "source": {
+      "type": "supplement",
+      "reference": "一般的な熱移動の物理概念に基づき独立執筆した日本語学習用語。原本の翻訳・転載ではありません。",
+      "guideId": "chapter2-cylindrical-conduction"
+    },
+    "reviewStatus": "needs_review",
+    "relatedQuestions": [
+      {
+        "id": "supp-batch2-fouling-loss-v1",
+        "label": "関連問題を解く"
+      }
+    ],
+    "related": [
+      "熱交換器"
+    ]
+  },
+  {
+    "id": "thermal-conductance",
+    "ja": "熱コンダクタンス",
+    "en": "thermal conductance",
+    "meaning": "温度差1 Kあたりに移せる熱移動率を示す係数。",
+    "brief": "温度差1 Kあたりに移せる熱移動率を示す係数。",
+    "beginner": "熱抵抗R[K/W]の逆数で、値が大きいほど同じ温度差に対して熱が多く移ります。",
+    "detail": "G=1/R_total=UAの単位はW/Kです。総括熱通過率U[W/(m²K)]とは面積Aの分だけ違います。内面積・外面積でUが変わっても同一装置の全熱コンダクタンスUAは変わらないため、面積基準をそろえるのに役立ちます。",
+    "unit": "W/K",
+    "formula": "G=UA=1/R_total",
+    "aliases": [
+      "全熱コンダクタンス"
+    ],
+    "category": "熱交換器",
+    "source": {
+      "type": "supplement",
+      "reference": "一般的な熱移動の物理概念に基づき独立執筆した日本語学習用語。原本の翻訳・転載ではありません。",
+      "guideId": "chapter2-cylindrical-conduction"
+    },
+    "reviewStatus": "needs_review",
+    "relatedQuestions": [
+      {
+        "id": "supp-batch2-g-times-dt-v1",
+        "label": "関連問題を解く"
+      }
+    ],
+    "related": [
+      "熱交換器"
+    ]
+  },
+  {
+    "id": "overall-u-area-basis",
+    "ja": "熱通過率の面積基準",
+    "en": "area basis of overall heat-transfer coefficient",
+    "meaning": "総括Uをどの伝熱面積で定義したかという約束。",
+    "brief": "総括Uをどの伝熱面積で定義したかという約束。",
+    "beginner": "円管は内面と外面の大きさが違うため、同じ装置でも内側Uと外側Uの値が異なります。",
+    "detail": "内面基準U_iと外面基準U_oは、U_iA_i=U_oA_o=1/R_totalを満たすように定義します。Uの数値だけの大小比較は無意味で、対応する面積を指定してUAを評価する必要があります。汚れ抵抗を面積基準で与える場合も同じ注意が必要です。",
+    "unit": "W/(m²·K)",
+    "formula": "U_iA_i=U_oA_o",
+    "aliases": [
+      "総括Uの面積基準"
+    ],
+    "category": "熱交換器",
+    "source": {
+      "type": "supplement",
+      "reference": "一般的な熱移動の物理概念に基づき独立執筆した日本語学習用語。原本の翻訳・転載ではありません。",
+      "guideId": "chapter2-cylindrical-conduction"
+    },
+    "reviewStatus": "needs_review",
+    "relatedQuestions": [
+      {
+        "id": "supp-batch2-outer-base-u-v1",
+        "label": "関連問題を解く"
+      }
+    ],
+    "related": [
+      "熱交換器"
+    ]
+  },
+  {
+    "id": "lmtd-correction-factor",
+    "ja": "流路補正係数",
+    "en": "LMTD correction factor",
+    "meaning": "理想的な並流・向流と異なる流路構成の有効温度差を補正する係数。",
+    "brief": "理想的な並流・向流と異なる流路構成の有効温度差を補正する係数。",
+    "beginner": "多パスや混合を伴う装置で、熱交換器の端末温度差だけでは伝熱を表しきれないときに使います。",
+    "detail": "一定Uなどの仮定が成り立つ設計ではQ̇=UA F ΔT_lmと表します。Fは無次元で流路配置と入口・出口温度の組み合わせに依存し、適切な相関の条件で評価します。F=1と決めつけると必要面積を過小評価する場合があります。",
+    "unit": "なし",
+    "formula": "Q̇=UA F ΔT_lm",
+    "aliases": [
+      "LMTD補正係数"
+    ],
+    "category": "熱交換器",
+    "source": {
+      "type": "supplement",
+      "reference": "一般的な熱移動の物理概念に基づき独立執筆した日本語学習用語。原本の翻訳・転載ではありません。",
+      "guideId": "chapter3-effectiveness-ntu"
+    },
+    "reviewStatus": "needs_review",
+    "relatedQuestions": [
+      {
+        "id": "supp-batch2-f-area-ratio-v1",
+        "label": "関連問題を解く"
+      }
+    ],
+    "related": [
+      "熱交換器"
+    ]
+  },
+  {
+    "id": "temperature-approach",
+    "ja": "温度アプローチ",
+    "en": "temperature approach",
+    "meaning": "熱交換器で二つの流体温度がどれだけ近づいたかを示す温度差。",
+    "brief": "熱交換器で二つの流体温度がどれだけ近づいたかを示す温度差。",
+    "beginner": "端末で温度が接近しすぎると、必要な伝熱面積が大きくなることがあります。",
+    "detail": "端末温度差（例えば向流のT_h,in−T_c,out）は局所温度差の候補です。局所温度差の最小値がピンチに関わりますが、どの端末で最小となるかは流れと相変化の条件によります。LMTDの計算では二つの正の端末温度差を使用します。",
+    "unit": "K",
+    "formula": "ΔT_1=T_h,in−T_c,out（向流の一端）",
+    "aliases": [
+      "接近温度差"
+    ],
+    "category": "熱交換器",
+    "source": {
+      "type": "supplement",
+      "reference": "一般的な熱移動の物理概念に基づき独立執筆した日本語学習用語。原本の翻訳・転載ではありません。",
+      "guideId": "chapter3-effectiveness-ntu"
+    },
+    "reviewStatus": "needs_review",
+    "relatedQuestions": [
+      {
+        "id": "supp-batch2-lmtd-v1",
+        "label": "関連問題を解く"
+      }
+    ],
+    "related": [
+      "熱交換器"
+    ]
+  },
+  {
+    "id": "pump-shaft-power",
+    "ja": "ポンプ軸動力",
+    "en": "pump shaft power",
+    "meaning": "ポンプの軸へ入力する機械的な動力。",
+    "brief": "ポンプの軸へ入力する機械的な動力。",
+    "beginner": "配管や熱交換器の圧力損失を補うため、流量を維持するには動力が必要です。",
+    "detail": "密度変化の小さい流体では必要水力動力P_h=Δp V̇で、ポンプ効率ηのとき必要軸動力はP_shaft=P_h/ηとなります。圧力損失Δp[Pa]と体積流量V̇[m³/s]の積はW。熱伝達率向上とポンプ運転コストを同時評価します。",
+    "unit": "W",
+    "formula": "P_shaft=Δp V̇/η",
+    "aliases": [
+      "必要ポンプ動力"
+    ],
+    "category": "流体・対流",
+    "source": {
+      "type": "supplement",
+      "reference": "一般的な熱移動の物理概念に基づき独立執筆した日本語学習用語。原本の翻訳・転載ではありません。",
+      "guideId": "chapter3-effectiveness-ntu"
+    },
+    "reviewStatus": "needs_review",
+    "relatedQuestions": [
+      {
+        "id": "supp-batch2-pump-shaft-v1",
+        "label": "関連問題を解く"
+      }
+    ],
+    "related": [
+      "流体・対流"
+    ]
+  },
+  {
+    "id": "hydrodynamic-entry-length",
+    "ja": "水力学的助走長",
+    "en": "hydrodynamic entrance length",
+    "meaning": "管入口から流れの速度分布が十分発達するまでのおおよその距離。",
+    "brief": "管入口から流れの速度分布が十分発達するまでのおおよその距離。",
+    "beginner": "管へ入った直後の速度分布は壁の粘性によって変化し、下流で一定の形に近づきます。",
+    "detail": "一定物性・円管層流の代表的な近似はL_h≈0.05 Re_D Dです。係数は助走完了とみなす基準や入口状態に依存する目安であり、熱的助走長L_t≈0.05 Re_D Pr Dとは一般に一致しません。",
+    "unit": "m",
+    "formula": "L_h≈0.05 Re_D D",
+    "aliases": [
+      "速度助走長"
+    ],
+    "category": "流体・対流",
+    "source": {
+      "type": "supplement",
+      "reference": "一般的な熱移動の物理概念に基づき独立執筆した日本語学習用語。原本の翻訳・転載ではありません。",
+      "guideId": "chapter7-internal-flow"
+    },
+    "reviewStatus": "needs_review",
+    "relatedQuestions": [
+      {
+        "id": "supp-batch2-hydraulic-entry-length-v1",
+        "label": "関連問題を解く"
+      }
+    ],
+    "related": [
+      "流体・対流"
+    ]
+  },
+  {
+    "id": "thermal-entry-length",
+    "ja": "熱的助走長",
+    "en": "thermal entrance length",
+    "meaning": "管入口から流体の無次元温度分布が十分発達するまでの距離の目安。",
+    "brief": "管入口から流体の無次元温度分布が十分発達するまでの距離の目安。",
+    "beginner": "速度分布が十分発達していても、加熱・冷却に伴う温度分布はまだ変化していることがあります。",
+    "detail": "一定物性・円管層流の代表的な近似L_t≈0.05 Re_D Pr DはPrに依存します。入口形状や境界条件で目安は変わります。十分発達した壁温一定Nu=3.66を助走区間へそのまま使うことはできません。",
+    "unit": "m",
+    "formula": "L_t≈0.05 Re_D Pr D",
+    "aliases": [
+      "温度助走長"
+    ],
+    "category": "流体・対流",
+    "source": {
+      "type": "supplement",
+      "reference": "一般的な熱移動の物理概念に基づき独立執筆した日本語学習用語。原本の翻訳・転載ではありません。",
+      "guideId": "chapter7-internal-flow"
+    },
+    "reviewStatus": "needs_review",
+    "relatedQuestions": [
+      {
+        "id": "supp-batch2-thermal-entry-length-v1",
+        "label": "関連問題を解く"
+      }
+    ],
+    "related": [
+      "流体・対流"
+    ]
+  },
+  {
+    "id": "buckingham-pi-theorem",
+    "ja": "バッキンガムのΠ定理",
+    "en": "Buckingham Pi theorem",
+    "meaning": "単位のある支配変数から独立した無次元群を構成するための考え方。",
+    "brief": "単位のある支配変数から独立した無次元群を構成するための考え方。",
+    "beginner": "たくさんの実験変数があっても、基本次元の重なりを整理して比較しやすくできます。",
+    "detail": "物理量n個の次元行列のランクがrなら、一般にn−r個の独立したΠ群を選べます。ただし現象に必要な変数・形状・境界条件が抜けていれば、群の数を合わせても実験は相似になりません。無次元数の数は有効な物理モデルの代わりではありません。",
+    "unit": "なし",
+    "formula": "独立Π群の数=n−r",
+    "aliases": [
+      "Π定理"
+    ],
+    "category": "数学・単位",
+    "source": {
+      "type": "supplement",
+      "reference": "一般的な熱移動の物理概念に基づき独立執筆した日本語学習用語。原本の翻訳・転載ではありません。",
+      "guideId": "chapter4-fin-design"
+    },
+    "reviewStatus": "needs_review",
+    "relatedQuestions": [
+      {
+        "id": "supp-batch2-dimensional-analysis-model-v1",
+        "label": "関連問題を解く"
+      }
+    ],
+    "related": [
+      "数学・単位"
+    ]
+  },
+  {
+    "id": "thermal-similarity",
+    "ja": "熱的相似則",
+    "en": "thermal similarity law",
+    "meaning": "物性や寸法が違う系で、適切な無次元条件を一致させて温度場を比較する考え方。",
+    "brief": "物性や寸法が違う系で、適切な無次元条件を一致させて温度場を比較する考え方。",
+    "beginner": "物体の大きさが変わっても、条件を揃えれば似た温度変化を再現できる場合があります。",
+    "detail": "定物性の同じ形状・初期境界条件の無次元熱伝導問題では、BiとFoを一致させると対応する温度場が相似になり得ます。代表長さLを2倍にしたとき、同じk・αならhを半減、tを4倍にすると両数を保てます。異なる形状のまま成立を断定できません。",
+    "unit": "なし",
+    "formula": "Bi=hL/k; Fo=αt/L²",
+    "aliases": [
+      "熱伝導の相似"
+    ],
+    "category": "数学・単位",
+    "source": {
+      "type": "supplement",
+      "reference": "一般的な熱移動の物理概念に基づき独立執筆した日本語学習用語。原本の翻訳・転載ではありません。",
+      "guideId": "chapter4-fin-design"
+    },
+    "reviewStatus": "needs_review",
+    "relatedQuestions": [
+      {
+        "id": "supp-batch2-similarity-condition-v1",
+        "label": "関連問題を解く"
+      }
+    ],
+    "related": [
+      "数学・単位"
+    ]
+  },
+  {
+    "id": "dimensionless-excess-temperature",
+    "ja": "無次元超過温度",
+    "en": "dimensionless excess temperature",
+    "meaning": "周囲温度からの温度差を初期の温度差で割った比。",
+    "brief": "周囲温度からの温度差を初期の温度差で割った比。",
+    "beginner": "物体の温度が周囲温度へ近づく過程を0から1などの比として表せます。",
+    "detail": "θ=(T−T∞)/(T_i−T∞)で定義し、初期温度T_i≠T∞を必要とします。θを求めてもT_iとT∞がなければ℃やKの温度へ戻せません。非定常平板の解析解や無次元温度応答線図でよく利用します。",
+    "unit": "なし",
+    "formula": "θ=(T−T∞)/(T_i−T∞)",
+    "aliases": [
+      "無次元温度比"
+    ],
+    "category": "熱伝導",
+    "source": {
+      "type": "supplement",
+      "reference": "一般的な熱移動の物理概念に基づき独立執筆した日本語学習用語。原本の翻訳・転載ではありません。",
+      "guideId": "chapter5-semi-infinite"
+    },
+    "reviewStatus": "needs_review",
+    "relatedQuestions": [
+      {
+        "id": "supp-found-slab-solve-v1",
+        "label": "関連問題を解く"
+      }
+    ],
+    "related": [
+      "熱伝導"
+    ]
+  },
+  {
+    "id": "view-factor-summation",
+    "ja": "形態係数の和則",
+    "en": "view-factor summation rule",
+    "meaning": "閉じた囲いではある面からの放射が全ての面へ分配されるという幾何学的な関係。",
+    "brief": "閉じた囲いではある面からの放射が全ての面へ分配されるという幾何学的な関係。",
+    "beginner": "面1から出た放射の行き先を全部合わせると、その割合は100%になります。",
+    "detail": "完全な閉じた囲いについてΣ_j F_ij=1です。凸面は自分自身を直接見ないためF_ii=0ですが凹面では正の値もあり得ます。囲いが開放なら周囲空間を追加の面として扱わずに和を1にすることはできません。",
+    "unit": "なし",
+    "formula": "Σ_jF_ij=1（閉鎖囲い）",
+    "aliases": [
+      "形態係数和則"
+    ],
+    "category": "熱放射",
+    "source": {
+      "type": "supplement",
+      "reference": "一般的な熱移動の物理概念に基づき独立執筆した日本語学習用語。原本の翻訳・転載ではありません。",
+      "guideId": "chapter10-view-factors"
+    },
+    "reviewStatus": "needs_review",
+    "relatedQuestions": [
+      {
+        "id": "supp-batch2-closed-view-sum-v1",
+        "label": "関連問題を解く"
+      }
+    ],
+    "related": [
+      "熱放射"
+    ]
+  },
+  {
+    "id": "radiation-network",
+    "ja": "放射ネットワーク",
+    "en": "radiation network",
+    "meaning": "放射率と形態係数を使って、表面の放射交換を抵抗回路に似せて整理する方法。",
+    "brief": "放射率と形態係数を使って、表面の放射交換を抵抗回路に似せて整理する方法。",
+    "beginner": "黒体でない表面では反射・再入射も起きるので、単に温度の4乗差だけでは解けません。",
+    "detail": "灰色拡散面の射度J、照射G、表面の放射抵抗と幾何学的交換抵抗を組み合わせ、連立収支を解くことがあります。参加性ガスや波長依存が強い表面はさらに複雑なモデルを要し、黒体用の式を単純に一つの放射率で補正するだけでは一般に不十分です。",
+    "unit": "W または W/m²",
+    "formula": "Q̇=σA₁F₁₂(T₁⁴−T₂⁴)（二黒体の限定例）",
+    "aliases": [
+      "放射回路"
+    ],
+    "category": "熱放射",
+    "source": {
+      "type": "supplement",
+      "reference": "一般的な熱移動の物理概念に基づき独立執筆した日本語学習用語。原本の翻訳・転載ではありません。",
+      "guideId": "chapter10-view-factors"
+    },
+    "reviewStatus": "needs_review",
+    "relatedQuestions": [
+      {
+        "id": "supp-batch2-grey-surface-limit-v1",
+        "label": "関連問題を解く"
+      }
+    ],
+    "related": [
+      "熱放射"
+    ]
+  },
+  {
+    "id": "graybody",
+    "ja": "灰色体",
+    "en": "graybody",
+    "meaning": "ある波長範囲で放射率を波長に依存しない一定値として近似できる表面。",
+    "brief": "ある波長範囲で放射率を波長に依存しない一定値として近似できる表面。",
+    "beginner": "放射率が1の黒体より少なく放射する場合があり、反射も考える必要があります。",
+    "detail": "灰色体は理想化されたスペクトル依存性の扱いで、拡散灰色面などのモデルに用います。灰色であっても放射交換の幾何条件は重要です。灰色体と黒体との交換式は特定の形状・周囲条件で簡単になり得ますが、多面での再入射には放射ネットワークが必要です。",
+    "unit": "なし（放射率ε）",
+    "formula": "0≤ε≤1",
+    "aliases": [
+      "灰色放射面"
+    ],
+    "category": "熱放射",
+    "source": {
+      "type": "supplement",
+      "reference": "一般的な熱移動の物理概念に基づき独立執筆した日本語学習用語。原本の翻訳・転載ではありません。",
+      "guideId": "chapter10-view-factors"
+    },
+    "reviewStatus": "needs_review",
+    "relatedQuestions": [
+      {
+        "id": "supp-batch2-grey-surface-limit-v1",
+        "label": "関連問題を解く"
+      }
+    ],
+    "related": [
+      "熱放射"
+    ]
+  },
+  {
+    "id": "hydrodynamically-developed",
+    "ja": "水力学的に十分発達した流れ",
+    "en": "hydrodynamically fully developed flow",
+    "meaning": "管内の無次元速度分布が流れ方向へ変わらなくなった状態。",
+    "brief": "管内の無次元速度分布が流れ方向へ変わらなくなった状態。",
+    "beginner": "流れ方向へ進んでも断面内の速度の形がほぼ変わらない状態を指します。",
+    "detail": "管内の十分発達した速度分布は局所の断面形状が軸方向で変わらないという意味で、圧力勾配・粘性散逸がゼロとは限りません。速度場が十分発達しても、温度場が熱的に十分発達しているとは限らないため、入口近くの熱移動を別に評価することがあります。",
+    "unit": "なし",
+    "formula": "L_h≈0.05 Re_D D（円管層流の目安）",
+    "aliases": [
+      "速度十分発達"
+    ],
+    "category": "流体・対流",
+    "source": {
+      "type": "supplement",
+      "reference": "一般的な熱移動の物理概念に基づき独立執筆した日本語学習用語。原本の翻訳・転載ではありません。",
+      "guideId": "chapter7-internal-flow"
+    },
+    "reviewStatus": "needs_review",
+    "relatedQuestions": [
+      {
+        "id": "supp-batch2-hydraulic-entry-length-v1",
+        "label": "関連問題を解く"
+      }
+    ],
+    "related": [
+      "流体・対流"
+    ]
+  },
+  {
+    "id": "thermally-developed",
+    "ja": "熱的に十分発達した流れ",
+    "en": "thermally fully developed flow",
+    "meaning": "管内の規格化された温度分布の形が流れ方向にほぼ変わらなくなった状態。",
+    "brief": "管内の規格化された温度分布の形が流れ方向にほぼ変わらなくなった状態。",
+    "beginner": "管の中の水などの温度分布が、加熱に伴って安定した形になった状態です。",
+    "detail": "円管の一定物性の十分発達した層流で、壁温一定ならNu_D≈3.66、壁熱流束一定ならNu_D≈4.36が代表値です。熱的に十分発達しても流体の混合平均温度や壁温度が流れ方向で変わることがあるため、温度そのものが一定という意味ではありません。",
+    "unit": "なし",
+    "formula": "Nu_D≈3.66 または 4.36（境界条件で相違）",
+    "aliases": [
+      "熱十分発達"
+    ],
+    "category": "流体・対流",
+    "source": {
+      "type": "supplement",
+      "reference": "一般的な熱移動の物理概念に基づき独立執筆した日本語学習用語。原本の翻訳・転載ではありません。",
+      "guideId": "chapter7-internal-flow"
+    },
+    "reviewStatus": "needs_review",
+    "relatedQuestions": [
+      {
+        "id": "supp-batch2-pipe-entry-judgment-v1",
+        "label": "関連問題を解く"
+      }
+    ],
+    "related": [
+      "流体・対流"
+    ]
   }
 ]
