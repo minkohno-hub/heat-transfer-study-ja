@@ -128,5 +128,13 @@ test('revised question answers never inflate field mastery while historical reco
   assert.equal(current.outdated,0);
   assert.equal(current.ratio,0.5);
   assert.equal(JSON.stringify(historical),before,'Previous learning history is never edited');
+  const bad=exported();
+  bad.attempts=[attempt({questionRevision:{version:'v2'}})];
+  assert.match(validateLearningData(bad),/回答履歴/,'Invalid imported revision metadata must be rejected');
+  bad.attempts=[attempt({questionRevision:'initial'})];
+  assert.equal(validateLearningData(bad),'','Valid imported revision data remains supported');
+  bad.attempts=[attempt({questionRevision:undefined})];
+  assert.equal(validateLearningData(bad),'','Older exports without revision are still accepted');
+
   assert.equal(isCurrentQuestionAnswer({id:'q3'},attempt({questionId:'q3',questionRevision:undefined})),true);
 });
