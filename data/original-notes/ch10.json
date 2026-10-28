@@ -24,7 +24,7 @@
       "example": "不透明面の吸収率0.8なら反射率は0.2。これだけではその面の温度や入射光のスペクトルが不明なため正味熱交換量は決まらない。",
       "limits": "可視域で黒い材料が熱赤外でも必ず高放射率とは限らない。太陽吸収率と熱赤外放射率の違いに注意。",
       "selfCheck": "不透明面で吸収率0.7なら反射率はいくらか。",
-      "answer": "0.3。",
+      "answer": "0.3",
       "reviewStatus": "AI_drafted_pending_independent_expert_review"
     },
     {
