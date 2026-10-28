@@ -609,7 +609,7 @@ function buildSearchIndex() {
       if(!Array.isArray(blocks))continue;
       blocks.forEach((b,i)=>{
         const content=[b.title,b.titleJa,b.authors,b.publication,b.originalCitation,b.noteJa,b.hint,b.answerHint,b.text,b.expression,b.explanation,b.caption,b.alt,b.description,...(b.items||[]),...(b.headers||[]),...(b.rows||[]).flat()].filter(v=>typeof v==='string').join(' ');
-        if(content)entries.push({kind:'book',kindLabel:language==='ja'?'本文 · 日本語':'本文 · 英語',chapter:section.chapterId,field:section.chapterTitle,chapterTitle:section.chapterTitle,title:`${section.id} ${language==='ja'?section.title:section.sourceTitle||section.title}`,text:content,source:b.bookPage?`書籍 p.${b.bookPage} · PDF p.${b.pdfPage}`:source,target:{route:'reader',section:section.id,language,blockId:b.id||`${section.id}-b${i}`}});
+        if(content)entries.push({kind:'book',kindLabel:section.localDraft?`本文下書き · ${language==='ja'?'日本語':'英語'}`:language==='ja'?'本文 · 日本語':'本文 · 英語',chapter:section.chapterId,field:section.chapterTitle,chapterTitle:section.chapterTitle,title:`${section.id} ${language==='ja'?section.title:section.sourceTitle||section.title}`,text:content,source:(b.bookPage?`書籍 p.${b.bookPage} · PDF p.${b.pdfPage}`:source)+(section.localDraft?' · 未照合':''),target:{route:'reader',section:section.id,language,blockId:b.id||`${section.id}-b${i}`}});
       });
     }
   }
