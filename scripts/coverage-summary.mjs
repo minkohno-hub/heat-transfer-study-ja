@@ -25,6 +25,7 @@ else{
   console.log('旧PCの本文・下書き存在記録:',report.oldPcDraftOrPrivateRecordSections,'/',report.textbookSections,'（実物未移行・独立未検証）');
   console.log('公開演習:',report.totalQuestions,'問（独立補足・応用',report.appCreatedQuestions,'問 / 書籍出典',report.bookCitedQuestions,'問）');
   console.log('書籍出典問題が存在する節:',report.sectionsWithBookCitedQuestions,'/',report.textbookSections);
+  console.log('独立作成の章別補助講座:',report.originalChapterGuides,'/',report.chapterCount,'章 / 章別独自演習あり:',report.chaptersWithOriginalPractice,'/',report.chapterCount,'章');
   console.log('アプリ独自ガイド:',report.guideEntries,'項目 / 用語:',report.glossaryTerms,'項目');
   console.log('学習分野別問題数:',JSON.stringify(report.practiceByField));
   console.log('章別の書籍出典問題:',JSON.stringify(report.chapters));
