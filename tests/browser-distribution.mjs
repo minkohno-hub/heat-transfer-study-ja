@@ -71,14 +71,20 @@ try {
   }
   await nav('guide');
   await page.locator('.guide-section').first().waitFor();
-  assert.equal(await page.locator('.guide-section').count(),21);
+  assert.equal(await page.locator('.guide-section').count(),32);
   for(const id of ['learn-dimensionless-transient','learn-lumped-cooling','learn-convection-dimensionless','learn-heat-exchanger'])
     assert.equal(await page.locator('#guide-'+id).count(),1,'発展学習ガイド: '+id);
+  for(let ch=1;ch<=11;ch++){
+    const guideId=['chapter1-energy-balance','chapter2-cylindrical-conduction','chapter3-effectiveness-ntu','chapter4-fin-design','chapter5-semi-infinite','chapter6-flat-boundary','chapter7-internal-flow','chapter8-buoyancy','chapter9-latent-boiling','chapter10-view-factors','chapter11-fick-mass'][ch-1];
+    assert.equal(await page.locator('#guide-'+guideId).count(),1,'章別独立ガイド: '+guideId);
+  }
   await page.locator('#guide-query').fill('放射率');
   await page.locator('#guide-search-form button').click();
   assert.ok(await page.locator('#guide-sim-radiation').count());
   await nav('glossary');
   await page.locator('#term-biot-number [data-start-question="supp-expanded-bi-calc"]').waitFor({state:'attached'});
+  await page.locator('#term-rayleigh-number [data-start-question="supp-chapter-ch8-ra"]').waitFor({state:'attached'});
+  await page.locator('#term-fick-diffusive-flux [data-start-question="supp-chapter-ch11-fick"]').waitFor({state:'attached'});
   await page.locator('#term-log-mean-temperature-difference [data-start-question="supp-expanded-hx-lmtd-equal"]').waitFor({state:'attached'});
   assert.match(await page.locator('#term-heat .term-links a').getAttribute('href'),/AHTTv600\.pdf#page=17$/);
   assert.match(await page.locator('#term-heat-flux .term-links a').getAttribute('href'),/AHTTv600\.pdf#page=25$/);
