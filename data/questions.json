@@ -9750,5 +9750,773 @@
       "よって条件により向流の冷側出口が温側出口を超えうる。"
     ],
     "beginnerPitfall": "高温側・低温側の流量、入口・出口、および外部損失の有無を確認する。"
+  },
+  {
+    "revision": "v1",
+    "field": "基本熱収支・熱移動機構",
+    "prerequisites": [
+      "熱移動率とエネルギー",
+      "伝熱機構と保存則"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "§1.2の独立執筆詳細講義と仮想の数値条件による新規作問。原本の問題・翻訳・図版は転載しない。",
+      "chapterId": "ch1",
+      "focusSectionId": "1.2",
+      "guideId": "chapter1-energy-balance"
+    },
+    "createdStatus": "独立作問",
+    "reviewStatus": "式と単位の内部検算済み／外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [],
+    "id": "supp-found-net-heating-time-v1",
+    "prompt": "質量2.0 kg、比熱500 J/(kg·K)の物体を10 K温める。物体へ伝わるヒーター出力は200 W、周囲損失は一定50 W、内部温度は一様とする。必要な加熱時間は？",
+    "choices": [
+      "50.0 s",
+      "66.7 s",
+      "100.0 s",
+      "200.0 s"
+    ],
+    "answer": 1,
+    "difficulty": "標準・熱損失",
+    "explanation": "ΔU=2×500×10=10000 J。正味の蓄熱率は200−50=150 Wなので、t=10000/150≈66.7 s。",
+    "distractors": [
+      "熱損失を無視して10000/200としています。",
+      "正解。正味150 Wを用います。",
+      "比熱や熱損失の単位を混同しています。",
+      "物体の有効加熱率を50 Wと誤認しています。"
+    ],
+    "hints": [
+      "加熱器出力と物体の蓄熱率は同じとは限りません。",
+      "mcΔTをヒーター出力から熱損失を引いたWで割ります。"
+    ],
+    "solutionSteps": [
+      "ΔU=10000 Jを求める。",
+      "Q̇_net=200−50=150 Wを求める。",
+      "t=10000/150≈66.7 sを求める。"
+    ],
+    "beginnerPitfall": "エネルギーJと速度W、保存則と伝熱係数を区別する。"
+  },
+  {
+    "revision": "v1",
+    "field": "基本熱収支・熱移動機構",
+    "prerequisites": [
+      "熱移動率とエネルギー",
+      "伝熱機構と保存則"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "§1.2の独立執筆詳細講義と仮想の数値条件による新規作問。原本の問題・翻訳・図版は転載しない。",
+      "chapterId": "ch1",
+      "focusSectionId": "1.2",
+      "guideId": "chapter1-energy-balance"
+    },
+    "createdStatus": "独立作問",
+    "reviewStatus": "式と単位の内部検算済み／外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [],
+    "id": "supp-found-closed-system-firstlaw-v1",
+    "prompt": "質量出入りのない閉じた系へ熱1200 Jが入り、系が外へ300 Jの仕事を行った。運動・位置エネルギーの変化を無視すると内部エネルギー変化は？",
+    "choices": [
+      "+900 J",
+      "+1500 J",
+      "−900 J",
+      "+1200 J"
+    ],
+    "answer": 0,
+    "difficulty": "基礎・エネルギー保存",
+    "explanation": "閉じた系ではΔU=Q_in−W_out=1200−300=+900 J。系のする仕事は内部エネルギーを減らす。",
+    "distractors": [
+      "正解。入熱と外向き仕事の符号を分けます。",
+      "系が外へした仕事を内部エネルギーへ加えています。",
+      "入熱と仕事の符号を両方反転しています。",
+      "外向き仕事を無視した値です。"
+    ],
+    "hints": [
+      "系への入熱を正、系がする仕事を正と定義します。",
+      "第一法則ΔU=Q_in−W_outです。"
+    ],
+    "solutionSteps": [
+      "Q_in=+1200 Jを確認する。",
+      "W_out=+300 Jとする。",
+      "ΔU=1200−300=900 J。"
+    ],
+    "beginnerPitfall": "エネルギーJと速度W、保存則と伝熱係数を区別する。"
+  },
+  {
+    "revision": "v1",
+    "field": "基本熱収支・熱移動機構",
+    "prerequisites": [
+      "熱移動率とエネルギー",
+      "伝熱機構と保存則"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "conceptual",
+    "source": {
+      "type": "supplement",
+      "reference": "§1.2の独立執筆詳細講義と仮想の数値条件による新規作問。原本の問題・翻訳・図版は転載しない。",
+      "chapterId": "ch1",
+      "focusSectionId": "1.2",
+      "guideId": "chapter1-energy-balance"
+    },
+    "createdStatus": "独立作問",
+    "reviewStatus": "式と単位の内部検算済み／外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [],
+    "id": "supp-found-heatloss-temperature-dependent-v1",
+    "prompt": "物体に一定電力で加熱し、周囲への対流損失がhA(T−T∞)に比例する。物体の内部温度が一様でhA一定と仮定すると、正しい説明は？",
+    "choices": [
+      "温度が上がっても蓄熱速度は常に一定である",
+      "熱の出入りを無視して温度を決められる",
+      "物体が定常でも温度は必ず上昇し続ける",
+      "温度上昇で損失が増え蓄熱率は変化しうる"
+    ],
+    "answer": 3,
+    "difficulty": "応用・モデル判断",
+    "explanation": "mc dT/dt=P−hA(T−T∞)。PとhAが一定でもTが上がれば損失が増え、dT/dtは変化する。定常ならPと損失が釣り合う場合がある。",
+    "distractors": [
+      "対流損失が温度差に比例する条件に反します。",
+      "エネルギー収支を解くには熱移動率の情報が必要です。",
+      "定常なら温度は時間に依存せず、上昇し続けません。",
+      "正解。温度依存の熱損失を収支に入れます。"
+    ],
+    "hints": [
+      "Newtonの冷却則の温度差を確認します。",
+      "右辺がTに依存する微分方程式を考えます。"
+    ],
+    "solutionSteps": [
+      "蓄熱の収支をmc dT/dt=P−Q̇_lossと書く。",
+      "Q̇_loss=hA(T−T∞)を代入する。",
+      "上昇温度に応じて正味の加熱率が変わると判断する。"
+    ],
+    "beginnerPitfall": "エネルギーJと速度W、保存則と伝熱係数を区別する。"
+  },
+  {
+    "revision": "v1",
+    "field": "基本熱収支・熱移動機構",
+    "prerequisites": [
+      "熱移動率とエネルギー",
+      "伝熱機構と保存則"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "§1.2の独立執筆詳細講義と仮想の数値条件による新規作問。原本の問題・翻訳・図版は転載しない。",
+      "chapterId": "ch1",
+      "focusSectionId": "1.2",
+      "guideId": "chapter1-energy-balance"
+    },
+    "createdStatus": "独立作問",
+    "reviewStatus": "式と単位の内部検算済み／外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [],
+    "id": "supp-found-openflow-enthalpy-v1",
+    "prompt": "単相流体が定常でṁ=0.20 kg/s、一定比熱c_p=4000 J/(kg·K)で10 K温められる。仕事・運動エネルギー差・外部損失を無視すると、流体への熱移動率は？",
+    "choices": [
+      "2000 W",
+      "4000 W",
+      "8000 W",
+      "16000 W"
+    ],
+    "answer": 2,
+    "difficulty": "標準・開放系",
+    "explanation": "Q̇=ṁc_pΔT=0.20×4000×10=8000 W。開いた系の流量kg/sを用い、m[kg]と取り違えない。",
+    "distractors": [
+      "比熱と温度差の積を過小に評価しています。",
+      "質量流量0.20 kg/sの係数を正しく反映していません。",
+      "正解。kg/s×J/(kg·K)×K=Wとなります。",
+      "流体流量または温度差を2倍に数えています。"
+    ],
+    "hints": [
+      "流れる質量の量ではなく質量流量を使います。",
+      "Q̇=ṁc_pΔTをSI単位で計算してください。"
+    ],
+    "solutionSteps": [
+      "質量流量と比熱の積は800 W/K。",
+      "温度差10 Kを掛ける。",
+      "Q̇=8000 Wと求める。"
+    ],
+    "beginnerPitfall": "エネルギーJと速度W、保存則と伝熱係数を区別する。"
+  },
+  {
+    "revision": "v1",
+    "field": "基本熱収支・熱移動機構",
+    "prerequisites": [
+      "熱移動率とエネルギー",
+      "伝熱機構と保存則"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "§1.3の独立執筆詳細講義と仮想の数値条件による新規作問。原本の問題・翻訳・図版は転載しない。",
+      "chapterId": "ch1",
+      "focusSectionId": "1.3",
+      "guideId": "chapter1-energy-balance"
+    },
+    "createdStatus": "独立作問",
+    "reviewStatus": "式と単位の内部検算済み／外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [],
+    "id": "supp-found-three-mode-conduction-v1",
+    "prompt": "厚さ0.10 m、k=2.0 W/(m·K)、面積0.50 m²の平板の両面に20 Kの温度差がある。一定k・一次元定常・発熱なしの伝導熱移動率の大きさは？",
+    "choices": [
+      "100 W",
+      "150 W",
+      "200 W",
+      "400 W"
+    ],
+    "answer": 2,
+    "difficulty": "標準・伝導",
+    "explanation": "Q̇=kAΔT/L=2.0×0.50×20/0.10=200 W。単位はW/(m·K)×m²×K/m=W。",
+    "distractors": [
+      "対流のhAΔTと混同した値です。",
+      "積算で用いる厚さまたは面積を誤用しています。",
+      "正解。厚さ0.10 mで割ります。",
+      "温度差か熱伝導率を二重に掛けた値です。"
+    ],
+    "hints": [
+      "Fourier則の平板解を使います。",
+      "kAΔTをLで割ってください。"
+    ],
+    "solutionSteps": [
+      "温度差を20 Kとする。",
+      "kAΔT/L=2×0.5×20/0.1。",
+      "200 Wを得る。"
+    ],
+    "beginnerPitfall": "エネルギーJと速度W、保存則と伝熱係数を区別する。"
+  },
+  {
+    "revision": "v1",
+    "field": "基本熱収支・熱移動機構",
+    "prerequisites": [
+      "熱移動率とエネルギー",
+      "伝熱機構と保存則"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "§1.3の独立執筆詳細講義と仮想の数値条件による新規作問。原本の問題・翻訳・図版は転載しない。",
+      "chapterId": "ch1",
+      "focusSectionId": "1.3",
+      "guideId": "chapter1-energy-balance"
+    },
+    "createdStatus": "独立作問",
+    "reviewStatus": "式と単位の内部検算済み／外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [],
+    "id": "supp-found-three-mode-convection-v1",
+    "prompt": "h=10 W/(m²·K)、A=0.50 m²、固体表面40℃、流体20℃の対流熱移動率の大きさは？",
+    "choices": [
+      "50 W",
+      "100 W",
+      "150 W",
+      "200 W"
+    ],
+    "answer": 1,
+    "difficulty": "基礎・対流",
+    "explanation": "Q̇_conv=hA(T_s−T∞)=10×0.50×20=100 W。熱伝達率hは材料の熱伝導率kとは別物。",
+    "distractors": [
+      "面積0.50 m²による係数を過大に減らしています。",
+      "正解。hと面積、温度差を掛けます。",
+      "温度差を30 Kと誤って使用しています。",
+      "面積0.50 m²を掛け忘れた値です。"
+    ],
+    "hints": [
+      "Newtonの冷却則を思い出します。",
+      "10×0.50×(40−20)を計算します。"
+    ],
+    "solutionSteps": [
+      "温度差20 K。",
+      "hA=5 W/K。",
+      "Q̇=5×20=100 W。"
+    ],
+    "beginnerPitfall": "エネルギーJと速度W、保存則と伝熱係数を区別する。"
+  },
+  {
+    "revision": "v1",
+    "field": "基本熱収支・熱移動機構",
+    "prerequisites": [
+      "熱移動率とエネルギー",
+      "伝熱機構と保存則"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "§1.3の独立執筆詳細講義と仮想の数値条件による新規作問。原本の問題・翻訳・図版は転載しない。",
+      "chapterId": "ch1",
+      "focusSectionId": "1.3",
+      "guideId": "chapter1-energy-balance"
+    },
+    "createdStatus": "独立作問",
+    "reviewStatus": "式と単位の内部検算済み／外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [],
+    "id": "supp-found-three-mode-radiation-v1",
+    "prompt": "放射率0.80の小さな灰色面A=0.50 m²が320 K、十分大きな黒体囲いが300 Kである。σ=5.670374419×10⁻⁸ W/(m²·K⁴)とし、正味放射熱移動率は約いくらか。",
+    "choices": [
+      "27.1 W",
+      "54.1 W",
+      "81.2 W",
+      "108.2 W"
+    ],
+    "answer": 1,
+    "difficulty": "発展・放射近似",
+    "explanation": "Q̇=εσA(T_s⁴−T_sur⁴)=0.8×5.670374419×10⁻⁸×0.5×(320⁴−300⁴)≈54.11 W。必ずKを用いる。",
+    "distractors": [
+      "放射率と面積の積を誤って半減しています。",
+      "正解。放射率0.8と面積0.5 m²をともに掛けます。",
+      "絶対温度の4乗差の係数を過大評価しています。",
+      "面積0.5 m²を掛け忘れた約2倍の値です。"
+    ],
+    "hints": [
+      "放射式の温度は必ず絶対温度Kです。",
+      "320⁴−300⁴を先に計算します。"
+    ],
+    "solutionSteps": [
+      "320⁴−300⁴=2,385,760,000 K⁴。",
+      "εσA=0.8×5.670374419×10⁻⁸×0.5。",
+      "積は約54.11 W。"
+    ],
+    "beginnerPitfall": "エネルギーJと速度W、保存則と伝熱係数を区別する。"
+  },
+  {
+    "revision": "v1",
+    "field": "基本熱収支・熱移動機構",
+    "prerequisites": [
+      "熱移動率とエネルギー",
+      "伝熱機構と保存則"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "conceptual",
+    "source": {
+      "type": "supplement",
+      "reference": "§1.3の独立執筆詳細講義と仮想の数値条件による新規作問。原本の問題・翻訳・図版は転載しない。",
+      "chapterId": "ch1",
+      "focusSectionId": "1.3",
+      "guideId": "chapter1-energy-balance"
+    },
+    "createdStatus": "独立作問",
+    "reviewStatus": "式と単位の内部検算済み／外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [],
+    "id": "supp-found-three-mode-temperature-units-v1",
+    "prompt": "三つの機構を学習する際、与えられた温度に関する取り扱いとして正しいものはどれか。",
+    "choices": [
+      "黒体放射のT⁴には絶対温度Kを使う",
+      "黒体放射のT⁴に摂氏温度を直接使う",
+      "伝導の温度差20℃差を20 K差にできない",
+      "対流熱伝達率と放射率は同じ次元を持つ"
+    ],
+    "answer": 0,
+    "difficulty": "基礎・単位判断",
+    "explanation": "絶対温度の4乗を用いる放射式は必ずKで評価する。一方、伝導・対流の温度差は℃差とK差の数値が等しく、hの単位と放射率の無次元性も異なる。",
+    "distractors": [
+      "正解。T⁴の温度原点は絶対零度です。",
+      "摂氏をそのまま4乗すると放射交換の計算は不正確です。",
+      "温度差20℃差は20 K差と同じ大きさです。",
+      "hはW/(m²·K)、放射率εは無次元です。"
+    ],
+    "hints": [
+      "放射式には温度の絶対値が登場します。",
+      "hとεの単位を比べてください。"
+    ],
+    "solutionSteps": [
+      "温度差と温度そのものを分ける。",
+      "Stefan–Boltzmann則はKの4乗で表す。",
+      "正しい選択は絶対温度Kである。"
+    ],
+    "beginnerPitfall": "エネルギーJと速度W、保存則と伝熱係数を区別する。"
+  },
+  {
+    "revision": "v1",
+    "field": "定常熱伝導・熱抵抗",
+    "prerequisites": [
+      "Fourier則",
+      "境界条件と熱抵抗"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "§2.2の独立執筆詳細講義と仮想の数値条件による新規作問。原本の問題・翻訳・図版は転載しない。",
+      "chapterId": "ch2",
+      "focusSectionId": "2.2",
+      "guideId": "chapter2-cylindrical-conduction"
+    },
+    "createdStatus": "独立作問",
+    "reviewStatus": "式と単位の内部検算済み／外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [],
+    "id": "supp-found-slab-conduction-rate-v1",
+    "prompt": "厚さ0.20 m、k=4.0 W/(m·K)、断面積2.0 m²の平板で、左面60℃、右面20℃。一定物性・一次元・定常の熱移動率の大きさは？",
+    "choices": [
+      "800 W",
+      "1200 W",
+      "1600 W",
+      "3200 W"
+    ],
+    "answer": 2,
+    "difficulty": "標準・温度勾配",
+    "explanation": "Q̇=kAΔT/L=4×2×(60−20)/0.20=1600 W。符号付き熱流束は左→右を正とすると+800 W/m²。",
+    "distractors": [
+      "熱流束800 W/m²を面積2m²で変換せずに記載しています。",
+      "温度差または厚さの代入が不適切です。",
+      "正解。面積2m²を掛けて1600 Wです。",
+      "面積を二重に掛けた2倍の値です。"
+    ],
+    "hints": [
+      "まず熱流束kΔT/Lを計算します。",
+      "熱流束に面積2m²を掛けてWへ変換します。"
+    ],
+    "solutionSteps": [
+      "温度勾配−40/0.20=−200 K/m。",
+      "q″=−4×(−200)=+800 W/m²。",
+      "Q̇=800×2=1600 W。"
+    ],
+    "beginnerPitfall": "指定した温度境界、熱流の方向、面積基準が一致しているか点検する。"
+  },
+  {
+    "revision": "v1",
+    "field": "定常熱伝導・熱抵抗",
+    "prerequisites": [
+      "Fourier則",
+      "境界条件と熱抵抗"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "§2.2の独立執筆詳細講義と仮想の数値条件による新規作問。原本の問題・翻訳・図版は転載しない。",
+      "chapterId": "ch2",
+      "focusSectionId": "2.2",
+      "guideId": "chapter2-cylindrical-conduction"
+    },
+    "createdStatus": "独立作問",
+    "reviewStatus": "式と単位の内部検算済み／外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [],
+    "id": "supp-found-slab-conduction-midpoint-v1",
+    "prompt": "一次元定常、内部発熱なし、一定kの厚さ0.20 mの平板。左面60℃、右面20℃とする。左から0.05 mの位置の温度は？",
+    "choices": [
+      "30 ℃",
+      "40 ℃",
+      "50 ℃",
+      "60 ℃"
+    ],
+    "answer": 2,
+    "difficulty": "基礎・温度分布",
+    "explanation": "T(x)=60+(20−60)x/0.20。x=0.05 mではT=60−40×0.25=50℃。線形温度分布は一定k・発熱なしの条件による。",
+    "distractors": [
+      "右面に近い位置の温度を誤って選んでいます。",
+      "温度差の半分を減らしています。",
+      "正解。厚さの4分の1だけ温度が低下します。",
+      "x=0の境界値を途中位置へ転用しています。"
+    ],
+    "hints": [
+      "線形の温度分布を使います。",
+      "x/L=0.05/0.20=0.25です。"
+    ],
+    "solutionSteps": [
+      "T(x)=T₁+(T₂−T₁)x/L。",
+      "T=60+(20−60)×0.25。",
+      "T=50℃。"
+    ],
+    "beginnerPitfall": "指定した温度境界、熱流の方向、面積基準が一致しているか点検する。"
+  },
+  {
+    "revision": "v1",
+    "field": "定常熱伝導・熱抵抗",
+    "prerequisites": [
+      "Fourier則",
+      "境界条件と熱抵抗"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "§2.2の独立執筆詳細講義と仮想の数値条件による新規作問。原本の問題・翻訳・図版は転載しない。",
+      "chapterId": "ch2",
+      "focusSectionId": "2.2",
+      "guideId": "chapter2-cylindrical-conduction"
+    },
+    "createdStatus": "独立作問",
+    "reviewStatus": "式と単位の内部検算済み／外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [],
+    "id": "supp-found-slab-resistance-value-v1",
+    "prompt": "厚さ0.20 m、k=4 W/(m·K)、面積2.0 m²の平板の熱抵抗[K/W]は？",
+    "choices": [
+      "0.010 K/W",
+      "0.025 K/W",
+      "0.050 K/W",
+      "0.100 K/W"
+    ],
+    "answer": 1,
+    "difficulty": "基礎・熱抵抗",
+    "explanation": "R_cond=L/(kA)=0.20/(4×2)=0.025 K/W。温度差40 KならQ̇=40/0.025=1600 Wとなる。",
+    "distractors": [
+      "厚さを別の値として代入した結果です。",
+      "正解。kA=8 W·m/Kを適切に割ります。",
+      "面積を1m²と取り違えた結果です。",
+      "kや面積を2倍誤って扱っています。"
+    ],
+    "hints": [
+      "R=L/(kA)です。",
+      "0.20/(4×2)を計算します。"
+    ],
+    "solutionSteps": [
+      "kA=8 W·m/K。",
+      "R=0.20/8。",
+      "R=0.025 K/W。"
+    ],
+    "beginnerPitfall": "指定した温度境界、熱流の方向、面積基準が一致しているか点検する。"
+  },
+  {
+    "revision": "v1",
+    "field": "定常熱伝導・熱抵抗",
+    "prerequisites": [
+      "Fourier則",
+      "境界条件と熱抵抗"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "conceptual",
+    "source": {
+      "type": "supplement",
+      "reference": "§2.2の独立執筆詳細講義と仮想の数値条件による新規作問。原本の問題・翻訳・図版は転載しない。",
+      "chapterId": "ch2",
+      "focusSectionId": "2.2",
+      "guideId": "chapter2-cylindrical-conduction"
+    },
+    "createdStatus": "独立作問",
+    "reviewStatus": "式と単位の内部検算済み／外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [],
+    "id": "supp-found-slab-nonlinear-limit-v1",
+    "prompt": "一定kの平板で線形の温度分布を導いた後、内部発熱が一様な正の値を取るようになった。適切な判断はどれか。",
+    "choices": [
+      "発熱があっても温度勾配は必ず一定となる",
+      "発熱すると平板の厚さは式から消えてしまう",
+      "表面温度を決めれば熱流束は必ずゼロとなる",
+      "保存式に発熱項が入り温度分布は曲がりうる"
+    ],
+    "answer": 3,
+    "difficulty": "応用・近似限界",
+    "explanation": "一次元・定常・一定kならd²T/dx²=−q‴/k。q‴>0なら曲率は負で、線形温度分布は一般に成立しない。境界条件によって形状と熱流束が定まる。",
+    "distractors": [
+      "d²T/dx²=0は発熱ゼロでの式です。",
+      "物体の厚さと境界条件は依然として重要です。",
+      "表面温度を指定しても内部発熱から熱が流れる場合があります。",
+      "正解。発熱項の存在で二階微分がゼロではなくなります。"
+    ],
+    "hints": [
+      "エネルギー保存式の発熱項を思い出します。",
+      "q‴が正ならd²T/dx²は負になります。"
+    ],
+    "solutionSteps": [
+      "一定kの保存式をk d²T/dx²+q‴=0と書く。",
+      "q‴>0なら二階微分はゼロではない。",
+      "線形分布が成立しない場合があると判断する。"
+    ],
+    "beginnerPitfall": "指定した温度境界、熱流の方向、面積基準が一致しているか点検する。"
+  },
+  {
+    "revision": "v1",
+    "field": "定常熱伝導・熱抵抗",
+    "prerequisites": [
+      "Fourier則",
+      "境界条件と熱抵抗"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "§2.3の独立執筆詳細講義と仮想の数値条件による新規作問。原本の問題・翻訳・図版は転載しない。",
+      "chapterId": "ch2",
+      "focusSectionId": "2.3",
+      "guideId": "chapter2-cylindrical-conduction"
+    },
+    "createdStatus": "独立作問",
+    "reviewStatus": "式と単位の内部検算済み／外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [],
+    "id": "supp-found-resistor-series-v1",
+    "prompt": "温度差60 Kの定常直列経路にR₁=0.10 K/W、R₂=0.20 K/Wがある。熱移動率の大きさは？",
+    "choices": [
+      "100 W",
+      "200 W",
+      "300 W",
+      "600 W"
+    ],
+    "answer": 1,
+    "difficulty": "基礎・直列",
+    "explanation": "直列抵抗R_total=0.10+0.20=0.30 K/W。Q̇=60/0.30=200 W。",
+    "distractors": [
+      "全抵抗を0.60 K/Wと過大評価した値です。",
+      "正解。直列は抵抗を足します。",
+      "小さい抵抗だけを過剰に使用しています。",
+      "R₁のみで計算してR₂を無視しています。"
+    ],
+    "hints": [
+      "直列では熱流率が全層で同じです。",
+      "R_total=R₁+R₂を計算します。"
+    ],
+    "solutionSteps": [
+      "R_total=0.30 K/W。",
+      "Q̇=ΔT/R_total。",
+      "60/0.30=200 W。"
+    ],
+    "beginnerPitfall": "指定した温度境界、熱流の方向、面積基準が一致しているか点検する。"
+  },
+  {
+    "revision": "v1",
+    "field": "定常熱伝導・熱抵抗",
+    "prerequisites": [
+      "Fourier則",
+      "境界条件と熱抵抗"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "§2.3の独立執筆詳細講義と仮想の数値条件による新規作問。原本の問題・翻訳・図版は転載しない。",
+      "chapterId": "ch2",
+      "focusSectionId": "2.3",
+      "guideId": "chapter2-cylindrical-conduction"
+    },
+    "createdStatus": "独立作問",
+    "reviewStatus": "式と単位の内部検算済み／外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [],
+    "id": "supp-found-resistor-parallel-v1",
+    "prompt": "温度差60 Kで両端を共有する定常並列経路にR₁=0.10 K/W、R₂=0.20 K/Wがある。合計熱移動率の大きさは？",
+    "choices": [
+      "200 W",
+      "300 W",
+      "600 W",
+      "900 W"
+    ],
+    "answer": 3,
+    "difficulty": "標準・並列",
+    "explanation": "並列各枝の熱流率は60/0.10=600 W、60/0.20=300 W。合計900 W。直列200 Wとは異なる。",
+    "distractors": [
+      "直列に接続した場合の値と混同しています。",
+      "第2枝の300 Wだけを計上しています。",
+      "第1枝の600 Wだけを計上しています。",
+      "正解。各枝の熱流率を足して900 Wです。"
+    ],
+    "hints": [
+      "並列では各枝が同じ温度差60 Kを受けます。",
+      "各枝の熱流率を別々に計算して加えます。"
+    ],
+    "solutionSteps": [
+      "第1枝Q̇₁=600 W。",
+      "第2枝Q̇₂=300 W。",
+      "合計Q̇=900 W。"
+    ],
+    "beginnerPitfall": "指定した温度境界、熱流の方向、面積基準が一致しているか点検する。"
+  },
+  {
+    "revision": "v1",
+    "field": "定常熱伝導・熱抵抗",
+    "prerequisites": [
+      "Fourier則",
+      "境界条件と熱抵抗"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "§2.3の独立執筆詳細講義と仮想の数値条件による新規作問。原本の問題・翻訳・図版は転載しない。",
+      "chapterId": "ch2",
+      "focusSectionId": "2.3",
+      "guideId": "chapter2-cylindrical-conduction"
+    },
+    "createdStatus": "独立作問",
+    "reviewStatus": "式と単位の内部検算済み／外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [],
+    "id": "supp-found-resistor-interface-temperature-v1",
+    "prompt": "左100℃、右40℃の定常直列経路で、左から順にR₁=0.10 K/W、R₂=0.20 K/Wがある。二つの抵抗の間の温度は？",
+    "choices": [
+      "40 ℃",
+      "60 ℃",
+      "80 ℃",
+      "100 ℃"
+    ],
+    "answer": 2,
+    "difficulty": "標準・界面温度",
+    "explanation": "全抵抗0.30 K/WなのでQ̇=60/0.30=200 W。第1抵抗の温度降下は200×0.10=20 K。中間温度は100−20=80℃。",
+    "distractors": [
+      "右側境界温度と中間温度を混同しています。",
+      "温度差を各層へ半分ずつ分けています。",
+      "正解。第1抵抗に20 Kの温度降下が生じます。",
+      "左側境界温度のままで降下を無視しています。"
+    ],
+    "hints": [
+      "まず直列経路の熱移動率を求めます。",
+      "第1抵抗の温度降下Q̇R₁を左温度から引きます。"
+    ],
+    "solutionSteps": [
+      "Q̇=60/(0.1+0.2)=200 W。",
+      "ΔT₁=200×0.1=20 K。",
+      "T_interface=100−20=80℃。"
+    ],
+    "beginnerPitfall": "指定した温度境界、熱流の方向、面積基準が一致しているか点検する。"
+  },
+  {
+    "revision": "v1",
+    "field": "定常熱伝導・熱抵抗",
+    "prerequisites": [
+      "Fourier則",
+      "境界条件と熱抵抗"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "conceptual",
+    "source": {
+      "type": "supplement",
+      "reference": "§2.3の独立執筆詳細講義と仮想の数値条件による新規作問。原本の問題・翻訳・図版は転載しない。",
+      "chapterId": "ch2",
+      "focusSectionId": "2.3",
+      "guideId": "chapter2-cylindrical-conduction"
+    },
+    "createdStatus": "独立作問",
+    "reviewStatus": "式と単位の内部検算済み／外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [],
+    "id": "supp-found-resistor-network-principle-v1",
+    "prompt": "線形の定常熱抵抗ネットワークで、同じ両端温度を保ちながら既存の経路に新たな伝熱経路を並列追加した。どの説明が正しいか。",
+    "choices": [
+      "両端の温度差が同じなら合計伝熱率は増えうる",
+      "並列路を増やすと必ず全熱抵抗が増えてしまう",
+      "直列経路と並列経路で合成の定義は同一である",
+      "新しい経路を増やしても合計熱流率は必ず不変"
+    ],
+    "answer": 0,
+    "difficulty": "応用・熱橋",
+    "explanation": "並列では合成コンダクタンス1/R_eq=Σ1/R_iが増える。正の抵抗の経路を加えればR_eqは小さく、両端温度差一定なら総熱流率は増す。",
+    "distractors": [
+      "正解。伝熱経路が増えると合計コンダクタンスが増します。",
+      "抵抗の並列では全抵抗は小さくなります。",
+      "直列は抵抗の和、並列はコンダクタンスの和です。",
+      "両端温度差一定なら新枝にも熱が流れます。"
+    ],
+    "hints": [
+      "直列と並列の合成式を比べてください。",
+      "1/R_eq=1/R₁+1/R₂の右辺が増えると考えます。"
+    ],
+    "solutionSteps": [
+      "並列回路は逆抵抗（コンダクタンス）を加算する。",
+      "正の抵抗を加えると1/R_eqが増える。",
+      "温度差固定なら総Q̇=ΔT/R_eqは増える。"
+    ],
+    "beginnerPitfall": "指定した温度境界、熱流の方向、面積基準が一致しているか点検する。"
   }
 ]
