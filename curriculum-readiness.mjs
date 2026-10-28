@@ -52,7 +52,14 @@ export function auditFullCurriculumReadiness({book,originalNotes,questions,publi
   if(!Number.isSafeInteger(nPerSection)||nPerSection<1||!Number.isSafeInteger(nKinds)||nKinds<1)throw new TypeError('品質基準値が不正です。');
   const rows=sections.map(s=>{
     const note=notes.get(s.id);
-    const qs=questions.filter(q=>q?.source?.sectionNoteId===s.id||q?.source?.type==='book'&&q?.source?.section===s.id);
+    // Attribute independently authored application and calculation questions to their
+    // actual section, not just one check item and book-cited questions.
+    // A question matching several fields is counted once within this section.
+    const qs=questions.filter(q=>
+      q?.source?.sectionNoteId===s.id||
+      q?.source?.focusSectionId===s.id||
+      (q?.source?.type==='book'&&q?.source?.section===s.id)
+    );
     const available=qs.length,reviewed=qs.filter(q=>questionApprovals.has(q.id)).length;
     const kinds=uniq(qs.map(q=>q.questionKind).filter(k=>typeof k==='string'&&k.trim()));
     const independentlyWritten=Boolean(note&&note.sourceType==='original_independent_japanese_notes'&&note.expertReviewed===false);
