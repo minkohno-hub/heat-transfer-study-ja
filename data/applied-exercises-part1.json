@@ -199,7 +199,7 @@
       "prompt": "熱交換器の二端で流体間温度差が60 Kと30 Kです。補正なしの対数平均温度差ΔT_lmを、ln2≈0.6931として求めると何Kですか。",
       "choices": [
         "45.0 K",
-        "約43.3 K",
+        "43.3 K",
         "30.0 K",
         "60.0 K"
       ],
@@ -239,7 +239,7 @@
       "createdStatus": "作成済み",
       "reviewStatus": "独立手計算・内部整合チェック済み／外部専門家校閲前",
       "expertReviewed": false,
-      "revision": "v1",
+      "revision": "v2",
       "reportHistory": []
     },
     {

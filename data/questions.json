@@ -899,15 +899,15 @@
     "id": "supp-audit-convection-compensating-inputs",
     "prompt": "対流モデル Q̇=hA(Tₛ−T∞) で、面積と熱の向きを一定に保ち、hだけ2倍、温度差 (Tₛ−T∞) の大きさだけ半分にした場合、Q̇の大きさはどうなりますか。温度差は0ではありません。",
     "choices": [
-      "2倍",
+      "もとの2倍",
       "変わらない",
-      "半分",
-      "4倍"
+      "もとの半分",
+      "もとの4倍"
     ],
     "answer": 1,
     "explanation": "補足説明：hと温度差をそれぞれ2倍・半分にすると積は不変で、面積も変わらないので熱移動率の大きさは同じです。",
     "distractors": [
-      "hの変化だけを計算しています。",
+      "hだけの変化を計算しています。",
       "正解。2×(1/2)=1で、hΔTの積は一定です。",
       "温度差だけの変化を計算しています。",
       "2つの変化をどちらも2倍と誤認しています。"
@@ -937,7 +937,8 @@
     "createdStatus": "作成済み",
     "reviewStatus": "AIによる内部照合済み・外部専門家校閲なし",
     "expertReviewed": false,
-    "reportHistory": []
+    "reportHistory": [],
+    "revision": "v2"
   },
   {
     "id": "supp-audit-radiation-equal-temperatures",
@@ -1209,7 +1210,7 @@
     "choices": [
       "0.040",
       "0.20",
-      "4.0",
+      "0.004",
       "2.0"
     ],
     "answer": 0,
@@ -1217,7 +1218,7 @@
     "distractors": [
       "正解。L𝚌=0.002/0.10=0.020 m、Bi=40×0.020/20=0.040です。",
       "Aₛとの関係を取り違え、特性長さを過大評価しています。",
-      "体積と面積の単位換算や割り算が誤っています。",
+      "V/Aₛによる特性長さ、またはh/kₛの値を10分の1に誤って扱っています。",
       "kₛで割る操作を落としています。"
     ],
     "hints": [
@@ -1246,7 +1247,8 @@
     "createdStatus": "作成済み",
     "reviewStatus": "AIによる内部照合済み・外部専門家校閲なし",
     "expertReviewed": false,
-    "reportHistory": []
+    "reportHistory": [],
+    "revision": "v2"
   },
   {
     "id": "supp-expanded-fo-calc",
@@ -1739,14 +1741,14 @@
     "id": "supp-chapter-ch1-flux",
     "prompt": "一様に120 Wの熱が0.060 m²の面を通過します。熱流束の大きさはいくらですか。",
     "choices": [
-      "120 W/m²",
+      "12,000 W/m²",
       "2,000 W/m²",
       "7.2 W/m²",
       "20 W/m²"
     ],
     "answer": 1,
     "distractors": [
-      "面積で割らず熱移動率をそのまま使っています。",
+      "面積0.060 m²を0.010 m²と読み違えています。",
       "正解。q″=Q̇/A=120/0.060=2000 W/m²。",
       "面積と熱移動率を掛けています。",
       "小数の桁・面積の扱いを取り違えています。"
@@ -1777,7 +1779,8 @@
     "createdStatus": "作成済み",
     "reviewStatus": "AIによる内部照合済み・外部専門家校閲なし",
     "expertReviewed": false,
-    "reportHistory": []
+    "reportHistory": [],
+    "revision": "v2"
   },
   {
     "id": "supp-chapter-ch1-energy",
@@ -1786,14 +1789,14 @@
       "21,600 J",
       "0.667 J",
       "300 J",
-      "2,160 J"
+      "216,000 J"
     ],
     "answer": 0,
     "distractors": [
       "正解。E=Q̇t=120×180=21600 J。",
       "熱移動率を時間で割っています。",
       "時間と熱移動率を足しています。",
-      "計算結果のゼロが一つ不足しています。"
+      "熱移動時間を10倍に扱い、計算結果が10倍になっています。"
     ],
     "explanation": "正解。E=Q̇t=120×180=21600 J。 熱移動率が180秒間一定という条件が必要です。",
     "hints": [
@@ -1821,7 +1824,8 @@
     "createdStatus": "作成済み",
     "reviewStatus": "AIによる内部照合済み・外部専門家校閲なし",
     "expertReviewed": false,
-    "reportHistory": []
+    "reportHistory": [],
+    "revision": "v2"
   },
   {
     "id": "supp-chapter-ch1-storage",
@@ -2223,14 +2227,14 @@
     "id": "supp-chapter-ch4-fin-concept",
     "prompt": "同じ材料・断面・h・周囲温度で、先端断熱の直線フィンの長さだけ増やしたとき、フィン効率η_fとフィンの総放熱量の一般的な関係として正しいものはどれですか。",
     "choices": [
-      "効率が下がるので総放熱量も必ず下がる",
+      "効率が下がれば総放熱量も同じ比率で下がる",
       "効率も総放熱量も必ずゼロになる",
       "効率は長さと無関係に1である",
       "効率は下がり得る一方、総放熱量は増え得る"
     ],
     "answer": 3,
     "distractors": [
-      "効率は理想放熱量に対する割合であり、総量の増減と同じではありません。",
+      "効率は理想放熱量に対する割合であり、面積の増加を無視して総量を同じ比率で減らせません。",
       "長さを伸ばしただけでは放熱がゼロになりません。",
       "温度勾配の影響を無視しています。",
       "正解。面積の増加と温度勾配による効率低下が同時に起こり、総放熱量は増えることがあります。"
@@ -2261,7 +2265,8 @@
     "createdStatus": "作成済み",
     "reviewStatus": "AIによる内部照合済み・外部専門家校閲なし",
     "expertReviewed": false,
-    "reportHistory": []
+    "reportHistory": [],
+    "revision": "v2"
   },
   {
     "id": "supp-chapter-ch5-penetration",
@@ -2839,14 +2844,14 @@
     "id": "supp-chapter-ch9-qflux",
     "prompt": "加熱面積0.010 m²に一様に500 Wを供給するとき、熱流束q″はいくらですか。",
     "choices": [
-      "5,000 W/m²",
+      "500,000 W/m²",
       "500 W/m²",
       "50,000 W/m²",
       "5 W/m²"
     ],
     "answer": 2,
     "distractors": [
-      "面積を0.10 m²と誤認しています。",
+      "面積0.010 m²を0.0010 m²と誤読し、熱流束を10倍にしています。",
       "熱移動率の数値をそのまま使っています。",
       "正解。q″=Q̇/A=500/0.010=50000 W/m²。",
       "面積と熱移動率を掛けています。"
@@ -2877,7 +2882,8 @@
     "createdStatus": "作成済み",
     "reviewStatus": "AIによる内部照合済み・外部専門家校閲なし",
     "expertReviewed": false,
-    "reportHistory": []
+    "reportHistory": [],
+    "revision": "v2"
   },
   {
     "id": "supp-chapter-ch9-chf",
@@ -3018,14 +3024,14 @@
       "凹面でも自己へ届く割合は常に0",
       "凹面では自己へ届く割合が正になり得る",
       "凹面では自己へ届く割合が必ず1",
-      "凹面の自己へ届く割合は放射率と同じ"
+      "自己形態係数は表面放射率と同値になる"
     ],
     "answer": 1,
     "distractors": [
       "凸面と凹面の違いを無視しています。",
       "正解。凹面の異なる部分同士が見合う場合、自己形態係数は正になり得ます。",
       "すべてが自己へ戻るわけではありません。",
-      "形態係数は幾何学的割合で放射率とは異なります。"
+      "形態係数は幾何学的割合で、表面の放射率とは異なります。"
     ],
     "explanation": "正解。凹面の異なる部分同士が見合う場合、自己形態係数は正になり得ます。 自己形態係数は反射率や放射率と同じ概念ではありません。",
     "hints": [
@@ -3053,7 +3059,8 @@
     "createdStatus": "作成済み",
     "reviewStatus": "AIによる内部照合済み・外部専門家校閲なし",
     "expertReviewed": false,
-    "reportHistory": []
+    "reportHistory": [],
+    "revision": "v2"
   },
   {
     "id": "supp-chapter-ch11-fick",
@@ -6764,14 +6771,14 @@
     "prompt": "均一な面積0.080 m²の壁面を240 Wが150秒間通過します。平均熱流束と移動した熱量の正しい組合せは？",
     "choices": [
       "3,000 W/m² と36,000 J",
-      "240 W/m² と36,000 J",
+      "30,000 W/m² と36,000 J",
       "3,000 W/m² と1,600 J",
       "19.2 W/m² と36,000 J"
     ],
     "answer": 0,
     "distractors": [
       "正解。240/0.080=3000 W/m²、240×150=36000 J。",
-      "熱移動率をそのまま熱流束と誤認しています。",
+      "面積0.080 m²を0.0080 m²と読み違え、熱流束だけを10倍にしています。",
       "熱移動時間を熱移動率で割るなど、量と率を混同しています。",
       "面積で割らずに掛けています。"
     ],
@@ -6803,7 +6810,7 @@
     "expertReviewed": false,
     "reportHistory": [],
     "questionGroup": "original_independent_numerical_v1",
-    "revision": "v1"
+    "revision": "v2"
   },
   {
     "id": "supp-advanced-ch2-calc",
@@ -6949,8 +6956,8 @@
     "choices": [
       "69.3 s",
       "138.6 s",
-      "100 s",
-      "200 s"
+      "100.0 s",
+      "200.0 s"
     ],
     "answer": 1,
     "distractors": [
@@ -6987,7 +6994,7 @@
     "expertReviewed": false,
     "reportHistory": [],
     "questionGroup": "original_independent_numerical_v1",
-    "revision": "v1"
+    "revision": "v2"
   },
   {
     "id": "supp-advanced-ch6-calc",
@@ -7462,7 +7469,7 @@
     "prompt": "熱交換器の二端で流体間温度差が60 Kと30 Kです。補正なしの対数平均温度差ΔT_lmを、ln2≈0.6931として求めると何Kですか。",
     "choices": [
       "45.0 K",
-      "約43.3 K",
+      "43.3 K",
       "30.0 K",
       "60.0 K"
     ],
@@ -7502,7 +7509,7 @@
     "createdStatus": "作成済み",
     "reviewStatus": "独立手計算・内部整合チェック済み／外部専門家校閲前",
     "expertReviewed": false,
-    "revision": "v1",
+    "revision": "v2",
     "reportHistory": []
   },
   {

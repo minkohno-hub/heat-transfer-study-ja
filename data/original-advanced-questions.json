@@ -9,14 +9,14 @@
       "prompt": "均一な面積0.080 m²の壁面を240 Wが150秒間通過します。平均熱流束と移動した熱量の正しい組合せは？",
       "choices": [
         "3,000 W/m² と36,000 J",
-        "240 W/m² と36,000 J",
+        "30,000 W/m² と36,000 J",
         "3,000 W/m² と1,600 J",
         "19.2 W/m² と36,000 J"
       ],
       "answer": 0,
       "distractors": [
         "正解。240/0.080=3000 W/m²、240×150=36000 J。",
-        "熱移動率をそのまま熱流束と誤認しています。",
+        "面積0.080 m²を0.0080 m²と読み違え、熱流束だけを10倍にしています。",
         "熱移動時間を熱移動率で割るなど、量と率を混同しています。",
         "面積で割らずに掛けています。"
       ],
@@ -48,7 +48,7 @@
       "expertReviewed": false,
       "reportHistory": [],
       "questionGroup": "original_independent_numerical_v1",
-      "revision": "v1"
+      "revision": "v2"
     },
     {
       "id": "supp-advanced-ch2-calc",
@@ -194,8 +194,8 @@
       "choices": [
         "69.3 s",
         "138.6 s",
-        "100 s",
-        "200 s"
+        "100.0 s",
+        "200.0 s"
       ],
       "answer": 1,
       "distractors": [
@@ -232,7 +232,7 @@
       "expertReviewed": false,
       "reportHistory": [],
       "questionGroup": "original_independent_numerical_v1",
-      "revision": "v1"
+      "revision": "v2"
     },
     {
       "id": "supp-advanced-ch6-calc",

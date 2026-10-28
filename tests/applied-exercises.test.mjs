@@ -11,7 +11,7 @@ const solutions={
 '1.2':['30 K',()=>100*10*60*.75/(2*750),30],
 '2.2':['400 W',()=>.5*2*20/.05,400],
 '2.3':['7.5 K',()=>25/(.02+.03+.05)*.03,7.5],
-'3.2':['約43.3 K',()=>30/Math.log(2),43.28],
+'3.2':['43.3 K',()=>30/Math.log(2),43.28],
 '3.3':['ε=0.50、40℃',()=>14000/(400*(90-20))+20+14000/700,40.5],
 '4.3':['0.050',()=>100*.005/10,.05],
 '4.5':['約0.603',()=>.9051/1.5,.6034],
@@ -48,7 +48,7 @@ test('22 practical numericals are scientifically labeled, unique and correctly l
   perChapter.set(q.source.chapterId,(perChapter.get(q.source.chapterId)||0)+1);
   assert.equal(q.id,'supp-applied-'+sid.replace('.','-')+'-v1');
   assert.equal(validateQuestion(q),'',q.id);
-  assert.equal(q.revision,'v1');
+  assert.equal(q.revision,q.id==='supp-applied-3-2-v1'?'v2':'v1');
   assert.equal(q.source.type,'supplement');
   assert.equal(q.questionKind,'numerical');
   assert.equal(q.expertReviewed,false);
