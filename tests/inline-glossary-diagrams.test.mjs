@@ -51,6 +51,9 @@ test('foundational lookalike quantities have distinct beginner and technical exp
  assert.match(byId.get('emissivity').detail,/射度J/);
  assert.match(byId.get('kelvin').detail,/温度差/);
  assert.match(byId.get('thermal-diffusivity').detail,/物質拡散係数/);
+ assert.match(byId.get('radiation-network').unit,/^なし（射度JはW\/m²/);
+ assert.match(byId.get('radiation-network').formula,/Q̇_ij=A_iF_ij\(J_i−J_j\)/);
+ assert.match(byId.get('overall-u-area-basis').unit,/^なし（総括熱通過率UはW\/\(m²·K\)）$/);
 });
 test('term markup escapes content, is keyboard focusable, and avoids false nested scripts',()=>{
  const markup=renderTermLinks('熱流束を確認し、温度勾配を調べる',glossary);
