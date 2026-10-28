@@ -442,7 +442,9 @@ try {
   }
   // At phone widths, the bottom sheet must stay in the viewport and not
   // capture answer-key shortcuts while the definition is open.
-  // The earlier resume test can leave a saved quiz; discard only that draft before creating this dedicated test session.
+  // Reload clears the ephemeral quiz result panel, so a saved draft can be discarded through the regular UI.
+  await page.reload();
+  await page.locator('.app-shell').waitFor();
   await nav('quiz');
   if(await page.locator('.question-card').count())await page.locator('[data-action="exit-quiz"]').click();
   if(await page.locator('[data-action="discard-quiz"]').count())await page.locator('[data-action="discard-quiz"]').click();
