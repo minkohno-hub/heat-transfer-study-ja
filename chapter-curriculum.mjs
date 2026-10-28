@@ -25,7 +25,7 @@ export function chapterLearningOverview(book,questions,guides,attempts=[],readSe
   const last=new Map();
   for(const attempt of attempts){
     if(!attempt || typeof attempt.questionId!=='string')continue;
-    const at=Date.parse(attempt.at||'');
+    const at=typeof attempt.at==='number'?attempt.at:Date.parse(String(attempt.at||''));
     if(!Number.isFinite(at))continue;
     const existing=last.get(attempt.questionId);
     if(!existing||at>=existing.time)last.set(attempt.questionId,{time:at,correct:attempt.correct===true});
