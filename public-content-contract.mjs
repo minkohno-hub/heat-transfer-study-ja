@@ -144,6 +144,25 @@ export function checkPublicContent({book, questions, glossary, guides,originalNo
       linkedIds.add(link.id);
     }
   }
-  if (originalNotes!==null) errors.push(...validateOriginalNotes(book,originalNotes));
+  if (originalNotes!==null) {
+    errors.push(...validateOriginalNotes(book,originalNotes));
+    const noteIds=new Set(originalNotes.notes?.map(n=>n.sectionId)||[]);
+    const sectionQuestions=questions.filter(q=>q?.source?.sectionNoteId!==undefined);
+    const seen=new Set();
+    for(const q of sectionQuestions) {
+      const sid=q.source.sectionNoteId;
+      const section=sections.get(sid);
+      if(!noteIds.has(sid)||!section||q.source.chapterId!=='ch'+sid.split('.')[0] ||
+        q.source.type!=='supplement'||q.questionGroup!=='original_independent_section_review_v1'||
+        q.reviewStatus!=='AI作問・論理構造照合済み／外部専門家校閲前'||q.expertReviewed!==false||
+        !/^v[1-9]\d*$/.test(String(q.revision||''))) {
+        error('節別独自問題の参照先・未校閲表示・改訂番号が不正: '+String(q?.id));
+      }
+      if(seen.has(sid))error('節別独自問題の節IDが重複: '+sid);
+      seen.add(sid);
+    }
+    if(seen.size!==noteIds.size||sectionQuestions.length!==76)
+      error('76節の独立学習ノートと節別演習の対応に欠落があります。');
+  }
   return errors;
 }
