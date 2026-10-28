@@ -1,6 +1,6 @@
 // A descriptive coverage report, deliberately NOT a fabricated overall completion percentage.
 // Never treat a draft record or an original English PDF as a published Japanese lesson.
-export function learningCoverage({book,questions,glossary,guides,contentManifest,originalNotes=null}) {
+export function learningCoverage({book,questions,glossary,guides,contentManifest,originalNotes=null,deepLessons=null}) {
   const sections=book.chapters.flatMap(ch=>ch.sections);
   const publishedFilePaths=contentManifest.files||[];
   const original=questions.filter(q=>q.source.type==='supplement');
@@ -14,6 +14,7 @@ export function learningCoverage({book,questions,glossary,guides,contentManifest
       originalPracticeQuestions:original.filter(q=>q.source.chapterId===ch.id).length,
       originalGuideEntries:guides.filter(g=>g.bookChapter===ch.id).length,
       independentSectionNotes:originalNotes?.notes?.filter(n=>n.chapterId===ch.id).length??null,
+      originalDeepLessonCount:deepLessons?.lessons?.filter(l=>l.sectionId.startsWith(ch.id.slice(2)+'.')).length??null,
       independentSectionQuestions:original.filter(q=>q.source.sectionNoteId&&chapterIds.has(q.source.sectionNoteId)).length
     };
   });
@@ -29,6 +30,7 @@ export function learningCoverage({book,questions,glossary,guides,contentManifest
     originalChapterGuides:guides.filter(g=>g.bookChapter&&book.chapters.some(ch=>ch.id===g.bookChapter)).length,
     chaptersWithOriginalPractice:new Set(original.map(q=>q.source.chapterId).filter(Boolean)).size,
     independentlyAuthoredJapaneseNotes:originalNotes?.notes?.length??null,
+    originalDeepLessons:deepLessons?.lessons?.length??null,
     sectionsWithIndependentCheckQuestions:new Set(original.map(q=>q.source.sectionNoteId).filter(Boolean)).size,
     totalQuestions:questions.length,
     appCreatedQuestions:original.length,
