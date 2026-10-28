@@ -4,6 +4,7 @@ import {questionChapter,questionsForChapter,chapterLearningOverview} from './cha
 import {validateOriginalNotes,independentNoteForSection} from './original-notes.mjs';
 import {validateDeepLessons,deepLessonForSection} from './original-deep-lessons.mjs';
 import {renderTransientFields,renderTransientSteps,transientGraph,transientFieldNames} from './transient-ui.mjs';
+import {renderLinkedQuestion} from './quiz-glossary.mjs';
 const CORE_DATA_FILES = ['./data/book.json', './data/questions.json', './data/glossary.json', './data/content-manifest.json', './data/original-notes.json', './data/original-deep-lessons.json'];
 const LEGACY_STORAGE_KEY = 'heat-study-ja:v1';
 const PROFILES_KEY = 'heat-study-ja:profiles:v1';
@@ -38,6 +39,7 @@ let ui = {
   quiz: null,
   quizResult: null,
   reportId: null,
+  quizTermId: null,
   reportMessage: '',
   searchResults: null,
   calendarDate: todayISO(),
@@ -381,6 +383,7 @@ function render() {
       <footer class="app-footer"><span>学習データはこのブラウザー内に保存されます。</span><span>教材進捗：${translatedSectionCount()}節の日本語訳・下書きを収録</span></footer>
     </div>`;
   if(ui.reportId)document.querySelector('.report-modal button')?.focus();
+  if(ui.quizTermId)document.querySelector('.quiz-term-modal [data-action="close-quiz-term"]')?.focus();
 }
 
 function routeContent() {
@@ -1013,7 +1016,7 @@ function renderQuiz() {
   return `${pageHeading('問題演習', `${session.index + 1} / ${session.ids.length} 問`, 'まず自分で考え、必要ならヒントを少しずつ見てから回答しましょう。', '<button type="button" class="text-button" data-action="exit-quiz">演習を中断</button>')}
     <div class="quiz-progress"><div class="progress-line"><span style="width:${progress}%"></span></div><div class="quiz-progress-label"><span>${escapeHTML(question.field)} · ${escapeHTML(question.difficulty)}</span><span>${session.mode === 'quick' ? `${session.quickMinutes}分セット` : modeLabel(session.mode)}</span></div></div>
     <article class="question-card surface-card"><div class="question-meta"><div>${statusPill(`問題 ${session.index + 1}`, 'blue')} ${statusPill(reviewStatusLabel(question.reviewStatus), 'amber')}</div><div class="question-actions"><button type="button" class="icon-button ${state.questionBookmarks.includes(question.id) ? 'is-bookmarked' : ''}" data-question-bookmark="${escapeHTML(question.id)}" aria-label="問題をブックマーク">${state.questionBookmarks.includes(question.id) ? '★' : '☆'}</button><button type="button" class="text-button" data-action="open-report" data-report-id="${escapeHTML(question.id)}">問題を報告</button></div></div>
-      <h2>${renderMathText(question.prompt)}</h2>
+      <h2 class="quiz-question-heading">${renderLinkedQuestion(question.prompt,glossary,chunk=>renderMathText(chunk))}</h2>
       ${figure}
       <p class="think-prompt"><span aria-hidden="true">✦</span> まずは自分で考えてみましょう。迷ったら、ヒントを一つずつ開けます。</p>
       ${session.hintCount ? `<div class="hint-box"><strong>${question.solutionSteps ? '考え方のステップ' : 'ヒント'}</strong><ol>${hints.slice(0, session.hintCount).map(hint => `<li>${escapeHTML(hint)}</li>`).join('')}</ol></div>` : ''}
@@ -1023,7 +1026,28 @@ function renderQuiz() {
       ${!answer ? `<button class="button primary answer-submit" type="submit" ${session.selected === null ? 'disabled' : ''}>回答する <span aria-hidden="true">↵</span></button>` : '<button type="button" class="button primary answer-submit" data-action="next-question">次の問題へ →</button>'}</form>
       ${answer ? renderAnswerFeedback(question, answer, note, choiceOrder) : ''}
     </article>
-    ${ui.reportId === question.id ? renderReportForm(question) : ''}`;
+    ${ui.reportId === question.id ? renderReportForm(question) : ''}
+    ${ui.quizTermId ? renderQuizTermPopup(ui.quizTermId) : ''}`;
+}
+
+function renderQuizTermPopup(id){
+  const term=glossary?.find(item=>item.id===id);
+  if(!term)return '';
+  const guide=term.source?.type==='supplement'&&GUIDE_SECTIONS.some(g=>g.id===term.source.guideId)
+    ? `<a class="text-link" href="#guide/${escapeHTML(term.source.guideId)}">関連する学習ガイドへ →</a>`:'';
+  return `<div class="modal-backdrop quiz-term-backdrop">
+    <section class="quiz-term-modal surface-card" role="dialog" aria-modal="true" aria-labelledby="quiz-term-title" aria-describedby="quiz-term-definition">
+      <button type="button" class="modal-close" data-action="close-quiz-term" aria-label="用語説明を閉じる">×</button>
+      <p class="eyebrow">用語の説明</p>
+      <h2 id="quiz-term-title">${escapeHTML(term.ja)}</h2>
+      ${term.en?`<p class="quiz-term-english" lang="en">${escapeHTML(term.en)}</p>`:''}
+      <p id="quiz-term-definition">${escapeHTML(term.meaning)}</p>
+      <p class="quiz-term-source">${term.source?.type==='supplement'?'アプリ独自の補足説明（外部専門家校閲前）':'書籍に関連する学習用語（アプリ内全文照合・専門家校閲とは別）'}</p>
+      <div class="quiz-term-actions">
+        <button type="button" class="button secondary" data-quiz-term-detail="${escapeHTML(term.id)}">用語集で詳しく見る →</button>
+        ${guide}
+      </div>
+    </section></div>`;
 }
 
 function modeLabel(mode) { return ({ all: 'すべて', unanswered: '未回答', wrong: '誤答', bookmarked: 'ブックマーク', due: '復習候補', weak: '苦手候補', single: '選択した問題', quick: '短時間学習' })[mode] || '問題演習'; }
@@ -1164,6 +1188,14 @@ function makeId() { return globalThis.crypto?.randomUUID?.() || `${Date.now()}-$
 function addDaysISO(day, count) { const date = new Date(`${day}T12:00:00`); date.setDate(date.getDate() + count); return todayISO(date); }
 
 function onClick(event) {
+  if(ui.quizTermId && event.target.matches('.quiz-term-backdrop')){event.preventDefault();closeQuizTerm();return;}
+  const termButton=event.target.closest('[data-quiz-term]');
+  if(termButton&&ui.quiz){event.preventDefault();if(!glossary?.some(t=>t.id===termButton.dataset.quizTerm))return;ui.quizTermId=termButton.dataset.quizTerm;render();return;}
+  const termDetail=event.target.closest('[data-quiz-term-detail]');
+  if(termDetail&&glossary?.some(t=>t.id===termDetail.dataset.quizTermDetail)){
+    event.preventDefault();const id=termDetail.dataset.quizTermDetail;ui.quizTermId=null;ui.glossaryQuery='';persistQuiz();saveState();setRoute('glossary');
+    setTimeout(()=>{const card=document.getElementById('term-'+id);card?.scrollIntoView({block:'center'});const heading=card?.querySelector('h2');if(heading){heading.tabIndex=-1;heading.focus({preventScroll:true});}},80);return;
+  }
   const languageButton = event.target.closest('[data-language]');
   if (languageButton) {
     if (languageButton.disabled || !['ja', 'en'].includes(languageButton.dataset.language)) return;
@@ -1216,6 +1248,7 @@ function onClick(event) {
   const simMode = event.target.closest('[data-sim-mode]'); if (simMode) { ui.simMode=simMode.dataset.simMode; render(); return; }
   const actionButton = event.target.closest('[data-action]'); if (!actionButton) return;
   const action = actionButton.dataset.action;
+  if(action==='close-quiz-term'){closeQuizTerm();return;}
   if(action==='prepare-bookmark'){ui.bookmarkPosition=readerPosition();document.querySelector('#bookmark-note')?.focus();showStatus(sectionIsTranslated(getSection(ui.readerSection))?'この位置をしおりにします。メモを入力して「しおりを付ける」を押してください。':'この節の開始ページをしおりにします。必要ならメモを入力してください。');return;}
   if (action === 'toggle-theme') { const effective = state.settings.theme === 'system' ? (systemDark?.matches?'dark':'light') : state.settings.theme; state.settings.theme=effective==='dark'?'light':'dark'; saveState(); render(); }
   else if (action === 'reader-font-up') { state.settings.fontScale=Math.min(1.4,Number((state.settings.fontScale+0.05).toFixed(2))); saveState(); render(); }
@@ -1433,6 +1466,15 @@ function importData(replace) {
 function mergeById(existing,incoming) { const map=new Map(); for(const item of [...existing,...incoming]) map.set(item.id||JSON.stringify(item),item); return [...map.values()]; }
 
 function onKeyDown(event) {
+  if(ui.quizTermId){
+    if(event.key==='Escape'){event.preventDefault();closeQuizTerm();return;}
+    if(event.key==='Tab'){
+      const items=[...document.querySelectorAll('.quiz-term-modal button,.quiz-term-modal a[href]')].filter(x=>!x.disabled);
+      const first=items[0],last=items.at(-1);
+      if((event.shiftKey&&document.activeElement===first)||(!event.shiftKey&&document.activeElement===last)){event.preventDefault();(event.shiftKey?last:first)?.focus();}
+    }
+    return;
+  }
   if(ui.reportId){
     if(event.key==='Escape'){event.preventDefault();closeReport();return;}
     if(event.key==='Tab'){
@@ -1450,6 +1492,7 @@ function onKeyDown(event) {
   else if(event.key==='Enter' && !answered && session.selected!==null){event.preventDefault();document.querySelector('#quiz-answer-form')?.requestSubmit();}
 }
 
+function closeQuizTerm(){const id=ui.quizTermId;ui.quizTermId=null;render();if(id)document.querySelector('[data-quiz-term="'+id+'"]')?.focus({preventScroll:true});}
 function closeReport(){ui.reportId=null;render();document.querySelector('[data-action="open-report"]')?.focus();}
 
 function reviewStatusLabel(status) {
