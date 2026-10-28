@@ -134,6 +134,23 @@ try {
   await nav('glossary');
   await page.locator('#term-thermal-conductivity [data-start-question="supp-flat-thickness"]').click();
   assert.match(await page.locator('.question-card').innerText(),/厚さ L/);
+  await page.locator('.question-card h2 [data-term-id="thermal-conductivity"]').click();
+  await page.locator('#term-overlay [role="dialog"]').waitFor({state:'visible'});
+  assert.match(await page.locator('#term-sheet-title').innerText(),/熱伝導率/);
+  assert.match(await page.locator('.term-sheet').innerText(),/W\/\(m·K\)/);
+  assert.equal(await page.locator('.answer-choice input:checked').count(),0,
+    'dictionary lookup must not select an answer');
+  await page.keyboard.press('Escape');
+  assert.equal(await page.locator('#term-overlay').count(),0);
+  await page.locator('.question-card h2 [data-term-id="thermal-conductivity"]').focus();
+  await page.keyboard.press('Enter');
+  await page.locator('#term-overlay [role="dialog"]').waitFor({state:'visible'});
+  await page.locator('[data-term-detail="thermal-conductivity"]').click();
+  assert.match(page.url(),/#glossary$/);
+  await page.locator('#term-thermal-conductivity').waitFor({state:'visible'});
+  await nav('quiz');
+  await page.locator('[data-action="resume-quiz"]').first().click().catch(()=>{});
+
   await page.locator('[data-action="exit-quiz"]').click();
   await page.locator('[data-action="discard-quiz"]').click();
   await nav('map');
@@ -239,6 +256,11 @@ try {
   assert.match(await page.locator('#reader-deep-lesson').innerText(),/専門家校閲前/);
   await nav('simulator');
   assert.match(await page.locator('.result-number').innerText(),/5,625/);
+  assert.equal(await page.locator('.sim-physical-diagram').count(),1);
+  assert.match(await page.locator('.sim-physical-diagram').getAttribute('role'),/img/);
+  assert.match(await page.locator('.simulation-figure').innerText(),/アプリ作成の図/);
+  assert.match(await page.locator('.sim-physical-diagram desc').innerText(),/左から右/);
+
   await page.locator('#sim-form input[name="k"]').fill('0.000001');
   assert.match(await page.locator('.result-number').innerText(),/3\.750×10⁻⁴/);
   await page.locator('#sim-form input[name="k"]').fill('15');
@@ -261,6 +283,8 @@ try {
   // Full interactive time-dependent cooling, validity warning, heat-flow sign
   // and mobile chart are checked on the exact allowlisted public distribution.
   await page.locator('[data-sim-mode="transient"]').click();
+  assert.match(await page.locator('.sim-physical-diagram desc').innerText(),/2000秒/);
+
   assert.match(await page.locator('.result-number strong').innerText(),/34\.715/);
   assert.match(await page.locator('.sim-output-card').innerText(),/Bi = 0\.02/);
   assert.match(await page.locator('.sim-chart').getAttribute('aria-label'),/横軸は秒/);
