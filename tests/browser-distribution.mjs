@@ -23,6 +23,20 @@ try {
   const page=await context.newPage();
   const errors=[],external=[];
   const base=liveBase?new URL(liveBase).href:`http://127.0.0.1:${server.address().port}`;
+  if(engine==='webkit'&&!liveBase){
+    const probe=await browser.newContext();
+    try{
+      const probePage=await probe.newPage();
+      await probePage.goto(base);
+      await probePage.evaluate(()=>navigator.serviceWorker.ready);
+      await probePage.reload();
+      await probePage.waitForFunction(()=>Boolean(navigator.serviceWorker.controller));
+      await probe.setOffline(true);
+      await probePage.goto(new URL('./?webkit-shell-probe=1',base).href,{waitUntil:'domcontentloaded'});
+      await probePage.locator('.app-shell').waitFor();
+      console.log('WebKit: PDFを保存する前のオフライン画面再訪を確認');
+    }finally{await probe.close();}
+  }
   page.on('pageerror',error=>errors.push(error.message));
   page.on('request',request=>{if(!request.url().startsWith(base))external.push(request.url());});
   const nav=route=>page.locator(`.main-nav a[href="#${route}"]`).click();
