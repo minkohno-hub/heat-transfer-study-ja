@@ -138,18 +138,18 @@ try {
   assert.match(await page.locator('.page-heading h1').innerText(),/1 \/ 10 問/);
   const priorityIds=await page.evaluate(()=>JSON.parse(localStorage.getItem('heat-study-ja:v1')).quizDraft.ids);
   assert.equal(priorityIds.length,10);
-  assert.ok(priorityIds.every(id=>id.startsWith('supp-chapter-ch2-')||id.startsWith('supp-section-2-')||id.startsWith('supp-advanced-ch2-')||id.startsWith('supp-applied-2-')));
+  assert.ok(priorityIds.every(id=>id.startsWith('supp-chapter-ch2-')||id.startsWith('supp-section-2-')||id.startsWith('supp-advanced-ch2-')||id.startsWith('supp-applied-2-')||id.startsWith('supp-deep-heat-')));
   await page.locator('[data-action="exit-quiz"]').click();
   await page.locator('[data-action="discard-quiz"]').click();
   await nav('map');
   await page.locator('[data-chapter-card="ch2"] [data-chapter-practice="ch2"]:not([data-chapter-practice-mode])').click();
   await page.locator('.question-card').waitFor({state:'visible'});
-  assert.match(await page.locator('.page-heading h1').innerText(),/1 \/ 11 問/);
-  assert.equal((await page.evaluate(()=>JSON.parse(localStorage.getItem('heat-study-ja:v1')).quizDraft.ids)).every(id=>id.startsWith('supp-chapter-ch2-')||id.startsWith('supp-section-2-')||id.startsWith('supp-advanced-ch2-')||id.startsWith('supp-applied-2-')),true);
+  assert.match(await page.locator('.page-heading h1').innerText(),/1 \/ 15 問/);
+  assert.equal((await page.evaluate(()=>JSON.parse(localStorage.getItem('heat-study-ja:v1')).quizDraft.ids)).every(id=>id.startsWith('supp-chapter-ch2-')||id.startsWith('supp-section-2-')||id.startsWith('supp-advanced-ch2-')||id.startsWith('supp-applied-2-')||id.startsWith('supp-deep-heat-')),true);
   await page.locator('[data-action="exit-quiz"]').click();
   await page.locator('[data-action="discard-quiz"]').click();
   await page.locator('#quiz-start-form select[name="chapter"]').selectOption('ch9');
-  await page.locator('#quiz-start-form select[name="count"]').selectOption('182');
+  await page.locator('#quiz-start-form select[name="count"]').selectOption('190');
   await page.locator('#quiz-start-form button[type="submit"]').click();
   await page.locator('.question-card').waitFor({state:'visible'});
   assert.match(await page.locator('.page-heading h1').innerText(),/1 \/ 24 問/);
@@ -158,7 +158,7 @@ try {
   await nav('guide');
   await page.locator('#guide-chapter11-fick-mass [data-chapter-practice="ch11"]').click();
   await page.locator('.question-card').waitFor({state:'visible'});
-  assert.match(await page.locator('.page-heading h1').innerText(),/1 \/ 17 問/);
+  assert.match(await page.locator('.page-heading h1').innerText(),/1 \/ 21 問/);
   await page.locator('[data-action="exit-quiz"]').click();
   await page.locator('[data-action="discard-quiz"]').click();
   await nav('search');
@@ -404,6 +404,23 @@ try {
   await nav('reader');
   // In-depth original Japanese lessons must be accessible on both fresh and
   // previously cached distributions, independently of copyrighted book text.
+  // Verify newly added independent advanced lessons through the real reader UI.
+  await page.locator('.reader-toc [data-section="2.1"]').evaluate(element=>{
+    for(let n=element.parentElement;n;n=n.parentElement)if(n.tagName==='DETAILS')n.open=true;
+  });
+  await page.locator('.reader-toc [data-section="2.1"]').click();
+  await page.locator('#reader-deep-lesson').waitFor({state:'visible'});
+  assert.match(await page.locator('#reader-deep-lesson').innerText(),/熱伝導方程式を保存則から導く/);
+  assert.match(await page.locator('#reader-deep-lesson').innerText(),/30\.8 ℃/);
+  assert.equal(await page.locator('#reader-deep-lesson .deep-lesson-block').count(),7);
+  await page.locator('.reader-toc [data-section="11.3"]').evaluate(element=>{
+    for(let n=element.parentElement;n;n=n.parentElement)if(n.tagName==='DETAILS')n.open=true;
+  });
+  await page.locator('.reader-toc [data-section="11.3"]').click();
+  await page.locator('#reader-deep-lesson').waitFor({state:'visible'});
+  assert.match(await page.locator('#reader-deep-lesson').innerText(),/Fickの法則/);
+  assert.match(await page.locator('#reader-deep-lesson').innerText(),/0\.01396/);
+  assert.equal(await page.locator('#reader-deep-lesson .deep-lesson-block').count(),7);
   await page.locator('.reader-toc [data-section="3.2"]').evaluate(element=>{
     for(let n=element.parentElement;n;n=n.parentElement)if(n.tagName==='DETAILS')n.open=true;
   });
