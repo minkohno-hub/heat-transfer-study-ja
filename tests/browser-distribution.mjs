@@ -159,6 +159,11 @@ try {
   await page.locator('.result-card .result-link').first().click();
   await page.locator('#reader-original-note').waitFor({state:'visible'});
   assert.match(await page.locator('#reader-original-note').innerText(),/独立執筆・学術校閲前/);
+  await page.locator('#reader-original-note [data-start-question]').click();
+  await page.locator('.question-card').waitFor({state:'visible'});
+  assert.match(await page.locator('.question-card').innerText(),/独立学習ノート/);
+  await page.locator('[data-action="exit-quiz"]').click();
+  await page.locator('[data-action="discard-quiz"]').click();
   await nav('simulator');
   assert.match(await page.locator('.result-number').innerText(),/5,625/);
   await page.locator('#sim-form input[name="k"]').fill('0.000001');
