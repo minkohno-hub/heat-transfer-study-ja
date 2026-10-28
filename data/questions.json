@@ -9361,5 +9361,386 @@
       "q_b=kAc m θb F≈5.260 W。断熱先端の5.166 Wより大きいことを確認する。"
     ],
     "beginnerPitfall": "先端対流の式で断熱先端と同じtanh(mL)を無条件に使わない。"
+  },
+  {
+    "revision": "v1",
+    "field": "伝熱の基本量・保存則",
+    "prerequisites": [
+      "熱移動率と熱流束",
+      "単位と積分"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "§1.1の独立執筆詳細教材および仮想条件に基づく新規問題。原本設問・原図・本文は転載しない。",
+      "chapterId": "ch1",
+      "focusSectionId": "1.1"
+    },
+    "createdStatus": "独立作問",
+    "reviewStatus": "式・単位の内部確認済み／第三者専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [],
+    "id": "supp-deep-heat-rate-flux-integral-v1",
+    "prompt": "定常の平面上で外向き熱流束がq″(x)=100+200x W/m²（xはm単位で0から1まで）、幅が0.50 mである。面全体の外向き熱移動率はいくらか。",
+    "choices": [
+      "50 W",
+      "100 W",
+      "150 W",
+      "200 W"
+    ],
+    "answer": 1,
+    "difficulty": "標準計算",
+    "explanation": "dA=0.50dxなので、Q̇=∫₀¹(100+200x)0.50dx=0.50(100+100)=100 W。面積0.50 m²の平均は200 W/m²。",
+    "distractors": [
+      "端点の値100 W/m²に面積0.50 m²を掛けただけです。",
+      "正解。分布を面積で積分します。",
+      "最大熱流束300 W/m²を全面に適用しています。",
+      "平均熱流束200 W/m²を熱移動率200 Wと混同しています。"
+    ],
+    "hints": [
+      "熱流束は位置で変化します。局所値を面積で積分してください。",
+      "微小面積dA=0.50dxとして定積分します。"
+    ],
+    "solutionSteps": [
+      "定義Q̇=∫_A q″dAを使う。",
+      "幅一定の長方形だからdA=0.50dx。",
+      "∫₀¹(100+200x)0.50dx=100 W。",
+      "WとW/m²を区別する。"
+    ],
+    "beginnerPitfall": "熱移動量J・熱移動率W・熱流束W/m²と、外向きの符号を区別する。"
+  },
+  {
+    "revision": "v1",
+    "field": "伝熱の基本量・保存則",
+    "prerequisites": [
+      "熱移動率と熱流束",
+      "単位と積分"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "§1.1の独立執筆詳細教材および仮想条件に基づく新規問題。原本設問・原図・本文は転載しない。",
+      "chapterId": "ch1",
+      "focusSectionId": "1.1"
+    },
+    "createdStatus": "独立作問",
+    "reviewStatus": "式・単位の内部確認済み／第三者専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [],
+    "id": "supp-deep-variable-rate-integral-v1",
+    "prompt": "外向き熱移動率が0秒で0 W、10秒で100 Wへ時間に比例して直線的に増える。10秒間に外へ移った熱移動量はいくらか。",
+    "choices": [
+      "1000 J",
+      "100 J",
+      "500 J",
+      "50 J"
+    ],
+    "answer": 2,
+    "difficulty": "標準計算",
+    "explanation": "熱移動率の時間積分は台形の面積。平均(0+100)/2=50 W、10秒でQ=50×10=500 J。",
+    "distractors": [
+      "終了時の100 Wが10秒間ずっと続くと誤認しています。",
+      "平均熱移動率と時間を掛ける際に時間の桁を誤っています。",
+      "正解。線形変動の平均50 Wを10秒積算します。",
+      "50 Wは平均熱移動率であり熱移動量ではありません。"
+    ],
+    "hints": [
+      "熱移動率は一定ではありません。",
+      "時間に対するQ̇のグラフの三角形の面積を求めます。"
+    ],
+    "solutionSteps": [
+      "Q=∫₀¹⁰ Q̇dtを設定する。",
+      "直線増加なので平均50 W。",
+      "50 W×10 s=500 J。",
+      "求める単位がJであることを検査する。"
+    ],
+    "beginnerPitfall": "熱移動量J・熱移動率W・熱流束W/m²と、外向きの符号を区別する。"
+  },
+  {
+    "revision": "v1",
+    "field": "伝熱の基本量・保存則",
+    "prerequisites": [
+      "熱移動率と熱流束",
+      "単位と積分"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "§1.1の独立執筆詳細教材および仮想条件に基づく新規問題。原本設問・原図・本文は転載しない。",
+      "chapterId": "ch1",
+      "focusSectionId": "1.1"
+    },
+    "createdStatus": "独立作問",
+    "reviewStatus": "式・単位の内部確認済み／第三者専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [],
+    "id": "supp-deep-boundary-energy-balance-v1",
+    "prompt": "質量が出入りしない閉じた系に30秒間、外部から400 Wの熱が入り、同時に系が外部へ100 Wの仕事率で仕事をした。運動・位置エネルギー変化は無視できる。内部エネルギー変化ΔUは？",
+    "choices": [
+      "+9000 J",
+      "+15000 J",
+      "−9000 J",
+      "+300 J"
+    ],
+    "answer": 0,
+    "difficulty": "応用計算",
+    "explanation": "入熱12000 J、系がする仕事3000 J。ΔU=Q_in−W_out=12000−3000=+9000 J。",
+    "distractors": [
+      "正解。熱と仕事の符号を区別して保存式に代入しています。",
+      "系がした仕事を加えてしまった値です。",
+      "入熱と外向き仕事の符号を逆にしています。",
+      "300 Wは正味のエネルギー蓄積率で、30秒積算する前の値です。"
+    ],
+    "hints": [
+      "閉じた系の第一法則ΔU=Q_in−W_outを使います。",
+      "正味の蓄積率は400−100=300 Wです。"
+    ],
+    "solutionSteps": [
+      "熱流入Q_in=400×30=12000 J。",
+      "系の外向き仕事W_out=100×30=3000 J。",
+      "ΔU=12000−3000=9000 J。",
+      "正のΔUは内部エネルギーの増加を意味する。"
+    ],
+    "beginnerPitfall": "熱移動量J・熱移動率W・熱流束W/m²と、外向きの符号を区別する。"
+  },
+  {
+    "revision": "v1",
+    "field": "伝熱の基本量・保存則",
+    "prerequisites": [
+      "熱移動率と熱流束",
+      "単位と積分"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "conceptual",
+    "source": {
+      "type": "supplement",
+      "reference": "§1.1の独立執筆詳細教材および仮想条件に基づく新規問題。原本設問・原図・本文は転載しない。",
+      "chapterId": "ch1",
+      "focusSectionId": "1.1"
+    },
+    "createdStatus": "独立作問",
+    "reviewStatus": "式・単位の内部確認済み／第三者専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [],
+    "id": "supp-deep-rate-vs-state-v1",
+    "prompt": "物体の表面温度を高精度に測定できたが、熱伝導率や流体の流れ、周囲の放射環境は不明である。表面からの熱移動率について正しい結論はどれか。",
+    "choices": [
+      "表面温度に面積を掛ければ熱移動率が決まる",
+      "物体が高温なら熱移動率は常に正と決まる",
+      "定常なら温度差の有無にかかわらず熱移動率はゼロ",
+      "温度だけでは定量化できず、機構と境界条件が必要"
+    ],
+    "answer": 3,
+    "difficulty": "概念・適用判断",
+    "explanation": "熱移動率には熱流束または伝熱モデルが必要。熱伝導なら温度勾配とk、対流ならhと温度差、放射なら表面放射特性と周囲温度等が必要。温度だけから方向と大きさを一般には確定できない。",
+    "distractors": [
+      "温度×面積はWにならず、次元が一致しません。",
+      "正負は指定した向きと周囲の状態に依存します。",
+      "定常は蓄熱率ゼロを意味しても、系を通過する熱移動率がゼロとは限りません。",
+      "正解。境界の駆動力と輸送係数を特定します。"
+    ],
+    "hints": [
+      "温度の単位と熱移動率Wの単位を比較します。",
+      "熱伝導・対流・放射それぞれに必要な入力を考えます。"
+    ],
+    "solutionSteps": [
+      "温度は状態量で、Wを直接与えない。",
+      "熱流束の構成則を適用するための情報を確認する。",
+      "輸送機構と境界条件が不明なら熱移動率は確定できない。"
+    ],
+    "beginnerPitfall": "熱移動量J・熱移動率W・熱流束W/m²と、外向きの符号を区別する。"
+  },
+  {
+    "revision": "v1",
+    "field": "熱交換器・エネルギー収支",
+    "prerequisites": [
+      "熱容量流量",
+      "定常エネルギー収支"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "§3.1の独立執筆詳細教材および仮想条件に基づく新規問題。原本設問・原図・本文は転載しない。",
+      "chapterId": "ch3",
+      "focusSectionId": "3.1"
+    },
+    "createdStatus": "独立作問",
+    "reviewStatus": "式・単位の内部確認済み／第三者専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [],
+    "id": "supp-deep-exchanger-cold-outlet-v1",
+    "prompt": "隔壁型熱交換器の高温側がṁ_h=0.60 kg/s、c_p,h=4000 J/(kg·K)、入口70℃、出口50℃。低温側はṁ_c=0.80 kg/s、c_p,c=4000 J/(kg·K)、入口20℃。定常・断熱・相変化なしと仮定した低温側出口温度は？",
+    "choices": [
+      "25℃",
+      "30℃",
+      "35℃",
+      "50℃"
+    ],
+    "answer": 2,
+    "difficulty": "標準計算",
+    "explanation": "温側Q̇=0.6×4000×20=48000 W。低温側C_c=0.8×4000=3200 W/Kなので温度上昇15 K。出口20+15=35℃。",
+    "distractors": [
+      "温側の温度低下20 Kを冷側の温度上昇として用いていませんが、この値はエネルギー収支と合いません。",
+      "低温側の温度上昇を10 Kと誤る値です。",
+      "正解。両側の熱容量流量を区別します。",
+      "高温側の出口温度を冷側の出口温度と同じと仮定しています。"
+    ],
+    "hints": [
+      "まず高温側の放熱率をWで計算します。",
+      "Q̇=C_c(T_c,out−20℃)を解きます。"
+    ],
+    "solutionSteps": [
+      "C_h=2400 W/K、Q̇=2400×20=48000 W。",
+      "C_c=3200 W/K。",
+      "T_c,out=20+48000/3200=35℃。",
+      "両側のエネルギー収支を再代入で確認する。"
+    ],
+    "beginnerPitfall": "高温側・低温側の流量、入口・出口、および外部損失の有無を確認する。"
+  },
+  {
+    "revision": "v1",
+    "field": "熱交換器・エネルギー収支",
+    "prerequisites": [
+      "熱容量流量",
+      "定常エネルギー収支"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "§3.1の独立執筆詳細教材および仮想条件に基づく新規問題。原本設問・原図・本文は転載しない。",
+      "chapterId": "ch3",
+      "focusSectionId": "3.1"
+    },
+    "createdStatus": "独立作問",
+    "reviewStatus": "式・単位の内部確認済み／第三者専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [],
+    "id": "supp-deep-exchanger-heat-loss-v1",
+    "prompt": "定常熱交換器で温側流体が50 kWのエンタルピー率を失い、冷側流体が46 kWを受け取った。軸仕事・蓄熱は無視できる。外部への熱損失率は？",
+    "choices": [
+      "0 kW",
+      "4 kW",
+      "46 kW",
+      "96 kW"
+    ],
+    "answer": 1,
+    "difficulty": "概念・計算",
+    "explanation": "定常・軸仕事なしならQ̇_h=Q̇_c+Q̇_loss。したがって50−46=4 kWが周囲へ流出。",
+    "distractors": [
+      "熱損失がないと決めつけ、両側の差を無視しています。",
+      "正解。温側から減少した50 kWのうち46 kWが冷側へ移動します。",
+      "冷側への熱移動率そのものを外部損失と誤認しています。",
+      "温側損失と冷側受熱を足しており、保存則と逆です。"
+    ],
+    "hints": [
+      "装置全体を制御体積として扱います。",
+      "温側の失熱＝冷側の受熱＋外部損失。"
+    ],
+    "solutionSteps": [
+      "熱収支Q̇_h−Q̇_c=Q̇_lossを立てる。",
+      "50−46=4 kW。",
+      "正の4 kWは周囲への損失を表す。"
+    ],
+    "beginnerPitfall": "高温側・低温側の流量、入口・出口、および外部損失の有無を確認する。"
+  },
+  {
+    "revision": "v1",
+    "field": "熱交換器・エネルギー収支",
+    "prerequisites": [
+      "熱容量流量",
+      "定常エネルギー収支"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "conceptual",
+    "source": {
+      "type": "supplement",
+      "reference": "§3.1の独立執筆詳細教材および仮想条件に基づく新規問題。原本設問・原図・本文は転載しない。",
+      "chapterId": "ch3",
+      "focusSectionId": "3.1"
+    },
+    "createdStatus": "独立作問",
+    "reviewStatus": "式・単位の内部確認済み／第三者専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [],
+    "id": "supp-deep-exchanger-qmax-v1",
+    "prompt": "相変化のない熱交換器で温側・冷側の熱容量流量が各2400、3200 W/K、入口温度が70、20℃である。断熱・定常の理想最大熱移動率Q̇_maxは？",
+    "choices": [
+      "120 kW",
+      "160 kW",
+      "48 kW",
+      "8 kW"
+    ],
+    "answer": 0,
+    "difficulty": "概念・式評価",
+    "explanation": "C_min=2400 W/K、最大の入口温度差は50 K。Q̇_max=C_min×50=120000 W=120 kW。",
+    "distractors": [
+      "正解。最大熱量は小さい方の熱容量流量C_minで決まります。",
+      "C_maxを使ったため上界を過大にしています。",
+      "例示された実際の熱移動率48 kWと理想上界を混同しています。",
+      "入口温度差や単位の取り扱いが不適切です。"
+    ],
+    "hints": [
+      "C_hとC_cのどちらが小さいですか。",
+      "Q̇_max=C_min(T_h,in−T_c,in)です。"
+    ],
+    "solutionSteps": [
+      "入口温度差70−20=50 K。",
+      "C_min=2400 W/K。",
+      "Q̇_max=2400×50=120000 W。",
+      "出力を120 kWと表記。"
+    ],
+    "beginnerPitfall": "高温側・低温側の流量、入口・出口、および外部損失の有無を確認する。"
+  },
+  {
+    "revision": "v1",
+    "field": "熱交換器・エネルギー収支",
+    "prerequisites": [
+      "熱容量流量",
+      "定常エネルギー収支"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "conceptual",
+    "source": {
+      "type": "supplement",
+      "reference": "§3.1の独立執筆詳細教材および仮想条件に基づく新規問題。原本設問・原図・本文は転載しない。",
+      "chapterId": "ch3",
+      "focusSectionId": "3.1"
+    },
+    "createdStatus": "独立作問",
+    "reviewStatus": "式・単位の内部確認済み／第三者専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [],
+    "id": "supp-deep-exchanger-parallel-vs-counter-v1",
+    "prompt": "外部との熱交換がない受動的な隔壁型熱交換器で、流体の相変化がなく比熱は一定とする。並流と向流の出口温度に関する記述として正しいのは？",
+    "choices": [
+      "並流では冷側出口が温側出口より常に高温になる",
+      "向流では冷側出口が温側出口より高温となることが条件によって可能",
+      "並流・向流の温度差分布は常に同じ",
+      "向流では熱容量流量が必ず等しい"
+    ],
+    "answer": 1,
+    "difficulty": "概念・設計判断",
+    "explanation": "並流では正の有限伝熱面積による受動的伝熱で、出口温度の冷温逆転は起こらない。向流では温側入口と冷側出口が近接するため、熱容量流量やUAに応じて冷側出口が温側出口を上回る場合がある。これは温側入口を上回る意味ではない。",
+    "distractors": [
+      "並流の出口で温度の逆転は起こらず、端末温度差が負になる条件と矛盾します。",
+      "正解。向流の温度分布ではこの関係が許される場合があります。",
+      "流路配置で温度差分布が変わることが熱交換器設計の要点です。",
+      "熱容量流量は質量流量と比熱で決まり、流路配置が等しい値を強制しません。"
+    ],
+    "hints": [
+      "両流体の温度差を流路の入口から出口まで描きます。",
+      "向流では『温側入口と冷側出口』が同じ端にあります。"
+    ],
+    "solutionSteps": [
+      "並流では両入口が同端で、下流へ温度差が減少する。",
+      "向流では入口位置が反対で、端末の組み合わせが異なる。",
+      "よって条件により向流の冷側出口が温側出口を超えうる。"
+    ],
+    "beginnerPitfall": "高温側・低温側の流量、入口・出口、および外部損失の有無を確認する。"
   }
 ]
