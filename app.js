@@ -754,7 +754,7 @@ function renderGlossary() {
     const reviewTag = term.reviewStatus === 'needs_review' ? statusPill('校閲前', 'amber') : '';
     return `<article class="term-card surface-card" id="term-${escapeHTML(term.id)}" lang="ja"><div class="term-heading"><h2 lang="${primaryLanguage}">${escapeHTML(primary)}</h2>${secondary?`<span lang="${primaryLanguage==='en'?'ja':'en'}">${escapeHTML(secondary)}</span>`:''}</div><p lang="${meaningLanguage}">${escapeHTML(meaning)}</p><div class="term-source">${sourceLabel(term.source)}</div>${reviewTag}${sourceLink}${questionLinks}</article>`;
   }).join('') || '<div class="empty-state"><p>一致する用語がありません。</p></div>';
-  return `${pageHeading('用語集', '専門用語を、自分の言葉に。', '日本語の意味と英語の原語を確認できます。補足説明と本書に由来する内容を分けて表示します。')}
+  return `${pageHeading('用語集', '専門用語を、自分の言葉に。', `${glossary.length}語を収録。日本語の意味と英語の原語を確認できます。問題文の点線付き用語からも説明を開けます。補足説明と本書に由来する内容を区別します。`)}
     <div class="reader-toolbar glossary-language-toolbar"><div class="language-toggle" role="group" aria-label="用語の表示言語"><button type="button" class="${language === 'ja' ? 'selected' : ''}" data-language="ja" aria-pressed="${language === 'ja'}">日本語</button><button type="button" class="${language === 'en' ? 'selected' : ''}" data-language="en" aria-pressed="${language === 'en'}">英語</button></div><span class="language-note">${language === 'ja' ? '日本語の用語名' : '英語名を優先・説明は収録言語で表示'}</span></div>
     <div class="glossary-search surface-card"><label for="glossary-query">用語を探す</label><input id="glossary-query" type="search" value="${escapeHTML(query)}" placeholder="用語や英語名を入力"/></div>
     <div class="glossary-grid">${termCards}</div>
