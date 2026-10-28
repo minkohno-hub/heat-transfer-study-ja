@@ -9375,10 +9375,11 @@
       "type": "supplement",
       "reference": "§1.1の独立執筆詳細教材および仮想条件に基づく新規問題。原本設問・原図・本文は転載しない。",
       "chapterId": "ch1",
-      "focusSectionId": "1.1"
+      "focusSectionId": "1.1",
+      "guideId": "chapter1-energy-balance"
     },
     "createdStatus": "独立作問",
-    "reviewStatus": "式・単位の内部確認済み／第三者専門家校閲前",
+    "reviewStatus": "式・単位の内部確認済み／外部専門家校閲前",
     "expertReviewed": false,
     "reportHistory": [],
     "id": "supp-deep-heat-rate-flux-integral-v1",
@@ -9423,10 +9424,11 @@
       "type": "supplement",
       "reference": "§1.1の独立執筆詳細教材および仮想条件に基づく新規問題。原本設問・原図・本文は転載しない。",
       "chapterId": "ch1",
-      "focusSectionId": "1.1"
+      "focusSectionId": "1.1",
+      "guideId": "chapter1-energy-balance"
     },
     "createdStatus": "独立作問",
-    "reviewStatus": "式・単位の内部確認済み／第三者専門家校閲前",
+    "reviewStatus": "式・単位の内部確認済み／外部専門家校閲前",
     "expertReviewed": false,
     "reportHistory": [],
     "id": "supp-deep-variable-rate-integral-v1",
@@ -9471,10 +9473,11 @@
       "type": "supplement",
       "reference": "§1.1の独立執筆詳細教材および仮想条件に基づく新規問題。原本設問・原図・本文は転載しない。",
       "chapterId": "ch1",
-      "focusSectionId": "1.1"
+      "focusSectionId": "1.1",
+      "guideId": "chapter1-energy-balance"
     },
     "createdStatus": "独立作問",
-    "reviewStatus": "式・単位の内部確認済み／第三者専門家校閲前",
+    "reviewStatus": "式・単位の内部確認済み／外部専門家校閲前",
     "expertReviewed": false,
     "reportHistory": [],
     "id": "supp-deep-boundary-energy-balance-v1",
@@ -9519,10 +9522,11 @@
       "type": "supplement",
       "reference": "§1.1の独立執筆詳細教材および仮想条件に基づく新規問題。原本設問・原図・本文は転載しない。",
       "chapterId": "ch1",
-      "focusSectionId": "1.1"
+      "focusSectionId": "1.1",
+      "guideId": "chapter1-energy-balance"
     },
     "createdStatus": "独立作問",
-    "reviewStatus": "式・単位の内部確認済み／第三者専門家校閲前",
+    "reviewStatus": "式・単位の内部確認済み／外部専門家校閲前",
     "expertReviewed": false,
     "reportHistory": [],
     "id": "supp-deep-rate-vs-state-v1",
@@ -9566,10 +9570,11 @@
       "type": "supplement",
       "reference": "§3.1の独立執筆詳細教材および仮想条件に基づく新規問題。原本設問・原図・本文は転載しない。",
       "chapterId": "ch3",
-      "focusSectionId": "3.1"
+      "focusSectionId": "3.1",
+      "guideId": "chapter3-effectiveness-ntu"
     },
     "createdStatus": "独立作問",
-    "reviewStatus": "式・単位の内部確認済み／第三者専門家校閲前",
+    "reviewStatus": "式・単位の内部確認済み／外部専門家校閲前",
     "expertReviewed": false,
     "reportHistory": [],
     "id": "supp-deep-exchanger-cold-outlet-v1",
@@ -9614,10 +9619,11 @@
       "type": "supplement",
       "reference": "§3.1の独立執筆詳細教材および仮想条件に基づく新規問題。原本設問・原図・本文は転載しない。",
       "chapterId": "ch3",
-      "focusSectionId": "3.1"
+      "focusSectionId": "3.1",
+      "guideId": "chapter3-effectiveness-ntu"
     },
     "createdStatus": "独立作問",
-    "reviewStatus": "式・単位の内部確認済み／第三者専門家校閲前",
+    "reviewStatus": "式・単位の内部確認済み／外部専門家校閲前",
     "expertReviewed": false,
     "reportHistory": [],
     "id": "supp-deep-exchanger-heat-loss-v1",
@@ -9661,10 +9667,11 @@
       "type": "supplement",
       "reference": "§3.1の独立執筆詳細教材および仮想条件に基づく新規問題。原本設問・原図・本文は転載しない。",
       "chapterId": "ch3",
-      "focusSectionId": "3.1"
+      "focusSectionId": "3.1",
+      "guideId": "chapter3-effectiveness-ntu"
     },
     "createdStatus": "独立作問",
-    "reviewStatus": "式・単位の内部確認済み／第三者専門家校閲前",
+    "reviewStatus": "式・単位の内部確認済み／外部専門家校閲前",
     "expertReviewed": false,
     "reportHistory": [],
     "id": "supp-deep-exchanger-qmax-v1",
@@ -9709,10 +9716,11 @@
       "type": "supplement",
       "reference": "§3.1の独立執筆詳細教材および仮想条件に基づく新規問題。原本設問・原図・本文は転載しない。",
       "chapterId": "ch3",
-      "focusSectionId": "3.1"
+      "focusSectionId": "3.1",
+      "guideId": "chapter3-effectiveness-ntu"
     },
     "createdStatus": "独立作問",
-    "reviewStatus": "式・単位の内部確認済み／第三者専門家校閲前",
+    "reviewStatus": "式・単位の内部確認済み／外部専門家校閲前",
     "expertReviewed": false,
     "reportHistory": [],
     "id": "supp-deep-exchanger-parallel-vs-counter-v1",
