@@ -13,7 +13,7 @@
       "example": "同じ流速、同じ直径の円管内流と円柱横流れでも、速度場と温度境界が異なるため同じNu相関を流用しない。",
       "limits": "相関式ごとのレイノルズ数範囲、プラントル数範囲、助走区間の扱い、物性評価温度を確認する。",
       "selfCheck": "円柱横流れと円管内流で同じReならNuも必ず同じか。",
-      "answer": "同じではない",
+      "answer": "同じとは限らない。流れと形状が違う",
       "reviewStatus": "AI_drafted_pending_independent_expert_review"
     },
     {
@@ -35,7 +35,7 @@
       "example": "相関式の範囲内でReを2倍にしたときNu∝Re^0.8ならNu比は約1.74。圧力損失が何倍かは摩擦係数と流速を別に考える必要がある。",
       "limits": "遷移域・粗面管・高粘度流体などに同じ係数を盲目的に適用しない。Dittus–Boelter形は適用範囲を必ず確認する。",
       "selfCheck": "管内乱流で熱交換量が増えれば、必要ポンプ動力は必ず減るか。",
-      "answer": "必ずしも減らない",
+      "answer": "必ずしも減らない。圧力損失も増え得る",
       "reviewStatus": "AI_drafted_pending_independent_expert_review"
     },
     {

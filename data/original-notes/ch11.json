@@ -56,8 +56,8 @@
       "relation": "等モル相互拡散ではN_total=0ならN_A=J_A。停滞成分BでN_B=0の場合、一般にはN_A≠J_Aとなる。",
       "example": "揮発成分Aが非揮発性成分B中を移動する場合、Aの蒸発がバルクの平均流れを生じさせるため、単純なJ_Aだけから全蒸発速度を決められないことがある。",
       "limits": "温度・圧力一定、二成分、定常の条件でも組成変化による対流成分があり得る。全モル流束を見落とさない。",
-      "selfCheck": "N_B=0という条件からN_total=0と結論できるか。",
-      "answer": "できない",
+      "selfCheck": "二成分系でN_total=N_A+N_Bと定義します。N_B=0からN_total=0と結論できますか。",
+      "answer": "できない。N_Aが残る場合がある",
       "reviewStatus": "AI_drafted_pending_independent_expert_review"
     },
     {

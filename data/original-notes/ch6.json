@@ -13,7 +13,7 @@
       "example": "同じ形状で流速を2倍にするとReは2倍になるが、Nuやhが必ず2倍になるわけではない。NuとReの関係は層流・乱流や熱境界条件で異なる。",
       "limits": "平板、円管、円柱周りでは相関式が異なる。速度境界層と温度境界層はPrにより厚さが異なり得る。",
       "selfCheck": "対流熱伝達率hは流体の固定された物性値か。",
-      "answer": "いいえ",
+      "answer": "いいえ。流れと形状にも依存する",
       "reviewStatus": "AI_drafted_pending_independent_expert_review"
     },
     {
@@ -23,8 +23,8 @@
       "relation": "Re_x=U_∞x/ν。理想的な層流ゼロ圧力勾配の平板で速度境界層厚さは代表的にδ₉₉≈5x/√Re_xと近似できる。",
       "example": "Re_x=10⁴、x=0.10 mならδ₉₉≈5×0.10/100=0.005 m。これは速度が外部流速の約99%になる厚さの目安であり、境界層の境界が厳密に存在するわけではない。",
       "limits": "Blasius解に基づく近似で、乱流、圧力勾配、表面粗さ、前縁付近の特殊条件では使用しない。",
-      "selfCheck": "xが増えるほどRe_xは通常増えるか。",
-      "answer": "流速とνが一定なら増える",
+      "selfCheck": "一様な外部流速U>0と動粘度ν>0が一定の平板上で、前縁からの距離xを増やすとRe_x=Ux/νはどう変わりますか。",
+      "answer": "Re_xはxに比例して増える",
       "reviewStatus": "AI_drafted_pending_independent_expert_review"
     },
     {
@@ -46,7 +46,7 @@
       "example": "同じ動粘度ν=1×10⁻⁶ m²/sで、α_f=1×10⁻⁷ m²/sならPr=10。α_f=1×10⁻⁵ m²/sならPr=0.1となり、相対的な熱拡散の大きさが異なる。",
       "limits": "乱流境界層や強い物性変化では単純な厚さ比の近似を無条件に適用しない。固体のBiに現れるk_sと流体のPrに現れるk_fを混同しない。",
       "selfCheck": "Pr=10はPr=0.1より熱拡散が相対的に大きいか。",
-      "answer": "小さい",
+      "answer": "小さい。Pr=ν/αだから",
       "reviewStatus": "AI_drafted_pending_independent_expert_review"
     },
     {
@@ -79,7 +79,7 @@
       "example": "同じ流体・平板の流れを層流から乱流へ変えると、平均熱伝達率が高くなることがあるが、必要ポンプ動力や摩擦抵抗も増え得る。",
       "limits": "乱流の渦拡散係数は普遍的な材料定数ではない。レイノルズ数だけで遷移の位置や熱交換量を厳密には決められない。",
       "selfCheck": "乱流の熱輸送を記述するとき平均値だけで十分か。",
-      "answer": "不十分",
+      "answer": "不十分。変動による熱輸送がある",
       "reviewStatus": "AI_drafted_pending_independent_expert_review"
     },
     {

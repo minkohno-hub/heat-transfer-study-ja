@@ -16,7 +16,7 @@ test('every original Japanese note has exactly one published question with a sin
   const items=optionSets.flatMap(d=>d.items),generated=source.questions;
   assert.equal(items.length,76);
   assert.equal(new Set(items.map(x=>x.sectionId)).size,76);
-  assert.equal(generated.filter(q=>['v2','v3'].includes(q.revision)).length,50,'answer wording and scientific conditions must be versioned');
+  assert.equal(generated.filter(q=>q.revision!=='v1').length,55,'answer wording and scientific conditions must be versioned');
   assert.equal(generated.length,76);
   assert.equal(all.length,182);
   assert.equal(all.filter(q=>q.source?.type==='supplement').length,174);
@@ -39,7 +39,7 @@ test('every original Japanese note has exactly one published question with a sin
     assert.equal(q.source.chapterId,n.chapterId,n.sectionId);
     assert.ok(GUIDE_SECTIONS.some(g=>g.id===q.source.guideId&&g.bookChapter===n.chapterId),n.sectionId);
     assert.equal(q.source.type,'supplement');
-    assert.ok(['v1','v2','v3'].includes(q.revision));
+    assert.ok(['v1','v2','v3','v4'].includes(q.revision));
     assert.equal(q.expertReviewed,false);
     assert.equal(q.distractors.length,4);
     assert.equal(q.distractors.filter(t=>t.startsWith('正解。')).length,1);
