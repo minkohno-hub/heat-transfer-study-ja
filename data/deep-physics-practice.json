@@ -785,6 +785,206 @@
         "正の符号は周囲へ熱が移ることを意味し、放射率は既にq″へ含まれます。"
       ],
       "beginnerPitfall": "与えられたq″に放射率εをもう一度掛けない。"
+    },
+    {
+      "revision": "v1",
+      "field": "伝導・フィン設計",
+      "prerequisites": [
+        "一次元定常熱伝導",
+        "側面の対流境界",
+        "双曲線関数と無次元量"
+      ],
+      "questionGroup": "original_independent_applied_v1",
+      "questionKind": "numerical",
+      "source": {
+        "type": "supplement",
+        "reference": "§4.5フィン設計について独立執筆した学習教材と仮想数値例に基づく問題。原本の章末問題・原図・本文を転載しない。",
+        "chapterId": "ch4",
+        "focusSectionId": "4.5",
+        "guideId": "chapter4-fin-design"
+      },
+      "createdStatus": "独立作問",
+      "reviewStatus": "内部の独立計算・構造監査実施／外部専門家校閲前",
+      "expertReviewed": false,
+      "reportHistory": [],
+      "id": "supp-deep-fin-base-heat-v1",
+      "prompt": "断熱先端の一定断面フィンで、k=200 W/(m·K)、h=25 W/(m²·K)、P=0.040 m、Ac=1.0×10⁻⁴ m²、L=0.10 m、基部と周囲の温度差60 K。m=7.0711 m⁻¹、tanh(mL)=0.608859のとき、基部から入る熱移動率q_bは？",
+      "choices": [
+        "4.500 W",
+        "6.000 W",
+        "5.166 W",
+        "8.485 W"
+      ],
+      "answer": 2,
+      "difficulty": "標準・エネルギー収支",
+      "explanation": "適用条件：一定断面・一定物性・一次元定常・側面対流h一定・先端断熱。q_b=kAc m ΔT tanh(mL)=200×10⁻⁴×7.0711×60×0.608859=5.166 W。全側面が基部と同温なら6.0 Wだが、実際はフィン内部に温度低下がある。",
+      "distractors": [
+        "基部の温度差とフィン長の寄与を過小評価した値です。",
+        "側面全体が基部温度のままと仮定した理想上限hPLΔTです。",
+        "正解。基部からの流入熱と側面からの放熱が一致します。",
+        "L→∞の理想長フィン値kAc m ΔTと混同しています。"
+      ],
+      "hints": [
+        "断熱先端のフィン放熱はq_b=kAc m ΔT tanh(mL)。",
+        "mL=0.70711、kAc mΔT=8.485 Wにtanh=0.608859を掛けます。"
+      ],
+      "solutionSteps": [
+        "定常、断熱先端なのでq_b=kAc mΔT tanh(mL)を選ぶ。",
+        "kAc mΔT=200×0.0001×7.0711×60=8.4853 W。",
+        "tanh(mL)=0.608859を掛けてq_b=5.1663 W。",
+        "理想最大hPLΔT=6.000 Wより小さいことを検算する。"
+      ],
+      "beginnerPitfall": "断面積Acと側面積PLを取り違えず、ワットの単位にそろえる。"
+    },
+    {
+      "revision": "v1",
+      "field": "伝導・フィン設計",
+      "prerequisites": [
+        "一次元定常熱伝導",
+        "側面の対流境界",
+        "双曲線関数と無次元量"
+      ],
+      "questionGroup": "original_independent_applied_v1",
+      "questionKind": "numerical",
+      "source": {
+        "type": "supplement",
+        "reference": "§4.5フィン設計について独立執筆した学習教材と仮想数値例に基づく問題。原本の章末問題・原図・本文を転載しない。",
+        "chapterId": "ch4",
+        "focusSectionId": "4.5",
+        "guideId": "chapter4-fin-design"
+      },
+      "createdStatus": "独立作問",
+      "reviewStatus": "内部の独立計算・構造監査実施／外部専門家校閲前",
+      "expertReviewed": false,
+      "reportHistory": [],
+      "id": "supp-deep-fin-effectiveness-v1",
+      "prompt": "断熱先端フィンの基部放熱量が5.166 W、h=25 W/(m²·K)、基部断面積Ac=1.0×10⁻⁴ m²、基部と流体の温度差60 Kである。フィン無しの同じ基部面との比較で定義されるフィン有効度ε_fは？",
+      "choices": [
+        "0.861 倍",
+        "34.44 倍",
+        "6.000 倍",
+        "68.88 倍"
+      ],
+      "answer": 1,
+      "difficulty": "応用・基準面積の比較",
+      "explanation": "適用条件：比較対象はフィンを外して露出した断面Acの単純対流。分母はhAcΔT=25×10⁻⁴×60=0.150 W、有効度ε_f=5.166/0.150≈34.44。フィン効率η_f≈0.861と違い、実際の側面積全部が基部温度の場合との比ではありません。",
+      "distractors": [
+        "フィン効率η_f=tanh(mL)/(mL)と有効度を混同した値です。",
+        "正解。フィンがない同面積Acの放熱に対する比です。",
+        "側面の理想放熱量6.0 Wを比の分子または分母として誤用した値です。",
+        "基準となる面積を半分としてしまった場合の約2倍の値です。"
+      ],
+      "hints": [
+        "フィン効率は側面PL、フィン有効度は基部断面Acで正規化します。",
+        "フィンを外した基部の放熱はhAcΔT=0.150 Wです。"
+      ],
+      "solutionSteps": [
+        "フィン有効度ε_f=q_fin/(hAcΔT)を定義する。",
+        "フィンがない基部面の放熱量を25×0.0001×60=0.150 Wと求める。",
+        "放熱量の比5.166/0.150=34.44を求める。",
+        "無次元34.44倍はη_f≈86.1%と別であると説明する。"
+      ],
+      "beginnerPitfall": "フィン効率とフィン有効度の日本語が似ていても、分母の比較対象が違う。"
+    },
+    {
+      "revision": "v1",
+      "field": "伝導・フィン設計",
+      "prerequisites": [
+        "一次元定常熱伝導",
+        "側面の対流境界",
+        "双曲線関数と無次元量"
+      ],
+      "questionGroup": "original_independent_applied_v1",
+      "questionKind": "numerical",
+      "source": {
+        "type": "supplement",
+        "reference": "§4.5フィン設計について独立執筆した学習教材と仮想数値例に基づく問題。原本の章末問題・原図・本文を転載しない。",
+        "chapterId": "ch4",
+        "focusSectionId": "4.5",
+        "guideId": "chapter4-fin-design"
+      },
+      "createdStatus": "独立作問",
+      "reviewStatus": "内部の独立計算・構造監査実施／外部専門家校閲前",
+      "expertReviewed": false,
+      "reportHistory": [],
+      "id": "supp-deep-fin-tip-temperature-v1",
+      "prompt": "一定断面・先端断熱のフィンで基部温度Tb=80.0 ℃、周囲温度T∞=20.0 ℃、mL=0.70711、cosh(mL)=1.26059とする。断熱先端x=Lの温度T(L)は？",
+      "choices": [
+        "67.60 ℃",
+        "47.60 ℃",
+        "80.00 ℃",
+        "60.00 ℃"
+      ],
+      "answer": 0,
+      "difficulty": "標準・温度分布と境界",
+      "explanation": "適用条件：一次元定常・一定断面・一定物性・断熱先端・周囲温度一定。先端温度はT(L)=T∞+(Tb−T∞)/cosh(mL)=20+60/1.26059≈67.60 ℃。47.60 Kは周囲からの温度差であって絶対的な摂氏温度そのものではありません。",
+      "distractors": [
+        "正解。θ_tip=60/1.26059=47.60 Kに周囲温度20℃を加えます。",
+        "先端の超過温度47.60 Kを摂氏表示の温度と取り違えています。",
+        "フィン全体が基部温度のままと仮定しています。",
+        "基部と周囲の温度差60 Kを先端の摂氏温度と取り違えています。"
+      ],
+      "hints": [
+        "超過温度θ=T−T∞の比を求める式です。",
+        "断熱先端θ(L)=θb/cosh(mL)を計算し、最後に周囲温度20℃を戻します。"
+      ],
+      "solutionSteps": [
+        "θb=Tb−T∞=60 Kを計算。",
+        "θ(L)=60/1.26059=47.597 K。",
+        "T(L)=20+47.597=67.597 ℃。",
+        "先端温度は周囲20℃と基部80℃の間であることを確認。"
+      ],
+      "beginnerPitfall": "先端で温度勾配がゼロでも、先端温度が周囲温度や基部温度に等しいとは限らない。"
+    },
+    {
+      "revision": "v1",
+      "field": "伝導・フィン設計",
+      "prerequisites": [
+        "一次元定常熱伝導",
+        "側面の対流境界",
+        "双曲線関数と無次元量"
+      ],
+      "questionGroup": "original_independent_applied_v1",
+      "questionKind": "numerical",
+      "source": {
+        "type": "supplement",
+        "reference": "§4.5フィン設計について独立執筆した学習教材と仮想数値例に基づく問題。原本の章末問題・原図・本文を転載しない。",
+        "chapterId": "ch4",
+        "focusSectionId": "4.5",
+        "guideId": "chapter4-fin-design"
+      },
+      "createdStatus": "独立作問",
+      "reviewStatus": "内部の独立計算・構造監査実施／外部専門家校閲前",
+      "expertReviewed": false,
+      "reportHistory": [],
+      "id": "supp-deep-fin-convective-tip-v1",
+      "prompt": "直線フィンでk=200 W/(m·K)、Ac=1.0×10⁻⁴ m²、m=7.0711 m⁻¹、L=0.100 m、h=25 W/(m²·K)、基部超過温度θb=60 K。先端面積Atip=Acの対流境界β=h/(mk)=0.017678とすると、双曲線関数で求めた基部放熱量は約？",
+      "choices": [
+        "5.166 W",
+        "6.000 W",
+        "8.485 W",
+        "5.260 W"
+      ],
+      "answer": 3,
+      "difficulty": "発展・境界条件の切替",
+      "explanation": "適用条件：一定断面・定常・均一k,h、先端面積Atip=Ac、先端も流体へ対流。q_b=kAc m θb [sinh(mL)+βcosh(mL)]/[cosh(mL)+βsinh(mL)]、β=h/(mk)。mL≈0.70711とβ≈0.017678を代入すると約5.260 W。断熱先端の5.166 Wよりわずかに増える。",
+      "distractors": [
+        "先端を断熱したままの計算値で、先端からの追加放熱を含みません。",
+        "フィンの全側面が基部温度という理想上限に対応します。",
+        "断熱先端の無限長極限の値をそのまま使っています。",
+        "正解。先端面積Acからの追加対流を境界条件に入れた計算です。"
+      ],
+      "hints": [
+        "断熱先端とは異なり−kAc dT/dx|L=hAcθ(L)です。",
+        "β=h/(mk)とmLを先端対流の双曲線式へ代入します。"
+      ],
+      "solutionSteps": [
+        "先端の境界条件が断熱ではなく対流であることを確認。",
+        "β=25/(7.0711×200)=0.017678、mL=0.70711。",
+        "対流先端の係数F=[sinh(mL)+βcosh(mL)]/[cosh(mL)+βsinh(mL)]を計算。",
+        "q_b=kAc m θb F≈5.260 W。断熱先端の5.166 Wより大きいことを確認する。"
+      ],
+      "beginnerPitfall": "先端対流の式で断熱先端と同じtanh(mL)を無条件に使わない。"
     }
   ]
 }
