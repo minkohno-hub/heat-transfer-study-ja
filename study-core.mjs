@@ -142,11 +142,17 @@ export function recordStudyActivity(records,context,from,to,pageId) {
   }
   return result;
 }
+// A stored score for an older question must never count as a correct response
+// to a newly revised question. Legacy records without a revision are 'initial'.
+export function isCurrentQuestionAnswer(question,answer) {
+  return Boolean(question&&answer&&(answer.questionRevision??'initial')===(question.revision??'initial'));
+}
 export function fieldProgress(questions,attempts) {
-  const ids=new Set(questions.map(q=>q.id)),latest=new Map();
-  for(const a of attempts)if(ids.has(a.questionId)&&(!latest.has(a.questionId)||instant(a.at)>=instant(latest.get(a.questionId).at)))latest.set(a.questionId,a);
-  const answered=latest.size,correct=[...latest.values()].filter(a=>a.correct).length;
-  return {answered,correct,enough:answered>=3,ratio:answered?correct/answered:0,total:questions.length};
+  const byId=new Map(questions.map(q=>[q.id,q])),latest=new Map();
+  for(const a of attempts)if(byId.has(a.questionId)&&(!latest.has(a.questionId)||instant(a.at)>=instant(latest.get(a.questionId).at)))latest.set(a.questionId,a);
+  const current=[...latest.entries()].filter(([id,a])=>isCurrentQuestionAnswer(byId.get(id),a));
+  const answered=current.length,correct=current.filter(([,a])=>a.correct===true).length;
+  return {answered,correct,enough:answered>=3,ratio:answered?correct/answered:0,total:questions.length,outdated:latest.size-answered};
 }
 export function studyDuration(seconds) {
   const numeric=Number(seconds),value=Number.isFinite(numeric)?Math.max(0,Math.round(numeric)):0;
