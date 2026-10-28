@@ -1,4 +1,4 @@
-const CACHE_NAME='heat-study-ja-v9';
+const CACHE_NAME='heat-study-ja-v10';
 const PDF_CACHE_NAME='heat-study-ja-pdf-v1';
 const PDF_URL='./book/AHTTv600.pdf';
 const APP_SHELL=['./','./index.html','./styles.css','./app.js','./study-core.mjs','./guide.mjs','./chapter-curriculum.mjs','./manifest.json',
@@ -21,17 +21,18 @@ self.addEventListener('message',event=>{
   event.waitUntil(caches.open(CACHE_NAME).then(cache=>cache.addAll(urls)).then(()=>event.source?.postMessage({type:'CONTENT_CACHE_RESULT',ok:true})).catch(()=>event.source?.postMessage({type:'CONTENT_CACHE_RESULT',ok:false})));
 });
 async function cachedPdfRange(response,rangeHeader){
-  const bytes=new Uint8Array(await response.arrayBuffer());
+  // Avoid expanding 32 MB into a Uint8Array for every small PDF range.
+  const blob=await response.blob(); const length=blob.size;
   const match=/^bytes=(\d*)-(\d*)$/.exec(rangeHeader||'');
-  if(!match)return new Response(null,{status:416,headers:{'Content-Range':`bytes */${bytes.length}`}});
+  if(!match)return new Response(null,{status:416,headers:{'Content-Range':`bytes */${length}`}});
   let start=match[1]===''?null:Number(match[1]);
   let end=match[2]===''?null:Number(match[2]);
-  if(start===null&&end!==null){start=Math.max(0,bytes.length-end);end=bytes.length-1;}
-  else if(start!==null&&end===null)end=bytes.length-1;
-  if(start===null||end===null||!Number.isSafeInteger(start)||!Number.isSafeInteger(end)||start<0||start>=bytes.length||end<start)return new Response(null,{status:416,headers:{'Content-Range':`bytes */${bytes.length}`}});
-  end=Math.min(end,bytes.length-1);
-  const slice=bytes.slice(start,end+1);
-  return new Response(slice,{status:206,headers:{'Content-Type':'application/pdf','Accept-Ranges':'bytes','Content-Range':`bytes ${start}-${end}/${bytes.length}`,'Content-Length':String(slice.length)}});
+  if(start===null&&end!==null){start=Math.max(0,length-end);end=length-1;}
+  else if(start!==null&&end===null)end=length-1;
+  if(start===null||end===null||!Number.isSafeInteger(start)||!Number.isSafeInteger(end)||start<0||start>=length||end<start)return new Response(null,{status:416,headers:{'Content-Range':`bytes */${length}`}});
+  end=Math.min(end,length-1);
+  const slice=blob.slice(start,end+1,'application/pdf');
+  return new Response(slice,{status:206,headers:{'Content-Type':'application/pdf','Accept-Ranges':'bytes','Content-Range':`bytes ${start}-${end}/${length}`,'Content-Length':String(slice.size)}});
 }
 self.addEventListener('fetch',event=>{
   if(event.request.method!=='GET'||new URL(event.request.url).origin!==self.location.origin)return;
