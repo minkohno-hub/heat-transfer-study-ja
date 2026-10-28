@@ -67,8 +67,8 @@
       ],
       "references": [
         {
-          "title": "NCEES FE Reference Handbook, Heat Transfer（自然対流の経験相関）",
-          "url": "https://itemichigan.org/wp-content/uploads/2025/11/fe-handbook-10-5.pdf"
+          "title": "NCEES 公式：FE Reference Handbook（自然対流相関の関連参照。入手にはNCEES側の条件あり）",
+          "url": "https://help.ncees.org/article/87-ncees-exam-reference-handbooks"
         },
         {
           "title": "Churchill & Chu (1975), vertical-plate free-convection correlations",
