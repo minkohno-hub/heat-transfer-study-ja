@@ -14,6 +14,8 @@ test('short Japanese notes and 159 unreviewed problems cannot be reported as com
   assert.equal(report.independentlyReviewedSections,0);
   assert.equal(report.verifiedRightsSections,0);
   assert.equal(report.verifiedJapaneseFullTextSections,0);
+  assert.equal(report.verifiedPublishedTranslations,0);
+  assert.equal(report.verifiedComprehensiveIndependentLessons,0);
   assert.equal(report.questionBankReadySections,0);
   assert.equal(report.fullyReadySections,0);
   assert.equal(report.fullCompletion,false);
@@ -41,8 +43,8 @@ test('auditor can only reach complete when every section clears all independent 
  })));
  const evidence={
    sectionReviewEvidence:ss.map(s=>({sectionId:s.id,status:'approved',reviewer:'subject-specialist',approvedAt:'2026-10-28',sourcePageEvidence:'book page independently checked',scientificReview:'approved',copyrightReview:'approved'})),
-   publicationPermissionEvidence:ss.map(s=>({sectionId:s.id,scope:'japanese_section_text',status:'verified',evidenceId:'rights-'+s.id})),
-   publishedSections:ss.map(s=>({sectionId:s.id,language:'ja',hasFullText:true,verifiedAgainstOriginal:true,copyrightStatus:'cleared',sourcePageEvidence:'book page checked'})),
+   publicationPermissionEvidence:ss.map(s=>({sectionId:s.id,scope:'original_independent_full_lesson',status:'verified',evidenceId:'independent-authorship-'+s.id})), 
+   publishedSections:ss.map(s=>({sectionId:s.id,language:'ja',hasFullText:true,verifiedAgainstOriginal:true,copyrightStatus:'cleared',contentOrigin:'independent_original',sourcePageEvidence:'book page checked'})),
    questionReviewEvidence:questions.map(q=>({questionId:q.id,status:'approved',reviewer:'independent-specialist',approvedAt:'2026-10-28',calculationEvidence:'independently evaluated',sourceOrOriginalityEvidence:'origin checked'}))
  };
  const full=auditFullCurriculumReadiness({book,originalNotes,questions,...evidence});
