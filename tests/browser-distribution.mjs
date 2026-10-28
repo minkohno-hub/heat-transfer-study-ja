@@ -486,6 +486,15 @@ try {
   assert.equal(pdfRange.signature,'%PDF');
   const pdfEnd=await page.evaluate(async()=>{const tail=await fetch('./book/AHTTv600.pdf',{headers:{Range:'bytes=-4'}});const invalid=await fetch('./book/AHTTv600.pdf',{headers:{Range:'bytes=32472182-'}});return {tailStatus:tail.status,tailRange:tail.headers.get('content-range'),tailBytes:(await tail.arrayBuffer()).byteLength,invalidStatus:invalid.status};});
   assert.deepEqual(pdfEnd,{tailStatus:206,tailRange:'bytes 32472178-32472181/32472182',tailBytes:4,invalidStatus:416});
+  // Glossary and its inline dialog must work without another network request.
+  await nav('glossary');
+  await page.locator('#term-fourier-law').waitFor({state:'visible'});
+  await page.locator('#term-thermal-conductivity [data-start-question="supp-flat-thickness"]').click();
+  await page.locator('.question-card h2 [data-term-id="thermal-conductivity"]').click();
+  await page.locator('#term-overlay [role="dialog"]').waitFor({state:'visible'});
+  assert.match(await page.locator('#term-sheet-title').innerText(),/熱伝導率/);
+  await page.keyboard.press('Escape');
+  assert.equal(await page.locator('#term-overlay').count(),0);
   await nav('guide');
   await page.locator('#guide-sim-radiation').waitFor({state:'visible'});
   assert.match(await page.locator('#guide-sim-radiation').innerText(),/熱放射/);
