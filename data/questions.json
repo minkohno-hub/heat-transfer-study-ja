@@ -8980,7 +8980,7 @@
       "reference": "独立執筆の発展講義§10.1の放射交換に関するオリジナル演習。原本の本文・原図・章末問題を転載しない。",
       "chapterId": "ch10",
       "focusSectionId": "10.1",
-      "guideId": "sim-radiation"
+      "guideId": "chapter10-view-factors"
     },
     "createdStatus": "独立作問",
     "reviewStatus": "独立計算・内部構造監査済み／外部専門家校閲前",
@@ -8989,7 +8989,7 @@
     "id": "supp-deep-rad-temperature-fourth-v1",
     "prompt": "黒体の全半球放射発散度はE_b=σT⁴に従う。絶対温度300 Kと600 Kの2つの黒体について、放射発散度E_b(600K)/E_b(300K)は？相手面との正味交換ではなく自己放出のみを比較する。",
     "choices": [
-      "2.0倍（温度一次）",
+      "2.0倍（温度一次比例）",
       "4.0倍（温度二次）",
       "16.0倍（温度四次）",
       "8.0倍（温度三次）"
@@ -9029,7 +9029,7 @@
       "reference": "独立執筆の発展講義§10.1の放射交換に関するオリジナル演習。原本の本文・原図・章末問題を転載しない。",
       "chapterId": "ch10",
       "focusSectionId": "10.1",
-      "guideId": "sim-radiation"
+      "guideId": "chapter10-view-factors"
     },
     "createdStatus": "独立作問",
     "reviewStatus": "独立計算・内部構造監査済み／外部専門家校閲前",
@@ -9038,7 +9038,7 @@
     "id": "supp-deep-rad-radiosity-v1",
     "prompt": "不透明・拡散・灰色面（ε=0.80）が400 Kで、外部からの照射量G=459.300 W/m²を受ける。黒体発散度E_b=1451.616 W/m²のとき、射度J=εE_b+(1−ε)Gは？",
     "choices": [
-      "1161.293 W/m²（自己放出のみ）",
+      "1161.293 W/m²（灰色面の自己放出のみ）",
       "1253.153 W/m²（自己放出＋反射）",
       "793.852 W/m²（正味熱流束）",
       "459.300 W/m²（照射量そのもの）"
@@ -9078,7 +9078,7 @@
       "reference": "独立執筆の発展講義§10.1の放射交換に関するオリジナル演習。原本の本文・原図・章末問題を転載しない。",
       "chapterId": "ch10",
       "focusSectionId": "10.1",
-      "guideId": "sim-radiation"
+      "guideId": "chapter10-view-factors"
     },
     "createdStatus": "独立作問",
     "reviewStatus": "独立計算・内部構造監査済み／外部専門家校閲前",
@@ -9127,7 +9127,7 @@
       "reference": "独立執筆の発展講義§10.1の放射交換に関するオリジナル演習。原本の本文・原図・章末問題を転載しない。",
       "chapterId": "ch10",
       "focusSectionId": "10.1",
-      "guideId": "sim-radiation"
+      "guideId": "chapter10-view-factors"
     },
     "createdStatus": "独立作問",
     "reviewStatus": "独立計算・内部構造監査済み／外部専門家校閲前",
