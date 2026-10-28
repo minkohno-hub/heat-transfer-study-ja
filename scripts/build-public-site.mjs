@@ -26,10 +26,11 @@ for(const chapter of book.chapters)for(const section of chapter.sections){
 for(const question of questions)if(question.figure?.kind==='book')delete question.figure.src;
 // Validate the actual allowlisted data after source sanitization, before writing any public files.
 const glossary=JSON.parse(await readFile(join(root,'data/glossary.json'),'utf8'));
-const issues=checkPublicContent({book,questions,glossary,guides:GUIDE_SECTIONS});
+const originalNotes=JSON.parse(await readFile(join(root,'data/original-notes.json'),'utf8'));
+const issues=checkPublicContent({book,questions,glossary,guides:GUIDE_SECTIONS,originalNotes});
 if(issues.length)throw new Error('公開教材の整合性検査に失敗しました:\n'+issues.join('\n'));
 
-const files=['index.html','styles.css','app.js','study-core.mjs','guide.mjs','chapter-curriculum.mjs','sw.js','manifest.json','data/glossary.json'];
+const files=['index.html','styles.css','app.js','study-core.mjs','guide.mjs','chapter-curriculum.mjs','original-notes.mjs','sw.js','manifest.json','data/glossary.json'];
 for(const path of new Set(files)){
   const source=join(root,path),target=join(output,path);
   await mkdir(dirname(target),{recursive:true});await copyFile(source,target);
@@ -37,7 +38,7 @@ for(const path of new Set(files)){
 await mkdir(join(output,'data'),{recursive:true});
 await mkdir(join(output,'book'),{recursive:true});
 await writeFile(join(output,'book/AHTTv600.pdf'),pdf);
-for(const [name,value] of Object.entries({'book.json':book,'questions.json':questions,'content-manifest.json':{files:[]}})){
+for(const [name,value] of Object.entries({'book.json':book,'questions.json':questions,'content-manifest.json':{files:[]},'original-notes.json':originalNotes})){
   await writeFile(join(output,'data',name),JSON.stringify(value,null,2)+'\n');
 }
 // A build that silently omits an imported module will crash for every user.
