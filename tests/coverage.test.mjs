@@ -33,7 +33,7 @@ test('coverage report separates original problems from verified book citation an
   assert.equal(coverage.originalDeepLessons,7);
   assert.equal(coverage.chapters.find(x=>x.chapter==='ch8').originalDeepLessonCount,2);
   assert.equal(coverage.chapters.find(x=>x.chapter==='ch3').originalDeepLessonCount,1);
-  assert.equal(coverage.chapters.find(x=>x.chapter==='ch5').originalDeepLessonCount,1);
+  assert.equal(coverage.chapters.find(x=>x.chapter==='ch5').originalDeepLessonCount,2);
   assert.equal(coverage.chapters.find(x=>x.chapter==='ch2').originalDeepLessonCount,1);
   assert.equal(coverage.chapters.find(x=>x.chapter==='ch11').originalDeepLessonCount,1);
   assert.equal(coverage.publicJapaneseSections,0,'Independent advanced lessons are not book translations');
