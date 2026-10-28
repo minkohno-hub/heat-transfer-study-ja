@@ -712,7 +712,7 @@ function buildSearchIndex() {
       target:{route:'guide',guideId:guide.id}});
   }
   for(const term of glossary) {
-    entries.push({kind:'glossary',kindLabel:'用語集',chapter:chapterKey(term.source.section),field:'用語集',title:`${term.ja} ${term.en||''}`,text:`${term.meaning} ${term.meaningEn||''}`,source:sourceLabel(term.source),target:{route:'glossary',term:term.id,language:'ja'}});
+    entries.push({kind:'glossary',kindLabel:'用語集',chapter:chapterKey(term.source.section),field:'用語集',title:`${term.ja} ${term.en||''}`,text:`${term.meaning} ${term.meaningEn||''} ${(Array.isArray(term.aliases)?term.aliases:[]).join(' ')}`,source:sourceLabel(term.source),target:{route:'glossary',term:term.id,language:'ja'}});
   }
   for(const q of questionBank) {
     const base={chapter:questionChapter(q,GUIDE_SECTIONS)||'supplement',field:q.field,source:sourceLabel(q.source),target:{route:'quiz',question:q.id}};
@@ -739,7 +739,7 @@ function renderSearch() {
 function renderGlossary() {
   const query = ui.glossaryQuery || '';
   const language = state.settings.contentLanguage === 'en' ? 'en' : 'ja';
-  const filtered = glossary.filter(item => !query || (item.ja + ' ' + item.en + ' ' + item.meaning + ' ' + (item.meaningEn || '')).toLowerCase().includes(query.toLowerCase()));
+  const filtered = glossary.filter(item => !query || (item.ja + ' ' + item.en + ' ' + item.meaning + ' ' + (item.meaningEn || '') + ' ' + (Array.isArray(item.aliases)?item.aliases.join(' '):'')).toLowerCase().includes(query.toLowerCase()));
   const termCards = filtered.map(term => {
     const primary = language === 'en' ? (term.en || term.ja) : term.ja;
     const secondary = language === 'en' ? term.ja : term.en;
