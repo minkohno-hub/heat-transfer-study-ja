@@ -428,3 +428,25 @@ input[type="range"] { width: 100%; accent-color: var(--accent); }
 .formula sub,.formula sup { font-size: .7em; line-height: 0; }
 .term-related { display: grid; justify-items: start; gap: 2px; margin-top: 12px; padding-top: 10px; border-top: 1px solid var(--line); }
 .term-related strong { color: var(--muted); font-size: 11px; }
+
+
+/* Independently authored Japanese section notes are supplementary material,
+   never styled or labeled as a translated original-book section. */
+.reader-original-note{
+  margin-block:1.5rem;
+  padding:clamp(1rem,3vw,1.5rem);
+  border:1px solid var(--border,var(--line,#b6c0c9));
+  border-radius:1rem;
+}
+.reader-original-note h3{font-size:clamp(1.12rem,2.2vw,1.4rem);margin:.45rem 0 .7rem}
+.reader-original-note .original-note-fields{display:grid;grid-template-columns:minmax(0,1fr);gap:.45rem;margin:1rem 0}
+.reader-original-note dt{font-size:.92rem;font-weight:750;letter-spacing:.01em;margin-top:.7rem}
+.reader-original-note dd{margin:0;white-space:pre-wrap;overflow-wrap:anywhere;line-height:1.78}
+.reader-original-note dd details{border:1px solid var(--border,var(--line,#b6c0c9));border-radius:.6rem;padding:.55rem .8rem}
+.reader-original-note dd details summary{cursor:pointer;font-weight:650}
+.reader-original-note dd details p{margin:.7rem 0 .2rem}
+.reader-original-note .button-row{flex-wrap:wrap;gap:.75rem}
+@media(max-width:600px){
+  .reader-original-note{margin-block:1rem;padding:.85rem}
+  .reader-original-note dd{font-size:1rem;line-height:1.72}
+}
