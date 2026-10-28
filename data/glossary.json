@@ -539,5 +539,236 @@
         "label": "必要伝熱面積"
       }
     ]
+  },
+  {
+    "id": "heat-flux-area",
+    "ja": "熱流束と熱移動率",
+    "en": "heat flux and heat transfer rate",
+    "meaning": "熱移動率Q̇[W]は単位時間当たりのエネルギー移動量。均一な熱流束q″[W/m²]ならQ̇=q″A。蓄熱量[J]や放熱時間[s]と区別する。",
+    "source": {
+      "type": "supplement",
+      "reference": "アプリ独自の章別発展学習ガイド。",
+      "guideId": "chapter1-energy-balance"
+    },
+    "relatedQuestions": [
+      {
+        "id": "supp-chapter-ch1-flux",
+        "label": "章別演習：エネルギー収支 ch1-flux"
+      },
+      {
+        "id": "supp-chapter-ch1-energy",
+        "label": "章別演習：エネルギー収支 ch1-energy"
+      }
+    ]
+  },
+  {
+    "id": "cylindrical-wall-resistance",
+    "ja": "円筒壁の熱抵抗",
+    "en": "cylindrical wall thermal resistance",
+    "meaning": "一方向・定常・一定熱伝導率の円筒壁では R=ln(r₂/r₁)/(2πkℓ) [K/W]。面積が半径によって変わるため、単純な平板R=L/kAとは異なる。",
+    "source": {
+      "type": "supplement",
+      "reference": "アプリ独自の章別発展学習ガイド。",
+      "guideId": "chapter2-cylindrical-conduction"
+    },
+    "relatedQuestions": [
+      {
+        "id": "supp-chapter-ch2-cylinder-resistance",
+        "label": "章別演習：円筒壁の熱伝導 ch2-cylinder-resistance"
+      },
+      {
+        "id": "supp-chapter-ch2-cylinder-watts",
+        "label": "章別演習：円筒壁の熱伝導 ch2-cylinder-watts"
+      }
+    ]
+  },
+  {
+    "id": "heat-capacity-rate",
+    "ja": "熱容量流量",
+    "en": "heat capacity rate",
+    "meaning": "流体の質量流量と比熱容量の積C=ṁcₚ[W/K]。相変化なし・比熱一定の熱交換器では、C_minと入口温度差から理想最大熱移動率を計算する。",
+    "source": {
+      "type": "supplement",
+      "reference": "アプリ独自の章別発展学習ガイド。",
+      "guideId": "chapter3-effectiveness-ntu"
+    },
+    "relatedQuestions": [
+      {
+        "id": "supp-chapter-ch3-qmax",
+        "label": "章別演習：熱交換器 ch3-qmax"
+      },
+      {
+        "id": "supp-chapter-ch3-outlet",
+        "label": "章別演習：熱交換器 ch3-outlet"
+      }
+    ]
+  },
+  {
+    "id": "fin-efficiency",
+    "ja": "フィン効率",
+    "en": "fin efficiency",
+    "meaning": "フィン表面全体が基部温度で放熱した場合の理想熱移動率に対する実際のフィン放熱量の割合。一定断面・先端断熱の理想モデルではη_f=tanh(mL)/(mL)。",
+    "source": {
+      "type": "supplement",
+      "reference": "アプリ独自の章別発展学習ガイド。",
+      "guideId": "chapter4-fin-design"
+    },
+    "relatedQuestions": [
+      {
+        "id": "supp-chapter-ch4-fin-m",
+        "label": "章別演習：フィン ch4-fin-m"
+      },
+      {
+        "id": "supp-chapter-ch4-fin-eta",
+        "label": "章別演習：フィン ch4-fin-eta"
+      }
+    ]
+  },
+  {
+    "id": "semi-infinite-thermal-body",
+    "ja": "半無限体の温度浸透",
+    "en": "semi-infinite transient conduction",
+    "meaning": "十分厚く反対面に温度変化が到達しない短時間の近似。一定表面温度の条件なら温度変化の代表長さは√(αt)に比例する。",
+    "source": {
+      "type": "supplement",
+      "reference": "アプリ独自の章別発展学習ガイド。",
+      "guideId": "chapter5-semi-infinite"
+    },
+    "relatedQuestions": [
+      {
+        "id": "supp-chapter-ch5-penetration",
+        "label": "章別演習：非定常熱伝導 ch5-penetration"
+      },
+      {
+        "id": "supp-chapter-ch5-time",
+        "label": "章別演習：非定常熱伝導 ch5-time"
+      }
+    ]
+  },
+  {
+    "id": "local-and-average-nusselt",
+    "ja": "局所・平均ヌセルト数",
+    "en": "local and average Nusselt numbers",
+    "meaning": "局所Nu_xは位置xでの対流熱伝達率に関わり、平均Nū_Lは全長Lで平均した熱伝達係数と対応する。層流等温平板の代表的な係数はそれぞれ0.332と0.664。",
+    "source": {
+      "type": "supplement",
+      "reference": "アプリ独自の章別発展学習ガイド。",
+      "guideId": "chapter6-flat-boundary"
+    },
+    "relatedQuestions": [
+      {
+        "id": "supp-chapter-ch6-nuavg",
+        "label": "章別演習：強制対流 ch6-nuavg"
+      },
+      {
+        "id": "supp-chapter-ch6-local",
+        "label": "章別演習：強制対流 ch6-local"
+      }
+    ]
+  },
+  {
+    "id": "hydraulic-diameter",
+    "ja": "水力直径",
+    "en": "hydraulic diameter",
+    "meaning": "非円形の流路断面積A_cと濡れ縁長さP_wからD_h=4A_c/P_wと定義する代表長さ。形状が異なる場合に円管のNu式を無条件に流用できるわけではない。",
+    "source": {
+      "type": "supplement",
+      "reference": "アプリ独自の章別発展学習ガイド。",
+      "guideId": "chapter7-internal-flow"
+    },
+    "relatedQuestions": [
+      {
+        "id": "supp-chapter-ch7-dh",
+        "label": "章別演習：管内対流 ch7-dh"
+      },
+      {
+        "id": "supp-chapter-ch7-nu-boundary",
+        "label": "章別演習：管内対流 ch7-nu-boundary"
+      }
+    ]
+  },
+  {
+    "id": "rayleigh-number",
+    "ja": "レイリー数",
+    "en": "Rayleigh number",
+    "meaning": "自然対流で浮力・粘性・熱拡散をまとめた無次元数。Ra=GrPr=gβ|ΔT|L³/(να)。物性と代表長さ・対象形状・境界条件を確認する。",
+    "source": {
+      "type": "supplement",
+      "reference": "アプリ独自の章別発展学習ガイド。",
+      "guideId": "chapter8-buoyancy"
+    },
+    "relatedQuestions": [
+      {
+        "id": "supp-chapter-ch8-ra",
+        "label": "章別演習：自然対流 ch8-ra"
+      },
+      {
+        "id": "supp-chapter-ch8-length",
+        "label": "章別演習：自然対流 ch8-length"
+      }
+    ]
+  },
+  {
+    "id": "critical-heat-flux",
+    "ja": "限界熱流束",
+    "en": "critical heat flux",
+    "meaning": "沸騰中に高い伝熱状態が維持できなくなる遷移に関わる熱流束の限界。特定条件で壁温急上昇の危険があり、圧力・流動・表面条件で変わる。",
+    "source": {
+      "type": "supplement",
+      "reference": "アプリ独自の章別発展学習ガイド。",
+      "guideId": "chapter9-latent-boiling"
+    },
+    "relatedQuestions": [
+      {
+        "id": "supp-chapter-ch9-qflux",
+        "label": "章別演習：相変化 ch9-qflux"
+      },
+      {
+        "id": "supp-chapter-ch9-chf",
+        "label": "章別演習：相変化 ch9-chf"
+      }
+    ]
+  },
+  {
+    "id": "radiation-view-factor",
+    "ja": "放射形態係数",
+    "en": "radiation view factor",
+    "meaning": "拡散放射面iから出るエネルギーのうち面jへ直接届く割合F_ij。幾何形状に依存し、A_iF_ij=A_jF_jiという相反則を満たす。",
+    "source": {
+      "type": "supplement",
+      "reference": "アプリ独自の章別発展学習ガイド。",
+      "guideId": "chapter10-view-factors"
+    },
+    "relatedQuestions": [
+      {
+        "id": "supp-chapter-ch10-reciprocity",
+        "label": "章別演習：放射熱移動 ch10-reciprocity"
+      },
+      {
+        "id": "supp-chapter-ch10-enclosure",
+        "label": "章別演習：放射熱移動 ch10-enclosure"
+      }
+    ]
+  },
+  {
+    "id": "fick-diffusive-flux",
+    "ja": "フィック則の拡散モル流束",
+    "en": "Fickian diffusive molar flux",
+    "meaning": "一定二成分拡散係数を仮定した単純モデルでJ_A=−D_AB dC_A/dx。単位はmol/(m²·s)。混合物全体の対流を含む全モル流束とは異なる。",
+    "source": {
+      "type": "supplement",
+      "reference": "アプリ独自の章別発展学習ガイド。",
+      "guideId": "chapter11-fick-mass"
+    },
+    "relatedQuestions": [
+      {
+        "id": "supp-chapter-ch11-fick",
+        "label": "章別演習：物質移動 ch11-fick"
+      },
+      {
+        "id": "supp-chapter-ch11-sc",
+        "label": "章別演習：物質移動 ch11-sc"
+      }
+    ]
   }
 ]
