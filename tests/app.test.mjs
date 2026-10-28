@@ -7,19 +7,36 @@ import * as guide from '../guide.mjs';
 import * as curriculum from '../chapter-curriculum.mjs';
 import * as originalNotesModule from '../original-notes.mjs';
 import * as deepNotesModule from '../original-deep-lessons.mjs';
+import * as termModule from '../term-links.mjs';
+import * as visualModule from '../sim-diagrams.mjs';
 const source=await readFile(new URL('../app.js',import.meta.url),'utf8');
 const key='heat-study-ja:v1';
 const question={id:'q1',prompt:'テスト用に作成した問題',choices:['答え','誤答1','誤答2','誤答3'],answer:0,field:'伝導',difficulty:'基礎',source:{section:'1.1'},explanation:'説明',distractors:['正解','理由1','理由2','理由3']};
 function harness(initial) {
   const store=new Map(initial?[[key,initial]]:[]);let fail=false,failKey='',rendered=0,submitted=0,reloaded=0;
   const root={innerHTML:''},document={querySelector:s=>s==='#app'?root:s==='#quiz-answer-form'?{requestSubmit(){submitted++;}}:null,querySelectorAll:()=>Array.from({length:4},()=>({focus(){}})),documentElement:{dataset:{},style:{setProperty(){}}},body:{append(){}},createElement:()=>({setAttribute(){},remove(){}})};
-  const context=vm.createContext({...core,...guide,...curriculum,...originalNotesModule,...deepNotesModule,structuredClone,JSON,Date,Math,Intl,Map,Set,Number,String,Array,Boolean,RegExp,Blob,URL,crypto:{randomUUID:()=> '11111111-1111-4111-8111-111111111111'},document,window:{matchMedia:()=>({matches:false}),scrollTo(){},confirm:()=>true,location:{reload(){reloaded++;}}},location:{hash:''},navigator:{onLine:true},setTimeout:()=>1,clearTimeout(){},localStorage:{getItem:k=>store.get(k)||null,setItem(k,v){if((fail&&k===key)||k===failKey)throw Error('quota');store.set(k,v);},removeItem(k){store.delete(k);}},FormData:class{constructor(v){this.values=v.values??v;}get(k){return this.values[k]??null;}}});
+  const context=vm.createContext({...core,...guide,...curriculum,...originalNotesModule,...deepNotesModule,...termModule,...visualModule,structuredClone,JSON,Date,Math,Intl,Map,Set,Number,String,Array,Boolean,RegExp,Blob,URL,crypto:{randomUUID:()=> '11111111-1111-4111-8111-111111111111'},document,window:{matchMedia:()=>({matches:false}),scrollTo(){},confirm:()=>true,location:{reload(){reloaded++;}}},location:{hash:''},navigator:{onLine:true},setTimeout:()=>1,clearTimeout(){},localStorage:{getItem:k=>store.get(k)||null,setItem(k,v){if((fail&&k===key)||k===failKey)throw Error('quota');store.set(k,v);},removeItem(k){store.delete(k);}},FormData:class{constructor(v){this.values=v.values??v;}get(k){return this.values[k]??null;}}});
   vm.runInContext(source.replace(/^import .*?;\s*/gm,'').replace(/\nstartApp\(\);\s*$/,'')+`
     render=()=>{globalThis.renderCount=(globalThis.renderCount||0)+1;};showStatus=message=>{globalThis.statusMessage=message;};
-    globalThis.api={get state(){return state;},set state(v){state=v;},get ui(){return ui;},set ui(v){ui={...ui,...v};},set questions(v){questionBank=v;},set book(v){book=v;},set terms(v){glossary=v;},set deepLessons(v){deepLessons=v;},submitQuizAnswer,reviewCandidates,validateImport,importData,exportData,exportBackup,saveState,savePlan,setReviewDate,onClick,onChange,formatHeatRate,buildSearchIndex,onKeyDown,renderBookBlock,renderQuestionFigure,renderGlossary,renderAnswerFeedback,renderDeepLesson,sourcePdfPage,sourcePdfLink,blockSourceLabel,figureZoomLink,renderSimulationSteps,simGraph,validBookBlocks,sectionIsTranslated,createProfile,get warning(){return storageIssue;},get status(){return globalThis.statusMessage;}};`,context);
+    globalThis.api={get state(){return state;},set state(v){state=v;},get ui(){return ui;},set ui(v){ui={...ui,...v};},set questions(v){questionBank=v;},set book(v){book=v;},set terms(v){glossary=v;},set deepLessons(v){deepLessons=v;},submitQuizAnswer,reviewCandidates,validateImport,importData,exportData,exportBackup,saveState,savePlan,setReviewDate,onClick,onChange,formatHeatRate,buildSearchIndex,onKeyDown,renderBookBlock,renderQuestionFigure,renderGlossary,renderAnswerFeedback,renderDeepLesson,linkedQuizText,renderQuiz,openTermSheet,closeTermSheet,sourcePdfPage,sourcePdfLink,blockSourceLabel,figureZoomLink,renderSimulationSteps,simGraph,validBookBlocks,sectionIsTranslated,createProfile,get warning(){return storageIssue;},get status(){return globalThis.statusMessage;}};`,context);
   const api=context.api;api.questions=[question];api.book={pdfPageCount:810,chapters:[{id:'ch1',title:'章',sections:[{id:'1.1',title:'本文',bookStart:3,bookEnd:4,pdfStart:17,pdfEnd:18,blocks:[{id:'b1',type:'paragraph',text:'検索する語',bookPage:3,pdfPage:17}]}]}]};api.terms=[{id:'term',ja:'熱',en:'heat',meaning:'温度による移動',source:{section:'1.1'}}];
   return {api,store,context,setFail:v=>fail=v,setFailKey:v=>failKey=v,get submitted(){return submitted;},get reloaded(){return reloaded;}};
 }
+test('quiz links terms in stems, choices, detailed explanations and hints without changing stored answer',async()=>{
+ const h=harness();
+ h.api.terms=JSON.parse(await readFile(new URL('../data/glossary.json',import.meta.url),'utf8'));
+ h.api.questions=[{...question,prompt:'熱流束と温度勾配の関係は？',choices:['熱流束','温度勾配','熱伝導率','ニュートンの冷却法則'],explanation:'温度勾配からフーリエの法則を選ぶ。',solutionSteps:['熱流束の単位はW/m²。'],distractors:['温度勾配との関係。','熱伝導率の意味。','熱流束を確認。','熱伝達率と違う。']}];
+ h.api.ui={quiz:{id:'test',ids:['q1'],index:0,answers:[],selected:1,confidence:'medium',hintCount:1,mode:'single'}};
+ const quiz=h.api.renderQuiz();
+ for(const id of ['heat-flux','temperature-gradient','thermal-conductivity','fourier-law'])
+  assert.ok(quiz.includes('data-term-id="'+id+'"'),id);
+ assert.match(quiz,/class="inline-term"/);
+ assert.match(quiz,/aria-haspopup="dialog"/);
+ assert.match(h.api.linkedQuizText('<script>alert(1)<\/script>熱流束'),/&lt;script&gt;/);
+ assert.equal(h.api.ui.quiz.selected,1,'opening a definition must not change the chosen answer');
+ const answer=h.api.renderAnswerFeedback(h.api.questions?.[0]||{...question,prompt:'熱流束',explanation:'熱流束',distractors:['熱流束','熱流束','熱流束','熱流束']},{correct:true,confidence:'medium',at:'2026-10-28T10:00:00Z'},{},[0,1,2,3]);
+ assert.match(answer,/data-term-id="heat-flux"/);
+});
 test('answer handling stores correctness, chosen text, confidence and next review exactly once',()=>{
   const h=harness();h.api.ui={quiz:{ids:['q1'],index:0,answers:[],selected:0,confidence:'low',mode:'single'}};
   h.api.submitQuizAnswer({});h.api.submitQuizAnswer({});
