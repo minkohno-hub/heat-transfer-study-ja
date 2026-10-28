@@ -24,7 +24,7 @@
       "example": "向流で高温80→60 ℃、低温20→40 ℃なら両端温度差は40 K。ΔT_lmも40 Kであり、0/0を計算機でそのまま評価しない。",
       "limits": "端点温度差は正とし、U一定・モデルに合う流動配置・熱損失小などを確認する。多パス熱交換器には補正係数が必要な場合がある。",
       "selfCheck": "向流の一端の温度差T_h,in−T_c,outが0 Kの場合、通常の正の端点LMTD式をそのまま使えるか。",
-      "answer": "そのまま適用せず、温度接近とモデル・極限の適否を確認する。",
+      "answer": "そのまま使えない。",
       "reviewStatus": "AI_drafted_pending_independent_expert_review"
     },
     {
@@ -35,7 +35,7 @@
       "example": "C_min=300 W/K、入口温度差50 KならQ̇_max=15000 W。実際のQ̇が9000 Wならε=0.60。これはシステムのエネルギー変換効率60%という意味ではない。",
       "limits": "単相の一定比熱・無損失の例である。相変化や流路の混合条件によってC_rやεの扱いを確認する。",
       "selfCheck": "同じQ̇でも入口温度差が変わるとεは変化し得るか。",
-      "answer": "変わり得る。分母Q̇_maxが変わるため。",
+      "answer": "変わり得る。",
       "reviewStatus": "AI_drafted_pending_independent_expert_review"
     },
     {
