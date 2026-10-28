@@ -497,3 +497,9 @@ input[type="range"] { width: 100%; accent-color: var(--accent); }
 .sim-physical-diagram .diagram-arrow {fill:none;stroke:var(--accent-strong);stroke-width:3;stroke-linecap:round;stroke-linejoin:round;}
 .sim-physical-diagram .diagram-boundary {fill:none;stroke:var(--blue);stroke-width:3;stroke-dasharray:6 6;}
 @media (max-width:540px) {.term-sheet {padding:23px 18px;max-height:85dvh;}.term-sheet h2{font-size:20px;}.simulation-figure{padding:8px;}.sim-physical-diagram{min-width:410px;}}
+
+@media (max-width: 540px) {
+  .term-backdrop {align-items:end;justify-items:stretch;padding:0;}
+  .term-sheet {width:100%;border-radius:18px 18px 0 0;max-height:80dvh;max-height:80svh;padding:24px 22px 32px;padding-bottom:max(28px,env(safe-area-inset-bottom));}
+  .term-sheet .button {width:100%;}
+}
