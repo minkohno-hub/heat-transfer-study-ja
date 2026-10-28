@@ -1011,7 +1011,7 @@ function submitQuizAnswer(form) {
   const question = getQuestion(session.ids[session.index]);
   if (!question || !Number.isInteger(session.selected) || session.selected < 0 || session.selected > 3) { showStatus('選択肢を一つ選んでから回答してください。'); return; }
   const answer = { questionId: question.id, selected: session.selected, selectedText: question.choices[session.selected], correctText: question.choices[question.answer], questionRevision: question.revision || 'initial', correct: session.selected === question.answer, confidence: session.confidence || 'medium', at: new Date().toISOString(), mode: session.mode };
-  const interval = nextReviewDays(state.attempts.filter(a=>a.questionId===question.id),answer);
+  const interval = nextReviewDays(state.attempts.filter(a=>a.questionId===question.id&&isCurrentQuestionAnswer(question,a)),answer);
   session.answers[session.index] = answer;
   state.attempts.push({ ...answer, id: makeId() });
   state.reviews[question.id] = { ...(state.reviews[question.id] || {}), dueDate: addDaysISO(todayISO(), interval), suggestedDays: interval, lastAnsweredAt: answer.at };
