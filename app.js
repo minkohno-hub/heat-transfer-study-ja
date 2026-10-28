@@ -2,7 +2,8 @@ import { createEmptyState, validateLearningData, normalizeLearningData, mergeLea
 import { GUIDE_SECTIONS, searchGuide } from './guide.mjs';
 import {questionChapter,questionsForChapter,chapterLearningOverview} from './chapter-curriculum.mjs';
 import {validateOriginalNotes,independentNoteForSection} from './original-notes.mjs';
-const CORE_DATA_FILES = ['./data/book.json', './data/questions.json', './data/glossary.json', './data/content-manifest.json', './data/original-notes.json'];
+import {validateDeepLessons,deepLessonForSection} from './original-deep-lessons.mjs';
+const CORE_DATA_FILES = ['./data/book.json', './data/questions.json', './data/glossary.json', './data/content-manifest.json', './data/original-notes.json', './data/original-deep-lessons.json'];
 const LEGACY_STORAGE_KEY = 'heat-study-ja:v1';
 const PROFILES_KEY = 'heat-study-ja:profiles:v1';
 const ACTIVE_PROFILE_KEY = 'heat-study-ja:active-profile:v1';
@@ -20,6 +21,7 @@ let questionBank;
 let glossary;
 let contentManifest;
 let originalNotes;
+let deepLessons;
 let speechRun = 0;
 function routeFromHash() { return location.hash.slice(1).split('/')[0] || 'home'; }
 function guideTargetFromHash() { const id=location.hash.slice(1).split('/')[1]; return GUIDE_SECTIONS.some(section=>section.id===id)?id:''; }
@@ -247,12 +249,14 @@ const NAV_ITEMS = [
 
 async function startApp() {
   try {
-    [book, questionBank, glossary, contentManifest, originalNotes] = await Promise.all(CORE_DATA_FILES.map(path => fetch(path).then(response => {
+    [book, questionBank, glossary, contentManifest, originalNotes, deepLessons] = await Promise.all(CORE_DATA_FILES.map(path => fetch(path).then(response => {
       if (!response.ok) throw new Error(`教材データを読み込めません（${path}）`);
       return response.json();
     })));
     const independentIssues=validateOriginalNotes(book,originalNotes);
     if(independentIssues.length)throw new Error('独立作成の日本語節別ノートの整合性を確認してください: '+independentIssues[0]);
+    const deepIssues=validateDeepLessons(book,deepLessons);
+    if(deepIssues.length)throw new Error('独立発展講義の整合性を確認してください: '+deepIssues[0]);
     const contentFiles = await Promise.all((contentManifest.files || []).map(path => fetch(path).then(response => {
       if (!response.ok) throw new Error(`章別教材データを読み込めません（${path}）`);
       return response.json();
@@ -481,6 +485,25 @@ function renderHome() {
     </div>`;
 }
 
+function renderDeepLesson(lesson) {
+  const esc=escapeHTML;
+  const paragraphs=lesson.blocks.map(b=>'<section class="deep-lesson-block"><h4>'+esc(b.heading)+'</h4><p>'+esc(b.text)+'</p></section>').join('');
+  const equations=lesson.equations.map(e=>'<div class="deep-equation"><strong>'+esc(e.label)+'</strong><p class="deep-expression">'+esc(e.expression)+'</p><p>'+esc(e.meaning)+'</p></div>').join('');
+  const example=lesson.workedExample;
+  const steps=example.steps.map((line,i)=>'<li><strong>手順'+(i+1)+'</strong> '+esc(line)+'</li>').join('');
+  const pitfalls=lesson.pitfalls.map(text=>'<li>'+esc(text)+'</li>').join('');
+  const sources=lesson.references.map(ref=>'<li><a class="text-link" target="_blank" rel="noopener noreferrer" href="'+esc(ref.url)+'">'+esc(ref.title)+'</a></li>').join('');
+  return '<section class="reader-deep-lesson surface-card" id="reader-deep-lesson" lang="ja" aria-labelledby="deep-lesson-heading">'
+    +'<p class="eyebrow">第'+esc(lesson.sectionId)+'節：独立作成の発展学習教材</p>'
+    +'<h3 id="deep-lesson-heading">'+esc(lesson.title)+'</h3>'
+    +'<p class="small-note"><strong>原本の全文翻訳ではありません。外部専門家校閲前。</strong> 一般的な物理法則と確認可能な資料から独立執筆し、原本の表現・図版を転載していません。</p>'
+    +'<p><strong>到達目標：</strong>'+esc(lesson.objective)+'</p>'+paragraphs
+    +'<h4>代表式・単位・適用条件</h4>'+equations
+    +'<section class="deep-worked-example"><h4>解き方を追う：'+esc(example.title)+'</h4><p>'+esc(example.problem)+'</p><ol>'+steps+'</ol><p><strong>計算結果：</strong>'+esc(example.answer)+'</p><p><strong>仮定と限界：</strong>'+esc(example.limitations)+'</p></section>'
+    +'<h4>誤用しやすいポイント</h4><ul>'+pitfalls+'</ul>'
+    +'<h4>独立講義で確認した関連資料</h4><ul>'+sources+'</ul>'
+    +'<p class="small-note">'+esc(lesson.reviewStatus)+'</p></section>';
+}
 function renderReader() {
   const section = getSection(ui.readerSection) || getSection('1.1');
   ui.readerSection = section.id;
@@ -488,6 +511,7 @@ function renderReader() {
   const chapter = book.chapters.find(item => item.id === section.chapterId);
   const independentChapterGuide = GUIDE_SECTIONS.find(item=>item.bookChapter===section.chapterId);
   const independentNote=independentNoteForSection(originalNotes,section.id);
+  const deepLesson=deepLessonForSection(deepLessons,section.id);
   const independentQuestion=questionBank.find(q=>q.source?.sectionNoteId===section.id);
   const independentApplications=questionBank.filter(q=>q.source?.focusSectionId===section.id);
   const available = sectionIsTranslated(section);
@@ -538,6 +562,7 @@ function renderReader() {
         </dl>
         <div class="button-row">${independentQuestion?`<button type="button" class="button secondary" data-start-question="${escapeHTML(independentQuestion.id)}">この節の確認問題を解く →</button>`:''}${independentApplications.map(q=>`<button type="button" class="button secondary" data-start-question="${escapeHTML(q.id)}">この節の応用計算を解く →</button>`).join('')}<a class="text-link" href="#guide/${escapeHTML(independentChapterGuide?.id||'start')}">章別の独立補助講座を読む →</a></div>
         </section>` : ''}
+        ${deepLesson ? renderDeepLesson(deepLesson) : ''}
         ${independentChapterGuide ? `<aside class="notice-card" aria-label="独立作成の章別補助講座"><span class="notice-icon" aria-hidden="true">i</span><div><strong>この章の日本語補助講座</strong><p>原本の翻訳・節本文ではありません。伝熱・物質移動の考え方を独立した例と式で説明します。</p><a class="text-link" href="#guide/${escapeHTML(independentChapterGuide.id)}"> ${escapeHTML(independentChapterGuide.title)} を開く →</a></div></aside>` : ''}
         ${available ? `<div class="book-content" lang="${contentLanguage}">${blocks}</div>` : blocks}
           <p class="small-note">原本PDFを読んだ後の読了・しおり・メモは自分で記録してください。PDFビューアー内の位置は自動取得できません。</p>
