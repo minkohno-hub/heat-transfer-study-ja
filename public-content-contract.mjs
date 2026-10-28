@@ -88,6 +88,11 @@ export function checkPublicContent({book, questions, glossary, guides}) {
     if (!object(q)) { error(label + ': 問題データが正しくありません。'); continue; }
     if (qIds.has(q.id)) error(label + ': 問題IDが重複しています。');
     qIds.add(q.id);
+    // Revision markers are persisted with answers. A malformed revision would
+    // prevent reliable reassessment after a substantive question correction.
+    if(q.revision !== undefined && (typeof q.revision!=='string'|| !/^[A-Za-z0-9][A-Za-z0-9._-]{0,47}$/.test(q.revision))) {
+      error(label + ': 問題改訂番号の形式が正しくありません。');
+    }
     const issue = validateQuestion(q);
     if (issue) error(label + ': ' + issue);
     if (!present(q.prompt) || !q.choices?.every(present) ||
