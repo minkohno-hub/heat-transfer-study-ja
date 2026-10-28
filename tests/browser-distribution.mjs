@@ -43,7 +43,7 @@ try {
   assert.match(await page.locator('#reader-original-note').innerText(),/独立執筆・学術校閲前/);
   assert.match(await page.locator('#reader-original-note').innerText(),/原本の翻訳、節の全文掲載、図表の転載ではありません/);
   await page.locator('#reader-original-note summary').click();
-  assert.match(await page.locator('#reader-original-note').innerText(),/熱移動率はW/);
+  assert.match(await page.locator('#reader-original-note').innerText(),/WとJ/);
 
   assert.match(await page.locator('#reader-article').innerText(),/原本の翻訳・節本文ではありません/);
   assert.ok((await page.locator('.brand').getAttribute('aria-label')).includes('熱移動を学ぶ'));
