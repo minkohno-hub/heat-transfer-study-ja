@@ -6,8 +6,8 @@ import {learningCoverage} from '../learning-coverage.mjs';
 const read=async name=>JSON.parse(await readFile(new URL('../'+name,import.meta.url),'utf8'));
 
 test('coverage report separates original problems from verified book citation and public Japanese lessons',async()=>{
-  const [book,questions,glossary,contentManifest]=await Promise.all(['data/book.json','data/questions.json','data/glossary.json','data/content-manifest.json'].map(read));
-  const coverage=learningCoverage({book,questions,glossary,guides:GUIDE_SECTIONS,contentManifest});
+  const [book,questions,glossary,contentManifest,originalNotes,deepLessons]=await Promise.all(['data/book.json','data/questions.json','data/glossary.json','data/content-manifest.json','data/original-notes.json','data/original-deep-lessons.json'].map(read));
+  const coverage=learningCoverage({book,questions,glossary,guides:GUIDE_SECTIONS,contentManifest,originalNotes,deepLessons});
   assert.equal(coverage.pdfPages,810);
   assert.equal(coverage.textbookSections,76);
   assert.equal(coverage.chapterCount,11);
@@ -15,20 +15,30 @@ test('coverage report separates original problems from verified book citation an
   assert.equal(coverage.oldPcDraftOnlyRecordSections,44);
   assert.equal(coverage.protectedPriorSections,2);
   assert.equal(coverage.publicJapaneseSections,0);
-  assert.equal(coverage.totalQuestions,72);
-  assert.equal(coverage.appCreatedQuestions,65);
+  assert.equal(coverage.totalQuestions,181);
+  assert.equal(coverage.appCreatedQuestions,174);
   assert.equal(coverage.bookCitedQuestions,7);
   assert.equal(coverage.sectionsWithBookCitedQuestions,2);
   assert.equal(coverage.guideEntries,32);
   assert.equal(coverage.glossaryTerms,42);
-  assert.equal(Object.values(coverage.practiceByField).reduce((a,b)=>a+b,0),72);
+  assert.equal(Object.values(coverage.practiceByField).reduce((a,b)=>a+b,0),181);
   assert.equal(coverage.chapters.reduce((a,b)=>a+b.sectionCount,0),76);
   assert.equal(coverage.chapters.reduce((a,b)=>a+b.citedPracticeQuestions,0),7);
   assert.equal(coverage.originalChapterGuides,11);
   assert.equal(coverage.chaptersWithOriginalPractice,11);
-  assert.equal(coverage.chapters.reduce((a,b)=>a+b.originalPracticeQuestions,0),33);
+  assert.equal(coverage.chapters.reduce((a,b)=>a+b.originalPracticeQuestions,0),142);
   assert.equal(coverage.chapters.reduce((a,b)=>a+b.originalGuideEntries,0),11);
-  assert.ok(coverage.chapters.every(c=>c.originalPracticeQuestions===3&&c.originalGuideEntries===1));
+  assert.ok(coverage.chapters.every(c=>c.originalPracticeQuestions===6+c.sectionCount&&c.originalGuideEntries===1));
+  assert.equal(coverage.independentlyAuthoredJapaneseNotes,76);
+  assert.equal(coverage.originalDeepLessons,4);
+  assert.equal(coverage.chapters.find(x=>x.chapter==='ch8').originalDeepLessonCount,2);
+  assert.equal(coverage.chapters.find(x=>x.chapter==='ch3').originalDeepLessonCount,1);
+  assert.equal(coverage.chapters.find(x=>x.chapter==='ch5').originalDeepLessonCount,1);
+  assert.equal(coverage.publicJapaneseSections,0,'Independent advanced lessons are not book translations');
+  assert.equal(coverage.sectionsWithIndependentCheckQuestions,76);
+  assert.equal(coverage.publicJapaneseSections,0,'Section notes do not count as full textbook translations');
+  assert.ok(coverage.chapters.every(c=>c.independentSectionNotes===c.sectionCount&&c.independentSectionQuestions===c.sectionCount));
+
 
 });
 test('coverage never assigns public Japanese-translation progress from an unexamined manifest',async()=>{

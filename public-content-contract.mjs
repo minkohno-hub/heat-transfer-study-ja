@@ -1,6 +1,8 @@
 // Fail-closed referential-integrity checks for the public, allowlisted distribution.
 // This does not prove source accuracy or grant redistribution permissions.
 import {validateQuestion} from './study-core.mjs';
+import {validateOriginalNotes} from './original-notes.mjs';
+import {validateDeepLessons} from './original-deep-lessons.mjs';
 
 const object = value => value !== null && typeof value === 'object' && !Array.isArray(value);
 const present = value => typeof value === 'string' && value.trim().length > 0;
@@ -16,7 +18,7 @@ const pageRange = value => {
  * Returns explicit errors. Never conflate passing structure checks with
  * original-source verification, expert review or full textbook coverage.
  */
-export function checkPublicContent({book, questions, glossary, guides}) {
+export function checkPublicContent({book, questions, glossary, guides,originalNotes=null,deepLessons=null}) {
   const errors = [];
   const error = message => errors.push(message);
   if (!object(book) || !Number.isInteger(book.pdfPageCount) || book.pdfPageCount < 1 ||
@@ -148,5 +150,39 @@ export function checkPublicContent({book, questions, glossary, guides}) {
       linkedIds.add(link.id);
     }
   }
+  if (originalNotes!==null) {
+    errors.push(...validateOriginalNotes(book,originalNotes));
+    const noteIds=new Set(originalNotes.notes?.map(n=>n.sectionId)||[]);
+    const sectionQuestions=questions.filter(q=>q?.source?.sectionNoteId!==undefined);
+    const seen=new Set();
+    for(const q of sectionQuestions) {
+      const sid=q.source.sectionNoteId;
+      const section=sections.get(sid);
+      if(!noteIds.has(sid)||!section||q.source.chapterId!=='ch'+sid.split('.')[0] ||
+        q.source.type!=='supplement'||q.questionGroup!=='original_independent_section_review_v1'||
+        q.reviewStatus!=='AI作問・論理構造照合済み／外部専門家校閲前'||q.expertReviewed!==false||
+        !/^v[1-9]\d*$/.test(String(q.revision||''))) {
+        error('節別独自問題の参照先・未校閲表示・改訂番号が不正: '+String(q?.id));
+      }
+      if(seen.has(sid))error('節別独自問題の節IDが重複: '+sid);
+      seen.add(sid);
+    }
+    if(seen.size!==noteIds.size||sectionQuestions.length!==76)
+      error('76節の独立学習ノートと節別演習の対応に欠落があります。');
+    const applied=questions.filter(q=>q?.source?.focusSectionId!==undefined);
+    for(const q of applied){
+      const sid=q.source.focusSectionId;
+      const section=sections.get(sid);
+      if(!section||!noteIds.has(sid)||q.source.chapterId!=='ch'+sid.split('.')[0]||
+        q.source.type!=='supplement'||q.questionGroup!=='original_independent_applied_v1'||
+        q.questionKind!=='numerical'||q.expertReviewed!==false||
+        !/^v[1-9]\d*$/.test(String(q.revision||''))||
+        !q.reviewStatus?.includes('外部専門家校閲前')) {
+        error('応用計算問題の関連節・原著・未校閲表示に不整合: '+String(q?.id));
+      }
+    }
+
+  }
+  if(deepLessons!==null)errors.push(...validateDeepLessons(book,deepLessons));
   return errors;
 }

@@ -38,7 +38,22 @@ try {
   await nav('reader');
   await page.locator('.reader-toc .toc-item.selected').waitFor({state:'attached'});
   assert.ok((await readerContrast()).every(value=>value>=4.5),'目次の選択行の文字コントラスト');
-  await page.locator('#reader-article a[href="#guide/chapter1-energy-balance"]').waitFor({state:"attached"});
+  await page.locator('#reader-article a[href="#guide/chapter1-energy-balance"]').first().waitFor({state:"attached"});
+  await page.locator('#reader-original-note').waitFor({state:'visible'});
+  assert.match(await page.locator('#reader-original-note').innerText(),/独立執筆・学術校閲前/);
+  assert.match(await page.locator('#reader-original-note').innerText(),/原本の翻訳、節の全文掲載、図表の転載ではありません/);
+  await page.locator('#reader-original-note summary').click();
+  assert.match(await page.locator('#reader-original-note').innerText(),/WとJ/);
+  await page.locator('#reader-original-note [data-start-question="supp-applied-1-1-v1"]').waitFor({state:'visible'});
+  await page.locator('#reader-original-note [data-start-question="supp-applied-1-1-v1"]').click();
+  await page.locator('.question-card').waitFor({state:'visible'});
+  assert.match(await page.locator('.question-card').innerText(),/0\.08 m².*0\.02 m²/s);
+  await page.locator('[data-action="exit-quiz"]').click();
+  await page.locator('[data-action="discard-quiz"]').click();
+  await nav('reader');
+  await page.locator('#reader-original-note').waitFor({state:'visible'});
+
+
   assert.match(await page.locator('#reader-article').innerText(),/原本の翻訳・節本文ではありません/);
   assert.ok((await page.locator('.brand').getAttribute('aria-label')).includes('熱移動を学ぶ'));
   assert.ok((await page.locator('.not-translated a[href*="AHTTv600.pdf"]').getAttribute('aria-label')).includes('原本PDFを開く'));
@@ -114,36 +129,36 @@ try {
   await page.locator('[data-action="discard-quiz"]').click();
   await nav('map');
   await page.locator('[data-chapter-card="ch2"]').waitFor({state:'visible'});
-  assert.match(await page.locator('[data-chapter-card="ch2"]').innerText(),/収録問題：3問/);
+  assert.match(await page.locator('[data-chapter-card="ch2"]').innerText(),/収録問題：11問/);
   assert.match(await page.locator('[data-chapter-card="ch1"]').innerText(),/原本の節を読了に記録：1\/5節/);
-  assert.match(await page.locator('[data-chapter-card="ch9"]').innerText(),/収録問題：10問/);
-  assert.match(await page.locator('[data-chapter-card="ch2"]').innerText(),/未回答：3問/);
+  assert.match(await page.locator('[data-chapter-card="ch9"]').innerText(),/収録問題：24問/);
+  assert.match(await page.locator('[data-chapter-card="ch2"]').innerText(),/未回答：11問/);
   await page.locator('[data-chapter-card="ch2"] [data-chapter-practice-mode="priority"]').click();
   await page.locator('.question-card').waitFor({state:'visible'});
-  assert.match(await page.locator('.page-heading h1').innerText(),/1 \/ 3 問/);
+  assert.match(await page.locator('.page-heading h1').innerText(),/1 \/ 10 問/);
   const priorityIds=await page.evaluate(()=>JSON.parse(localStorage.getItem('heat-study-ja:v1')).quizDraft.ids);
-  assert.ok(priorityIds.every(id=>id.startsWith('supp-chapter-ch2-')));
-  assert.equal(priorityIds.length,3);
+  assert.equal(priorityIds.length,10);
+  assert.ok(priorityIds.every(id=>id.startsWith('supp-chapter-ch2-')||id.startsWith('supp-section-2-')||id.startsWith('supp-advanced-ch2-')||id.startsWith('supp-applied-2-')));
   await page.locator('[data-action="exit-quiz"]').click();
   await page.locator('[data-action="discard-quiz"]').click();
   await nav('map');
   await page.locator('[data-chapter-card="ch2"] [data-chapter-practice="ch2"]:not([data-chapter-practice-mode])').click();
   await page.locator('.question-card').waitFor({state:'visible'});
-  assert.match(await page.locator('.page-heading h1').innerText(),/1 \/ 3 問/);
-  assert.equal((await page.evaluate(()=>JSON.parse(localStorage.getItem('heat-study-ja:v1')).quizDraft.ids)).every(id=>id.startsWith('supp-chapter-ch2-')),true);
+  assert.match(await page.locator('.page-heading h1').innerText(),/1 \/ 11 問/);
+  assert.equal((await page.evaluate(()=>JSON.parse(localStorage.getItem('heat-study-ja:v1')).quizDraft.ids)).every(id=>id.startsWith('supp-chapter-ch2-')||id.startsWith('supp-section-2-')||id.startsWith('supp-advanced-ch2-')||id.startsWith('supp-applied-2-')),true);
   await page.locator('[data-action="exit-quiz"]').click();
   await page.locator('[data-action="discard-quiz"]').click();
   await page.locator('#quiz-start-form select[name="chapter"]').selectOption('ch9');
-  await page.locator('#quiz-start-form select[name="count"]').selectOption('72');
+  await page.locator('#quiz-start-form select[name="count"]').selectOption('181');
   await page.locator('#quiz-start-form button[type="submit"]').click();
   await page.locator('.question-card').waitFor({state:'visible'});
-  assert.match(await page.locator('.page-heading h1').innerText(),/1 \/ 10 問/);
+  assert.match(await page.locator('.page-heading h1').innerText(),/1 \/ 24 問/);
   await page.locator('[data-action="exit-quiz"]').click();
   await page.locator('[data-action="discard-quiz"]').click();
   await nav('guide');
   await page.locator('#guide-chapter11-fick-mass [data-chapter-practice="ch11"]').click();
   await page.locator('.question-card').waitFor({state:'visible'});
-  assert.match(await page.locator('.page-heading h1').innerText(),/1 \/ 3 問/);
+  assert.match(await page.locator('.page-heading h1').innerText(),/1 \/ 17 問/);
   await page.locator('[data-action="exit-quiz"]').click();
   await page.locator('[data-action="discard-quiz"]').click();
   await nav('search');
@@ -154,6 +169,20 @@ try {
   assert.ok(await page.locator('.result-card').count()>=1);
   await page.locator('.result-card .result-link').first().click();
   assert.match(page.url(),/#guide\/chapter8-buoyancy$/);
+  await nav('search');
+  await page.locator('#search-query').fill('多成分混合物');
+  await page.locator('#search-form select[name="kind"]').selectOption('original-note');
+  await page.locator('#search-form select[name="chapter"]').selectOption('ch11');
+  await page.locator('#search-form button[type="submit"]').click();
+  assert.ok(await page.locator('.result-card').count()>=1);
+  await page.locator('.result-card .result-link').first().click();
+  await page.locator('#reader-original-note').waitFor({state:'visible'});
+  assert.match(await page.locator('#reader-original-note').innerText(),/独立執筆・学術校閲前/);
+  await page.locator('#reader-original-note [data-start-question]').click();
+  await page.locator('.question-card').waitFor({state:'visible'});
+  assert.match(await page.locator('.question-card').innerText(),/独立学習ノート/);
+  await page.locator('[data-action="exit-quiz"]').click();
+  await page.locator('[data-action="discard-quiz"]').click();
   await nav('simulator');
   assert.match(await page.locator('.result-number').innerText(),/5,625/);
   await page.locator('#sim-form input[name="k"]').fill('0.000001');
@@ -364,6 +393,40 @@ try {
   if(missingPdf.status===503)assert.match(missingPdf.message,/オフライン保存されていません/);
   if([200,206].includes(missingPdf.status))assert.equal(missingPdf.signature,'%PDF','別領域のHTTPキャッシュがPDFを返した場合も署名を確認する');
   }
+  await nav('reader');
+  // In-depth original Japanese lessons must be accessible on both fresh and
+  // previously cached distributions, independently of copyrighted book text.
+  await page.locator('.reader-toc [data-section="3.2"]').evaluate(element=>{
+    for(let n=element.parentElement;n;n=n.parentElement)if(n.tagName==='DETAILS')n.open=true;
+  });
+  await page.locator('.reader-toc [data-section="3.2"]').click();
+  await page.locator('#reader-deep-lesson').waitFor({state:'visible'});
+  assert.match(await page.locator('#reader-deep-lesson').innerText(),/対数平均温度差の導出/);
+  assert.match(await page.locator('#reader-deep-lesson').innerText(),/202\.73 W\/K/);
+  assert.equal(await page.locator('#reader-deep-lesson .deep-lesson-block').count(),6);
+  await page.locator('.reader-toc [data-section="5.2"]').evaluate(element=>{
+    for(let n=element.parentElement;n;n=n.parentElement)if(n.tagName==='DETAILS')n.open=true;
+  });
+  await page.locator('.reader-toc [data-section="5.2"]').click();
+  await page.locator('#reader-deep-lesson').waitFor({state:'visible'});
+  assert.match(await page.locator('#reader-deep-lesson').innerText(),/集中熱容量法の支配方程式/);
+  assert.match(await page.locator('#reader-deep-lesson').innerText(),/49\.43/);
+  await page.locator('.reader-toc [data-section="8.4"]').evaluate(element=>{
+    for(let n=element.parentElement;n;n=n.parentElement)if(n.tagName==='DETAILS')n.open=true;
+  });
+  await page.locator('.reader-toc [data-section="8.4"]').click();
+  await page.locator('#reader-deep-lesson').waitFor({state:'visible'});
+  assert.match(await page.locator('#reader-deep-lesson').innerText(),/独立作成の発展学習教材/);
+  assert.match(await page.locator('#reader-deep-lesson').innerText(),/Ra≈7\.85×10⁶/);
+  assert.equal(await page.locator('#reader-deep-lesson .deep-lesson-block').count(),6);
+  await page.locator('.reader-toc [data-section="8.5"]').evaluate(element=>{
+    for(let n=element.parentElement;n;n=n.parentElement)if(n.tagName==='DETAILS')n.open=true;
+  });
+  await page.locator('.reader-toc [data-section="8.5"]').click();
+  await page.locator('#reader-deep-lesson').waitFor({state:'visible'});
+  assert.match(await page.locator('#reader-deep-lesson').innerText(),/膜状凝縮の液膜抵抗/);
+  assert.match(await page.locator('#reader-deep-lesson').innerText(),/9\.70 kW/);
+  assert.equal(await page.locator('#reader-deep-lesson .deep-worked-example li').count(),5);
   assert.deepEqual(errors,[]);
   assert.deepEqual(external,[]);
   console.log(engine==='webkit'?'WebKitで公開配信物の主要画面・保存・PDFキャッシュのオンライン範囲取得を確認。Playwright WebKitのオフライン通信・再訪は内部エラーのため未検証。':`${engine}で公開配信物：原本PDFとオフラインの範囲取得、訳文・抽出原図なし、ガイド・演習・計算・保存・画面幅・数字キーとEnter・3種類の表示モードを確認。`);

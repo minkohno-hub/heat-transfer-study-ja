@@ -1,7 +1,9 @@
 import { createEmptyState, validateLearningData, normalizeLearningData, mergeLearningData, calculateHeatTransfer, chapterKey, searchEntries, searchSnippet, searchRanges, localDay, validDay, shiftMonth, nextReviewDays, planMinutes, validateQuestion, safeLocalFigurePath, speechChunks, questionFingerprint, quizChoiceOrder, quizResumeIssue, recordStudyActivity, fieldProgress, studyDuration, isCurrentQuestionAnswer } from './study-core.mjs';
 import { GUIDE_SECTIONS, searchGuide } from './guide.mjs';
 import {questionChapter,questionsForChapter,chapterLearningOverview} from './chapter-curriculum.mjs';
-const CORE_DATA_FILES = ['./data/book.json', './data/questions.json', './data/glossary.json', './data/content-manifest.json'];
+import {validateOriginalNotes,independentNoteForSection} from './original-notes.mjs';
+import {validateDeepLessons,deepLessonForSection} from './original-deep-lessons.mjs';
+const CORE_DATA_FILES = ['./data/book.json', './data/questions.json', './data/glossary.json', './data/content-manifest.json', './data/original-notes.json', './data/original-deep-lessons.json'];
 const LEGACY_STORAGE_KEY = 'heat-study-ja:v1';
 const PROFILES_KEY = 'heat-study-ja:profiles:v1';
 const ACTIVE_PROFILE_KEY = 'heat-study-ja:active-profile:v1';
@@ -18,6 +20,8 @@ let book;
 let questionBank;
 let glossary;
 let contentManifest;
+let originalNotes;
+let deepLessons;
 let speechRun = 0;
 function routeFromHash() { return location.hash.slice(1).split('/')[0] || 'home'; }
 function guideTargetFromHash() { const id=location.hash.slice(1).split('/')[1]; return GUIDE_SECTIONS.some(section=>section.id===id)?id:''; }
@@ -245,10 +249,14 @@ const NAV_ITEMS = [
 
 async function startApp() {
   try {
-    [book, questionBank, glossary, contentManifest] = await Promise.all(CORE_DATA_FILES.map(path => fetch(path).then(response => {
+    [book, questionBank, glossary, contentManifest, originalNotes, deepLessons] = await Promise.all(CORE_DATA_FILES.map(path => fetch(path).then(response => {
       if (!response.ok) throw new Error(`教材データを読み込めません（${path}）`);
       return response.json();
     })));
+    const independentIssues=validateOriginalNotes(book,originalNotes);
+    if(independentIssues.length)throw new Error('独立作成の日本語節別ノートの整合性を確認してください: '+independentIssues[0]);
+    const deepIssues=validateDeepLessons(book,deepLessons);
+    if(deepIssues.length)throw new Error('独立発展講義の整合性を確認してください: '+deepIssues[0]);
     const contentFiles = await Promise.all((contentManifest.files || []).map(path => fetch(path).then(response => {
       if (!response.ok) throw new Error(`章別教材データを読み込めません（${path}）`);
       return response.json();
@@ -479,12 +487,35 @@ function renderHome() {
     </div>`;
 }
 
+function renderDeepLesson(lesson) {
+  const esc=escapeHTML;
+  const paragraphs=lesson.blocks.map(b=>'<section class="deep-lesson-block"><h4>'+esc(b.heading)+'</h4><p>'+esc(b.text)+'</p></section>').join('');
+  const equations=lesson.equations.map(e=>'<div class="deep-equation"><strong>'+esc(e.label)+'</strong><p class="deep-expression">'+esc(e.expression)+'</p><p>'+esc(e.meaning)+'</p></div>').join('');
+  const example=lesson.workedExample;
+  const steps=example.steps.map((line,i)=>'<li><strong>手順'+(i+1)+'</strong> '+esc(line)+'</li>').join('');
+  const pitfalls=lesson.pitfalls.map(text=>'<li>'+esc(text)+'</li>').join('');
+  const sources=lesson.references.map(ref=>'<li><a class="text-link" target="_blank" rel="noopener noreferrer" href="'+esc(ref.url)+'">'+esc(ref.title)+'</a></li>').join('');
+  return '<section class="reader-deep-lesson surface-card" id="reader-deep-lesson" lang="ja" aria-labelledby="deep-lesson-heading">'
+    +'<p class="eyebrow">第'+esc(lesson.sectionId)+'節：独立作成の発展学習教材</p>'
+    +'<h3 id="deep-lesson-heading">'+esc(lesson.title)+'</h3>'
+    +'<p class="small-note"><strong>原本の全文翻訳ではありません。外部専門家校閲前。</strong> 一般的な物理法則と確認可能な資料から独立執筆し、原本の表現・図版を転載していません。</p>'
+    +'<p><strong>到達目標：</strong>'+esc(lesson.objective)+'</p>'+paragraphs
+    +'<h4>代表式・単位・適用条件</h4>'+equations
+    +'<section class="deep-worked-example"><h4>解き方を追う：'+esc(example.title)+'</h4><p>'+esc(example.problem)+'</p><ol>'+steps+'</ol><p><strong>計算結果：</strong>'+esc(example.answer)+'</p><p><strong>仮定と限界：</strong>'+esc(example.limitations)+'</p></section>'
+    +'<h4>誤用しやすいポイント</h4><ul>'+pitfalls+'</ul>'
+    +'<h4>独立講義で確認した関連資料</h4><ul>'+sources+'</ul>'
+    +'<p class="small-note">'+esc(lesson.reviewStatus)+'</p></section>';
+}
 function renderReader() {
   const section = getSection(ui.readerSection) || getSection('1.1');
   ui.readerSection = section.id;
   state.lastSection = section.id; saveState();
   const chapter = book.chapters.find(item => item.id === section.chapterId);
   const independentChapterGuide = GUIDE_SECTIONS.find(item=>item.bookChapter===section.chapterId);
+  const independentNote=independentNoteForSection(originalNotes,section.id);
+  const deepLesson=deepLessonForSection(deepLessons,section.id);
+  const independentQuestion=questionBank.find(q=>q.source?.sectionNoteId===section.id);
+  const independentApplications=questionBank.filter(q=>q.source?.focusSectionId===section.id);
   const available = sectionIsTranslated(section);
   const hasEnglish = Array.isArray(section.blocksEn);
   const contentLanguage = hasEnglish && state.settings.contentLanguage === 'en' ? 'en' : 'ja';
@@ -519,6 +550,21 @@ function renderReader() {
         <h2 class="reader-title">${escapeHTML(section.id)}　${escapeHTML(displayTitle)}</h2>
         <div class="reader-status-row">${statusPill(available ? (section.localDraft ? '訳文下書き・未照合' : section.localSourceChecked ? '原本照合済み（作業者）' : '翻訳済み') : draftLabel, available ? section.localDraft ? 'amber' : 'green' : 'neutral')}${statusPill(available ? section.localDraft ? '文章・式・図表の照合待ち' : '専門家校閲待ち' : privateOnly ? '訳文等の公開範囲を確認中' : draftComplete ? '確認待ち・アプリ未収録' : inProgress ? '下書きはアプリ未収録' : '日本語訳は未収録', 'amber')}</div>
         ${section.localDraft ? '<aside class="notice-card compact-notice"><p>この訳文は以前のPCで作成した下書きです。原本との文章・数式・図表・ページの網羅性を再確認していません。学習時は英語原本PDFと照らし合わせてください。</p></aside>' : ''}
+        ${independentNote ? `<section class="reader-original-note surface-card" id="reader-original-note" aria-labelledby="original-note-heading" lang="ja">
+        <p class="eyebrow">第${escapeHTML(section.chapterId.slice(2))}章 · 第${escapeHTML(section.id)}節に関連する独自日本語ノート</p>
+        <h3 id="original-note-heading">${escapeHTML(independentNote.objective)}</h3>
+        <p class="small-note"><strong>独立執筆・学術校閲前。</strong>原本の翻訳、節の全文掲載、図表の転載ではありません。原本の節との逐文対応は未検証です。</p>
+        <dl class="original-note-fields">
+          <dt>考え方</dt><dd>${escapeHTML(independentNote.explanation)}</dd>
+          <dt>代表式・用語</dt><dd>${escapeHTML(independentNote.relation)}</dd>
+          <dt>具体例</dt><dd>${escapeHTML(independentNote.example)}</dd>
+          <dt>適用条件と注意点</dt><dd>${escapeHTML(independentNote.limits)}</dd>
+          <dt>理解度チェック</dt><dd>${escapeHTML(independentNote.selfCheck)}</dd>
+          <dt>考え方・答え</dt><dd><details><summary>答えを確認する</summary><p>${escapeHTML(independentNote.answer)}</p></details></dd>
+        </dl>
+        <div class="button-row">${independentQuestion?`<button type="button" class="button secondary" data-start-question="${escapeHTML(independentQuestion.id)}">この節の確認問題を解く →</button>`:''}${independentApplications.map(q=>`<button type="button" class="button secondary" data-start-question="${escapeHTML(q.id)}">この節の応用計算を解く →</button>`).join('')}<a class="text-link" href="#guide/${escapeHTML(independentChapterGuide?.id||'start')}">章別の独立補助講座を読む →</a></div>
+        </section>` : ''}
+        ${deepLesson ? renderDeepLesson(deepLesson) : ''}
         ${independentChapterGuide ? `<aside class="notice-card" aria-label="独立作成の章別補助講座"><span class="notice-icon" aria-hidden="true">i</span><div><strong>この章の日本語補助講座</strong><p>原本の翻訳・節本文ではありません。伝熱・物質移動の考え方を独立した例と式で説明します。</p><a class="text-link" href="#guide/${escapeHTML(independentChapterGuide.id)}"> ${escapeHTML(independentChapterGuide.title)} を開く →</a></div></aside>` : ''}
         ${available ? `<div class="book-content" lang="${contentLanguage}">${blocks}</div>` : blocks}
           <p class="small-note">原本PDFを読んだ後の読了・しおり・メモは自分で記録してください。PDFビューアー内の位置は自動取得できません。</p>
@@ -615,6 +661,15 @@ function buildSearchIndex() {
       });
     }
   }
+  // Every section has a short independently authored learning note; not a book translation.
+  for(const note of originalNotes?.notes||[]){
+    entries.push({kind:'original-note',kindLabel:'独立作成の日本語節別ノート',chapter:note.chapterId,
+      field:'節別の独立日本語学習ノート',
+      title:note.sectionId+' '+note.title+' · '+note.objective,
+      text:[note.explanation,note.relation,note.example,note.limits,note.selfCheck,note.answer].join(' '),
+      source:'節別の独立執筆教材 · 原本PDF p.'+note.pdfStart+'から関連事項を確認可能（原本の訳文ではない）',
+      target:{route:'reader',section:note.sectionId,language:'ja'}});
+  }
   // Search independent original explanations without claiming they are translated book chapters.
   for(const guide of GUIDE_SECTIONS) {
     entries.push({kind:'guide',kindLabel:guide.bookChapter?'独立作成の章別講座':'学習ガイド',
@@ -639,9 +694,9 @@ function buildSearchIndex() {
 }
 function renderSearch() {
   const results = ui.searchResults || [];
-  return `${pageHeading('横断検索', '探したい言葉から、学びへ。', '収録済みの見出し、独立学習ガイド、用語、問題、解説、メモを横断検索します。未収録の原本本文は検索対象ではありません。')}
+  return `${pageHeading('横断検索', '探したい言葉から、学びへ。', '収録済みの目次見出し、独自の日本語節別ノート76項目、学習ガイド、用語、問題、メモを検索します。未収録の原本訳文は検索できません。')}
     <form id="search-form" class="search-form surface-card"><label for="search-query">検索語</label><div class="search-input-row"><div class="search-input-wrap"><span aria-hidden="true">⌕</span><input id="search-query" name="query" type="search" value="${escapeHTML(ui.search.query)}" placeholder="例：温度勾配、対流、熱抵抗" autocomplete="off"/><button type="button" class="clear-search" data-action="clear-search" aria-label="検索語を消去">×</button></div><button class="button primary" type="submit">検索</button></div>
-      <div class="filter-row"><label>対象<select name="kind"><option value="all" ${ui.search.kind === 'all' ? 'selected' : ''}>すべて</option><option value="book" ${ui.search.kind === 'book' ? 'selected' : ''}>本文・見出し</option><option value="glossary" ${ui.search.kind === 'glossary' ? 'selected' : ''}>用語集</option><option value="guide" ${ui.search.kind === 'guide' ? 'selected' : ''}>学習ガイド</option><option value="question" ${ui.search.kind === 'question' ? 'selected' : ''}>問題・解説</option><option value="memo" ${ui.search.kind === 'memo' ? 'selected' : ''}>メモ・しおり</option></select></label><label>章<select name="chapter"><option value="all">すべての章</option>${book.chapters.map(ch => `<option value="${ch.id}" ${ui.search.chapter === ch.id ? 'selected' : ''}>第${ch.id.slice(2)}章 ${escapeHTML(ch.title)}</option>`).join('')}<option value="supplement" ${ui.search.chapter === 'supplement' ? 'selected' : ''}>補足説明</option></select></label><label>分野<select name="field"><option value="all">すべての分野</option>${[...new Set(buildSearchIndex().map(e=>e.field).filter(Boolean))].map(field=>`<option value="${escapeHTML(field)}" ${ui.search.field===field?'selected':''}>${escapeHTML(field)}</option>`).join('')}</select></label><span class="search-hint">日本語の一部だけでも検索できます</span></div>
+      <div class="filter-row"><label>対象<select name="kind"><option value="all" ${ui.search.kind === 'all' ? 'selected' : ''}>すべて</option><option value="book" ${ui.search.kind === 'book' ? 'selected' : ''}>本文・見出し</option><option value="glossary" ${ui.search.kind === 'glossary' ? 'selected' : ''}>用語集</option><option value="guide" ${ui.search.kind === 'guide' ? 'selected' : ''}>学習ガイド</option><option value="original-note" ${ui.search.kind === 'original-note' ? 'selected' : ''}>独自の日本語節別ノート</option><option value="question" ${ui.search.kind === 'question' ? 'selected' : ''}>問題・解説</option><option value="memo" ${ui.search.kind === 'memo' ? 'selected' : ''}>メモ・しおり</option></select></label><label>章<select name="chapter"><option value="all">すべての章</option>${book.chapters.map(ch => `<option value="${ch.id}" ${ui.search.chapter === ch.id ? 'selected' : ''}>第${ch.id.slice(2)}章 ${escapeHTML(ch.title)}</option>`).join('')}<option value="supplement" ${ui.search.chapter === 'supplement' ? 'selected' : ''}>補足説明</option></select></label><label>分野<select name="field"><option value="all">すべての分野</option>${[...new Set(buildSearchIndex().map(e=>e.field).filter(Boolean))].map(field=>`<option value="${escapeHTML(field)}" ${ui.search.field===field?'selected':''}>${escapeHTML(field)}</option>`).join('')}</select></label><span class="search-hint">日本語の一部だけでも検索できます</span></div>
     </form>
     <section class="search-results"><div class="results-heading"><h2>${ui.search.query ? `「${escapeHTML(ui.search.query)}」の検索結果` : '検索結果'}</h2>${ui.search.query ? `<span>${results.length}件</span>` : ''}</div>
       ${!ui.search.query ? `<div class="empty-state"><span class="empty-mark">⌕</span><h3>見つけたい言葉を入力してください</h3><p>原本の節見出し、独立学習ガイド、用語、問題、保存したメモを検索できます。</p></div>` : !results.length ? `<div class="empty-state"><span class="empty-mark">…</span><h3>一致する内容がありません</h3><p>別の言葉や短い表現で検索してみてください。未翻訳本文は検索対象に含まれません。</p></div>` : `<div class="result-list">${results.map(entry => `<article class="result-card"><div class="result-meta">${statusPill(entry.kindLabel, entry.kind === 'book' ? 'blue' : entry.kind === 'memo' ? 'amber' : 'green')}<span>${escapeHTML(entry.chapterTitle || '')}</span></div><h3><button type="button" class="result-link" data-search-target='${escapeHTML(JSON.stringify(entry.target))}'>${highlight(entry.title, ui.search.query)}</button></h3><p>${highlight(searchSnippet(entry.text, ui.search.query), ui.search.query)}</p><small>${escapeHTML(entry.source)}</small></article>`).join('')}</div>`}
@@ -929,7 +984,7 @@ function renderAnswerFeedback(question, answer, existingNote, choiceOrder) {
   const correct = answer.correct;
   const sourceSection=getSection(question.source.section);
   const guideId=question.source.guideId;
-  const sourceAction = question.source.type === 'book' ? `<div class="source-ref">出典：${sourceLabel(question.source)}。${sectionIsTranslated(sourceSection)?`<button type="button" class="text-link" data-section="${escapeHTML(question.source.section)}">アプリ内の本文を開く →</button>`:'アプリ内の日本語訳は未収録です。'}</div>${sourcePdfLink(question.source,sourceSection)}` : `<div class="source-ref">${sourceLabel(question.source)}。書籍本文ではなくアプリ作成の説明です。${GUIDE_SECTIONS.some(section=>section.id===guideId)?`<a class="text-link" href="#guide/${guideId}">関連する学習ガイドへ →</a>`:''}</div>`;
+  const sourceAction = question.source.type === 'book' ? `<div class="source-ref">出典：${sourceLabel(question.source)}。${sectionIsTranslated(sourceSection)?`<button type="button" class="text-link" data-section="${escapeHTML(question.source.section)}">アプリ内の本文を開く →</button>`:'アプリ内の日本語訳は未収録です。'}</div>${sourcePdfLink(question.source,sourceSection)}` : `<div class="source-ref">${sourceLabel(question.source)}。書籍本文ではなくアプリ作成の説明です。${GUIDE_SECTIONS.some(section=>section.id===guideId)?`<a class="text-link" href="#guide/${guideId}">関連する学習ガイドへ →</a>`:''}${(question.source.sectionNoteId||question.source.focusSectionId) && independentNoteForSection(originalNotes,question.source.sectionNoteId||question.source.focusSectionId)?`<button type="button" class="text-link" data-section="${escapeHTML(question.source.sectionNoteId||question.source.focusSectionId)}">関連する独自日本語節別ノートを読む →</button>`:''}</div>`;
   const reasons = choiceOrder.map((index,position) => `<li class="${index === question.answer ? 'is-correct' : ''}"><strong>${String.fromCharCode(65 + position)} ${index === question.answer ? '正解' : '誤答'}</strong><p>${escapeHTML(question.distractors[index])}</p></li>`).join('');
   return `<section class="answer-feedback ${correct ? 'feedback-correct' : 'feedback-wrong'}" aria-live="polite"><div class="feedback-title"><span class="feedback-symbol">${correct ? '✓' : '!'}</span><div><strong>${correct ? '正解です' : '今回は不正解です'}</strong><small>自信度：${confidenceLabel(answer.confidence)} · ${formatTime(answer.at)}</small></div></div>
     <div class="explanation-block"><h3>何を問う問題だった？</h3><p>${escapeHTML(question.prompt)}</p><h3>正解へ至る考え方</h3><p>${escapeHTML(question.explanation)}</p></div>
