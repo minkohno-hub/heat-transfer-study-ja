@@ -163,6 +163,19 @@ export function checkPublicContent({book, questions, glossary, guides,originalNo
     }
     if(seen.size!==noteIds.size||sectionQuestions.length!==76)
       error('76節の独立学習ノートと節別演習の対応に欠落があります。');
+    const applied=questions.filter(q=>q?.source?.focusSectionId!==undefined);
+    for(const q of applied){
+      const sid=q.source.focusSectionId;
+      const section=sections.get(sid);
+      if(!section||!noteIds.has(sid)||q.source.chapterId!=='ch'+sid.split('.')[0]||
+        q.source.type!=='supplement'||q.questionGroup!=='original_independent_applied_v1'||
+        q.questionKind!=='numerical'||q.expertReviewed!==false||
+        !/^v[1-9]\\d*$/.test(String(q.revision||''))||
+        !q.reviewStatus?.includes('外部専門家校閲前')) {
+        error('応用計算問題の関連節・原著・未校閲表示に不整合: '+String(q?.id));
+      }
+    }
+
   }
   return errors;
 }
