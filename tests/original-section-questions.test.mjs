@@ -57,7 +57,10 @@ test('every original Japanese note has exactly one published question with a sin
       assert.ok(idx>=0&&idx!==q.answer);
       assert.ok(q.distractors[idx].includes(d.reason),n.sectionId);
     }
-    assert.deepEqual(all.find(x=>x.id===q.id),q);
+    const published=all.find(x=>x.id===q.id);
+    assert.ok(['conceptual','numerical'].includes(published?.questionKind),n.sectionId);
+    const {questionKind,...originalQuestionFields}=published;
+    assert.deepEqual(originalQuestionFields,q,'Source question content must remain unchanged except for its cognition tag');
   }
 });
 test('independent calculations verify representative objective answer keys across heat/mass transfer',async()=>{
