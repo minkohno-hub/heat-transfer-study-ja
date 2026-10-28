@@ -1,6 +1,6 @@
 // A descriptive coverage report, deliberately NOT a fabricated overall completion percentage.
 // Never treat a draft record or an original English PDF as a published Japanese lesson.
-export function learningCoverage({book,questions,glossary,guides,contentManifest}) {
+export function learningCoverage({book,questions,glossary,guides,contentManifest,originalNotes=null}) {
   const sections=book.chapters.flatMap(ch=>ch.sections);
   const publishedFilePaths=contentManifest.files||[];
   const original=questions.filter(q=>q.source.type==='supplement');
@@ -12,7 +12,9 @@ export function learningCoverage({book,questions,glossary,guides,contentManifest
       citedPracticeQuestions:bookBased.filter(q=>chapterIds.has(q.source.section)).length,
       sectionsWithCitedPractice:new Set(bookBased.filter(q=>chapterIds.has(q.source.section)).map(q=>q.source.section)).size,
       originalPracticeQuestions:original.filter(q=>q.source.chapterId===ch.id).length,
-      originalGuideEntries:guides.filter(g=>g.bookChapter===ch.id).length
+      originalGuideEntries:guides.filter(g=>g.bookChapter===ch.id).length,
+      independentSectionNotes:originalNotes?.notes?.filter(n=>n.chapterId===ch.id).length??null,
+      independentSectionQuestions:original.filter(q=>q.source.sectionNoteId&&chapterIds.has(q.source.sectionNoteId)).length
     };
   });
   return {
@@ -26,6 +28,8 @@ export function learningCoverage({book,questions,glossary,guides,contentManifest
     publicJapaneseSections:publishedFilePaths.length===0?0:null, // Must inspect manifested files before assigning a nonzero count.
     originalChapterGuides:guides.filter(g=>g.bookChapter&&book.chapters.some(ch=>ch.id===g.bookChapter)).length,
     chaptersWithOriginalPractice:new Set(original.map(q=>q.source.chapterId).filter(Boolean)).size,
+    independentlyAuthoredJapaneseNotes:originalNotes?.notes?.length??null,
+    sectionsWithIndependentCheckQuestions:new Set(original.map(q=>q.source.sectionNoteId).filter(Boolean)).size,
     totalQuestions:questions.length,
     appCreatedQuestions:original.length,
     bookCitedQuestions:bookBased.length,
