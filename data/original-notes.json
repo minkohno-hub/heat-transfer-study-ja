@@ -387,7 +387,7 @@
       "relation": "無次元温度比 Θ=(T−T_∞)/(T_i−T_∞)。ただし基準温度や無次元化は線図ごとに確認する。",
       "example": "T_i=100 ℃、T_∞=20 ℃で中心のΘ=0.25と読めた場合、中心温度は20+0.25×80=40 ℃。表面や体積平均の値ではない。",
       "limits": "特性長さの選択、Bi/Foの定義、形状、線図の適用範囲に依存する。目盛りを外挿して高精度の値と扱わない。",
-      "selfCheck": "無次元温度Θ=0なら物体温度は何℃に一致するか。",
+      "selfCheck": "Θ=(T−T_∞)/(T_i−T_∞)でT_i≠T_∞のとき、Θ=0ならTはどの温度に一致するか。",
       "answer": "T_∞",
       "reviewStatus": "AI_drafted_pending_independent_expert_review",
       "chapterId": "ch5",
