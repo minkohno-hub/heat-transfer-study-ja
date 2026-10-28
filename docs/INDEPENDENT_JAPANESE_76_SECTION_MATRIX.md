@@ -1,6 +1,6 @@
 # 原本76節に対応する独立日本語教材・問題集の品質台帳
 
-作成：2026-10-28。対象：`chatgpt/independent-japanese-76-section-notes-20261028`。**独立執筆した節別の概念ノート76件**と**各節1問の独立した四択問題76問**を扱う。既存72問と節別76問、発展数値演習11問を合わせて159問。章別の独立ガイドは従来の11件を維持する。
+作成：2026-10-28。対象：`chatgpt/independent-japanese-76-section-notes-20261028`。**独立執筆した節別の概念ノート76件**と**各節1問の独立した四択問題76問**を扱う。既存72問、節別76問、発展数値演習11問、新規応用計算22問を合わせて181問。章別の独立ガイドは従来の11件を維持する。
 
 ## 進捗の厳密な読み方
 
@@ -18,8 +18,8 @@
 
 - 既存公開コードは英語原本PDFの閲覧を維持。今回の独自ノートは独自の日本語表現・一般式・独自数値例として作成し、原本英語段落、翻訳、原図を転載しない。
 - `data/original-notes.json` は11章、76節、各節の目的・説明・式・具体例・適用条件・自習質問と答えを含む。
-- `data/original-section-questions.json` は各節に対応した76の独立MCQの正答・誤答理由等の控え。公開は通常の`data/questions.json`に統合した159問を使い、同じ問題を二重計上しない。
-- `data/original-advanced-questions.json` に、全11章の伝導・非定常・対流・沸騰・放射・物質移動を横断する**発展数値演習11問**と独立した計算解法を保管する。
+- `data/original-section-questions.json` は各節に対応した76の独立MCQの正答・誤答理由等の控え。公開は通常の`data/questions.json`に統合した181問を使い、同じ問題を二重計上しない。
+- `data/original-advanced-questions.json` に全11章の**発展数値演習11問**。追加で `data/applied-exercises-part1.json` / `data/applied-exercises-part2.json` に各章2問の**応用計算22問**と段階解法・誤答理由を保管する。
 - `data/original-question-options/` は誤答選択肢とその理由の編集元で、公開配信物の許可リスト外。
 - `original-notes.mjs`で全76節のID一意性・章/目次/ページ対応・必須説明・レビュー未実施の表示を検査。`public-content-contract.mjs` は独自節別問題とノートの1対1対応を検査。
 - `scripts/coverage-summary.mjs`で原本訳文の配信実数、独自ノート数、節別問題数を別々に算出する。
