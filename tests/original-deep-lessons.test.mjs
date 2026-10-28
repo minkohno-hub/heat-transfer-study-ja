@@ -5,11 +5,11 @@ import {validateDeepLessons,deepLessonForSection} from '../original-deep-lessons
 import {checkPublicContent} from '../public-content-contract.mjs';
 import {GUIDE_SECTIONS} from '../guide.mjs';
 const read=async path=>JSON.parse(await readFile(new URL('../'+path,import.meta.url),'utf8'));
-test('advanced original Japanese instruction covers 2.1, 3.2, 5.2, 5.6, 8.4, 8.5 and 11.3 without claiming an unlicensed translation',async()=>{
+test('advanced original Japanese instruction covers 2.1, 3.2, 5.2, 5.6, 8.4, 8.5, 10.1 and 11.3 without claiming an unlicensed translation',async()=>{
  const [book,deep]=await Promise.all(['data/book.json','data/original-deep-lessons.json'].map(read));
  assert.deepEqual(validateDeepLessons(book,deep),[]);
- assert.equal(deep.lessons.length,7);
- assert.deepEqual(deep.lessons.map(x=>x.sectionId),['2.1','3.2','5.2','5.6','8.4','8.5','11.3']);
+ assert.equal(deep.lessons.length,8);
+ assert.deepEqual(deep.lessons.map(x=>x.sectionId),['2.1','3.2','5.2','5.6','8.4','8.5','10.1','11.3']);
  assert.equal(deep.translation,false);
  assert.equal(deep.expertReviewed,false);
  for(const l of deep.lessons){
