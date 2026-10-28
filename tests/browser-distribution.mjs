@@ -149,7 +149,6 @@ try {
   assert.match(page.url(),/#glossary$/);
   await page.locator('#term-thermal-conductivity').waitFor({state:'visible'});
   await nav('quiz');
-  await page.locator('[data-action="resume-quiz"]').first().click().catch(()=>{});
 
   await page.locator('[data-action="exit-quiz"]').click();
   await page.locator('[data-action="discard-quiz"]').click();
