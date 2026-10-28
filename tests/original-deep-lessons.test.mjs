@@ -5,11 +5,11 @@ import {validateDeepLessons,deepLessonForSection} from '../original-deep-lessons
 import {checkPublicContent} from '../public-content-contract.mjs';
 import {GUIDE_SECTIONS} from '../guide.mjs';
 const read=async path=>JSON.parse(await readFile(new URL('../'+path,import.meta.url),'utf8'));
-test('advanced original Japanese instruction covers 3.2, 5.2, 8.4 and 8.5 without claiming an unlicensed translation',async()=>{
+test('five advanced original Japanese lessons retain source and review boundaries',async()=>{
  const [book,deep]=await Promise.all(['data/book.json','data/original-deep-lessons.json'].map(read));
  assert.deepEqual(validateDeepLessons(book,deep),[]);
- assert.equal(deep.lessons.length,4);
- assert.deepEqual(deep.lessons.map(x=>x.sectionId),['3.2','5.2','8.4','8.5']);
+ assert.equal(deep.lessons.length,5);
+ assert.deepEqual(deep.lessons.map(x=>x.sectionId),['3.2','5.2','8.4','8.5','10.1']);
  assert.equal(deep.translation,false);
  assert.equal(deep.expertReviewed,false);
  for(const l of deep.lessons){
@@ -23,6 +23,18 @@ test('advanced original Japanese instruction covers 3.2, 5.2, 8.4 and 8.5 withou
   assert.ok(l.workedExample.steps.length>=4);
  }
  assert.equal(deepLessonForSection(deep,'9.1'),null);
+});
+test('radiation lesson uses absolute temperatures and preserves the net heat-flow sign',()=>{
+ const sigma=5.67e-8,epsilon=.8,area=.2,surrounding=300;
+ const net=surface=>epsilon*sigma*area*(surface**4-surrounding**4);
+ assert.ok(Math.abs(net(400)-158.76)<1e-9);
+ assert.ok(Math.abs(net(350)-62.6535)<1e-9);
+ assert.equal(net(surrounding),0);
+ assert.ok(net(250)<0);
+ assert.ok(Math.abs(net(400)/area-793.8)<1e-9);
+ const factored=(surface,environment)=>epsilon*sigma*area*(surface-environment)*(surface+environment)*(surface**2+environment**2);
+ assert.ok(Math.abs(factored(400,300)-net(400))<1e-10);
+ assert.ok(factored(300+1e-9,300)>0);
 });
 test('natural convection and film condensation independently recompute the two worked examples',()=>{
  const Ra=(9.81*.003*10*.2**3)/(1.5e-5*2e-5);
