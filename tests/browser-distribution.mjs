@@ -384,11 +384,17 @@ try {
   if([200,206].includes(missingPdf.status))assert.equal(missingPdf.signature,'%PDF','別領域のHTTPキャッシュがPDFを返した場合も署名を確認する');
   }
   await nav('reader');
+  await page.locator('.reader-toc [data-section="8.4"]').evaluate(element=>{
+    for(let n=element.parentElement;n;n=n.parentElement)if(n.tagName==='DETAILS')n.open=true;
+  });
   await page.locator('.reader-toc [data-section="8.4"]').click();
   await page.locator('#reader-deep-lesson').waitFor({state:'visible'});
   assert.match(await page.locator('#reader-deep-lesson').innerText(),/独立作成の発展学習教材/);
   assert.match(await page.locator('#reader-deep-lesson').innerText(),/Ra≈7\.85×10⁶/);
   assert.equal(await page.locator('#reader-deep-lesson .deep-lesson-block').count(),6);
+  await page.locator('.reader-toc [data-section="8.5"]').evaluate(element=>{
+    for(let n=element.parentElement;n;n=n.parentElement)if(n.tagName==='DETAILS')n.open=true;
+  });
   await page.locator('.reader-toc [data-section="8.5"]').click();
   await page.locator('#reader-deep-lesson').waitFor({state:'visible'});
   assert.match(await page.locator('#reader-deep-lesson').innerText(),/膜状凝縮の液膜抵抗/);
