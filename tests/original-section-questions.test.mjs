@@ -18,12 +18,12 @@ test('every original Japanese note has exactly one published question with a sin
   assert.equal(new Set(items.map(x=>x.sectionId)).size,76);
   assert.equal(generated.filter(q=>q.revision!=='v1').length,55,'answer wording and scientific conditions must be versioned');
   assert.equal(generated.length,76);
-  assert.equal(all.length,202);
-  assert.equal(all.filter(q=>q.source?.type==='supplement').length,194);
+  assert.equal(all.length,210);
+  assert.equal(all.filter(q=>q.source?.type==='supplement').length,202);
   assert.equal(all.filter(q=>q.source?.type==='book').length,8);
   assert.equal(all.filter(q=>q.questionGroup==='original_independent_section_review_v1').length,76);
   const ids=new Set(all.map(q=>q.id));
-  assert.equal(ids.size,202);
+  assert.equal(ids.size,210);
   const expected=notes.notes.map(n=>n.sectionId);
   assert.deepEqual(generated.map(q=>q.source.sectionNoteId),expected);
   for(const [i,n] of notes.notes.entries()){
