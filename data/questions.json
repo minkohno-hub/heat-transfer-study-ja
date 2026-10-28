@@ -11858,5 +11858,642 @@
       "合計1100 W。"
     ],
     "beginnerPitfall": "熱流束W/m²と熱移動率W、面積・時間積分の範囲、モデルの仮定を混同しない。"
+  },
+  {
+    "id": "supp-next-cold-outlet-with-loss-v1",
+    "revision": "v1",
+    "field": "熱交換器の熱収支",
+    "prerequisites": [
+      "エネルギー・熱移動率の単位",
+      "モデルの境界条件"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "§3.1について独立執筆した伝熱演習。原本の文章・問題・原図を転載しない。",
+      "chapterId": "ch3",
+      "focusSectionId": "3.1",
+      "guideId": "chapter3-effectiveness-ntu"
+    },
+    "createdStatus": "独立作問",
+    "reviewStatus": "算術・モデル前提の内部確認済み／外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [],
+    "prompt": "定常熱交換器で温側の失熱50 kW、冷側の受熱46 kW、冷側C_c=2000 W/K、冷側入口20℃。冷側出口温度は？",
+    "choices": [
+      "23 ℃",
+      "40 ℃",
+      "43 ℃",
+      "50 ℃"
+    ],
+    "answer": 2,
+    "difficulty": "標準・応用",
+    "explanation": "T_c,out=20+46000/2000=43℃。外部損失4kWを冷側受熱に含めない。",
+    "distractors": [
+      "冷側の温度上昇3Kとしている。",
+      "低温側の温度上昇20Kと誤認している。",
+      "正解。受熱46kWをC_cで割る。",
+      "温側50kWを流入と混同している。"
+    ],
+    "hints": [
+      "まず境界条件と与えられた単位を確認してください。",
+      "熱収支、無次元数、あるいは伝導の成立条件を式で表します。"
+    ],
+    "solutionSteps": [
+      "境界・対象流体・代表長さと仮定を特定する。",
+      "該当する物理法則と保存式を適用する。",
+      "数値を代入し単位・符号と極限を検算する。",
+      "各選択肢の誤りの原因を確認する。"
+    ],
+    "beginnerPitfall": "同一の数値でも温度差・流束・熱容量流量・局所値と平均値を混同しない。"
+  },
+  {
+    "id": "supp-next-massflow-from-heat-v1",
+    "revision": "v1",
+    "field": "熱交換器の熱収支",
+    "prerequisites": [
+      "エネルギー・熱移動率の単位",
+      "モデルの境界条件"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "§3.1について独立執筆した伝熱演習。原本の文章・問題・原図を転載しない。",
+      "chapterId": "ch3",
+      "focusSectionId": "3.1",
+      "guideId": "chapter3-effectiveness-ntu"
+    },
+    "createdStatus": "独立作問",
+    "reviewStatus": "算術・モデル前提の内部確認済み／外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [],
+    "prompt": "温側単相流体の失熱率30 kW、入口・出口温度差15 K、一定比熱4000 J/(kg·K)である。温側質量流量は？",
+    "choices": [
+      "0.25 kg/s",
+      "0.50 kg/s",
+      "1.00 kg/s",
+      "2.00 kg/s"
+    ],
+    "answer": 1,
+    "difficulty": "標準・応用",
+    "explanation": "ṁ=Q̇/(c_pΔT)=30000/(4000×15)=0.50 kg/s。",
+    "distractors": [
+      "必要流量の半分。",
+      "正解。CpΔT=60000 J/kg。",
+      "質量流量を2倍にした値。",
+      "質量流量を4倍にした値。"
+    ],
+    "hints": [
+      "まず境界条件と与えられた単位を確認してください。",
+      "熱収支、無次元数、あるいは伝導の成立条件を式で表します。"
+    ],
+    "solutionSteps": [
+      "境界・対象流体・代表長さと仮定を特定する。",
+      "該当する物理法則と保存式を適用する。",
+      "数値を代入し単位・符号と極限を検算する。",
+      "各選択肢の誤りの原因を確認する。"
+    ],
+    "beginnerPitfall": "同一の数値でも温度差・流束・熱容量流量・局所値と平均値を混同しない。"
+  },
+  {
+    "id": "supp-next-exchanger-qmax-feasibility-v1",
+    "revision": "v1",
+    "field": "熱交換器の熱収支",
+    "prerequisites": [
+      "エネルギー・熱移動率の単位",
+      "モデルの境界条件"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "applied",
+    "source": {
+      "type": "supplement",
+      "reference": "§3.1について独立執筆した伝熱演習。原本の文章・問題・原図を転載しない。",
+      "chapterId": "ch3",
+      "focusSectionId": "3.1",
+      "guideId": "chapter3-effectiveness-ntu"
+    },
+    "createdStatus": "独立作問",
+    "reviewStatus": "算術・モデル前提の内部確認済み／外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [],
+    "prompt": "熱容量流量が両側とも400 W/K、入口温度が80℃と20℃の受動的な定常単相熱交換器。30 kWの熱交換を実現できると結論できるか。",
+    "choices": [
+      "伝熱面積を大きくすれば必ず30kWを超えられる",
+      "温側温度だけで決まり冷側の流量は無関係である",
+      "交換熱量の上限がないので30kWは必ず実現する",
+      "理想最大24kWを超えるので与条件では実現できない"
+    ],
+    "answer": 3,
+    "difficulty": "標準・応用",
+    "explanation": "C_min×入口温度差=400×60=24000 W=24 kW。30 kWは理想最大を超え、受動的な無損失の単相モデルと矛盾する。",
+    "distractors": [
+      "入口温度差の上限を無視している。",
+      "C_minの概念と冷側熱収支を無視。",
+      "有限の入口温度差を無視している。",
+      "正解。30 kWは24 kWの上限を超過。"
+    ],
+    "hints": [
+      "まず境界条件と与えられた単位を確認してください。",
+      "熱収支、無次元数、あるいは伝導の成立条件を式で表します。"
+    ],
+    "solutionSteps": [
+      "境界・対象流体・代表長さと仮定を特定する。",
+      "該当する物理法則と保存式を適用する。",
+      "数値を代入し単位・符号と極限を検算する。",
+      "各選択肢の誤りの原因を確認する。"
+    ],
+    "beginnerPitfall": "同一の数値でも温度差・流束・熱容量流量・局所値と平均値を混同しない。"
+  },
+  {
+    "id": "supp-next-ntu-eps-ratio-v1",
+    "revision": "v1",
+    "field": "熱交換器の有効度",
+    "prerequisites": [
+      "エネルギー・熱移動率の単位",
+      "モデルの境界条件"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "§3.3について独立執筆した伝熱演習。原本の文章・問題・原図を転載しない。",
+      "chapterId": "ch3",
+      "focusSectionId": "3.3",
+      "guideId": "chapter3-effectiveness-ntu"
+    },
+    "createdStatus": "独立作問",
+    "reviewStatus": "算術・モデル前提の内部確認済み／外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [],
+    "prompt": "C_min=300 W/K、入口温度差40 Kの熱交換器が6.0 kWを伝熱している。通常の無損失単相モデルの有効度εは？",
+    "choices": [
+      "0.25",
+      "0.40",
+      "0.50",
+      "0.75"
+    ],
+    "answer": 2,
+    "difficulty": "標準・応用",
+    "explanation": "Q̇_max=300×40=12000 W、ε=6000/12000=0.50。",
+    "distractors": [
+      "実熱量を4分の1とした。",
+      "上限Q̇_maxを誤っている。",
+      "正解。0.50は無次元。",
+      "C_minの扱いを過小評価している。"
+    ],
+    "hints": [
+      "まず境界条件と与えられた単位を確認してください。",
+      "熱収支、無次元数、あるいは伝導の成立条件を式で表します。"
+    ],
+    "solutionSteps": [
+      "境界・対象流体・代表長さと仮定を特定する。",
+      "該当する物理法則と保存式を適用する。",
+      "数値を代入し単位・符号と極限を検算する。",
+      "各選択肢の誤りの原因を確認する。"
+    ],
+    "beginnerPitfall": "同一の数値でも温度差・流束・熱容量流量・局所値と平均値を混同しない。"
+  },
+  {
+    "id": "supp-next-ntu-ua-inverse-v1",
+    "revision": "v1",
+    "field": "熱交換器の有効度",
+    "prerequisites": [
+      "エネルギー・熱移動率の単位",
+      "モデルの境界条件"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "§3.3について独立執筆した伝熱演習。原本の文章・問題・原図を転載しない。",
+      "chapterId": "ch3",
+      "focusSectionId": "3.3",
+      "guideId": "chapter3-effectiveness-ntu"
+    },
+    "createdStatus": "独立作問",
+    "reviewStatus": "算術・モデル前提の内部確認済み／外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [],
+    "prompt": "熱交換器の総合熱コンダクタンスUA=600 W/K、C_min=400 W/K。NTUは？",
+    "choices": [
+      "0.67",
+      "1.00",
+      "1.50",
+      "2.00"
+    ],
+    "answer": 2,
+    "difficulty": "標準・応用",
+    "explanation": "NTU=UA/C_min=600/400=1.50。",
+    "distractors": [
+      "逆数C_min/UAに近い値。",
+      "UAとC_minが等しいと誤認。",
+      "正解。無次元1.5。",
+      "C_min=300 W/Kと誤認。"
+    ],
+    "hints": [
+      "まず境界条件と与えられた単位を確認してください。",
+      "熱収支、無次元数、あるいは伝導の成立条件を式で表します。"
+    ],
+    "solutionSteps": [
+      "境界・対象流体・代表長さと仮定を特定する。",
+      "該当する物理法則と保存式を適用する。",
+      "数値を代入し単位・符号と極限を検算する。",
+      "各選択肢の誤りの原因を確認する。"
+    ],
+    "beginnerPitfall": "同一の数値でも温度差・流束・熱容量流量・局所値と平均値を混同しない。"
+  },
+  {
+    "id": "supp-next-fourier-size-time-v1",
+    "revision": "v1",
+    "field": "非定常熱伝導",
+    "prerequisites": [
+      "エネルギー・熱移動率の単位",
+      "モデルの境界条件"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "applied",
+    "source": {
+      "type": "supplement",
+      "reference": "§5.3について独立執筆した伝熱演習。原本の文章・問題・原図を転載しない。",
+      "chapterId": "ch5",
+      "focusSectionId": "5.3",
+      "guideId": "chapter5-semi-infinite"
+    },
+    "createdStatus": "独立作問",
+    "reviewStatus": "算術・モデル前提の内部確認済み／外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [],
+    "prompt": "同じ熱拡散率の平板で、代表長さを2倍、経過時間を4倍にした。Fo=αt/L²はどう変化するか。",
+    "choices": [
+      "元の4倍になる",
+      "元と変わらない",
+      "元の1/4になる",
+      "元の16倍になる"
+    ],
+    "answer": 1,
+    "difficulty": "標準・応用",
+    "explanation": "Fo_new=α(4t)/(2L)²=αt/L²。時間4倍と長さ2乗4倍が相殺する。",
+    "distractors": [
+      "時間だけを4倍にしている。",
+      "正解。Foは不変。",
+      "長さだけを2倍にしている。",
+      "比を二重に4倍にしている。"
+    ],
+    "hints": [
+      "まず境界条件と与えられた単位を確認してください。",
+      "熱収支、無次元数、あるいは伝導の成立条件を式で表します。"
+    ],
+    "solutionSteps": [
+      "境界・対象流体・代表長さと仮定を特定する。",
+      "該当する物理法則と保存式を適用する。",
+      "数値を代入し単位・符号と極限を検算する。",
+      "各選択肢の誤りの原因を確認する。"
+    ],
+    "beginnerPitfall": "同一の数値でも温度差・流束・熱容量流量・局所値と平均値を混同しない。"
+  },
+  {
+    "id": "supp-next-fourier-time-scale-v1",
+    "revision": "v1",
+    "field": "非定常熱伝導",
+    "prerequisites": [
+      "エネルギー・熱移動率の単位",
+      "モデルの境界条件"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "§5.3について独立執筆した伝熱演習。原本の文章・問題・原図を転載しない。",
+      "chapterId": "ch5",
+      "focusSectionId": "5.3",
+      "guideId": "chapter5-semi-infinite"
+    },
+    "createdStatus": "独立作問",
+    "reviewStatus": "算術・モデル前提の内部確認済み／外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [],
+    "prompt": "平板の半厚さL=0.020 m、熱拡散率α=1.0×10⁻⁶ m²/sとする。代表熱拡散時間L²/αは？",
+    "choices": [
+      "100 s",
+      "200 s",
+      "400 s",
+      "800 s"
+    ],
+    "answer": 2,
+    "difficulty": "標準・応用",
+    "explanation": "L²/α=0.0004/10⁻⁶=400 s。Fo=1になる時間尺度であり、温度が完全平衡になる保証ではない。",
+    "distractors": [
+      "L²を過小にした。",
+      "αの桁を誤っている。",
+      "正解。400 s。",
+      "長さを過大にした。"
+    ],
+    "hints": [
+      "まず境界条件と与えられた単位を確認してください。",
+      "熱収支、無次元数、あるいは伝導の成立条件を式で表します。"
+    ],
+    "solutionSteps": [
+      "境界・対象流体・代表長さと仮定を特定する。",
+      "該当する物理法則と保存式を適用する。",
+      "数値を代入し単位・符号と極限を検算する。",
+      "各選択肢の誤りの原因を確認する。"
+    ],
+    "beginnerPitfall": "同一の数値でも温度差・流束・熱容量流量・局所値と平均値を混同しない。"
+  },
+  {
+    "id": "supp-next-dimensionless-centre-temperature-v1",
+    "revision": "v1",
+    "field": "非定常熱伝導",
+    "prerequisites": [
+      "エネルギー・熱移動率の単位",
+      "モデルの境界条件"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "§5.3について独立執筆した伝熱演習。原本の文章・問題・原図を転載しない。",
+      "chapterId": "ch5",
+      "focusSectionId": "5.3",
+      "guideId": "chapter5-semi-infinite"
+    },
+    "createdStatus": "独立作問",
+    "reviewStatus": "算術・モデル前提の内部確認済み／外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [],
+    "prompt": "非定常平板で初期一様温度100℃、周囲温度20℃、ある時刻の中心無次元超過温度θ_c=(T_c−T∞)/(T_i−T∞)=0.40。中心温度は？",
+    "choices": [
+      "40 ℃",
+      "52 ℃",
+      "60 ℃",
+      "72 ℃"
+    ],
+    "answer": 1,
+    "difficulty": "標準・応用",
+    "explanation": "T_c=T∞+θ_c(T_i−T∞)=20+0.40×80=52℃。",
+    "distractors": [
+      "初期超過温度を半分にした。",
+      "正解。温度差32 Kを周囲温度に加える。",
+      "θを0.5と取り違えている。",
+      "θの適用範囲を誤っている。"
+    ],
+    "hints": [
+      "まず境界条件と与えられた単位を確認してください。",
+      "熱収支、無次元数、あるいは伝導の成立条件を式で表します。"
+    ],
+    "solutionSteps": [
+      "境界・対象流体・代表長さと仮定を特定する。",
+      "該当する物理法則と保存式を適用する。",
+      "数値を代入し単位・符号と極限を検算する。",
+      "各選択肢の誤りの原因を確認する。"
+    ],
+    "beginnerPitfall": "同一の数値でも温度差・流束・熱容量流量・局所値と平均値を混同しない。"
+  },
+  {
+    "id": "supp-next-nusselt-invert-h-v1",
+    "revision": "v1",
+    "field": "対流と境界層",
+    "prerequisites": [
+      "エネルギー・熱移動率の単位",
+      "モデルの境界条件"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "§6.1について独立執筆した伝熱演習。原本の文章・問題・原図を転載しない。",
+      "chapterId": "ch6",
+      "focusSectionId": "6.1",
+      "guideId": "chapter6-flat-boundary"
+    },
+    "createdStatus": "独立作問",
+    "reviewStatus": "算術・モデル前提の内部確認済み／外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [],
+    "prompt": "流体熱伝導率k_f=0.025 W/(m·K)、代表長さL=0.50 m、平均Nu=200。平均熱伝達率hは？",
+    "choices": [
+      "5 W/(m²·K)",
+      "10 W/(m²·K)",
+      "20 W/(m²·K)",
+      "40 W/(m²·K)"
+    ],
+    "answer": 1,
+    "difficulty": "標準・応用",
+    "explanation": "h=Nu k_f/L=200×0.025/0.50=10 W/(m²·K)。",
+    "distractors": [
+      "Nuを半分にした。",
+      "正解。流体物性を使い10 W/(m²·K)。",
+      "Lで割り忘れた係数を含む。",
+      "Nuを2倍と誤認した。"
+    ],
+    "hints": [
+      "まず境界条件と与えられた単位を確認してください。",
+      "熱収支、無次元数、あるいは伝導の成立条件を式で表します。"
+    ],
+    "solutionSteps": [
+      "境界・対象流体・代表長さと仮定を特定する。",
+      "該当する物理法則と保存式を適用する。",
+      "数値を代入し単位・符号と極限を検算する。",
+      "各選択肢の誤りの原因を確認する。"
+    ],
+    "beginnerPitfall": "同一の数値でも温度差・流束・熱容量流量・局所値と平均値を混同しない。"
+  },
+  {
+    "id": "supp-next-local-versus-average-v1",
+    "revision": "v1",
+    "field": "対流と境界層",
+    "prerequisites": [
+      "エネルギー・熱移動率の単位",
+      "モデルの境界条件"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "applied",
+    "source": {
+      "type": "supplement",
+      "reference": "§6.1について独立執筆した伝熱演習。原本の文章・問題・原図を転載しない。",
+      "chapterId": "ch6",
+      "focusSectionId": "6.1",
+      "guideId": "chapter6-flat-boundary"
+    },
+    "createdStatus": "独立作問",
+    "reviewStatus": "算術・モデル前提の内部確認済み／外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [],
+    "prompt": "平板上で局所熱伝達率h_xが流れ方向に変化する。終端x=Lの局所値h_Lと面平均h̄_Lを扱う際の正しい判断は？",
+    "choices": [
+      "終端の局所値を常に面平均と同じにできる",
+      "hが変化しても必ず平均値は0となる",
+      "終端の値だけから面積積分は不要である",
+      "分布を平均して求める値と終端の値は異なる"
+    ],
+    "answer": 3,
+    "difficulty": "標準・応用",
+    "explanation": "一般に平均h̄_L=(1/L)∫₀ᴸ h_x dx（幅一定で温度差の取り扱いが適切な場合）。局所値h_Lとは別である。",
+    "distractors": [
+      "分布がある条件を無視している。",
+      "hが変化することは平均0を意味しない。",
+      "面積平均を評価する条件が欠けている。",
+      "正解。平均には分布を反映する。"
+    ],
+    "hints": [
+      "まず境界条件と与えられた単位を確認してください。",
+      "熱収支、無次元数、あるいは伝導の成立条件を式で表します。"
+    ],
+    "solutionSteps": [
+      "境界・対象流体・代表長さと仮定を特定する。",
+      "該当する物理法則と保存式を適用する。",
+      "数値を代入し単位・符号と極限を検算する。",
+      "各選択肢の誤りの原因を確認する。"
+    ],
+    "beginnerPitfall": "同一の数値でも温度差・流束・熱容量流量・局所値と平均値を混同しない。"
+  },
+  {
+    "id": "supp-next-pr-layer-thickness-v1",
+    "revision": "v1",
+    "field": "対流と境界層",
+    "prerequisites": [
+      "エネルギー・熱移動率の単位",
+      "モデルの境界条件"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "conceptual",
+    "source": {
+      "type": "supplement",
+      "reference": "§6.1について独立執筆した伝熱演習。原本の文章・問題・原図を転載しない。",
+      "chapterId": "ch6",
+      "focusSectionId": "6.1",
+      "guideId": "chapter6-flat-boundary"
+    },
+    "createdStatus": "独立作問",
+    "reviewStatus": "算術・モデル前提の内部確認済み／外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [],
+    "prompt": "同様の平板・流動条件で、流体のPrが十分大きくなった場合の温度境界層について一般的に適切な傾向は？",
+    "choices": [
+      "温度境界層が必ず速度境界層より厚くなる",
+      "速度境界層と温度境界層は常に一致する",
+      "熱拡散が相対的に小さく温度境界層は薄まりやすい",
+      "Prにかかわらず境界層の厚さは常に無限大である"
+    ],
+    "answer": 2,
+    "difficulty": "標準・応用",
+    "explanation": "Pr=ν/α_fが大きいほど熱拡散の相対的効果が小さくなるため、同程度の流況で温度境界層は薄まりやすい。ただし一般式の仮定を確認する。",
+    "distractors": [
+      "Prが大きいほど熱拡散は相対的に小さい。",
+      "二種類の拡散率が等しいとは限らない。",
+      "正解。熱と運動量の拡散の比を考える。",
+      "境界層の厚さはPr・Re・位置等に依存。"
+    ],
+    "hints": [
+      "まず境界条件と与えられた単位を確認してください。",
+      "熱収支、無次元数、あるいは伝導の成立条件を式で表します。"
+    ],
+    "solutionSteps": [
+      "境界・対象流体・代表長さと仮定を特定する。",
+      "該当する物理法則と保存式を適用する。",
+      "数値を代入し単位・符号と極限を検算する。",
+      "各選択肢の誤りの原因を確認する。"
+    ],
+    "beginnerPitfall": "同一の数値でも温度差・流束・熱容量流量・局所値と平均値を混同しない。"
+  },
+  {
+    "id": "supp-next-steady-flux-concept-v1",
+    "revision": "v1",
+    "field": "定常伝導・抵抗",
+    "prerequisites": [
+      "エネルギー・熱移動率の単位",
+      "モデルの境界条件"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "conceptual",
+    "source": {
+      "type": "supplement",
+      "reference": "§2.2について独立執筆した伝熱演習。原本の文章・問題・原図を転載しない。",
+      "chapterId": "ch2",
+      "focusSectionId": "2.2",
+      "guideId": "chapter2-cylindrical-conduction"
+    },
+    "createdStatus": "独立作問",
+    "reviewStatus": "算術・モデル前提の内部確認済み／外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [],
+    "prompt": "発熱のない一定kの一次元定常平板で、両表面の温度を指定した場合の内部温度勾配について正しいのは？",
+    "choices": [
+      "温度勾配が線形位置に比例して増えてしまう",
+      "温度勾配は内部で一定になりうる",
+      "温度勾配は常に0となってしまう",
+      "温度勾配は左右で必ず逆向きになる"
+    ],
+    "answer": 1,
+    "difficulty": "標準・応用",
+    "explanation": "一定k・内部発熱なしの一次元定常伝導ではd²T/dx²=0となり、dT/dxは一定。境界温度が等しければ0になるが、一般には0とは限らない。",
+    "distractors": [
+      "曲率ゼロで勾配が位置とともに増えない。",
+      "正解。線形温度分布。",
+      "非ゼロの表面温度差なら勾配も非ゼロ。",
+      "熱の向きは一様な平板内で一定。"
+    ],
+    "hints": [
+      "まず境界条件と与えられた単位を確認してください。",
+      "熱収支、無次元数、あるいは伝導の成立条件を式で表します。"
+    ],
+    "solutionSteps": [
+      "境界・対象流体・代表長さと仮定を特定する。",
+      "該当する物理法則と保存式を適用する。",
+      "数値を代入し単位・符号と極限を検算する。",
+      "各選択肢の誤りの原因を確認する。"
+    ],
+    "beginnerPitfall": "同一の数値でも温度差・流束・熱容量流量・局所値と平均値を混同しない。"
+  },
+  {
+    "id": "supp-next-parallel-temperature-condition-v1",
+    "revision": "v1",
+    "field": "定常伝導・抵抗",
+    "prerequisites": [
+      "エネルギー・熱移動率の単位",
+      "モデルの境界条件"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "conceptual",
+    "source": {
+      "type": "supplement",
+      "reference": "§2.3について独立執筆した伝熱演習。原本の文章・問題・原図を転載しない。",
+      "chapterId": "ch2",
+      "focusSectionId": "2.3",
+      "guideId": "chapter2-cylindrical-conduction"
+    },
+    "createdStatus": "独立作問",
+    "reviewStatus": "算術・モデル前提の内部確認済み／外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [],
+    "prompt": "定常の二つの独立した熱抵抗が同じ高温節点・低温節点を共有して並列に接続される。各枝について何が共通か。",
+    "choices": [
+      "各枝の熱移動率だけが必ず同じ値となる",
+      "各枝の熱抵抗値がいつも同一と決まる",
+      "各枝の熱容量流量が必ず同一となる",
+      "両端節点間の温度差が各枝で同じ値となる"
+    ],
+    "answer": 3,
+    "difficulty": "標準・応用",
+    "explanation": "並列経路は同じ二つの温度節点を結ぶのでΔTが共通。各枝のQ̇=ΔT/RはR次第で異なる。",
+    "distractors": [
+      "異なる抵抗なら熱流率は違いうる。",
+      "並列というだけで抵抗値は等しくならない。",
+      "熱容量流量は別の物理量。",
+      "正解。並列では温度差が共通。"
+    ],
+    "hints": [
+      "まず境界条件と与えられた単位を確認してください。",
+      "熱収支、無次元数、あるいは伝導の成立条件を式で表します。"
+    ],
+    "solutionSteps": [
+      "境界・対象流体・代表長さと仮定を特定する。",
+      "該当する物理法則と保存式を適用する。",
+      "数値を代入し単位・符号と極限を検算する。",
+      "各選択肢の誤りの原因を確認する。"
+    ],
+    "beginnerPitfall": "同一の数値でも温度差・流束・熱容量流量・局所値と平均値を混同しない。"
   }
 ]
