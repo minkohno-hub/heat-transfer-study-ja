@@ -30,7 +30,7 @@ test('the four guide examples agree with independently calculated hand values',(
 
 
 test('advanced self-authored lessons are searchable and explicit about approximations and limitations',()=>{
-  assert.equal(GUIDE_SECTIONS.length,21);
+  assert.equal(GUIDE_SECTIONS.length,32);
   const keys={
     'learn-dimensionless-transient':['Bi','Fo','0.1','L𝚌'],
     'learn-lumped-cooling':['ρVc','2000 s','Bi','exp'],
