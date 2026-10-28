@@ -31,7 +31,7 @@ export function renderSimulationVisual(mode,result){
   }
   if(mode==='convection'){
     const desc=`表面 ${finite(v.surface)} ℃と流体 ${finite(v.fluid)} ℃の対流熱交換。熱移動率 ${finite(q)} W。正は表面から流体、負は流体から表面。`;
-    const shapes=`${rect(30,75,170,111,'diagram-solid')}${rect(382,75,168,111,'diagram-fluid')}
+    const shapes=`${rect(30,75,170,111,Number(v.surface)>=Number(v.fluid)?'diagram-hot-side':'diagram-cold-side')}${rect(382,75,168,111,Number(v.surface)<Number(v.fluid)?'diagram-hot-side':'diagram-cold-side')}
     <path d="M405 91 Q430 80 456 91 T530 91 M405 119 Q430 108 456 119 T530 119 M405 148 Q430 137 456 148 T530 148" class="diagram-fluid-lines"/>
     ${heatArrow(q,211,369,123)}
     ${label(115,35,'固体表面')}${label(468,35,'周囲流体')}
@@ -41,7 +41,7 @@ export function renderSimulationVisual(mode,result){
   }
   if(mode==='radiation'){
     const desc=`放射率 ${finite(v.emissivity)} の面が ${finite(v.surface)} ℃、囲いが ${finite(v.surrounding)} ℃。正味放射熱移動率 ${finite(q)} W。真空中も熱放射は可能。`;
-    const shapes=`${rect(27,71,172,107,'diagram-solid')}${rect(390,71,164,107,'diagram-enclosure')}
+    const shapes=`${rect(27,71,172,107,Number(v.surface)>=Number(v.surrounding)?'diagram-hot-side':'diagram-cold-side')}${rect(390,71,164,107,Number(v.surface)<Number(v.surrounding)?'diagram-hot-side':'diagram-cold-side')}
     ${waves(240,'diagram-radiation-wave')}${waves(279,'diagram-radiation-wave')}${waves(318,'diagram-radiation-wave')}
     ${heatArrow(q,212,374,148)}
     ${label(112,37,'放射面 Tₛ')}${label(471,37,'大きな黒体囲い')}
@@ -65,7 +65,7 @@ export function renderSimulationVisual(mode,result){
     if(!Number.isFinite(current)||!Number.isFinite(ambient))return '';
     const direction=dt>0?'物体から流体へ放熱':dt<0?'流体から物体へ吸熱':'温度差なし';
     const desc=`集中熱容量モデル。初期温度 ${finite(initial)} ℃、経過 ${finite(v.time)} 秒後の物体温度 ${finite(current)} ℃、周囲流体温度 ${finite(ambient)} ℃。${direction}。`;
-    const shapes=`${rect(25,65,174,108,'diagram-solid')}${rect(383,65,171,108,'diagram-fluid')}
+    const shapes=`${rect(25,65,174,108,dt>=0?'diagram-hot-side':'diagram-cold-side')}${rect(383,65,171,108,dt<0?'diagram-hot-side':'diagram-cold-side')}
     ${heatArrow(q,211,371,123)}
     ${label(111,35,'物体')}${label(468,35,'周囲流体')}
     ${label(111,54,finite(current)+' ℃')}${label(468,54,finite(ambient)+' ℃')}
