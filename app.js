@@ -1020,6 +1020,14 @@ function closeTermDialog(){
   if(previous?.isConnected)previous.focus();
 }
 function termLinkedText(value,options={}) { return renderGlossaryLinkedText(value,glossary||[],options); }
+function choiceTermButtons(text){
+  const ids=matchedTermIds(text,glossary||[],{limit:3});
+  if(!ids.length)return '';
+  return '<div class="choice-term-actions">'+ids.map(id=>{
+    const item=glossary.find(t=>t.id===id);
+    return '<button type="button" class="term-choice-button" data-term-open="'+escapeHTML(id)+'" aria-haspopup="dialog">用語：'+escapeHTML(item.ja)+'</button>';
+  }).join('')+'</div>';
+}
 function renderQuiz() {
   if (ui.quizResult) return renderQuizResult();
   if (!ui.quiz) return renderQuizSetup();
@@ -1039,7 +1047,7 @@ function renderQuiz() {
       <p class="think-prompt"><span aria-hidden="true">✦</span> まずは自分で考えてみましょう。迷ったら、ヒントを一つずつ開けます。</p>
       ${session.hintCount ? `<div class="hint-box"><strong>${question.solutionSteps ? '考え方のステップ' : 'ヒント'}</strong><ol>${hints.slice(0, session.hintCount).map(hint => `<li>${termLinkedText(hint,{limit:4})}</li>`).join('')}</ol></div>` : ''}
       ${!answer ? `<button type="button" class="text-button hint-trigger" data-action="reveal-hint" ${session.hintCount >= hints.length ? 'disabled' : ''}>${session.hintCount < hints.length ? `ヒントを${session.hintCount ? 'もう一つ' : '見る'}（${session.hintCount + 1}/${hints.length}）` : 'すべてのヒントを表示しました'}</button>` : ''}
-      <form id="quiz-answer-form"><fieldset class="answer-options" ${answer ? 'disabled' : ''}><legend>最も適切な答えを一つ選んでください</legend>${choiceOrder.map((index,position) => `<label class="answer-choice ${session.selected === index ? 'selected' : ''} ${answer && index === question.answer ? 'correct-choice' : ''} ${answer && session.selected === index && !answer.correct ? 'wrong-choice' : ''}"><input type="radio" name="choice" value="${index}" ${session.selected === index ? 'checked' : ''} ${answer ? 'disabled' : ''}/><span class="choice-letter">${String.fromCharCode(65 + position)}</span><span>${escapeHTML(question.choices[index])}</span>${answer && index === question.answer ? '<b class="choice-mark">正解</b>' : answer && session.selected === index ? '<b class="choice-mark">選択</b>' : ''}</label>`).join('')}</fieldset>
+      <form id="quiz-answer-form"><fieldset class="answer-options"><legend>最も適切な答えを一つ選んでください</legend>${choiceOrder.map((index,position) => `<label class="answer-choice ${session.selected === index ? 'selected' : ''} ${answer && index === question.answer ? 'correct-choice' : ''} ${answer && session.selected === index && !answer.correct ? 'wrong-choice' : ''}"><input type="radio" name="choice" value="${index}" ${session.selected === index ? 'checked' : ''} ${answer ? 'disabled' : ''}/><span class="choice-letter">${String.fromCharCode(65 + position)}</span><span>${escapeHTML(question.choices[index])}</span>${answer && index === question.answer ? '<b class="choice-mark">正解</b>' : answer && session.selected === index ? '<b class="choice-mark">選択</b>' : ''}</label>${choiceTermButtons(question.choices[index])}`).join('')}</fieldset>
       <fieldset class="confidence-field" ${answer ? 'disabled' : ''}><legend>今の自信は？</legend><div class="confidence-options">${[['high','自信あり'],['medium','少し迷う'],['low','自信が低い'],['unsure','迷った']].map(([value,label]) => `<label><input type="radio" name="confidence" value="${value}" ${session.confidence === value ? 'checked' : ''} ${answer ? 'disabled' : ''}/><span>${label}</span></label>`).join('')}</div></fieldset>
       ${!answer ? `<button class="button primary answer-submit" type="submit" ${session.selected === null ? 'disabled' : ''}>回答する <span aria-hidden="true">↵</span></button>` : '<button type="button" class="button primary answer-submit" data-action="next-question">次の問題へ →</button>'}</form>
       ${answer ? renderAnswerFeedback(question, answer, note, choiceOrder) : ''}
