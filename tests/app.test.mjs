@@ -296,3 +296,16 @@ test('quiz uses in-text glossary buttons and a reversible definition sheet witho
  assert.equal(JSON.stringify(h.api.ui.quiz),before);
  assert.equal(h.api.state.attempts.length,beforeHistory);
 });
+
+test('glossary alias lookup finds the canonical definition and global search entry',async()=>{
+ const h=harness();
+ h.api.terms=JSON.parse(await readFile(new URL('../data/glossary.json',import.meta.url),'utf8'));
+ h.api.ui={glossaryQuery:'LMTD'};
+ const html=h.api.renderGlossary();
+ assert.match(html,/id="term-log-mean-temperature-difference"/);
+ assert.ok(!html.includes('id="term-heat-conduction"'),'glossary filter should actually limit displayed cards');
+ const entries=h.api.buildSearchIndex().filter(x=>x.kind==='glossary');
+ assert.ok(entries.some(x=>x.title.includes('対数平均温度差')&&x.text.includes('LMTD')));
+ h.api.ui={glossaryQuery:'Nu'};
+ assert.match(h.api.renderGlossary(),/id="term-nusselt-number"/);
+});
