@@ -129,6 +129,21 @@ try {
   assert.ok(await page.locator('#term-heat-flux [data-start-question="book-9-1-peak-flux-risk"]').count());
   assert.ok(await page.locator('#term-power [data-start-question="book-9-1-wire-flux"]').count());
   assert.ok(await page.locator('#term-convection [data-start-question="book-9-1-before-inception"]').count());
+
+  // Newly independently authored glossary entries must link to the exact public practice,
+  // including long technical names, without requiring a separate login or paid API.
+  for(const [term,question] of [
+    ['fouling-thermal-resistance','supp-batch2-fouling-loss-v1'],
+    ['lmtd-correction-factor','supp-batch2-f-area-ratio-v1'],
+    ['hydrodynamic-entry-length','supp-batch2-hydraulic-entry-length-v1'],
+    ['thermal-similarity','supp-batch2-similarity-condition-v1'],
+    ['view-factor-summation','supp-batch2-closed-view-sum-v1'],
+    ['graybody','supp-batch2-grey-surface-limit-v1']
+  ]){
+    const card=page.locator('#term-'+term);
+    await card.waitFor({state:'attached'});
+    assert.ok(await card.locator('[data-start-question="'+question+'"]').count(),term+' → '+question);
+  }
   await page.locator('#term-thermal-conductivity .term-links a').click();
   assert.match(page.url(),/#guide\/sim-conduction$/);
   await nav('glossary');
@@ -154,30 +169,30 @@ try {
   await page.locator('[data-action="discard-quiz"]').click();
   await nav('map');
   await page.locator('[data-chapter-card="ch2"]').waitFor({state:'visible'});
-  assert.match(await page.locator('[data-chapter-card="ch2"]').innerText(),/収録問題：15問/);
+  assert.match(await page.locator('[data-chapter-card="ch2"]').innerText(),/収録問題：36問/);
   assert.match(await page.locator('[data-chapter-card="ch1"]').innerText(),/原本の節を読了に記録：1\/5節/);
-  assert.match(await page.locator('[data-chapter-card="ch9"]').innerText(),/収録問題：24問/);
-  assert.match(await page.locator('[data-chapter-card="ch2"]').innerText(),/未回答：15問/);
+  assert.match(await page.locator('[data-chapter-card="ch9"]').innerText(),/収録問題：28問/);
+  assert.match(await page.locator('[data-chapter-card="ch2"]').innerText(),/未回答：36問/);
   await page.locator('[data-chapter-card="ch2"] [data-chapter-practice-mode="priority"]').click();
   await page.locator('.question-card').waitFor({state:'visible'});
   assert.match(await page.locator('.page-heading h1').innerText(),/1 \/ 10 問/);
   const priorityIds=await page.evaluate(()=>JSON.parse(localStorage.getItem('heat-study-ja:v1')).quizDraft.ids);
   assert.equal(priorityIds.length,10);
-  assert.ok(priorityIds.every(id=>id.startsWith('supp-chapter-ch2-')||id.startsWith('supp-section-2-')||id.startsWith('supp-advanced-ch2-')||id.startsWith('supp-applied-2-')||id.startsWith('supp-deep-heat-')));
+  assert.ok(priorityIds.every(id=>id.startsWith('supp-chapter-ch2-')||id.startsWith('supp-section-2-')||id.startsWith('supp-advanced-ch2-')||id.startsWith('supp-applied-2-')||id.startsWith('supp-deep-heat-')||id.startsWith('supp-found-')||id.startsWith('supp-next-')||id.startsWith('supp-batch2-')));
   await page.locator('[data-action="exit-quiz"]').click();
   await page.locator('[data-action="discard-quiz"]').click();
   await nav('map');
   await page.locator('[data-chapter-card="ch2"] [data-chapter-practice="ch2"]:not([data-chapter-practice-mode])').click();
   await page.locator('.question-card').waitFor({state:'visible'});
-  assert.match(await page.locator('.page-heading h1').innerText(),/1 \/ 15 問/);
-  assert.equal((await page.evaluate(()=>JSON.parse(localStorage.getItem('heat-study-ja:v1')).quizDraft.ids)).every(id=>id.startsWith('supp-chapter-ch2-')||id.startsWith('supp-section-2-')||id.startsWith('supp-advanced-ch2-')||id.startsWith('supp-applied-2-')||id.startsWith('supp-deep-heat-')),true);
+  assert.match(await page.locator('.page-heading h1').innerText(),/1 \/ 36 問/);
+  assert.equal((await page.evaluate(()=>JSON.parse(localStorage.getItem('heat-study-ja:v1')).quizDraft.ids)).every(id=>id.startsWith('supp-chapter-ch2-')||id.startsWith('supp-section-2-')||id.startsWith('supp-advanced-ch2-')||id.startsWith('supp-applied-2-')||id.startsWith('supp-deep-heat-')||id.startsWith('supp-found-')||id.startsWith('supp-next-')||id.startsWith('supp-batch2-')),true);
   await page.locator('[data-action="exit-quiz"]').click();
   await page.locator('[data-action="discard-quiz"]').click();
   await page.locator('#quiz-start-form select[name="chapter"]').selectOption('ch9');
-  await page.locator('#quiz-start-form select[name="count"]').selectOption('202');
+  await page.locator('#quiz-start-form select[name="count"]').selectOption('312');
   await page.locator('#quiz-start-form button[type="submit"]').click();
   await page.locator('.question-card').waitFor({state:'visible'});
-  assert.match(await page.locator('.page-heading h1').innerText(),/1 \/ 24 問/);
+  assert.match(await page.locator('.page-heading h1').innerText(),/1 \/ 28 問/);
   await page.locator('[data-action="exit-quiz"]').click();
   await page.locator('[data-action="discard-quiz"]').click();
   await nav('guide');

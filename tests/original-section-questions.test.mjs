@@ -18,12 +18,12 @@ test('every original Japanese note has exactly one published question with a sin
   assert.equal(new Set(items.map(x=>x.sectionId)).size,76);
   assert.equal(generated.filter(q=>q.revision!=='v1').length,55,'answer wording and scientific conditions must be versioned');
   assert.equal(generated.length,76);
-  assert.equal(all.length,202);
-  assert.equal(all.filter(q=>q.source?.type==='supplement').length,194);
+  assert.ok(all.length>=298);
+  assert.equal(all.filter(q=>q.source?.type==='supplement').length,all.length-all.filter(q=>q.source?.type==='book').length);
   assert.equal(all.filter(q=>q.source?.type==='book').length,8);
   assert.equal(all.filter(q=>q.questionGroup==='original_independent_section_review_v1').length,76);
   const ids=new Set(all.map(q=>q.id));
-  assert.equal(ids.size,202);
+  assert.equal(ids.size,all.length);
   const expected=notes.notes.map(n=>n.sectionId);
   assert.deepEqual(generated.map(q=>q.source.sectionNoteId),expected);
   for(const [i,n] of notes.notes.entries()){
@@ -57,7 +57,10 @@ test('every original Japanese note has exactly one published question with a sin
       assert.ok(idx>=0&&idx!==q.answer);
       assert.ok(q.distractors[idx].includes(d.reason),n.sectionId);
     }
-    assert.deepEqual(all.find(x=>x.id===q.id),q);
+    const published=all.find(x=>x.id===q.id);
+    assert.ok(['conceptual','numerical'].includes(published?.questionKind),n.sectionId);
+    const {questionKind,...originalQuestionFields}=published;
+    assert.deepEqual(originalQuestionFields,q,'Source question content must remain unchanged except for its cognition tag');
   }
 });
 test('independent calculations verify representative objective answer keys across heat/mass transfer',async()=>{

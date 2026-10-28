@@ -10,7 +10,8 @@
     "build:public": "node scripts/build-public-site.mjs",
     "audit": "node scripts/audit-content.mjs",
     "audit:readiness": "node scripts/readiness-audit.mjs",
-    "audit:readiness:strict": "node scripts/readiness-audit.mjs --strict"
+    "audit:readiness:strict": "node scripts/readiness-audit.mjs --strict",
+    "audit:authoring": "node scripts/authoring-queue.mjs"
   },
   "engines": {
     "node": ">=20"

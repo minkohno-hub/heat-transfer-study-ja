@@ -11,10 +11,10 @@ test('all eleven chapters have distinct independently authored question sets wit
   const chapterCounts=Object.fromEntries(book.chapters.map(ch=>[ch.id,ch.sections.length]));
   assert.equal(chapters.size,11);
   const classified=questions.filter(q=>questionChapter(q,GUIDE_SECTIONS));
-  assert.equal(classified.length,170); // Previous 150 chapter-linked questions + 20 deep-physics numericals
+  assert.equal(classified.length,280); // Classified questions include 32 new section-focused exercises
   for(const chapter of chapters){
     const qs=questionsForChapter(questions,chapter,GUIDE_SECTIONS);
-    assert.equal(qs.filter(q=>q.source.type==='supplement').length,6+chapterCounts[chapter]+(['ch2','ch4','ch5','ch10','ch11'].includes(chapter)?4:0),chapter);
+    assert.equal(qs.filter(q=>q.source.type==='supplement').length,6+chapterCounts[chapter]+(['ch2','ch4','ch5','ch10','ch11'].includes(chapter)?4:0)+({'ch1':18,'ch2':21,'ch3':20,'ch4':21,'ch5':7,'ch6':7,'ch7':6,'ch9':4,'ch10':6}[chapter]||0),chapter);
     assert.equal(qs.filter(q=>q.source.type==='book').length,chapter==='ch9'?7:chapter==='ch1'?1:0,chapter);
   }
   assert.equal(questionsForChapter(questions,'unknown',GUIDE_SECTIONS).length,0);
@@ -36,7 +36,7 @@ test('chapter overview uses most recent per-question answer and never implies fu
   assert.equal(overview.length,11);
   const ch2=overview.find(ch=>ch.chapter==='ch2');
   assert.equal(ch2.guideId,'chapter2-cylindrical-conduction');
-  assert.equal(ch2.practiceQuestionCount,15);
+  assert.equal(ch2.practiceQuestionCount,36);
   assert.equal(ch2.attemptedQuestions,1);
   assert.equal(ch2.latestCorrect,1);
   assert.equal(ch2.sectionsMarkedRead,2);
@@ -44,9 +44,9 @@ test('chapter overview uses most recent per-question answer and never implies fu
   assert.equal(ch3.attemptedQuestions,1);
   assert.equal(ch3.latestCorrect,0);
   const ch9=overview.find(ch=>ch.chapter==='ch9');
-  assert.equal(ch9.practiceQuestionCount,24);
+  assert.equal(ch9.practiceQuestionCount,28);
   assert.equal(ch9.bookCitedQuestionCount,7);
-  assert.equal(overview.reduce((sum,x)=>sum+x.practiceQuestionCount,0),170);
+  assert.equal(overview.reduce((sum,x)=>sum+x.practiceQuestionCount,0),280);
   const numerical=chapterLearningOverview(book,questions,GUIDE_SECTIONS,[
     {questionId:'supp-chapter-ch2-series',at:Date.UTC(2026,9,28,0),correct:true},
     {questionId:'supp-chapter-ch2-series',at:'2026-10-28T10:00:00+09:00',correct:false}
@@ -69,8 +69,8 @@ test('chapter roadmap distinguishes stale old-revision scores, wrong responses a
   assert.equal(ch2.latestCorrect,0);
   assert.equal(ch2.outdatedQuestions,1);
   assert.equal(ch2.latestIncorrect,1);
-  assert.equal(ch2.unansweredQuestions,13);
-  assert.equal(ch2.recommendedQuestionIds.length,15);
+  assert.equal(ch2.unansweredQuestions,34);
+  assert.equal(ch2.recommendedQuestionIds.length,36);
   assert.equal(ch2.recommendedQuestionIds[0],'supp-chapter-ch2-series','Outdated question should be retried before unseen questions');
   const current=chapterLearningOverview(book,questions,GUIDE_SECTIONS,[...attempts,
     {questionId:'supp-chapter-ch2-series',at:'2026-10-28T10:00:00Z',correct:true,questionRevision:'v2'}
@@ -78,7 +78,7 @@ test('chapter roadmap distinguishes stale old-revision scores, wrong responses a
   assert.equal(current.outdatedQuestions,0);
   assert.equal(current.attemptedQuestions,2);
   assert.equal(current.latestCorrect,1);
-  assert.equal(current.recommendedQuestionIds.length,14);
-  assert.equal(current.practiceQuestionIds.length,15);
+  assert.equal(current.recommendedQuestionIds.length,35);
+  assert.equal(current.practiceQuestionIds.length,36);
   assert.equal(current.sectionsMarkedRead,0,'Old answers do not modify book reading marks');
 });

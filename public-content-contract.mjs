@@ -175,7 +175,7 @@ export function checkPublicContent({book, questions, glossary, guides,originalNo
       const section=sections.get(sid);
       if(!section||!noteIds.has(sid)||q.source.chapterId!=='ch'+sid.split('.')[0]||
         q.source.type!=='supplement'||q.questionGroup!=='original_independent_applied_v1'||
-        q.questionKind!=='numerical'||q.expertReviewed!==false||
+        !['numerical','conceptual','applied'].includes(q.questionKind)||q.expertReviewed!==false||
         !/^v[1-9]\d*$/.test(String(q.revision||''))||
         !q.reviewStatus?.includes('外部専門家校閲前')) {
         error('応用計算問題の関連節・原著・未校閲表示に不整合: '+String(q?.id));

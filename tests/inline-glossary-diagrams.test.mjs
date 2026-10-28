@@ -5,9 +5,9 @@ import {termCandidates,matchTerms,renderTermLinks,renderTermSheet} from '../term
 import {renderSimulationDiagram} from '../sim-diagrams.mjs';
 const glossary=JSON.parse(await readFile(new URL('../data/glossary.json',import.meta.url),'utf8'));
 test('expanded glossary has unique canonical Japanese labels and categorical, accurate supplement notes',()=>{
- assert.equal(glossary.length,109);
- assert.equal(new Set(glossary.map(x=>x.id)).size,109);
- assert.equal(new Set(glossary.map(x=>x.ja)).size,109);
+ assert.equal(glossary.length,125);
+ assert.equal(new Set(glossary.map(x=>x.id)).size,125);
+ assert.equal(new Set(glossary.map(x=>x.ja)).size,125);
  const labels=new Map();
  for(const term of glossary)for(const label of [term.ja,...term.aliases]){
   const previous=labels.get(label);

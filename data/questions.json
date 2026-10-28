@@ -3242,7 +3242,8 @@
     "expertReviewed": false,
     "reportHistory": [],
     "questionGroup": "original_independent_section_review_v1",
-    "revision": "v2"
+    "revision": "v2",
+    "questionKind": "conceptual"
   },
   {
     "id": "supp-section-1-2",
@@ -3289,7 +3290,8 @@
     "expertReviewed": false,
     "reportHistory": [],
     "questionGroup": "original_independent_section_review_v1",
-    "revision": "v3"
+    "revision": "v3",
+    "questionKind": "conceptual"
   },
   {
     "id": "supp-section-1-3",
@@ -3336,7 +3338,8 @@
     "expertReviewed": false,
     "reportHistory": [],
     "questionGroup": "original_independent_section_review_v1",
-    "revision": "v3"
+    "revision": "v3",
+    "questionKind": "conceptual"
   },
   {
     "id": "supp-section-1-4",
@@ -3383,7 +3386,8 @@
     "expertReviewed": false,
     "reportHistory": [],
     "questionGroup": "original_independent_section_review_v1",
-    "revision": "v2"
+    "revision": "v2",
+    "questionKind": "conceptual"
   },
   {
     "id": "supp-section-1-5",
@@ -3430,7 +3434,8 @@
     "expertReviewed": false,
     "reportHistory": [],
     "questionGroup": "original_independent_section_review_v1",
-    "revision": "v3"
+    "revision": "v3",
+    "questionKind": "conceptual"
   },
   {
     "id": "supp-section-2-1",
@@ -3477,7 +3482,8 @@
     "expertReviewed": false,
     "reportHistory": [],
     "questionGroup": "original_independent_section_review_v1",
-    "revision": "v3"
+    "revision": "v3",
+    "questionKind": "conceptual"
   },
   {
     "id": "supp-section-2-2",
@@ -3524,7 +3530,8 @@
     "expertReviewed": false,
     "reportHistory": [],
     "questionGroup": "original_independent_section_review_v1",
-    "revision": "v2"
+    "revision": "v2",
+    "questionKind": "numerical"
   },
   {
     "id": "supp-section-2-3",
@@ -3571,7 +3578,8 @@
     "expertReviewed": false,
     "reportHistory": [],
     "questionGroup": "original_independent_section_review_v1",
-    "revision": "v1"
+    "revision": "v1",
+    "questionKind": "numerical"
   },
   {
     "id": "supp-section-2-4",
@@ -3618,7 +3626,8 @@
     "expertReviewed": false,
     "reportHistory": [],
     "questionGroup": "original_independent_section_review_v1",
-    "revision": "v1"
+    "revision": "v1",
+    "questionKind": "conceptual"
   },
   {
     "id": "supp-section-2-5",
@@ -3665,7 +3674,8 @@
     "expertReviewed": false,
     "reportHistory": [],
     "questionGroup": "original_independent_section_review_v1",
-    "revision": "v1"
+    "revision": "v1",
+    "questionKind": "numerical"
   },
   {
     "id": "supp-section-3-1",
@@ -3712,7 +3722,8 @@
     "expertReviewed": false,
     "reportHistory": [],
     "questionGroup": "original_independent_section_review_v1",
-    "revision": "v3"
+    "revision": "v3",
+    "questionKind": "conceptual"
   },
   {
     "id": "supp-section-3-2",
@@ -3759,7 +3770,8 @@
     "expertReviewed": false,
     "reportHistory": [],
     "questionGroup": "original_independent_section_review_v1",
-    "revision": "v3"
+    "revision": "v3",
+    "questionKind": "conceptual"
   },
   {
     "id": "supp-section-3-3",
@@ -3806,7 +3818,8 @@
     "expertReviewed": false,
     "reportHistory": [],
     "questionGroup": "original_independent_section_review_v1",
-    "revision": "v2"
+    "revision": "v2",
+    "questionKind": "conceptual"
   },
   {
     "id": "supp-section-3-4",
@@ -3853,7 +3866,8 @@
     "expertReviewed": false,
     "reportHistory": [],
     "questionGroup": "original_independent_section_review_v1",
-    "revision": "v1"
+    "revision": "v1",
+    "questionKind": "conceptual"
   },
   {
     "id": "supp-section-4-1",
@@ -3900,7 +3914,8 @@
     "expertReviewed": false,
     "reportHistory": [],
     "questionGroup": "original_independent_section_review_v1",
-    "revision": "v2"
+    "revision": "v2",
+    "questionKind": "conceptual"
   },
   {
     "id": "supp-section-4-2",
@@ -3947,7 +3962,8 @@
     "expertReviewed": false,
     "reportHistory": [],
     "questionGroup": "original_independent_section_review_v1",
-    "revision": "v1"
+    "revision": "v1",
+    "questionKind": "conceptual"
   },
   {
     "id": "supp-section-4-3",
@@ -3994,7 +4010,8 @@
     "expertReviewed": false,
     "reportHistory": [],
     "questionGroup": "original_independent_section_review_v1",
-    "revision": "v1"
+    "revision": "v1",
+    "questionKind": "numerical"
   },
   {
     "id": "supp-section-4-4",
@@ -4041,7 +4058,8 @@
     "expertReviewed": false,
     "reportHistory": [],
     "questionGroup": "original_independent_section_review_v1",
-    "revision": "v3"
+    "revision": "v3",
+    "questionKind": "conceptual"
   },
   {
     "id": "supp-section-4-5",
@@ -4088,7 +4106,8 @@
     "expertReviewed": false,
     "reportHistory": [],
     "questionGroup": "original_independent_section_review_v1",
-    "revision": "v3"
+    "revision": "v3",
+    "questionKind": "conceptual"
   },
   {
     "id": "supp-section-5-1",
@@ -4135,7 +4154,8 @@
     "expertReviewed": false,
     "reportHistory": [],
     "questionGroup": "original_independent_section_review_v1",
-    "revision": "v3"
+    "revision": "v3",
+    "questionKind": "conceptual"
   },
   {
     "id": "supp-section-5-2",
@@ -4182,7 +4202,8 @@
     "expertReviewed": false,
     "reportHistory": [],
     "questionGroup": "original_independent_section_review_v1",
-    "revision": "v2"
+    "revision": "v2",
+    "questionKind": "conceptual"
   },
   {
     "id": "supp-section-5-3",
@@ -4229,7 +4250,8 @@
     "expertReviewed": false,
     "reportHistory": [],
     "questionGroup": "original_independent_section_review_v1",
-    "revision": "v1"
+    "revision": "v1",
+    "questionKind": "conceptual"
   },
   {
     "id": "supp-section-5-4",
@@ -4276,7 +4298,8 @@
     "expertReviewed": false,
     "reportHistory": [],
     "questionGroup": "original_independent_section_review_v1",
-    "revision": "v4"
+    "revision": "v4",
+    "questionKind": "conceptual"
   },
   {
     "id": "supp-section-5-5",
@@ -4323,7 +4346,8 @@
     "expertReviewed": false,
     "reportHistory": [],
     "questionGroup": "original_independent_section_review_v1",
-    "revision": "v3"
+    "revision": "v3",
+    "questionKind": "conceptual"
   },
   {
     "id": "supp-section-5-6",
@@ -4370,7 +4394,8 @@
     "expertReviewed": false,
     "reportHistory": [],
     "questionGroup": "original_independent_section_review_v1",
-    "revision": "v1"
+    "revision": "v1",
+    "questionKind": "numerical"
   },
   {
     "id": "supp-section-5-7",
@@ -4417,7 +4442,8 @@
     "expertReviewed": false,
     "reportHistory": [],
     "questionGroup": "original_independent_section_review_v1",
-    "revision": "v2"
+    "revision": "v2",
+    "questionKind": "conceptual"
   },
   {
     "id": "supp-section-5-8",
@@ -4464,7 +4490,8 @@
     "expertReviewed": false,
     "reportHistory": [],
     "questionGroup": "original_independent_section_review_v1",
-    "revision": "v3"
+    "revision": "v3",
+    "questionKind": "conceptual"
   },
   {
     "id": "supp-section-6-1",
@@ -4511,7 +4538,8 @@
     "expertReviewed": false,
     "reportHistory": [],
     "questionGroup": "original_independent_section_review_v1",
-    "revision": "v3"
+    "revision": "v3",
+    "questionKind": "conceptual"
   },
   {
     "id": "supp-section-6-2",
@@ -4558,7 +4586,8 @@
     "expertReviewed": false,
     "reportHistory": [],
     "questionGroup": "original_independent_section_review_v1",
-    "revision": "v2"
+    "revision": "v2",
+    "questionKind": "numerical"
   },
   {
     "id": "supp-section-6-3",
@@ -4605,7 +4634,8 @@
     "expertReviewed": false,
     "reportHistory": [],
     "questionGroup": "original_independent_section_review_v1",
-    "revision": "v3"
+    "revision": "v3",
+    "questionKind": "conceptual"
   },
   {
     "id": "supp-section-6-4",
@@ -4652,7 +4682,8 @@
     "expertReviewed": false,
     "reportHistory": [],
     "questionGroup": "original_independent_section_review_v1",
-    "revision": "v3"
+    "revision": "v3",
+    "questionKind": "conceptual"
   },
   {
     "id": "supp-section-6-5",
@@ -4699,7 +4730,8 @@
     "expertReviewed": false,
     "reportHistory": [],
     "questionGroup": "original_independent_section_review_v1",
-    "revision": "v1"
+    "revision": "v1",
+    "questionKind": "numerical"
   },
   {
     "id": "supp-section-6-6",
@@ -4746,7 +4778,8 @@
     "expertReviewed": false,
     "reportHistory": [],
     "questionGroup": "original_independent_section_review_v1",
-    "revision": "v2"
+    "revision": "v2",
+    "questionKind": "conceptual"
   },
   {
     "id": "supp-section-6-7",
@@ -4793,7 +4826,8 @@
     "expertReviewed": false,
     "reportHistory": [],
     "questionGroup": "original_independent_section_review_v1",
-    "revision": "v3"
+    "revision": "v3",
+    "questionKind": "conceptual"
   },
   {
     "id": "supp-section-6-8",
@@ -4840,7 +4874,8 @@
     "expertReviewed": false,
     "reportHistory": [],
     "questionGroup": "original_independent_section_review_v1",
-    "revision": "v1"
+    "revision": "v1",
+    "questionKind": "conceptual"
   },
   {
     "id": "supp-section-6-9",
@@ -4887,7 +4922,8 @@
     "expertReviewed": false,
     "reportHistory": [],
     "questionGroup": "original_independent_section_review_v1",
-    "revision": "v2"
+    "revision": "v2",
+    "questionKind": "conceptual"
   },
   {
     "id": "supp-section-7-1",
@@ -4934,7 +4970,8 @@
     "expertReviewed": false,
     "reportHistory": [],
     "questionGroup": "original_independent_section_review_v1",
-    "revision": "v2"
+    "revision": "v2",
+    "questionKind": "conceptual"
   },
   {
     "id": "supp-section-7-2",
@@ -4981,7 +5018,8 @@
     "expertReviewed": false,
     "reportHistory": [],
     "questionGroup": "original_independent_section_review_v1",
-    "revision": "v1"
+    "revision": "v1",
+    "questionKind": "conceptual"
   },
   {
     "id": "supp-section-7-3",
@@ -5028,7 +5066,8 @@
     "expertReviewed": false,
     "reportHistory": [],
     "questionGroup": "original_independent_section_review_v1",
-    "revision": "v3"
+    "revision": "v3",
+    "questionKind": "conceptual"
   },
   {
     "id": "supp-section-7-4",
@@ -5075,7 +5114,8 @@
     "expertReviewed": false,
     "reportHistory": [],
     "questionGroup": "original_independent_section_review_v1",
-    "revision": "v2"
+    "revision": "v2",
+    "questionKind": "conceptual"
   },
   {
     "id": "supp-section-7-5",
@@ -5122,7 +5162,8 @@
     "expertReviewed": false,
     "reportHistory": [],
     "questionGroup": "original_independent_section_review_v1",
-    "revision": "v3"
+    "revision": "v3",
+    "questionKind": "conceptual"
   },
   {
     "id": "supp-section-7-6",
@@ -5169,7 +5210,8 @@
     "expertReviewed": false,
     "reportHistory": [],
     "questionGroup": "original_independent_section_review_v1",
-    "revision": "v2"
+    "revision": "v2",
+    "questionKind": "conceptual"
   },
   {
     "id": "supp-section-7-7",
@@ -5216,7 +5258,8 @@
     "expertReviewed": false,
     "reportHistory": [],
     "questionGroup": "original_independent_section_review_v1",
-    "revision": "v2"
+    "revision": "v2",
+    "questionKind": "conceptual"
   },
   {
     "id": "supp-section-8-1",
@@ -5263,7 +5306,8 @@
     "expertReviewed": false,
     "reportHistory": [],
     "questionGroup": "original_independent_section_review_v1",
-    "revision": "v3"
+    "revision": "v3",
+    "questionKind": "conceptual"
   },
   {
     "id": "supp-section-8-2",
@@ -5310,7 +5354,8 @@
     "expertReviewed": false,
     "reportHistory": [],
     "questionGroup": "original_independent_section_review_v1",
-    "revision": "v3"
+    "revision": "v3",
+    "questionKind": "conceptual"
   },
   {
     "id": "supp-section-8-3",
@@ -5357,7 +5402,8 @@
     "expertReviewed": false,
     "reportHistory": [],
     "questionGroup": "original_independent_section_review_v1",
-    "revision": "v2"
+    "revision": "v2",
+    "questionKind": "numerical"
   },
   {
     "id": "supp-section-8-4",
@@ -5404,7 +5450,8 @@
     "expertReviewed": false,
     "reportHistory": [],
     "questionGroup": "original_independent_section_review_v1",
-    "revision": "v3"
+    "revision": "v3",
+    "questionKind": "conceptual"
   },
   {
     "id": "supp-section-8-5",
@@ -5451,7 +5498,8 @@
     "expertReviewed": false,
     "reportHistory": [],
     "questionGroup": "original_independent_section_review_v1",
-    "revision": "v1"
+    "revision": "v1",
+    "questionKind": "conceptual"
   },
   {
     "id": "supp-section-9-1",
@@ -5498,7 +5546,8 @@
     "expertReviewed": false,
     "reportHistory": [],
     "questionGroup": "original_independent_section_review_v1",
-    "revision": "v3"
+    "revision": "v3",
+    "questionKind": "conceptual"
   },
   {
     "id": "supp-section-9-2",
@@ -5545,7 +5594,8 @@
     "expertReviewed": false,
     "reportHistory": [],
     "questionGroup": "original_independent_section_review_v1",
-    "revision": "v2"
+    "revision": "v2",
+    "questionKind": "conceptual"
   },
   {
     "id": "supp-section-9-3",
@@ -5592,7 +5642,8 @@
     "expertReviewed": false,
     "reportHistory": [],
     "questionGroup": "original_independent_section_review_v1",
-    "revision": "v2"
+    "revision": "v2",
+    "questionKind": "conceptual"
   },
   {
     "id": "supp-section-9-4",
@@ -5639,7 +5690,8 @@
     "expertReviewed": false,
     "reportHistory": [],
     "questionGroup": "original_independent_section_review_v1",
-    "revision": "v2"
+    "revision": "v2",
+    "questionKind": "conceptual"
   },
   {
     "id": "supp-section-9-5",
@@ -5686,7 +5738,8 @@
     "expertReviewed": false,
     "reportHistory": [],
     "questionGroup": "original_independent_section_review_v1",
-    "revision": "v1"
+    "revision": "v1",
+    "questionKind": "conceptual"
   },
   {
     "id": "supp-section-9-6",
@@ -5733,7 +5786,8 @@
     "expertReviewed": false,
     "reportHistory": [],
     "questionGroup": "original_independent_section_review_v1",
-    "revision": "v1"
+    "revision": "v1",
+    "questionKind": "conceptual"
   },
   {
     "id": "supp-section-9-7",
@@ -5780,7 +5834,8 @@
     "expertReviewed": false,
     "reportHistory": [],
     "questionGroup": "original_independent_section_review_v1",
-    "revision": "v2"
+    "revision": "v2",
+    "questionKind": "conceptual"
   },
   {
     "id": "supp-section-9-8",
@@ -5827,7 +5882,8 @@
     "expertReviewed": false,
     "reportHistory": [],
     "questionGroup": "original_independent_section_review_v1",
-    "revision": "v2"
+    "revision": "v2",
+    "questionKind": "conceptual"
   },
   {
     "id": "supp-section-9-9",
@@ -5874,7 +5930,8 @@
     "expertReviewed": false,
     "reportHistory": [],
     "questionGroup": "original_independent_section_review_v1",
-    "revision": "v1"
+    "revision": "v1",
+    "questionKind": "conceptual"
   },
   {
     "id": "supp-section-9-10-core",
@@ -5921,7 +5978,8 @@
     "expertReviewed": false,
     "reportHistory": [],
     "questionGroup": "original_independent_section_review_v1",
-    "revision": "v3"
+    "revision": "v3",
+    "questionKind": "conceptual"
   },
   {
     "id": "supp-section-9-11",
@@ -5968,7 +6026,8 @@
     "expertReviewed": false,
     "reportHistory": [],
     "questionGroup": "original_independent_section_review_v1",
-    "revision": "v2"
+    "revision": "v2",
+    "questionKind": "conceptual"
   },
   {
     "id": "supp-section-10-1",
@@ -6015,7 +6074,8 @@
     "expertReviewed": false,
     "reportHistory": [],
     "questionGroup": "original_independent_section_review_v1",
-    "revision": "v2"
+    "revision": "v2",
+    "questionKind": "numerical"
   },
   {
     "id": "supp-section-10-2",
@@ -6062,7 +6122,8 @@
     "expertReviewed": false,
     "reportHistory": [],
     "questionGroup": "original_independent_section_review_v1",
-    "revision": "v2"
+    "revision": "v2",
+    "questionKind": "numerical"
   },
   {
     "id": "supp-section-10-3",
@@ -6109,7 +6170,8 @@
     "expertReviewed": false,
     "reportHistory": [],
     "questionGroup": "original_independent_section_review_v1",
-    "revision": "v1"
+    "revision": "v1",
+    "questionKind": "conceptual"
   },
   {
     "id": "supp-section-10-4",
@@ -6156,7 +6218,8 @@
     "expertReviewed": false,
     "reportHistory": [],
     "questionGroup": "original_independent_section_review_v1",
-    "revision": "v1"
+    "revision": "v1",
+    "questionKind": "numerical"
   },
   {
     "id": "supp-section-10-5",
@@ -6203,7 +6266,8 @@
     "expertReviewed": false,
     "reportHistory": [],
     "questionGroup": "original_independent_section_review_v1",
-    "revision": "v1"
+    "revision": "v1",
+    "questionKind": "conceptual"
   },
   {
     "id": "supp-section-10-6",
@@ -6250,7 +6314,8 @@
     "expertReviewed": false,
     "reportHistory": [],
     "questionGroup": "original_independent_section_review_v1",
-    "revision": "v1"
+    "revision": "v1",
+    "questionKind": "conceptual"
   },
   {
     "id": "supp-section-11-1",
@@ -6297,7 +6362,8 @@
     "expertReviewed": false,
     "reportHistory": [],
     "questionGroup": "original_independent_section_review_v1",
-    "revision": "v2"
+    "revision": "v2",
+    "questionKind": "conceptual"
   },
   {
     "id": "supp-section-11-2",
@@ -6344,7 +6410,8 @@
     "expertReviewed": false,
     "reportHistory": [],
     "questionGroup": "original_independent_section_review_v1",
-    "revision": "v2"
+    "revision": "v2",
+    "questionKind": "numerical"
   },
   {
     "id": "supp-section-11-3",
@@ -6391,7 +6458,8 @@
     "expertReviewed": false,
     "reportHistory": [],
     "questionGroup": "original_independent_section_review_v1",
-    "revision": "v1"
+    "revision": "v1",
+    "questionKind": "conceptual"
   },
   {
     "id": "supp-section-11-4",
@@ -6438,7 +6506,8 @@
     "expertReviewed": false,
     "reportHistory": [],
     "questionGroup": "original_independent_section_review_v1",
-    "revision": "v3"
+    "revision": "v3",
+    "questionKind": "conceptual"
   },
   {
     "id": "supp-section-11-5",
@@ -6485,7 +6554,8 @@
     "expertReviewed": false,
     "reportHistory": [],
     "questionGroup": "original_independent_section_review_v1",
-    "revision": "v3"
+    "revision": "v3",
+    "questionKind": "conceptual"
   },
   {
     "id": "supp-section-11-6",
@@ -6532,7 +6602,8 @@
     "expertReviewed": false,
     "reportHistory": [],
     "questionGroup": "original_independent_section_review_v1",
-    "revision": "v3"
+    "revision": "v3",
+    "questionKind": "conceptual"
   },
   {
     "id": "supp-section-11-7",
@@ -6579,7 +6650,8 @@
     "expertReviewed": false,
     "reportHistory": [],
     "questionGroup": "original_independent_section_review_v1",
-    "revision": "v2"
+    "revision": "v2",
+    "questionKind": "conceptual"
   },
   {
     "id": "supp-section-11-8",
@@ -6626,7 +6698,8 @@
     "expertReviewed": false,
     "reportHistory": [],
     "questionGroup": "original_independent_section_review_v1",
-    "revision": "v1"
+    "revision": "v1",
+    "questionKind": "numerical"
   },
   {
     "id": "supp-section-11-9",
@@ -6673,7 +6746,8 @@
     "expertReviewed": false,
     "reportHistory": [],
     "questionGroup": "original_independent_section_review_v1",
-    "revision": "v3"
+    "revision": "v3",
+    "questionKind": "conceptual"
   },
   {
     "id": "supp-section-11-10-core",
@@ -6720,7 +6794,8 @@
     "expertReviewed": false,
     "reportHistory": [],
     "questionGroup": "original_independent_section_review_v1",
-    "revision": "v3"
+    "revision": "v3",
+    "questionKind": "conceptual"
   },
   {
     "id": "supp-section-11-11",
@@ -6767,7 +6842,8 @@
     "expertReviewed": false,
     "reportHistory": [],
     "questionGroup": "original_independent_section_review_v1",
-    "revision": "v3"
+    "revision": "v3",
+    "questionKind": "conceptual"
   },
   {
     "id": "supp-advanced-ch1-calc",
@@ -9361,5 +9437,5319 @@
       "q_b=kAc m θb F≈5.260 W。断熱先端の5.166 Wより大きいことを確認する。"
     ],
     "beginnerPitfall": "先端対流の式で断熱先端と同じtanh(mL)を無条件に使わない。"
+  },
+  {
+    "revision": "v1",
+    "field": "伝熱の基本量・保存則",
+    "prerequisites": [
+      "熱移動率と熱流束",
+      "単位と積分"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "§1.1の独立執筆詳細教材および仮想条件に基づく新規問題。原本設問・原図・本文は転載しない。",
+      "chapterId": "ch1",
+      "focusSectionId": "1.1",
+      "guideId": "chapter1-energy-balance"
+    },
+    "createdStatus": "独立作問",
+    "reviewStatus": "式・単位の内部確認済み／外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [],
+    "id": "supp-deep-heat-rate-flux-integral-v1",
+    "prompt": "定常の平面上で外向き熱流束がq″(x)=100+200x W/m²（xはm単位で0から1まで）、幅が0.50 mである。面全体の外向き熱移動率はいくらか。",
+    "choices": [
+      "50 W",
+      "100 W",
+      "150 W",
+      "200 W"
+    ],
+    "answer": 1,
+    "difficulty": "標準計算",
+    "explanation": "dA=0.50dxなので、Q̇=∫₀¹(100+200x)0.50dx=0.50(100+100)=100 W。面積0.50 m²の平均は200 W/m²。",
+    "distractors": [
+      "端点の値100 W/m²に面積0.50 m²を掛けただけです。",
+      "正解。分布を面積で積分します。",
+      "最大熱流束300 W/m²を全面に適用しています。",
+      "平均熱流束200 W/m²を熱移動率200 Wと混同しています。"
+    ],
+    "hints": [
+      "熱流束は位置で変化します。局所値を面積で積分してください。",
+      "微小面積dA=0.50dxとして定積分します。"
+    ],
+    "solutionSteps": [
+      "定義Q̇=∫_A q″dAを使う。",
+      "幅一定の長方形だからdA=0.50dx。",
+      "∫₀¹(100+200x)0.50dx=100 W。",
+      "WとW/m²を区別する。"
+    ],
+    "beginnerPitfall": "熱移動量J・熱移動率W・熱流束W/m²と、外向きの符号を区別する。"
+  },
+  {
+    "revision": "v1",
+    "field": "伝熱の基本量・保存則",
+    "prerequisites": [
+      "熱移動率と熱流束",
+      "単位と積分"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "§1.1の独立執筆詳細教材および仮想条件に基づく新規問題。原本設問・原図・本文は転載しない。",
+      "chapterId": "ch1",
+      "focusSectionId": "1.1",
+      "guideId": "chapter1-energy-balance"
+    },
+    "createdStatus": "独立作問",
+    "reviewStatus": "式・単位の内部確認済み／外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [],
+    "id": "supp-deep-variable-rate-integral-v1",
+    "prompt": "外向き熱移動率が0秒で0 W、10秒で100 Wへ時間に比例して直線的に増える。10秒間に外へ移った熱移動量はいくらか。",
+    "choices": [
+      "1000 J",
+      "100 J",
+      "500 J",
+      "50 J"
+    ],
+    "answer": 2,
+    "difficulty": "標準計算",
+    "explanation": "熱移動率の時間積分は台形の面積。平均(0+100)/2=50 W、10秒でQ=50×10=500 J。",
+    "distractors": [
+      "終了時の100 Wが10秒間ずっと続くと誤認しています。",
+      "平均熱移動率と時間を掛ける際に時間の桁を誤っています。",
+      "正解。線形変動の平均50 Wを10秒積算します。",
+      "50 Wは平均熱移動率であり熱移動量ではありません。"
+    ],
+    "hints": [
+      "熱移動率は一定ではありません。",
+      "時間に対するQ̇のグラフの三角形の面積を求めます。"
+    ],
+    "solutionSteps": [
+      "Q=∫₀¹⁰ Q̇dtを設定する。",
+      "直線増加なので平均50 W。",
+      "50 W×10 s=500 J。",
+      "求める単位がJであることを検査する。"
+    ],
+    "beginnerPitfall": "熱移動量J・熱移動率W・熱流束W/m²と、外向きの符号を区別する。"
+  },
+  {
+    "revision": "v1",
+    "field": "伝熱の基本量・保存則",
+    "prerequisites": [
+      "熱移動率と熱流束",
+      "単位と積分"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "§1.1の独立執筆詳細教材および仮想条件に基づく新規問題。原本設問・原図・本文は転載しない。",
+      "chapterId": "ch1",
+      "focusSectionId": "1.1",
+      "guideId": "chapter1-energy-balance"
+    },
+    "createdStatus": "独立作問",
+    "reviewStatus": "式・単位の内部確認済み／外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [],
+    "id": "supp-deep-boundary-energy-balance-v1",
+    "prompt": "質量が出入りしない閉じた系に30秒間、外部から400 Wの熱が入り、同時に系が外部へ100 Wの仕事率で仕事をした。運動・位置エネルギー変化は無視できる。内部エネルギー変化ΔUは？",
+    "choices": [
+      "+9000 J",
+      "+15000 J",
+      "−9000 J",
+      "+300 J"
+    ],
+    "answer": 0,
+    "difficulty": "応用計算",
+    "explanation": "入熱12000 J、系がする仕事3000 J。ΔU=Q_in−W_out=12000−3000=+9000 J。",
+    "distractors": [
+      "正解。熱と仕事の符号を区別して保存式に代入しています。",
+      "系がした仕事を加えてしまった値です。",
+      "入熱と外向き仕事の符号を逆にしています。",
+      "300 Wは正味のエネルギー蓄積率で、30秒積算する前の値です。"
+    ],
+    "hints": [
+      "閉じた系の第一法則ΔU=Q_in−W_outを使います。",
+      "正味の蓄積率は400−100=300 Wです。"
+    ],
+    "solutionSteps": [
+      "熱流入Q_in=400×30=12000 J。",
+      "系の外向き仕事W_out=100×30=3000 J。",
+      "ΔU=12000−3000=9000 J。",
+      "正のΔUは内部エネルギーの増加を意味する。"
+    ],
+    "beginnerPitfall": "熱移動量J・熱移動率W・熱流束W/m²と、外向きの符号を区別する。"
+  },
+  {
+    "revision": "v1",
+    "field": "伝熱の基本量・保存則",
+    "prerequisites": [
+      "熱移動率と熱流束",
+      "単位と積分"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "applied",
+    "source": {
+      "type": "supplement",
+      "reference": "§1.1の独立執筆詳細教材および仮想条件に基づく新規問題。原本設問・原図・本文は転載しない。",
+      "chapterId": "ch1",
+      "focusSectionId": "1.1",
+      "guideId": "chapter1-energy-balance"
+    },
+    "createdStatus": "独立作問",
+    "reviewStatus": "式・単位の内部確認済み／外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [],
+    "id": "supp-deep-rate-vs-state-v1",
+    "prompt": "物体の表面温度を高精度に測定できたが、熱伝導率や流体の流れ、周囲の放射環境は不明である。表面からの熱移動率について正しい結論はどれか。",
+    "choices": [
+      "表面温度に面積を掛ければ熱移動率が決まる",
+      "物体が高温なら熱移動率は常に正と決まる",
+      "定常なら温度差の有無にかかわらず熱移動率はゼロ",
+      "温度だけでは定量化できず、機構と境界条件が必要"
+    ],
+    "answer": 3,
+    "difficulty": "概念・適用判断",
+    "explanation": "熱移動率には熱流束または伝熱モデルが必要。熱伝導なら温度勾配とk、対流ならhと温度差、放射なら表面放射特性と周囲温度等が必要。温度だけから方向と大きさを一般には確定できない。",
+    "distractors": [
+      "温度×面積はWにならず、次元が一致しません。",
+      "正負は指定した向きと周囲の状態に依存します。",
+      "定常は蓄熱率ゼロを意味しても、系を通過する熱移動率がゼロとは限りません。",
+      "正解。境界の駆動力と輸送係数を特定します。"
+    ],
+    "hints": [
+      "温度の単位と熱移動率Wの単位を比較します。",
+      "熱伝導・対流・放射それぞれに必要な入力を考えます。"
+    ],
+    "solutionSteps": [
+      "温度は状態量で、Wを直接与えない。",
+      "熱流束の構成則を適用するための情報を確認する。",
+      "輸送機構と境界条件が不明なら熱移動率は確定できない。"
+    ],
+    "beginnerPitfall": "熱移動量J・熱移動率W・熱流束W/m²と、外向きの符号を区別する。"
+  },
+  {
+    "revision": "v1",
+    "field": "熱交換器・エネルギー収支",
+    "prerequisites": [
+      "熱容量流量",
+      "定常エネルギー収支"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "§3.1の独立執筆詳細教材および仮想条件に基づく新規問題。原本設問・原図・本文は転載しない。",
+      "chapterId": "ch3",
+      "focusSectionId": "3.1",
+      "guideId": "chapter3-effectiveness-ntu"
+    },
+    "createdStatus": "独立作問",
+    "reviewStatus": "式・単位の内部確認済み／外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [],
+    "id": "supp-deep-exchanger-cold-outlet-v1",
+    "prompt": "隔壁型熱交換器の高温側がṁ_h=0.60 kg/s、c_p,h=4000 J/(kg·K)、入口70℃、出口50℃。低温側はṁ_c=0.80 kg/s、c_p,c=4000 J/(kg·K)、入口20℃。定常・断熱・相変化なしと仮定した低温側出口温度は？",
+    "choices": [
+      "25℃",
+      "30℃",
+      "35℃",
+      "50℃"
+    ],
+    "answer": 2,
+    "difficulty": "標準計算",
+    "explanation": "温側Q̇=0.6×4000×20=48000 W。低温側C_c=0.8×4000=3200 W/Kなので温度上昇15 K。出口20+15=35℃。",
+    "distractors": [
+      "温側の温度低下20 Kを冷側の温度上昇として用いていませんが、この値はエネルギー収支と合いません。",
+      "低温側の温度上昇を10 Kと誤る値です。",
+      "正解。両側の熱容量流量を区別します。",
+      "高温側の出口温度を冷側の出口温度と同じと仮定しています。"
+    ],
+    "hints": [
+      "まず高温側の放熱率をWで計算します。",
+      "Q̇=C_c(T_c,out−20℃)を解きます。"
+    ],
+    "solutionSteps": [
+      "C_h=2400 W/K、Q̇=2400×20=48000 W。",
+      "C_c=3200 W/K。",
+      "T_c,out=20+48000/3200=35℃。",
+      "両側のエネルギー収支を再代入で確認する。"
+    ],
+    "beginnerPitfall": "高温側・低温側の流量、入口・出口、および外部損失の有無を確認する。"
+  },
+  {
+    "revision": "v1",
+    "field": "熱交換器・エネルギー収支",
+    "prerequisites": [
+      "熱容量流量",
+      "定常エネルギー収支"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "§3.1の独立執筆詳細教材および仮想条件に基づく新規問題。原本設問・原図・本文は転載しない。",
+      "chapterId": "ch3",
+      "focusSectionId": "3.1",
+      "guideId": "chapter3-effectiveness-ntu"
+    },
+    "createdStatus": "独立作問",
+    "reviewStatus": "式・単位の内部確認済み／外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [],
+    "id": "supp-deep-exchanger-heat-loss-v1",
+    "prompt": "定常熱交換器で温側流体が50 kWのエンタルピー率を失い、冷側流体が46 kWを受け取った。軸仕事・蓄熱は無視できる。外部への熱損失率は？",
+    "choices": [
+      "0 kW",
+      "4 kW",
+      "46 kW",
+      "96 kW"
+    ],
+    "answer": 1,
+    "difficulty": "概念・計算",
+    "explanation": "定常・軸仕事なしならQ̇_h=Q̇_c+Q̇_loss。したがって50−46=4 kWが周囲へ流出。",
+    "distractors": [
+      "熱損失がないと決めつけ、両側の差を無視しています。",
+      "正解。温側から減少した50 kWのうち46 kWが冷側へ移動します。",
+      "冷側への熱移動率そのものを外部損失と誤認しています。",
+      "温側損失と冷側受熱を足しており、保存則と逆です。"
+    ],
+    "hints": [
+      "装置全体を制御体積として扱います。",
+      "温側の失熱＝冷側の受熱＋外部損失。"
+    ],
+    "solutionSteps": [
+      "熱収支Q̇_h−Q̇_c=Q̇_lossを立てる。",
+      "50−46=4 kW。",
+      "正の4 kWは周囲への損失を表す。"
+    ],
+    "beginnerPitfall": "高温側・低温側の流量、入口・出口、および外部損失の有無を確認する。"
+  },
+  {
+    "revision": "v1",
+    "field": "熱交換器・エネルギー収支",
+    "prerequisites": [
+      "熱容量流量",
+      "定常エネルギー収支"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "conceptual",
+    "source": {
+      "type": "supplement",
+      "reference": "§3.1の独立執筆詳細教材および仮想条件に基づく新規問題。原本設問・原図・本文は転載しない。",
+      "chapterId": "ch3",
+      "focusSectionId": "3.1",
+      "guideId": "chapter3-effectiveness-ntu"
+    },
+    "createdStatus": "独立作問",
+    "reviewStatus": "式・単位の内部確認済み／外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [],
+    "id": "supp-deep-exchanger-qmax-v1",
+    "prompt": "相変化のない熱交換器で温側・冷側の熱容量流量が各2400、3200 W/K、入口温度が70、20℃である。断熱・定常の理想最大熱移動率Q̇_maxは？",
+    "choices": [
+      "120 kW",
+      "160 kW",
+      "48 kW",
+      "8 kW"
+    ],
+    "answer": 0,
+    "difficulty": "概念・式評価",
+    "explanation": "C_min=2400 W/K、最大の入口温度差は50 K。Q̇_max=C_min×50=120000 W=120 kW。",
+    "distractors": [
+      "正解。最大熱量は小さい方の熱容量流量C_minで決まります。",
+      "C_maxを使ったため上界を過大にしています。",
+      "例示された実際の熱移動率48 kWと理想上界を混同しています。",
+      "入口温度差や単位の取り扱いが不適切です。"
+    ],
+    "hints": [
+      "C_hとC_cのどちらが小さいですか。",
+      "Q̇_max=C_min(T_h,in−T_c,in)です。"
+    ],
+    "solutionSteps": [
+      "入口温度差70−20=50 K。",
+      "C_min=2400 W/K。",
+      "Q̇_max=2400×50=120000 W。",
+      "出力を120 kWと表記。"
+    ],
+    "beginnerPitfall": "高温側・低温側の流量、入口・出口、および外部損失の有無を確認する。"
+  },
+  {
+    "revision": "v1",
+    "field": "熱交換器・エネルギー収支",
+    "prerequisites": [
+      "熱容量流量",
+      "定常エネルギー収支"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "applied",
+    "source": {
+      "type": "supplement",
+      "reference": "§3.1の独立執筆詳細教材および仮想条件に基づく新規問題。原本設問・原図・本文は転載しない。",
+      "chapterId": "ch3",
+      "focusSectionId": "3.1",
+      "guideId": "chapter3-effectiveness-ntu"
+    },
+    "createdStatus": "独立作問",
+    "reviewStatus": "式・単位の内部確認済み／外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [],
+    "id": "supp-deep-exchanger-parallel-vs-counter-v1",
+    "prompt": "外部との熱交換がない受動的な隔壁型熱交換器で、流体の相変化がなく比熱は一定とする。並流と向流の出口温度に関する記述として正しいのは？",
+    "choices": [
+      "並流では冷側出口が温側出口より常に高温になる",
+      "向流では冷側出口が温側出口より高温となることが条件によって可能",
+      "並流と向流ではどちらも流路全体の流体間温度差分布が完全に一致する",
+      "向流では両流体の熱容量流量が同じ値になることを配置が必ず保証する"
+    ],
+    "answer": 1,
+    "difficulty": "概念・設計判断",
+    "explanation": "並流では正の有限伝熱面積による受動的伝熱で、出口温度の冷温逆転は起こらない。向流では温側入口と冷側出口が近接するため、熱容量流量やUAに応じて冷側出口が温側出口を上回る場合がある。これは温側入口を上回る意味ではない。",
+    "distractors": [
+      "並流の出口で温度の逆転は起こらず、端末温度差が負になる条件と矛盾します。",
+      "正解。向流の温度分布ではこの関係が許される場合があります。",
+      "流路配置で温度差分布が変わることが熱交換器設計の要点です。",
+      "熱容量流量は質量流量と比熱で決まり、流路配置が等しい値を強制しません。"
+    ],
+    "hints": [
+      "両流体の温度差を流路の入口から出口まで描きます。",
+      "向流では『温側入口と冷側出口』が同じ端にあります。"
+    ],
+    "solutionSteps": [
+      "並流では両入口が同端で、下流へ温度差が減少する。",
+      "向流では入口位置が反対で、端末の組み合わせが異なる。",
+      "よって条件により向流の冷側出口が温側出口を超えうる。"
+    ],
+    "beginnerPitfall": "高温側・低温側の流量、入口・出口、および外部損失の有無を確認する。"
+  },
+  {
+    "revision": "v1",
+    "field": "基本熱収支・熱移動機構",
+    "prerequisites": [
+      "熱移動率とエネルギー",
+      "伝熱機構と保存則"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "§1.2の独立執筆詳細講義と仮想の数値条件による新規作問。原本の問題・翻訳・図版は転載しない。",
+      "chapterId": "ch1",
+      "focusSectionId": "1.2",
+      "guideId": "chapter1-energy-balance"
+    },
+    "createdStatus": "独立作問",
+    "reviewStatus": "式と単位の内部検算済み／外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [],
+    "id": "supp-found-net-heating-time-v1",
+    "prompt": "質量2.0 kg、比熱500 J/(kg·K)の物体を10 K温める。物体へ伝わるヒーター出力は200 W、周囲損失は一定50 W、内部温度は一様とする。必要な加熱時間は？",
+    "choices": [
+      "50.0 s",
+      "66.7 s",
+      "100.0 s",
+      "200.0 s"
+    ],
+    "answer": 1,
+    "difficulty": "標準・熱損失",
+    "explanation": "ΔU=2×500×10=10000 J。正味の蓄熱率は200−50=150 Wなので、t=10000/150≈66.7 s。",
+    "distractors": [
+      "熱損失を無視して10000/200としています。",
+      "正解。正味150 Wを用います。",
+      "比熱や熱損失の単位を混同しています。",
+      "物体の有効加熱率を50 Wと誤認しています。"
+    ],
+    "hints": [
+      "加熱器出力と物体の蓄熱率は同じとは限りません。",
+      "mcΔTをヒーター出力から熱損失を引いたWで割ります。"
+    ],
+    "solutionSteps": [
+      "ΔU=10000 Jを求める。",
+      "Q̇_net=200−50=150 Wを求める。",
+      "t=10000/150≈66.7 sを求める。"
+    ],
+    "beginnerPitfall": "エネルギーJと速度W、保存則と伝熱係数を区別する。"
+  },
+  {
+    "revision": "v1",
+    "field": "基本熱収支・熱移動機構",
+    "prerequisites": [
+      "熱移動率とエネルギー",
+      "伝熱機構と保存則"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "§1.2の独立執筆詳細講義と仮想の数値条件による新規作問。原本の問題・翻訳・図版は転載しない。",
+      "chapterId": "ch1",
+      "focusSectionId": "1.2",
+      "guideId": "chapter1-energy-balance"
+    },
+    "createdStatus": "独立作問",
+    "reviewStatus": "式と単位の内部検算済み／外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [],
+    "id": "supp-found-closed-system-firstlaw-v1",
+    "prompt": "質量出入りのない閉じた系へ熱1200 Jが入り、系が外へ300 Jの仕事を行った。運動・位置エネルギーの変化を無視すると内部エネルギー変化は？",
+    "choices": [
+      "+900 J",
+      "+1500 J",
+      "−900 J",
+      "+1200 J"
+    ],
+    "answer": 0,
+    "difficulty": "基礎・エネルギー保存",
+    "explanation": "閉じた系ではΔU=Q_in−W_out=1200−300=+900 J。系のする仕事は内部エネルギーを減らす。",
+    "distractors": [
+      "正解。入熱と外向き仕事の符号を分けます。",
+      "系が外へした仕事を内部エネルギーへ加えています。",
+      "入熱と仕事の符号を両方反転しています。",
+      "外向き仕事を無視した値です。"
+    ],
+    "hints": [
+      "系への入熱を正、系がする仕事を正と定義します。",
+      "第一法則ΔU=Q_in−W_outです。"
+    ],
+    "solutionSteps": [
+      "Q_in=+1200 Jを確認する。",
+      "W_out=+300 Jとする。",
+      "ΔU=1200−300=900 J。"
+    ],
+    "beginnerPitfall": "エネルギーJと速度W、保存則と伝熱係数を区別する。"
+  },
+  {
+    "revision": "v1",
+    "field": "基本熱収支・熱移動機構",
+    "prerequisites": [
+      "熱移動率とエネルギー",
+      "伝熱機構と保存則"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "applied",
+    "source": {
+      "type": "supplement",
+      "reference": "§1.2の独立執筆詳細講義と仮想の数値条件による新規作問。原本の問題・翻訳・図版は転載しない。",
+      "chapterId": "ch1",
+      "focusSectionId": "1.2",
+      "guideId": "chapter1-energy-balance"
+    },
+    "createdStatus": "独立作問",
+    "reviewStatus": "式と単位の内部検算済み／外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [],
+    "id": "supp-found-heatloss-temperature-dependent-v1",
+    "prompt": "物体に一定電力で加熱し、周囲への対流損失がhA(T−T∞)に比例する。物体の内部温度が一様でhA一定と仮定すると、正しい説明は？",
+    "choices": [
+      "温度が上がっても蓄熱速度は常に一定である",
+      "熱の出入りを無視して温度を決められる",
+      "物体が定常でも温度は必ず上昇し続ける",
+      "温度上昇で損失が増え蓄熱率は変化しうる"
+    ],
+    "answer": 3,
+    "difficulty": "応用・モデル判断",
+    "explanation": "mc dT/dt=P−hA(T−T∞)。PとhAが一定でもTが上がれば損失が増え、dT/dtは変化する。定常ならPと損失が釣り合う場合がある。",
+    "distractors": [
+      "対流損失が温度差に比例する条件に反します。",
+      "エネルギー収支を解くには熱移動率の情報が必要です。",
+      "定常なら温度は時間に依存せず、上昇し続けません。",
+      "正解。温度依存の熱損失を収支に入れます。"
+    ],
+    "hints": [
+      "Newtonの冷却則の温度差を確認します。",
+      "右辺がTに依存する微分方程式を考えます。"
+    ],
+    "solutionSteps": [
+      "蓄熱の収支をmc dT/dt=P−Q̇_lossと書く。",
+      "Q̇_loss=hA(T−T∞)を代入する。",
+      "上昇温度に応じて正味の加熱率が変わると判断する。"
+    ],
+    "beginnerPitfall": "エネルギーJと速度W、保存則と伝熱係数を区別する。"
+  },
+  {
+    "revision": "v1",
+    "field": "基本熱収支・熱移動機構",
+    "prerequisites": [
+      "熱移動率とエネルギー",
+      "伝熱機構と保存則"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "§1.2の独立執筆詳細講義と仮想の数値条件による新規作問。原本の問題・翻訳・図版は転載しない。",
+      "chapterId": "ch1",
+      "focusSectionId": "1.2",
+      "guideId": "chapter1-energy-balance"
+    },
+    "createdStatus": "独立作問",
+    "reviewStatus": "式と単位の内部検算済み／外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [],
+    "id": "supp-found-openflow-enthalpy-v1",
+    "prompt": "単相流体が定常でṁ=0.20 kg/s、一定比熱c_p=4000 J/(kg·K)で10 K温められる。仕事・運動エネルギー差・外部損失を無視すると、流体への熱移動率は？",
+    "choices": [
+      "2000 W",
+      "4000 W",
+      "8000 W",
+      "16000 W"
+    ],
+    "answer": 2,
+    "difficulty": "標準・開放系",
+    "explanation": "Q̇=ṁc_pΔT=0.20×4000×10=8000 W。開いた系の流量kg/sを用い、m[kg]と取り違えない。",
+    "distractors": [
+      "比熱と温度差の積を過小に評価しています。",
+      "質量流量0.20 kg/sの係数を正しく反映していません。",
+      "正解。kg/s×J/(kg·K)×K=Wとなります。",
+      "流体流量または温度差を2倍に数えています。"
+    ],
+    "hints": [
+      "流れる質量の量ではなく質量流量を使います。",
+      "Q̇=ṁc_pΔTをSI単位で計算してください。"
+    ],
+    "solutionSteps": [
+      "質量流量と比熱の積は800 W/K。",
+      "温度差10 Kを掛ける。",
+      "Q̇=8000 Wと求める。"
+    ],
+    "beginnerPitfall": "エネルギーJと速度W、保存則と伝熱係数を区別する。"
+  },
+  {
+    "revision": "v1",
+    "field": "基本熱収支・熱移動機構",
+    "prerequisites": [
+      "熱移動率とエネルギー",
+      "伝熱機構と保存則"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "§1.3の独立執筆詳細講義と仮想の数値条件による新規作問。原本の問題・翻訳・図版は転載しない。",
+      "chapterId": "ch1",
+      "focusSectionId": "1.3",
+      "guideId": "chapter1-energy-balance"
+    },
+    "createdStatus": "独立作問",
+    "reviewStatus": "式と単位の内部検算済み／外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [],
+    "id": "supp-found-three-mode-conduction-v1",
+    "prompt": "厚さ0.10 m、k=2.0 W/(m·K)、面積0.50 m²の平板の両面に20 Kの温度差がある。一定k・一次元定常・発熱なしの伝導熱移動率の大きさは？",
+    "choices": [
+      "100 W",
+      "150 W",
+      "200 W",
+      "400 W"
+    ],
+    "answer": 2,
+    "difficulty": "標準・伝導",
+    "explanation": "Q̇=kAΔT/L=2.0×0.50×20/0.10=200 W。単位はW/(m·K)×m²×K/m=W。",
+    "distractors": [
+      "対流のhAΔTと混同した値です。",
+      "積算で用いる厚さまたは面積を誤用しています。",
+      "正解。厚さ0.10 mで割ります。",
+      "温度差か熱伝導率を二重に掛けた値です。"
+    ],
+    "hints": [
+      "Fourier則の平板解を使います。",
+      "kAΔTをLで割ってください。"
+    ],
+    "solutionSteps": [
+      "温度差を20 Kとする。",
+      "kAΔT/L=2×0.5×20/0.1。",
+      "200 Wを得る。"
+    ],
+    "beginnerPitfall": "エネルギーJと速度W、保存則と伝熱係数を区別する。"
+  },
+  {
+    "revision": "v1",
+    "field": "基本熱収支・熱移動機構",
+    "prerequisites": [
+      "熱移動率とエネルギー",
+      "伝熱機構と保存則"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "§1.3の独立執筆詳細講義と仮想の数値条件による新規作問。原本の問題・翻訳・図版は転載しない。",
+      "chapterId": "ch1",
+      "focusSectionId": "1.3",
+      "guideId": "chapter1-energy-balance"
+    },
+    "createdStatus": "独立作問",
+    "reviewStatus": "式と単位の内部検算済み／外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [],
+    "id": "supp-found-three-mode-convection-v1",
+    "prompt": "h=10 W/(m²·K)、A=0.50 m²、固体表面40℃、流体20℃の対流熱移動率の大きさは？",
+    "choices": [
+      "50 W",
+      "100 W",
+      "150 W",
+      "200 W"
+    ],
+    "answer": 1,
+    "difficulty": "基礎・対流",
+    "explanation": "Q̇_conv=hA(T_s−T∞)=10×0.50×20=100 W。熱伝達率hは材料の熱伝導率kとは別物。",
+    "distractors": [
+      "面積0.50 m²による係数を過大に減らしています。",
+      "正解。hと面積、温度差を掛けます。",
+      "温度差を30 Kと誤って使用しています。",
+      "面積0.50 m²を掛け忘れた値です。"
+    ],
+    "hints": [
+      "Newtonの冷却則を思い出します。",
+      "10×0.50×(40−20)を計算します。"
+    ],
+    "solutionSteps": [
+      "温度差20 K。",
+      "hA=5 W/K。",
+      "Q̇=5×20=100 W。"
+    ],
+    "beginnerPitfall": "エネルギーJと速度W、保存則と伝熱係数を区別する。"
+  },
+  {
+    "revision": "v1",
+    "field": "基本熱収支・熱移動機構",
+    "prerequisites": [
+      "熱移動率とエネルギー",
+      "伝熱機構と保存則"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "§1.3の独立執筆詳細講義と仮想の数値条件による新規作問。原本の問題・翻訳・図版は転載しない。",
+      "chapterId": "ch1",
+      "focusSectionId": "1.3",
+      "guideId": "chapter1-energy-balance"
+    },
+    "createdStatus": "独立作問",
+    "reviewStatus": "式と単位の内部検算済み／外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [],
+    "id": "supp-found-three-mode-radiation-v1",
+    "prompt": "放射率0.80の小さな灰色面A=0.50 m²が320 K、十分大きな黒体囲いが300 Kである。σ=5.670374419×10⁻⁸ W/(m²·K⁴)とし、正味放射熱移動率は約いくらか。",
+    "choices": [
+      "27.1 W",
+      "54.1 W",
+      "81.2 W",
+      "108.2 W"
+    ],
+    "answer": 1,
+    "difficulty": "発展・放射近似",
+    "explanation": "Q̇=εσA(T_s⁴−T_sur⁴)=0.8×5.670374419×10⁻⁸×0.5×(320⁴−300⁴)≈54.11 W。必ずKを用いる。",
+    "distractors": [
+      "放射率と面積の積を誤って半減しています。",
+      "正解。放射率0.8と面積0.5 m²をともに掛けます。",
+      "絶対温度の4乗差の係数を過大評価しています。",
+      "面積0.5 m²を掛け忘れた約2倍の値です。"
+    ],
+    "hints": [
+      "放射式の温度は必ず絶対温度Kです。",
+      "320⁴−300⁴を先に計算します。"
+    ],
+    "solutionSteps": [
+      "320⁴−300⁴=2,385,760,000 K⁴。",
+      "εσA=0.8×5.670374419×10⁻⁸×0.5。",
+      "積は約54.11 W。"
+    ],
+    "beginnerPitfall": "エネルギーJと速度W、保存則と伝熱係数を区別する。"
+  },
+  {
+    "revision": "v1",
+    "field": "基本熱収支・熱移動機構",
+    "prerequisites": [
+      "熱移動率とエネルギー",
+      "伝熱機構と保存則"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "applied",
+    "source": {
+      "type": "supplement",
+      "reference": "§1.3の独立執筆詳細講義と仮想の数値条件による新規作問。原本の問題・翻訳・図版は転載しない。",
+      "chapterId": "ch1",
+      "focusSectionId": "1.3",
+      "guideId": "chapter1-energy-balance"
+    },
+    "createdStatus": "独立作問",
+    "reviewStatus": "式と単位の内部検算済み／外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [],
+    "id": "supp-found-three-mode-temperature-units-v1",
+    "prompt": "三つの機構を学習する際、与えられた温度に関する取り扱いとして正しいものはどれか。",
+    "choices": [
+      "黒体放射のT⁴には絶対温度Kを使う",
+      "黒体放射のT⁴に摂氏温度を直接使う",
+      "伝導の温度差20℃差を20 K差にできない",
+      "対流熱伝達率と放射率は同じ次元を持つ"
+    ],
+    "answer": 0,
+    "difficulty": "基礎・単位判断",
+    "explanation": "絶対温度の4乗を用いる放射式は必ずKで評価する。一方、伝導・対流の温度差は℃差とK差の数値が等しく、hの単位と放射率の無次元性も異なる。",
+    "distractors": [
+      "正解。T⁴の温度原点は絶対零度です。",
+      "摂氏をそのまま4乗すると放射交換の計算は不正確です。",
+      "温度差20℃差は20 K差と同じ大きさです。",
+      "hはW/(m²·K)、放射率εは無次元です。"
+    ],
+    "hints": [
+      "放射式には温度の絶対値が登場します。",
+      "hとεの単位を比べてください。"
+    ],
+    "solutionSteps": [
+      "温度差と温度そのものを分ける。",
+      "Stefan–Boltzmann則はKの4乗で表す。",
+      "正しい選択は絶対温度Kである。"
+    ],
+    "beginnerPitfall": "エネルギーJと速度W、保存則と伝熱係数を区別する。"
+  },
+  {
+    "revision": "v1",
+    "field": "定常熱伝導・熱抵抗",
+    "prerequisites": [
+      "Fourier則",
+      "境界条件と熱抵抗"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "§2.2の独立執筆詳細講義と仮想の数値条件による新規作問。原本の問題・翻訳・図版は転載しない。",
+      "chapterId": "ch2",
+      "focusSectionId": "2.2",
+      "guideId": "chapter2-cylindrical-conduction"
+    },
+    "createdStatus": "独立作問",
+    "reviewStatus": "式と単位の内部検算済み／外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [],
+    "id": "supp-found-slab-conduction-rate-v1",
+    "prompt": "厚さ0.20 m、k=4.0 W/(m·K)、断面積2.0 m²の平板で、左面60℃、右面20℃。一定物性・一次元・定常の熱移動率の大きさは？",
+    "choices": [
+      "800 W",
+      "1200 W",
+      "1600 W",
+      "3200 W"
+    ],
+    "answer": 2,
+    "difficulty": "標準・温度勾配",
+    "explanation": "Q̇=kAΔT/L=4×2×(60−20)/0.20=1600 W。符号付き熱流束は左→右を正とすると+800 W/m²。",
+    "distractors": [
+      "熱流束800 W/m²を面積2m²で変換せずに記載しています。",
+      "温度差または厚さの代入が不適切です。",
+      "正解。面積2m²を掛けて1600 Wです。",
+      "面積を二重に掛けた2倍の値です。"
+    ],
+    "hints": [
+      "まず熱流束kΔT/Lを計算します。",
+      "熱流束に面積2m²を掛けてWへ変換します。"
+    ],
+    "solutionSteps": [
+      "温度勾配−40/0.20=−200 K/m。",
+      "q″=−4×(−200)=+800 W/m²。",
+      "Q̇=800×2=1600 W。"
+    ],
+    "beginnerPitfall": "指定した温度境界、熱流の方向、面積基準が一致しているか点検する。"
+  },
+  {
+    "revision": "v1",
+    "field": "定常熱伝導・熱抵抗",
+    "prerequisites": [
+      "Fourier則",
+      "境界条件と熱抵抗"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "§2.2の独立執筆詳細講義と仮想の数値条件による新規作問。原本の問題・翻訳・図版は転載しない。",
+      "chapterId": "ch2",
+      "focusSectionId": "2.2",
+      "guideId": "chapter2-cylindrical-conduction"
+    },
+    "createdStatus": "独立作問",
+    "reviewStatus": "式と単位の内部検算済み／外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [],
+    "id": "supp-found-slab-conduction-midpoint-v1",
+    "prompt": "一次元定常、内部発熱なし、一定kの厚さ0.20 mの平板。左面60℃、右面20℃とする。左から0.05 mの位置の温度は？",
+    "choices": [
+      "30 ℃",
+      "40 ℃",
+      "50 ℃",
+      "60 ℃"
+    ],
+    "answer": 2,
+    "difficulty": "基礎・温度分布",
+    "explanation": "T(x)=60+(20−60)x/0.20。x=0.05 mではT=60−40×0.25=50℃。線形温度分布は一定k・発熱なしの条件による。",
+    "distractors": [
+      "右面に近い位置の温度を誤って選んでいます。",
+      "温度差の半分を減らしています。",
+      "正解。厚さの4分の1だけ温度が低下します。",
+      "x=0の境界値を途中位置へ転用しています。"
+    ],
+    "hints": [
+      "線形の温度分布を使います。",
+      "x/L=0.05/0.20=0.25です。"
+    ],
+    "solutionSteps": [
+      "T(x)=T₁+(T₂−T₁)x/L。",
+      "T=60+(20−60)×0.25。",
+      "T=50℃。"
+    ],
+    "beginnerPitfall": "指定した温度境界、熱流の方向、面積基準が一致しているか点検する。"
+  },
+  {
+    "revision": "v1",
+    "field": "定常熱伝導・熱抵抗",
+    "prerequisites": [
+      "Fourier則",
+      "境界条件と熱抵抗"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "§2.2の独立執筆詳細講義と仮想の数値条件による新規作問。原本の問題・翻訳・図版は転載しない。",
+      "chapterId": "ch2",
+      "focusSectionId": "2.2",
+      "guideId": "chapter2-cylindrical-conduction"
+    },
+    "createdStatus": "独立作問",
+    "reviewStatus": "式と単位の内部検算済み／外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [],
+    "id": "supp-found-slab-resistance-value-v1",
+    "prompt": "厚さ0.20 m、k=4 W/(m·K)、面積2.0 m²の平板の熱抵抗[K/W]は？",
+    "choices": [
+      "0.010 K/W",
+      "0.025 K/W",
+      "0.050 K/W",
+      "0.100 K/W"
+    ],
+    "answer": 1,
+    "difficulty": "基礎・熱抵抗",
+    "explanation": "R_cond=L/(kA)=0.20/(4×2)=0.025 K/W。温度差40 KならQ̇=40/0.025=1600 Wとなる。",
+    "distractors": [
+      "厚さを別の値として代入した結果です。",
+      "正解。kA=8 W·m/Kを適切に割ります。",
+      "面積を1m²と取り違えた結果です。",
+      "kや面積を2倍誤って扱っています。"
+    ],
+    "hints": [
+      "R=L/(kA)です。",
+      "0.20/(4×2)を計算します。"
+    ],
+    "solutionSteps": [
+      "kA=8 W·m/K。",
+      "R=0.20/8。",
+      "R=0.025 K/W。"
+    ],
+    "beginnerPitfall": "指定した温度境界、熱流の方向、面積基準が一致しているか点検する。"
+  },
+  {
+    "revision": "v1",
+    "field": "定常熱伝導・熱抵抗",
+    "prerequisites": [
+      "Fourier則",
+      "境界条件と熱抵抗"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "applied",
+    "source": {
+      "type": "supplement",
+      "reference": "§2.2の独立執筆詳細講義と仮想の数値条件による新規作問。原本の問題・翻訳・図版は転載しない。",
+      "chapterId": "ch2",
+      "focusSectionId": "2.2",
+      "guideId": "chapter2-cylindrical-conduction"
+    },
+    "createdStatus": "独立作問",
+    "reviewStatus": "式と単位の内部検算済み／外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [],
+    "id": "supp-found-slab-nonlinear-limit-v1",
+    "prompt": "一定kの平板で線形の温度分布を導いた後、内部発熱が一様な正の値を取るようになった。適切な判断はどれか。",
+    "choices": [
+      "発熱があっても温度勾配は必ず一定となる",
+      "発熱すると平板の厚さは式から消えてしまう",
+      "表面温度を決めれば熱流束は必ずゼロとなる",
+      "保存式に発熱項が入り温度分布は曲がりうる"
+    ],
+    "answer": 3,
+    "difficulty": "応用・近似限界",
+    "explanation": "一次元・定常・一定kならd²T/dx²=−q‴/k。q‴>0なら曲率は負で、線形温度分布は一般に成立しない。境界条件によって形状と熱流束が定まる。",
+    "distractors": [
+      "d²T/dx²=0は発熱ゼロでの式です。",
+      "物体の厚さと境界条件は依然として重要です。",
+      "表面温度を指定しても内部発熱から熱が流れる場合があります。",
+      "正解。発熱項の存在で二階微分がゼロではなくなります。"
+    ],
+    "hints": [
+      "エネルギー保存式の発熱項を思い出します。",
+      "q‴が正ならd²T/dx²は負になります。"
+    ],
+    "solutionSteps": [
+      "一定kの保存式をk d²T/dx²+q‴=0と書く。",
+      "q‴>0なら二階微分はゼロではない。",
+      "線形分布が成立しない場合があると判断する。"
+    ],
+    "beginnerPitfall": "指定した温度境界、熱流の方向、面積基準が一致しているか点検する。"
+  },
+  {
+    "revision": "v1",
+    "field": "定常熱伝導・熱抵抗",
+    "prerequisites": [
+      "Fourier則",
+      "境界条件と熱抵抗"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "§2.3の独立執筆詳細講義と仮想の数値条件による新規作問。原本の問題・翻訳・図版は転載しない。",
+      "chapterId": "ch2",
+      "focusSectionId": "2.3",
+      "guideId": "chapter2-cylindrical-conduction"
+    },
+    "createdStatus": "独立作問",
+    "reviewStatus": "式と単位の内部検算済み／外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [],
+    "id": "supp-found-resistor-series-v1",
+    "prompt": "温度差60 Kの定常直列経路にR₁=0.10 K/W、R₂=0.20 K/Wがある。熱移動率の大きさは？",
+    "choices": [
+      "100 W",
+      "200 W",
+      "300 W",
+      "600 W"
+    ],
+    "answer": 1,
+    "difficulty": "基礎・直列",
+    "explanation": "直列抵抗R_total=0.10+0.20=0.30 K/W。Q̇=60/0.30=200 W。",
+    "distractors": [
+      "全抵抗を0.60 K/Wと過大評価した値です。",
+      "正解。直列は抵抗を足します。",
+      "小さい抵抗だけを過剰に使用しています。",
+      "R₁のみで計算してR₂を無視しています。"
+    ],
+    "hints": [
+      "直列では熱流率が全層で同じです。",
+      "R_total=R₁+R₂を計算します。"
+    ],
+    "solutionSteps": [
+      "R_total=0.30 K/W。",
+      "Q̇=ΔT/R_total。",
+      "60/0.30=200 W。"
+    ],
+    "beginnerPitfall": "指定した温度境界、熱流の方向、面積基準が一致しているか点検する。"
+  },
+  {
+    "revision": "v1",
+    "field": "定常熱伝導・熱抵抗",
+    "prerequisites": [
+      "Fourier則",
+      "境界条件と熱抵抗"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "§2.3の独立執筆詳細講義と仮想の数値条件による新規作問。原本の問題・翻訳・図版は転載しない。",
+      "chapterId": "ch2",
+      "focusSectionId": "2.3",
+      "guideId": "chapter2-cylindrical-conduction"
+    },
+    "createdStatus": "独立作問",
+    "reviewStatus": "式と単位の内部検算済み／外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [],
+    "id": "supp-found-resistor-parallel-v1",
+    "prompt": "温度差60 Kで両端を共有する定常並列経路にR₁=0.10 K/W、R₂=0.20 K/Wがある。合計熱移動率の大きさは？",
+    "choices": [
+      "200 W",
+      "300 W",
+      "600 W",
+      "900 W"
+    ],
+    "answer": 3,
+    "difficulty": "標準・並列",
+    "explanation": "並列各枝の熱流率は60/0.10=600 W、60/0.20=300 W。合計900 W。直列200 Wとは異なる。",
+    "distractors": [
+      "直列に接続した場合の値と混同しています。",
+      "第2枝の300 Wだけを計上しています。",
+      "第1枝の600 Wだけを計上しています。",
+      "正解。各枝の熱流率を足して900 Wです。"
+    ],
+    "hints": [
+      "並列では各枝が同じ温度差60 Kを受けます。",
+      "各枝の熱流率を別々に計算して加えます。"
+    ],
+    "solutionSteps": [
+      "第1枝Q̇₁=600 W。",
+      "第2枝Q̇₂=300 W。",
+      "合計Q̇=900 W。"
+    ],
+    "beginnerPitfall": "指定した温度境界、熱流の方向、面積基準が一致しているか点検する。"
+  },
+  {
+    "revision": "v1",
+    "field": "定常熱伝導・熱抵抗",
+    "prerequisites": [
+      "Fourier則",
+      "境界条件と熱抵抗"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "§2.3の独立執筆詳細講義と仮想の数値条件による新規作問。原本の問題・翻訳・図版は転載しない。",
+      "chapterId": "ch2",
+      "focusSectionId": "2.3",
+      "guideId": "chapter2-cylindrical-conduction"
+    },
+    "createdStatus": "独立作問",
+    "reviewStatus": "式と単位の内部検算済み／外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [],
+    "id": "supp-found-resistor-interface-temperature-v1",
+    "prompt": "左100℃、右40℃の定常直列経路で、左から順にR₁=0.10 K/W、R₂=0.20 K/Wがある。二つの抵抗の間の温度は？",
+    "choices": [
+      "40 ℃",
+      "60 ℃",
+      "80 ℃",
+      "100 ℃"
+    ],
+    "answer": 2,
+    "difficulty": "標準・界面温度",
+    "explanation": "全抵抗0.30 K/WなのでQ̇=60/0.30=200 W。第1抵抗の温度降下は200×0.10=20 K。中間温度は100−20=80℃。",
+    "distractors": [
+      "右側境界温度と中間温度を混同しています。",
+      "温度差を各層へ半分ずつ分けています。",
+      "正解。第1抵抗に20 Kの温度降下が生じます。",
+      "左側境界温度のままで降下を無視しています。"
+    ],
+    "hints": [
+      "まず直列経路の熱移動率を求めます。",
+      "第1抵抗の温度降下Q̇R₁を左温度から引きます。"
+    ],
+    "solutionSteps": [
+      "Q̇=60/(0.1+0.2)=200 W。",
+      "ΔT₁=200×0.1=20 K。",
+      "T_interface=100−20=80℃。"
+    ],
+    "beginnerPitfall": "指定した温度境界、熱流の方向、面積基準が一致しているか点検する。"
+  },
+  {
+    "revision": "v1",
+    "field": "定常熱伝導・熱抵抗",
+    "prerequisites": [
+      "Fourier則",
+      "境界条件と熱抵抗"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "applied",
+    "source": {
+      "type": "supplement",
+      "reference": "§2.3の独立執筆詳細講義と仮想の数値条件による新規作問。原本の問題・翻訳・図版は転載しない。",
+      "chapterId": "ch2",
+      "focusSectionId": "2.3",
+      "guideId": "chapter2-cylindrical-conduction"
+    },
+    "createdStatus": "独立作問",
+    "reviewStatus": "式と単位の内部検算済み／外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [],
+    "id": "supp-found-resistor-network-principle-v1",
+    "prompt": "線形の定常熱抵抗ネットワークで、同じ両端温度を保ちながら既存の経路に新たな伝熱経路を並列追加した。どの説明が正しいか。",
+    "choices": [
+      "両端の温度差が同じなら合計伝熱率は増えうる",
+      "並列路を増やすと必ず全熱抵抗が増えてしまう",
+      "直列経路と並列経路で合成の定義は同一である",
+      "新しい経路を増やしても合計熱流率は必ず不変"
+    ],
+    "answer": 0,
+    "difficulty": "応用・熱橋",
+    "explanation": "並列では合成コンダクタンス1/R_eq=Σ1/R_iが増える。正の抵抗の経路を加えればR_eqは小さく、両端温度差一定なら総熱流率は増す。",
+    "distractors": [
+      "正解。伝熱経路が増えると合計コンダクタンスが増します。",
+      "抵抗の並列では全抵抗は小さくなります。",
+      "直列は抵抗の和、並列はコンダクタンスの和です。",
+      "両端温度差一定なら新枝にも熱が流れます。"
+    ],
+    "hints": [
+      "直列と並列の合成式を比べてください。",
+      "1/R_eq=1/R₁+1/R₂の右辺が増えると考えます。"
+    ],
+    "solutionSteps": [
+      "並列回路は逆抵抗（コンダクタンス）を加算する。",
+      "正の抵抗を加えると1/R_eqが増える。",
+      "温度差固定なら総Q̇=ΔT/R_eqは増える。"
+    ],
+    "beginnerPitfall": "指定した温度境界、熱流の方向、面積基準が一致しているか点検する。"
+  },
+  {
+    "id": "supp-found-ntu-def-v1",
+    "revision": "v1",
+    "field": "熱交換器・有効度",
+    "prerequisites": [
+      "エネルギー保存",
+      "物性と境界条件"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "§3.3独立執筆の詳細教材に基づく新規問題。原文・原図・原本の設問を転載しない。",
+      "chapterId": "ch3",
+      "focusSectionId": "3.3",
+      "guideId": "chapter3-effectiveness-ntu"
+    },
+    "createdStatus": "独立作問",
+    "reviewStatus": "式と単位の内部計算確認済み／外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [],
+    "prompt": "UA=300 W/K、C_min=300 W/Kの熱交換器でNTUは？",
+    "choices": [
+      "0.50",
+      "1.00",
+      "2.00",
+      "3.00"
+    ],
+    "answer": 1,
+    "difficulty": "基礎・標準・適用判断",
+    "explanation": "NTU=UA/C_min=300/300=1.00で、両者の単位W/Kが相殺する。",
+    "distractors": [
+      "熱容量流量を2倍としている。",
+      "正解。無次元で1.00。",
+      "C_minの値を半分にしている。",
+      "熱交換率とNTUを混同している。"
+    ],
+    "hints": [
+      "最初に問題の量の単位と代表長さを特定してください。",
+      "条件に合う式を選び、適用限界と矛盾しないか点検してください。"
+    ],
+    "solutionSteps": [
+      "対象系・境界条件を特定する。",
+      "該当する熱移動・流体・相変化の式を選ぶ。",
+      "物性値と単位、または条件判断を計算する。",
+      "他の選択肢との違いと適用限界を確認する。"
+    ],
+    "beginnerPitfall": "無次元数と温度、熱移動率Wと熱流束W/m²、適用条件の違いを整理する。"
+  },
+  {
+    "id": "supp-found-ntu-thermal-v1",
+    "revision": "v1",
+    "field": "熱交換器・有効度",
+    "prerequisites": [
+      "エネルギー保存",
+      "物性と境界条件"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "§3.3独立執筆の詳細教材に基づく新規問題。原文・原図・原本の設問を転載しない。",
+      "chapterId": "ch3",
+      "focusSectionId": "3.3",
+      "guideId": "chapter3-effectiveness-ntu"
+    },
+    "createdStatus": "独立作問",
+    "reviewStatus": "式と単位の内部計算確認済み／外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [],
+    "prompt": "高温側がほぼ60℃一定、冷側入口20℃、C_min=300 W/K、UA=300 W/K、C_r≈0。ε=1−exp(−NTU)を用いた熱移動率は約？",
+    "choices": [
+      "4.415 kW",
+      "6.000 kW",
+      "7.585 kW",
+      "12.00 kW"
+    ],
+    "answer": 2,
+    "difficulty": "基礎・標準・適用判断",
+    "explanation": "NTU=1、ε≈0.63212、Q_max=300×40=12000 W。Q≈7585 W。",
+    "distractors": [
+      "εでなく残りの指数項0.368を掛けている。",
+      "有効度0.5と誤認している。",
+      "正解。12×0.63212≈7.585 kW。",
+      "理想上限を実際値としている。"
+    ],
+    "hints": [
+      "最初に問題の量の単位と代表長さを特定してください。",
+      "条件に合う式を選び、適用限界と矛盾しないか点検してください。"
+    ],
+    "solutionSteps": [
+      "対象系・境界条件を特定する。",
+      "該当する熱移動・流体・相変化の式を選ぶ。",
+      "物性値と単位、または条件判断を計算する。",
+      "他の選択肢との違いと適用限界を確認する。"
+    ],
+    "beginnerPitfall": "無次元数と温度、熱移動率Wと熱流束W/m²、適用条件の違いを整理する。"
+  },
+  {
+    "id": "supp-found-ntu-qmax-v1",
+    "revision": "v1",
+    "field": "熱交換器・有効度",
+    "prerequisites": [
+      "エネルギー保存",
+      "物性と境界条件"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "§3.3独立執筆の詳細教材に基づく新規問題。原文・原図・原本の設問を転載しない。",
+      "chapterId": "ch3",
+      "focusSectionId": "3.3",
+      "guideId": "chapter3-effectiveness-ntu"
+    },
+    "createdStatus": "独立作問",
+    "reviewStatus": "式と単位の内部計算確認済み／外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [],
+    "prompt": "温側C_h=400 W/K、冷側C_c=800 W/K、入口が100℃と20℃の熱交換器。Q_maxは？",
+    "choices": [
+      "16 kW",
+      "24 kW",
+      "32 kW",
+      "64 kW"
+    ],
+    "answer": 2,
+    "difficulty": "基礎・標準・適用判断",
+    "explanation": "C_min=400 W/K、入口温度差80 KだからQ_max=32000 W。",
+    "distractors": [
+      "入口温度差を40 Kとしている。",
+      "C_minまたは温度差を誤っている。",
+      "正解。400×80=32000 W。",
+      "C_maxを使っている。"
+    ],
+    "hints": [
+      "最初に問題の量の単位と代表長さを特定してください。",
+      "条件に合う式を選び、適用限界と矛盾しないか点検してください。"
+    ],
+    "solutionSteps": [
+      "対象系・境界条件を特定する。",
+      "該当する熱移動・流体・相変化の式を選ぶ。",
+      "物性値と単位、または条件判断を計算する。",
+      "他の選択肢との違いと適用限界を確認する。"
+    ],
+    "beginnerPitfall": "無次元数と温度、熱移動率Wと熱流束W/m²、適用条件の違いを整理する。"
+  },
+  {
+    "id": "supp-found-ntu-config-v1",
+    "revision": "v1",
+    "field": "熱交換器・有効度",
+    "prerequisites": [
+      "エネルギー保存",
+      "物性と境界条件"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "applied",
+    "source": {
+      "type": "supplement",
+      "reference": "§3.3独立執筆の詳細教材に基づく新規問題。原文・原図・原本の設問を転載しない。",
+      "chapterId": "ch3",
+      "focusSectionId": "3.3",
+      "guideId": "chapter3-effectiveness-ntu"
+    },
+    "createdStatus": "独立作問",
+    "reviewStatus": "式と単位の内部計算確認済み／外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [],
+    "prompt": "同じNTUとC_rで熱交換器の配置を並流から向流に変えた。正しい判断は？",
+    "choices": [
+      "流路が変わっても有効度は必ず同じになる",
+      "有効度はNTUだけ分かれば一意に決まる",
+      "熱容量流量比は向流になると消えてしまう",
+      "有効度は流路配置に応じた関係式で求める"
+    ],
+    "answer": 3,
+    "difficulty": "基礎・標準・適用判断",
+    "explanation": "並流と向流は温度差分布が違うため、ε–NTUの関係式も異なる。",
+    "distractors": [
+      "温度差分布の違いを無視。",
+      "C_rや配置が必要。",
+      "熱容量比は向流でも残る。",
+      "正解。配置に合う式を選ぶ。"
+    ],
+    "hints": [
+      "最初に問題の量の単位と代表長さを特定してください。",
+      "条件に合う式を選び、適用限界と矛盾しないか点検してください。"
+    ],
+    "solutionSteps": [
+      "対象系・境界条件を特定する。",
+      "該当する熱移動・流体・相変化の式を選ぶ。",
+      "物性値と単位、または条件判断を計算する。",
+      "他の選択肢との違いと適用限界を確認する。"
+    ],
+    "beginnerPitfall": "無次元数と温度、熱移動率Wと熱流束W/m²、適用条件の違いを整理する。"
+  },
+  {
+    "id": "supp-found-slab-biot-v1",
+    "revision": "v1",
+    "field": "非定常・平板伝導",
+    "prerequisites": [
+      "エネルギー保存",
+      "物性と境界条件"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "§5.3独立執筆の詳細教材に基づく新規問題。原文・原図・原本の設問を転載しない。",
+      "chapterId": "ch5",
+      "focusSectionId": "5.3",
+      "guideId": "chapter5-semi-infinite"
+    },
+    "createdStatus": "独立作問",
+    "reviewStatus": "式と単位の内部計算確認済み／外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [],
+    "prompt": "両面が同条件の厚さ0.040 mの平板。半厚さL=0.020 m、h=50 W/(m²·K)、k=5 W/(m·K)のBiは？",
+    "choices": [
+      "0.050",
+      "0.100",
+      "0.200",
+      "0.400"
+    ],
+    "answer": 2,
+    "difficulty": "基礎・標準・適用判断",
+    "explanation": "Bi=hL/k=50×0.020/5=0.20。",
+    "distractors": [
+      "Lをさらに半分としている。",
+      "hかLの係数を半減。",
+      "正解。半厚さを使う。",
+      "全厚さを使った値。"
+    ],
+    "hints": [
+      "最初に問題の量の単位と代表長さを特定してください。",
+      "条件に合う式を選び、適用限界と矛盾しないか点検してください。"
+    ],
+    "solutionSteps": [
+      "対象系・境界条件を特定する。",
+      "該当する熱移動・流体・相変化の式を選ぶ。",
+      "物性値と単位、または条件判断を計算する。",
+      "他の選択肢との違いと適用限界を確認する。"
+    ],
+    "beginnerPitfall": "無次元数と温度、熱移動率Wと熱流束W/m²、適用条件の違いを整理する。"
+  },
+  {
+    "id": "supp-found-slab-fourier-v1",
+    "revision": "v1",
+    "field": "非定常・平板伝導",
+    "prerequisites": [
+      "エネルギー保存",
+      "物性と境界条件"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "§5.3独立執筆の詳細教材に基づく新規問題。原文・原図・原本の設問を転載しない。",
+      "chapterId": "ch5",
+      "focusSectionId": "5.3",
+      "guideId": "chapter5-semi-infinite"
+    },
+    "createdStatus": "独立作問",
+    "reviewStatus": "式と単位の内部計算確認済み／外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [],
+    "prompt": "平板半厚さL=0.020 m、α=1.0×10⁻⁶ m²/s、経過時間100 sのFoは？",
+    "choices": [
+      "0.025",
+      "0.100",
+      "0.250",
+      "1.000"
+    ],
+    "answer": 2,
+    "difficulty": "基礎・標準・適用判断",
+    "explanation": "Fo=αt/L²=0.0001/0.0004=0.25。",
+    "distractors": [
+      "L²またはαの桁違い。",
+      "代表長さを間違えている。",
+      "正解。0.25で無次元。",
+      "分子と分母を等しいとみなす。"
+    ],
+    "hints": [
+      "最初に問題の量の単位と代表長さを特定してください。",
+      "条件に合う式を選び、適用限界と矛盾しないか点検してください。"
+    ],
+    "solutionSteps": [
+      "対象系・境界条件を特定する。",
+      "該当する熱移動・流体・相変化の式を選ぶ。",
+      "物性値と単位、または条件判断を計算する。",
+      "他の選択肢との違いと適用限界を確認する。"
+    ],
+    "beginnerPitfall": "無次元数と温度、熱移動率Wと熱流束W/m²、適用条件の違いを整理する。"
+  },
+  {
+    "id": "supp-found-slab-solve-v1",
+    "revision": "v1",
+    "field": "非定常・平板伝導",
+    "prerequisites": [
+      "エネルギー保存",
+      "物性と境界条件"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "applied",
+    "source": {
+      "type": "supplement",
+      "reference": "§5.3独立執筆の詳細教材に基づく新規問題。原文・原図・原本の設問を転載しない。",
+      "chapterId": "ch5",
+      "focusSectionId": "5.3",
+      "guideId": "chapter5-semi-infinite"
+    },
+    "createdStatus": "独立作問",
+    "reviewStatus": "式と単位の内部計算確認済み／外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [],
+    "prompt": "ある平板のBi=0.20、Fo=0.25だけが分かった。中心温度の数値を求めるには何が必要か？",
+    "choices": [
+      "初期温度と周囲温度などの境界条件が必要",
+      "Biが0.20なら内部は必ず一様温度である",
+      "Foが0.25なら中心温度は25℃と決まる",
+      "経過時間が分かれば全ての温度が求まる"
+    ],
+    "answer": 0,
+    "difficulty": "基礎・標準・適用判断",
+    "explanation": "BiとFoは無次元の物理指標であり、温度基準、初期・境界条件および解が必要。",
+    "distractors": [
+      "正解。無次元数は温度そのものではない。",
+      "一様温度近似を保証しない。",
+      "Foを℃と誤認している。",
+      "経過時間だけでは不足。"
+    ],
+    "hints": [
+      "最初に問題の量の単位と代表長さを特定してください。",
+      "条件に合う式を選び、適用限界と矛盾しないか点検してください。"
+    ],
+    "solutionSteps": [
+      "対象系・境界条件を特定する。",
+      "該当する熱移動・流体・相変化の式を選ぶ。",
+      "物性値と単位、または条件判断を計算する。",
+      "他の選択肢との違いと適用限界を確認する。"
+    ],
+    "beginnerPitfall": "無次元数と温度、熱移動率Wと熱流束W/m²、適用条件の違いを整理する。"
+  },
+  {
+    "id": "supp-found-slab-symmetry-v1",
+    "revision": "v1",
+    "field": "非定常・平板伝導",
+    "prerequisites": [
+      "エネルギー保存",
+      "物性と境界条件"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "conceptual",
+    "source": {
+      "type": "supplement",
+      "reference": "§5.3独立執筆の詳細教材に基づく新規問題。原文・原図・原本の設問を転載しない。",
+      "chapterId": "ch5",
+      "focusSectionId": "5.3",
+      "guideId": "chapter5-semi-infinite"
+    },
+    "createdStatus": "独立作問",
+    "reviewStatus": "式と単位の内部計算確認済み／外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [],
+    "prompt": "初期温度・両面の境界が対称な平板で、中心x=0の温度勾配は？",
+    "choices": [
+      "dT/dx=+h/k",
+      "dT/dx=−h/k",
+      "dT/dx=0",
+      "T=0 K"
+    ],
+    "answer": 2,
+    "difficulty": "基礎・標準・適用判断",
+    "explanation": "中心は対称面なので法線方向の熱流束がゼロ、温度勾配dT/dx=0。",
+    "distractors": [
+      "h/kは中心温度勾配の値ではない。",
+      "負号を付けても対称面条件にならない。",
+      "正解。中心勾配ゼロ。",
+      "中心温度が絶対零度とは限らない。"
+    ],
+    "hints": [
+      "最初に問題の量の単位と代表長さを特定してください。",
+      "条件に合う式を選び、適用限界と矛盾しないか点検してください。"
+    ],
+    "solutionSteps": [
+      "対象系・境界条件を特定する。",
+      "該当する熱移動・流体・相変化の式を選ぶ。",
+      "物性値と単位、または条件判断を計算する。",
+      "他の選択肢との違いと適用限界を確認する。"
+    ],
+    "beginnerPitfall": "無次元数と温度、熱移動率Wと熱流束W/m²、適用条件の違いを整理する。"
+  },
+  {
+    "id": "supp-found-re-flat-v1",
+    "revision": "v1",
+    "field": "対流・境界層",
+    "prerequisites": [
+      "エネルギー保存",
+      "物性と境界条件"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "§6.1独立執筆の詳細教材に基づく新規問題。原文・原図・原本の設問を転載しない。",
+      "chapterId": "ch6",
+      "focusSectionId": "6.1",
+      "guideId": "chapter6-flat-boundary"
+    },
+    "createdStatus": "独立作問",
+    "reviewStatus": "式と単位の内部計算確認済み／外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [],
+    "prompt": "主流速度U=2.0 m/s、長さL=0.50 m、流体動粘度ν=1.5×10⁻⁵ m²/s。Re_Lは？",
+    "choices": [
+      "6.67×10³",
+      "6.67×10⁴",
+      "6.67×10⁵",
+      "6.67×10⁶"
+    ],
+    "answer": 1,
+    "difficulty": "基礎・標準・適用判断",
+    "explanation": "Re=UL/ν=1/(1.5×10⁻⁵)≈6.67×10⁴。",
+    "distractors": [
+      "動粘度の指数を1桁間違えた。",
+      "正解。約66667。",
+      "動粘度を10分の1とした。",
+      "動粘度を100分の1とした。"
+    ],
+    "hints": [
+      "最初に問題の量の単位と代表長さを特定してください。",
+      "条件に合う式を選び、適用限界と矛盾しないか点検してください。"
+    ],
+    "solutionSteps": [
+      "対象系・境界条件を特定する。",
+      "該当する熱移動・流体・相変化の式を選ぶ。",
+      "物性値と単位、または条件判断を計算する。",
+      "他の選択肢との違いと適用限界を確認する。"
+    ],
+    "beginnerPitfall": "無次元数と温度、熱移動率Wと熱流束W/m²、適用条件の違いを整理する。"
+  },
+  {
+    "id": "supp-found-pr-fluid-v1",
+    "revision": "v1",
+    "field": "対流・境界層",
+    "prerequisites": [
+      "エネルギー保存",
+      "物性と境界条件"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "§6.1独立執筆の詳細教材に基づく新規問題。原文・原図・原本の設問を転載しない。",
+      "chapterId": "ch6",
+      "focusSectionId": "6.1",
+      "guideId": "chapter6-flat-boundary"
+    },
+    "createdStatus": "独立作問",
+    "reviewStatus": "式と単位の内部計算確認済み／外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [],
+    "prompt": "流体動粘度ν=1.5×10⁻⁵ m²/s、流体熱拡散率α_f=2.0×10⁻⁵ m²/s。Prは？",
+    "choices": [
+      "0.50",
+      "0.75",
+      "1.00",
+      "1.50"
+    ],
+    "answer": 1,
+    "difficulty": "基礎・標準・適用判断",
+    "explanation": "Pr=ν/α_f=1.5/2.0=0.75。",
+    "distractors": [
+      "粘性拡散率を小さく見積もる。",
+      "正解。無次元物性比。",
+      "二つの値が等しいと誤認。",
+      "逆比に近い値を選んでいる。"
+    ],
+    "hints": [
+      "最初に問題の量の単位と代表長さを特定してください。",
+      "条件に合う式を選び、適用限界と矛盾しないか点検してください。"
+    ],
+    "solutionSteps": [
+      "対象系・境界条件を特定する。",
+      "該当する熱移動・流体・相変化の式を選ぶ。",
+      "物性値と単位、または条件判断を計算する。",
+      "他の選択肢との違いと適用限界を確認する。"
+    ],
+    "beginnerPitfall": "無次元数と温度、熱移動率Wと熱流束W/m²、適用条件の違いを整理する。"
+  },
+  {
+    "id": "supp-found-nu-average-v1",
+    "revision": "v1",
+    "field": "対流・境界層",
+    "prerequisites": [
+      "エネルギー保存",
+      "物性と境界条件"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "§6.1独立執筆の詳細教材に基づく新規問題。原文・原図・原本の設問を転載しない。",
+      "chapterId": "ch6",
+      "focusSectionId": "6.1",
+      "guideId": "chapter6-flat-boundary"
+    },
+    "createdStatus": "独立作問",
+    "reviewStatus": "式と単位の内部計算確認済み／外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [],
+    "prompt": "平板上の平均h=20 W/(m²·K)、L=0.50 m、流体熱伝導率k_f=0.025 W/(m·K)。平均Nuは？",
+    "choices": [
+      "100",
+      "200",
+      "400",
+      "800"
+    ],
+    "answer": 2,
+    "difficulty": "基礎・標準・適用判断",
+    "explanation": "Nu=hL/k_f=20×0.50/0.025=400。",
+    "distractors": [
+      "分子のhLを過小評価。",
+      "分母k_fを過大評価。",
+      "正解。無次元400。",
+      "k_fを半分とした結果。"
+    ],
+    "hints": [
+      "最初に問題の量の単位と代表長さを特定してください。",
+      "条件に合う式を選び、適用限界と矛盾しないか点検してください。"
+    ],
+    "solutionSteps": [
+      "対象系・境界条件を特定する。",
+      "該当する熱移動・流体・相変化の式を選ぶ。",
+      "物性値と単位、または条件判断を計算する。",
+      "他の選択肢との違いと適用限界を確認する。"
+    ],
+    "beginnerPitfall": "無次元数と温度、熱移動率Wと熱流束W/m²、適用条件の違いを整理する。"
+  },
+  {
+    "id": "supp-found-nu-fluid-k-v1",
+    "revision": "v1",
+    "field": "対流・境界層",
+    "prerequisites": [
+      "エネルギー保存",
+      "物性と境界条件"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "applied",
+    "source": {
+      "type": "supplement",
+      "reference": "§6.1独立執筆の詳細教材に基づく新規問題。原文・原図・原本の設問を転載しない。",
+      "chapterId": "ch6",
+      "focusSectionId": "6.1",
+      "guideId": "chapter6-flat-boundary"
+    },
+    "createdStatus": "独立作問",
+    "reviewStatus": "式と単位の内部計算確認済み／外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [],
+    "prompt": "Nu=hL/k_fを評価するとき、k_fとして用いる物性は？",
+    "choices": [
+      "固体壁の熱伝導率を直接そのまま使う",
+      "流体の熱伝導率を0と仮定して求める",
+      "固体と流体の熱伝導率を必ず足し合わせる",
+      "境界層を形成する流体側の熱伝導率を使う"
+    ],
+    "answer": 3,
+    "difficulty": "基礎・標準・適用判断",
+    "explanation": "Nuは流体の対流と熱伝導を比べる無次元数であり、流体のk_fが必要。",
+    "distractors": [
+      "固体のk_sでは別の量になる。",
+      "流体静止で熱伝導率はゼロにならない。",
+      "k_sとk_fを足す一般式ではない。",
+      "正解。流体側の物性を使う。"
+    ],
+    "hints": [
+      "最初に問題の量の単位と代表長さを特定してください。",
+      "条件に合う式を選び、適用限界と矛盾しないか点検してください。"
+    ],
+    "solutionSteps": [
+      "対象系・境界条件を特定する。",
+      "該当する熱移動・流体・相変化の式を選ぶ。",
+      "物性値と単位、または条件判断を計算する。",
+      "他の選択肢との違いと適用限界を確認する。"
+    ],
+    "beginnerPitfall": "無次元数と温度、熱移動率Wと熱流束W/m²、適用条件の違いを整理する。"
+  },
+  {
+    "id": "supp-found-boil-flux-v1",
+    "revision": "v1",
+    "field": "沸騰・相変化",
+    "prerequisites": [
+      "エネルギー保存",
+      "物性と境界条件"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "§9.1独立執筆の詳細教材に基づく新規問題。原文・原図・原本の設問を転載しない。",
+      "chapterId": "ch9",
+      "focusSectionId": "9.1",
+      "guideId": "chapter9-latent-boiling"
+    },
+    "createdStatus": "独立作問",
+    "reviewStatus": "式と単位の内部計算確認済み／外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [],
+    "prompt": "面積0.010 m²の加熱面が液体へ200 Wを伝える。平均熱流束は？",
+    "choices": [
+      "2 kW/m²",
+      "10 kW/m²",
+      "20 kW/m²",
+      "200 kW/m²"
+    ],
+    "answer": 2,
+    "difficulty": "基礎・標準・適用判断",
+    "explanation": "q″=200/0.010=20000 W/m²=20 kW/m²。",
+    "distractors": [
+      "桁換算が不適切。",
+      "面積を二倍としている。",
+      "正解。面積で割る。",
+      "10倍の桁違い。"
+    ],
+    "hints": [
+      "最初に問題の量の単位と代表長さを特定してください。",
+      "条件に合う式を選び、適用限界と矛盾しないか点検してください。"
+    ],
+    "solutionSteps": [
+      "対象系・境界条件を特定する。",
+      "該当する熱移動・流体・相変化の式を選ぶ。",
+      "物性値と単位、または条件判断を計算する。",
+      "他の選択肢との違いと適用限界を確認する。"
+    ],
+    "beginnerPitfall": "無次元数と温度、熱移動率Wと熱流束W/m²、適用条件の違いを整理する。"
+  },
+  {
+    "id": "supp-found-boil-h-v1",
+    "revision": "v1",
+    "field": "沸騰・相変化",
+    "prerequisites": [
+      "エネルギー保存",
+      "物性と境界条件"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "§9.1独立執筆の詳細教材に基づく新規問題。原文・原図・原本の設問を転載しない。",
+      "chapterId": "ch9",
+      "focusSectionId": "9.1",
+      "guideId": "chapter9-latent-boiling"
+    },
+    "createdStatus": "独立作問",
+    "reviewStatus": "式と単位の内部計算確認済み／外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [],
+    "prompt": "平均熱流束20 kW/m²、壁温120℃、飽和温度100℃の見かけのh=q″/ΔT_satは？",
+    "choices": [
+      "100 W/(m²·K)",
+      "500 W/(m²·K)",
+      "1000 W/(m²·K)",
+      "2000 W/(m²·K)"
+    ],
+    "answer": 2,
+    "difficulty": "基礎・標準・適用判断",
+    "explanation": "20 kW/m²は20000 W/m²、過熱度20 Kなのでh=1000 W/(m²·K)。",
+    "distractors": [
+      "熱流束の桁違い。",
+      "過熱度を40 Kとした。",
+      "正解。単位をWへ揃える。",
+      "過熱度を10 Kとした。"
+    ],
+    "hints": [
+      "最初に問題の量の単位と代表長さを特定してください。",
+      "条件に合う式を選び、適用限界と矛盾しないか点検してください。"
+    ],
+    "solutionSteps": [
+      "対象系・境界条件を特定する。",
+      "該当する熱移動・流体・相変化の式を選ぶ。",
+      "物性値と単位、または条件判断を計算する。",
+      "他の選択肢との違いと適用限界を確認する。"
+    ],
+    "beginnerPitfall": "無次元数と温度、熱移動率Wと熱流束W/m²、適用条件の違いを整理する。"
+  },
+  {
+    "id": "supp-found-boil-chf-v1",
+    "revision": "v1",
+    "field": "沸騰・相変化",
+    "prerequisites": [
+      "エネルギー保存",
+      "物性と境界条件"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "applied",
+    "source": {
+      "type": "supplement",
+      "reference": "§9.1独立執筆の詳細教材に基づく新規問題。原文・原図・原本の設問を転載しない。",
+      "chapterId": "ch9",
+      "focusSectionId": "9.1",
+      "guideId": "chapter9-latent-boiling"
+    },
+    "createdStatus": "独立作問",
+    "reviewStatus": "式と単位の内部計算確認済み／外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [],
+    "prompt": "運転熱流束20 kW/m²が分かったが、同条件でのCHFが不明。正しい判断は？",
+    "choices": [
+      "20 kW/m²なら必ずCHFを超えている",
+      "比較できるCHFがなく超過は判定できない",
+      "核沸騰には限界熱流束という概念がない",
+      "液体の沸点だけでCHFは一意に決定できる"
+    ],
+    "answer": 1,
+    "difficulty": "基礎・標準・適用判断",
+    "explanation": "CHFは液体、圧力、表面状態、流動・配置条件などに依存する。",
+    "distractors": [
+      "不明な限界値と比較できない。",
+      "正解。条件に合うCHFが必要。",
+      "核沸騰にはCHFがある。",
+      "沸点だけで決まる定数ではない。"
+    ],
+    "hints": [
+      "最初に問題の量の単位と代表長さを特定してください。",
+      "条件に合う式を選び、適用限界と矛盾しないか点検してください。"
+    ],
+    "solutionSteps": [
+      "対象系・境界条件を特定する。",
+      "該当する熱移動・流体・相変化の式を選ぶ。",
+      "物性値と単位、または条件判断を計算する。",
+      "他の選択肢との違いと適用限界を確認する。"
+    ],
+    "beginnerPitfall": "無次元数と温度、熱移動率Wと熱流束W/m²、適用条件の違いを整理する。"
+  },
+  {
+    "id": "supp-found-boil-regime-v1",
+    "revision": "v1",
+    "field": "沸騰・相変化",
+    "prerequisites": [
+      "エネルギー保存",
+      "物性と境界条件"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "applied",
+    "source": {
+      "type": "supplement",
+      "reference": "§9.1独立執筆の詳細教材に基づく新規問題。原文・原図・原本の設問を転載しない。",
+      "chapterId": "ch9",
+      "focusSectionId": "9.1",
+      "guideId": "chapter9-latent-boiling"
+    },
+    "createdStatus": "独立作問",
+    "reviewStatus": "式と単位の内部計算確認済み／外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [],
+    "prompt": "プール沸騰で核沸騰からCHFの領域に近づく際、適切な説明は？",
+    "choices": [
+      "加熱面の温度はいつでも一定に保たれる",
+      "熱流束を増しても温度上昇は起こり得ない",
+      "核沸騰と膜沸騰では熱伝達率が常に完全に等しくなる",
+      "濡れ状態が変わり壁温が急激に変化する危険がある"
+    ],
+    "answer": 3,
+    "difficulty": "基礎・標準・適用判断",
+    "explanation": "CHF付近で冷却機構が変わり、壁温が急上昇する条件があり得る。",
+    "distractors": [
+      "熱負荷で壁温は変わる。",
+      "壁温急変は起こりうる。",
+      "蒸気膜形成でhは変化し得る。",
+      "正解。過渡的な不安定性に注意。"
+    ],
+    "hints": [
+      "最初に問題の量の単位と代表長さを特定してください。",
+      "条件に合う式を選び、適用限界と矛盾しないか点検してください。"
+    ],
+    "solutionSteps": [
+      "対象系・境界条件を特定する。",
+      "該当する熱移動・流体・相変化の式を選ぶ。",
+      "物性値と単位、または条件判断を計算する。",
+      "他の選択肢との違いと適用限界を確認する。"
+    ],
+    "beginnerPitfall": "無次元数と温度、熱移動率Wと熱流束W/m²、適用条件の違いを整理する。"
+  },
+  {
+    "id": "supp-next-time-energy-out-v1",
+    "revision": "v1",
+    "field": "基本熱移動・保存則",
+    "prerequisites": [
+      "熱移動率とエネルギー",
+      "境界条件と単位"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "§1.1の独立詳説教材と仮想数値に基づく新規演習。原本の文章・設問・図版は転載しない。",
+      "chapterId": "ch1",
+      "focusSectionId": "1.1",
+      "guideId": "chapter1-energy-balance"
+    },
+    "createdStatus": "独立作問",
+    "reviewStatus": "保存則・算術の内部確認済み／外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [],
+    "prompt": "一定の熱移動率90 Wで、熱が系から45 sの間外へ移る。外へ移った総エネルギーは？",
+    "choices": [
+      "405 J",
+      "4050 J",
+      "4500 J",
+      "9000 J"
+    ],
+    "answer": 1,
+    "difficulty": "標準・応用",
+    "explanation": "エネルギーはQ=Q̇t=90×45=4050 J。WはJ/sである。",
+    "distractors": [
+      "時間を4.5 sと取り違えている。",
+      "正解。45秒間で4050 J。",
+      "90×50と計算した値。",
+      "移動時間を100 sと誤認している。"
+    ],
+    "hints": [
+      "Q̇はJ/sです。",
+      "90 W×45 sを計算します。"
+    ],
+    "solutionSteps": [
+      "熱移動率90 J/sを確認する。",
+      "Q=Q̇tを使う。",
+      "90×45=4050 J。"
+    ],
+    "beginnerPitfall": "熱流束W/m²と熱移動率W、面積・時間積分の範囲、モデルの仮定を混同しない。"
+  },
+  {
+    "id": "supp-next-signed-net-flux-v1",
+    "revision": "v1",
+    "field": "基本熱移動・保存則",
+    "prerequisites": [
+      "熱移動率とエネルギー",
+      "境界条件と単位"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "applied",
+    "source": {
+      "type": "supplement",
+      "reference": "§1.1の独立詳説教材と仮想数値に基づく新規演習。原本の文章・設問・図版は転載しない。",
+      "chapterId": "ch1",
+      "focusSectionId": "1.1",
+      "guideId": "chapter1-energy-balance"
+    },
+    "createdStatus": "独立作問",
+    "reviewStatus": "保存則・算術の内部確認済み／外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [],
+    "prompt": "仕事・質量出入りのない閉じた系に140 Wの熱が入り、100 Wが外へ出ている。内部エネルギーの変化率は？",
+    "choices": [
+      "+40 W",
+      "+10 W",
+      "+140 W",
+      "+240 W"
+    ],
+    "answer": 0,
+    "difficulty": "標準・応用",
+    "explanation": "保存則でdU/dt=Q̇_in−Q̇_out=140−100=+40 W。エネルギーの時間変化なので単位W。",
+    "distractors": [
+      "正解。正味入熱40 W。",
+      "正味入熱を計算する際の差を過小に評価しています。",
+      "流入だけ計上した値。",
+      "流入と流出を加えてしまった値。"
+    ],
+    "hints": [
+      "正味の流入が正です。",
+      "140 Wから100 Wを差し引きます。"
+    ],
+    "solutionSteps": [
+      "流入を+140 Wとする。",
+      "流出を−100 Wとする。",
+      "正味蓄熱率は+40 W。"
+    ],
+    "beginnerPitfall": "熱流束W/m²と熱移動率W、面積・時間積分の範囲、モデルの仮定を混同しない。"
+  },
+  {
+    "id": "supp-next-open-enthalpy-jump-v1",
+    "revision": "v1",
+    "field": "基本熱移動・保存則",
+    "prerequisites": [
+      "熱移動率とエネルギー",
+      "境界条件と単位"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "§1.2の独立詳説教材と仮想数値に基づく新規演習。原本の文章・設問・図版は転載しない。",
+      "chapterId": "ch1",
+      "focusSectionId": "1.2",
+      "guideId": "chapter1-energy-balance"
+    },
+    "createdStatus": "独立作問",
+    "reviewStatus": "保存則・算術の内部確認済み／外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [],
+    "prompt": "定常の単相流体がṁ=0.25 kg/sで流れ、出口・入口の比エンタルピー差が+50 kJ/kgである。仕事と運動・位置エネルギー変化を無視した流体の受熱率は？",
+    "choices": [
+      "2.5 kW",
+      "5.0 kW",
+      "12.5 kW",
+      "25.0 kW"
+    ],
+    "answer": 2,
+    "difficulty": "標準・応用",
+    "explanation": "Q̇=ṁΔh=0.25 kg/s×50 kJ/kg=12.5 kJ/s=12.5 kW。",
+    "distractors": [
+      "質量流量を0.05 kg/sとしている。",
+      "温度差のみで推定し過小評価。",
+      "正解。kg/sとkJ/kgが相殺する。",
+      "質量流量を0.50 kg/sとしている。"
+    ],
+    "hints": [
+      "流れる物質のエンタルピー差を使います。",
+      "0.25×50の単位はkJ/sです。"
+    ],
+    "solutionSteps": [
+      "ṁ=0.25 kg/s。",
+      "Δh=50 kJ/kg。",
+      "Q̇=12.5 kW。"
+    ],
+    "beginnerPitfall": "熱流束W/m²と熱移動率W、面積・時間積分の範囲、モデルの仮定を混同しない。"
+  },
+  {
+    "id": "supp-next-combined-surface-loss-v1",
+    "revision": "v1",
+    "field": "基本熱移動・保存則",
+    "prerequisites": [
+      "熱移動率とエネルギー",
+      "境界条件と単位"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "§1.3の独立詳説教材と仮想数値に基づく新規演習。原本の文章・設問・図版は転載しない。",
+      "chapterId": "ch1",
+      "focusSectionId": "1.3",
+      "guideId": "chapter1-energy-balance"
+    },
+    "createdStatus": "独立作問",
+    "reviewStatus": "保存則・算術の内部確認済み／外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [],
+    "prompt": "ある一様面A=0.50 m²が320 K、流体と十分大きな黒体囲いがともに300 Kである。h=10 W/(m²·K)、ε=0.8、σ=5.670374419×10⁻⁸で、対流・放射の外向き熱移動率の合計は約？",
+    "choices": [
+      "54.1 W",
+      "100.0 W",
+      "154.1 W",
+      "200.0 W"
+    ],
+    "answer": 2,
+    "difficulty": "標準・応用",
+    "explanation": "対流=10×0.5×20=100 W。放射=0.8σ×0.5(320⁴−300⁴)≈54.11 W。両者は同じ表面温度を使うため合計約154.1 W。",
+    "distractors": [
+      "放射だけを計上している。",
+      "対流だけを計上している。",
+      "正解。同じ外表面からの2経路を合計する。",
+      "別の伝導モデルの値を混同している。"
+    ],
+    "hints": [
+      "対流と放射は同じ表面から外向きに流れます。",
+      "hAΔTとεσA(T_s⁴−T_sur⁴)を別々に計算します。"
+    ],
+    "solutionSteps": [
+      "対流の外向き熱移動率100 W。",
+      "放射の外向き熱移動率約54.11 W。",
+      "合計約154.11 W。"
+    ],
+    "beginnerPitfall": "熱流束W/m²と熱移動率W、面積・時間積分の範囲、モデルの仮定を混同しない。"
+  },
+  {
+    "id": "supp-next-slab-flux-unit-v1",
+    "revision": "v1",
+    "field": "基本熱移動・保存則",
+    "prerequisites": [
+      "熱移動率とエネルギー",
+      "境界条件と単位"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "§1.3の独立詳説教材と仮想数値に基づく新規演習。原本の文章・設問・図版は転載しない。",
+      "chapterId": "ch1",
+      "focusSectionId": "1.3",
+      "guideId": "chapter1-energy-balance"
+    },
+    "createdStatus": "独立作問",
+    "reviewStatus": "保存則・算術の内部確認済み／外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [],
+    "prompt": "厚さ0.10 mの均質平板、熱伝導率2 W/(m·K)、両面温度差20 K。一次元定常・発熱なしの場合、熱流束の大きさは？",
+    "choices": [
+      "40 W/m²",
+      "100 W/m²",
+      "200 W/m²",
+      "400 W/m²"
+    ],
+    "answer": 3,
+    "difficulty": "標準・応用",
+    "explanation": "q″=kΔT/L=2×20/0.10=400 W/m²。熱移動率を求めるときだけ面積を掛ける。",
+    "distractors": [
+      "厚さを1mと誤認した値。",
+      "kや温度差を誤用した値。",
+      "面積0.5m²を追加して200 Wと取り違えた値。",
+      "正解。面積に依存しない熱流束400 W/m²。"
+    ],
+    "hints": [
+      "問われているのはW/m²です。",
+      "Fourier則の平板近似を用いてください。"
+    ],
+    "solutionSteps": [
+      "温度差20 K。",
+      "q″=2×20/0.10。",
+      "400 W/m²。"
+    ],
+    "beginnerPitfall": "熱流束W/m²と熱移動率W、面積・時間積分の範囲、モデルの仮定を混同しない。"
+  },
+  {
+    "id": "supp-next-radiation-zero-emissivity-v1",
+    "revision": "v1",
+    "field": "基本熱移動・保存則",
+    "prerequisites": [
+      "熱移動率とエネルギー",
+      "境界条件と単位"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "applied",
+    "source": {
+      "type": "supplement",
+      "reference": "§1.3の独立詳説教材と仮想数値に基づく新規演習。原本の文章・設問・図版は転載しない。",
+      "chapterId": "ch1",
+      "focusSectionId": "1.3",
+      "guideId": "chapter1-energy-balance"
+    },
+    "createdStatus": "独立作問",
+    "reviewStatus": "保存則・算術の内部確認済み／外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [],
+    "prompt": "灰色面と大きな黒体囲いの放射交換モデルQ̇=εσA(T_s⁴−T_sur⁴)で、放射率εを0に近づけると、このモデルの正味交換は？",
+    "choices": [
+      "必ず無限大に発散する",
+      "常に対流熱伝達率と等しくなる",
+      "温度差にかかわらず放射交換は0に近づく",
+      "放射率にかかわらず放射の熱移動率は温度差だけで決まる"
+    ],
+    "answer": 2,
+    "difficulty": "標準・応用",
+    "explanation": "この灰色面近似では放射交換はεに比例するため、ε→0でQ̇_rad→0。ただし物理的な表面の全機構がゼロになる意味ではない。",
+    "distractors": [
+      "式のεへの比例に反する。",
+      "hとの単位・機構を混同している。",
+      "正解。放射のみ0へ近づく。",
+      "放射率が0に近づく効果を完全に無視しています。"
+    ],
+    "hints": [
+      "式のεの位置を見てください。",
+      "放射だけであり対流は別の機構です。"
+    ],
+    "solutionSteps": [
+      "式のεを0に近づける。",
+      "他の係数を有限と仮定する。",
+      "Q̇_radが0へ近づく。"
+    ],
+    "beginnerPitfall": "熱流束W/m²と熱移動率W、面積・時間積分の範囲、モデルの仮定を混同しない。"
+  },
+  {
+    "id": "supp-next-inverse-delta-temperature-v1",
+    "revision": "v1",
+    "field": "定常熱伝導・熱抵抗",
+    "prerequisites": [
+      "熱移動率とエネルギー",
+      "境界条件と単位"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "§2.2の独立詳説教材と仮想数値に基づく新規演習。原本の文章・設問・図版は転載しない。",
+      "chapterId": "ch2",
+      "focusSectionId": "2.2",
+      "guideId": "chapter2-cylindrical-conduction"
+    },
+    "createdStatus": "独立作問",
+    "reviewStatus": "保存則・算術の内部確認済み／外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [],
+    "prompt": "厚さ0.050 m、k=2 W/(m·K)、面積1.0 m²の一様平板で定常伝導の熱移動率が200 Wである。両表面温度差の大きさは？",
+    "choices": [
+      "2 K",
+      "5 K",
+      "10 K",
+      "20 K"
+    ],
+    "answer": 1,
+    "difficulty": "標準・応用",
+    "explanation": "ΔT=Q̇L/(kA)=200×0.050/(2×1)=5 K。熱移動率から逆算する場合も単位を保つ。",
+    "distractors": [
+      "kAの値を過大にしている。",
+      "正解。熱抵抗0.025 K/W。",
+      "Lを0.10 mとしている。",
+      "面積と厚さを重複計上している。"
+    ],
+    "hints": [
+      "熱抵抗R=L/(kA)を使います。",
+      "ΔT=Q̇Rです。"
+    ],
+    "solutionSteps": [
+      "R=0.050/(2×1)=0.025 K/W。",
+      "ΔT=200×0.025。",
+      "5 K。"
+    ],
+    "beginnerPitfall": "熱流束W/m²と熱移動率W、面積・時間積分の範囲、モデルの仮定を混同しない。"
+  },
+  {
+    "id": "supp-next-linear-temperature-location-v1",
+    "revision": "v1",
+    "field": "定常熱伝導・熱抵抗",
+    "prerequisites": [
+      "熱移動率とエネルギー",
+      "境界条件と単位"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "§2.2の独立詳説教材と仮想数値に基づく新規演習。原本の文章・設問・図版は転載しない。",
+      "chapterId": "ch2",
+      "focusSectionId": "2.2",
+      "guideId": "chapter2-cylindrical-conduction"
+    },
+    "createdStatus": "独立作問",
+    "reviewStatus": "保存則・算術の内部確認済み／外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [],
+    "prompt": "一次元定常、内部発熱なしで、厚さ0.20 mの平板は左60℃、右20℃。左面から0.15 mの位置の温度は？",
+    "choices": [
+      "20 ℃",
+      "30 ℃",
+      "40 ℃",
+      "50 ℃"
+    ],
+    "answer": 1,
+    "difficulty": "標準・応用",
+    "explanation": "T(x)=60+(20−60)x/0.20。x=0.15なら60−40×0.75=30℃。",
+    "distractors": [
+      "右端x=0.20 mの温度を選んでいる。",
+      "正解。全厚さの75%位置。",
+      "全厚さの50%位置としている。",
+      "全厚さの25%位置としている。"
+    ],
+    "hints": [
+      "境界値を線形補間します。",
+      "x/L=0.15/0.20=0.75です。"
+    ],
+    "solutionSteps": [
+      "T(x)=60−40x/0.20。",
+      "x=0.15 mを代入。",
+      "30℃。"
+    ],
+    "beginnerPitfall": "熱流束W/m²と熱移動率W、面積・時間積分の範囲、モデルの仮定を混同しない。"
+  },
+  {
+    "id": "supp-next-three-series-v1",
+    "revision": "v1",
+    "field": "定常熱伝導・熱抵抗",
+    "prerequisites": [
+      "熱移動率とエネルギー",
+      "境界条件と単位"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "§2.3の独立詳説教材と仮想数値に基づく新規演習。原本の文章・設問・図版は転載しない。",
+      "chapterId": "ch2",
+      "focusSectionId": "2.3",
+      "guideId": "chapter2-cylindrical-conduction"
+    },
+    "createdStatus": "独立作問",
+    "reviewStatus": "保存則・算術の内部確認済み／外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [],
+    "prompt": "定常の熱移動経路に0.10、0.20、0.30 K/Wの3抵抗が直列接続されている。両端温度差が60 Kなら熱移動率は？",
+    "choices": [
+      "60 W",
+      "100 W",
+      "150 W",
+      "600 W"
+    ],
+    "answer": 1,
+    "difficulty": "標準・応用",
+    "explanation": "直列抵抗の和0.60 K/Wで、Q̇=60/0.60=100 W。",
+    "distractors": [
+      "全抵抗を1 K/Wとした値。",
+      "正解。全抵抗0.60 K/W。",
+      "抵抗の一部を見落とした値。",
+      "最小抵抗だけを使った値。"
+    ],
+    "hints": [
+      "直列では抵抗を合計します。",
+      "0.10+0.20+0.30=0.60 K/W。"
+    ],
+    "solutionSteps": [
+      "R_total=0.60 K/W。",
+      "Q̇=60/R_total。",
+      "100 W。"
+    ],
+    "beginnerPitfall": "熱流束W/m²と熱移動率W、面積・時間積分の範囲、モデルの仮定を混同しない。"
+  },
+  {
+    "id": "supp-next-parallel-extra-branch-v1",
+    "revision": "v1",
+    "field": "定常熱伝導・熱抵抗",
+    "prerequisites": [
+      "熱移動率とエネルギー",
+      "境界条件と単位"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "§2.3の独立詳説教材と仮想数値に基づく新規演習。原本の文章・設問・図版は転載しない。",
+      "chapterId": "ch2",
+      "focusSectionId": "2.3",
+      "guideId": "chapter2-cylindrical-conduction"
+    },
+    "createdStatus": "独立作問",
+    "reviewStatus": "保存則・算術の内部確認済み／外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [],
+    "prompt": "温度差60 Kの両端に、熱抵抗0.10 K/Wと0.20 K/Wの経路が並列にある。さらに0.30 K/Wの経路を並列追加すると、総熱移動率は？",
+    "choices": [
+      "600 W",
+      "900 W",
+      "1100 W",
+      "1500 W"
+    ],
+    "answer": 2,
+    "difficulty": "標準・応用",
+    "explanation": "各枝の熱流率は600、300、200 W。合計1100 W。枝を増やすとコンダクタンスが増える。",
+    "distractors": [
+      "第1枝しか考慮していない。",
+      "新経路を無視した元の並列値。",
+      "正解。600+300+200 W。",
+      "温度差を二重に掛けている。"
+    ],
+    "hints": [
+      "並列では全枝で同じ温度差です。",
+      "枝別の熱移動率を足してください。"
+    ],
+    "solutionSteps": [
+      "1枝目600 W。",
+      "2枝目300 W、3枝目200 W。",
+      "合計1100 W。"
+    ],
+    "beginnerPitfall": "熱流束W/m²と熱移動率W、面積・時間積分の範囲、モデルの仮定を混同しない。"
+  },
+  {
+    "id": "supp-next-cold-outlet-with-loss-v1",
+    "revision": "v1",
+    "field": "熱交換器の熱収支",
+    "prerequisites": [
+      "エネルギー・熱移動率の単位",
+      "モデルの境界条件"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "§3.1について独立執筆した伝熱演習。原本の文章・問題・原図を転載しない。",
+      "chapterId": "ch3",
+      "focusSectionId": "3.1",
+      "guideId": "chapter3-effectiveness-ntu"
+    },
+    "createdStatus": "独立作問",
+    "reviewStatus": "算術・モデル前提の内部確認済み／外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [],
+    "prompt": "定常熱交換器で温側の失熱50 kW、冷側の受熱46 kW、冷側C_c=2000 W/K、冷側入口20℃。冷側出口温度は？",
+    "choices": [
+      "23 ℃",
+      "40 ℃",
+      "43 ℃",
+      "50 ℃"
+    ],
+    "answer": 2,
+    "difficulty": "標準・応用",
+    "explanation": "T_c,out=20+46000/2000=43℃。外部損失4kWを冷側受熱に含めない。",
+    "distractors": [
+      "冷側の温度上昇3Kとしている。",
+      "低温側の温度上昇20Kと誤認している。",
+      "正解。受熱46kWをC_cで割る。",
+      "温側50kWを流入と混同している。"
+    ],
+    "hints": [
+      "まず境界条件と与えられた単位を確認してください。",
+      "熱収支、無次元数、あるいは伝導の成立条件を式で表します。"
+    ],
+    "solutionSteps": [
+      "境界・対象流体・代表長さと仮定を特定する。",
+      "該当する物理法則と保存式を適用する。",
+      "数値を代入し単位・符号と極限を検算する。",
+      "各選択肢の誤りの原因を確認する。"
+    ],
+    "beginnerPitfall": "同一の数値でも温度差・流束・熱容量流量・局所値と平均値を混同しない。"
+  },
+  {
+    "id": "supp-next-massflow-from-heat-v1",
+    "revision": "v1",
+    "field": "熱交換器の熱収支",
+    "prerequisites": [
+      "エネルギー・熱移動率の単位",
+      "モデルの境界条件"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "§3.1について独立執筆した伝熱演習。原本の文章・問題・原図を転載しない。",
+      "chapterId": "ch3",
+      "focusSectionId": "3.1",
+      "guideId": "chapter3-effectiveness-ntu"
+    },
+    "createdStatus": "独立作問",
+    "reviewStatus": "算術・モデル前提の内部確認済み／外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [],
+    "prompt": "温側単相流体の失熱率30 kW、入口・出口温度差15 K、一定比熱4000 J/(kg·K)である。温側質量流量は？",
+    "choices": [
+      "0.25 kg/s",
+      "0.50 kg/s",
+      "1.00 kg/s",
+      "2.00 kg/s"
+    ],
+    "answer": 1,
+    "difficulty": "標準・応用",
+    "explanation": "ṁ=Q̇/(c_pΔT)=30000/(4000×15)=0.50 kg/s。",
+    "distractors": [
+      "必要流量の半分。",
+      "正解。CpΔT=60000 J/kg。",
+      "質量流量を2倍にした値。",
+      "質量流量を4倍にした値。"
+    ],
+    "hints": [
+      "まず境界条件と与えられた単位を確認してください。",
+      "熱収支、無次元数、あるいは伝導の成立条件を式で表します。"
+    ],
+    "solutionSteps": [
+      "境界・対象流体・代表長さと仮定を特定する。",
+      "該当する物理法則と保存式を適用する。",
+      "数値を代入し単位・符号と極限を検算する。",
+      "各選択肢の誤りの原因を確認する。"
+    ],
+    "beginnerPitfall": "同一の数値でも温度差・流束・熱容量流量・局所値と平均値を混同しない。"
+  },
+  {
+    "id": "supp-next-exchanger-qmax-feasibility-v1",
+    "revision": "v1",
+    "field": "熱交換器の熱収支",
+    "prerequisites": [
+      "エネルギー・熱移動率の単位",
+      "モデルの境界条件"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "applied",
+    "source": {
+      "type": "supplement",
+      "reference": "§3.1について独立執筆した伝熱演習。原本の文章・問題・原図を転載しない。",
+      "chapterId": "ch3",
+      "focusSectionId": "3.1",
+      "guideId": "chapter3-effectiveness-ntu"
+    },
+    "createdStatus": "独立作問",
+    "reviewStatus": "算術・モデル前提の内部確認済み／外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [],
+    "prompt": "熱容量流量が両側とも400 W/K、入口温度が80℃と20℃の受動的な定常単相熱交換器。30 kWの熱交換を実現できると結論できるか。",
+    "choices": [
+      "流路を向流に変えれば入口条件と流量がそのままでも必ず30kWを超えられる",
+      "温側温度だけで決まり冷側の流量は無関係である",
+      "交換熱量の上限がないので30kWは必ず実現する",
+      "理想最大24kWを超えるので与条件では実現できない"
+    ],
+    "answer": 3,
+    "difficulty": "標準・応用",
+    "explanation": "C_min×入口温度差=400×60=24000 W=24 kW。30 kWは理想最大を超え、受動的な無損失の単相モデルと矛盾する。",
+    "distractors": [
+      "向流への変更でも最大熱流率C_minΔT_inの上限は超えられません。",
+      "C_minの概念と冷側熱収支を無視。",
+      "有限の入口温度差を無視している。",
+      "正解。30 kWは24 kWの上限を超過。"
+    ],
+    "hints": [
+      "まず境界条件と与えられた単位を確認してください。",
+      "熱収支、無次元数、あるいは伝導の成立条件を式で表します。"
+    ],
+    "solutionSteps": [
+      "境界・対象流体・代表長さと仮定を特定する。",
+      "該当する物理法則と保存式を適用する。",
+      "数値を代入し単位・符号と極限を検算する。",
+      "各選択肢の誤りの原因を確認する。"
+    ],
+    "beginnerPitfall": "同一の数値でも温度差・流束・熱容量流量・局所値と平均値を混同しない。"
+  },
+  {
+    "id": "supp-next-ntu-eps-ratio-v1",
+    "revision": "v1",
+    "field": "熱交換器の有効度",
+    "prerequisites": [
+      "エネルギー・熱移動率の単位",
+      "モデルの境界条件"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "§3.3について独立執筆した伝熱演習。原本の文章・問題・原図を転載しない。",
+      "chapterId": "ch3",
+      "focusSectionId": "3.3",
+      "guideId": "chapter3-effectiveness-ntu"
+    },
+    "createdStatus": "独立作問",
+    "reviewStatus": "算術・モデル前提の内部確認済み／外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [],
+    "prompt": "C_min=300 W/K、入口温度差40 Kの熱交換器が6.0 kWを伝熱している。通常の無損失単相モデルの有効度εは？",
+    "choices": [
+      "0.25",
+      "0.40",
+      "0.50",
+      "0.75"
+    ],
+    "answer": 2,
+    "difficulty": "標準・応用",
+    "explanation": "Q̇_max=300×40=12000 W、ε=6000/12000=0.50。",
+    "distractors": [
+      "実熱量を4分の1とした。",
+      "上限Q̇_maxを誤っている。",
+      "正解。0.50は無次元。",
+      "C_minの扱いを過小評価している。"
+    ],
+    "hints": [
+      "まず境界条件と与えられた単位を確認してください。",
+      "熱収支、無次元数、あるいは伝導の成立条件を式で表します。"
+    ],
+    "solutionSteps": [
+      "境界・対象流体・代表長さと仮定を特定する。",
+      "該当する物理法則と保存式を適用する。",
+      "数値を代入し単位・符号と極限を検算する。",
+      "各選択肢の誤りの原因を確認する。"
+    ],
+    "beginnerPitfall": "同一の数値でも温度差・流束・熱容量流量・局所値と平均値を混同しない。"
+  },
+  {
+    "id": "supp-next-ntu-ua-inverse-v1",
+    "revision": "v1",
+    "field": "熱交換器の有効度",
+    "prerequisites": [
+      "エネルギー・熱移動率の単位",
+      "モデルの境界条件"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "§3.3について独立執筆した伝熱演習。原本の文章・問題・原図を転載しない。",
+      "chapterId": "ch3",
+      "focusSectionId": "3.3",
+      "guideId": "chapter3-effectiveness-ntu"
+    },
+    "createdStatus": "独立作問",
+    "reviewStatus": "算術・モデル前提の内部確認済み／外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [],
+    "prompt": "熱交換器の総合熱コンダクタンスUA=600 W/K、C_min=400 W/K。NTUは？",
+    "choices": [
+      "0.67",
+      "1.00",
+      "1.50",
+      "2.00"
+    ],
+    "answer": 2,
+    "difficulty": "標準・応用",
+    "explanation": "NTU=UA/C_min=600/400=1.50。",
+    "distractors": [
+      "逆数C_min/UAに近い値。",
+      "UAとC_minが等しいと誤認。",
+      "正解。無次元1.5。",
+      "C_min=300 W/Kと誤認。"
+    ],
+    "hints": [
+      "まず境界条件と与えられた単位を確認してください。",
+      "熱収支、無次元数、あるいは伝導の成立条件を式で表します。"
+    ],
+    "solutionSteps": [
+      "境界・対象流体・代表長さと仮定を特定する。",
+      "該当する物理法則と保存式を適用する。",
+      "数値を代入し単位・符号と極限を検算する。",
+      "各選択肢の誤りの原因を確認する。"
+    ],
+    "beginnerPitfall": "同一の数値でも温度差・流束・熱容量流量・局所値と平均値を混同しない。"
+  },
+  {
+    "id": "supp-next-fourier-size-time-v1",
+    "revision": "v1",
+    "field": "非定常熱伝導",
+    "prerequisites": [
+      "エネルギー・熱移動率の単位",
+      "モデルの境界条件"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "applied",
+    "source": {
+      "type": "supplement",
+      "reference": "§5.3について独立執筆した伝熱演習。原本の文章・問題・原図を転載しない。",
+      "chapterId": "ch5",
+      "focusSectionId": "5.3",
+      "guideId": "chapter5-semi-infinite"
+    },
+    "createdStatus": "独立作問",
+    "reviewStatus": "算術・モデル前提の内部確認済み／外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [],
+    "prompt": "同じ熱拡散率の平板で、代表長さを2倍、経過時間を4倍にした。Fo=αt/L²はどう変化するか。",
+    "choices": [
+      "元の4倍になる",
+      "元と変わらない",
+      "元の1/4になる",
+      "元の16倍になる"
+    ],
+    "answer": 1,
+    "difficulty": "標準・応用",
+    "explanation": "Fo_new=α(4t)/(2L)²=αt/L²。時間4倍と長さ2乗4倍が相殺する。",
+    "distractors": [
+      "時間だけを4倍にしている。",
+      "正解。Foは不変。",
+      "長さだけを2倍にしている。",
+      "比を二重に4倍にしている。"
+    ],
+    "hints": [
+      "まず境界条件と与えられた単位を確認してください。",
+      "熱収支、無次元数、あるいは伝導の成立条件を式で表します。"
+    ],
+    "solutionSteps": [
+      "境界・対象流体・代表長さと仮定を特定する。",
+      "該当する物理法則と保存式を適用する。",
+      "数値を代入し単位・符号と極限を検算する。",
+      "各選択肢の誤りの原因を確認する。"
+    ],
+    "beginnerPitfall": "同一の数値でも温度差・流束・熱容量流量・局所値と平均値を混同しない。"
+  },
+  {
+    "id": "supp-next-fourier-time-scale-v1",
+    "revision": "v1",
+    "field": "非定常熱伝導",
+    "prerequisites": [
+      "エネルギー・熱移動率の単位",
+      "モデルの境界条件"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "§5.3について独立執筆した伝熱演習。原本の文章・問題・原図を転載しない。",
+      "chapterId": "ch5",
+      "focusSectionId": "5.3",
+      "guideId": "chapter5-semi-infinite"
+    },
+    "createdStatus": "独立作問",
+    "reviewStatus": "算術・モデル前提の内部確認済み／外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [],
+    "prompt": "平板の半厚さL=0.020 m、熱拡散率α=1.0×10⁻⁶ m²/sとする。代表熱拡散時間L²/αは？",
+    "choices": [
+      "100 s",
+      "200 s",
+      "400 s",
+      "800 s"
+    ],
+    "answer": 2,
+    "difficulty": "標準・応用",
+    "explanation": "L²/α=0.0004/10⁻⁶=400 s。Fo=1になる時間尺度であり、温度が完全平衡になる保証ではない。",
+    "distractors": [
+      "L²を過小にした。",
+      "αの桁を誤っている。",
+      "正解。400 s。",
+      "長さを過大にした。"
+    ],
+    "hints": [
+      "まず境界条件と与えられた単位を確認してください。",
+      "熱収支、無次元数、あるいは伝導の成立条件を式で表します。"
+    ],
+    "solutionSteps": [
+      "境界・対象流体・代表長さと仮定を特定する。",
+      "該当する物理法則と保存式を適用する。",
+      "数値を代入し単位・符号と極限を検算する。",
+      "各選択肢の誤りの原因を確認する。"
+    ],
+    "beginnerPitfall": "同一の数値でも温度差・流束・熱容量流量・局所値と平均値を混同しない。"
+  },
+  {
+    "id": "supp-next-dimensionless-centre-temperature-v1",
+    "revision": "v1",
+    "field": "非定常熱伝導",
+    "prerequisites": [
+      "エネルギー・熱移動率の単位",
+      "モデルの境界条件"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "§5.3について独立執筆した伝熱演習。原本の文章・問題・原図を転載しない。",
+      "chapterId": "ch5",
+      "focusSectionId": "5.3",
+      "guideId": "chapter5-semi-infinite"
+    },
+    "createdStatus": "独立作問",
+    "reviewStatus": "算術・モデル前提の内部確認済み／外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [],
+    "prompt": "非定常平板で初期一様温度100℃、周囲温度20℃、ある時刻の中心無次元超過温度θ_c=(T_c−T∞)/(T_i−T∞)=0.40。中心温度は？",
+    "choices": [
+      "40 ℃",
+      "52 ℃",
+      "60 ℃",
+      "72 ℃"
+    ],
+    "answer": 1,
+    "difficulty": "標準・応用",
+    "explanation": "T_c=T∞+θ_c(T_i−T∞)=20+0.40×80=52℃。",
+    "distractors": [
+      "初期超過温度を半分にした。",
+      "正解。温度差32 Kを周囲温度に加える。",
+      "θを0.5と取り違えている。",
+      "θの適用範囲を誤っている。"
+    ],
+    "hints": [
+      "まず境界条件と与えられた単位を確認してください。",
+      "熱収支、無次元数、あるいは伝導の成立条件を式で表します。"
+    ],
+    "solutionSteps": [
+      "境界・対象流体・代表長さと仮定を特定する。",
+      "該当する物理法則と保存式を適用する。",
+      "数値を代入し単位・符号と極限を検算する。",
+      "各選択肢の誤りの原因を確認する。"
+    ],
+    "beginnerPitfall": "同一の数値でも温度差・流束・熱容量流量・局所値と平均値を混同しない。"
+  },
+  {
+    "id": "supp-next-nusselt-invert-h-v1",
+    "revision": "v1",
+    "field": "対流と境界層",
+    "prerequisites": [
+      "エネルギー・熱移動率の単位",
+      "モデルの境界条件"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "§6.1について独立執筆した伝熱演習。原本の文章・問題・原図を転載しない。",
+      "chapterId": "ch6",
+      "focusSectionId": "6.1",
+      "guideId": "chapter6-flat-boundary"
+    },
+    "createdStatus": "独立作問",
+    "reviewStatus": "算術・モデル前提の内部確認済み／外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [],
+    "prompt": "流体熱伝導率k_f=0.025 W/(m·K)、代表長さL=0.50 m、平均Nu=200。平均熱伝達率hは？",
+    "choices": [
+      "5 W/(m²·K)",
+      "10 W/(m²·K)",
+      "20 W/(m²·K)",
+      "40 W/(m²·K)"
+    ],
+    "answer": 1,
+    "difficulty": "標準・応用",
+    "explanation": "h=Nu k_f/L=200×0.025/0.50=10 W/(m²·K)。",
+    "distractors": [
+      "Nuを半分にした。",
+      "正解。流体物性を使い10 W/(m²·K)。",
+      "Lで割り忘れた係数を含む。",
+      "Nuを2倍と誤認した。"
+    ],
+    "hints": [
+      "まず境界条件と与えられた単位を確認してください。",
+      "熱収支、無次元数、あるいは伝導の成立条件を式で表します。"
+    ],
+    "solutionSteps": [
+      "境界・対象流体・代表長さと仮定を特定する。",
+      "該当する物理法則と保存式を適用する。",
+      "数値を代入し単位・符号と極限を検算する。",
+      "各選択肢の誤りの原因を確認する。"
+    ],
+    "beginnerPitfall": "同一の数値でも温度差・流束・熱容量流量・局所値と平均値を混同しない。"
+  },
+  {
+    "id": "supp-next-local-versus-average-v1",
+    "revision": "v1",
+    "field": "対流と境界層",
+    "prerequisites": [
+      "エネルギー・熱移動率の単位",
+      "モデルの境界条件"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "applied",
+    "source": {
+      "type": "supplement",
+      "reference": "§6.1について独立執筆した伝熱演習。原本の文章・問題・原図を転載しない。",
+      "chapterId": "ch6",
+      "focusSectionId": "6.1",
+      "guideId": "chapter6-flat-boundary"
+    },
+    "createdStatus": "独立作問",
+    "reviewStatus": "算術・モデル前提の内部確認済み／外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [],
+    "prompt": "平板上で局所熱伝達率h_xが流れ方向に変化する。終端x=Lの局所値h_Lと面平均h̄_Lを扱う際の正しい判断は？",
+    "choices": [
+      "終端の局所値をいつでも全長の面平均熱伝達率として使用できる",
+      "hが変化しても必ず平均値は0となる",
+      "終端の値だけから面積積分は不要である",
+      "分布を平均して求める値と終端の値は異なる"
+    ],
+    "answer": 3,
+    "difficulty": "標準・応用",
+    "explanation": "一般に平均h̄_L=(1/L)∫₀ᴸ h_x dx（幅一定で温度差の取り扱いが適切な場合）。局所値h_Lとは別である。",
+    "distractors": [
+      "局所値と面積平均を混同しています。",
+      "hが変化することは平均0を意味しない。",
+      "面積平均を評価する条件が欠けている。",
+      "正解。平均には分布を反映する。"
+    ],
+    "hints": [
+      "まず境界条件と与えられた単位を確認してください。",
+      "熱収支、無次元数、あるいは伝導の成立条件を式で表します。"
+    ],
+    "solutionSteps": [
+      "境界・対象流体・代表長さと仮定を特定する。",
+      "該当する物理法則と保存式を適用する。",
+      "数値を代入し単位・符号と極限を検算する。",
+      "各選択肢の誤りの原因を確認する。"
+    ],
+    "beginnerPitfall": "同一の数値でも温度差・流束・熱容量流量・局所値と平均値を混同しない。"
+  },
+  {
+    "id": "supp-next-pr-layer-thickness-v1",
+    "revision": "v1",
+    "field": "対流と境界層",
+    "prerequisites": [
+      "エネルギー・熱移動率の単位",
+      "モデルの境界条件"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "conceptual",
+    "source": {
+      "type": "supplement",
+      "reference": "§6.1について独立執筆した伝熱演習。原本の文章・問題・原図を転載しない。",
+      "chapterId": "ch6",
+      "focusSectionId": "6.1",
+      "guideId": "chapter6-flat-boundary"
+    },
+    "createdStatus": "独立作問",
+    "reviewStatus": "算術・モデル前提の内部確認済み／外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [],
+    "prompt": "同様の平板・流動条件で、流体のPrが十分大きくなった場合の温度境界層について一般的に適切な傾向は？",
+    "choices": [
+      "温度境界層が必ず速度境界層より厚くなる",
+      "速度境界層と温度境界層は常に一致する",
+      "熱拡散が相対的に小さく温度境界層は薄まりやすい",
+      "Prにかかわらず境界層の厚さは常に無限大である"
+    ],
+    "answer": 2,
+    "difficulty": "標準・応用",
+    "explanation": "Pr=ν/α_fが大きいほど熱拡散の相対的効果が小さくなるため、同程度の流況で温度境界層は薄まりやすい。ただし一般式の仮定を確認する。",
+    "distractors": [
+      "Prが大きいほど熱拡散は相対的に小さい。",
+      "二種類の拡散率が等しいとは限らない。",
+      "正解。熱と運動量の拡散の比を考える。",
+      "境界層の厚さはPr・Re・位置等に依存。"
+    ],
+    "hints": [
+      "まず境界条件と与えられた単位を確認してください。",
+      "熱収支、無次元数、あるいは伝導の成立条件を式で表します。"
+    ],
+    "solutionSteps": [
+      "境界・対象流体・代表長さと仮定を特定する。",
+      "該当する物理法則と保存式を適用する。",
+      "数値を代入し単位・符号と極限を検算する。",
+      "各選択肢の誤りの原因を確認する。"
+    ],
+    "beginnerPitfall": "同一の数値でも温度差・流束・熱容量流量・局所値と平均値を混同しない。"
+  },
+  {
+    "id": "supp-next-steady-flux-concept-v1",
+    "revision": "v1",
+    "field": "定常伝導・抵抗",
+    "prerequisites": [
+      "エネルギー・熱移動率の単位",
+      "モデルの境界条件"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "conceptual",
+    "source": {
+      "type": "supplement",
+      "reference": "§2.2について独立執筆した伝熱演習。原本の文章・問題・原図を転載しない。",
+      "chapterId": "ch2",
+      "focusSectionId": "2.2",
+      "guideId": "chapter2-cylindrical-conduction"
+    },
+    "createdStatus": "独立作問",
+    "reviewStatus": "算術・モデル前提の内部確認済み／外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [],
+    "prompt": "発熱のない一定kの一次元定常平板で、両表面の温度を指定した場合の内部温度勾配について正しいのは？",
+    "choices": [
+      "温度勾配が線形位置に比例して増えてしまう",
+      "温度勾配は内部で一定になりうる",
+      "温度勾配は常に0となってしまう",
+      "温度勾配は左右で必ず逆向きになる"
+    ],
+    "answer": 1,
+    "difficulty": "標準・応用",
+    "explanation": "一定k・内部発熱なしの一次元定常伝導ではd²T/dx²=0となり、dT/dxは一定。境界温度が等しければ0になるが、一般には0とは限らない。",
+    "distractors": [
+      "曲率ゼロで勾配が位置とともに増えない。",
+      "正解。線形温度分布。",
+      "非ゼロの表面温度差なら勾配も非ゼロ。",
+      "熱の向きは一様な平板内で一定。"
+    ],
+    "hints": [
+      "まず境界条件と与えられた単位を確認してください。",
+      "熱収支、無次元数、あるいは伝導の成立条件を式で表します。"
+    ],
+    "solutionSteps": [
+      "境界・対象流体・代表長さと仮定を特定する。",
+      "該当する物理法則と保存式を適用する。",
+      "数値を代入し単位・符号と極限を検算する。",
+      "各選択肢の誤りの原因を確認する。"
+    ],
+    "beginnerPitfall": "同一の数値でも温度差・流束・熱容量流量・局所値と平均値を混同しない。"
+  },
+  {
+    "id": "supp-next-parallel-temperature-condition-v1",
+    "revision": "v1",
+    "field": "定常伝導・抵抗",
+    "prerequisites": [
+      "エネルギー・熱移動率の単位",
+      "モデルの境界条件"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "conceptual",
+    "source": {
+      "type": "supplement",
+      "reference": "§2.3について独立執筆した伝熱演習。原本の文章・問題・原図を転載しない。",
+      "chapterId": "ch2",
+      "focusSectionId": "2.3",
+      "guideId": "chapter2-cylindrical-conduction"
+    },
+    "createdStatus": "独立作問",
+    "reviewStatus": "算術・モデル前提の内部確認済み／外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [],
+    "prompt": "定常の二つの独立した熱抵抗が同じ高温節点・低温節点を共有して並列に接続される。各枝について何が共通か。",
+    "choices": [
+      "並列の二枝では熱移動率が抵抗値によらず必ず同じ値になる",
+      "各枝の熱抵抗値がいつも同一と決まる",
+      "各枝の熱容量流量が必ず同一となる",
+      "両端節点間の温度差が各枝で同じ値となる"
+    ],
+    "answer": 3,
+    "difficulty": "標準・応用",
+    "explanation": "並列経路は同じ二つの温度節点を結ぶのでΔTが共通。各枝のQ̇=ΔT/RはR次第で異なる。",
+    "distractors": [
+      "枝の熱移動率は抵抗の値によって異なります。",
+      "並列というだけで抵抗値は等しくならない。",
+      "熱容量流量は別の物理量。",
+      "正解。並列では温度差が共通。"
+    ],
+    "hints": [
+      "まず境界条件と与えられた単位を確認してください。",
+      "熱収支、無次元数、あるいは伝導の成立条件を式で表します。"
+    ],
+    "solutionSteps": [
+      "境界・対象流体・代表長さと仮定を特定する。",
+      "該当する物理法則と保存式を適用する。",
+      "数値を代入し単位・符号と極限を検算する。",
+      "各選択肢の誤りの原因を確認する。"
+    ],
+    "beginnerPitfall": "同一の数値でも温度差・流束・熱容量流量・局所値と平均値を混同しない。"
+  },
+  {
+    "id": "supp-batch2-plane-u-v1",
+    "revision": "v1",
+    "field": "総括熱伝達係数と円筒熱抵抗",
+    "prerequisites": [
+      "エネルギーの保存",
+      "伝熱の境界と単位"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "§2.4の独立日本語教材による新規設問。原本本文・設問・図の転載ではない。",
+      "chapterId": "ch2",
+      "focusSectionId": "2.4",
+      "guideId": "chapter2-cylindrical-conduction"
+    },
+    "createdStatus": "独立作問",
+    "reviewStatus": "内部で式・単位を検算／外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [],
+    "prompt": "内側h_i=100、外側h_o=25 W/(m²K)、壁厚L=0.020 m、壁k=2 W/(mK)の平板で総括Uは？",
+    "choices": [
+      "10.00 W/(m²K)",
+      "12.50 W/(m²K)",
+      "16.67 W/(m²K)",
+      "25.00 W/(m²K)"
+    ],
+    "answer": 2,
+    "difficulty": "標準・計算",
+    "explanation": "R″=1/100+.020/2+1/25=.060 m²K/W、U=1/.060≈16.67 W/(m²K)。",
+    "distractors": [
+      "熱抵抗を過大評価した。",
+      "R″=.080と誤計算した。",
+      "正解。R″=1/100+.020/2+1/25=.060 m²K/W、U=1/.060≈16.67 W/(m²K)。",
+      "外側のhだけをUにした。"
+    ],
+    "hints": [
+      "直列抵抗をm²K/Wへ統一する。",
+      "R″=1/h_i+L/k+1/h_o。"
+    ],
+    "solutionSteps": [
+      "直列抵抗をm²K/Wへ統一する。",
+      "R″=1/h_i+L/k+1/h_o。",
+      "R″=1/100+.020/2+1/25=.060 m²K/W、U=1/.060≈16.67 W/(m²K)。"
+    ],
+    "beginnerPitfall": "基準面積・温度差・定常状態・流体の流動条件を混同しない。"
+  },
+  {
+    "id": "supp-batch2-wall-rpp-v1",
+    "revision": "v1",
+    "field": "総括熱伝達係数と円筒熱抵抗",
+    "prerequisites": [
+      "エネルギーの保存",
+      "伝熱の境界と単位"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "§2.4の独立日本語教材による新規設問。原本本文・設問・図の転載ではない。",
+      "chapterId": "ch2",
+      "focusSectionId": "2.4",
+      "guideId": "chapter2-cylindrical-conduction"
+    },
+    "createdStatus": "独立作問",
+    "reviewStatus": "内部で式・単位を検算／外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [],
+    "prompt": "壁厚0.020 m、熱伝導率k=2.0 W/(mK)の平板で、面積当たりの熱抵抗R″は？",
+    "choices": [
+      "0.001 m²K/W",
+      "0.010 m²K/W",
+      "0.100 m²K/W",
+      "1.000 m²K/W"
+    ],
+    "answer": 1,
+    "difficulty": "標準・計算",
+    "explanation": "R″=L/k=.020/2=.010 m²K/W。全抵抗K/Wには面積が必要。",
+    "distractors": [
+      "壁厚を1桁過小評価。",
+      "正解。R″=L/k=.020/2=.010 m²K/W。全抵抗K/Wには面積が必要。",
+      "壁厚を1桁過大評価。",
+      "壁厚を2桁過大評価。"
+    ],
+    "hints": [
+      "面積当たりの抵抗と全抵抗を区別する。",
+      "R″=L/kを計算する。"
+    ],
+    "solutionSteps": [
+      "面積当たりの抵抗と全抵抗を区別する。",
+      "R″=L/kを計算する。",
+      "R″=L/k=.020/2=.010 m²K/W。全抵抗K/Wには面積が必要。"
+    ],
+    "beginnerPitfall": "基準面積・温度差・定常状態・流体の流動条件を混同しない。"
+  },
+  {
+    "id": "supp-batch2-tube-ratio-v1",
+    "revision": "v1",
+    "field": "総括熱伝達係数と円筒熱抵抗",
+    "prerequisites": [
+      "エネルギーの保存",
+      "伝熱の境界と単位"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "§2.4の独立日本語教材による新規設問。原本本文・設問・図の転載ではない。",
+      "chapterId": "ch2",
+      "focusSectionId": "2.4",
+      "guideId": "chapter2-cylindrical-conduction"
+    },
+    "createdStatus": "独立作問",
+    "reviewStatus": "内部で式・単位を検算／外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [],
+    "prompt": "円筒内半径r_i=.010 m、外半径r_o=.012 mで同じ管長のU_i/U_oは？",
+    "choices": [
+      "0.833",
+      "1.000",
+      "1.200",
+      "2.000"
+    ],
+    "answer": 2,
+    "difficulty": "標準・計算",
+    "explanation": "U_iA_i=U_oA_o、従ってU_i/U_o=A_o/A_i=r_o/r_i=1.2。",
+    "distractors": [
+      "内外面積比を逆にした。",
+      "面積基準の違いを無視。",
+      "正解。U_iA_i=U_oA_o、従ってU_i/U_o=A_o/A_i=r_o/r_i=1.2。",
+      "厚さと直径の比を誤った。"
+    ],
+    "hints": [
+      "UAは面積基準を変えても不変。",
+      "円筒側面積は半径に比例する。"
+    ],
+    "solutionSteps": [
+      "UAは面積基準を変えても不変。",
+      "円筒側面積は半径に比例する。",
+      "U_iA_i=U_oA_o、従ってU_i/U_o=A_o/A_i=r_o/r_i=1.2。"
+    ],
+    "beginnerPitfall": "基準面積・温度差・定常状態・流体の流動条件を混同しない。"
+  },
+  {
+    "id": "supp-batch2-g-times-dt-v1",
+    "revision": "v1",
+    "field": "総括熱伝達係数と円筒熱抵抗",
+    "prerequisites": [
+      "エネルギーの保存",
+      "伝熱の境界と単位"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "§2.4の独立日本語教材による新規設問。原本本文・設問・図の転載ではない。",
+      "chapterId": "ch2",
+      "focusSectionId": "2.4",
+      "guideId": "chapter2-cylindrical-conduction"
+    },
+    "createdStatus": "独立作問",
+    "reviewStatus": "内部で式・単位を検算／外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [],
+    "prompt": "全コンダクタンスUA=40 W/K、代表温度差15 Kの装置の熱移動率Q̇は？",
+    "choices": [
+      "400 W",
+      "500 W",
+      "600 W",
+      "800 W"
+    ],
+    "answer": 2,
+    "difficulty": "標準・計算",
+    "explanation": "Q̇=(UA)ΔT=40×15=600 W。UAに面積をもう一度掛けない。",
+    "distractors": [
+      "温度差10Kで計算。",
+      "温度差12.5Kとした。",
+      "正解。Q̇=(UA)ΔT=40×15=600 W。UAに面積をもう一度掛けない。",
+      "温度差20Kで計算。"
+    ],
+    "hints": [
+      "UAの単位はW/K。",
+      "Q̇=UAΔTを使う。"
+    ],
+    "solutionSteps": [
+      "UAの単位はW/K。",
+      "Q̇=UAΔTを使う。",
+      "Q̇=(UA)ΔT=40×15=600 W。UAに面積をもう一度掛けない。"
+    ],
+    "beginnerPitfall": "基準面積・温度差・定常状態・流体の流動条件を混同しない。"
+  },
+  {
+    "id": "supp-batch2-outer-base-u-v1",
+    "revision": "v1",
+    "field": "総括熱伝達係数と円筒熱抵抗",
+    "prerequisites": [
+      "エネルギーの保存",
+      "伝熱の境界と単位"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "§2.4の独立日本語教材による新規設問。原本本文・設問・図の転載ではない。",
+      "chapterId": "ch2",
+      "focusSectionId": "2.4",
+      "guideId": "chapter2-cylindrical-conduction"
+    },
+    "createdStatus": "独立作問",
+    "reviewStatus": "内部で式・単位を検算／外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [],
+    "prompt": "内側基準U_i=100 W/(m²K)、A_i=.50 m²、A_o=1.00 m²の装置でU_oはいくらか。",
+    "choices": [
+      "25 W/(m²K)",
+      "50 W/(m²K)",
+      "100 W/(m²K)",
+      "200 W/(m²K)"
+    ],
+    "answer": 1,
+    "difficulty": "標準・計算",
+    "explanation": "UA=U_iA_i=50 W/K、U_o=UA/A_o=50 W/(m²K)。",
+    "distractors": [
+      "基準面積を二重に適用した。",
+      "正解。UA=U_iA_i=50 W/K、U_o=UA/A_o=50 W/(m²K)。",
+      "内外のUを同じとした。",
+      "面積比を内外逆に使用して総括Uを過大評価しています。"
+    ],
+    "hints": [
+      "G=U_iA_iをまず計算。",
+      "外面積でGを割る。"
+    ],
+    "solutionSteps": [
+      "G=U_iA_iをまず計算。",
+      "外面積でGを割る。",
+      "UA=U_iA_i=50 W/K、U_o=UA/A_o=50 W/(m²K)。"
+    ],
+    "beginnerPitfall": "基準面積・温度差・定常状態・流体の流動条件を混同しない。"
+  },
+  {
+    "id": "supp-batch2-fouling-loss-v1",
+    "revision": "v1",
+    "field": "総括熱伝達係数と円筒熱抵抗",
+    "prerequisites": [
+      "エネルギーの保存",
+      "伝熱の境界と単位"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "§2.4の独立日本語教材による新規設問。原本本文・設問・図の転載ではない。",
+      "chapterId": "ch2",
+      "focusSectionId": "2.4",
+      "guideId": "chapter2-cylindrical-conduction"
+    },
+    "createdStatus": "独立作問",
+    "reviewStatus": "内部で式・単位を検算／外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [],
+    "prompt": "全抵抗0.050 K/Wへ汚れ抵抗0.010 K/Wを追加した。温度差30 K固定ならQ̇は？",
+    "choices": [
+      "300 W",
+      "400 W",
+      "500 W",
+      "600 W"
+    ],
+    "answer": 2,
+    "difficulty": "標準・計算",
+    "explanation": "R_new=.050+.010=.060 K/W、Q̇=30/.060=500 W。",
+    "distractors": [
+      "全抵抗を0.10と誤認。",
+      "合成抵抗を過大評価。",
+      "正解。R_new=.050+.010=.060 K/W、Q̇=30/.060=500 W。",
+      "汚れのない値を用いた。"
+    ],
+    "hints": [
+      "汚れ抵抗は直列。",
+      "Q̇=ΔT/R_total。"
+    ],
+    "solutionSteps": [
+      "汚れ抵抗は直列。",
+      "Q̇=ΔT/R_total。",
+      "R_new=.050+.010=.060 K/W、Q̇=30/.060=500 W。"
+    ],
+    "beginnerPitfall": "基準面積・温度差・定常状態・流体の流動条件を混同しない。"
+  },
+  {
+    "id": "supp-batch2-outer-h-decrease-v1",
+    "revision": "v1",
+    "field": "総括熱伝達係数と円筒熱抵抗",
+    "prerequisites": [
+      "エネルギーの保存",
+      "伝熱の境界と単位"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "applied",
+    "source": {
+      "type": "supplement",
+      "reference": "§2.4の独立日本語教材による新規設問。原本本文・設問・図の転載ではない。",
+      "chapterId": "ch2",
+      "focusSectionId": "2.4",
+      "guideId": "chapter2-cylindrical-conduction"
+    },
+    "createdStatus": "独立作問",
+    "reviewStatus": "内部で式・単位を検算／外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [],
+    "prompt": "配管外側h_oだけが低下した。他の熱抵抗と温度差が不変なら全体のUAはどうなるか。",
+    "choices": [
+      "外側抵抗が減少し全体UAが必ず上昇する",
+      "外側の流速が変わっても全抵抗は不変である",
+      "外側h_oが下がると熱流率は必ず増える",
+      "外側対流抵抗が増え、全体UAは低下する"
+    ],
+    "answer": 3,
+    "difficulty": "応用・設計判断",
+    "explanation": "R_o=1/(h_oA_o)だからh_o減少でR_o増、R_total増、UA=1/R_total減。",
+    "distractors": [
+      "h_o減少なら抵抗は増える。",
+      "対流抵抗はh_oに依存。",
+      "h_o減少は通常熱流を抑える。",
+      "正解。R_o=1/(h_oA_o)だからh_o減少でR_o増、R_total増、UA=1/R_total減。"
+    ],
+    "hints": [
+      "h_oは抵抗の分母。",
+      "UAは総抵抗の逆数。"
+    ],
+    "solutionSteps": [
+      "h_oは抵抗の分母。",
+      "UAは総抵抗の逆数。",
+      "R_o=1/(h_oA_o)だからh_o減少でR_o増、R_total増、UA=1/R_total減。"
+    ],
+    "beginnerPitfall": "基準面積・温度差・定常状態・流体の流動条件を混同しない。"
+  },
+  {
+    "id": "supp-batch2-design-area-v1",
+    "revision": "v1",
+    "field": "熱交換器設計と流動",
+    "prerequisites": [
+      "エネルギーの保存",
+      "伝熱の境界と単位"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "§3.4の独立日本語教材による新規設問。原本本文・設問・図の転載ではない。",
+      "chapterId": "ch3",
+      "focusSectionId": "3.4",
+      "guideId": "chapter3-effectiveness-ntu"
+    },
+    "createdStatus": "独立作問",
+    "reviewStatus": "内部で式・単位を検算／外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [],
+    "prompt": "熱負荷12 kW、U=300 W/(m²K)、補正F=.80、LMTD=25Kの必要面積は？",
+    "choices": [
+      "1.00 m²",
+      "1.50 m²",
+      "2.00 m²",
+      "3.00 m²"
+    ],
+    "answer": 2,
+    "difficulty": "標準・計算",
+    "explanation": "A=12000/(300×.80×25)=2.00m²。全ての単位とFを合わせる。",
+    "distractors": [
+      "補正係数の適用が誤り。",
+      "分母を過大に見積もった。",
+      "正解。A=12000/(300×.80×25)=2.00m²。全ての単位とFを合わせる。",
+      "分母を過小に見積もった。"
+    ],
+    "hints": [
+      "熱負荷はWへ換算。",
+      "A=Q̇/(UFΔT_lm)。"
+    ],
+    "solutionSteps": [
+      "熱負荷はWへ換算。",
+      "A=Q̇/(UFΔT_lm)。",
+      "A=12000/(300×.80×25)=2.00m²。全ての単位とFを合わせる。"
+    ],
+    "beginnerPitfall": "基準面積・温度差・定常状態・流体の流動条件を混同しない。"
+  },
+  {
+    "id": "supp-batch2-fouling-area-v1",
+    "revision": "v1",
+    "field": "熱交換器設計と流動",
+    "prerequisites": [
+      "エネルギーの保存",
+      "伝熱の境界と単位"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "§3.4の独立日本語教材による新規設問。原本本文・設問・図の転載ではない。",
+      "chapterId": "ch3",
+      "focusSectionId": "3.4",
+      "guideId": "chapter3-effectiveness-ntu"
+    },
+    "createdStatus": "独立作問",
+    "reviewStatus": "内部で式・単位を検算／外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [],
+    "prompt": "同じ熱負荷・LMTD・FでUが300から150 W/(m²K)へ半減。元の面積2m²なら新しい面積は？",
+    "choices": [
+      "1.0 m²",
+      "2.0 m²",
+      "3.0 m²",
+      "4.0 m²"
+    ],
+    "answer": 3,
+    "difficulty": "標準・計算",
+    "explanation": "AはUの逆数に比例するため2×2=4 m²必要。",
+    "distractors": [
+      "U低下で面積が減ると誤認。",
+      "変更前の面積を使う。",
+      "倍率を1.5とした。",
+      "正解。AはUの逆数に比例するため2×2=4 m²必要。"
+    ],
+    "hints": [
+      "必要UAが同じ条件。",
+      "U_new A_new=U_old A_old。"
+    ],
+    "solutionSteps": [
+      "必要UAが同じ条件。",
+      "U_new A_new=U_old A_old。",
+      "AはUの逆数に比例するため2×2=4 m²必要。"
+    ],
+    "beginnerPitfall": "基準面積・温度差・定常状態・流体の流動条件を混同しない。"
+  },
+  {
+    "id": "supp-batch2-lmtd-v1",
+    "revision": "v1",
+    "field": "熱交換器設計と流動",
+    "prerequisites": [
+      "エネルギーの保存",
+      "伝熱の境界と単位"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "§3.4の独立日本語教材による新規設問。原本本文・設問・図の転載ではない。",
+      "chapterId": "ch3",
+      "focusSectionId": "3.4",
+      "guideId": "chapter3-effectiveness-ntu"
+    },
+    "createdStatus": "独立作問",
+    "reviewStatus": "内部で式・単位を検算／外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [],
+    "prompt": "端末温度差が40 Kと20 Kである。対応する対数平均温度差LMTDは約？",
+    "choices": [
+      "20.0 K",
+      "25.0 K",
+      "28.9 K",
+      "30.0 K"
+    ],
+    "answer": 2,
+    "difficulty": "標準・計算",
+    "explanation": "(40−20)/ln(40/20)=20/ln2≈28.85 K。算術平均の30Kとは異なる。",
+    "distractors": [
+      "小さい端末温度差の値。",
+      "自然対数の評価ミス。",
+      "正解。(40−20)/ln(40/20)=20/ln2≈28.85 K。算術平均の30Kとは異なる。",
+      "算術平均を使用した。"
+    ],
+    "hints": [
+      "自然対数を使用。",
+      "20/ln2を計算。"
+    ],
+    "solutionSteps": [
+      "自然対数を使用。",
+      "20/ln2を計算。",
+      "(40−20)/ln(40/20)=20/ln2≈28.85 K。算術平均の30Kとは異なる。"
+    ],
+    "beginnerPitfall": "基準面積・温度差・定常状態・流体の流動条件を混同しない。"
+  },
+  {
+    "id": "supp-batch2-max-heat-check-v1",
+    "revision": "v1",
+    "field": "熱交換器設計と流動",
+    "prerequisites": [
+      "エネルギーの保存",
+      "伝熱の境界と単位"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "applied",
+    "source": {
+      "type": "supplement",
+      "reference": "§3.4の独立日本語教材による新規設問。原本本文・設問・図の転載ではない。",
+      "chapterId": "ch3",
+      "focusSectionId": "3.4",
+      "guideId": "chapter3-effectiveness-ntu"
+    },
+    "createdStatus": "独立作問",
+    "reviewStatus": "内部で式・単位を検算／外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [],
+    "prompt": "単相熱交換器のC_min=400 W/K、高温側入口80℃、低温側入口30℃。要求22kWは理想上限内か。",
+    "choices": [
+      "伝熱面積を十分大きくすれば入口の温度差制約を超えて22kWに到達する",
+      "向流なら必ず40kWに到達可能になる",
+      "上限が20kWのため与えた入口条件では実現不能",
+      "面積を増やせば入口温度差も自動的に増加"
+    ],
+    "answer": 2,
+    "difficulty": "応用・設計判断",
+    "explanation": "Q_max=400×(80−30)=20,000 W。22kWは上限を超える。",
+    "distractors": [
+      "熱交換面積を増やしても理想上限C_minΔT_inは超えません。",
+      "向流でもQ_maxは同じ。",
+      "正解。Q_max=400×(80−30)=20,000 W。22kWは上限を超える。",
+      "面積は入口温度差を変えない。"
+    ],
+    "hints": [
+      "入口温度差50Kを計算。",
+      "Q̇_max=C_minΔT_in。"
+    ],
+    "solutionSteps": [
+      "入口温度差50Kを計算。",
+      "Q̇_max=C_minΔT_in。",
+      "Q_max=400×(80−30)=20,000 W。22kWは上限を超える。"
+    ],
+    "beginnerPitfall": "基準面積・温度差・定常状態・流体の流動条件を混同しない。"
+  },
+  {
+    "id": "supp-batch2-pump-shaft-v1",
+    "revision": "v1",
+    "field": "熱交換器設計と流動",
+    "prerequisites": [
+      "エネルギーの保存",
+      "伝熱の境界と単位"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "§3.4の独立日本語教材による新規設問。原本本文・設問・図の転載ではない。",
+      "chapterId": "ch3",
+      "focusSectionId": "3.4",
+      "guideId": "chapter3-effectiveness-ntu"
+    },
+    "createdStatus": "独立作問",
+    "reviewStatus": "内部で式・単位を検算／外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [],
+    "prompt": "圧力損失50 kPa、体積流量.0010 m³/s、効率η=.50のポンプ必要軸動力は？",
+    "choices": [
+      "25 W",
+      "50 W",
+      "100 W",
+      "200 W"
+    ],
+    "answer": 2,
+    "difficulty": "標準・計算",
+    "explanation": "水力動力ΔpV̇=50 W、軸入力=50/.50=100 W。",
+    "distractors": [
+      "効率を掛けてしまった。",
+      "効率を考慮しない水力出力50 Wの値で、必要な軸入力ではありません。",
+      "正解。水力動力ΔpV̇=50 W、軸入力=50/.50=100 W。",
+      "効率を0.25と誤認。"
+    ],
+    "hints": [
+      "1Pa·m³/s=1W。",
+      "水力動力を効率で割る。"
+    ],
+    "solutionSteps": [
+      "1Pa·m³/s=1W。",
+      "水力動力を効率で割る。",
+      "水力動力ΔpV̇=50 W、軸入力=50/.50=100 W。"
+    ],
+    "beginnerPitfall": "基準面積・温度差・定常状態・流体の流動条件を混同しない。"
+  },
+  {
+    "id": "supp-batch2-f-area-ratio-v1",
+    "revision": "v1",
+    "field": "熱交換器設計と流動",
+    "prerequisites": [
+      "エネルギーの保存",
+      "伝熱の境界と単位"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "§3.4の独立日本語教材による新規設問。原本本文・設問・図の転載ではない。",
+      "chapterId": "ch3",
+      "focusSectionId": "3.4",
+      "guideId": "chapter3-effectiveness-ntu"
+    },
+    "createdStatus": "独立作問",
+    "reviewStatus": "内部で式・単位を検算／外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [],
+    "prompt": "熱負荷・U・LMTDを固定して補正係数Fを1.0から.80へ変更した。必要面積の倍率は？",
+    "choices": [
+      "0.80倍",
+      "1.00倍",
+      "1.25倍",
+      "1.80倍"
+    ],
+    "answer": 2,
+    "difficulty": "標準・計算",
+    "explanation": "A∝1/FなのでA_new/A_old=1/.8=1.25。",
+    "distractors": [
+      "Fに比例すると誤認。",
+      "Fの変化による必要伝熱面積の増加を無視しています。",
+      "正解。A∝1/FなのでA_new/A_old=1/.8=1.25。",
+      "Fの差を加算した値。"
+    ],
+    "hints": [
+      "Fは面積式の分母。",
+      "旧F/新Fを計算する。"
+    ],
+    "solutionSteps": [
+      "Fは面積式の分母。",
+      "旧F/新Fを計算する。",
+      "A∝1/FなのでA_new/A_old=1/.8=1.25。"
+    ],
+    "beginnerPitfall": "基準面積・温度差・定常状態・流体の流動条件を混同しない。"
+  },
+  {
+    "id": "supp-batch2-flow-tradeoff-v1",
+    "revision": "v1",
+    "field": "熱交換器設計と流動",
+    "prerequisites": [
+      "エネルギーの保存",
+      "伝熱の境界と単位"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "applied",
+    "source": {
+      "type": "supplement",
+      "reference": "§3.4の独立日本語教材による新規設問。原本本文・設問・図の転載ではない。",
+      "chapterId": "ch3",
+      "focusSectionId": "3.4",
+      "guideId": "chapter3-effectiveness-ntu"
+    },
+    "createdStatus": "独立作問",
+    "reviewStatus": "内部で式・単位を検算／外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [],
+    "prompt": "熱交換器の流速を上げてhを改善したい。設計判断として適切なのは？",
+    "choices": [
+      "伝熱改善と同時に圧力損失は必ずゼロになる",
+      "流速が上がれば必要ポンプ動力は必ず半減する",
+      "伝熱面積の削減で運転費は自動的に不要になる",
+      "熱性能に加え圧力損失・ポンプ動力も評価する"
+    ],
+    "answer": 3,
+    "difficulty": "応用・設計判断",
+    "explanation": "流速上昇でh改善の可能性がある一方、摩擦圧力損失とポンプ仕事も増え得る。",
+    "distractors": [
+      "流体摩擦は消えない。",
+      "流量増はポンプ負荷増の要因。",
+      "運転費は無視できない。",
+      "正解。流速上昇でh改善の可能性がある一方、摩擦圧力損失とポンプ仕事も増え得る。"
+    ],
+    "hints": [
+      "熱性能以外の制約も必要。",
+      "圧力損失と流速の関係を見る。"
+    ],
+    "solutionSteps": [
+      "熱性能以外の制約も必要。",
+      "圧力損失と流速の関係を見る。",
+      "流速上昇でh改善の可能性がある一方、摩擦圧力損失とポンプ仕事も増え得る。"
+    ],
+    "beginnerPitfall": "基準面積・温度差・定常状態・流体の流動条件を混同しない。"
+  },
+  {
+    "id": "supp-batch2-bi-number-v1",
+    "revision": "v1",
+    "field": "次元解析・相似条件",
+    "prerequisites": [
+      "熱移動の構成則",
+      "単位と適用条件"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "§4.3の独立詳説と仮想数値条件に基づく原創4択。原本の問題・訳文・図版は転載しない。",
+      "chapterId": "ch4",
+      "focusSectionId": "4.3",
+      "guideId": "chapter4-fin-design"
+    },
+    "createdStatus": "独立作問",
+    "reviewStatus": "内部で算術と単位を確認／外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [],
+    "prompt": "固体側k_s=8 W/(m·K)、h=40 W/(m²·K)、代表長さL=.020 mでBi=hL/k_sはいくつか。",
+    "choices": [
+      "0.020",
+      "0.050",
+      "0.100",
+      "0.200"
+    ],
+    "answer": 2,
+    "difficulty": "標準・数値計算",
+    "explanation": "Bi=40×.020/8=.10。hとk_s、Lの単位は相殺し無次元になる。",
+    "distractors": [
+      "hとLの積を過小評価。",
+      "熱伝導率を2倍に誤認。",
+      "正解。Bi=40×.020/8=.10。hとk_s、Lの単位は相殺し無次元になる。",
+      "Lを2倍として計算。"
+    ],
+    "hints": [
+      "固体のk_sを用いる。",
+      "Bi=hL/k_sを計算。"
+    ],
+    "solutionSteps": [
+      "固体のk_sを用いる。",
+      "Bi=hL/k_sを計算。",
+      "Bi=40×.020/8=.10。hとk_s、Lの単位は相殺し無次元になる。"
+    ],
+    "beginnerPitfall": "無次元数・流路の発達・黒体と灰色体など、それぞれのモデルの成立条件を確認する。"
+  },
+  {
+    "id": "supp-batch2-fo-number-v1",
+    "revision": "v1",
+    "field": "次元解析・相似条件",
+    "prerequisites": [
+      "熱移動の構成則",
+      "単位と適用条件"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "§4.3の独立詳説と仮想数値条件に基づく原創4択。原本の問題・訳文・図版は転載しない。",
+      "chapterId": "ch4",
+      "focusSectionId": "4.3",
+      "guideId": "chapter4-fin-design"
+    },
+    "createdStatus": "独立作問",
+    "reviewStatus": "内部で算術と単位を確認／外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [],
+    "prompt": "α_s=2.0×10⁻⁶ m²/s、L=.020 m、t=100 sのFourier数Foはいくつか。",
+    "choices": [
+      "0.125",
+      "0.250",
+      "0.500",
+      "1.000"
+    ],
+    "answer": 2,
+    "difficulty": "標準・数値計算",
+    "explanation": "Fo=αt/L²=(2×10⁻⁶×100)/(.020)²=.0002/.0004=.50。",
+    "distractors": [
+      "長さの二乗を過大に評価。",
+      "熱拡散時間を2倍と誤認。",
+      "正解。Fo=αt/L²=(2×10⁻⁶×100)/(.020)²=.0002/.0004=.50。",
+      "長さの二乗を過小に評価。"
+    ],
+    "hints": [
+      "Lは二乗で評価。",
+      "Fo=αt/L²を使用。"
+    ],
+    "solutionSteps": [
+      "Lは二乗で評価。",
+      "Fo=αt/L²を使用。",
+      "Fo=αt/L²=(2×10⁻⁶×100)/(.020)²=.0002/.0004=.50。"
+    ],
+    "beginnerPitfall": "無次元数・流路の発達・黒体と灰色体など、それぞれのモデルの成立条件を確認する。"
+  },
+  {
+    "id": "supp-batch2-length-double-fo-v1",
+    "revision": "v1",
+    "field": "次元解析・相似条件",
+    "prerequisites": [
+      "熱移動の構成則",
+      "単位と適用条件"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "§4.3の独立詳説と仮想数値条件に基づく原創4択。原本の問題・訳文・図版は転載しない。",
+      "chapterId": "ch4",
+      "focusSectionId": "4.3",
+      "guideId": "chapter4-fin-design"
+    },
+    "createdStatus": "独立作問",
+    "reviewStatus": "内部で算術と単位を確認／外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [],
+    "prompt": "αと経過時間は一定のまま、平板の代表長さをLから2Lへ変更した。元のFo=.50なら新しいFoは？",
+    "choices": [
+      "0.125",
+      "0.250",
+      "0.500",
+      "1.000"
+    ],
+    "answer": 0,
+    "difficulty": "標準・数値計算",
+    "explanation": "Fo∝1/L²であり、長さ2倍はFoを1/4にする。新Fo=.50/4=.125。",
+    "distractors": [
+      "正解。Fo∝1/L²であり、長さ2倍はFoを1/4にする。新Fo=.50/4=.125。",
+      "Lだけに反比例すると誤認。",
+      "長さ変更を無視した。",
+      "Foが2倍になると誤認。"
+    ],
+    "hints": [
+      "Foの分母にL²がある。",
+      "元の値を4で割る。"
+    ],
+    "solutionSteps": [
+      "Foの分母にL²がある。",
+      "元の値を4で割る。",
+      "Fo∝1/L²であり、長さ2倍はFoを1/4にする。新Fo=.50/4=.125。"
+    ],
+    "beginnerPitfall": "無次元数・流路の発達・黒体と灰色体など、それぞれのモデルの成立条件を確認する。"
+  },
+  {
+    "id": "supp-batch2-bi-scale-h-v1",
+    "revision": "v1",
+    "field": "次元解析・相似条件",
+    "prerequisites": [
+      "熱移動の構成則",
+      "単位と適用条件"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "§4.3の独立詳説と仮想数値条件に基づく原創4択。原本の問題・訳文・図版は転載しない。",
+      "chapterId": "ch4",
+      "focusSectionId": "4.3",
+      "guideId": "chapter4-fin-design"
+    },
+    "createdStatus": "独立作問",
+    "reviewStatus": "内部で算術と単位を確認／外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [],
+    "prompt": "同じ材質kと初期Bi=.10を保持したまま代表長さLを.020 mから.040 mにする。元h=40 W/(m²K)なら新hは？",
+    "choices": [
+      "10 W/(m²K)",
+      "20 W/(m²K)",
+      "40 W/(m²K)",
+      "80 W/(m²K)"
+    ],
+    "answer": 1,
+    "difficulty": "標準・数値計算",
+    "explanation": "Bi=hL/kを一定にするにはh_new=h_old×L_old/L_new=40×.020/.040=20 W/(m²K)。",
+    "distractors": [
+      "長さを二倍にする以上にhを小さく見積もっています。",
+      "正解。Bi=hL/kを一定にするにはh_new=h_old×L_old/L_new=40×.020/.040=20 W/(m²K)。",
+      "代表長さの変化を無視し、hを一定のままにしています。",
+      "hを長さに比例させた誤り。"
+    ],
+    "hints": [
+      "kもBiも一定。",
+      "hとLの積を一定にする。"
+    ],
+    "solutionSteps": [
+      "kもBiも一定。",
+      "hとLの積を一定にする。",
+      "Bi=hL/kを一定にするにはh_new=h_old×L_old/L_new=40×.020/.040=20 W/(m²K)。"
+    ],
+    "beginnerPitfall": "無次元数・流路の発達・黒体と灰色体など、それぞれのモデルの成立条件を確認する。"
+  },
+  {
+    "id": "supp-batch2-fo-scale-t-v1",
+    "revision": "v1",
+    "field": "次元解析・相似条件",
+    "prerequisites": [
+      "熱移動の構成則",
+      "単位と適用条件"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "§4.3の独立詳説と仮想数値条件に基づく原創4択。原本の問題・訳文・図版は転載しない。",
+      "chapterId": "ch4",
+      "focusSectionId": "4.3",
+      "guideId": "chapter4-fin-design"
+    },
+    "createdStatus": "独立作問",
+    "reviewStatus": "内部で算術と単位を確認／外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [],
+    "prompt": "元L=.020 m、t=100 s、同じ熱拡散率の相似平板をL=.040 mにした。同じFoにする経過時間は？",
+    "choices": [
+      "100 s",
+      "200 s",
+      "400 s",
+      "800 s"
+    ],
+    "answer": 2,
+    "difficulty": "標準・数値計算",
+    "explanation": "Fo=αt/L²。長さが2倍ならtを4倍にして400 sで一致。",
+    "distractors": [
+      "長さの二乗効果を無視して経過時間を変えていません。",
+      "長さに一次比例と誤認。",
+      "正解。Fo=αt/L²。長さが2倍ならtを4倍にして400 sで一致。",
+      "長さの倍率を8倍と誤認。"
+    ],
+    "hints": [
+      "同じFoはt/L²一定。",
+      "長さの倍率を二乗。"
+    ],
+    "solutionSteps": [
+      "同じFoはt/L²一定。",
+      "長さの倍率を二乗。",
+      "Fo=αt/L²。長さが2倍ならtを4倍にして400 sで一致。"
+    ],
+    "beginnerPitfall": "無次元数・流路の発達・黒体と灰色体など、それぞれのモデルの成立条件を確認する。"
+  },
+  {
+    "id": "supp-batch2-similarity-condition-v1",
+    "revision": "v1",
+    "field": "次元解析・相似条件",
+    "prerequisites": [
+      "熱移動の構成則",
+      "単位と適用条件"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "applied",
+    "source": {
+      "type": "supplement",
+      "reference": "§4.3の独立詳説と仮想数値条件に基づく原創4択。原本の問題・訳文・図版は転載しない。",
+      "chapterId": "ch4",
+      "focusSectionId": "4.3",
+      "guideId": "chapter4-fin-design"
+    },
+    "createdStatus": "独立作問",
+    "reviewStatus": "内部で算術と単位を確認／外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [],
+    "prompt": "固体kとαが同じ相似な二つの平板で、代表長さを2倍にする。BiとFoを元と同じに保つ操作として適切なのは？",
+    "choices": [
+      "hを2倍、時間を1/4倍とする",
+      "hを半分、時間を4倍にする",
+      "hと時間をともに元のままとする",
+      "hを4倍、時間を2倍にする"
+    ],
+    "answer": 1,
+    "difficulty": "応用・適用判断",
+    "explanation": "Bi=hL/kを保つにはhを1/2、Fo=αt/L²を保つにはtを4倍にする。初期・無次元境界条件も揃える必要がある。",
+    "distractors": [
+      "BiとFoの倍率を逆にした。",
+      "正解。Bi=hL/kを保つにはhを1/2、Fo=αt/L²を保つにはtを4倍にする。初期・無次元境界条件も揃える必要がある。",
+      "Lの変化でBiとFoが変わる。",
+      "どちらの無次元数も一致しない。"
+    ],
+    "hints": [
+      "Biはh×Lに比例。",
+      "Foはt/L²に比例。"
+    ],
+    "solutionSteps": [
+      "Biはh×Lに比例。",
+      "Foはt/L²に比例。",
+      "Bi=hL/kを保つにはhを1/2、Fo=αt/L²を保つにはtを4倍にする。初期・無次元境界条件も揃える必要がある。"
+    ],
+    "beginnerPitfall": "無次元数・流路の発達・黒体と灰色体など、それぞれのモデルの成立条件を確認する。"
+  },
+  {
+    "id": "supp-batch2-pipe-h-wall-temperature-v1",
+    "revision": "v1",
+    "field": "管内層流・助走区間",
+    "prerequisites": [
+      "熱移動の構成則",
+      "単位と適用条件"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "§7.2の独立詳説と仮想数値条件に基づく原創4択。原本の問題・訳文・図版は転載しない。",
+      "chapterId": "ch7",
+      "focusSectionId": "7.2",
+      "guideId": "chapter7-internal-flow"
+    },
+    "createdStatus": "独立作問",
+    "reviewStatus": "内部で算術と単位を確認／外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [],
+    "prompt": "円管の流動・熱的に十分発達した層流、壁温一定、Nu_D=3.66、流体k_f=.60 W/(mK)、内径D=.020 m。hは？",
+    "choices": [
+      "54.9 W/(m²K)",
+      "73.2 W/(m²K)",
+      "109.8 W/(m²K)",
+      "219.6 W/(m²K)"
+    ],
+    "answer": 2,
+    "difficulty": "標準・数値計算",
+    "explanation": "h=Nu_D k_f/D=3.66×.60/.020=109.8 W/(m²K)。",
+    "distractors": [
+      "Dが2倍の値であると誤認してhを半分にしています。",
+      "Nu=2.44を使用した誤り。",
+      "正解。h=Nu_D k_f/D=3.66×.60/.020=109.8 W/(m²K)。",
+      "直径を半分として過大評価。"
+    ],
+    "hints": [
+      "管壁ではなく流体k_fを使う。",
+      "h=Nu_D k_f/D。"
+    ],
+    "solutionSteps": [
+      "管壁ではなく流体k_fを使う。",
+      "h=Nu_D k_f/D。",
+      "h=Nu_D k_f/D=3.66×.60/.020=109.8 W/(m²K)。"
+    ],
+    "beginnerPitfall": "無次元数・流路の発達・黒体と灰色体など、それぞれのモデルの成立条件を確認する。"
+  },
+  {
+    "id": "supp-batch2-local-wall-flux-v1",
+    "revision": "v1",
+    "field": "管内層流・助走区間",
+    "prerequisites": [
+      "熱移動の構成則",
+      "単位と適用条件"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "§7.2の独立詳説と仮想数値条件に基づく原創4択。原本の問題・訳文・図版は転載しない。",
+      "chapterId": "ch7",
+      "focusSectionId": "7.2",
+      "guideId": "chapter7-internal-flow"
+    },
+    "createdStatus": "独立作問",
+    "reviewStatus": "内部で算術と単位を確認／外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [],
+    "prompt": "十分発達した壁温一定の円管層流で局所h=109.8 W/(m²K)、局所壁面温度が流体混合平均温度より10 K高い。局所壁熱流束q″は？",
+    "choices": [
+      "109.8 W/m²",
+      "549.0 W/m²",
+      "1098 W/m²",
+      "2196 W/m²"
+    ],
+    "answer": 2,
+    "difficulty": "標準・数値計算",
+    "explanation": "局所q″=h(T_w−T_b)=109.8×10=1098 W/m²。温度差はその断面の値。",
+    "distractors": [
+      "温度差を1Kとして計算。",
+      "温度差を5Kとして計算。",
+      "正解。局所q″=h(T_w−T_b)=109.8×10=1098 W/m²。温度差はその断面の値。",
+      "温度差を20Kとして計算。"
+    ],
+    "hints": [
+      "壁面とその断面の流体平均温度を使う。",
+      "q″=hΔT。"
+    ],
+    "solutionSteps": [
+      "壁面とその断面の流体平均温度を使う。",
+      "q″=hΔT。",
+      "局所q″=h(T_w−T_b)=109.8×10=1098 W/m²。温度差はその断面の値。"
+    ],
+    "beginnerPitfall": "無次元数・流路の発達・黒体と灰色体など、それぞれのモデルの成立条件を確認する。"
+  },
+  {
+    "id": "supp-batch2-constant-flux-pipe-h-v1",
+    "revision": "v1",
+    "field": "管内層流・助走区間",
+    "prerequisites": [
+      "熱移動の構成則",
+      "単位と適用条件"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "§7.2の独立詳説と仮想数値条件に基づく原創4択。原本の問題・訳文・図版は転載しない。",
+      "chapterId": "ch7",
+      "focusSectionId": "7.2",
+      "guideId": "chapter7-internal-flow"
+    },
+    "createdStatus": "独立作問",
+    "reviewStatus": "内部で算術と単位を確認／外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [],
+    "prompt": "十分発達した定物性の円管層流で壁熱流束一定とし、Nu_D≈4.36、k_f=.60 W/(mK)、D=.020 mならhは約？",
+    "choices": [
+      "65.4 W/(m²K)",
+      "109.8 W/(m²K)",
+      "130.8 W/(m²K)",
+      "261.6 W/(m²K)"
+    ],
+    "answer": 2,
+    "difficulty": "標準・数値計算",
+    "explanation": "h≈4.36×.60/.020=130.8 W/(m²K)。一定壁温のNu=3.66を使わない。",
+    "distractors": [
+      "Nuを半分にしている。",
+      "壁温一定のNuを流用した。",
+      "正解。h≈4.36×.60/.020=130.8 W/(m²K)。一定壁温のNu=3.66を使わない。",
+      "hを二倍にしている。"
+    ],
+    "hints": [
+      "熱的な壁条件が指定されている。",
+      "Nu≈4.36を使用。"
+    ],
+    "solutionSteps": [
+      "熱的な壁条件が指定されている。",
+      "Nu≈4.36を使用。",
+      "h≈4.36×.60/.020=130.8 W/(m²K)。一定壁温のNu=3.66を使わない。"
+    ],
+    "beginnerPitfall": "無次元数・流路の発達・黒体と灰色体など、それぞれのモデルの成立条件を確認する。"
+  },
+  {
+    "id": "supp-batch2-hydraulic-entry-length-v1",
+    "revision": "v1",
+    "field": "管内層流・助走区間",
+    "prerequisites": [
+      "熱移動の構成則",
+      "単位と適用条件"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "§7.2の独立詳説と仮想数値条件に基づく原創4択。原本の問題・訳文・図版は転載しない。",
+      "chapterId": "ch7",
+      "focusSectionId": "7.2",
+      "guideId": "chapter7-internal-flow"
+    },
+    "createdStatus": "独立作問",
+    "reviewStatus": "内部で算術と単位を確認／外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [],
+    "prompt": "層流円管でRe_D=200、D=.020 mとする。L_h≈0.05 Re_D Dで見積もる水力学的助走長は？",
+    "choices": [
+      "0.020 m",
+      "0.100 m",
+      "0.200 m",
+      "1.000 m"
+    ],
+    "answer": 2,
+    "difficulty": "標準・数値計算",
+    "explanation": "L_h≈0.05×200×.020=.20 m。これは水力学的助走域の近似目安であり厳密境界ではない。",
+    "distractors": [
+      "0.05の係数を過小評価。",
+      "ReかDを半減した結果。",
+      "正解。L_h≈0.05×200×.020=.20 m。これは水力学的助走域の近似目安であり厳密境界ではない。",
+      "Prを入れ熱助走長と混同。"
+    ],
+    "hints": [
+      "速度場の助走長と熱助走長を分ける。",
+      "L_h≈0.05 Re D。"
+    ],
+    "solutionSteps": [
+      "速度場の助走長と熱助走長を分ける。",
+      "L_h≈0.05 Re D。",
+      "L_h≈0.05×200×.020=.20 m。これは水力学的助走域の近似目安であり厳密境界ではない。"
+    ],
+    "beginnerPitfall": "無次元数・流路の発達・黒体と灰色体など、それぞれのモデルの成立条件を確認する。"
+  },
+  {
+    "id": "supp-batch2-thermal-entry-length-v1",
+    "revision": "v1",
+    "field": "管内層流・助走区間",
+    "prerequisites": [
+      "熱移動の構成則",
+      "単位と適用条件"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "§7.2の独立詳説と仮想数値条件に基づく原創4択。原本の問題・訳文・図版は転載しない。",
+      "chapterId": "ch7",
+      "focusSectionId": "7.2",
+      "guideId": "chapter7-internal-flow"
+    },
+    "createdStatus": "独立作問",
+    "reviewStatus": "内部で算術と単位を確認／外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [],
+    "prompt": "Re_D=200、Pr=5、D=.020 mの層流円管で、L_t≈0.05 Re_D Pr Dの熱的助走長は？",
+    "choices": [
+      "0.20 m",
+      "0.50 m",
+      "1.00 m",
+      "2.00 m"
+    ],
+    "answer": 2,
+    "difficulty": "標準・数値計算",
+    "explanation": "L_t≈0.05×200×5×.020=1.0 m。Pr=5なので水力助走長0.2 mより長い。",
+    "distractors": [
+      "Prを忘れて水力学的助走長にした。",
+      "Prの効果を過小評価。",
+      "正解。L_t≈0.05×200×5×.020=1.0 m。Pr=5なので水力助走長0.2 mより長い。",
+      "Prを10と誤認した。"
+    ],
+    "hints": [
+      "熱的助走長にはPrが掛かる。",
+      "0.05×Re×Pr×D。"
+    ],
+    "solutionSteps": [
+      "熱的助走長にはPrが掛かる。",
+      "0.05×Re×Pr×D。",
+      "L_t≈0.05×200×5×.020=1.0 m。Pr=5なので水力助走長0.2 mより長い。"
+    ],
+    "beginnerPitfall": "無次元数・流路の発達・黒体と灰色体など、それぞれのモデルの成立条件を確認する。"
+  },
+  {
+    "id": "supp-batch2-pipe-entry-judgment-v1",
+    "revision": "v1",
+    "field": "管内層流・助走区間",
+    "prerequisites": [
+      "熱移動の構成則",
+      "単位と適用条件"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "applied",
+    "source": {
+      "type": "supplement",
+      "reference": "§7.2の独立詳説と仮想数値条件に基づく原創4択。原本の問題・訳文・図版は転載しない。",
+      "chapterId": "ch7",
+      "focusSectionId": "7.2",
+      "guideId": "chapter7-internal-flow"
+    },
+    "createdStatus": "独立作問",
+    "reviewStatus": "内部で算術と単位を確認／外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [],
+    "prompt": "円管層流の熱的助走長が約1.0 mと推定され、入口から0.5 mの温度場を調べる。壁温一定の十分発達Nu_D=3.66について適切なのは？",
+    "choices": [
+      "円管入口付近でもNu=3.66が常に厳密に成り立ち、熱の助走長は不要である",
+      "流動が層流なら熱的な助走は考慮不要である",
+      "熱的助走域なので十分発達の定数の適用を再検討する",
+      "管壁温度の値によらず全区間の熱流束は一定とする"
+    ],
+    "answer": 2,
+    "difficulty": "応用・適用判断",
+    "explanation": "0.5mは熱的助走長1.0mより短い。流れが層流でも温度場は未発達のため、十分発達の代表Nuを無条件に当てはめない。",
+    "distractors": [
+      "十分発達Nuの条件と熱助走域を混同しています。",
+      "速度と温度の発達を混同。",
+      "正解。0.5mは熱的助走長1.0mより短い。流れが層流でも温度場は未発達のため、十分発達の代表Nuを無条件に当てはめない。",
+      "局所の壁温・流体温度が変わり得る。"
+    ],
+    "hints": [
+      "速度と温度の助走区間は別物。",
+      "現在位置とL_tの大小を比較。"
+    ],
+    "solutionSteps": [
+      "速度と温度の助走区間は別物。",
+      "現在位置とL_tの大小を比較。",
+      "0.5mは熱的助走長1.0mより短い。流れが層流でも温度場は未発達のため、十分発達の代表Nuを無条件に当てはめない。"
+    ],
+    "beginnerPitfall": "無次元数・流路の発達・黒体と灰色体など、それぞれのモデルの成立条件を確認する。"
+  },
+  {
+    "id": "supp-batch2-view-reciprocity-v1",
+    "revision": "v1",
+    "field": "放射形態係数",
+    "prerequisites": [
+      "熱移動の構成則",
+      "単位と適用条件"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "§10.3の独立詳説と仮想数値条件に基づく原創4択。原本の問題・訳文・図版は転載しない。",
+      "chapterId": "ch10",
+      "focusSectionId": "10.3",
+      "guideId": "chapter10-view-factors"
+    },
+    "createdStatus": "独立作問",
+    "reviewStatus": "内部で算術と単位を確認／外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [],
+    "prompt": "二面の面積A1=1.0 m²、A2=4.0 m²、形態係数F12=.80である。相反則よりF21は？",
+    "choices": [
+      "0.10",
+      "0.20",
+      "0.40",
+      "0.80"
+    ],
+    "answer": 1,
+    "difficulty": "標準・数値計算",
+    "explanation": "F21=A1F12/A2=(1×.8)/4=.20。小面積から大面積を見る割合と逆は等しくない。",
+    "distractors": [
+      "相反則の面積比を誤った。",
+      "正解。F21=A1F12/A2=(1×.8)/4=.20。小面積から大面積を見る割合と逆は等しくない。",
+      "面積A2を2 m²と誤認した結果に相当します。",
+      "両方向の形態係数を等しいとした。"
+    ],
+    "hints": [
+      "A1F12=A2F21。",
+      "F21を面積比で計算。"
+    ],
+    "solutionSteps": [
+      "A1F12=A2F21。",
+      "F21を面積比で計算。",
+      "F21=A1F12/A2=(1×.8)/4=.20。小面積から大面積を見る割合と逆は等しくない。"
+    ],
+    "beginnerPitfall": "無次元数・流路の発達・黒体と灰色体など、それぞれのモデルの成立条件を確認する。"
+  },
+  {
+    "id": "supp-batch2-blackbody-two-surfaces-v1",
+    "revision": "v1",
+    "field": "放射形態係数",
+    "prerequisites": [
+      "熱移動の構成則",
+      "単位と適用条件"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "§10.3の独立詳説と仮想数値条件に基づく原創4択。原本の問題・訳文・図版は転載しない。",
+      "chapterId": "ch10",
+      "focusSectionId": "10.3",
+      "guideId": "chapter10-view-factors"
+    },
+    "createdStatus": "独立作問",
+    "reviewStatus": "内部で算術と単位を確認／外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [],
+    "prompt": "二つの黒体でA1=1 m²、F12=.80、T1=400K、T2=300K、σ=5.67×10⁻⁸。面1から面2への正味放射熱移動率は約？",
+    "choices": [
+      "198.5 W",
+      "396.9 W",
+      "793.8 W",
+      "992.3 W"
+    ],
+    "answer": 2,
+    "difficulty": "標準・数値計算",
+    "explanation": "Q̇=σA1F12(T1⁴−T2⁴)=5.67×10⁻⁸×1×.8×17.5×10⁹=793.8 W。",
+    "distractors": [
+      "形態係数を過小評価。",
+      "形態係数を0.4と誤認。",
+      "正解。Q̇=σA1F12(T1⁴−T2⁴)=5.67×10⁻⁸×1×.8×17.5×10⁹=793.8 W。",
+      "形態係数を掛けない黒体差。"
+    ],
+    "hints": [
+      "放射の温度はKの4乗。",
+      "σA1F12(T1⁴−T2⁴)。"
+    ],
+    "solutionSteps": [
+      "放射の温度はKの4乗。",
+      "σA1F12(T1⁴−T2⁴)。",
+      "Q̇=σA1F12(T1⁴−T2⁴)=5.67×10⁻⁸×1×.8×17.5×10⁹=793.8 W。"
+    ],
+    "beginnerPitfall": "無次元数・流路の発達・黒体と灰色体など、それぞれのモデルの成立条件を確認する。"
+  },
+  {
+    "id": "supp-batch2-reverse-f12-v1",
+    "revision": "v1",
+    "field": "放射形態係数",
+    "prerequisites": [
+      "熱移動の構成則",
+      "単位と適用条件"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "§10.3の独立詳説と仮想数値条件に基づく原創4択。原本の問題・訳文・図版は転載しない。",
+      "chapterId": "ch10",
+      "focusSectionId": "10.3",
+      "guideId": "chapter10-view-factors"
+    },
+    "createdStatus": "独立作問",
+    "reviewStatus": "内部で算術と単位を確認／外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [],
+    "prompt": "相反則A1F12=A2F21でA1=2 m²、A2=6 m²、F21=.25ならF12は？",
+    "choices": [
+      "0.125",
+      "0.250",
+      "0.500",
+      "0.750"
+    ],
+    "answer": 3,
+    "difficulty": "標準・数値計算",
+    "explanation": "F12=(A2/A1)F21=(6/2)×.25=.75。0≤F12≤1を満たす。",
+    "distractors": [
+      "面積比を誤っている。",
+      "逆のF21をそのまま使用。",
+      "面積比を2倍と誤認。",
+      "正解。F12=(A2/A1)F21=(6/2)×.25=.75。0≤F12≤1を満たす。"
+    ],
+    "hints": [
+      "相反則で未知F12を左辺から解く。",
+      "F12=(A2/A1)F21。"
+    ],
+    "solutionSteps": [
+      "相反則で未知F12を左辺から解く。",
+      "F12=(A2/A1)F21。",
+      "F12=(A2/A1)F21=(6/2)×.25=.75。0≤F12≤1を満たす。"
+    ],
+    "beginnerPitfall": "無次元数・流路の発達・黒体と灰色体など、それぞれのモデルの成立条件を確認する。"
+  },
+  {
+    "id": "supp-batch2-closed-view-sum-v1",
+    "revision": "v1",
+    "field": "放射形態係数",
+    "prerequisites": [
+      "熱移動の構成則",
+      "単位と適用条件"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "§10.3の独立詳説と仮想数値条件に基づく原創4択。原本の問題・訳文・図版は転載しない。",
+      "chapterId": "ch10",
+      "focusSectionId": "10.3",
+      "guideId": "chapter10-view-factors"
+    },
+    "createdStatus": "独立作問",
+    "reviewStatus": "内部で算術と単位を確認／外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [],
+    "prompt": "閉じた三面囲いの凸面1でF11=0、F12=.25である。全ての到達面を含むときF13は？",
+    "choices": [
+      "0.25",
+      "0.50",
+      "0.75",
+      "1.00"
+    ],
+    "answer": 2,
+    "difficulty": "標準・数値計算",
+    "explanation": "閉鎖囲いの形態係数の行和は1。F13=1−F11−F12=1−0−.25=.75。",
+    "distractors": [
+      "F12をそのまま用いている。",
+      "F12を二重に足している。",
+      "正解。閉鎖囲いの形態係数の行和は1。F13=1−F11−F12=1−0−.25=.75。",
+      "他面を無視して1とした。"
+    ],
+    "hints": [
+      "完全閉鎖囲いでΣ_jF1j=1。",
+      "残りの割合を計算。"
+    ],
+    "solutionSteps": [
+      "完全閉鎖囲いでΣ_jF1j=1。",
+      "残りの割合を計算。",
+      "閉鎖囲いの形態係数の行和は1。F13=1−F11−F12=1−0−.25=.75。"
+    ],
+    "beginnerPitfall": "無次元数・流路の発達・黒体と灰色体など、それぞれのモデルの成立条件を確認する。"
+  },
+  {
+    "id": "supp-batch2-convex-self-factor-v1",
+    "revision": "v1",
+    "field": "放射形態係数",
+    "prerequisites": [
+      "熱移動の構成則",
+      "単位と適用条件"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "conceptual",
+    "source": {
+      "type": "supplement",
+      "reference": "§10.3の独立詳説と仮想数値条件に基づく原創4択。原本の問題・訳文・図版は転載しない。",
+      "chapterId": "ch10",
+      "focusSectionId": "10.3",
+      "guideId": "chapter10-view-factors"
+    },
+    "createdStatus": "独立作問",
+    "reviewStatus": "内部で算術と単位を確認／外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [],
+    "prompt": "拡散放射の形態係数で、凸面の自己形態係数Fiiについて正しい説明は？",
+    "choices": [
+      "凸面は自己を直接見ないためFii=0となる",
+      "凸面の自己形態係数は必ずちょうど1.0に等しく、どのような形でも他面は見ない",
+      "Fiiはいつも絶対温度に比例して増える",
+      "凹面・凸面を問わずFiiは必ず1である"
+    ],
+    "answer": 0,
+    "difficulty": "標準・数値計算",
+    "explanation": "凸面は自分自身へ直接の視線が戻らないためFii=0。凹面ではFii>0もあり得る。",
+    "distractors": [
+      "正解。凸面は自分自身へ直接の視線が戻らないためFii=0。凹面ではFii>0もあり得る。",
+      "凸面の自己形態係数は0で、外側の他面を見る場合があります。",
+      "形態係数は温度依存の量ではない。",
+      "凹面と凸面の自己視野は異なる。"
+    ],
+    "hints": [
+      "自己形態係数は幾何学的割合。",
+      "凸面と凹面の視線経路を考える。"
+    ],
+    "solutionSteps": [
+      "自己形態係数は幾何学的割合。",
+      "凸面と凹面の視線経路を考える。",
+      "凸面は自分自身へ直接の視線が戻らないためFii=0。凹面ではFii>0もあり得る。"
+    ],
+    "beginnerPitfall": "無次元数・流路の発達・黒体と灰色体など、それぞれのモデルの成立条件を確認する。"
+  },
+  {
+    "id": "supp-batch2-grey-surface-limit-v1",
+    "revision": "v1",
+    "field": "放射形態係数",
+    "prerequisites": [
+      "熱移動の構成則",
+      "単位と適用条件"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "applied",
+    "source": {
+      "type": "supplement",
+      "reference": "§10.3の独立詳説と仮想数値条件に基づく原創4択。原本の問題・訳文・図版は転載しない。",
+      "chapterId": "ch10",
+      "focusSectionId": "10.3",
+      "guideId": "chapter10-view-factors"
+    },
+    "createdStatus": "独立作問",
+    "reviewStatus": "内部で算術と単位を確認／外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [],
+    "prompt": "二つの面が黒体でなく灰色体で、反射があり得る。黒体間のQ̇=σA1F12(T1⁴−T2⁴)をそのまま使う判断は？",
+    "choices": [
+      "灰色体でも放射率に関係なく黒体式が厳密",
+      "面同士の放射率を単純加算すれば厳密解",
+      "反射・多重交換を考え、適切な放射回路を用いる",
+      "形態係数F12を0と置けば必ず精密に計算可能"
+    ],
+    "answer": 2,
+    "difficulty": "応用・適用判断",
+    "explanation": "灰色体では反射・再入射の影響があり、黒体式へ単純に一つの放射率を掛ければ一般解になるとは限らない。射度と照射を扱う放射ネットワークを検討する。",
+    "distractors": [
+      "灰色体の反射を無視している。",
+      "放射率は足すだけでは交換が解けない。",
+      "正解。灰色体では反射・再入射の影響があり、黒体式へ単純に一つの放射率を掛ければ一般解になるとは限らない。射度と照射を扱う放射ネットワークを検討する。",
+      "F12は幾何量であり恣意的にゼロにできない。"
+    ],
+    "hints": [
+      "二面ともε<1なら反射が起こり得る。",
+      "黒体式の前提を点検。"
+    ],
+    "solutionSteps": [
+      "二面ともε<1なら反射が起こり得る。",
+      "黒体式の前提を点検。",
+      "灰色体では反射・再入射の影響があり、黒体式へ単純に一つの放射率を掛ければ一般解になるとは限らない。射度と照射を扱う放射ネットワークを検討する。"
+    ],
+    "beginnerPitfall": "無次元数・流路の発達・黒体と灰色体など、それぞれのモデルの成立条件を確認する。"
+  },
+  {
+    "id": "supp-batch2-dimensional-analysis-model-v1",
+    "revision": "v1",
+    "field": "次元解析・相似条件",
+    "prerequisites": [
+      "熱拡散方程式",
+      "無次元のBiとFo"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "conceptual",
+    "source": {
+      "type": "supplement",
+      "reference": "§4.3の独立執筆次元解析教材に関連する新規概念問題。原本の問題・図版を転載しない。",
+      "chapterId": "ch4",
+      "focusSectionId": "4.3",
+      "guideId": "chapter4-fin-design"
+    },
+    "createdStatus": "独立作問",
+    "reviewStatus": "概念と適用条件の内部確認済み／外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [],
+    "prompt": "二つの熱伝導実験でBiとFoが同じ数値だった。熱の無次元温度分布も完全に一致すると結論するには、何をさらに確認する必要があるか。",
+    "choices": [
+      "二つの実験が異なる形状・境界でも一致することを仮定する",
+      "代表長さLは違っていても関係しないものとみなす",
+      "形状と初期温度分布、無次元境界条件の一致を確かめる",
+      "BiとFoが同じなら他の物性や条件を確認しなくてもよい"
+    ],
+    "answer": 2,
+    "difficulty": "応用・モデルの成立条件",
+    "explanation": "BiとFoが同じでも、形状、初期の無次元温度分布、境界条件（各面の熱流束・対流、周囲温度、時間依存等）が異なれば解は一般に一致しない。物性一定・発熱なし等の支配方程式も一致させる必要がある。",
+    "distractors": [
+      "異なる形状や境界条件を無視すると相似にならない。",
+      "代表長さはBiとFoを作る際に必要な量であり、定義の一貫性が重要。",
+      "正解。同じ無次元方程式と対応する初期・境界条件が必要。",
+      "二つの無次元量だけではモデルの全条件を指定できない。"
+    ],
+    "hints": [
+      "BiとFoは支配条件の一部だけを表しています。",
+      "無次元微分方程式の解を一意に決めるための入力を考えます。"
+    ],
+    "solutionSteps": [
+      "BiとFoは無次元パラメータであることを確認する。",
+      "空間の形状・初期温度・境界条件が解に関与することを整理する。",
+      "同じ無次元条件で初めて温度場の相似を検討できると判断する。"
+    ],
+    "beginnerPitfall": "BiとFoの数値だけが同じならすべての熱伝導問題に同じ温度分布が当てはまるという誤解を避ける。"
+  },
+  {
+    "id": "supp-batch3-neumann-grad-v1",
+    "revision": "v1",
+    "field": "境界値問題・熱流束の符号",
+    "prerequisites": [
+      "熱伝導方程式",
+      "指定温度・熱流束・エネルギー保存"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "§4.1に関する独立執筆の学習教材・仮想条件から作成。原本の翻訳・本文・図・章末問題は転載しない。",
+      "chapterId": "ch4",
+      "focusSectionId": "4.1",
+      "guideId": "chapter4-fin-design"
+    },
+    "createdStatus": "独立作問",
+    "reviewStatus": "保存則・式の内部確認済み／外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [],
+    "prompt": "一次元平板で右面の外向き熱流束q″=+200 W/m²、k=2 W/(mK)である。右面の温度勾配dT/dxは？",
+    "choices": [
+      "−50 K/m",
+      "−100 K/m",
+      "+100 K/m",
+      "+200 K/m"
+    ],
+    "answer": 1,
+    "difficulty": "標準・計算と概念",
+    "explanation": "右面で外向き法線は+x。q″=−k dT/dx=+200だからdT/dx=−100 K/m。",
+    "distractors": [
+      "kを二重に掛けた誤り。",
+      "正解。右面で外向き法線は+x。q″=−k dT/dx=+200だからdT/dx=−100 K/m。",
+      "Fourier則の負号を落としている。",
+      "kと流束の積と勾配を混同。"
+    ],
+    "hints": [
+      "右面の法線は+x向き。",
+      "q″=−k dT/dxを解く。"
+    ],
+    "solutionSteps": [
+      "右面の法線は+x向き。",
+      "q″=−k dT/dxを解く。",
+      "右面で外向き法線は+x。q″=−k dT/dx=+200だからdT/dx=−100 K/m。"
+    ],
+    "beginnerPitfall": "外向き法線、境界と初期条件、内部発熱率の単位、半厚さと全厚さを区別する。"
+  },
+  {
+    "id": "supp-batch3-neumann-right-temperature-v1",
+    "revision": "v1",
+    "field": "境界値問題・熱流束の符号",
+    "prerequisites": [
+      "熱伝導方程式",
+      "指定温度・熱流束・エネルギー保存"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "§4.1に関する独立執筆の学習教材・仮想条件から作成。原本の翻訳・本文・図・章末問題は転載しない。",
+      "chapterId": "ch4",
+      "focusSectionId": "4.1",
+      "guideId": "chapter4-fin-design"
+    },
+    "createdStatus": "独立作問",
+    "reviewStatus": "保存則・式の内部確認済み／外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [],
+    "prompt": "厚さ0.10 m、k=2 W/(mK)の発熱なし定常平板で、左面100℃、右面から外向きに200 W/m²放熱する。右面温度は？",
+    "choices": [
+      "80 ℃",
+      "90 ℃",
+      "95 ℃",
+      "100 ℃"
+    ],
+    "answer": 1,
+    "difficulty": "標準・計算と概念",
+    "explanation": "dT/dx=−200/2=−100 K/m。右面温度T(L)=100−100×0.10=90℃。",
+    "distractors": [
+      "温度低下を20Kと誤算。",
+      "正解。dT/dx=−200/2=−100 K/m。右面温度T(L)=100−100×0.10=90℃。",
+      "温度低下を5Kと誤算。",
+      "右面の熱流束を無視。"
+    ],
+    "hints": [
+      "平板内温度は定常一様kなら線形。",
+      "T(L)=T(0)−q″L/kを使う。"
+    ],
+    "solutionSteps": [
+      "平板内温度は定常一様kなら線形。",
+      "T(L)=T(0)−q″L/kを使う。",
+      "dT/dx=−200/2=−100 K/m。右面温度T(L)=100−100×0.10=90℃。"
+    ],
+    "beginnerPitfall": "外向き法線、境界と初期条件、内部発熱率の単位、半厚さと全厚さを区別する。"
+  },
+  {
+    "id": "supp-batch3-left-boundary-outward-flux-v1",
+    "revision": "v1",
+    "field": "境界値問題・熱流束の符号",
+    "prerequisites": [
+      "熱伝導方程式",
+      "指定温度・熱流束・エネルギー保存"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "§4.1に関する独立執筆の学習教材・仮想条件から作成。原本の翻訳・本文・図・章末問題は転載しない。",
+      "chapterId": "ch4",
+      "focusSectionId": "4.1",
+      "guideId": "chapter4-fin-design"
+    },
+    "createdStatus": "独立作問",
+    "reviewStatus": "保存則・式の内部確認済み／外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [],
+    "prompt": "右向き熱流束q_x″=+200 W/m²で一定の平板。左面の外向き法線は−x向きである。左面の外向き熱流束成分は？",
+    "choices": [
+      "−200 W/m²",
+      "−100 W/m²",
+      "+100 W/m²",
+      "+200 W/m²"
+    ],
+    "answer": 0,
+    "difficulty": "標準・計算と概念",
+    "explanation": "外向き流束はq″·n。左面はn=−xなのでq_out,left=−200 W/m²で、物体へ流入することを表す。",
+    "distractors": [
+      "正解。外向き流束はq″·n。左面はn=−xなのでq_out,left=−200 W/m²で、物体へ流入することを表す。",
+      "熱流率を半分と誤認。",
+      "左面の法線と向きを混同している。",
+      "左面を右面と同じ外向きで扱う誤り。"
+    ],
+    "hints": [
+      "左面の外向き法線は右面と逆向き。",
+      "q_out=q_x″n_xを計算。"
+    ],
+    "solutionSteps": [
+      "左面の外向き法線は右面と逆向き。",
+      "q_out=q_x″n_xを計算。",
+      "外向き流束はq″·n。左面はn=−xなのでq_out,left=−200 W/m²で、物体へ流入することを表す。"
+    ],
+    "beginnerPitfall": "外向き法線、境界と初期条件、内部発熱率の単位、半厚さと全厚さを区別する。"
+  },
+  {
+    "id": "supp-batch3-dirichlet-and-robin-v1",
+    "revision": "v1",
+    "field": "境界値問題・熱流束の符号",
+    "prerequisites": [
+      "熱伝導方程式",
+      "指定温度・熱流束・エネルギー保存"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "conceptual",
+    "source": {
+      "type": "supplement",
+      "reference": "§4.1に関する独立執筆の学習教材・仮想条件から作成。原本の翻訳・本文・図・章末問題は転載しない。",
+      "chapterId": "ch4",
+      "focusSectionId": "4.1",
+      "guideId": "chapter4-fin-design"
+    },
+    "createdStatus": "独立作問",
+    "reviewStatus": "保存則・式の内部確認済み／外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [],
+    "prompt": "流体温度T∞が既知で、固体表面温度T_sが未知、対流熱伝達率hが有限とする。壁の境界条件はどれが適切か。",
+    "choices": [
+      "固体表面温度T_sをT∞と等しいと常に固定する",
+      "固体内部の温度勾配をどこでも0と指定する",
+      "固体と流体の伝熱をRobin条件で連成する",
+      "固体内の発熱率をhの値と等しいとする"
+    ],
+    "answer": 2,
+    "difficulty": "標準・計算と概念",
+    "explanation": "表面温度T_sが未知で有限のhなら−k∂T/∂n=h(T_s−T∞)という対流Robin条件を用いる。T_s=T∞の決めつけは不適切。",
+    "distractors": [
+      "流体温度と壁面温度を無条件に同じとしている。",
+      "有限の対流があっても伝導勾配は一般に0でない。",
+      "正解。表面温度T_sが未知で有限のhなら−k∂T/∂n=h(T_s−T∞)という対流Robin条件を用いる。T_s=T∞の決めつけは不適切。",
+      "体積発熱率とhの単位が一致しない。"
+    ],
+    "hints": [
+      "壁面の伝導熱流と対流熱流を釣り合わせる。",
+      "T_sは結果として求まる未知数。"
+    ],
+    "solutionSteps": [
+      "壁面の伝導熱流と対流熱流を釣り合わせる。",
+      "T_sは結果として求まる未知数。",
+      "表面温度T_sが未知で有限のhなら−k∂T/∂n=h(T_s−T∞)という対流Robin条件を用いる。T_s=T∞の決めつけは不適切。"
+    ],
+    "beginnerPitfall": "外向き法線、境界と初期条件、内部発熱率の単位、半厚さと全厚さを区別する。"
+  },
+  {
+    "id": "supp-batch3-insulated-boundary-v1",
+    "revision": "v1",
+    "field": "境界値問題・熱流束の符号",
+    "prerequisites": [
+      "熱伝導方程式",
+      "指定温度・熱流束・エネルギー保存"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "conceptual",
+    "source": {
+      "type": "supplement",
+      "reference": "§4.1に関する独立執筆の学習教材・仮想条件から作成。原本の翻訳・本文・図・章末問題は転載しない。",
+      "chapterId": "ch4",
+      "focusSectionId": "4.1",
+      "guideId": "chapter4-fin-design"
+    },
+    "createdStatus": "独立作問",
+    "reviewStatus": "保存則・式の内部確認済み／外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [],
+    "prompt": "熱伝導率が正の固体の断熱面について、内部発熱なし・伝導のみのモデルで成立する境界条件は？",
+    "choices": [
+      "法線温度勾配が0であり伝導流束が0である",
+      "断熱面は必ず絶対零度または0℃のいずれかに温度固定される",
+      "断熱面の温度は必ず周囲温度に等しい",
+      "断熱面へは正の熱流束が必ず流入する"
+    ],
+    "answer": 0,
+    "difficulty": "標準・計算と概念",
+    "explanation": "断熱面は法線熱流束q_out″=−k∂T/∂n=0であり、k>0なら∂T/∂n=0。温度の絶対値を固定する条件ではない。",
+    "distractors": [
+      "正解。断熱面は法線熱流束q_out″=−k∂T/∂n=0であり、k>0なら∂T/∂n=0。温度の絶対値を固定する条件ではない。",
+      "断熱は法線流束ゼロであり、表面温度固定ではありません。",
+      "流体温度との一致を意味しない。",
+      "断熱なら法線方向の伝導熱流束は0。"
+    ],
+    "hints": [
+      "断熱は熱の出入りを禁止する境界。",
+      "−k∂T/∂n=0を解釈。"
+    ],
+    "solutionSteps": [
+      "断熱は熱の出入りを禁止する境界。",
+      "−k∂T/∂n=0を解釈。",
+      "断熱面は法線熱流束q_out″=−k∂T/∂n=0であり、k>0なら∂T/∂n=0。温度の絶対値を固定する条件ではない。"
+    ],
+    "beginnerPitfall": "外向き法線、境界と初期条件、内部発熱率の単位、半厚さと全厚さを区別する。"
+  },
+  {
+    "id": "supp-batch3-pure-neumann-unique-v1",
+    "revision": "v1",
+    "field": "境界値問題・熱流束の符号",
+    "prerequisites": [
+      "熱伝導方程式",
+      "指定温度・熱流束・エネルギー保存"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "applied",
+    "source": {
+      "type": "supplement",
+      "reference": "§4.1に関する独立執筆の学習教材・仮想条件から作成。原本の翻訳・本文・図・章末問題は転載しない。",
+      "chapterId": "ch4",
+      "focusSectionId": "4.1",
+      "guideId": "chapter4-fin-design"
+    },
+    "createdStatus": "独立作問",
+    "reviewStatus": "保存則・式の内部確認済み／外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [],
+    "prompt": "発熱なしの定常熱伝導で全境界の熱流束だけを指定し、全体の入出熱は整合している。温度の絶対値を一意に求めるには？",
+    "choices": [
+      "指定された流束だけから温度の基準値は常に定まる",
+      "どの面でも熱流束を0にすれば温度は必ず0℃",
+      "熱伝導率だけが分かれば温度の定数項も決まる",
+      "ある一点の温度など追加の基準条件が必要となる"
+    ],
+    "answer": 3,
+    "difficulty": "応用・物理判断",
+    "explanation": "全境界でNeumann条件だけを課す定常伝導では、解に任意の定数を加えても温度勾配は変わらない。適合条件を満たしても温度の基準を追加指定する必要がある。",
+    "distractors": [
+      "絶対温度へ任意の定数を加えられる。",
+      "流束ゼロは温度ゼロの条件ではない。",
+      "kだけでは温度の基準は決まらない。",
+      "正解。全境界でNeumann条件だけを課す定常伝導では、解に任意の定数を加えても温度勾配は変わらない。適合条件を満たしても温度の基準を追加指定する必要がある。"
+    ],
+    "hints": [
+      "熱流束は温度の勾配を指定する。",
+      "T+Cも同じ勾配を持つ。"
+    ],
+    "solutionSteps": [
+      "熱流束は温度の勾配を指定する。",
+      "T+Cも同じ勾配を持つ。",
+      "全境界でNeumann条件だけを課す定常伝導では、解に任意の定数を加えても温度勾配は変わらない。適合条件を満たしても温度の基準を追加指定する必要がある。"
+    ],
+    "beginnerPitfall": "外向き法線、境界と初期条件、内部発熱率の単位、半厚さと全厚さを区別する。"
+  },
+  {
+    "id": "supp-batch3-initial-condition-necessity-v1",
+    "revision": "v1",
+    "field": "境界値問題・熱流束の符号",
+    "prerequisites": [
+      "熱伝導方程式",
+      "指定温度・熱流束・エネルギー保存"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "applied",
+    "source": {
+      "type": "supplement",
+      "reference": "§4.1に関する独立執筆の学習教材・仮想条件から作成。原本の翻訳・本文・図・章末問題は転載しない。",
+      "chapterId": "ch4",
+      "focusSectionId": "4.1",
+      "guideId": "chapter4-fin-design"
+    },
+    "createdStatus": "独立作問",
+    "reviewStatus": "保存則・式の内部確認済み／外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [],
+    "prompt": "同じ平板の境界温度と物性が分かっているが、加熱開始直後の非定常温度分布を求めたい。何が追加で必要か。",
+    "choices": [
+      "定常の境界温度だけから非定常の初期温度分布も必ず決まる",
+      "初期温度分布T(x,0)を指定する必要がある",
+      "物体の色だけを追加で指定すれば必ず十分",
+      "熱流束の符号を省略して温度だけを指定する"
+    ],
+    "answer": 1,
+    "difficulty": "応用・物理判断",
+    "explanation": "非定常熱方程式は時間微分を含むため、初期温度T(x,0)と適切な境界条件が必要。境界値だけでは一般に過渡解を一意に定められない。",
+    "distractors": [
+      "境界条件だけでは一般に初期の温度分布は決まりません。",
+      "正解。非定常熱方程式は時間微分を含むため、初期温度T(x,0)と適切な境界条件が必要。境界値だけでは一般に過渡解を一意に定められない。",
+      "色だけでは熱容量や初期条件が決まらない。",
+      "法線方向と符号の条件は依然として重要。"
+    ],
+    "hints": [
+      "定常方程式と非定常方程式を比較する。",
+      "過渡現象ではt=0の状態が必要。"
+    ],
+    "solutionSteps": [
+      "定常方程式と非定常方程式を比較する。",
+      "過渡現象ではt=0の状態が必要。",
+      "非定常熱方程式は時間微分を含むため、初期温度T(x,0)と適切な境界条件が必要。境界値だけでは一般に過渡解を一意に定められない。"
+    ],
+    "beginnerPitfall": "外向き法線、境界と初期条件、内部発熱率の単位、半厚さと全厚さを区別する。"
+  },
+  {
+    "id": "supp-batch3-generated-center-rise-v1",
+    "revision": "v1",
+    "field": "内部発熱・熱伝導支配式",
+    "prerequisites": [
+      "熱伝導方程式",
+      "指定温度・熱流束・エネルギー保存"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "§4.2に関する独立執筆の学習教材・仮想条件から作成。原本の翻訳・本文・図・章末問題は転載しない。",
+      "chapterId": "ch4",
+      "focusSectionId": "4.2",
+      "guideId": "chapter4-fin-design"
+    },
+    "createdStatus": "独立作問",
+    "reviewStatus": "保存則・式の内部確認済み／外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [],
+    "prompt": "全厚さ0.10 mの両面を20℃に保持する対称平板。半厚さL=.050 m、q‴=20000 W/m³、k=10 W/(mK)。中心温度の上昇幅は？",
+    "choices": [
+      "1.25 K",
+      "2.00 K",
+      "2.50 K",
+      "5.00 K"
+    ],
+    "answer": 2,
+    "difficulty": "標準・計算と概念",
+    "explanation": "中心上昇はΔT=q‴L²/(2k)=20000×.050²/(2×10)=2.50 K。Lは半厚さ。",
+    "distractors": [
+      "半厚さLを正しく二乗せず、過小評価した値です。",
+      "分母2kの扱いが不正確。",
+      "正解。中心上昇はΔT=q‴L²/(2k)=20000×.050²/(2×10)=2.50 K。Lは半厚さ。",
+      "分母の2を忘れた値。"
+    ],
+    "hints": [
+      "左右対称で中心が最大。",
+      "ΔT_center=q‴L²/(2k)。"
+    ],
+    "solutionSteps": [
+      "左右対称で中心が最大。",
+      "ΔT_center=q‴L²/(2k)。",
+      "中心上昇はΔT=q‴L²/(2k)=20000×.050²/(2×10)=2.50 K。Lは半厚さ。"
+    ],
+    "beginnerPitfall": "外向き法線、境界と初期条件、内部発熱率の単位、半厚さと全厚さを区別する。"
+  },
+  {
+    "id": "supp-batch3-generated-center-temp-v1",
+    "revision": "v1",
+    "field": "内部発熱・熱伝導支配式",
+    "prerequisites": [
+      "熱伝導方程式",
+      "指定温度・熱流束・エネルギー保存"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "§4.2に関する独立執筆の学習教材・仮想条件から作成。原本の翻訳・本文・図・章末問題は転載しない。",
+      "chapterId": "ch4",
+      "focusSectionId": "4.2",
+      "guideId": "chapter4-fin-design"
+    },
+    "createdStatus": "独立作問",
+    "reviewStatus": "保存則・式の内部確認済み／外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [],
+    "prompt": "両面温度20℃、半厚さ0.050 m、q‴=20000 W/m³、k=10 W/(mK)の発熱あり平板。中心温度は？",
+    "choices": [
+      "20.0 ℃",
+      "21.25 ℃",
+      "22.5 ℃",
+      "25.0 ℃"
+    ],
+    "answer": 2,
+    "difficulty": "標準・計算と概念",
+    "explanation": "ΔT_center=2.5 KだからT_center=20+2.5=22.5℃。",
+    "distractors": [
+      "固体内部にある体積発熱を無視して、表面温度と等しいとしています。",
+      "温度上昇を半分と誤認。",
+      "正解。ΔT_center=2.5 KだからT_center=20+2.5=22.5℃。",
+      "温度上昇を2倍と誤認。"
+    ],
+    "hints": [
+      "中心上昇と絶対温度を分ける。",
+      "表面温度にΔTを足す。"
+    ],
+    "solutionSteps": [
+      "中心上昇と絶対温度を分ける。",
+      "表面温度にΔTを足す。",
+      "ΔT_center=2.5 KだからT_center=20+2.5=22.5℃。"
+    ],
+    "beginnerPitfall": "外向き法線、境界と初期条件、内部発熱率の単位、半厚さと全厚さを区別する。"
+  },
+  {
+    "id": "supp-batch3-generated-surface-flux-v1",
+    "revision": "v1",
+    "field": "内部発熱・熱伝導支配式",
+    "prerequisites": [
+      "熱伝導方程式",
+      "指定温度・熱流束・エネルギー保存"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "§4.2に関する独立執筆の学習教材・仮想条件から作成。原本の翻訳・本文・図・章末問題は転載しない。",
+      "chapterId": "ch4",
+      "focusSectionId": "4.2",
+      "guideId": "chapter4-fin-design"
+    },
+    "createdStatus": "独立作問",
+    "reviewStatus": "保存則・式の内部確認済み／外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [],
+    "prompt": "両面等温の対称平板、半厚さL=.050 m、正の体積発熱率q‴=20000 W/m³。各表面の外向き熱流束の大きさは？",
+    "choices": [
+      "500 W/m²",
+      "750 W/m²",
+      "1000 W/m²",
+      "2000 W/m²"
+    ],
+    "answer": 2,
+    "difficulty": "標準・計算と概念",
+    "explanation": "各側の外向き熱流束はq_out″=q‴L=20000×.050=1000 W/m²。両側の合計とは区別。",
+    "distractors": [
+      "Lを.025mと誤算。",
+      "Lを.0375mと誤算。",
+      "正解。各側の外向き熱流束はq_out″=q‴L=20000×.050=1000 W/m²。両側の合計とは区別。",
+      "両面分を1面の流束と混同。"
+    ],
+    "hints": [
+      "全厚さ2Lの発熱が左右へ半分ずつ出る。",
+      "q″_out=q‴L。"
+    ],
+    "solutionSteps": [
+      "全厚さ2Lの発熱が左右へ半分ずつ出る。",
+      "q″_out=q‴L。",
+      "各側の外向き熱流束はq_out″=q‴L=20000×.050=1000 W/m²。両側の合計とは区別。"
+    ],
+    "beginnerPitfall": "外向き法線、境界と初期条件、内部発熱率の単位、半厚さと全厚さを区別する。"
+  },
+  {
+    "id": "supp-batch3-generated-total-power-v1",
+    "revision": "v2",
+    "field": "内部発熱・熱伝導支配式",
+    "prerequisites": [
+      "熱伝導方程式",
+      "指定温度・熱流束・エネルギー保存"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "§4.2に関する独立執筆の学習教材・仮想条件から作成。原本の翻訳・本文・図・章末問題は転載しない。",
+      "chapterId": "ch4",
+      "focusSectionId": "4.2",
+      "guideId": "chapter4-fin-design"
+    },
+    "createdStatus": "独立作問",
+    "reviewStatus": "v2で面ごとの放熱量の根拠不足を修正・保存則の内部確認済み／外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [],
+    "prompt": "全厚さ0.10 m、平面面積A=1.0 m²の平板で一様q‴=20000 W/m³の発熱がある。総発熱率は？",
+    "choices": [
+      "500 W",
+      "1000 W",
+      "2000 W",
+      "4000 W"
+    ],
+    "answer": 2,
+    "difficulty": "標準・計算と概念",
+    "explanation": "Q̇_gen=q‴V=20000×(0.10×1.0)=2000 W。面ごとの放熱量は境界条件や蓄熱の有無で変わり、この設問の条件だけでは決まらない。",
+    "distractors": [
+      "体積を1/4に評価。",
+      "発熱率を半分だけ数えた。面ごとの放熱量は条件不足で定まらない。",
+      "正解。Q̇_gen=q‴V=20000×(0.10×1.0)=2000 W。面ごとの放熱量は境界条件や蓄熱の有無で変わり、この設問の条件だけでは決まらない。",
+      "体積を2倍にしている。"
+    ],
+    "hints": [
+      "体積発熱の単位はW/m³。",
+      "板体積=全厚さ×平面面積。"
+    ],
+    "solutionSteps": [
+      "体積発熱の単位はW/m³。",
+      "板体積=全厚さ×平面面積。",
+      "Q̇_gen=q‴V=20000×(0.10×1.0)=2000 W。面ごとの放熱量は境界条件や蓄熱の有無で変わり、この設問の条件だけでは決まらない。"
+    ],
+    "beginnerPitfall": "体積発熱の総量と、面ごとの放熱量を混同しない。後者には境界条件・蓄熱条件が必要。"
+  },
+  {
+    "id": "supp-batch3-generation-thickness-squared-v1",
+    "revision": "v1",
+    "field": "内部発熱・熱伝導支配式",
+    "prerequisites": [
+      "熱伝導方程式",
+      "指定温度・熱流束・エネルギー保存"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "§4.2に関する独立執筆の学習教材・仮想条件から作成。原本の翻訳・本文・図・章末問題は転載しない。",
+      "chapterId": "ch4",
+      "focusSectionId": "4.2",
+      "guideId": "chapter4-fin-design"
+    },
+    "createdStatus": "独立作問",
+    "reviewStatus": "保存則・式の内部確認済み／外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [],
+    "prompt": "両面温度を固定し、同じkと体積発熱率q‴で平板の半厚さLを2倍にする。中心温度上昇幅は何倍か。",
+    "choices": [
+      "2倍",
+      "3倍",
+      "4倍",
+      "8倍"
+    ],
+    "answer": 2,
+    "difficulty": "標準・計算と概念",
+    "explanation": "ΔT_center=q‴L²/(2k)なので、他条件一定でLが2倍なら中心温度上昇は4倍。",
+    "distractors": [
+      "長さへの一次比例と誤認。",
+      "L²の倍率を3と誤認。",
+      "正解。ΔT_center=q‴L²/(2k)なので、他条件一定でLが2倍なら中心温度上昇は4倍。",
+      "L³への比例と誤認。"
+    ],
+    "hints": [
+      "中心温度上昇はLの二乗に比例。",
+      "2²を計算する。"
+    ],
+    "solutionSteps": [
+      "中心温度上昇はLの二乗に比例。",
+      "2²を計算する。",
+      "ΔT_center=q‴L²/(2k)なので、他条件一定でLが2倍なら中心温度上昇は4倍。"
+    ],
+    "beginnerPitfall": "外向き法線、境界と初期条件、内部発熱率の単位、半厚さと全厚さを区別する。"
+  },
+  {
+    "id": "supp-batch3-laplace-vs-poisson-v1",
+    "revision": "v1",
+    "field": "内部発熱・熱伝導支配式",
+    "prerequisites": [
+      "熱伝導方程式",
+      "指定温度・熱流束・エネルギー保存"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "applied",
+    "source": {
+      "type": "supplement",
+      "reference": "§4.2に関する独立執筆の学習教材・仮想条件から作成。原本の翻訳・本文・図・章末問題は転載しない。",
+      "chapterId": "ch4",
+      "focusSectionId": "4.2",
+      "guideId": "chapter4-fin-design"
+    },
+    "createdStatus": "独立作問",
+    "reviewStatus": "保存則・式の内部確認済み／外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [],
+    "prompt": "一定物性の定常固体で内部体積発熱q‴を0にした。正しい支配方程式の変化は？",
+    "choices": [
+      "内部の正の発熱がゼロになってもLaplace方程式には移行せず常に∇²T=1となる",
+      "発熱がなくなると定常温度場は必ず0℃",
+      "内部発熱なしのLaplace方程式∇²T=0になる",
+      "定常でも時間微分は必ず大きな正の値になる"
+    ],
+    "answer": 2,
+    "difficulty": "応用・物理判断",
+    "explanation": "一定kの定常式k∇²T+q‴=0でq‴=0とすると∇²T=0。温度の値は境界条件から決まる。",
+    "distractors": [
+      "発熱0なら一定kの定常方程式は∇²T=0です。",
+      "Laplace式は温度ゼロを強制しない。",
+      "正解。一定kの定常式k∇²T+q‴=0でq‴=0とすると∇²T=0。温度の値は境界条件から決まる。",
+      "定常は∂T/∂t=0。"
+    ],
+    "hints": [
+      "定常では蓄熱項が0。",
+      "発熱項q‴も0と置く。"
+    ],
+    "solutionSteps": [
+      "定常では蓄熱項が0。",
+      "発熱項q‴も0と置く。",
+      "一定kの定常式k∇²T+q‴=0でq‴=0とすると∇²T=0。温度の値は境界条件から決まる。"
+    ],
+    "beginnerPitfall": "外向き法線、境界と初期条件、内部発熱率の単位、半厚さと全厚さを区別する。"
+  },
+  {
+    "id": "supp-batch3-variable-k-equation-v1",
+    "revision": "v1",
+    "field": "内部発熱・熱伝導支配式",
+    "prerequisites": [
+      "熱伝導方程式",
+      "指定温度・熱流束・エネルギー保存"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "applied",
+    "source": {
+      "type": "supplement",
+      "reference": "§4.2に関する独立執筆の学習教材・仮想条件から作成。原本の翻訳・本文・図・章末問題は転載しない。",
+      "chapterId": "ch4",
+      "focusSectionId": "4.2",
+      "guideId": "chapter4-fin-design"
+    },
+    "createdStatus": "独立作問",
+    "reviewStatus": "保存則・式の内部確認済み／外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [],
+    "prompt": "定常熱伝導で熱伝導率kが温度依存する場合、一般に正しい方程式の取り扱いは？",
+    "choices": [
+      "温度によってkが変化しても、kは常に微分の外に出し∇²T=0だけで十分とする",
+      "熱伝導率が変化すると保存則は成立しない",
+      "熱流率と温度場は無関係なので微分不要",
+      "kを微分の内側に置いた∇·(k∇T)を用いる"
+    ],
+    "answer": 3,
+    "difficulty": "応用・物理判断",
+    "explanation": "温度依存のkについては保存式に∇·(k∇T)+q‴=0を使う。kを一定と仮定してk∇²Tへ置き換えると不適切な場合がある。",
+    "distractors": [
+      "温度依存kの微分を省略しているため、一般には成立しません。",
+      "熱伝導率の温度依存と保存則は両立する。",
+      "熱移動は温度勾配とkに依存する。",
+      "正解。温度依存のkについては保存式に∇·(k∇T)+q‴=0を使う。kを一定と仮定してk∇²Tへ置き換えると不適切な場合がある。"
+    ],
+    "hints": [
+      "一般化したFourier則を保存則へ代入。",
+      "微分の積の法則を考える。"
+    ],
+    "solutionSteps": [
+      "一般化したFourier則を保存則へ代入。",
+      "微分の積の法則を考える。",
+      "温度依存のkについては保存式に∇·(k∇T)+q‴=0を使う。kを一定と仮定してk∇²Tへ置き換えると不適切な場合がある。"
+    ],
+    "beginnerPitfall": "外向き法線、境界と初期条件、内部発熱率の単位、半厚さと全厚さを区別する。"
   }
 ]
