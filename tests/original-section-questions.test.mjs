@@ -16,6 +16,7 @@ test('every original Japanese note has exactly one published question with a sin
   const items=optionSets.flatMap(d=>d.items),generated=source.questions;
   assert.equal(items.length,76);
   assert.equal(new Set(items.map(x=>x.sectionId)).size,76);
+  assert.equal(generated.filter(q=>q.revision==='v2').length,40,'40 answer-key wording improvements must be versioned');
   assert.equal(generated.length,76);
   assert.equal(all.length,159);
   assert.equal(all.filter(q=>q.source?.type==='supplement').length,152);
@@ -38,7 +39,7 @@ test('every original Japanese note has exactly one published question with a sin
     assert.equal(q.source.chapterId,n.chapterId,n.sectionId);
     assert.ok(GUIDE_SECTIONS.some(g=>g.id===q.source.guideId&&g.bookChapter===n.chapterId),n.sectionId);
     assert.equal(q.source.type,'supplement');
-    assert.equal(q.revision,'v1');
+    assert.ok(['v1','v2'].includes(q.revision));
     assert.equal(q.expertReviewed,false);
     assert.equal(q.distractors.length,4);
     assert.equal(q.distractors.filter(t=>t.startsWith('正解。')).length,1);
@@ -66,21 +67,21 @@ test('independent calculations verify representative objective answer keys acros
     ['2.2',1/3,'1/3倍。'],
     ['2.3',.2+.3,'0.5 K/W。'],
     ['2.5',2,'2倍。'],
-    ['3.3',9000/(300*50),'変わり得る。分母Q̇_maxが変わるため。'],
+    ['3.3',9000/(300*50),'変わり得る。'],
     ['4.3',1/(2**2),'1/4倍。'],
     ['5.2',Math.exp(-1),'周囲温度との差。'],
     ['5.6',Math.sqrt(9),'3倍。'],
     ['6.5',.664/.332,'約2倍。'],
-    ['7.5',2*20*10/(20+10),'流体と壁が接している濡れ縁の長さ。'],
+    ['7.5',2*20*10/(20+10),'濡れ縁の長さ。'],
     ['8.3',2**3,'2³=8倍。'],
     ['9.8',.02/.1,'気液二相の全質量流量に対する蒸気質量流量の割合。'],
     ['10.1',2**4,'16倍。'],
-    ['10.2',1-.7,'0.3。'],
+    ['10.2',1-.7,'0.3'],
     ['10.3',1*.8/4,'A₁F₁₂=A₂F₂₁。'],
     ['10.4',800-600,'200 W/m²。'],
-    ['11.2',2/(2+3),'0.4。'],
+    ['11.2',2/(2+3),'0.4'],
     ['11.3',-2e-9*(-100),'正。'],
-    ['11.6',1e-6/(2e-9),'運動量拡散率が分子拡散係数の500倍であること。'],
+    ['11.6',1e-6/(2e-9),'ν/D_AB。'],
     ['11.8',1/2,'1/2倍。']
   ];
   const expectedValues={ '2.2':1/3,'2.3':.5,'2.5':2,'3.3':.6,'4.3':.25,'5.2':Math.exp(-1),'5.6':3,'6.5':2,'7.5':13.33333333,'8.3':8,'9.8':.2,'10.1':16,'10.2':.3,'10.3':.2,'10.4':200,'11.2':.4,'11.3':2e-7,'11.6':500,'11.8':.5 };
