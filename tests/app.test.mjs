@@ -23,6 +23,24 @@ test('answer handling stores correctness, chosen text, confidence and next revie
   h.api.submitQuizAnswer({});h.api.submitQuizAnswer({});
   assert.equal(h.api.state.attempts.length,1);assert.equal(h.api.state.attempts[0].correct,true);assert.equal(h.api.state.attempts[0].selectedText,'答え');assert.equal(h.api.state.reviews.q1.suggestedDays,1);assert.ok(h.api.reviewCandidates()[0].reasons.includes('正解したが自信が低い'));
 });
+test('a revised problem is due for re-answer and high-confidence streak restarts from zero',()=>{
+  const h=harness();
+  h.api.questions=[{...question,revision:'v2'}];
+  h.api.state.attempts=[
+    {id:'old-1',questionId:'q1',correct:true,confidence:'high',questionRevision:'v1',at:'2026-10-20T00:00:00Z'},
+    {id:'old-2',questionId:'q1',correct:true,confidence:'high',questionRevision:'v1',at:'2026-10-21T00:00:00Z'}
+  ];
+  const candidates=h.api.reviewCandidates();
+  assert.equal(candidates.length,1);
+  assert.ok(candidates[0].reasons.includes('問題改訂後の再回答が必要'));
+  h.api.ui={quiz:{ids:['q1'],index:0,answers:[],selected:0,confidence:'high',mode:'single'}};
+  h.api.submitQuizAnswer({});
+  const current=h.api.state.attempts.at(-1);
+  assert.equal(current.questionRevision,'v2');
+  assert.equal(h.api.state.attempts.length,3,'Old revision records are retained');
+  assert.equal(h.api.state.reviews.q1.suggestedDays,7,'Revised question must start a new review streak');
+  assert.equal(h.api.reviewCandidates().length,0,'A valid current-revision answer clears the stale-answer recommendation');
+});
 test('incorrect and invalid selections cannot become correct records',()=>{
   const h=harness();h.api.ui={quiz:{ids:['q1'],index:0,answers:[],selected:7,confidence:'high'}};h.api.submitQuizAnswer({});assert.equal(h.api.state.attempts.length,0);
   h.api.ui.quiz.selected=1;h.api.submitQuizAnswer({});assert.equal(h.api.state.attempts[0].correct,false);assert.ok(h.api.reviewCandidates()[0].reasons.includes('直近の誤答'));
