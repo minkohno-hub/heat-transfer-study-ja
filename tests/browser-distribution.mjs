@@ -117,7 +117,17 @@ try {
   assert.match(await page.locator('[data-chapter-card="ch2"]').innerText(),/収録問題：3問/);
   assert.match(await page.locator('[data-chapter-card="ch1"]').innerText(),/原本の節を読了に記録：1\/5節/);
   assert.match(await page.locator('[data-chapter-card="ch9"]').innerText(),/収録問題：10問/);
-  await page.locator('[data-chapter-card="ch2"] [data-chapter-practice="ch2"]').click();
+  assert.match(await page.locator('[data-chapter-card="ch2"]').innerText(),/未回答：3問/);
+  await page.locator('[data-chapter-card="ch2"] [data-chapter-practice-mode="priority"]').click();
+  await page.locator('.question-card').waitFor({state:'visible'});
+  assert.match(await page.locator('.page-heading h1').innerText(),/1 \/ 3 問/);
+  const priorityIds=await page.evaluate(()=>JSON.parse(localStorage.getItem('heat-study-ja:v1')).quizDraft.ids);
+  assert.ok(priorityIds.every(id=>id.startsWith('supp-chapter-ch2-')));
+  assert.equal(priorityIds.length,3);
+  await page.locator('[data-action="exit-quiz"]').click();
+  await page.locator('[data-action="discard-quiz"]').click();
+  await nav('map');
+  await page.locator('[data-chapter-card="ch2"] [data-chapter-practice="ch2"]:not([data-chapter-practice-mode])').click();
   await page.locator('.question-card').waitFor({state:'visible'});
   assert.match(await page.locator('.page-heading h1').innerText(),/1 \/ 3 問/);
   assert.equal((await page.evaluate(()=>JSON.parse(localStorage.getItem('heat-study-ja:v1')).quizDraft.ids)).every(id=>id.startsWith('supp-chapter-ch2-')),true);
