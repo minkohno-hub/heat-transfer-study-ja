@@ -2,6 +2,8 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import {readFile} from 'node:fs/promises';
 import {validateQuestion} from '../study-core.mjs';
+import {checkPublicContent} from '../public-content-contract.mjs';
+import {GUIDE_SECTIONS} from '../guide.mjs';
 
 const read=async path=>JSON.parse(await readFile(new URL('../'+path,import.meta.url),'utf8'));
 const solutions={
@@ -84,4 +86,21 @@ test('no accidental right-answer-length bias in new numerical MCQs',async()=>{
  const items=d.flatMap(x=>x.questions);
  const longest=items.filter(q=>q.choices[q.answer].length>Math.max(...q.choices.filter((_,i)=>i!==q.answer).map(v=>v.length)));
  assert.ok(longest.length<=3,'correct answer uniquely longest in '+longest.length+'/22');
+});
+
+test('public bundle rejects applied questions with broken section links or fictitious science-review labels',async()=>{
+ const [book,notes,questions,glossary]=await Promise.all([
+   'data/book.json','data/original-notes.json','data/questions.json','data/glossary.json'
+ ].map(read));
+ const make=()=>structuredClone(questions);
+ for(const q of questions)if(q.figure?.kind==='book')delete q.figure.src;
+ assert.deepEqual(checkPublicContent({book,originalNotes:notes,questions,glossary,guides:GUIDE_SECTIONS}),[]);
+ const linked=make();
+ linked.find(q=>q.id==='supp-applied-1-1-v1').source.focusSectionId='0.999';
+ assert.ok(checkPublicContent({book,originalNotes:notes,questions:linked,glossary,guides:GUIDE_SECTIONS})
+   .some(e=>e.includes('応用計算問題の関連節')));
+ const falsified=make();
+ falsified.find(q=>q.id==='supp-applied-11-6-v1').expertReviewed=true;
+ assert.ok(checkPublicContent({book,originalNotes:notes,questions:falsified,glossary,guides:GUIDE_SECTIONS})
+   .some(e=>e.includes('未校閲表示')));
 });
