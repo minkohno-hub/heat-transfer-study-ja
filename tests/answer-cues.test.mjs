@@ -12,7 +12,7 @@ test('section practice must not offer a strong correct-answer-length shortcut',a
   // This is only one anti-cue heuristic, NOT a scientific approval of wording.
   assert.ok(longest.length/76<=.25,
     'Correct answer is a uniquely longest choice in '+longest.length+'/76 questions; rewrite choices before release');
-  const punctuationCue=questions.filter(q=>{
+  const punctuationCue=all.filter(q=>{
     const correct=/[。．.!?！？]$/.test(q.choices[q.answer]);
     return q.choices.every((choice,i)=>i===q.answer||/[。．.!?！？]$/.test(choice)!==correct);
   });
