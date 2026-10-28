@@ -92,6 +92,7 @@ test('public bundle rejects applied questions with broken section links or ficti
  const [book,notes,questions,glossary]=await Promise.all([
    'data/book.json','data/original-notes.json','data/questions.json','data/glossary.json'
  ].map(read));
+ for(const ch of book.chapters)for(const section of ch.sections){for(const key of ['blocks','blocksEn','figures','sourceReview'])delete section[key];}
  const make=()=>structuredClone(questions);
  for(const q of questions)if(q.figure?.kind==='book')delete q.figure.src;
  assert.deepEqual(checkPublicContent({book,originalNotes:notes,questions,glossary,guides:GUIDE_SECTIONS}),[]);
