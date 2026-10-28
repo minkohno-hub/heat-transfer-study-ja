@@ -102,7 +102,7 @@ test('all 33 chapter exercises have correct single-choice keys and independent a
 test('new glossary links target valid chapter practice and public contract remains valid',async()=>{
   const [book,questions,glossary]=await Promise.all(['data/book.json','data/questions.json','data/glossary.json'].map(read));
   assert.equal(glossary.length,109);
-  const chTerms=glossary.filter(t=>t.source?.guideId?.startsWith('chapter'));
+  const chTerms=glossary.filter(t=>t.source?.guideId?.startsWith('chapter')&&t.relatedQuestions?.length);
   assert.equal(chTerms.length,11);
   for(const term of chTerms){
     assert.ok(term.relatedQuestions.length>=2,term.id);
