@@ -1,0 +1,53 @@
+{
+  "version": 1,
+  "chapter": "ch3",
+  "sourceType": "original_independent_japanese_notes",
+  "independentOfBookText": true,
+  "expertReviewed": false,
+  "notes": [
+    {
+      "sectionId": "3.1",
+      "objective": "熱交換器の構造と熱収支を区別する",
+      "explanation": "熱交換器は高温流体から低温流体へ熱を受け渡す機器で、流路の配置、接触する伝熱面、流体の相変化の有無が設計を左右する。並流と向流では流体間の温度差の分布が異なる。熱損失が小さい定常運転では、温側の失熱率と冷側の受熱率が一致する。",
+      "relation": "相変化なし・比熱一定なら Q̇=C_h(T_h,in−T_h,out)=C_c(T_c,out−T_c,in)、C=ṁ c_p [W/K]。",
+      "example": "温側C_h=400 W/Kが20 K冷えればQ̇=8000 W。冷側C_c=200 W/Kなら温度上昇は40 Kとなる。両側で熱移動率が一致しない場合は条件を再確認する。",
+      "limits": "相変化があるときは温度変化のみの式ではなくエンタルピー差を用いる。外部熱損失、比熱の温度依存、過渡運転も別途考える。",
+      "selfCheck": "温側と冷側で計算したQ̇が一致しないとき、まず何を疑うか。",
+      "answer": "流量や比熱・温度の測定、損失・蓄熱、またはモデル仮定。",
+      "reviewStatus": "AI_drafted_pending_independent_expert_review"
+    },
+    {
+      "sectionId": "3.2",
+      "objective": "対数平均温度差LMTDの端点を正しく選ぶ",
+      "explanation": "熱交換面に沿って流体間温度差が変わるため、算術平均でなく対数平均温度差を使うことがある。純粋な並流と向流では高温・低温流体の入口と出口の組合せが異なり、端点を取り違えると必要面積を誤る。温度差が同じ端点に収束した場合は極限を使う。",
+      "relation": "ΔT_lm=(ΔT₁−ΔT₂)/ln(ΔT₁/ΔT₂)。向流では通常ΔT₁=T_h,in−T_c,out、ΔT₂=T_h,out−T_c,in。ΔT₁=ΔT₂ならΔT_lm=ΔT₁。",
+      "example": "向流で高温80→60 ℃、低温20→40 ℃なら両端温度差は40 K。ΔT_lmも40 Kであり、0/0を計算機でそのまま評価しない。",
+      "limits": "端点温度差は正とし、U一定・モデルに合う流動配置・熱損失小などを確認する。多パス熱交換器には補正係数が必要な場合がある。",
+      "selfCheck": "向流の一端の温度差T_h,in−T_c,outが0 Kの場合、通常の正の端点LMTD式をそのまま使えるか。",
+      "answer": "そのまま適用せず、温度接近とモデル・極限の適否を確認する。",
+      "reviewStatus": "AI_drafted_pending_independent_expert_review"
+    },
+    {
+      "sectionId": "3.3",
+      "objective": "有効度とNTUを熱容量流量から理解する",
+      "explanation": "有効度εは、入口温度差と小さい側の熱容量流量で決まる理想最大熱移動率に対し、どれだけ熱交換できたかの割合である。NTUは装置の総熱コンダクタンスと流体の熱容量流量を比べる無次元数で、一般に大きいほど伝熱能力が高い。ε–NTUの関係は流動配置で異なる。",
+      "relation": "Q̇_max=C_min(T_h,in−T_c,in)、ε=Q̇/Q̇_max、NTU=UA/C_min、C_r=C_min/C_max。",
+      "example": "C_min=300 W/K、入口温度差50 KならQ̇_max=15000 W。実際のQ̇が9000 Wならε=0.60。これはシステムのエネルギー変換効率60%という意味ではない。",
+      "limits": "単相の一定比熱・無損失の例である。相変化や流路の混合条件によってC_rやεの扱いを確認する。",
+      "selfCheck": "同じQ̇でも入口温度差が変わるとεは変化し得るか。",
+      "answer": "変わり得る。分母Q̇_maxが変わるため。",
+      "reviewStatus": "AI_drafted_pending_independent_expert_review"
+    },
+    {
+      "sectionId": "3.4",
+      "objective": "熱交換器設計を熱・流動・保守の三面から判断する",
+      "explanation": "必要な熱交換量からUAを求めても実機設計は終わらない。伝熱面積を増やすと圧力損失や製作費が増えることがあり、汚れ抵抗によって運転中のUも変化する。熱収支、流路と圧力損失、材料の耐食性、清掃性、安全性を同時に評価する。",
+      "relation": "単純なLMTD設計ならA=Q̇/(U F ΔT_lm)。Fは必要な場合の流動配置補正係数で、適切な流路構成と有効範囲を確認する。",
+      "example": "必要Q̇=10000 W、U=250 W/(m²·K)、ΔT_lm=20 K、F=1の理想化モデルならA=2 m²。汚れ等でUが半分になると同じ熱負荷に必要なAは4 m²になる。",
+      "limits": "必要面積だけで流体の出口温度が実現可能とは限らない。ピンチ温度差、入口条件、圧力損失、温度依存物性を合わせて確かめる。",
+      "selfCheck": "汚れ抵抗が増えた場合、他条件一定のUはどう変化しやすいか。",
+      "answer": "低下する。",
+      "reviewStatus": "AI_drafted_pending_independent_expert_review"
+    }
+  ]
+}
