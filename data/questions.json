@@ -13167,5 +13167,869 @@
       "流速上昇でh改善の可能性がある一方、摩擦圧力損失とポンプ仕事も増え得る。"
     ],
     "beginnerPitfall": "基準面積・温度差・定常状態・流体の流動条件を混同しない。"
+  },
+  {
+    "id": "supp-batch2-bi-number-v1",
+    "revision": "v1",
+    "field": "次元解析・相似条件",
+    "prerequisites": [
+      "熱移動の構成則",
+      "単位と適用条件"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "§4.3の独立詳説と仮想数値条件に基づく原創4択。原本の問題・訳文・図版は転載しない。",
+      "chapterId": "ch4",
+      "focusSectionId": "4.3",
+      "guideId": "chapter4-fin-design"
+    },
+    "createdStatus": "独立作問",
+    "reviewStatus": "内部で算術と単位を確認／外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [],
+    "prompt": "固体側k_s=8 W/(m·K)、h=40 W/(m²·K)、代表長さL=.020 mでBi=hL/k_sはいくつか。",
+    "choices": [
+      "0.020",
+      "0.050",
+      "0.100",
+      "0.200"
+    ],
+    "answer": 2,
+    "difficulty": "標準・数値計算",
+    "explanation": "Bi=40×.020/8=.10。hとk_s、Lの単位は相殺し無次元になる。",
+    "distractors": [
+      "hとLの積を過小評価。",
+      "熱伝導率を2倍に誤認。",
+      "正解。Bi=40×.020/8=.10。hとk_s、Lの単位は相殺し無次元になる。",
+      "Lを2倍として計算。"
+    ],
+    "hints": [
+      "固体のk_sを用いる。",
+      "Bi=hL/k_sを計算。"
+    ],
+    "solutionSteps": [
+      "固体のk_sを用いる。",
+      "Bi=hL/k_sを計算。",
+      "Bi=40×.020/8=.10。hとk_s、Lの単位は相殺し無次元になる。"
+    ],
+    "beginnerPitfall": "無次元数・流路の発達・黒体と灰色体など、それぞれのモデルの成立条件を確認する。"
+  },
+  {
+    "id": "supp-batch2-fo-number-v1",
+    "revision": "v1",
+    "field": "次元解析・相似条件",
+    "prerequisites": [
+      "熱移動の構成則",
+      "単位と適用条件"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "§4.3の独立詳説と仮想数値条件に基づく原創4択。原本の問題・訳文・図版は転載しない。",
+      "chapterId": "ch4",
+      "focusSectionId": "4.3",
+      "guideId": "chapter4-fin-design"
+    },
+    "createdStatus": "独立作問",
+    "reviewStatus": "内部で算術と単位を確認／外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [],
+    "prompt": "α_s=2.0×10⁻⁶ m²/s、L=.020 m、t=100 sのFourier数Foはいくつか。",
+    "choices": [
+      "0.125",
+      "0.250",
+      "0.500",
+      "1.000"
+    ],
+    "answer": 2,
+    "difficulty": "標準・数値計算",
+    "explanation": "Fo=αt/L²=(2×10⁻⁶×100)/(.020)²=.0002/.0004=.50。",
+    "distractors": [
+      "長さの二乗を過大に評価。",
+      "熱拡散時間を2倍と誤認。",
+      "正解。Fo=αt/L²=(2×10⁻⁶×100)/(.020)²=.0002/.0004=.50。",
+      "長さの二乗を過小に評価。"
+    ],
+    "hints": [
+      "Lは二乗で評価。",
+      "Fo=αt/L²を使用。"
+    ],
+    "solutionSteps": [
+      "Lは二乗で評価。",
+      "Fo=αt/L²を使用。",
+      "Fo=αt/L²=(2×10⁻⁶×100)/(.020)²=.0002/.0004=.50。"
+    ],
+    "beginnerPitfall": "無次元数・流路の発達・黒体と灰色体など、それぞれのモデルの成立条件を確認する。"
+  },
+  {
+    "id": "supp-batch2-length-double-fo-v1",
+    "revision": "v1",
+    "field": "次元解析・相似条件",
+    "prerequisites": [
+      "熱移動の構成則",
+      "単位と適用条件"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "§4.3の独立詳説と仮想数値条件に基づく原創4択。原本の問題・訳文・図版は転載しない。",
+      "chapterId": "ch4",
+      "focusSectionId": "4.3",
+      "guideId": "chapter4-fin-design"
+    },
+    "createdStatus": "独立作問",
+    "reviewStatus": "内部で算術と単位を確認／外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [],
+    "prompt": "αと経過時間は一定のまま、平板の代表長さをLから2Lへ変更した。元のFo=.50なら新しいFoは？",
+    "choices": [
+      "0.125",
+      "0.250",
+      "0.500",
+      "1.000"
+    ],
+    "answer": 0,
+    "difficulty": "標準・数値計算",
+    "explanation": "Fo∝1/L²であり、長さ2倍はFoを1/4にする。新Fo=.50/4=.125。",
+    "distractors": [
+      "正解。Fo∝1/L²であり、長さ2倍はFoを1/4にする。新Fo=.50/4=.125。",
+      "Lだけに反比例すると誤認。",
+      "長さ変更を無視した。",
+      "Foが2倍になると誤認。"
+    ],
+    "hints": [
+      "Foの分母にL²がある。",
+      "元の値を4で割る。"
+    ],
+    "solutionSteps": [
+      "Foの分母にL²がある。",
+      "元の値を4で割る。",
+      "Fo∝1/L²であり、長さ2倍はFoを1/4にする。新Fo=.50/4=.125。"
+    ],
+    "beginnerPitfall": "無次元数・流路の発達・黒体と灰色体など、それぞれのモデルの成立条件を確認する。"
+  },
+  {
+    "id": "supp-batch2-bi-scale-h-v1",
+    "revision": "v1",
+    "field": "次元解析・相似条件",
+    "prerequisites": [
+      "熱移動の構成則",
+      "単位と適用条件"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "§4.3の独立詳説と仮想数値条件に基づく原創4択。原本の問題・訳文・図版は転載しない。",
+      "chapterId": "ch4",
+      "focusSectionId": "4.3",
+      "guideId": "chapter4-fin-design"
+    },
+    "createdStatus": "独立作問",
+    "reviewStatus": "内部で算術と単位を確認／外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [],
+    "prompt": "同じ材質kと初期Bi=.10を保持したまま代表長さLを.020 mから.040 mにする。元h=40 W/(m²K)なら新hは？",
+    "choices": [
+      "10 W/(m²K)",
+      "20 W/(m²K)",
+      "40 W/(m²K)",
+      "80 W/(m²K)"
+    ],
+    "answer": 1,
+    "difficulty": "標準・数値計算",
+    "explanation": "Bi=hL/kを一定にするにはh_new=h_old×L_old/L_new=40×.020/.040=20 W/(m²K)。",
+    "distractors": [
+      "hを過小にした値。",
+      "正解。Bi=hL/kを一定にするにはh_new=h_old×L_old/L_new=40×.020/.040=20 W/(m²K)。",
+      "長さ変更を無視。",
+      "hを長さに比例させた誤り。"
+    ],
+    "hints": [
+      "kもBiも一定。",
+      "hとLの積を一定にする。"
+    ],
+    "solutionSteps": [
+      "kもBiも一定。",
+      "hとLの積を一定にする。",
+      "Bi=hL/kを一定にするにはh_new=h_old×L_old/L_new=40×.020/.040=20 W/(m²K)。"
+    ],
+    "beginnerPitfall": "無次元数・流路の発達・黒体と灰色体など、それぞれのモデルの成立条件を確認する。"
+  },
+  {
+    "id": "supp-batch2-fo-scale-t-v1",
+    "revision": "v1",
+    "field": "次元解析・相似条件",
+    "prerequisites": [
+      "熱移動の構成則",
+      "単位と適用条件"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "§4.3の独立詳説と仮想数値条件に基づく原創4択。原本の問題・訳文・図版は転載しない。",
+      "chapterId": "ch4",
+      "focusSectionId": "4.3",
+      "guideId": "chapter4-fin-design"
+    },
+    "createdStatus": "独立作問",
+    "reviewStatus": "内部で算術と単位を確認／外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [],
+    "prompt": "元L=.020 m、t=100 s、同じ熱拡散率の相似平板をL=.040 mにした。同じFoにする経過時間は？",
+    "choices": [
+      "100 s",
+      "200 s",
+      "400 s",
+      "800 s"
+    ],
+    "answer": 2,
+    "difficulty": "標準・数値計算",
+    "explanation": "Fo=αt/L²。長さが2倍ならtを4倍にして400 sで一致。",
+    "distractors": [
+      "長さの変化を無視。",
+      "長さに一次比例と誤認。",
+      "正解。Fo=αt/L²。長さが2倍ならtを4倍にして400 sで一致。",
+      "長さの倍率を8倍と誤認。"
+    ],
+    "hints": [
+      "同じFoはt/L²一定。",
+      "長さの倍率を二乗。"
+    ],
+    "solutionSteps": [
+      "同じFoはt/L²一定。",
+      "長さの倍率を二乗。",
+      "Fo=αt/L²。長さが2倍ならtを4倍にして400 sで一致。"
+    ],
+    "beginnerPitfall": "無次元数・流路の発達・黒体と灰色体など、それぞれのモデルの成立条件を確認する。"
+  },
+  {
+    "id": "supp-batch2-similarity-condition-v1",
+    "revision": "v1",
+    "field": "次元解析・相似条件",
+    "prerequisites": [
+      "熱移動の構成則",
+      "単位と適用条件"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "applied",
+    "source": {
+      "type": "supplement",
+      "reference": "§4.3の独立詳説と仮想数値条件に基づく原創4択。原本の問題・訳文・図版は転載しない。",
+      "chapterId": "ch4",
+      "focusSectionId": "4.3",
+      "guideId": "chapter4-fin-design"
+    },
+    "createdStatus": "独立作問",
+    "reviewStatus": "内部で算術と単位を確認／外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [],
+    "prompt": "固体kとαが同じ相似な二つの平板で、代表長さを2倍にする。BiとFoを元と同じに保つ操作として適切なのは？",
+    "choices": [
+      "hを2倍、時間を1/4倍とする",
+      "hを半分、時間を4倍にする",
+      "hと時間をともに元のままとする",
+      "hを4倍、時間を2倍にする"
+    ],
+    "answer": 1,
+    "difficulty": "応用・適用判断",
+    "explanation": "Bi=hL/kを保つにはhを1/2、Fo=αt/L²を保つにはtを4倍にする。初期・無次元境界条件も揃える必要がある。",
+    "distractors": [
+      "BiとFoの倍率を逆にした。",
+      "正解。Bi=hL/kを保つにはhを1/2、Fo=αt/L²を保つにはtを4倍にする。初期・無次元境界条件も揃える必要がある。",
+      "Lの変化でBiとFoが変わる。",
+      "どちらの無次元数も一致しない。"
+    ],
+    "hints": [
+      "Biはh×Lに比例。",
+      "Foはt/L²に比例。"
+    ],
+    "solutionSteps": [
+      "Biはh×Lに比例。",
+      "Foはt/L²に比例。",
+      "Bi=hL/kを保つにはhを1/2、Fo=αt/L²を保つにはtを4倍にする。初期・無次元境界条件も揃える必要がある。"
+    ],
+    "beginnerPitfall": "無次元数・流路の発達・黒体と灰色体など、それぞれのモデルの成立条件を確認する。"
+  },
+  {
+    "id": "supp-batch2-pipe-h-wall-temperature-v1",
+    "revision": "v1",
+    "field": "管内層流・助走区間",
+    "prerequisites": [
+      "熱移動の構成則",
+      "単位と適用条件"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "§7.2の独立詳説と仮想数値条件に基づく原創4択。原本の問題・訳文・図版は転載しない。",
+      "chapterId": "ch7",
+      "focusSectionId": "7.2",
+      "guideId": "chapter7-internal-flow"
+    },
+    "createdStatus": "独立作問",
+    "reviewStatus": "内部で算術と単位を確認／外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [],
+    "prompt": "円管の流動・熱的に十分発達した層流、壁温一定、Nu_D=3.66、流体k_f=.60 W/(mK)、内径D=.020 m。hは？",
+    "choices": [
+      "54.9 W/(m²K)",
+      "73.2 W/(m²K)",
+      "109.8 W/(m²K)",
+      "219.6 W/(m²K)"
+    ],
+    "answer": 2,
+    "difficulty": "標準・数値計算",
+    "explanation": "h=Nu_D k_f/D=3.66×.60/.020=109.8 W/(m²K)。",
+    "distractors": [
+      "直径を2倍と誤認。",
+      "Nu=2.44を使用した誤り。",
+      "正解。h=Nu_D k_f/D=3.66×.60/.020=109.8 W/(m²K)。",
+      "直径を半分として過大評価。"
+    ],
+    "hints": [
+      "管壁ではなく流体k_fを使う。",
+      "h=Nu_D k_f/D。"
+    ],
+    "solutionSteps": [
+      "管壁ではなく流体k_fを使う。",
+      "h=Nu_D k_f/D。",
+      "h=Nu_D k_f/D=3.66×.60/.020=109.8 W/(m²K)。"
+    ],
+    "beginnerPitfall": "無次元数・流路の発達・黒体と灰色体など、それぞれのモデルの成立条件を確認する。"
+  },
+  {
+    "id": "supp-batch2-local-wall-flux-v1",
+    "revision": "v1",
+    "field": "管内層流・助走区間",
+    "prerequisites": [
+      "熱移動の構成則",
+      "単位と適用条件"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "§7.2の独立詳説と仮想数値条件に基づく原創4択。原本の問題・訳文・図版は転載しない。",
+      "chapterId": "ch7",
+      "focusSectionId": "7.2",
+      "guideId": "chapter7-internal-flow"
+    },
+    "createdStatus": "独立作問",
+    "reviewStatus": "内部で算術と単位を確認／外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [],
+    "prompt": "十分発達した壁温一定の円管層流で局所h=109.8 W/(m²K)、局所壁面温度が流体混合平均温度より10 K高い。局所壁熱流束q″は？",
+    "choices": [
+      "109.8 W/m²",
+      "549.0 W/m²",
+      "1098 W/m²",
+      "2196 W/m²"
+    ],
+    "answer": 2,
+    "difficulty": "標準・数値計算",
+    "explanation": "局所q″=h(T_w−T_b)=109.8×10=1098 W/m²。温度差はその断面の値。",
+    "distractors": [
+      "温度差を1Kとして計算。",
+      "温度差を5Kとして計算。",
+      "正解。局所q″=h(T_w−T_b)=109.8×10=1098 W/m²。温度差はその断面の値。",
+      "温度差を20Kとして計算。"
+    ],
+    "hints": [
+      "壁面とその断面の流体平均温度を使う。",
+      "q″=hΔT。"
+    ],
+    "solutionSteps": [
+      "壁面とその断面の流体平均温度を使う。",
+      "q″=hΔT。",
+      "局所q″=h(T_w−T_b)=109.8×10=1098 W/m²。温度差はその断面の値。"
+    ],
+    "beginnerPitfall": "無次元数・流路の発達・黒体と灰色体など、それぞれのモデルの成立条件を確認する。"
+  },
+  {
+    "id": "supp-batch2-constant-flux-pipe-h-v1",
+    "revision": "v1",
+    "field": "管内層流・助走区間",
+    "prerequisites": [
+      "熱移動の構成則",
+      "単位と適用条件"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "§7.2の独立詳説と仮想数値条件に基づく原創4択。原本の問題・訳文・図版は転載しない。",
+      "chapterId": "ch7",
+      "focusSectionId": "7.2",
+      "guideId": "chapter7-internal-flow"
+    },
+    "createdStatus": "独立作問",
+    "reviewStatus": "内部で算術と単位を確認／外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [],
+    "prompt": "十分発達した定物性の円管層流で壁熱流束一定とし、Nu_D≈4.36、k_f=.60 W/(mK)、D=.020 mならhは約？",
+    "choices": [
+      "65.4 W/(m²K)",
+      "109.8 W/(m²K)",
+      "130.8 W/(m²K)",
+      "261.6 W/(m²K)"
+    ],
+    "answer": 2,
+    "difficulty": "標準・数値計算",
+    "explanation": "h≈4.36×.60/.020=130.8 W/(m²K)。一定壁温のNu=3.66を使わない。",
+    "distractors": [
+      "Nuを半分にしている。",
+      "壁温一定のNuを流用した。",
+      "正解。h≈4.36×.60/.020=130.8 W/(m²K)。一定壁温のNu=3.66を使わない。",
+      "hを二倍にしている。"
+    ],
+    "hints": [
+      "熱的な壁条件が指定されている。",
+      "Nu≈4.36を使用。"
+    ],
+    "solutionSteps": [
+      "熱的な壁条件が指定されている。",
+      "Nu≈4.36を使用。",
+      "h≈4.36×.60/.020=130.8 W/(m²K)。一定壁温のNu=3.66を使わない。"
+    ],
+    "beginnerPitfall": "無次元数・流路の発達・黒体と灰色体など、それぞれのモデルの成立条件を確認する。"
+  },
+  {
+    "id": "supp-batch2-hydraulic-entry-length-v1",
+    "revision": "v1",
+    "field": "管内層流・助走区間",
+    "prerequisites": [
+      "熱移動の構成則",
+      "単位と適用条件"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "§7.2の独立詳説と仮想数値条件に基づく原創4択。原本の問題・訳文・図版は転載しない。",
+      "chapterId": "ch7",
+      "focusSectionId": "7.2",
+      "guideId": "chapter7-internal-flow"
+    },
+    "createdStatus": "独立作問",
+    "reviewStatus": "内部で算術と単位を確認／外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [],
+    "prompt": "層流円管でRe_D=200、D=.020 mとする。L_h≈0.05 Re_D Dで見積もる水力学的助走長は？",
+    "choices": [
+      "0.020 m",
+      "0.100 m",
+      "0.200 m",
+      "1.000 m"
+    ],
+    "answer": 2,
+    "difficulty": "標準・数値計算",
+    "explanation": "L_h≈0.05×200×.020=.20 m。これは水力学的助走域の近似目安であり厳密境界ではない。",
+    "distractors": [
+      "0.05の係数を過小評価。",
+      "ReかDを半減した結果。",
+      "正解。L_h≈0.05×200×.020=.20 m。これは水力学的助走域の近似目安であり厳密境界ではない。",
+      "Prを入れ熱助走長と混同。"
+    ],
+    "hints": [
+      "速度場の助走長と熱助走長を分ける。",
+      "L_h≈0.05 Re D。"
+    ],
+    "solutionSteps": [
+      "速度場の助走長と熱助走長を分ける。",
+      "L_h≈0.05 Re D。",
+      "L_h≈0.05×200×.020=.20 m。これは水力学的助走域の近似目安であり厳密境界ではない。"
+    ],
+    "beginnerPitfall": "無次元数・流路の発達・黒体と灰色体など、それぞれのモデルの成立条件を確認する。"
+  },
+  {
+    "id": "supp-batch2-thermal-entry-length-v1",
+    "revision": "v1",
+    "field": "管内層流・助走区間",
+    "prerequisites": [
+      "熱移動の構成則",
+      "単位と適用条件"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "§7.2の独立詳説と仮想数値条件に基づく原創4択。原本の問題・訳文・図版は転載しない。",
+      "chapterId": "ch7",
+      "focusSectionId": "7.2",
+      "guideId": "chapter7-internal-flow"
+    },
+    "createdStatus": "独立作問",
+    "reviewStatus": "内部で算術と単位を確認／外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [],
+    "prompt": "Re_D=200、Pr=5、D=.020 mの層流円管で、L_t≈0.05 Re_D Pr Dの熱的助走長は？",
+    "choices": [
+      "0.20 m",
+      "0.50 m",
+      "1.00 m",
+      "2.00 m"
+    ],
+    "answer": 2,
+    "difficulty": "標準・数値計算",
+    "explanation": "L_t≈0.05×200×5×.020=1.0 m。Pr=5なので水力助走長0.2 mより長い。",
+    "distractors": [
+      "Prを忘れて水力学的助走長にした。",
+      "Prの効果を過小評価。",
+      "正解。L_t≈0.05×200×5×.020=1.0 m。Pr=5なので水力助走長0.2 mより長い。",
+      "Prを10と誤認した。"
+    ],
+    "hints": [
+      "熱的助走長にはPrが掛かる。",
+      "0.05×Re×Pr×D。"
+    ],
+    "solutionSteps": [
+      "熱的助走長にはPrが掛かる。",
+      "0.05×Re×Pr×D。",
+      "L_t≈0.05×200×5×.020=1.0 m。Pr=5なので水力助走長0.2 mより長い。"
+    ],
+    "beginnerPitfall": "無次元数・流路の発達・黒体と灰色体など、それぞれのモデルの成立条件を確認する。"
+  },
+  {
+    "id": "supp-batch2-pipe-entry-judgment-v1",
+    "revision": "v1",
+    "field": "管内層流・助走区間",
+    "prerequisites": [
+      "熱移動の構成則",
+      "単位と適用条件"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "applied",
+    "source": {
+      "type": "supplement",
+      "reference": "§7.2の独立詳説と仮想数値条件に基づく原創4択。原本の問題・訳文・図版は転載しない。",
+      "chapterId": "ch7",
+      "focusSectionId": "7.2",
+      "guideId": "chapter7-internal-flow"
+    },
+    "createdStatus": "独立作問",
+    "reviewStatus": "内部で算術と単位を確認／外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [],
+    "prompt": "円管層流の熱的助走長が約1.0 mと推定され、入口から0.5 mの温度場を調べる。壁温一定の十分発達Nu_D=3.66について適切なのは？",
+    "choices": [
+      "入口でもNu=3.66が厳密に成り立つと決める",
+      "流動が層流なら熱的な助走は考慮不要である",
+      "熱的助走域なので十分発達の定数の適用を再検討する",
+      "管壁温度の値によらず全区間の熱流束は一定とする"
+    ],
+    "answer": 2,
+    "difficulty": "応用・適用判断",
+    "explanation": "0.5mは熱的助走長1.0mより短い。流れが層流でも温度場は未発達のため、十分発達の代表Nuを無条件に当てはめない。",
+    "distractors": [
+      "十分発達Nuを入口へ外挿した誤り。",
+      "速度と温度の発達を混同。",
+      "正解。0.5mは熱的助走長1.0mより短い。流れが層流でも温度場は未発達のため、十分発達の代表Nuを無条件に当てはめない。",
+      "局所の壁温・流体温度が変わり得る。"
+    ],
+    "hints": [
+      "速度と温度の助走区間は別物。",
+      "現在位置とL_tの大小を比較。"
+    ],
+    "solutionSteps": [
+      "速度と温度の助走区間は別物。",
+      "現在位置とL_tの大小を比較。",
+      "0.5mは熱的助走長1.0mより短い。流れが層流でも温度場は未発達のため、十分発達の代表Nuを無条件に当てはめない。"
+    ],
+    "beginnerPitfall": "無次元数・流路の発達・黒体と灰色体など、それぞれのモデルの成立条件を確認する。"
+  },
+  {
+    "id": "supp-batch2-view-reciprocity-v1",
+    "revision": "v1",
+    "field": "放射形態係数",
+    "prerequisites": [
+      "熱移動の構成則",
+      "単位と適用条件"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "§10.3の独立詳説と仮想数値条件に基づく原創4択。原本の問題・訳文・図版は転載しない。",
+      "chapterId": "ch10",
+      "focusSectionId": "10.3",
+      "guideId": "chapter10-view-factors"
+    },
+    "createdStatus": "独立作問",
+    "reviewStatus": "内部で算術と単位を確認／外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [],
+    "prompt": "二面の面積A1=1.0 m²、A2=4.0 m²、形態係数F12=.80である。相反則よりF21は？",
+    "choices": [
+      "0.10",
+      "0.20",
+      "0.40",
+      "0.80"
+    ],
+    "answer": 1,
+    "difficulty": "標準・数値計算",
+    "explanation": "F21=A1F12/A2=(1×.8)/4=.20。小面積から大面積を見る割合と逆は等しくない。",
+    "distractors": [
+      "相反則の面積比を誤った。",
+      "正解。F21=A1F12/A2=(1×.8)/4=.20。小面積から大面積を見る割合と逆は等しくない。",
+      "面積を2と誤認。",
+      "両方向の形態係数を等しいとした。"
+    ],
+    "hints": [
+      "A1F12=A2F21。",
+      "F21を面積比で計算。"
+    ],
+    "solutionSteps": [
+      "A1F12=A2F21。",
+      "F21を面積比で計算。",
+      "F21=A1F12/A2=(1×.8)/4=.20。小面積から大面積を見る割合と逆は等しくない。"
+    ],
+    "beginnerPitfall": "無次元数・流路の発達・黒体と灰色体など、それぞれのモデルの成立条件を確認する。"
+  },
+  {
+    "id": "supp-batch2-blackbody-two-surfaces-v1",
+    "revision": "v1",
+    "field": "放射形態係数",
+    "prerequisites": [
+      "熱移動の構成則",
+      "単位と適用条件"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "§10.3の独立詳説と仮想数値条件に基づく原創4択。原本の問題・訳文・図版は転載しない。",
+      "chapterId": "ch10",
+      "focusSectionId": "10.3",
+      "guideId": "chapter10-view-factors"
+    },
+    "createdStatus": "独立作問",
+    "reviewStatus": "内部で算術と単位を確認／外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [],
+    "prompt": "二つの黒体でA1=1 m²、F12=.80、T1=400K、T2=300K、σ=5.67×10⁻⁸。面1から面2への正味放射熱移動率は約？",
+    "choices": [
+      "198.5 W",
+      "396.9 W",
+      "793.8 W",
+      "992.3 W"
+    ],
+    "answer": 2,
+    "difficulty": "標準・数値計算",
+    "explanation": "Q̇=σA1F12(T1⁴−T2⁴)=5.67×10⁻⁸×1×.8×17.5×10⁹=793.8 W。",
+    "distractors": [
+      "形態係数を過小評価。",
+      "形態係数を0.4と誤認。",
+      "正解。Q̇=σA1F12(T1⁴−T2⁴)=5.67×10⁻⁸×1×.8×17.5×10⁹=793.8 W。",
+      "形態係数を掛けない黒体差。"
+    ],
+    "hints": [
+      "放射の温度はKの4乗。",
+      "σA1F12(T1⁴−T2⁴)。"
+    ],
+    "solutionSteps": [
+      "放射の温度はKの4乗。",
+      "σA1F12(T1⁴−T2⁴)。",
+      "Q̇=σA1F12(T1⁴−T2⁴)=5.67×10⁻⁸×1×.8×17.5×10⁹=793.8 W。"
+    ],
+    "beginnerPitfall": "無次元数・流路の発達・黒体と灰色体など、それぞれのモデルの成立条件を確認する。"
+  },
+  {
+    "id": "supp-batch2-reverse-f12-v1",
+    "revision": "v1",
+    "field": "放射形態係数",
+    "prerequisites": [
+      "熱移動の構成則",
+      "単位と適用条件"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "§10.3の独立詳説と仮想数値条件に基づく原創4択。原本の問題・訳文・図版は転載しない。",
+      "chapterId": "ch10",
+      "focusSectionId": "10.3",
+      "guideId": "chapter10-view-factors"
+    },
+    "createdStatus": "独立作問",
+    "reviewStatus": "内部で算術と単位を確認／外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [],
+    "prompt": "相反則A1F12=A2F21でA1=2 m²、A2=6 m²、F21=.25ならF12は？",
+    "choices": [
+      "0.125",
+      "0.250",
+      "0.500",
+      "0.750"
+    ],
+    "answer": 3,
+    "difficulty": "標準・数値計算",
+    "explanation": "F12=(A2/A1)F21=(6/2)×.25=.75。0≤F12≤1を満たす。",
+    "distractors": [
+      "面積比を誤っている。",
+      "逆のF21をそのまま使用。",
+      "面積比を2倍と誤認。",
+      "正解。F12=(A2/A1)F21=(6/2)×.25=.75。0≤F12≤1を満たす。"
+    ],
+    "hints": [
+      "相反則で未知F12を左辺から解く。",
+      "F12=(A2/A1)F21。"
+    ],
+    "solutionSteps": [
+      "相反則で未知F12を左辺から解く。",
+      "F12=(A2/A1)F21。",
+      "F12=(A2/A1)F21=(6/2)×.25=.75。0≤F12≤1を満たす。"
+    ],
+    "beginnerPitfall": "無次元数・流路の発達・黒体と灰色体など、それぞれのモデルの成立条件を確認する。"
+  },
+  {
+    "id": "supp-batch2-closed-view-sum-v1",
+    "revision": "v1",
+    "field": "放射形態係数",
+    "prerequisites": [
+      "熱移動の構成則",
+      "単位と適用条件"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "§10.3の独立詳説と仮想数値条件に基づく原創4択。原本の問題・訳文・図版は転載しない。",
+      "chapterId": "ch10",
+      "focusSectionId": "10.3",
+      "guideId": "chapter10-view-factors"
+    },
+    "createdStatus": "独立作問",
+    "reviewStatus": "内部で算術と単位を確認／外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [],
+    "prompt": "閉じた三面囲いの凸面1でF11=0、F12=.25である。全ての到達面を含むときF13は？",
+    "choices": [
+      "0.25",
+      "0.50",
+      "0.75",
+      "1.00"
+    ],
+    "answer": 2,
+    "difficulty": "標準・数値計算",
+    "explanation": "閉鎖囲いの形態係数の行和は1。F13=1−F11−F12=1−0−.25=.75。",
+    "distractors": [
+      "F12をそのまま用いている。",
+      "F12を二重に足している。",
+      "正解。閉鎖囲いの形態係数の行和は1。F13=1−F11−F12=1−0−.25=.75。",
+      "他面を無視して1とした。"
+    ],
+    "hints": [
+      "完全閉鎖囲いでΣ_jF1j=1。",
+      "残りの割合を計算。"
+    ],
+    "solutionSteps": [
+      "完全閉鎖囲いでΣ_jF1j=1。",
+      "残りの割合を計算。",
+      "閉鎖囲いの形態係数の行和は1。F13=1−F11−F12=1−0−.25=.75。"
+    ],
+    "beginnerPitfall": "無次元数・流路の発達・黒体と灰色体など、それぞれのモデルの成立条件を確認する。"
+  },
+  {
+    "id": "supp-batch2-convex-self-factor-v1",
+    "revision": "v1",
+    "field": "放射形態係数",
+    "prerequisites": [
+      "熱移動の構成則",
+      "単位と適用条件"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "conceptual",
+    "source": {
+      "type": "supplement",
+      "reference": "§10.3の独立詳説と仮想数値条件に基づく原創4択。原本の問題・訳文・図版は転載しない。",
+      "chapterId": "ch10",
+      "focusSectionId": "10.3",
+      "guideId": "chapter10-view-factors"
+    },
+    "createdStatus": "独立作問",
+    "reviewStatus": "内部で算術と単位を確認／外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [],
+    "prompt": "拡散放射の形態係数で、凸面の自己形態係数Fiiについて正しい説明は？",
+    "choices": [
+      "凸面は自己を直接見ないためFii=0となる",
+      "凸面なら自己形態係数が必ず1となる",
+      "Fiiはいつも絶対温度に比例して増える",
+      "凹面・凸面を問わずFiiは必ず1である"
+    ],
+    "answer": 0,
+    "difficulty": "標準・数値計算",
+    "explanation": "凸面は自分自身へ直接の視線が戻らないためFii=0。凹面ではFii>0もあり得る。",
+    "distractors": [
+      "正解。凸面は自分自身へ直接の視線が戻らないためFii=0。凹面ではFii>0もあり得る。",
+      "凸面は直接自己を見る経路を持たない。",
+      "形態係数は温度依存の量ではない。",
+      "凹面と凸面の自己視野は異なる。"
+    ],
+    "hints": [
+      "自己形態係数は幾何学的割合。",
+      "凸面と凹面の視線経路を考える。"
+    ],
+    "solutionSteps": [
+      "自己形態係数は幾何学的割合。",
+      "凸面と凹面の視線経路を考える。",
+      "凸面は自分自身へ直接の視線が戻らないためFii=0。凹面ではFii>0もあり得る。"
+    ],
+    "beginnerPitfall": "無次元数・流路の発達・黒体と灰色体など、それぞれのモデルの成立条件を確認する。"
+  },
+  {
+    "id": "supp-batch2-grey-surface-limit-v1",
+    "revision": "v1",
+    "field": "放射形態係数",
+    "prerequisites": [
+      "熱移動の構成則",
+      "単位と適用条件"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "applied",
+    "source": {
+      "type": "supplement",
+      "reference": "§10.3の独立詳説と仮想数値条件に基づく原創4択。原本の問題・訳文・図版は転載しない。",
+      "chapterId": "ch10",
+      "focusSectionId": "10.3",
+      "guideId": "chapter10-view-factors"
+    },
+    "createdStatus": "独立作問",
+    "reviewStatus": "内部で算術と単位を確認／外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [],
+    "prompt": "二つの面が黒体でなく灰色体で、反射があり得る。黒体間のQ̇=σA1F12(T1⁴−T2⁴)をそのまま使う判断は？",
+    "choices": [
+      "灰色体でも放射率に関係なく黒体式が厳密",
+      "面同士の放射率を単純加算すれば厳密解",
+      "反射・多重交換を考え、適切な放射回路を用いる",
+      "形態係数F12を0と置けば必ず精密に計算可能"
+    ],
+    "answer": 2,
+    "difficulty": "応用・適用判断",
+    "explanation": "灰色体では反射・再入射の影響があり、黒体式へ単純に一つの放射率を掛ければ一般解になるとは限らない。射度と照射を扱う放射ネットワークを検討する。",
+    "distractors": [
+      "灰色体の反射を無視している。",
+      "放射率は足すだけでは交換が解けない。",
+      "正解。灰色体では反射・再入射の影響があり、黒体式へ単純に一つの放射率を掛ければ一般解になるとは限らない。射度と照射を扱う放射ネットワークを検討する。",
+      "F12は幾何量であり恣意的にゼロにできない。"
+    ],
+    "hints": [
+      "二面ともε<1なら反射が起こり得る。",
+      "黒体式の前提を点検。"
+    ],
+    "solutionSteps": [
+      "二面ともε<1なら反射が起こり得る。",
+      "黒体式の前提を点検。",
+      "灰色体では反射・再入射の影響があり、黒体式へ単純に一つの放射率を掛ければ一般解になるとは限らない。射度と照射を扱う放射ネットワークを検討する。"
+    ],
+    "beginnerPitfall": "無次元数・流路の発達・黒体と灰色体など、それぞれのモデルの成立条件を確認する。"
   }
 ]
