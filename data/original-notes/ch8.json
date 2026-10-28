@@ -35,7 +35,7 @@
       "example": "g=10 m/s²、β=0.003 K⁻¹、ΔT=10 K、L=0.10 m、ν=10⁻⁵ m²/s、α=2×10⁻⁵ m²/sならRa=1.5×10⁶。指数の計算と単位消去を検算する。",
       "limits": "境界層の遷移、板の厚さ、非一様壁温、流体の密度変化が大きいと単純な層流近似は崩れる。",
       "selfCheck": "物性と温度差を固定しLを2倍にするとRaはいくつに比例して変わるか。",
-      "answer": "2³=8倍",
+      "answer": "8倍",
       "reviewStatus": "AI_drafted_pending_independent_expert_review"
     },
     {

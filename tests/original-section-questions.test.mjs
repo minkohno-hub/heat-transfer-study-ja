@@ -16,7 +16,7 @@ test('every original Japanese note has exactly one published question with a sin
   const items=optionSets.flatMap(d=>d.items),generated=source.questions;
   assert.equal(items.length,76);
   assert.equal(new Set(items.map(x=>x.sectionId)).size,76);
-  assert.equal(generated.filter(q=>['v2','v3'].includes(q.revision)).length,42,'answer wording and scientific conditions must be versioned');
+  assert.equal(generated.filter(q=>['v2','v3'].includes(q.revision)).length,50,'answer wording and scientific conditions must be versioned');
   assert.equal(generated.length,76);
   assert.equal(all.length,182);
   assert.equal(all.filter(q=>q.source?.type==='supplement').length,174);
@@ -73,8 +73,8 @@ test('independent calculations verify representative objective answer keys acros
     ['5.6',Math.sqrt(9),'3倍'],
     ['6.5',.664/.332,'約2倍'],
     ['7.5',2*20*10/(20+10),'濡れ縁の長さ'],
-    ['8.3',2**3,'2³=8倍'],
-    ['9.8',.02/.1,'気液二相の全質量流量に対する蒸気質量流量の割合'],
+    ['8.3',2**3,'8倍'],
+    ['9.8',.02/.1,'蒸気質量流量／二相全質量流量'],
     ['10.1',2**4,'16倍'],
     ['10.2',1-.7,'0.3'],
     ['10.3',1*.8/4,'A₁F₁₂=A₂F₂₁'],

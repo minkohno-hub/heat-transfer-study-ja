@@ -10,12 +10,12 @@ test('section practice must not offer a strong correct-answer-length shortcut',a
     return correct>Math.max(...q.choices.filter((_,i)=>i!==q.answer).map(choice=>choice.length));
   });
   // This is only one anti-cue heuristic, NOT a scientific approval of wording.
-  assert.ok(longest.length/76<=.25,
+  assert.equal(longest.length,0,
     'Correct answer is a uniquely longest choice in '+longest.length+'/76 questions; rewrite choices before release');
   const punctuationCue=all.filter(q=>{
     const correct=/[。．.!?！？]$/.test(q.choices[q.answer]);
     return q.choices.every((choice,i)=>i===q.answer||/[。．.!?！？]$/.test(choice)!==correct);
   });
   assert.equal(punctuationCue.length,0,'Correct answer must not be the only choice with different terminal punctuation');
-  assert.equal(questions.filter(q=>['v2','v3'].includes(q.revision)).length,42);
+  assert.equal(questions.filter(q=>['v2','v3'].includes(q.revision)).length,50);
 });

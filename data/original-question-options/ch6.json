@@ -40,8 +40,8 @@
       "sectionId": "6.3",
       "distractors": [
         {
-          "text": "流体密度だけで決まるため",
-          "reason": "温度場・熱拡散・境界条件を無視しています。"
+          "text": "流体密度と粘度だけで決まるため",
+          "reason": "流体の物性だけでなく熱拡散と壁面の熱境界条件も影響します。"
         },
         {
           "text": "常に熱伝導が0のため",
@@ -91,16 +91,16 @@
       "sectionId": "6.6",
       "distractors": [
         {
-          "text": "Nu×Re×Pr",
-          "reason": "StはNuをRePrで割る量です。"
+          "text": "St=Nu×(RePr)",
+          "reason": "分母のRePrを掛けると、流れの強さが増すほどStが増える誤式です。"
         },
         {
-          "text": "Nu×Pr/Re",
-          "reason": "Prを掛ける位置が逆です。"
+          "text": "St=(NuPr)/Re",
+          "reason": "Prは分子ではなく分母に入ります。"
         },
         {
-          "text": "Nu/Reだけ",
-          "reason": "Prを落としています。"
+          "text": "St=Nu/(Re+Pr)",
+          "reason": "分母はReとPrの和ではなく積です。"
         }
       ]
     },
