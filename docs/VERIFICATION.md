@@ -249,3 +249,9 @@ JSONダウンロード失敗時の代替を含む実装 `3869978` はPR #1へpus
 ## 2026-10-28 独立ブランチの追加教材・増問のCI
 
 Codexの`aaef3d97`を独立ブランチへ固定して教材を追加。 [GitHub Actions #40657961004](https://github.com/minkohno-hub/heat-transfer-study-ja/actions/runs/40657961004) の`test-and-audit`は、Node **107件（成功102、スキップ5、失敗0）**、教材構造監査、事実のみのreadiness表示、許可リスト公開ビルドで成功。**pushイベントにつきブラウザー試験はスキップ**。第三者による科学レビューやiPhone Safari、実際の公開URLの最新版確認には代えられない。独立PRを公開したあとのChromiumブラウザーテストは別の実行で判断する。追加演習8問、独立発展講義2件の内容と残課題は[当日資料](DEEP_PHYSICS_INCREMENT_20261028.md)に記録。
+
+## 2026-10-28 継続開発の統合試験と未検証事項
+
+独立PR #7の最終HEAD`a51f462905d512b2f0ba68867227c1b9e8cfa6eb`：[CI #40660394918](https://github.com/minkohno-hub/heat-transfer-study-ja/actions/runs/40660394918)はNode110件中105件成功・5スキップ・0失敗、内容監査・配布許可リスト公開ビルドとChromium E2E成功。Codexへの統合後、[CI #40660676542](https://github.com/minkohno-hub/heat-transfer-study-ja/actions/runs/40660676542)ではNode/公開ビルドとWebKitオンラインブラウザーテスト成功。独立PR #8のHEAD`55c2103bb632372719a0c67b6f7066b7a171f586`：[CI #40661013770](https://github.com/minkohno-hub/heat-transfer-study-ja/actions/runs/40661013770)でNode/公開ビルドおよび検索強調のChromium E2E成功。
+
+以上はビルド済み公開物の自動テストであり、独立PRをマージした最新版のGitHub Pages実URLへの配信・実URLでの操作、iPhone Safari/Android実機、読み上げ支援、ユーザー側に保存された既存キャッシュの更新、PDFの原本全式・図表の画像照合、外部専門家による校閲を完了したことを意味しない。PR #8統合後のCodexブランチのCIは別途最新の実行結果を確認する。関連する未完了ゲートは[Issue #9](https://github.com/minkohno-hub/heat-transfer-study-ja/issues/9)に記録。未取得の旧PC教材の実物を確認済みとしない。
