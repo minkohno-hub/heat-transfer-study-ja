@@ -1,0 +1,64 @@
+{
+  "version": 1,
+  "chapter": "ch2",
+  "sourceType": "original_independent_japanese_notes",
+  "independentOfBookText": true,
+  "expertReviewed": false,
+  "notes": [
+    {
+      "sectionId": "2.1",
+      "objective": "熱伝導方程式をエネルギー保存から理解する",
+      "explanation": "固体内部の微小体積を系に取り、各方向の流入・流出熱流束と発熱を釣り合わせると熱伝導方程式が得られる。温度の時間変化は密度・比熱、温度の空間分布は熱伝導率と境界条件で決まる。熱拡散率は温度変化がどの速さで広がるかの指標である。",
+      "relation": "等方・一定物性なら ρc ∂T/∂t=k∇²T+q‴。α=k/(ρc) [m²/s]。q‴は単位体積当たりの発熱率[W/m³]。",
+      "example": "k=10 W/(m·K)、ρ=1000 kg/m³、c=2000 J/(kg·K)ならα=5×10⁻⁶ m²/s。kが同じでもρcが大きいほど温度変化の広がりは遅くなる。",
+      "limits": "異方性材料や温度依存物性では上記の単純な一定k式は使えない。境界温度だけでなく初期温度と発熱条件も確認する。",
+      "selfCheck": "定常・発熱なしなら一定物性の伝導方程式の右辺はどうなるか。",
+      "answer": "∇²T=0（ラプラス方程式）。",
+      "reviewStatus": "AI_drafted_pending_independent_expert_review"
+    },
+    {
+      "sectionId": "2.2",
+      "objective": "平板の定常伝導を温度勾配から解く",
+      "explanation": "一定厚みの平板で一次元定常、内部発熱なし、熱伝導率が一定なら温度は厚み方向に直線的に変化する。熱流束の向きは温度が下がる方向であり、フーリエの法則の負号がこの向きを表す。表面温度差だけで求める場合も面積を明示する。",
+      "relation": "平板の熱抵抗 R_cond=L/(kA) [K/W]、熱移動率 Q̇=kA(T_hot−T_cold)/L。熱流束 q″=kΔT/L。",
+      "example": "厚さ0.10 m、k=2 W/(m·K)、面積1 m²、両面温度差20 KならQ̇=400 W。厚さを2倍にすると、他条件一定でQ̇は半分。",
+      "limits": "側面からの損失、温度によるkの変化、面積変化、内部発熱、非定常性が大きい場合は温度分布が直線とは限らない。",
+      "selfCheck": "熱伝導率と面積を固定したまま厚さを3倍にするとQ̇は何倍か。",
+      "answer": "1/3倍。",
+      "reviewStatus": "AI_drafted_pending_independent_expert_review"
+    },
+    {
+      "sectionId": "2.3",
+      "objective": "直列・並列熱抵抗の類推を見分ける",
+      "explanation": "温度差を電位差、熱移動率を電流、熱抵抗を抵抗に類推すると、定常の複合壁を直感的に整理できる。直列では同じ熱流が順番に流れ、並列では同じ温度差に対して複数経路へ分岐する。接触抵抗は界面の温度差を生む。",
+      "relation": "直列 R_total=ΣR_i、Q̇=ΔT/R_total。並列 1/R_eq=Σ(1/R_i)。接触抵抗は通常 K/W または面積当たり m²K/Wで表すため単位に注意。",
+      "example": "0.2 K/Wと0.3 K/Wの直列抵抗は0.5 K/W。同じ二つを並列にするとR_eq=1/(5+3.333…)≈0.12 K/W。等価回路を描く前に熱流経路を確かめる。",
+      "limits": "放射のT⁴依存や温度依存係数が支配する場合、抵抗を一定値として単純加算できないことがある。面積基準の違う抵抗も混ぜない。",
+      "selfCheck": "0.2 K/Wと0.3 K/Wを直列につないだ全抵抗は。",
+      "answer": "0.5 K/W。",
+      "reviewStatus": "AI_drafted_pending_independent_expert_review"
+    },
+    {
+      "sectionId": "2.4",
+      "objective": "総括熱通過率Uの面積基準を明記する",
+      "explanation": "伝導と複数表面の対流を一つの関係でまとめると、Q̇=UAΔTとなる。Uは各層の抵抗を集約した値で、同じ装置でも内側面積基準U_iと外側面積基準U_oは数値が異なることがある。特に円筒配管で内外面積が異なる点を忘れない。",
+      "relation": "R_total=1/(h_iA_i)+R_wall+1/(h_oA_o)+R_fouling（該当する抵抗がある場合）。常に 1/(U_iA_i)=1/(U_oA_o)=R_total。",
+      "example": "全抵抗0.025 K/Wなら全コンダクタンスUA=40 W/K。温度差10 KでQ̇=400 W。基準面積A=2 m²ならU=20 W/(m²·K)。",
+      "limits": "Uは固有材料定数ではない。流速、熱伝達率、汚れ、形状、相変化の有無などで変わる。異なる面積基準のUを直接比較しない。",
+      "selfCheck": "同じ熱交換器で内外のUの数値が異なっても、同じに保たれる量は何か。",
+      "answer": "UA（全体の熱コンダクタンス）。",
+      "reviewStatus": "AI_drafted_pending_independent_expert_review"
+    },
+    {
+      "sectionId": "2.5",
+      "objective": "伝導解析を検算できる形にまとめる",
+      "explanation": "熱伝導の演習では、支配方程式、初期条件と境界条件、熱流経路、物性の温度依存性を明示してから解く。直列壁の温度降下は各抵抗に比例するため、どの層に大きい温度差が生じるかを先に予測できる。解の単位と熱収支を最後に確認する。",
+      "relation": "定常直列の各層で ΔT_i=Q̇ R_i、ΣΔT_i=ΔT_total。発熱・蓄熱のない単一路ではQ̇は各層を通じて一定。",
+      "example": "Q̇=100 W、R₁=0.02 K/W、R₂=0.05 K/Wなら温度降下は2 Kと5 Kで合計7 K。抵抗の大きい第2層が温度差の大部分を担う。",
+      "limits": "この関係は同じ熱流率が流れる直列・定常系に限る。熱橋や温度依存の熱伝導率がある構造は適切に細分化する。",
+      "selfCheck": "同じQ̇で抵抗Rが2倍なら、その部分の温度降下は何倍か。",
+      "answer": "2倍。",
+      "reviewStatus": "AI_drafted_pending_independent_expert_review"
+    }
+  ]
+}
