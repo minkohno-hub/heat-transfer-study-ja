@@ -493,8 +493,8 @@ input[type="range"] { width: 100%; accent-color: var(--accent); }
 .sim-physical-figure { margin:18px 0 24px; padding:13px 12px 10px; background:var(--surface-soft); border:1px solid var(--line); border-radius:13px; }
 .sim-physical-svg { display:block; width:100%; height:auto; max-height:270px; color:var(--text); overflow:visible; }
 .sim-physical-figure figcaption { margin:5px 3px 2px; color:var(--muted); font-size:11px; line-height:1.75; }
-.sim-physical-svg .diagram-label { fill:var(--text); font-size:14px; font-weight:650; }
-.sim-physical-svg .diagram-node-label { fill:var(--text); font-size:11px; font-weight:600; }
+.sim-physical-svg .diagram-label { fill:var(--ink); font-size:14px; font-weight:650; }
+.sim-physical-svg .diagram-node-label { fill:var(--ink); font-size:11px; font-weight:600; }
 .sim-physical-svg .diagram-figure-heading { fill:var(--muted); font-size:12px; font-weight:650; }
 .sim-physical-svg .diagram-neutral { fill:var(--muted); font-size:15px; font-weight:700; }
 .sim-physical-svg .diagram-reservoir { fill:var(--surface); stroke:var(--line); stroke-width:2; }
