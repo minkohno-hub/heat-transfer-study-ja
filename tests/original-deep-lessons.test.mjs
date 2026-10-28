@@ -117,6 +117,18 @@ test('new heat-equation and binary-diffusion examples balance fluxes and use the
  assert.ok(diffusion.workedExample.answer.includes('0.01396'));
  assert.ok(slab.workedExample.answer.includes('3200 W/m²'));
 });
+test('the new finite black-surface explanation respects reciprocity and net-pair conservation',async()=>{
+ const lesson=deepLessonForSection(await read('data/original-deep-lessons.json'),'10.1');
+ assert.ok(lesson.blocks.some(block=>block.heading==='二つの黒体面を区別して数える'));
+ assert.ok(lesson.equations.some(eq=>eq.expression.includes('A_1F_12=A_2F_21')));
+ const sigma=5.670374419e-8,A1=1,A2=2,F12=.30,F21=A1*F12/A2,T1=400,T2=300;
+ assert.equal(F21,.15);
+ const q12=sigma*A1*F12*(T1**4-T2**4);
+ const q21=sigma*A2*F21*(T2**4-T1**4);
+ assert.ok(Math.abs(q12-297.6946569975)<1e-9);
+ assert.ok(Math.abs(q12+q21)<1e-9);
+ assert.ok(lesson.blocks.some(block=>block.text.includes('他の面との対交換も足す')));
+});
 test('public build checks advanced note structural integrity and mislabeling',async()=>{
  const [book,questions,glossary,originalNotes,deepLessons]=await Promise.all([
   'data/book.json','data/questions.json','data/glossary.json','data/original-notes.json','data/original-deep-lessons.json'

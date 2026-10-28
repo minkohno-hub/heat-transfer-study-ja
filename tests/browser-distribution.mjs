@@ -251,6 +251,14 @@ try {
   await page.locator('[id="reader-block-10.1-deep-example"]').waitFor({state:'visible'});
   assert.match(await page.locator('[id="reader-block-10.1-deep-example"]').innerHTML(),/<mark>459\.300<\/mark>/);
   await nav('search');
+  await page.locator('#search-query').fill('297.695');
+  await page.locator('#search-form select[name="kind"]').selectOption('deep-lesson');
+  await page.locator('#search-form select[name="chapter"]').selectOption('ch10');
+  await page.locator('#search-form button[type="submit"]').click();
+  await page.locator('.result-card .result-link').first().click();
+  await page.locator('[id="reader-block-10.1-deep-6"]').waitFor({state:'visible'});
+  assert.match(await page.locator('[id="reader-block-10.1-deep-6"]').innerHTML(),/<mark>297\.695<\/mark>/);
+  await nav('search');
   await page.locator('#search-query').fill('フィン有効度');
   await page.locator('#search-form select[name="kind"]').selectOption('deep-lesson');
   await page.locator('#search-form select[name="chapter"]').selectOption('ch4');
