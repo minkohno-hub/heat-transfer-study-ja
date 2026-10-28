@@ -18,9 +18,14 @@ test('the authoring queue counts actually authored lessons and focus-section pra
  assert.equal(r.remainingQuestionDraftMinimum,372);
  assert.equal(r.draftAuthoringMinimumMet,18);
  assert.equal(r.sectionsNeedingDetailedLesson,49);
+ assert.equal(r.legacyDraftRecordedSections,44);
  assert.equal(r.externallyAcceptedSections,0);
  assert.ok(r.next.length===12);
  assert.ok(r.next.every(x=>!x.authoringMinimumMet));
+ assert.ok(r.next.every(x=>!x.legacyDraftRecorded),'unmigrated legacy drafts should be checked before recreating their range');
+ assert.equal(r.next[0].sectionId,'9.3','available sections follow book order before later boiling topics');
+ assert.ok(r.sections.some(x=>x.sectionId==='4.4'&&x.legacyDraftRecorded));
+ assert.ok(r.sections.some(x=>x.sectionId==='9.3'&&!x.legacyDraftRecorded));
  const s=r.sections.find(x=>x.sectionId==='2.2');
  assert.ok(s.detailedLessonDraft);
  assert.ok(s.questionDraftCount>=5,'One note check and four new focused calculations must count');

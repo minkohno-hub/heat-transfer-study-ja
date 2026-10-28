@@ -6,8 +6,10 @@ export function buildAuthoringQueue({book,originalNotes,deepLessons,questions,ev
   if(!Array.isArray(deepLessons?.lessons))throw new TypeError('独立詳細教材の配列が必要です。');
   const report=auditFullCurriculumReadiness({book,originalNotes,questions,...evidence,targets});
   const deepIds=new Set(deepLessons.lessons.map(lesson=>lesson.sectionId));
+  const sourceSections=new Map(book.chapters.flatMap(chapter=>chapter.sections.map(section=>[section.id,section])));
   const sections=report.sections.map((section,index)=>{
     const detailedLessonDraft=deepIds.has(section.id);
+    const legacyDraftRecorded=sourceSections.get(section.id)?.translationStatus==='draft_complete';
     const questionDraftCount=section.sectionQuestionCount;
     const kinds=section.distinctQuestionKinds;
     const missingQuestionDrafts=Math.max(0,targets.questionsPerSection-questionDraftCount);
@@ -15,7 +17,7 @@ export function buildAuthoringQueue({book,originalNotes,deepLessons,questions,ev
     const authoringMinimumMet=Boolean(section.originalConceptNote&&detailedLessonDraft&&missingQuestionDrafts===0&&missingKinds===0);
     return {
       chapterId:section.chapterId,sectionId:section.id,title:section.title,order:index,
-      shortConceptNoteDraft:section.originalConceptNote,detailedLessonDraft,
+      shortConceptNoteDraft:section.originalConceptNote,detailedLessonDraft,legacyDraftRecorded,
       questionDraftCount,questionKinds:kinds,
       missingQuestionDrafts,missingKinds,authoringMinimumMet,
       independentlyReviewed:section.independentlyReviewed,
@@ -27,12 +29,13 @@ export function buildAuthoringQueue({book,originalNotes,deepLessons,questions,ev
   });
   const count=key=>sections.filter(row=>row[key]).length;
   const backlog=sections.filter(row=>!row.authoringMinimumMet);
-  // Book order takes priority over adding another feature to already-covered sections.
-  // A missing detailed lesson gets attention before polishing surplus questions.
+  // A recorded old-PC draft might not be present in this environment. Keep it visible,
+  // but prioritize sections without such a record so that the queue does not encourage
+  // recreating material before the legacy files have been located and checked.
   const next=backlog.slice().sort((a,b)=>
+    Number(a.legacyDraftRecorded)-Number(b.legacyDraftRecorded)||
     Number(a.shortConceptNoteDraft)-Number(b.shortConceptNoteDraft)||
     Number(a.detailedLessonDraft)-Number(b.detailedLessonDraft)||
-    b.missingQuestionDrafts-a.missingQuestionDrafts||
     a.order-b.order
   );
   return {
@@ -46,6 +49,7 @@ export function buildAuthoringQueue({book,originalNotes,deepLessons,questions,ev
     draftAuthoringMinimumMet:count('authoringMinimumMet'),
     remainingQuestionDraftMinimum:sections.reduce((a,x)=>a+x.missingQuestionDrafts,0),
     sectionsNeedingDetailedLesson:sections.filter(x=>!x.detailedLessonDraft).length,
+    legacyDraftRecordedSections:count('legacyDraftRecorded'),
     externallyAcceptedSections:count('finalAcceptance'),
     next:next.slice(0,12).map(({order,...row})=>row),
     sections:sections.map(({order,...row})=>row),
