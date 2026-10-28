@@ -263,10 +263,21 @@ try {
   assert.match(await page.locator('#reader-deep-lesson').innerText(),/専門家校閲前/);
   await nav('simulator');
   assert.match(await page.locator('.result-number').innerText(),/5,625/);
+  assert.match(await page.locator('.sim-physical-svg').getAttribute('aria-label'),/左側 80 ℃、右側 20 ℃/);
+  assert.ok(await page.locator('.sim-physical-figure figcaption').count());
+  await page.locator('#sim-form input[name="hot"]').fill('10');
+  assert.match(await page.locator('.sim-physical-svg').getAttribute('aria-label'),/右側から左側へ/);
+  await page.locator('#sim-form input[name="hot"]').fill('80');
   await page.locator('#sim-form input[name="k"]').fill('0.000001');
   assert.match(await page.locator('.result-number').innerText(),/3\.750×10⁻⁴/);
   await page.locator('#sim-form input[name="k"]').fill('15');
   assert.match(await page.locator('.related-reading a[href*="AHTTv600.pdf"]').getAttribute('href'),/AHTTv600\.pdf#page=\d+$/);
+  await page.locator('[data-sim-mode="convection"]').click();
+  assert.match(await page.locator('.sim-physical-svg').getAttribute('aria-label'),/表面 80 ℃と流体 20 ℃/);
+  assert.match(await page.locator('.sim-physical-figure').innerText(),/対流熱伝達率/);
+  await page.locator('[data-sim-mode="resistance"]').click();
+  assert.match(await page.locator('.sim-physical-svg').getAttribute('aria-label'),/2層の壁と両側対流/);
+  assert.ok(await page.locator('.sim-physical-svg .diagram-node-label').count()===5);
   await page.locator('[data-sim-mode="radiation"]').click();
   assert.match(await page.locator('.result-number').innerText(),/W/);
   await page.locator('#sim-form input[name="emissivity"]').fill('0');
@@ -274,6 +285,8 @@ try {
   await page.locator('#sim-form input[name="surface"]').fill('20');
   await page.locator('#sim-form input[name="surrounding"]').fill('80');
   assert.equal((await page.locator('.result-number strong').innerText()).replace(/\s/g,''),'0W');
+  assert.match(await page.locator('.sim-physical-svg').getAttribute('aria-label'),/放射率 0/);
+  assert.match(await page.locator('.sim-physical-figure').innerText(),/熱移動なし/);
   await page.locator('#sim-form input[name="surface"]').fill('150');
   await page.locator('#sim-form input[name="surrounding"]').fill('25');
   await page.locator('#sim-form input[name="emissivity"]').fill('0.85');
@@ -286,6 +299,8 @@ try {
   // and mobile chart are checked on the exact allowlisted public distribution.
   await page.locator('[data-sim-mode="transient"]').click();
   assert.match(await page.locator('.result-number strong').innerText(),/34\.715/);
+  assert.match(await page.locator('.sim-physical-svg').getAttribute('aria-label'),/2,000 秒後の物体温度 34\.72 ℃/);
+  assert.match(await page.locator('.sim-physical-figure').innerText(),/物体内部は温度一様/);
   assert.match(await page.locator('.sim-output-card').innerText(),/Bi = 0\.02/);
   assert.match(await page.locator('.sim-chart').getAttribute('aria-label'),/横軸は秒/);
   assert.match(await page.locator('.sim-output-card').innerText(),/101,139/);
