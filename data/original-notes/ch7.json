@@ -35,7 +35,7 @@
       "example": "相関式の範囲内でReを2倍にしたときNu∝Re^0.8ならNu比は約1.74。圧力損失が何倍かは摩擦係数と流速を別に考える必要がある。",
       "limits": "遷移域・粗面管・高粘度流体などに同じ係数を盲目的に適用しない。Dittus–Boelter形は適用範囲を必ず確認する。",
       "selfCheck": "管内乱流で熱交換量が増えれば、必要ポンプ動力は必ず減るか。",
-      "answer": "必ずしも減らない。摩擦損失が増えることがある。",
+      "answer": "必ずしも減らない。",
       "reviewStatus": "AI_drafted_pending_independent_expert_review"
     },
     {
@@ -46,7 +46,7 @@
       "example": "ṁc_p=200 W/Kの流体を流し、温度が10 K上がればQ̇=2000 W。局所熱流束を求めるには壁温と局所流体温度、hが別途必要。",
       "limits": "壁温が一定でない場合、対数平均や積分による評価が必要。流路の圧力損失や熱損失も設計に影響する。",
       "selfCheck": "管内で流体温度が20 K上がったときQ̇を求めるために必要な流体情報は何か。",
-      "answer": "質量流量と比熱容量、または熱容量流量ṁc_p。",
+      "answer": "熱容量流量ṁc_p。",
       "reviewStatus": "AI_drafted_pending_independent_expert_review"
     },
     {
@@ -57,7 +57,7 @@
       "example": "幅20 mm、高さ10 mmの閉じた長方形ダクトならD_h=400/30≈13.3 mm。円管の直径に置き換えた後もNu=3.66と決めつけない。",
       "limits": "一部が自由表面の開水路では濡れ縁の定義が変わる。熱境界条件とアスペクト比によってNuが異なる。",
       "selfCheck": "D_hの分母に使うP_wは何か。",
-      "answer": "流体と壁が接している濡れ縁の長さ。",
+      "answer": "濡れ縁の長さ。",
       "reviewStatus": "AI_drafted_pending_independent_expert_review"
     },
     {
