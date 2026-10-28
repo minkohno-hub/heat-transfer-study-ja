@@ -414,9 +414,9 @@ function pageHeading(eyebrow, title, description = '', actions = '') {
 function focusGuideSection(id){const section=document.getElementById(`guide-${id}`);section?.scrollIntoView({block:'start'});section?.focus({preventScroll:true});}
 function renderGuide() {
   const matches=searchGuide(ui.guideQuery);
-  return `${pageHeading('使い方・学習ガイド','操作と熱移動の考え方を学ぶ','基本操作から4つのシミュレーターの式・前提・手計算例まで、アプリ内で確認できます。')}
+  return `${pageHeading('使い方・学習ガイド','操作と熱移動の考え方を学ぶ','基本操作、4つのシミュレーターのモデル、書籍11章に対応する独立作成の日本語補助講座を学べます。原本の翻訳ではありません。')}
     <div class="guide-layout"><aside class="surface-card guide-toc" aria-label="ガイドの目次"><h2>目次</h2><form id="guide-search-form" role="search"><label for="guide-query">ガイド内を検索</label><div class="guide-search-row"><input id="guide-query" name="query" type="search" value="${escapeHTML(ui.guideQuery)}" placeholder="例：放射率、復元、復習"/><button type="submit" class="button secondary">探す</button></div></form><nav aria-label="ガイドの項目">${GUIDE_SECTIONS.map(section=>`<a href="#guide/${section.id}">${escapeHTML(section.title)}</a>`).join('')}</nav></aside>
-    <div class="guide-results"><p class="guide-count" role="status">${ui.guideQuery?`「${escapeHTML(ui.guideQuery)}」の検索結果：${matches.length}項目`:`全${GUIDE_SECTIONS.length}項目 · アプリ作成の説明`}</p>${matches.length?matches.map(section=>`<section class="surface-card guide-section" id="guide-${section.id}" tabindex="-1"><p class="eyebrow">使い方・学習ガイド</p><h2>${escapeHTML(section.title)}</h2><p class="guide-summary">${escapeHTML(section.summary)}</p><div class="guide-body">${section.html}</div><a class="text-link" href="#guide">ガイドの先頭へ ↑</a></section>`).join(''):'<div class="surface-card guide-empty"><p>該当する説明が見つかりませんでした。別の言葉で検索してください。</p></div>'}</div></div>`;
+    <div class="guide-results"><p class="guide-count" role="status">${ui.guideQuery?`「${escapeHTML(ui.guideQuery)}」の検索結果：${matches.length}項目`:`全${GUIDE_SECTIONS.length}項目 · アプリ作成の説明`}</p>${matches.length?matches.map(section=>`<section class="surface-card guide-section" id="guide-${section.id}" tabindex="-1"><p class="eyebrow">${section.bookChapter ? `独立作成の章別補助講座 · 第${escapeHTML(section.bookChapter.slice(2))}章` : `使い方・学習ガイド`}</p><h2>${escapeHTML(section.title)}</h2><p class="guide-summary">${escapeHTML(section.summary)}</p><div class="guide-body">${section.html}</div><a class="text-link" href="#guide">ガイドの先頭へ ↑</a></section>`).join(''):'<div class="surface-card guide-empty"><p>該当する説明が見つかりませんでした。別の言葉で検索してください。</p></div>'}</div></div>`;
 }
 function statusPill(text, tone = 'neutral') { return `<span class="status-pill tone-${tone}">${text}</span>`; }
 function translatedSectionCount() { return allSections().filter(sectionIsTranslated).length; }
@@ -478,6 +478,7 @@ function renderReader() {
   ui.readerSection = section.id;
   state.lastSection = section.id; saveState();
   const chapter = book.chapters.find(item => item.id === section.chapterId);
+  const independentChapterGuide = GUIDE_SECTIONS.find(item=>item.bookChapter===section.chapterId);
   const available = sectionIsTranslated(section);
   const hasEnglish = Array.isArray(section.blocksEn);
   const contentLanguage = hasEnglish && state.settings.contentLanguage === 'en' ? 'en' : 'ja';
@@ -511,6 +512,7 @@ function renderReader() {
         <p class="small-note">原本PDFは英語版です。翻訳本文・原図の再利用とは権利を分けて扱います。PDFビューアーによっては指定ページへ自動移動しません。オフライン保存には空き容量と対応ブラウザーが必要です。</p>
         <h2 class="reader-title">${escapeHTML(section.id)}　${escapeHTML(displayTitle)}</h2>
         <div class="reader-status-row">${statusPill(available ? (section.localSourceChecked ? '原本照合済み（作業者）' : '翻訳済み') : draftLabel, available ? 'green' : 'neutral')}${statusPill(available ? '専門家校閲待ち' : privateOnly ? '訳文等の公開範囲を確認中' : draftComplete ? '確認待ち・アプリ未収録' : inProgress ? '下書きはアプリ未収録' : '日本語訳は未収録', 'amber')}</div>
+        ${independentChapterGuide ? `<aside class="notice-card" aria-label="独立作成の章別補助講座"><span class="notice-icon" aria-hidden="true">i</span><div><strong>この章の日本語補助講座</strong><p>原本の翻訳・節本文ではありません。伝熱・物質移動の考え方を独立した例と式で説明します。</p><a class="text-link" href="#guide/${escapeHTML(independentChapterGuide.id)}"> ${escapeHTML(independentChapterGuide.title)} を開く →</a></div></aside>` : ''}
         ${available ? `<div class="book-content" lang="${contentLanguage}">${blocks}</div>` : blocks}
           <p class="small-note">原本PDFを読んだ後の読了・しおり・メモは自分で記録してください。PDFビューアー内の位置は自動取得できません。</p>
           <div class="reader-actions"><button type="button" class="button ${state.readSections[section.id] ? 'secondary' : 'primary'}" data-action="toggle-read">${state.readSections[section.id] ? '✓ 読了に記録済み' : 'この節を読了にする'}</button><form class="bookmark-form" id="bookmark-form"><label for="bookmark-note">しおりのメモ（任意）</label><div class="inline-form"><input id="bookmark-note" name="note" type="text" maxlength="180" placeholder="あとで見返したい点"/><button class="button secondary" type="submit">しおりを付ける</button></div></form></div>
