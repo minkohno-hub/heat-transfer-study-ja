@@ -258,7 +258,7 @@ try {
   assert.equal(await page.locator('.sim-physical-diagram').count(),1);
   assert.match(await page.locator('.sim-physical-diagram').getAttribute('role'),/img/);
   assert.match(await page.locator('.simulation-figure').innerText(),/アプリ作成の図/);
-  assert.match(await page.locator('.sim-physical-diagram desc').innerText(),/左から右/);
+  assert.match(await page.locator('.sim-physical-diagram desc').textContent(),/左から右/);
 
   await page.locator('#sim-form input[name="k"]').fill('0.000001');
   assert.match(await page.locator('.result-number').innerText(),/3\.750×10⁻⁴/);
@@ -282,7 +282,7 @@ try {
   // Full interactive time-dependent cooling, validity warning, heat-flow sign
   // and mobile chart are checked on the exact allowlisted public distribution.
   await page.locator('[data-sim-mode="transient"]').click();
-  assert.match(await page.locator('.sim-physical-diagram desc').innerText(),/2000秒/);
+  assert.match(await page.locator('.sim-physical-diagram desc').textContent(),/2000秒/);
 
   assert.match(await page.locator('.result-number strong').innerText(),/34\.715/);
   assert.match(await page.locator('.sim-output-card').innerText(),/Bi = 0\.02/);
