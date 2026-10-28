@@ -3,6 +3,7 @@ import { GUIDE_SECTIONS, searchGuide } from './guide.mjs';
 import {questionChapter,questionsForChapter,chapterLearningOverview} from './chapter-curriculum.mjs';
 import {validateOriginalNotes,independentNoteForSection} from './original-notes.mjs';
 import {validateDeepLessons,deepLessonForSection} from './original-deep-lessons.mjs';
+import {renderTransientFields,renderTransientSteps,transientGraph,transientFieldNames} from './transient-ui.mjs';
 const CORE_DATA_FILES = ['./data/book.json', './data/questions.json', './data/glossary.json', './data/content-manifest.json', './data/original-notes.json', './data/original-deep-lessons.json'];
 const LEGACY_STORAGE_KEY = 'heat-study-ja:v1';
 const PROFILES_KEY = 'heat-study-ja:profiles:v1';
@@ -943,6 +944,45 @@ function simGraph(mode,current,baseline) {
   const ticks=[0,.5,1].map(f=>{const q=low+(high-low)*f;return `<line x1="${left}" y1="${y(q)}" x2="${width-right}" y2="${y(q)}" class="chart-grid"/><text x="${left-8}" y="${y(q)+4}" text-anchor="end" class="chart-label">${q.toPrecision(2)}</text>`;}).join('');
   return `<svg class="sim-chart" viewBox="0 0 ${width} ${height}" role="img" aria-label="温度差と熱移動率の関係。現在の点は温度差${current.delta.toPrecision(3)} K、熱移動率${current.watts.toPrecision(3)} W。負の値は基準方向と逆向き。"><title>温度差と熱移動率</title>${ticks}<line x1="${left}" y1="${y(0)}" x2="${width-right}" y2="${y(0)}" class="chart-axis"/><path d="${path(points)}" class="chart-current"/>${base?`<path d="${path(basePoints)}" class="chart-baseline"/>`:''}<circle cx="${x(current.delta)}" cy="${y(current.watts)}" r="5" class="chart-current-point"/><text x="${left}" y="${height-29}" class="chart-label">${minDelta.toPrecision(2)}</text><text x="${width-right}" y="${height-29}" text-anchor="end" class="chart-label">${maxDelta.toPrecision(2)}</text><text x="${left+w/2}" y="${height-7}" text-anchor="middle" class="chart-label">温度差 ΔT（K または ℃差）</text><text x="14" y="${top+h/2}" transform="rotate(-90 14 ${top+h/2})" text-anchor="middle" class="chart-label">熱移動率 Q̇（W）</text></svg>`;
 }
+function renderTransientSimulator(){
+  const v=ui.simValues.transient,x=calculateLumpedCooling(v),old=state.simComparisons.transient,
+    prior=old?calculateLumpedCooling(old):null,
+    compare=prior&&!prior.error?prior:null,
+    mode='transient',meta=SIM_META.transient,related=getSection('5.1');
+  const result=x.error
+    ? `<div class="sim-error" role="alert"><strong>計算できませんでした</strong><p>${escapeHTML(x.error)}</p></div>`
+    : `<div class="result-number"><span>経過 ${Number(x.values.time).toLocaleString('ja-JP')} 秒後の物体温度</span>
+       <strong>${formatHeatRate(x.temperature)}<i>℃</i></strong>
+       <small>外向き熱移動率：${formatHeatRate(x.watts)} W。累積放熱量：${formatHeatRate(x.energyJ)} J。負の値なら吸熱します。</small></div>
+       <div class="assumption-card" role="status"><strong>適用性：ビオ数 Bi = ${x.biot.toPrecision(4)}</strong><p>${escapeHTML(x.applicability)}</p></div>`;
+  return `${pageHeading('簡易シミュレーター','時間とともに変わる物体温度','物体・周囲の条件を変えて、非定常の冷却と加熱を比較します。')}
+    <div class="sim-tabs" role="tablist" aria-label="熱移動の種類">
+      ${Object.entries(SIM_META).map(([key,item])=>`<button type="button" role="tab" aria-selected="${mode===key}" class="sim-tab ${mode===key?'selected':''}" data-sim-mode="${key}"><span aria-hidden="true">${key==='transient'?'◷':key==='conduction'?'▥':key==='convection'?'↝':'☼'}</span>${item.title}</button>`).join('')}</div>
+    <div class="sim-layout"><section class="surface-card sim-input-card">
+      <div class="sim-intro"><p class="eyebrow">${meta.title}</p><h2>${meta.description}</h2>
+      <a class="text-link" href="#guide/sim-transient">物理的背景・単位・手計算例 →</a></div>
+      <form id="sim-form" class="sim-form"><div class="sim-fields">${renderTransientFields(v)}</div></form>
+      <div class="formula-card"><span>使用する式</span><strong>${meta.formula}</strong>
+        <p>物体温度の正負と熱移動方向は別です。放熱を正とします。</p></div>
+      <div class="assumption-card"><strong>モデルの前提と限界</strong><p>${meta.note}</p></div>
+    </section><section class="surface-card sim-output-card">
+      <div class="card-heading"><div><p class="eyebrow">現在の条件</p><h2>物体温度</h2></div>
+        ${statusPill('非定常・Biを確認','amber')}</div>
+      ${result}
+      ${x.error?'':renderTransientSteps(x)}
+      ${x.error?'':`<div class="chart-heading"><h3>時間に対する物体温度</h3><span>横軸：秒 ／ 縦軸：℃。内部温度を一様とした近似です。</span></div>
+        ${transientGraph(x,compare)}
+        <div class="chart-legend"><span><i class="legend-current"></i>現在の条件</span>
+          ${compare?'<span><i class="legend-baseline"></i>保存した比較条件</span>':''}</div>`}
+      <div class="comparison-controls"><button type="button" class="button secondary" data-action="save-comparison">この条件を比較用に保存</button>
+        ${old?'<button type="button" class="text-button" data-action="clear-comparison">比較条件を削除</button>':''}
+        ${compare?`<small>保存条件の結果：${formatHeatRate(compare.temperature)} ℃</small>`:''}</div>
+      <div class="related-reading"><strong>関連する本書の範囲</strong>
+        ${related?`<a href="#reader" data-section="${escapeHTML(related.id)}">第${escapeHTML(related.id)}節：${escapeHTML(related.title)}</a>${sourcePdfLink({},related)}`:''}
+        <small>日本語の計算説明はアプリ独自の補足モデルです。原本の翻訳ではありません。</small>
+        <button type="button" class="text-button" data-sim-practice="熱伝導">熱伝導の練習問題に挑戦 →</button></div>
+      </section></div>`;
+}
 function renderSimulator() {
   if(ui.simMode==='transient')return renderTransientSimulator();
   const mode = ui.simMode; const values = simRead(mode); const result = calculateSimulation(mode, values); const baseline = state.simComparisons[mode]; const meta = SIM_META[mode];
@@ -1248,12 +1288,12 @@ function onChange(event) {
   else if (target.dataset.reviewDate) setReviewDate(target.dataset.reviewDate,target.value);
   else if (target.dataset.date) { ui.calendarDate=target.dataset.date; render(); }
   else if (target.id === 'import-file' && target.files?.[0]) readImportFile(target.files[0]);
-  else if (target.name && ['k','area','thickness','hot','cold','h','surface','fluid','emissivity','surrounding','hHot','hCold','k1','k2','L1','L2','volume','density','cp','initial','ambient','time'].includes(target.name)) { ui.simValues[ui.simMode][target.name]=target.value; renderSimulatorOutputsOnly(); }
+  else if (target.name && [...transientFieldNames,'thickness','hot','cold','surface','fluid','emissivity','surrounding','hHot','hCold','k1','k2','L1','L2'].includes(target.name)) { ui.simValues[ui.simMode][target.name]=target.value; renderSimulatorOutputsOnly(); }
 }
 function onInput(event) {
   const target=event.target;
   if (target.id === 'glossary-query') { ui.glossaryQuery=target.value; const at=target.selectionStart; render(); const field=document.getElementById('glossary-query'); field?.focus(); field?.setSelectionRange(at,at); }
-  else if (target.name && ['k','area','thickness','hot','cold','h','surface','fluid','emissivity','surrounding','hHot','hCold','k1','k2','L1','L2','volume','density','cp','initial','ambient','time'].includes(target.name)) { ui.simValues[ui.simMode][target.name]=target.value; renderSimulatorOutputsOnly(); }
+  else if (target.name && [...transientFieldNames,'thickness','hot','cold','surface','fluid','emissivity','surrounding','hHot','hCold','k1','k2','L1','L2'].includes(target.name)) { ui.simValues[ui.simMode][target.name]=target.value; renderSimulatorOutputsOnly(); }
 }
 function renderSimulatorOutputsOnly() {
   if (ui.route !== 'simulator') return;
