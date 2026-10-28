@@ -32,8 +32,10 @@ test('conduction, convection and radiation arrows reverse with the temperature d
    const reversed={...standard,[keys[0]]:standard[keys[1]],[keys[1]]:standard[keys[0]]};
    const b=renderSimulationVisual(mode,calc(mode,reversed));
    assert.notEqual(a,b,mode);
-   assert.match(a,/points="385,125 371,118 371,132"/,mode);
-   assert.match(b,/points="196,125 210,118 210,132"/,mode);
+   const flow=html=>{const m=html.match(/<line x1="(\\d+)" y1="\\d+" x2="(\\d+)" y2="\\d+" class="diagram-heat diagram-flow-line"/);assert.ok(m,mode);return [Number(m[1]),Number(m[2])];};
+   const forward=flow(a),backward=flow(b);
+   assert.ok(forward[0]<forward[1],'forward arrow must point right: '+mode);
+   assert.ok(backward[0]>backward[1],'backward arrow must point left: '+mode);
    const equal={...standard,[keys[1]]:standard[keys[0]]};
    const c=renderSimulationVisual(mode,calc(mode,equal));
    assert.match(c,/熱移動なし/,mode);
@@ -69,7 +71,7 @@ test('transient diagrams update temperature and direction as time and ambient co
  assert.ok(first.includes('t = 2,000 s'));
  assert.ok(later.includes('t = 4,000 s'));
  const heating=renderSimulationVisual('transient',calc('transient',{...conditions.transient,initial:0,ambient:20}));
- assert.match(heating,/points="196,123 210,116 210,130"/);
+ assert.match(heating,/<line x1="369" y1="123" x2="221" y2="123" class="diagram-heat diagram-flow-line"/);
 });
 test('invalid or nonfinite inputs never render a misleading physical diagram',()=>{
  for(const mode of Object.keys(conditions)){
