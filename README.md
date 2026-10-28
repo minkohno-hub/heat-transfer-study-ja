@@ -118,7 +118,7 @@ node scripts/serve.mjs
 node scripts/build-local-pack.mjs
 ```
 
-追加教材を読み込むときは、原本照合済みの表示と本文ブロックの構造を確認します。空の節や表示できない種類・壊れた表を含む場合は追加教材全体の取り込みを中止し、収録済み本文を表示します。書籍図の画像はアプリ内の教材パスだけを参照し、外部サイトの画像は表示しません。旧PCの教材を移した後は、実物の構造と出典を照合し、ローカル教材用のテストも実行してください。
+追加教材を読み込むときは、原本照合済みか未照合の下書きかという表示と、本文ブロックの構造を確認します。空の節や表示できない種類・壊れた表を含む場合は追加教材全体の取り込みを中止し、収録済み本文を表示します。書籍図の画像はアプリ内の教材パスだけを参照し、外部サイトの画像は表示しません。旧PCの教材を移した後は、実物の構造と出典を照合し、ローカル教材用のテストも実行してください。
 
 ## 確認する
 
@@ -131,7 +131,7 @@ node scripts/build-public-site.mjs
 node tests/browser-distribution.mjs
 ```
 
-`build-public-site.mjs` は許可したファイルだけを `dist/` へ出力し、原本PDFを含めます。翻訳・抽出本文・原図単体は含めません。`tests/browser-distribution.mjs` はその配信物を確認します。既定はPlaywrightとChromiumで、`BROWSER_ENGINE=firefox` または `webkit` を指定すると、対応ブラウザーが入っている開発環境では同じ確認を実行できます。既存のローカル教材を使う総合確認は `tests/browser.mjs` です。ローカル教材がある環境で、`PLAYWRIGHT_MODULE` にPlaywrightの場所、`BROWSER_EXECUTABLE` にブラウザーの実行ファイルを設定して実行します。確認専用の一時プロファイルを使います。実施結果と未確認範囲は [VERIFICATION.md](docs/VERIFICATION.md) に記録しています。クラウドでの引き継ぎ状態は [CLOUD_HANDOFF.md](docs/CLOUD_HANDOFF.md) を参照してください。
+`build-public-site.mjs` は許可したファイルだけを `dist/` へ出力し、原本PDFを含めます。翻訳・抽出本文・原図単体は含めません。`tests/browser-distribution.mjs` はその配信物を確認します。既定はPlaywrightとChromiumで、`BROWSER_ENGINE=firefox` では同じオフライン確認を実行します。`BROWSER_ENGINE=webkit` では主要画面・保存・オンラインでのPDF範囲取得を確認します。Playwright WebKitのオフライン再訪は内部エラーで未検証であり、iPhone Safari実機の確認も残ります。既存のローカル教材を使う総合確認は `tests/browser.mjs` です。ローカル教材がある環境で、`PLAYWRIGHT_MODULE` にPlaywrightの場所、`BROWSER_EXECUTABLE` にブラウザーの実行ファイルを設定して実行します。確認専用の一時プロファイルを使います。実施結果と未確認範囲は [VERIFICATION.md](docs/VERIFICATION.md) に記録しています。クラウドでの引き継ぎ状態は [CLOUD_HANDOFF.md](docs/CLOUD_HANDOFF.md) を参照してください。
 
 ## 出典と残作業
 
