@@ -65,6 +65,7 @@ test('LMTD and lumped transient Japanese worked examples are independently recal
 });
 
 test('semi-infinite constant-wall-temperature solution independently closes the heat equation and energy integral',async()=>{
+ const close=(x,y,tol)=>assert.ok(Math.abs(x-y)<=tol*Math.max(1,Math.abs(y)),x+' vs '+y);
  const d=await read('data/original-deep-lessons.json');
  const lesson=deepLessonForSection(d,'5.6');
  assert.ok(lesson);
