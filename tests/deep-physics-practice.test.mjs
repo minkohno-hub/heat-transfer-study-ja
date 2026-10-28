@@ -14,7 +14,7 @@ test('twenty authored deep-physics numericals are published with matched keys, r
  const items=bundle.questions;
  assert.equal(bundle.kind,'original_deep_physics_practice_v1');
  assert.equal(items.length,20);
- assert.equal(bank.length,202);
+ assert.equal(bank.length,210);
  assert.equal(new Set(items.map(q=>q.id)).size,20);
  assert.deepEqual(items.map(q=>q.answer).sort(),[0,0,0,0,0,1,1,1,1,1,2,2,2,2,2,3,3,3,3,3]);
  assert.equal(items.filter(q=>q.source.focusSectionId==='2.1').length,4);
