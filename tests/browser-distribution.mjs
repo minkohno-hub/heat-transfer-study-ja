@@ -289,7 +289,7 @@ try {
   // Full interactive time-dependent cooling, validity warning, heat-flow sign
   // and mobile chart are checked on the exact allowlisted public distribution.
   await page.locator('[data-sim-mode="transient"]').click();
-  assert.match(await page.locator('.sim-physical-diagram desc').textContent(),/2000秒/);
+  assert.match(await page.locator('.sim-physical-diagram desc').textContent(),/2,000秒/);
 
   assert.match(await page.locator('.result-number strong').innerText(),/34\.715/);
   assert.match(await page.locator('.sim-output-card').innerText(),/Bi = 0\.02/);
