@@ -35,7 +35,8 @@ function unsafeKeys(v, depth=0) {
 const optional = (o,k,check) => o[k] === undefined || check(o[k]);
 const attemptOK = a => record(a) && text(a.questionId) && a.questionId.length>0 && typeof a.correct==='boolean' && time(a.at)
   && optional(a,'id',text) && optional(a,'selected',v=>Number.isInteger(v)&&v>=0&&v<4)
-  && optional(a,'confidence',v=>['high','medium','low','unsure'].includes(v)) && optional(a,'mode',text);
+  && optional(a,'confidence',v=>['high','medium','low','unsure'].includes(v)) && optional(a,'mode',text)
+  && optional(a,'questionRevision',v=>text(v)&&/^[A-Za-z0-9][A-Za-z0-9._-]{0,47}$/.test(v));
 export function validateLearningData(data, {stored=false}={}) {
   const invalid = message => `${message}現在の記録は変更していません。`;
   if (!record(data) || data.schemaVersion!==1 || (!stored && data.format!==DATA_FORMAT)) return invalid('対応する学習データ形式ではありません。');
