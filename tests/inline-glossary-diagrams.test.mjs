@@ -71,4 +71,10 @@ test('model diagrams have live labels, accessible non-color arrows and distinct 
  assert.doesNotMatch(reversedResistance,/高温側 20 ℃/);
  assert.match(renderSimulationDiagram('transient',{initial:60,ambient:20,time:2000},{temperature:34.72,biot:.02}),/初期温度60℃/);
  assert.ok(!renderSimulationDiagram('radiation',{surface:'<img>',surrounding:20,emissivity:1},{}).includes('<img>'));
+ const zero=renderSimulationDiagram('radiation',{surface:150,surrounding:20,emissivity:0},{watts:0});
+ assert.match(zero,/正味の熱移動はゼロ/);
+ assert.ok(!zero.includes('M296 104 L310 113'),'zero-emissivity surface must not show outward heat-transfer arrow');
+ const reverse=renderSimulationDiagram('conduction',{hot:80,cold:20,thickness:.1,area:1},{watts:-15});
+ assert.match(reverse,/熱は右から左/,'result sign must override raw temperature order if a future solver has more constraints');
+
 });

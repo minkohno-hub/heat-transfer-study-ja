@@ -357,6 +357,8 @@ async function startApp() {
 
 function render() {
   if (!book) return;
+  // Route/data re-render destroys the overlay; never leave a stale modal keyboard trap.
+  ui.termId=null;ui.termReturnFocus=null;
   const theme = state.settings.theme === 'system' ? (systemDark?.matches ? 'dark' : 'light') : state.settings.theme;
   document.documentElement.dataset.theme = theme;
   document.documentElement.style.setProperty('--reader-scale', String(state.settings.fontScale || 1));
@@ -494,7 +496,7 @@ function renderHome() {
 }
 
 function renderDeepLesson(lesson) {
-  const esc=escapeHTML, mark=value=>ui.readerQuery?highlight(value,ui.readerQuery):linkedQuizText(value,3);
+  const esc=escapeHTML, mark=value=>ui.readerQuery?highlight(value,ui.readerQuery):renderTermLinks(value,glossary||[],{limit:3});
   const paragraphs=lesson.blocks.map((b,i)=>'<section class="deep-lesson-block" id="reader-block-'+esc(lesson.sectionId+'-deep-'+i)+'"><h4>'+mark(b.heading)+'</h4><p>'+mark(b.text)+'</p></section>').join('');
   const equations=lesson.equations.map((e,i)=>'<div class="deep-equation" id="reader-block-'+esc(lesson.sectionId+'-equation-'+i)+'"><strong>'+mark(e.label)+'</strong><p class="deep-expression">'+mark(e.expression)+'</p><p>'+mark(e.meaning)+'</p></div>').join('');
   const example=lesson.workedExample;
@@ -584,7 +586,7 @@ function renderReader() {
 }
 
 function renderBookBlock(block, language = 'ja') {
-  const text = (ui.readerQuery ? highlight(block.text || '',ui.readerQuery) : linkedQuizText(block.text||'',5)).replaceAll('\n', '<br>');
+  const text = (ui.readerQuery ? highlight(block.text || '',ui.readerQuery) : renderTermLinks(block.text||'',glossary||[],{limit:5})).replaceAll('\n', '<br>');
   if (block.type === 'heading') return `<h3 class="book-subheading">${text}</h3>`;
   if (block.type === 'subheading') return `<h4 class="book-subheading book-subheading-minor">${text}</h4>`;
   if (block.type === 'example') return `<section class="book-example"><h4>${escapeHTML(block.title || (language === 'en' ? 'Example' : '例題'))}</h4><p>${text}</p></section>`;
@@ -965,7 +967,7 @@ function renderTransientSimulator(){
       <form id="sim-form" class="sim-form"><div class="sim-fields">${renderTransientFields(v)}</div></form>
       <div class="formula-card"><span>使用する式</span><strong>${meta.formula}</strong>
         <p>物体温度の正負と熱移動方向は別です。放熱を正とします。</p></div>
-      <div class="assumption-card"><strong>モデルの前提と限界</strong><p>${meta.note}</p></div>
+      <div class="assumption-card"><strong>モデルの前提と限界</strong><p>${linkedQuizText(meta.note,5)}</p></div>
     </section><section class="surface-card sim-output-card">
       <div class="card-heading"><div><p class="eyebrow">現在の条件</p><h2>物体温度</h2></div>
         ${statusPill('非定常・Biを確認','amber')}</div>
@@ -992,7 +994,7 @@ function renderSimulator() {
   const related=getSection(['conduction','resistance'].includes(mode)?'2.2':mode==='convection'?'6.1':'10.1');
   return `${pageHeading('簡易シミュレーター', '条件を変えて、熱の動きを見る。', '入力値を変えると計算結果とグラフが更新されます。設計値を決めるためのものではなく、基本式の動きを試す学習用モデルです。')}
     <div class="sim-tabs" role="tablist" aria-label="熱移動の種類">${Object.entries(SIM_META).map(([key,item]) => `<button type="button" role="tab" aria-selected="${mode === key}" class="sim-tab ${mode === key ? 'selected' : ''}" data-sim-mode="${key}"><span>${key === 'conduction' ? '▥' : key === 'convection' ? '↝' : '☼'}</span>${item.title}</button>`).join('')}</div>
-    <div class="sim-layout"><section class="surface-card sim-input-card"><div class="sim-intro"><p class="eyebrow">${meta.title}</p><h2>${linkedQuizText(meta.description,4)}</h2>${renderSimulationDiagram(mode,values,result)}<a class="text-link" href="#guide/sim-${mode}">このモデルの理論・単位・手計算例 →</a></div><form id="sim-form" class="sim-form"><div class="sim-fields">${renderSimInputs(mode, values)}</div></form><div class="formula-card"><span>使用する式</span><strong>${meta.formula}</strong><p>正の値は、入力欄の「高温側」または「表面」から反対側へ移る向きを表します。負の値なら向きが逆です。</p></div><div class="assumption-card"><strong>前提と適用範囲</strong><p>${meta.note}</p></div></section>
+    <div class="sim-layout"><section class="surface-card sim-input-card"><div class="sim-intro"><p class="eyebrow">${meta.title}</p><h2>${linkedQuizText(meta.description,4)}</h2>${renderSimulationDiagram(mode,values,result)}<a class="text-link" href="#guide/sim-${mode}">このモデルの理論・単位・手計算例 →</a></div><form id="sim-form" class="sim-form"><div class="sim-fields">${renderSimInputs(mode, values)}</div></form><div class="formula-card"><span>使用する式</span><strong>${meta.formula}</strong><p>正の値は、入力欄の「高温側」または「表面」から反対側へ移る向きを表します。負の値なら向きが逆です。</p></div><div class="assumption-card"><strong>前提と適用範囲</strong><p>${linkedQuizText(meta.note,5)}</p></div></section>
       <section class="surface-card sim-output-card"><div class="card-heading"><div><p class="eyebrow">現在の条件</p><h2>熱移動率</h2></div>${statusPill(mode === 'radiation' ? '℃からKへ換算' : '定常モデル', 'blue')}</div>${resultView}${!result.error?renderSimulationSteps(mode,result):''}
         ${!result.error ? `<div class="chart-heading"><h3>温度差を変えたとき</h3><span>現在・保存条件の温度差を含む範囲${mode==='radiation'?'。各曲線は表面温度が0 Kより高い範囲のみ表示':''}</span></div>${simGraph(mode, result, baseline)}<div class="chart-legend"><span><i class="legend-current"></i>現在の条件</span>${baseline ? '<span><i class="legend-baseline"></i>保存した比較条件</span>' : ''}</div>` : ''}
         <div class="comparison-controls"><button type="button" class="button secondary" data-action="save-comparison">この条件を比較用に保存</button>${baseline ? '<button type="button" class="text-button" data-action="clear-comparison">比較条件を削除</button>' : ''}${comparison && !comparison.error ? `<small>保存条件の結果：${comparison.watts.toLocaleString('ja-JP', { maximumFractionDigits: 3 })} W</small>` : ''}</div>

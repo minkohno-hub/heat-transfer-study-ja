@@ -267,6 +267,10 @@ try {
   assert.match(await page.locator('.sim-physical-diagram').getAttribute('role'),/img/);
   assert.match(await page.locator('.simulation-figure').innerText(),/アプリ作成の図/);
   assert.match(await page.locator('.sim-physical-diagram desc').textContent(),/左から右/);
+  await page.locator('#sim-form input[name="hot"]').fill('10');
+  assert.match(await page.locator('.sim-physical-diagram desc').textContent(),/右から左/);
+  await page.locator('#sim-form input[name="hot"]').fill('80');
+  assert.match(await page.locator('.sim-physical-diagram desc').textContent(),/左から右/);
 
   await page.locator('#sim-form input[name="k"]').fill('0.000001');
   assert.match(await page.locator('.result-number').innerText(),/3\.750×10⁻⁴/);
@@ -276,6 +280,8 @@ try {
   assert.match(await page.locator('.result-number').innerText(),/W/);
   await page.locator('#sim-form input[name="emissivity"]').fill('0');
   assert.match(await page.locator('.result-number').innerText(),/モデル計算結果は0 W/);
+  assert.match(await page.locator('.sim-physical-diagram desc').textContent(),/正味の熱移動はゼロ/);
+
   await page.locator('#sim-form input[name="surface"]').fill('20');
   await page.locator('#sim-form input[name="surrounding"]').fill('80');
   assert.equal((await page.locator('.result-number strong').innerText()).replace(/\s/g,''),'0W');
@@ -563,7 +569,7 @@ try {
   await page.locator('#reader-deep-lesson').waitFor({state:'visible'});
   assert.match(await page.locator('#reader-deep-lesson').innerText(),/膜状凝縮の液膜抵抗/);
   assert.match(await page.locator('#reader-deep-lesson').innerText(),/1\.724 kW/);
-  assert.match(await page.locator('#reader-deep-lesson').innerText(),/Ref≈21\.9/);
+  assert.match(await page.locator('#reader-deep-lesson').innerText(),/Re_f≈21\.9/);
   assert.equal(await page.locator('#reader-deep-lesson .deep-worked-example li').count(),6);
   await page.locator('.reader-toc [data-section="10.1"]').evaluate(element=>{
     for(let n=element.parentElement;n;n=n.parentElement)if(n.tagName==='DETAILS')n.open=true;
