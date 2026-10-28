@@ -2262,5 +2262,533 @@
     "reviewStatus": "AIによる内部照合済み・外部専門家校閲なし",
     "expertReviewed": false,
     "reportHistory": []
+  },
+  {
+    "id": "supp-chapter-ch5-penetration",
+    "prompt": "半無限体の温度浸透尺度をδ=2√(αt)で定義します。熱拡散率α=1.0×10⁻⁶ m²/s、時間t=100 sならδは何mですか。",
+    "choices": [
+      "0.010 m",
+      "0.20 m",
+      "0.020 m",
+      "2.0 m"
+    ],
+    "answer": 2,
+    "distractors": [
+      "平方根をとった後の2倍を忘れています。",
+      "小数点を一桁読み間違えています。",
+      "正解。αt=10⁻⁴ m²なのでδ=2×0.010=0.020 m。",
+      "桁・単位が大きくずれています。"
+    ],
+    "explanation": "正解。αt=10⁻⁴ m²なのでδ=2×0.010=0.020 m。 δは定義した代表尺度であり、熱の到達位置を厳密に区切りません。",
+    "hints": [
+      "αtの単位はm²です。",
+      "√(10⁻⁴)=10⁻²、最後に2を掛けます。"
+    ],
+    "solutionSteps": [
+      "δ=2√(αt)を使用。",
+      "√(1.0×10⁻⁶×100)=0.010 m。",
+      "δ=0.020 m。"
+    ],
+    "beginnerPitfall": "δは定義した代表尺度であり、熱の到達位置を厳密に区切りません。",
+    "field": "非定常熱伝導",
+    "difficulty": "基礎〜応用・章別独立演習",
+    "prerequisites": [
+      "非定常熱伝導",
+      "物理量と単位"
+    ],
+    "source": {
+      "type": "supplement",
+      "reference": "アプリ独自の章別補助講座。書籍の文章・図表・翻訳を転載しない。",
+      "guideId": "chapter5-semi-infinite",
+      "chapterId": "ch5"
+    },
+    "createdStatus": "作成済み",
+    "reviewStatus": "AIによる内部照合済み・外部専門家校閲なし",
+    "expertReviewed": false,
+    "reportHistory": []
+  },
+  {
+    "id": "supp-chapter-ch5-time",
+    "prompt": "半無限体で一定物性と同じ境界条件の下、温度浸透尺度δ∝√tが成り立つとき、経過時間だけ4倍になればδは何倍ですか。",
+    "choices": [
+      "4倍",
+      "2倍",
+      "16倍",
+      "半分"
+    ],
+    "answer": 1,
+    "distractors": [
+      "温度浸透尺度を時間に直接比例すると取り違えています。",
+      "正解。√(4t)/√t=2。",
+      "時間を二乗しています。",
+      "時間が増えるのに浸透が小さくなるという逆の結果です。"
+    ],
+    "explanation": "正解。√(4t)/√t=2。 同じ熱拡散率・境界条件・近似の成立を前提にしています。",
+    "hints": [
+      "代表尺度は時間そのものではなく平方根に比例します。",
+      "√4を計算します。"
+    ],
+    "solutionSteps": [
+      "δ∝√tと置く。",
+      "時間比は4。",
+      "尺度比は√4=2。"
+    ],
+    "beginnerPitfall": "同じ熱拡散率・境界条件・近似の成立を前提にしています。",
+    "field": "非定常熱伝導",
+    "difficulty": "基礎〜応用・章別独立演習",
+    "prerequisites": [
+      "非定常熱伝導",
+      "物理量と単位"
+    ],
+    "source": {
+      "type": "supplement",
+      "reference": "アプリ独自の章別補助講座。書籍の文章・図表・翻訳を転載しない。",
+      "guideId": "chapter5-semi-infinite",
+      "chapterId": "ch5"
+    },
+    "createdStatus": "作成済み",
+    "reviewStatus": "AIによる内部照合済み・外部専門家校閲なし",
+    "expertReviewed": false,
+    "reportHistory": []
+  },
+  {
+    "id": "supp-chapter-ch5-surface",
+    "prompt": "半無限体の一定表面温度解 T(x,t)=T_i+(T_s−T_i)erfc[x/(2√(αt))] において、表面x=0、t>0の温度はどれですか。",
+    "choices": [
+      "常にT_i",
+      "(T_i+T_s)/2",
+      "常に0 ℃",
+      "T_s"
+    ],
+    "answer": 3,
+    "distractors": [
+      "初期温度を境界条件より優先してしまっています。",
+      "誤差関数の境界値を無視した平均です。",
+      "温度の基準は0 ℃に固定されていません。",
+      "正解。erfc(0)=1より T(0,t)=T_i+(T_s−T_i)=T_s。"
+    ],
+    "explanation": "正解。erfc(0)=1より T(0,t)=T_i+(T_s−T_i)=T_s。 境界条件を一定表面温度に設定した理想モデルです。",
+    "hints": [
+      "erfc(0)はいくつですか。",
+      "erfc(0)=1を代入します。"
+    ],
+    "solutionSteps": [
+      "x=0を式に代入する。",
+      "erfc(0)=1。",
+      "T(0,t)=T_s。"
+    ],
+    "beginnerPitfall": "境界条件を一定表面温度に設定した理想モデルです。",
+    "field": "非定常熱伝導",
+    "difficulty": "基礎〜応用・章別独立演習",
+    "prerequisites": [
+      "非定常熱伝導",
+      "物理量と単位"
+    ],
+    "source": {
+      "type": "supplement",
+      "reference": "アプリ独自の章別補助講座。書籍の文章・図表・翻訳を転載しない。",
+      "guideId": "chapter5-semi-infinite",
+      "chapterId": "ch5"
+    },
+    "createdStatus": "作成済み",
+    "reviewStatus": "AIによる内部照合済み・外部専門家校閲なし",
+    "expertReviewed": false,
+    "reportHistory": []
+  },
+  {
+    "id": "supp-chapter-ch6-nuavg",
+    "prompt": "等温平板上の層流近似で、平均ヌセルト数Nū_L≈0.664 Re_L^(1/2)Pr^(1/3)とします。Re_L=10,000、Pr=1ならNū_Lはいくらですか。",
+    "choices": [
+      "66.4",
+      "33.2",
+      "6,640",
+      "100"
+    ],
+    "answer": 0,
+    "distractors": [
+      "正解。√10000=100、Pr^(1/3)=1、Nū_L=0.664×100=66.4。",
+      "0.332の局所相関を混同しています。",
+      "Reを平方根にし忘れています。",
+      "平方根だけ計算し係数0.664を掛けていません。"
+    ],
+    "explanation": "正解。√10000=100、Pr^(1/3)=1、Nū_L=0.664×100=66.4。 等温壁・全長層流・物性一定など適用条件を満たす場合の例です。",
+    "hints": [
+      "Re_Lの平方根は100です。",
+      "Pr=1ではPr^(1/3)=1です。"
+    ],
+    "solutionSteps": [
+      "局所と平均の相関式を区別。",
+      "Nū_L=0.664×100×1。",
+      "Nū_L=66.4。"
+    ],
+    "beginnerPitfall": "等温壁・全長層流・物性一定など適用条件を満たす場合の例です。",
+    "field": "強制対流",
+    "difficulty": "基礎〜応用・章別独立演習",
+    "prerequisites": [
+      "強制対流",
+      "物理量と単位"
+    ],
+    "source": {
+      "type": "supplement",
+      "reference": "アプリ独自の章別補助講座。書籍の文章・図表・翻訳を転載しない。",
+      "guideId": "chapter6-flat-boundary",
+      "chapterId": "ch6"
+    },
+    "createdStatus": "作成済み",
+    "reviewStatus": "AIによる内部照合済み・外部専門家校閲なし",
+    "expertReviewed": false,
+    "reportHistory": []
+  },
+  {
+    "id": "supp-chapter-ch6-have",
+    "prompt": "平均Nū_L=66.4、平板長さL=0.50 m、流体熱伝導率k_f=0.025 W/(m·K)のとき平均熱伝達率h̄=Nū_L k_f/Lは何W/(m²·K)ですか。",
+    "choices": [
+      "1.66",
+      "6.64",
+      "3.32",
+      "33.2"
+    ],
+    "answer": 2,
+    "distractors": [
+      "終端での局所hと平均hを混同しています。",
+      "Lを誤って計算しています。",
+      "正解。66.4×0.025/0.50=3.32 W/(m²·K)。",
+      "一桁大きい計算です。"
+    ],
+    "explanation": "正解。66.4×0.025/0.50=3.32 W/(m²·K)。 このNuは平均値なので、求めるhも平均値です。",
+    "hints": [
+      "Nu=hL/kの定義を変形します。",
+      "66.4×0.025=1.66、これを0.50で割ります。"
+    ],
+    "solutionSteps": [
+      "h̄=Nū_L k_f/L。",
+      "66.4×0.025/0.50。",
+      "3.32 W/(m²·K)。"
+    ],
+    "beginnerPitfall": "このNuは平均値なので、求めるhも平均値です。",
+    "field": "強制対流",
+    "difficulty": "基礎〜応用・章別独立演習",
+    "prerequisites": [
+      "強制対流",
+      "物理量と単位"
+    ],
+    "source": {
+      "type": "supplement",
+      "reference": "アプリ独自の章別補助講座。書籍の文章・図表・翻訳を転載しない。",
+      "guideId": "chapter6-flat-boundary",
+      "chapterId": "ch6"
+    },
+    "createdStatus": "作成済み",
+    "reviewStatus": "AIによる内部照合済み・外部専門家校閲なし",
+    "expertReviewed": false,
+    "reportHistory": []
+  },
+  {
+    "id": "supp-chapter-ch6-local",
+    "prompt": "全長が層流で等温の理想的平板において、末端x=Lの局所熱伝達率h_Lと前縁から全長までの平均熱伝達率h̄の関係はどれですか（近似相関式 Nu_x=0.332√Re_x Pr^(1/3)、Nū_L=0.664√Re_L Pr^(1/3)）。",
+    "choices": [
+      "h̄=h_L/2",
+      "h̄=2h_L",
+      "h̄=4h_L",
+      "h̄=0"
+    ],
+    "answer": 1,
+    "distractors": [
+      "局所と平均を逆にしています。",
+      "正解。相関式の係数が2倍なので、同じLでh̄=2h_L。",
+      "係数比は4ではなく2です。",
+      "流れと温度差があるのに平均熱伝達がゼロとはなりません。"
+    ],
+    "explanation": "正解。相関式の係数が2倍なので、同じLでh̄=2h_L。 実験・理想平板層流の相関であり、乱流や入口条件が違えば成立しません。",
+    "hints": [
+      "同じ位置Lで相関式の係数を比較します。",
+      "0.664/0.332を求めます。"
+    ],
+    "solutionSteps": [
+      "h_L=Nu_L k_f/L。",
+      "h̄=Nū_L k_f/L。",
+      "h̄/h_L=0.664/0.332=2。"
+    ],
+    "beginnerPitfall": "実験・理想平板層流の相関であり、乱流や入口条件が違えば成立しません。",
+    "field": "強制対流",
+    "difficulty": "基礎〜応用・章別独立演習",
+    "prerequisites": [
+      "強制対流",
+      "物理量と単位"
+    ],
+    "source": {
+      "type": "supplement",
+      "reference": "アプリ独自の章別補助講座。書籍の文章・図表・翻訳を転載しない。",
+      "guideId": "chapter6-flat-boundary",
+      "chapterId": "ch6"
+    },
+    "createdStatus": "作成済み",
+    "reviewStatus": "AIによる内部照合済み・外部専門家校閲なし",
+    "expertReviewed": false,
+    "reportHistory": []
+  },
+  {
+    "id": "supp-chapter-ch7-dh",
+    "prompt": "内側寸法が幅20 mm、高さ10 mmの長方形流路で、4辺すべてが濡れた断面の水力直径D_h=2ab/(a+b)はいくらですか。",
+    "choices": [
+      "10.0 mm",
+      "30.0 mm",
+      "20.0 mm",
+      "13.3 mm"
+    ],
+    "answer": 3,
+    "distractors": [
+      "短辺だけを代表直径としています。",
+      "両辺を足した値で水力直径ではありません。",
+      "長辺だけを使っています。",
+      "正解。2×20×10/(20+10)=400/30≈13.3 mm。"
+    ],
+    "explanation": "正解。2×20×10/(20+10)=400/30≈13.3 mm。 四辺すべてが濡れた閉流路に対する定義です。",
+    "hints": [
+      "水力直径は断面積と濡れ縁から求めます。",
+      "長方形では2ab/(a+b)です。"
+    ],
+    "solutionSteps": [
+      "a=20 mm、b=10 mm。",
+      "2×20×10/(20+10)。",
+      "≈13.3 mm。"
+    ],
+    "beginnerPitfall": "四辺すべてが濡れた閉流路に対する定義です。",
+    "field": "管内対流",
+    "difficulty": "基礎〜応用・章別独立演習",
+    "prerequisites": [
+      "管内対流",
+      "物理量と単位"
+    ],
+    "source": {
+      "type": "supplement",
+      "reference": "アプリ独自の章別補助講座。書籍の文章・図表・翻訳を転載しない。",
+      "guideId": "chapter7-internal-flow",
+      "chapterId": "ch7"
+    },
+    "createdStatus": "作成済み",
+    "reviewStatus": "AIによる内部照合済み・外部専門家校閲なし",
+    "expertReviewed": false,
+    "reportHistory": []
+  },
+  {
+    "id": "supp-chapter-ch7-nu-boundary",
+    "prompt": "十分に速度・温度場が発達した円管内の層流、物性一定という条件で、壁面温度が一様な場合の代表的なNu_Dはどれですか。",
+    "choices": [
+      "3.66",
+      "4.36",
+      "0.664",
+      "0.332"
+    ],
+    "answer": 0,
+    "distractors": [
+      "正解。等温壁の十分発達した円管層流ではNu_D=3.66が代表値。",
+      "4.36は壁面熱流束一定の代表値です。",
+      "0.664は平板層流の平均Nu相関式の係数です。",
+      "0.332は平板層流の局所Nu相関式の係数です。"
+    ],
+    "explanation": "正解。等温壁の十分発達した円管層流ではNu_D=3.66が代表値。 助走区間・乱流・非円形管では別途相関式を使います。",
+    "hints": [
+      "壁面温度一定と熱流束一定を区別します。",
+      "入口助走や乱流がない円管の条件です。"
+    ],
+    "solutionSteps": [
+      "円管で完全発達層流。",
+      "壁温一定の境界条件。",
+      "Nu_D=3.66。"
+    ],
+    "beginnerPitfall": "助走区間・乱流・非円形管では別途相関式を使います。",
+    "field": "管内対流",
+    "difficulty": "基礎〜応用・章別独立演習",
+    "prerequisites": [
+      "管内対流",
+      "物理量と単位"
+    ],
+    "source": {
+      "type": "supplement",
+      "reference": "アプリ独自の章別補助講座。書籍の文章・図表・翻訳を転載しない。",
+      "guideId": "chapter7-internal-flow",
+      "chapterId": "ch7"
+    },
+    "createdStatus": "作成済み",
+    "reviewStatus": "AIによる内部照合済み・外部専門家校閲なし",
+    "expertReviewed": false,
+    "reportHistory": []
+  },
+  {
+    "id": "supp-chapter-ch7-h",
+    "prompt": "等温壁・十分発達した円管層流に対してNu_D=3.66、流体のk_f=0.60 W/(m·K)、円管直径D=0.020 mとすると、h=Nu_D k_f/Dは何W/(m²·K)ですか。",
+    "choices": [
+      "10.98",
+      "219.6",
+      "109.8",
+      "3.66"
+    ],
+    "answer": 2,
+    "distractors": [
+      "直径0.020 mと0.20 mを混同しています。",
+      "温度境界条件と係数の扱いを誤っています。",
+      "正解。3.66×0.60/0.020=109.8 W/(m²·K)。",
+      "Nuをそのまま有次元のhとしています。"
+    ],
+    "explanation": "正解。3.66×0.60/0.020=109.8 W/(m²·K)。 この単純なNu値は指定された円管・壁温・層流条件に限られます。",
+    "hints": [
+      "Nu_D=hD/k_fを変形します。",
+      "3.66×0.60=2.196、直径0.020で割ります。"
+    ],
+    "solutionSteps": [
+      "h=Nu_D k_f/D。",
+      "2.196/0.020。",
+      "109.8 W/(m²·K)。"
+    ],
+    "beginnerPitfall": "この単純なNu値は指定された円管・壁温・層流条件に限られます。",
+    "field": "管内対流",
+    "difficulty": "基礎〜応用・章別独立演習",
+    "prerequisites": [
+      "管内対流",
+      "物理量と単位"
+    ],
+    "source": {
+      "type": "supplement",
+      "reference": "アプリ独自の章別補助講座。書籍の文章・図表・翻訳を転載しない。",
+      "guideId": "chapter7-internal-flow",
+      "chapterId": "ch7"
+    },
+    "createdStatus": "作成済み",
+    "reviewStatus": "AIによる内部照合済み・外部専門家校閲なし",
+    "expertReviewed": false,
+    "reportHistory": []
+  },
+  {
+    "id": "supp-chapter-ch8-ra",
+    "prompt": "自然対流のRa=gβ|ΔT|L³/(να)を使います。g=10 m/s²、β=0.003 K⁻¹、ΔT=10 K、L=0.10 m、ν=1.0×10⁻⁵ m²/s、α=2.0×10⁻⁵ m²/sならRaは？",
+    "choices": [
+      "1.5×10⁶",
+      "1.5×10⁵",
+      "1.5×10⁴",
+      "1.5×10⁸"
+    ],
+    "answer": 0,
+    "distractors": [
+      "正解。分子=0.0003、分母=2×10⁻¹⁰なのでRa=1.5×10⁶。",
+      "分子のL³または分母の指数を誤っています。",
+      "3桁の差があり、長さの三乗を無視した可能性があります。",
+      "分母の指数を過剰に小さくするなどの桁誤りです。"
+    ],
+    "explanation": "正解。分子=0.0003、分母=2×10⁻¹⁰なのでRa=1.5×10⁶。 見直し注意：数値と計算過程が一致するか確認してから回答してください。",
+    "hints": [
+      "分子gβΔTL³を先に計算します。",
+      "分母ναは2.0×10⁻¹⁰です。"
+    ],
+    "solutionSteps": [
+      "L³=0.001 m³。",
+      "分子10×0.003×10×0.001=0.0003。",
+      "0.0003/(2×10⁻¹⁰)=1.5×10⁶。"
+    ],
+    "beginnerPitfall": "見直し注意：数値と計算過程が一致するか確認してから回答してください。",
+    "field": "自然対流",
+    "difficulty": "基礎〜応用・章別独立演習",
+    "prerequisites": [
+      "自然対流",
+      "物理量と単位"
+    ],
+    "source": {
+      "type": "supplement",
+      "reference": "アプリ独自の章別補助講座。書籍の文章・図表・翻訳を転載しない。",
+      "guideId": "chapter8-buoyancy",
+      "chapterId": "ch8"
+    },
+    "createdStatus": "作成済み",
+    "reviewStatus": "AIによる内部照合済み・外部専門家校閲なし",
+    "expertReviewed": false,
+    "reportHistory": []
+  },
+  {
+    "id": "supp-chapter-ch8-length",
+    "prompt": "物性、重力、温度差が同一の自然対流で、Ra∝L³が成立するモデルです。代表長さLを2倍にするとRaは何倍になりますか。",
+    "choices": [
+      "2倍",
+      "4倍",
+      "8倍",
+      "16倍"
+    ],
+    "answer": 2,
+    "distractors": [
+      "Lに一次比例と誤認しています。",
+      "長さの二乗を使っています。",
+      "正解。2³=8でRaは8倍。",
+      "指数を4と誤認しています。"
+    ],
+    "explanation": "正解。2³=8でRaは8倍。 代表長さ以外の流体物性と温度差が不変の比較です。",
+    "hints": [
+      "Raの分子にはL³が含まれます。",
+      "2の三乗を求めます。"
+    ],
+    "solutionSteps": [
+      "Ra∝L³と確認。",
+      "(2L)³/L³=2³。",
+      "8倍。"
+    ],
+    "beginnerPitfall": "代表長さ以外の流体物性と温度差が不変の比較です。",
+    "field": "自然対流",
+    "difficulty": "基礎〜応用・章別独立演習",
+    "prerequisites": [
+      "自然対流",
+      "物理量と単位"
+    ],
+    "source": {
+      "type": "supplement",
+      "reference": "アプリ独自の章別補助講座。書籍の文章・図表・翻訳を転載しない。",
+      "guideId": "chapter8-buoyancy",
+      "chapterId": "ch8"
+    },
+    "createdStatus": "作成済み",
+    "reviewStatus": "AIによる内部照合済み・外部専門家校閲なし",
+    "expertReviewed": false,
+    "reportHistory": []
+  },
+  {
+    "id": "supp-chapter-ch8-gr-pr",
+    "prompt": "自然対流のグラスホフ数Gr=2.0×10⁶、プラントル数Pr=0.70のとき、Ra=GrPrはいくらですか。",
+    "choices": [
+      "2.86×10⁶",
+      "1.4×10⁶",
+      "2.0×10⁶",
+      "0.35×10⁶"
+    ],
+    "answer": 1,
+    "distractors": [
+      "Prで割っており、積を計算していません。",
+      "正解。2.0×10⁶×0.70=1.4×10⁶。",
+      "Prを掛け忘れています。",
+      "値を過度に小さくしています。"
+    ],
+    "explanation": "正解。2.0×10⁶×0.70=1.4×10⁶。 Ra単独でhを決めず、幾何と流動の相関条件を確認します。",
+    "hints": [
+      "RaはGrとPrの積です。",
+      "2.0×0.70=1.4。"
+    ],
+    "solutionSteps": [
+      "Ra=GrPrを使う。",
+      "2.0×10⁶×0.70。",
+      "1.4×10⁶。"
+    ],
+    "beginnerPitfall": "Ra単独でhを決めず、幾何と流動の相関条件を確認します。",
+    "field": "自然対流",
+    "difficulty": "基礎〜応用・章別独立演習",
+    "prerequisites": [
+      "自然対流",
+      "物理量と単位"
+    ],
+    "source": {
+      "type": "supplement",
+      "reference": "アプリ独自の章別補助講座。書籍の文章・図表・翻訳を転載しない。",
+      "guideId": "chapter8-buoyancy",
+      "chapterId": "ch8"
+    },
+    "createdStatus": "作成済み",
+    "reviewStatus": "AIによる内部照合済み・外部専門家校閲なし",
+    "expertReviewed": false,
+    "reportHistory": []
   }
 ]
