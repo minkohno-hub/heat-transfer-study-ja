@@ -1,5 +1,6 @@
 // Original, advanced Japanese teaching materials: not translations of the book.
 // The external references ground physical relations, not a claim of expert review.
+export const DEEP_LESSON_IDS=Object.freeze(['3.2','5.2','8.4','8.5']);
 const nonempty=value=>typeof value==='string'&&value.trim().length>0;
 const object=value=>value!==null&&typeof value==='object'&&!Array.isArray(value);
 export function validateDeepLessons(book,document){
@@ -14,7 +15,7 @@ export function validateDeepLessons(book,document){
   const label='発展講座 '+String(lesson?.sectionId);
   if(!object(lesson)){errors.push(label+': オブジェクト不正');continue;}
   const sec=sections.get(lesson.sectionId);
-  if(!sec||lesson.sectionId!=='8.4'&&lesson.sectionId!=='8.5')errors.push(label+': 対象範囲外');
+  if(!sec||!DEEP_LESSON_IDS.includes(lesson.sectionId))errors.push(label+': 対象範囲外');
   if(seen.has(lesson.sectionId))errors.push(label+': 重複');seen.add(lesson.sectionId);
   for(const key of ['title','objective','reviewStatus']){
    if(!nonempty(lesson[key]))errors.push(label+': '+key+' 不足');
@@ -39,7 +40,7 @@ export function validateDeepLessons(book,document){
   if(lesson.fullTranslation===true||lesson.expertReviewed===true||lesson.blocks?.some(x=>x.bookText||x.originalFigure))
     errors.push(label+': 原本の権利未確認本文または虚偽の校閲情報');
  }
- if(seen.size!==2||!seen.has('8.4')||!seen.has('8.5'))errors.push('§8.4・§8.5の独立発展講座の完全性がありません。');
+ if(seen.size!==DEEP_LESSON_IDS.length||DEEP_LESSON_IDS.some(id=>!seen.has(id)))errors.push('§3.2・§5.2・§8.4・§8.5の独立発展講座の完全性がありません。');
  return errors;
 }
 export function deepLessonForSection(document,id){
