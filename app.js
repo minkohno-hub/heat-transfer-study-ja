@@ -6,6 +6,7 @@ import {validateDeepLessons,deepLessonForSection} from './original-deep-lessons.
 import {renderTransientFields,renderTransientSteps,transientGraph,transientFieldNames} from './transient-ui.mjs';
 import {renderGlossaryLinkedText,matchedTermIds} from './glossary-linking.mjs';
 import {renderSimulationDiagram} from './simulation-diagrams.mjs';
+import {glossaryDialogHTML} from './glossary-dialog.mjs';
 const CORE_DATA_FILES = ['./data/book.json', './data/questions.json', './data/glossary.json', './data/content-manifest.json', './data/original-notes.json', './data/original-deep-lessons.json'];
 const LEGACY_STORAGE_KEY = 'heat-study-ja:v1';
 const PROFILES_KEY = 'heat-study-ja:profiles:v1';
@@ -1001,6 +1002,23 @@ function renderSimulator() {
       </section></div>`;
 }
 
+let activeTermTrigger=null;
+function openTermDialog(id,trigger){
+  const term=(glossary||[]).find(x=>x.id===id&&x.availableInApp!==false);
+  if(!term)return;
+  document.querySelector('.term-overlay')?.remove();
+  activeTermTrigger=trigger;
+  const holder=document.createElement('div');
+  holder.className='term-overlay';
+  holder.innerHTML=glossaryDialogHTML(term);
+  root.append(holder);
+  holder.querySelector('.term-dialog-close')?.focus();
+}
+function closeTermDialog(){
+  document.querySelector('.term-overlay')?.remove();
+  const previous=activeTermTrigger;activeTermTrigger=null;
+  if(previous?.isConnected)previous.focus();
+}
 function termLinkedText(value,options={}) { return renderGlossaryLinkedText(value,glossary||[],options); }
 function renderQuiz() {
   if (ui.quizResult) return renderQuizResult();
@@ -1167,6 +1185,12 @@ function makeId() { return globalThis.crypto?.randomUUID?.() || `${Date.now()}-$
 function addDaysISO(day, count) { const date = new Date(`${day}T12:00:00`); date.setDate(date.getDate() + count); return todayISO(date); }
 
 function onClick(event) {
+  const termDetail=event.target.closest('[data-term-detail]');
+  if(termDetail){event.preventDefault();const item=(glossary||[]).find(x=>x.id===termDetail.dataset.termDetail);closeTermDialog();if(item){ui.glossaryQuery=item.ja;setRoute('glossary');setTimeout(()=>document.getElementById('term-'+item.id)?.scrollIntoView({block:'center'}),70);}return;}
+  const dismiss=event.target.closest('[data-term-close]');
+  if(dismiss){event.preventDefault();closeTermDialog();return;}
+  const termTrigger=event.target.closest('[data-term-open]');
+  if(termTrigger){event.preventDefault();event.stopPropagation();openTermDialog(termTrigger.dataset.termOpen,termTrigger);return;}
   const languageButton = event.target.closest('[data-language]');
   if (languageButton) {
     if (languageButton.disabled || !['ja', 'en'].includes(languageButton.dataset.language)) return;
@@ -1436,6 +1460,16 @@ function importData(replace) {
 function mergeById(existing,incoming) { const map=new Map(); for(const item of [...existing,...incoming]) map.set(item.id||JSON.stringify(item),item); return [...map.values()]; }
 
 function onKeyDown(event) {
+  const popup=document.querySelector('.term-dialog');
+  if(popup){
+    if(event.key==='Escape'){event.preventDefault();closeTermDialog();return;}
+    if(event.key==='Tab'){
+      const keys=[...popup.querySelectorAll('button:not([disabled]),a[href]')];
+      const first=keys[0],last=keys.at(-1);
+      if((event.shiftKey&&document.activeElement===first)||(!event.shiftKey&&document.activeElement===last)){event.preventDefault();(event.shiftKey?last:first)?.focus();}
+    }
+    return;
+  }
   if(ui.reportId){
     if(event.key==='Escape'){event.preventDefault();closeReport();return;}
     if(event.key==='Tab'){
