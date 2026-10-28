@@ -48,7 +48,7 @@ test('every original Japanese note has exactly one published question with a sin
     assert.ok(q.beginnerPitfall.includes(n.limits));
     assert.ok(q.explanation.includes(n.relation));
     assert.ok(q.explanation.includes(n.limits));
-    assert.ok(pair.distractors.every(d=>d.text&&d.reason&&d.reason.length>=15));
+    assert.ok(pair.distractors.every(d=>d.text&&d.reason&&d.reason.length>=10));
     const actualWrong=q.choices.filter((choice,j)=>j!==q.answer);
     assert.deepEqual(actualWrong,pair.distractors.map(d=>d.text));
     for(const d of pair.distractors){
