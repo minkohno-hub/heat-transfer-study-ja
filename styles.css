@@ -450,3 +450,24 @@ input[type="range"] { width: 100%; accent-color: var(--accent); }
   .reader-original-note{margin-block:1rem;padding:.85rem}
   .reader-original-note dd{font-size:1rem;line-height:1.72}
 }
+
+
+/* In-depth original Japanese teaching, deliberately distinct from book translation. */
+.reader-deep-lesson{
+  padding:clamp(1rem,3vw,1.6rem);
+  border:1px solid var(--border,var(--line,#b6c0c9));
+  border-radius:1rem;
+  margin-block:1.5rem;
+}
+.reader-deep-lesson h3{font-size:clamp(1.2rem,2.6vw,1.55rem);margin:.5rem 0 1rem;overflow-wrap:anywhere}
+.reader-deep-lesson h4{font-size:1.08rem;margin:1.5rem 0 .55rem}
+.reader-deep-lesson p{line-height:1.82;overflow-wrap:anywhere}
+.reader-deep-lesson .deep-equation{padding:.7rem 1rem;margin:.8rem 0;border-left:3px solid currentColor;background:var(--surface-secondary,transparent);border-radius:.3rem}
+.reader-deep-lesson .deep-expression{font-variant-numeric:lining-nums;font-family:ui-monospace,SFMono-Regular,Consolas,monospace;font-size:.93rem;white-space:pre-wrap;overflow-wrap:anywhere}
+.reader-deep-lesson li{line-height:1.7;margin-block:.35rem;overflow-wrap:anywhere}
+.reader-deep-lesson .deep-worked-example{padding:clamp(.7rem,2vw,1.2rem);border:1px solid var(--border,var(--line,#b6c0c9));border-radius:.8rem}
+@media(max-width:600px){
+ .reader-deep-lesson{padding:.85rem;margin-block:1rem}
+ .reader-deep-lesson .deep-equation{padding:.6rem}
+ .reader-deep-lesson h4{margin-top:1.15rem}
+}
