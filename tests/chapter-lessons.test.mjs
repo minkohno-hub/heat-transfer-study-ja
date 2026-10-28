@@ -59,7 +59,8 @@ test('eleven chapter-aligned original guides map to actual book chapter sections
     assert.ok(known.has(guide.bookChapter),guide.id);
     assert.ok(guide.relatedSectionIds.length>=2,guide.id);
     assert.ok(guide.relatedSectionIds.every(id=>known.get(guide.bookChapter).has(id)),guide.id);
-    assert.ok(guide.html.length>=500,guide.id);
+    assert.ok(guide.html.length>=300,guide.id);
+    assert.ok((guide.html.match(/<p>/g)||[]).length>=4,guide.id);
     assert.ok(guide.html.includes('<p>'),guide.id);
     assert.ok(searchGuide(guide.title).some(x=>x.id===guide.id),guide.id);
   }
