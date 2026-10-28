@@ -13,7 +13,7 @@
       "example": "同じ形状で流速を2倍にするとReは2倍になるが、Nuやhが必ず2倍になるわけではない。NuとReの関係は層流・乱流や熱境界条件で異なる。",
       "limits": "平板、円管、円柱周りでは相関式が異なる。速度境界層と温度境界層はPrにより厚さが異なり得る。",
       "selfCheck": "対流熱伝達率hは流体の固定された物性値か。",
-      "answer": "いいえ。",
+      "answer": "いいえ",
       "reviewStatus": "AI_drafted_pending_independent_expert_review"
     },
     {
@@ -24,7 +24,7 @@
       "example": "Re_x=10⁴、x=0.10 mならδ₉₉≈5×0.10/100=0.005 m。これは速度が外部流速の約99%になる厚さの目安であり、境界層の境界が厳密に存在するわけではない。",
       "limits": "Blasius解に基づく近似で、乱流、圧力勾配、表面粗さ、前縁付近の特殊条件では使用しない。",
       "selfCheck": "xが増えるほどRe_xは通常増えるか。",
-      "answer": "流速とνが一定なら増える。",
+      "answer": "流速とνが一定なら増える",
       "reviewStatus": "AI_drafted_pending_independent_expert_review"
     },
     {
@@ -35,7 +35,7 @@
       "example": "壁で温度が高い流れでは、壁から流体へ熱が伝わり、下流へ行くほど温度境界層が発達する。流速成分vが小さくてもv∂T/∂yを無条件に落とせない。",
       "limits": "流体が圧縮性、粘性散逸が重要、軸方向熱伝導が大きいなどの場合は右辺の項を増やす必要がある。",
       "selfCheck": "対流熱伝達が流速だけで決まらない理由は何か。",
-      "answer": "熱拡散や境界条件も影響するため。",
+      "answer": "熱拡散や境界条件も影響するため",
       "reviewStatus": "AI_drafted_pending_independent_expert_review"
     },
     {
@@ -46,7 +46,7 @@
       "example": "同じ動粘度ν=1×10⁻⁶ m²/sで、α_f=1×10⁻⁷ m²/sならPr=10。α_f=1×10⁻⁵ m²/sならPr=0.1となり、相対的な熱拡散の大きさが異なる。",
       "limits": "乱流境界層や強い物性変化では単純な厚さ比の近似を無条件に適用しない。固体のBiに現れるk_sと流体のPrに現れるk_fを混同しない。",
       "selfCheck": "Pr=10はPr=0.1より熱拡散が相対的に大きいか。",
-      "answer": "小さい。",
+      "answer": "小さい",
       "reviewStatus": "AI_drafted_pending_independent_expert_review"
     },
     {
@@ -57,7 +57,7 @@
       "example": "Re_L=10⁴、Pr=1ならNū_L=66.4。k_f=0.025 W/(m·K)、L=0.50 mならh̄=3.32 W/(m²·K)。終端局所値は約1.66 W/(m²·K)。",
       "limits": "熱流束一定壁、乱流混在、圧力勾配、異なる物性評価条件では式が変わる。平均値を局所値として使用しない。",
       "selfCheck": "同じRe_LとPrで等温・全域層流なら平均Nuは終端の局所Nuの何倍か。",
-      "answer": "約2倍。",
+      "answer": "約2倍",
       "reviewStatus": "AI_drafted_pending_independent_expert_review"
     },
     {
@@ -68,7 +68,7 @@
       "example": "Nu=100、Re=10000、Pr=1ならSt=0.010。Prを変えたとき、同じStが得られると決めつけず、対応する輸送相関を確認する。",
       "limits": "j因子と摩擦係数の対応は流れと乱流構造、熱・運動量の境界条件などの適用範囲に依存する。複雑流路へ無条件に外挿しない。",
       "selfCheck": "StをNu、Re、Prから求める式は何か。",
-      "answer": "St=Nu/(RePr)。",
+      "answer": "St=Nu/(RePr)",
       "reviewStatus": "AI_drafted_pending_independent_expert_review"
     },
     {
@@ -79,7 +79,7 @@
       "example": "同じ流体・平板の流れを層流から乱流へ変えると、平均熱伝達率が高くなることがあるが、必要ポンプ動力や摩擦抵抗も増え得る。",
       "limits": "乱流の渦拡散係数は普遍的な材料定数ではない。レイノルズ数だけで遷移の位置や熱交換量を厳密には決められない。",
       "selfCheck": "乱流の熱輸送を記述するとき平均値だけで十分か。",
-      "answer": "不十分。",
+      "answer": "不十分",
       "reviewStatus": "AI_drafted_pending_independent_expert_review"
     },
     {
@@ -90,7 +90,7 @@
       "example": "例えば同一の流路で経験式がNu∝Re^0.8を満たす範囲ならReを2倍にするとNuは約2^0.8≈1.74倍。これはその特定範囲でのみ成り立つ。",
       "limits": "Re指数0.8をすべての乱流へ適用しない。壁面粗さや遷移域、流体の物性変化を補正する必要がある。",
       "selfCheck": "乱流相関式でまず確認すべき二つの無次元数は何か。",
-      "answer": "ReとPr。",
+      "answer": "ReとPr",
       "reviewStatus": "AI_drafted_pending_independent_expert_review"
     },
     {
@@ -101,7 +101,7 @@
       "example": "板前半でh_x=10、後半でh_x=20 W/(m²·K)と近似できるなら、両区間が同じ長さの全長平均hは15 W/(m²·K)。実際のh_xは滑らかに変化する場合が多い。",
       "limits": "平板の臨界Re_xは流入乱れや粗さなどによって変化し、万能な境界値ではない。局所h_xの単純平均と面積加重平均の違いを意識する。",
       "selfCheck": "平板全長の平均hはどのように求めるか。",
-      "answer": "局所h_xの面積平均。",
+      "answer": "局所h_xの面積平均",
       "reviewStatus": "AI_drafted_pending_independent_expert_review"
     }
   ]

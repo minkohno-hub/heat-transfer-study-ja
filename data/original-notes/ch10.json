@@ -13,7 +13,7 @@
       "example": "同じ面積・放射率で絶対温度が300 Kから600 Kに2倍になれば、放出出力のσT⁴の項は16倍。ただし正味熱移動率が必ず16倍になるわけではない。",
       "limits": "Tは必ずKを使う。スペクトル依存性、入射方向、透過する媒体、外部照射などが重要な系では単純な灰色面モデルを使わない。",
       "selfCheck": "黒体の放射出力で温度を2倍にすると何倍になるか。",
-      "answer": "16倍。",
+      "answer": "16倍",
       "reviewStatus": "AI_drafted_pending_independent_expert_review"
     },
     {
@@ -35,7 +35,7 @@
       "example": "A₁=1 m²、A₂=4 m²、F₁₂=0.8ならF₂₁=1×0.8/4=0.2。両方向が0.8だと誤って仮定するとエネルギーの幾何学的交換関係が破れる。",
       "limits": "形態係数は幾何学量だが、灰色体の反射や参加性ガスがある正味交換量には追加モデルが要る。",
       "selfCheck": "二面の面積が違う場合に常に成り立つ関係は何か。",
-      "answer": "A₁F₁₂=A₂F₂₁。",
+      "answer": "A₁F₁₂=A₂F₂₁",
       "reviewStatus": "AI_drafted_pending_independent_expert_review"
     },
     {
@@ -46,7 +46,7 @@
       "example": "ε=0.5、E_b=1000 W/m²、G=600 W/m²の理想面ならJ=0.5×1000+0.5×600=800 W/m²。これは必ずしも正味の流出熱流束ではなく、正味はJ−G=200 W/m²。",
       "limits": "Jの単位はW/m²。放射抵抗の式は線形化したネットワーク量との対応に注意し、拡散・灰色・不透明など前提を確認する。",
       "selfCheck": "Jが800、Gが600 W/m²なら面からの正味放射流束は。",
-      "answer": "200 W/m²。",
+      "answer": "200 W/m²",
       "reviewStatus": "AI_drafted_pending_independent_expert_review"
     },
     {
@@ -57,7 +57,7 @@
       "example": "κ_λ L=1の理想単色例では透過率はe⁻¹≈0.368。実際の気体放射は多数の吸収線を含み、全波長の透過率が同じになるわけではない。",
       "limits": "散乱、非一様温度、化学反応、強いスペクトル依存がある系では上式だけで放射熱流を計算できない。",
       "selfCheck": "光路長Lを増やすと単純な吸収媒体の透過率はどうなるか。",
-      "answer": "減少する。",
+      "answer": "減少する",
       "reviewStatus": "AI_drafted_pending_independent_expert_review"
     },
     {
@@ -68,7 +68,7 @@
       "example": "日射強度800 W/m²、太陽吸収率0.9、入射面積1 m²なら日射からの吸収熱率は720 W。装置の正味受熱には放射冷却、対流などの損失も含める必要がある。",
       "limits": "α_solar=0.9だからε_IR=0.9とは断定できない。ガラス透過や傾斜角、周囲熱交換も必要なら考慮する。",
       "selfCheck": "太陽吸収率と常温熱赤外放射率を同じ値と決めてよいか。",
-      "answer": "一般には決められない。波長特性が異なるため。",
+      "answer": "一般には決められない。波長特性が異なるため",
       "reviewStatus": "AI_drafted_pending_independent_expert_review"
     }
   ]

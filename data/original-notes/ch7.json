@@ -13,7 +13,7 @@
       "example": "同じ流速、同じ直径の円管内流と円柱横流れでも、速度場と温度境界が異なるため同じNu相関を流用しない。",
       "limits": "相関式ごとのレイノルズ数範囲、プラントル数範囲、助走区間の扱い、物性評価温度を確認する。",
       "selfCheck": "円柱横流れと円管内流で同じReならNuも必ず同じか。",
-      "answer": "同じではない。",
+      "answer": "同じではない",
       "reviewStatus": "AI_drafted_pending_independent_expert_review"
     },
     {
@@ -24,7 +24,7 @@
       "example": "k_f=0.60 W/(m·K)、D=0.020 m、一定壁温の条件が成立するならh=3.66×0.60/0.020=109.8 W/(m²·K)。",
       "limits": "これは十分発達した円管層流のモデルで、入口付近・非円形・乱流にはそのまま適用できない。流れのReで層流の成立も確かめる。",
       "selfCheck": "十分発達した円管層流で一定壁温と一定熱流束のNuが違うのはなぜか。",
-      "answer": "壁面の熱境界条件が温度分布を変えるため。",
+      "answer": "壁面の熱境界条件が温度分布を変えるため",
       "reviewStatus": "AI_drafted_pending_independent_expert_review"
     },
     {
@@ -35,7 +35,7 @@
       "example": "相関式の範囲内でReを2倍にしたときNu∝Re^0.8ならNu比は約1.74。圧力損失が何倍かは摩擦係数と流速を別に考える必要がある。",
       "limits": "遷移域・粗面管・高粘度流体などに同じ係数を盲目的に適用しない。Dittus–Boelter形は適用範囲を必ず確認する。",
       "selfCheck": "管内乱流で熱交換量が増えれば、必要ポンプ動力は必ず減るか。",
-      "answer": "必ずしも減らない。",
+      "answer": "必ずしも減らない",
       "reviewStatus": "AI_drafted_pending_independent_expert_review"
     },
     {
@@ -46,7 +46,7 @@
       "example": "ṁc_p=200 W/Kの流体を流し、温度が10 K上がればQ̇=2000 W。局所熱流束を求めるには壁温と局所流体温度、hが別途必要。",
       "limits": "壁温が一定でない場合、対数平均や積分による評価が必要。流路の圧力損失や熱損失も設計に影響する。",
       "selfCheck": "管内で流体温度が20 K上がったときQ̇を求めるために必要な流体情報は何か。",
-      "answer": "熱容量流量ṁc_p。",
+      "answer": "熱容量流量ṁc_p",
       "reviewStatus": "AI_drafted_pending_independent_expert_review"
     },
     {
@@ -57,7 +57,7 @@
       "example": "幅20 mm、高さ10 mmの閉じた長方形ダクトならD_h=400/30≈13.3 mm。円管の直径に置き換えた後もNu=3.66と決めつけない。",
       "limits": "一部が自由表面の開水路では濡れ縁の定義が変わる。熱境界条件とアスペクト比によってNuが異なる。",
       "selfCheck": "D_hの分母に使うP_wは何か。",
-      "answer": "濡れ縁の長さ。",
+      "answer": "濡れ縁の長さ",
       "reviewStatus": "AI_drafted_pending_independent_expert_review"
     },
     {
@@ -68,7 +68,7 @@
       "example": "D=0.020 m、k_f=0.030 W/(m·K)、適切な相関・測定で平均Nu_D=50ならh̄=50×0.030/0.020=75 W/(m²·K)。ここではNu=50を仮定している。",
       "limits": "Nu=50は与えた例の値で普遍的相関結果ではない。乱流・表面粗さ・円柱端部や群配列の影響は別に確認する。",
       "selfCheck": "横流れで代表長さとして使うものは通常何か。",
-      "answer": "円柱直径D。",
+      "answer": "円柱直径D",
       "reviewStatus": "AI_drafted_pending_independent_expert_review"
     },
     {
@@ -79,7 +79,7 @@
       "example": "仮にhを100 W/(m²·K)と推定し誤差が±20%なら80〜120 W/(m²·K)が目安。同じAとΔTではQ̇にも幅が出る。",
       "limits": "±20%は任意の例示で実際の相関誤差ではない。安全設計では適切な係数と試験・不確かさ解析を行う。",
       "selfCheck": "伝熱相関式を選ぶ前にReとPrのほか何を確認するか。",
-      "answer": "形状、流れ、熱境界条件、有効範囲。",
+      "answer": "形状、流れ、熱境界条件、有効範囲",
       "reviewStatus": "AI_drafted_pending_independent_expert_review"
     }
   ]

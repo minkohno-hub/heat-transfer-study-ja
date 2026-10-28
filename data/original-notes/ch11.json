@@ -13,7 +13,7 @@
       "example": "濃度がx方向に減少するとdC_A/dx<0なので、D_AB>0ならJ_A>0。成分は高濃度側から低濃度側へ拡散する傾向がある。",
       "limits": "多成分・非理想系では濃度勾配だけで表せないことがある。流体全体の移動に伴う輸送を忘れない。",
       "selfCheck": "拡散モル流束の単位は何か。",
-      "answer": "mol/(m²·s)。",
+      "answer": "mol/(m²·s)",
       "reviewStatus": "AI_drafted_pending_independent_expert_review"
     },
     {
@@ -35,7 +35,7 @@
       "example": "D_AB=2×10⁻⁹ m²/s、dC_A/dx=−100 mol/m⁴ならJ_A=+2×10⁻⁷ mol/(m²·s)。負号が二つあるため符号を逆にしない。",
       "limits": "非理想溶液、多成分拡散、温度・圧力勾配の効果が無視できない場合に単純なフィック則は不十分な場合がある。",
       "selfCheck": "dC_A/dxが負のときD_AB>0ならJ_Aの符号は。",
-      "answer": "正。",
+      "answer": "正",
       "reviewStatus": "AI_drafted_pending_independent_expert_review"
     },
     {
@@ -46,7 +46,7 @@
       "example": "定常・反応なし・一次元ならdN_A/dx=0なので全モル流束は位置によらず一定になり得る。濃度勾配がなくなるとは限らない。",
       "limits": "反応、流体膨張、変化する全モル濃度、界面での不連続条件などはモデル化が必要。",
       "selfCheck": "定常・反応なしの一次元系で一定となるのは何か。",
-      "answer": "全モル流束N_A。",
+      "answer": "全モル流束N_A",
       "reviewStatus": "AI_drafted_pending_independent_expert_review"
     },
     {
@@ -57,7 +57,7 @@
       "example": "揮発成分Aが非揮発性成分B中を移動する場合、Aの蒸発がバルクの平均流れを生じさせるため、単純なJ_Aだけから全蒸発速度を決められないことがある。",
       "limits": "温度・圧力一定、二成分、定常の条件でも組成変化による対流成分があり得る。全モル流束を見落とさない。",
       "selfCheck": "N_B=0という条件からN_total=0と結論できるか。",
-      "answer": "できない。",
+      "answer": "できない",
       "reviewStatus": "AI_drafted_pending_independent_expert_review"
     },
     {
@@ -68,7 +68,7 @@
       "example": "ν=10⁻⁶ m²/s、D_AB=2×10⁻⁹ m²/sならSc=500。k_m=10⁻⁴ m/s、L=0.020 mならSh=1000。",
       "limits": "Re・Sc・Shの相関式は流速、流動状態、濃度境界条件の前提を確認する。係数の定義が異なる流束を混在させない。",
       "selfCheck": "Scが500とは何の比を表すか。",
-      "answer": "ν/D_AB。",
+      "answer": "ν/D_AB",
       "reviewStatus": "AI_drafted_pending_independent_expert_review"
     },
     {
@@ -79,7 +79,7 @@
       "example": "同じ蒸発質量流量0.001 kg/sで潜熱2.3×10⁶ J/kgなら潜熱移動率は2300 W。このほか温度変化があるなら顕熱を追加する。",
       "limits": "Lewis関係を使う際には境界条件・物性・低速質量移動の近似などを確認する。顕熱の符号と相変化の潜熱を二重計上しない。",
       "selfCheck": "Leの定義に使う二つの拡散率は何か。",
-      "answer": "α_fとD_AB。",
+      "answer": "α_fとD_AB",
       "reviewStatus": "AI_drafted_pending_independent_expert_review"
     },
     {
@@ -90,7 +90,7 @@
       "example": "D_AB=10⁻⁹ m²/s、仮定膜厚δ=10⁻⁴ mならk_m≈10⁻⁵ m/s。膜厚を半分にすると同じ単純モデルのk_mは2倍となる。",
       "limits": "現実の膜厚は直接測れる幾何学的厚さと一致するとは限らない。混合物の流れ、反応、境界条件によってk_mの意味は変わる。",
       "selfCheck": "単純な停滞膜モデルで膜厚δを2倍にするとk_mは何倍か。",
-      "answer": "1/2倍。",
+      "answer": "1/2倍",
       "reviewStatus": "AI_drafted_pending_independent_expert_review"
     },
     {
@@ -101,7 +101,7 @@
       "example": "高濃度蒸気の吹き出しを伴う表面では、流体のバルク流が熱境界層を変え、同じ温度差でも熱流束が変わり得る。",
       "limits": "高速移動の補正式は系・流動条件により違う。StやShの低速相関を無条件に流用しない。",
       "selfCheck": "強い吹き出し流がある表面で単相低速相関を使う前に確認することは何か。",
-      "answer": "界面質量流束とバルク流の影響。",
+      "answer": "界面質量流束とバルク流の影響",
       "reviewStatus": "AI_drafted_pending_independent_expert_review"
     },
     {
@@ -112,7 +112,7 @@
       "example": "混合物のν=2×10⁻⁶ m²/s、D_AB=10⁻⁹ m²/sならSc=2000。温度で粘度が変わればScも変化し得る。",
       "limits": "多成分系では成分対ごとのD_ijやより一般の拡散モデルを要する。物性の単位と採用データの温度条件を明記する。",
       "selfCheck": "混合物のSchmidt数に必要な物性値は何か。",
-      "answer": "νとD_AB。",
+      "answer": "νとD_AB",
       "reviewStatus": "AI_drafted_pending_independent_expert_review"
     },
     {
@@ -123,7 +123,7 @@
       "example": "三成分混合物A/B/CでAの濃度勾配が同じでも、B/Cの組成が変わるとAの拡散流束が変わり得る。単一の一定D_ABでは説明しきれない。",
       "limits": "非理想性や交差拡散、電場、化学反応を含む場合は専用モデル・実測値が必要。定量設計では簡易式の適用可能性を検証する。",
       "selfCheck": "多成分混合物で一成分の濃度勾配だけからその流束が決まるとは限らない理由は何か。",
-      "answer": "他成分との相互拡散のため。",
+      "answer": "他成分との相互拡散のため",
       "reviewStatus": "AI_drafted_pending_independent_expert_review"
     }
   ]

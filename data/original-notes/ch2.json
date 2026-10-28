@@ -13,7 +13,7 @@
       "example": "k=10 W/(m·K)、ρ=1000 kg/m³、c=2000 J/(kg·K)ならα=5×10⁻⁶ m²/s。kが同じでもρcが大きいほど温度変化の広がりは遅くなる。",
       "limits": "異方性材料や温度依存物性では上記の単純な一定k式は使えない。境界温度だけでなく初期温度と発熱条件も確認する。",
       "selfCheck": "定常・発熱なしなら一定物性の伝導方程式の右辺はどうなるか。",
-      "answer": "∇²T=0。",
+      "answer": "∇²T=0",
       "reviewStatus": "AI_drafted_pending_independent_expert_review"
     },
     {
@@ -24,7 +24,7 @@
       "example": "厚さ0.10 m、k=2 W/(m·K)、面積1 m²、両面温度差20 KならQ̇=400 W。厚さを2倍にすると、他条件一定でQ̇は半分。",
       "limits": "側面からの損失、温度によるkの変化、面積変化、内部発熱、非定常性が大きい場合は温度分布が直線とは限らない。",
       "selfCheck": "熱伝導率と面積を固定したまま厚さを3倍にするとQ̇は何倍か。",
-      "answer": "1/3倍。",
+      "answer": "1/3倍",
       "reviewStatus": "AI_drafted_pending_independent_expert_review"
     },
     {
@@ -35,7 +35,7 @@
       "example": "0.2 K/Wと0.3 K/Wの直列抵抗は0.5 K/W。同じ二つを並列にするとR_eq=1/(5+3.333…)≈0.12 K/W。等価回路を描く前に熱流経路を確かめる。",
       "limits": "放射のT⁴依存や温度依存係数が支配する場合、抵抗を一定値として単純加算できないことがある。面積基準の違う抵抗も混ぜない。",
       "selfCheck": "0.2 K/Wと0.3 K/Wを直列につないだ全抵抗は。",
-      "answer": "0.5 K/W。",
+      "answer": "0.5 K/W",
       "reviewStatus": "AI_drafted_pending_independent_expert_review"
     },
     {
@@ -46,7 +46,7 @@
       "example": "全抵抗0.025 K/Wなら全コンダクタンスUA=40 W/K。温度差10 KでQ̇=400 W。基準面積A=2 m²ならU=20 W/(m²·K)。",
       "limits": "Uは固有材料定数ではない。流速、熱伝達率、汚れ、形状、相変化の有無などで変わる。異なる面積基準のUを直接比較しない。",
       "selfCheck": "同じ熱交換器で内外のUの数値が異なっても、同じに保たれる量は何か。",
-      "answer": "UA（全体の熱コンダクタンス）。",
+      "answer": "UA（全体の熱コンダクタンス）",
       "reviewStatus": "AI_drafted_pending_independent_expert_review"
     },
     {
@@ -57,7 +57,7 @@
       "example": "Q̇=100 W、R₁=0.02 K/W、R₂=0.05 K/Wなら温度降下は2 Kと5 Kで合計7 K。抵抗の大きい第2層が温度差の大部分を担う。",
       "limits": "この関係は同じ熱流率が流れる直列・定常系に限る。熱橋や温度依存の熱伝導率がある構造は適切に細分化する。",
       "selfCheck": "同じQ̇で抵抗Rが2倍なら、その部分の温度降下は何倍か。",
-      "answer": "2倍。",
+      "answer": "2倍",
       "reviewStatus": "AI_drafted_pending_independent_expert_review"
     }
   ]

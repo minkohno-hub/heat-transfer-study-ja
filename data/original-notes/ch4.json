@@ -13,7 +13,7 @@
       "example": "同じ板でも両面の温度が固定される問題と、片面が対流にさらされる問題では、表面温度および内部温度分布が異なる。境界条件の種類を先に図に書く。",
       "limits": "温度と熱流束を同じ面で独立に同時指定すると過剰な条件となる場合がある。境界法線の向きを明示して式の符号を確かめる。",
       "selfCheck": "非定常伝導の温度分布を求めるとき、境界条件のほかに通常必要なものは何か。",
-      "answer": "初期条件。",
+      "answer": "初期条件",
       "reviewStatus": "AI_drafted_pending_independent_expert_review"
     },
     {
@@ -24,7 +24,7 @@
       "example": "厚さのある板の内部に一様な正の発熱があると、一次元・一定kでは温度分布の曲率は負になる。両面を同温度で冷やす対称条件なら中央温度が最大となる。",
       "limits": "熱伝導率が温度で変わる場合、k∇²Tの代わりに∇·(k∇T)を使う必要がある。対称性は境界条件が満たす場合だけ利用する。",
       "selfCheck": "一定k、定常、内部発熱なしの支配方程式は何か。",
-      "answer": "∇²T=0。",
+      "answer": "∇²T=0",
       "reviewStatus": "AI_drafted_pending_independent_expert_review"
     },
     {
@@ -35,7 +35,7 @@
       "example": "長さを2倍にして他条件が同じならBiは2倍になり、同じ時間でのFoは1/4になる。これは形状尺度が伝熱の過渡応答に強く影響する例である。",
       "limits": "BiのLは集中熱容量法ではV/A_sなど、モデルに応じた定義が必要。Foも境界条件と形状なしに温度を決められない。",
       "selfCheck": "長さだけ2倍にするとFoは何倍になるか。",
-      "answer": "1/4倍。",
+      "answer": "1/4倍",
       "reviewStatus": "AI_drafted_pending_independent_expert_review"
     },
     {
@@ -46,7 +46,7 @@
       "example": "同じ幾何と温度差でkが2倍なら、定常線形伝導モデルの熱移動率は2倍。形状を拡大する場合はSの長さ次元と境界条件を確認する。",
       "limits": "Sの計算式を不明な形状へ流用しない。温度依存のk、内部発熱、複数材料、対流境界は追加の無次元条件が必要。",
       "selfCheck": "形状係数Sの単位は何か。",
-      "answer": "m。",
+      "answer": "m",
       "reviewStatus": "AI_drafted_pending_independent_expert_review"
     },
     {
@@ -57,7 +57,7 @@
       "example": "mL=1ならη_f≈0.7616。フィン長さを増やすと表面積は増える一方、効率は低下し得るので、総放熱量と効率を別々に評価する。",
       "limits": "この解は一定k・h、一次元、断熱先端、側面対流などの仮定を要する。放射や先端対流、接触抵抗が重要なら別の式を使う。",
       "selfCheck": "フィン効率が下がっただけで、総放熱量も必ず下がると言えるか。",
-      "answer": "言えない。",
+      "answer": "言えない",
       "reviewStatus": "AI_drafted_pending_independent_expert_review"
     }
   ]
