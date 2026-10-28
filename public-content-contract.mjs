@@ -27,10 +27,15 @@ export function checkPublicContent({book, questions, glossary, guides}) {
     return ['公開する問題・用語・ガイドが配列ではありません。'];
   }
   const sections = new Map();
+  const chapterSections = new Map();
   for (const chapter of book.chapters) {
     if (!object(chapter) || !Array.isArray(chapter.sections)) {
       error('章の構造が正しくありません。'); continue;
     }
+    if (!present(chapter.id) || chapterSections.has(chapter.id)) {
+      error('章IDが不正または重複しています。'); continue;
+    }
+    chapterSections.set(chapter.id,new Set(chapter.sections.map(s=>s?.id).filter(present)));
     for (const section of chapter.sections) {
       if (!object(section) || !present(section.id) || !Number.isInteger(section.pdfStart) ||
         section.pdfStart < 1 || section.pdfStart > book.pdfPageCount) {
@@ -45,6 +50,7 @@ export function checkPublicContent({book, questions, glossary, guides}) {
     }
   }
   const guideIds = new Set();
+  const guideById = new Map();
   for (const guide of guides) {
     if (!object(guide) || !present(guide.id) || !present(guide.title) ||
       !present(guide.summary) || !present(guide.html)) {
@@ -52,6 +58,16 @@ export function checkPublicContent({book, questions, glossary, guides}) {
     }
     if (guideIds.has(guide.id)) error('ガイドIDが重複しています: ' + guide.id);
     guideIds.add(guide.id);
+    guideById.set(guide.id,guide);
+    if (guide.bookChapter !== undefined) {
+      const known=chapterSections.get(guide.bookChapter);
+      if (!known || !Array.isArray(guide.relatedSectionIds) ||
+        guide.relatedSectionIds.length===0 ||
+        guide.relatedSectionIds.some(sectionId=>!known.has(sectionId)) ||
+        new Set(guide.relatedSectionIds).size!==guide.relatedSectionIds.length) {
+        error('章別独立講座の章ID・関連節が一致しません: '+guide.id);
+      }
+    }
   }
   const qIds = new Set();
   const checkBookSource = (source, label) => {
@@ -84,6 +100,11 @@ export function checkPublicContent({book, questions, glossary, guides}) {
     if (q.source.type === 'supplement') {
       if (!present(q.source.reference) || !guideIds.has(q.source.guideId)) {
         error(label + ': 独立補足問題が存在しないガイドを参照しています。');
+      }
+      if (q.source.chapterId !== undefined &&
+        (!chapterSections.has(q.source.chapterId) ||
+         guideById.get(q.source.guideId)?.bookChapter!==q.source.chapterId)) {
+        error(label + ': 章別問題の章IDが対応する独立ガイドと一致しません。');
       }
     } else if (q.source.type === 'book') {
       checkBookSource(q.source, label);
