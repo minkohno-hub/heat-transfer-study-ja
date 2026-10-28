@@ -518,3 +518,23 @@ input[type="range"] { width: 100%; accent-color: var(--accent); }
 @media (prefers-reduced-motion:reduce) {
   .sim-physical-svg * { animation:none !important; }
 }
+
+/* A separate vertical scene keeps temperatures readable on 320px phones. */
+.sim-physical-mini { display:none; }
+.sim-physical-svg .diagram-mini-main,.sim-physical-mini .diagram-mini-main { fill:#24343c; font-size:17px; font-weight:700; }
+.sim-physical-mini .diagram-mini-temp { fill:#24343c; font-size:22px; font-weight:750; }
+.sim-physical-mini .diagram-figure-heading { fill:var(--ink); font-size:15px; font-weight:700; }
+.sim-physical-mini .diagram-label { fill:var(--ink); font-size:15px; }
+.sim-physical-mini .diagram-neutral { fill:var(--ink); font-size:15px; }
+.sim-physical-mini .diagram-hot-side { fill:#e6aa91; stroke:#b26b4d; stroke-width:2; }
+.sim-physical-mini .diagram-cold-side { fill:#a7d7dc; stroke:#45868c; stroke-width:2; }
+.sim-physical-mini .diagram-layer-one { fill:#e6aa91; stroke:#b26b4d; stroke-width:2; }
+.sim-physical-mini .diagram-layer-two { fill:#d4bd92; stroke:#9b7e4b; stroke-width:2; }
+.sim-physical-mini .diagram-heat { stroke:#b54c32; fill:#b54c32; }
+.sim-physical-mini .diagram-flow-line { stroke-width:5; stroke-linecap:round; }
+.sim-physical-mini .diagram-radiation-wave { stroke:#b54c32; stroke-width:3; stroke-linecap:round; }
+.sim-physical-mini .diagram-fluid-lines { fill:none; stroke:#397881; stroke-width:2.5; stroke-linecap:round; }
+@media(max-width:600px) {
+  .sim-physical-figure .sim-physical-svg { display:none; }
+  .sim-physical-figure .sim-physical-mini { display:block; width:100%; height:auto; max-height:330px; }
+}
