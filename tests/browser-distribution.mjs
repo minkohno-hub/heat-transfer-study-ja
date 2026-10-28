@@ -158,7 +158,7 @@ try {
   await page.locator('[data-action="exit-quiz"]').click();
   await page.locator('[data-action="discard-quiz"]').click();
   await page.locator('#quiz-start-form select[name="chapter"]').selectOption('ch9');
-  await page.locator('#quiz-start-form select[name="count"]').selectOption('194');
+  await page.locator('#quiz-start-form select[name="count"]').selectOption('198');
   await page.locator('#quiz-start-form button[type="submit"]').click();
   await page.locator('.question-card').waitFor({state:'visible'});
   assert.match(await page.locator('.page-heading h1').innerText(),/1 \/ 24 問/);
@@ -215,6 +215,16 @@ try {
   await page.locator('#reader-deep-lesson').waitFor({state:'visible'});
   assert.match(await page.locator('#reader-deep-lesson').innerText(),/誤差関数/);
   assert.match(await page.locator('#reader-deep-lesson').innerText(),/6.770×10³/);
+  await page.locator('#reader-deep-lesson mark').first().waitFor({state:'visible'});
+  await nav('search');
+  await page.locator('#search-query').fill('射度');
+  await page.locator('#search-form select[name="kind"]').selectOption('deep-lesson');
+  await page.locator('#search-form select[name="chapter"]').selectOption('ch10');
+  await page.locator('#search-form button[type="submit"]').click();
+  await page.locator('.result-card .result-link').filter({hasText:'10.1'}).first().click();
+  await page.locator('#reader-deep-lesson').waitFor({state:'visible'});
+  assert.match(await page.locator('#reader-deep-lesson').innerText(),/1253.153/);
+  assert.match(await page.locator('#reader-deep-lesson').innerText(),/専門家校閲前/);
   await page.locator('#reader-deep-lesson mark').first().waitFor({state:'visible'});
   await nav('simulator');
   assert.match(await page.locator('.result-number').innerText(),/5,625/);
