@@ -53,3 +53,31 @@ test('chapter overview uses most recent per-question answer and never implies fu
   assert.equal(numerical.find(ch=>ch.chapter==='ch2').latestCorrect,0,'Numeric legacy timestamps participate in last-answer ranking');
   assert.deepEqual(chapterLearningOverview(null,[],[]),[]);
 });
+
+test('chapter roadmap distinguishes stale old-revision scores, wrong responses and truly unanswered practice',async()=>{
+  const [book,all]=await Promise.all([read('data/book.json'),read('data/questions.json')]);
+  const questions=all.map(q=>q.id==='supp-chapter-ch2-series'?{...q,revision:'v2'}:q);
+  const attempts=[
+    {questionId:'supp-chapter-ch2-series',at:'2026-10-27T09:00:00Z',correct:true,questionRevision:'initial'},
+    {questionId:'supp-chapter-ch2-cylindrical',at:'2026-10-28T08:00:00Z',correct:false,questionRevision:'initial'}
+  ];
+  const overview=chapterLearningOverview(book,questions,GUIDE_SECTIONS,attempts);
+  const ch2=overview.find(c=>c.chapter==='ch2');
+  assert.equal(ch2.historicalAttemptedQuestions,2);
+  assert.equal(ch2.attemptedQuestions,1);
+  assert.equal(ch2.latestCorrect,0);
+  assert.equal(ch2.outdatedQuestions,1);
+  assert.equal(ch2.latestIncorrect,1);
+  assert.equal(ch2.unansweredQuestions,1);
+  assert.equal(ch2.recommendedQuestionIds.length,3);
+  assert.equal(ch2.recommendedQuestionIds[0],'supp-chapter-ch2-series','Outdated question should be retried before unseen questions');
+  const current=chapterLearningOverview(book,questions,GUIDE_SECTIONS,[...attempts,
+    {questionId:'supp-chapter-ch2-series',at:'2026-10-28T10:00:00Z',correct:true,questionRevision:'v2'}
+  ]).find(c=>c.chapter==='ch2');
+  assert.equal(current.outdatedQuestions,0);
+  assert.equal(current.attemptedQuestions,2);
+  assert.equal(current.latestCorrect,1);
+  assert.equal(current.recommendedQuestionIds.length,2);
+  assert.equal(current.practiceQuestionIds.length,3);
+  assert.equal(current.sectionsMarkedRead,0,'Old answers do not modify book reading marks');
+});
