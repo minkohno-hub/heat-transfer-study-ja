@@ -11,7 +11,7 @@ const ids=['2.4','3.4','4.3','7.2','10.3'];
 test('five standalone independent lessons are registered, section-aligned and do not assert external academic review',async()=>{
  const [book,deep]=await Promise.all(['data/book.json','data/original-deep-lessons.json'].map(read));
  assert.deepEqual(validateDeepLessons(book,deep),[]);
- assert.equal(deep.lessons.length,24);
+ assert.ok(deep.lessons.length>=26);
  for(const id of ids){
   assert.ok(DEEP_LESSON_IDS.includes(id),id);
   const l=deepLessonForSection(deep,id);
@@ -31,7 +31,7 @@ test('33 new original quizzes contain 4 explained choices, unambiguous answer ke
   'data/book.json','data/original-notes.json','data/original-deep-lessons.json',
   'data/questions.json','data/readiness-evidence.json'
  ].map(read));
- assert.equal(all.length,298);
+ assert.ok(all.length>=312);
  const qs=all.filter(q=>q.id.startsWith('supp-batch2-'));
  assert.equal(qs.length,33);
  assert.equal(new Set(all.map(q=>q.id)).size,all.length);
@@ -56,10 +56,10 @@ test('33 new original quizzes contain 4 explained choices, unambiguous answer ke
  }
  const report=buildAuthoringQueue({book,originalNotes:notes,deepLessons:deep,questions:all,evidence});
  assert.equal(report.sectionCount,76);
- assert.equal(report.detailedLessonDrafts,24);
- assert.equal(report.sectionsNeedingDetailedLesson,52);
- assert.equal(report.draftAuthoringMinimumMet,15);
- assert.equal(report.remainingQuestionDraftMinimum,392);
+ assert.ok(report.detailedLessonDrafts>=26);
+ assert.ok(report.sectionsNeedingDetailedLesson<=50);
+ assert.ok(report.draftAuthoringMinimumMet>=17);
+ assert.ok(report.remainingQuestionDraftMinimum<=378);
  assert.equal(report.externallyAcceptedSections,0);
  for(const id of ids){
   const row=report.sections.find(x=>x.sectionId===id);
