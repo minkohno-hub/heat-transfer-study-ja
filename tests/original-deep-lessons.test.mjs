@@ -8,8 +8,8 @@ const read=async path=>JSON.parse(await readFile(new URL('../'+path,import.meta.
 test('advanced original Japanese instruction includes 1.1 and 3.1 alongside the existing topics without claiming an unlicensed translation',async()=>{
  const [book,deep]=await Promise.all(['data/book.json','data/original-deep-lessons.json'].map(read));
  assert.deepEqual(validateDeepLessons(book,deep),[]);
- assert.equal(deep.lessons.length,11);
- assert.deepEqual(deep.lessons.map(x=>x.sectionId),['1.1','2.1','3.1','3.2','4.5','5.2','5.6','8.4','8.5','10.1','11.3']);
+ assert.equal(deep.lessons.length,19);
+ assert.deepEqual(deep.lessons.map(x=>x.sectionId),['1.1','1.2','1.3','2.1','2.2','2.3','3.1','3.2','3.3','4.5','5.2','5.3','5.6','6.1','8.4','8.5','9.1','10.1','11.3']);
  assert.equal(deep.translation,false);
  assert.equal(deep.expertReviewed,false);
  for(const l of deep.lessons){
