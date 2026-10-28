@@ -61,12 +61,12 @@ test('boundary signs, stationary Poisson profile, and two-sided energy rate inde
  // A steady slab with symmetric imposed wall temperatures and positive generation.
  const g=20_000,half=.05,ks=10,Ts=20,A=1;
  const rise=g*half**2/(2*ks);
- assert.equal(rise,2.5);
- assert.equal(Ts+rise,22.5);
+ assert.ok(Math.abs(rise-2.5)<1e-10);
+ assert.ok(Math.abs(Ts+rise-22.5)<1e-10);
  assert.equal(g*half,1000);
  assert.equal(g*(2*half*A),2000);
  assert.equal(2*(g*half*A),g*(2*half*A));
- assert.equal(g*(2*half)**2/(2*ks),4*rise);
+ assert.ok(Math.abs(g*(2*half)**2/(2*ks)-4*rise)<1e-10);
  // Laplace equation is the special case of the Poisson model with zero generation.
  const laplace=(qgen)=>-qgen/ks;
  assert.equal(laplace(0),0);
