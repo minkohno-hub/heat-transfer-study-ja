@@ -32,7 +32,7 @@ test('conduction, convection and radiation arrows reverse with the temperature d
    const reversed={...standard,[keys[0]]:standard[keys[1]],[keys[1]]:standard[keys[0]]};
    const b=renderSimulationVisual(mode,calc(mode,reversed));
    assert.notEqual(a,b,mode);
-   const flow=html=>{const m=html.match(/<line x1="(\\d+)" y1="\\d+" x2="(\\d+)" y2="\\d+" class="diagram-heat diagram-flow-line"/);assert.ok(m,mode);return [Number(m[1]),Number(m[2])];};
+   const flow=html=>{const m=html.match(/<line x1="([0-9]+)" y1="[^"]+" x2="([0-9]+)" y2="[^"]+" class="diagram-heat diagram-flow-line"/);assert.ok(m,mode);return [Number(m[1]),Number(m[2])];};
    const forward=flow(a),backward=flow(b);
    assert.ok(forward[0]<forward[1],'forward arrow must point right: '+mode);
    assert.ok(backward[0]>backward[1],'backward arrow must point left: '+mode);
