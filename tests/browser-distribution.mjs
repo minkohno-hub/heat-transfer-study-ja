@@ -204,6 +204,8 @@ try {
   await page.locator('#reader-deep-lesson').waitFor({state:'visible'});
   assert.match(await page.locator('#reader-deep-lesson').innerText(),/Fickの法則/);
   assert.match(await page.locator('#reader-deep-lesson').innerText(),/Stefan流/);
+  await page.locator('#reader-deep-lesson mark').first().waitFor({state:'visible'});
+  assert.equal(await page.locator('#reader-deep-lesson mark').first().innerText(),'Stefan流');
   await nav('simulator');
   assert.match(await page.locator('.result-number').innerText(),/5,625/);
   await page.locator('#sim-form input[name="k"]').fill('0.000001');
