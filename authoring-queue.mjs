@@ -30,7 +30,7 @@ export function buildAuthoringQueue({book,originalNotes,deepLessons,questions,ev
   // Book order takes priority over adding another feature to already-covered sections.
   // A missing detailed lesson gets attention before polishing surplus questions.
   const next=backlog.slice().sort((a,b)=>
-    Number(!a.shortConceptNoteDraft)-Number(!b.shortConceptNoteDraft)||
+    Number(a.shortConceptNoteDraft)-Number(b.shortConceptNoteDraft)||
     Number(a.detailedLessonDraft)-Number(b.detailedLessonDraft)||
     b.missingQuestionDrafts-a.missingQuestionDrafts||
     a.order-b.order
