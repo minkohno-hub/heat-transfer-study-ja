@@ -236,6 +236,7 @@ function setRoute(route) {
   if(ui.route==='reader'&&route!=='reader')captureReaderPosition();
   if(ui.route==='reader'&&route!=='reader')stopSpeech(false);
   ui.route = route;
+  if(route!=='quiz')ui.quizTermId=null;
   ui.guideTarget = '';
   if (location.hash !== `#${route}`) location.hash = route;
   render();
@@ -319,7 +320,7 @@ async function startApp() {
     window.addEventListener('hashchange', () => {
       const next=routeFromHash(),guideTarget=guideTargetFromHash();if(next===ui.route&&guideTarget===ui.guideTarget)return;
       flushLearningTime();if(ui.route==='reader'){captureReaderPosition();stopSpeech(false);}persistQuiz();
-      ui.route=next;ui.guideTarget=guideTarget;if(guideTarget)ui.guideQuery='';render();window.scrollTo({top:0,behavior:'instant'});focusPageHeading();
+      ui.route=next;if(next!=='quiz')ui.quizTermId=null;ui.guideTarget=guideTarget;if(guideTarget)ui.guideQuery='';render();window.scrollTo({top:0,behavior:'instant'});focusPageHeading();
       if(next==='reader')setTimeout(()=>restoreReaderPosition(state.readerPositions[ui.readerSection]),100);
       if(next==='guide'&&guideTarget)setTimeout(()=>focusGuideSection(guideTarget),0);
     });
