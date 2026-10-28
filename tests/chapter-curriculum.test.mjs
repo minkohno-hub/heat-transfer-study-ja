@@ -46,5 +46,10 @@ test('chapter overview uses most recent per-question answer and never implies fu
   assert.equal(ch9.practiceQuestionCount,10);
   assert.equal(ch9.bookCitedQuestionCount,7);
   assert.equal(overview.reduce((sum,x)=>sum+x.practiceQuestionCount,0),40);
+  const numerical=chapterLearningOverview(book,questions,GUIDE_SECTIONS,[
+    {questionId:'supp-chapter-ch2-series',at:Date.UTC(2026,9,28,0),correct:true},
+    {questionId:'supp-chapter-ch2-series',at:'2026-10-28T10:00:00+09:00',correct:false}
+  ]);
+  assert.equal(numerical.find(ch=>ch.chapter==='ch2').latestCorrect,0,'Numeric legacy timestamps participate in last-answer ranking');
   assert.deepEqual(chapterLearningOverview(null,[],[]),[]);
 });
