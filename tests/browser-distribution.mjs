@@ -433,6 +433,11 @@ try {
     for(const route of ['home','reader','guide','glossary','quiz','simulator','settings']){
       await nav(route);
       assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth)<=width+2,`${route}@${width}`);
+      if(route==='simulator'){
+        assert.equal(await page.locator('.sim-physical-mini').isVisible(),width<=600,`mobile physical diagram visibility @${width}`);
+        assert.equal(await page.locator('.sim-physical-svg').isVisible(),width>600,`desktop physical diagram visibility @${width}`);
+        if(width<=390){const font=await page.locator('.sim-physical-mini .diagram-mini-temp').first().evaluate(e=>parseFloat(getComputedStyle(e).fontSize));assert.ok(font>=18,'mobile temperature labels must remain legible');}
+      }
       if(route==='reader'){
         const status=page.locator('.reader-toc .toc-item i').filter({hasText:'下書き記録・未移行'}).first();
         assert.ok(await status.evaluate(element=>element.getBoundingClientRect().height<=20&&element.scrollWidth<=element.clientWidth+1&&parseFloat(getComputedStyle(element).fontSize)>=10),`目次の進捗表示@${width}`);
