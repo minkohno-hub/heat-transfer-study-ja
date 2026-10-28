@@ -28,7 +28,7 @@ test('coverage report separates original problems from verified book citation an
   assert.equal(coverage.chaptersWithOriginalPractice,11);
   assert.equal(coverage.chapters.reduce((a,b)=>a+b.originalPracticeQuestions,0),109);
   assert.equal(coverage.chapters.reduce((a,b)=>a+b.originalGuideEntries,0),11);
-  assert.ok(coverage.chapters.every(c=>c.originalPracticeQuestions===3&&c.originalGuideEntries===1));
+  assert.ok(coverage.chapters.every(c=>c.originalPracticeQuestions===3+c.sectionCount&&c.originalGuideEntries===1));
 
 });
 test('coverage never assigns public Japanese-translation progress from an unexamined manifest',async()=>{
