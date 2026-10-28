@@ -272,7 +272,7 @@
     "id": "thermal-conductivity",
     "ja": "熱伝導率",
     "en": "thermal conductivity",
-    "meaning": "材料の中を熱が伝わりやすい度合いを表す物性値。単位は W/(m·K)。均質な平板の一次元定常熱伝導のモデルで用いる。",
+    "meaning": "材料内部での温度勾配に対して、どれだけ伝導熱流束が生じるかを表す物性値。単位は W/(m·K)。一次元のフーリエ則 q″=−k dT/dx の比例係数であり、温度差そのものとは異なる。",
     "source": {
       "type": "supplement",
       "reference": "Fourierの法則（一般的な伝熱の定義）",
