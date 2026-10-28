@@ -13,7 +13,7 @@ test('eight additional original lessons are complete enough for independent inte
   assert.deepEqual(validateDeepLessons(book,deep),[]);
   assert.equal(deep.translation,false);
   assert.equal(deep.expertReviewed,false);
-  assert.ok(deep.lessons.length>=24);
+  assert.ok(deep.lessons.length>=26);
   for(const id of sectionIds){
     const lesson=deepLessonForSection(deep,id);
     assert.ok(lesson,id);
@@ -29,7 +29,7 @@ test('32 added exercises refer to a real section/guide and retain four explained
   const [book,questions,glossary,originalNotes,deepLessons]=await Promise.all(
     ['data/book.json','data/questions.json','data/glossary.json','data/original-notes.json','data/original-deep-lessons.json'].map(read)
   );
-  assert.ok(questions.length>=298);
+  assert.ok(questions.length>=312);
   const newQuestions=questions.filter(q=>q.id.startsWith('supp-found-'));
   assert.equal(newQuestions.length,32);
   assert.equal(new Set(questions.map(q=>q.id)).size,questions.length);
