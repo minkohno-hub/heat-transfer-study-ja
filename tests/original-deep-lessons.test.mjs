@@ -5,11 +5,11 @@ import {validateDeepLessons,deepLessonForSection} from '../original-deep-lessons
 import {checkPublicContent} from '../public-content-contract.mjs';
 import {GUIDE_SECTIONS} from '../guide.mjs';
 const read=async path=>JSON.parse(await readFile(new URL('../'+path,import.meta.url),'utf8'));
-test('advanced original Japanese instruction covers 8.4 and 8.5 without claiming an unlicensed translation',async()=>{
+test('advanced original Japanese instruction covers 3.2, 5.2, 8.4 and 8.5 without claiming an unlicensed translation',async()=>{
  const [book,deep]=await Promise.all(['data/book.json','data/original-deep-lessons.json'].map(read));
  assert.deepEqual(validateDeepLessons(book,deep),[]);
- assert.equal(deep.lessons.length,2);
- assert.deepEqual(deep.lessons.map(x=>x.sectionId),['8.4','8.5']);
+ assert.equal(deep.lessons.length,4);
+ assert.deepEqual(deep.lessons.map(x=>x.sectionId),['3.2','5.2','8.4','8.5']);
  assert.equal(deep.translation,false);
  assert.equal(deep.expertReviewed,false);
  for(const l of deep.lessons){
@@ -36,6 +36,30 @@ test('natural convection and film condensation independently recompute the two w
  // h~L^(-1/4), and q''~(T_sat-T_w)^(3/4), within the same Nusselt-film idealization.
  close((hc*(2**(-.25)))/hc,2**(-.25),1e-10);
  close((hc*(2**(-.25))*(2*dT))/(hc*dT),2**(.75),1e-10);
+});
+test('LMTD and lumped transient Japanese worked examples are independently recalculated',()=>{
+  // Counterflow: heat-capacity-rate consistency as well as LMTD/UA consistency.
+  const heatHot=250*(100-60);
+  const heatCold=500*(40-20);
+  assert.equal(heatHot,10_000);
+  assert.equal(heatHot,heatCold);
+  const dt1=100-40,dt2=60-20;
+  const lm=(dt1-dt2)/Math.log(dt1/dt2);
+  assert.ok(Math.abs(lm-49.326069)<0.001);
+  const ua=heatHot/lm,u=ua/2;
+  assert.ok(Math.abs(ua-202.732554)<0.01);
+  assert.ok(Math.abs(u-101.366277)<0.01);
+  assert.ok(Math.abs(ua*lm-heatCold)<1e-8);
+  // Lumped thermal capacitance: independently calculate Biot, tau and lost sensible heat.
+  const m=1,c=500,rho=5000,as=.10,h=20,ks=50,T0=100,Tinf=20;
+  const V=m/rho,Lc=V/as,Bi=h*Lc/ks,tau=m*c/(h*as);
+  const t=tau,T=Tinf+(T0-Tinf)*Math.exp(-t/tau),heatReleased=m*c*(T0-T);
+  assert.equal(Bi,.0008);
+  assert.equal(tau,250);
+  assert.ok(Math.abs(T-49.4303553)<0.0001);
+  assert.ok(Math.abs(heatReleased-25284.8223)<0.1);
+  const alpha=ks/(rho*c),Fo=alpha*t/(Lc**2);
+  assert.ok(Math.abs(Bi*Fo-t/tau)<1e-12);
 });
 test('public build checks advanced note structural integrity and mislabeling',async()=>{
  const [book,questions,glossary,originalNotes,deepLessons]=await Promise.all([
