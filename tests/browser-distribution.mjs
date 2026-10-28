@@ -421,6 +421,24 @@ try {
       }
     }
   }
+  // At phone widths, the bottom sheet must stay in the viewport and not
+  // capture answer-key shortcuts while the definition is open.
+  for(const width of [320,390]){
+    await page.setViewportSize({width,height:844});
+    await nav('glossary');
+    await page.locator('#term-thermal-conductivity [data-start-question="supp-flat-thickness"]').click();
+    await page.locator('.quiz-term-link[data-quiz-term="thermal-conductivity"]').click();
+    const bounds=await page.locator('.quiz-term-modal').boundingBox();
+    assert.ok(bounds&&bounds.x>=-1&&bounds.x+bounds.width<=width+1,'definition sheet fits phone width '+width);
+    assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+2),'no horizontal scroll for '+width);
+    await page.keyboard.press('1');
+    assert.equal(await page.locator('input[name="choice"]:checked').count(),0,'answer key must not fire under open sheet');
+    await page.locator('.quiz-term-backdrop').click({position:{x:5,y:5}});
+    assert.equal(await page.locator('.quiz-term-modal').count(),0);
+    await page.locator('[data-action="exit-quiz"]').click();
+    await page.locator('[data-action="discard-quiz"]').click();
+  }
+  await page.setViewportSize({width:1365,height:844});
   await nav('plan');
   const beforeFailedSave=await page.evaluate(()=>localStorage.getItem('heat-study-ja:v1'));
   await page.evaluate(()=>{
