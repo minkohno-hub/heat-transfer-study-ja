@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {createEmptyState,validateLearningData,normalizeLearningData,mergeLearningData,calculateHeatTransfer,chapterKey,searchEntries,searchSnippet,nextReviewDays,shiftMonth,localDay,planMinutes,fieldProgress,DATA_FORMAT,speechChunks,quizChoiceOrder} from '../study-core.mjs';
+import {createEmptyState,validateLearningData,normalizeLearningData,mergeLearningData,calculateHeatTransfer,chapterKey,searchEntries,searchSnippet,nextReviewDays,shiftMonth,localDay,planMinutes,fieldProgress,isCurrentQuestionAnswer,DATA_FORMAT,speechChunks,quizChoiceOrder} from '../study-core.mjs';
 const exported=()=>({...createEmptyState(),format:DATA_FORMAT});
 const attempt=(extra={})=>({id:'a1',questionId:'q1',selected:0,correct:true,confidence:'high',at:'2026-10-19T15:15:00.000Z',...extra});
 
@@ -107,4 +107,26 @@ test('calendar clamps month-end and learning dates use local calendar dates',()=
 });
 test('a five-minute plan allocates exactly five minutes',()=>{
   for(const n of [5,10,15,30,60]){const parts=planMinutes(n);assert.equal(parts.reduce((a,b)=>a+b,0),n);assert.ok(parts.every(x=>x>0));}
+});
+
+test('revised question answers never inflate field mastery while historical records remain untouched',()=>{
+  const original={id:'q1'},revised={id:'q1',revision:'v2'},fresh={id:'q2',revision:'v1'};
+  const previous=attempt({questionId:'q1',correct:true,questionRevision:'initial'});
+  assert.equal(isCurrentQuestionAnswer(original,previous),true,'Old no-revision content accepts legacy initial answers');
+  assert.equal(isCurrentQuestionAnswer(revised,previous),false);
+  const historical=[previous,attempt({id:'a2',questionId:'q2',correct:true,questionRevision:'v1'})];
+  const before=JSON.stringify(historical);
+  const stale=fieldProgress([revised,fresh],historical);
+  assert.equal(stale.answered,1);
+  assert.equal(stale.correct,1);
+  assert.equal(stale.outdated,1);
+  assert.equal(stale.enough,false);
+  const rerun=attempt({id:'a3',questionId:'q1',correct:false,questionRevision:'v2',at:'2026-10-28T10:00:00Z'});
+  const current=fieldProgress([revised,fresh],[...historical,rerun]);
+  assert.equal(current.answered,2);
+  assert.equal(current.correct,1);
+  assert.equal(current.outdated,0);
+  assert.equal(current.ratio,0.5);
+  assert.equal(JSON.stringify(historical),before,'Previous learning history is never edited');
+  assert.equal(isCurrentQuestionAnswer({id:'q3'},attempt({questionId:'q3',questionRevision:undefined})),true);
 });
