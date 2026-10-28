@@ -44,6 +44,15 @@ try {
   assert.match(await page.locator('#reader-original-note').innerText(),/原本の翻訳、節の全文掲載、図表の転載ではありません/);
   await page.locator('#reader-original-note summary').click();
   assert.match(await page.locator('#reader-original-note').innerText(),/WとJ/);
+  await page.locator('#reader-original-note [data-start-question="supp-applied-1-1-v1"]').waitFor({state:'visible'});
+  await page.locator('#reader-original-note [data-start-question="supp-applied-1-1-v1"]').click();
+  await page.locator('.question-card').waitFor({state:'visible'});
+  assert.match(await page.locator('.question-card').innerText(),/0\.08 m².*0\.02 m²/s);
+  await page.locator('[data-action="exit-quiz"]').click();
+  await page.locator('[data-action="discard-quiz"]').click();
+  await nav('reader');
+  await page.locator('#reader-original-note').waitFor({state:'visible'});
+
 
   assert.match(await page.locator('#reader-article').innerText(),/原本の翻訳・節本文ではありません/);
   assert.ok((await page.locator('.brand').getAttribute('aria-label')).includes('熱移動を学ぶ'));
