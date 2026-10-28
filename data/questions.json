@@ -2790,5 +2790,401 @@
     "reviewStatus": "AIによる内部照合済み・外部専門家校閲なし",
     "expertReviewed": false,
     "reportHistory": []
+  },
+  {
+    "id": "supp-chapter-ch9-latent",
+    "prompt": "凝縮する蒸気の質量流量ṁ=0.020 kg/s、相変化潜熱h_fg=2.2×10⁶ J/kgです。顕熱と外部損失を無視した潜熱移動率の大きさは？",
+    "choices": [
+      "4.4 kW",
+      "44 kW",
+      "440 kW",
+      "0.044 kW"
+    ],
+    "answer": 1,
+    "distractors": [
+      "潜熱の桁を一つ落としています。",
+      "正解。Q̇=ṁh_fg=0.020×2.2×10⁶=44000 W=44 kW。",
+      "10倍大きい結果です。",
+      "kWへの換算でも誤っています。"
+    ],
+    "explanation": "正解。Q̇=ṁh_fg=0.020×2.2×10⁶=44000 W=44 kW。 温度変化に伴う顕熱や外部損失は含まれていません。",
+    "hints": [
+      "kg/s×J/kgはJ/s=Wになります。",
+      "44000 Wは44 kWです。"
+    ],
+    "solutionSteps": [
+      "Q̇=ṁh_fgを使用。",
+      "0.020×2.2×10⁶=44000 W。",
+      "44 kWに換算。"
+    ],
+    "beginnerPitfall": "温度変化に伴う顕熱や外部損失は含まれていません。",
+    "field": "相変化",
+    "difficulty": "基礎〜応用・章別独立演習",
+    "prerequisites": [
+      "相変化",
+      "物理量と単位"
+    ],
+    "source": {
+      "type": "supplement",
+      "reference": "アプリ独自の章別補助講座。書籍の文章・図表・翻訳を転載しない。",
+      "guideId": "chapter9-latent-boiling",
+      "chapterId": "ch9"
+    },
+    "createdStatus": "作成済み",
+    "reviewStatus": "AIによる内部照合済み・外部専門家校閲なし",
+    "expertReviewed": false,
+    "reportHistory": []
+  },
+  {
+    "id": "supp-chapter-ch9-qflux",
+    "prompt": "加熱面積0.010 m²に一様に500 Wを供給するとき、熱流束q″はいくらですか。",
+    "choices": [
+      "5,000 W/m²",
+      "500 W/m²",
+      "50,000 W/m²",
+      "5 W/m²"
+    ],
+    "answer": 2,
+    "distractors": [
+      "面積を0.10 m²と誤認しています。",
+      "熱移動率の数値をそのまま使っています。",
+      "正解。q″=Q̇/A=500/0.010=50000 W/m²。",
+      "面積と熱移動率を掛けています。"
+    ],
+    "explanation": "正解。q″=Q̇/A=500/0.010=50000 W/m²。 一様な熱流束として扱う単純化条件です。",
+    "hints": [
+      "熱流束は単位面積当たりの熱移動率です。",
+      "0.010 m²で割ります。"
+    ],
+    "solutionSteps": [
+      "q″=Q̇/A。",
+      "500/0.010=50000。",
+      "単位W/m²。"
+    ],
+    "beginnerPitfall": "一様な熱流束として扱う単純化条件です。",
+    "field": "相変化",
+    "difficulty": "基礎〜応用・章別独立演習",
+    "prerequisites": [
+      "相変化",
+      "物理量と単位"
+    ],
+    "source": {
+      "type": "supplement",
+      "reference": "アプリ独自の章別補助講座。書籍の文章・図表・翻訳を転載しない。",
+      "guideId": "chapter9-latent-boiling",
+      "chapterId": "ch9"
+    },
+    "createdStatus": "作成済み",
+    "reviewStatus": "AIによる内部照合済み・外部専門家校閲なし",
+    "expertReviewed": false,
+    "reportHistory": []
+  },
+  {
+    "id": "supp-chapter-ch9-chf",
+    "prompt": "沸騰伝熱の限界熱流束（CHF）を扱う場合の説明として正しいものはどれですか。",
+    "choices": [
+      "すべての液体に共通する一定温度",
+      "必ず蒸気発生が止まる瞬間",
+      "熱交換器の最高流量のこと",
+      "条件によって伝熱状態が急変し壁温上昇の危険がある限界に関係する"
+    ],
+    "answer": 3,
+    "distractors": [
+      "CHFは温度値そのものではなく熱流束です。",
+      "相変化の質量流量が必ずゼロになることを意味しません。",
+      "流量の最大値の定義ではありません。",
+      "正解。CHF付近を超えると伝熱の悪化と壁温の急上昇を伴う場合があります。"
+    ],
+    "explanation": "正解。CHF付近を超えると伝熱の悪化と壁温の急上昇を伴う場合があります。 CHFは圧力・流れ・表面性状・濡れ性などで変わり、単一の普遍的数値はありません。",
+    "hints": [
+      "CHFの単位は一般にW/m²です。",
+      "壁面の熱負荷制御時の安全性を考えます。"
+    ],
+    "solutionSteps": [
+      "CHFは熱流束に関わる限界。",
+      "表面や圧力・流動条件で変わる。",
+      "危険な壁面温度上昇と関連し得る。"
+    ],
+    "beginnerPitfall": "CHFは圧力・流れ・表面性状・濡れ性などで変わり、単一の普遍的数値はありません。",
+    "field": "相変化",
+    "difficulty": "基礎〜応用・章別独立演習",
+    "prerequisites": [
+      "相変化",
+      "物理量と単位"
+    ],
+    "source": {
+      "type": "supplement",
+      "reference": "アプリ独自の章別補助講座。書籍の文章・図表・翻訳を転載しない。",
+      "guideId": "chapter9-latent-boiling",
+      "chapterId": "ch9"
+    },
+    "createdStatus": "作成済み",
+    "reviewStatus": "AIによる内部照合済み・外部専門家校閲なし",
+    "expertReviewed": false,
+    "reportHistory": []
+  },
+  {
+    "id": "supp-chapter-ch10-reciprocity",
+    "prompt": "2面の形態係数がA₁F₁₂=A₂F₂₁を満たします。A₁=2.0 m²、A₂=4.0 m²、F₁₂=0.60ならF₂₁は？",
+    "choices": [
+      "0.30",
+      "1.20",
+      "0.60",
+      "0.15"
+    ],
+    "answer": 0,
+    "distractors": [
+      "正解。F₂₁=(2.0/4.0)×0.60=0.30。",
+      "面積比を逆にし、形態係数の範囲も超えています。",
+      "両方向の形態係数が同じと誤認しています。",
+      "面積比を過度に小さくしています。"
+    ],
+    "explanation": "正解。F₂₁=(2.0/4.0)×0.60=0.30。 相反則は拡散放射面の幾何に関わる関係です。",
+    "hints": [
+      "相反則をF₂₁について解きます。",
+      "A₁/A₂=0.5です。"
+    ],
+    "solutionSteps": [
+      "A₁F₁₂=A₂F₂₁。",
+      "F₂₁=(2.0×0.60)/4.0。",
+      "0.30を得る。"
+    ],
+    "beginnerPitfall": "相反則は拡散放射面の幾何に関わる関係です。",
+    "field": "放射熱移動",
+    "difficulty": "基礎〜応用・章別独立演習",
+    "prerequisites": [
+      "放射熱移動",
+      "物理量と単位"
+    ],
+    "source": {
+      "type": "supplement",
+      "reference": "アプリ独自の章別補助講座。書籍の文章・図表・翻訳を転載しない。",
+      "guideId": "chapter10-view-factors",
+      "chapterId": "ch10"
+    },
+    "createdStatus": "作成済み",
+    "reviewStatus": "AIによる内部照合済み・外部専門家校閲なし",
+    "expertReviewed": false,
+    "reportHistory": []
+  },
+  {
+    "id": "supp-chapter-ch10-enclosure",
+    "prompt": "閉じた放射囲いで、面1から面2へのF₁₂=0.60、面1は凸面でF₁₁=0、囲いには面1・2・3のみがあるとします。F₁₃は？",
+    "choices": [
+      "0.60",
+      "1.60",
+      "0.40",
+      "0"
+    ],
+    "answer": 2,
+    "distractors": [
+      "面2への割合と残りの割合を混同しています。",
+      "放射の全行き先の割合が1を超えています。",
+      "正解。F₁₁+F₁₂+F₁₃=1なのでF₁₃=1−0.60=0.40。",
+      "残りの放射経路がないと誤認しています。"
+    ],
+    "explanation": "正解。F₁₁+F₁₂+F₁₃=1なのでF₁₃=1−0.60=0.40。 囲いに未記載の面や開口が存在しない条件です。",
+    "hints": [
+      "面1から出た放射の到達割合を合計します。",
+      "F₁₁=0を使います。"
+    ],
+    "solutionSteps": [
+      "閉じた囲いではΣF₁j=1。",
+      "F₁₁=0、F₁₂=0.60。",
+      "F₁₃=0.40。"
+    ],
+    "beginnerPitfall": "囲いに未記載の面や開口が存在しない条件です。",
+    "field": "放射熱移動",
+    "difficulty": "基礎〜応用・章別独立演習",
+    "prerequisites": [
+      "放射熱移動",
+      "物理量と単位"
+    ],
+    "source": {
+      "type": "supplement",
+      "reference": "アプリ独自の章別補助講座。書籍の文章・図表・翻訳を転載しない。",
+      "guideId": "chapter10-view-factors",
+      "chapterId": "ch10"
+    },
+    "createdStatus": "作成済み",
+    "reviewStatus": "AIによる内部照合済み・外部専門家校閲なし",
+    "expertReviewed": false,
+    "reportHistory": []
+  },
+  {
+    "id": "supp-chapter-ch10-concept",
+    "prompt": "閉じた凹面の形態係数Fᵢᵢについて、一般的に正しい説明はどれですか。",
+    "choices": [
+      "どんな面でも必ず0",
+      "凹面では自分自身へ到達する放射があり、0より大きくなる場合がある",
+      "どんな面でも必ず1",
+      "放射率εと常に一致する"
+    ],
+    "answer": 1,
+    "distractors": [
+      "凸面と凹面の違いを無視しています。",
+      "正解。凹面の異なる部分同士が見合う場合、自己形態係数は正になり得ます。",
+      "すべてが自己へ戻るわけではありません。",
+      "形態係数は幾何学的割合で放射率とは異なります。"
+    ],
+    "explanation": "正解。凹面の異なる部分同士が見合う場合、自己形態係数は正になり得ます。 自己形態係数は反射率や放射率と同じ概念ではありません。",
+    "hints": [
+      "同じ面の異なる部分が互いに見える形状を考えます。",
+      "形態係数は位置・向きによる幾何量です。"
+    ],
+    "solutionSteps": [
+      "凸面の自己形態係数は0。",
+      "凹面では他の部分が見える場合がある。",
+      "Fᵢᵢが正となり得る。"
+    ],
+    "beginnerPitfall": "自己形態係数は反射率や放射率と同じ概念ではありません。",
+    "field": "放射熱移動",
+    "difficulty": "基礎〜応用・章別独立演習",
+    "prerequisites": [
+      "放射熱移動",
+      "物理量と単位"
+    ],
+    "source": {
+      "type": "supplement",
+      "reference": "アプリ独自の章別補助講座。書籍の文章・図表・翻訳を転載しない。",
+      "guideId": "chapter10-view-factors",
+      "chapterId": "ch10"
+    },
+    "createdStatus": "作成済み",
+    "reviewStatus": "AIによる内部照合済み・外部専門家校閲なし",
+    "expertReviewed": false,
+    "reportHistory": []
+  },
+  {
+    "id": "supp-chapter-ch11-fick",
+    "prompt": "一次元フィック則 J_A=−D_AB(dC_A/dx) において、D_AB=2.0×10⁻⁹ m²/s、濃度勾配dC_A/dx=−100 mol/m⁴です。拡散モル流束は？",
+    "choices": [
+      "−2.0×10⁻⁷ mol/(m²·s)",
+      "+2.0×10⁻⁹ mol/(m²·s)",
+      "+2.0×10⁻⁷ mol/(m²·s)",
+      "−200 mol/(m²·s)"
+    ],
+    "answer": 2,
+    "distractors": [
+      "負の濃度勾配にさらに負号を掛けることを忘れています。",
+      "濃度勾配の大きさ100を掛け忘れています。",
+      "正解。−(2×10⁻⁹)×(−100)=+2×10⁻⁷ mol/(m²·s)。",
+      "指数と符号の両方が誤っています。"
+    ],
+    "explanation": "正解。−(2×10⁻⁹)×(−100)=+2×10⁻⁷ mol/(m²·s)。 これはバルク移動に相対的な拡散流束であり全モル流束ではありません。",
+    "hints": [
+      "J_Aは濃度勾配に負号を掛けます。",
+      "負×負は正です。"
+    ],
+    "solutionSteps": [
+      "J_A=−D_AB dC_A/dx。",
+      "−2.0×10⁻⁹×(−100)。",
+      "+2.0×10⁻⁷ mol/(m²·s)。"
+    ],
+    "beginnerPitfall": "これはバルク移動に相対的な拡散流束であり全モル流束ではありません。",
+    "field": "物質移動",
+    "difficulty": "基礎〜応用・章別独立演習",
+    "prerequisites": [
+      "物質移動",
+      "物理量と単位"
+    ],
+    "source": {
+      "type": "supplement",
+      "reference": "アプリ独自の章別補助講座。書籍の文章・図表・翻訳を転載しない。",
+      "guideId": "chapter11-fick-mass",
+      "chapterId": "ch11"
+    },
+    "createdStatus": "作成済み",
+    "reviewStatus": "AIによる内部照合済み・外部専門家校閲なし",
+    "expertReviewed": false,
+    "reportHistory": []
+  },
+  {
+    "id": "supp-chapter-ch11-sc",
+    "prompt": "流体の動粘度ν=1.0×10⁻⁶ m²/s、二成分拡散係数D_AB=2.0×10⁻⁹ m²/sです。シュミット数Sc=ν/D_ABはいくらですか。",
+    "choices": [
+      "0.002",
+      "50",
+      "5,000",
+      "500"
+    ],
+    "answer": 3,
+    "distractors": [
+      "逆比を求めています。",
+      "10倍小さく計算しています。",
+      "10倍大きく計算しています。",
+      "正解。1.0×10⁻⁶/(2.0×10⁻⁹)=500。"
+    ],
+    "explanation": "正解。1.0×10⁻⁶/(2.0×10⁻⁹)=500。 Scは無次元で、運動量拡散と分子拡散の比を示します。",
+    "hints": [
+      "動粘度と拡散係数の単位は同じです。",
+      "指数比は10³、係数比は1/2です。"
+    ],
+    "solutionSteps": [
+      "Sc=ν/D_AB。",
+      "(1.0/2.0)×10³。",
+      "500。"
+    ],
+    "beginnerPitfall": "Scは無次元で、運動量拡散と分子拡散の比を示します。",
+    "field": "物質移動",
+    "difficulty": "基礎〜応用・章別独立演習",
+    "prerequisites": [
+      "物質移動",
+      "物理量と単位"
+    ],
+    "source": {
+      "type": "supplement",
+      "reference": "アプリ独自の章別補助講座。書籍の文章・図表・翻訳を転載しない。",
+      "guideId": "chapter11-fick-mass",
+      "chapterId": "ch11"
+    },
+    "createdStatus": "作成済み",
+    "reviewStatus": "AIによる内部照合済み・外部専門家校閲なし",
+    "expertReviewed": false,
+    "reportHistory": []
+  },
+  {
+    "id": "supp-chapter-ch11-sh",
+    "prompt": "濃度差で定義した物質移動係数k_m=1.0×10⁻⁴ m/s、代表長さL=0.020 m、D_AB=2.0×10⁻⁹ m²/sのときSh=k_mL/D_ABはいくらですか。",
+    "choices": [
+      "1,000",
+      "100",
+      "10,000",
+      "0.001"
+    ],
+    "answer": 0,
+    "distractors": [
+      "正解。Sh=(1.0×10⁻⁴×0.020)/(2.0×10⁻⁹)=1000。",
+      "10倍小さい桁誤りです。",
+      "10倍大きい桁誤りです。",
+      "逆数に近い誤った量です。"
+    ],
+    "explanation": "正解。Sh=(1.0×10⁻⁴×0.020)/(2.0×10⁻⁹)=1000。 k_mの定義と代表長さは採用する物質移動モデルに対応させます。",
+    "hints": [
+      "分子k_m Lの単位はm²/sです。",
+      "(1.0×10⁻⁴×0.020)=2.0×10⁻⁶。"
+    ],
+    "solutionSteps": [
+      "Sh=k_mL/D_AB。",
+      "分子2.0×10⁻⁶ m²/s。",
+      "分母2.0×10⁻⁹で割り1000。"
+    ],
+    "beginnerPitfall": "k_mの定義と代表長さは採用する物質移動モデルに対応させます。",
+    "field": "物質移動",
+    "difficulty": "基礎〜応用・章別独立演習",
+    "prerequisites": [
+      "物質移動",
+      "物理量と単位"
+    ],
+    "source": {
+      "type": "supplement",
+      "reference": "アプリ独自の章別補助講座。書籍の文章・図表・翻訳を転載しない。",
+      "guideId": "chapter11-fick-mass",
+      "chapterId": "ch11"
+    },
+    "createdStatus": "作成済み",
+    "reviewStatus": "AIによる内部照合済み・外部専門家校閲なし",
+    "expertReviewed": false,
+    "reportHistory": []
   }
 ]
