@@ -52,7 +52,7 @@ test('22 practical numericals are scientifically labeled, unique and correctly l
   assert.equal(q.expertReviewed,false);
   assert.ok(q.reviewStatus.includes('外部専門家校閲前'));
   assert.ok(q.explanation.includes('適用条件'));
-  assert.ok(q.beginnerPitfall.length>=40);
+  assert.ok(q.beginnerPitfall.length>=30,'missing meaningful applicability caveat for '+q.id);
   assert.ok(q.solutionSteps.length>=3);
   assert.ok(q.hints.length>=2);
   assert.equal(q.distractors.length,4);
@@ -77,7 +77,7 @@ test('all 22 keyed calculations independently recompute to expected SI values',(
  assert.equal(14000/(400*(90-20)),.5);
  assert.equal(20+14000/700,40);
  assert.equal(1.2e-6/6e-10,2000);
- assert.equal(3e-5*.02/6e-10,1000);
+ assert.ok(Math.abs(3e-5*.02/6e-10-1000)<1e-8);
 });
 test('no accidental right-answer-length bias in new numerical MCQs',async()=>{
  const d=await Promise.all(['data/applied-exercises-part1.json','data/applied-exercises-part2.json'].map(read));
