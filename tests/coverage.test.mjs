@@ -15,13 +15,13 @@ test('coverage report separates original problems from verified book citation an
   assert.equal(coverage.oldPcDraftOnlyRecordSections,44);
   assert.equal(coverage.protectedPriorSections,2);
   assert.equal(coverage.publicJapaneseSections,0);
-  assert.equal(coverage.totalQuestions,202);
-  assert.equal(coverage.appCreatedQuestions,194);
+  assert.equal(coverage.totalQuestions,210);
+  assert.equal(coverage.appCreatedQuestions,202);
   assert.equal(coverage.bookCitedQuestions,8);
   assert.equal(coverage.sectionsWithBookCitedQuestions,3);
   assert.equal(coverage.guideEntries,33);
   assert.equal(coverage.glossaryTerms,109);
-  assert.equal(Object.values(coverage.practiceByField).reduce((a,b)=>a+b,0),202);
+  assert.equal(Object.values(coverage.practiceByField).reduce((a,b)=>a+b,0),210);
   assert.equal(coverage.chapters.reduce((a,b)=>a+b.sectionCount,0),76);
   assert.equal(coverage.chapters.reduce((a,b)=>a+b.citedPracticeQuestions,0),8);
   assert.equal(coverage.originalChapterGuides,11);
