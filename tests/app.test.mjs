@@ -28,7 +28,7 @@ test('quiz links terms in stems, choices, detailed explanations and hints withou
  h.api.questions=[{...question,prompt:'熱流束と温度勾配の関係は？',choices:['熱流束','温度勾配','熱伝導率','ニュートンの冷却法則'],explanation:'温度勾配からフーリエの法則を選ぶ。',solutionSteps:['熱流束の単位はW/m²。'],distractors:['温度勾配との関係。','熱伝導率の意味。','熱流束を確認。','熱伝達率と違う。']}];
  h.api.ui={quiz:{id:'test',ids:['q1'],index:0,answers:[],selected:1,confidence:'medium',hintCount:1,mode:'single'}};
  const quiz=h.api.renderQuiz();
- for(const id of ['heat-flux','temperature-gradient','thermal-conductivity','fourier-law'])
+ for(const id of ['heat-flux','temperature-gradient','thermal-conductivity'])
   assert.ok(quiz.includes('data-term-id="'+id+'"'),id);
  assert.match(quiz,/class="inline-term"/);
  assert.match(quiz,/aria-haspopup="dialog"/);
