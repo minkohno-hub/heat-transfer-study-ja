@@ -28,7 +28,7 @@ export function validateOriginalNotes(book,document) {
     if(Object.hasOwn(n,'blocks')||Object.hasOwn(n,'figures')||Object.hasOwn(n,'translationStatus')||
        Object.hasOwn(n,'sourceReview')||Object.hasOwn(n,'bookText')||Object.hasOwn(n,'originalText'))
        errors.push(label+': 書籍由来本文または原図と誤認される非配布項目があります。');
-    if(keys.some(k=>typeof n[k]==='string'&&/[<>]/.test(n[k])))
+    if(keys.some(k=>typeof n[k]==='string'&&/<\/?[A-Za-z][^>]*>/.test(n[k])))
        errors.push(label+': ノート本文にHTML風の制御文字があります。');
   }
   if(sourceSections.size!==76||document.notes.length!==76||ids.size!==76||[...sourceSections.keys()].some(id=>!ids.has(id)))
