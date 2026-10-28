@@ -255,3 +255,7 @@ Codexの`aaef3d97`を独立ブランチへ固定して教材を追加。 [GitHub
 独立PR #7の最終HEAD`a51f462905d512b2f0ba68867227c1b9e8cfa6eb`：[CI #40660394918](https://github.com/minkohno-hub/heat-transfer-study-ja/actions/runs/40660394918)はNode110件中105件成功・5スキップ・0失敗、内容監査・配布許可リスト公開ビルドとChromium E2E成功。Codexへの統合後、[CI #40660676542](https://github.com/minkohno-hub/heat-transfer-study-ja/actions/runs/40660676542)ではNode/公開ビルドとWebKitオンラインブラウザーテスト成功。独立PR #8のHEAD`55c2103bb632372719a0c67b6f7066b7a171f586`：[CI #40661013770](https://github.com/minkohno-hub/heat-transfer-study-ja/actions/runs/40661013770)でNode/公開ビルドおよび検索強調のChromium E2E成功。
 
 以上はビルド済み公開物の自動テストであり、独立PRをマージした最新版のGitHub Pages実URLへの配信・実URLでの操作、iPhone Safari/Android実機、読み上げ支援、ユーザー側に保存された既存キャッシュの更新、PDFの原本全式・図表の画像照合、外部専門家による校閲を完了したことを意味しない。PR #8統合後のCodexブランチのCIは別途最新の実行結果を確認する。関連する未完了ゲートは[Issue #9](https://github.com/minkohno-hub/heat-transfer-study-ja/issues/9)に記録。未取得の旧PC教材の実物を確認済みとしない。
+
+## 2026-10-28 半無限体§5.6の独自教材と4問・CI確認
+
+独立原稿§5.6、原本の再配布権と区別した日本語解説の7件目を追加。試験した式はT=Ts+(Ti−Ts)erf[x/(2√αt)]、q''(0,t)=k(Ts−Ti)/√(παt)、E/A=2k(Ts−Ti)√[t/(πα)]。独立演習4問を加えて合計194問（独立作問186、書籍出典の独立作問8）。温度、流束、累積エネルギーと支配方程式の関係をNodeで別式から検算。GitHub Actions PR CI #40665922346（コミット5ecb36dd3）でNode122件中117成功、旧PC教材の5件スキップ、失敗0、内容監査、公開ビルド、Chromium配信E2E成功。後続の文書コミットは別のCIで再確認する。実機iPhone Safari、全PDFページの画像照合、専門家校閲、最新版のPages公開URLへの配信は未実施。厳格な教材・問題集の完成認定0/76節は継続。
