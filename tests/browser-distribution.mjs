@@ -32,6 +32,11 @@ try {
       await probePage.reload();
       await probePage.waitForFunction(()=>Boolean(navigator.serviceWorker.controller));
       await probe.setOffline(true);
+      const shellFetch=await probePage.evaluate(async()=>{
+        try{const response=await fetch('./index.html',{cache:'no-store'});return {status:response.status,appShell:(await response.text()).includes('app.js')};}
+        catch(error){return {error:error.name};}
+      });
+      console.log('WebKitオフラインのシェル取得:',JSON.stringify(shellFetch));
       await probePage.goto(new URL('./?webkit-shell-probe=1',base).href,{waitUntil:'domcontentloaded'});
       await probePage.locator('.app-shell').waitFor();
       console.log('WebKit: PDFを保存する前のオフライン画面再訪を確認');
