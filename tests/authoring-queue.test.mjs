@@ -13,11 +13,11 @@ test('the authoring queue counts actually authored lessons and focus-section pra
  const r=buildAuthoringQueue({book,originalNotes,deepLessons,questions,evidence});
  assert.equal(r.sectionCount,76);
  assert.equal(r.shortConceptNoteDrafts,76);
- assert.equal(r.detailedLessonDrafts,26);
- assert.equal(r.questionsInBank,312);
- assert.equal(r.remainingQuestionDraftMinimum,378);
- assert.equal(r.draftAuthoringMinimumMet,17);
- assert.equal(r.sectionsNeedingDetailedLesson,50);
+ assert.equal(r.detailedLessonDrafts,27);
+ assert.equal(r.questionsInBank,318);
+ assert.equal(r.remainingQuestionDraftMinimum,372);
+ assert.equal(r.draftAuthoringMinimumMet,18);
+ assert.equal(r.sectionsNeedingDetailedLesson,49);
  assert.equal(r.externallyAcceptedSections,0);
  assert.ok(r.next.length===12);
  assert.ok(r.next.every(x=>!x.authoringMinimumMet));

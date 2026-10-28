@@ -171,7 +171,7 @@ try {
   await page.locator('[data-chapter-card="ch2"]').waitFor({state:'visible'});
   assert.match(await page.locator('[data-chapter-card="ch2"]').innerText(),/収録問題：36問/);
   assert.match(await page.locator('[data-chapter-card="ch1"]').innerText(),/原本の節を読了に記録：1\/5節/);
-  assert.match(await page.locator('[data-chapter-card="ch9"]').innerText(),/収録問題：28問/);
+  assert.match(await page.locator('[data-chapter-card="ch9"]').innerText(),/収録問題：34問/);
   assert.match(await page.locator('[data-chapter-card="ch2"]').innerText(),/未回答：36問/);
   await page.locator('[data-chapter-card="ch2"] [data-chapter-practice-mode="priority"]').click();
   await page.locator('.question-card').waitFor({state:'visible'});
@@ -189,10 +189,10 @@ try {
   await page.locator('[data-action="exit-quiz"]').click();
   await page.locator('[data-action="discard-quiz"]').click();
   await page.locator('#quiz-start-form select[name="chapter"]').selectOption('ch9');
-  await page.locator('#quiz-start-form select[name="count"]').selectOption('312');
+  await page.locator('#quiz-start-form select[name="count"]').selectOption('318');
   await page.locator('#quiz-start-form button[type="submit"]').click();
   await page.locator('.question-card').waitFor({state:'visible'});
-  assert.match(await page.locator('.page-heading h1').innerText(),/1 \/ 28 問/);
+  assert.match(await page.locator('.page-heading h1').innerText(),/1 \/ 34 問/);
   await page.locator('[data-action="exit-quiz"]').click();
   await page.locator('[data-action="discard-quiz"]').click();
   await nav('guide');
@@ -273,6 +273,15 @@ try {
   await page.locator('.result-card .result-link').first().click();
   await page.locator('[id="reader-block-10.1-deep-6"]').waitFor({state:'visible'});
   assert.match(await page.locator('[id="reader-block-10.1-deep-6"]').innerHTML(),/<mark>297\.695<\/mark>/);
+  await nav('search');
+  await page.locator('#search-query').fill('気泡の成長・離脱');
+  await page.locator('#search-form select[name="kind"]').selectOption('deep-lesson');
+  await page.locator('#search-form select[name="chapter"]').selectOption('ch9');
+  await page.locator('#search-form button[type="submit"]').click();
+  await page.locator('.result-card .result-link').filter({hasText:'9.2'}).first().click();
+  await page.locator('[id="reader-block-9.2-deep-0"]').waitFor({state:'visible'});
+  assert.match(await page.locator('[id="reader-block-9.2-deep-0"]').innerHTML(),/<mark>気泡の成長・離脱<\/mark>/);
+  assert.match(await page.locator('#reader-deep-lesson').innerText(),/外部学術専門家校閲前/);
   await nav('search');
   await page.locator('#search-query').fill('フィン有効度');
   await page.locator('#search-form select[name="kind"]').selectOption('deep-lesson');

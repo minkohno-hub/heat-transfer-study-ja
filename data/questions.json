@@ -14751,5 +14751,298 @@
       "温度依存のkについては保存式に∇·(k∇T)+q‴=0を使う。kを一定と仮定してk∇²Tへ置き換えると不適切な場合がある。"
     ],
     "beginnerPitfall": "外向き法線、境界と初期条件、内部発熱率の単位、半厚さと全厚さを区別する。"
+  },
+  {
+    "id": "supp-nucleate-laplace-pressure-v1",
+    "revision": "v1",
+    "field": "沸騰・相変化",
+    "prerequisites": [
+      "表面張力",
+      "PaとkPa",
+      "μmとm"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "アプリ独立執筆の核沸騰学習講義 §9.2 と仮想条件から作成。原本の翻訳・本文・図・章末問題は転載しない。",
+      "chapterId": "ch9",
+      "focusSectionId": "9.2",
+      "guideId": "chapter9-latent-boiling"
+    },
+    "createdStatus": "独立作問",
+    "reviewStatus": "理想モデルの式・単位を内部検算／外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [],
+    "prompt": "静止した理想球形蒸気泡の曲率半径R=50 μm、表面張力σ=0.050 N/mとする。Δp=p_v−p_l=2σ/Rで求める内外圧力差はいくらか。有効数字2桁でkPaで答える。",
+    "choices": [
+      "0.50 kPa",
+      "1.0 kPa",
+      "2.0 kPa",
+      "4.0 kPa"
+    ],
+    "answer": 2,
+    "difficulty": "標準・数値計算",
+    "explanation": "R=50 μm=5.0×10⁻⁵ m。Δp=2×0.050/(5.0×10⁻⁵)=2000 Pa=2.0 kPa。N/mをmで割るとN/m²=Paになる。実際の壁付着泡の開始条件はこの式だけでは決まらない。",
+    "distractors": [
+      "半径を4倍として扱ったため圧力差を4分の1にしている。",
+      "球形界面の係数2を落とした。",
+      "正解。単位をmとPaへ換算し、球形界面の係数2を使った。",
+      "半径を半分にしたときの圧力差を選んでいる。"
+    ],
+    "hints": [
+      "50 μmをmに直し、曲率半径を直径と区別する。",
+      "2σ/Rの単位は(N/m)/m=N/m²=Pa。"
+    ],
+    "solutionSteps": [
+      "50 μm=5.0×10⁻⁵ mに換算する。",
+      "Δp=2σ/R=0.100/(5.0×10⁻⁵)=2000 Paを計算する。",
+      "2000 Pa=2.0 kPaとし、有効数字2桁で表す。"
+    ],
+    "beginnerPitfall": "壁付着泡を真球と断定しない。これは静止した球形界面の圧力差であり、沸騰開始温度の予測値ではない。"
+  },
+  {
+    "id": "supp-nucleate-radius-sensitivity-v1",
+    "revision": "v1",
+    "field": "沸騰・相変化",
+    "prerequisites": [
+      "球形界面のラプラス圧力",
+      "逆比例"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "applied",
+    "source": {
+      "type": "supplement",
+      "reference": "アプリ独立執筆の核沸騰学習講義 §9.2 と仮想条件から作成。原本の翻訳・本文・図・章末問題は転載しない。",
+      "chapterId": "ch9",
+      "focusSectionId": "9.2",
+      "guideId": "chapter9-latent-boiling"
+    },
+    "createdStatus": "独立作問",
+    "reviewStatus": "理想モデルの式・単位を内部検算／外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [],
+    "prompt": "静止球形界面の式R=2σ/Δpを使う。同じ表面張力で正の内外圧力差Δpだけを2倍にしたとき、理想平衡半径Rは元の何倍になるか。",
+    "choices": [
+      "元の1/4倍",
+      "元の1/2倍",
+      "元と同じ",
+      "元の2倍"
+    ],
+    "answer": 1,
+    "difficulty": "基礎・式の意味",
+    "explanation": "σが一定ならRは正のΔpに反比例する。Δpを2倍にするとR_new/R_old=Δp_old/Δp_new=1/2。実際の気泡成長速度や離脱径の比例則ではない。",
+    "distractors": [
+      "圧力差を2倍から4倍へ読み替えた。",
+      "正解。Rと正の圧力差は逆比例する。",
+      "圧力差が変わっても半径を固定した。",
+      "逆比例を正比例と取り違えた。"
+    ],
+    "hints": [
+      "表面張力σは変えず、分母だけを比較する。",
+      "R_new/R_old=Δp_old/Δp_newを計算する。"
+    ],
+    "solutionSteps": [
+      "R_old=2σ/Δp_old、R_new=2σ/Δp_newと書く。",
+      "比を取るとR_new/R_old=Δp_old/Δp_new。",
+      "Δp_new=2Δp_oldを代入し、1/2倍と求める。"
+    ],
+    "beginnerPitfall": "圧力差がゼロ以下ならこの正の平衡半径の式をそのまま適用しない。"
+  },
+  {
+    "id": "supp-nucleate-subcooling-v1",
+    "revision": "v1",
+    "field": "沸騰・相変化",
+    "prerequisites": [
+      "飽和温度",
+      "壁面過熱度",
+      "気泡核"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "conceptual",
+    "source": {
+      "type": "supplement",
+      "reference": "アプリ独立執筆の核沸騰学習講義 §9.2 と仮想条件から作成。原本の翻訳・本文・図・章末問題は転載しない。",
+      "chapterId": "ch9",
+      "focusSectionId": "9.2",
+      "guideId": "chapter9-latent-boiling"
+    },
+    "createdStatus": "独立作問",
+    "reviewStatus": "理想モデルの式・単位を内部検算／外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [],
+    "prompt": "主流の液体はその圧力での飽和温度より低いが、加熱面の壁温は局所の飽和温度より高い。核沸騰について最も妥当な判断はどれか。",
+    "choices": [
+      "局所的な核沸騰はありうるが、開始は表面にも依存する",
+      "主流が過冷却なら、壁面の気泡核は無関係になる",
+      "壁面過熱度が正なら、表面の状態によらず必ず核沸騰する",
+      "主流の過冷却度だけで、壁面の気泡発生は決まる"
+    ],
+    "answer": 0,
+    "difficulty": "標準・適用条件",
+    "explanation": "主流が過冷却でも壁面近傍では局所的な核沸騰が起こりうる。ただし過熱度が正という条件だけでは十分でなく、核生成点、濡れ性、局所圧力・熱輸送が関わる。",
+    "distractors": [
+      "正解。主流の過冷却と壁面近傍の局所現象を区別する。",
+      "主流が飽和していなくても局所的な気泡発生はありうる。",
+      "表面状態と核生成点を無視して必然と判断している。",
+      "壁面温度や核生成点を無視して主流温度だけで決めている。"
+    ],
+    "hints": [
+      "主流温度と壁面の局所温度を分ける。",
+      "壁面過熱は必要な条件の一つだが、それだけで開始を保証しない。"
+    ],
+    "solutionSteps": [
+      "液体の主流が過冷却されている条件を確認する。",
+      "壁面近くの温度と気泡核の存在を別に考える。",
+      "局所沸騰は可能だが、開始を断定できない選択肢を選ぶ。"
+    ],
+    "beginnerPitfall": "壁面過熱度が正であれば必ず気泡が生まれる、という十分条件にはしない。"
+  },
+  {
+    "id": "supp-nucleate-latent-rate-v1",
+    "revision": "v1",
+    "field": "沸騰・相変化",
+    "prerequisites": [
+      "質量流量",
+      "蒸発潜熱",
+      "WとkW"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "アプリ独立執筆の核沸騰学習講義 §9.2 と仮想条件から作成。原本の翻訳・本文・図・章末問題は転載しない。",
+      "chapterId": "ch9",
+      "focusSectionId": "9.2",
+      "guideId": "chapter9-latent-boiling"
+    },
+    "createdStatus": "独立作問",
+    "reviewStatus": "理想モデルの式・単位を内部検算／外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [],
+    "prompt": "蒸気の生成質量流量が0.0020 kg/s、蒸発潜熱が2.0×10⁶ J/kgとする。相変化に対応する潜熱移動率のみはいくらか。有効数字2桁で示す。顕熱や壁面の全加熱電力は問わない。",
+    "choices": [
+      "2.0 kW",
+      "8.0 kW",
+      "1.0 kW",
+      "4.0 kW"
+    ],
+    "answer": 3,
+    "difficulty": "標準・数値計算",
+    "explanation": "Q̇_lat=ṁ_v h_fg=0.0020×2.0×10⁶=4000 W=4.0 kW。kg/sとJ/kgの積はJ/s=W。顕熱が別にあれば全加熱電力はこれと異なりうる。",
+    "distractors": [
+      "質量流量を半分として扱った。",
+      "質量流量を2倍として扱った。",
+      "質量流量を4分の1として扱った。",
+      "正解。質量流量に単位質量当たりの潜熱を掛けた。"
+    ],
+    "hints": [
+      "潜熱h_fgの単位はJ/kg。",
+      "kg/s×J/kg=J/s=WとしてからkWへ換算する。"
+    ],
+    "solutionSteps": [
+      "Q̇_lat=ṁ_v h_fgを選び、kg/sとJ/kgを掛ける。",
+      "0.0020×2.0×10⁶=4000 W。",
+      "1000 W=1 kWより4.0 kW。有効数字2桁で示す。"
+    ],
+    "beginnerPitfall": "潜熱分だけを求めている。総熱移動率には顕熱や流動の寄与がありうる。"
+  },
+  {
+    "id": "supp-nucleate-effective-h-v1",
+    "revision": "v1",
+    "field": "沸騰・相変化",
+    "prerequisites": [
+      "熱流束",
+      "壁面過熱度",
+      "熱伝達率"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "アプリ独立執筆の核沸騰学習講義 §9.2 と仮想条件から作成。原本の翻訳・本文・図・章末問題は転載しない。",
+      "chapterId": "ch9",
+      "focusSectionId": "9.2",
+      "guideId": "chapter9-latent-boiling"
+    },
+    "createdStatus": "独立作問",
+    "reviewStatus": "理想モデルの式・単位を内部検算／外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [],
+    "prompt": "ある核沸騰の測定点で平均熱流束q″=60 kW/m²、壁面過熱度ΔT_sat=15 Kだった。h_eff=q″/ΔT_satで定義した見かけの熱伝達率はいくらか。有効数字2桁で示す。",
+    "choices": [
+      "1.0×10³ W/(m²·K)",
+      "4.0×10³ W/(m²·K)",
+      "2.0×10³ W/(m²·K)",
+      "8.0×10³ W/(m²·K)"
+    ],
+    "answer": 1,
+    "difficulty": "標準・数値計算",
+    "explanation": "60 kW/m²=60000 W/m²。h_eff=60000/15=4000 W/(m²·K)=4.0×10³ W/(m²·K)。これはその測定点の比で、広い過熱度範囲に使う一定物性値ではない。",
+    "distractors": [
+      "熱流束を4分の1にした比に相当する。",
+      "正解。kWをWへ直し、15 Kで割った。",
+      "温度差を2倍として扱った。",
+      "温度差を半分として扱った。"
+    ],
+    "hints": [
+      "kW/m²をW/m²へ換算する。",
+      "h_effは熱流束を温度差で割った量。"
+    ],
+    "solutionSteps": [
+      "60 kW/m²=60000 W/m²へ換算する。",
+      "h_eff=60000/15=4000 W/(m²·K)。",
+      "4.0×10³ W/(m²·K)と有効数字2桁で表す。"
+    ],
+    "beginnerPitfall": "一点で計算したh_effを別の過熱度でも一定だと仮定しない。"
+  },
+  {
+    "id": "supp-nucleate-onset-limit-v1",
+    "revision": "v1",
+    "field": "沸騰・相変化",
+    "prerequisites": [
+      "ラプラス圧力",
+      "核生成点",
+      "限界熱流束"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "applied",
+    "source": {
+      "type": "supplement",
+      "reference": "アプリ独立執筆の核沸騰学習講義 §9.2 と仮想条件から作成。原本の翻訳・本文・図・章末問題は転載しない。",
+      "chapterId": "ch9",
+      "focusSectionId": "9.2",
+      "guideId": "chapter9-latent-boiling"
+    },
+    "createdStatus": "独立作問",
+    "reviewStatus": "理想モデルの式・単位を内部検算／外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [],
+    "prompt": "理想球形泡の半径Rと表面張力σだけが分かっている。この情報から実際の加熱面について言えることはどれか。",
+    "choices": [
+      "Rとσだけで、核沸騰が始まる壁面の温度差が決まる",
+      "Rとσだけで、加熱面の限界熱流束が決まる",
+      "Rとσだけでは、開始温度も限界熱流束も決まらない",
+      "Rとσだけで、加熱面の全熱流束が決まる"
+    ],
+    "answer": 2,
+    "difficulty": "応用・モデル限界",
+    "explanation": "Rとσから理想球形界面の圧力差2σ/Rは計算できる。しかし壁付着泡の形状・濡れ性・気泡核・液体物性・圧力・熱輸送を指定していないため、実際の核沸騰開始温度、全熱流束、限界熱流束は決められない。",
+    "distractors": [
+      "核生成点や局所の熱輸送が不足している。",
+      "CHFには液体供給や幾何・圧力条件が必要。",
+      "正解。求められるのは理想球形界面の圧力差までである。",
+      "壁面の温度差と伝熱機構が不足している。"
+    ],
+    "hints": [
+      "2σ/Rで求められる量を一つに絞る。",
+      "実際の壁面の開始・CHFには表面と流体の条件が要る。"
+    ],
+    "solutionSteps": [
+      "理想球形界面の式で求まる圧力差を確認する。",
+      "壁付着泡と液体の流動・熱条件が未指定だと分かる。",
+      "実際の開始温度もCHFも決まらないと判断する。"
+    ],
+    "beginnerPitfall": "理想平衡式の計算可能性と、沸騰運転の安全判定を混同しない。"
   }
 ]
