@@ -200,13 +200,21 @@ test('independent application questions have unique answer keys and independentl
     'convection-negative-direction':'−1,000 W',
     'convection-inverse-h':'25 W/(m²·K)',
     'convection-compensating-inputs':'変わらない',
-    'radiation-equal-temperatures':'0 W',
+    'radiation-equal-temperatures':'正味の熱移動率は0 Wになる',
     'radiation-emissivity-scale':'3倍',
     'radiation-same-delta-different-level':'Aのほうが大きい',
     'resistance-layer-temp-drop':'40 K',
     'resistance-overall-u':'2.0 W/(m²·K)',
     'resistance-one-layer-doubled':'9/11倍'
   }))assert.equal(correct[key],label,key);
+});
+
+test('conceptual answers do not stand out solely by option length',async()=>{
+  const byId=new Map((await read('data/questions.json')).map(question=>[question.id,question]));
+  for(const id of ['supp-audit-radiation-equal-temperatures','supp-chapter-ch9-chf','supp-chapter-ch10-concept']){
+    const lengths=byId.get(id).choices.map(choice=>Array.from(choice).length);
+    assert.ok(Math.max(...lengths)-Math.min(...lengths)<=4,`${id}: ${lengths}`);
+  }
 });
 
 

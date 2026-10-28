@@ -15,8 +15,8 @@ const answerLabels={
   'ch6-nuavg':'66.4','ch6-have':'3.32','ch6-local':'h̄=2h_L',
   'ch7-dh':'13.3 mm','ch7-nu-boundary':'3.66','ch7-h':'109.8',
   'ch8-ra':'1.5×10⁶','ch8-length':'8倍','ch8-gr-pr':'1.4×10⁶',
-  'ch9-latent':'44 kW','ch9-qflux':'50,000 W/m²','ch9-chf':'条件によって伝熱状態が急変し壁温上昇の危険がある限界に関係する',
-  'ch10-reciprocity':'0.30','ch10-enclosure':'0.40','ch10-concept':'凹面では自分自身へ到達する放射があり、0より大きくなる場合がある',
+  'ch9-latent':'44 kW','ch9-qflux':'50,000 W/m²','ch9-chf':'伝熱悪化と壁温上昇の危険に関わる',
+  'ch10-reciprocity':'0.30','ch10-enclosure':'0.40','ch10-concept':'凹面では自己へ届く割合が正になり得る',
   'ch11-fick':'+2.0×10⁻⁷ mol/(m²·s)','ch11-sc':'500','ch11-sh':'1,000'
 };
 const numericChecks={
