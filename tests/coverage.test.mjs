@@ -30,8 +30,10 @@ test('coverage report separates original problems from verified book citation an
   assert.equal(coverage.chapters.reduce((a,b)=>a+b.originalGuideEntries,0),11);
   assert.ok(coverage.chapters.every(c=>c.originalPracticeQuestions===6+c.sectionCount&&c.originalGuideEntries===1));
   assert.equal(coverage.independentlyAuthoredJapaneseNotes,76);
-  assert.equal(coverage.originalDeepLessons,2);
+  assert.equal(coverage.originalDeepLessons,4);
   assert.equal(coverage.chapters.find(x=>x.chapter==='ch8').originalDeepLessonCount,2);
+  assert.equal(coverage.chapters.find(x=>x.chapter==='ch3').originalDeepLessonCount,1);
+  assert.equal(coverage.chapters.find(x=>x.chapter==='ch5').originalDeepLessonCount,1);
   assert.equal(coverage.publicJapaneseSections,0,'Independent advanced lessons are not book translations');
   assert.equal(coverage.sectionsWithIndependentCheckQuestions,76);
   assert.equal(coverage.publicJapaneseSections,0,'Section notes do not count as full textbook translations');
