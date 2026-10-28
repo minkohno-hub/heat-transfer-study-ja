@@ -32,6 +32,21 @@ test('longest glossary match wins and generic one-letter units do not wreck read
  assert.ok(termCandidates(glossary).length>=95);
  assert.ok(matchTerms('Nu Pr and Biot number',glossary,5).some(x=>x.id==='biot-number'));
 });
+test('foundational lookalike quantities have distinct beginner and technical explanations',()=>{
+ const byId=new Map(glossary.map(term=>[term.id,term]));
+ for(const id of ['heat-rate','heat-flux','thermal-conductivity','convection-coefficient','emissivity','kelvin','thermal-diffusivity']){
+  const term=byId.get(id);
+  assert.ok(term.beginner.length>=35&&term.detail.length>=100,id);
+  assert.notEqual(term.beginner,term.detail,id);
+ }
+ assert.match(byId.get('heat-rate').detail,/面積積分/);
+ assert.match(byId.get('heat-flux').detail,/W\/m²/);
+ assert.match(byId.get('thermal-conductivity').detail,/対流熱伝達率/);
+ assert.match(byId.get('convection-coefficient').detail,/熱伝導率/);
+ assert.match(byId.get('emissivity').detail,/射度J/);
+ assert.match(byId.get('kelvin').detail,/温度差/);
+ assert.match(byId.get('thermal-diffusivity').detail,/物質拡散係数/);
+});
 test('term markup escapes content, is keyboard focusable, and avoids false nested scripts',()=>{
  const markup=renderTermLinks('熱流束を確認し、温度勾配を調べる',glossary);
  assert.match(markup,/data-term-id="heat-flux"/);
