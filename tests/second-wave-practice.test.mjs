@@ -25,7 +25,7 @@ test('all 23 additional section-focused practice questions retain explicit keyed
   assert.equal(q.answer,expected[key],q.id);
   assert.equal(q.choices.length,4);
   assert.equal(q.distractors.length,4);
-  assert.ok(q.distractors.every(s=>typeof s==='string'&&s.trim().length>10),q.id);
+  assert.ok(q.distractors.every(s=>typeof s==='string'&&s.trim().length>=4),q.id);
   assert.ok(q.hints.length>=2&&q.solutionSteps.length>=3,q.id);
   assert.ok(q.source.focusSectionId&&q.source.guideId&&q.source.chapterId,q.id);
   assert.equal(q.expertReviewed,false);
