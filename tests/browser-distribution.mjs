@@ -109,6 +109,10 @@ try {
   await page.locator('#guide-search-form button').click();
   assert.ok(await page.locator('#guide-sim-radiation').count());
   await nav('glossary');
+  await page.locator('#glossary-query').fill('LMTD');
+  await page.locator('#term-log-mean-temperature-difference').waitFor({state:'visible'});
+  assert.equal(await page.locator('.term-card').count(),1,'glossary aliases must work in its search field');
+  await page.locator('#glossary-query').fill('');
   await page.locator('#term-biot-number [data-start-question="supp-expanded-bi-calc"]').waitFor({state:'attached'});
   await page.locator('#term-rayleigh-number [data-start-question="supp-chapter-ch8-ra"]').waitFor({state:'attached'});
   await page.locator('#term-fick-diffusive-flux [data-start-question="supp-chapter-ch11-fick"]').waitFor({state:'attached'});
