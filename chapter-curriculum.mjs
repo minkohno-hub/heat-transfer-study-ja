@@ -29,7 +29,7 @@ export function chapterLearningOverview(book,questions,guides,attempts=[],readSe
     const at=typeof attempt.at==='number'?attempt.at:Date.parse(String(attempt.at||''));
     if(!Number.isFinite(at))continue;
     const existing=last.get(attempt.questionId);
-    if(!existing||at>=existing.time)last.set(attempt.questionId,{time:at,correct:attempt.correct===true});
+    if(!existing||at>=existing.time)last.set(attempt.questionId,{time:at,correct:attempt.correct===true,questionRevision:attempt.questionRevision});
   }
   return book.chapters.map(chapter=>{
     const qs=questionsForChapter(questions,chapter.id,guides);
