@@ -1734,5 +1734,533 @@
     "reviewStatus": "AIによる内部照合済み・外部専門家校閲なし",
     "expertReviewed": false,
     "reportHistory": []
+  },
+  {
+    "id": "supp-chapter-ch1-flux",
+    "prompt": "一様に120 Wの熱が0.060 m²の面を通過します。熱流束の大きさはいくらですか。",
+    "choices": [
+      "120 W/m²",
+      "2,000 W/m²",
+      "7.2 W/m²",
+      "20 W/m²"
+    ],
+    "answer": 1,
+    "distractors": [
+      "面積で割らず熱移動率をそのまま使っています。",
+      "正解。q″=Q̇/A=120/0.060=2000 W/m²。",
+      "面積と熱移動率を掛けています。",
+      "小数の桁・面積の扱いを取り違えています。"
+    ],
+    "explanation": "正解。q″=Q̇/A=120/0.060=2000 W/m²。 面積が均一な熱流を受ける設定でのみQ̇/Aがその面の一様熱流束を表します。",
+    "hints": [
+      "熱移動率Wと熱流束W/m²を区別します。",
+      "面の面積で割り、単位W/m²を確認します。"
+    ],
+    "solutionSteps": [
+      "q″=Q̇/A を使う。",
+      "120/0.060=2000 を計算する。",
+      "熱流束の単位はW/m²。"
+    ],
+    "beginnerPitfall": "面積が均一な熱流を受ける設定でのみQ̇/Aがその面の一様熱流束を表します。",
+    "field": "エネルギー収支",
+    "difficulty": "基礎〜応用・章別独立演習",
+    "prerequisites": [
+      "エネルギー収支",
+      "物理量と単位"
+    ],
+    "source": {
+      "type": "supplement",
+      "reference": "アプリ独自の章別補助講座。書籍の文章・図表・翻訳を転載しない。",
+      "guideId": "chapter1-energy-balance",
+      "chapterId": "ch1"
+    },
+    "createdStatus": "作成済み",
+    "reviewStatus": "AIによる内部照合済み・外部専門家校閲なし",
+    "expertReviewed": false,
+    "reportHistory": []
+  },
+  {
+    "id": "supp-chapter-ch1-energy",
+    "prompt": "一定の熱移動率120 Wで180 sだけ熱が移動します。移動するエネルギーは何Jですか。",
+    "choices": [
+      "21,600 J",
+      "0.667 J",
+      "300 J",
+      "2,160 J"
+    ],
+    "answer": 0,
+    "distractors": [
+      "正解。E=Q̇t=120×180=21600 J。",
+      "熱移動率を時間で割っています。",
+      "時間と熱移動率を足しています。",
+      "計算結果のゼロが一つ不足しています。"
+    ],
+    "explanation": "正解。E=Q̇t=120×180=21600 J。 熱移動率が180秒間一定という条件が必要です。",
+    "hints": [
+      "W=J/sを確認します。",
+      "Wに秒を掛けるとJです。"
+    ],
+    "solutionSteps": [
+      "E=Q̇t を立てる。",
+      "120 W×180 s=21600 J。",
+      "温度や比熱を使わず答えられる。"
+    ],
+    "beginnerPitfall": "熱移動率が180秒間一定という条件が必要です。",
+    "field": "エネルギー収支",
+    "difficulty": "基礎〜応用・章別独立演習",
+    "prerequisites": [
+      "エネルギー収支",
+      "物理量と単位"
+    ],
+    "source": {
+      "type": "supplement",
+      "reference": "アプリ独自の章別補助講座。書籍の文章・図表・翻訳を転載しない。",
+      "guideId": "chapter1-energy-balance",
+      "chapterId": "ch1"
+    },
+    "createdStatus": "作成済み",
+    "reviewStatus": "AIによる内部照合済み・外部専門家校閲なし",
+    "expertReviewed": false,
+    "reportHistory": []
+  },
+  {
+    "id": "supp-chapter-ch1-storage",
+    "prompt": "一様温度の物体2.0 kg、比熱500 J/(kg·K)を相変化なしで10 K上昇させる際の内部エネルギー増加をmcΔTで近似すると何Jですか。",
+    "choices": [
+      "1,000 J",
+      "500 J",
+      "10,000 J",
+      "100,000 J"
+    ],
+    "answer": 2,
+    "distractors": [
+      "比熱と温度差だけを掛け、質量の扱いを誤っています。",
+      "温度差を掛けていません。",
+      "正解。ΔE≈mcΔT=2×500×10=10000 J。",
+      "10倍の桁誤りです。"
+    ],
+    "explanation": "正解。ΔE≈mcΔT=2×500×10=10000 J。 この蓄熱量だけから必要な加熱時間は計算できません。",
+    "hints": [
+      "質量×比熱×温度差を掛けます。",
+      "単位kg×J/(kg·K)×K=J。"
+    ],
+    "solutionSteps": [
+      "ΔE=mcΔTを用いる。",
+      "2.0×500×10=10000を計算。",
+      "一様温度・一定比熱・無相変化の近似を確認。"
+    ],
+    "beginnerPitfall": "この蓄熱量だけから必要な加熱時間は計算できません。",
+    "field": "エネルギー収支",
+    "difficulty": "基礎〜応用・章別独立演習",
+    "prerequisites": [
+      "エネルギー収支",
+      "物理量と単位"
+    ],
+    "source": {
+      "type": "supplement",
+      "reference": "アプリ独自の章別補助講座。書籍の文章・図表・翻訳を転載しない。",
+      "guideId": "chapter1-energy-balance",
+      "chapterId": "ch1"
+    },
+    "createdStatus": "作成済み",
+    "reviewStatus": "AIによる内部照合済み・外部専門家校閲なし",
+    "expertReviewed": false,
+    "reportHistory": []
+  },
+  {
+    "id": "supp-chapter-ch2-cylinder-resistance",
+    "prompt": "長さ1.0 m、内半径0.010 m、外半径0.020 m、熱伝導率2.0 W/(m·K)の円筒壁で、半径方向定常熱伝導抵抗は約何K/Wですか。ln2≈0.693、π≈3.142とします。",
+    "choices": [
+      "0.0552 K/W",
+      "0.693 K/W",
+      "0.110 K/W",
+      "0.00552 K/W"
+    ],
+    "answer": 0,
+    "distractors": [
+      "正解。R=ln(r₂/r₁)/(2πkℓ)=0.693/(4π)≈0.0552 K/W。",
+      "分母の2πkℓを省いています。",
+      "円筒周長の因子を誤っています。",
+      "結果をさらに10で割る桁誤りです。"
+    ],
+    "explanation": "正解。R=ln(r₂/r₁)/(2πkℓ)=0.693/(4π)≈0.0552 K/W。 端部と内部発熱を無視した半径方向定常の一定物性モデルです。",
+    "hints": [
+      "面積が半径で変化するため、円筒の対数式を使います。",
+      "分母は2π×2×1=4π。"
+    ],
+    "solutionSteps": [
+      "R=ln(r₂/r₁)/(2πkℓ) を選ぶ。",
+      "r₂/r₁=2より分子ln2≈0.693。",
+      "R≈0.693/12.568≈0.0552 K/W。"
+    ],
+    "beginnerPitfall": "端部と内部発熱を無視した半径方向定常の一定物性モデルです。",
+    "field": "円筒壁の熱伝導",
+    "difficulty": "基礎〜応用・章別独立演習",
+    "prerequisites": [
+      "円筒壁の熱伝導",
+      "物理量と単位"
+    ],
+    "source": {
+      "type": "supplement",
+      "reference": "アプリ独自の章別補助講座。書籍の文章・図表・翻訳を転載しない。",
+      "guideId": "chapter2-cylindrical-conduction",
+      "chapterId": "ch2"
+    },
+    "createdStatus": "作成済み",
+    "reviewStatus": "AIによる内部照合済み・外部専門家校閲なし",
+    "expertReviewed": false,
+    "reportHistory": []
+  },
+  {
+    "id": "supp-chapter-ch2-cylinder-watts",
+    "prompt": "円筒壁の熱抵抗が0.050 K/W、内外の表面温度差が10 Kのとき、壁を通る熱移動率の大きさは何Wですか。",
+    "choices": [
+      "0.5 W",
+      "20 W",
+      "200 W",
+      "2,000 W"
+    ],
+    "answer": 2,
+    "distractors": [
+      "Rと温度差を掛け、逆比例を忘れています。",
+      "温度差を0.1 Kとみなした計算です。",
+      "正解。Q̇=ΔT/R=10/0.050=200 W。",
+      "抵抗の小数点を一桁読み違えています。"
+    ],
+    "explanation": "正解。Q̇=ΔT/R=10/0.050=200 W。 温度差は円筒固体壁の両面の値であり、外部対流抵抗は含みません。",
+    "hints": [
+      "熱抵抗はΔT/Q̇で定義します。",
+      "Q̇=ΔT/Rを使います。"
+    ],
+    "solutionSteps": [
+      "定常のQ̇=ΔT/Rを用いる。",
+      "10/0.050=200を計算する。",
+      "Wの単位と熱流の向きを別に判断する。"
+    ],
+    "beginnerPitfall": "温度差は円筒固体壁の両面の値であり、外部対流抵抗は含みません。",
+    "field": "円筒壁の熱伝導",
+    "difficulty": "基礎〜応用・章別独立演習",
+    "prerequisites": [
+      "円筒壁の熱伝導",
+      "物理量と単位"
+    ],
+    "source": {
+      "type": "supplement",
+      "reference": "アプリ独自の章別補助講座。書籍の文章・図表・翻訳を転載しない。",
+      "guideId": "chapter2-cylindrical-conduction",
+      "chapterId": "ch2"
+    },
+    "createdStatus": "作成済み",
+    "reviewStatus": "AIによる内部照合済み・外部専門家校閲なし",
+    "expertReviewed": false,
+    "reportHistory": []
+  },
+  {
+    "id": "supp-chapter-ch2-series",
+    "prompt": "同じ熱が順に通過する定常系の熱抵抗が0.10、0.20、0.30 K/Wです。両端温度差が12 Kなら全熱移動率の大きさは何Wですか。",
+    "choices": [
+      "120 W",
+      "36 W",
+      "7.2 W",
+      "20 W"
+    ],
+    "answer": 3,
+    "distractors": [
+      "最初の抵抗だけを使用しています。",
+      "温度差に全抵抗を掛けています。",
+      "一部の抵抗を誤って使用しています。",
+      "正解。合計R=0.60 K/W、Q̇=12/0.60=20 W。"
+    ],
+    "explanation": "正解。合計R=0.60 K/W、Q̇=12/0.60=20 W。 各抵抗が同一熱移動経路上にある直列・定常モデルに限ります。",
+    "hints": [
+      "直列抵抗を合計します。",
+      "0.10+0.20+0.30=0.60 K/W。"
+    ],
+    "solutionSteps": [
+      "R_total=0.60 K/Wを求める。",
+      "Q̇=ΔT/R_total。",
+      "12/0.60=20 W。"
+    ],
+    "beginnerPitfall": "各抵抗が同一熱移動経路上にある直列・定常モデルに限ります。",
+    "field": "熱抵抗",
+    "difficulty": "基礎〜応用・章別独立演習",
+    "prerequisites": [
+      "熱抵抗",
+      "物理量と単位"
+    ],
+    "source": {
+      "type": "supplement",
+      "reference": "アプリ独自の章別補助講座。書籍の文章・図表・翻訳を転載しない。",
+      "guideId": "chapter2-cylindrical-conduction",
+      "chapterId": "ch2"
+    },
+    "createdStatus": "作成済み",
+    "reviewStatus": "AIによる内部照合済み・外部専門家校閲なし",
+    "expertReviewed": false,
+    "reportHistory": []
+  },
+  {
+    "id": "supp-chapter-ch3-qmax",
+    "prompt": "熱容量流量C_h=400 W/K、C_c=600 W/Kで、両流体の入口温度差が60 Kです。相変化も外部熱損失もない理想熱交換器の最大可能熱移動率Q̇_maxは何Wですか。",
+    "choices": [
+      "24,000 W",
+      "36,000 W",
+      "60,000 W",
+      "400 W"
+    ],
+    "answer": 0,
+    "distractors": [
+      "正解。C_min=400 W/K、Q̇_max=400×60=24000 W。",
+      "大きい側のC_maxを使っています。",
+      "C_hとC_cを足して使っています。",
+      "温度差を掛けていません。"
+    ],
+    "explanation": "正解。C_min=400 W/K、Q̇_max=400×60=24000 W。 最大可能量の簡略定義であり、実際の交換量ではありません。",
+    "hints": [
+      "C_minは小さいほうの熱容量流量です。",
+      "Q̇_max=C_min(T_h,in−T_c,in)。"
+    ],
+    "solutionSteps": [
+      "C_min=min(400,600)=400 W/K。",
+      "入口温度差は60 K。",
+      "Q̇_max=400×60=24000 W。"
+    ],
+    "beginnerPitfall": "最大可能量の簡略定義であり、実際の交換量ではありません。",
+    "field": "熱交換器",
+    "difficulty": "基礎〜応用・章別独立演習",
+    "prerequisites": [
+      "熱交換器",
+      "物理量と単位"
+    ],
+    "source": {
+      "type": "supplement",
+      "reference": "アプリ独自の章別補助講座。書籍の文章・図表・翻訳を転載しない。",
+      "guideId": "chapter3-effectiveness-ntu",
+      "chapterId": "ch3"
+    },
+    "createdStatus": "作成済み",
+    "reviewStatus": "AIによる内部照合済み・外部専門家校閲なし",
+    "expertReviewed": false,
+    "reportHistory": []
+  },
+  {
+    "id": "supp-chapter-ch3-epsilon",
+    "prompt": "ある熱交換器でQ̇_max=24,000 W、実際の熱移動率Q̇_actual=12,000 Wです。熱交換器の有効度εはいくらですか。",
+    "choices": [
+      "2.0",
+      "0.50",
+      "0.25",
+      "12,000"
+    ],
+    "answer": 1,
+    "distractors": [
+      "比を逆に計算しています。",
+      "正解。ε=Q̇_actual/Q̇_max=12000/24000=0.50。",
+      "実際の熱移動率を半分にしてさらに割っています。",
+      "分子をそのまま答えており無次元でありません。"
+    ],
+    "explanation": "正解。ε=Q̇_actual/Q̇_max=12000/24000=0.50。 ε=0.50は必ずしも装置の経済効率50%を意味しません。",
+    "hints": [
+      "有効度は達成率として定義します。",
+      "実際÷最大可能を計算します。"
+    ],
+    "solutionSteps": [
+      "ε=Q̇_actual/Q̇_maxを使う。",
+      "12000/24000=0.5。",
+      "無次元の結果である。"
+    ],
+    "beginnerPitfall": "ε=0.50は必ずしも装置の経済効率50%を意味しません。",
+    "field": "熱交換器",
+    "difficulty": "基礎〜応用・章別独立演習",
+    "prerequisites": [
+      "熱交換器",
+      "物理量と単位"
+    ],
+    "source": {
+      "type": "supplement",
+      "reference": "アプリ独自の章別補助講座。書籍の文章・図表・翻訳を転載しない。",
+      "guideId": "chapter3-effectiveness-ntu",
+      "chapterId": "ch3"
+    },
+    "createdStatus": "作成済み",
+    "reviewStatus": "AIによる内部照合済み・外部専門家校閲なし",
+    "expertReviewed": false,
+    "reportHistory": []
+  },
+  {
+    "id": "supp-chapter-ch3-outlet",
+    "prompt": "温側入口80 ℃、C_h=400 W/Kで、熱交換器の温側から冷側へ12,000 Wが移ります。定常・一定比熱なら温側出口は何℃ですか。",
+    "choices": [
+      "20 ℃",
+      "65 ℃",
+      "50 ℃",
+      "110 ℃"
+    ],
+    "answer": 2,
+    "distractors": [
+      "冷側の入口温度と混同しています。",
+      "熱損失を半分として計算しています。",
+      "正解。ΔT_h=12000/400=30 Kより80−30=50 ℃。",
+      "熱を失う温側が高温になる符号の誤りです。"
+    ],
+    "explanation": "正解。ΔT_h=12000/400=30 Kより80−30=50 ℃。 温側の相変化・外部の熱損失・比熱変化が無視できる場合です。",
+    "hints": [
+      "温側は熱を失うため温度が下がります。",
+      "Q̇=C_h(T_h,in−T_h,out)。"
+    ],
+    "solutionSteps": [
+      "ΔT_h=12000/400=30 K。",
+      "温側出口=80−30。",
+      "50 ℃を得る。"
+    ],
+    "beginnerPitfall": "温側の相変化・外部の熱損失・比熱変化が無視できる場合です。",
+    "field": "熱交換器",
+    "difficulty": "基礎〜応用・章別独立演習",
+    "prerequisites": [
+      "熱交換器",
+      "物理量と単位"
+    ],
+    "source": {
+      "type": "supplement",
+      "reference": "アプリ独自の章別補助講座。書籍の文章・図表・翻訳を転載しない。",
+      "guideId": "chapter3-effectiveness-ntu",
+      "chapterId": "ch3"
+    },
+    "createdStatus": "作成済み",
+    "reviewStatus": "AIによる内部照合済み・外部専門家校閲なし",
+    "expertReviewed": false,
+    "reportHistory": []
+  },
+  {
+    "id": "supp-chapter-ch4-fin-m",
+    "prompt": "一定断面の直線フィンでh=20 W/(m²·K)、周長P=0.040 m、k=200 W/(m·K)、断面積A_c=0.00040 m²です。m=√(hP/(kA_c))は約何m⁻¹ですか。",
+    "choices": [
+      "10.0 m⁻¹",
+      "3.16 m⁻¹",
+      "0.316 m⁻¹",
+      "1.00 m⁻¹"
+    ],
+    "answer": 1,
+    "distractors": [
+      "平方根を取る前の比を答えています。",
+      "正解。hP/(kA_c)=0.8/0.08=10、m=√10≈3.16 m⁻¹。",
+      "さらに10分の1にしています。",
+      "比が1ではありません。"
+    ],
+    "explanation": "正解。hP/(kA_c)=0.8/0.08=10、m=√10≈3.16 m⁻¹。 フィン断面・k・hが一定の一次元定常モデルです。",
+    "hints": [
+      "まずhPとkA_cを別々に計算します。",
+      "m²=10 m⁻²です。"
+    ],
+    "solutionSteps": [
+      "hP=20×0.040=0.80。",
+      "kA_c=200×0.00040=0.080。",
+      "m=√(0.80/0.080)=√10≈3.16 m⁻¹。"
+    ],
+    "beginnerPitfall": "フィン断面・k・hが一定の一次元定常モデルです。",
+    "field": "フィン",
+    "difficulty": "基礎〜応用・章別独立演習",
+    "prerequisites": [
+      "フィン",
+      "物理量と単位"
+    ],
+    "source": {
+      "type": "supplement",
+      "reference": "アプリ独自の章別補助講座。書籍の文章・図表・翻訳を転載しない。",
+      "guideId": "chapter4-fin-design",
+      "chapterId": "ch4"
+    },
+    "createdStatus": "作成済み",
+    "reviewStatus": "AIによる内部照合済み・外部専門家校閲なし",
+    "expertReviewed": false,
+    "reportHistory": []
+  },
+  {
+    "id": "supp-chapter-ch4-fin-eta",
+    "prompt": "先端断熱の一定断面直線フィンでmL=1とします。η_f=tanh(mL)/(mL)とtanh(1)≈0.7616からフィン効率は？",
+    "choices": [
+      "1.31",
+      "0.238",
+      "0.762",
+      "1.00"
+    ],
+    "answer": 2,
+    "distractors": [
+      "tanh(1)の逆数を使っています。",
+      "1−tanh(1)を計算しています。",
+      "正解。η_f=tanh(1)/1≈0.762。",
+      "有限長で温度勾配がある一般の場合の効率を1と誤認しています。"
+    ],
+    "explanation": "正解。η_f=tanh(1)/1≈0.762。 先端断熱、側面対流、一定物性、一次元近似を前提とします。",
+    "hints": [
+      "mLは無次元です。",
+      "tanh(1)/1をそのまま計算します。"
+    ],
+    "solutionSteps": [
+      "η_f=tanh(mL)/(mL)を適用。",
+      "mL=1、tanh(1)=0.7616。",
+      "η_f≈0.762。"
+    ],
+    "beginnerPitfall": "先端断熱、側面対流、一定物性、一次元近似を前提とします。",
+    "field": "フィン",
+    "difficulty": "基礎〜応用・章別独立演習",
+    "prerequisites": [
+      "フィン",
+      "物理量と単位"
+    ],
+    "source": {
+      "type": "supplement",
+      "reference": "アプリ独自の章別補助講座。書籍の文章・図表・翻訳を転載しない。",
+      "guideId": "chapter4-fin-design",
+      "chapterId": "ch4"
+    },
+    "createdStatus": "作成済み",
+    "reviewStatus": "AIによる内部照合済み・外部専門家校閲なし",
+    "expertReviewed": false,
+    "reportHistory": []
+  },
+  {
+    "id": "supp-chapter-ch4-fin-concept",
+    "prompt": "同じ材料・断面・h・周囲温度で、先端断熱の直線フィンの長さだけ増やしたとき、フィン効率η_fとフィンの総放熱量の一般的な関係として正しいものはどれですか。",
+    "choices": [
+      "効率が下がるので総放熱量も必ず下がる",
+      "効率も総放熱量も必ずゼロになる",
+      "効率は長さと無関係に1である",
+      "効率は下がり得る一方、総放熱量は増え得る"
+    ],
+    "answer": 3,
+    "distractors": [
+      "効率は理想放熱量に対する割合であり、総量の増減と同じではありません。",
+      "長さを伸ばしただけでは放熱がゼロになりません。",
+      "温度勾配の影響を無視しています。",
+      "正解。面積の増加と温度勾配による効率低下が同時に起こり、総放熱量は増えることがあります。"
+    ],
+    "explanation": "正解。面積の増加と温度勾配による効率低下が同時に起こり、総放熱量は増えることがあります。 この説明は定常先端断熱フィンで材料や境界条件を固定した場合の傾向です。",
+    "hints": [
+      "フィン効率は総放熱量そのものではありません。",
+      "面積が増え、遠い先端の温度差は小さくなる場合を考えます。"
+    ],
+    "solutionSteps": [
+      "効率の分母はフィン全体が基部温度にある理想放熱量。",
+      "長くすると面積は増えるが温度差は先端へ向かい小さくなり得る。",
+      "したがって効率だけでは総放熱量の符号を判断できない。"
+    ],
+    "beginnerPitfall": "この説明は定常先端断熱フィンで材料や境界条件を固定した場合の傾向です。",
+    "field": "フィン",
+    "difficulty": "基礎〜応用・章別独立演習",
+    "prerequisites": [
+      "フィン",
+      "物理量と単位"
+    ],
+    "source": {
+      "type": "supplement",
+      "reference": "アプリ独自の章別補助講座。書籍の文章・図表・翻訳を転載しない。",
+      "guideId": "chapter4-fin-design",
+      "chapterId": "ch4"
+    },
+    "createdStatus": "作成済み",
+    "reviewStatus": "AIによる内部照合済み・外部専門家校閲なし",
+    "expertReviewed": false,
+    "reportHistory": []
   }
 ]
