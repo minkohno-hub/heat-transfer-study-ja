@@ -543,6 +543,37 @@
 - **25節**は読書画面のボタン候補が8件未満（直接割当問題が8問未満の22節に加え、原書ページ出典問題のある§1.2・§9.1・§9.2が読書画面直通の対象外）。この25節に対し、アプリ内からすべての問題へ到達できないとは断定しない。問題一覧には別経路がある。
 - 読書→問題→独立ノートへ戻る双方向動線はコード上では存在しても、イベント委譲・状態保存・フォーカス復帰・Safari操作などの**E2E検証は未実施**。実際のボタン数を成果物の公開完成率に換算しない。
 
+## 第14チャンク：CI・公開配信・回帰テストの実行境界（2026-10-29）
+
+**固定したコード基点**：Codex `c8d207710374411694898093ca9d6adc16fa0fcf`、前の照合HEAD `9dedc2c89db6083865c6b331f5dcd9ff96d2b9f2`。本チャンクはGitHub Actionsの設定・実行記録と既存テストのアサーションを照合した。ここでの記載は**自分がNodeやブラウザを手元で実行したという意味ではない**。
+
+### GitHub Actionsの実行証拠
+
+- GitHub Actions **Check public learning app** の実行 [40850879747](https://github.com/minkohno-hub/heat-transfer-study-ja/actions/runs/40850879747) は、**2026-10-29 09:35:50 UTC**のCodex HEAD `c8d207710374411694898093ca9d6adc16fa0fcf` に対するpushイベントで**success**。ジョブ`check`では`npm test`と`npm run build:public`、ジョブ`browser-webkit-online`ではWebKitの導入・公開ビルド・`npm run test:browser:public`がいずれもsuccess。
+- この成功は**Codexの特定SHAのテスト成功**であり、`chat/collation`、`chat/glossary`、`chat/parallel-dev`の未統合変更を試験したものではない。GitHub Actionsのブランチ別一覧では、照合・用語・図解の3並行ブランチの実行数は当時**各0件**。
+- この記録から、**iPhone Safari実機・Chrome/Firefox各実機・アクセシビリティ支援技術・専門家校閲・公開Pagesの利用者向け実操作が全て成功した**とはいえない。WebKitの自動テストとiOS実機テストは同一ではない。
+
+### ワークフロー設定の対応表
+
+| ファイル | 現行の起動条件・動作 | 未統合ブランチへの適用判定 |
+|---|---|---|
+| `.github/workflows/pages.yml` | **Codexブランチへのpush**で単体・公開ビルド・WebKitのブラウザー検査 | 照合・用語・図解ブランチのpushでは起動しない |
+| `.github/workflows/independent-audit.yml` | `chatgpt/**`へのpush、または**CodexブランチへのPR**で実行。ブラウザ検査ジョブはPR時のみ | `chat/collation`・`chat/glossary`・`chat/parallel-dev`のpushは対象外。PRも未作成 |
+| `.github/workflows/deploy-public-pages.yml` | `workflow_dispatch`による**手動デプロイ**。checkoutは**明示的にCodexブランチ** | 用語/図解の独立ブランチが更新されても、手動実行しただけでその内容は配信されない |
+
+### 統合時に必ず更新すべき固定値の監査
+
+- `tests/inline-glossary-diagrams.test.mjs`は現在の基点データに対して`assert.equal(glossary.length,158)`の**完全一致**を要求する。用語専用ラインの拡充成果を取り込むと、**このassertionは意図的な仕様更新なしでは必ず失敗する**。ただし本照合ラインではテストを改変しない。
+- `tests/original-deep-lessons.test.mjs`も`assert.equal(deep.lessons.length,54)`、および54節IDの**完全な列挙一致**を前提とする。残り22節の詳細講義が新規に加われば、同じ理由で正当な変更に合わせてテスト基準を更新する必要がある。
+- 既存`npm test`は`node --test tests/*.test.mjs`であり、**一致数だけを最新データに変更するのでなく、節ID・一意性・式・単位・出典・リンク品質などの本来の回帰検査を維持したまま**固定値を更新する。
+
+### コミット後・統合後の最小品質ゲート
+
+1. **統合前**：用語/図解/本線の差分を各責任ラインで固定SHA照合、テスト未実行の箇所を未実行と記録。原書図・独立SVG・公開許諾の区分を維持。
+2. **統合後**：Codex HEADで`npm test`、公開コンテンツ監査、`npm run build:public`、WebKitとChromiumの公開配信物E2Eを実行し、Actions実行URL・SHA・日時・検査範囲を残す。
+3. **公開後**：GitHub Pages実配信URLで節別ノート76件・詳細講義・問題・用語タップ・SVG画像・オフラインキャッシュ・学習記録書出復元・実機Safariを確認する。専門家校閲は別証拠。
+4. この照合専用ブランチではワークフロー・テスト・ソース・問題・用語・図解・他ライン・PRを一切変更しない。
+
 ## 節外範囲・追加検証ゲート
 
 | 対象 | 本チャンクの確認状況 | 残る検証 |
