@@ -6380,5 +6380,403 @@
       "reference": "第8・9章に対応する沸騰・凝縮・二相流の基本的な保存則と相関の適用条件から独立執筆。原書の翻訳・図版転載ではない。専門家校閲前。"
     },
     "reviewStatus": "needs_review"
+  },
+  {
+    "id": "mass-fraction",
+    "ja": "質量分率",
+    "en": "mass fraction",
+    "aliases": [
+      "質量割合"
+    ],
+    "category": "物質移動",
+    "brief": "混合物の全質量のうち、ある成分の質量が占める割合。",
+    "meaning": "混合物の全質量のうち、ある成分の質量が占める割合。",
+    "beginner": "2種類の気体や液体を混ぜたとき、全体の重さのうち一方の成分が何割かを表します。mol数で比べた割合とは別です。",
+    "detail": "成分iの質量分率w_i=m_i/m_total=ρ_i/ρで、すべての成分についてΣw_i=1。モル分率x_iからの換算はw_i=x_iM_i/(Σ_j x_jM_j)、M_iはモル質量。分子量が異なる混合物では同じ成分の質量分率とモル分率は一般に等しくない。質量基準の平均流速・物質拡散流束の定義にも使う。",
+    "formula": "w_i=m_i/m_total=x_iM_i/(Σ_jx_jM_j)",
+    "unit": "w_i、x_i: 無次元、M_i: kg/mol",
+    "example": "成分Aが2 kg、成分Bが8 kgの混合物ならw_A=2/10=0.20。",
+    "related": [
+      "モル分率",
+      "密度",
+      "質量流束"
+    ],
+    "relatedSections": [
+      "11.2",
+      "11.3"
+    ],
+    "relatedQuestions": [],
+    "relatedSimulators": [],
+    "confusions": [
+      "質量分率はkgを基準にした比、モル分率はmolを基準にした比。"
+    ],
+    "source": {
+      "type": "supplement",
+      "reference": "第7・11章の管内流れ・混合物輸送・化学熱力学の基礎式から独立執筆した補足。原書の翻訳や原図ではない。専門家校閲前。"
+    },
+    "reviewStatus": "needs_review"
+  },
+  {
+    "id": "mass-average-velocity",
+    "ja": "質量平均速度",
+    "en": "mass-average velocity",
+    "aliases": [
+      "質量基準平均速度"
+    ],
+    "category": "物質移動",
+    "brief": "各成分の速度を質量分率で重み付けした混合物の代表速度。",
+    "meaning": "各成分の速度を質量分率で重み付けした混合物の代表速度。",
+    "beginner": "成分によって速さが違う場合でも、重さの割合を使って混合物全体の速度を定義できます。質量の大きな成分の影響が強くなります。",
+    "detail": "質量平均速度v=Σ_iρ_iv_i/ρ=Σ_iw_iv_i。これを基準に各成分の拡散質量流束をj_i=ρ_i(v_i−v)と定義するとΣ_ij_i=0。モル平均速度v*=Σ_ix_iv_iとは重みが異なり、分子量が異なる混合物では両者は通常一致しない。速度はベクトルで、正負の方向も保持して計算する。",
+    "formula": "v=Σ_iw_iv_i、j_i=ρ_i(v_i−v)",
+    "unit": "v: m/s、j_i: kg/(m²·s)、w_i: 無次元",
+    "example": "質量分率A=1/3、B=2/3、流速A=1 m/s、B=0ならv=1/3 m/s。モル分率が半々の場合のモル平均は0.5 m/s。",
+    "related": [
+      "質量分率",
+      "モル分率",
+      "モル平均速度",
+      "質量流束"
+    ],
+    "relatedSections": [
+      "11.2",
+      "11.3"
+    ],
+    "relatedQuestions": [],
+    "relatedSimulators": [],
+    "confusions": [
+      "質量平均速度とモル平均速度は同じ速度ではない。"
+    ],
+    "source": {
+      "type": "supplement",
+      "reference": "第7・11章の管内流れ・混合物輸送・化学熱力学の基礎式から独立執筆した補足。原書の翻訳や原図ではない。専門家校閲前。"
+    },
+    "reviewStatus": "needs_review"
+  },
+  {
+    "id": "molar-average-velocity",
+    "ja": "モル平均速度",
+    "en": "molar-average velocity",
+    "aliases": [
+      "モル基準平均速度"
+    ],
+    "category": "物質移動",
+    "brief": "各成分速度をモル分率で重み付けして得られる混合物の平均速度。",
+    "meaning": "各成分速度をモル分率で重み付けして得られる混合物の平均速度。",
+    "beginner": "混ざっている分子の個数に対応するmol数を重みとして、各成分の速度を平均する方法です。質量の重みとは異なります。",
+    "detail": "モル平均速度v*=Σ_ix_iv_i。モル平均を基準とする拡散モル流束J_i=c_i(v_i−v*)はΣ_iJ_i=0。固定面での成分全モル流束N_i=c_iv_iとはN_i=J_i+x_iNで結ばれる。一般にモル平均速度と質量平均速度は一致しないため、フィック則の流束がどちらの速度を基準としているかを確認する。",
+    "formula": "v*=Σ_ix_iv_i、J_i=c_i(v_i−v*)",
+    "unit": "v*: m/s、J_i: mol/(m²·s)、c_i: mol/m³",
+    "example": "モル分率A=B=0.5、Aの速度1 m/s、Bは0ならv*=0.50 m/s。同じ状態でも質量分率A=1/3なら質量平均は1/3 m/s。",
+    "related": [
+      "モル分率",
+      "質量平均速度",
+      "フィック則の拡散モル流束",
+      "全モル流束"
+    ],
+    "relatedSections": [
+      "11.2",
+      "11.3"
+    ],
+    "relatedQuestions": [],
+    "relatedSimulators": [],
+    "confusions": [
+      "モル平均速度は全成分の速度の単純平均とは限らない。"
+    ],
+    "source": {
+      "type": "supplement",
+      "reference": "第7・11章の管内流れ・混合物輸送・化学熱力学の基礎式から独立執筆した補足。原書の翻訳や原図ではない。専門家校閲前。"
+    },
+    "reviewStatus": "needs_review"
+  },
+  {
+    "id": "diffusive-mass-flux",
+    "ja": "拡散質量流束",
+    "en": "diffusive mass flux",
+    "aliases": [
+      "質量基準拡散流束"
+    ],
+    "category": "物質移動",
+    "brief": "質量平均速度から見た、成分の相対移動による質量流束。",
+    "meaning": "質量平均速度から見た、成分の相対移動による質量流束。",
+    "beginner": "液体全体が動いているだけの分を取り除いて、分子が混ざって広がることで運ばれる質量を数える量です。",
+    "detail": "成分Aの拡散質量流束はj_A=ρ_A(v_A−v)で、vは質量平均速度、二成分ならj_A+j_B=0。単純な二成分混合物で温度・圧力勾配による交差効果を無視し、適切なD_ABを用いるとj_A=−ρD_AB∇w_Aと記述する。固定座標での成分質量流束ρ_Av_Aは、移流項ρ_Avと拡散項j_Aの和である。",
+    "formula": "j_A=ρ_A(v_A−v)≈−ρD_AB∇w_A（二成分・単純近似）",
+    "unit": "j_A: kg/(m²·s)、D_AB: m²/s、∇w_A: m⁻¹",
+    "example": "ρ=1 kg/m³、D_AB=2×10⁻⁵ m²/s、∂w_A/∂z=−10 m⁻¹ならj_A=+2×10⁻⁴ kg/(m²·s)。",
+    "related": [
+      "質量流束",
+      "質量分率",
+      "質量平均速度",
+      "物質拡散係数"
+    ],
+    "relatedSections": [
+      "11.2",
+      "11.3",
+      "11.4"
+    ],
+    "relatedQuestions": [],
+    "relatedSimulators": [],
+    "confusions": [
+      "拡散質量流束は全体の流れによる移流質量流束と異なる。"
+    ],
+    "source": {
+      "type": "supplement",
+      "reference": "第7・11章の管内流れ・混合物輸送・化学熱力学の基礎式から独立執筆した補足。原書の翻訳や原図ではない。専門家校閲前。"
+    },
+    "reviewStatus": "needs_review"
+  },
+  {
+    "id": "species-conservation-equation",
+    "ja": "成分保存方程式",
+    "en": "species conservation equation",
+    "aliases": [
+      "化学種保存方程式"
+    ],
+    "category": "物質移動",
+    "brief": "ある成分の質量が、移流・拡散・生成・消費によって変化することを表す保存則。",
+    "meaning": "ある成分の質量が、移流・拡散・生成・消費によって変化することを表す保存則。",
+    "beginner": "混ざっているA成分だけに注目します。流れや拡散で入ってきた分と外へ出た分、反応で増減する分が、Aの量の変化を決めます。",
+    "detail": "成分Aの質量濃度ρ_Aと質量平均速度v、拡散質量流束j_Aについて∂ρ_A/∂t+∇·(ρ_Av+j_A)=r_A。r_Aは化学反応などによる単位体積当たりの正味質量生成率。単純な拡散方程式は流速ゼロ、一定物性などの特別な場合に対応する。全成分を足し合わせれば、質量保存を満たす系でΣr_i=0およびΣj_i=0となる。",
+    "formula": "∂ρ_A/∂t+∇·(ρ_Av+j_A)=r_A",
+    "unit": "∂ρ_A/∂t、r_A: kg/(m³·s)、ρ_Av,j_A: kg/(m²·s)",
+    "example": "ある点でr_A=0.030 kg/(m³·s)、流束の発散が+0.010 kg/(m³·s)なら、局所のρ_A増加率は0.020 kg/(m³·s)。",
+    "related": [
+      "質量平均速度",
+      "拡散質量流束",
+      "質量分率",
+      "物質拡散"
+    ],
+    "relatedSections": [
+      "11.4",
+      "11.5"
+    ],
+    "relatedQuestions": [],
+    "relatedSimulators": [],
+    "confusions": [
+      "成分保存は混合物全体の質量保存と異なり、反応の成分生成・消費項を含む。"
+    ],
+    "source": {
+      "type": "supplement",
+      "reference": "第7・11章の管内流れ・混合物輸送・化学熱力学の基礎式から独立執筆した補足。原書の翻訳や原図ではない。専門家校閲前。"
+    },
+    "reviewStatus": "needs_review"
+  },
+  {
+    "id": "convective-mass-transfer-coefficient",
+    "ja": "対流物質移動係数",
+    "en": "convective mass transfer coefficient",
+    "aliases": [
+      "濃度基準物質移動係数"
+    ],
+    "category": "物質移動",
+    "brief": "表面と流体の濃度差に対する、対流物質移動の流束の比例係数。",
+    "meaning": "表面と流体の濃度差に対する、対流物質移動の流束の比例係数。",
+    "beginner": "壁と流体の成分濃度に差があるとき、その差が1 mol/m³ならどれだけのモルが移動するかを表す目安です。",
+    "detail": "濃度差基準で定義する係数k_c[m/s]を使い、低移動速度・希薄成分近似ではN_A≈k_c(c_A,s−c_A,∞)と表せる。k_cは分子拡散係数、流速、形状、境界層状態に依存する。圧力差基準・モル分率差基準の物質移動係数とは単位が異なる。大きなステファン流や界面相平衡がある場合はこの単純な線形式を補正する。",
+    "formula": "N_A≈k_c(c_A,s−c_A,∞)（希薄・低流束の例）",
+    "unit": "k_c: m/s、N_A: mol/(m²·s)、c_A: mol/m³",
+    "example": "k_c=0.010 m/s、表面と主流のモル濃度差0.20 mol/m³ならN_A≈0.0020 mol/(m²·s)。",
+    "related": [
+      "シャーウッド数",
+      "物質拡散係数",
+      "モル濃度",
+      "全モル流束"
+    ],
+    "relatedSections": [
+      "11.6",
+      "11.7"
+    ],
+    "relatedQuestions": [],
+    "relatedSimulators": [],
+    "confusions": [
+      "濃度基準のk_c[m/s]と、圧力差基準の係数では単位が違う。"
+    ],
+    "source": {
+      "type": "supplement",
+      "reference": "第7・11章の管内流れ・混合物輸送・化学熱力学の基礎式から独立執筆した補足。原書の翻訳や原図ではない。専門家校閲前。"
+    },
+    "reviewStatus": "needs_review"
+  },
+  {
+    "id": "lewis-number",
+    "ja": "ルイス数",
+    "en": "Lewis number",
+    "aliases": [
+      "Le数"
+    ],
+    "category": "物質移動",
+    "brief": "熱拡散率と物質拡散係数を比べる無次元数。",
+    "meaning": "熱拡散率と物質拡散係数を比べる無次元数。",
+    "beginner": "温度変化が広がる速さと、成分の濃度変化が広がる速さを比べた値です。熱と物質が同時に動く問題で役立ちます。",
+    "detail": "ルイス数Le=α/D_AB=Sc/Prで、α=k/(ρcₚ)は熱拡散率、D_ABは成分AとBの物質拡散係数。どちらもm²/sなので比は無次元。Le=1でも境界条件や駆動力が一致しなければ温度分布と濃度分布が同じになるとは限らない。温度、圧力、成分組成による物性の変化に注意する。",
+    "formula": "Le=α/D_AB=Sc/Pr",
+    "unit": "Le: 無次元、α,D_AB: m²/s",
+    "example": "α=1.5×10⁻⁵ m²/s、D_AB=2.0×10⁻⁵ m²/sならLe=0.75。",
+    "related": [
+      "熱拡散率",
+      "物質拡散係数",
+      "シュミット数",
+      "プラントル数"
+    ],
+    "relatedSections": [
+      "11.6",
+      "11.7",
+      "11.9"
+    ],
+    "relatedQuestions": [],
+    "relatedSimulators": [],
+    "confusions": [
+      "ルイス数は熱伝導率kと物質拡散係数Dの直接比ではない。"
+    ],
+    "source": {
+      "type": "supplement",
+      "reference": "第7・11章の管内流れ・混合物輸送・化学熱力学の基礎式から独立執筆した補足。原書の翻訳や原図ではない。専門家校閲前。"
+    },
+    "reviewStatus": "needs_review"
+  },
+  {
+    "id": "chemical-potential",
+    "ja": "化学ポテンシャル",
+    "en": "chemical potential",
+    "aliases": [
+      "部分モルギブズエネルギー"
+    ],
+    "category": "物質移動",
+    "brief": "温度・圧力などを一定として、ある成分を微量加えたときのギブズエネルギーの増分。",
+    "meaning": "温度・圧力などを一定として、ある成分を微量加えたときのギブズエネルギーの増分。",
+    "beginner": "濃度が違えば物質が動くことがありますが、本当に拡散を動かすのは混合物中でのその成分の化学的な状態の差です。",
+    "detail": "成分iの化学ポテンシャルμ_i=(∂G/∂n_i)_{T,p,n_{j≠i}}。活量a_iを使えばμ_i=μ_i°+RT ln a_i。非理想混合物では活量係数が濃度との関係を変え、単純な濃度勾配と化学ポテンシャル勾配が同じ向きになるとは限らない。流束則にはさらに流体摩擦や多成分結合などの輸送現象の記述が必要。",
+    "formula": "μ_i=μ_i°+RT ln a_i",
+    "unit": "μ_i: J/mol、R: J/(mol·K)、T: K、a_i: 無次元",
+    "example": "同じ温度300 K・同じ標準状態で活量の比が2なら、化学ポテンシャル差RT ln2≈1.729 kJ/mol。",
+    "related": [
+      "モル分率",
+      "活量",
+      "物質拡散"
+    ],
+    "relatedSections": [
+      "11.10",
+      "11.11"
+    ],
+    "relatedQuestions": [],
+    "relatedSimulators": [],
+    "confusions": [
+      "化学ポテンシャルは温度やモル濃度そのものではなく、物質移動の熱力学的駆動力を表す。"
+    ],
+    "source": {
+      "type": "supplement",
+      "reference": "第7・11章の管内流れ・混合物輸送・化学熱力学の基礎式から独立執筆した補足。原書の翻訳や原図ではない。専門家校閲前。"
+    },
+    "reviewStatus": "needs_review"
+  },
+  {
+    "id": "activity",
+    "ja": "活量",
+    "en": "thermodynamic activity",
+    "aliases": [
+      "熱力学的活量"
+    ],
+    "category": "物質移動",
+    "brief": "理想からのずれを含め、化学ポテンシャルの式に用いる無次元の成分の有効度。",
+    "meaning": "理想からのずれを含め、化学ポテンシャルの式に用いる無次元の成分の有効度。",
+    "beginner": "混合物では、同じ濃度でも周囲の分子との相互作用によって動きやすさが異なります。その影響を濃度に反映した値です。",
+    "detail": "溶液の標準状態を定めたとき、化学ポテンシャルμ_i=μ_i°+RT ln a_iで定義する無次元量が活量a_i。モル分率基準ではa_i=γ_i x_iと表し、γ_iが活量係数。理想溶液極限ではγ_i≈1だが、標準状態が変われば活動度の表現も変わる。活量とモル濃度や吸収率を混同しない。",
+    "formula": "μ_i=μ_i°+RT ln a_i、a_i=γ_i x_i（モル分率標準）",
+    "unit": "a_i、γ_i、x_i: 無次元、μ_i: J/mol",
+    "example": "x_i=0.20で活量係数γ_i=1.5ならa_i=0.30（この標準状態に基づく）。",
+    "related": [
+      "化学ポテンシャル",
+      "モル分率",
+      "物質拡散"
+    ],
+    "relatedSections": [
+      "11.10",
+      "11.11"
+    ],
+    "relatedQuestions": [],
+    "relatedSimulators": [],
+    "confusions": [
+      "活量は単位mol/m³の濃度でも、熱放射の吸収率でもない。"
+    ],
+    "source": {
+      "type": "supplement",
+      "reference": "第7・11章の管内流れ・混合物輸送・化学熱力学の基礎式から独立執筆した補足。原書の翻訳や原図ではない。専門家校閲前。"
+    },
+    "reviewStatus": "needs_review"
+  },
+  {
+    "id": "darcy-friction-factor",
+    "ja": "ダルシー摩擦係数",
+    "en": "Darcy friction factor",
+    "aliases": [
+      "管摩擦係数（ダルシー）"
+    ],
+    "category": "強制対流",
+    "brief": "管の壁面摩擦に伴う圧力損失を動圧・管長・管径で表す無次元係数。",
+    "meaning": "管の壁面摩擦に伴う圧力損失を動圧・管長・管径で表す無次元係数。",
+    "beginner": "管の中を液体が流れると、壁の摩擦で圧力が失われます。管の太さや長さ、流れの速さと合わせて損失を計算する係数です。",
+    "detail": "十分発達した一定断面管内流の摩擦損失をΔp_f=f_D(L/D_h)(ρU²/2)と定義する。十分発達した円管層流ではf_D=64/Re。非円形ダクトの層流では一般に同じ64/Reとはならない。入口・曲がり・バルブなどの局所損失を別に加算する。ファニング摩擦係数f_Fとダルシー摩擦係数はf_D=4f_Fの関係。",
+    "formula": "Δp_f=f_D(L/D_h)ρU²/2、円管層流f_D=64/Re",
+    "unit": "f_D: 無次元、Δp_f: Pa、D_h,L: m",
+    "example": "十分発達した円管層流でRe=1000ならf_D=0.064。L/D=100、動圧500 Paでは摩擦圧力損失3200 Pa。",
+    "related": [
+      "レイノルズ数",
+      "水力直径",
+      "層流",
+      "ポンプ軸動力"
+    ],
+    "relatedSections": [
+      "7.2",
+      "7.3",
+      "7.5"
+    ],
+    "relatedQuestions": [],
+    "relatedSimulators": [],
+    "confusions": [
+      "ファニング摩擦係数をダルシー摩擦係数と取り違えると計算が4倍ずれる。"
+    ],
+    "source": {
+      "type": "supplement",
+      "reference": "第7・11章の管内流れ・混合物輸送・化学熱力学の基礎式から独立執筆した補足。原書の翻訳や原図ではない。専門家校閲前。"
+    },
+    "reviewStatus": "needs_review"
+  },
+  {
+    "id": "heat-mass-transfer-analogy",
+    "ja": "熱・物質移動の類推",
+    "en": "heat and mass transfer analogy",
+    "aliases": [
+      "熱物質移動アナロジー"
+    ],
+    "category": "物質移動",
+    "brief": "熱と物質の保存・拡散式の対応から、対流相関を相互に利用する考え方。",
+    "meaning": "熱と物質の保存・拡散式の対応から、対流相関を相互に利用する考え方。",
+    "beginner": "温度の広がり方と濃度の広がり方は、方程式の形が似ています。条件が合えば伝熱の考え方を物質移動にも使えます。",
+    "detail": "強制対流の幾何形状・流動状態・境界条件が対応し物性が一定などの場合、NuとSh、PrとScの相似性を利用できる。例えば平板層流外部流れで両者の相関が同じ形式に従う範囲ならSh_x/Nu_x≈(Sc/Pr)^(1/3)。質量移動による壁面吸い込み・吹き出し、ステファン流、反応や物性変化が顕著なら単純な類推は不正確となる。",
+    "formula": "Sh_x/Nu_x≈(Sc/Pr)^(1/3)（対応する平板層流相関の一例）",
+    "unit": "Sh、Nu、Sc、Pr: 無次元",
+    "example": "同じ条件でNu_x=20、Sc/Pr=8なら、対応相関を仮定したSh_xは約40。",
+    "related": [
+      "ヌセルト数",
+      "シャーウッド数",
+      "プラントル数",
+      "シュミット数",
+      "ルイス数"
+    ],
+    "relatedSections": [
+      "6.6",
+      "11.6",
+      "11.7"
+    ],
+    "relatedQuestions": [],
+    "relatedSimulators": [],
+    "confusions": [
+      "類推は適用条件付きであり、どんな流れでもNuとShが同じになる意味ではない。"
+    ],
+    "source": {
+      "type": "supplement",
+      "reference": "第7・11章の管内流れ・混合物輸送・化学熱力学の基礎式から独立執筆した補足。原書の翻訳や原図ではない。専門家校閲前。"
+    },
+    "reviewStatus": "needs_review"
   }
 ]
