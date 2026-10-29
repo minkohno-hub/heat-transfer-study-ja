@@ -14,7 +14,7 @@ function slabParse(raw){
  const n=Number(s);return Number.isFinite(n)?n:NaN;
 }
 
-function slabEigenModes(bi,count=SLAB_TERMS){
+export function slabEigenModes(bi,count=SLAB_TERMS){
  const modes=[];
  for(let n=0;n<count;n++){
   let l=n*Math.PI,r=(n+.5)*Math.PI;
