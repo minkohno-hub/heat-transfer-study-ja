@@ -196,8 +196,9 @@ test('search indexes published advanced Japanese physics lessons including deriv
  const entries=h.api.buildSearchIndex().filter(x=>x.kind==='deep-lesson');
  assert.equal(entries.length,deepLessons.lessons.reduce((sum,lesson)=>sum+1+lesson.blocks.length+lesson.equations.length+2,0));
  const diffusion=core.searchEntries(entries,{query:'Stefan流',kind:'deep-lesson',chapter:'ch11'});
- assert.ok(diffusion.length>=1);
- assert.ok(diffusion.every(entry=>entry.target.section==='11.3'&&entry.target.route==='reader'&&entry.target.language==='ja'&&entry.target.blockId));
+ assert.ok(diffusion.some(entry=>entry.target.section==='11.3'));
+ assert.ok(diffusion.some(entry=>entry.target.section==='11.5'),'the new stationary-medium lecture remains searchable alongside Fick law');
+ assert.ok(diffusion.every(entry=>deepLessons.lessons.some(l=>l.sectionId===entry.target.section&&l.sectionId.startsWith('11.'))&&entry.target.route==='reader'&&entry.target.language==='ja'&&entry.target.blockId));
  assert.ok(diffusion.every(entry=>entry.source.includes('外部専門家校閲前')));
  assert.ok(entries.some(entry=>entry.target.section==='11.3'&&entry.text.includes('N_A=')));
  const conduction=core.searchEntries(entries,{query:'Dirichlet',kind:'deep-lesson',chapter:'ch2'});

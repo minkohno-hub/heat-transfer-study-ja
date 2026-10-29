@@ -21586,5 +21586,1545 @@
       "両者の異なる符号は両立すると判断する。"
     ],
     "beginnerPitfall": "負の相対流束から濃度や物性まで負としない。"
+  },
+  {
+    "id": "supp-species-tank-storage-v1",
+    "revision": "v1",
+    "field": "物質移動",
+    "prerequisites": [
+      "成分保存",
+      "フィックの法則",
+      "流束の基準"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "輸送現象の一般法則と独自の仮想例から作問。原本の翻訳・原図・章末問題ではない。",
+      "chapterId": "ch11",
+      "focusSectionId": "11.4",
+      "guideId": "chapter11-fick-mass"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "執筆原稿・基本算術と構造を確認／包括的品質監査待ち・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "執筆時の定義・収支・基本計算を確認。全問の独立科学監査・原本網羅照合・外部校閲は後工程。"
+      }
+    ],
+    "prompt": "完全混合槽でAの流入0.0020 kg/s、流出0.0010 kg/s、槽内生成0.00010 kg/s。Aの蓄積率はどれか。正は増加。",
+    "choices": [
+      "+1.10×10⁻³ kg/s",
+      "+9.00×10⁻⁴ kg/s",
+      "+3.10×10⁻³ kg/s",
+      "−1.10×10⁻³ kg/s"
+    ],
+    "answer": 0,
+    "difficulty": "標準・数値計算",
+    "explanation": "d m_A/dt=0.0020−0.0010+0.00010=+0.00110 kg/s。成分の増加率であり混合物全質量の増加率とは限らない。",
+    "distractors": [
+      "正解。流入−流出+生成を用いた。",
+      "生成項を消費として引いた。",
+      "流出も蓄積へ足した。",
+      "蓄積の符号を逆にした。"
+    ],
+    "hints": [
+      "流出は槽のAを減らす。",
+      "生成はAを増やす。"
+    ],
+    "solutionSteps": [
+      "流入と流出の差0.0010 kg/s。",
+      "生成0.00010を足す。",
+      "蓄積+0.00110 kg/s。"
+    ],
+    "beginnerPitfall": "流入出と生成の符号を先に決める。"
+  },
+  {
+    "id": "supp-species-tank-fraction-rate-v1",
+    "revision": "v1",
+    "field": "物質移動",
+    "prerequisites": [
+      "成分保存",
+      "フィックの法則",
+      "流束の基準"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "輸送現象の一般法則と独自の仮想例から作問。原本の翻訳・原図・章末問題ではない。",
+      "chapterId": "ch11",
+      "focusSectionId": "11.4",
+      "guideId": "chapter11-fick-mass"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "執筆原稿・基本算術と構造を確認／包括的品質監査待ち・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "執筆時の定義・収支・基本計算を確認。全問の独立科学監査・原本網羅照合・外部校閲は後工程。"
+      }
+    ],
+    "prompt": "一定全質量20 kgの完全混合槽でAの蓄積率+0.00110 kg/s。質量分率の時間変化dw_A/dtはどれか。",
+    "choices": [
+      "+5.50×10⁻² s⁻¹",
+      "+5.50×10⁻⁵ s⁻¹",
+      "+2.20×10⁻² s⁻¹",
+      "+1.10×10⁻³ s⁻¹"
+    ],
+    "answer": 1,
+    "difficulty": "標準・数値計算",
+    "explanation": "m_A=M w_A、M一定なのでM dw_A/dt=dm_A/dt。0.00110/20=5.50×10⁻⁵ s⁻¹。全質量が変わる場合はMの時間微分も必要。",
+    "distractors": [
+      "kgとgの基準を混ぜ1000倍にした。",
+      "正解。Aの蓄積率を一定全質量で割った。",
+      "全質量を割らず掛けた。",
+      "kg/sの数値をそのまま分率変化へ使った。"
+    ],
+    "hints": [
+      "分率は成分質量/全質量。",
+      "全質量一定という条件を使う。"
+    ],
+    "solutionSteps": [
+      "20 dw_A/dt=0.00110。",
+      "20で割る。",
+      "単位はs⁻¹。"
+    ],
+    "beginnerPitfall": "全質量が一定である条件を確認して微分する。"
+  },
+  {
+    "id": "supp-species-source-volume-v1",
+    "revision": "v1",
+    "field": "物質移動",
+    "prerequisites": [
+      "成分保存",
+      "フィックの法則",
+      "流束の基準"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "輸送現象の一般法則と独自の仮想例から作問。原本の翻訳・原図・章末問題ではない。",
+      "chapterId": "ch11",
+      "focusSectionId": "11.4",
+      "guideId": "chapter11-fick-mass"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "執筆原稿・基本算術と構造を確認／包括的品質監査待ち・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "執筆時の定義・収支・基本計算を確認。全問の独立科学監査・原本網羅照合・外部校閲は後工程。"
+      }
+    ],
+    "prompt": "体積0.020 m³の槽で、Aの一様な体積生成率r_A=0.0050 kg/(m³·s)。槽全体のA生成率はいくらか。",
+    "choices": [
+      "5.0×10⁻³ kg/s",
+      "1.0×10⁻¹ kg/s",
+      "1.0×10⁻⁴ kg/s",
+      "2.5×10⁻¹ kg/s"
+    ],
+    "answer": 2,
+    "difficulty": "標準・数値計算",
+    "explanation": "R_A=∫r_A dV=r_AV=0.0050×0.020=0.00010 kg/s。一様でない場合は分布を積分する。",
+    "distractors": [
+      "体積当たりの値を全体値へ流用した。",
+      "体積又は生成率の桁を1000倍にした。",
+      "正解。体積当たり生成率へ体積を掛けた。",
+      "体積を掛けず割った。"
+    ],
+    "hints": [
+      "m³を打ち消す。",
+      "一様な体積源はr_AV。"
+    ],
+    "solutionSteps": [
+      "0.0050×0.020。",
+      "積0.00010。",
+      "単位kg/s。"
+    ],
+    "beginnerPitfall": "体積当たりと全体の生成率を分ける。"
+  },
+  {
+    "id": "supp-species-reaction-mass-moles-v1",
+    "revision": "v1",
+    "field": "物質移動",
+    "prerequisites": [
+      "成分保存",
+      "フィックの法則",
+      "流束の基準"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "conceptual",
+    "source": {
+      "type": "supplement",
+      "reference": "輸送現象の一般法則と独自の仮想例から作問。原本の翻訳・原図・章末問題ではない。",
+      "chapterId": "ch11",
+      "focusSectionId": "11.4",
+      "guideId": "chapter11-fick-mass"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "執筆原稿・基本算術と構造を確認／包括的品質監査待ち・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "執筆時の定義・収支・基本計算を確認。全問の独立科学監査・原本網羅照合・外部校閲は後工程。"
+      }
+    ],
+    "prompt": "通常の化学反応の成分保存式を足して全質量保存へ戻す。r_iを成分質量生成率、R_iを成分モル生成率とすると、一般に要求される関係はどれか。",
+    "choices": [
+      "ΣR_i=0であり、Σr_iは非ゼロでもよい",
+      "Σr_i=ΣR_iであり、両者の単位も同じ",
+      "各r_i=0であり、反応による成分変化はない",
+      "Σr_i=0であり、ΣR_iは非ゼロでもよい"
+    ],
+    "answer": 3,
+    "difficulty": "概念・適用判断",
+    "explanation": "Σ_i r_i=Σ_i M_iR_i=0。例えばAが分解して複数の生成物分子となれば、質量は保存されても全モル数は変わりうる。核反応等はこの通常の化学モデルの対象外。",
+    "distractors": [
+      "質量とモル数の保存を取り違えた。",
+      "kg基準とmol基準の単位と換算を混同した。",
+      "全質量の保存は各成分の生成率がゼロという意味ではない。",
+      "正解。通常の反応で質量は保存されるが全モル数は変わりうる。"
+    ],
+    "hints": [
+      "成分ごとの生成と合計質量保存を区別する。",
+      "モル数は分子の組み換えで変わりうる。"
+    ],
+    "solutionSteps": [
+      "r_iの単位kg/(m³·s)。",
+      "R_iへM_iを掛けて足す。",
+      "合計質量源0。"
+    ],
+    "beginnerPitfall": "全質量保存から全モル数保存まで主張しない。"
+  },
+  {
+    "id": "supp-species-variable-coefficients-v1",
+    "revision": "v1",
+    "field": "物質移動",
+    "prerequisites": [
+      "成分保存",
+      "フィックの法則",
+      "流束の基準"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "applied",
+    "source": {
+      "type": "supplement",
+      "reference": "輸送現象の一般法則と独自の仮想例から作問。原本の翻訳・原図・章末問題ではない。",
+      "chapterId": "ch11",
+      "focusSectionId": "11.4",
+      "guideId": "chapter11-fick-mass"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "執筆原稿・基本算術と構造を確認／包括的品質監査待ち・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "執筆時の定義・収支・基本計算を確認。全問の独立科学監査・原本網羅照合・外部校閲は後工程。"
+      }
+    ],
+    "prompt": "質量平均基準の二成分Fickモデルj_A=−ρD_AB∇w_Aを保存式へ代入する。ρとD_ABが空間で変わる場合、拡散項はどう扱うか。",
+    "choices": [
+      "∇·(ρD_AB∇w_A)の形を保って扱う",
+      "ρD_AB∇²w_Aへ条件なしに置き換える",
+      "ρとD_ABの勾配だけで流束を決める",
+      "拡散項を全体流へ含め、保存式から除く"
+    ],
+    "answer": 0,
+    "difficulty": "概念・適用判断",
+    "explanation": "保存式は∂ρ_A/∂t+∇·(ρ_Av)=∇·(ρD_AB∇w_A)+r_A。係数一定等の条件を満たすときに初めて簡略化できる。非理想等ならFickモデル自体も確認する。",
+    "distractors": [
+      "正解。変動係数を発散の外へ勝手に出さない。",
+      "係数の勾配による寄与を落とした。",
+      "組成勾配を駆動力とする元のモデルを失った。",
+      "全体流と拡散は同一ではなく輸送項を落とせない。"
+    ],
+    "hints": [
+      "積を微分すると係数の変化も現れる。",
+      "元の流束と発散形を保つ。"
+    ],
+    "solutionSteps": [
+      "j_Aを代入。",
+      "負号を右辺へ移す。",
+      "可変のρDを発散の中に保つ。"
+    ],
+    "beginnerPitfall": "定数物性の式を可変物性へ無条件に転用しない。"
+  },
+  {
+    "id": "supp-species-boundary-outward-sign-v1",
+    "revision": "v1",
+    "field": "物質移動",
+    "prerequisites": [
+      "成分保存",
+      "フィックの法則",
+      "流束の基準"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "applied",
+    "source": {
+      "type": "supplement",
+      "reference": "輸送現象の一般法則と独自の仮想例から作問。原本の翻訳・原図・章末問題ではない。",
+      "chapterId": "ch11",
+      "focusSectionId": "11.4",
+      "guideId": "chapter11-fick-mass"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "執筆原稿・基本算術と構造を確認／包括的品質監査待ち・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "執筆時の定義・収支・基本計算を確認。全問の独立科学監査・原本網羅照合・外部校閲は後工程。"
+      }
+    ],
+    "prompt": "固定検査体積のある境界で、外向き法線方向のA全質量流束が+0.30 kg/(m²·s)、面積2.0 m²。他の境界輸送・生成はない。この面の蓄積への寄与はどれか。",
+    "choices": [
+      "固定した面なので、輸送の寄与は0となる",
+      "外へ出るので、−0.60 kg/sとなる",
+      "外向きを正とするので、+0.60 kg/sとなる",
+      "流束を面積で割り、−0.15 kg/sとなる"
+    ],
+    "answer": 1,
+    "difficulty": "概念・適用判断",
+    "explanation": "蓄積=−∮全流束·n dA+生成。与えた面では−0.30×2.0=−0.60 kg/s。固定なのは面の位置であり成分の流れではない。",
+    "distractors": [
+      "固定検査面でも成分は横切る。",
+      "正解。正味流出は内部のAを減らす。",
+      "外向き流束の正と蓄積増加の正を混同した。",
+      "面積積分を除算とした。"
+    ],
+    "hints": [
+      "蓄積は流入−流出+生成。",
+      "外向き流束は流出。"
+    ],
+    "solutionSteps": [
+      "面の流出量0.60 kg/s。",
+      "蓄積式では負号。",
+      "−0.60 kg/s。"
+    ],
+    "beginnerPitfall": "正方向と内部量の増減を区別する。"
+  },
+  {
+    "id": "supp-species-initial-boundary-needed-v1",
+    "revision": "v1",
+    "field": "物質移動",
+    "prerequisites": [
+      "成分保存",
+      "フィックの法則",
+      "流束の基準"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "conceptual",
+    "source": {
+      "type": "supplement",
+      "reference": "輸送現象の一般法則と独自の仮想例から作問。原本の翻訳・原図・章末問題ではない。",
+      "chapterId": "ch11",
+      "focusSectionId": "11.4",
+      "guideId": "chapter11-fick-mass"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "執筆原稿・基本算術と構造を確認／包括的品質監査待ち・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "執筆時の定義・収支・基本計算を確認。全問の独立科学監査・原本網羅照合・外部校閲は後工程。"
+      }
+    ],
+    "prompt": "非定常の成分保存方程式と拡散係数だけが与えられた。濃度分布を一意に求めるための説明として適切なのはどれか。",
+    "choices": [
+      "拡散係数が正なら、初期分布を必ずゼロとする",
+      "非定常なので、境界からの輸送は考えなくてよい",
+      "初期・境界条件や速度・反応モデルも確認する",
+      "保存式だけで、どの境界でも同じ分布に決まる"
+    ],
+    "answer": 2,
+    "difficulty": "概念・適用判断",
+    "explanation": "成分保存は収支の制約。初期組成、組成/流束等の境界条件、速度場、物性・反応を定めて解を選ぶ。過剰又は不足した条件にも注意する。",
+    "distractors": [
+      "正のDから初期組成は決まらない。",
+      "非定常でも境界輸送は蓄積を変える。",
+      "正解。方程式に加え系の条件と構成則が必要。",
+      "異なる境界や初期状態で異なる解になる。"
+    ],
+    "hints": [
+      "同じ拡散方程式でも初期分布は変えられる。",
+      "境界が物質を供給するか遮断するか確認。"
+    ],
+    "solutionSteps": [
+      "必要な未知場を列挙。",
+      "初期と境界を定義。",
+      "モデルと条件を合わせて解く。"
+    ],
+    "beginnerPitfall": "保存則を初期・境界情報の代用にしない。"
+  },
+  {
+    "id": "supp-stationary-planar-flux-v1",
+    "revision": "v1",
+    "field": "物質移動",
+    "prerequisites": [
+      "成分保存",
+      "フィックの法則",
+      "流束の基準"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "輸送現象の一般法則と独自の仮想例から作問。原本の翻訳・原図・章末問題ではない。",
+      "chapterId": "ch11",
+      "focusSectionId": "11.5",
+      "guideId": "chapter11-fick-mass"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "執筆原稿・基本算術と構造を確認／包括的品質監査待ち・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "執筆時の定義・収支・基本計算を確認。全問の独立科学監査・原本網羅照合・外部校閲は後工程。"
+      }
+    ],
+    "prompt": "一定ρ=1000 kg/m³、D_AB=1.0×10⁻⁹ m²/s、厚さL=0.0020 mの平面層。質量平均速度0、反応なしの定常でw_A(0)=0.020、w_A(L)=0.010。x正方向のj_Aはいくらか。",
+    "choices": [
+      "−5.0×10⁻⁶ kg/(m²·s)",
+      "+1.0×10⁻⁵ kg/(m²·s)",
+      "+5.0×10⁻⁹ kg/(m²·s)",
+      "+5.0×10⁻⁶ kg/(m²·s)"
+    ],
+    "answer": 3,
+    "difficulty": "標準・数値計算",
+    "explanation": "j_A=−ρD(w_L−w_0)/L=1000×10⁻⁹×0.010/0.0020=+5.0×10⁻⁶ kg/(m²·s)。質量平均静止なのでこのモデルでは全A質量流束とも等しい。",
+    "distractors": [
+      "Fick則の負号と勾配の符号を取り違えた。",
+      "出口との差でなく入口組成だけを使った。",
+      "質量分率勾配へ必要なρを掛けていない。",
+      "正解。高組成側から低組成側へρDΔw/Lで求めた。"
+    ],
+    "hints": [
+      "組成差は0.010。",
+      "勾配は出口−入口を長さで割る。"
+    ],
+    "solutionSteps": [
+      "dw/dx=−5 m⁻¹。",
+      "−ρDを掛ける。",
+      "正方向5.0×10⁻⁶。"
+    ],
+    "beginnerPitfall": "質量分率から質量流束へはρが必要。"
+  },
+  {
+    "id": "supp-stationary-erfc-profile-v1",
+    "revision": "v1",
+    "field": "物質移動",
+    "prerequisites": [
+      "成分保存",
+      "フィックの法則",
+      "流束の基準"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "輸送現象の一般法則と独自の仮想例から作問。原本の翻訳・原図・章末問題ではない。",
+      "chapterId": "ch11",
+      "focusSectionId": "11.5",
+      "guideId": "chapter11-fick-mass"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "執筆原稿・基本算術と構造を確認／包括的品質監査待ち・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "執筆時の定義・収支・基本計算を確認。全問の独立科学監査・原本網羅照合・外部校閲は後工程。"
+      }
+    ],
+    "prompt": "半無限拡散のw_A=w_i+(w_s−w_i)erfc(η)。w_i=0、w_s=0.020、η=0.50、erfc(0.50)=0.4795001ならw_Aはどれか。",
+    "choices": [
+      "0.0095900",
+      "0.0104100",
+      "0.0200000",
+      "0.4795001"
+    ],
+    "answer": 0,
+    "difficulty": "標準・数値計算",
+    "explanation": "w_A=0.020×0.4795001=0.009590002。表面0.020と初期0の間にあり、指定深さで半分より少し小さい。",
+    "distractors": [
+      "正解。規格化分布へ表面と初期の差を掛けた。",
+      "erfcの代わりに1−erfcを使った。",
+      "内部点を表面と同じにした。",
+      "無次元化した分布を元の組成へ戻していない。"
+    ],
+    "hints": [
+      "erfcの値は規格化された変化。",
+      "表面と初期の差を掛ける。"
+    ],
+    "solutionSteps": [
+      "差0.020。",
+      "0.4795001を掛ける。",
+      "0.0095900。"
+    ],
+    "beginnerPitfall": "誤差関数と相補誤差関数を混ぜない。"
+  },
+  {
+    "id": "supp-stationary-cumulative-v1",
+    "revision": "v1",
+    "field": "物質移動",
+    "prerequisites": [
+      "成分保存",
+      "フィックの法則",
+      "流束の基準"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "輸送現象の一般法則と独自の仮想例から作問。原本の翻訳・原図・章末問題ではない。",
+      "chapterId": "ch11",
+      "focusSectionId": "11.5",
+      "guideId": "chapter11-fick-mass"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "執筆原稿・基本算術と構造を確認／包括的品質監査待ち・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "執筆時の定義・収支・基本計算を確認。全問の独立科学監査・原本網羅照合・外部校閲は後工程。"
+      }
+    ],
+    "prompt": "半無限体の表面流束がj_A(t)=K/√tで、現在t=1000 sでj_A=1.12838×10⁻⁵ kg/(m²·s)。0から現在までの累積移動質量/面積はいくらか。積分可能な理想モデルとする。",
+    "choices": [
+      "約0.045135 kg/m²",
+      "約0.022568 kg/m²",
+      "約0.011284 kg/m²",
+      "約0.000022568 kg/m²"
+    ],
+    "answer": 1,
+    "difficulty": "標準・数値計算",
+    "explanation": "∫₀ᵗ K/√τ dτ=2K√t=2t j_A(t)。2×1000×1.12838×10⁻⁵=0.0225676 kg/m²。t=0の流束特異性は積分可能。",
+    "distractors": [
+      "正しい積分量をさらに2倍にした。",
+      "正解。t⁻¹/²を積分して2t j_A(t)とした。",
+      "現在流束×時間で過去の大きな流束を落とした。",
+      "時間1000 sを積分に反映していない。"
+    ],
+    "hints": [
+      "現在の流束は過去より小さい。",
+      "∫τ⁻¹/²dτ=2√τ。"
+    ],
+    "solutionSteps": [
+      "積分式2K√t。",
+      "K=j_A(t)√t。",
+      "2t j_A(t)=0.022568。"
+    ],
+    "beginnerPitfall": "現在流束×時間を非定常の累積量へ流用しない。"
+  },
+  {
+    "id": "supp-stationary-penetration-scale-v1",
+    "revision": "v1",
+    "field": "物質移動",
+    "prerequisites": [
+      "成分保存",
+      "フィックの法則",
+      "流束の基準"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "applied",
+    "source": {
+      "type": "supplement",
+      "reference": "輸送現象の一般法則と独自の仮想例から作問。原本の翻訳・原図・章末問題ではない。",
+      "chapterId": "ch11",
+      "focusSectionId": "11.5",
+      "guideId": "chapter11-fick-mass"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "執筆原稿・基本算術と構造を確認／包括的品質監査待ち・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "執筆時の定義・収支・基本計算を確認。全問の独立科学監査・原本網羅照合・外部校閲は後工程。"
+      }
+    ],
+    "prompt": "同じDで半無限拡散を行い、同じ規格化濃度の位置を比較する。経過時間を4倍にすると、その位置までの深さはどうなるか。",
+    "choices": [
+      "1/√tに比例するので、深さは半分になる",
+      "Dが同じなので、深さは変化しない",
+      "√tに比例するので、深さは2倍になる",
+      "tに比例するので、深さは4倍になる"
+    ],
+    "answer": 2,
+    "difficulty": "概念・適用判断",
+    "explanation": "同じerfc値には同じηが対応する。x=2η√Dtなのでtを4倍にすると深さは2倍。これは鋭い境界の位置ではなく、同じ濃度を取る点。",
+    "distractors": [
+      "表面流束のt⁻¹/²依存と深さを混同した。",
+      "時間依存の広がりを落とした。",
+      "正解。同じη=x/(2√Dt)を保つ条件を使った。",
+      "拡散距離を時間に線形とした。"
+    ],
+    "hints": [
+      "相似変数ηを一定にする。",
+      "√4=2。"
+    ],
+    "solutionSteps": [
+      "同じ規格化濃度を指定。",
+      "η一定と置く。",
+      "深さは2倍。"
+    ],
+    "beginnerPitfall": "拡散の滑らかな分布を鋭い浸透先端としない。"
+  },
+  {
+    "id": "supp-stationary-zero-reference-v1",
+    "revision": "v1",
+    "field": "物質移動",
+    "prerequisites": [
+      "成分保存",
+      "フィックの法則",
+      "流束の基準"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "conceptual",
+    "source": {
+      "type": "supplement",
+      "reference": "輸送現象の一般法則と独自の仮想例から作問。原本の翻訳・原図・章末問題ではない。",
+      "chapterId": "ch11",
+      "focusSectionId": "11.5",
+      "guideId": "chapter11-fick-mass"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "執筆原稿・基本算術と構造を確認／包括的品質監査待ち・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "執筆時の定義・収支・基本計算を確認。全問の独立科学監査・原本網羅照合・外部校閲は後工程。"
+      }
+    ],
+    "prompt": "正の成分濃度を持つ、モル質量が異なる二成分混合物を考える。静止の条件について、一般に同値とはならない条件の対はどれか。",
+    "choices": [
+      "質量平均速度0と、全質量流束0",
+      "全モル流束0と、正の全濃度でのモル平均速度0",
+      "成分B流束0と、正のB濃度でのB速度0",
+      "質量平均速度0と、固定系での成分B流束0"
+    ],
+    "answer": 3,
+    "difficulty": "概念・適用判断",
+    "explanation": "全質量流束ρv、全モル流束cv_m、成分BのN_Bは異なる量。例えばN_B=0でN_A≠0なら全モル流束はN_A≠0。モルと質量の平均も一般に異なる。",
+    "distractors": [
+      "正の全密度では全質量流束ρv=0と質量平均速度0は同値。",
+      "正の全モル濃度では全モル流束cv_m=0とモル平均速度0は同値。",
+      "正のB濃度ではN_B=c_Bv_Bなので同値。",
+      "正解。特定成分Bと質量平均の静止は一般に異なる条件。"
+    ],
+    "hints": [
+      "何がゼロなのかを明示する。",
+      "全体と特定成分、モルと質量を分ける。"
+    ],
+    "solutionSteps": [
+      "各流束と速度の定義を書く。",
+      "同値な条件を整理する。",
+      "異なる三つの拘束を区別する。"
+    ],
+    "beginnerPitfall": "静止という語だけで平均流やStefan流を消さない。"
+  },
+  {
+    "id": "supp-stationary-stefan-log-v1",
+    "revision": "v1",
+    "field": "物質移動",
+    "prerequisites": [
+      "成分保存",
+      "フィックの法則",
+      "流束の基準"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "輸送現象の一般法則と独自の仮想例から作問。原本の翻訳・原図・章末問題ではない。",
+      "chapterId": "ch11",
+      "focusSectionId": "11.5",
+      "guideId": "chapter11-fick-mass"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "執筆原稿・基本算術と構造を確認／包括的品質監査待ち・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "執筆時の定義・収支・基本計算を確認。全問の独立科学監査・原本網羅照合・外部校閲は後工程。"
+      }
+    ],
+    "prompt": "等温等圧・一定c,Dの理想二成分層でN_B=0。cD_AB/L=0.10 mol/(m²·s)、y_A(0)=0.30、y_A(L)=0.10。N_A= (cD_AB/L)ln[(1−y_A(L))/(1−y_A(0))]、ln(0.9/0.7)=0.2513144を使うとN_Aはどれか。",
+    "choices": [
+      "+0.0251314 mol/(m²·s)",
+      "+0.0200000 mol/(m²·s)",
+      "−0.0251314 mol/(m²·s)",
+      "+0.2513144 mol/(m²·s)"
+    ],
+    "answer": 0,
+    "difficulty": "標準・数値計算",
+    "explanation": "N_A=0.10×0.2513144=0.02513144。N_B=0なのでN_t=N_A。等モル逆拡散なら0.10×(0.30−0.10)=0.020で、条件が異なる。",
+    "distractors": [
+      "正解。Bが固定系で静止する対数式を使った。",
+      "N_t=0の等モル逆拡散式へ置き換えた。",
+      "対数の比を逆にした。",
+      "前係数0.10を掛けていない。"
+    ],
+    "hints": [
+      "N_B=0はN_t=0ではない。",
+      "指定された対数式を使う。"
+    ],
+    "solutionSteps": [
+      "対数値0.2513144。",
+      "前係数0.10を掛ける。",
+      "正方向0.0251314。"
+    ],
+    "beginnerPitfall": "成分B静止と等モル逆拡散を同じにしない。"
+  },
+  {
+    "id": "supp-stationary-finite-thickness-v1",
+    "revision": "v1",
+    "field": "物質移動",
+    "prerequisites": [
+      "成分保存",
+      "フィックの法則",
+      "流束の基準"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "applied",
+    "source": {
+      "type": "supplement",
+      "reference": "輸送現象の一般法則と独自の仮想例から作問。原本の翻訳・原図・章末問題ではない。",
+      "chapterId": "ch11",
+      "focusSectionId": "11.5",
+      "guideId": "chapter11-fick-mass"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "執筆原稿・基本算術と構造を確認／包括的品質監査待ち・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "執筆時の定義・収支・基本計算を確認。全問の独立科学監査・原本網羅照合・外部校閲は後工程。"
+      }
+    ],
+    "prompt": "表面組成を変えた有限厚さの板を半無限拡散で近似していた。裏面近くでも組成変化が無視できなくなった。次の判断で適切なのはどれか。",
+    "choices": [
+      "板厚を無視して、必ず定常の一様組成とみなす",
+      "裏面の境界条件を含む有限厚さモデルを検討する",
+      "同じDなら、どの時刻も半無限解を厳密解とする",
+      "裏面への影響を消すため、D_ABをゼロへ変更する"
+    ],
+    "answer": 1,
+    "difficulty": "概念・適用判断",
+    "explanation": "半無限近似は対象時間で遠方が初期状態に近いことを必要とする。裏面の組成/流束等を含む有限領域の非定常問題へ切り替える。",
+    "distractors": [
+      "裏面影響があるだけで一様定常とは決まらない。",
+      "正解。半無限の遠方条件が満たせるかを再検討した。",
+      "D一定だけでは裏面無影響を保証しない。",
+      "物性を都合で変えて近似誤差を隠せない。"
+    ],
+    "hints": [
+      "半無限解の遠方条件を確認。",
+      "実際の裏面が供給・遮断する条件を調べる。"
+    ],
+    "solutionSteps": [
+      "裏面影響を評価。",
+      "近似の限界を記録。",
+      "有限領域の条件を含める。"
+    ],
+    "beginnerPitfall": "解が計算できても幾何と境界の適用を確認する。"
+  },
+  {
+    "id": "supp-lowrate-coefficient-basis-v1",
+    "revision": "v1",
+    "field": "物質移動",
+    "prerequisites": [
+      "成分保存",
+      "フィックの法則",
+      "流束の基準"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "輸送現象の一般法則と独自の仮想例から作問。原本の翻訳・原図・章末問題ではない。",
+      "chapterId": "ch11",
+      "focusSectionId": "11.6",
+      "guideId": "chapter11-fick-mass"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "執筆原稿・基本算術と構造を確認／包括的品質監査待ち・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "執筆時の定義・収支・基本計算を確認。全問の独立科学監査・原本網羅照合・外部校閲は後工程。"
+      }
+    ],
+    "prompt": "低移動率モデルでk_c=0.0060 m/s、表面と主流のモル濃度差1.5 mol/m³。N_A=k_cΔC_Aはいくらか。",
+    "choices": [
+      "2.5×10² mol/(m²·s)",
+      "9.0×10⁻³ kg/(m²·s)",
+      "9.0×10⁻³ mol/(m²·s)",
+      "4.0×10⁻³ mol/(m²·s)"
+    ],
+    "answer": 2,
+    "difficulty": "標準・数値計算",
+    "explanation": "N_A=0.0060×1.5=0.0090 mol/(m²·s)。m/s×mol/m³=mol/(m²·s)。質量へ直すには成分モル質量を使う。",
+    "distractors": [
+      "濃度差を係数で割った。",
+      "モル濃度基準なのに質量流束の単位へ変えた。",
+      "正解。モル濃度差に対応する係数を掛けた。",
+      "濃度差を掛けず割った。"
+    ],
+    "hints": [
+      "係数の定義と駆動力の基準を合わせる。",
+      "単位の積を確認。"
+    ],
+    "solutionSteps": [
+      "0.0060×1.5。",
+      "数値0.0090。",
+      "モル流束単位を付ける。"
+    ],
+    "beginnerPitfall": "係数と駆動力の質量/モル基準を合わせる。"
+  },
+  {
+    "id": "supp-lowrate-sherwood-to-k-v1",
+    "revision": "v1",
+    "field": "物質移動",
+    "prerequisites": [
+      "成分保存",
+      "フィックの法則",
+      "流束の基準"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "輸送現象の一般法則と独自の仮想例から作問。原本の翻訳・原図・章末問題ではない。",
+      "chapterId": "ch11",
+      "focusSectionId": "11.6",
+      "guideId": "chapter11-fick-mass"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "執筆原稿・基本算術と構造を確認／包括的品質監査待ち・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "執筆時の定義・収支・基本計算を確認。全問の独立科学監査・原本網羅照合・外部校閲は後工程。"
+      }
+    ],
+    "prompt": "長さL=0.50 m、D_AB=2.0×10⁻⁵ m²/s、平均Sh_L=155.77。平均係数k̄_c=Sh_LD_AB/Lはどれか。有効数字3桁。",
+    "choices": [
+      "1.56×10⁻³ m/s",
+      "3.89×10⁶ m/s",
+      "1.56×10² m/s",
+      "6.23×10⁻³ m/s"
+    ],
+    "answer": 3,
+    "difficulty": "標準・数値計算",
+    "explanation": "k̄_c=155.77×2.0×10⁻⁵/0.50=0.0062308 m/s。Shは無次元、k_cはm/s。",
+    "distractors": [
+      "長さを割らず掛けた。",
+      "Dを分子から分母へ移した。",
+      "無次元Shの数値をそのまま係数とした。",
+      "正解。Shを物理的な係数へ逆換算した。"
+    ],
+    "hints": [
+      "Sh=k_cL/Dを変形。",
+      "D/Lの単位はm/s。"
+    ],
+    "solutionSteps": [
+      "ShDを計算。",
+      "Lで割る。",
+      "6.23×10⁻³ m/s。"
+    ],
+    "beginnerPitfall": "無次元数と次元付き係数を区別する。"
+  },
+  {
+    "id": "supp-lowrate-re-sc-v1",
+    "revision": "v1",
+    "field": "物質移動",
+    "prerequisites": [
+      "成分保存",
+      "フィックの法則",
+      "流束の基準"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "輸送現象の一般法則と独自の仮想例から作問。原本の翻訳・原図・章末問題ではない。",
+      "chapterId": "ch11",
+      "focusSectionId": "11.6",
+      "guideId": "chapter11-fick-mass"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "執筆原稿・基本算術と構造を確認／包括的品質監査待ち・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "執筆時の定義・収支・基本計算を確認。全問の独立科学監査・原本網羅照合・外部校閲は後工程。"
+      }
+    ],
+    "prompt": "主流U=2.0 m/s、平板長さL=0.50 m、ν=1.5×10⁻⁵、D_AB=2.0×10⁻⁵ m²/s。Re_L=UL/νとSc=ν/D_ABの組合せはどれか。",
+    "choices": [
+      "Re_L≈6.67×10⁴、Sc=0.75",
+      "Re_L≈5.00×10⁴、Sc=1.33",
+      "Re_L≈6.67×10⁴、Sc=1.33",
+      "Re_L≈5.00×10⁴、Sc=0.75"
+    ],
+    "answer": 0,
+    "difficulty": "標準・数値計算",
+    "explanation": "Re_L=1.0/(1.5×10⁻⁵)=66666.7、Sc=1.5/2.0=0.75。いずれも無次元。物性は同じ代表状態で評価する。",
+    "distractors": [
+      "正解。Reにν、Scにν/Dを使った。",
+      "Reの分母をDにしScも逆にした。",
+      "Scの比を逆にした。",
+      "ReにνでなくDを用いた。"
+    ],
+    "hints": [
+      "Reは運動量拡散との比。",
+      "Scの分子はν。"
+    ],
+    "solutionSteps": [
+      "UL=1.0 m²/s。",
+      "νで割りRe。",
+      "ν/D=0.75。"
+    ],
+    "beginnerPitfall": "Scと逆数、Reと物質移流の比を混ぜない。"
+  },
+  {
+    "id": "supp-lowrate-average-local-v1",
+    "revision": "v1",
+    "field": "物質移動",
+    "prerequisites": [
+      "成分保存",
+      "フィックの法則",
+      "流束の基準"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "applied",
+    "source": {
+      "type": "supplement",
+      "reference": "輸送現象の一般法則と独自の仮想例から作問。原本の翻訳・原図・章末問題ではない。",
+      "chapterId": "ch11",
+      "focusSectionId": "11.6",
+      "guideId": "chapter11-fick-mass"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "執筆原稿・基本算術と構造を確認／包括的品質監査待ち・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "執筆時の定義・収支・基本計算を確認。全問の独立科学監査・原本網羅照合・外部校閲は後工程。"
+      }
+    ],
+    "prompt": "平板層流・表面濃度一定で局所係数k_c(x)=C/√xとする。同じ長さLの面平均係数k̄_cと下流端の局所係数k_c(L)の関係はどれか。",
+    "choices": [
+      "k̄_c=4k_c(L)となる",
+      "k̄_c=2k_c(L)となる",
+      "k̄_c=k_c(L)となる",
+      "k̄_c=k_c(L)/2となる"
+    ],
+    "answer": 1,
+    "difficulty": "概念・適用判断",
+    "explanation": "k̄_c=(1/L)×2C√L=2C/√L=2k_c(L)。同じ条件での局所0.332と平均0.664の違いに対応する。",
+    "distractors": [
+      "積分の倍率をさらに二重に掛けた。",
+      "正解。平均(1/L)∫₀ᴸ Cx⁻¹/²dxを計算した。",
+      "位置依存を無視して末端を代表値とした。",
+      "積分で得る倍率2を逆にした。"
+    ],
+    "hints": [
+      "面平均は長さ方向の積分。",
+      "∫x⁻¹/²dx=2√x。"
+    ],
+    "solutionSteps": [
+      "0〜Lで積分。",
+      "長さLで割る。",
+      "末端値の2倍。"
+    ],
+    "beginnerPitfall": "局所係数と面平均係数を混ぜない。"
+  },
+  {
+    "id": "supp-lowrate-meaning-v1",
+    "revision": "v1",
+    "field": "物質移動",
+    "prerequisites": [
+      "成分保存",
+      "フィックの法則",
+      "流束の基準"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "conceptual",
+    "source": {
+      "type": "supplement",
+      "reference": "輸送現象の一般法則と独自の仮想例から作問。原本の翻訳・原図・章末問題ではない。",
+      "chapterId": "ch11",
+      "focusSectionId": "11.6",
+      "guideId": "chapter11-fick-mass"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "執筆原稿・基本算術と構造を確認／包括的品質監査待ち・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "執筆時の定義・収支・基本計算を確認。全問の独立科学監査・原本網羅照合・外部校閲は後工程。"
+      }
+    ],
+    "prompt": "対流物質移動のlow ratesについて、本節の近似の意味として適切なのはどれか。",
+    "choices": [
+      "分子拡散係数が必ずゼロとなる低い拡散率",
+      "表面と主流の濃度が必ず等しい低い濃度差",
+      "界面移動が流れ等を強く変えない低い移動率",
+      "主流速度が必ずゼロ近くとなる低い移動速度"
+    ],
+    "answer": 2,
+    "difficulty": "概念・適用判断",
+    "explanation": "主流が速くても移動の影響が弱い場合はある。low ratesを単に外部流速の低速と訳して条件を置き換えない。",
+    "distractors": [
+      "低移動率はDがゼロという定義ではない。",
+      "小さな影響の近似であり駆動力ゼロを要求しない。",
+      "正解。界面の吹出し等が場へ与える影響が小さい近似。",
+      "界面移動率と外部主流速度を同一視した。"
+    ],
+    "hints": [
+      "rateは何の移動率かを考える。",
+      "蒸発による法線流の影響を想像する。"
+    ],
+    "solutionSteps": [
+      "主流と界面移動を分ける。",
+      "場の変化が小さい条件を確認。",
+      "低移動率近似と説明。"
+    ],
+    "beginnerPitfall": "主流の速度と界面を横切る移動率を区別する。"
+  },
+  {
+    "id": "supp-lowrate-correlation-scope-v1",
+    "revision": "v1",
+    "field": "物質移動",
+    "prerequisites": [
+      "成分保存",
+      "フィックの法則",
+      "流束の基準"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "applied",
+    "source": {
+      "type": "supplement",
+      "reference": "輸送現象の一般法則と独自の仮想例から作問。原本の翻訳・原図・章末問題ではない。",
+      "chapterId": "ch11",
+      "focusSectionId": "11.6",
+      "guideId": "chapter11-fick-mass"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "執筆原稿・基本算術と構造を確認／包括的品質監査待ち・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "執筆時の定義・収支・基本計算を確認。全問の独立科学監査・原本網羅照合・外部校閲は後工程。"
+      }
+    ],
+    "prompt": "層流平板・濃度一定・弱い吹出し用のSh̄_L=0.664 Re_L^(1/2)Sc^(1/3)を使おうとしている。適用前に必要な判断はどれか。",
+    "choices": [
+      "Reが正なら、円管や球にも同じ式を使う",
+      "Scが正なら、強い蒸発にも補正なしで使う",
+      "長さが既知なら、乱流でも係数を変えず使う",
+      "幾何・流れ・境界条件・物性範囲を確認する"
+    ],
+    "answer": 3,
+    "difficulty": "概念・適用判断",
+    "explanation": "相関は普遍式ではない。流れの状態、主流と表面条件、吹出し・浮力、物性評価と範囲を確認する。範囲外では別モデルや根拠ある相関を探す。",
+    "distractors": [
+      "正のReだけでは幾何や境界条件は一致しない。",
+      "正のScだけでは吹出しの影響を無視できない。",
+      "乱流と層流では一般に相関の形が異なる。",
+      "正解。相関の成立条件と対象の一致を調べる。"
+    ],
+    "hints": [
+      "相関に付いている前提を読む。",
+      "数値を代入できることと適用可能は別。"
+    ],
+    "solutionSteps": [
+      "対象の幾何を確認。",
+      "流れと境界を確認。",
+      "物性と範囲を確認。"
+    ],
+    "beginnerPitfall": "相関の条件を数値計算の後回しにしない。"
+  },
+  {
+    "id": "supp-lowrate-diffusivity-coefficient-v1",
+    "revision": "v1",
+    "field": "物質移動",
+    "prerequisites": [
+      "成分保存",
+      "フィックの法則",
+      "流束の基準"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "conceptual",
+    "source": {
+      "type": "supplement",
+      "reference": "輸送現象の一般法則と独自の仮想例から作問。原本の翻訳・原図・章末問題ではない。",
+      "chapterId": "ch11",
+      "focusSectionId": "11.6",
+      "guideId": "chapter11-fick-mass"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "執筆原稿・基本算術と構造を確認／包括的品質監査待ち・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "執筆時の定義・収支・基本計算を確認。全問の独立科学監査・原本網羅照合・外部校閲は後工程。"
+      }
+    ],
+    "prompt": "物質移動係数k_c[m/s]と分子拡散係数D_AB[m²/s]の区別として適切なのはどれか。",
+    "choices": [
+      "k_cは流れや形状にも依存し、D_ABと単位も異なる",
+      "k_cとD_ABは同じ物性なので、数値も常に一致する",
+      "D_ABは板長さのみで決まり、物質や状態にはよらない",
+      "k_cは全体の移動率そのものなので、単位はkg/sである"
+    ],
+    "answer": 0,
+    "difficulty": "概念・適用判断",
+    "explanation": "k_cはDも含む輸送問題から得る量で、Sh=k_cL/Dを通じて流れ・形状・境界に関係する。Dの値だけで全体移動率は決まらない。",
+    "distractors": [
+      "正解。係数と物性・単位を分けた。",
+      "流れ依存の係数を分子物性と同じにした。",
+      "Dは物質と状態に依存する物性。",
+      "全移動率は面積と駆動力を含めて求める。"
+    ],
+    "hints": [
+      "各単位を確認。",
+      "係数は流束/駆動力。"
+    ],
+    "solutionSteps": [
+      "m/sとm²/sを比較。",
+      "Shとの関係を考える。",
+      "役割を区別する。"
+    ],
+    "beginnerPitfall": "移動係数と分子拡散係数を同じにしない。"
+  },
+  {
+    "id": "supp-simultaneous-latent-flux-v1",
+    "revision": "v1",
+    "field": "物質移動",
+    "prerequisites": [
+      "成分保存",
+      "フィックの法則",
+      "流束の基準"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "輸送現象の一般法則と独自の仮想例から作問。原本の翻訳・原図・章末問題ではない。",
+      "chapterId": "ch11",
+      "focusSectionId": "11.7",
+      "guideId": "chapter11-fick-mass"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "執筆原稿・基本算術と構造を確認／包括的品質監査待ち・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "執筆時の定義・収支・基本計算を確認。全問の独立科学監査・原本網羅照合・外部校閲は後工程。"
+      }
+    ],
+    "prompt": "質量濃度基準のk_c=0.010 m/s、ρ_As−ρ_A∞=0.010 kg/m³、h_fg=2.4×10⁶ J/kg。低移動率モデルの蒸発流束と潜熱流束の組合せはどれか。",
+    "choices": [
+      "ṁ_A″=1.0 kg/(m²·s)、潜熱2400000 W/m²",
+      "ṁ_A″=1.0×10⁻⁴ kg/(m²·s)、潜熱240 W/m²",
+      "ṁ_A″=1.0×10⁻² kg/(m²·s)、潜熱24000 W/m²",
+      "ṁ_A″=1.0×10⁻⁴ kg/(m²·s)、潜熱2.4 W/m²"
+    ],
+    "answer": 1,
+    "difficulty": "標準・数値計算",
+    "explanation": "ṁ_A″=0.010×0.010=10⁻⁴ kg/(m²·s)。潜熱流束は10⁻⁴×2.4×10⁶=240 W/m²。ここでは質量濃度でありモル濃度ではない。",
+    "distractors": [
+      "濃度差を係数で割り流束とした。",
+      "正解。係数×濃度差で質量流束、その値×潜熱とした。",
+      "濃度差を掛けず係数を流束にした。",
+      "質量流束は合うが潜熱積を100分の1にした。"
+    ],
+    "hints": [
+      "m/s×kg/m³。",
+      "次にJ/kgを掛ける。"
+    ],
+    "solutionSteps": [
+      "質量流束10⁻⁴。",
+      "潜熱を掛ける。",
+      "240 W/m²。"
+    ],
+    "beginnerPitfall": "潜熱と流束のkg基準を揃える。"
+  },
+  {
+    "id": "supp-simultaneous-candidate-balance-v1",
+    "revision": "v1",
+    "field": "物質移動",
+    "prerequisites": [
+      "成分保存",
+      "フィックの法則",
+      "流束の基準"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "輸送現象の一般法則と独自の仮想例から作問。原本の翻訳・原図・章末問題ではない。",
+      "chapterId": "ch11",
+      "focusSectionId": "11.7",
+      "guideId": "chapter11-fick-mass"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "執筆原稿・基本算術と構造を確認／包括的品質監査待ち・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "執筆時の定義・収支・基本計算を確認。全問の独立科学監査・原本網羅照合・外部校閲は後工程。"
+      }
+    ],
+    "prompt": "主流35℃、候補表面23℃、h=20 W/(m²·K)。候補で必要潜熱流束240 W/m²、他の供給・蓄熱なし。供給対流熱から必要潜熱を引いた残差はどれか。",
+    "choices": [
+      "−2.40×10² W/m²",
+      "+9.20×10² W/m²",
+      "+0.00×10² W/m²",
+      "+2.40×10² W/m²"
+    ],
+    "answer": 2,
+    "difficulty": "標準・数値計算",
+    "explanation": "供給20×12=240 W/m²、残差240−240=0。この候補は与えたモデルで収支を満たすが、実在物性からの唯一解とは限らない。",
+    "distractors": [
+      "供給対流熱を数えていない。",
+      "温度差でなく温度の和を使った。",
+      "正解。20×(35−23)−240を計算した。",
+      "必要潜熱を差し引いていない。"
+    ],
+    "hints": [
+      "温度差12 K。",
+      "供給と消費の差を取る。"
+    ],
+    "solutionSteps": [
+      "対流供給240。",
+      "潜熱消費240。",
+      "残差0。"
+    ],
+    "beginnerPitfall": "収支検算と実在物性に基づく温度予測を区別する。"
+  },
+  {
+    "id": "supp-simultaneous-lewis-v1",
+    "revision": "v1",
+    "field": "物質移動",
+    "prerequisites": [
+      "成分保存",
+      "フィックの法則",
+      "流束の基準"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "輸送現象の一般法則と独自の仮想例から作問。原本の翻訳・原図・章末問題ではない。",
+      "chapterId": "ch11",
+      "focusSectionId": "11.7",
+      "guideId": "chapter11-fick-mass"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "執筆原稿・基本算術と構造を確認／包括的品質監査待ち・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "執筆時の定義・収支・基本計算を確認。全問の独立科学監査・原本網羅照合・外部校閲は後工程。"
+      }
+    ],
+    "prompt": "同じ代表状態で熱拡散率α=2.0×10⁻⁵、物質拡散係数D_AB=2.5×10⁻⁵ m²/s。Le=α/D_ABはいくらか。",
+    "choices": [
+      "1.25",
+      "0.50",
+      "5.0",
+      "0.80"
+    ],
+    "answer": 3,
+    "difficulty": "標準・数値計算",
+    "explanation": "Le=(2.0×10⁻⁵)/(2.5×10⁻⁵)=0.80。無次元であり、熱と物質の拡散性を比較する。",
+    "distractors": [
+      "Lewis数を逆数にした。",
+      "与えた二物性の比を取り違えた。",
+      "指数又は係数の計算を取り違えた。",
+      "正解。熱と物質の拡散係数の比を取った。"
+    ],
+    "hints": [
+      "Leの分子はα。",
+      "共通の10⁻⁵を消す。"
+    ],
+    "solutionSteps": [
+      "2.0/2.5。",
+      "0.80。",
+      "無次元。"
+    ],
+    "beginnerPitfall": "Lewis数の逆数と混ぜない。"
+  },
+  {
+    "id": "supp-simultaneous-analogy-units-v1",
+    "revision": "v1",
+    "field": "物質移動",
+    "prerequisites": [
+      "成分保存",
+      "フィックの法則",
+      "流束の基準"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "applied",
+    "source": {
+      "type": "supplement",
+      "reference": "輸送現象の一般法則と独自の仮想例から作問。原本の翻訳・原図・章末問題ではない。",
+      "chapterId": "ch11",
+      "focusSectionId": "11.7",
+      "guideId": "chapter11-fick-mass"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "執筆原稿・基本算術と構造を確認／包括的品質監査待ち・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "執筆時の定義・収支・基本計算を確認。全問の独立科学監査・原本網羅照合・外部校閲は後工程。"
+      }
+    ],
+    "prompt": "Le=1で熱・物質移動類推が成立すると仮定する。ρ=1.2 kg/m³、c_p=1000 J/(kg·K)、k_c=0.010 m/sなら、h≈ρc_p k_cはどれか。",
+    "choices": [
+      "1.20×10¹ W/(m²·K)",
+      "1.00×10⁻² W/(m²·K)",
+      "1.20×10³ W/(m²·K)",
+      "1.20×10⁻³ W/(m²·K)"
+    ],
+    "answer": 0,
+    "difficulty": "概念・適用判断",
+    "explanation": "h≈1.2×1000×0.010=12 W/(m²·K)。Le=1だけで任意の場に成り立つわけではなく、類推の成立条件を別に要する。",
+    "distractors": [
+      "正解。単位を含めρc_pを掛けた。",
+      "単位の違うhとk_cを数値だけ等置した。",
+      "k_cを掛けていない。",
+      "k_cの代わりに小さすぎる係数を掛けた。"
+    ],
+    "hints": [
+      "hとk_cは単位が違う。",
+      "ρc_pの体積熱容量を使う。"
+    ],
+    "solutionSteps": [
+      "ρc_p=1200 J/(m³·K)。",
+      "k_cを掛ける。",
+      "h≈12 W/(m²·K)。"
+    ],
+    "beginnerPitfall": "hとk_cを数値のみで同じにしない。"
+  },
+  {
+    "id": "supp-simultaneous-saturation-closure-v1",
+    "revision": "v1",
+    "field": "物質移動",
+    "prerequisites": [
+      "成分保存",
+      "フィックの法則",
+      "流束の基準"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "applied",
+    "source": {
+      "type": "supplement",
+      "reference": "輸送現象の一般法則と独自の仮想例から作問。原本の翻訳・原図・章末問題ではない。",
+      "chapterId": "ch11",
+      "focusSectionId": "11.7",
+      "guideId": "chapter11-fick-mass"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "執筆原稿・基本算術と構造を確認／包括的品質監査待ち・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "執筆時の定義・収支・基本計算を確認。全問の独立科学監査・原本網羅照合・外部校閲は後工程。"
+      }
+    ],
+    "prompt": "候補表面温度で与えた濃度と係数を使い、蒸発と熱供給が釣り合った。実在物質の界面温度を一意に予測するために、さらに必要な情報はどれか。",
+    "choices": [
+      "潜熱をゼロにし、温度を主流へ固定する規則",
+      "温度に応じた平衡濃度や物性・他の熱経路",
+      "候補で残差ゼロなら、追加情報は常に不要",
+      "表面濃度を温度によらず任意に増す規則"
+    ],
+    "answer": 1,
+    "difficulty": "概念・適用判断",
+    "explanation": "ρ_As(T_s)等の平衡関係、温度依存物性、圧力、液側伝熱や放射など対象の条件を定める。候補の検算と、関数を使い未知T_sを解く問題を分ける。",
+    "distractors": [
+      "蒸発の潜熱と冷却を消して別モデルへ変えた。",
+      "正解。熱収支と物質移動式を物性で閉じる情報が必要。",
+      "仮想の一点検算を実在の唯一解の証明に広げた。",
+      "根拠ない濃度設定で予測を閉じられない。"
+    ],
+    "hints": [
+      "表面温度が変わると飽和濃度も変わる。",
+      "一つの点と全体の関数は異なる。"
+    ],
+    "solutionSteps": [
+      "未知温度を定める関数を列挙。",
+      "熱と物質の式を連立。",
+      "条件と解の範囲を検証。"
+    ],
+    "beginnerPitfall": "仮想入力の整合を実在物性の確定としない。"
+  },
+  {
+    "id": "supp-simultaneous-wetbulb-dewpoint-v1",
+    "revision": "v1",
+    "field": "物質移動",
+    "prerequisites": [
+      "成分保存",
+      "フィックの法則",
+      "流束の基準"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "conceptual",
+    "source": {
+      "type": "supplement",
+      "reference": "輸送現象の一般法則と独自の仮想例から作問。原本の翻訳・原図・章末問題ではない。",
+      "chapterId": "ch11",
+      "focusSectionId": "11.7",
+      "guideId": "chapter11-fick-mass"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "執筆原稿・基本算術と構造を確認／包括的品質監査待ち・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "執筆時の定義・収支・基本計算を確認。全問の独立科学監査・原本網羅照合・外部校閲は後工程。"
+      }
+    ],
+    "prompt": "蒸発冷却の湿球温度と、同じ気体の露点温度の区別として適切なのはどれか。",
+    "choices": [
+      "湿球は必ず沸点、露点は必ず凝固点となる温度である",
+      "両者は熱伝達率だけで決まり、組成情報を必要としない",
+      "湿球は熱・物質移動の収支、露点は飽和到達で定まる",
+      "両者は定義が同じで、全ての湿度で同じ温度になる"
+    ],
+    "answer": 2,
+    "difficulty": "概念・適用判断",
+    "explanation": "湿球は濡れ面の蒸発冷却による収支に関係し、露点は通常、圧力と水蒸気量を保って冷やすと飽和へ達する温度。飽和時等に一致しても一般に同じではない。",
+    "distractors": [
+      "沸騰・凝固という別現象の温度と混同した。",
+      "湿度や組成が飽和・物質移動に関係する。",
+      "正解。蒸発面のエネルギー収支と冷却による飽和条件を区別した。",
+      "異なる定義を同一視した。"
+    ],
+    "hints": [
+      "濡れ面からの蒸発と、気体を冷やす操作を分ける。",
+      "飽和時だけの一致を一般化しない。"
+    ],
+    "solutionSteps": [
+      "湿球の収支条件を確認。",
+      "露点の飽和条件を確認。",
+      "二つの定義を区別。"
+    ],
+    "beginnerPitfall": "名称の似た湿度関連の温度を同一視しない。"
+  },
+  {
+    "id": "supp-simultaneous-molar-latent-basis-v1",
+    "revision": "v1",
+    "field": "物質移動",
+    "prerequisites": [
+      "成分保存",
+      "フィックの法則",
+      "流束の基準"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "conceptual",
+    "source": {
+      "type": "supplement",
+      "reference": "輸送現象の一般法則と独自の仮想例から作問。原本の翻訳・原図・章末問題ではない。",
+      "chapterId": "ch11",
+      "focusSectionId": "11.7",
+      "guideId": "chapter11-fick-mass"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "執筆原稿・基本算術と構造を確認／包括的品質監査待ち・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "執筆時の定義・収支・基本計算を確認。全問の独立科学監査・原本網羅照合・外部校閲は後工程。"
+      }
+    ],
+    "prompt": "モル蒸発流束N_A[mol/(m²·s)]から、質量基準潜熱h_fg[J/kg]による必要熱流束を求める。正しい組合せはどれか。",
+    "choices": [
+      "N_A h_fg、M_Aは不要で単位も揃う",
+      "N_A h_fg/M_A、M_Aの単位はkg/mol",
+      "N_A M_A/h_fg、M_Aの単位はkg/mol",
+      "N_A M_A h_fg、M_Aの単位はkg/mol"
+    ],
+    "answer": 3,
+    "difficulty": "概念・適用判断",
+    "explanation": "N_A M_Aがkg/(m²·s)、それにh_fg[J/kg]を掛ければJ/(m²·s)=W/m²。モル潜熱[J/mol]を使う場合とは式を分ける。",
+    "distractors": [
+      "molとkgが打ち消されずW/m²にならない。",
+      "M_Aを掛けるべき所で割った。",
+      "潜熱を掛けず割り、熱流束の次元にならない。",
+      "正解。モルを質量へ換算してからJ/kgを掛ける。"
+    ],
+    "hints": [
+      "molをkgへ直す必要がある。",
+      "各単位を順に打ち消す。"
+    ],
+    "solutionSteps": [
+      "N_AにM_Aを掛ける。",
+      "質量流束へh_fgを掛ける。",
+      "W/m²を確認。"
+    ],
+    "beginnerPitfall": "質量基準とモル基準の潜熱を混ぜない。"
   }
 ]
