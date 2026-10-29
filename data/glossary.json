@@ -11663,5 +11663,392 @@
       "reference": "第7章の円管内流動・摩擦損失・乱流伝熱の一般理論を独立記述。式の適用範囲はIAEA Sodium Coolant Handbook, 2025（https://www-pub.iaea.org/MTCD/Publications/PDF/CRCP_SOD_003web.pdf）およびORNL/TM-2015/656のGnielinski相関（https://www.comsol.jp/paper/download/298121/Pub59883.pdf）も参考に確認。原書の翻訳・図版転載ではなく専門家校閲前。"
     },
     "reviewStatus": "needs_review"
+  },
+  {
+    "id": "mass-to-mole-fraction-conversion",
+    "ja": "質量分率とモル分率の換算",
+    "en": "mass-to-mole fraction conversion",
+    "aliases": [
+      "質量基準とモル基準の組成換算"
+    ],
+    "category": "拡散・物質移動",
+    "brief": "混合物の成分の質量割合と物質量割合を、各成分のモル質量を使って相互に変換すること。",
+    "meaning": "混合物の成分の質量割合と物質量割合を、各成分のモル質量を使って相互に変換すること。",
+    "beginner": "分子一つが重い物質は、同じ質量でも分子の数が少なくなります。質量の割合とモル数の割合を変えるときは分子の重さを使います。",
+    "detail": "各成分の質量分率w_i、モル質量M_iに対し、モル分率x_i=(w_i/M_i)/Σ_j(w_j/M_j)と表せる。逆方向はw_i=x_iM_i/Σ_j(x_jM_j)。すべてのM_iを同じ質量/モル単位に統一する。多成分系でw_i=x_iと置くことは、成分モル質量が等しい特殊な場合を除いて正しくない。",
+    "formula": "x_i=(w_i/M_i)/Σ_j(w_j/M_j)",
+    "unit": "x_i,w_i: 無次元、M_i: kg/molまたはg/mol（全成分同単位）",
+    "example": "Aの質量分率0.50・モル質量20 g/mol、Bの質量分率0.50・モル質量40 g/molならモル分率x_A=2/3、x_B=1/3。",
+    "related": [
+      "質量分率",
+      "モル分率",
+      "混合物の平均モル質量"
+    ],
+    "relatedSections": [
+      "11.2",
+      "11.10"
+    ],
+    "relatedQuestions": [],
+    "relatedSimulators": [],
+    "confusions": [
+      "質量比50:50の混合物でモル分率も50:50とは限らない。"
+    ],
+    "source": {
+      "type": "supplement",
+      "reference": "第11章の混合物組成・拡散と多孔質媒体の基礎概念を、一般的な物質移動理論に基づき独立執筆した補足。クヌーセン拡散式はSpringer Adsorption (2021) https://doi.org/10.1007/s10450-021-00314-y の式を参考に適用前提を確認した。原書翻訳・図版の転載ではなく専門家校閲前。"
+    },
+    "reviewStatus": "needs_review"
+  },
+  {
+    "id": "mixture-average-molar-mass",
+    "ja": "混合物の平均モル質量",
+    "en": "mean molar mass of a mixture",
+    "aliases": [
+      "混合物の平均分子量"
+    ],
+    "category": "拡散・物質移動",
+    "brief": "混合物全体の質量を全物質量で割った、混合組成に応じた代表モル質量。",
+    "meaning": "混合物全体の質量を全物質量で割った、混合組成に応じた代表モル質量。",
+    "beginner": "軽い分子と重い分子が混ざると、混合物全体で1モル当たり何グラムになるかが変わります。",
+    "detail": "多成分混合物の平均モル質量M̄=m_total/n_total=Σ_i x_i M_iで、x_iはモル分率。質量分率から求めると1/M̄=Σ_i(w_i/M_i)。理想気体の密度をρ=pM̄/(RT)と表す際にはM̄をkg/molに変換する。質量分率でM_iを単純に算術平均する方法は一般に誤り。",
+    "formula": "M̄=Σ_i x_iM_i、1/M̄=Σ_i(w_i/M_i)",
+    "unit": "M̄,M_i: kg/mol（またはg/molを統一）、x_i,w_i: 無次元",
+    "example": "モル分率x_A=0.25、x_B=0.75、モル質量M_A=20、M_B=40 g/molなら平均モル質量は35 g/mol。",
+    "related": [
+      "モル分率",
+      "質量分率",
+      "理想混合気体の密度"
+    ],
+    "relatedSections": [
+      "11.2",
+      "11.10"
+    ],
+    "relatedQuestions": [],
+    "relatedSimulators": [],
+    "confusions": [
+      "平均モル質量はモル分率で加重平均し、質量分率での単純平均とは異なる。"
+    ],
+    "source": {
+      "type": "supplement",
+      "reference": "第11章の混合物組成・拡散と多孔質媒体の基礎概念を、一般的な物質移動理論に基づき独立執筆した補足。クヌーセン拡散式はSpringer Adsorption (2021) https://doi.org/10.1007/s10450-021-00314-y の式を参考に適用前提を確認した。原書翻訳・図版の転載ではなく専門家校閲前。"
+    },
+    "reviewStatus": "needs_review"
+  },
+  {
+    "id": "diffusion-characteristic-time",
+    "ja": "物質拡散の特性時間",
+    "en": "diffusion characteristic time",
+    "aliases": [
+      "濃度拡散時間尺度"
+    ],
+    "category": "拡散・物質移動",
+    "brief": "物質の拡散係数と代表長さから見積もる、濃度差が広がる時間の尺度。",
+    "meaning": "物質の拡散係数と代表長さから見積もる、濃度差が広がる時間の尺度。",
+    "beginner": "厚い膜ほど、成分が片側から反対側まで広がるには時間がかかります。距離の二乗と拡散係数の比で目安を求めます。",
+    "detail": "一定拡散係数D_ABの分子拡散について、代表長さLの濃度変化が広がる時間尺度はt_D=L²/D_AB。熱伝導の熱拡散時間L²/αと式の形は同じであるが、拡散させる物性と境界条件が異なる。t_Dは特定の濃度値へ到達する厳密な時刻ではなく、形状・境界・流体の移流があれば実際の応答は変わる。",
+    "formula": "t_D=L²/D_AB",
+    "unit": "t_D: s、L: m、D_AB: m²/s",
+    "example": "L=0.001 m、D_AB=1×10⁻⁹ m²/sなら特性時間t_D=1000 s。",
+    "related": [
+      "物質拡散係数",
+      "熱拡散の特性時間",
+      "フィックの法則"
+    ],
+    "relatedSections": [
+      "11.3",
+      "11.5"
+    ],
+    "relatedQuestions": [],
+    "relatedSimulators": [],
+    "confusions": [
+      "拡散時間尺度は、実際に全分子が移動し終わる時刻を意味しない。"
+    ],
+    "source": {
+      "type": "supplement",
+      "reference": "第11章の混合物組成・拡散と多孔質媒体の基礎概念を、一般的な物質移動理論に基づき独立執筆した補足。クヌーセン拡散式はSpringer Adsorption (2021) https://doi.org/10.1007/s10450-021-00314-y の式を参考に適用前提を確認した。原書翻訳・図版の転載ではなく専門家校閲前。"
+    },
+    "reviewStatus": "needs_review"
+  },
+  {
+    "id": "knudsen-number-pores",
+    "ja": "クヌーセン数（細孔）",
+    "en": "Knudsen number for gas transport in pores",
+    "aliases": [
+      "細孔クヌーセン数"
+    ],
+    "category": "拡散・物質移動",
+    "brief": "気体分子の平均自由行程と細孔の代表径を比べ、壁衝突と分子間衝突の重要度を示す無次元数。",
+    "meaning": "気体分子の平均自由行程と細孔の代表径を比べ、壁衝突と分子間衝突の重要度を示す無次元数。",
+    "beginner": "細い穴の中では、気体分子はほかの分子より穴の壁にぶつかることが多くなります。どちらの衝突が主かを判断する数です。",
+    "detail": "細孔径d_pと気体分子の平均自由行程λを用いてKn=λ/d_pと定義することが多い。Knが十分大きい場合には壁との衝突に支配されるクヌーセン拡散が重要で、小さい場合は分子間衝突の通常拡散や粘性流が重要となる。代表長さとして径か半径かで数値が変わるため、各相関の定義を照合する。",
+    "formula": "Kn=λ/d_p（細孔径基準）",
+    "unit": "Kn: 無次元、λ,d_p: m",
+    "example": "分子平均自由行程λ=100 nm、細孔径d_p=20 nmならKn=5。",
+    "related": [
+      "クヌーセン拡散",
+      "物質拡散係数",
+      "多孔質体の空隙率"
+    ],
+    "relatedSections": [
+      "11.5",
+      "11.10"
+    ],
+    "relatedQuestions": [],
+    "relatedSimulators": [],
+    "confusions": [
+      "Knの代表長さを細孔径とするか半径とするかで数値が変わる。"
+    ],
+    "source": {
+      "type": "supplement",
+      "reference": "第11章の混合物組成・拡散と多孔質媒体の基礎概念を、一般的な物質移動理論に基づき独立執筆した補足。クヌーセン拡散式はSpringer Adsorption (2021) https://doi.org/10.1007/s10450-021-00314-y の式を参考に適用前提を確認した。原書翻訳・図版の転載ではなく専門家校閲前。"
+    },
+    "reviewStatus": "needs_review"
+  },
+  {
+    "id": "knudsen-diffusion",
+    "ja": "クヌーセン拡散",
+    "en": "Knudsen diffusion",
+    "aliases": [
+      "細孔内クヌーセン拡散"
+    ],
+    "category": "拡散・物質移動",
+    "brief": "細い細孔内で気体分子と壁の衝突が主となる拡散。",
+    "meaning": "細い細孔内で気体分子と壁の衝突が主となる拡散。",
+    "beginner": "空気の分子同士がぶつかるより、細い穴の壁にぶつかることが多いときの、気体の動き方です。",
+    "detail": "理想気体分子が長く滑らかな円筒細孔を通り、壁衝突が主で分子間衝突が比較的少ない場合、D_K=(d_p/3)√(8RT/(πM))というクヌーセン拡散係数の近似式が使われる。d_pは細孔径、Mはkg/molのモル質量。多孔質体全体の有効拡散には空隙率・屈曲度・孔径分布を別途考える。吸着・表面拡散・粘性流を無条件で含まない。",
+    "formula": "D_K=(d_p/3)√(8RT/(πM))",
+    "unit": "D_K: m²/s、d_p: m、T: K、M: kg/mol",
+    "example": "同じ温度・分子種の理想円筒細孔では、細孔径を20 nmから40 nmに2倍にするとD_Kも2倍になる。",
+    "related": [
+      "クヌーセン数（細孔）",
+      "物質拡散係数",
+      "多孔質体の有効拡散係数"
+    ],
+    "relatedSections": [
+      "11.5",
+      "11.10"
+    ],
+    "relatedQuestions": [],
+    "relatedSimulators": [],
+    "confusions": [
+      "クヌーセン拡散は分子間衝突主体の通常の分子拡散とは機構が異なる。"
+    ],
+    "source": {
+      "type": "supplement",
+      "reference": "第11章の混合物組成・拡散と多孔質媒体の基礎概念を、一般的な物質移動理論に基づき独立執筆した補足。クヌーセン拡散式はSpringer Adsorption (2021) https://doi.org/10.1007/s10450-021-00314-y の式を参考に適用前提を確認した。原書翻訳・図版の転載ではなく専門家校閲前。"
+    },
+    "reviewStatus": "needs_review"
+  },
+  {
+    "id": "porous-medium-porosity",
+    "ja": "多孔質体の空隙率",
+    "en": "porosity of a porous medium",
+    "aliases": [
+      "細孔空隙率"
+    ],
+    "category": "拡散・物質移動",
+    "brief": "多孔質材料の全体積に占める空隙体積の割合。",
+    "meaning": "多孔質材料の全体積に占める空隙体積の割合。",
+    "beginner": "スポンジや多孔質膜の内部で、固体ではなく空気や液体が入れる部分がどれほどあるかを示します。",
+    "detail": "多孔質材料の代表体積V_totalに対し、空隙の体積V_poreを用いてε_p=V_pore/V_totalと定義する。空隙の総量が大きくても細孔が閉じている場合には通過拡散に寄与しないため、連結した開放細孔率との違いが重要。熱放射の放射率εと同じギリシャ文字が使われ得るが、物理量は異なる。",
+    "formula": "ε_p=V_pore/V_total",
+    "unit": "ε_p: 無次元、V_pore,V_total: m³",
+    "example": "材料全体100 cm³のうち連結した空隙が30 cm³ならその空隙体積率は0.30。",
+    "related": [
+      "多孔質体の有効拡散係数",
+      "クヌーセン拡散",
+      "密度"
+    ],
+    "relatedSections": [
+      "11.5",
+      "11.10"
+    ],
+    "relatedQuestions": [],
+    "relatedSimulators": [],
+    "confusions": [
+      "空隙率は放射率と異なり、また閉鎖孔も含む総空隙率と連結した開放孔率は一致しない。"
+    ],
+    "source": {
+      "type": "supplement",
+      "reference": "第11章の混合物組成・拡散と多孔質媒体の基礎概念を、一般的な物質移動理論に基づき独立執筆した補足。クヌーセン拡散式はSpringer Adsorption (2021) https://doi.org/10.1007/s10450-021-00314-y の式を参考に適用前提を確認した。原書翻訳・図版の転載ではなく専門家校閲前。"
+    },
+    "reviewStatus": "needs_review"
+  },
+  {
+    "id": "porous-medium-tortuosity",
+    "ja": "細孔の屈曲度",
+    "en": "pore tortuosity",
+    "aliases": [
+      "多孔質流路の屈曲度"
+    ],
+    "category": "拡散・物質移動",
+    "brief": "多孔質材料内の分子が進む道が直線より長く曲がりくねっている程度を表す量。",
+    "meaning": "多孔質材料内の分子が進む道が直線より長く曲がりくねっている程度を表す量。",
+    "beginner": "スポンジ内部の細い通路が曲がっているほど、まっすぐ進むより長い距離を移動することになります。",
+    "detail": "幾何学的な屈曲度は実際の細孔経路長L_pathと材料厚さLの比τ_g=L_path/Lなどで定義される。拡散の有効係数に現れる屈曲度因子τ_Dは流路の接続や収縮の効果も含む場合があり、τ_gやτ_g²のどちらを使うかは文献で異なる。D_eff=ε_p D/τ_Dを使う場合はτ_Dをその式の拡散抵抗因子として定義してから使う。",
+    "formula": "τ_g=L_path/L（幾何学的定義の一例）",
+    "unit": "τ_g,τ_D: 無次元、L_path,L: m",
+    "example": "直線距離1 mmの膜を分子が平均1.5 mmの経路で通るなら、幾何学的屈曲度は1.5。",
+    "related": [
+      "多孔質体の空隙率",
+      "多孔質体の有効拡散係数",
+      "物質拡散係数"
+    ],
+    "relatedSections": [
+      "11.5",
+      "11.10"
+    ],
+    "relatedQuestions": [],
+    "relatedSimulators": [],
+    "confusions": [
+      "屈曲度の定義は文献で複数あり、幾何学的値と有効拡散式の係数を無条件に同一視しない。"
+    ],
+    "source": {
+      "type": "supplement",
+      "reference": "第11章の混合物組成・拡散と多孔質媒体の基礎概念を、一般的な物質移動理論に基づき独立執筆した補足。クヌーセン拡散式はSpringer Adsorption (2021) https://doi.org/10.1007/s10450-021-00314-y の式を参考に適用前提を確認した。原書翻訳・図版の転載ではなく専門家校閲前。"
+    },
+    "reviewStatus": "needs_review"
+  },
+  {
+    "id": "effective-diffusion-porous-medium",
+    "ja": "多孔質体の有効拡散係数",
+    "en": "effective diffusivity in a porous medium",
+    "aliases": [
+      "多孔質拡散の実効係数"
+    ],
+    "category": "拡散・物質移動",
+    "brief": "細孔が占める割合や流路の屈曲を含めて、材料全体を通る見かけの拡散の速さを示す係数。",
+    "meaning": "細孔が占める割合や流路の屈曲を含めて、材料全体を通る見かけの拡散の速さを示す係数。",
+    "beginner": "多孔質膜にはたくさんの穴があっても、穴の全部が真っすぐ通っているわけではありません。その影響を含めた拡散のしやすさです。",
+    "detail": "単純な均質多孔質モデルではD_eff≈(ε_p/τ_D)D_poreと近似する。ε_pは連結細孔に対応する空隙率、τ_Dは採用した有効拡散抵抗因子の定義、D_poreは細孔中の拡散係数。異なる拡散機構、孔径分布、閉鎖孔、吸着、反応、異方性がある場合は単一スカラーの式で精度よく表せないこともある。",
+    "formula": "D_eff≈(ε_p/τ_D)D_pore（τ_Dの定義を明示）",
+    "unit": "D_eff,D_pore: m²/s、ε_p,τ_D: 無次元",
+    "example": "ε_p=0.40、τ_D=2、細孔中のD_pore=1×10⁻⁵ m²/sならD_eff≈2×10⁻⁶ m²/s。",
+    "related": [
+      "多孔質体の空隙率",
+      "細孔の屈曲度",
+      "クヌーセン拡散",
+      "物質拡散係数"
+    ],
+    "relatedSections": [
+      "11.5",
+      "11.10"
+    ],
+    "relatedQuestions": [],
+    "relatedSimulators": [],
+    "confusions": [
+      "屈曲度にτを使う文献によっては分母がτ²になる定義があるので必ず確認する。"
+    ],
+    "source": {
+      "type": "supplement",
+      "reference": "第11章の混合物組成・拡散と多孔質媒体の基礎概念を、一般的な物質移動理論に基づき独立執筆した補足。クヌーセン拡散式はSpringer Adsorption (2021) https://doi.org/10.1007/s10450-021-00314-y の式を参考に適用前提を確認した。原書翻訳・図版の転載ではなく専門家校閲前。"
+    },
+    "reviewStatus": "needs_review"
+  },
+  {
+    "id": "bosanquet-diffusion-approximation",
+    "ja": "ボサンケ近似（拡散）",
+    "en": "Bosanquet approximation for diffusion",
+    "aliases": [
+      "Bosanquet近似"
+    ],
+    "category": "拡散・物質移動",
+    "brief": "分子間衝突による拡散と壁面衝突による拡散の抵抗を逆数で加算する近似。",
+    "meaning": "分子間衝突による拡散と壁面衝突による拡散の抵抗を逆数で加算する近似。",
+    "beginner": "細孔内で分子同士にも壁にもぶつかる場合、それぞれの動きにくさを足し合わせて拡散の速さを見積もります。",
+    "detail": "長い単純細孔の希薄気体で、通常の分子拡散係数D_ABとクヌーセン拡散係数D_Kの寄与を1/D_comb≈1/D_AB+1/D_Kとして組み合わせるボサンケ近似がある。気体流れ・吸着・濃度依存・多成分相互拡散が強い場合は単純な調和和で厳密に記述できない。材料全体では別途空隙率や屈曲度を考慮する。",
+    "formula": "1/D_comb≈1/D_AB+1/D_K",
+    "unit": "D_comb,D_AB,D_K: m²/s",
+    "example": "D_AB=2×10⁻⁵ m²/s、D_K=2×10⁻⁵ m²/sなら合成拡散係数は1×10⁻⁵ m²/s。",
+    "related": [
+      "クヌーセン拡散",
+      "多孔質体の有効拡散係数",
+      "物質拡散係数"
+    ],
+    "relatedSections": [
+      "11.5",
+      "11.10"
+    ],
+    "relatedQuestions": [],
+    "relatedSimulators": [],
+    "confusions": [
+      "逆数の和は係数そのものの算術和とは異なり、反応や吸着を含む普遍式でもない。"
+    ],
+    "source": {
+      "type": "supplement",
+      "reference": "第11章の混合物組成・拡散と多孔質媒体の基礎概念を、一般的な物質移動理論に基づき独立執筆した補足。クヌーセン拡散式はSpringer Adsorption (2021) https://doi.org/10.1007/s10450-021-00314-y の式を参考に適用前提を確認した。原書翻訳・図版の転載ではなく専門家校閲前。"
+    },
+    "reviewStatus": "needs_review"
+  },
+  {
+    "id": "advection-diffusion-equation",
+    "ja": "移流拡散方程式",
+    "en": "advection–diffusion equation",
+    "aliases": [
+      "対流拡散方程式"
+    ],
+    "category": "拡散・物質移動",
+    "brief": "成分が流れに運ばれる移流と、濃度差により広がる分子拡散を同時に表す保存方程式。",
+    "meaning": "成分が流れに運ばれる移流と、濃度差により広がる分子拡散を同時に表す保存方程式。",
+    "beginner": "流れで物質が移動するだけでなく、濃いところから薄いところへも広がります。二つの効果をまとめて計算します。",
+    "detail": "非圧縮・一定拡散係数D・反応なしで濃度cを用いると∂c/∂t+u·∇c=D∇²cと表せる。左辺は局所時間変化と移流、右辺は分子拡散を表す。圧縮流や多成分混合、反応、濃度依存の拡散係数では保存形を出発点に追加項を扱う必要がある。熱移動のエネルギー方程式とは形が似ていても、拡散される量と係数は異なる。",
+    "formula": "∂c/∂t+u·∇c=D∇²c（非圧縮・一定D・反応なし）",
+    "unit": "c: mol/m³、各項: mol/(m³·s)、D: m²/s",
+    "example": "流れのない1次元でD=1×10⁻⁹ m²/s、濃度の二階微分が2×10⁶ mol/m⁵なら時間変化率は0.002 mol/(m³·s)。",
+    "related": [
+      "移流",
+      "成分保存方程式",
+      "フィックの法則",
+      "物質拡散係数"
+    ],
+    "relatedSections": [
+      "11.4",
+      "11.6"
+    ],
+    "relatedQuestions": [],
+    "relatedSimulators": [],
+    "confusions": [
+      "移流は流体のバルク移動、拡散は濃度勾配に伴う相対移動であり別の機構。"
+    ],
+    "source": {
+      "type": "supplement",
+      "reference": "第11章の混合物組成・拡散と多孔質媒体の基礎概念を、一般的な物質移動理論に基づき独立執筆した補足。クヌーセン拡散式はSpringer Adsorption (2021) https://doi.org/10.1007/s10450-021-00314-y の式を参考に適用前提を確認した。原書翻訳・図版の転載ではなく専門家校閲前。"
+    },
+    "reviewStatus": "needs_review"
+  },
+  {
+    "id": "gas-diffusivity-pressure-dependence",
+    "ja": "気体拡散係数の圧力依存性",
+    "en": "pressure dependence of gas diffusivity",
+    "aliases": [
+      "気相分子拡散係数の圧力効果"
+    ],
+    "category": "拡散・物質移動",
+    "brief": "希薄気体で分子拡散係数が圧力におおむね反比例する性質。",
+    "meaning": "希薄気体で分子拡散係数が圧力におおむね反比例する性質。",
+    "beginner": "同じ温度の気体なら、圧力が低いほど分子同士の衝突が少なく、濃度差による広がりは速くなる傾向があります。",
+    "detail": "理想に近い希薄な二成分気体の分子拡散係数D_ABは、温度一定かつ同じ組成条件などでは近似的にD_AB∝1/pとなる。これは圧力が下がるほど平均自由行程が伸びることに対応する。高圧の非理想気体、細孔でのクヌーセン拡散、液体中の拡散にはこの反比例則をそのまま当てはめない。",
+    "formula": "D_AB(p₂)≈D_AB(p₁)(p₁/p₂)（等温・希薄気体近似）",
+    "unit": "D_AB: m²/s、p: Pa",
+    "example": "等温・希薄気体で100 kPa時のD_AB=2×10⁻⁵ m²/sなら50 kPaでは概算4×10⁻⁵ m²/s。",
+    "related": [
+      "物質拡散係数",
+      "分圧",
+      "クヌーセン拡散"
+    ],
+    "relatedSections": [
+      "11.3",
+      "11.10"
+    ],
+    "relatedQuestions": [],
+    "relatedSimulators": [],
+    "confusions": [
+      "気相分子拡散の圧力依存を液体中拡散やクヌーセン拡散へ無条件に流用しない。"
+    ],
+    "source": {
+      "type": "supplement",
+      "reference": "第11章の混合物組成・拡散と多孔質媒体の基礎概念を、一般的な物質移動理論に基づき独立執筆した補足。クヌーセン拡散式はSpringer Adsorption (2021) https://doi.org/10.1007/s10450-021-00314-y の式を参考に適用前提を確認した。原書翻訳・図版の転載ではなく専門家校閲前。"
+    },
+    "reviewStatus": "needs_review"
   }
 ]
