@@ -622,6 +622,57 @@ try {
   assert.match(await page.locator('#reader-deep-lesson').innerText(),/1\.724 kW/);
   assert.match(await page.locator('#reader-deep-lesson').innerText(),/Re_f≈21\.9/);
   assert.equal(await page.locator('#reader-deep-lesson .deep-worked-example li').count(),6);
+  // Check every formerly pending lecture in the actual reader. Chromium/Firefox
+  // are still offline here; WebKit checks the same content online.
+  for(const [sectionId,answer] of [
+    ['9.5','瞬間の蓄熱率+100 W'],['9.6','1920→840 W'],['9.7','105 kPa'],
+    ['9.8','0.963'],['9.9','41.4 ℃'],['9.10','1.13倍'],['9.11','1200 Pa']
+  ]){
+    const link=page.locator(`.reader-toc [data-section="${sectionId}"]`);
+    await link.evaluate(element=>{for(let n=element.parentElement;n;n=n.parentElement)if(n.tagName==='DETAILS')n.open=true;});
+    await link.click();
+    const text=await page.locator('#reader-deep-lesson').innerText();
+    assert.ok(text.includes(answer),sectionId+' example result');
+    assert.match(text,/AI内部/);assert.match(text,/外部学術専門家校閲前/);
+  }
+  // Exercise all 38 reviewed additions through the public question bank, not
+  // merely their JSON. A vocabulary tap must leave the answer draft intact.
+  const pending=await page.evaluate(async()=>
+    (await (await fetch('./data/questions.json')).json()).filter(q=>q.reportHistory?.some(r=>r.type==='internal_independent_check')));
+  assert.equal(pending.length,38);
+  const replaceSuspended=dialog=>dialog.accept();
+  page.on('dialog',replaceSuspended);
+  for(const q of pending){
+    await nav('quiz');
+    if(await page.locator('[data-action="exit-quiz"]').count()){
+      await page.locator('[data-action="exit-quiz"]').click();
+      await page.locator('[data-action="discard-quiz"]').click();
+    }
+    await page.locator(`.bank-item[data-start-question="${q.id}"]`).click();
+    await page.locator('.question-card').waitFor({state:'visible'});
+    assert.equal(await page.locator('.answer-options input').count(),4,q.id);
+    const term=page.locator('.question-card h2 [data-term-id]').first();
+    if(await term.count()){
+      const before=await page.evaluate(()=>{
+        const s=JSON.parse(localStorage.getItem('heat-study-ja:v1'));
+        return JSON.stringify({attempts:s.attempts,draft:s.quizDraft,reviews:s.reviews});
+      });
+      await term.click();await page.locator('#term-overlay [role="dialog"]').waitFor();
+      await page.keyboard.press('Escape');
+      const after=await page.evaluate(()=>{
+        const s=JSON.parse(localStorage.getItem('heat-study-ja:v1'));
+        return JSON.stringify({attempts:s.attempts,draft:s.quizDraft,reviews:s.reviews});
+      });
+      assert.equal(after,before,q.id+' vocabulary preserves learning state');
+    }
+    await page.locator(`input[name="choice"][value="${q.answer}"]`).check();
+    await page.locator('#quiz-answer-form button[type="submit"]').click();
+    await page.locator('.feedback-correct').waitFor();
+    const latest=await page.evaluate(()=>JSON.parse(localStorage.getItem('heat-study-ja:v1')).attempts.at(-1));
+    assert.equal(latest.questionId,q.id);assert.equal(latest.questionRevision,q.revision);
+  }
+  page.off('dialog',replaceSuspended);
+  await nav('reader');
   await page.locator('.reader-toc [data-section="10.1"]').evaluate(element=>{
     for(let n=element.parentElement;n;n=n.parentElement)if(n.tagName==='DETAILS')n.open=true;
   });

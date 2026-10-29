@@ -4,6 +4,7 @@ Desktop.ini
 
 # Local PDF extraction and content-authoring scratch files
 .work-*
+/work/
 __pycache__/
 
 # Book-derived translations and original figures remain a local educational pack.
