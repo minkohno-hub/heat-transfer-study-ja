@@ -122,3 +122,13 @@
 - 新規専用回帰テスト: `tests/lesson-diagram-4-3.test.mjs`。**ローカルNode v22 `node --test` で4件実行、4件成功・失敗0**（自立性・読み上げ説明、Bi/Foの数値、長さ/熱伝達率/時間/図形の倍率、相似に必要な条件と限界）。`lxml`のXML構文解析成功。GitHubに保存したSVG・テストのGit blob SHAとローカルの `git hash-object` を突合。
 - 未実施: 全既存テスト群、GitHub CI、実ブラウザー・iPhone Safari・Android・スクリーンリーダーによる検査、公開ビルドへの登録・講義画面での表示、外部学術専門家校閲。独立SVG素材追加の段階であり、Pagesに配信されたとは認定しない。
 - 担当境界: 図解のみ `chat/parallel-dev`。用語集 `chat/glossary`、76節照合 `chat/collation`、詳細講義と問題はCodex担当。main・Codexブランチ・他ライン、PRには手を加えない。
+
+## 第10図解チャンク：§3.4 必要伝熱面積とU低下（2026-10-29 JST）
+
+- 作業開始時HEAD: `da0fc5fe5908233c41c65910e19f64fba8c0d6c1`。独立詳細講義 `data/original-deep-lessons.json` の§3.4「熱交換器の設計：必要UAと伝熱面積、圧力損失の両立」および既存SVG9点を確認。§3.2のLMTD導出、§3.3のε–NTUとは異なり、本図は**Uが低下したときの設計必要面積**の比較である。既存アセットとは重複しない。
+- 独自SVG追加：`assets/lesson-diagrams/section-3-4-required-heat-transfer-area.svg`。基準条件U=300 W/(m²·K)で必要面積2.00 m²、U半減条件150 W/(m²·K)で4.00 m²を横棒2:4の正確な幅比で示す。横棒は面積値の比較であり実装置の長さ・形状を表さない。配色に加え数値・単位で識別できる。
+- 共通設計条件は必要熱負荷Q=12,000 W、流動配置補正F=0.80、LMTD=25 Kであり、A=Q/(UF LMTD)を各条件へ独立に適用した。理論最大Qmax=C_min×ΔT_in=1,000 W/K×30 K=30,000 W、要求は上限の40%である。上限を下回るのは必要条件であって**実機達成の証明ではない**。FとLMTDを固定した仮想感度比較であり、汚れが実際にUだけを半減させると予測したモデルではない。端末温度差、流量、圧力損失、補正係数、運転条件は別途評価を要する。
+- SVGは独立作図であり、原書図版の転載・トレース・翻訳なし。日本語、色以外のラベル、`title`/`desc`、`viewBox`、ライト/ダークCSS、オフライン向け外部依存なし。XML構文解析とCairoSVGライト画像表示を確認し、不要な補助線が文字と重なる箇所を削除した。
+- 新規Node回帰テスト `tests/lesson-diagram-3-4.test.mjs` は4件：自立SVG/アクセシビリティ、計算値と両条件のQ検算、棒の幅比とQmaxの40%可視化、比較の前提と限界説明。**実際の配置と同じ `tests/` と `assets/lesson-diagrams/` を用意してローカルの `node --test` を実行、4件成功・0件失敗**。GitHubへの登録blob SHAはテスト済みファイルの `git hash-object` と一致（SVG `6261b81de5d3b6099d28f134066fd57c20fd5ab4`、テスト `3189437f49384295b519d0493e51c070ddcc81fe`）。
+- **未実施**：既存テスト群の全件、GitHub CI、実ブラウザー・iPhone Safari・Android・スクリーンリーダー、外部学術校閲、公開ビルドへの登録、講義画面およびPages上での表示。独自図解ファイルの追加は公開アプリへの組込完了を意味しない。
+- 図解専任 `chat/parallel-dev` のみを更新し、詳細講義・問題、用語集担当 `chat/glossary`、照合担当 `chat/collation`、main/Codex/別ブランチには変更を加えず、PRも作成しない。

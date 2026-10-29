@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="1180" viewBox="0 0 800 1180" role="img" aria-labelledby="area-title area-desc" style="max-width:100%" data-origin="original-app-diagram" data-lesson="3.4" data-q-w="12000" data-correction-f="0.8" data-lmtd-k="25" data-u-clean="300" data-u-reduced="150" data-c-min="1000" data-inlet-delta-k="30" data-area-clean="2" data-area-reduced="4">
+<title id="area-title">§3.4 熱交換器：Uの低下と必要伝熱面積</title>
+<desc id="area-desc">アプリ独自の設計比較図。熱負荷12キロワット、流動配置補正係数0.8、対数平均温度差25ケルビンを同一に保つ仮想条件で、総括熱伝達係数Uが300から150ワット毎平方メートルケルビンに半減すると、必要面積は2から4平方メートルに2倍となる。面積を表す棒の横幅は正確に2対4。理論最大熱移動率は冷温側の小さい熱容量流量1000ワット毎ケルビンと入口温度差30ケルビンから30キロワットで、要求12キロワットはその40パーセント。これは実現可能性の必要条件に過ぎず、端末温度差、汚れ抵抗の温度依存、流れ配置補正係数、圧力損失、運転条件の変化は独立検討が必要。棒グラフは実機の形状や設置寸法を示さない。</desc>
+<style>
+ text{font-family:'Noto Sans CJK JP','Hiragino Kaku Gothic ProN',system-ui,sans-serif;font-size:23px}
+ .bg{fill:#fff}.panel{fill:#f3f7fb;stroke:#bbccdc;stroke-width:2}.ink{fill:#172f43}.muted{fill:#475e70}
+ .clean{fill:#257a97}.reduced{fill:#b2602d}.cleanBar{fill:#8ccfe4;stroke:#257a97;stroke-width:2}.reducedBar{fill:#e6af86;stroke:#a65728;stroke-width:2}
+ .outline{fill:#e3edf3;stroke:#99adbd;stroke-width:2}.quota{fill:#4b9ab2}.rule{stroke:#9fb5c7;stroke-width:2;stroke-dasharray:6 6}.arrow{stroke:#486579;stroke-width:2.5;fill:none;stroke-linecap:round;stroke-linejoin:round}
+ .title{font-size:34px;font-weight:750}.section{font-size:27px;font-weight:700}.small{font-size:20px}.eq{font-size:26px;font-weight:650}.metric{font-size:31px;font-weight:760}
+ @media(prefers-color-scheme:dark){.bg{fill:#101a26}.panel{fill:#1c2c3c;stroke:#617c91}.ink{fill:#f0f7fd}.muted{fill:#c5d8e7}.clean{fill:#8cdaef}.reduced{fill:#ffc194}.cleanBar{fill:#245d77;stroke:#8cdaef}.reducedBar{fill:#71472f;stroke:#ffc194}.outline{fill:#30485b;stroke:#718a9c}.quota{fill:#398cac}.rule{stroke:#8da4b6}.arrow{stroke:#c3d9e8}}
+</style>
+<rect class="bg" width="800" height="1180"/>
+<text x="32" y="61" class="title ink">§3.4 Uの低下と必要伝熱面積</text>
+<text x="34" y="102" class="small muted">同じ熱負荷・温度差を仮定し、必要面積を比較する</text>
+
+<rect class="panel" x="23" y="126" width="754" height="387" rx="18"/>
+<text x="44" y="168" class="section ink">① Uが半減すると必要面積は2倍</text>
+<text x="44" y="209" class="small muted">横棒は必要伝熱面積に比例。装置の実寸図ではない。</text>
+<text x="44" y="261" class="small ink">基準条件</text>
+<text x="44" y="295" class="small clean">U = 300 W/(m²·K)</text>
+<rect id="bar-clean" class="cleanBar" x="263" y="254" width="208" height="54" rx="7"/>
+<text x="485" y="288" class="metric clean">2.00 m²</text>
+<text x="44" y="372" class="small ink">U半減条件</text>
+<text x="44" y="406" class="small reduced">U = 150 W/(m²·K)</text>
+<rect id="bar-reduced" class="reducedBar" x="263" y="365" width="416" height="54" rx="7"/>
+<text x="678" y="458" text-anchor="end" class="metric reduced">4.00 m²</text>
+<text x="44" y="493" class="small muted">熱負荷 12.0 kW をどちらも満たす設計面積</text>
+
+<rect class="panel" x="23" y="530" width="754" height="310" rx="18"/>
+<text x="44" y="573" class="section ink">② 面積計算は同じ式で行う</text>
+<text x="44" y="613" class="eq ink">Q = U × A × F × ΔT_lm</text>
+<text x="44" y="653" class="eq ink">A = Q / (U × F × ΔT_lm)</text>
+<text x="44" y="700" class="small ink">固定値：Q = 12,000 W、F = 0.80、ΔT_lm = 25 K</text>
+<text x="44" y="741" class="small clean">基準：12,000 / (300 × 0.80 × 25) = 2.00 m²</text>
+<text x="44" y="780" class="small reduced">U半減：12,000 / (150 × 0.80 × 25) = 4.00 m²</text>
+<text x="44" y="820" class="small muted">※ FとΔT_lmが同一という仮想比較。実機では再評価する。</text>
+
+<rect class="panel" x="23" y="858" width="754" height="272" rx="18"/>
+<text x="44" y="900" class="section ink">③ 理論最大熱交換量とも比較</text>
+<text x="44" y="944" class="small ink">Q_max = C_min × ΔT_in = 1,000 × 30 = 30 kW</text>
+<rect class="outline" x="44" y="976" width="680" height="45" rx="7"/>
+<rect id="required-fraction" class="quota" x="44" y="976" width="272" height="45" rx="7"/>
+<text x="180" y="1006" text-anchor="middle" class="small ink">要求 12 kW</text>
+<text x="710" y="1006" text-anchor="end" class="small ink">上限 30 kW</text>
+<text x="44" y="1058" class="small ink">要求は上限の40%：上限以下でも達成の保証ではない。</text>
+<text x="44" y="1092" class="small muted">圧力損失、端末温度差、Uや補正係数の変化は別途検証。</text>
+<text x="400" y="1161" text-anchor="middle" class="small muted">アプリ作成の独自図｜図の棒は必要面積の比較用</text>
+</svg>
