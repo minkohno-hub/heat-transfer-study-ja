@@ -20816,5 +20816,775 @@
       "補助なしで正の取り出しが可能とはしない。"
     ],
     "beginnerPitfall": "負号を消して、物理的に不可能な有効出力を作らない。"
+  },
+  {
+    "id": "supp-mass-intro-area-rate-v1",
+    "revision": "v1",
+    "field": "物質移動",
+    "prerequisites": [
+      "モル分率",
+      "フィックの法則",
+      "流束の基準"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "混合物の組成・流束の一般定義と独自の仮想例から作問。原本の翻訳・原図・章末問題ではない。",
+      "chapterId": "ch11",
+      "focusSectionId": "11.1",
+      "guideId": "chapter11-fick-mass"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "執筆原稿・基本算術と構造を確認／包括的品質監査待ち・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "執筆中の定義・基本計算を確認。全問の独立科学監査・原本網羅照合・外部校閲は後工程。"
+      }
+    ],
+    "prompt": "成分Aの一様な全モル流束N_A=0.20 mol/(m²·s)が、面積0.050 m²を正方向へ通る。全モル移動率ṅ_Aはいくらか。有効数字2桁。",
+    "choices": [
+      "1.0×10⁻² mol/s",
+      "4.0 mol/s",
+      "2.0×10⁻¹ mol/s",
+      "1.0×10⁻³ mol/s"
+    ],
+    "answer": 0,
+    "difficulty": "標準・数値計算",
+    "explanation": "ṅ_A=A N_A=0.050×0.20=0.010 mol/s。面が非一様なら局所の全流束を面積積分する。",
+    "distractors": [
+      "正解。流束に同じ面の面積を掛けた。",
+      "面積を掛けず割った。",
+      "面積当たりの値を全量へ流用した。",
+      "面積又は流束の桁を10分の1にした。"
+    ],
+    "hints": [
+      "mol/(m²·s)をmol/sへ変える。",
+      "m²を掛けて打ち消す。"
+    ],
+    "solutionSteps": [
+      "同じ面積と流束を対応させる。",
+      "0.050×0.20=0.010。",
+      "1.0×10⁻² mol/s。"
+    ],
+    "beginnerPitfall": "流束と全移動率の面積の有無を区別する。"
+  },
+  {
+    "id": "supp-mass-intro-molar-mass-rate-v1",
+    "revision": "v1",
+    "field": "物質移動",
+    "prerequisites": [
+      "モル分率",
+      "フィックの法則",
+      "流束の基準"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "混合物の組成・流束の一般定義と独自の仮想例から作問。原本の翻訳・原図・章末問題ではない。",
+      "chapterId": "ch11",
+      "focusSectionId": "11.1",
+      "guideId": "chapter11-fick-mass"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "執筆原稿・基本算術と構造を確認／包括的品質監査待ち・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "執筆中の定義・基本計算を確認。全問の独立科学監査・原本網羅照合・外部校閲は後工程。"
+      }
+    ],
+    "prompt": "仮想成分Aのモル移動率0.010 mol/s、モル質量M_A=0.030 kg/mol。質量移動率はいくらか。有効数字2桁。",
+    "choices": [
+      "1.0×10⁻² kg/s",
+      "3.0×10⁻⁴ kg/s",
+      "3.3×10⁻¹ kg/s",
+      "3.0×10⁻¹ kg/s"
+    ],
+    "answer": 1,
+    "difficulty": "標準・数値計算",
+    "explanation": "ṁ_A=M_A ṅ_A=0.030×0.010=0.00030 kg/s。0.30 g/sでもある。成分が違えばM_Aを変えて換算する。",
+    "distractors": [
+      "mol/sの数値をそのままkg/sとした。",
+      "正解。mol/sにkg/molを掛けた。",
+      "モル質量を掛けず割った。",
+      "kgとgの基準を混ぜ1000倍にした。"
+    ],
+    "hints": [
+      "モル質量の単位kg/molを使う。",
+      "molを打ち消す積を作る。"
+    ],
+    "solutionSteps": [
+      "0.030 kg/mol×0.010 mol/s。",
+      "積は0.00030 kg/s。",
+      "0.30 g/sと換算して照合する。"
+    ],
+    "beginnerPitfall": "モルの数値と質量の数値を同じとして扱わない。"
+  },
+  {
+    "id": "supp-mass-intro-diffusion-time-v1",
+    "revision": "v1",
+    "field": "物質移動",
+    "prerequisites": [
+      "モル分率",
+      "フィックの法則",
+      "流束の基準"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "混合物の組成・流束の一般定義と独自の仮想例から作問。原本の翻訳・原図・章末問題ではない。",
+      "chapterId": "ch11",
+      "focusSectionId": "11.1",
+      "guideId": "chapter11-fick-mass"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "執筆原稿・基本算術と構造を確認／包括的品質監査待ち・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "執筆中の定義・基本計算を確認。全問の独立科学監査・原本網羅照合・外部校閲は後工程。"
+      }
+    ],
+    "prompt": "仮想媒体でD_AB=1.0×10⁻⁹ m²/s、代表長さL=2.0 mm。拡散時間の尺度t_D=L²/D_ABはいくらか。有効数字2桁。厳密な到達時間ではなく尺度を求める。",
+    "choices": [
+      "2.0×10⁶ s",
+      "2.0×10³ s",
+      "4.0×10³ s",
+      "4.0×10⁹ s"
+    ],
+    "answer": 2,
+    "difficulty": "標準・数値計算",
+    "explanation": "L=0.0020 m、L²=4.0×10⁻⁶ m²、t_D=4000 s。境界条件と判定する変化量で実時間の係数は変わる。",
+    "distractors": [
+      "L²でなくLをDで割った。",
+      "長さの二乗又は係数を取り違えた。",
+      "正解。長さをmへ換算し二乗してからDで割った。",
+      "mmの数値をmへ直さず二乗した。"
+    ],
+    "hints": [
+      "mmをmへ直す。",
+      "時間尺度は長さの二乗に比例。"
+    ],
+    "solutionSteps": [
+      "L²=4.0×10⁻⁶ m²。",
+      "Dで割り4000 s。",
+      "尺度であり厳密な完了時刻とはしない。"
+    ],
+    "beginnerPitfall": "長さを変えると時間尺度は二乗で変わる。"
+  },
+  {
+    "id": "supp-mass-intro-uniform-advection-v1",
+    "revision": "v1",
+    "field": "物質移動",
+    "prerequisites": [
+      "モル分率",
+      "フィックの法則",
+      "流束の基準"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "applied",
+    "source": {
+      "type": "supplement",
+      "reference": "混合物の組成・流束の一般定義と独自の仮想例から作問。原本の翻訳・原図・章末問題ではない。",
+      "chapterId": "ch11",
+      "focusSectionId": "11.1",
+      "guideId": "chapter11-fick-mass"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "執筆原稿・基本算術と構造を確認／包括的品質監査待ち・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "執筆中の定義・基本計算を確認。全問の独立科学監査・原本網羅照合・外部校閲は後工程。"
+      }
+    ],
+    "prompt": "理想二成分系で組成勾配がなく、他の拡散駆動力もなくJ_A=0とする。固定系の全モル流束N_t=+0.40 mol/(m²·s)、y_A=0.25。成分Aの全モル流束をどう扱うか。",
+    "choices": [
+      "拡散だけとし、N_A=0 mol/(m²·s)",
+      "全体流と同値で、N_A=+0.40 mol/(m²·s)",
+      "平均を差し引き、N_A=−0.10 mol/(m²·s)",
+      "全体流に運ばれ、N_A=+0.10 mol/(m²·s)"
+    ],
+    "answer": 3,
+    "difficulty": "概念・適用判断",
+    "explanation": "N_A=0+0.25×0.40=+0.10 mol/(m²·s)。成分の拡散がなくても、混合物全体が流れれば固定した面を横切る成分輸送はある。",
+    "distractors": [
+      "拡散流束と固定系の全流束を混同した。",
+      "Aの割合を掛けていない。",
+      "全流束を復元する式で符号を逆にした。",
+      "正解。N_A=J_A+y_A N_tで全体による移動が残る。"
+    ],
+    "hints": [
+      "全流束には平均流による部分がある。",
+      "N_A=J_A+y_A N_t。"
+    ],
+    "solutionSteps": [
+      "J_A=0を代入。",
+      "平均流寄与0.25×0.40。",
+      "正の全流束0.10 mol/(m²·s)。"
+    ],
+    "beginnerPitfall": "拡散ゼロから全体の輸送もゼロと結論しない。"
+  },
+  {
+    "id": "supp-mass-intro-stirring-versus-diffusivity-v1",
+    "revision": "v1",
+    "field": "物質移動",
+    "prerequisites": [
+      "モル分率",
+      "フィックの法則",
+      "流束の基準"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "applied",
+    "source": {
+      "type": "supplement",
+      "reference": "混合物の組成・流束の一般定義と独自の仮想例から作問。原本の翻訳・原図・章末問題ではない。",
+      "chapterId": "ch11",
+      "focusSectionId": "11.1",
+      "guideId": "chapter11-fick-mass"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "執筆原稿・基本算術と構造を確認／包括的品質監査待ち・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "執筆中の定義・基本計算を確認。全問の独立科学監査・原本網羅照合・外部校閲は後工程。"
+      }
+    ],
+    "prompt": "同じ物質・温度・代表組成の液体で、攪拌により成分の移動が速くなった。分子拡散係数D_ABについて適切な解釈はどれか。",
+    "choices": [
+      "流れや組成分布の効果と分子D_ABの変化を分けて判断する",
+      "攪拌で全ての成分のD_ABが同じ倍率で必ず増加したとする",
+      "攪拌は分子の移動を全て止めるので、D_ABをゼロとする",
+      "流れがある場合はD_ABという物性を定義できなくなるとする"
+    ],
+    "answer": 0,
+    "difficulty": "概念・適用判断",
+    "explanation": "攪拌は流れ、境界層、組成勾配を変える。分子拡散係数は物質と状態等に依存する物性で、見かけの混合の速さそのものではない。乱流の有効輸送係数と分子Dも区別する。",
+    "distractors": [
+      "正解。巨視的な対流と分子輸送の物性を区別した。",
+      "輸送の変化を分子物性の普遍的変化と断定した。",
+      "攪拌は分子拡散を消す作用ではない。",
+      "流動中でも分子拡散と全体輸送を分けて扱える。"
+    ],
+    "hints": [
+      "輸送の機構を全体流と分子運動に分ける。",
+      "同じ物性でも境界層が変われば流束は変わる。"
+    ],
+    "solutionSteps": [
+      "攪拌で変わる流れと分布を考える。",
+      "分子Dとは別の作用と整理。",
+      "物性の変化を主張するには独立の根拠を確認する。"
+    ],
+    "beginnerPitfall": "攪拌の効果を分子物性の変化へ無条件に置き換えない。"
+  },
+  {
+    "id": "supp-mass-intro-phase-conservation-v1",
+    "revision": "v1",
+    "field": "物質移動",
+    "prerequisites": [
+      "モル分率",
+      "フィックの法則",
+      "流束の基準"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "conceptual",
+    "source": {
+      "type": "supplement",
+      "reference": "混合物の組成・流束の一般定義と独自の仮想例から作問。原本の翻訳・原図・章末問題ではない。",
+      "chapterId": "ch11",
+      "focusSectionId": "11.1",
+      "guideId": "chapter11-fick-mass"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "執筆原稿・基本算術と構造を確認／包括的品質監査待ち・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "執筆中の定義・基本計算を確認。全問の独立科学監査・原本網羅照合・外部校閲は後工程。"
+      }
+    ],
+    "prompt": "漏れも化学反応もない密閉容器で成分Aが液相から気相へ蒸発している。両相を合わせたAの量について適切なのはどれか。",
+    "choices": [
+      "潜熱を吸収する分だけ、Aのモル数も新たに生成される",
+      "液相から気相へ移るが、両相のAの合計は保存される",
+      "液相のAが減るので、両相のAの合計も必ず減少する",
+      "気相の体積が増すので、Aの全質量も必ず増加する"
+    ],
+    "answer": 1,
+    "difficulty": "概念・適用判断",
+    "explanation": "Aの相間移動は液相の減少と気相の増加に同じ量で現れ、合計で打ち消す。反応と漏れがなければAの全質量・全モル数は保存される。",
+    "distractors": [
+      "エネルギーの移動を反応による成分生成と混同した。",
+      "正解。相間の移動と系全体での保存を分けた。",
+      "相間の移動を容器外への流出と混同した。",
+      "体積の変化を質量の生成と混同した。"
+    ],
+    "hints": [
+      "検査体積は両相を含む容器全体。",
+      "相を変えることは成分を消すことではない。"
+    ],
+    "solutionSteps": [
+      "各相のAを分けて数える。",
+      "相間移動項を両相で足す。",
+      "合計は変化しない。"
+    ],
+    "beginnerPitfall": "保存則の対象を成分・相・容器のどれかで混ぜない。"
+  },
+  {
+    "id": "supp-mass-intro-isothermal-composition-gradient-v1",
+    "revision": "v1",
+    "field": "物質移動",
+    "prerequisites": [
+      "モル分率",
+      "フィックの法則",
+      "流束の基準"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "conceptual",
+    "source": {
+      "type": "supplement",
+      "reference": "混合物の組成・流束の一般定義と独自の仮想例から作問。原本の翻訳・原図・章末問題ではない。",
+      "chapterId": "ch11",
+      "focusSectionId": "11.1",
+      "guideId": "chapter11-fick-mass"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "執筆原稿・基本算術と構造を確認／包括的品質監査待ち・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "執筆中の定義・基本計算を確認。全問の独立科学監査・原本網羅照合・外部校閲は後工程。"
+      }
+    ],
+    "prompt": "温度と圧力が一様な理想二成分系でも、組成が場所で異なる。単純なFickモデルでの拡散について適切な説明はどれか。",
+    "choices": [
+      "圧力が一様なら、全ての分子は静止していると判断できる",
+      "熱移動がないので、分子拡散係数も必ずゼロになっている",
+      "組成の勾配が駆動し、温度差がなくても拡散は起こりうる",
+      "温度差がないので、組成差があっても成分は一切移動しない"
+    ],
+    "answer": 2,
+    "difficulty": "概念・適用判断",
+    "explanation": "等温・等圧の理想二成分モデルでもJ_A=−cD_AB∇y_Aがあり、D_AB>0と組成勾配があれば拡散する。熱収支と成分収支は連成しうるが、同一の法則ではない。",
+    "distractors": [
+      "一様な圧力から分子や成分速度のゼロは導けない。",
+      "熱移動の有無で分子Dの正負や値は決まらない。",
+      "正解。熱と成分の輸送の駆動力を分けた。",
+      "温度勾配と組成勾配を同じ駆動力として扱った。"
+    ],
+    "hints": [
+      "Fick則に入る勾配は何か。",
+      "温度差が必要なのは熱伝導の駆動力の説明。"
+    ],
+    "solutionSteps": [
+      "等温等圧という条件を確認。",
+      "組成勾配は残ると判断。",
+      "単純モデルでは拡散しうる。"
+    ],
+    "beginnerPitfall": "熱移動の直観を、そのまま全ての成分輸送へ移さない。"
+  },
+  {
+    "id": "supp-mixture-mass-fraction-conversion-v1",
+    "revision": "v1",
+    "field": "物質移動",
+    "prerequisites": [
+      "モル分率",
+      "フィックの法則",
+      "流束の基準"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "混合物の組成・流束の一般定義と独自の仮想例から作問。原本の翻訳・原図・章末問題ではない。",
+      "chapterId": "ch11",
+      "focusSectionId": "11.2",
+      "guideId": "chapter11-fick-mass"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "執筆原稿・基本算術と構造を確認／包括的品質監査待ち・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "執筆中の定義・基本計算を確認。全問の独立科学監査・原本網羅照合・外部校閲は後工程。"
+      }
+    ],
+    "prompt": "二成分混合物でy_A=0.40、y_B=0.60、M_A=0.020、M_B=0.040 kg/mol。w_A=y_AM_A/(y_AM_A+y_BM_B)はいくらか。小数第2位まで。",
+    "choices": [
+      "0.40",
+      "0.50",
+      "0.75",
+      "0.25"
+    ],
+    "answer": 3,
+    "difficulty": "標準・数値計算",
+    "explanation": "1 molの混合物を基準にすると、Aは0.008 kg、Bは0.024 kg、合計0.032 kg。w_A=0.008/0.032=0.25。",
+    "distractors": [
+      "モル分率をそのまま質量分率にした。",
+      "二成分を同じ割合とした。",
+      "Bの質量分率をAと取り違えた。",
+      "正解。成分質量の重みで割合を作った。"
+    ],
+    "hints": [
+      "1 molの混合物を仮定する。",
+      "各成分のモル数にモル質量を掛ける。"
+    ],
+    "solutionSteps": [
+      "A質量0.008 kg。",
+      "全質量0.032 kg。",
+      "比は0.25。"
+    ],
+    "beginnerPitfall": "モル分率の重みと質量分率の重みを区別する。"
+  },
+  {
+    "id": "supp-mixture-density-from-moles-v1",
+    "revision": "v1",
+    "field": "物質移動",
+    "prerequisites": [
+      "モル分率",
+      "フィックの法則",
+      "流束の基準"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "混合物の組成・流束の一般定義と独自の仮想例から作問。原本の翻訳・原図・章末問題ではない。",
+      "chapterId": "ch11",
+      "focusSectionId": "11.2",
+      "guideId": "chapter11-fick-mass"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "執筆原稿・基本算術と構造を確認／包括的品質監査待ち・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "執筆中の定義・基本計算を確認。全問の独立科学監査・原本網羅照合・外部校閲は後工程。"
+      }
+    ],
+    "prompt": "二成分系でy_A=0.40、y_B=0.60、M_A=0.020、M_B=0.040 kg/mol、全モル濃度c=50 mol/m³。平均モル質量と密度ρ=cM̄の組合せはどれか。",
+    "choices": [
+      "M̄=0.032 kg/mol、ρ=1.60 kg/m³",
+      "M̄=0.030 kg/mol、ρ=1.50 kg/m³",
+      "M̄=0.035 kg/mol、ρ=1.75 kg/m³",
+      "M̄=0.016 kg/mol、ρ=0.80 kg/m³"
+    ],
+    "answer": 0,
+    "difficulty": "標準・数値計算",
+    "explanation": "M̄=0.40×0.020+0.60×0.040=0.032 kg/mol。ρ=50×0.032=1.60 kg/m³。密度は質量/体積で、モル濃度そのものではない。",
+    "distractors": [
+      "正解。モル分率でM_iを平均してからcを掛けた。",
+      "二つのMを等しい重みで平均した。",
+      "与条件と異なる質量分率の重みでMを平均した。",
+      "平均モル質量を正しい値の半分にした。"
+    ],
+    "hints": [
+      "M̄にはモル分率を使う。",
+      "mol/m³とkg/molの積。"
+    ],
+    "solutionSteps": [
+      "平均モル質量0.032 kg/mol。",
+      "50を掛ける。",
+      "密度1.60 kg/m³。"
+    ],
+    "beginnerPitfall": "平均モル質量の重みを勝手に質量分率へ変えない。"
+  },
+  {
+    "id": "supp-mixture-molar-diffusion-reference-v1",
+    "revision": "v1",
+    "field": "物質移動",
+    "prerequisites": [
+      "モル分率",
+      "フィックの法則",
+      "流束の基準"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "混合物の組成・流束の一般定義と独自の仮想例から作問。原本の翻訳・原図・章末問題ではない。",
+      "chapterId": "ch11",
+      "focusSectionId": "11.2",
+      "guideId": "chapter11-fick-mass"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "執筆原稿・基本算術と構造を確認／包括的品質監査待ち・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "執筆中の定義・基本計算を確認。全問の独立科学監査・原本網羅照合・外部校閲は後工程。"
+      }
+    ],
+    "prompt": "同じ断面・固定座標系でN_A=40、N_B=30 mol/(m²·s)、y_A=0.40、y_B=0.60。モル平均基準のJ_i=N_i−y_i(N_A+N_B)からJ_A,J_Bを求める。",
+    "choices": [
+      "J_A=−12、J_B=+12 mol/(m²·s)",
+      "J_A=+12、J_B=−12 mol/(m²·s)",
+      "J_A=+40、J_B=+30 mol/(m²·s)",
+      "J_A=+28、J_B=+42 mol/(m²·s)"
+    ],
+    "answer": 1,
+    "difficulty": "標準・数値計算",
+    "explanation": "N_t=70。J_A=40−0.4×70=12、J_B=30−0.6×70=−12。J_A+J_B=0で、N_t=70と別の量。",
+    "distractors": [
+      "相対流束の符号を両方逆にした。",
+      "正解。全流束から各成分の平均移動の部分を引いた。",
+      "全流束を拡散流束と同じにした。",
+      "平均に運ばれる部分だけを拡散とした。"
+    ],
+    "hints": [
+      "全モル流束の和を求める。",
+      "各成分の割合で平均移動の部分を引く。"
+    ],
+    "solutionSteps": [
+      "N_t=70。",
+      "J_A=40−28=12。",
+      "J_B=30−42=−12で和0。"
+    ],
+    "beginnerPitfall": "ΣJ_i=0を、ΣN_iも必ず0という意味にしない。"
+  },
+  {
+    "id": "supp-mixture-mass-diffusion-reference-v1",
+    "revision": "v1",
+    "field": "物質移動",
+    "prerequisites": [
+      "モル分率",
+      "フィックの法則",
+      "流束の基準"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "混合物の組成・流束の一般定義と独自の仮想例から作問。原本の翻訳・原図・章末問題ではない。",
+      "chapterId": "ch11",
+      "focusSectionId": "11.2",
+      "guideId": "chapter11-fick-mass"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "執筆原稿・基本算術と構造を確認／包括的品質監査待ち・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "執筆中の定義・基本計算を確認。全問の独立科学監査・原本網羅照合・外部校閲は後工程。"
+      }
+    ],
+    "prompt": "固定系でAの全質量流束0.80、Bの全質量流束1.20 kg/(m²·s)、w_A=0.25、w_B=0.75。質量平均基準のj_i=m_i″−w_i m_t″からj_Aを求める。",
+    "choices": [
+      "+0.50 kg/(m²·s)",
+      "−0.30 kg/(m²·s)",
+      "+0.30 kg/(m²·s)",
+      "+0.80 kg/(m²·s)"
+    ],
+    "answer": 2,
+    "difficulty": "標準・数値計算",
+    "explanation": "m_t″=0.80+1.20=2.00。j_A=0.80−0.25×2.00=0.30 kg/(m²·s)。同様にj_B=−0.30で和は0。モル平均基準のJ_AへM_Aを掛けた値と同じとは限らない。",
+    "distractors": [
+      "平均に運ばれる部分だけを答えた。",
+      "平均に対する相対方向を逆にした。",
+      "正解。全質量流束2.00からAの平均移動0.50を引いた。",
+      "Aの全質量流束をそのまま拡散とした。"
+    ],
+    "hints": [
+      "全質量流束を先に求める。",
+      "質量分率を使う基準。"
+    ],
+    "solutionSteps": [
+      "総流束2.00 kg/(m²·s)。",
+      "Aの平均移動0.50。",
+      "差+0.30。"
+    ],
+    "beginnerPitfall": "質量平均とモル平均の拡散流束を混ぜない。"
+  },
+  {
+    "id": "supp-mixture-moving-observer-v1",
+    "revision": "v1",
+    "field": "物質移動",
+    "prerequisites": [
+      "モル分率",
+      "フィックの法則",
+      "流束の基準"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "applied",
+    "source": {
+      "type": "supplement",
+      "reference": "混合物の組成・流束の一般定義と独自の仮想例から作問。原本の翻訳・原図・章末問題ではない。",
+      "chapterId": "ch11",
+      "focusSectionId": "11.2",
+      "guideId": "chapter11-fick-mass"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "執筆原稿・基本算術と構造を確認／包括的品質監査待ち・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "執筆中の定義・基本計算を確認。全問の独立科学監査・原本網羅照合・外部校閲は後工程。"
+      }
+    ],
+    "prompt": "仮想混合物でc_A=20、c_B=30 mol/m³、v_A=2.0、v_B=1.0 m/s、y_A=0.40。x正方向へ0.50 m/sで動く観測者から見る。新観測者のN_Aとモル平均基準J_Aの組合せはどれか。",
+    "choices": [
+      "N_A=40、J_A=12 mol/(m²·s)",
+      "N_A=30、J_A=0 mol/(m²·s)",
+      "N_A=30、J_A=30 mol/(m²·s)",
+      "N_A=30、J_A=12 mol/(m²·s)"
+    ],
+    "answer": 3,
+    "difficulty": "概念・適用判断",
+    "explanation": "新速度は1.5と0.5 m/s。N_A=30、N_B=15、N_t=45。J_A=30−0.40×45=12。全流束は変わるが、同じ平均基準に対する拡散は変わらない。",
+    "distractors": [
+      "固定系の全流束が観測者によらず不変とした。",
+      "平均に対する速度差まで消えるとした。",
+      "新しい全流束をそのまま拡散流束とした。",
+      "正解。成分速度と平均速度が同じだけ移り、相対拡散は保たれた。"
+    ],
+    "hints": [
+      "各成分速度から観測者速度を引く。",
+      "新しい全モル流束の和を使う。"
+    ],
+    "solutionSteps": [
+      "新流束は30と15。",
+      "総和45。",
+      "J_A=30−18=12。"
+    ],
+    "beginnerPitfall": "観測者を変えた全流束と、平均に相対的な流束を区別する。"
+  },
+  {
+    "id": "supp-mixture-equal-fraction-condition-v1",
+    "revision": "v1",
+    "field": "物質移動",
+    "prerequisites": [
+      "モル分率",
+      "フィックの法則",
+      "流束の基準"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "conceptual",
+    "source": {
+      "type": "supplement",
+      "reference": "混合物の組成・流束の一般定義と独自の仮想例から作問。原本の翻訳・原図・章末問題ではない。",
+      "chapterId": "ch11",
+      "focusSectionId": "11.2",
+      "guideId": "chapter11-fick-mass"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "執筆原稿・基本算術と構造を確認／包括的品質監査待ち・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "執筆中の定義・基本計算を確認。全問の独立科学監査・原本網羅照合・外部校閲は後工程。"
+      }
+    ],
+    "prompt": "両成分を含む二成分混合物について、全ての組成0<y_A<1でw_A=y_Aとなる条件はどれか。",
+    "choices": [
+      "二つの成分のモル質量が等しい",
+      "二つの成分の比熱容量が等しい",
+      "二つの成分の温度だけが等しい",
+      "二つの成分が同じ相に存在する"
+    ],
+    "answer": 0,
+    "difficulty": "概念・適用判断",
+    "explanation": "w_A=y_A M_A/[y_A M_A+(1−y_A)M_B]。0<y_A<1でw_A=y_AとするとM_A=M_Bが必要。純成分という端点だけの一致を一般の混合組成へ広げない。",
+    "distractors": [
+      "正解。同じモル数当たり質量なら二つの割合の重みが一致する。",
+      "熱容量の重みは組成換算のM_iの代用ではない。",
+      "同温度でもモル質量が違えば割合は異なる。",
+      "同じ相でも異なるモル質量の成分を混ぜられる。"
+    ],
+    "hints": [
+      "w_Aの換算式を使う。",
+      "0<y_A<1なので二成分が両方ある。"
+    ],
+    "solutionSteps": [
+      "式でw_A=y_Aと置く。",
+      "M_A=y_A M_A+(1−y_A)M_B。",
+      "M_A=M_B。"
+    ],
+    "beginnerPitfall": "同温度・同じ相と、同モル質量を取り違えない。"
+  },
+  {
+    "id": "supp-mixture-negative-relative-flux-v1",
+    "revision": "v1",
+    "field": "物質移動",
+    "prerequisites": [
+      "モル分率",
+      "フィックの法則",
+      "流束の基準"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "applied",
+    "source": {
+      "type": "supplement",
+      "reference": "混合物の組成・流束の一般定義と独自の仮想例から作問。原本の翻訳・原図・章末問題ではない。",
+      "chapterId": "ch11",
+      "focusSectionId": "11.2",
+      "guideId": "chapter11-fick-mass"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "執筆原稿・基本算術と構造を確認／包括的品質監査待ち・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "執筆中の定義・基本計算を確認。全問の独立科学監査・原本網羅照合・外部校閲は後工程。"
+      }
+    ],
+    "prompt": "ある固定座標系でN_B=+30 mol/(m²·s)、同じ断面のモル平均基準ではJ_B=−12 mol/(m²·s)だった。適切な物理的解釈はどれか。",
+    "choices": [
+      "J_Bが負なので、Bの分子拡散係数が負になっていると判断する",
+      "固定系では正方向へ運ばれ、モル平均の移動に対しては負となる",
+      "J_Bが負なので、固定系のN_Bも必ず負として訂正する",
+      "J_Bが負なので、Bのモル濃度も負になっていると判断する"
+    ],
+    "answer": 1,
+    "difficulty": "概念・適用判断",
+    "explanation": "J_B=N_B−y_B N_t。全体の移動よりBが遅ければ、固定系で正方向に運ばれていても相対的な流束は負となる。流束は観測・平均の基準と正方向を併記して比較する。",
+    "distractors": [
+      "流束の符号だけで物性Dの符号を決められない。",
+      "正解。異なる速度基準の符号をそれぞれ解釈した。",
+      "相対流束の符号を固定系の全流束へ強制した。",
+      "濃度の符号と速度差の符号を混同した。"
+    ],
+    "hints": [
+      "二つの流束が何に対して定義されるか。",
+      "平均より遅い正方向の流れを考える。"
+    ],
+    "solutionSteps": [
+      "N_Bは固定面を横切る正方向輸送。",
+      "J_Bは平均からの差。",
+      "両者の異なる符号は両立すると判断する。"
+    ],
+    "beginnerPitfall": "負の相対流束から濃度や物性まで負としない。"
   }
 ]
