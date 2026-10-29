@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="1240" viewBox="0 0 760 1240" style="max-width:100%" role="img" aria-labelledby="lmtd-title lmtd-desc" data-origin="original-app-diagram" data-lesson="3.2" data-flow="counterflow" data-ch-w-per-k="250" data-cc-w-per-k="500" data-hot-in-c="100" data-hot-out-c="60" data-cold-in-c="20" data-cold-out-c="40" data-area-m2="2" data-heat-w="10000" data-ua-w-per-k="202.732554054">
+  <title id="lmtd-title">§3.2 完全向流の熱交換器：温度曲線と対数平均温度差</title>
+  <desc id="lmtd-desc">アプリ作成の独自模式図。高温側は左から右に流れて100℃から60℃に冷却され、低温側は右から左に流れて20℃から40℃に加熱される。横方向を高温側の流れと同じ向きにした温度曲線では、左端の温度差が60ケルビン、右端が40ケルビン。熱容量流量は高温側250、低温側500ワット毎ケルビン。両者の交換熱量は10キロワットで一致し、対数平均温度差は49.326ケルビン、必要UAは202.733ワット毎ケルビン。曲線は定常、物性とUが一定の完全向流の解析解であり、実際の流路形状は表さない。</desc>
+  <style>
+    text{font-family:system-ui,'Noto Sans CJK JP','Hiragino Kaku Gothic ProN',sans-serif;font-size:24px}
+    .bg{fill:#ffffff}.panel{fill:#f4f7fa;stroke:#c6d4df;stroke-width:2}.ink{fill:#172e41}.muted{fill:#42586a}
+    .hotText{fill:#a63f23}.coldText{fill:#176989}.hotArea{fill:#f7dccd;stroke:#b34f33;stroke-width:2}.coldArea{fill:#d4edf6;stroke:#29738d;stroke-width:2}
+    .hotLine{stroke:#b34f33;stroke-width:4.5;fill:none;stroke-linejoin:round}.coldLine{stroke:#176989;stroke-width:4.5;fill:none;stroke-linejoin:round}
+    .axis{stroke:#273f50;stroke-width:2.5;fill:none}.guide{stroke:#b5c6d3;stroke-width:1.4;stroke-dasharray:6 6}.heatArrow{stroke:#7e6259;stroke-width:3.2;fill:none;stroke-linecap:round;stroke-linejoin:round}
+    .title{font-size:33px;font-weight:700}.section{font-size:27px;font-weight:700}.small{font-size:20px}.eq{font-size:25px;font-weight:650}
+    @media(prefers-color-scheme:dark){.bg{fill:#111a25}.panel{fill:#1a2a39;stroke:#637b90}.ink{fill:#f1f7fc}.muted{fill:#c6d5df}.hotText{fill:#ffb492}.coldText{fill:#8cdef7}.hotArea{fill:#693b31;stroke:#f5ab8a}.coldArea{fill:#20495b;stroke:#7acbe4}.hotLine{stroke:#ffb492}.coldLine{stroke:#8cdef7}.axis{stroke:#d6e5ee}.guide{stroke:#71869a}.heatArrow{stroke:#e3baa7}}
+  </style>
+  <rect class="bg" width="760" height="1240"/>
+  <text x="32" y="59" class="title ink">§3.2 向流熱交換器とLMTD</text>
+  <text x="34" y="100" class="small muted">流れる向きが逆の2流体を同じ座標で比較する</text>
+
+  <rect x="24" y="122" width="712" height="287" rx="19" class="panel"/>
+  <text x="43" y="161" class="section ink">① 完全向流：入口は互いに反対側</text>
+  <rect x="156" y="191" width="444" height="58" rx="9" class="hotArea"/>
+  <text x="378" y="228" text-anchor="middle" class="ink">高温側：100 ℃ → 60 ℃</text>
+  <path class="heatArrow" d="M250 255 V278 M239 267 L250 278 L261 267 M380 255 V278 M369 267 L380 278 L391 267 M510 255 V278 M499 267 L510 278 L521 267"/>
+  <rect x="156" y="283" width="444" height="58" rx="9" class="coldArea"/>
+  <text x="378" y="320" text-anchor="middle" class="ink">低温側：40 ℃ ← 20 ℃</text>
+  <text x="46" y="381" class="small muted">高温側の正方向 → ／ 低温側の流れ ← ／ 熱は高温側から低温側へ</text>
+
+  <rect x="24" y="427" width="712" height="468" rx="19" class="panel"/>
+  <text x="43" y="470" class="section ink">② 端点温度差と、流路に沿う温度変化</text>
+  <path class="hotLine" d="M48 510 H88"/><text x="98" y="518" class="small hotText">高温側</text>
+  <path class="coldLine" d="M286 510 H326"/><text x="336" y="518" class="small coldText">低温側</text>
+  <text x="507" y="517" class="small muted">定常・U一定</text>
+  <path class="guide" d="M151 575 H653 M151 665 H653 M151 710 H653 M151 755 H653"/>
+  <path class="axis" d="M146 548 V811 H667 M654 802 L667 811 L654 820"/>
+  <text x="52" y="554" class="small ink">温度 (℃)</text>
+  <text x="79" y="582" class="small ink">100</text>
+  <text x="89" y="672" class="small ink">60</text>
+  <text x="89" y="717" class="small ink">40</text>
+  <text x="89" y="762" class="small ink">20</text>
+  <path id="hot-profile" class="hotLine" d="M190.00,575.00 L200.75,577.72 L211.50,580.42 L222.25,583.09 L233.00,585.73 L243.75,588.34 L254.50,590.93 L265.25,593.49 L276.00,596.03 L286.75,598.54 L297.50,601.03 L308.25,603.49 L319.00,605.92 L329.75,608.33 L340.50,610.72 L351.25,613.08 L362.00,615.42 L372.75,617.74 L383.50,620.03 L394.25,622.30 L405.00,624.55 L415.75,626.77 L426.50,628.97 L437.25,631.15 L448.00,633.31 L458.75,635.44 L469.50,637.55 L480.25,639.65 L491.00,641.72 L501.75,643.77 L512.50,645.80 L523.25,647.81 L534.00,649.80 L544.75,651.76 L555.50,653.71 L566.25,655.64 L577.00,657.55 L587.75,659.44 L598.50,661.31 L609.25,663.17 L620.00,665.00"/>
+  <path id="cold-profile" class="coldLine" d="M190.00,710.00 L200.75,711.36 L211.50,712.71 L222.25,714.04 L233.00,715.36 L243.75,716.67 L254.50,717.97 L265.25,719.25 L276.00,720.52 L286.75,721.77 L297.50,723.01 L308.25,724.24 L319.00,725.46 L329.75,726.67 L340.50,727.86 L351.25,729.04 L362.00,730.21 L372.75,731.37 L383.50,732.52 L394.25,733.65 L405.00,734.77 L415.75,735.88 L426.50,736.99 L437.25,738.07 L448.00,739.15 L458.75,740.22 L469.50,741.28 L480.25,742.32 L491.00,743.36 L501.75,744.38 L512.50,745.40 L523.25,746.40 L534.00,747.40 L544.75,748.38 L555.50,749.36 L566.25,750.32 L577.00,751.28 L587.75,752.22 L598.50,753.16 L609.25,754.08 L620.00,755.00"/>
+  <path class="guide" d="M182 575 V710 M628 665 V755"/>
+  <text x="190" y="835" text-anchor="middle" class="small ink">0</text>
+  <text x="620" y="835" text-anchor="middle" class="small ink">1</text>
+  <text x="408" y="838" text-anchor="middle" class="small muted">流路位置 s = A(x)/A →</text>
+  <text x="49" y="873" class="small ink">左端 ΔT = 60 K</text>
+  <text x="408" y="873" class="small ink">右端 ΔT = 40 K</text>
+
+  <rect x="24" y="914" width="712" height="281" rx="19" class="panel"/>
+  <text x="44" y="955" class="section ink">③ 収支と対数平均温度差の検算</text>
+  <text x="44" y="995" class="small ink">温側：250 × (100 − 60) = 10,000 W</text>
+  <text x="44" y="1032" class="small ink">冷側：500 × (40 − 20) = 10,000 W</text>
+  <text x="44" y="1071" class="eq ink">LMTD = (60 − 40) / ln(60/40) = 49.326 K</text>
+  <text x="44" y="1110" class="eq ink">UA = 10,000 / 49.326 = 202.733 W/K</text>
+  <text x="44" y="1149" class="small muted">A = 2.0 m² → U ≈ 101.37 W/(m²·K)</text>
+  <text x="380" y="1222" text-anchor="middle" class="small muted">アプリ作成の独自図｜寸法比は模式的・原図転載なし</text>
+</svg>
