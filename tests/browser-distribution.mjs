@@ -195,7 +195,7 @@ try {
   await page.locator('[data-action="exit-quiz"]').click();
   await page.locator('[data-action="discard-quiz"]').click();
   await page.locator('#quiz-start-form select[name="chapter"]').selectOption('ch9');
-  await page.locator('#quiz-start-form select[name="count"]').selectOption('324');
+  await page.locator('#quiz-start-form select[name="count"]').selectOption('326');
   await page.locator('#quiz-start-form button[type="submit"]').click();
   await page.locator('.question-card').waitFor({state:'visible'});
   assert.match(await page.locator('.page-heading h1').innerText(),/1 \/ 40 問/);
@@ -204,7 +204,7 @@ try {
   await nav('guide');
   await page.locator('#guide-chapter11-fick-mass [data-chapter-practice="ch11"]').click();
   await page.locator('.question-card').waitFor({state:'visible'});
-  assert.match(await page.locator('.page-heading h1').innerText(),/1 \/ 21 問/);
+  assert.match(await page.locator('.page-heading h1').innerText(),/1 \/ 23 問/);
   await page.locator('[data-action="exit-quiz"]').click();
   await page.locator('[data-action="discard-quiz"]').click();
   await nav('search');

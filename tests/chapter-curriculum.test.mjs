@@ -11,10 +11,10 @@ test('all eleven chapters have distinct independently authored question sets wit
   const chapterCounts=Object.fromEntries(book.chapters.map(ch=>[ch.id,ch.sections.length]));
   assert.equal(chapters.size,11);
   const classified=questions.filter(q=>questionChapter(q,GUIDE_SECTIONS));
-  assert.equal(classified.length,292); // Chapter-linked questions include six new §9.3 exercises
+  assert.equal(classified.length,294); // Chapter-linked questions include six new §9.3 exercises
   for(const chapter of chapters){
     const qs=questionsForChapter(questions,chapter,GUIDE_SECTIONS);
-    assert.equal(qs.filter(q=>q.source.type==='supplement').length,6+chapterCounts[chapter]+(['ch2','ch4','ch5','ch10','ch11'].includes(chapter)?4:0)+({'ch1':18,'ch2':21,'ch3':20,'ch4':21,'ch5':7,'ch6':7,'ch7':6,'ch9':16,'ch10':6}[chapter]||0),chapter);
+    assert.equal(qs.filter(q=>q.source.type==='supplement').length,6+chapterCounts[chapter]+(['ch2','ch4','ch5','ch10','ch11'].includes(chapter)?4:0)+({'ch1':18,'ch2':21,'ch3':20,'ch4':21,'ch5':7,'ch6':7,'ch7':6,'ch9':16,'ch10':6,'ch11':2}[chapter]||0),chapter);
     assert.equal(qs.filter(q=>q.source.type==='book').length,chapter==='ch9'?7:chapter==='ch1'?1:0,chapter);
   }
   assert.equal(questionsForChapter(questions,'unknown',GUIDE_SECTIONS).length,0);
@@ -46,7 +46,7 @@ test('chapter overview uses most recent per-question answer and never implies fu
   const ch9=overview.find(ch=>ch.chapter==='ch9');
   assert.equal(ch9.practiceQuestionCount,40);
   assert.equal(ch9.bookCitedQuestionCount,7);
-  assert.equal(overview.reduce((sum,x)=>sum+x.practiceQuestionCount,0),292);
+  assert.equal(overview.reduce((sum,x)=>sum+x.practiceQuestionCount,0),294);
   const numerical=chapterLearningOverview(book,questions,GUIDE_SECTIONS,[
     {questionId:'supp-chapter-ch2-series',at:Date.UTC(2026,9,28,0),correct:true},
     {questionId:'supp-chapter-ch2-series',at:'2026-10-28T10:00:00+09:00',correct:false}

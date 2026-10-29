@@ -15338,5 +15338,103 @@
       "対象条件に合う相関や実験を別に確認すると判断する。"
     ],
     "beginnerPitfall": "数値が計算できることと、実機に適用できることを区別する。"
+  },
+  {
+    "revision": "v1",
+    "questionGroup": "original_independent_applied_v1",
+    "createdStatus": "独立作問",
+    "reviewStatus": "式・単位と適用条件を内部検算／外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [],
+    "id": "supp-fick-frame-total-flux-v1",
+    "field": "物質移動",
+    "prerequisites": [
+      "フィックの法則",
+      "モル分率",
+      "流束の基準系"
+    ],
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "モル平均速度に対する拡散と固定座標系の全流束を区別する独立執筆の補足問題。原本の翻訳・章末問題ではない。",
+      "chapterId": "ch11",
+      "focusSectionId": "11.3",
+      "guideId": "chapter11-fick-mass"
+    },
+    "prompt": "二成分系の固定座標系に対する全モル流束がN_A+N_B=+0.010 mol/(m²·s)、Aのモル分率がy_A=0.30である。モル平均速度に対するAの拡散モル流束はJ_A=+0.0020 mol/(m²·s)。N_A=J_A+y_A(N_A+N_B)から、固定座標系に対するAの全モル流束を求めよ。有効数字2桁とする。",
+    "choices": [
+      "+0.0020 mol/(m²·s)",
+      "+0.0030 mol/(m²·s)",
+      "+0.0050 mol/(m²·s)",
+      "−0.0010 mol/(m²·s)"
+    ],
+    "answer": 2,
+    "difficulty": "標準・数値計算",
+    "explanation": "流れに伴うAのモル流束は0.30×0.010=0.0030 mol/(m²·s)。モル平均速度に対する拡散0.0020と合わせN_A=0.0050 mol/(m²·s)。固定座標系の全流束Nとモル平均速度に対する拡散流束Jは異なる。",
+    "distractors": [
+      "拡散流束だけを全流束とした。",
+      "流れに伴う寄与だけで拡散を落としている。",
+      "正解。基準系をそろえた二つの寄与の和。",
+      "正の流れ寄与を足す代わりに引いている。"
+    ],
+    "hints": [
+      "流れに伴うAの寄与はy_A×全モル流束。",
+      "指定された関係の右辺二項を同じ単位で足す。"
+    ],
+    "solutionSteps": [
+      "y_A(N_A+N_B)=0.30×0.010=0.0030 mol/(m²·s)。",
+      "N_A=0.0020+0.0030=0.0050 mol/(m²·s)。",
+      "正号は指定したx正方向。二桁で+0.0050と表す。"
+    ],
+    "beginnerPitfall": "フィック則の拡散流束を、バルク流れを含む固定座標系の全流束と同一視しない。"
+  },
+  {
+    "revision": "v1",
+    "questionGroup": "original_independent_applied_v1",
+    "createdStatus": "独立作問",
+    "reviewStatus": "式・単位と適用条件を内部検算／外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [],
+    "id": "supp-fick-stagnant-versus-equimolar-v1",
+    "field": "物質移動",
+    "prerequisites": [
+      "フィックの法則",
+      "モル分率",
+      "流束の基準系"
+    ],
+    "questionKind": "applied",
+    "source": {
+      "type": "supplement",
+      "reference": "モル平均速度に対する拡散と固定座標系の全流束を区別する独立執筆の補足問題。原本の翻訳・章末問題ではない。",
+      "chapterId": "ch11",
+      "focusSectionId": "11.3",
+      "guideId": "chapter11-fick-mass"
+    },
+    "prompt": "一定温度・圧力の二成分層で、固定座標系に対してBは移動しないが、Aの全モル流束N_Aはゼロではない。Aの全流束のモデルを選ぶとき、与条件と整合する判断はどれか。",
+    "choices": [
+      "N_A+N_B=0なので、全モル流れを除く",
+      "N_A=0と置き、Aの拡散だけを計算する",
+      "J_A=0と置き、濃度勾配を常にゼロとする",
+      "N_B=0と置き、全モル流れの寄与を含める"
+    ],
+    "answer": 3,
+    "difficulty": "標準・適用判断",
+    "explanation": "Bの固定座標系での全流束がゼロとはN_B=0を意味する。N_A≠0なら全モル流束N_A+N_B=N_A≠0。よって等モル相互拡散のN_A+N_B=0とは異なる。Bの全流束がゼロでも、その拡散寄与J_Bは流れ寄与と打ち消し合いうる。",
+    "distractors": [
+      "等モル相互拡散の条件を誤って使った。",
+      "Aが移動するという与条件に反する。",
+      "Bの全流束ゼロからAの拡散ゼロは導けない。",
+      "正解。固定座標系のBの全流束ゼロを境界条件に用いる。"
+    ],
+    "hints": [
+      "Bが移動しないという条件はN_Bについての条件。",
+      "全モル流束はN_A+N_B。Aは移動している。"
+    ],
+    "solutionSteps": [
+      "Bの固定座標系の全流束はN_B=0。",
+      "N_A≠0なのでN_A+N_B≠0。",
+      "等モル相互拡散ではなく、全流れの寄与を含むモデルを選ぶ。"
+    ],
+    "beginnerPitfall": "静止成分の全流束ゼロと、モル平均速度に対する拡散流束ゼロは異なる。"
   }
 ]
