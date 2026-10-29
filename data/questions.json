@@ -16759,5 +16759,152 @@
       "制御方式・温度履歴・表面条件を合わせて比較する。"
     ],
     "beginnerPitfall": "沸騰曲線に描かれた点と、実際にたどる運転経路を同一視しない。"
+  },
+  {
+    "id": "supp-radiation-inverse-emissivity-v1",
+    "revision": "v1",
+    "field": "放射",
+    "prerequisites": [
+      "射度",
+      "照射量",
+      "放射率"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "一般的な放射交換と仮想条件から独立作問。原本の翻訳・原図・章末問題を転載しない。",
+      "chapterId": "ch10",
+      "focusSectionId": "10.1",
+      "guideId": "chapter10-view-factors"
+    },
+    "createdStatus": "独立作問下書き",
+    "reviewStatus": "執筆下書き・包括的品質監査は後工程／外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [],
+    "prompt": "不透明な灰色・拡散面で、射度J=760 W/m²、照射量G=400 W/m²、同じ表面温度の黒体放射発散度E_b=1000 W/m²が与えられた。J=εE_b+(1−ε)Gが成立するとして、放射率εを求めよ。有効数字2桁とする。",
+    "choices": [
+      "0.40",
+      "0.60",
+      "0.76",
+      "1.9"
+    ],
+    "answer": 1,
+    "difficulty": "標準・数値計算",
+    "explanation": "J−G=ε(E_b−G)なのでε=(760−400)/(1000−400)=360/600=0.60。反射された照射もJに含まれるため、J/E_bではない。この例では0≤ε≤1を満たし、JはGとE_bの間にある。",
+    "distractors": [
+      "εではなく1−εに対応する値。",
+      "正解。反射寄与を含む式をεについて解いた。",
+      "射度を放出だけとみなしJ/E_bとした。",
+      "J/Gを放射率としたため上限1を超える。"
+    ],
+    "hints": [
+      "まず式をJ=G+ε(E_b−G)と整理する。",
+      "射度は自己放出と反射の和。"
+    ],
+    "solutionSteps": [
+      "J−G=360 W/m²を計算する。",
+      "E_b−G=600 W/m²を計算する。",
+      "比360/600=0.60で無次元かつ0と1の間と確認する。"
+    ],
+    "beginnerPitfall": "射度を自己放出の放射発散度だけと混同しない。"
+  },
+  {
+    "id": "supp-radiation-net-incoming-sign-v1",
+    "revision": "v1",
+    "field": "放射",
+    "prerequisites": [
+      "射度",
+      "照射量",
+      "放射率"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "一般的な放射交換と仮想条件から独立作問。原本の翻訳・原図・章末問題を転載しない。",
+      "chapterId": "ch10",
+      "focusSectionId": "10.1",
+      "guideId": "chapter10-view-factors"
+    },
+    "createdStatus": "独立作問下書き",
+    "reviewStatus": "執筆下書き・包括的品質監査は後工程／外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [],
+    "prompt": "ある表面の射度がJ=500 W/m²、照射量がG=800 W/m²である。表面から外向きを正とし、q″=J−Gと定義する。面積A=0.20 m²が一様な場合、正味熱流束と熱移動率の組合せはどれか。有効数字2桁とする。",
+    "choices": [
+      "q″=+300 W/m²、Q̇=+60 W",
+      "q″=−300 W/m²、Q̇=−1500 W",
+      "q″=−300 W/m²、Q̇=−60 W",
+      "q″=+1300 W/m²、Q̇=+260 W"
+    ],
+    "answer": 2,
+    "difficulty": "標準・数値計算",
+    "explanation": "q″=500−800=−300 W/m²。Q̇=Aq″=0.20×(−300)=−60 W。負号は表面への正味流入を意味する。射度が正でも照射がより大きければ、表面は正味で放射エネルギーを受け取る。",
+    "distractors": [
+      "差の大きさは合うが外向きの符号を逆にした。",
+      "面積を掛けず割っている。",
+      "正解。射度と照射の差に面積を掛けた。",
+      "正味交換を和として計算している。"
+    ],
+    "hints": [
+      "外向き正の定義ではJからGを引く。",
+      "熱流束から熱移動率へは面積を掛ける。"
+    ],
+    "solutionSteps": [
+      "J−G=−300 W/m²。",
+      "面積0.20 m²を掛けて−60 W。",
+      "表面に60 Wが正味で流入すると解釈する。"
+    ],
+    "beginnerPitfall": "出ていく放射があることと、正味で熱を失うことを同じにしない。"
+  },
+  {
+    "id": "supp-radiation-spectral-kirchhoff-v1",
+    "revision": "v1",
+    "field": "放射",
+    "prerequisites": [
+      "射度",
+      "照射量",
+      "放射率"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "applied",
+    "source": {
+      "type": "supplement",
+      "reference": "一般的な放射交換と仮想条件から独立作問。原本の翻訳・原図・章末問題を転載しない。",
+      "chapterId": "ch10",
+      "focusSectionId": "10.1",
+      "guideId": "chapter10-view-factors"
+    },
+    "createdStatus": "独立作問下書き",
+    "reviewStatus": "執筆下書き・包括的品質監査は後工程／外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [],
+    "prompt": "選択吸収面について、太陽光の波長分布で重み付けした吸収率α_solar=0.90、低温面の熱放射で重み付けした放射率ε_thermal=0.10という値が示された。Kirchhoffの法則との関係について適切な判断はどれか。",
+    "choices": [
+      "どちらも放射の比率なので、二つの値は常に等しい",
+      "吸収率が大きいので、全波長で放射率も0.90となる",
+      "二つの比率の和が1なら、波長条件の確認は要らない",
+      "波長の重みが異なるため、差だけで矛盾とは言えない"
+    ],
+    "answer": 3,
+    "difficulty": "応用・条件判断",
+    "explanation": "Kirchhoffの法則では熱平衡などの適用条件の下で、同じ波長・方向・偏光等をそろえた放射特性を比較する。太陽光と低温面の熱放射はスペクトル分布が異なり、重み付けの異なる全吸収率と全放射率は同じ値とは限らない。灰色面なら波長依存を無視するが、ここでは選択吸収面である。",
+    "distractors": [
+      "異なる波長分布の重みをそろえていない。",
+      "波長依存のある面を無条件に灰色面とした。",
+      "吸収率と放射率に一般的な和1の規則はない。",
+      "正解。比較する波長条件と法則の前提を確認する。"
+    ],
+    "hints": [
+      "同じ波長での特性と、波長積分した値を区別する。",
+      "太陽光と低温面の熱放射のスペクトルは違う。"
+    ],
+    "solutionSteps": [
+      "α_solarとε_thermalの重み付けが異なると確認する。",
+      "Kirchhoffの法則が比較する同じ波長等の特性を確認する。",
+      "二つの積分値の差だけでは法則に矛盾しないと判断する。"
+    ],
+    "beginnerPitfall": "異なる波長範囲の吸収・放射特性を同一の係数と決めつけない。"
   }
 ]

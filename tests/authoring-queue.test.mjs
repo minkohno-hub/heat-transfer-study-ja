@@ -14,9 +14,9 @@ test('the authoring queue counts actually authored lessons and focus-section pra
  assert.equal(r.sectionCount,76);
  assert.equal(r.shortConceptNoteDrafts,76);
  assert.equal(r.detailedLessonDrafts,32);
- assert.equal(r.questionsInBank,353);
- assert.equal(r.remainingQuestionDraftMinimum,337);
- assert.equal(r.draftAuthoringMinimumMet,24);
+ assert.equal(r.questionsInBank,356);
+ assert.equal(r.remainingQuestionDraftMinimum,334);
+ assert.equal(r.draftAuthoringMinimumMet,25);
  assert.equal(r.sectionsNeedingDetailedLesson,44);
  assert.equal(r.legacyDraftRecordedSections,44);
  assert.equal(r.externallyAcceptedSections,0);
