@@ -16906,5 +16906,740 @@
       "二つの積分値の差だけでは法則に矛盾しないと判断する。"
     ],
     "beginnerPitfall": "異なる波長範囲の吸収・放射特性を同一の係数と決めつけない。"
+  },
+  {
+    "id": "supp-transition-area-average-v1",
+    "revision": "v1",
+    "field": "沸騰・相変化",
+    "prerequisites": [
+      "沸騰曲線",
+      "熱流束と平均",
+      "状態と境界条件"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "独立日本語講義§9.6の一般法則と仮想条件から独自作問。原本の本文・図版・章末問題は転載しない。",
+      "chapterId": "ch9",
+      "focusSectionId": "9.6",
+      "guideId": "chapter9-latent-boiling"
+    },
+    "createdStatus": "独立作問下書き",
+    "reviewStatus": "執筆下書き・包括的品質監査は後工程／外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [],
+    "prompt": "遷移沸騰を考える独立の二領域モデルで、濡れ面積割合f=0.25、濡れ部分の平均流束q″_wet=400 kW/m²、蒸気被覆部分q″_dry=40 kW/m²とする。面平均q̄″=f q″_wet+(1−f)q″_dryはいくらか。有効数字2桁とする。",
+    "choices": [
+      "1.3×10² kW/m²",
+      "2.2×10² kW/m²",
+      "3.1×10² kW/m²",
+      "4.4×10² kW/m²"
+    ],
+    "answer": 0,
+    "difficulty": "標準・数値計算",
+    "explanation": "0.25×400+0.75×40=100+30=130 kW/m²。全領域の面積割合の和は1。この式は与えられた領域の面積平均で、実際の濡れ割合や界面を予測する相関ではない。",
+    "distractors": [
+      "正解。二領域をそれぞれの面積割合で重み付けした。",
+      "面積割合を使わず単純な算術平均にした。",
+      "濡れ面積割合と蒸気被覆割合を逆にした。",
+      "局所流束の和を全体平均とした。"
+    ],
+    "hints": [
+      "乾いた部分の割合は1−0.25。",
+      "各流束を対応する面積割合で重み付けする。"
+    ],
+    "solutionSteps": [
+      "濡れ部分の寄与は100 kW/m²。",
+      "蒸気被覆部分の寄与は30 kW/m²。",
+      "合計130 kW/m²を二桁で示す。"
+    ],
+    "beginnerPitfall": "平均の重みは面積であり、局所値の単純平均ではない。"
+  },
+  {
+    "id": "supp-transition-time-average-v1",
+    "revision": "v1",
+    "field": "沸騰・相変化",
+    "prerequisites": [
+      "沸騰曲線",
+      "熱流束と平均",
+      "状態と境界条件"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "独立日本語講義§9.6の一般法則と仮想条件から独自作問。原本の本文・図版・章末問題は転載しない。",
+      "chapterId": "ch9",
+      "focusSectionId": "9.6",
+      "guideId": "chapter9-latent-boiling"
+    },
+    "createdStatus": "独立作問下書き",
+    "reviewStatus": "執筆下書き・包括的品質監査は後工程／外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [],
+    "prompt": "ある面の面積平均熱流束が、最初の10 sは60 kW/m²、続く20 sは180 kW/m²で一定だった。全30 sの時間平均流束はいくらか。有効数字2桁とする。",
+    "choices": [
+      "1.2×10² kW/m²",
+      "1.4×10² kW/m²",
+      "1.8×10² kW/m²",
+      "2.4×10² kW/m²"
+    ],
+    "answer": 1,
+    "difficulty": "標準・数値計算",
+    "explanation": "時間積分は60×10+180×20=4200 kJ/m²。30 sで割ると140 kW/m²。等しい時間でないため、二つの流束の単純平均120ではない。",
+    "distractors": [
+      "時間窓の長さを無視して二値の平均を取った。",
+      "正解。各区間のエネルギーを足し、総時間で割った。",
+      "最後の区間の値だけを全時間へ使った。",
+      "二つの区間値を足したものを平均とした。"
+    ],
+    "hints": [
+      "時間平均は∫q̄″dtを総時間で割る。",
+      "最初と次の区間の時間は異なる。"
+    ],
+    "solutionSteps": [
+      "各時間区間で600、3600 kJ/m²を得る。",
+      "積分値の合計4200 kJ/m²。",
+      "30 sで割り140 kW/m²。"
+    ],
+    "beginnerPitfall": "測定時間が違う区間を等しい重みで平均しない。"
+  },
+  {
+    "id": "supp-transition-wet-fraction-inverse-v1",
+    "revision": "v1",
+    "field": "沸騰・相変化",
+    "prerequisites": [
+      "沸騰曲線",
+      "熱流束と平均",
+      "状態と境界条件"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "独立日本語講義§9.6の一般法則と仮想条件から独自作問。原本の本文・図版・章末問題は転載しない。",
+      "chapterId": "ch9",
+      "focusSectionId": "9.6",
+      "guideId": "chapter9-latent-boiling"
+    },
+    "createdStatus": "独立作問下書き",
+    "reviewStatus": "執筆下書き・包括的品質監査は後工程／外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [],
+    "prompt": "二領域の仮想面でq″_wet=300 kW/m²、q″_dry=50 kW/m²、面平均q̄″=150 kW/m²である。q̄″=f q″_wet+(1−f)q″_dryを満たす濡れ割合fはいくらか。有効数字2桁とする。",
+    "choices": [
+      "0.20",
+      "0.50",
+      "0.40",
+      "0.60"
+    ],
+    "answer": 2,
+    "difficulty": "標準・数値計算",
+    "explanation": "150=50+250fよりf=(150−50)/(300−50)=0.40。0≤f≤1の範囲にあり、元の式へ戻すと0.40×300+0.60×50=150。これは局所流束を与えた単純モデルでの逆算で、実機の画像測定を代替しない。",
+    "distractors": [
+      "乾いた寄与を引かず別の比率にした。",
+      "面平均を濡れ流束だけで割った。",
+      "正解。乾いた寄与を引いて二領域の差で割った。",
+      "蒸気被覆割合1−fを答えた。"
+    ],
+    "hints": [
+      "式をq̄″=q″_dry+f(q″_wet−q″_dry)と書く。",
+      "最後に0≤f≤1と元の式への代入を確認する。"
+    ],
+    "solutionSteps": [
+      "150−50=100 kW/m²。",
+      "300−50=250 kW/m²。",
+      "f=100/250=0.40。"
+    ],
+    "beginnerPitfall": "濡れ割合の逆算には各領域の流束という追加条件が要る。"
+  },
+  {
+    "id": "supp-transition-average-slope-v1",
+    "revision": "v1",
+    "field": "沸騰・相変化",
+    "prerequisites": [
+      "沸騰曲線",
+      "熱流束と平均",
+      "状態と境界条件"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "独立日本語講義§9.6の一般法則と仮想条件から独自作問。原本の本文・図版・章末問題は転載しない。",
+      "chapterId": "ch9",
+      "focusSectionId": "9.6",
+      "guideId": "chapter9-latent-boiling"
+    },
+    "createdStatus": "独立作問下書き",
+    "reviewStatus": "執筆下書き・包括的品質監査は後工程／外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [],
+    "prompt": "滑らかな二領域学習モデルで、ある状態のf=0.40、q″_wet=400 kW/m²、q″_dry=40 kW/m²とする。温度に対する局所傾きはdq″_wet/dT=2.0、dq″_dry/dT=0.20 kW/(m²·K)、df/dT=−0.0050 K⁻¹。積の微分を含めたd q̄″/dTはいくらか。有効数字2桁とする。",
+    "choices": [
+      "+0.92 kW/(m²·K)",
+      "−1.8 kW/(m²·K)",
+      "+2.7 kW/(m²·K)",
+      "−0.88 kW/(m²·K)"
+    ],
+    "answer": 3,
+    "difficulty": "標準・数値計算",
+    "explanation": "d q̄″/dT=f q″_wet′+(1−f)q″_dry′+f′(q″_wet−q″_dry)。0.40×2.0+0.60×0.20−0.0050×360=0.80+0.12−1.80=−0.88 kW/(m²·K)。局所傾きが正でも濡れ割合の減少で平均は負になりうる。",
+    "distractors": [
+      "面積割合が変化する第三項を落とした。",
+      "濡れ割合の変化項だけを使った。",
+      "濡れ割合の変化項の符号を逆にした。",
+      "正解。二つの局所項と面積割合の変化項を足した。"
+    ],
+    "hints": [
+      "fも温度によって変わるため積の微分が必要。",
+      "f′の単位K⁻¹と流束差の積に注意する。"
+    ],
+    "solutionSteps": [
+      "局所伝熱の寄与は0.80+0.12=0.92。",
+      "濡れ割合の寄与は−0.0050×360=−1.80。",
+      "合計−0.88 kW/(m²·K)。"
+    ],
+    "beginnerPitfall": "各領域の正の傾きだけから面平均の傾きも正と断定しない。"
+  },
+  {
+    "id": "supp-transition-fourier-consistency-v1",
+    "revision": "v1",
+    "field": "沸騰・相変化",
+    "prerequisites": [
+      "沸騰曲線",
+      "熱流束と平均",
+      "状態と境界条件"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "applied",
+    "source": {
+      "type": "supplement",
+      "reference": "独立日本語講義§9.6の一般法則と仮想条件から独自作問。原本の本文・図版・章末問題は転載しない。",
+      "chapterId": "ch9",
+      "focusSectionId": "9.6",
+      "guideId": "chapter9-latent-boiling"
+    },
+    "createdStatus": "独立作問下書き",
+    "reviewStatus": "執筆下書き・包括的品質監査は後工程／外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [],
+    "prompt": "遷移沸騰で、壁面過熱度の増加に対して面平均熱流束が減る結果が得られた。フーリエの法則との関係として適切な説明はどれか。",
+    "choices": [
+      "平均値の負の傾きは、局所熱伝導率が負であると示す",
+      "局所伝導と濡れ面積の変化を分け、平均の変化を考える",
+      "フーリエ則に従う面なら、沸騰曲線は全域で直線となる",
+      "温度差が正であれば、観測された平均値は誤測定となる"
+    ],
+    "answer": 1,
+    "difficulty": "応用・条件判断",
+    "explanation": "局所伝導は局所温度勾配に対する関係である。沸騰曲線では温度とともに面の濡れ・蒸気被覆・流動が変わりうる。固定された伝熱経路と一定係数の単純比例式とは異なるため、面平均の負の傾きだけでフーリエ則の破れとは言えない。",
+    "distractors": [
+      "正味の応答の傾きと物性の符号を混同した。",
+      "正解。局所法則と変化する面の状態を分けて扱った。",
+      "沸騰状態を一定の伝導経路と決めつけた。",
+      "温度差の符号だけでは平均流束の傾きは決まらない。"
+    ],
+    "hints": [
+      "局所の温度勾配と面全体の過熱度は同一の説明変数ではない。",
+      "液体が触れる面積が減る場合を考える。"
+    ],
+    "solutionSteps": [
+      "フーリエ則の対象を局所伝導と確認する。",
+      "沸騰状態によって面積割合や流れが変わると考える。",
+      "平均曲線の傾きと局所熱伝導率を区別する。"
+    ],
+    "beginnerPitfall": "曲線の微分係数を物質の熱伝導率と読み替えない。"
+  },
+  {
+    "id": "supp-transition-measurement-context-v1",
+    "revision": "v1",
+    "field": "沸騰・相変化",
+    "prerequisites": [
+      "沸騰曲線",
+      "熱流束と平均",
+      "状態と境界条件"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "applied",
+    "source": {
+      "type": "supplement",
+      "reference": "独立日本語講義§9.6の一般法則と仮想条件から独自作問。原本の本文・図版・章末問題は転載しない。",
+      "chapterId": "ch9",
+      "focusSectionId": "9.6",
+      "guideId": "chapter9-latent-boiling"
+    },
+    "createdStatus": "独立作問下書き",
+    "reviewStatus": "執筆下書き・包括的品質監査は後工程／外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [],
+    "prompt": "二つの遷移沸騰試験で、面積・時間平均の熱流束が同じだった。この情報だけから判断できる範囲として適切なのはどれか。",
+    "choices": [
+      "瞬間の局所最大熱流束の値も、二つの試験で同じと分かる",
+      "全時刻の濡れ割合も、二試験で同じと分かる",
+      "平均の定義を確認し、局所値や瞬間値は別に調べる",
+      "壁面の最大温度も、二試験で同じと分かる"
+    ],
+    "answer": 2,
+    "difficulty": "応用・条件判断",
+    "explanation": "同じ平均は異なる空間分布や変動からも生じる。平均の対象面積・時間窓・測定方法を確認した上で比較する。局所ピーク、最大温度、濡れ割合などはこの平均だけから一意には決まらない。",
+    "distractors": [
+      "平均から局所最大値を一意に復元できない。",
+      "平均が同じでも時間的変動は異なりうる。",
+      "正解。平均値の情報と未測定の量を区別した。",
+      "熱流束平均だけから最大温度は決まらない。"
+    ],
+    "hints": [
+      "異なる二つの分布が同じ平均を持ちうる。",
+      "平均を求めた面積と時間窓も必要。"
+    ],
+    "solutionSteps": [
+      "比較する二平均の定義をそろえる。",
+      "局所・瞬間の情報が平均操作で失われると考える。",
+      "ピークや温度は別の計測等で確認する。"
+    ],
+    "beginnerPitfall": "平均値の一致から局所安全性の一致を主張しない。"
+  },
+  {
+    "id": "supp-transition-fraction-model-limit-v1",
+    "revision": "v1",
+    "field": "沸騰・相変化",
+    "prerequisites": [
+      "沸騰曲線",
+      "熱流束と平均",
+      "状態と境界条件"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "applied",
+    "source": {
+      "type": "supplement",
+      "reference": "独立日本語講義§9.6の一般法則と仮想条件から独自作問。原本の本文・図版・章末問題は転載しない。",
+      "chapterId": "ch9",
+      "focusSectionId": "9.6",
+      "guideId": "chapter9-latent-boiling"
+    },
+    "createdStatus": "独立作問下書き",
+    "reviewStatus": "執筆下書き・包括的品質監査は後工程／外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [],
+    "prompt": "q̄″=f q″_wet+(1−f)q″_dryという二領域の式がある。これだけで実際の加熱面の遷移沸騰熱流束を予測したい。適切な判断はどれか。",
+    "choices": [
+      "fを温度差の数値に置けば、そのまま予測できる",
+      "f=0.5と決めれば、装置によらず厳密に予測できる",
+      "物性表からfを選べば、界面の変化は省略できる",
+      "fと各領域の流束を決める追加モデルや測定が要る"
+    ],
+    "answer": 3,
+    "difficulty": "応用・条件判断",
+    "explanation": "この式は各領域の平均をその面積割合でまとめる関係であり、濡れ割合の時間発展や局所の伝熱機構を解いていない。実際の予測には界面・流れ・壁の条件に合う追加情報が必要。fを普遍的な定数や流体物性と扱わない。",
+    "distractors": [
+      "温度差は有次元で、0から1の面積割合ではない。",
+      "面積割合を普遍値にする根拠がない。",
+      "濡れ割合は流体の固有物性だけでは決まらない。",
+      "正解。平均式に未指定の入力が残っている。"
+    ],
+    "hints": [
+      "式の右辺に未知量がいくつあるか確認する。",
+      "面積割合は表面・流れ・履歴でも変わりうる。"
+    ],
+    "solutionSteps": [
+      "未知のfと局所流束を列挙する。",
+      "平均式単独ではそれらが決まらないと認識する。",
+      "対象条件に合うモデルや測定を追加する。"
+    ],
+    "beginnerPitfall": "平均を取る式と、界面を含む現象の予測式を区別する。"
+  },
+  {
+    "id": "supp-system-local-pressure-v1",
+    "revision": "v1",
+    "field": "沸騰・相変化",
+    "prerequisites": [
+      "沸騰曲線",
+      "熱流束と平均",
+      "状態と境界条件"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "独立日本語講義§9.7の一般法則と仮想条件から独自作問。原本の本文・図版・章末問題は転載しない。",
+      "chapterId": "ch9",
+      "focusSectionId": "9.7",
+      "guideId": "chapter9-latent-boiling"
+    },
+    "createdStatus": "独立作問下書き",
+    "reviewStatus": "執筆下書き・包括的品質監査は後工程／外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [],
+    "prompt": "仮想の静止液体で、自由表面の絶対圧力90 kPa、密度800 kg/m³、g=10 m/s²、加熱面深さH=0.75 mとする。p_local=p_surface+ρgHの近似で、加熱面の絶対圧力はいくらか。整数のkPaで示す。",
+    "choices": [
+      "96 kPa",
+      "84 kPa",
+      "690 kPa",
+      "6 kPa"
+    ],
+    "answer": 0,
+    "difficulty": "標準・数値計算",
+    "explanation": "静水圧増分は800×10×0.75=6000 Pa=6 kPa。絶対圧力は90+6=96 kPa。深さHは自由表面から下向きを正とした。増分6 kPaだけでは加熱面の絶対圧力にならない。",
+    "distractors": [
+      "正解。自由表面圧力へ正の静水圧増分を加えた。",
+      "深くなるほど圧力を下げる符号にした。",
+      "PaからkPaの換算を誤った。",
+      "自由表面の絶対圧力を足していない。"
+    ],
+    "hints": [
+      "ρgHの単位はPa。",
+      "求めるのは増分ではなく絶対圧力。"
+    ],
+    "solutionSteps": [
+      "増分6000 Pa=6 kPaを計算する。",
+      "自由表面の90 kPaへ加える。",
+      "局所絶対圧力96 kPaを得る。"
+    ],
+    "beginnerPitfall": "自由表面からの圧力増分と絶対圧力を混同しない。"
+  },
+  {
+    "id": "supp-system-clapeyron-increment-v1",
+    "revision": "v1",
+    "field": "沸騰・相変化",
+    "prerequisites": [
+      "沸騰曲線",
+      "熱流束と平均",
+      "状態と境界条件"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "独立日本語講義§9.7の一般法則と仮想条件から独自作問。原本の本文・図版・章末問題は転載しない。",
+      "chapterId": "ch9",
+      "focusSectionId": "9.7",
+      "guideId": "chapter9-latent-boiling"
+    },
+    "createdStatus": "独立作問下書き",
+    "reviewStatus": "執筆下書き・包括的品質監査は後工程／外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [],
+    "prompt": "仮想の純物質の液体・蒸気平衡で、T_sat=400 K、比体積差v_v−v_l=0.50 m³/kg、潜熱h_fg=2.0×10⁶ J/kgとする。小さい圧力増分Δp=4.0 kPaの間、dT_sat/dp=T_sat(v_v−v_l)/h_fgを一定と近似する。飽和温度の増分はいくらか。有効数字2桁とする。",
+    "choices": [
+      "0.00040 K",
+      "0.40 K",
+      "4.0 K",
+      "40 K"
+    ],
+    "answer": 1,
+    "difficulty": "標準・数値計算",
+    "explanation": "傾きは400×0.50/(2.0×10⁶)=1.0×10⁻⁴ K/Pa。Δp=4000 Paを掛けてΔT_sat≈0.40 K。局所傾き一定という仮定の小変化計算で、広い圧力範囲へ線形外挿しない。",
+    "distractors": [
+      "圧力増分のkPaをPaへ直していない。",
+      "正解。K/Paの傾きにPaの増分を掛けた。",
+      "温度増分を正しい値の10倍にしている。",
+      "温度増分を正しい値の100倍にしている。"
+    ],
+    "hints": [
+      "4.0 kPaは4000 Pa。",
+      "Clapeyron関係のTは絶対温度。"
+    ],
+    "solutionSteps": [
+      "傾き1.0×10⁻⁴ K/Paを計算する。",
+      "圧力増分を4000 Paに換算する。",
+      "積から温度増分0.40 Kを得る。"
+    ],
+    "beginnerPitfall": "飽和曲線の局所傾きを核生成や熱流束の予測式と混同しない。"
+  },
+  {
+    "id": "supp-system-superheat-subcooling-v1",
+    "revision": "v1",
+    "field": "沸騰・相変化",
+    "prerequisites": [
+      "沸騰曲線",
+      "熱流束と平均",
+      "状態と境界条件"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "独立日本語講義§9.7の一般法則と仮想条件から独自作問。原本の本文・図版・章末問題は転載しない。",
+      "chapterId": "ch9",
+      "focusSectionId": "9.7",
+      "guideId": "chapter9-latent-boiling"
+    },
+    "createdStatus": "独立作問下書き",
+    "reviewStatus": "執筆下書き・包括的品質監査は後工程／外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [],
+    "prompt": "局所圧力に対応する飽和温度が110 ℃、壁温T_w=130 ℃、液体の代表温度T_bulk=95 ℃である。壁面過熱度ΔT_e=T_w−T_satと液体過冷却度ΔT_sub=T_sat−T_bulkの組合せはどれか。",
+    "choices": [
+      "ΔT_e=35 K、ΔT_sub=15 K",
+      "ΔT_e=20 K、ΔT_sub=−15 K",
+      "ΔT_e=20 K、ΔT_sub=15 K",
+      "ΔT_e=15 K、ΔT_sub=20 K"
+    ],
+    "answer": 2,
+    "difficulty": "標準・数値計算",
+    "explanation": "壁面過熱度は130−110=20 K、液体過冷却度は110−95=15 K。壁から液体全体までの差35 Kとは区別する。液体全体が過冷却でも壁近傍で局所的な沸騰が起こる場合がある。",
+    "distractors": [
+      "壁面過熱度にT_w−T_bulkを使った。",
+      "過冷却度の引き算を逆にした。",
+      "正解。共通の局所飽和温度を基準とする二つの差。",
+      "二つの差の名称と値を逆にした。"
+    ],
+    "hints": [
+      "壁面過熱度は飽和温度よりどれだけ壁が熱いか。",
+      "液体過冷却度は飽和温度よりどれだけ液体が冷たいか。"
+    ],
+    "solutionSteps": [
+      "壁面過熱度130−110=20 K。",
+      "液体過冷却度110−95=15 K。",
+      "T_w−T_bulk=35 Kとは別量と確認する。"
+    ],
+    "beginnerPitfall": "二つの温度差の基準と符号をそろえる。"
+  },
+  {
+    "id": "supp-system-surface-comparison-v1",
+    "revision": "v1",
+    "field": "沸騰・相変化",
+    "prerequisites": [
+      "沸騰曲線",
+      "熱流束と平均",
+      "状態と境界条件"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "applied",
+    "source": {
+      "type": "supplement",
+      "reference": "独立日本語講義§9.7の一般法則と仮想条件から独自作問。原本の本文・図版・章末問題は転載しない。",
+      "chapterId": "ch9",
+      "focusSectionId": "9.7",
+      "guideId": "chapter9-latent-boiling"
+    },
+    "createdStatus": "独立作問下書き",
+    "reviewStatus": "執筆下書き・包括的品質監査は後工程／外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [],
+    "prompt": "表面処理の効果を調べる二つの沸騰試験で、表面の粗さだけでなく液体の圧力と外部流速も変わっていた。得られた熱流束の差について適切な扱いはどれか。",
+    "choices": [
+      "差の全てを粗さの効果とし、圧力と流速は記録しない",
+      "熱流束が大きい方を、圧力や流れの異なる全条件で優れた表面と認定する",
+      "同じ液体なので、圧力と流速の違いは除外して比較する",
+      "複数条件が変わったと記録し、粗さ単独の効果は分けて調べる"
+    ],
+    "answer": 3,
+    "difficulty": "応用・条件判断",
+    "explanation": "圧力と流速は飽和状態、物性、泡や液体の輸送に影響しうる。複数条件を同時に変えた比較から粗さだけの因果効果を断定できない。条件をそろえた試験や、適切な実験計画で影響を切り分ける。",
+    "distractors": [
+      "同時に変わった条件の影響を無視した。",
+      "限られた条件の比較を全てへ一般化した。",
+      "同じ液体でも状態や流動条件は変わる。",
+      "正解。比較条件と因果関係を区別して記録する。"
+    ],
+    "hints": [
+      "二試験の違いは粗さだけではない。",
+      "圧力と流速も熱の輸送へ影響する。"
+    ],
+    "solutionSteps": [
+      "変わった条件を粗さ・圧力・流速と列挙する。",
+      "一つの原因に全差を帰属できないと判断する。",
+      "条件をそろえた追加比較等を計画する。"
+    ],
+    "beginnerPitfall": "複数要因を変えた差を一要因の効果と断定しない。"
+  },
+  {
+    "id": "supp-system-small-gravity-limit-v1",
+    "revision": "v1",
+    "field": "沸騰・相変化",
+    "prerequisites": [
+      "沸騰曲線",
+      "熱流束と平均",
+      "状態と境界条件"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "applied",
+    "source": {
+      "type": "supplement",
+      "reference": "独立日本語講義§9.7の一般法則と仮想条件から独自作問。原本の本文・図版・章末問題は転載しない。",
+      "chapterId": "ch9",
+      "focusSectionId": "9.7",
+      "guideId": "chapter9-latent-boiling"
+    },
+    "createdStatus": "独立作問下書き",
+    "reviewStatus": "執筆下書き・包括的品質監査は後工程／外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [],
+    "prompt": "通常重力の大きな水平面向けプール沸騰相関を、微小重力の装置へ使いたい。係数と幾何の仮定を保ったままgだけを小さくして計算する扱いとして適切なのはどれか。",
+    "choices": [
+      "泡や蒸気の排出機構と適用範囲を見直し、追加の根拠を調べる",
+      "式にgが含まれるので、微小重力を含む重力の全範囲で適用可能と判断する",
+      "同じ液体なら、重力の違いで気液界面の形は変わらない",
+      "数値が有限なら、幾何や流動条件の確認を省略してよい"
+    ],
+    "answer": 0,
+    "difficulty": "応用・条件判断",
+    "explanation": "重力は浮力による泡・蒸気排出や液体供給の機構に関係する。微小重力で元の相関の仮定が維持されるとは限らず、相関にgが含まれることだけでは外挿を正当化しない。幾何・表面張力・外部流等の影響も改めて検討する。",
+    "distractors": [
+      "正解。支配機構と元の相関範囲を確認する。",
+      "変数として入っていても適用範囲は有限。",
+      "同じ液体でも重力と表面張力の相対作用は変わる。",
+      "計算可能であることとモデルの適合は異なる。"
+    ],
+    "hints": [
+      "元の相関はどんな流動機構を仮定したか。",
+      "重力が弱くなると浮力排出の役割も変わる。"
+    ],
+    "solutionSteps": [
+      "通常重力での相関の条件を読む。",
+      "重力変更で気液輸送が変わりうると認識する。",
+      "対象条件に適合する根拠やモデルを探す。"
+    ],
+    "beginnerPitfall": "相関に変数が現れるだけで、その全範囲へ外挿可能とはしない。"
+  },
+  {
+    "id": "supp-system-mixture-equilibrium-v1",
+    "revision": "v1",
+    "field": "沸騰・相変化",
+    "prerequisites": [
+      "沸騰曲線",
+      "熱流束と平均",
+      "状態と境界条件"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "applied",
+    "source": {
+      "type": "supplement",
+      "reference": "独立日本語講義§9.7の一般法則と仮想条件から独自作問。原本の本文・図版・章末問題は転載しない。",
+      "chapterId": "ch9",
+      "focusSectionId": "9.7",
+      "guideId": "chapter9-latent-boiling"
+    },
+    "createdStatus": "独立作問下書き",
+    "reviewStatus": "執筆下書き・包括的品質監査は後工程／外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [],
+    "prompt": "純物質の飽和温度T_sat(p)を使った説明を、二成分液体の沸騰へそのまま適用したい。組成と圧力だけでなく、局所の相平衡条件も確認すべき理由はどれか。",
+    "choices": [
+      "混合物でも全成分の沸点が等しいため、組成は不要だから",
+      "液相・気相の組成や沸点・露点が異なりうるから",
+      "混合物なら全ての圧力で飽和温度が一定だから",
+      "二成分なら蒸発潜熱が常にゼロになるから"
+    ],
+    "answer": 1,
+    "difficulty": "応用・条件判断",
+    "explanation": "混合物では液相・気相の組成が異なりうる。圧力に加え組成や相平衡を扱い、沸点・露点を区別する必要がある。純物質の単一のT_sat(p)だけでは一般に十分ではない。",
+    "distractors": [
+      "混合物の相平衡における組成依存を消している。",
+      "正解。純物質の前提を混合物へそのまま移せない。",
+      "混合物でも圧力と組成は相平衡に関係する。",
+      "成分数だけから相変化の潜熱がゼロとは言えない。"
+    ],
+    "hints": [
+      "純物質という前提が変わっている。",
+      "蒸気と液体の組成が同じとは限らない。"
+    ],
+    "solutionSteps": [
+      "対象が混合物と確認する。",
+      "圧力・組成・各相の平衡を考える。",
+      "沸点・露点の区別を含むモデルを用いる。"
+    ],
+    "beginnerPitfall": "純物質で成立する状態指定を、混合物にも十分だと決めつけない。"
+  },
+  {
+    "id": "supp-system-local-saturation-shift-v1",
+    "revision": "v1",
+    "field": "沸騰・相変化",
+    "prerequisites": [
+      "沸騰曲線",
+      "熱流束と平均",
+      "状態と境界条件"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "独立日本語講義§9.7の一般法則と仮想条件から独自作問。原本の本文・図版・章末問題は転載しない。",
+      "chapterId": "ch9",
+      "focusSectionId": "9.7",
+      "guideId": "chapter9-latent-boiling"
+    },
+    "createdStatus": "独立作問下書き",
+    "reviewStatus": "執筆下書き・包括的品質監査は後工程／外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [],
+    "prompt": "ある仮想純液体で、静水圧の効果により加熱面の局所飽和温度が自由表面に比べ0.80 K高いとする。壁温を固定し、自由表面の飽和温度を使った壁面過熱度が12.0 Kだったとき、局所圧力で補正した壁面過熱度はいくらか。小数第1位まで示す。",
+    "choices": [
+      "12.8 K",
+      "12.0 K",
+      "11.2 K",
+      "0.80 K"
+    ],
+    "answer": 2,
+    "difficulty": "標準・数値計算",
+    "explanation": "壁面過熱度はT_w−T_sat。壁温を固定して基準の飽和温度を0.80 K上げると、過熱度は12.0−0.80=11.2 Kへ下がる。圧力補正だけから実際の熱流束の増減までは決まらない。",
+    "distractors": [
+      "飽和温度の上昇を過熱度へ加算した。",
+      "基準飽和温度の変化を無視した。",
+      "正解。引く側の飽和温度が上がるため過熱度は減る。",
+      "過熱度の変化量を最終過熱度とした。"
+    ],
+    "hints": [
+      "T_w−T_satのどちらの項が変わるか。",
+      "壁温は固定されている。"
+    ],
+    "solutionSteps": [
+      "初期の過熱度12.0 Kを確認する。",
+      "飽和温度上昇0.80 Kを差し引く。",
+      "局所過熱度11.2 Kを得る。"
+    ],
+    "beginnerPitfall": "飽和温度と壁温が両方動く場合まで、この単純差を無条件に使わない。"
+  },
+  {
+    "id": "supp-radiation-gray-versus-diffuse-v1",
+    "revision": "v1",
+    "field": "放射",
+    "prerequisites": [
+      "放射率",
+      "灰色体",
+      "拡散面"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "conceptual",
+    "source": {
+      "type": "supplement",
+      "reference": "一般的な放射モデルの仮定を区別する独立作問。原本の翻訳・図版・章末問題は転載しない。",
+      "chapterId": "ch10",
+      "focusSectionId": "10.1",
+      "guideId": "chapter10-view-factors"
+    },
+    "createdStatus": "独立作問下書き",
+    "reviewStatus": "執筆下書き・包括的品質監査は後工程／外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [],
+    "prompt": "「不透明・灰色・拡散面」を仮定する放射モデルで、このうち「灰色面」が表す近似はどれか。対象の波長範囲に対する意味を選ぶ。",
+    "choices": [
+      "物体を通る透過率をゼロとし、反射と吸収を考える",
+      "放射率を1とし、入射放射の全てを吸収する",
+      "放射率などの波長依存を無視し、一定値で扱う",
+      "放射強度の方向依存を無視し、各方向で同じとする"
+    ],
+    "answer": 2,
+    "difficulty": "基礎・モデルの定義",
+    "explanation": "灰色面は対象の波長範囲で放射率などの波長依存を無視する近似。不透明は透過しない条件、黒体は入射を全吸収する理想体、拡散放射面は放射強度の方向依存を無視する仮定であり、それぞれ別である。灰色という仮定だけで放射率1や方向非依存が決まるわけではない。",
+    "distractors": [
+      "不透明という仮定の説明で、灰色の定義ではない。",
+      "黒体という理想化の説明で、一般の灰色面ではない。",
+      "正解。灰色という近似は波長依存の省略を表す。",
+      "拡散放射という仮定の説明で、灰色とは別である。"
+    ],
+    "hints": [
+      "波長と方向は別の変数。",
+      "灰色は放射率を1にするという意味ではない。"
+    ],
+    "solutionSteps": [
+      "不透明・灰色・拡散の各仮定を分ける。",
+      "灰色が波長依存に対する仮定だと確認する。",
+      "放射率の数値や方向性は別の条件と判断する。"
+    ],
+    "beginnerPitfall": "不透明・黒体・灰色・拡散を同じ性質と混同しない。"
   }
 ]
