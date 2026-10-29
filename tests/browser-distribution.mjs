@@ -73,13 +73,16 @@ try {
   assert.equal(await page.locator('.reader-toc .toc-item:not(.not-ready)').count(),0);
   assert.match(await page.locator('.not-translated').innerText(),/公開していません/);
   assert.match(await page.locator('.not-translated a[href*="AHTTv600.pdf"]').getAttribute('href'),/AHTTv600\.pdf#page=17$/);
+  assert.equal(await page.locator('.reader-toc .toc-item.selected').getAttribute('data-section'),'1.1');
   await page.locator('[data-action="toggle-read"]').click();
+  await page.waitForFunction(()=>JSON.parse(localStorage.getItem('heat-study-ja:v1'))?.readSections?.['1.1']===true);
+  assert.match(await page.locator('[data-action="toggle-read"]').innerText(),/読了に記録済み/);
   await page.locator('#bookmark-note').fill('原本の対応箇所');
   await page.locator('#bookmark-form button[type="submit"]').click();
   await page.locator('#reader-note-form textarea').fill('原本を読んだ後に自分で確認する。');
   await page.locator('#reader-note-form button[type="submit"]').click();
   const readingRecord=await page.evaluate(()=>{const s=JSON.parse(localStorage.getItem('heat-study-ja:v1'));return {read:s.readSections['1.1'],bookmark:s.bookmarks[0],note:s.notes[0]};});
-  assert.equal(readingRecord.read,true);
+  assert.equal(readingRecord.read,true,'read completion must survive subsequent bookmark and note writes: '+JSON.stringify(readingRecord));
   assert.equal(readingRecord.bookmark.bookPage,3);
   assert.equal(readingRecord.note.sectionId,'1.1');
   await page.locator('.reader-pager [data-section="1.2"]').click();
@@ -679,6 +682,7 @@ try {
     assert.match(rendered,/外部学術専門家校閲前/);
     for(const reference of lesson.references)assert.equal(await page.locator(`#reader-deep-lesson a[href="${reference.url}"]`).count(),1);
   }
+  console.log(engine+': 全76詳細講義の目標・本文・例題・参照・未校閲表示を確認。');
   // Exercise all internally checked earlier additions and every new question authored here.
   // A vocabulary tap must leave the answer draft and persisted learning state intact.
   const pending=await page.evaluate(async()=>

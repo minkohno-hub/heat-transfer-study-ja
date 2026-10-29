@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "checkedAt": "2026-10-29T13:58:01.713590+00:00",
-  "basis": "88cf7b2以降の第8章追加を含むPR #1作業ツリー。旧PC原稿の回収数とは別。",
+  "basis": "375bd44に監査所見3件の改訂修正を加えた作業ツリー。旧PC回収数とは別。",
   "scope": "独立執筆原稿と節別問題の暫定最低条件。科学的・法的完成認定ではない。",
   "totals": {
     "sectionCount": 76,
@@ -17,8 +17,8 @@
   "glossaryOnThisBranch": 158,
   "evidence": {
     "node": {
-      "total": 315,
-      "passed": 310,
+      "total": 318,
+      "passed": 313,
       "skipped": 5,
       "failed": 0
     },
