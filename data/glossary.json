@@ -12491,5 +12491,421 @@
       "reference": "教科書第8〜9章の沸騰・凝縮・二相流の一般的な関係を独立執筆した補足。鉛直板凝縮の平均熱伝達率はESDU https://mmshah.org/publications/condensation.pdf、ZuberのCHF式はJAEA https://jopss.jaea.go.jp/pdfdata/JAEA-Data-Code-2008-014.pdf と照合。原書翻訳・転載ではなく専門家校閲前。"
     },
     "reviewStatus": "needs_review"
+  },
+  {
+    "id": "beer-lambert-radiative-law",
+    "ja": "ベール・ランベルトの法則（放射）",
+    "en": "Beer–Lambert law for radiation",
+    "aliases": [
+      "放射の指数減衰則"
+    ],
+    "category": "気体放射",
+    "brief": "媒質中の指定方向の放射が吸収や散乱によって指数関数的に弱まる関係。",
+    "meaning": "媒質中の指定方向の放射が吸収や散乱によって指数関数的に弱まる関係。",
+    "beginner": "光が気体や煙を通ると、単位距離ごとに一定の割合で減り、距離に対して指数関数の形で弱まります。",
+    "detail": "直接透過する分光放射強度はI_out=I_in exp(−τ)、τ=∫β_e ds。β_eは吸収係数と散乱係数の和であり、散乱は元の光線方向から放射を外す。媒質自身の発光や他方向から散乱して入る寄与を含む観測強度は、この減衰式のみでは表せない。波長と距離の単位を統一する。",
+    "formula": "I_out=I_in exp(−τ)、τ=∫β_e ds",
+    "unit": "I: W/(m²·sr·m)、β_e: m⁻¹、τ: 無次元",
+    "example": "I_in=100 W/(m²·sr·m)、τ=0.5の直接透過強度は約60.65 W/(m²·sr·m)。",
+    "related": [
+      "放射強度",
+      "光学的厚さ（熱放射）",
+      "放射参加媒質",
+      "放射消散係数"
+    ],
+    "relatedSections": [
+      "10.5"
+    ],
+    "relatedQuestions": [],
+    "relatedSimulators": [],
+    "confusions": [
+      "吸収だけでなく散乱も減衰させるが、光の総エネルギーがすべて媒質に吸収されるわけではない。"
+    ],
+    "source": {
+      "type": "supplement",
+      "reference": "気体放射と太陽放射の一般理論に基づく独立執筆。FU Berlin Radiative Transfer https://refubium.fu-berlin.de/bitstream/handle/fub188/7514/02_JM_02.pdf、Sandia PVPMC https://pvpmc.sandia.gov/modeling-guide/1-weather-design-inputs/plane-of-array-poa-irradiance/calculating-poa-irradiance/poa-ground-reflected/ を数式の参考とした。翻訳転載でなく専門家校閲前。"
+    },
+    "reviewStatus": "needs_review"
+  },
+  {
+    "id": "radiative-extinction-coefficient",
+    "ja": "放射消散係数",
+    "en": "radiative extinction coefficient",
+    "aliases": [
+      "消散係数（放射）"
+    ],
+    "category": "気体放射",
+    "brief": "指定方向の放射が吸収と散乱により弱まる程度を表す距離当たりの係数。",
+    "meaning": "指定方向の放射が吸収と散乱により弱まる程度を表す距離当たりの係数。",
+    "beginner": "光が吸収される影響と別方向へ散る影響を足したものです。吸収するだけの物質でなければ吸収係数とは違います。",
+    "detail": "分光消散係数β_e,λは吸収係数κ_a,λと散乱係数σ_s,λの和である。散乱があると、進行方向の光線は弱まっても他方向の放射強度が増える場合がある。β_e,λの単位はm⁻¹で、波長、圧力、物質組成や温度などに依存する。散乱しない媒体でだけβ_e=κ_aとなる。",
+    "formula": "β_e,λ=κ_a,λ+σ_s,λ",
+    "unit": "β_e,λ、κ_a,λ、σ_s,λ: m⁻¹",
+    "example": "吸収係数0.20 m⁻¹と散乱係数0.30 m⁻¹をもつ媒体の消散係数は0.50 m⁻¹。",
+    "related": [
+      "吸収係数（熱放射）",
+      "放射参加媒質",
+      "光学的厚さ（熱放射）",
+      "単一散乱アルベド"
+    ],
+    "relatedSections": [
+      "10.5"
+    ],
+    "relatedQuestions": [],
+    "relatedSimulators": [],
+    "confusions": [
+      "散乱する媒体では消散係数と吸収係数が等しくない。"
+    ],
+    "source": {
+      "type": "supplement",
+      "reference": "気体放射と太陽放射の一般理論に基づく独立執筆。FU Berlin Radiative Transfer https://refubium.fu-berlin.de/bitstream/handle/fub188/7514/02_JM_02.pdf、Sandia PVPMC https://pvpmc.sandia.gov/modeling-guide/1-weather-design-inputs/plane-of-array-poa-irradiance/calculating-poa-irradiance/poa-ground-reflected/ を数式の参考とした。翻訳転載でなく専門家校閲前。"
+    },
+    "reviewStatus": "needs_review"
+  },
+  {
+    "id": "single-scattering-albedo",
+    "ja": "単一散乱アルベド",
+    "en": "single-scattering albedo",
+    "aliases": [
+      "散乱アルベド"
+    ],
+    "category": "気体放射",
+    "brief": "光の消散のうち、散乱による割合を表す無次元比。",
+    "meaning": "光の消散のうち、散乱による割合を表す無次元比。",
+    "beginner": "光が弱くなった原因のうち、吸収ではなく散らばった割合です。地面が反射する日射の割合とは異なります。",
+    "detail": "単一散乱アルベドω=σ_s/(κ_a+σ_s)。消散が正で各係数が非負なら0≤ω≤1。ω=0は散乱なし、ω=1は吸収なしを表すが、散乱光の方向分布はさらに位相関数による。地表の日射反射率を示す地表アルベドとは対象が違うため、両者を同じ数値として用いない。",
+    "formula": "ω=σ_s/(κ_a+σ_s)",
+    "unit": "ω: 無次元、κ_a,σ_s: m⁻¹",
+    "example": "κ_a=0.20 m⁻¹、σ_s=0.30 m⁻¹なら単一散乱アルベドは0.60。",
+    "related": [
+      "放射消散係数",
+      "吸収係数（熱放射）",
+      "地表アルベド"
+    ],
+    "relatedSections": [
+      "10.5"
+    ],
+    "relatedQuestions": [],
+    "relatedSimulators": [],
+    "confusions": [
+      "単一散乱アルベドは内部の散乱比であり地面の表面反射率とは違う。"
+    ],
+    "source": {
+      "type": "supplement",
+      "reference": "気体放射と太陽放射の一般理論に基づく独立執筆。FU Berlin Radiative Transfer https://refubium.fu-berlin.de/bitstream/handle/fub188/7514/02_JM_02.pdf、Sandia PVPMC https://pvpmc.sandia.gov/modeling-guide/1-weather-design-inputs/plane-of-array-poa-irradiance/calculating-poa-irradiance/poa-ground-reflected/ を数式の参考とした。翻訳転載でなく専門家校閲前。"
+    },
+    "reviewStatus": "needs_review"
+  },
+  {
+    "id": "radiative-transfer-equation",
+    "ja": "放射輸送方程式",
+    "en": "radiative transfer equation",
+    "aliases": [
+      "放射伝達方程式（媒質）"
+    ],
+    "category": "気体放射",
+    "brief": "放射が媒質中で減衰し、媒質から新たに放射が出る両方の作用を表す式。",
+    "meaning": "放射が媒質中で減衰し、媒質から新たに放射が出る両方の作用を表す式。",
+    "beginner": "光は吸収で弱くなる一方、温かい気体から新しい赤外線が出ることもあります。その二つを同時に計算します。",
+    "detail": "吸収・放射し、散乱せず局所熱平衡にある媒体のある波長ではdI_λ/ds=−κ_λI_λ+κ_λB_λ(T)。B_λは同じ温度の黒体分光放射強度であり、前半は吸収損失、後半は媒体からの放射源項となる。散乱する媒体では散乱による消散と角度積分した源項を追加する必要がある。",
+    "formula": "dI_λ/ds=−κ_λI_λ+κ_λB_λ(T)（非散乱・局所熱平衡）",
+    "unit": "I_λ,B_λ: W/(m²·sr·m)、κ_λ: m⁻¹",
+    "example": "κ=0.2 m⁻¹、I_λ=10、B_λ=20を同じ放射強度単位で与えると、dI_λ/dsは+2（放射強度単位）/m。",
+    "related": [
+      "放射強度",
+      "プランクの放射法則",
+      "放射参加媒質",
+      "放射消散係数"
+    ],
+    "relatedSections": [
+      "10.5"
+    ],
+    "relatedQuestions": [],
+    "relatedSimulators": [],
+    "confusions": [
+      "媒体の熱放射があるとき、指数減衰する入射成分だけでは出口強度を求められない。"
+    ],
+    "source": {
+      "type": "supplement",
+      "reference": "気体放射と太陽放射の一般理論に基づく独立執筆。FU Berlin Radiative Transfer https://refubium.fu-berlin.de/bitstream/handle/fub188/7514/02_JM_02.pdf、Sandia PVPMC https://pvpmc.sandia.gov/modeling-guide/1-weather-design-inputs/plane-of-array-poa-irradiance/calculating-poa-irradiance/poa-ground-reflected/ を数式の参考とした。翻訳転載でなく専門家校閲前。"
+    },
+    "reviewStatus": "needs_review"
+  },
+  {
+    "id": "radiative-source-function",
+    "ja": "放射源関数",
+    "en": "radiative source function",
+    "aliases": [
+      "放射輸送のソース関数"
+    ],
+    "category": "気体放射",
+    "brief": "光学的厚さを使った放射輸送方程式で、媒質からの放射源を表す強度。",
+    "meaning": "光学的厚さを使った放射輸送方程式で、媒質からの放射源を表す強度。",
+    "beginner": "入ってくる光を弱めるだけでなく媒質が放射を足します。源関数は媒質が光の強さを近づける値を示します。",
+    "detail": "放射輸送をdI_λ/dτ_λ=−I_λ+S_λと記したときS_λが放射源関数である。散乱なしの局所熱平衡ではS_λ=B_λ(T)だが、散乱があれば全方向の入射強度を角度積分した寄与も含む。媒体からの放射による源関数と、材料内部の体積発熱率W/m³は単位が異なる。",
+    "formula": "dI_λ/dτ_λ=−I_λ+S_λ、非散乱LTEではS_λ=B_λ(T)",
+    "unit": "S_λ: W/(m²·sr·m)、τ_λ: 無次元",
+    "example": "非散乱・局所熱平衡でB_λ=20 W/(m²·sr·m)なら源関数も同じ単位で20。",
+    "related": [
+      "放射輸送方程式",
+      "プランクの放射法則",
+      "放射参加媒質"
+    ],
+    "relatedSections": [
+      "10.5"
+    ],
+    "relatedQuestions": [],
+    "relatedSimulators": [],
+    "confusions": [
+      "源関数は散乱や非平衡の影響があると必ずしも黒体放射強度に等しくない。"
+    ],
+    "source": {
+      "type": "supplement",
+      "reference": "気体放射と太陽放射の一般理論に基づく独立執筆。FU Berlin Radiative Transfer https://refubium.fu-berlin.de/bitstream/handle/fub188/7514/02_JM_02.pdf、Sandia PVPMC https://pvpmc.sandia.gov/modeling-guide/1-weather-design-inputs/plane-of-array-poa-irradiance/calculating-poa-irradiance/poa-ground-reflected/ を数式の参考とした。翻訳転載でなく専門家校閲前。"
+    },
+    "reviewStatus": "needs_review"
+  },
+  {
+    "id": "isothermal-radiating-layer-solution",
+    "ja": "等温吸収放射層の透過解",
+    "en": "isothermal absorbing-emitting layer solution",
+    "aliases": [
+      "等温参加媒質の入出射強度"
+    ],
+    "category": "気体放射",
+    "brief": "等温媒質の出口放射強度を、入射光の透過と媒質自体の放射の和で表す解。",
+    "meaning": "等温媒質の出口放射強度を、入射光の透過と媒質自体の放射の和で表す解。",
+    "beginner": "最初の赤外線が気体を通ると弱まりますが、温かい気体からの放射も加わるため、両方を足す必要があります。",
+    "detail": "一様・等温・非散乱・局所熱平衡の媒体を一定の光学的厚さτに沿って通ると、I_out=I_in e^(−τ)+B_λ(T)(1−e^(−τ))。第一項は入射成分の透過、第二項は媒体の熱放射。媒体温度が距離で変わる場合はB_λ(T)も変わるため、源項を経路に沿って積分する必要がある。",
+    "formula": "I_out=I_in e^(−τ)+B_λ(T)(1−e^(−τ))",
+    "unit": "I_in,I_out,B_λ: W/(m²·sr·m)、τ: 無次元",
+    "example": "入射強度100、黒体強度40、透過率0.5を同じ単位で与えると出口は70。",
+    "related": [
+      "放射輸送方程式",
+      "放射源関数",
+      "光学的厚さ（熱放射）"
+    ],
+    "relatedSections": [
+      "10.5"
+    ],
+    "relatedQuestions": [],
+    "relatedSimulators": [],
+    "confusions": [
+      "熱放射する層の出口強度を、入射光の減衰分だけとみなしてはならない。"
+    ],
+    "source": {
+      "type": "supplement",
+      "reference": "気体放射と太陽放射の一般理論に基づく独立執筆。FU Berlin Radiative Transfer https://refubium.fu-berlin.de/bitstream/handle/fub188/7514/02_JM_02.pdf、Sandia PVPMC https://pvpmc.sandia.gov/modeling-guide/1-weather-design-inputs/plane-of-array-poa-irradiance/calculating-poa-irradiance/poa-ground-reflected/ を数式の参考とした。翻訳転載でなく専門家校閲前。"
+    },
+    "reviewStatus": "needs_review"
+  },
+  {
+    "id": "gas-layer-emissivity",
+    "ja": "等温気体層の放射率",
+    "en": "emissivity of an isothermal gas layer",
+    "aliases": [
+      "気体層の分光放射率"
+    ],
+    "category": "気体放射",
+    "brief": "温度一定の気体層が同じ温度の黒体と比べて放射する割合。",
+    "meaning": "温度一定の気体層が同じ温度の黒体と比べて放射する割合。",
+    "beginner": "気体は波長や厚さによって光を出す割合が違います。吸収しやすい波長では放射も強くなる傾向があります。",
+    "detail": "非散乱・一様等温・局所熱平衡の気体層で、一定の分光吸収係数κ_λと光路長Lに対する方向別分光放射率はε_λ=1−exp(−κ_λL)。同条件の吸収率に一致するのはキルヒホッフ則による。波長・方向を積分した全放射率は異なる重み付けを要し、単一のκ_λだけから必ず求められるわけではない。",
+    "formula": "ε_λ=1−exp(−κ_λL)（等温・非散乱・単一経路）",
+    "unit": "ε_λ: 無次元、κ_λ: m⁻¹、L: m",
+    "example": "κ_λ=0.20 m⁻¹、光路長2 mなら放射率は1−e^(−0.4)≈0.330。",
+    "related": [
+      "放射率",
+      "吸収係数（熱放射）",
+      "光学的厚さ（熱放射）",
+      "キルヒホッフの法則"
+    ],
+    "relatedSections": [
+      "10.2",
+      "10.5"
+    ],
+    "relatedQuestions": [],
+    "relatedSimulators": [],
+    "confusions": [
+      "気体層の分光方向放射率と、全方向・全波長で平均した放射率は異なる。"
+    ],
+    "source": {
+      "type": "supplement",
+      "reference": "気体放射と太陽放射の一般理論に基づく独立執筆。FU Berlin Radiative Transfer https://refubium.fu-berlin.de/bitstream/handle/fub188/7514/02_JM_02.pdf、Sandia PVPMC https://pvpmc.sandia.gov/modeling-guide/1-weather-design-inputs/plane-of-array-poa-irradiance/calculating-poa-irradiance/poa-ground-reflected/ を数式の参考とした。翻訳転載でなく専門家校閲前。"
+    },
+    "reviewStatus": "needs_review"
+  },
+  {
+    "id": "non-gray-gas",
+    "ja": "非灰色気体",
+    "en": "non-gray gas",
+    "aliases": [
+      "波長選択的な放射性気体"
+    ],
+    "category": "気体放射",
+    "brief": "吸収・放射特性が赤外線の波長によって大きく変わる気体。",
+    "meaning": "吸収・放射特性が赤外線の波長によって大きく変わる気体。",
+    "beginner": "同じ気体でも吸収しやすい赤外線の波長と、ほとんど透過する波長があるため全部を同じには扱えません。",
+    "detail": "水蒸気や二酸化炭素は分子の振動回転状態に応じた吸収帯を持ち、分光吸収係数κ_λは波長・温度・圧力・混合組成によって変化する。単一の灰色κで近似すると吸収帯と透過窓の違いを表せない場合がある。各波長における透過率は非散乱・一様の場合e^(−κ_λL)で示せる。",
+    "formula": "τ_λ=κ_λL、透過率_λ=e^(−τ_λ)",
+    "unit": "κ_λ: m⁻¹、τ_λ: 無次元、L: m",
+    "example": "光路長1 mでκ_λが0.1 m⁻¹と1 m⁻¹の二波長なら透過率は約0.905と0.368。",
+    "related": [
+      "放射参加媒質",
+      "放射消散係数",
+      "分光放射率",
+      "プランクの放射法則"
+    ],
+    "relatedSections": [
+      "10.5"
+    ],
+    "relatedQuestions": [],
+    "relatedSimulators": [],
+    "confusions": [
+      "灰色面の波長非依存の近似を、すべての気体の分光放射へ無条件で適用しない。"
+    ],
+    "source": {
+      "type": "supplement",
+      "reference": "気体放射と太陽放射の一般理論に基づく独立執筆。FU Berlin Radiative Transfer https://refubium.fu-berlin.de/bitstream/handle/fub188/7514/02_JM_02.pdf、Sandia PVPMC https://pvpmc.sandia.gov/modeling-guide/1-weather-design-inputs/plane-of-array-poa-irradiance/calculating-poa-irradiance/poa-ground-reflected/ を数式の参考とした。翻訳転載でなく専門家校閲前。"
+    },
+    "reviewStatus": "needs_review"
+  },
+  {
+    "id": "solar-incidence-angle",
+    "ja": "太陽光入射角",
+    "en": "solar angle of incidence",
+    "aliases": [
+      "日射の入射角"
+    ],
+    "category": "太陽放射",
+    "brief": "受光面の法線と太陽から届く直達光線方向がなす角度。",
+    "meaning": "受光面の法線と太陽から届く直達光線方向がなす角度。",
+    "beginner": "面に正面から当たる日射は強く、斜めに当たるほど単位面積に届く量が小さくなります。",
+    "detail": "入射角θ_iは表側受光面の法線と太陽方向のなす角で、直達照度G_b=DNI·max(0,cosθ_i)。水平面に対しては太陽天頂角と一致するが、傾斜面では一般に異なる。裏面からの直達成分は表側へ加算しない。また散乱日射や地表反射は別の項として計上する。",
+    "formula": "G_b=DNI·max(0,cosθ_i)",
+    "unit": "G_b,DNI: W/m²、θ_i: radまたは°",
+    "example": "直達法線日射強度DNI=800 W/m²、入射角60°なら受光面の直達照度は400 W/m²。",
+    "related": [
+      "直達法線日射強度",
+      "太陽天頂角",
+      "傾斜面の直達日射照度"
+    ],
+    "relatedSections": [
+      "10.6"
+    ],
+    "relatedQuestions": [],
+    "relatedSimulators": [],
+    "confusions": [
+      "入射角は水平面からの傾斜角や太陽高度角と同じではない。"
+    ],
+    "source": {
+      "type": "supplement",
+      "reference": "気体放射と太陽放射の一般理論に基づく独立執筆。FU Berlin Radiative Transfer https://refubium.fu-berlin.de/bitstream/handle/fub188/7514/02_JM_02.pdf、Sandia PVPMC https://pvpmc.sandia.gov/modeling-guide/1-weather-design-inputs/plane-of-array-poa-irradiance/calculating-poa-irradiance/poa-ground-reflected/ を数式の参考とした。翻訳転載でなく専門家校閲前。"
+    },
+    "reviewStatus": "needs_review"
+  },
+  {
+    "id": "tilted-plane-direct-irradiance",
+    "ja": "傾斜面の直達日射照度",
+    "en": "direct solar irradiance on a tilted plane",
+    "aliases": [
+      "傾斜面直達日射"
+    ],
+    "category": "太陽放射",
+    "brief": "傾斜した受光面に入る直達日射だけの照度。",
+    "meaning": "傾斜した受光面に入る直達日射だけの照度。",
+    "beginner": "太陽光を受ける板を傾けると光との角度が変わり、受ける直射光の量も変わります。",
+    "detail": "受光面への直達成分はG_b,tilt=DNI·max(0,cosθ_i)。DNIは光線に垂直な面で測る値であり、θ_iは傾斜面法線に対する入射角。天空散乱成分や地表反射成分は含まない。太陽が板の裏側にあれば表側の直達成分は0となる。",
+    "formula": "G_b,tilt=DNI·max(0,cosθ_i)",
+    "unit": "G_b,tilt,DNI: W/m²、θ_i: radまたは°",
+    "example": "DNI=1000 W/m²、入射角60°なら傾斜面への直達成分は500 W/m²。",
+    "related": [
+      "太陽光入射角",
+      "直達法線日射強度",
+      "日射照度"
+    ],
+    "relatedSections": [
+      "10.6"
+    ],
+    "relatedQuestions": [],
+    "relatedSimulators": [],
+    "confusions": [
+      "傾斜面の直達成分と、散乱や反射を含む傾斜面総照度を混同しない。"
+    ],
+    "source": {
+      "type": "supplement",
+      "reference": "気体放射と太陽放射の一般理論に基づく独立執筆。FU Berlin Radiative Transfer https://refubium.fu-berlin.de/bitstream/handle/fub188/7514/02_JM_02.pdf、Sandia PVPMC https://pvpmc.sandia.gov/modeling-guide/1-weather-design-inputs/plane-of-array-poa-irradiance/calculating-poa-irradiance/poa-ground-reflected/ を数式の参考とした。翻訳転載でなく専門家校閲前。"
+    },
+    "reviewStatus": "needs_review"
+  },
+  {
+    "id": "ground-albedo",
+    "ja": "地表アルベド",
+    "en": "ground albedo",
+    "aliases": [
+      "地表面日射反射率"
+    ],
+    "category": "太陽放射",
+    "brief": "地面に入射した短波日射のうち反射して戻る割合。",
+    "meaning": "地面に入射した短波日射のうち反射して戻る割合。",
+    "beginner": "明るい地面や雪面は太陽光を反射しやすく、その反射光が集熱器に届くこともあります。",
+    "detail": "地表アルベドρ_gは地表が受けた短波日射照度に対する反射短波日射照度の比。反射率は地表状態や太陽光の入射条件・波長に依存する。傾斜面の日射推定では一定のρ_gを使って地表を拡散反射面に近似するが、鏡面反射や付近の遮蔽を無視する場合にのみ簡単な式が妥当となる。",
+    "formula": "ρ_g=反射短波照度/入射短波照度",
+    "unit": "ρ_g: 無次元、各照度: W/m²",
+    "example": "地表が500 W/m²を受けて100 W/m²を反射した場合、地表アルベドは0.20。",
+    "related": [
+      "反射率",
+      "日射照度",
+      "単一散乱アルベド",
+      "傾斜面の地表反射日射"
+    ],
+    "relatedSections": [
+      "10.6"
+    ],
+    "relatedQuestions": [],
+    "relatedSimulators": [],
+    "confusions": [
+      "地表アルベドは媒質の散乱割合や熱赤外線の放射率ではない。"
+    ],
+    "source": {
+      "type": "supplement",
+      "reference": "気体放射と太陽放射の一般理論に基づく独立執筆。FU Berlin Radiative Transfer https://refubium.fu-berlin.de/bitstream/handle/fub188/7514/02_JM_02.pdf、Sandia PVPMC https://pvpmc.sandia.gov/modeling-guide/1-weather-design-inputs/plane-of-array-poa-irradiance/calculating-poa-irradiance/poa-ground-reflected/ を数式の参考とした。翻訳転載でなく専門家校閲前。"
+    },
+    "reviewStatus": "needs_review"
+  },
+  {
+    "id": "tilted-ground-reflected-irradiance",
+    "ja": "傾斜面の地表反射日射",
+    "en": "ground-reflected irradiance on a tilted plane",
+    "aliases": [
+      "傾斜面への地面反射日射"
+    ],
+    "category": "太陽放射",
+    "brief": "地面で反射した短波太陽放射のうち傾斜面に届く照度。",
+    "meaning": "地面で反射した短波太陽放射のうち傾斜面に届く照度。",
+    "beginner": "日射は太陽から直接届く以外に、地面で反射して板に入る成分もあります。面の傾きでその量が変わります。",
+    "detail": "地面が一様なランバート拡散反射面で、遮蔽を無視する等方モデルならG_ref=GHIρ_g(1−cosβ)/2。βは水平面からの傾斜角、GHIは全球水平日射照度、ρ_gは地表アルベド。水平上向き面β=0なら地表反射寄与0、鉛直面β=90°では係数1/2。周囲建物や非一様な反射・影は別途扱う。",
+    "formula": "G_ref=GHIρ_g(1−cosβ)/2",
+    "unit": "G_ref,GHI: W/m²、ρ_g: 無次元、β: radまたは°",
+    "example": "GHI=800 W/m²、アルベド0.20、傾斜60°なら地表反射成分は40 W/m²。",
+    "related": [
+      "地表アルベド",
+      "日射照度",
+      "傾斜面の直達日射照度",
+      "反射率"
+    ],
+    "relatedSections": [
+      "10.6"
+    ],
+    "relatedQuestions": [],
+    "relatedSimulators": [],
+    "confusions": [
+      "等方反射モデルには建物による遮蔽や地面の鏡面反射が含まれない。"
+    ],
+    "source": {
+      "type": "supplement",
+      "reference": "気体放射と太陽放射の一般理論に基づく独立執筆。FU Berlin Radiative Transfer https://refubium.fu-berlin.de/bitstream/handle/fub188/7514/02_JM_02.pdf、Sandia PVPMC https://pvpmc.sandia.gov/modeling-guide/1-weather-design-inputs/plane-of-array-poa-irradiance/calculating-poa-irradiance/poa-ground-reflected/ を数式の参考とした。翻訳転載でなく専門家校閲前。"
+    },
+    "reviewStatus": "needs_review"
   }
 ]

@@ -161,3 +161,11 @@
 - 参考式：ESDU 1990 膜状凝縮（https://mmshah.org/publications/condensation.pdf）およびJAEA 2008 Zuber（https://jopss.jaea.go.jp/pdfdata/JAEA-Data-Code-2008-014.pdf）。専門家による完全な教材照合は未実施。
 - **事前検査**：全375語のID、日本語代表名/別名NFKCと英語名の重複なし。新規13語の必須欄・関連語存在・節IDの有効性・数値関係14件の独立計算に合格。既存362語は内容・順序変更なし。
 - 未確認の問題IDは関連付けない。既存158語固定Nodeテスト、CI、ビルド、ブラウザ・実機、外部専門家校閲は未実施で全品質ゲート未達。テスト、教材、図解、照合表、PR、他ブランチには触れない。
+
+## 第21バッチ（2026-10-29 JST）
+- 直前 **375語**、追加 **12語**、累計 **387語**。
+- 追加：ベール・ランベルトの法則（放射）、放射消散係数、単一散乱アルベド、放射輸送方程式、放射源関数、等温吸収放射層の透過解、等温気体層の放射率、非灰色気体、太陽光入射角、傾斜面の直達日射照度、地表アルベド、傾斜面の地表反射日射。
+- 10.5節の放射輸送・消散/散乱・媒質の自己放射・非灰色性、10.6節の日射入射角・傾斜面の直達と地表反射を補足。式・単位・初心者向け説明・例・混同注意を付した。既存375語の内容/順序は保持。
+- 照合：FU Berlin放射輸送（https://refubium.fu-berlin.de/bitstream/handle/fub188/7514/02_JM_02.pdf）、Sandia PVPMC地表反射日射（https://pvpmc.sandia.gov/modeling-guide/1-weather-design-inputs/plane-of-array-poa-irradiance/calculating-poa-irradiance/poa-ground-reflected/）。原書翻訳・図版転載ではない。新語はneeds_review。
+- **JS事前検証**：全387語のID・NFKC正規化日本語名/別名・英語名の衝突なし。新規12語の必須欄・関連語・節ID、数値例13件の検算に合格。
+- relatedQuestions=[]。既存Nodeテスト・CI・公開ビルド・実機・専門家校閲は未実施、全品質ゲート未達。テスト・他担当ブランチ/PR/図/教材/問題は変更しない。
