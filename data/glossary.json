@@ -4882,5 +4882,493 @@
       "reference": "基本物理・数学の一般原理に基づきアプリ向けに独立執筆。原書翻訳・原図の転載ではない。専門家校閲前。"
     },
     "reviewStatus": "needs_review"
+  },
+  {
+    "id": "heat-diffusion-equation",
+    "ja": "熱伝導方程式",
+    "en": "heat diffusion equation",
+    "category": "熱伝導",
+    "aliases": [
+      "熱拡散方程式"
+    ],
+    "brief": "温度の時間変化を熱の出入り・内部発熱・蓄熱の保存則から記述する方程式。",
+    "meaning": "温度の時間変化を熱の出入り・内部発熱・蓄熱の保存則から記述する方程式。",
+    "beginner": "物体内部の温度変化は、周りから入ってくる熱と出ていく熱、内部発熱、それを蓄える能力によって決まります。",
+    "detail": "静止等方固体の局所エネルギー保存からρcₚ∂T/∂t=∇·(k∇T)+q̇'''。kとρcₚが一定なら∂T/∂t=α∇²T+q̇'''/(ρcₚ)。移流を含む流体エネルギー式とは異なる。解には初期条件と適切な境界条件が必要。",
+    "formula": "ρcₚ∂T/∂t=∇·(k∇T)+q̇'''",
+    "unit": "ρcₚ: J/(m³·K)、q̇''': W/m³",
+    "example": "k=10、ρcₚ=2×10⁶、∇²T=2000（整合するSI単位）、発熱0なら温度変化率は0.010 K/s。",
+    "related": [
+      "熱伝導",
+      "温度のラプラシアン",
+      "熱拡散率",
+      "境界条件"
+    ],
+    "relatedSections": [
+      "2.1",
+      "4.2",
+      "5.1"
+    ],
+    "relatedSimulators": [
+      "conduction",
+      "transient"
+    ],
+    "relatedQuestions": [],
+    "confusions": [
+      "フーリエの法則は熱流束と勾配の関係で、熱伝導方程式は保存則を含む。"
+    ],
+    "source": {
+      "type": "supplement",
+      "reference": "一般的な保存則・熱伝導方程式・対流の原理に基づく独自作成の補足。原書翻訳ではなく、専門家校閲前。"
+    },
+    "reviewStatus": "needs_review"
+  },
+  {
+    "id": "control-volume-energy-balance",
+    "ja": "検査体積のエネルギー収支",
+    "en": "control-volume energy balance",
+    "category": "基礎物理",
+    "aliases": [
+      "検査体積エネルギー保存"
+    ],
+    "brief": "検査領域内のエネルギー変化を、出入りや発生・仕事から求める保存則。",
+    "meaning": "検査領域内のエネルギー変化を、出入りや発生・仕事から求める保存則。",
+    "beginner": "物体のある部分を箱で囲うと、入る熱が出る熱より多ければ箱の内部のエネルギーが増えます。流体が出入りする場合は別に運ばれるエネルギーも数えます。",
+    "detail": "固定した静止固体で仕事と運動エネルギーを無視するならdU/dt=Q̇_in−Q̇_out+Q̇_gen。流体が通る検査体積では質量流量に伴うエンタルピー流入出と軸仕事等を含める必要がある。Q[J]とQ̇[W]および正負の定義を区別する。",
+    "formula": "dU/dt=Q̇_in−Q̇_out+Q̇_gen（静止体の単純例）",
+    "unit": "U: J、Q̇: W、dU/dt: W",
+    "example": "120 W流入、70 W流出、内部発熱10 Wなら、内部のエネルギー増加率は60 W。",
+    "related": [
+      "熱移動率",
+      "熱容量",
+      "内部発熱",
+      "定常状態"
+    ],
+    "relatedSections": [
+      "1.2",
+      "2.1",
+      "6.3"
+    ],
+    "relatedSimulators": [],
+    "relatedQuestions": [],
+    "confusions": [
+      "固体だけの収支式を流体が流入出する装置へそのまま当てはめない。"
+    ],
+    "source": {
+      "type": "supplement",
+      "reference": "一般的な保存則・熱伝導方程式・対流の原理に基づく独自作成の補足。原書翻訳ではなく、専門家校閲前。"
+    },
+    "reviewStatus": "needs_review"
+  },
+  {
+    "id": "interfacial-heat-flux-continuity",
+    "ja": "界面熱流束の連続条件",
+    "en": "continuity of heat flux at an interface",
+    "category": "熱伝導",
+    "aliases": [
+      "界面熱流束連続"
+    ],
+    "brief": "界面に蓄熱・発熱がなければ、法線方向の熱流束が両側で一致する条件。",
+    "meaning": "界面に蓄熱・発熱がなければ、法線方向の熱流束が両側で一致する条件。",
+    "beginner": "2つの材料の境界に熱がたまらなければ、入ってくる熱と出ていく熱の量は同じです。材料によって温度の傾きは違って構いません。",
+    "detail": "共通法線の方向をそろえてq''_{1,n}=q''_{2,n}。完全接触では温度も連続するが、接触熱抵抗があると温度の跳びが生じ得る。界面に面発熱・蓄熱・側方輸送を考慮すべき場合はそれらを収支に含めるため、単純な等式にはならない。",
+    "formula": "−k₁∂T₁/∂n=−k₂∂T₂/∂n",
+    "unit": "q'': W/m²、温度勾配: K/m",
+    "example": "同方向へ200 W/m²を流すとき、k₁=1、k₂=2 W/(m·K)なら勾配は−200、−100 K/m。",
+    "related": [
+      "熱流束",
+      "熱伝導率",
+      "接触熱抵抗"
+    ],
+    "relatedSections": [
+      "2.1",
+      "2.2",
+      "4.1"
+    ],
+    "relatedSimulators": [
+      "conduction",
+      "resistance"
+    ],
+    "relatedQuestions": [],
+    "confusions": [
+      "熱流束が連続しても温度勾配は連続するとは限らない。"
+    ],
+    "source": {
+      "type": "supplement",
+      "reference": "一般的な保存則・熱伝導方程式・対流の原理に基づく独自作成の補足。原書翻訳ではなく、専門家校閲前。"
+    },
+    "reviewStatus": "needs_review"
+  },
+  {
+    "id": "adiabatic-boundary",
+    "ja": "断熱境界条件",
+    "en": "adiabatic boundary condition",
+    "category": "熱伝導",
+    "aliases": [
+      "断熱壁条件"
+    ],
+    "brief": "面に垂直な熱流束をゼロとする境界条件。",
+    "meaning": "面に垂直な熱流束をゼロとする境界条件。",
+    "beginner": "面の外と内で熱が交換されない理想化です。壁面の温度をゼロにする意味ではありません。",
+    "detail": "断熱境界はq''_n=−k∂T/∂n=0で、等方媒体のk>0なら法線方向の温度勾配はゼロ。熱流束指定のノイマン境界条件の特例である。面に沿った温度勾配は一般にはゼロでなく、実物の断熱材には小さな熱損失が残る可能性がある。",
+    "formula": "q''_n=−k∂T/∂n=0",
+    "unit": "q''_n: W/m²、∂T/∂n: K/m",
+    "example": "k=0.2 W/(m·K)かつ法線勾配0 K/mの境界なら、法線伝導熱流束は0 W/m²。",
+    "related": [
+      "熱流束指定境界条件",
+      "境界条件",
+      "熱流束"
+    ],
+    "relatedSections": [
+      "2.1",
+      "4.1",
+      "5.3"
+    ],
+    "relatedSimulators": [
+      "conduction"
+    ],
+    "relatedQuestions": [],
+    "confusions": [
+      "断熱とは熱流束ゼロであり、温度0℃や絶対零度ではない。"
+    ],
+    "source": {
+      "type": "supplement",
+      "reference": "一般的な保存則・熱伝導方程式・対流の原理に基づく独自作成の補足。原書翻訳ではなく、専門家校閲前。"
+    },
+    "reviewStatus": "needs_review"
+  },
+  {
+    "id": "critical-radius-of-insulation",
+    "ja": "断熱材の臨界半径",
+    "en": "critical radius of insulation",
+    "category": "熱抵抗",
+    "aliases": [
+      "臨界断熱半径"
+    ],
+    "brief": "断熱材の厚さを増すと熱損失がかえって増える場合の境目となる外半径。",
+    "meaning": "断熱材の厚さを増すと熱損失がかえって増える場合の境目となる外半径。",
+    "beginner": "細い管に断熱材を巻くと表面積が増えるため、巻き始めはむしろ冷めやすくなる場合があります。",
+    "detail": "長い円筒で断熱材のkと外表面のhが一定なら熱損失最大の外半径はr_c=k/h。球ならr_c=2k/h。元の管半径がこの臨界半径以上なら断熱追加は熱抵抗を増す。外面放射や強い温度依存性がある場合は単純な式を適用できない。",
+    "formula": "r_c=k/h（円筒）、r_c=2k/h（球）",
+    "unit": "r_c: m、k: W/(m·K)、h: W/(m²·K)",
+    "example": "k=0.050 W/(m·K)、h=10 W/(m²·K)の円筒ではr_c=0.005 m=5 mm。",
+    "related": [
+      "円筒壁の熱抵抗",
+      "熱抵抗",
+      "対流熱伝達率"
+    ],
+    "relatedSections": [
+      "2.3",
+      "2.4"
+    ],
+    "relatedSimulators": [
+      "resistance"
+    ],
+    "relatedQuestions": [],
+    "confusions": [
+      "最大損失が生じる外半径であり、全ての管に断熱を追加すると損失が増える意味ではない。"
+    ],
+    "source": {
+      "type": "supplement",
+      "reference": "一般的な保存則・熱伝導方程式・対流の原理に基づく独自作成の補足。原書翻訳ではなく、専門家校閲前。"
+    },
+    "reviewStatus": "needs_review"
+  },
+  {
+    "id": "thermal-contact-conductance",
+    "ja": "接触熱コンダクタンス",
+    "en": "thermal contact conductance",
+    "category": "熱抵抗",
+    "aliases": [
+      "界面熱コンダクタンス"
+    ],
+    "brief": "接触界面の温度差1 K・面積1 m²当たりの熱流束を表す係数。",
+    "meaning": "接触界面の温度差1 K・面積1 m²当たりの熱流束を表す係数。",
+    "beginner": "接した物体にも細かな隙間があるため、同じ熱量を流すのに界面温度差が生まれます。その通しやすさを表します。",
+    "detail": "面積基準の接触熱コンダクタンスh_cはq''=h_c(T₁−T₂)で定義する。対応する全体の接触熱抵抗R_c=1/(h_cA)。接触圧や表面粗さ・介在流体に依存し、材料そのもののkや面積を含んだ熱コンダクタンスh_cAとは異なる。",
+    "formula": "q''=h_cΔT、R_c=1/(h_cA)",
+    "unit": "h_c: W/(m²·K)、R_c: K/W",
+    "example": "h_c=1000 W/(m²·K)、A=0.020 m²、界面温度差5 Kなら100 Wが通る。",
+    "related": [
+      "接触熱抵抗",
+      "熱コンダクタンス",
+      "熱流束"
+    ],
+    "relatedSections": [
+      "2.3",
+      "2.4"
+    ],
+    "relatedSimulators": [
+      "resistance"
+    ],
+    "relatedQuestions": [],
+    "confusions": [
+      "面積基準のh_cと全体のh_cA[W/K]を混同しない。"
+    ],
+    "source": {
+      "type": "supplement",
+      "reference": "一般的な保存則・熱伝導方程式・対流の原理に基づく独自作成の補足。原書翻訳ではなく、専門家校閲前。"
+    },
+    "reviewStatus": "needs_review"
+  },
+  {
+    "id": "fin-parameter",
+    "ja": "フィンパラメータ",
+    "en": "fin parameter",
+    "category": "フィン",
+    "aliases": [
+      "フィン定数m"
+    ],
+    "brief": "一定断面フィン内部の熱伝導と側面対流の競合を表す逆長さの指標。",
+    "meaning": "一定断面フィン内部の熱伝導と側面対流の競合を表す逆長さの指標。",
+    "beginner": "内部で熱が先端へ伝わる能力と側面から周囲へ逃げる能力を一緒に表し、フィンの温度が下がる形を決めます。",
+    "detail": "断面積A_c、側面周長P、一定hとkの直線フィンならm=√(hP/(kA_c))、過剰温度θについてd²θ/dx²−m²θ=0。mだけでは効率や総熱量を決められずmL、先端条件、面積などを確認する。変断面・温度依存物性には同じ式を無条件で適用しない。",
+    "formula": "m=√(hP/(kA_c))",
+    "unit": "m: m⁻¹、h: W/(m²·K)、P: m、k: W/(m·K)、A_c: m²",
+    "example": "h=50、P=0.040、k=200、A_c=1×10⁻⁴（整合するSI単位）ならm=10 m⁻¹。",
+    "related": [
+      "フィン",
+      "フィン効率",
+      "フィン有効度",
+      "熱伝導率"
+    ],
+    "relatedSections": [
+      "4.5"
+    ],
+    "relatedSimulators": [],
+    "relatedQuestions": [],
+    "confusions": [
+      "mは長さの逆数、mLは無次元量。"
+    ],
+    "source": {
+      "type": "supplement",
+      "reference": "一般的な保存則・熱伝導方程式・対流の原理に基づく独自作成の補足。原書翻訳ではなく、専門家校閲前。"
+    },
+    "reviewStatus": "needs_review"
+  },
+  {
+    "id": "excess-temperature",
+    "ja": "過剰温度",
+    "en": "excess temperature",
+    "category": "非定常熱伝導",
+    "aliases": [
+      "周囲基準温度差"
+    ],
+    "brief": "物体の温度から周囲の基準温度を差し引いた温度差。",
+    "meaning": "物体の温度から周囲の基準温度を差し引いた温度差。",
+    "beginner": "物体が周りよりどれほど温かいか冷たいかを温度差で表すと、冷却やフィンの計算が簡潔になります。",
+    "detail": "θ=T−T∞と定義する。T∞は一定とみなす周囲温度。フィンではθ(x)、集中熱容量法ではθ(t)。温度差はKでも℃でも数値が同じだが、熱放射式に必要な絶対温度T⁴の代わりにはならない。無次元超過温度θ/θ_iとは区別する。",
+    "formula": "θ=T−T∞、θ/θ_i=(T−T∞)/(T_i−T∞)",
+    "unit": "θ: K（温度差）、θ/θ_i: 無次元",
+    "example": "初期80℃・周囲20℃ならθ_i=60 K。途中50℃ならθ=30 K、比は0.5。",
+    "related": [
+      "無次元超過温度",
+      "集中熱容量法",
+      "フィン",
+      "絶対温度"
+    ],
+    "relatedSections": [
+      "4.5",
+      "5.2"
+    ],
+    "relatedSimulators": [
+      "transient"
+    ],
+    "relatedQuestions": [],
+    "confusions": [
+      "過剰温度は絶対温度ではなく、単なる温度差。"
+    ],
+    "source": {
+      "type": "supplement",
+      "reference": "一般的な保存則・熱伝導方程式・対流の原理に基づく独自作成の補足。原書翻訳ではなく、専門家校閲前。"
+    },
+    "reviewStatus": "needs_review"
+  },
+  {
+    "id": "transient-eigenvalue",
+    "ja": "非定常伝導の固有値",
+    "en": "transient conduction eigenvalue",
+    "category": "非定常熱伝導",
+    "aliases": [
+      "伝導固有値"
+    ],
+    "brief": "形状と境界条件が決める非定常温度分布の空間モードの値。",
+    "meaning": "形状と境界条件が決める非定常温度分布の空間モードの値。",
+    "beginner": "冷えるときの温度分布はいくつかの決まった形に分けられ、その形と時間の減り方を決める数値です。",
+    "detail": "半厚さLの中心対称平板で両面が一定hの対流境界なら、正の固有値λ_nはλ_n tanλ_n=Biを満たす。各モードはexp(−λ_n²Fo)で減衰する。円柱や球、異なる境界条件では固有値の方程式も変わる。第一固有値のみが全ての時刻で十分とは限らない。",
+    "formula": "λ_n tanλ_n=Bi（両面対流・対称平板）",
+    "unit": "λ_n、Bi、Fo: 無次元",
+    "example": "λ₁=π/4ならtan(π/4)=1で、そのモードに対応するBi=π/4≈0.7854。",
+    "related": [
+      "ビオ数",
+      "フーリエ数",
+      "非定常熱伝導"
+    ],
+    "relatedSections": [
+      "5.3",
+      "5.4",
+      "5.5"
+    ],
+    "relatedSimulators": [
+      "transient"
+    ],
+    "relatedQuestions": [],
+    "confusions": [
+      "固有値は物性値ではなく、形状と境界条件に依存する。"
+    ],
+    "source": {
+      "type": "supplement",
+      "reference": "一般的な保存則・熱伝導方程式・対流の原理に基づく独自作成の補足。原書翻訳ではなく、専門家校閲前。"
+    },
+    "reviewStatus": "needs_review"
+  },
+  {
+    "id": "separation-of-variables",
+    "ja": "変数分離法",
+    "en": "separation of variables",
+    "category": "数学・解析",
+    "aliases": [
+      "変数分離"
+    ],
+    "brief": "位置と時間など複数変数の微分方程式を、各変数の関数に分けて解く方法。",
+    "meaning": "位置と時間など複数変数の微分方程式を、各変数の関数に分けて解く方法。",
+    "beginner": "温度T(x,t)を位置だけと時間だけの式に分けると、難しい偏微分方程式を解きやすくできます。",
+    "detail": "線形な熱拡散方程式で境界条件を均質化できれば、θ(x,t)=X(x)τ(t)と仮定して空間の固有値問題と時間減衰へ分けることができる。任意の初期分布は複数の固有関数の和で表す。非線形放射境界や物性の強い温度依存性には単純な手法が通用しないことがある。",
+    "formula": "θ(x,t)=X(x)τ(t)、τ∝exp(−αλ²t/L²)",
+    "unit": "θ: K、t: s、α: m²/s、λ: 無次元",
+    "example": "両端断熱の0≤x≤Lでθ=10cos(πx/L)exp(−απ²t/L²) Kは熱拡散方程式を満たす。",
+    "related": [
+      "非定常熱伝導",
+      "偏微分",
+      "非定常伝導の固有値",
+      "断熱境界条件"
+    ],
+    "relatedSections": [
+      "4.2",
+      "5.3",
+      "5.8"
+    ],
+    "relatedSimulators": [],
+    "relatedQuestions": [],
+    "confusions": [
+      "任意の初期条件が一つの積で表せるわけではない。"
+    ],
+    "source": {
+      "type": "supplement",
+      "reference": "一般的な保存則・熱伝導方程式・対流の原理に基づく独自作成の補足。原書翻訳ではなく、専門家校閲前。"
+    },
+    "reviewStatus": "needs_review"
+  },
+  {
+    "id": "one-term-approximation",
+    "ja": "一項近似解",
+    "en": "one-term approximation",
+    "category": "非定常熱伝導",
+    "aliases": [
+      "第1項近似"
+    ],
+    "brief": "非定常熱伝導の級数解で、最も遅く減衰する第一項だけを残す近似。",
+    "meaning": "非定常熱伝導の級数解で、最も遅く減衰する第一項だけを残す近似。",
+    "beginner": "温度分布をたくさんの成分で表しても、時間とともに速く減る成分が小さくなるため第一項が支配的になります。",
+    "detail": "単純な形状・一定物性・均一初期温度・対流境界では温度分布を固有関数級数で表す。対称平板中心の温度比はΣ A_n exp(−λ_n²Fo)となり、一項近似ではA₁exp(−λ₁²Fo)。Fo>0.2などの通例の目安は形状・Biに依存し、誤差の普遍的保証ではない。",
+    "formula": "θ(0,t)/θ_i≈A₁exp(−λ₁²Fo)（平板中心）",
+    "unit": "A₁、λ₁、Fo、温度比: 無次元",
+    "example": "λ₁=π/4、Fo=0.5なら指数因子は約0.735で、中心温度比はこれにA₁を掛ける。",
+    "related": [
+      "非定常伝導の固有値",
+      "フーリエ数",
+      "無次元超過温度"
+    ],
+    "relatedSections": [
+      "5.4",
+      "5.5"
+    ],
+    "relatedSimulators": [
+      "transient"
+    ],
+    "relatedQuestions": [],
+    "confusions": [
+      "指数因子だけで温度比とはならずA₁を掛ける。"
+    ],
+    "source": {
+      "type": "supplement",
+      "reference": "一般的な保存則・熱伝導方程式・対流の原理に基づく独自作成の補足。原書翻訳ではなく、専門家校閲前。"
+    },
+    "reviewStatus": "needs_review"
+  },
+  {
+    "id": "boussinesq-approximation",
+    "ja": "ブシネスク近似",
+    "en": "Boussinesq approximation",
+    "category": "自然対流",
+    "aliases": [
+      "Boussinesq近似"
+    ],
+    "brief": "密度の微小変化を浮力には残し、他の項では密度をほぼ一定とする近似。",
+    "meaning": "密度の微小変化を浮力には残し、他の項では密度をほぼ一定とする近似。",
+    "beginner": "温度によるわずかな密度差が浮力の原因です。ただしその他の流れの計算では密度一定とみなせます。",
+    "detail": "低マッハ数で|βΔT|≪1などの条件でρ≈ρ₀[1−β(T−T₀)]と線形化し、この変化を主に浮力項に適用する。慣性・連続の項ではρ≈ρ₀とする。大温度差・圧縮性・物性の強い変化が無視できないときは適用に注意する。",
+    "formula": "ρ≈ρ₀[1−β(T−T₀)]、|βΔT|≪1",
+    "unit": "β: K⁻¹、ΔT: K、βΔT: 無次元",
+    "example": "β=0.0030 K⁻¹、ΔT=2 Kなら|βΔT|=0.006（0.6%）。他の適用条件も確認する。",
+    "related": [
+      "自然対流",
+      "体膨張係数",
+      "密度",
+      "グラスホフ数"
+    ],
+    "relatedSections": [
+      "8.2",
+      "8.3"
+    ],
+    "relatedSimulators": [],
+    "relatedQuestions": [],
+    "confusions": [
+      "浮力からも密度変化を消す近似ではない。"
+    ],
+    "source": {
+      "type": "supplement",
+      "reference": "一般的な保存則・熱伝導方程式・対流の原理に基づく独自作成の補足。原書翻訳ではなく、専門家校閲前。"
+    },
+    "reviewStatus": "needs_review"
+  },
+  {
+    "id": "thermal-boundary-layer-thickness",
+    "ja": "温度境界層厚さ",
+    "en": "thermal boundary-layer thickness",
+    "category": "対流",
+    "aliases": [
+      "熱境界層厚さ"
+    ],
+    "brief": "壁温の影響が主流温度に近づくまでの距離を、一定の基準で定めた量。",
+    "meaning": "壁温の影響が主流温度に近づくまでの距離を、一定の基準で定めた量。",
+    "beginner": "温かい壁の近くほど流体は温まり、離れるほど主流の温度へ戻ります。その影響が及ぶ厚さの目安です。",
+    "detail": "等温壁の外部流れでは|T(δ_T)−T∞|=0.01|T_w−T∞|という99%基準でδ_Tを定義することがある。境界は物理的な不連続面ではなく、基準で厚さが変わる。プラントル数により速度境界層厚さとの関係も変化する。",
+    "formula": "|T(δ_T)−T∞|/|T_w−T∞|=0.01（99%基準）",
+    "unit": "δ_T: m、温度比: 無次元",
+    "example": "壁80℃・主流20℃なら、この基準では主流との差が0.6 Kに達する場所を外縁とする。",
+    "related": [
+      "境界層",
+      "速度境界層",
+      "プラントル数",
+      "温度勾配"
+    ],
+    "relatedSections": [
+      "6.2",
+      "6.4",
+      "6.5"
+    ],
+    "relatedSimulators": [
+      "convection"
+    ],
+    "relatedQuestions": [],
+    "confusions": [
+      "境界層に明確な物理的境界線はなく厚さは定義による。"
+    ],
+    "source": {
+      "type": "supplement",
+      "reference": "一般的な保存則・熱伝導方程式・対流の原理に基づく独自作成の補足。原書翻訳ではなく、専門家校閲前。"
+    },
+    "reviewStatus": "needs_review"
   }
 ]
