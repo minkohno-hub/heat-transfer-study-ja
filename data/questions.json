@@ -29176,5 +29176,1435 @@
       "初期・境界の条件も確認。"
     ],
     "beginnerPitfall": "PDEを満たすだけで任意の境界も満たすとしない。"
+  },
+  {
+    "id": "supp-laminar-velocity-thickness-v1",
+    "revision": "v1",
+    "field": "境界層・外部対流",
+    "prerequisites": [
+      "連続の式",
+      "境界層",
+      "レイノルズ数"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "輸送現象の一般法則と独自の仮想例から作問。原本の翻訳・原図・章末問題ではない。",
+      "chapterId": "ch6",
+      "focusSectionId": "6.2",
+      "guideId": "chapter6-flat-boundary"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "執筆原稿・基本算術と構造を確認／包括的品質監査待ち・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "執筆時の定義・収支・基本計算を確認。全問の独立科学監査・原本網羅照合・外部校閲は後工程。"
+      }
+    ],
+    "prompt": "層流平板でx=0.50 m、Re_x=6.667×10⁴、√Re_x≈258.2。δ_99≈5x/√Re_xによる速度境界層厚さの目安はどれか。",
+    "choices": [
+      "約9.68 mm",
+      "約1.94 mm",
+      "約19.4 mm",
+      "約968 mm"
+    ],
+    "answer": 0,
+    "difficulty": "標準・数値計算",
+    "explanation": "δ_99≈5×0.50/258.2=0.009682 m=9.68 mm。定義した速度到達率による目安で、実在の鋭い外端ではない。",
+    "distractors": [
+      "正解。99%速度を目安とする層厚式を使った。",
+      "式の係数5を落とした。",
+      "長さ又は係数を2倍にした。",
+      "mからmmへの換算を100倍にした。"
+    ],
+    "hints": [
+      "分母はReでなく平方根。",
+      "mからmmへ換算。"
+    ],
+    "solutionSteps": [
+      "2.50/258.2 m。",
+      "0.009682 m。",
+      "9.68 mm。"
+    ],
+    "beginnerPitfall": "境界層厚さの定義と単位を確認する。"
+  },
+  {
+    "id": "supp-laminar-wall-shear-v1",
+    "revision": "v1",
+    "field": "境界層・外部対流",
+    "prerequisites": [
+      "連続の式",
+      "境界層",
+      "レイノルズ数"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "輸送現象の一般法則と独自の仮想例から作問。原本の翻訳・原図・章末問題ではない。",
+      "chapterId": "ch6",
+      "focusSectionId": "6.2",
+      "guideId": "chapter6-flat-boundary"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "執筆原稿・基本算術と構造を確認／包括的品質監査待ち・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "執筆時の定義・収支・基本計算を確認。全問の独立科学監査・原本網羅照合・外部校閲は後工程。"
+      }
+    ],
+    "prompt": "局所C_f,x=0.00257、ρ=1.2 kg/m³、U=2.0 m/s。τ_w=C_f,xρU²/2による壁面せん断応力はどれか。",
+    "choices": [
+      "約0.00107 Pa",
+      "約0.00617 Pa",
+      "約0.0123 Pa",
+      "約0.00257 Pa"
+    ],
+    "answer": 1,
+    "difficulty": "標準・数値計算",
+    "explanation": "動圧1.2×2.0²/2=2.4 Pa、τ_w=0.00257×2.4=0.006168 Pa。摩擦係数の定義がFanning等の別定義と同じかも確認する。",
+    "distractors": [
+      "動圧を掛けず割った。",
+      "正解。摩擦係数へ動圧を掛けた。",
+      "動圧の1/2を落とした。",
+      "無次元係数を応力の数値として流用した。"
+    ],
+    "hints": [
+      "C_fの定義を解く。",
+      "動圧はρU²/2。"
+    ],
+    "solutionSteps": [
+      "動圧2.4 Pa。",
+      "0.00257を掛ける。",
+      "約0.00617 Pa。"
+    ],
+    "beginnerPitfall": "無次元摩擦係数と応力を区別する。"
+  },
+  {
+    "id": "supp-laminar-average-drag-v1",
+    "revision": "v1",
+    "field": "境界層・外部対流",
+    "prerequisites": [
+      "連続の式",
+      "境界層",
+      "レイノルズ数"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "輸送現象の一般法則と独自の仮想例から作問。原本の翻訳・原図・章末問題ではない。",
+      "chapterId": "ch6",
+      "focusSectionId": "6.2",
+      "guideId": "chapter6-flat-boundary"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "執筆原稿・基本算術と構造を確認／包括的品質監査待ち・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "執筆時の定義・収支・基本計算を確認。全問の独立科学監査・原本網羅照合・外部校閲は後工程。"
+      }
+    ],
+    "prompt": "層流平板の平均摩擦係数C̄_f=0.00514、ρ=1.2 kg/m³、U=2.0 m/s、片面積0.10 m²。摩擦抗力D_f=C̄_f(ρU²/2)Aはどれか。",
+    "choices": [
+      "約1.23×10⁻² N",
+      "約5.14×10⁻³ N",
+      "約1.23×10⁻³ N",
+      "約6.17×10⁻⁴ N"
+    ],
+    "answer": 2,
+    "difficulty": "標準・数値計算",
+    "explanation": "D_f=0.00514×2.4×0.10=0.0012336 N。圧力抵抗や反対側の面の力は含めていない。",
+    "distractors": [
+      "面積0.10を落とした。",
+      "係数へ動圧や面積を正しく掛けていない。",
+      "正解。平均係数と動圧と片面積を掛けた。",
+      "既に平均なのにさらに半分にした。"
+    ],
+    "hints": [
+      "平均係数か局所かを確認。",
+      "Pa×m²=N。"
+    ],
+    "solutionSteps": [
+      "動圧2.4 Pa。",
+      "面積0.10を掛ける。",
+      "平均係数を掛け約0.00123 N。"
+    ],
+    "beginnerPitfall": "片面摩擦抗力と物体の全抗力を同じとしない。"
+  },
+  {
+    "id": "supp-laminar-normal-velocity-term-v1",
+    "revision": "v1",
+    "field": "境界層・外部対流",
+    "prerequisites": [
+      "連続の式",
+      "境界層",
+      "レイノルズ数"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "applied",
+    "source": {
+      "type": "supplement",
+      "reference": "輸送現象の一般法則と独自の仮想例から作問。原本の翻訳・原図・章末問題ではない。",
+      "chapterId": "ch6",
+      "focusSectionId": "6.2",
+      "guideId": "chapter6-flat-boundary"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "執筆原稿・基本算術と構造を確認／包括的品質監査待ち・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "執筆時の定義・収支・基本計算を確認。全問の独立科学監査・原本網羅照合・外部校閲は後工程。"
+      }
+    ],
+    "prompt": "薄い層流境界層でv≪uが成立する。運動量式のv∂u/∂yを扱う判断として適切なのはどれか。",
+    "choices": [
+      "vが小さいので、全ての条件でその項をゼロにする",
+      "vが小さいので、連続式そのものを使わない",
+      "不透過壁でv=0なら、層内全てでv=0とする",
+      "y方向の勾配が大きく、移流項の尺度も比較する"
+    ],
+    "answer": 3,
+    "difficulty": "概念・適用判断",
+    "explanation": "vはUδ/x程度でもu_yはU/δ程度なのでv u_yはU²/xの尺度となりu u_xと同程度になりうる。壁のv=0と層内のvは別。",
+    "distractors": [
+      "u_yが大きいことを無視した。",
+      "非圧縮でも連続式は必要。",
+      "壁の境界条件を層内全体へ広げた。",
+      "正解。速度だけでなく微分の長さ尺度も含めて比較した。"
+    ],
+    "hints": [
+      "微分の代表長さはxとδで違う。",
+      "積の全体の尺度を比べる。"
+    ],
+    "solutionSteps": [
+      "v∼Uδ/x。",
+      "u_y∼U/δ。",
+      "積はU²/x。"
+    ],
+    "beginnerPitfall": "小さい速度だけでその移流を消さない。"
+  },
+  {
+    "id": "supp-laminar-blasius-boundary-v1",
+    "revision": "v1",
+    "field": "境界層・外部対流",
+    "prerequisites": [
+      "連続の式",
+      "境界層",
+      "レイノルズ数"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "conceptual",
+    "source": {
+      "type": "supplement",
+      "reference": "輸送現象の一般法則と独自の仮想例から作問。原本の翻訳・原図・章末問題ではない。",
+      "chapterId": "ch6",
+      "focusSectionId": "6.2",
+      "guideId": "chapter6-flat-boundary"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "執筆原稿・基本算術と構造を確認／包括的品質監査待ち・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "執筆時の定義・収支・基本計算を確認。全問の独立科学監査・原本網羅照合・外部校閲は後工程。"
+      }
+    ],
+    "prompt": "静止・不透過の平板で一様主流Uを持つBlasius解の条件はどれか。",
+    "choices": [
+      "壁でu=v=0、遠方でu→Uとする",
+      "壁でu=U、遠方でu→0とする",
+      "壁で∂u/∂y=0、遠方の速度は指定しない",
+      "壁でv=U、接線速度は指定しない"
+    ],
+    "answer": 0,
+    "difficulty": "概念・適用判断",
+    "explanation": "相似変換ではf(0)=f′(0)=0、f′(∞)=1に対応する。動く壁や多孔壁へは条件を変更して別問題として解く。",
+    "distractors": [
+      "正解。無滑り・不透過と主流の条件を使った。",
+      "壁と主流の条件を交換した。",
+      "無滑りを自由滑りのような条件へ変えた。",
+      "不透過壁に法線流を課している。"
+    ],
+    "hints": [
+      "壁の接線と法線を分ける。",
+      "主流は壁から遠い位置。"
+    ],
+    "solutionSteps": [
+      "無滑りu=0。",
+      "不透過v=0。",
+      "遠方u→U。"
+    ],
+    "beginnerPitfall": "壁の運動や透過条件を混ぜない。"
+  },
+  {
+    "id": "supp-laminar-thickness-definition-v1",
+    "revision": "v1",
+    "field": "境界層・外部対流",
+    "prerequisites": [
+      "連続の式",
+      "境界層",
+      "レイノルズ数"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "conceptual",
+    "source": {
+      "type": "supplement",
+      "reference": "輸送現象の一般法則と独自の仮想例から作問。原本の翻訳・原図・章末問題ではない。",
+      "chapterId": "ch6",
+      "focusSectionId": "6.2",
+      "guideId": "chapter6-flat-boundary"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "執筆原稿・基本算術と構造を確認／包括的品質監査待ち・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "執筆時の定義・収支・基本計算を確認。全問の独立科学監査・原本網羅照合・外部校閲は後工程。"
+      }
+    ],
+    "prompt": "δ_99を速度境界層厚さと呼ぶことの意味はどれか。",
+    "choices": [
+      "全ての速度分布で同じ絶対厚さとなる",
+      "主流速度の99%への到達位置を目安とする",
+      "その位置に物理的な薄膜の境界面が必ずある",
+      "その位置で全ての粘性が突然ゼロになる"
+    ],
+    "answer": 1,
+    "difficulty": "概念・適用判断",
+    "explanation": "境界層の外端は通常滑らかな接近を便宜的に区切る。99%等の定義を明示し、別定義の厚さと数値を混ぜない。",
+    "distractors": [
+      "主流・距離・物性や条件で層厚は変わる。",
+      "正解。滑らかな速度分布に定義した到達率の尺度。",
+      "数学的な層厚の目安を実在膜と混同した。",
+      "粘性という物性が層端で消えるわけではない。"
+    ],
+    "hints": [
+      "主流へは滑らかに近づく。",
+      "到達率を定義する。"
+    ],
+    "solutionSteps": [
+      "99%位置を特定。",
+      "厚さとして記録。",
+      "定義の違いに注意。"
+    ],
+    "beginnerPitfall": "尺度の外端を実在する界面としない。"
+  },
+  {
+    "id": "supp-laminar-adverse-pressure-gradient-v1",
+    "revision": "v1",
+    "field": "境界層・外部対流",
+    "prerequisites": [
+      "連続の式",
+      "境界層",
+      "レイノルズ数"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "applied",
+    "source": {
+      "type": "supplement",
+      "reference": "輸送現象の一般法則と独自の仮想例から作問。原本の翻訳・原図・章末問題ではない。",
+      "chapterId": "ch6",
+      "focusSectionId": "6.2",
+      "guideId": "chapter6-flat-boundary"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "執筆原稿・基本算術と構造を確認／包括的品質監査待ち・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "執筆時の定義・収支・基本計算を確認。全問の独立科学監査・原本網羅照合・外部校閲は後工程。"
+      }
+    ],
+    "prompt": "下流へ圧力が大きく上昇し、剝離も起こりうる表面へ、ゼロ圧力勾配のBlasius式を使いたい。適切なのはどれか。",
+    "choices": [
+      "平滑面であれば、剝離は数学的にも起こらない",
+      "Blasiusの係数を任意に変え、厳密値と表示する",
+      "圧力勾配と剝離の影響を含むモデルを検討する",
+      "Reが正なら、圧力勾配の影響は常にゼロとする"
+    ],
+    "answer": 2,
+    "difficulty": "概念・適用判断",
+    "explanation": "境界層運動量式には一般に主流の圧力勾配の効果がある。ゼロ勾配・非剝離の平板解を、そのまま別流れの予測へ使わない。",
+    "distractors": [
+      "平滑でも逆圧力勾配による剝離はありうる。",
+      "根拠なく係数を変更して厳密とできない。",
+      "正解。元の相似解の仮定の不一致を確認した。",
+      "正のReだけでは圧力勾配を無視できない。"
+    ],
+    "hints": [
+      "主流速度と圧力は一定か。",
+      "剝離に近い壁面せん断を考える。"
+    ],
+    "solutionSteps": [
+      "仮定との違いを整理。",
+      "圧力勾配を含める。",
+      "適用可能なモデルを選ぶ。"
+    ],
+    "beginnerPitfall": "平板相似解をあらゆる流れへ転用しない。"
+  },
+  {
+    "id": "supp-laminar-energy-integral-rate-v1",
+    "revision": "v1",
+    "field": "境界層・外部対流",
+    "prerequisites": [
+      "連続の式",
+      "境界層",
+      "レイノルズ数"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "輸送現象の一般法則と独自の仮想例から作問。原本の翻訳・原図・章末問題ではない。",
+      "chapterId": "ch6",
+      "focusSectionId": "6.3",
+      "guideId": "chapter6-flat-boundary"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "執筆原稿・基本算術と構造を確認／包括的品質監査待ち・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "執筆時の定義・収支・基本計算を確認。全問の独立科学監査・原本網羅照合・外部校閲は後工程。"
+      }
+    ],
+    "prompt": "境界層の積分熱収支が成立する。下流の∫u(T−T_∞)dy=0.040 m²·K/s、ρ=1.2 kg/m³、c_p=1000 J/(kg·K)、幅0.20 m。入口の超過顕熱なしの全入熱はどれか。",
+    "choices": [
+      "48.0 W",
+      "240 W",
+      "0.00960 W",
+      "9.60 W"
+    ],
+    "answer": 3,
+    "difficulty": "標準・数値計算",
+    "explanation": "単位幅48.0 W/m、Q̇=48.0×0.20=9.60 W。壁の局所熱流を流れ方向に積分した値と整合させる。",
+    "distractors": [
+      "単位幅のW/mを全熱流Wとした。",
+      "幅を掛けず割った。",
+      "cpのJとkJ基準を取り違えた。",
+      "正解。単位幅の顕熱輸送へ幅を掛けた。"
+    ],
+    "hints": [
+      "ρc_pを積分へ掛ける。",
+      "最後に幅。"
+    ],
+    "solutionSteps": [
+      "1.2×1000×0.040=48 W/m。",
+      "幅0.20。",
+      "9.60 W。"
+    ],
+    "beginnerPitfall": "単位幅と全幅の熱移動率を区別する。"
+  },
+  {
+    "id": "supp-laminar-energy-wall-gradient-v1",
+    "revision": "v1",
+    "field": "境界層・外部対流",
+    "prerequisites": [
+      "連続の式",
+      "境界層",
+      "レイノルズ数"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "輸送現象の一般法則と独自の仮想例から作問。原本の翻訳・原図・章末問題ではない。",
+      "chapterId": "ch6",
+      "focusSectionId": "6.3",
+      "guideId": "chapter6-flat-boundary"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "執筆原稿・基本算術と構造を確認／包括的品質監査待ち・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "執筆時の定義・収支・基本計算を確認。全問の独立科学監査・原本網羅照合・外部校閲は後工程。"
+      }
+    ],
+    "prompt": "壁から流体への+yを正とする。流体k_f=0.025 W/(m·K)、壁面勾配(∂T/∂y)_w=−4000 K/m、T_s−T_∞=50 K。q_w″と局所hはどれか。",
+    "choices": [
+      "q_w″=+100 W/m²、h=2.0 W/(m²·K)",
+      "q_w″=−100 W/m²、h=−2.0 W/(m²·K)",
+      "q_w″=+100 W/m²、h=5000 W/(m²·K)",
+      "q_w″=+4000 W/m²、h=80 W/(m²·K)"
+    ],
+    "answer": 0,
+    "difficulty": "標準・数値計算",
+    "explanation": "q_w″=−0.025×(−4000)=+100 W/m²、h=100/50=2.0 W/(m²·K)。固体の熱伝導率をこの流体側の勾配へ代用しない。",
+    "distractors": [
+      "正解。Fourier則の符号と対流係数の定義を使った。",
+      "Fourier則の負号を落とした。",
+      "熱流を温度差で割らず掛けた。",
+      "流体k_fを掛けず勾配を熱流束とした。"
+    ],
+    "hints": [
+      "正方向と温度勾配を確認。",
+      "h=q_w″/ΔT。"
+    ],
+    "solutionSteps": [
+      "負×負で正の熱流100。",
+      "温度差50で割る。",
+      "h=2.0。"
+    ],
+    "beginnerPitfall": "流体の壁面勾配へ流体のkを対応させる。"
+  },
+  {
+    "id": "supp-laminar-energy-viscous-scale-v1",
+    "revision": "v1",
+    "field": "境界層・外部対流",
+    "prerequisites": [
+      "連続の式",
+      "境界層",
+      "レイノルズ数"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "輸送現象の一般法則と独自の仮想例から作問。原本の翻訳・原図・章末問題ではない。",
+      "chapterId": "ch6",
+      "focusSectionId": "6.3",
+      "guideId": "chapter6-flat-boundary"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "執筆原稿・基本算術と構造を確認／包括的品質監査待ち・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "執筆時の定義・収支・基本計算を確認。全問の独立科学監査・原本網羅照合・外部校閲は後工程。"
+      }
+    ],
+    "prompt": "粘性散逸を検討する指標Ec=U²/(c_p|ΔT|)で、U=100 m/s、c_p=1000 J/(kg·K)、|ΔT|=10 K。Ecはいくらか。",
+    "choices": [
+      "0.10",
+      "1.0",
+      "0.010",
+      "100"
+    ],
+    "answer": 1,
+    "difficulty": "標準・数値計算",
+    "explanation": "Ec=100²/(1000×10)=1.0。小さいEcとはいえず、散逸省略の妥当性を検討する一つの情報となる。圧縮性等の他条件も別に確認する。",
+    "distractors": [
+      "分子又は分母を10分の1へ取り違えた。",
+      "正解。運動エネルギーの尺度と顕熱尺度の比を求めた。",
+      "U²ではなくUを使った。",
+      "分母又は温度差の桁を取り違えた。"
+    ],
+    "hints": [
+      "速度は二乗。",
+      "J/kgはm²/s²と対応。"
+    ],
+    "solutionSteps": [
+      "U²=10000。",
+      "cpΔT=10000。",
+      "比1。"
+    ],
+    "beginnerPitfall": "速度が大きい流れで省略項を無条件に落とさない。"
+  },
+  {
+    "id": "supp-laminar-energy-axial-conduction-v1",
+    "revision": "v1",
+    "field": "境界層・外部対流",
+    "prerequisites": [
+      "連続の式",
+      "境界層",
+      "レイノルズ数"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "applied",
+    "source": {
+      "type": "supplement",
+      "reference": "輸送現象の一般法則と独自の仮想例から作問。原本の翻訳・原図・章末問題ではない。",
+      "chapterId": "ch6",
+      "focusSectionId": "6.3",
+      "guideId": "chapter6-flat-boundary"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "執筆原稿・基本算術と構造を確認／包括的品質監査待ち・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "執筆時の定義・収支・基本計算を確認。全問の独立科学監査・原本網羅照合・外部校閲は後工程。"
+      }
+    ],
+    "prompt": "対流の境界層エネルギー式でx方向熱伝導を落としていたが、熱のPéclet数が小さくなり軸方向伝導が重要かもしれない。適切な対応はどれか。",
+    "choices": [
+      "Reだけが正なら、熱拡散率は考えなくてよい",
+      "軸方向伝導を落とす代わりに、温度差をゼロとする",
+      "軸方向伝導を含むエネルギー式で影響を調べる",
+      "流れが少しでもあれば、軸伝導は厳密にゼロとする"
+    ],
+    "answer": 2,
+    "difficulty": "概念・適用判断",
+    "explanation": "元のk_f∇²Tを含む保存式へ戻り、幾何、移流と拡散、境界条件に合うモデルを選ぶ。液体金属などで適用範囲を注意する。",
+    "distractors": [
+      "熱拡散と移流の比較にはPrやPeも関係する。",
+      "物理的な条件を都合で変えても元問題を解けない。",
+      "正解。省略した項の尺度と境界への影響を再評価した。",
+      "流れの存在だけでは軸伝導を無視できない。"
+    ],
+    "hints": [
+      "何を根拠に省略したか。",
+      "熱拡散が速い場合を考える。"
+    ],
+    "solutionSteps": [
+      "省略項の尺度を比較。",
+      "必要ならT_xxを戻す。",
+      "境界条件も再検討。"
+    ],
+    "beginnerPitfall": "熱境界層の省略を流れがあるだけで正当化しない。"
+  },
+  {
+    "id": "supp-laminar-energy-mean-vs-local-v1",
+    "revision": "v1",
+    "field": "境界層・外部対流",
+    "prerequisites": [
+      "連続の式",
+      "境界層",
+      "レイノルズ数"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "applied",
+    "source": {
+      "type": "supplement",
+      "reference": "輸送現象の一般法則と独自の仮想例から作問。原本の翻訳・原図・章末問題ではない。",
+      "chapterId": "ch6",
+      "focusSectionId": "6.3",
+      "guideId": "chapter6-flat-boundary"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "執筆原稿・基本算術と構造を確認／包括的品質監査待ち・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "執筆時の定義・収支・基本計算を確認。全問の独立科学監査・原本網羅照合・外部校閲は後工程。"
+      }
+    ],
+    "prompt": "壁からの全入熱と加熱面積、一定の壁−主流温度差だけが分かった。局所h_xについて適切な説明はどれか。",
+    "choices": [
+      "全入熱が分かれば、全位置のh_xは必ず同じとなる",
+      "局所h_xは、全入熱の数値と単位も同じになる",
+      "温度差が一定なら、局所熱流も必ず一様となる",
+      "平均hは求まるが、局所分布は追加情報が必要"
+    ],
+    "answer": 3,
+    "difficulty": "概念・適用判断",
+    "explanation": "h̄=Q̇/(AΔT)は計算できる。一方で局所h_xには温度勾配・相関・測定等の位置情報が必要。",
+    "distractors": [
+      "一つの積分値から位置分布は一般に決まらない。",
+      "hと熱移動率は次元が違う。",
+      "境界層の発達でh_xと熱流は変わりうる。",
+      "正解。積分情報と局所情報を区別した。"
+    ],
+    "hints": [
+      "全量は面積積分。",
+      "異なる分布でも積分は同じになりうる。"
+    ],
+    "solutionSteps": [
+      "平均hを計算。",
+      "局所分布は未定と記録。",
+      "必要な場の情報を求める。"
+    ],
+    "beginnerPitfall": "平均を局所分布の代用にしない。"
+  },
+  {
+    "id": "supp-laminar-energy-wall-transfer-v1",
+    "revision": "v1",
+    "field": "境界層・外部対流",
+    "prerequisites": [
+      "連続の式",
+      "境界層",
+      "レイノルズ数"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "conceptual",
+    "source": {
+      "type": "supplement",
+      "reference": "輸送現象の一般法則と独自の仮想例から作問。原本の翻訳・原図・章末問題ではない。",
+      "chapterId": "ch6",
+      "focusSectionId": "6.3",
+      "guideId": "chapter6-flat-boundary"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "執筆原稿・基本算術と構造を確認／包括的品質監査待ち・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "執筆時の定義・収支・基本計算を確認。全問の独立科学監査・原本網羅照合・外部校閲は後工程。"
+      }
+    ],
+    "prompt": "静止・不透過壁の対流熱伝達で、壁を横切る熱を記述する説明はどれか。",
+    "choices": [
+      "壁面では分子伝導で、流れがその後の輸送を担う",
+      "壁面を横切る流体質量が常に全ての熱を運ぶ",
+      "対流と呼ぶので、Fourier則は壁面で成立しない",
+      "流れがあれば、壁面の温度勾配は必ずゼロとなる"
+    ],
+    "answer": 0,
+    "difficulty": "概念・適用判断",
+    "explanation": "対流熱伝達率hは流れが作る温度場の壁面勾配をまとめた量。壁を横切る熱流は−k_fT_yで評価する。",
+    "distractors": [
+      "正解。壁法線速度0と壁面熱伝導、流れの輸送を整合させた。",
+      "不透過壁では質量は壁を横切らない。",
+      "対流の総称でも壁面伝導は使う。",
+      "不透過壁でも温度勾配と熱流はありうる。"
+    ],
+    "hints": [
+      "不透過壁のvは0。",
+      "それでも壁と流体は熱を交換する。"
+    ],
+    "solutionSteps": [
+      "壁の質量流0。",
+      "温度勾配による熱流。",
+      "流れが下流へ運ぶ。"
+    ],
+    "beginnerPitfall": "対流という語から壁面伝導を消さない。"
+  },
+  {
+    "id": "supp-laminar-energy-fluid-properties-v1",
+    "revision": "v1",
+    "field": "境界層・外部対流",
+    "prerequisites": [
+      "連続の式",
+      "境界層",
+      "レイノルズ数"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "conceptual",
+    "source": {
+      "type": "supplement",
+      "reference": "輸送現象の一般法則と独自の仮想例から作問。原本の翻訳・原図・章末問題ではない。",
+      "chapterId": "ch6",
+      "focusSectionId": "6.3",
+      "guideId": "chapter6-flat-boundary"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "執筆原稿・基本算術と構造を確認／包括的品質監査待ち・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "執筆時の定義・収支・基本計算を確認。全問の独立科学監査・原本網羅照合・外部校閲は後工程。"
+      }
+    ],
+    "prompt": "流体の温度境界層でNu_x=h_xx/kを定義する。kに使う量はどれか。",
+    "choices": [
+      "流速の数値へW/(m·K)の単位を付けた値",
+      "対応する代表状態の流体熱伝導率",
+      "壁材料の固体熱伝導率",
+      "壁と流体の熱伝導率の無条件な和"
+    ],
+    "answer": 1,
+    "difficulty": "概念・適用判断",
+    "explanation": "Nuは流体側の対流係数と熱伝導尺度の比。固体内部のBi等に使うk_sとは役割が異なり、何のkかを明記する。",
+    "distractors": [
+      "速度と熱伝導率は次元と意味が違う。",
+      "正解。流体側の熱輸送に対応する物性を使う。",
+      "流体側の勾配の式へ固体物性を入れた。",
+      "二つの物性を足す根拠がない。"
+    ],
+    "hints": [
+      "どの領域の温度場を解くか。",
+      "k_fとk_sの添字を確認。"
+    ],
+    "solutionSteps": [
+      "流体の温度場。",
+      "流体k_fを選ぶ。",
+      "同じ代表状態へ合わせる。"
+    ],
+    "beginnerPitfall": "流体Nuと固体Biの熱伝導率を混同しない。"
+  },
+  {
+    "id": "supp-laminar-pr-number-v1",
+    "revision": "v1",
+    "field": "境界層・外部対流",
+    "prerequisites": [
+      "連続の式",
+      "境界層",
+      "レイノルズ数"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "輸送現象の一般法則と独自の仮想例から作問。原本の翻訳・原図・章末問題ではない。",
+      "chapterId": "ch6",
+      "focusSectionId": "6.4",
+      "guideId": "chapter6-flat-boundary"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "執筆原稿・基本算術と構造を確認／包括的品質監査待ち・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "執筆時の定義・収支・基本計算を確認。全問の独立科学監査・原本網羅照合・外部校閲は後工程。"
+      }
+    ],
+    "prompt": "同じ状態のν=8.0×10⁻⁶ m²/s、流体α_f=1.0×10⁻⁶ m²/s。Pr=ν/α_fはどれか。",
+    "choices": [
+      "7.0",
+      "9.0",
+      "8.0",
+      "0.125"
+    ],
+    "answer": 2,
+    "difficulty": "標準・数値計算",
+    "explanation": "Pr=8.0。運動量に比べ熱の拡散が遅い側で、等温平板層流では温度層が比較的薄い。",
+    "distractors": [
+      "比でなく差の係数を答えた。",
+      "比でなく和の係数を答えた。",
+      "正解。二つの拡散率の比を正しい順序で取った。",
+      "比を逆にした。"
+    ],
+    "hints": [
+      "分子はν。",
+      "共通の10⁻⁶を消す。"
+    ],
+    "solutionSteps": [
+      "8.0/1.0。",
+      "Pr=8.0。",
+      "無次元。"
+    ],
+    "beginnerPitfall": "Prの逆数を使わない。"
+  },
+  {
+    "id": "supp-laminar-pr-thickness-scale-v1",
+    "revision": "v1",
+    "field": "境界層・外部対流",
+    "prerequisites": [
+      "連続の式",
+      "境界層",
+      "レイノルズ数"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "輸送現象の一般法則と独自の仮想例から作問。原本の翻訳・原図・章末問題ではない。",
+      "chapterId": "ch6",
+      "focusSectionId": "6.4",
+      "guideId": "chapter6-flat-boundary"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "執筆原稿・基本算術と構造を確認／包括的品質監査待ち・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "執筆時の定義・収支・基本計算を確認。全問の独立科学監査・原本網羅照合・外部校閲は後工程。"
+      }
+    ],
+    "prompt": "適用可能な等温平板層流の概略尺度δ_t/δ∼Pr⁻¹/³でPr=8、速度層厚さの目安8.94 mm。比例係数を1とした温度層の概略値はどれか。",
+    "choices": [
+      "17.9 mm",
+      "8.94 mm",
+      "1.12 mm",
+      "4.47 mm"
+    ],
+    "answer": 3,
+    "difficulty": "標準・数値計算",
+    "explanation": "δ_tの尺度≈8.94×0.50=4.47 mm。厚さの定義と比例係数を省いた尺度で、厳密な99%厚さではない。",
+    "distractors": [
+      "比を逆にして2倍とした。",
+      "Prの影響を落とした。",
+      "三乗根を取らず1/8を掛けた。",
+      "正解。三乗根尺度8⁻¹/³=1/2を掛けた。"
+    ],
+    "hints": [
+      "8の三乗根は2。",
+      "逆数なので半分。"
+    ],
+    "solutionSteps": [
+      "Pr⁻¹/³=0.50。",
+      "8.94 mmを掛ける。",
+      "概略4.47 mm。"
+    ],
+    "beginnerPitfall": "尺度の等号化や過剰な精度を避ける。"
+  },
+  {
+    "id": "supp-laminar-pr-low-range-v1",
+    "revision": "v1",
+    "field": "境界層・外部対流",
+    "prerequisites": [
+      "連続の式",
+      "境界層",
+      "レイノルズ数"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "applied",
+    "source": {
+      "type": "supplement",
+      "reference": "輸送現象の一般法則と独自の仮想例から作問。原本の翻訳・原図・章末問題ではない。",
+      "chapterId": "ch6",
+      "focusSectionId": "6.4",
+      "guideId": "chapter6-flat-boundary"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "執筆原稿・基本算術と構造を確認／包括的品質監査待ち・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "執筆時の定義・収支・基本計算を確認。全問の独立科学監査・原本網羅照合・外部校閲は後工程。"
+      }
+    ],
+    "prompt": "Pr=0.005の流体に、中〜高Prの等温平板尺度δ_t/δ∼Pr⁻¹/³をそのまま使いたい。適切なのはどれか。",
+    "choices": [
+      "極低Prに合う温度場や相関の範囲を確認する",
+      "Prが正なら、どの範囲でも同じ精度とする",
+      "Prが小さいので、熱拡散は必ず遅くなるとする",
+      "温度層は常に速度層と同じ厚さとする"
+    ],
+    "answer": 0,
+    "difficulty": "概念・適用判断",
+    "explanation": "極低Prでは熱層が速度層の外へ広がるなど、温度式の支配バランスが変わりうる。対象に合う低Prの式を選ぶ。",
+    "distractors": [
+      "正解。三乗根尺度の範囲外を確認した。",
+      "正のPrだけでは相関の適用範囲を満たさない。",
+      "小Prはνに対してαが大きいことを表す。",
+      "二つの拡散率と場は一般に異なる。"
+    ],
+    "hints": [
+      "Prの小ささの物理的意味。",
+      "相関に示す範囲を読む。"
+    ],
+    "solutionSteps": [
+      "範囲外と記録。",
+      "低Prのモデルを検討。",
+      "流れ・境界も確認。"
+    ],
+    "beginnerPitfall": "中〜高Pr用の尺度を極低Prへ無条件に外挿しない。"
+  },
+  {
+    "id": "supp-laminar-pr-h-from-thickness-v1",
+    "revision": "v1",
+    "field": "境界層・外部対流",
+    "prerequisites": [
+      "連続の式",
+      "境界層",
+      "レイノルズ数"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "applied",
+    "source": {
+      "type": "supplement",
+      "reference": "輸送現象の一般法則と独自の仮想例から作問。原本の翻訳・原図・章末問題ではない。",
+      "chapterId": "ch6",
+      "focusSectionId": "6.4",
+      "guideId": "chapter6-flat-boundary"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "執筆原稿・基本算術と構造を確認／包括的品質監査待ち・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "執筆時の定義・収支・基本計算を確認。全問の独立科学監査・原本網羅照合・外部校閲は後工程。"
+      }
+    ],
+    "prompt": "温度99%厚さδ_tを得たのでh=k_f/δ_tを厳密式とした。適切な修正はどれか。",
+    "choices": [
+      "温度層の厚さとhは、単位も常に同じとなる",
+      "壁面勾配や適切な相関で、分布形状の効果も扱う",
+      "99%という定義があれば、分布形状は常に不要となる",
+      "厚さが正なら、hはどの流体でも同じ数値となる"
+    ],
+    "answer": 1,
+    "difficulty": "概念・適用判断",
+    "explanation": "h=−k_f(∂θ/∂y)_w。δ_tは定義した一地点であり、k_f/δ_tは係数を省いた尺度になる場合があっても普遍的な厳密式ではない。",
+    "distractors": [
+      "長さとW/(m²·K)は異なる次元。",
+      "正解。hは温度分布の壁面勾配で定義することを確認した。",
+      "99%位置だけでは壁面勾配は一般に決まらない。",
+      "流体kや流れの条件にも依存する。"
+    ],
+    "hints": [
+      "hは壁での傾きに対応。",
+      "同じ99%点でも分布形状は違いうる。"
+    ],
+    "solutionSteps": [
+      "厚さの定義を確認。",
+      "温度勾配又は相関を求める。",
+      "尺度と厳密関係を分ける。"
+    ],
+    "beginnerPitfall": "99%厚さをそのまま伝導抵抗厚さとみなさない。"
+  },
+  {
+    "id": "supp-laminar-pr-transient-vs-plate-v1",
+    "revision": "v1",
+    "field": "境界層・外部対流",
+    "prerequisites": [
+      "連続の式",
+      "境界層",
+      "レイノルズ数"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "conceptual",
+    "source": {
+      "type": "supplement",
+      "reference": "輸送現象の一般法則と独自の仮想例から作問。原本の翻訳・原図・章末問題ではない。",
+      "chapterId": "ch6",
+      "focusSectionId": "6.4",
+      "guideId": "chapter6-flat-boundary"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "執筆原稿・基本算術と構造を確認／包括的品質監査待ち・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "執筆時の定義・収支・基本計算を確認。全問の独立科学監査・原本網羅照合・外部校閲は後工程。"
+      }
+    ],
+    "prompt": "同時間の単純な熱/運動量拡散距離の比Pr⁻¹/²と、定常層流平板の厚さ比の尺度Pr⁻¹/³について適切なのはどれか。",
+    "choices": [
+      "両者が違うので、Prの定義を変更する必要がある",
+      "どちらの指数も、全形状で常に厳密に成立する",
+      "移流や分布の条件が異なり、別の尺度となる",
+      "同じ導出なので、指数は自由に交換してよい"
+    ],
+    "answer": 2,
+    "difficulty": "概念・適用判断",
+    "explanation": "静止拡散では距離∼√(拡散率×時間)。平板温度境界層は位置依存速度と熱移流を含み、中〜高Prで三乗根の整理が使われる。",
+    "distractors": [
+      "Prは物性比の定義であり尺度の都合で変えない。",
+      "幾何や範囲・厚さ定義に条件がある。",
+      "正解。単純な時間拡散と移流のある境界層を区別した。",
+      "異なる支配バランスの指数を交換できない。"
+    ],
+    "hints": [
+      "移流があるか。",
+      "同じtでの√αtと平板相似を分ける。"
+    ],
+    "solutionSteps": [
+      "各モデルの仮定を確認。",
+      "指数の出所を確認。",
+      "適用範囲を分けて使う。"
+    ],
+    "beginnerPitfall": "式の見た目が似ていてもモデルを混ぜない。"
+  },
+  {
+    "id": "supp-laminar-pr-same-value-different-h-v1",
+    "revision": "v1",
+    "field": "境界層・外部対流",
+    "prerequisites": [
+      "連続の式",
+      "境界層",
+      "レイノルズ数"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "conceptual",
+    "source": {
+      "type": "supplement",
+      "reference": "輸送現象の一般法則と独自の仮想例から作問。原本の翻訳・原図・章末問題ではない。",
+      "chapterId": "ch6",
+      "focusSectionId": "6.4",
+      "guideId": "chapter6-flat-boundary"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "執筆原稿・基本算術と構造を確認／包括的品質監査待ち・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "執筆時の定義・収支・基本計算を確認。全問の独立科学監査・原本網羅照合・外部校閲は後工程。"
+      }
+    ],
+    "prompt": "二つの流体が同じPrを持つ。これだけでhの値について何が言えるか。",
+    "choices": [
+      "Prが同じなら、全ての長さと流速でhも同じとなる",
+      "Prが同じなら、両流体のkも必ず同じとなる",
+      "Prが同じなら、局所hと平均hも必ず一致する",
+      "物性や流れ・形状の情報なしにはhは決まらない"
+    ],
+    "answer": 3,
+    "difficulty": "概念・適用判断",
+    "explanation": "Nu相関が同じでもReや境界条件が要り、h=Nu k_f/Lへ直すにはk_fと長さが必要。Prだけからhを断定しない。",
+    "distractors": [
+      "Reや長さ、k等を無視した。",
+      "同じ比でも各物性は異なりうる。",
+      "位置依存と平均の違いはPrだけで消えない。",
+      "正解。無次元の物性比だけでは係数の絶対値は未定。"
+    ],
+    "hints": [
+      "Prは一つの比にすぎない。",
+      "hへ戻す式を確認。"
+    ],
+    "solutionSteps": [
+      "流速・幾何を確認。",
+      "Nuとk_f/Lを評価。",
+      "情報不足だけではh未定。"
+    ],
+    "beginnerPitfall": "同じ無次元物性比から係数の絶対値を決めない。"
+  },
+  {
+    "id": "supp-laminar-plate-average-h-v1",
+    "revision": "v1",
+    "field": "境界層・外部対流",
+    "prerequisites": [
+      "連続の式",
+      "境界層",
+      "レイノルズ数"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "輸送現象の一般法則と独自の仮想例から作問。原本の翻訳・原図・章末問題ではない。",
+      "chapterId": "ch6",
+      "focusSectionId": "6.5",
+      "guideId": "chapter6-flat-boundary"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "執筆原稿・基本算術と構造を確認／包括的品質監査待ち・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "執筆時の定義・収支・基本計算を確認。全問の独立科学監査・原本網羅照合・外部校閲は後工程。"
+      }
+    ],
+    "prompt": "等温層流平板の平均Nū_L=144.414、流体k_f=0.026 W/(m·K)、長さL=0.30 m。h̄_L=Nū_Lk_f/Lはどれか。",
+    "choices": [
+      "約12.5 W/(m²·K)",
+      "約1.13 W/(m²·K)",
+      "約144 W/(m²·K)",
+      "約6.26 W/(m²·K)"
+    ],
+    "answer": 0,
+    "difficulty": "標準・数値計算",
+    "explanation": "h̄_L=144.414×0.026/0.30≈12.5159 W/(m²·K)。この例の末端局所hはその半分だが、平均hの問いへ混ぜない。",
+    "distractors": [
+      "正解。平均Nuから次元付き平均hへ戻した。",
+      "Lを割らず掛けた。",
+      "Nuの数値をそのままhとした。",
+      "平均値を求めるのに局所末端の半分へ変えた。"
+    ],
+    "hints": [
+      "Nu=hL/k_fを変形。",
+      "流体のkを使う。"
+    ],
+    "solutionSteps": [
+      "144.414×0.026。",
+      "0.30で割る。",
+      "約12.5。"
+    ],
+    "beginnerPitfall": "無次元Nuと次元付きh、局所と平均を分ける。"
+  },
+  {
+    "id": "supp-laminar-plate-total-heat-v1",
+    "revision": "v1",
+    "field": "境界層・外部対流",
+    "prerequisites": [
+      "連続の式",
+      "境界層",
+      "レイノルズ数"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "輸送現象の一般法則と独自の仮想例から作問。原本の翻訳・原図・章末問題ではない。",
+      "chapterId": "ch6",
+      "focusSectionId": "6.5",
+      "guideId": "chapter6-flat-boundary"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "執筆原稿・基本算術と構造を確認／包括的品質監査待ち・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "執筆時の定義・収支・基本計算を確認。全問の独立科学監査・原本網羅照合・外部校閲は後工程。"
+      }
+    ],
+    "prompt": "一様温度差40 Kの等温板で平均h=12.5 W/(m²·K)、幅0.20 m、長さ0.30 m。片面全熱流Q̇=hWLΔTはどれか。",
+    "choices": [
+      "8.33×10³ W",
+      "30.0 W",
+      "500 W",
+      "60.0 W"
+    ],
+    "answer": 1,
+    "difficulty": "標準・数値計算",
+    "explanation": "A=0.20×0.30=0.060 m²、Q̇=12.5×0.060×40=30.0 W。平均流束は500 W/m²で、全熱流とは単位も違う。",
+    "distractors": [
+      "面積を掛けず割った。",
+      "正解。平均係数と片面積と温度差を掛けた。",
+      "面積当たり熱流束を全熱流とした。",
+      "片面指定なのに両面を数えた。"
+    ],
+    "hints": [
+      "片面積を求める。",
+      "平均流束に面積を掛ける。"
+    ],
+    "solutionSteps": [
+      "面積0.060 m²。",
+      "hΔT=500 W/m²。",
+      "全熱流30 W。"
+    ],
+    "beginnerPitfall": "片面/両面と流束/移動率を区別する。"
+  },
+  {
+    "id": "supp-laminar-plate-local-average-v1",
+    "revision": "v1",
+    "field": "境界層・外部対流",
+    "prerequisites": [
+      "連続の式",
+      "境界層",
+      "レイノルズ数"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "conceptual",
+    "source": {
+      "type": "supplement",
+      "reference": "輸送現象の一般法則と独自の仮想例から作問。原本の翻訳・原図・章末問題ではない。",
+      "chapterId": "ch6",
+      "focusSectionId": "6.5",
+      "guideId": "chapter6-flat-boundary"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "執筆原稿・基本算術と構造を確認／包括的品質監査待ち・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "執筆時の定義・収支・基本計算を確認。全問の独立科学監査・原本網羅照合・外部校閲は後工程。"
+      }
+    ],
+    "prompt": "等温・前縁から加熱・全域層流の平板で局所Nu係数0.332と平均係数0.664の関係はどれか。",
+    "choices": [
+      "0.664は二面を加えた値で、片面には使えない",
+      "流体が変われば、局所/平均という区別はなくなる",
+      "局所hを長さ平均した結果で、平均は末端の2倍",
+      "二つは同じ量の丸め値で、どちらを選んでもよい"
+    ],
+    "answer": 2,
+    "difficulty": "概念・適用判断",
+    "explanation": "h̄=(1/L)∫₀ᴸCx⁻¹/²dx=2C/√L=2h_x(L)。全域層流・等温等の前提を変えたときは同じ倍率としない。",
+    "distractors": [
+      "片面の長さ平均であり両面の倍率ではない。",
+      "局所と面平均の定義は流体が変わっても必要。",
+      "正解。同じ境界条件での局所分布と平均の関係。",
+      "局所と平均は異なる定義。"
+    ],
+    "hints": [
+      "係数は何を平均したか。",
+      "0からLへ局所hを積分。"
+    ],
+    "solutionSteps": [
+      "局所Cx⁻¹/²。",
+      "長さ積分してLで割る。",
+      "平均2h(L)。"
+    ],
+    "beginnerPitfall": "平均係数の2倍を両面の数と取り違えない。"
+  },
+  {
+    "id": "supp-laminar-plate-flux-boundary-v1",
+    "revision": "v1",
+    "field": "境界層・外部対流",
+    "prerequisites": [
+      "連続の式",
+      "境界層",
+      "レイノルズ数"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "applied",
+    "source": {
+      "type": "supplement",
+      "reference": "輸送現象の一般法則と独自の仮想例から作問。原本の翻訳・原図・章末問題ではない。",
+      "chapterId": "ch6",
+      "focusSectionId": "6.5",
+      "guideId": "chapter6-flat-boundary"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "執筆原稿・基本算術と構造を確認／包括的品質監査待ち・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "執筆時の定義・収支・基本計算を確認。全問の独立科学監査・原本網羅照合・外部校閲は後工程。"
+      }
+    ],
+    "prompt": "等温平板用のNu_x=0.332 Re_x^(1/2)Pr^(1/3)を、表面熱流束一定の板へ使いたい。適切なのはどれか。",
+    "choices": [
+      "熱流束一定でも表面温度は必ず一定なので同じ式",
+      "Reが同じなら、温度境界はどの条件でも無関係",
+      "同じ式の0.332だけを任意に変え、厳密値とする",
+      "壁の境界条件が異なり、対応する相関や解を選ぶ"
+    ],
+    "answer": 3,
+    "difficulty": "概念・適用判断",
+    "explanation": "等熱流束条件では局所温度差や平均係数の定義も確認する。等温境界の解を無条件に厳密式として転用しない。",
+    "distractors": [
+      "熱流束一定の発達場では表面温度が変わりうる。",
+      "熱境界条件はNuと温度分布へ影響する。",
+      "根拠なく係数を選ぶと予測と検証を失う。",
+      "正解。温度場の境界条件の違いを確認した。"
+    ],
+    "hints": [
+      "何を壁で固定したか。",
+      "熱流束と温度は別の境界条件。"
+    ],
+    "solutionSteps": [
+      "境界条件を分類。",
+      "対応する式を探す。",
+      "局所/平均の定義も確認。"
+    ],
+    "beginnerPitfall": "等温と等熱流束を同じ条件としない。"
+  },
+  {
+    "id": "supp-laminar-plate-unheated-start-v1",
+    "revision": "v1",
+    "field": "境界層・外部対流",
+    "prerequisites": [
+      "連続の式",
+      "境界層",
+      "レイノルズ数"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "applied",
+    "source": {
+      "type": "supplement",
+      "reference": "輸送現象の一般法則と独自の仮想例から作問。原本の翻訳・原図・章末問題ではない。",
+      "chapterId": "ch6",
+      "focusSectionId": "6.5",
+      "guideId": "chapter6-flat-boundary"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "執筆原稿・基本算術と構造を確認／包括的品質監査待ち・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "執筆時の定義・収支・基本計算を確認。全問の独立科学監査・原本網羅照合・外部校閲は後工程。"
+      }
+    ],
+    "prompt": "平板の前半が非加熱で後半だけ等温加熱される。前縁から同時に速度・温度境界層が発達する式を使う際に必要なのはどれか。",
+    "choices": [
+      "非加熱区間と速度場の発達の履歴を確認する",
+      "加熱長さを入れれば、全ての履歴を厳密に消せる",
+      "非加熱区間では流れも必ず存在しないとする",
+      "温度境界層は、加熱開始前から必ず同じ形である"
+    ],
+    "answer": 0,
+    "difficulty": "概念・適用判断",
+    "explanation": "運動量層は先端から発達し、熱層は別の位置で始まる。非加熱開始長さを扱う相関等、対象と一致する条件を確認する。",
+    "distractors": [
+      "正解。熱と運動量の開始位置の違いを考えた。",
+      "単に長さを置換するだけで同じ境界値問題とは限らない。",
+      "加熱の有無は流れの有無とは別。",
+      "加熱開始位置が温度層の発達に影響する。"
+    ],
+    "hints": [
+      "速度層と温度層の開始位置。",
+      "同じ長さへ単純置換できるか。"
+    ],
+    "solutionSteps": [
+      "非加熱長さを記録。",
+      "速度場の発達を確認。",
+      "対応する熱相関を選ぶ。"
+    ],
+    "beginnerPitfall": "加熱長さだけで流れの履歴を置き換えない。"
+  },
+  {
+    "id": "supp-laminar-plate-practical-scope-v1",
+    "revision": "v1",
+    "field": "境界層・外部対流",
+    "prerequisites": [
+      "連続の式",
+      "境界層",
+      "レイノルズ数"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "conceptual",
+    "source": {
+      "type": "supplement",
+      "reference": "輸送現象の一般法則と独自の仮想例から作問。原本の翻訳・原図・章末問題ではない。",
+      "chapterId": "ch6",
+      "focusSectionId": "6.5",
+      "guideId": "chapter6-flat-boundary"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "執筆原稿・基本算術と構造を確認／包括的品質監査待ち・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "執筆時の定義・収支・基本計算を確認。全問の独立科学監査・原本網羅照合・外部校閲は後工程。"
+      }
+    ],
+    "prompt": "層流等温平板相関の適用条件を評価する方法として適切なのはどれか。",
+    "choices": [
+      "流速が与えられれば、温度差は常に無視できる",
+      "流況・Pr・物性・壁境界等を併せて確認する",
+      "Reが目安以下なら、他の全ての条件も自動で成立",
+      "hが有限値なら、形状や物性の評価状態は不要"
+    ],
+    "answer": 1,
+    "difficulty": "概念・適用判断",
+    "explanation": "平滑・一定主流・ゼロ圧力勾配・層流・等温・適切な物性やPr範囲・弱い吹出し等を確認する。相関を代入できることと使えることを分ける。",
+    "distractors": [
+      "温度差は熱流や物性・浮力等へ関係する。",
+      "正解。相関の仮定を複数の条件として確認した。",
+      "Reだけで熱境界や物性一定等は保証できない。",
+      "有限値だけでは物理的適用は保証できない。"
+    ],
+    "hints": [
+      "相関に付いている前提を列挙。",
+      "Reは一つの判定情報。"
+    ],
+    "solutionSteps": [
+      "流況を確認。",
+      "熱境界と物性を確認。",
+      "範囲外なら別モデル。"
+    ],
+    "beginnerPitfall": "Re一つで適用条件を全て承認しない。"
   }
 ]
