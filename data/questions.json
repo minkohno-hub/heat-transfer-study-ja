@@ -33301,5 +33301,1105 @@
       "温度は線形。"
     ],
     "beginnerPitfall": "壁熱流束一定と壁温一定を同じ境界としない。"
+  },
+  {
+    "id": "supp-geometry-correlation-square-h-v1",
+    "revision": "v1",
+    "field": "強制対流",
+    "prerequisites": [
+      "代表長さと境界条件",
+      "局所・平均",
+      "相関と測定"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "輸送現象の一般法則と独自の仮想例から作問。原本の翻訳・原図・章末問題ではない。",
+      "chapterId": "ch7",
+      "focusSectionId": "7.5",
+      "guideId": "chapter7-internal-flow"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "執筆原稿・基本算術と構造を確認／包括的品質監査待ち・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "執筆時の定義・収支・基本計算を確認。全問の独立科学監査・原本網羅照合・外部校閲は後工程。"
+      }
+    ],
+    "prompt": "十分発達した正方形ダクトの全壁温一定条件でNu_Dh=2.98を与える。辺0.010 mなのでD_h=0.010 m、k_f=0.60 W/(m·K)。hはどれか。",
+    "choices": [
+      "約179 W/(m²·K)",
+      "約220 W/(m²·K)",
+      "約1.79 W/(m²·K)",
+      "約298 W/(m²·K)"
+    ],
+    "answer": 0,
+    "difficulty": "標準・数値計算",
+    "explanation": "h=2.98×0.60/0.010=178.8 W/(m²·K)。水力直径が分かってもNuは円管と同じとは限らない。",
+    "distractors": [
+      "正解。指定した断面・境界のNuからhへ戻した。",
+      "円管のNu=3.66へ置き換えた。",
+      "直径の換算又は係数を100分の1にした。",
+      "流体kを掛けずNu/D_hだけを使った。"
+    ],
+    "hints": [
+      "Nuはこの断面の指定値。",
+      "h=Nu k_f/D_h。"
+    ],
+    "solutionSteps": [
+      "2.98×0.60=1.788。",
+      "D_hで割る。",
+      "178.8 W/(m²·K)。"
+    ],
+    "beginnerPitfall": "円管の十分発達Nuを無条件に転用しない。"
+  },
+  {
+    "id": "supp-geometry-correlation-square-pressure-v1",
+    "revision": "v1",
+    "field": "強制対流",
+    "prerequisites": [
+      "代表長さと境界条件",
+      "局所・平均",
+      "相関と測定"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "輸送現象の一般法則と独自の仮想例から作問。原本の翻訳・原図・章末問題ではない。",
+      "chapterId": "ch7",
+      "focusSectionId": "7.5",
+      "guideId": "chapter7-internal-flow"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "執筆原稿・基本算術と構造を確認／包括的品質監査待ち・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "執筆時の定義・収支・基本計算を確認。全問の独立科学監査・原本網羅照合・外部校閲は後工程。"
+      }
+    ],
+    "prompt": "発達層流の正方形直管でDarcy f_DRe=56.91、Re=1000、L/D_h=500、動圧ρU_b²/2=5.0 Pa。摩擦圧力差はどれか。",
+    "choices": [
+      "約569 Pa",
+      "約142 Pa",
+      "約160 Pa",
+      "約35.6 Pa"
+    ],
+    "answer": 1,
+    "difficulty": "標準・数値計算",
+    "explanation": "f_D=56.91/1000=0.05691、Δp_f=0.05691×500×5=142.275 Pa。入口損失や継手は別。",
+    "distractors": [
+      "Darcy係数へ不要な倍率4を加えた。",
+      "正解。正方形のDarcy係数を使った。",
+      "円管のf_DRe=64へ置き換えた。",
+      "Fanningの4分の1をDarcy式へ使った。"
+    ],
+    "hints": [
+      "まずf_D。",
+      "長さ比と動圧を掛ける。"
+    ],
+    "solutionSteps": [
+      "f_D=0.05691。",
+      "500×5を掛ける。",
+      "約142 Pa。"
+    ],
+    "beginnerPitfall": "断面と摩擦係数定義をそろえる。"
+  },
+  {
+    "id": "supp-geometry-correlation-square-local-rate-v1",
+    "revision": "v1",
+    "field": "強制対流",
+    "prerequisites": [
+      "代表長さと境界条件",
+      "局所・平均",
+      "相関と測定"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "輸送現象の一般法則と独自の仮想例から作問。原本の翻訳・原図・章末問題ではない。",
+      "chapterId": "ch7",
+      "focusSectionId": "7.5",
+      "guideId": "chapter7-internal-flow"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "執筆原稿・基本算術と構造を確認／包括的品質監査待ち・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "執筆時の定義・収支・基本計算を確認。全問の独立科学監査・原本網羅照合・外部校閲は後工程。"
+      }
+    ],
+    "prompt": "ある断面で周平均h=178.8 W/(m²·K)、T_s−T_b=20 K、加熱周長P_h=0.040 m。単位長さ入熱q′=hP_h(T_s−T_b)はどれか。",
+    "choices": [
+      "約715 W/m",
+      "約7.15 W/m",
+      "約143 W/m",
+      "約3576 W/m"
+    ],
+    "answer": 2,
+    "difficulty": "標準・数値計算",
+    "explanation": "q̄_w″=178.8×20=3576 W/m²、q′=3576×0.040=143.04 W/m。下流でT_bが変わるとこのq′も変わる。",
+    "distractors": [
+      "周長を別の代表長さとして誤った。",
+      "温度差を落とした。",
+      "正解。平均流束へ加熱周長を掛けた。",
+      "面積当たり流束を単位長さ入熱へ流用した。"
+    ],
+    "hints": [
+      "q′の単位はW/m。",
+      "加熱周長を掛ける。"
+    ],
+    "solutionSteps": [
+      "流束3576 W/m²。",
+      "周長0.040 m。",
+      "143.04 W/m。"
+    ],
+    "beginnerPitfall": "局所の単位長さ熱流を全長の一定値としない。"
+  },
+  {
+    "id": "supp-geometry-correlation-duct-thermal-boundary-v1",
+    "revision": "v1",
+    "field": "強制対流",
+    "prerequisites": [
+      "代表長さと境界条件",
+      "局所・平均",
+      "相関と測定"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "applied",
+    "source": {
+      "type": "supplement",
+      "reference": "輸送現象の一般法則と独自の仮想例から作問。原本の翻訳・原図・章末問題ではない。",
+      "chapterId": "ch7",
+      "focusSectionId": "7.5",
+      "guideId": "chapter7-internal-flow"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "執筆原稿・基本算術と構造を確認／包括的品質監査待ち・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "執筆時の定義・収支・基本計算を確認。全問の独立科学監査・原本網羅照合・外部校閲は後工程。"
+      }
+    ],
+    "prompt": "断面の周方向壁温一様・単位長さ入熱一定のNuを、片面だけ局所熱流束一定の矩形流路へ使いたい。適切なのはどれか。",
+    "choices": [
+      "単位が同じなら、全て同じ熱境界として使う",
+      "断面比が同じなら、熱境界の違いは必ず消える",
+      "hの値を4倍すれば、片面加熱を常に厳密に表せる",
+      "加熱周長と熱境界の違いに合う資料を確認する"
+    ],
+    "answer": 3,
+    "difficulty": "概念・適用判断",
+    "explanation": "H1/H2等の呼び分けがある場合も元の定義を読む。周方向温度一様と局所熱流束一様、全周加熱と部分加熱は一般に別問題。",
+    "distractors": [
+      "単位一致は境界条件の同一性を保証しない。",
+      "同じ断面でも熱境界で温度場は変わる。",
+      "面の数の倍率だけで場を厳密に置換できない。",
+      "正解。どの量をどの面で一定にするかを照合した。"
+    ],
+    "hints": [
+      "何を一定としたNuか。",
+      "どの面が熱を与えるか。"
+    ],
+    "solutionSteps": [
+      "元資料の境界を記録。",
+      "対象との違いを確認。",
+      "対応する相関を選ぶ。"
+    ],
+    "beginnerPitfall": "一定熱流束という短い名称だけで境界を同じにしない。"
+  },
+  {
+    "id": "supp-geometry-correlation-duct-dh-not-sufficient-v1",
+    "revision": "v1",
+    "field": "強制対流",
+    "prerequisites": [
+      "代表長さと境界条件",
+      "局所・平均",
+      "相関と測定"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "conceptual",
+    "source": {
+      "type": "supplement",
+      "reference": "輸送現象の一般法則と独自の仮想例から作問。原本の翻訳・原図・章末問題ではない。",
+      "chapterId": "ch7",
+      "focusSectionId": "7.5",
+      "guideId": "chapter7-internal-flow"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "執筆原稿・基本算術と構造を確認／包括的品質監査待ち・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "執筆時の定義・収支・基本計算を確認。全問の独立科学監査・原本網羅照合・外部校閲は後工程。"
+      }
+    ],
+    "prompt": "二つの非円形流路のD_hとReが同じである。層流の十分発達Nuについて適切なのはどれか。",
+    "choices": [
+      "断面の縦横比や熱境界が違えばNuも変わりうる",
+      "D_hとReが同じなら、熱境界によらずNuは同じ",
+      "Reが同じなら、Nuには流体Prも形状も無関係",
+      "Nuは全て円管の値3.66へ必ず一致する"
+    ],
+    "answer": 0,
+    "difficulty": "概念・適用判断",
+    "explanation": "D_hは便利な代表長さだが、特に層流の断面速度・温度分布や壁の加熱条件まで消さない。",
+    "distractors": [
+      "正解。水力直径以外の幾何と境界の情報を残した。",
+      "一つの長さによる整理を完全な同一性とした。",
+      "適用する入口や熱境界等の依存を落とした。",
+      "特定の円管境界値を普遍化した。"
+    ],
+    "hints": [
+      "水力直径で失われる断面形状の情報。",
+      "周方向境界も確認。"
+    ],
+    "solutionSteps": [
+      "D_hの定義を確認。",
+      "断面比を確認。",
+      "熱境界に合うNuを使う。"
+    ],
+    "beginnerPitfall": "代表長さの一致を全ての熱伝達の一致としない。"
+  },
+  {
+    "id": "supp-geometry-correlation-duct-local-global-v1",
+    "revision": "v1",
+    "field": "強制対流",
+    "prerequisites": [
+      "代表長さと境界条件",
+      "局所・平均",
+      "相関と測定"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "applied",
+    "source": {
+      "type": "supplement",
+      "reference": "輸送現象の一般法則と独自の仮想例から作問。原本の翻訳・原図・章末問題ではない。",
+      "chapterId": "ch7",
+      "focusSectionId": "7.5",
+      "guideId": "chapter7-internal-flow"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "執筆原稿・基本算術と構造を確認／包括的品質監査待ち・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "執筆時の定義・収支・基本計算を確認。全問の独立科学監査・原本網羅照合・外部校閲は後工程。"
+      }
+    ],
+    "prompt": "等温壁ダクトの評価断面でq′=143 W/mを得た。入口から出口へ流体が温まる全長5 mの熱流を求める方法はどれか。",
+    "choices": [
+      "壁が等温なら、全熱流は必ずゼロとなる",
+      "q′(x)を積分し、流体の熱収支と照合する",
+      "その断面の143へ5を掛ければ必ず厳密となる",
+      "十分発達なら、T_bの下流変化を全て無視する"
+    ],
+    "answer": 1,
+    "difficulty": "概念・適用判断",
+    "explanation": "Q̇=∫q′(x)dx=ṁc_p(T_out−T_in)を使う。一定h・一定壁温なら§7.4の指数応答等でT_bを求める。",
+    "distractors": [
+      "等温壁と流体の差があれば熱は流れる。",
+      "正解。局所温度差が変わる全長の輸送を扱った。",
+      "局所q′が一定という追加条件を無断で課した。",
+      "温度形の発達は平均温度変化を消さない。"
+    ],
+    "hints": [
+      "流体が温まると壁との差はどうなるか。",
+      "局所量の長さ積分。"
+    ],
+    "solutionSteps": [
+      "T_b(x)を求める。",
+      "q′(x)を積分。",
+      "流体エンタルピーで検算。"
+    ],
+    "beginnerPitfall": "一断面のq′を全長の一様値としない。"
+  },
+  {
+    "id": "supp-geometry-correlation-crossflow-reynolds-v1",
+    "revision": "v1",
+    "field": "強制対流",
+    "prerequisites": [
+      "代表長さと境界条件",
+      "局所・平均",
+      "相関と測定"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "輸送現象の一般法則と独自の仮想例から作問。原本の翻訳・原図・章末問題ではない。",
+      "chapterId": "ch7",
+      "focusSectionId": "7.6",
+      "guideId": "chapter7-internal-flow"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "執筆原稿・基本算術と構造を確認／包括的品質監査待ち・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "執筆時の定義・収支・基本計算を確認。全問の独立科学監査・原本網羅照合・外部校閲は後工程。"
+      }
+    ],
+    "prompt": "単独円柱へ軸に垂直な主流U=5.0 m/sが当たる。外径D=0.020 m、ν=1.5×10⁻⁵ m²/s。Re_D=UD/νはどれか。",
+    "choices": [
+      "約166700",
+      "約6.67",
+      "約6667",
+      "約3333"
+    ],
+    "answer": 2,
+    "difficulty": "標準・数値計算",
+    "explanation": "Re_D=5×0.020/(1.5×10⁻⁵)=6666.67。管内の断面平均速度ではなく、外部の主流基準。",
+    "distractors": [
+      "長さ0.50 mを外径の代わりに使った。",
+      "粘度又は長さの単位の桁を誤った。",
+      "正解。主流速度と外径でReを定義した。",
+      "外径でなく半径を使った。"
+    ],
+    "hints": [
+      "円柱横流れの代表長さは外径。",
+      "流体のνを使う。"
+    ],
+    "solutionSteps": [
+      "UD=0.10 m²/s。",
+      "νで割る。",
+      "Re≈6667。"
+    ],
+    "beginnerPitfall": "内部流の速度や半径と混同しない。"
+  },
+  {
+    "id": "supp-geometry-correlation-crossflow-area-v1",
+    "revision": "v1",
+    "field": "強制対流",
+    "prerequisites": [
+      "代表長さと境界条件",
+      "局所・平均",
+      "相関と測定"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "輸送現象の一般法則と独自の仮想例から作問。原本の翻訳・原図・章末問題ではない。",
+      "chapterId": "ch7",
+      "focusSectionId": "7.6",
+      "guideId": "chapter7-internal-flow"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "執筆原稿・基本算術と構造を確認／包括的品質監査待ち・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "執筆時の定義・収支・基本計算を確認。全問の独立科学監査・原本網羅照合・外部校閲は後工程。"
+      }
+    ],
+    "prompt": "長い等温円柱の外径0.020 m、長さ0.50 m。端面を除く側面の伝熱面積πDL_zはどれか。",
+    "choices": [
+      "約0.0100 m²",
+      "約0.000314 m²",
+      "約0.0628 m²",
+      "約0.0314 m²"
+    ],
+    "answer": 3,
+    "difficulty": "標準・数値計算",
+    "explanation": "A_s=π×0.020×0.50=0.0314159 m²。投影面積DL_zは抗力等の定義で現れるが、側面伝熱面積とは別。",
+    "distractors": [
+      "流れに対する投影面積を使った。",
+      "円の端断面積を側面積とした。",
+      "側面をさらに2回数えた。",
+      "正解。円周と長さを掛けた。"
+    ],
+    "hints": [
+      "側面は円周×長さ。",
+      "端面を除く。"
+    ],
+    "solutionSteps": [
+      "円周πD。",
+      "L_zを掛ける。",
+      "約0.0314 m²。"
+    ],
+    "beginnerPitfall": "投影面積・端面積・伝熱面積を区別する。"
+  },
+  {
+    "id": "supp-geometry-correlation-crossflow-heat-v1",
+    "revision": "v1",
+    "field": "強制対流",
+    "prerequisites": [
+      "代表長さと境界条件",
+      "局所・平均",
+      "相関と測定"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "輸送現象の一般法則と独自の仮想例から作問。原本の翻訳・原図・章末問題ではない。",
+      "chapterId": "ch7",
+      "focusSectionId": "7.6",
+      "guideId": "chapter7-internal-flow"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "執筆原稿・基本算術と構造を確認／包括的品質監査待ち・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "執筆時の定義・収支・基本計算を確認。全問の独立科学監査・原本網羅照合・外部校閲は後工程。"
+      }
+    ],
+    "prompt": "単独等温円柱で平均Nu_D=42.739、k_f=0.026 W/(m·K)、D=0.020 m、L_z=0.50 m、温度差40 K。側面対流Q̇=(Nu_Dk_f/D)πDL_zΔTはどれか。",
+    "choices": [
+      "約69.8 W",
+      "約22.2 W",
+      "約55.6 W",
+      "約140 W"
+    ],
+    "answer": 0,
+    "difficulty": "標準・数値計算",
+    "explanation": "h̄=55.5607 W/(m²·K)、A_s≈0.0314159 m²、Q̇≈69.8196 W。放射・端部・支持部伝導は未算入。",
+    "distractors": [
+      "正解。周平均hと側面積と温度差を使った。",
+      "投影面積DL_zを伝熱面積とした。",
+      "hの数値を全熱流へ流用した。",
+      "側面をさらに二重に数えた。"
+    ],
+    "hints": [
+      "先にh̄へ戻す。",
+      "熱面積はπDL_z。"
+    ],
+    "solutionSteps": [
+      "h̄≈55.56。",
+      "側面積を掛ける。",
+      "温度差40で約69.8 W。"
+    ],
+    "beginnerPitfall": "対流係数と全移動率を同じにしない。"
+  },
+  {
+    "id": "supp-geometry-correlation-crossflow-tube-bank-v1",
+    "revision": "v1",
+    "field": "強制対流",
+    "prerequisites": [
+      "代表長さと境界条件",
+      "局所・平均",
+      "相関と測定"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "applied",
+    "source": {
+      "type": "supplement",
+      "reference": "輸送現象の一般法則と独自の仮想例から作問。原本の翻訳・原図・章末問題ではない。",
+      "chapterId": "ch7",
+      "focusSectionId": "7.6",
+      "guideId": "chapter7-internal-flow"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "執筆原稿・基本算術と構造を確認／包括的品質監査待ち・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "執筆時の定義・収支・基本計算を確認。全問の独立科学監査・原本網羅照合・外部校閲は後工程。"
+      }
+    ],
+    "prompt": "円柱が多列に並ぶ管群で、単独円柱横流れの式を使いたい。適切な判断はどれか。",
+    "choices": [
+      "単独円柱のhへ管数を掛ければ平均hになる",
+      "配置と隙間速度を含む管群用の条件を確認する",
+      "外径が同じなら、管数と間隔の影響は必ずない",
+      "最初の列の温度だけで全列のhが厳密に決まる"
+    ],
+    "answer": 1,
+    "difficulty": "概念・適用判断",
+    "explanation": "横/縦ピッチ、配列、列数、速度定義、物性とRe範囲などが合う資料を使う。単独式の数値を無条件に流用しない。",
+    "distractors": [
+      "hは面積や管数を掛けた全熱流とは別。",
+      "正解。流れの干渉・速度基準と配置の違いを確認した。",
+      "近接による加速や後流の影響を落とした。",
+      "全列の流れ・温度の条件は追加情報を要する。"
+    ],
+    "hints": [
+      "他の円柱が流れを変えるか。",
+      "どの速度でReを作るか。"
+    ],
+    "solutionSteps": [
+      "管群配置を記録。",
+      "対応する速度と相関。",
+      "適用範囲を確認。"
+    ],
+    "beginnerPitfall": "単独円柱と管群の相関を同じとしない。"
+  },
+  {
+    "id": "supp-geometry-correlation-crossflow-property-state-v1",
+    "revision": "v1",
+    "field": "強制対流",
+    "prerequisites": [
+      "代表長さと境界条件",
+      "局所・平均",
+      "相関と測定"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "applied",
+    "source": {
+      "type": "supplement",
+      "reference": "輸送現象の一般法則と独自の仮想例から作問。原本の翻訳・原図・章末問題ではない。",
+      "chapterId": "ch7",
+      "focusSectionId": "7.6",
+      "guideId": "chapter7-internal-flow"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "執筆原稿・基本算術と構造を確認／包括的品質監査待ち・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "執筆時の定義・収支・基本計算を確認。全問の独立科学監査・原本網羅照合・外部校閲は後工程。"
+      }
+    ],
+    "prompt": "表面60℃、主流20℃の横流れで、相関が膜温度評価を指定している。物性評価の基本として適切なのはどれか。",
+    "choices": [
+      "固体のkを使えば、流体物性の温度は不要になる",
+      "℃をKへ直した温度差だけで、全物性が決まる",
+      "40℃で対応する物性をそろえ、範囲も確認する",
+      "流体νだけ20℃、kだけ60℃を無条件に混ぜる"
+    ],
+    "answer": 2,
+    "difficulty": "概念・適用判断",
+    "explanation": "T_f=(60+20)/2=40℃。大物性差等では膜温度近似の適用と補正も確認する。具体的物性は根拠ある資料又は仮想入力として明示する。",
+    "distractors": [
+      "Nuのkは流体側で固体物性の代用はできない。",
+      "物質・圧力・組成等も物性の情報に必要。",
+      "正解。指定した評価法と一貫した流体状態を使った。",
+      "同じ代表状態の物性へ対応させていない。"
+    ],
+    "hints": [
+      "相関がどの代表温度を指定したか。",
+      "同じ状態でν,Pr,k_fを対応。"
+    ],
+    "solutionSteps": [
+      "膜温度40℃。",
+      "流体物性を取得。",
+      "範囲と変動を検討。"
+    ],
+    "beginnerPitfall": "異なる温度の物性を無計画に混ぜない。"
+  },
+  {
+    "id": "supp-geometry-correlation-crossflow-local-average-v1",
+    "revision": "v1",
+    "field": "強制対流",
+    "prerequisites": [
+      "代表長さと境界条件",
+      "局所・平均",
+      "相関と測定"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "conceptual",
+    "source": {
+      "type": "supplement",
+      "reference": "輸送現象の一般法則と独自の仮想例から作問。原本の翻訳・原図・章末問題ではない。",
+      "chapterId": "ch7",
+      "focusSectionId": "7.6",
+      "guideId": "chapter7-internal-flow"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "執筆原稿・基本算術と構造を確認／包括的品質監査待ち・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "執筆時の定義・収支・基本計算を確認。全問の独立科学監査・原本網羅照合・外部校閲は後工程。"
+      }
+    ],
+    "prompt": "単独円柱の周平均熱伝達率h̄について適切な説明はどれか。",
+    "choices": [
+      "平均なので、全周の局所hは必ず同じ値である",
+      "全長平均の内部管hと常に同じ定義となる",
+      "円柱が等温なら、周方向のhの変化は必ず消える",
+      "よどみ点や後流部の局所hと一般に同じではない"
+    ],
+    "answer": 3,
+    "difficulty": "概念・適用判断",
+    "explanation": "前方のよどみ・加速、剝離や後流で局所熱流は変わりうる。平均相関が返す量と局所の測定を対応させる。",
+    "distractors": [
+      "平均の定義は局所値の一様性を意味しない。",
+      "内部流と外部横流れでは対象が違う。",
+      "表面温度一定でも流れと熱勾配は位置で変わる。",
+      "正解。周方向の速度・温度場の違いを残した。"
+    ],
+    "hints": [
+      "何を平均したhか。",
+      "周方向の流れを考える。"
+    ],
+    "solutionSteps": [
+      "周方向平均を定義。",
+      "局所値と区別。",
+      "等温面の全熱流に使う。"
+    ],
+    "beginnerPitfall": "平均hを全ての位置での局所hとしない。"
+  },
+  {
+    "id": "supp-geometry-correlation-crossflow-radiation-separation-v1",
+    "revision": "v1",
+    "field": "強制対流",
+    "prerequisites": [
+      "代表長さと境界条件",
+      "局所・平均",
+      "相関と測定"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "conceptual",
+    "source": {
+      "type": "supplement",
+      "reference": "輸送現象の一般法則と独自の仮想例から作問。原本の翻訳・原図・章末問題ではない。",
+      "chapterId": "ch7",
+      "focusSectionId": "7.6",
+      "guideId": "chapter7-internal-flow"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "執筆原稿・基本算術と構造を確認／包括的品質監査待ち・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "執筆時の定義・収支・基本計算を確認。全問の独立科学監査・原本網羅照合・外部校閲は後工程。"
+      }
+    ],
+    "prompt": "電気加熱円柱の総電力から、横流れ相関の対流hを実験比較したい。適切なのはどれか。",
+    "choices": [
+      "放射・支持伝導・蓄熱等を分けた対流熱を使う",
+      "総電力は常に対流熱だけなので、そのまま使う",
+      "放射率が既知なら、支持部伝導は必ずゼロになる",
+      "主流があれば、放射のエネルギー移動は消える"
+    ],
+    "answer": 0,
+    "difficulty": "概念・適用判断",
+    "explanation": "エネルギー保存から対流へ出た熱を分離し、対応する面積・壁/主流温度差と比較する。",
+    "distractors": [
+      "正解。平均対流係数の定義に合う熱経路を整理した。",
+      "他の損失や非定常蓄積を無条件に無視した。",
+      "放射率から支持部の伝導の有無は決まらない。",
+      "流れと放射は併存できる。"
+    ],
+    "hints": [
+      "電力はどこへ流れるか。",
+      "対流だけのhと合わせる。"
+    ],
+    "solutionSteps": [
+      "全体収支。",
+      "他経路と蓄積を評価。",
+      "残る対流熱でh。"
+    ],
+    "beginnerPitfall": "総投入電力を無条件に対流熱流としない。"
+  },
+  {
+    "id": "supp-geometry-correlation-observed-h-v1",
+    "revision": "v1",
+    "field": "強制対流",
+    "prerequisites": [
+      "代表長さと境界条件",
+      "局所・平均",
+      "相関と測定"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "輸送現象の一般法則と独自の仮想例から作問。原本の翻訳・原図・章末問題ではない。",
+      "chapterId": "ch7",
+      "focusSectionId": "7.7",
+      "guideId": "chapter7-internal-flow"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "執筆原稿・基本算術と構造を確認／包括的品質監査待ち・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "執筆時の定義・収支・基本計算を確認。全問の独立科学監査・原本網羅照合・外部校閲は後工程。"
+      }
+    ],
+    "prompt": "他経路を分離済みの対流熱100 W、適切な面積0.20 m²、平均温度差25 K。h_obs=Q̇_conv/(AΔT)はどれか。",
+    "choices": [
+      "12500 W/(m²·K)",
+      "20.0 W/(m²·K)",
+      "500 W/(m²·K)",
+      "0.80 W/(m²·K)"
+    ],
+    "answer": 1,
+    "difficulty": "標準・数値計算",
+    "explanation": "h_obs=100/(0.20×25)=20.0 W/(m²·K)。観測からの推定にも測定と熱分離・平均定義の不確かさがある。",
+    "distractors": [
+      "面積で割った後温度差を掛けた。",
+      "正解。面積と温度差の積で対流熱を割った。",
+      "面積だけで割り温度差を落とした。",
+      "面積を掛け温度差で割った。"
+    ],
+    "hints": [
+      "hの単位はW/(m²·K)。",
+      "分母はAΔT。"
+    ],
+    "solutionSteps": [
+      "分母5.0 m²·K。",
+      "100/5。",
+      "20.0 W/(m²·K)。"
+    ],
+    "beginnerPitfall": "実験で求めたhを無条件に真値としない。"
+  },
+  {
+    "id": "supp-geometry-correlation-relative-residual-v1",
+    "revision": "v1",
+    "field": "強制対流",
+    "prerequisites": [
+      "代表長さと境界条件",
+      "局所・平均",
+      "相関と測定"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "輸送現象の一般法則と独自の仮想例から作問。原本の翻訳・原図・章末問題ではない。",
+      "chapterId": "ch7",
+      "focusSectionId": "7.7",
+      "guideId": "chapter7-internal-flow"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "執筆原稿・基本算術と構造を確認／包括的品質監査待ち・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "執筆時の定義・収支・基本計算を確認。全問の独立科学監査・原本網羅照合・外部校閲は後工程。"
+      }
+    ],
+    "prompt": "観測h_obs=20.0、予測h_pred=18.0 W/(m²·K)。r=(h_pred−h_obs)/h_obsと定義する相対残差はどれか。",
+    "choices": [
+      "−11.1%",
+      "+90%",
+      "−10%",
+      "+10%"
+    ],
+    "answer": 2,
+    "difficulty": "標準・数値計算",
+    "explanation": "r=(18−20)/20=−0.10。負はこの観測に対して小さく予測したことを表す。符号と基準を明記して別データと比べる。",
+    "distractors": [
+      "分母を予測値とした。",
+      "予測/観測の比を残差とした。",
+      "正解。観測基準で予測から観測を引いた。",
+      "残差の符号を反転した。"
+    ],
+    "hints": [
+      "分母はh_obs。",
+      "差は予測−観測。"
+    ],
+    "solutionSteps": [
+      "差−2.0。",
+      "20.0で割る。",
+      "−10%。"
+    ],
+    "beginnerPitfall": "相対誤差の分母と符号を曖昧にしない。"
+  },
+  {
+    "id": "supp-geometry-correlation-h-uncertainty-v1",
+    "revision": "v1",
+    "field": "強制対流",
+    "prerequisites": [
+      "代表長さと境界条件",
+      "局所・平均",
+      "相関と測定"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "輸送現象の一般法則と独自の仮想例から作問。原本の翻訳・原図・章末問題ではない。",
+      "chapterId": "ch7",
+      "focusSectionId": "7.7",
+      "guideId": "chapter7-internal-flow"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "執筆原稿・基本算術と構造を確認／包括的品質監査待ち・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "執筆時の定義・収支・基本計算を確認。全問の独立科学監査・原本網羅照合・外部校閲は後工程。"
+      }
+    ],
+    "prompt": "h=Q̇/(AΔT)でh=20.0 W/(m²·K)。独立な相対標準不確かさはQ̇が2%、Aが1%、ΔTが3%。一次伝播によるu_hはどれか。",
+    "choices": [
+      "約1.20 W/(m²·K)",
+      "約0.0374 W/(m²·K)",
+      "約2.80 W/(m²·K)",
+      "約0.748 W/(m²·K)"
+    ],
+    "answer": 3,
+    "difficulty": "標準・数値計算",
+    "explanation": "u_h/h≈√(0.02²+0.01²+0.03²)=0.0374166、u_h≈0.748331 W/(m²·K)。モデル偏りや相関した誤差はこの独立式だけでは表せない。",
+    "distractors": [
+      "相対標準不確かさを単純加算した。",
+      "相対値へhを掛けていない。",
+      "相対分散の扱い又は係数を取り違えた。",
+      "正解。相対分散を加え平方根を取ってhを掛けた。"
+    ],
+    "hints": [
+      "独立なら分散を足す。",
+      "相対値から絶対値へhを掛ける。"
+    ],
+    "solutionSteps": [
+      "相対分散0.0014。",
+      "平方根0.0374166。",
+      "20を掛け約0.748。"
+    ],
+    "beginnerPitfall": "測定の標準不確かさとモデル誤差を同じにしない。"
+  },
+  {
+    "id": "supp-geometry-correlation-single-point-selection-v1",
+    "revision": "v1",
+    "field": "強制対流",
+    "prerequisites": [
+      "代表長さと境界条件",
+      "局所・平均",
+      "相関と測定"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "applied",
+    "source": {
+      "type": "supplement",
+      "reference": "輸送現象の一般法則と独自の仮想例から作問。原本の翻訳・原図・章末問題ではない。",
+      "chapterId": "ch7",
+      "focusSectionId": "7.7",
+      "guideId": "chapter7-internal-flow"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "執筆原稿・基本算術と構造を確認／包括的品質監査待ち・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "執筆時の定義・収支・基本計算を確認。全問の独立科学監査・原本網羅照合・外部校閲は後工程。"
+      }
+    ],
+    "prompt": "一つの観測h=20に対し相関Aは18、Bは24を返した。選定について適切なのはどれか。",
+    "choices": [
+      "この一点の近さと、全範囲の精度を分ける",
+      "一点で近いAは、全流況で必ずBより正確である",
+      "数値の大きいBは、必ず科学的品質が高い",
+      "二つの平均21を、根拠なしに厳密な真値とする"
+    ],
+    "answer": 0,
+    "difficulty": "概念・適用判断",
+    "explanation": "定義・範囲・物性・測定不確かさとモデル誤差を比較し、独立な別条件データで性能を確認する。",
+    "distractors": [
+      "正解。一点の残差と全体の適用・検証を区別した。",
+      "独立な他条件データなしに一般化した。",
+      "熱伝達率の大きさは相関の正確さではない。",
+      "根拠のない平均は観測や真値の代用ではない。"
+    ],
+    "hints": [
+      "観測点はいくつか。",
+      "全範囲への一般化には何が必要か。"
+    ],
+    "solutionSteps": [
+      "残差を計算。",
+      "前提と不確かさを確認。",
+      "独立データで比較。"
+    ],
+    "beginnerPitfall": "一点の近さを全範囲の科学的承認としない。"
+  },
+  {
+    "id": "supp-geometry-correlation-power-law-sensitivity-v1",
+    "revision": "v1",
+    "field": "強制対流",
+    "prerequisites": [
+      "代表長さと境界条件",
+      "局所・平均",
+      "相関と測定"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "applied",
+    "source": {
+      "type": "supplement",
+      "reference": "輸送現象の一般法則と独自の仮想例から作問。原本の翻訳・原図・章末問題ではない。",
+      "chapterId": "ch7",
+      "focusSectionId": "7.7",
+      "guideId": "chapter7-internal-flow"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "執筆原稿・基本算術と構造を確認／包括的品質監査待ち・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "執筆時の定義・収支・基本計算を確認。全問の独立科学監査・原本網羅照合・外部校閲は後工程。"
+      }
+    ],
+    "prompt": "同じ物性・形状・適用範囲でNu∝Re^0.8が成立する。主流Uの小さい相対変化+5%に対するhの一次相対変化の目安はどれか。",
+    "choices": [
+      "約−4%",
+      "約+4%",
+      "約+5%",
+      "約+0.8%"
+    ],
+    "answer": 1,
+    "difficulty": "概念・適用判断",
+    "explanation": "同じk,ν,Pr,Lならh∝U^0.8で、小変化の感度は0.8×5%=4%。流況が変わる場合や大きな変化を全て同じ線形近似としない。",
+    "distractors": [
+      "指数の正負を逆にした。",
+      "正解。δh/h≈0.8δU/Uを使った。",
+      "指数を落として速度と同じ変化とした。",
+      "速度の変化幅を掛けていない。"
+    ],
+    "hints": [
+      "対数微分を取る。",
+      "指数が相対変化の倍率。"
+    ],
+    "solutionSteps": [
+      "d ln h=0.8 d ln U。",
+      "0.8×5%。",
+      "約+4%。"
+    ],
+    "beginnerPitfall": "感度の一次近似を大変化や範囲外に無条件に使わない。"
+  },
+  {
+    "id": "supp-geometry-correlation-calibration-validation-v1",
+    "revision": "v1",
+    "field": "強制対流",
+    "prerequisites": [
+      "代表長さと境界条件",
+      "局所・平均",
+      "相関と測定"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "conceptual",
+    "source": {
+      "type": "supplement",
+      "reference": "輸送現象の一般法則と独自の仮想例から作問。原本の翻訳・原図・章末問題ではない。",
+      "chapterId": "ch7",
+      "focusSectionId": "7.7",
+      "guideId": "chapter7-internal-flow"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "執筆原稿・基本算術と構造を確認／包括的品質監査待ち・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "執筆時の定義・収支・基本計算を確認。全問の独立科学監査・原本網羅照合・外部校閲は後工程。"
+      }
+    ],
+    "prompt": "測定データに合わせて相関の係数を修正した。同じデータへの一致について適切な説明はどれか。",
+    "choices": [
+      "係数を合わせた時点で、測定不確かさは消える",
+      "測定に合えば、境界や形状の条件を記録しなくてよい",
+      "適合と独立検証を分け、別データでも確かめる",
+      "同じデータに合えば、外挿精度も必ず証明される"
+    ],
+    "answer": 2,
+    "difficulty": "概念・適用判断",
+    "explanation": "独立な条件とデータで残差と範囲を確認する。過剰な合わせ込みで見かけの一致を作らず、測定・モデルの不確かさも記録する。",
+    "distractors": [
+      "モデルへの適合は測定の不確かさを消さない。",
+      "対象や範囲は再現・適用判断に必要。",
+      "正解。係数を合わせたデータと評価するデータを区別した。",
+      "適合だけでは範囲外の妥当性は保証できない。"
+    ],
+    "hints": [
+      "係数決定に同じデータを使ったか。",
+      "未知条件での性能を確認。"
+    ],
+    "solutionSteps": [
+      "適合用データを明記。",
+      "別の検証用データ。",
+      "範囲と誤差を記録。"
+    ],
+    "beginnerPitfall": "係数合わせを独立な予測検証としない。"
+  },
+  {
+    "id": "supp-geometry-correlation-correlation-complete-conditions-v1",
+    "revision": "v1",
+    "field": "強制対流",
+    "prerequisites": [
+      "代表長さと境界条件",
+      "局所・平均",
+      "相関と測定"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "conceptual",
+    "source": {
+      "type": "supplement",
+      "reference": "輸送現象の一般法則と独自の仮想例から作問。原本の翻訳・原図・章末問題ではない。",
+      "chapterId": "ch7",
+      "focusSectionId": "7.7",
+      "guideId": "chapter7-internal-flow"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "執筆原稿・基本算術と構造を確認／包括的品質監査待ち・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "執筆時の定義・収支・基本計算を確認。全問の独立科学監査・原本網羅照合・外部校閲は後工程。"
+      }
+    ],
+    "prompt": "相関式の適用を確認する際、必要な情報の組合せはどれか。",
+    "choices": [
+      "Reが正という情報だけで全て判断する",
+      "Nuの数値の大きさだけで全て判断する",
+      "熱伝達面積だけで全て判断する",
+      "幾何・流況・熱境界・定義・物性と範囲"
+    ],
+    "answer": 3,
+    "difficulty": "概念・適用判断",
+    "explanation": "局所/平均、入口/発達、粗さ、物性評価温度、Re/Pr範囲、加熱条件等を対象に対応させる。情報が不足する場合は仮定又は未確定と記録する。",
+    "distractors": [
+      "正のReだけでは対象や熱境界は分からない。",
+      "大きなNuは適用の妥当性を保証しない。",
+      "面積だけでは流れ・物性・境界は決まらない。",
+      "正解。複数の適用条件と定義を確認する。"
+    ],
+    "hints": [
+      "相関が何を対象にしたか。",
+      "必要な条件を一覧に。"
+    ],
+    "solutionSteps": [
+      "幾何と流れ。",
+      "熱境界と物性。",
+      "定義・範囲を照合。"
+    ],
+    "beginnerPitfall": "一つの無次元数や面積だけで適用を承認しない。"
   }
 ]

@@ -8,8 +8,8 @@ const read=async path=>JSON.parse(await readFile(new URL('../'+path,import.meta.
 test('advanced original Japanese instruction includes 1.1 and 3.1 alongside the existing topics without claiming an unlicensed translation',async()=>{
  const [book,deep]=await Promise.all(['data/book.json','data/original-deep-lessons.json'].map(read));
  assert.deepEqual(validateDeepLessons(book,deep),[]);
- assert.equal(deep.lessons.length,70);
- assert.deepEqual(deep.lessons.map(x=>x.sectionId),['1.1','1.2','1.3','1.4','1.5','2.1','2.2','2.3','2.4','2.5','3.1','3.2','3.3','3.4','4.1','4.2','4.3','4.4','4.5','5.1','5.2','5.3','5.4','5.5','5.6','5.7','5.8','6.1','6.2','6.3','6.4','6.5','6.6','6.7','6.8','6.9','7.1','7.2','7.3','7.4','8.4','8.5','9.1','9.2','9.3','9.4','9.5','9.6','9.7','9.8','9.9','9.10','9.11','10.1','10.2','10.3','10.4','10.5','10.6','11.1','11.2','11.3','11.4','11.5','11.6','11.7','11.8','11.9','11.10','11.11']);
+ assert.equal(deep.lessons.length,73);
+ assert.deepEqual(deep.lessons.map(x=>x.sectionId),['1.1','1.2','1.3','1.4','1.5','2.1','2.2','2.3','2.4','2.5','3.1','3.2','3.3','3.4','4.1','4.2','4.3','4.4','4.5','5.1','5.2','5.3','5.4','5.5','5.6','5.7','5.8','6.1','6.2','6.3','6.4','6.5','6.6','6.7','6.8','6.9','7.1','7.2','7.3','7.4','7.5','7.6','7.7','8.4','8.5','9.1','9.2','9.3','9.4','9.5','9.6','9.7','9.8','9.9','9.10','9.11','10.1','10.2','10.3','10.4','10.5','10.6','11.1','11.2','11.3','11.4','11.5','11.6','11.7','11.8','11.9','11.10','11.11']);
  assert.equal(deep.translation,false);
  assert.equal(deep.expertReviewed,false);
  for(const l of deep.lessons){
