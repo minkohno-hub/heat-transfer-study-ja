@@ -170,3 +170,51 @@ SVG模式図、計算過程の詳細、面1温度に対するQdotの温度応答
 ### 本ライン最新の数量と残課題
 
 **既存5モデル（未変更）＋新規4モデル（未統合）＝総計9種類に相当する実装。** 新規専用テスト7+9+11+12=**39件**を個別実行してすべて成功（第1〜3モデルはGitHub取得ソースの独立JavaScript環境で検証、第4モデルはNode.js標準テストランナーで検証）。新規モデルをアプリの実際のタブで使える状態にする統合作業、公開ビルド・実ブラウザ・実機テスト、専門家校閲は未実施。Codex本線の週次制限が解けるまで、このラインでは自分の担当範囲と専用ブランチの開発・整備を継続する。
+
+
+## 第5モデル（2026-10-30）：円筒断熱材の定常伝導と臨界半径
+
+### 実装ファイル・最新コードコミット
+
+- 新規モジュール：cylindrical-insulation.mjs
+- 実装コミット：d7092435d4d7c3b3a61f62a65c5e3c275650009c
+- 新規テスト：tests/cylindrical-insulation.test.mjs
+- テストコミット：681bf909767129d4a27a1b5e76a7e11c82fe75ac
+- これらの後に本進捗文書を更新。PR #1本線、既存モード、共有ソース、他ラインのファイルは一切変更しない。PRも作成しない。
+
+### 対象・物理モデル・数値条件
+
+第2章の定常熱伝導、熱抵抗の応用。内側円筒外表面の半径r0を一定温度Tbに保ち、長さℓの円筒を熱伝導率kの均質な断熱材で厚さdだけ覆う。周囲流体温度T∞、外面の対流熱伝達率hは一定。固体の伝導は半径方向一次元・定常。端面の熱損失、管壁、内部対流、放射、物性の温度依存を無視する。
+
+- 外半径ro=r0+d、伝導抵抗 Rcond=ln(ro/r0)/(2πkℓ) [K/W]、外面対流抵抗 Rconv=1/(2πroℓh) [K/W]、合成抵抗 Rtotal=Rcond+Rconv。
+- 符号付き熱移動率 Qdot=(Tb−T∞)/Rtotal [W]。正符号は外向き放熱、負符号は内向き吸熱。表面温度 Ts=Tb−Qdot Rcond、外面熱流束 q''=Qdot/(2πroℓ)。断熱材内 T(r)=Tb−Qdot ln(r/r0)/(2πkℓ)。
+- d=0の場合はRcond=0、Ts=Tb。微小なdに対してはlog1p(d/r0)を用い精度を改善。入力欄は十進数のみ、絶対零度以下・数値範囲外・無限値を拒否する。
+- 臨界半径 rcrit=k/h。rcrit>r0の場合、絶対熱移動率|Qdot|はdcrit=rcrit−r0で最大。rcrit≤r0の場合は断熱材の厚さに対して単調減少。固定hを仮定する理論上の極値であり、実際の保温設計の推奨厚さではない。
+- 断面模式SVG、内面から外面への温度分布グラフ、d対|Qdot|と臨界厚さ位置のグラフ、比較条件の重ね合わせ、計算手順と前提条件を独立作成。入力範囲内で臨界厚さが実現できない場合はそのことを明示。
+- 標準例：r0=0.004m、d=0.003m、ℓ=1m、k=0.05W/(m K)、h=5W/(m² K)、Tb=80℃、T∞=20℃。rcrit=0.010m、dcrit=0.006m、Qdot=9.48077513W、Ts=63.1117779℃、断熱材なしに対する|Qdot|比=1.25742686。
+- 教材の文章・図・表・数値データは転載せず、標準的な熱抵抗・Fourier法則から独自実装。専門家による査読や現実の保温設備への適用性検証は未実施。
+
+### 専用テスト実行状況
+
+Node.js標準ランナー実行：node --test tests/cylindrical-insulation.test.mjs。**12成功・失敗0**。確認は、独立した熱抵抗の算術、外面対流との熱収支、半径別のFourier熱流、臨界厚さの最大値、臨界半径未満からの単調減少、断熱材なしの極限、微小厚さの対数計算、加熱・冷却の符号反転、温度差ゼロ、長さ比例、入力検証、HTMLエスケープとSVG・比較グラフ。GitHub保存後に新規2ファイルの存在・blob SHA・ブランチ差分を確認。公開アプリ上の結合試験・実ブラウザ・スマートフォン試験は未実施。
+
+### Codex統合担当への手順・残課題
+
+1. PR #1の最新HEADを統合時に再取得する。ラインBは起点c8d207710374411694898093ca9d6adc16fa0fcfから分岐しており本線は先に進んでいる。本線の共有ソースを巻き戻したり、本ライン側からPR #1へ直接コミットしない。
+2. 取り込むファイルはcylindrical-insulation.mjsとtests/cylindrical-insulation.test.mjs。既存の平板伝導conductionや直列抵抗resistanceを置換しない新モードIDの例はcylinder。
+3. app.jsのimport、SIM_META、ui.simValues、モードタブ、calculateSimulation、renderSimulator、renderSimulatorOutputsOnly、onInput/onChangeを拡張する。主なexportはCYLINDER_DEFAULTS、cylinderFieldNames、calculateCylindricalInsulation、renderCylinderFields、renderCylinderSteps、renderCylinderDiagram、cylinderTemperatureGraph、cylinderThicknessGraph。値の制約、入力エラー表示、計算結果の符号を維持。
+4. 空間温度グラフは相対半径位置（d=0では内外面が一致）、厚さの感度グラフはd対|Qdot|。旧来のΔT対Qdotグラフを誤って流用しない。
+5. study-core.mjsのvalidateLearningData内のsimComparisons検証を拡張し、比較条件の保存・復元時に新モードの合法データだけを受け入れ、旧データを破損させない。scripts/build-public-site.mjsの公開配信許可リスト、sw.jsのキャッシュバージョンとオフライン、guide.mjsの説明と節リンクは本線で追加する。
+6. 公開ビルドとNode全テスト、320/390px表示、Safari/Chrome、d=0、rcrit<r0、温度差の反転、ラベル、比較曲線、端末保存、オフラインのE2E試験を実施。
+7. 次段階の研究拡張は管壁・管内対流、hの外径依存、放射・温度依存物性、接触抵抗。現モデルではそれらを自動予測しない。
+
+### 最新のラインB総括（2026-10-30）
+
+新規追加モジュールと専用テストの対：
+1. fin-efficiency.mjs / tests/fin-efficiency.test.mjs（§4.5）
+2. heat-exchanger.mjs / tests/heat-exchanger.test.mjs（§3.2・3.3）
+3. transient-slab.mjs / tests/transient-slab.test.mjs（§5.3〜5.5）
+4. radiation-enclosure.mjs / tests/radiation-enclosure.test.mjs（§10.3・10.4）
+5. cylindrical-insulation.mjs / tests/cylindrical-insulation.test.mjs（第2章の応用）
+
+**既存5モデルを保護＋独立新規5モデル＝計10種類に相当する計算モジュール。新規専用テスト累計7+9+11+12+12=51成功、失敗0。** 第1〜3モデルは保存ソースの独立JavaScript環境で確認、第4〜5モデルはNode.js標準ランナーで確認。追加5モデルはGitHub Pagesの既存アプリ画面に未登録のため、実アプリの完成を意味しない。共有アプリへの結合、公開ビルド、E2E、専門家査読は未解決。統合はCodex本線が行い、その後に全体を再監査する。監視への報告対象はこの専用記録と新規10ファイル。本ラインはPR #1に直接触れない。
