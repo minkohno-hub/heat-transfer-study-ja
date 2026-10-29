@@ -6778,5 +6778,452 @@
       "reference": "第7・11章の管内流れ・混合物輸送・化学熱力学の基礎式から独立執筆した補足。原書の翻訳や原図ではない。専門家校閲前。"
     },
     "reviewStatus": "needs_review"
+  },
+  {
+    "id": "composite-plane-wall",
+    "ja": "複合平板壁",
+    "en": "composite plane wall",
+    "category": "熱伝導",
+    "aliases": [
+      "多層平板壁"
+    ],
+    "brief": "厚さや熱伝導率の異なる平板層を重ねた壁。",
+    "meaning": "厚さや熱伝導率の異なる平板層を重ねた壁。",
+    "beginner": "金属板と断熱材を重ねた壁では、それぞれの層の熱の通しにくさを一緒に計算します。材料の違いが重要です。",
+    "detail": "定常一次元・同一断面積A・発熱なし・良好な接触なら各層の熱抵抗R_i=L_i/(k_iA)を加えQ̇=ΔT/ΣR_i。界面に接触熱抵抗や両端の対流がある場合はそれも追加する。温度依存性が強い熱伝導率や面内の回り込みがある場合は単純な一次元式に注意する。",
+    "formula": "Q̇=ΔT/Σ[L_i/(k_iA)]",
+    "unit": "R_i: K/W、Q̇: W、k_i: W/(m·K)",
+    "example": "A=1 m²、1層目L=0.020 m・k=1、2層目L=0.030 m・k=3ならR=0.030 K/W、温度差30 Kでは1000 W。",
+    "related": [
+      "平板",
+      "熱抵抗",
+      "熱伝導率",
+      "接触熱抵抗"
+    ],
+    "relatedSections": [
+      "2.2",
+      "2.3"
+    ],
+    "relatedQuestions": [],
+    "relatedSimulators": [
+      "conduction",
+      "resistance"
+    ],
+    "confusions": [
+      "層ごとの温度差は、熱抵抗が異なれば同じではない。"
+    ],
+    "source": {
+      "type": "supplement",
+      "reference": "熱伝導、伝熱抵抗、フィン、熱交換器と対流の一般的な学術定義を元に独立執筆した補足。原書翻訳や原図の転載ではない。専門家校閲前。"
+    },
+    "reviewStatus": "needs_review"
+  },
+  {
+    "id": "series-thermal-resistances",
+    "ja": "熱抵抗の直列接続",
+    "en": "thermal resistances in series",
+    "category": "熱抵抗",
+    "aliases": [
+      "直列伝熱抵抗"
+    ],
+    "brief": "同じ熱移動率が順番に通る熱抵抗を足し合わせる方法。",
+    "meaning": "同じ熱移動率が順番に通る熱抵抗を足し合わせる方法。",
+    "beginner": "熱が何枚かの壁を順に通るなら、熱が通りにくい程度をそれぞれ足して考えることができます。",
+    "detail": "定常で熱が分岐せず蓄積・発生もない経路では、直列の各熱抵抗のQ̇は等しい。合成抵抗R_total=ΣR_i、ΔT=Q̇R_total。伝導だけでなく対流や接触抵抗も直列に接続できる。面積当たりの抵抗[m²K/W]と全体抵抗[K/W]は単位が違うため混合しない。",
+    "formula": "R_total=ΣR_i、Q̇=ΔT/R_total",
+    "unit": "R: K/W、Q̇: W、ΔT: K",
+    "example": "R₁=0.020 K/WとR₂=0.030 K/W、全温度差10 Kなら熱移動率は200 W。",
+    "related": [
+      "熱抵抗",
+      "複合平板壁",
+      "接触熱抵抗",
+      "熱移動率"
+    ],
+    "relatedSections": [
+      "2.3",
+      "2.4"
+    ],
+    "relatedQuestions": [],
+    "relatedSimulators": [
+      "resistance"
+    ],
+    "confusions": [
+      "熱が複数経路に分かれる並列の場合は、抵抗を単純に足せない。"
+    ],
+    "source": {
+      "type": "supplement",
+      "reference": "熱伝導、伝熱抵抗、フィン、熱交換器と対流の一般的な学術定義を元に独立執筆した補足。原書翻訳や原図の転載ではない。専門家校閲前。"
+    },
+    "reviewStatus": "needs_review"
+  },
+  {
+    "id": "parallel-thermal-resistances",
+    "ja": "熱抵抗の並列接続",
+    "en": "thermal resistances in parallel",
+    "category": "熱抵抗",
+    "aliases": [
+      "並列伝熱抵抗"
+    ],
+    "brief": "共通の温度差を受ける複数熱流経路の熱抵抗をまとめる方法。",
+    "meaning": "共通の温度差を受ける複数熱流経路の熱抵抗をまとめる方法。",
+    "beginner": "熱が二つの経路へ分かれて進むときは、どちらの道にも同じ温度差がかかり、通る熱量はそれぞれ違います。",
+    "detail": "同じ二つの温度節点をつなぐ各枝iに対しQ̇_i=ΔT/R_iで、総移動率はΣQ̇_i。したがって1/R_eq=Σ1/R_iとなる。各枝の端部温度が均一でない場合や多次元熱流が強い場合は単純な並列モデルが不適切になることがある。",
+    "formula": "1/R_eq=Σ(1/R_i)、Q̇_total=ΔT/R_eq",
+    "unit": "R: K/W、Q̇: W、ΔT: K",
+    "example": "R₁=2 K/WとR₂=3 K/Wを並列にするとR_eq=1.2 K/W、温度差12 Kなら10 W。",
+    "related": [
+      "熱抵抗",
+      "熱抵抗の直列接続",
+      "熱移動率"
+    ],
+    "relatedSections": [
+      "2.3",
+      "2.4"
+    ],
+    "relatedQuestions": [],
+    "relatedSimulators": [
+      "resistance"
+    ],
+    "confusions": [
+      "並列では抵抗値でなく、熱コンダクタンス（抵抗の逆数）を足す。"
+    ],
+    "source": {
+      "type": "supplement",
+      "reference": "熱伝導、伝熱抵抗、フィン、熱交換器と対流の一般的な学術定義を元に独立執筆した補足。原書翻訳や原図の転載ではない。専門家校閲前。"
+    },
+    "reviewStatus": "needs_review"
+  },
+  {
+    "id": "anisotropic-thermal-conductivity",
+    "ja": "異方性熱伝導率",
+    "en": "anisotropic thermal conductivity",
+    "category": "熱伝導",
+    "aliases": [
+      "方向依存熱伝導率"
+    ],
+    "brief": "材料内で熱伝導率が方向に依存する性質。",
+    "meaning": "材料内で熱伝導率が方向に依存する性質。",
+    "beginner": "繊維の向きには熱が通りやすく、横には通りにくい材料があります。材料を置く向きが熱の移動に影響します。",
+    "detail": "異方性の伝熱では熱流束ベクトルq⃗″=−K∇Tとし、Kは方向ごとの伝導を含むテンソル。主軸方向ではK=diag(k_x,k_y,k_z)にできる。温度勾配と熱流束が常に平行というわけではなく、等方媒体のスカラーkだけのモデルを使えない場合がある。",
+    "formula": "q⃗″=−K∇T、主軸上はq_x″=−k_x∂T/∂x",
+    "unit": "K: W/(m·K)、q⃗″: W/m²、∇T: K/m",
+    "example": "k_x=10、k_y=2 W/(m·K)、温度勾配が(3,4) K/mなら熱流束成分は(−30,−8) W/m²。",
+    "related": [
+      "熱伝導率",
+      "フーリエの法則",
+      "多次元熱伝導",
+      "温度勾配"
+    ],
+    "relatedSections": [
+      "2.1",
+      "4.2",
+      "5.7"
+    ],
+    "relatedQuestions": [],
+    "relatedSimulators": [
+      "conduction"
+    ],
+    "confusions": [
+      "異方性では熱流束の向きが温度勾配の正反対の向きとは限らない。"
+    ],
+    "source": {
+      "type": "supplement",
+      "reference": "熱伝導、伝熱抵抗、フィン、熱交換器と対流の一般的な学術定義を元に独立執筆した補足。原書翻訳や原図の転載ではない。専門家校閲前。"
+    },
+    "reviewStatus": "needs_review"
+  },
+  {
+    "id": "thermal-diffusion-time-scale",
+    "ja": "熱拡散の特性時間",
+    "en": "thermal diffusion time scale",
+    "category": "非定常熱伝導",
+    "aliases": [
+      "熱拡散時間スケール"
+    ],
+    "brief": "長さの二乗を熱拡散率で割って求める時間の目安。",
+    "meaning": "長さの二乗を熱拡散率で割って求める時間の目安。",
+    "beginner": "分厚い物ほど内部まで熱が届くのに時間がかかります。厚みの二乗に比例する目安の時間を定義できます。",
+    "detail": "一定熱拡散率αの材料で代表長さLを選びt_d=L²/αとする。フーリエ数Fo=αt/L²が1になる時間を表す。これは冷却が完了する正確な時間ではなく、固有値・形状・境界条件により指数減衰の時間には異なる係数が付く。代表長さの選び方も問題ごとに明示する。",
+    "formula": "t_d=L²/α、Fo=t/t_d",
+    "unit": "t_d: s、L: m、α: m²/s",
+    "example": "L=0.010 m、α=1.0×10⁻⁶ m²/sなら特性時間は100 s。",
+    "related": [
+      "熱拡散率",
+      "フーリエ数",
+      "非定常熱伝導",
+      "非定常伝導の固有値"
+    ],
+    "relatedSections": [
+      "5.1",
+      "5.3",
+      "5.6"
+    ],
+    "relatedQuestions": [],
+    "relatedSimulators": [
+      "transient"
+    ],
+    "confusions": [
+      "特性時間は特定の温度へ必ず到達する時間ではない。"
+    ],
+    "source": {
+      "type": "supplement",
+      "reference": "熱伝導、伝熱抵抗、フィン、熱交換器と対流の一般的な学術定義を元に独立執筆した補足。原書翻訳や原図の転載ではない。専門家校閲前。"
+    },
+    "reviewStatus": "needs_review"
+  },
+  {
+    "id": "fin-corrected-length",
+    "ja": "フィンの補正長さ",
+    "en": "corrected fin length",
+    "category": "フィン",
+    "aliases": [
+      "フィン補正長さ"
+    ],
+    "brief": "フィン先端の対流効果を長さ増加に置き換える近似長さ。",
+    "meaning": "フィン先端の対流効果を長さ増加に置き換える近似長さ。",
+    "beginner": "フィンの先端から逃げる熱を、先端断熱のフィンが少し長くなったものとして扱います。あくまで近似です。",
+    "detail": "一定断面の直線フィンで、先端対流の代わりに先端断熱モデルを用いる場合、L_c≈L+A_tip/P（先端面積A_tip、側面周長P）を使うことがある。薄く幅広い矩形フィンならL_c≈L+t/2。熱伝達率が一様で先端効果が比較的小さい条件の近似で、厳密な先端対流境界解と常に一致するわけではない。",
+    "formula": "L_c≈L+A_tip/P、幅広矩形フィンではL_c≈L+t/2",
+    "unit": "L_c,L,t: m、A_tip: m²、P: m",
+    "example": "薄い矩形フィンの長さL=40 mm、厚さt=2 mmならL_c≈41 mm。",
+    "related": [
+      "フィン",
+      "先端断熱",
+      "先端対流",
+      "フィン効率"
+    ],
+    "relatedSections": [
+      "4.5"
+    ],
+    "relatedQuestions": [],
+    "relatedSimulators": [],
+    "confusions": [
+      "先端条件の近似であり、実際にフィンが伸びるわけではない。"
+    ],
+    "source": {
+      "type": "supplement",
+      "reference": "熱伝導、伝熱抵抗、フィン、熱交換器と対流の一般的な学術定義を元に独立執筆した補足。原書翻訳や原図の転載ではない。専門家校閲前。"
+    },
+    "reviewStatus": "needs_review"
+  },
+  {
+    "id": "crossflow-heat-exchanger",
+    "ja": "直交流熱交換器",
+    "en": "crossflow heat exchanger",
+    "category": "熱交換器",
+    "aliases": [
+      "クロスフロー熱交換器"
+    ],
+    "brief": "二流体の主な流れが互いに直交する熱交換器。",
+    "meaning": "二流体の主な流れが互いに直交する熱交換器。",
+    "beginner": "二つの流体が交差する向きに流れながら、壁を通じて熱をやり取りする装置です。混合状態も重要です。",
+    "detail": "直交流では片側混合・両側非混合などの条件で温度分布と有効度NTU関係が変わる。外への熱損失を無視し、単相で一定比熱ならQ̇=C_h(T_h,in−T_h,out)=C_c(T_c,out−T_c,in)。温度差の評価に向流用LMTDを無補正で当てはめられない配置もある。",
+    "formula": "Q̇=C_h(T_h,in−T_h,out)=C_c(T_c,out−T_c,in)",
+    "unit": "Q̇: W、C_h,C_c: W/K",
+    "example": "高温側C_h=500 W/K、80→60℃、低温側C_c=1000 W/K、20→30℃なら熱収支はいずれも10 kW。",
+    "related": [
+      "熱交換器",
+      "熱交換器の熱収支",
+      "熱交換器有効度",
+      "流路補正係数"
+    ],
+    "relatedSections": [
+      "3.1",
+      "3.2",
+      "3.3",
+      "3.4"
+    ],
+    "relatedQuestions": [],
+    "relatedSimulators": [],
+    "confusions": [
+      "流体混合の条件で有効度関係が変わり、直交流を向流と同じにしない。"
+    ],
+    "source": {
+      "type": "supplement",
+      "reference": "熱伝導、伝熱抵抗、フィン、熱交換器と対流の一般的な学術定義を元に独立執筆した補足。原書翻訳や原図の転載ではない。専門家校閲前。"
+    },
+    "reviewStatus": "needs_review"
+  },
+  {
+    "id": "shell-and-tube-heat-exchanger",
+    "ja": "多管式熱交換器",
+    "en": "shell-and-tube heat exchanger",
+    "category": "熱交換器",
+    "aliases": [
+      "シェルアンドチューブ熱交換器"
+    ],
+    "brief": "管内と多数の管を収める胴側との間で熱交換する装置。",
+    "meaning": "管内と多数の管を収める胴側との間で熱交換する装置。",
+    "beginner": "細い管を束ね、その内側と外側に違う流体を流します。大きな熱交換面を確保しやすい形式です。",
+    "detail": "管内側と胴（シェル）側へ流体を分け、管壁を介して熱を移動させる。バッフルや管路の複数パスで温度分布・圧力損失・汚れ条件が変わる。総括熱伝達率Uが一定とみなせるとき設計でQ̇=UAFΔT_lmを使い、補正係数Fは流路配置や温度条件で変わる。",
+    "formula": "Q̇=UAFΔT_lm（適切な補正係数を使用）",
+    "unit": "Q̇: W、U: W/(m²·K)、A: m²、F: 無次元",
+    "example": "U=500 W/(m²·K)、A=2 m²、F=0.90、ΔT_lm=20 KならQ̇=18 kW。",
+    "related": [
+      "熱交換器",
+      "総括伝熱係数",
+      "流路補正係数",
+      "対数平均温度差"
+    ],
+    "relatedSections": [
+      "3.1",
+      "3.2",
+      "3.4"
+    ],
+    "relatedQuestions": [],
+    "relatedSimulators": [],
+    "confusions": [
+      "流路の条件を確認せずにF=1と置けない。"
+    ],
+    "source": {
+      "type": "supplement",
+      "reference": "熱伝導、伝熱抵抗、フィン、熱交換器と対流の一般的な学術定義を元に独立執筆した補足。原書翻訳や原図の転載ではない。専門家校閲前。"
+    },
+    "reviewStatus": "needs_review"
+  },
+  {
+    "id": "graetz-number",
+    "ja": "グレーツ数",
+    "en": "Graetz number",
+    "category": "管内対流",
+    "aliases": [
+      "Gz数"
+    ],
+    "brief": "管内の熱的入口領域における熱移流と拡散の比を表す無次元数。",
+    "meaning": "管内の熱的入口領域における熱移流と拡散の比を表す無次元数。",
+    "beginner": "管へ入った直後は温度分布がまだ発達していません。その影響を入口からの距離を使って評価する量です。",
+    "detail": "円管の局所グレーツ数の代表的定義はGz_x=RePr(D/x)。熱の入口発達を考える際に使い、定義により長さや数値係数の取り方が違う場合がある。ReとPrを同一の基準流速・物性で評価し、層流であることや速度場の発達状況と合わせて解釈する。",
+    "formula": "Gz_x=RePr(D/x)（円管、局所定義の一例）",
+    "unit": "Gz_x、Re、Pr: 無次元、D,x: m",
+    "example": "Re=1000、Pr=7、径D=0.010 m、入口からx=1 mならGz_x=70。",
+    "related": [
+      "レイノルズ数",
+      "プラントル数",
+      "熱的助走長",
+      "熱的に十分発達した流れ"
+    ],
+    "relatedSections": [
+      "7.2",
+      "7.4"
+    ],
+    "relatedQuestions": [],
+    "relatedSimulators": [],
+    "confusions": [
+      "入口からの距離xに依存し、単独の定数ではない。"
+    ],
+    "source": {
+      "type": "supplement",
+      "reference": "熱伝導、伝熱抵抗、フィン、熱交換器と対流の一般的な学術定義を元に独立執筆した補足。原書翻訳や原図の転載ではない。専門家校閲前。"
+    },
+    "reviewStatus": "needs_review"
+  },
+  {
+    "id": "dittus-boelter-correlation",
+    "ja": "ディタス・ベルター式",
+    "en": "Dittus–Boelter correlation",
+    "category": "管内対流",
+    "aliases": [
+      "Dittus-Boelter相関式"
+    ],
+    "brief": "滑らかな円管内の発達した乱流伝熱を近似する経験相関式。",
+    "meaning": "滑らかな円管内の発達した乱流伝熱を近似する経験相関式。",
+    "beginner": "乱流の速さと物性が分かれば、管と流体の熱の移りやすさをおおよそ計算できます。適用条件には制限があります。",
+    "detail": "滑らかな長い円管で発達した乱流に対しNu_D≈0.023Re_D^0.8Pr^nとし、一般に流体加熱でn=0.4、冷却でn=0.3を用いる。目安はRe_D≳10⁴、0.7≲Pr≲160、L/D≳10で物性変化が小さいこと。入口・遷移流・粗面・大きな粘度変化では誤差が増えるため別の相関や補正を考える。",
+    "formula": "Nu_D≈0.023Re_D^0.8Pr^n、n=0.4（加熱）/0.3（冷却）",
+    "unit": "Nu_D、Re_D、Pr: 無次元",
+    "example": "Re_D=20000、Pr=1なら加熱・冷却ともNu_D≈0.023×20000^0.8≈63.5。",
+    "related": [
+      "ヌセルト数",
+      "レイノルズ数",
+      "プラントル数",
+      "乱流"
+    ],
+    "relatedSections": [
+      "7.3",
+      "7.7"
+    ],
+    "relatedQuestions": [],
+    "relatedSimulators": [],
+    "confusions": [
+      "層流や入口領域の相関としてそのまま使えない。"
+    ],
+    "source": {
+      "type": "supplement",
+      "reference": "熱伝導、伝熱抵抗、フィン、熱交換器と対流の一般的な学術定義を元に独立執筆した補足。原書翻訳や原図の転載ではない。専門家校閲前。"
+    },
+    "reviewStatus": "needs_review"
+  },
+  {
+    "id": "wall-shear-stress",
+    "ja": "壁面せん断応力",
+    "en": "wall shear stress",
+    "category": "流体力学",
+    "aliases": [
+      "壁面摩擦応力"
+    ],
+    "brief": "流体が壁へ及ぼす接線方向の力を単位面積で表した量。",
+    "meaning": "流体が壁へ及ぼす接線方向の力を単位面積で表した量。",
+    "beginner": "壁の近くの液体は速度が変化するため、壁に沿ってこする力が生じます。その強さを面積当たりで表します。",
+    "detail": "静止した平坦壁近くの単純なニュートン流れではτ_w=μ(∂u/∂y)_w。μは動的粘度で動粘度νとは単位が異なる。三次元・曲面では応力テンソルを使い、座標と力の方向によって符号が変わる。摩擦速度にはせん断応力の大きさを使う。",
+    "formula": "τ_w=μ(∂u/∂y)_w（平坦壁の単純な流れ）",
+    "unit": "τ_w: Pa、μ: Pa·s、∂u/∂y: s⁻¹",
+    "example": "μ=0.001 Pa·s、壁面速度勾配500 s⁻¹なら、せん断応力の大きさは0.50 Pa。",
+    "related": [
+      "粘度",
+      "速度境界層",
+      "乱流",
+      "ダルシー摩擦係数"
+    ],
+    "relatedSections": [
+      "6.2",
+      "6.7",
+      "7.3"
+    ],
+    "relatedQuestions": [],
+    "relatedSimulators": [],
+    "confusions": [
+      "壁面せん断応力[Pa]と熱流束[W/m²]は別の物理量。"
+    ],
+    "source": {
+      "type": "supplement",
+      "reference": "熱伝導、伝熱抵抗、フィン、熱交換器と対流の一般的な学術定義を元に独立執筆した補足。原書翻訳や原図の転載ではない。専門家校閲前。"
+    },
+    "reviewStatus": "needs_review"
+  },
+  {
+    "id": "friction-velocity",
+    "ja": "摩擦速度",
+    "en": "friction velocity",
+    "category": "流体力学",
+    "aliases": [
+      "せん断速度u_tau"
+    ],
+    "brief": "壁面せん断応力の大きさと流体密度から定義する速度尺度。",
+    "meaning": "壁面せん断応力の大きさと流体密度から定義する速度尺度。",
+    "beginner": "壁との摩擦を速度の単位で表した指標で、乱流の壁のすぐ近くを調べるときに使います。",
+    "detail": "u_τ=√(|τ_w|/ρ)であり、壁近くの実際の流速を直接測ったものではない。乱流境界層で壁座標y⁺=yu_τ/νなどに利用する。τ_wの符号ではなく大きさを取り、密度ρと動粘度νの単位にも注意する。壁面状態が一様でない流れでは場所によって値が変わる。",
+    "formula": "u_τ=√(|τ_w|/ρ)、y⁺=yu_τ/ν",
+    "unit": "u_τ: m/s、τ_w: Pa、ρ: kg/m³",
+    "example": "τ_w=0.50 Pa、ρ=1000 kg/m³なら摩擦速度は約0.0224 m/s。",
+    "related": [
+      "壁面せん断応力",
+      "密度",
+      "動粘度",
+      "乱流"
+    ],
+    "relatedSections": [
+      "6.7",
+      "6.8"
+    ],
+    "relatedQuestions": [],
+    "relatedSimulators": [],
+    "confusions": [
+      "摩擦速度は流速の尺度であって、壁の直近の局所速度そのものではない。"
+    ],
+    "source": {
+      "type": "supplement",
+      "reference": "熱伝導、伝熱抵抗、フィン、熱交換器と対流の一般的な学術定義を元に独立執筆した補足。原書翻訳や原図の転載ではない。専門家校閲前。"
+    },
+    "reviewStatus": "needs_review"
   }
 ]
