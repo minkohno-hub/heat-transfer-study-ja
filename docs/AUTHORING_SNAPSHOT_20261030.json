@@ -1,13 +1,13 @@
 {
   "schemaVersion": 1,
-  "checkedAt": "2026-10-29T21:50:05.122672+00:00",
-  "basis": "c7aff29に§9.8の管内沸騰相関の詳細説明と8問を追加した作業ツリーの実データ再集計。旧PC回収数とは別。",
+  "checkedAt": "2026-10-29T22:00:52.444062+00:00",
+  "basis": "9ef8242に§9.10の経験式の温度尺度・被覆連成の説明と6問を追加した作業ツリーの実データ。旧PC回収数とは別。",
   "scope": "独立執筆原稿と節別問題の暫定最低条件。科学的・法的完成認定ではない。",
   "totals": {
     "sectionCount": 76,
     "shortConceptNoteDrafts": 76,
     "detailedLessonDrafts": 76,
-    "questionsInBank": 720,
+    "questionsInBank": 726,
     "draftAuthoringMinimumMet": 76,
     "remainingQuestionDraftMinimum": 0,
     "sectionsNeedingDetailedLesson": 0,
@@ -17,16 +17,16 @@
   "glossaryOnThisBranch": 158,
   "evidence": {
     "node": {
-      "total": 342,
-      "passed": 337,
+      "total": 347,
+      "passed": 342,
       "skipped": 5,
       "failed": 0
     },
     "publicBuild": "passed",
     "currentBatchBrowser": {
-      "previousSourceCI": "c7aff29:run40959557653 check and WebKit online passed; 76 lectures/384 exercise questions, bank712",
-      "currentChromiumProbe": "passed: section9.8 and 8 additional questions, mobile overflow absent, stored revision v1, pageerrors0",
-      "currentWebKit": "not yet executed: 76 lectures/392 exercise questions",
+      "previousSourceCI": "9ef8242:run40961168305 check and WebKit online passed; 76 lectures/392 exercise questions, bank720",
+      "currentChromiumProbe": "passed: section9.10 and 6 additional questions, mobile overflow absent, stored revision v1, pageerrors0",
+      "currentWebKit": "not yet executed: 76 lectures/398 exercise questions",
       "publicDeployment": "not performed; previously directly checked published bank72 is historical verification"
     },
     "expertReview": "not_completed",
@@ -1555,7 +1555,7 @@
       "independentFigures": "parallel_line_assets_unintegrated_or_pending",
       "publicScreenCurrentBatch": "c5d35fc: built-artifact Chromium and WebKit-online passed; latest live deployment not performed",
       "expertApproval": false,
-      "currentRevisionScreenCheck": "passed: targeted Chromium reader/8questions/revision/mobile probe"
+      "currentRevisionScreenCheck": "9ef8242:targeted Chromium and full WebKit online passed"
     },
     {
       "chapterId": "ch9",
@@ -1592,7 +1592,7 @@
       "shortConceptNoteDraft": true,
       "detailedLessonDraft": true,
       "legacyDraftRecorded": false,
-      "questionDraftCount": 8,
+      "questionDraftCount": 14,
       "questionKinds": 3,
       "missingQuestionDrafts": 0,
       "missingKinds": 0,
@@ -1602,15 +1602,16 @@
       "reviewedQuestionCount": 0,
       "verifiedRights": false,
       "finalAcceptance": false,
-      "learningObjective": "膜状凝縮と滴状凝縮の面の状態を区別し、液滴の生成・成長・合体・離脱が平均熱移動へ関係すると説明できる。凝縮側の係数の増加と熱交換器全体の性能向上を、熱抵抗の収支で区別できる。",
-      "detailedBlockCount": 8,
-      "equationCount": 4,
-      "workedExampleSteps": 6,
+      "learningObjective": "膜状凝縮と滴状凝縮の面の状態を区別し、液滴の生成・成長・合体・離脱が平均熱移動へ関係すると説明できる。凝縮側の係数の増加と熱交換器全体の性能向上を、熱抵抗の収支で区別できる。 適合する純水蒸気のRose経験式の温度尺度・圧力・接触角・面の条件を確認し、実効hと微分勾配を区別できる。被覆抵抗があるときに基材温度と凝縮表面温度を分けて連成収支を立てられる。",
+      "detailedBlockCount": 13,
+      "equationCount": 7,
+      "workedExampleSteps": 12,
       "questionReview": "comprehensive_scientific_review_pending",
-      "sourceCollation": "section_start_mapping_tracked_full_scope_unverified",
+      "sourceCollation": "PDF pp538-539 Rose units and conditions viewed as images; derivative/coating examples independent; full scope unverified",
       "independentFigures": "parallel_line_assets_unintegrated_or_pending",
       "publicScreenCurrentBatch": "c5d35fc: built-artifact Chromium and WebKit-online passed; latest live deployment not performed",
-      "expertApproval": false
+      "expertApproval": false,
+      "currentRevisionScreenCheck": "passed: targeted Chromium reader/6questions/revision/mobile probe"
     },
     {
       "chapterId": "ch9",

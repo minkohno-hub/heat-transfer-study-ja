@@ -37115,5 +37115,341 @@
       "流動状態に適合する別モデルを選ぶ。"
     ],
     "beginnerPitfall": "入力値がそろうことを、相関の有効性の証拠としない。"
+  },
+  {
+    "id": "supp-dropwise-correlation-heat-flux-v1",
+    "revision": "v1",
+    "field": "沸騰・相変化",
+    "prerequisites": [
+      "滴状凝縮",
+      "温度と温度差",
+      "熱抵抗"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "一般的な滴状凝縮経験式と独立した温度・被覆収支から作問。原本の文章・図・例題を転載しない。",
+      "chapterId": "ch9",
+      "focusSectionId": "9.10",
+      "guideId": "chapter9-latent-boiling"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "2026-10-30：内部の別式検算・単位・条件・全選択肢確認／原本網羅照合・包括的品質監査・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-30",
+        "type": "authored_with_internal_check",
+        "details": "docs/DROPWISE_CORRELATION_20261030.md。対象式・単位・条件を画像確認し、独自例と選択肢を内部検算。実機・外部専門家校閲ではない。"
+      }
+    ],
+    "prompt": "短い鉛直面の純水蒸気の滴状凝縮に、q″=1000 t_C^0.8(5θ+0.3θ²) W/m²を採用できると仮定する。t_Cは蒸気温度の摂氏数値、θは蒸気と凝縮表面の温度差のK数値。蒸気60.0 ℃、表面56.0 ℃のときq″はいくらか。有効数字3桁とする。",
+    "choices": [
+      "6.56×10⁵ W/m²",
+      "6.56×10² W/m²",
+      "5.29×10⁵ W/m²",
+      "1.64×10⁵ W/m²"
+    ],
+    "answer": 0,
+    "difficulty": "標準・数値計算",
+    "explanation": "θ=60.0−56.0=4.00、60.0^0.8≈26.455806。q″=1000×26.455806×24.8≈656104 W/m²。指定温度尺度と単位を保つ。",
+    "distractors": [
+      "正解。θ=4.00を使い、指定された1000の換算も含めた。",
+      "元のkW/m²の数値を、W/m²として使った。",
+      "式の二次項0.3θ²を落とした。",
+      "熱流束ではなくq″/ΔT_sの数値を答えた。"
+    ],
+    "hints": [
+      "蒸気と表面の温度差を求める。",
+      "t_C=60.0、θ=4.00を使う。"
+    ],
+    "solutionSteps": [
+      "蒸気と表面の温度差を求める。",
+      "t_C=60.0、θ=4.00を使う。",
+      "5θ+0.3θ²=24.8。",
+      "1000倍したW/m²の値を3桁に丸める。"
+    ],
+    "beginnerPitfall": "経験式が指定する温度尺度を無断で変更しない。"
+  },
+  {
+    "id": "supp-dropwise-correlation-temperature-scale-v1",
+    "revision": "v1",
+    "field": "沸騰・相変化",
+    "prerequisites": [
+      "滴状凝縮",
+      "温度と温度差",
+      "熱抵抗"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "conceptual",
+    "source": {
+      "type": "supplement",
+      "reference": "一般的な滴状凝縮経験式と独立した温度・被覆収支から作問。原本の文章・図・例題を転載しない。",
+      "chapterId": "ch9",
+      "focusSectionId": "9.10",
+      "guideId": "chapter9-latent-boiling"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "2026-10-30：内部の別式検算・単位・条件・全選択肢確認／原本網羅照合・包括的品質監査・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-30",
+        "type": "authored_with_internal_check",
+        "details": "docs/DROPWISE_CORRELATION_20261030.md。対象式・単位・条件を画像確認し、独自例と選択肢を内部検算。実機・外部専門家校閲ではない。"
+      }
+    ],
+    "prompt": "ある経験式がq″/[kW/m²]=t_C^0.8(5θ+0.3θ²)と定義され、t_Cは蒸気温度の摂氏表示数値、θは蒸気と凝縮表面の温度差のK数値である。蒸気60.0 ℃、表面56.0 ℃なら、正しい入力はどれか。",
+    "choices": [
+      "t_C=56.00、θ=4.000",
+      "t_C=60.00、θ=4.000",
+      "t_C=333.15、θ=4.000",
+      "t_C=60.00、θ=277.15"
+    ],
+    "answer": 1,
+    "difficulty": "概念・適用と境界条件の判断",
+    "explanation": "この式は係数も含めて摂氏の蒸気温度数値を指定している。放射の四乗則のように絶対温度Kを必ず使う基本法則とは異なる。温度差4 Kは摂氏差4 ℃と同じ数値。",
+    "distractors": [
+      "蒸気温度の代わりに凝縮表面温度を使った。",
+      "正解。指定された蒸気の摂氏数値と温度差を使う。",
+      "この経験式に指定された温度尺度をKへ無断で変更した。",
+      "温度差を絶対温度の換算として扱った。"
+    ],
+    "hints": [
+      "式が温度のどの数値を指定するか読む。",
+      "蒸気温度は60.0 ℃である。"
+    ],
+    "solutionSteps": [
+      "式が温度のどの数値を指定するか読む。",
+      "蒸気温度は60.0 ℃である。",
+      "温度差は60.0−56.0=4.00 K。",
+      "273.15を温度差へ加えない。"
+    ],
+    "beginnerPitfall": "全ての経験式で無条件にKへ変更すれば正確になるとは限らない。"
+  },
+  {
+    "id": "supp-dropwise-correlation-effective-coefficient-v1",
+    "revision": "v1",
+    "field": "沸騰・相変化",
+    "prerequisites": [
+      "滴状凝縮",
+      "温度と温度差",
+      "熱抵抗"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "一般的な滴状凝縮経験式と独立した温度・被覆収支から作問。原本の文章・図・例題を転載しない。",
+      "chapterId": "ch9",
+      "focusSectionId": "9.10",
+      "guideId": "chapter9-latent-boiling"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "2026-10-30：内部の別式検算・単位・条件・全選択肢確認／原本網羅照合・包括的品質監査・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-30",
+        "type": "authored_with_internal_check",
+        "details": "docs/DROPWISE_CORRELATION_20261030.md。対象式・単位・条件を画像確認し、独自例と選択肢を内部検算。実機・外部専門家校閲ではない。"
+      }
+    ],
+    "prompt": "適合する滴状凝縮経験式q″=1000 t_C^0.8(5θ+0.3θ²) W/m²を使う。t_C=60.0、θ=4.00での実効熱伝達係数h_eff=q″/ΔT_sはいくらか。ΔT_s=4.00 K、有効数字3桁とする。微分勾配とは区別する。",
+    "choices": [
+      "6.56×10⁵ W/(m²·K)",
+      "1.32×10⁵ W/(m²·K)",
+      "1.64×10⁵ W/(m²·K)",
+      "1.96×10⁵ W/(m²·K)"
+    ],
+    "answer": 2,
+    "difficulty": "標準・数値計算",
+    "explanation": "h_eff=1000×60.0^0.8(5+0.3×4.00)≈164026 W/(m²·K)。微分勾配なら1000×60.0^0.8(5+0.6×4.00)≈195773となり、同じ係数ではない。",
+    "distractors": [
+      "熱流束の数値を温度差で割らなかった。",
+      "二次項の寄与を無視し、温度差ゼロへの極限を使った。",
+      "正解。熱流束656104 W/m²を4.00 Kで割った。",
+      "dq″/dΔT_sの値を実効係数と取り違えた。"
+    ],
+    "hints": [
+      "実効係数は比q″/ΔT_sで定義される。",
+      "式をθで割って5+0.3θとする。"
+    ],
+    "solutionSteps": [
+      "実効係数は比q″/ΔT_sで定義される。",
+      "式をθで割って5+0.3θとする。",
+      "θ=4.00を代入する。",
+      "微分時の0.6θとは異なることを確認する。"
+    ],
+    "beginnerPitfall": "非線形の特性では一点の比と微分を区別する。"
+  },
+  {
+    "id": "supp-dropwise-correlation-coating-balance-v1",
+    "revision": "v1",
+    "field": "沸騰・相変化",
+    "prerequisites": [
+      "滴状凝縮",
+      "温度と温度差",
+      "熱抵抗"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "applied",
+    "source": {
+      "type": "supplement",
+      "reference": "一般的な滴状凝縮経験式と独立した温度・被覆収支から作問。原本の文章・図・例題を転載しない。",
+      "chapterId": "ch9",
+      "focusSectionId": "9.10",
+      "guideId": "chapter9-latent-boiling"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "2026-10-30：内部の別式検算・単位・条件・全選択肢確認／原本網羅照合・包括的品質監査・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-30",
+        "type": "authored_with_internal_check",
+        "details": "docs/DROPWISE_CORRELATION_20261030.md。対象式・単位・条件を画像確認し、独自例と選択肢を内部検算。実機・外部専門家校閲ではない。"
+      }
+    ],
+    "prompt": "純水蒸気60.0 ℃、被覆下の基材56.0 ℃、面積当たり被覆抵抗R″=2.00×10⁻⁶ m²·K/W。凝縮表面の温度差を数値θ [K]とし、被覆後にも適合すると仮定したq″(θ)=1000×60.0^0.8(5θ+0.3θ²) W/m²を使う。定常一次元でθを求める正しい収支式はどれか。",
+    "choices": [
+      "θ−(2.00×10⁻⁶)q″(θ)=4.00",
+      "θ+(2.00×10⁻⁶)q″(4.00)=4.00",
+      "(2.00×10⁻⁶)q″(θ)=4.00",
+      "θ+(2.00×10⁻⁶)q″(θ)=4.00"
+    ],
+    "answer": 3,
+    "difficulty": "概念・適用と境界条件の判断",
+    "explanation": "蒸気と基材の4 Kは、蒸気から凝縮表面までの差と被覆内の温度降下の和。θ+R″q″(θ)=4を解くとθ≈3.04665、q″≈476677 W/m²となる。被覆後の濡れ等への適合は追加仮定である。",
+    "distractors": [
+      "熱流に沿う被覆の温度降下を逆符号にした。",
+      "未知の表面温度を解く前に熱流束を固定してしまった。",
+      "凝縮面の温度差θを収支から落とした。",
+      "正解。凝縮面と被覆に生じる温度差の和が蒸気と基材の差に等しい。"
+    ],
+    "hints": [
+      "基材と被覆外側の温度を分ける。",
+      "被覆内の温度降下はq″R″。"
+    ],
+    "solutionSteps": [
+      "基材と被覆外側の温度を分ける。",
+      "被覆内の温度降下はq″R″。",
+      "二つの正の温度差の和を4 Kにする。",
+      "q″は未知θと連成して求める。"
+    ],
+    "beginnerPitfall": "基材と凝縮表面へ同じ56.0 ℃を重複して与えない。"
+  },
+  {
+    "id": "supp-dropwise-correlation-noncondensable-gas-v1",
+    "revision": "v1",
+    "field": "沸騰・相変化",
+    "prerequisites": [
+      "滴状凝縮",
+      "温度と温度差",
+      "熱抵抗"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "conceptual",
+    "source": {
+      "type": "supplement",
+      "reference": "一般的な滴状凝縮経験式と独立した温度・被覆収支から作問。原本の文章・図・例題を転載しない。",
+      "chapterId": "ch9",
+      "focusSectionId": "9.10",
+      "guideId": "chapter9-latent-boiling"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "2026-10-30：内部の別式検算・単位・条件・全選択肢確認／原本網羅照合・包括的品質監査・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-30",
+        "type": "authored_with_internal_check",
+        "details": "docs/DROPWISE_CORRELATION_20261030.md。対象式・単位・条件を画像確認し、独自例と選択肢を内部検算。実機・外部専門家校閲ではない。"
+      }
+    ],
+    "prompt": "非凝縮性ガスなしの純水蒸気を条件にした滴状凝縮経験式を使っていた。蒸気に空気が混入した場合、適切な扱いはどれか。",
+    "choices": [
+      "蒸気分圧と拡散抵抗も調べ、純蒸気の式の流用を避ける",
+      "全圧だけを飽和温度へ換算し、純蒸気の式をそのまま使う",
+      "空気は熱を運ばないので、抵抗も組成の変化も無視する",
+      "気体が増えた分だけ表面積を増やし、必ず伝熱が改善する"
+    ],
+    "answer": 0,
+    "difficulty": "概念・適用と境界条件の判断",
+    "explanation": "空気が界面付近へ集まると蒸気分圧と界面までの拡散抵抗が重要になる。高いhを持つ純蒸気の経験式を、そのまま混合気へ適用しない。",
+    "distractors": [
+      "正解。純蒸気の適用条件が外れ、蒸気の輸送抵抗が加わりうる。",
+      "蒸気分圧と全圧を区別していない。",
+      "空気は熱輸送にも物質移動抵抗にも関係する。",
+      "ガス混入だけで凝縮面積や伝熱が必ず増すわけではない。"
+    ],
+    "hints": [
+      "経験式の純蒸気という前提を確認する。",
+      "全圧と蒸気分圧は同一ではない。"
+    ],
+    "solutionSteps": [
+      "経験式の純蒸気という前提を確認する。",
+      "全圧と蒸気分圧は同一ではない。",
+      "界面までの蒸気輸送を別に評価する。",
+      "適合する熱・物質移動モデルへ切り替える。"
+    ],
+    "beginnerPitfall": "非凝縮性という言葉を、熱や物質輸送に影響しないという意味にしない。"
+  },
+  {
+    "id": "supp-dropwise-correlation-range-selection-v1",
+    "revision": "v1",
+    "field": "沸騰・相変化",
+    "prerequisites": [
+      "滴状凝縮",
+      "温度と温度差",
+      "熱抵抗"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "applied",
+    "source": {
+      "type": "supplement",
+      "reference": "一般的な滴状凝縮経験式と独立した温度・被覆収支から作問。原本の文章・図・例題を転載しない。",
+      "chapterId": "ch9",
+      "focusSectionId": "9.10",
+      "guideId": "chapter9-latent-boiling"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "2026-10-30：内部の別式検算・単位・条件・全選択肢確認／原本網羅照合・包括的品質監査・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-30",
+        "type": "authored_with_internal_check",
+        "details": "docs/DROPWISE_CORRELATION_20261030.md。対象式・単位・条件を画像確認し、独自例と選択肢を内部検算。実機・外部専門家校閲ではない。"
+      }
+    ],
+    "prompt": "ある滴状凝縮式は、純水蒸気・短い鉛直面・圧力約1 kPa〜大気圧付近・接触角約90°に対応し、基礎データの温度差は主に8 K未満である。提示した条件内の計算練習に選べる候補はどれか。",
+    "choices": [
+      "短い鉛直面、空気混合20 kPa、接触角約90°、ΔT=4 K",
+      "短い鉛直面、純蒸気20 kPa、接触角約90°、ΔT=4 K",
+      "長い鉛直面、純蒸気20 kPa、接触角約90°、ΔT=4 K",
+      "短い鉛直面、純蒸気200 kPa、接触角約90°、ΔT=4 K"
+    ],
+    "answer": 1,
+    "difficulty": "概念・適用と境界条件の判断",
+    "explanation": "20 kPaの純水蒸気で短い鉛直面、接触角約90°、温度差4 Kなら提示条件内の練習になる。これは実機の表面維持や精度の承認ではなく、他の候補は指定した適用条件を外れる。",
+    "distractors": [
+      "非凝縮性ガスなしという前提を外れる。",
+      "正解。提示された面・純蒸気・圧力・接触角・温度差の条件を満たす。",
+      "短い面のモデルを長い面へ使える根拠が別に必要。",
+      "指定した大気圧付近までの圧力範囲を外れる。"
+    ],
+    "hints": [
+      "純蒸気か混合気かを確認する。",
+      "面の形状と圧力範囲を照合する。"
+    ],
+    "solutionSteps": [
+      "純蒸気か混合気かを確認する。",
+      "面の形状と圧力範囲を照合する。",
+      "接触角と温度差を照合する。",
+      "条件内の計算と実機の承認を分ける。"
+    ],
+    "beginnerPitfall": "式の数値入力ができることを、適用条件の確認の代わりにしない。"
   }
 ]
