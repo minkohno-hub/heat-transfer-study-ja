@@ -112,3 +112,13 @@
 - 新規専用テスト `tests/lesson-diagram-6-1.test.mjs` に4件：SVGの自立性と読み上げ説明、Re/Pr/Nuの独立検算、二枚の模式線各33点の数学的滑らかさ、壁面条件と誤用防止説明。GitHub blobから再取得してJSで計算・模式線計66点・XML簡易タグ構造・外部依存を照合、不一致0。**Nodeテストランナー、既存全テスト、CIの実行とは区別する（このチャンクでは未実行）。**
 - **未実施**：実機Safari/Android、スクリーンリーダー、公開ビルドへの素材登録と講義画面への連携、Pages表示・外部学術校閲。独立SVGの追加は公開アプリ上での表示完了を意味しない。
 - 分担：図解のみ `chat/parallel-dev`。用語集 `chat/glossary`、76節照合 `chat/collation`、詳細講義・問題はCodexが担当。main・他ブランチ・PRには変更しない。
+
+## 第9図解チャンク：§4.3 Bi・Foの相似則（2026-10-29 JST）
+
+- 作業開始時の `chat/parallel-dev` HEAD: `01fe578ed004f6d2640bee795ad6bbb8a8316a07`。`data/original-deep-lessons.json` の§4.3「次元解析：BuckinghamのΠ群とBi・Foのスケール則」に詳細独立講義が存在することを確認。独自図解8点には§4.3なし。§5.3の内部冷却温度分布とは異なり、今回の説明対象は幾何・境界パラメータを変更して無次元条件を保持する方法。
+- 新規SVG: `assets/lesson-diagrams/section-4-3-bi-fo-similarity-scaling.svg`。対称平板の代表長さを半厚さLと固定し、元L=0.020 m、k=8 W/(m·K)、α=2.0×10⁻⁶ m²/s、h=40 W/(m²·K)、t=100 sから、厚さ方向の長さ2倍のモデルL=0.040 m、同一k・α、h=20 W/(m²·K)、t=400 sへ変更。厚さ方向のみを図中で正確に2倍表示し、縦方向は非実寸の模式図。
+- 独立再計算: Bi=hL/kが両モデル0.10、Fo=αt/L²が両モデル0.50。任意倍率aに対してL→aL、k・α同一とすると、BiとFoを同時に保つにはh→h/a、t→a²tとなる。標準の単位系、代表長さLの定義、左右面で同じ対流条件、幾何の相似・無次元の初期条件・境界条件の一致を注記。冷却方向の矢印はTi>T∞の条件付き。BiとFoが一致しても実温度そのものや正味流束が一致するとは断定しない。
+- SVGは原著図版からの転載・トレース・翻訳ではない独自作図。日本語テキスト、数値、方向、`title`/`desc`、`viewBox`、オフラインに対応する自己完結性、ライト・ダークCSSを実装。CairoSVGでライト配色のPNGを生成して目視し、日本語フォントの欠落を修正。
+- 新規専用回帰テスト: `tests/lesson-diagram-4-3.test.mjs`。**ローカルNode v22 `node --test` で4件実行、4件成功・失敗0**（自立性・読み上げ説明、Bi/Foの数値、長さ/熱伝達率/時間/図形の倍率、相似に必要な条件と限界）。`lxml`のXML構文解析成功。GitHubに保存したSVG・テストのGit blob SHAとローカルの `git hash-object` を突合。
+- 未実施: 全既存テスト群、GitHub CI、実ブラウザー・iPhone Safari・Android・スクリーンリーダーによる検査、公開ビルドへの登録・講義画面での表示、外部学術専門家校閲。独立SVG素材追加の段階であり、Pagesに配信されたとは認定しない。
+- 担当境界: 図解のみ `chat/parallel-dev`。用語集 `chat/glossary`、76節照合 `chat/collation`、詳細講義と問題はCodex担当。main・Codexブランチ・他ライン、PRには手を加えない。
