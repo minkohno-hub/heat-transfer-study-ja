@@ -12050,5 +12050,446 @@
       "reference": "第11章の混合物組成・拡散と多孔質媒体の基礎概念を、一般的な物質移動理論に基づき独立執筆した補足。クヌーセン拡散式はSpringer Adsorption (2021) https://doi.org/10.1007/s10450-021-00314-y の式を参考に適用前提を確認した。原書翻訳・図版の転載ではなく専門家校閲前。"
     },
     "reviewStatus": "needs_review"
+  },
+  {
+    "id": "clapeyron-equation",
+    "ja": "クラペイロンの式",
+    "en": "Clapeyron equation",
+    "aliases": [],
+    "category": "沸騰・凝縮・二相流",
+    "brief": "飽和圧力が温度でどう変わるかを相変化潜熱と両相の比容積差から決める熱力学関係。",
+    "meaning": "飽和圧力が温度でどう変わるかを相変化潜熱と両相の比容積差から決める熱力学関係。",
+    "beginner": "沸点が圧力で変わる理由には、蒸発に必要な熱と蒸気になる際の体積変化が関わります。その関係を式にしたものです。",
+    "detail": "純物質の気液相平衡線上でdp_sat/dT=h_fg/[T(v_g−v_l)]。h_fgは質量当たりの気化潜熱、v_gとv_lは飽和蒸気・液の比容積でありTは絶対温度。臨界点近傍では潜熱と比容積差がともに小さくなるので単純な近似を乱用しない。蒸気を理想気体とみなす積分式には別の仮定が必要。",
+    "formula": "dp_sat/dT=h_fg/[T(v_g−v_l)]",
+    "unit": "dp_sat/dT: Pa/K、h_fg: J/kg、v_g,v_l: m³/kg、T: K",
+    "example": "T=400 K、h_fg=2×10⁶ J/kg、v_g−v_l=1 m³/kgなら飽和圧力の温度勾配は5000 Pa/K。",
+    "related": [
+      "飽和圧力",
+      "飽和温度",
+      "潜熱",
+      "エンタルピー"
+    ],
+    "relatedSections": [
+      "8.5",
+      "9.7"
+    ],
+    "relatedQuestions": [],
+    "relatedSimulators": [],
+    "confusions": [
+      "絶対温度Kで評価し、圧力変化の傾きが常に一定とはみなさない。"
+    ],
+    "source": {
+      "type": "supplement",
+      "reference": "教科書第8〜9章の沸騰・凝縮・二相流の一般的な関係を独立執筆した補足。鉛直板凝縮の平均熱伝達率はESDU https://mmshah.org/publications/condensation.pdf、ZuberのCHF式はJAEA https://jopss.jaea.go.jp/pdfdata/JAEA-Data-Code-2008-014.pdf と照合。原書翻訳・転載ではなく専門家校閲前。"
+    },
+    "reviewStatus": "needs_review"
+  },
+  {
+    "id": "clausius-clapeyron-approximation",
+    "ja": "クラウジウス・クラペイロン近似",
+    "en": "Clausius–Clapeyron approximation",
+    "aliases": [],
+    "category": "沸騰・凝縮・二相流",
+    "brief": "飽和蒸気の理想気体近似と一定潜熱の仮定で、2温度間の飽和圧力比を推定する式。",
+    "meaning": "飽和蒸気の理想気体近似と一定潜熱の仮定で、2温度間の飽和圧力比を推定する式。",
+    "beginner": "ある温度での蒸気圧が分かると、別の温度での蒸気圧をおおよそ計算できます。温度範囲が広いと誤差も出ます。",
+    "detail": "気相を理想気体、液相比容積が気相比容積より十分小さいと仮定し、モル気化潜熱ΔH_vapが評価区間で一定なら、ln(p₂/p₁)=−(ΔH_vap/R)(1/T₂−1/T₁)。これはクラペイロンの一般式から導く近似で、圧力比の対数の引数は無次元。臨界点近くや大きな温度変化では潜熱一定の仮定が崩れやすい。",
+    "formula": "ln(p₂/p₁)=−(ΔH_vap/R)(1/T₂−1/T₁)",
+    "unit": "ΔH_vap: J/mol、R: J/(mol·K)、T: K、p₂/p₁: 無次元",
+    "example": "ΔH_vap/R=3000 K、T₁=300 K、T₂=330 Kならln(p₂/p₁)≈0.909、圧力比は約2.48。",
+    "related": [
+      "クラペイロンの式",
+      "飽和圧力",
+      "潜熱",
+      "対数"
+    ],
+    "relatedSections": [
+      "9.7"
+    ],
+    "relatedQuestions": [],
+    "relatedSimulators": [],
+    "confusions": [
+      "潜熱一定と蒸気の理想性を仮定する近似であり、一般の蒸気表そのものではない。"
+    ],
+    "source": {
+      "type": "supplement",
+      "reference": "教科書第8〜9章の沸騰・凝縮・二相流の一般的な関係を独立執筆した補足。鉛直板凝縮の平均熱伝達率はESDU https://mmshah.org/publications/condensation.pdf、ZuberのCHF式はJAEA https://jopss.jaea.go.jp/pdfdata/JAEA-Data-Code-2008-014.pdf と照合。原書翻訳・転載ではなく専門家校閲前。"
+    },
+    "reviewStatus": "needs_review"
+  },
+  {
+    "id": "bond-number",
+    "ja": "ボンド数",
+    "en": "Bond number",
+    "aliases": [
+      "エトベス数"
+    ],
+    "category": "沸騰・凝縮・二相流",
+    "brief": "重力による気液界面変形と表面張力による保持効果を比較する無次元数。",
+    "meaning": "重力による気液界面変形と表面張力による保持効果を比較する無次元数。",
+    "beginner": "小さな水滴では表面張力が丸さを保ちますが、大きい液滴では重力でつぶれやすくなります。",
+    "detail": "密度差Δρ=|ρ_l−ρ_g|、代表長さL、重力加速度g、表面張力σからBo=ΔρgL²/σ。小さいBoでは相対的に表面張力、大きいBoでは重力が重要になる。代表長さを何に取るかで値が変わるため基準を明記する。管内沸騰で用いるボイリング数Bo=q″/(Gh_fg)とは同じ略号でも全く別の無次元数。",
+    "formula": "Bo=|ρ_l−ρ_g|gL²/σ",
+    "unit": "Bo: 無次元、Δρ: kg/m³、g: m/s²、σ: N/m",
+    "example": "Δρ=1000 kg/m³、g=10 m/s²、L=0.001 m、σ=0.1 N/mならBo=0.10。",
+    "related": [
+      "表面張力",
+      "毛管長",
+      "ボイリング数",
+      "密度"
+    ],
+    "relatedSections": [
+      "9.3",
+      "9.7"
+    ],
+    "relatedQuestions": [],
+    "relatedSimulators": [],
+    "confusions": [
+      "ボンド数Boとボイリング数Boを同じ量と誤認しない。"
+    ],
+    "source": {
+      "type": "supplement",
+      "reference": "教科書第8〜9章の沸騰・凝縮・二相流の一般的な関係を独立執筆した補足。鉛直板凝縮の平均熱伝達率はESDU https://mmshah.org/publications/condensation.pdf、ZuberのCHF式はJAEA https://jopss.jaea.go.jp/pdfdata/JAEA-Data-Code-2008-014.pdf と照合。原書翻訳・転載ではなく専門家校閲前。"
+    },
+    "reviewStatus": "needs_review"
+  },
+  {
+    "id": "weber-number",
+    "ja": "ウェーバー数",
+    "en": "Weber number",
+    "aliases": [
+      "We数"
+    ],
+    "category": "沸騰・凝縮・二相流",
+    "brief": "慣性が気液界面を変形させる作用と、表面張力の作用の比を表す無次元数。",
+    "meaning": "慣性が気液界面を変形させる作用と、表面張力の作用の比を表す無次元数。",
+    "beginner": "流れの速さが増すと液滴が変形・分裂しやすくなります。流れの勢いと表面張力の競争を見る数字です。",
+    "detail": "流体の代表密度ρ、相対速度U、長さL、表面張力σを使いWe=ρU²L/σ。慣性対表面張力を測るが、実際の液滴分裂条件には粘度、密度比、形状、乱れなどが影響する。Reは慣性対粘性、Boは重力対表面張力である。どの相の密度・速度を使ったかを明記する。",
+    "formula": "We=ρU²L/σ",
+    "unit": "We: 無次元、ρ: kg/m³、U: m/s、L: m、σ: N/m",
+    "example": "ρ=1000 kg/m³、U=1 m/s、L=0.001 m、σ=0.1 N/mならWe=10。",
+    "related": [
+      "表面張力",
+      "気液二相流の流動様式",
+      "レイノルズ数"
+    ],
+    "relatedSections": [
+      "9.3",
+      "9.8"
+    ],
+    "relatedQuestions": [],
+    "relatedSimulators": [],
+    "confusions": [
+      "Weは慣性対表面張力で、レイノルズ数の慣性対粘性とは違う。"
+    ],
+    "source": {
+      "type": "supplement",
+      "reference": "教科書第8〜9章の沸騰・凝縮・二相流の一般的な関係を独立執筆した補足。鉛直板凝縮の平均熱伝達率はESDU https://mmshah.org/publications/condensation.pdf、ZuberのCHF式はJAEA https://jopss.jaea.go.jp/pdfdata/JAEA-Data-Code-2008-014.pdf と照合。原書翻訳・転載ではなく専門家校閲前。"
+    },
+    "reviewStatus": "needs_review"
+  },
+  {
+    "id": "nusselt-vertical-film-condensation",
+    "ja": "鉛直板のヌセルト膜状凝縮解",
+    "en": "Nusselt laminar film condensation on a vertical plate",
+    "aliases": [],
+    "category": "沸騰・凝縮・二相流",
+    "brief": "鉛直壁にできた層流凝縮液膜の熱伝達を、重力・粘性と液膜内熱伝導から評価する古典的解。",
+    "meaning": "鉛直壁にできた層流凝縮液膜の熱伝達を、重力・粘性と液膜内熱伝導から評価する古典的解。",
+    "beginner": "冷たい縦の板で蒸気が液体になると、液膜は下へ流れるほど厚くなります。その膜が熱の通り道となります。",
+    "detail": "純蒸気が静止している雰囲気で、等温鉛直面に層流液膜を作り、物性一定、界面せん断・慣性・液膜顕熱を無視できる場合、平均h̄=0.943[ρ_l(ρ_l−ρ_v)g h_fg k_l³/(μ_l L(T_sat−T_w))]^(1/4)。非凝縮性ガスや蒸気流・液膜波動・顕熱の影響が強い場合には補正や別モデルが必要。",
+    "formula": "h̄=0.943[ρ_l(ρ_l−ρ_v)g h_fg k_l³/(μ_l L ΔT)]^(1/4)",
+    "unit": "h̄: W/(m²·K)、ρ: kg/m³、μ_l: Pa·s、k_l: W/(m·K)",
+    "example": "物性と壁面温度差を固定し、板の高さLを16倍にした仮想比較では、平均凝縮熱伝達率は1/2倍。",
+    "related": [
+      "膜状凝縮",
+      "凝縮液膜厚さ",
+      "凝縮面の過冷却度",
+      "非凝縮性ガス"
+    ],
+    "relatedSections": [
+      "8.5",
+      "9.9"
+    ],
+    "relatedQuestions": [],
+    "relatedSimulators": [],
+    "confusions": [
+      "理想の純蒸気層流液膜モデルを、凝縮の全条件で成立する万能式とは扱わない。"
+    ],
+    "source": {
+      "type": "supplement",
+      "reference": "教科書第8〜9章の沸騰・凝縮・二相流の一般的な関係を独立執筆した補足。鉛直板凝縮の平均熱伝達率はESDU https://mmshah.org/publications/condensation.pdf、ZuberのCHF式はJAEA https://jopss.jaea.go.jp/pdfdata/JAEA-Data-Code-2008-014.pdf と照合。原書翻訳・転載ではなく専門家校閲前。"
+    },
+    "reviewStatus": "needs_review"
+  },
+  {
+    "id": "local-film-condensation-coefficient",
+    "ja": "膜状凝縮の局所熱伝達率",
+    "en": "local laminar film condensation coefficient",
+    "aliases": [],
+    "category": "沸騰・凝縮・二相流",
+    "brief": "鉛直板の上端から下るにつれて液膜が厚くなり、低下していく局所的な凝縮熱伝達率。",
+    "meaning": "鉛直板の上端から下るにつれて液膜が厚くなり、低下していく局所的な凝縮熱伝達率。",
+    "beginner": "板の上側は水の膜が薄く、下側では厚くなりやすいので、熱の通りやすさが場所によって変わります。",
+    "detail": "ヌセルトの理想的な鉛直板層流膜状凝縮では液膜厚さδ(x)∝x^(1/4)、局所熱伝達率h_x≈k_l/δ(x)∝x^(−1/4)。長さLの平均はh̄_L=(1/L)∫₀ᴸh_x dx=(4/3)h_{x=L}。上端x→0では理論解が形式上発散するが、実際の端部効果や核生成などを無視したモデル上の特徴である。",
+    "formula": "h_x∝x^(−1/4)、h̄_L=(4/3)h_{x=L}",
+    "unit": "h_x,h̄_L: W/(m²·K)、x,L: m",
+    "example": "板の下端の局所h_x=600 W/(m²·K)なら、理想層流膜状凝縮の平均h̄_L=800 W/(m²·K)。",
+    "related": [
+      "鉛直板のヌセルト膜状凝縮解",
+      "凝縮液膜厚さ",
+      "膜状凝縮"
+    ],
+    "relatedSections": [
+      "8.5"
+    ],
+    "relatedQuestions": [],
+    "relatedSimulators": [],
+    "confusions": [
+      "局所値と平均値は違う。上端の数学的な発散を現実の無限熱伝達率と誤解しない。"
+    ],
+    "source": {
+      "type": "supplement",
+      "reference": "教科書第8〜9章の沸騰・凝縮・二相流の一般的な関係を独立執筆した補足。鉛直板凝縮の平均熱伝達率はESDU https://mmshah.org/publications/condensation.pdf、ZuberのCHF式はJAEA https://jopss.jaea.go.jp/pdfdata/JAEA-Data-Code-2008-014.pdf と照合。原書翻訳・転載ではなく専門家校閲前。"
+    },
+    "reviewStatus": "needs_review"
+  },
+  {
+    "id": "zuber-chf-correlation",
+    "ja": "ズーバーの限界熱流束相関",
+    "en": "Zuber critical heat flux correlation",
+    "aliases": [
+      "ZuberのCHF式"
+    ],
+    "category": "沸騰・凝縮・二相流",
+    "brief": "飽和プール沸騰の液体と蒸気の流動不安定性に基づき限界熱流束を推定する代表的な式。",
+    "meaning": "飽和プール沸騰の液体と蒸気の流動不安定性に基づき限界熱流束を推定する代表的な式。",
+    "beginner": "泡が増えて液体が加熱面へ届きにくくなる限界を、表面張力・密度・潜熱などから大まかに求めます。",
+    "detail": "大きな上向き水平加熱面の飽和プール沸騰でq″_CHF≈0.131 h_fg√ρ_v[σg(ρ_l−ρ_v)]^(1/4)というZuber相関が使われる。ρ_vは飽和蒸気密度で、係数と妥当性はヒーター寸法・傾き、濡れ性、圧力、過冷却条件などに依存する。限界熱流束への到達と、その後の壁温上昇は装置の熱負荷制御条件にも関係する。",
+    "formula": "q″_CHF≈0.131h_fg√ρ_v[σg(ρ_l−ρ_v)]^(1/4)",
+    "unit": "q″_CHF: W/m²、h_fg: J/kg、ρ: kg/m³、σ: N/m",
+    "example": "仮にh_fg=2.26×10⁶ J/kg、ρ_v=1 kg/m³、ρ_l=1000 kg/m³、σ=0.072 N/m、g=9.81 m/s²ならq″_CHFは約1.52×10⁶ W/m²。",
+    "related": [
+      "限界熱流束",
+      "核沸騰離脱",
+      "表面張力",
+      "ボンド数"
+    ],
+    "relatedSections": [
+      "9.3"
+    ],
+    "relatedQuestions": [],
+    "relatedSimulators": [],
+    "confusions": [
+      "Zuber式は飽和プール沸騰の代表条件の推算で、全流路・全表面の保証値ではない。"
+    ],
+    "source": {
+      "type": "supplement",
+      "reference": "教科書第8〜9章の沸騰・凝縮・二相流の一般的な関係を独立執筆した補足。鉛直板凝縮の平均熱伝達率はESDU https://mmshah.org/publications/condensation.pdf、ZuberのCHF式はJAEA https://jopss.jaea.go.jp/pdfdata/JAEA-Data-Code-2008-014.pdf と照合。原書翻訳・転載ではなく専門家校閲前。"
+    },
+    "reviewStatus": "needs_review"
+  },
+  {
+    "id": "nucleation-site-density",
+    "ja": "沸騰核生成サイト密度",
+    "en": "active nucleation site density",
+    "aliases": [
+      "活性核生成点密度"
+    ],
+    "category": "沸騰・凝縮・二相流",
+    "brief": "加熱面で実際に気泡を生じる活性サイトの個数を面積で割った値。",
+    "meaning": "加熱面で実際に気泡を生じる活性サイトの個数を面積で割った値。",
+    "beginner": "同じ広さの加熱面でも、小さなくぼみから泡が出る場所が多いものと少ないものがあります。",
+    "detail": "核沸騰の活性核生成サイト密度n_s=N_active/Aは、観察した活性気泡生成点の数と加熱面積の比。表面の傷・粗さ、濡れ性、過熱度、圧力、溶存気体に加え観測時間や画像解像度にも依存する。サイト数と気泡放出頻度、気泡直径は別の変数であるため、サイト密度だけで熱流束を決定できない。",
+    "formula": "n_s=N_active/A",
+    "unit": "n_s: m⁻²、N_active: 個、A: m²",
+    "example": "面積0.010 m²に活性サイトが200個あるなら密度は20000 m⁻²。",
+    "related": [
+      "核沸騰",
+      "核沸騰開始",
+      "濡れ性",
+      "壁面過熱度"
+    ],
+    "relatedSections": [
+      "9.2"
+    ],
+    "relatedQuestions": [],
+    "relatedSimulators": [],
+    "confusions": [
+      "生成サイト数は観測時間内にできた気泡の総数とは違う。"
+    ],
+    "source": {
+      "type": "supplement",
+      "reference": "教科書第8〜9章の沸騰・凝縮・二相流の一般的な関係を独立執筆した補足。鉛直板凝縮の平均熱伝達率はESDU https://mmshah.org/publications/condensation.pdf、ZuberのCHF式はJAEA https://jopss.jaea.go.jp/pdfdata/JAEA-Data-Code-2008-014.pdf と照合。原書翻訳・転載ではなく専門家校閲前。"
+    },
+    "reviewStatus": "needs_review"
+  },
+  {
+    "id": "bubble-departure-frequency",
+    "ja": "気泡離脱頻度",
+    "en": "bubble departure frequency",
+    "aliases": [],
+    "category": "沸騰・凝縮・二相流",
+    "brief": "同じ沸騰核生成サイトから単位時間に気泡が離脱する回数。",
+    "meaning": "同じ沸騰核生成サイトから単位時間に気泡が離脱する回数。",
+    "beginner": "一つの泡の発生場所から何秒ごとに泡が離れるかを測れば、その繰り返しの速さを求められます。",
+    "detail": "気泡離脱周期t_cycleと周波数f_bはf_b=1/t_cycleで対応する。気泡の成長・離脱・再濡れの過程で周期が決まり、加熱面過熱度や表面張力、流れ、圧力などに依存する。泡による熱移動はサイト密度・気泡サイズ・流体の顕熱輸送などと組み合わさるため、周波数だけから熱流束は計算できない。",
+    "formula": "f_b=1/t_cycle",
+    "unit": "f_b: Hz、t_cycle: s",
+    "example": "同一のサイトで0.05秒ごとに1個気泡が離脱すれば頻度は20 Hz。",
+    "related": [
+      "核沸騰",
+      "沸騰核生成サイト密度",
+      "核沸騰開始"
+    ],
+    "relatedSections": [
+      "9.2"
+    ],
+    "relatedQuestions": [],
+    "relatedSimulators": [],
+    "confusions": [
+      "離脱頻度と活性サイトの密度は別の量である。"
+    ],
+    "source": {
+      "type": "supplement",
+      "reference": "教科書第8〜9章の沸騰・凝縮・二相流の一般的な関係を独立執筆した補足。鉛直板凝縮の平均熱伝達率はESDU https://mmshah.org/publications/condensation.pdf、ZuberのCHF式はJAEA https://jopss.jaea.go.jp/pdfdata/JAEA-Data-Code-2008-014.pdf と照合。原書翻訳・転載ではなく専門家校閲前。"
+    },
+    "reviewStatus": "needs_review"
+  },
+  {
+    "id": "superficial-phase-velocity",
+    "ja": "二相流の見掛け速度",
+    "en": "superficial velocity of a gas or liquid phase",
+    "aliases": [],
+    "category": "沸騰・凝縮・二相流",
+    "brief": "気相・液相それぞれの体積流量を流路の全断面積で割って定義する速度。",
+    "meaning": "気相・液相それぞれの体積流量を流路の全断面積で割って定義する速度。",
+    "beginner": "管の全断面を気体だけ、または液体だけが流れたと仮定した速度です。泡の実速度とは違います。",
+    "detail": "気相・液相それぞれの体積流量V̇_g,V̇_l、流路断面積Aに対し見掛け速度j_g=V̇_g/A、j_l=V̇_l/Aとする。気相断面体積割合αを使えばj_g≈αu_g、j_l≈(1−α)u_lという相の断面平均実速度との関係がある。流動様式やすべり比により二つの実速度は異なり、見掛け速度そのものが気泡速度とは限らない。",
+    "formula": "j_g=V̇_g/A、j_l=V̇_l/A",
+    "unit": "j_g,j_l: m/s、V̇_g,V̇_l: m³/s、A: m²",
+    "example": "断面積0.01 m²を気相体積流量0.002 m³/sが流れるならj_g=0.20 m/s。",
+    "related": [
+      "気液二相流の流動様式",
+      "ボイド率",
+      "気液すべり比",
+      "体積流量"
+    ],
+    "relatedSections": [
+      "9.8",
+      "9.9"
+    ],
+    "relatedQuestions": [],
+    "relatedSimulators": [],
+    "confusions": [
+      "見掛け速度は、各相が占める実際の断面積で割った局所・相平均速度ではない。"
+    ],
+    "source": {
+      "type": "supplement",
+      "reference": "教科書第8〜9章の沸騰・凝縮・二相流の一般的な関係を独立執筆した補足。鉛直板凝縮の平均熱伝達率はESDU https://mmshah.org/publications/condensation.pdf、ZuberのCHF式はJAEA https://jopss.jaea.go.jp/pdfdata/JAEA-Data-Code-2008-014.pdf と照合。原書翻訳・転載ではなく専門家校閲前。"
+    },
+    "reviewStatus": "needs_review"
+  },
+  {
+    "id": "two-phase-mass-velocity",
+    "ja": "二相流の質量速度",
+    "en": "two-phase mass velocity",
+    "aliases": [
+      "質量流束G（二相流）"
+    ],
+    "category": "沸騰・凝縮・二相流",
+    "brief": "気液二相流の全質量流量を流路全断面積で割った質量速度。",
+    "meaning": "気液二相流の全質量流量を流路全断面積で割った質量速度。",
+    "beginner": "毎秒通る水と蒸気の合計質量を、管の断面積1m²当たりで表します。蒸気と液体の取り分を乾き度で表せます。",
+    "detail": "二相流ではG=(ṁ_g+ṁ_l)/A_flowという質量速度を用いる。流量基準乾き度x=ṁ_g/(ṁ_g+ṁ_l)ならG_g=xG、G_l=(1−x)G。これは気相の体積割合であるボイド率とは異なる。Gは流路全断面を基準にしたkg/(m²·s)であり、質量流量ṁ[kg/s]や各相の占有断面で割った流束と混同しない。",
+    "formula": "G=ṁ_total/A_flow、G_g=xG、G_l=(1−x)G",
+    "unit": "G: kg/(m²·s)、ṁ: kg/s、x: 無次元",
+    "example": "全質量流量0.5 kg/s、流路面積0.01 m²ならG=50 kg/(m²·s)。乾き度0.20なら気相分は10 kg/(m²·s)。",
+    "related": [
+      "乾き度",
+      "質量流量",
+      "二相流の見掛け速度",
+      "ボイリング数"
+    ],
+    "relatedSections": [
+      "9.8",
+      "9.9"
+    ],
+    "relatedQuestions": [],
+    "relatedSimulators": [],
+    "confusions": [
+      "Gは相の実速度ではなく流路の全断面を使う質量流量の密度である。"
+    ],
+    "source": {
+      "type": "supplement",
+      "reference": "教科書第8〜9章の沸騰・凝縮・二相流の一般的な関係を独立執筆した補足。鉛直板凝縮の平均熱伝達率はESDU https://mmshah.org/publications/condensation.pdf、ZuberのCHF式はJAEA https://jopss.jaea.go.jp/pdfdata/JAEA-Data-Code-2008-014.pdf と照合。原書翻訳・転載ではなく専門家校閲前。"
+    },
+    "reviewStatus": "needs_review"
+  },
+  {
+    "id": "equilibrium-quality-rise",
+    "ja": "加熱による平衡乾き度の増加",
+    "en": "equilibrium quality rise during boiling",
+    "aliases": [],
+    "category": "沸騰・凝縮・二相流",
+    "brief": "飽和平衡二相流への加熱が、蒸気の質量割合をどれだけ増やすかを表す熱収支。",
+    "meaning": "飽和平衡二相流への加熱が、蒸気の質量割合をどれだけ増やすかを表す熱収支。",
+    "beginner": "沸騰している水と蒸気の混合物にさらに熱を加えると、蒸気の質量割合が増加します。その増分を求めます。",
+    "detail": "純物質の飽和二相流で圧力が一定、熱損失・流動仕事などを無視、潜熱h_fg一定の単純な定常熱収支ではΔx=Q̇/(ṁh_fg)。入口に過冷却液体がある場合は飽和温度まで上げるための顕熱を先に考慮する。圧力降下や過熱蒸気を含む場合は入口出口の比エンタルピー差で計算する。",
+    "formula": "Δx=Q̇/(ṁh_fg)（飽和二相・定圧・潜熱一定）",
+    "unit": "Δx: 無次元、Q̇: W、ṁ: kg/s、h_fg: J/kg",
+    "example": "質量流量0.10 kg/s、潜熱2×10⁶ J/kg、加熱20 kWなら平衡乾き度は0.10増える。",
+    "related": [
+      "乾き度",
+      "飽和気液混合物の比エンタルピー",
+      "潜熱",
+      "二相流の質量速度"
+    ],
+    "relatedSections": [
+      "9.8"
+    ],
+    "relatedQuestions": [],
+    "relatedSimulators": [],
+    "confusions": [
+      "過冷却液を沸騰させるまでに要する顕熱を無視してΔx式を使ってはならない。"
+    ],
+    "source": {
+      "type": "supplement",
+      "reference": "教科書第8〜9章の沸騰・凝縮・二相流の一般的な関係を独立執筆した補足。鉛直板凝縮の平均熱伝達率はESDU https://mmshah.org/publications/condensation.pdf、ZuberのCHF式はJAEA https://jopss.jaea.go.jp/pdfdata/JAEA-Data-Code-2008-014.pdf と照合。原書翻訳・転載ではなく専門家校閲前。"
+    },
+    "reviewStatus": "needs_review"
+  },
+  {
+    "id": "heat-pipe-thermal-resistance",
+    "ja": "ヒートパイプの等価熱抵抗",
+    "en": "equivalent thermal resistance of a heat pipe",
+    "aliases": [],
+    "category": "沸騰・凝縮・二相流",
+    "brief": "ヒートパイプの蒸発部と凝縮部の代表温度差を熱輸送率で割った抵抗。",
+    "meaning": "ヒートパイプの蒸発部と凝縮部の代表温度差を熱輸送率で割った抵抗。",
+    "beginner": "蒸発して凝縮する仕組みで熱を運ぶヒートパイプについて、何W運ぶのに何Kの温度差が必要かを表します。",
+    "detail": "定常運転時の蒸発部代表温度T_e、凝縮部代表温度T_c、輸送熱移動率Q̇からR_hp=(T_e−T_c)/Q̇。測定する表面や伝熱媒体、接触熱抵抗をどこまで含むかに依存する。蒸気・液体流動、芯材、管壁の伝導などを合わせた等価値で、材料の熱伝導率kそのものではない。毛細管限界などを超えると通常の運転が成立しない。",
+    "formula": "R_hp=(T_e−T_c)/Q̇",
+    "unit": "R_hp: K/W、T_e,T_c: Kまたは℃、Q̇: W",
+    "example": "代表温度差5 Kで100 Wを運ぶ場合、ヒートパイプの等価熱抵抗は0.050 K/W。",
+    "related": [
+      "ヒートパイプ",
+      "ヒートパイプの毛細管限界",
+      "熱抵抗"
+    ],
+    "relatedSections": [
+      "9.11"
+    ],
+    "relatedQuestions": [],
+    "relatedSimulators": [],
+    "confusions": [
+      "等価熱抵抗は測温位置や運転条件によって変化し得るので物質固有の熱伝導率と混同しない。"
+    ],
+    "source": {
+      "type": "supplement",
+      "reference": "教科書第8〜9章の沸騰・凝縮・二相流の一般的な関係を独立執筆した補足。鉛直板凝縮の平均熱伝達率はESDU https://mmshah.org/publications/condensation.pdf、ZuberのCHF式はJAEA https://jopss.jaea.go.jp/pdfdata/JAEA-Data-Code-2008-014.pdf と照合。原書翻訳・転載ではなく専門家校閲前。"
+    },
+    "reviewStatus": "needs_review"
   }
 ]
