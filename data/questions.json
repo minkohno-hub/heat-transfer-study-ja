@@ -34401,5 +34401,1105 @@
       "定義・範囲を照合。"
     ],
     "beginnerPitfall": "一つの無次元数や面積だけで適用を承認しない。"
+  },
+  {
+    "id": "supp-buoyancy-film-ideal-gas-beta-v1",
+    "revision": "v1",
+    "field": "自然対流・凝縮",
+    "prerequisites": [
+      "浮力と密度",
+      "物性と無次元数",
+      "相変化と熱収支"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "輸送現象の一般法則と独自の仮想例から作問。原本の翻訳・原図・章末問題ではない。",
+      "chapterId": "ch8",
+      "focusSectionId": "8.1",
+      "guideId": "chapter8-buoyancy"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "執筆原稿・基本算術と構造を確認／包括的品質監査待ち・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "執筆時の定義・収支・基本計算を確認。全問の独立科学監査・原本網羅照合・外部校閲は後工程。"
+      }
+    ],
+    "prompt": "理想気体の体積膨張係数β≈1/T_refを使う。代表温度30℃=303.15 Kでβはどれか。",
+    "choices": [
+      "約3.30×10⁻³ K⁻¹",
+      "約3.33×10⁻² K⁻¹",
+      "約3.03×10² K⁻¹",
+      "約3.30×10⁻⁶ K⁻¹"
+    ],
+    "answer": 0,
+    "difficulty": "標準・数値計算",
+    "explanation": "β≈1/303.15=0.00329870 K⁻¹。理想気体近似と状態の根拠を確認し、全物質の膨張係数へ使わない。",
+    "distractors": [
+      "正解。絶対温度の逆数を使った。",
+      "摂氏30の逆数を使った。",
+      "温度そのものを係数とした。",
+      "指数又は温度単位を1000分の1にした。"
+    ],
+    "hints": [
+      "状態に関係する式はK。",
+      "βの単位はK⁻¹。"
+    ],
+    "solutionSteps": [
+      "T_ref=303.15 K。",
+      "逆数を取る。",
+      "約3.30×10⁻³ K⁻¹。"
+    ],
+    "beginnerPitfall": "℃の逆数を理想気体βへ使わない。"
+  },
+  {
+    "id": "supp-buoyancy-film-rayleigh-from-gr-v1",
+    "revision": "v1",
+    "field": "自然対流・凝縮",
+    "prerequisites": [
+      "浮力と密度",
+      "物性と無次元数",
+      "相変化と熱収支"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "輸送現象の一般法則と独自の仮想例から作問。原本の翻訳・原図・章末問題ではない。",
+      "chapterId": "ch8",
+      "focusSectionId": "8.1",
+      "guideId": "chapter8-buoyancy"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "執筆原稿・基本算術と構造を確認／包括的品質監査待ち・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "執筆時の定義・収支・基本計算を確認。全問の独立科学監査・原本網羅照合・外部校閲は後工程。"
+      }
+    ],
+    "prompt": "同じ定義のGr_L=3.16018×10⁸、Pr=0.727273。Ra_L=Gr_LPrはどれか。",
+    "choices": [
+      "約7.27×10⁻¹",
+      "約2.30×10⁸",
+      "約4.35×10⁸",
+      "約3.16×10⁸"
+    ],
+    "answer": 1,
+    "difficulty": "標準・数値計算",
+    "explanation": "Ra≈3.16018×10⁸×0.727273=2.29831×10⁸。Lと物性評価の状態も同じにそろえる。",
+    "distractors": [
+      "Pr自体をRaとして答えた。",
+      "正解。GrへPrを掛けた。",
+      "Prを掛けず割った。",
+      "Prの因子を落とした。"
+    ],
+    "hints": [
+      "Ra=Gr Pr。",
+      "いずれも無次元。"
+    ],
+    "solutionSteps": [
+      "3.16018×0.727273。",
+      "10⁸を保つ。",
+      "約2.30×10⁸。"
+    ],
+    "beginnerPitfall": "RaとGr、Prの関係を逆にしない。"
+  },
+  {
+    "id": "supp-buoyancy-film-richardson-scale-v1",
+    "revision": "v1",
+    "field": "自然対流・凝縮",
+    "prerequisites": [
+      "浮力と密度",
+      "物性と無次元数",
+      "相変化と熱収支"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "輸送現象の一般法則と独自の仮想例から作問。原本の翻訳・原図・章末問題ではない。",
+      "chapterId": "ch8",
+      "focusSectionId": "8.1",
+      "guideId": "chapter8-buoyancy"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "執筆原稿・基本算術と構造を確認／包括的品質監査待ち・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "執筆時の定義・収支・基本計算を確認。全問の独立科学監査・原本網羅照合・外部校閲は後工程。"
+      }
+    ],
+    "prompt": "同じLでGr_L=3.16018×10⁸、強制主流のRe_L=62500。Ri=Gr_L/Re_L²はどれか。",
+    "choices": [
+      "約12.4",
+      "約5.06×10⁻⁶",
+      "約0.0809",
+      "約5056"
+    ],
+    "answer": 2,
+    "difficulty": "標準・数値計算",
+    "explanation": "Ri=3.16018×10⁸/(62500²)=0.0809006。浮力と強制慣性の尺度比較で、幾何や助長/対向の確認も必要。",
+    "distractors": [
+      "Riの比を逆にした。",
+      "指数又はReの冪を取り違えた。",
+      "正解。強制慣性との比としてReの二乗を使った。",
+      "Reの二乗でなく一次で割った。"
+    ],
+    "hints": [
+      "Reは二乗。",
+      "定義に同じ長さを使う。"
+    ],
+    "solutionSteps": [
+      "Re²=3.90625×10⁹。",
+      "Grで比を作る。",
+      "Ri≈0.0809。"
+    ],
+    "beginnerPitfall": "一つのRiだけで全混合対流を厳密判定しない。"
+  },
+  {
+    "id": "supp-buoyancy-film-phase-driving-distinction-v1",
+    "revision": "v1",
+    "field": "自然対流・凝縮",
+    "prerequisites": [
+      "浮力と密度",
+      "物性と無次元数",
+      "相変化と熱収支"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "conceptual",
+    "source": {
+      "type": "supplement",
+      "reference": "輸送現象の一般法則と独自の仮想例から作問。原本の翻訳・原図・章末問題ではない。",
+      "chapterId": "ch8",
+      "focusSectionId": "8.1",
+      "guideId": "chapter8-buoyancy"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "執筆原稿・基本算術と構造を確認／包括的品質監査待ち・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "執筆時の定義・収支・基本計算を確認。全問の独立科学監査・原本網羅照合・外部校閲は後工程。"
+      }
+    ],
+    "prompt": "単相自然対流と冷壁の膜状凝縮の違いとして適切なのはどれか。",
+    "choices": [
+      "どちらも重力があるので、必ず同じRa相関で表せる",
+      "凝縮膜は全ての位置で流量が必ず一定となる",
+      "自然対流は温度差があってもエネルギーを運ばない",
+      "凝縮膜には質量追加と潜熱放出の収支がある"
+    ],
+    "answer": 3,
+    "difficulty": "概念・適用判断",
+    "explanation": "膜の粘性・重力・伝導とh_fg dΓ/dx等の式を使う。単相の温度密度差による境界層と、流下凝縮液膜を同一モデルにしない。",
+    "distractors": [
+      "重力が共通でも支配する流体層と収支は異なる。",
+      "凝縮が加わると液流量は下流へ増す。",
+      "自然対流も熱を輸送する。",
+      "正解。相変化で膜へ質量とエネルギーが加わる点を残した。"
+    ],
+    "hints": [
+      "相変化はあるか。",
+      "液体はどこから加わるか。"
+    ],
+    "solutionSteps": [
+      "単相/二相を分類。",
+      "生成する液膜と潜熱を数える。",
+      "対応するモデルを選ぶ。"
+    ],
+    "beginnerPitfall": "重力の存在だけで二つの現象を同じ相関にしない。"
+  },
+  {
+    "id": "supp-buoyancy-film-zero-gravity-limit-v1",
+    "revision": "v1",
+    "field": "自然対流・凝縮",
+    "prerequisites": [
+      "浮力と密度",
+      "物性と無次元数",
+      "相変化と熱収支"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "applied",
+    "source": {
+      "type": "supplement",
+      "reference": "輸送現象の一般法則と独自の仮想例から作問。原本の翻訳・原図・章末問題ではない。",
+      "chapterId": "ch8",
+      "focusSectionId": "8.1",
+      "guideId": "chapter8-buoyancy"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "執筆原稿・基本算術と構造を確認／包括的品質監査待ち・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "執筆時の定義・収支・基本計算を確認。全問の独立科学監査・原本網羅照合・外部校閲は後工程。"
+      }
+    ],
+    "prompt": "他の条件を固定し、浮力自然対流モデルでg→0の極限を考える。適切な解釈はどれか。",
+    "choices": [
+      "浮力駆動は弱まるが、伝導等の輸送は残りうる",
+      "gが小さくなれば、全ての熱移動機構が消える",
+      "重力と無関係な強制流も、必ず同時に止まる",
+      "gが0なら、分子の熱伝導率も必ず0となる"
+    ],
+    "answer": 0,
+    "difficulty": "概念・適用判断",
+    "explanation": "GrやRaの浮力尺度は0へ向かうが、伝導・放射・外部駆動・表面張力等の別機構は条件に応じて残る。浮力相関の極限と全系の熱流を分ける。",
+    "distractors": [
+      "正解。駆動の一つの消失と他の輸送を区別した。",
+      "浮力と熱伝導・放射等を同一視した。",
+      "外部駆動の有無は重力だけで決まらない。",
+      "物質のkが重力0から直ちに消えるわけではない。"
+    ],
+    "hints": [
+      "どの項にgが入るか。",
+      "他の伝熱経路も考える。"
+    ],
+    "solutionSteps": [
+      "浮力項の減少。",
+      "別の駆動と拡散を確認。",
+      "全熱移動ゼロとはしない。"
+    ],
+    "beginnerPitfall": "一つの駆動を全ての熱輸送と同じにしない。"
+  },
+  {
+    "id": "supp-buoyancy-film-vertical-hot-cold-direction-v1",
+    "revision": "v1",
+    "field": "自然対流・凝縮",
+    "prerequisites": [
+      "浮力と密度",
+      "物性と無次元数",
+      "相変化と熱収支"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "conceptual",
+    "source": {
+      "type": "supplement",
+      "reference": "輸送現象の一般法則と独自の仮想例から作問。原本の翻訳・原図・章末問題ではない。",
+      "chapterId": "ch8",
+      "focusSectionId": "8.1",
+      "guideId": "chapter8-buoyancy"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "執筆原稿・基本算術と構造を確認／包括的品質監査待ち・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "執筆時の定義・収支・基本計算を確認。全問の独立科学監査・原本網羅照合・外部校閲は後工程。"
+      }
+    ],
+    "prompt": "通常の正のβを持つ流体の垂直壁近傍で、他の駆動が弱いとする。温壁と冷壁の自然対流の向きはどれか。",
+    "choices": [
+      "温度差の符号によらず、全て静止となる",
+      "温壁で上昇、冷壁で下降する傾向",
+      "温壁で下降、冷壁で上昇する傾向",
+      "温壁も冷壁も、必ず同じ上昇となる"
+    ],
+    "answer": 1,
+    "difficulty": "概念・適用判断",
+    "explanation": "温かい近傍流体は軽く、冷たい近傍流体は重くなる。異常な密度特性や幾何・対向流などでは条件を再確認する。",
+    "distractors": [
+      "温度密度差が駆動しうることを落とした。",
+      "正解。温度密度差による浮力の向きを使った。",
+      "正βの密度変化と浮力の向きを逆にした。",
+      "加熱/冷却の密度差の違いを落とした。"
+    ],
+    "hints": [
+      "温度が上がると密度はどうなるか。",
+      "周囲に対する重さを比べる。"
+    ],
+    "solutionSteps": [
+      "温壁側は軽い。",
+      "冷壁側は重い。",
+      "上昇/下降を対応。"
+    ],
+    "beginnerPitfall": "Raの絶対値整理で流れの向きを消さない。"
+  },
+  {
+    "id": "supp-buoyancy-film-boussinesq-check-v1",
+    "revision": "v1",
+    "field": "自然対流・凝縮",
+    "prerequisites": [
+      "浮力と密度",
+      "物性と無次元数",
+      "相変化と熱収支"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "applied",
+    "source": {
+      "type": "supplement",
+      "reference": "輸送現象の一般法則と独自の仮想例から作問。原本の翻訳・原図・章末問題ではない。",
+      "chapterId": "ch8",
+      "focusSectionId": "8.1",
+      "guideId": "chapter8-buoyancy"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "執筆原稿・基本算術と構造を確認／包括的品質監査待ち・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "執筆時の定義・収支・基本計算を確認。全問の独立科学監査・原本網羅照合・外部校閲は後工程。"
+      }
+    ],
+    "prompt": "密度変化を浮力だけへ残す近似を使いたいが、|βΔT|が大きく物性も強く変化する。適切なのはどれか。",
+    "choices": [
+      "βの単位を変えれば、大きい変化は消える",
+      "近似を保つため、実際の温度差を無断で0とする",
+      "密度・物性変化を含むモデルの必要性を検討する",
+      "Raが正なら、Boussinesq近似は常に厳密である"
+    ],
+    "answer": 2,
+    "difficulty": "概念・適用判断",
+    "explanation": "小さい密度変化や他物性の近似の妥当性を確認する。|βΔT|一つだけでも全ての誤差保証にはならず、対象の範囲と必要精度で判断する。",
+    "distractors": [
+      "単位を替えても無次元変化の大きさは消えない。",
+      "条件を変更しても元の問題の予測にならない。",
+      "正解。省略した密度・物性の変動を再評価した。",
+      "無次元数の正値だけで小変化近似は保証できない。"
+    ],
+    "hints": [
+      "小変化という仮定を確認。",
+      "他物性も一定か。"
+    ],
+    "solutionSteps": [
+      "変動幅を調べる。",
+      "近似の影響を評価。",
+      "必要な保存モデルへ。"
+    ],
+    "beginnerPitfall": "計算可能性を近似の精度保証としない。"
+  },
+  {
+    "id": "supp-buoyancy-film-film-thickness-length-v1",
+    "revision": "v1",
+    "field": "自然対流・凝縮",
+    "prerequisites": [
+      "浮力と密度",
+      "物性と無次元数",
+      "相変化と熱収支"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "輸送現象の一般法則と独自の仮想例から作問。原本の翻訳・原図・章末問題ではない。",
+      "chapterId": "ch8",
+      "focusSectionId": "8.2",
+      "guideId": "chapter8-buoyancy"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "執筆原稿・基本算術と構造を確認／包括的品質監査待ち・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "執筆時の定義・収支・基本計算を確認。全問の独立科学監査・原本網羅照合・外部校閲は後工程。"
+      }
+    ],
+    "prompt": "滑らかな層流凝縮膜の同じ物性・温度差のモデルでδ(x)∝x^1/4。下流距離を16倍にすると膜厚は何倍か。",
+    "choices": [
+      "4倍",
+      "16倍",
+      "1/2倍",
+      "2倍"
+    ],
+    "answer": 3,
+    "difficulty": "標準・数値計算",
+    "explanation": "δ_new/δ_old=16^1/4=2。局所h=k_l/δはこの仮定の範囲では半分となる。波や流況が変わる場合は同じ尺度を維持しない。",
+    "distractors": [
+      "平方根を使った。",
+      "距離と厚さを線形比例とした。",
+      "増加の向きを逆にした。",
+      "正解。16の4乗根を取った。"
+    ],
+    "hints": [
+      "膜厚は4乗根。",
+      "2⁴=16。"
+    ],
+    "solutionSteps": [
+      "距離比16。",
+      "4乗根2。",
+      "膜厚2倍。"
+    ],
+    "beginnerPitfall": "同じ流膜モデルの適用を超えた大幅変更へ無条件に使わない。"
+  },
+  {
+    "id": "supp-buoyancy-film-film-average-h-v1",
+    "revision": "v1",
+    "field": "自然対流・凝縮",
+    "prerequisites": [
+      "浮力と密度",
+      "物性と無次元数",
+      "相変化と熱収支"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "輸送現象の一般法則と独自の仮想例から作問。原本の翻訳・原図・章末問題ではない。",
+      "chapterId": "ch8",
+      "focusSectionId": "8.2",
+      "guideId": "chapter8-buoyancy"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "執筆原稿・基本算術と構造を確認／包括的品質監査待ち・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "執筆時の定義・収支・基本計算を確認。全問の独立科学監査・原本網羅照合・外部校閲は後工程。"
+      }
+    ],
+    "prompt": "垂直層流凝縮膜でh_x∝x⁻¹/⁴。末端局所h_L=4800 W/(m²·K)なら、全長平均h̄_L=(4/3)h_Lはどれか。",
+    "choices": [
+      "6400 W/(m²·K)",
+      "4800 W/(m²·K)",
+      "3600 W/(m²·K)",
+      "9600 W/(m²·K)"
+    ],
+    "answer": 0,
+    "difficulty": "標準・数値計算",
+    "explanation": "h̄_L=(4/3)×4800=6400 W/(m²·K)。流動・熱収支で得たx⁻¹/⁴を積分した結果で、全ての凝縮に共通の倍率ではない。",
+    "distractors": [
+      "正解。局所分布の長さ平均倍率を使った。",
+      "末端値を平均とした。",
+      "倍率を逆にした。",
+      "層流平板の2倍を膜凝縮へ転用した。"
+    ],
+    "hints": [
+      "∫x⁻¹/⁴dx=(4/3)x³/⁴。",
+      "長さで割る。"
+    ],
+    "solutionSteps": [
+      "倍率4/3。",
+      "4800を掛ける。",
+      "6400。"
+    ],
+    "beginnerPitfall": "局所と平均、別現象の倍率を混ぜない。"
+  },
+  {
+    "id": "supp-buoyancy-film-film-width-latent-v1",
+    "revision": "v1",
+    "field": "自然対流・凝縮",
+    "prerequisites": [
+      "浮力と密度",
+      "物性と無次元数",
+      "相変化と熱収支"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "輸送現象の一般法則と独自の仮想例から作問。原本の翻訳・原図・章末問題ではない。",
+      "chapterId": "ch8",
+      "focusSectionId": "8.2",
+      "guideId": "chapter8-buoyancy"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "執筆原稿・基本算術と構造を確認／包括的品質監査待ち・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "執筆時の定義・収支・基本計算を確認。全問の独立科学監査・原本網羅照合・外部校閲は後工程。"
+      }
+    ],
+    "prompt": "凝縮膜の下端Γ=0.00640 kg/(m·s)、幅0.10 m、h_fg=2.0×10⁶ J/kg。液体顕熱等を無視したQ̇=WΓh_fgはどれか。",
+    "choices": [
+      "128 W",
+      "1280 W",
+      "12800 W",
+      "0.00128 W"
+    ],
+    "answer": 1,
+    "difficulty": "標準・数値計算",
+    "explanation": "ṁ=WΓ=0.000640 kg/s、Q̇=0.000640×2.0×10⁶=1280 W。Γ自体は全凝縮量ではない。",
+    "distractors": [
+      "幅又は係数を10分の1へ取り違えた。",
+      "正解。単位幅液流量へ幅と質量基準潜熱を掛けた。",
+      "幅0.10を落とした。",
+      "潜熱を掛けず割る等で次元を失った。"
+    ],
+    "hints": [
+      "先にkg/sへ変換。",
+      "次にJ/kg。"
+    ],
+    "solutionSteps": [
+      "Γ×幅=0.000640 kg/s。",
+      "h_fgを掛ける。",
+      "1280 W。"
+    ],
+    "beginnerPitfall": "単位幅Γと全凝縮量を混同しない。"
+  },
+  {
+    "id": "supp-buoyancy-film-film-reynolds-definition-v1",
+    "revision": "v1",
+    "field": "自然対流・凝縮",
+    "prerequisites": [
+      "浮力と密度",
+      "物性と無次元数",
+      "相変化と熱収支"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "輸送現象の一般法則と独自の仮想例から作問。原本の翻訳・原図・章末問題ではない。",
+      "chapterId": "ch8",
+      "focusSectionId": "8.2",
+      "guideId": "chapter8-buoyancy"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "執筆原稿・基本算術と構造を確認／包括的品質監査待ち・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "執筆時の定義・収支・基本計算を確認。全問の独立科学監査・原本網羅照合・外部校閲は後工程。"
+      }
+    ],
+    "prompt": "膜ReをRe_f=4Γ/μ_lと定義する。Γ=0.00640 kg/(m·s)、μ_l=0.0010 Pa·sならRe_fはどれか。",
+    "choices": [
+      "0.0256",
+      "102.4",
+      "25.6",
+      "6.40"
+    ],
+    "answer": 2,
+    "difficulty": "標準・数値計算",
+    "explanation": "Re_f=4×0.00640/0.0010=25.6。低い値でも実際の波・蒸気せん断・入口条件等を別に確認し、普遍閾値で全承認しない。",
+    "distractors": [
+      "粘度又は流量の単位を1000分の1にした。",
+      "4の因子を二度掛けた。",
+      "正解。指定した4Γ/μ_lを使った。",
+      "定義の4を落とした。"
+    ],
+    "hints": [
+      "膜Reの定義を確認。",
+      "Pa·s=kg/(m·s)。"
+    ],
+    "solutionSteps": [
+      "4Γ=0.0256。",
+      "μ_lで割る。",
+      "25.6。"
+    ],
+    "beginnerPitfall": "異なる膜Reの定義や全質量流量を混ぜない。"
+  },
+  {
+    "id": "supp-buoyancy-film-film-zero-vapor-shear-v1",
+    "revision": "v1",
+    "field": "自然対流・凝縮",
+    "prerequisites": [
+      "浮力と密度",
+      "物性と無次元数",
+      "相変化と熱収支"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "conceptual",
+    "source": {
+      "type": "supplement",
+      "reference": "輸送現象の一般法則と独自の仮想例から作問。原本の翻訳・原図・章末問題ではない。",
+      "chapterId": "ch8",
+      "focusSectionId": "8.2",
+      "guideId": "chapter8-buoyancy"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "執筆原稿・基本算術と構造を確認／包括的品質監査待ち・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "執筆時の定義・収支・基本計算を確認。全問の独立科学監査・原本網羅照合・外部校閲は後工程。"
+      }
+    ],
+    "prompt": "静止純蒸気・滑らかな凝縮膜で蒸気側せん断を無視するモデルの液膜境界条件はどれか。",
+    "choices": [
+      "壁で∂u/∂y=0、膜表面でu=0",
+      "壁でも膜表面でも必ずu=0",
+      "膜厚方向に温度差がないとする",
+      "壁でu=0、膜表面で∂u/∂y=0"
+    ],
+    "answer": 3,
+    "difficulty": "概念・適用判断",
+    "explanation": "これらをμ_lu_yy+(ρ_l−ρ_v)g=0へ課して放物形のuを得る。蒸気流が強い場合は界面せん断条件を見直す。",
+    "distractors": [
+      "壁と自由表面の条件を交換した。",
+      "界面の無せん断を無滑りと同じにした。",
+      "凝縮の熱駆動差を消した別条件。",
+      "正解。壁の無滑りと表面せん断0を使った。"
+    ],
+    "hints": [
+      "固体壁は無滑り。",
+      "蒸気せん断なしは速度0とは違う。"
+    ],
+    "solutionSteps": [
+      "壁u=0。",
+      "表面u_y=0。",
+      "運動量式を積分。"
+    ],
+    "beginnerPitfall": "せん断0と速度0を同一視しない。"
+  },
+  {
+    "id": "supp-buoyancy-film-film-noncondensable-gas-v1",
+    "revision": "v1",
+    "field": "自然対流・凝縮",
+    "prerequisites": [
+      "浮力と密度",
+      "物性と無次元数",
+      "相変化と熱収支"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "applied",
+    "source": {
+      "type": "supplement",
+      "reference": "輸送現象の一般法則と独自の仮想例から作問。原本の翻訳・原図・章末問題ではない。",
+      "chapterId": "ch8",
+      "focusSectionId": "8.2",
+      "guideId": "chapter8-buoyancy"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "執筆原稿・基本算術と構造を確認／包括的品質監査待ち・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "執筆時の定義・収支・基本計算を確認。全問の独立科学監査・原本網羅照合・外部校閲は後工程。"
+      }
+    ],
+    "prompt": "純蒸気の膜凝縮モデルを、空気など非凝縮ガスが多い蒸気混合物へ使う。適切なのはどれか。",
+    "choices": [
+      "ガス側の拡散・熱抵抗と界面条件も検討する",
+      "液膜が見えれば、ガスの組成は常に無関係",
+      "非凝縮ガスは必ず液体へ全て凝縮するとする",
+      "膜のk_lを気体kへ置き換えるだけで厳密となる"
+    ],
+    "answer": 0,
+    "difficulty": "概念・適用判断",
+    "explanation": "界面の蒸気濃度・温度や非凝縮成分による物質移動抵抗が関係する。純飽和蒸気の液膜伝導だけのモデルを無条件に転用しない。",
+    "distractors": [
+      "正解。蒸気輸送と非凝縮成分の追加抵抗を確認した。",
+      "ガス側輸送が凝縮量を制限する場合がある。",
+      "非凝縮という成分の状態を取り違えた。",
+      "気体と液膜の別領域を単一物性の交換だけで解けない。"
+    ],
+    "hints": [
+      "純蒸気という前提は成立するか。",
+      "界面へ蒸気が届く機構。"
+    ],
+    "solutionSteps": [
+      "ガス組成を確認。",
+      "ガス側輸送を含める。",
+      "液膜と界面収支へ結ぶ。"
+    ],
+    "beginnerPitfall": "液膜があるだけで純蒸気の相関を承認しない。"
+  },
+  {
+    "id": "supp-buoyancy-film-film-mass-addition-v1",
+    "revision": "v1",
+    "field": "自然対流・凝縮",
+    "prerequisites": [
+      "浮力と密度",
+      "物性と無次元数",
+      "相変化と熱収支"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "applied",
+    "source": {
+      "type": "supplement",
+      "reference": "輸送現象の一般法則と独自の仮想例から作問。原本の翻訳・原図・章末問題ではない。",
+      "chapterId": "ch8",
+      "focusSectionId": "8.2",
+      "guideId": "chapter8-buoyancy"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "執筆原稿・基本算術と構造を確認／包括的品質監査待ち・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "執筆時の定義・収支・基本計算を確認。全問の独立科学監査・原本網羅照合・外部校閲は後工程。"
+      }
+    ],
+    "prompt": "反応なし定常の凝縮液膜でΓが下流へ増える。保存則との関係はどれか。",
+    "choices": [
+      "Γの増加は、全系の質量が生成された証拠である",
+      "蒸気から凝縮した質量が膜へ加わるので整合する",
+      "定常ならΓは一定なので、測定は必ず誤りである",
+      "反応なしなら、相間の質量移動は起こらない"
+    ],
+    "answer": 1,
+    "difficulty": "概念・適用判断",
+    "explanation": "液膜の制御体積には界面からの流入がありdΓ/dx>0となりうる。蒸気側の減少も合わせれば全質量保存と一致する。",
+    "distractors": [
+      "相間移動は両相全体での質量生成ではない。",
+      "正解。液膜を系とした相間流入を含めた。",
+      "定常の局所蓄積0と流路の質量追加を混同した。",
+      "反応と相変化を同じものとした。"
+    ],
+    "hints": [
+      "どの相を系として数えるか。",
+      "界面からの流入がある。"
+    ],
+    "solutionSteps": [
+      "膜への凝縮流入を数える。",
+      "下流液流量の増加。",
+      "両相合計で保存。"
+    ],
+    "beginnerPitfall": "定常を全断面の同一流量と無条件にみなさない。"
+  },
+  {
+    "id": "supp-buoyancy-film-vertical-ra-v1",
+    "revision": "v1",
+    "field": "自然対流・凝縮",
+    "prerequisites": [
+      "浮力と密度",
+      "物性と無次元数",
+      "相変化と熱収支"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "輸送現象の一般法則と独自の仮想例から作問。原本の翻訳・原図・章末問題ではない。",
+      "chapterId": "ch8",
+      "focusSectionId": "8.3",
+      "guideId": "chapter8-buoyancy"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "執筆原稿・基本算術と構造を確認／包括的品質監査待ち・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "執筆時の定義・収支・基本計算を確認。全問の独立科学監査・原本網羅照合・外部校閲は後工程。"
+      }
+    ],
+    "prompt": "垂直面の自然対流でgβ|ΔT|L³=0.0809005 m⁴/s²、ν=1.6×10⁻⁵、α_f=2.2×10⁻⁵ m²/sを与える。Ra_L=gβ|ΔT|L³/(να_f)はどれか。",
+    "choices": [
+      "約1.67×10⁸",
+      "約2.30×10⁴",
+      "約2.30×10⁸",
+      "約3.16×10⁸"
+    ],
+    "answer": 2,
+    "difficulty": "標準・数値計算",
+    "explanation": "να_f=3.52×10⁻¹⁰ m⁴/s²、Ra≈0.0809005/(3.52×10⁻¹⁰)=2.29831×10⁸。流況や他条件の判断も別に必要。",
+    "distractors": [
+      "分母をα_f²へ置き換えた。",
+      "指数を4桁取り違えた。",
+      "正解。νと熱拡散率の積で浮力尺度を割った。",
+      "分母をν²としてGrを答えた。"
+    ],
+    "hints": [
+      "Raの分母はνα_f。",
+      "Grのν²と区別。"
+    ],
+    "solutionSteps": [
+      "物性積3.52×10⁻¹⁰。",
+      "浮力尺度で比。",
+      "Ra≈2.30×10⁸。"
+    ],
+    "beginnerPitfall": "RaとGrを混同しない。"
+  },
+  {
+    "id": "supp-buoyancy-film-vertical-average-h-v1",
+    "revision": "v1",
+    "field": "自然対流・凝縮",
+    "prerequisites": [
+      "浮力と密度",
+      "物性と無次元数",
+      "相変化と熱収支"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "輸送現象の一般法則と独自の仮想例から作問。原本の翻訳・原図・章末問題ではない。",
+      "chapterId": "ch8",
+      "focusSectionId": "8.3",
+      "guideId": "chapter8-buoyancy"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "執筆原稿・基本算術と構造を確認／包括的品質監査待ち・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "執筆時の定義・収支・基本計算を確認。全問の独立科学監査・原本網羅照合・外部校閲は後工程。"
+      }
+    ],
+    "prompt": "等温垂直面の平均Nū_L=64.1676、流体k_f=0.0267 W/(m·K)、高さL=0.50 m。h̄=Nū_Lk_f/Lはどれか。",
+    "choices": [
+      "約0.857 W/(m²·K)",
+      "約1.71 W/(m²·K)",
+      "約64.2 W/(m²·K)",
+      "約3.43 W/(m²·K)"
+    ],
+    "answer": 3,
+    "difficulty": "標準・数値計算",
+    "explanation": "h̄=64.1676×0.0267/0.50=3.42655 W/(m²·K)。全高さ平均の係数であり局所末端hではない。",
+    "distractors": [
+      "Lを割らず掛けた。",
+      "Nu k_fを求めた後Lで割っていない。",
+      "無次元Nuの数値をhへ流用した。",
+      "正解。流体k_fと高さで平均hへ戻した。"
+    ],
+    "hints": [
+      "Nu=hL/k_f。",
+      "高さの定義を確認。"
+    ],
+    "solutionSteps": [
+      "64.1676×0.0267。",
+      "0.50で割る。",
+      "平均約3.43。"
+    ],
+    "beginnerPitfall": "平均と局所、Nuとhの定義を保持する。"
+  },
+  {
+    "id": "supp-buoyancy-film-vertical-cold-wall-sign-v1",
+    "revision": "v1",
+    "field": "自然対流・凝縮",
+    "prerequisites": [
+      "浮力と密度",
+      "物性と無次元数",
+      "相変化と熱収支"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "conceptual",
+    "source": {
+      "type": "supplement",
+      "reference": "輸送現象の一般法則と独自の仮想例から作問。原本の翻訳・原図・章末問題ではない。",
+      "chapterId": "ch8",
+      "focusSectionId": "8.3",
+      "guideId": "chapter8-buoyancy"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "執筆原稿・基本算術と構造を確認／包括的品質監査待ち・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "執筆時の定義・収支・基本計算を確認。全問の独立科学監査・原本網羅照合・外部校閲は後工程。"
+      }
+    ],
+    "prompt": "壁から流体へ正のQ̇=h̄A(T_s−T_∞)を使う。h̄>0、A>0で壁が流体より冷たい場合、正しい解釈はどれか。",
+    "choices": [
+      "Q̇は負で、熱は周囲の流体から冷壁へ入る",
+      "Raに絶対値を使うので、Q̇も必ず正となる",
+      "h̄が正なので、壁温によらず壁から熱が出る",
+      "冷壁では熱伝達率を必ず負として定義し直す"
+    ],
+    "answer": 0,
+    "difficulty": "概念・適用判断",
+    "explanation": "Raは|ΔT|で強さを整理しても、最終Q̇は元のT_s−T_∞を使う。冷却面の物性・流入方向など相関条件も確認する。",
+    "distractors": [
+      "正解。温度差の符号で熱移動方向を示した。",
+      "流れ強さの整理の絶対値を熱流へ持ち込んだ。",
+      "係数の正値だけでは熱流の方向は決まらない。",
+      "正の係数と負の温度差で既に向きを表せる。"
+    ],
+    "hints": [
+      "求める正方向を確認。",
+      "冷壁なら温度差は負。"
+    ],
+    "solutionSteps": [
+      "h̄Aは正。",
+      "ΔTは負。",
+      "流体から壁へ。"
+    ],
+    "beginnerPitfall": "無次元数の絶対値で熱流の符号を消さない。"
+  },
+  {
+    "id": "supp-buoyancy-film-vertical-height-choice-v1",
+    "revision": "v1",
+    "field": "自然対流・凝縮",
+    "prerequisites": [
+      "浮力と密度",
+      "物性と無次元数",
+      "相変化と熱収支"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "applied",
+    "source": {
+      "type": "supplement",
+      "reference": "輸送現象の一般法則と独自の仮想例から作問。原本の翻訳・原図・章末問題ではない。",
+      "chapterId": "ch8",
+      "focusSectionId": "8.3",
+      "guideId": "chapter8-buoyancy"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "執筆原稿・基本算術と構造を確認／包括的品質監査待ち・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "執筆時の定義・収支・基本計算を確認。全問の独立科学監査・原本網羅照合・外部校閲は後工程。"
+      }
+    ],
+    "prompt": "高さ0.50 m、幅0.20 mの垂直板に、高さL基準の平均自然対流相関を使う。適切なLの選び方はどれか。",
+    "choices": [
+      "温度差が既知なら、Lは不要となる",
+      "流れ方向の高さ0.50 mを指定通り使う",
+      "幅0.20 mを、面積が同じになるよう任意に使う",
+      "対角線をLとすれば、必ず精度が上がる"
+    ],
+    "answer": 1,
+    "difficulty": "概念・適用判断",
+    "explanation": "RaはL³、h=Nu k_f/Lなので、長さの誤りは複数の段階へ影響する。有限幅や端部が重要なら相関の幾何条件も再評価する。",
+    "distractors": [
+      "RaやNuからhへの換算にLが必要。",
+      "正解。相関で定義された形状と長さを対応させた。",
+      "異なる長さへ変えるとRaとhの定義も変わる。",
+      "根拠なく代表長さを変えても精度は保証できない。"
+    ],
+    "hints": [
+      "相関が何をLと呼ぶか。",
+      "浮力に沿う高さ。"
+    ],
+    "solutionSteps": [
+      "高さ0.50 m。",
+      "RaとNuに同じL。",
+      "幅は面積等へ別に使う。"
+    ],
+    "beginnerPitfall": "面積の計算と代表長さを無計画に入れ替えない。"
+  },
+  {
+    "id": "supp-buoyancy-film-vertical-forced-flow-v1",
+    "revision": "v1",
+    "field": "自然対流・凝縮",
+    "prerequisites": [
+      "浮力と密度",
+      "物性と無次元数",
+      "相変化と熱収支"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "applied",
+    "source": {
+      "type": "supplement",
+      "reference": "輸送現象の一般法則と独自の仮想例から作問。原本の翻訳・原図・章末問題ではない。",
+      "chapterId": "ch8",
+      "focusSectionId": "8.3",
+      "guideId": "chapter8-buoyancy"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "執筆原稿・基本算術と構造を確認／包括的品質監査待ち・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "執筆時の定義・収支・基本計算を確認。全問の独立科学監査・原本網羅照合・外部校閲は後工程。"
+      }
+    ],
+    "prompt": "静止した広い周囲の垂直面用の自然対流相関を、強いファン流が対向する壁へ使う。適切な判断はどれか。",
+    "choices": [
+      "強制流があれば、浮力の向きは常に上向きに固定する",
+      "自然対流と強制対流のhを根拠なく単純に足す",
+      "混合対流と方向・配置に対応するモデルを検討する",
+      "Raが範囲内なら、ファンの影響は必ず無視できる"
+    ],
+    "answer": 2,
+    "difficulty": "概念・適用判断",
+    "explanation": "Ri等の尺度、流れの方向、幾何、物性に合う混合対流相関や保存式を選ぶ。自然のみの式の適用外を有限値の計算で隠さない。",
+    "distractors": [
+      "加熱/冷却と流れの方向の情報を落とした。",
+      "熱境界層は独立の並列hの和とは限らない。",
+      "正解。別の駆動と助長/対向による変化を確認した。",
+      "Raだけでは強制慣性との比は分からない。"
+    ],
+    "hints": [
+      "外部の流れは無視できるか。",
+      "自然の向きと強制流を比較。"
+    ],
+    "solutionSteps": [
+      "駆動の比を評価。",
+      "助長/対向を確認。",
+      "対応するモデル。"
+    ],
+    "beginnerPitfall": "自然と強制のhを無条件に足して済ませない。"
+  },
+  {
+    "id": "supp-buoyancy-film-vertical-convection-only-v1",
+    "revision": "v1",
+    "field": "自然対流・凝縮",
+    "prerequisites": [
+      "浮力と密度",
+      "物性と無次元数",
+      "相変化と熱収支"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "輸送現象の一般法則と独自の仮想例から作問。原本の翻訳・原図・章末問題ではない。",
+      "chapterId": "ch8",
+      "focusSectionId": "8.3",
+      "guideId": "chapter8-buoyancy"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "執筆原稿・基本算術と構造を確認／包括的品質監査待ち・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "執筆時の定義・収支・基本計算を確認。全問の独立科学監査・原本網羅照合・外部校閲は後工程。"
+      }
+    ],
+    "prompt": "垂直板の片面積0.10 m²、平均対流h̄=3.42655 W/(m²·K)、T_s−T_∞=20 K。放射等を含まない対流Q̇はどれか。",
+    "choices": [
+      "約68.5 W",
+      "約3.43 W",
+      "約13.7 W",
+      "約6.85 W"
+    ],
+    "answer": 3,
+    "difficulty": "標準・数値計算",
+    "explanation": "Q̇_conv=3.42655×0.10×20=6.85310 W。放射や壁・支持の伝導を合計した総損失とは区別する。",
+    "distractors": [
+      "面積0.10を落とした。",
+      "hの数値を熱移動率へ流用した。",
+      "片面指定なのに2面を数えた。",
+      "正解。平均h・片面積・温度差を掛けた。"
+    ],
+    "hints": [
+      "平均熱流束はh̄ΔT。",
+      "片面積0.10 m²。"
+    ],
+    "solutionSteps": [
+      "熱流束68.531 W/m²。",
+      "面積を掛ける。",
+      "約6.85 W。"
+    ],
+    "beginnerPitfall": "対流だけの熱流を全ての放熱としない。"
   }
 ]

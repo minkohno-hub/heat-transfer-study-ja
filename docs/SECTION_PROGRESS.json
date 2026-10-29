@@ -3752,5 +3752,14 @@
         "確認後にローカル教材パックへ取り込む"
       ]
     }
-  ]
+  ],
+  "independentAuthoringCheckpoint": {
+    "date": "2026-10-29",
+    "snapshot": "docs/AUTHORING_SNAPSHOT_20261029.json",
+    "detailedDrafts": 76,
+    "questionsInBank": 692,
+    "draftMinimumMet": 76,
+    "formalApproval": 0,
+    "note": "下の旧PC翻訳・照合・取り込み記録を新規原稿の完成記録へ置換しない。旧原稿発見時に照合する。"
+  }
 }

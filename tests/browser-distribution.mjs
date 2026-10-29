@@ -218,7 +218,7 @@ try {
   await page.locator('[data-action="exit-quiz"]').click();
   await page.locator('[data-action="discard-quiz"]').click();
   await page.locator('#quiz-start-form select[name="chapter"]').selectOption('ch9');
-  await page.locator('#quiz-start-form select[name="count"]').selectOption('672');
+  await page.locator('#quiz-start-form select[name="count"]').selectOption('692');
   await page.locator('#quiz-start-form button[type="submit"]').click();
   await page.locator('.question-card').waitFor({state:'visible'});
   assert.match(await page.locator('.page-heading h1').innerText(),/1 \/ 95 問/);
@@ -664,11 +664,26 @@ try {
     assert.ok(text.includes(answer),sectionId+' example result');
     assert.match(text,/AI内部/);assert.match(text,/外部学術専門家校閲前/);
   }
-  // Exercise the 38 reviewed additions and 27 new flow/phase questions through the bank, not
-  // merely their JSON. A vocabulary tap must leave the answer draft intact.
+  // Render every detailed lecture in the built distribution, including its actual example.
+  const allLectures=await page.evaluate(async()=>(await (await fetch('./data/original-deep-lessons.json')).json()).lessons);
+  assert.equal(allLectures.length,76);
+  for(const lesson of allLectures){
+    const link=page.locator(`.reader-toc [data-section="${lesson.sectionId}"]`);
+    await link.evaluate(element=>{for(let n=element.parentElement;n;n=n.parentElement)if(n.tagName==='DETAILS')n.open=true;});
+    await link.click();
+    await page.waitForFunction(title=>document.querySelector('#deep-lesson-heading')?.textContent.includes(title),lesson.title);
+    assert.equal(await page.locator('#reader-deep-lesson .deep-lesson-block').count(),lesson.blocks.length);
+    assert.equal(await page.locator('#reader-deep-lesson .deep-worked-example li').count(),lesson.workedExample.steps.length);
+    const rendered=await page.locator('#reader-deep-lesson').textContent();
+    assert.ok(rendered.includes(lesson.objective),lesson.sectionId+' learning objective');
+    assert.match(rendered,/外部学術専門家校閲前/);
+    for(const reference of lesson.references)assert.equal(await page.locator(`#reader-deep-lesson a[href="${reference.url}"]`).count(),1);
+  }
+  // Exercise all internally checked earlier additions and every new question authored here.
+  // A vocabulary tap must leave the answer draft and persisted learning state intact.
   const pending=await page.evaluate(async()=>
     (await (await fetch('./data/questions.json')).json()).filter(q=>q.reportHistory?.some(r=>['internal_independent_check','authored_with_internal_check'].includes(r.type))));
-  assert.equal(pending.length,339);
+  assert.equal(pending.length,359);
   const replaceSuspended=dialog=>dialog.accept();
   page.on('dialog',replaceSuspended);
   for(const q of pending){
