@@ -12,7 +12,7 @@ const recovered=['heat-conduction','transient-conduction','boundary-condition','
 test('all 16 concepts from PR14 plus diffusivity have complete original explanations and valid learning targets',()=>{
  const sections=new Set(book.chapters.flatMap(c=>c.sections.map(s=>s.id)));
  const qIds=new Set(questions.map(q=>q.id));
- assert.equal(terms.length,150);
+ assert.equal(terms.length,157);
  for(const id of [...recovered,'mass-diffusivity']){
   const t=byId.get(id);assert.ok(t,id);
   assert.ok(t.en&&t.category&&t.brief.length>=15&&t.beginner.length>=35&&t.detail.length>=100,id);
@@ -30,6 +30,13 @@ test('short scientific aliases are recognized at Latin word boundaries and unpub
  assert.deepEqual(matchTerms('Score Shannon erfcx Nu_x Re_f ScAB W J K',terms,8),[]);
  assert.deepEqual(matchTerms('秘密用語',[{id:'private',ja:'秘密用語',availableInApp:false}],8),[]);
  assert.deepEqual(matchTerms('熱伝導率と非定常熱伝導',terms,8).map(x=>x.id),['thermal-conductivity','transient-conduction']);
+});
+test('prepared term matching retains original offsets after length-changing case folds',()=>{
+ const text='İ: HEAT CONDUCTION、Sc=500、熱伝導率';
+ const hits=matchTerms(text,terms,8);
+ assert.deepEqual(hits.map(h=>h.id),['heat-conduction','schmidt-number','thermal-conductivity']);
+ for(const hit of hits)assert.equal(text.slice(hit.start,hit.end),hit.label);
+ assert.deepEqual(matchTerms('熱伝導率・熱伝導・熱伝導率',terms,2).map(h=>h.label),['熱伝導率','熱伝導']);
 });
 test('radioactivity wording cannot accidentally open the thermal radiosity definition',()=>{
  assert.equal(matchTerms('放射能をBqで測る',terms,8).length,0);

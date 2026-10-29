@@ -21,25 +21,50 @@ export function termCandidates(terms){
 export function matchTerms(input,terms,maxMatches=4){
   const text=String(input??'');
   if(!text||!Number.isInteger(maxMatches)||maxMatches<1)return [];
-  const matches=[],candidates=termCandidates(terms);
+  return compiledMatches(text,compileTerms(terms),maxMatches);
+}
+const compileTerms=terms=>termCandidates(terms).map(item=>({...item,key:item.label.toLocaleLowerCase()}));
+function compiledMatches(text,candidates,maxMatches){
+  const matches=[],folded=text.toLocaleLowerCase();
   let cursor=0;
+  // Most labels are Japanese or ASCII. Searching each prepared label once per
+  // match avoids locale conversion for every label at every character position.
+  // Preserve original offsets even for rare case folds that change text length.
+  const stable=folded.length===text.length;
   while(cursor<text.length&&matches.length<maxMatches){
-    const found=candidates.find(item=>{
-      if(text.slice(cursor,cursor+item.label.length).toLocaleLowerCase()!==item.label.toLocaleLowerCase())return false;
-      if(/^[A-Za-z]/.test(item.label)){
-        if(cursor>0&&latin.test(text[cursor-1]))return false;
-        const after=text[cursor+item.label.length];
-        if(after&&latin.test(after))return false;
+    let found=null,at=text.length;
+    for(const item of candidates){
+      let index=stable?folded.indexOf(item.key,cursor):-1;
+      if(!stable){
+        for(let i=cursor;i<text.length;i++)if(text.slice(i,i+item.label.length).toLocaleLowerCase()===item.key){index=i;break;}
       }
-      return true;
-    });
-    if(found){matches.push({start:cursor,end:cursor+found.label.length,id:found.id,label:text.slice(cursor,cursor+found.label.length)});cursor+=found.label.length;}
-    else cursor++;
+      while(index>=0&&index<at){
+        const stop=index+item.label.length;
+        let valid=true;
+      if(/^[A-Za-z]/.test(item.label)){
+          if(index>0&&latin.test(text[index-1]))valid=false;
+          if(text[stop]&&latin.test(text[stop]))valid=false;
+        }
+        if(valid){found=item;at=index;break;}
+        if(stable)index=folded.indexOf(item.key,index+1);
+        else{
+          let next=-1;
+          for(let i=index+1;i<text.length;i++)if(text.slice(i,i+item.label.length).toLocaleLowerCase()===item.key){next=i;break;}
+          index=next;
+        }
+      }
+    }
+    if(!found)break;
+    matches.push({start:at,end:at+found.label.length,id:found.id,label:text.slice(at,at+found.label.length)});
+    cursor=at+found.label.length;
   }
   return matches;
 }
 export function renderTermLinks(input,terms,{limit=4,highlights=[]}={}){
-  const text=String(input??''),hits=matchTerms(text,terms,limit);
+  const text=String(input??'');
+  return renderMatchedText(text,matchTerms(text,terms,limit),highlights);
+}
+function renderMatchedText(text,hits,highlights=[]){
   const ranges=[];
   for(const [start,end] of (Array.isArray(highlights)?highlights:[])
     .filter(r=>Array.isArray(r)&&r.length===2&&r.every(Number.isInteger)&&r[0]>=0&&r[1]>r[0]&&r[1]<=text.length)
@@ -73,6 +98,7 @@ export function linkTermTextNodes(container,terms,{limit=3}={}){
   const doc=container?.ownerDocument;
   if(!doc||!Number.isInteger(limit)||limit<1)return;
   const walker=doc.createTreeWalker(container,4),nodes=[];
+  const candidates=compileTerms(terms);
   while(walker.nextNode())nodes.push(walker.currentNode);
   const budget=new Map();
   for(const node of nodes){
@@ -81,10 +107,10 @@ export function linkTermTextNodes(container,terms,{limit=3}={}){
     if(!parent||parent.closest('a,button,summary,label,input,textarea,select,option,code,pre,svg,math,script,style,[data-term-id]'))continue;
     const block=parent.closest('p,li,td,dd')||parent,left=limit-(budget.get(block)||0);
     if(left<=0)continue;
-    const hits=matchTerms(node.textContent,terms,left);
+    const hits=compiledMatches(node.textContent,candidates,left);
     if(!hits.length)continue;
     const template=doc.createElement('template');
-    template.innerHTML=renderTermLinks(node.textContent,terms,{limit:left});
+    template.innerHTML=renderMatchedText(node.textContent,hits);
     node.replaceWith(template.content);budget.set(block,(budget.get(block)||0)+hits.length);
   }
 }

@@ -4312,5 +4312,262 @@
       "reference": "一般的な伝熱・数学・物質移動の法則と独自の数値例による補足説明。原本の翻訳ではない。外部専門家校閲前。",
       "guideId": "chapter11-fick-mass"
     }
+  },
+  {
+    "id": "mass-flux",
+    "ja": "質量流束",
+    "en": "mass flux",
+    "aliases": [],
+    "category": "相変化・物性",
+    "meaning": "単位流路断面積を単位時間に通る質量の量。",
+    "brief": "単位流路断面積を単位時間に通る質量の量。",
+    "beginner": "管を通る全流量を、流れる断面の広さで割ったものです。壁から入る熱流束とは違い、運ばれるのは質量です。",
+    "detail": "G=ṁ/A_cの単位はkg/(m²·s)。加熱壁面積ではなく流路断面積を使う。単相で密度が一様ならG=ρu_bと書けるが、二相流では相密度と相速度が異なり、Gを一つの密度で割って全相の実速度とはできない。熱流束q″[W/m²]と記号・単位・面積の定義を区別する。",
+    "formula": "G=ṁ/A_c",
+    "unit": "kg/(m²·s)",
+    "example": "ṁ=0.020 kg/s、A_c=5.0×10⁻⁵ m²ならG=400 kg/(m²·s)。",
+    "related": [
+      "熱流束",
+      "乾き度",
+      "ボイド率"
+    ],
+    "relatedSections": [
+      "9.8",
+      "9.9"
+    ],
+    "relatedSimulators": [],
+    "relatedQuestions": [
+      {
+        "id": "supp-tube-boiling-mass-flux-v1",
+        "label": "質量流束の確認問題"
+      }
+    ],
+    "reviewStatus": "needs_review",
+    "source": {
+      "type": "supplement",
+      "guideId": "chapter9-latent-boiling",
+      "reference": "保存則・界面と二相流の一般定義による独立補足と仮想例。原本の翻訳ではない。外部専門家校閲前。"
+    }
+  },
+  {
+    "id": "vapor-quality",
+    "ja": "乾き度",
+    "en": "vapor quality",
+    "aliases": [
+      "質量乾き度",
+      "質量流量乾き度"
+    ],
+    "category": "相変化・物性",
+    "meaning": "二相系の蒸気の質量割合。流れでは質量流量の割合を使う場合がある。",
+    "brief": "二相系の蒸気の質量割合。流れでは質量流量の割合を使う場合がある。",
+    "beginner": "蒸気がどれだけ混ざっているかを質量で数えます。静止した容器の中の割合と、管を毎秒通る割合は、相の速さが違うと一致するとは限りません。",
+    "detail": "静止した平衡二相系ではx=m_v/(m_l+m_v)。管の流れではx_flow=ṁ_v/(ṁ_l+ṁ_v)という流量乾き度を定義する。保有質量と流量の平均を混ぜない。ボイド率は蒸気の断面・体積割合なので別の量。エンタルピーで延長定義する平衡乾き度x_eq=(h−h_f)/h_fgが0未満や1超でも、負又は100%超の実蒸気質量を認める意味ではない。",
+    "formula": "x=m_v/m、x_flow=ṁ_v/ṁ",
+    "unit": "無次元（質量又は質量流量の比）",
+    "example": "全流量0.020 kg/sのうち蒸気0.0020 kg/sなら流量乾き度0.10。蒸気体積の10%を意味しない。",
+    "related": [
+      "ボイド率",
+      "質量流束",
+      "潜熱"
+    ],
+    "relatedSections": [
+      "9.8",
+      "9.9"
+    ],
+    "relatedSimulators": [],
+    "relatedQuestions": [
+      {
+        "id": "supp-tube-boiling-equilibrium-quality-v1",
+        "label": "乾き度の確認問題"
+      }
+    ],
+    "reviewStatus": "needs_review",
+    "source": {
+      "type": "supplement",
+      "guideId": "chapter9-latent-boiling",
+      "reference": "保存則・界面と二相流の一般定義による独立補足と仮想例。原本の翻訳ではない。外部専門家校閲前。"
+    }
+  },
+  {
+    "id": "void-fraction",
+    "ja": "ボイド率",
+    "en": "void fraction",
+    "aliases": [
+      "気相体積率"
+    ],
+    "category": "相変化・物性",
+    "meaning": "二相系に占める蒸気・気体の体積又は断面積の割合。",
+    "brief": "二相系に占める蒸気・気体の体積又は断面積の割合。",
+    "beginner": "泡や蒸気が占める空間の割合です。蒸気は軽いため、質量は少なくても流路の空間の大部分を占めることがあります。",
+    "detail": "断面平均α=A_v/A_cと、ある領域の体積平均α=V_v/Vは測定・平均の対象を指定する。正方向に流れる両相の平均速度比S=u_v/u_lを使う流路モデルではα=[1+((1−x_flow)/x_flow)(ρ_v/ρ_l)S]⁻¹。等速S=1を仮定すれば乾き度と密度から計算できるが、実流れの滑りが分からなければ同じ乾き度でもαは一意に決まらない。",
+    "formula": "α=A_v/A_c（断面平均の場合）",
+    "unit": "無次元",
+    "example": "x_flow=0.10、ρ_l=1000、ρ_v=10 kg/m³、S=2ならα≈0.847。",
+    "related": [
+      "乾き度",
+      "質量流束",
+      "密度"
+    ],
+    "relatedSections": [
+      "9.8"
+    ],
+    "relatedSimulators": [],
+    "relatedQuestions": [
+      {
+        "id": "supp-tube-boiling-slip-void-v1",
+        "label": "ボイド率の確認問題"
+      }
+    ],
+    "reviewStatus": "needs_review",
+    "source": {
+      "type": "supplement",
+      "guideId": "chapter9-latent-boiling",
+      "reference": "保存則・界面と二相流の一般定義による独立補足と仮想例。原本の翻訳ではない。外部専門家校閲前。"
+    }
+  },
+  {
+    "id": "film-condensation",
+    "ja": "膜状凝縮",
+    "en": "film condensation",
+    "aliases": [
+      "膜凝縮"
+    ],
+    "category": "相変化・物性",
+    "meaning": "蒸気が冷たい面で凝縮し、連続した液膜を形成する状態。",
+    "brief": "蒸気が冷たい面で凝縮し、連続した液膜を形成する状態。",
+    "beginner": "冷たい面にできた液体がつながって膜になり、その膜を熱が通って壁へ移ります。膜沸騰で壁に接する蒸気膜とは、膜の相が逆です。",
+    "detail": "純蒸気の凝縮では壁温が局所飽和温度より低い。液膜を通る伝導に加え、重力・界面せん断・表面の向きが液膜の厚さや流れへ関係する。静穏蒸気・非波状層流の外部垂直板に対するNusselt型モデルは、強い蒸気流や管内流、非凝縮性ガスへそのまま移せない。凝縮流量は顕熱等を無視できる区間に限りQ̇/h_fgで求める。",
+    "formula": "ṁ_cond≈Q̇/h_fg（潜熱のみの収支）",
+    "unit": "Q̇: W、h_fg: J/kg、ṁ_cond: kg/s",
+    "example": "Q̇=2400 W、h_fg=2.0×10⁶ J/kgなら凝縮流量0.0012 kg/s。",
+    "related": [
+      "膜沸騰",
+      "滴状凝縮",
+      "液膜レイノルズ数"
+    ],
+    "relatedSections": [
+      "8.5",
+      "9.9"
+    ],
+    "relatedSimulators": [],
+    "relatedQuestions": [
+      {
+        "id": "supp-forced-condensation-film-shear-flow-v1",
+        "label": "膜状凝縮の確認問題"
+      }
+    ],
+    "reviewStatus": "needs_review",
+    "source": {
+      "type": "supplement",
+      "guideId": "chapter9-latent-boiling",
+      "reference": "保存則・界面と二相流の一般定義による独立補足と仮想例。原本の翻訳ではない。外部専門家校閲前。"
+    }
+  },
+  {
+    "id": "dropwise-condensation",
+    "ja": "滴状凝縮",
+    "en": "dropwise condensation",
+    "aliases": [
+      "滴状の凝縮"
+    ],
+    "category": "相変化・物性",
+    "meaning": "凝縮液が連続膜ではなく、液滴として生成・成長・離脱する状態。",
+    "brief": "凝縮液が連続膜ではなく、液滴として生成・成長・離脱する状態。",
+    "beginner": "冷たい面に小さな滴が生まれ、合体して大きくなり、離れると面が更新されます。滴の大きさや排出、表面の処理が熱の通り方に関係します。",
+    "detail": "液滴の生成・合体・離脱・面の被覆が変わるため、平均径一つや静的接触角一つで全伝熱を予測できない。凝縮側の係数が大きくても、被覆・壁・冷却側の抵抗が全体を制限しうる。表面処理の直後の係数と長期維持を区別する。連続液膜の相関の任意倍率を普遍値として採用しない。全体の熱移動率は局所熱流束の面積積分で定義する。",
+    "formula": "Q̇=∫_A q″dA、R_cond=1/(h̄A)",
+    "unit": "h̄: W/(m²·K)、R_cond: K/W",
+    "example": "A=0.020 m²、h̄=20000 W/(m²·K)なら凝縮側抵抗0.0025 K/W。被覆等の抵抗は別に足す。",
+    "related": [
+      "膜状凝縮",
+      "濡れ性",
+      "熱抵抗"
+    ],
+    "relatedSections": [
+      "9.10"
+    ],
+    "relatedSimulators": [],
+    "relatedQuestions": [
+      {
+        "id": "supp-dropwise-coating-resistance-v1",
+        "label": "滴状凝縮の確認問題"
+      }
+    ],
+    "reviewStatus": "needs_review",
+    "source": {
+      "type": "supplement",
+      "guideId": "chapter9-latent-boiling",
+      "reference": "保存則・界面と二相流の一般定義による独立補足と仮想例。原本の翻訳ではない。外部専門家校閲前。"
+    }
+  },
+  {
+    "id": "heat-pipe",
+    "ja": "ヒートパイプ",
+    "en": "heat pipe",
+    "aliases": [],
+    "category": "相変化・物性",
+    "meaning": "蒸発・蒸気移動・凝縮・液体還流の循環で熱を運ぶ密閉装置。",
+    "brief": "蒸発・蒸気移動・凝縮・液体還流の循環で熱を運ぶ密閉装置。",
+    "beginner": "熱い端で液体が蒸気となり、冷たい端で液体へ戻って熱を渡します。液体が熱い端へ戻ることで、少量の流体が繰り返し働きます。",
+    "detail": "ウィック付きではメニスカスの曲率差による毛管圧力が還流を支える。重力還流型の熱サイフォンと姿勢への依存を同じにしない。定常で相変化主体なら循環量ṁ≈Q̇/h_fg。毛管条件は流動損失・姿勢と整合して評価し、音速・同伴・ウィック内沸騰・凍結起動等の限界は別に確認する。実効熱抵抗K/Wは材料固有の熱伝導率W/(m·K)ではない。",
+    "formula": "ṁ≈Q̇/h_fg、R_eff=(T_evap−T_cond)/Q̇",
+    "unit": "ṁ: kg/s、R_eff: K/W",
+    "example": "150 W、h_fg=1.5×10⁶ J/kgなら潜熱循環量は0.00010 kg/s。毎秒その量を消費するという意味ではない。",
+    "related": [
+      "毛管圧力",
+      "潜熱",
+      "熱抵抗"
+    ],
+    "relatedSections": [
+      "9.11"
+    ],
+    "relatedSimulators": [],
+    "relatedQuestions": [
+      {
+        "id": "supp-heat-pipe-latent-circulation-v1",
+        "label": "ヒートパイプの確認問題"
+      }
+    ],
+    "reviewStatus": "needs_review",
+    "source": {
+      "type": "supplement",
+      "guideId": "chapter9-latent-boiling",
+      "reference": "保存則・界面と二相流の一般定義による独立補足と仮想例。原本の翻訳ではない。外部専門家校閲前。"
+    }
+  },
+  {
+    "id": "capillary-pressure",
+    "ja": "毛管圧力",
+    "en": "capillary pressure",
+    "aliases": [],
+    "category": "相変化・物性",
+    "meaning": "曲がった気液界面の表面張力による圧力差。",
+    "brief": "曲がった気液界面の表面張力による圧力差。",
+    "beginner": "細いすき間に濡れる液体が入り込むとき、曲がった界面に圧力の差が生まれます。ヒートパイプでは液体を戻すための圧力に関係します。",
+    "detail": "Young–Laplace関係は曲率半径R₁,R₂と法線の符号を指定してΔp=σ(1/R₁+1/R₂)。濡れた代表円形細孔では利用可能圧力の尺度を2σcosθ/r_effと近似する。接触角は液体側で定義し、実際の圧力差は両端のメニスカスにも依存する。細孔を小さくすると圧力尺度が増す一方、透過性が低下して損失が増す場合がある。",
+    "formula": "Δp_cap≈2σcosθ/r_eff",
+    "unit": "Pa（σ: N/m、r_eff: m）",
+    "example": "σ=0.030 N/m、cosθ=0.50、r_eff=15 μmなら圧力尺度2000 Pa。",
+    "related": [
+      "表面張力",
+      "濡れ性",
+      "ヒートパイプ"
+    ],
+    "relatedSections": [
+      "9.11"
+    ],
+    "relatedSimulators": [],
+    "relatedQuestions": [
+      {
+        "id": "supp-heat-pipe-contact-angle-pressure-v1",
+        "label": "毛管圧力の確認問題"
+      }
+    ],
+    "reviewStatus": "needs_review",
+    "source": {
+      "type": "supplement",
+      "guideId": "chapter9-latent-boiling",
+      "reference": "保存則・界面と二相流の一般定義による独立補足と仮想例。原本の翻訳ではない。外部専門家校閲前。"
+    }
   }
 ]

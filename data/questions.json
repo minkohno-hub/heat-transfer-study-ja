@@ -17883,5 +17883,1465 @@
       "放射率の数値や方向性は別の条件と判断する。"
     ],
     "beginnerPitfall": "不透明・黒体・灰色・拡散を同じ性質と混同しない。"
+  },
+  {
+    "id": "supp-tube-boiling-mass-flux-v1",
+    "revision": "v1",
+    "field": "沸騰・相変化",
+    "prerequisites": [
+      "管内強制対流沸騰",
+      "質量流束"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "保存則・相平衡・流動と熱抵抗に基づく独立作問と仮想数値例。原本の本文・図・章末問題の転載ではない。",
+      "chapterId": "ch9",
+      "focusSectionId": "9.8",
+      "guideId": "chapter9-latent-boiling"
+    },
+    "createdStatus": "独立作問",
+    "reviewStatus": "AI内部で独立再計算・全選択肢を確認／原本網羅照合・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "新タスクで独立執筆。保存則から別コードで検算し、条件と誤答理由を確認。外部校閲ではない。"
+      }
+    ],
+    "prompt": "管内二相流の全質量流量ṁ=0.020 kg/s、流路断面積A_c=5.0×10⁻⁵ m²とする。質量流束G=ṁ/A_cはいくらか。有効数字2桁で示す。",
+    "choices": [
+      "4.0×10² kg/(m²·s)",
+      "4.0×10¹ kg/(m²·s)",
+      "4.0×10³ kg/(m²·s)",
+      "1.0×10⁻⁶ kg/(m²·s)"
+    ],
+    "answer": 0,
+    "difficulty": "標準・数値計算",
+    "explanation": "G=0.020/(5.0×10⁻⁵)=400 kg/(m²·s)。加熱面積ではなく流路断面積を使う。熱流束W/m²とも、各相の実速度m/sとも異なる。",
+    "distractors": [
+      "正解。流路断面積で全質量流量を割った。",
+      "指数計算で10分の1にした。",
+      "指数計算で10倍にした。",
+      "流量を断面積で割らず掛けた。"
+    ],
+    "hints": [
+      "求めるのは単位流路断面積当たりの質量流量。",
+      "kg/sをm²で割る。"
+    ],
+    "solutionSteps": [
+      "断面積5.0×10⁻⁵ m²を確認する。",
+      "0.020/(5.0×10⁻⁵)=400。",
+      "G=4.0×10² kg/(m²·s)で、速度や熱流束と区別する。"
+    ],
+    "beginnerPitfall": "壁の加熱面積と流体が通る断面積を入れ替えない。"
+  },
+  {
+    "id": "supp-tube-boiling-latent-quality-v1",
+    "revision": "v1",
+    "field": "沸騰・相変化",
+    "prerequisites": [
+      "管内強制対流沸騰",
+      "潜熱"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "保存則・相平衡・流動と熱抵抗に基づく独立作問と仮想数値例。原本の本文・図・章末問題の転載ではない。",
+      "chapterId": "ch9",
+      "focusSectionId": "9.8",
+      "guideId": "chapter9-latent-boiling"
+    },
+    "createdStatus": "独立作問",
+    "reviewStatus": "AI内部で独立再計算・全選択肢を確認／原本網羅照合・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "新タスクで独立執筆。保存則から別コードで検算し、条件と誤答理由を確認。外部校閲ではない。"
+      }
+    ],
+    "prompt": "一定圧力の局所平衡にある飽和二相区間で、ṁ=0.050 kg/s、x_in=0.200、h_fg=2.0×10⁶ J/kg。流体へ5.0 kWを加える。損失・軸仕事・運動と位置エネルギー変化を無視した出口質量乾き度を小数第3位まで求める。",
+    "choices": [
+      "0.300",
+      "0.250",
+      "0.050",
+      "0.200"
+    ],
+    "answer": 1,
+    "difficulty": "標準・数値計算",
+    "explanation": "比エンタルピー増分は5000/0.050=100000 J/kg。Δx=100000/(2.0×10⁶)=0.050なのでx_out=0.250。相変化で増えた蒸気は0.0025 kg/sだが、全流量は0.050 kg/sのまま。",
+    "distractors": [
+      "潜熱又は質量流量を半分として増分を2倍にした。",
+      "正解。比エンタルピーの増分を潜熱で割り、入口乾き度へ足した。",
+      "乾き度の増分だけを出口値とした。",
+      "加熱による乾き度の変化を落とした。"
+    ],
+    "hints": [
+      "流体1 kg当たりの加熱量を求める。",
+      "乾き度の増分を入口値へ足す。"
+    ],
+    "solutionSteps": [
+      "Δh=100000 J/kg。",
+      "Δx=0.050を得る。",
+      "x_out=0.200+0.050=0.250で二相範囲内。"
+    ],
+    "beginnerPitfall": "潜熱の式は飽和二相区間に限り、入口過冷却の加熱を含めない。"
+  },
+  {
+    "id": "supp-tube-boiling-subcooled-budget-v1",
+    "revision": "v1",
+    "field": "沸騰・相変化",
+    "prerequisites": [
+      "過冷却液体",
+      "潜熱"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "保存則・相平衡・流動と熱抵抗に基づく独立作問と仮想数値例。原本の本文・図・章末問題の転載ではない。",
+      "chapterId": "ch9",
+      "focusSectionId": "9.8",
+      "guideId": "chapter9-latent-boiling"
+    },
+    "createdStatus": "独立作問",
+    "reviewStatus": "AI内部で独立再計算・全選択肢を確認／原本網羅照合・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "新タスクで独立執筆。保存則から別コードで検算し、条件と誤答理由を確認。外部校閲ではない。"
+      }
+    ],
+    "prompt": "仮想の一定圧力流路に過冷却液がṁ=0.020 kg/sで入り、飽和液までの比エンタルピー差は100 kJ/kg、潜熱は2.0×10⁶ J/kgとする。流体への総入熱3.0 kW、他のエネルギー項なし、出口は局所平衡とする。出口蒸気の質量乾き度はいくらか。",
+    "choices": [
+      "0.0500",
+      "0.1000",
+      "0.0250",
+      "0.0750"
+    ],
+    "answer": 2,
+    "difficulty": "標準・数値計算",
+    "explanation": "飽和液までの入熱は0.020×100000=2000 W。潜熱へ使えるのは3000−2000=1000 Wで、x_out=1000/(0.020×2.0×10⁶)=0.0250。負の入口平衡乾き度を実蒸気量と解釈せず、顕熱区間を分ける。",
+    "distractors": [
+      "顕熱に使う2000 Wを、そのまま蒸発用の熱として使った。",
+      "顕熱を引く代わりに加える等の誤った収支。",
+      "正解。最初に必要な顕熱2000 Wを引き、残り1000 Wで蒸発させた。",
+      "入口の顕熱加熱を無視し全入熱を潜熱に使った。"
+    ],
+    "hints": [
+      "まず飽和液になるための熱を計算する。",
+      "残った入熱だけが蒸気生成に使われる。"
+    ],
+    "solutionSteps": [
+      "顕熱加熱2000 W。",
+      "潜熱へ残る1000 W。",
+      "蒸発量0.00050 kg/sを全流量0.020 kg/sで割り0.0250。"
+    ],
+    "beginnerPitfall": "過冷却入口からの全入熱を、潜熱だけで処理しない。"
+  },
+  {
+    "id": "supp-tube-boiling-slip-void-v1",
+    "revision": "v1",
+    "field": "沸騰・相変化",
+    "prerequisites": [
+      "管内強制対流沸騰",
+      "流動様式"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "保存則・相平衡・流動と熱抵抗に基づく独立作問と仮想数値例。原本の本文・図・章末問題の転載ではない。",
+      "chapterId": "ch9",
+      "focusSectionId": "9.8",
+      "guideId": "chapter9-latent-boiling"
+    },
+    "createdStatus": "独立作問",
+    "reviewStatus": "AI内部で独立再計算・全選択肢を確認／原本網羅照合・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "新タスクで独立執筆。保存則から別コードで検算し、条件と誤答理由を確認。外部校閲ではない。"
+      }
+    ],
+    "prompt": "仮想の定常二相流で質量流量乾き度x=0.10、ρ_l=1000 kg/m³、ρ_v=10 kg/m³、滑り比S=u_v/u_l=2.0。断面平均の各相速度と密度を使うモデルα=1/[1+((1−x)/x)(ρ_v/ρ_l)S]でボイド率を求める。有効数字3桁。",
+    "choices": [
+      "0.917",
+      "0.100",
+      "0.957",
+      "0.847"
+    ],
+    "answer": 3,
+    "difficulty": "標準・数値計算",
+    "explanation": "((1−x)/x)(ρ_v/ρ_l)S=9×0.01×2=0.18。α=1/1.18≈0.847。同じ乾き度でも蒸気速度が速いほど、同じ蒸気流量を運ぶのに必要な断面割合は等速モデルより小さくなる。",
+    "distractors": [
+      "両相等速S=1としてしまった。",
+      "質量流量の割合を断面体積割合と同じにした。",
+      "滑り比を逆数1/2としてしまった。",
+      "正解。両相の質量流量を速度・断面積へ換算した式にS=2を使った。"
+    ],
+    "hints": [
+      "xは流量の質量割合、αは断面割合。",
+      "S=1の等速近似に戻さず、指定の2を使う。"
+    ],
+    "solutionSteps": [
+      "相流量比をx/(1−x)と書く。",
+      "断面割合の比へ直すと(1−α)/α=0.18。",
+      "α=1/(1+0.18)=0.847。"
+    ],
+    "beginnerPitfall": "等速モデルを実際の滑りがある流れへ無条件に使わない。"
+  },
+  {
+    "id": "supp-tube-boiling-equilibrium-quality-v1",
+    "revision": "v1",
+    "field": "沸騰・相変化",
+    "prerequisites": [
+      "過冷却液体",
+      "管内強制対流沸騰"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "conceptual",
+    "source": {
+      "type": "supplement",
+      "reference": "保存則・相平衡・流動と熱抵抗に基づく独立作問と仮想数値例。原本の本文・図・章末問題の転載ではない。",
+      "chapterId": "ch9",
+      "focusSectionId": "9.8",
+      "guideId": "chapter9-latent-boiling"
+    },
+    "createdStatus": "独立作問",
+    "reviewStatus": "AI内部で独立再計算・全選択肢を確認／原本網羅照合・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "新タスクで独立執筆。保存則から別コードで検算し、条件と誤答理由を確認。外部校閲ではない。"
+      }
+    ],
+    "prompt": "局所圧力の飽和エンタルピーからx_eq=(h−h_f)/h_fgを計算すると−0.05となった。この値の解釈として適切なのはどれか。",
+    "choices": [
+      "平衡では過冷却液側を表し、実際の蒸気質量割合は負にならない",
+      "実際の蒸気質量流量が負となり、蒸気は必ず上流へ逆流している",
+      "実際の蒸気体積割合が負となり、流路断面積も負になっている",
+      "平衡上は過熱蒸気側で、実際の液体質量割合が負という意味になる"
+    ],
+    "answer": 0,
+    "difficulty": "基礎・概念",
+    "explanation": "x_eq<0はhが飽和液の比エンタルピーより小さいことを示す指標。実際の流量割合xは0から1である。過冷却液中でも壁近傍に非平衡の泡が生じることがあるため、この指標だけで局所沸騰の有無も断定しない。",
+    "distractors": [
+      "正解。エンタルピーによる状態指標と実際の相流量を区別した。",
+      "負の状態指標から相速度の向きは決まらない。",
+      "物理的な断面割合は0から1であり負にはならない。",
+      "h<h_fなので過熱蒸気側ではない。"
+    ],
+    "hints": [
+      "分子h−h_fの符号を読む。",
+      "状態指標と実際の流量の割合は別。"
+    ],
+    "solutionSteps": [
+      "h<h_fと確認する。",
+      "平衡上の過冷却側と判断する。",
+      "実蒸気量や速度は追加のモデル・測定で確認する。"
+    ],
+    "beginnerPitfall": "状態の指標に現れる負値を、負の実在質量としない。"
+  },
+  {
+    "id": "supp-tube-boiling-energy-not-limit-v1",
+    "revision": "v1",
+    "field": "沸騰・相変化",
+    "prerequisites": [
+      "限界熱流束",
+      "管内強制対流沸騰"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "applied",
+    "source": {
+      "type": "supplement",
+      "reference": "保存則・相平衡・流動と熱抵抗に基づく独立作問と仮想数値例。原本の本文・図・章末問題の転載ではない。",
+      "chapterId": "ch9",
+      "focusSectionId": "9.8",
+      "guideId": "chapter9-latent-boiling"
+    },
+    "createdStatus": "独立作問",
+    "reviewStatus": "AI内部で独立再計算・全選択肢を確認／原本網羅照合・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "新タスクで独立執筆。保存則から別コードで検算し、条件と誤答理由を確認。外部校閲ではない。"
+      }
+    ],
+    "prompt": "入口条件と全入熱の熱収支から、二本の管で同じ出口乾き度が得られた。管径と軸方向の加熱分布は異なる。伝熱悪化の限界について適切な判断はどれか。",
+    "choices": [
+      "二相流なので、プール沸騰のCHFだけを両管の限界に採用する",
+      "局所の流動と壁面熱流束を調べ、管に合う限界評価を別に行う",
+      "出口乾き度が同じなので、局所壁温と限界の値も常に同じとする",
+      "全入熱が同じなら、管径や加熱分布を限界評価から外してよい"
+    ],
+    "answer": 1,
+    "difficulty": "応用・条件判断",
+    "explanation": "熱収支は平均エンタルピーを拘束するが、壁の濡れ、局所最大流束、乾き度分布、圧力損失を解いていない。核沸騰からの離脱や液膜ドライアウトなど、条件に合う機構と相関を評価する。",
+    "distractors": [
+      "管内のDNBやドライアウト等を一律にプール沸騰式で置換できない。",
+      "正解。平均のエネルギー収支に含まれない局所の条件を確認する。",
+      "出口状態から全ての局所値を復元できない。",
+      "管径と加熱分布は液膜や局所負荷を変えうる。"
+    ],
+    "hints": [
+      "熱収支で分かる量と分からない量を分ける。",
+      "出口平均が同じでも、途中の壁面条件は違いうる。"
+    ],
+    "solutionSteps": [
+      "管径・加熱分布の違いを記録する。",
+      "局所状態と壁温を評価する。",
+      "対象の管内二相流に適合する限界モデルを使う。"
+    ],
+    "beginnerPitfall": "出口の平均値だけで、途中の安全限界を確定しない。"
+  },
+  {
+    "id": "supp-tube-boiling-pressure-property-derivative-v1",
+    "revision": "v1",
+    "field": "沸騰・相変化",
+    "prerequisites": [
+      "管内強制対流沸騰",
+      "微分"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "保存則・相平衡・流動と熱抵抗に基づく独立作問と仮想数値例。原本の本文・図・章末問題の転載ではない。",
+      "chapterId": "ch9",
+      "focusSectionId": "9.8",
+      "guideId": "chapter9-latent-boiling"
+    },
+    "createdStatus": "独立作問",
+    "reviewStatus": "AI内部で独立再計算・全選択肢を確認／原本網羅照合・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "新タスクで独立執筆。保存則から別コードで検算し、条件と誤答理由を確認。外部校閲ではない。"
+      }
+    ],
+    "prompt": "定常の局所平衡二相区間でh=h_f(z)+x(z)h_fg(z)、dh/dz=q′/ṁとする。運動・位置エネルギー変化等は無視。ある位置でq′/ṁ=100 kJ/(kg·m)、dh_f/dz=−20 kJ/(kg·m)、dh_fg/dz=+10 kJ/(kg·m)、x=0.20、h_fg=2000 kJ/kg。積の微分からdx/dzはいくらか。",
+    "choices": [
+      "0.0610 m⁻¹",
+      "0.0390 m⁻¹",
+      "0.0590 m⁻¹",
+      "0.0500 m⁻¹"
+    ],
+    "answer": 2,
+    "difficulty": "標準・数値計算",
+    "explanation": "100=−20+2000 dx/dz+0.20×10。したがってdx/dz=(100+20−2)/2000=0.0590 m⁻¹。圧力依存物性が変わる区間では、単純なq′/(ṁh_fg)だけでは不足する。",
+    "distractors": [
+      "x dh_fg/dzの項を引かず加えた。",
+      "dh_f/dzの負号を逆にして処理した。",
+      "正解。顕熱基準の変化とx h_fgの物性変化を両方含めた。",
+      "h_fとh_fgを位置によらず一定とした。"
+    ],
+    "hints": [
+      "h_fの微分も残す。",
+      "x h_fgは積なので二項に分かれる。"
+    ],
+    "solutionSteps": [
+      "dh/dz=dh_f/dz+h_fg dx/dz+x dh_fg/dz。",
+      "潜熱で割る前の差は100−(−20)−2=118 kJ/(kg·m)。",
+      "118/2000=0.0590 m⁻¹。"
+    ],
+    "beginnerPitfall": "圧力が変わる流路で、飽和物性を常に一定と置かない。"
+  },
+  {
+    "id": "supp-forced-condensation-outlet-quality-v1",
+    "revision": "v1",
+    "field": "沸騰・相変化",
+    "prerequisites": [
+      "潜熱",
+      "膜状凝縮"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "保存則・相平衡・流動と熱抵抗に基づく独立作問と仮想数値例。原本の本文・図・章末問題の転載ではない。",
+      "chapterId": "ch9",
+      "focusSectionId": "9.9",
+      "guideId": "chapter9-latent-boiling"
+    },
+    "createdStatus": "独立作問",
+    "reviewStatus": "AI内部で独立再計算・全選択肢を確認／原本網羅照合・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "新タスクで独立執筆。保存則から別コードで検算し、条件と誤答理由を確認。外部校閲ではない。"
+      }
+    ],
+    "prompt": "仮想の一定圧力・局所平衡の凝縮区間で、全流量0.040 kg/s、入口乾き度0.800、潜熱2.0×10⁶ J/kg。16.0 kWを流体から除去し、他のエネルギー項を無視する。出口乾き度を小数第3位まで求める。",
+    "choices": [
+      "0.200",
+      "0.800",
+      "1.000",
+      "0.600"
+    ],
+    "answer": 3,
+    "difficulty": "標準・数値計算",
+    "explanation": "Δx=16000/(0.040×2.0×10⁶)=0.200。x_out=0.800−0.200=0.600。区間で0.0080 kg/sが凝縮するが、蒸気と液体を合わせた全流量は0.040 kg/sで保存される。",
+    "distractors": [
+      "低下した割合だけを出口値とした。",
+      "凝縮による乾き度低下を無視した。",
+      "熱を除去したのに乾き度を加えた。",
+      "正解。除去熱量による乾き度の低下0.200を入口から引いた。"
+    ],
+    "hints": [
+      "凝縮では比エンタルピーが減る。",
+      "乾き度の変化の符号を確認する。"
+    ],
+    "solutionSteps": [
+      "潜熱相当の割合の低下0.200を計算する。",
+      "入口0.800から差し引く。",
+      "出口0.600でまだ蒸気が残る。"
+    ],
+    "beginnerPitfall": "除去熱を正と定義した式では、出口乾き度から引く。"
+  },
+  {
+    "id": "supp-forced-condensation-complete-then-subcool-v1",
+    "revision": "v1",
+    "field": "沸騰・相変化",
+    "prerequisites": [
+      "潜熱",
+      "比熱容量"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "保存則・相平衡・流動と熱抵抗に基づく独立作問と仮想数値例。原本の本文・図・章末問題の転載ではない。",
+      "chapterId": "ch9",
+      "focusSectionId": "9.9",
+      "guideId": "chapter9-latent-boiling"
+    },
+    "createdStatus": "独立作問",
+    "reviewStatus": "AI内部で独立再計算・全選択肢を確認／原本網羅照合・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "新タスクで独立執筆。保存則から別コードで検算し、条件と誤答理由を確認。外部校閲ではない。"
+      }
+    ],
+    "prompt": "仮想流体が一定圧力で全流量0.020 kg/s、入口乾き度0.750、飽和温度100 ℃で流入する。潜熱2.0×10⁶ J/kg、液比熱4000 J/(kg·K)一定、凝固等なし。32.0 kWを除去し、他のエネルギー項なしで出口平衡に達する。出口状態はどれか。",
+    "choices": [
+      "全て液体で75.0 ℃",
+      "全て液体で100 ℃",
+      "蒸気乾き度−0.050",
+      "蒸気乾き度0.050"
+    ],
+    "answer": 0,
+    "difficulty": "標準・数値計算",
+    "explanation": "全蒸気の凝縮には0.020×0.750×2.0×10⁶=30000 W。余り2000 Wに対し液温低下=2000/(0.020×4000)=25 K、出口75.0 ℃の液体。潜熱だけの式で負の実乾き度を出したままにしない。",
+    "distractors": [
+      "正解。全凝縮に30000 Wを使い、残り2000 Wで液体を25 K冷却した。",
+      "全凝縮後に残る2000 Wの顕熱冷却を落とした。",
+      "形式的な負の平衡乾き度を実蒸気量として認めた。",
+      "形式的な負値の符号だけを反転させた。"
+    ],
+    "hints": [
+      "まず入口蒸気を全部凝縮する熱量を求める。",
+      "その後に残る除去熱は液体の顕熱へ使う。"
+    ],
+    "solutionSteps": [
+      "全凝縮まで30000 W。",
+      "残り32000−30000=2000 W。",
+      "液体を25 K冷やし75.0 ℃。"
+    ],
+    "beginnerPitfall": "二相式の適用範囲を超えたら、単相区間を分けて収支を立てる。"
+  },
+  {
+    "id": "supp-forced-condensation-coolant-balance-v1",
+    "revision": "v1",
+    "field": "沸騰・相変化",
+    "prerequisites": [
+      "熱容量流量",
+      "強制対流"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "保存則・相平衡・流動と熱抵抗に基づく独立作問と仮想数値例。原本の本文・図・章末問題の転載ではない。",
+      "chapterId": "ch9",
+      "focusSectionId": "9.9",
+      "guideId": "chapter9-latent-boiling"
+    },
+    "createdStatus": "独立作問",
+    "reviewStatus": "AI内部で独立再計算・全選択肢を確認／原本網羅照合・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "新タスクで独立執筆。保存則から別コードで検算し、条件と誤答理由を確認。外部校閲ではない。"
+      }
+    ],
+    "prompt": "凝縮側から冷却側へ6.0 kWが伝わる。単相冷却流体の全流量0.10 kg/s、比熱4000 J/(kg·K)、入口20.0 ℃。損失なし、比熱一定とすると冷却側出口温度はいくらか。",
+    "choices": [
+      "80.0 ℃",
+      "35.0 ℃",
+      "15.0 ℃",
+      "21.5 ℃"
+    ],
+    "answer": 1,
+    "difficulty": "標準・数値計算",
+    "explanation": "ΔT_c=6000/(0.10×4000)=15.0 K。出口は20.0+15.0=35.0 ℃。熱収支だけから必要面積や局所壁温が決まるわけではなく、凝縮温度や温度分布との整合も別に確認する。",
+    "distractors": [
+      "凝縮側の飽和温度等を冷却側出口と混同した。",
+      "正解。受熱による温度上昇15 Kを入口へ加えた。",
+      "温度上昇を出口の温度そのものとした。",
+      "kWの換算や流量の桁を取り違えた。"
+    ],
+    "hints": [
+      "kWをWへ直す。",
+      "温度上昇と出口温度を区別する。"
+    ],
+    "solutionSteps": [
+      "冷却側の熱容量流量は400 W/K。",
+      "6000/400=15 K。",
+      "入口20.0 ℃へ足し35.0 ℃。"
+    ],
+    "beginnerPitfall": "二つの流体で受熱・放熱の符号をそろえる。"
+  },
+  {
+    "id": "supp-forced-condensation-film-shear-flow-v1",
+    "revision": "v1",
+    "field": "沸騰・相変化",
+    "prerequisites": [
+      "膜状凝縮",
+      "液膜レイノルズ数"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "保存則・相平衡・流動と熱抵抗に基づく独立作問と仮想数値例。原本の本文・図・章末問題の転載ではない。",
+      "chapterId": "ch9",
+      "focusSectionId": "9.9",
+      "guideId": "chapter9-latent-boiling"
+    },
+    "createdStatus": "独立作問",
+    "reviewStatus": "AI内部で独立再計算・全選択肢を確認／原本網羅照合・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "新タスクで独立執筆。保存則から別コードで検算し、条件と誤答理由を確認。外部校閲ではない。"
+      }
+    ],
+    "prompt": "下向きを正とする外部垂直板の仮想層流液膜で、δ=1.0×10⁻⁴ m、μ=1.0×10⁻³ Pa·s、ρ_l=1000 kg/m³、ρ_vを無視、g=10 m/s²、下向き界面せん断τ_i=+0.10 Pa。単位幅流量Γ=ρ_l(ρ_l−ρ_v)gδ³/(3μ)+ρ_lτ_iδ²/(2μ)を使う。Γを有効数字3桁で求める。",
+    "choices": [
+      "5.00×10⁻⁴ kg/(m·s)",
+      "2.83×10⁻³ kg/(m·s)",
+      "3.83×10⁻³ kg/(m·s)",
+      "3.33×10⁻³ kg/(m·s)"
+    ],
+    "answer": 2,
+    "difficulty": "標準・数値計算",
+    "explanation": "重力寄与は1000×1000×10×(10⁻⁴)³/(3×10⁻³)=0.0033333 kg/(m·s)。せん断寄与は1000×0.10×(10⁻⁴)²/(2×10⁻³)=0.0005000。合計0.0038333。膜厚を与えた運動量モデルであり、これだけで凝縮熱伝達率や膜厚を予測してはいない。",
+    "distractors": [
+      "重力寄与を無視した。",
+      "界面せん断を上向きの負値にした。",
+      "正解。重力寄与と同方向せん断寄与を足した。",
+      "界面せん断を無視した。"
+    ],
+    "hints": [
+      "壁からの法線座標で速度を積分した二つの寄与。",
+      "τ_iは下向きが正。"
+    ],
+    "solutionSteps": [
+      "重力項0.0033333を求める。",
+      "せん断項+0.0005000を求める。",
+      "和0.0038333 kg/(m·s)を3桁に丸める。"
+    ],
+    "beginnerPitfall": "式のΓは単位幅流量で、板全体のkg/sとは異なる。"
+  },
+  {
+    "id": "supp-forced-condensation-total-mass-v1",
+    "revision": "v1",
+    "field": "沸騰・相変化",
+    "prerequisites": [
+      "潜熱",
+      "密度"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "conceptual",
+    "source": {
+      "type": "supplement",
+      "reference": "保存則・相平衡・流動と熱抵抗に基づく独立作問と仮想数値例。原本の本文・図・章末問題の転載ではない。",
+      "chapterId": "ch9",
+      "focusSectionId": "9.9",
+      "guideId": "chapter9-latent-boiling"
+    },
+    "createdStatus": "独立作問",
+    "reviewStatus": "AI内部で独立再計算・全選択肢を確認／原本網羅照合・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "新タスクで独立執筆。保存則から別コードで検算し、条件と誤答理由を確認。外部校閲ではない。"
+      }
+    ],
+    "prompt": "漏れ・分岐のない管内で、蒸気の一部が液体へ凝縮する定常流を考える。全質量流量の扱いとして適切なのはどれか。",
+    "choices": [
+      "蒸気流量が減るので、両相を合わせた全流量も必ず減少する",
+      "液体は蒸気より高密度なので、両相の全質量も必ず増加する",
+      "凝縮でエネルギーが壁へ出る分、流体の質量流量も失われる",
+      "蒸気流量は減るが液体流量が増え、両相の合計は保存される"
+    ],
+    "answer": 3,
+    "difficulty": "基礎・概念",
+    "explanation": "蒸気と液体の間で質量が移るが、流路外へ漏れない定常状態ではṁ_in=ṁ_out。密度・体積流量・相速度は変わりうる。潜熱収支と全質量保存は別の保存則として同時に満たす。",
+    "distractors": [
+      "相間の質量移動を系からの漏れと混同した。",
+      "密度の変化は同じ質量が占める体積を変える。",
+      "通常の伝熱の質量保存モデルで、潜熱放出を質量損失としない。",
+      "正解。相変化による相間の移動と全体の保存を分けた。"
+    ],
+    "hints": [
+      "流路の境界を越える質量を数える。",
+      "相を変えることは流路から消えることではない。"
+    ],
+    "solutionSteps": [
+      "蒸気・液体の質量収支を分ける。",
+      "両相間の凝縮量は加算すると打ち消す。",
+      "全流量は保存すると結論する。"
+    ],
+    "beginnerPitfall": "密度・体積と質量を同じ量として扱わない。"
+  },
+  {
+    "id": "supp-forced-condensation-opposing-shear-v1",
+    "revision": "v1",
+    "field": "沸騰・相変化",
+    "prerequisites": [
+      "膜状凝縮",
+      "強制対流"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "applied",
+    "source": {
+      "type": "supplement",
+      "reference": "保存則・相平衡・流動と熱抵抗に基づく独立作問と仮想数値例。原本の本文・図・章末問題の転載ではない。",
+      "chapterId": "ch9",
+      "focusSectionId": "9.9",
+      "guideId": "chapter9-latent-boiling"
+    },
+    "createdStatus": "独立作問",
+    "reviewStatus": "AI内部で独立再計算・全選択肢を確認／原本網羅照合・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "新タスクで独立執筆。保存則から別コードで検算し、条件と誤答理由を確認。外部校閲ではない。"
+      }
+    ],
+    "prompt": "静穏蒸気の重力駆動液膜モデルを、上向き蒸気流が下向き凝縮液膜にせん断を及ぼす外部垂直板へ移したい。適切な評価方針はどれか。",
+    "choices": [
+      "重力と逆向きのせん断を運動量収支へ入れ、排液と適用範囲を見直す",
+      "せん断の向きに関係なく液膜は必ず薄くなるので、静穏の係数を増やす",
+      "液膜Reが小さければ、上向き蒸気が及ぼすせん断を常にゼロにする",
+      "流体が同じなら、静穏な外部板と管内凝縮の係数を常に同一にする"
+    ],
+    "answer": 0,
+    "difficulty": "応用・条件判断",
+    "explanation": "逆向き界面せん断は重力による排液を妨げうる。膜厚や流量を決める収支、蒸気側流れとの連成、強い場合の流動状態を確認する。固定膜厚の運動量式から、膜厚や係数を無条件に決めたとはしない。",
+    "distractors": [
+      "正解。排液を妨げる向きの力と、元のモデルの前提の変更を扱った。",
+      "同方向と逆方向のせん断を同じ影響とした。",
+      "液膜Reだけでは界面せん断の小ささを保証できない。",
+      "幾何と流動境界条件の差を消している。"
+    ],
+    "hints": [
+      "蒸気の流れ方向と液体の排出方向を比べる。",
+      "元のモデルは界面せん断を無視していた。"
+    ],
+    "solutionSteps": [
+      "下向きを正なら上向きせん断は負。",
+      "液膜の運動量と排液条件を再評価する。",
+      "適合するせん断を含むモデルを選ぶ。"
+    ],
+    "beginnerPitfall": "凝縮という名称が同じでも、力の釣合いと幾何をそろえる。"
+  },
+  {
+    "id": "supp-dropwise-area-average-v1",
+    "revision": "v1",
+    "field": "沸騰・相変化",
+    "prerequisites": [
+      "滴状凝縮",
+      "熱伝達率"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "保存則・相平衡・流動と熱抵抗に基づく独立作問と仮想数値例。原本の本文・図・章末問題の転載ではない。",
+      "chapterId": "ch9",
+      "focusSectionId": "9.10",
+      "guideId": "chapter9-latent-boiling"
+    },
+    "createdStatus": "独立作問",
+    "reviewStatus": "AI内部で独立再計算・全選択肢を確認／原本網羅照合・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "新タスクで独立執筆。保存則から別コードで検算し、条件と誤答理由を確認。外部校閲ではない。"
+      }
+    ],
+    "prompt": "独立の二領域モデルで、面積の30%は局所平均係数20000 W/(m²·K)、残り70%は4000 W/(m²·K)とする。全ての領域で同じ蒸気温度と表面温度を持つ場合、面積平均係数はいくらか。有効数字2桁。",
+    "choices": [
+      "2.4×10⁴ W/(m²·K)",
+      "8.8×10³ W/(m²·K)",
+      "1.2×10⁴ W/(m²·K)",
+      "1.5×10⁴ W/(m²·K)"
+    ],
+    "answer": 1,
+    "difficulty": "標準・数値計算",
+    "explanation": "共通のΔTならQ̇/A=[0.30×20000+0.70×4000]ΔT。平均h=8800 W/(m²·K)。壁温も場所で変わるなら、単にhだけを面積加重して全体流束を決められるとは限らない。",
+    "distractors": [
+      "係数を重みなしに足した。",
+      "正解。共通の温度差で局所熱流束を面積加重平均した。",
+      "二領域を面積割合なしで単純平均した。",
+      "二領域の面積割合を逆にし、14800を丸めた。"
+    ],
+    "hints": [
+      "各領域の流束はh_iΔT。",
+      "全領域で温度差が同じという条件を使う。"
+    ],
+    "solutionSteps": [
+      "二領域の寄与は6000と2800 W/(m²·K)。",
+      "合計8800 W/(m²·K)。",
+      "2桁で8.8×10³、温度差が共通であることを再確認する。"
+    ],
+    "beginnerPitfall": "異なる温度差の領域まで、係数だけで平均しない。"
+  },
+  {
+    "id": "supp-dropwise-total-resistance-gain-v1",
+    "revision": "v1",
+    "field": "沸騰・相変化",
+    "prerequisites": [
+      "滴状凝縮",
+      "熱抵抗"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "保存則・相平衡・流動と熱抵抗に基づく独立作問と仮想数値例。原本の本文・図・章末問題の転載ではない。",
+      "chapterId": "ch9",
+      "focusSectionId": "9.10",
+      "guideId": "chapter9-latent-boiling"
+    },
+    "createdStatus": "独立作問",
+    "reviewStatus": "AI内部で独立再計算・全選択肢を確認／原本網羅照合・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "新タスクで独立執筆。保存則から別コードで検算し、条件と誤答理由を確認。外部校閲ではない。"
+      }
+    ],
+    "prompt": "仮想の凝縮面A=0.010 m²でh_condを5000から20000 W/(m²·K)へ変える。壁抵抗0.0050 K/W、冷却側抵抗0.0250 K/Wと両端温度差は固定。直列抵抗モデルで全熱移動率の倍率はいくらか。有効数字3桁。",
+    "choices": [
+      "0.700倍",
+      "1.75倍",
+      "1.43倍",
+      "4.00倍"
+    ],
+    "answer": 2,
+    "difficulty": "標準・数値計算",
+    "explanation": "凝縮抵抗は0.0200→0.0050 K/W、全抵抗は0.0500→0.0350 K/W。Q̇_new/Q̇_old=R_old/R_new=0.0500/0.0350≈1.43。凝縮側hが4倍でも全体は4倍にならない。",
+    "distractors": [
+      "熱移動率の比を抵抗の比と同じ向きにした。",
+      "固定した壁・冷却側の抵抗を誤って加算した。",
+      "正解。全抵抗0.0500から0.0350への低下から倍率を求めた。",
+      "凝縮側係数の倍率を全体へ流用した。"
+    ],
+    "hints": [
+      "まず各状態の1/(hA)を求める。",
+      "同じ温度差ならQ̇は全抵抗に反比例。"
+    ],
+    "solutionSteps": [
+      "元の全抵抗は0.0500 K/W。",
+      "変更後は0.0350 K/W。",
+      "倍率0.0500/0.0350=1.43。"
+    ],
+    "beginnerPitfall": "局所の伝熱改善を、そのまま全体の改善率にしない。"
+  },
+  {
+    "id": "supp-dropwise-coating-resistance-v1",
+    "revision": "v1",
+    "field": "沸騰・相変化",
+    "prerequisites": [
+      "滴状凝縮",
+      "熱抵抗"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "保存則・相平衡・流動と熱抵抗に基づく独立作問と仮想数値例。原本の本文・図・章末問題の転載ではない。",
+      "chapterId": "ch9",
+      "focusSectionId": "9.10",
+      "guideId": "chapter9-latent-boiling"
+    },
+    "createdStatus": "独立作問",
+    "reviewStatus": "AI内部で独立再計算・全選択肢を確認／原本網羅照合・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "新タスクで独立執筆。保存則から別コードで検算し、条件と誤答理由を確認。外部校閲ではない。"
+      }
+    ],
+    "prompt": "仮想の処理面で凝縮係数h=20000 W/(m²·K)を、被覆の蒸気側表面温度基準で与える。被覆厚50 μm、被覆k=0.20 W/(m·K)、面積0.020 m²。蒸気と被覆下の基材との温度差20 K、他抵抗なし。被覆伝導と凝縮を直列とした熱移動率はいくらか。有効数字3桁。",
+    "choices": [
+      "8.00×10³ W",
+      "1.60×10³ W",
+      "2.00×10³ W",
+      "1.33×10³ W"
+    ],
+    "answer": 3,
+    "difficulty": "標準・数値計算",
+    "explanation": "R_coat=50×10⁻⁶/(0.20×0.020)=0.0125 K/W。R_cond=1/(20000×0.020)=0.0025 K/W。Q̇=20/(0.0150)=1333.33 W。凝縮係数が大きくても被覆の抵抗が全体を制限しうる。",
+    "distractors": [
+      "被覆の抵抗を無視した。",
+      "凝縮抵抗を無視し被覆だけで計算した。",
+      "総抵抗を0.0100 K/Wと取り違えた。",
+      "正解。被覆抵抗0.0125と凝縮抵抗0.0025 K/Wを加えた。"
+    ],
+    "hints": [
+      "μmをmへ直す。",
+      "hの基準面は被覆の外側なので、被覆伝導は別に足す。"
+    ],
+    "solutionSteps": [
+      "被覆と凝縮の抵抗をそれぞれ計算する。",
+      "和は0.0150 K/W。",
+      "20/0.0150=1.33×10³ W。"
+    ],
+    "beginnerPitfall": "表面処理の効果を見るとき、被覆の熱抵抗を落とさない。"
+  },
+  {
+    "id": "supp-dropwise-h-uncertainty-v1",
+    "revision": "v1",
+    "field": "沸騰・相変化",
+    "prerequisites": [
+      "滴状凝縮",
+      "微分",
+      "近似"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "保存則・相平衡・流動と熱抵抗に基づく独立作問と仮想数値例。原本の本文・図・章末問題の転載ではない。",
+      "chapterId": "ch9",
+      "focusSectionId": "9.10",
+      "guideId": "chapter9-latent-boiling"
+    },
+    "createdStatus": "独立作問",
+    "reviewStatus": "AI内部で独立再計算・全選択肢を確認／原本網羅照合・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "新タスクで独立執筆。保存則から別コードで検算し、条件と誤答理由を確認。外部校閲ではない。"
+      }
+    ],
+    "prompt": "実験でh=Q̇/(AΔT)を求める。Aの不確かさは無視でき、Q̇とΔTの相対標準不確かさは各10%と5.0%、互いに無相関で、小さな誤差の一次伝播を使う。hの相対標準不確かさは概ねいくらか。有効数字2桁。",
+    "choices": [
+      "11 %",
+      "15 %",
+      "10 %",
+      "5.0 %"
+    ],
+    "answer": 0,
+    "difficulty": "標準・数値計算",
+    "explanation": "dh/h=dQ̇/Q̇−dΔT/ΔT。無相関の標準不確かさでは符号によらず分散を足し、u_r(h)=√(0.10²+0.050²)=0.1118≈11%。共通センサー等による相関がある場合は共分散項が必要。",
+    "distractors": [
+      "正解。独立な二つの相対標準不確かさを二乗和の平方根で合成した。",
+      "最悪値の和を標準不確かさとしている。",
+      "温度差の不確かさを無視した。",
+      "熱量の不確かさを無視した。"
+    ],
+    "hints": [
+      "対数微分で相対変化の式を作る。",
+      "標準不確かさと最悪誤差の和を区別する。"
+    ],
+    "solutionSteps": [
+      "相対分散は0.10²+0.050²=0.0125。",
+      "平方根0.1118。",
+      "約11%、相関なしと一次近似の条件を確認する。"
+    ],
+    "beginnerPitfall": "標準不確かさを、常に最悪値の足し算で求めない。"
+  },
+  {
+    "id": "supp-dropwise-distribution-not-mean-v1",
+    "revision": "v1",
+    "field": "沸騰・相変化",
+    "prerequisites": [
+      "滴状凝縮",
+      "熱伝達率"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "conceptual",
+    "source": {
+      "type": "supplement",
+      "reference": "保存則・相平衡・流動と熱抵抗に基づく独立作問と仮想数値例。原本の本文・図・章末問題の転載ではない。",
+      "chapterId": "ch9",
+      "focusSectionId": "9.10",
+      "guideId": "chapter9-latent-boiling"
+    },
+    "createdStatus": "独立作問",
+    "reviewStatus": "AI内部で独立再計算・全選択肢を確認／原本網羅照合・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "新タスクで独立執筆。保存則から別コードで検算し、条件と誤答理由を確認。外部校閲ではない。"
+      }
+    ],
+    "prompt": "二つの滴状凝縮面で、液滴の平均直径だけが同じだった。面平均熱伝達率の判断として適切なのはどれか。",
+    "choices": [
+      "同じ平均直径なら、滴の生成と離脱は評価から除外する",
+      "滴の個数・分布・被覆率・離脱の違いも調べて比較する",
+      "同じ平均直径なら、全ての面で熱伝達率も同じと結論する",
+      "同じ平均直径なら、液滴を通る全熱抵抗はゼロと結論する"
+    ],
+    "answer": 1,
+    "difficulty": "基礎・概念",
+    "explanation": "同じ平均径でも小滴と大滴の分布、個数密度、表面被覆率、接触角、離脱頻度は異なりうる。局所の熱流束を面積積分した結果が同じとは限らない。平均一つを完全な状態記述としない。",
+    "distractors": [
+      "面の更新と分布を変える過程を省略している。",
+      "正解。平均直径だけでは局所の伝熱経路と面積分布が決まらない。",
+      "平均値一つから分布と動的な過程を復元できない。",
+      "有限の液滴や界面の抵抗が消えるわけではない。"
+    ],
+    "hints": [
+      "平均径だけで滴の個数や分布は分からない。",
+      "面から熱が出る経路を考える。"
+    ],
+    "solutionSteps": [
+      "測定で分かったのは平均直径と整理する。",
+      "被覆と更新の情報を追加する。",
+      "同じ温度差・面積等の条件で熱伝達率を比較する。"
+    ],
+    "beginnerPitfall": "面の分布情報が平均値一つに全て残ると考えない。"
+  },
+  {
+    "id": "supp-dropwise-contact-angle-evidence-v1",
+    "revision": "v1",
+    "field": "沸騰・相変化",
+    "prerequisites": [
+      "滴状凝縮",
+      "濡れ性"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "applied",
+    "source": {
+      "type": "supplement",
+      "reference": "保存則・相平衡・流動と熱抵抗に基づく独立作問と仮想数値例。原本の本文・図・章末問題の転載ではない。",
+      "chapterId": "ch9",
+      "focusSectionId": "9.10",
+      "guideId": "chapter9-latent-boiling"
+    },
+    "createdStatus": "独立作問",
+    "reviewStatus": "AI内部で独立再計算・全選択肢を確認／原本網羅照合・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "新タスクで独立執筆。保存則から別コードで検算し、条件と誤答理由を確認。外部校閲ではない。"
+      }
+    ],
+    "prompt": "二つの処理面の静的接触角が等しいので、滴状凝縮の性能も同じと評価したい。適切な方針はどれか。",
+    "choices": [
+      "静的接触角が同じなら、被覆の厚さと物性は省略する",
+      "静的接触角が同じなら、液滴の移動は起こらないとする",
+      "接触角の履歴差・排液・被覆熱抵抗等も含めて調べる",
+      "静的接触角が同じなら、熱伝達率も全条件で同じとする"
+    ],
+    "answer": 2,
+    "difficulty": "応用・条件判断",
+    "explanation": "液滴の移動には接触角履歴差等も関係し、被覆が凝縮しやすさを変える一方で熱抵抗を加える場合がある。同じ静的接触角だけで、熱移動量や面の更新を一意に決定できない。",
+    "distractors": [
+      "被覆の熱伝導抵抗は接触角とは別の情報。",
+      "静的接触角が等しいことは液滴の静止を保証しない。",
+      "正解。静的な角度一つでは液滴の運動や熱抵抗を表せない。",
+      "他の表面・流動・熱的条件を固定したことにはならない。"
+    ],
+    "hints": [
+      "角度の測定と熱抵抗の測定は別。",
+      "離脱しやすさは静的な角度だけでは決まらない。"
+    ],
+    "solutionSteps": [
+      "接触角以外の違いを列挙する。",
+      "被覆の抵抗と液滴の排出を調べる。",
+      "条件をそろえた熱伝達測定で比較する。"
+    ],
+    "beginnerPitfall": "一つの濡れ性指標を万能な性能指標にしない。"
+  },
+  {
+    "id": "supp-dropwise-film-model-limit-v1",
+    "revision": "v1",
+    "field": "沸騰・相変化",
+    "prerequisites": [
+      "滴状凝縮",
+      "膜状凝縮"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "applied",
+    "source": {
+      "type": "supplement",
+      "reference": "保存則・相平衡・流動と熱抵抗に基づく独立作問と仮想数値例。原本の本文・図・章末問題の転載ではない。",
+      "chapterId": "ch9",
+      "focusSectionId": "9.10",
+      "guideId": "chapter9-latent-boiling"
+    },
+    "createdStatus": "独立作問",
+    "reviewStatus": "AI内部で独立再計算・全選択肢を確認／原本網羅照合・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "新タスクで独立執筆。保存則から別コードで検算し、条件と誤答理由を確認。外部校閲ではない。"
+      }
+    ],
+    "prompt": "連続した非波状液膜の相関式しか手元にない。離脱する液滴が面を覆う滴状凝縮の係数を予測するとき、適切な扱いはどれか。",
+    "choices": [
+      "同じ液体なので、液膜の係数を根拠なく10倍して採用する",
+      "全ての液滴を同じ膜厚と見なし、適用条件の照合を省略する",
+      "液滴が小さければ、界面と被覆の抵抗を常にゼロとする",
+      "液滴の分布と面の条件に適合するモデル・測定を別に探す"
+    ],
+    "answer": 3,
+    "difficulty": "応用・条件判断",
+    "explanation": "液膜の流れと厚みを仮定した式は、液滴の核生成・合体・離脱・被覆の変化を解いていない。滴状凝縮向けのモデルや測定の対象条件を照合する。実験上大きな改善がある場合でも、普遍的な一定倍率とはしない。",
+    "distractors": [
+      "任意倍率には流体・表面・実験範囲の根拠がない。",
+      "面の構造を変える仮定の検証を省略している。",
+      "小さいという情報だけでは全ての熱抵抗を消せない。",
+      "正解。連続液膜と離脱する滴で異なる幾何・運動を扱った。"
+    ],
+    "hints": [
+      "元の相関が仮定する面の状態を確認する。",
+      "滴状面に必要な状態変数を考える。"
+    ],
+    "solutionSteps": [
+      "連続液膜という前提を列挙する。",
+      "滴の分布・生成・排出はその前提にないと確認する。",
+      "対象に合う根拠を追加する。"
+    ],
+    "beginnerPitfall": "同じ凝縮でも幾何と界面状態に合うモデルを選ぶ。"
+  },
+  {
+    "id": "supp-heat-pipe-latent-circulation-v1",
+    "revision": "v1",
+    "field": "沸騰・相変化",
+    "prerequisites": [
+      "ヒートパイプ",
+      "潜熱"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "保存則・相平衡・流動と熱抵抗に基づく独立作問と仮想数値例。原本の本文・図・章末問題の転載ではない。",
+      "chapterId": "ch9",
+      "focusSectionId": "9.11",
+      "guideId": "chapter9-latent-boiling"
+    },
+    "createdStatus": "独立作問",
+    "reviewStatus": "AI内部で独立再計算・全選択肢を確認／原本網羅照合・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "新タスクで独立執筆。保存則から別コードで検算し、条件と誤答理由を確認。外部校閲ではない。"
+      }
+    ],
+    "prompt": "定常ヒートパイプで輸送熱150 Wが全て潜熱輸送と近似でき、h_fg=1.5×10⁶ J/kg。顕熱・損失・壁伝導を無視した循環質量流量はいくらか。有効数字2桁。",
+    "choices": [
+      "1.0×10⁻⁴ kg/s",
+      "1.0×10⁻³ kg/s",
+      "1.0×10⁻⁵ kg/s",
+      "2.3×10⁸ kg/s"
+    ],
+    "answer": 0,
+    "difficulty": "標準・数値計算",
+    "explanation": "ṁ=150/(1.5×10⁶)=1.0×10⁻⁴ kg/s=0.10 g/s。これは循環量で、毎秒この量の流体を消費するという意味ではない。壁の伝導等があれば、全輸送熱をそのまま潜熱へ換算しない。",
+    "distractors": [
+      "正解。熱輸送率を単位質量当たり潜熱で割った。",
+      "指数の処理で流量を10倍にした。",
+      "指数の処理で流量を10分の1にした。",
+      "潜熱を割らず掛け、次元も一致しない。"
+    ],
+    "hints": [
+      "WはJ/s。",
+      "潜熱J/kgで割ればkg/sになる。"
+    ],
+    "solutionSteps": [
+      "潜熱輸送とみなす150 Wを確認。",
+      "150/(1.5×10⁶)=0.00010 kg/s。",
+      "0.10 g/sに換算し、閉じた循環と解釈する。"
+    ],
+    "beginnerPitfall": "熱輸送の循環流量を、作動流体の消費量としない。"
+  },
+  {
+    "id": "supp-heat-pipe-contact-angle-pressure-v1",
+    "revision": "v1",
+    "field": "沸騰・相変化",
+    "prerequisites": [
+      "ヒートパイプ",
+      "表面張力"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "保存則・相平衡・流動と熱抵抗に基づく独立作問と仮想数値例。原本の本文・図・章末問題の転載ではない。",
+      "chapterId": "ch9",
+      "focusSectionId": "9.11",
+      "guideId": "chapter9-latent-boiling"
+    },
+    "createdStatus": "独立作問",
+    "reviewStatus": "AI内部で独立再計算・全選択肢を確認／原本網羅照合・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "新タスクで独立執筆。保存則から別コードで検算し、条件と誤答理由を確認。外部校閲ではない。"
+      }
+    ],
+    "prompt": "代表円形細孔の仮想毛管圧力Δp_cap=2σcosθ/r_effを使う。σ=0.030 N/m、液体側接触角θ=60°（cosθ=0.50）、r_eff=15 μm。Δp_capを有効数字2桁で求める。",
+    "choices": [
+      "2.0×10⁻³ Pa",
+      "2.0×10³ Pa",
+      "4.0×10³ Pa",
+      "1.0×10³ Pa"
+    ],
+    "answer": 1,
+    "difficulty": "標準・数値計算",
+    "explanation": "r_eff=15×10⁻⁶ m。2×0.030×0.50/(15×10⁻⁶)=2000 Pa。実ウィックの利用可能な圧力は両端メニスカスや構造にも依存し、この代表式だけでは保証しない。",
+    "distractors": [
+      "細孔半径のμmをmへ換算していない。",
+      "正解。接触角とμmの換算を含めた。",
+      "cosθを1としてしまった。",
+      "係数2を落とした。"
+    ],
+    "hints": [
+      "接触角は液体側の定義を使う。",
+      "μmは10⁻⁶ m。"
+    ],
+    "solutionSteps": [
+      "分子は0.030 N/m。",
+      "半径は15×10⁻⁶ m。",
+      "比から2.0×10³ N/m²=2.0×10³ Pa。"
+    ],
+    "beginnerPitfall": "半径と直径、接触角の基準側を取り違えない。"
+  },
+  {
+    "id": "supp-heat-pipe-gravity-assisted-margin-v1",
+    "revision": "v1",
+    "field": "沸騰・相変化",
+    "prerequisites": [
+      "ヒートパイプ",
+      "表面張力"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "保存則・相平衡・流動と熱抵抗に基づく独立作問と仮想数値例。原本の本文・図・章末問題の転載ではない。",
+      "chapterId": "ch9",
+      "focusSectionId": "9.11",
+      "guideId": "chapter9-latent-boiling"
+    },
+    "createdStatus": "独立作問",
+    "reviewStatus": "AI内部で独立再計算・全選択肢を確認／原本網羅照合・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "新タスクで独立執筆。保存則から別コードで検算し、条件と誤答理由を確認。外部校閲ではない。"
+      }
+    ],
+    "prompt": "仮想の毛管条件で利用可能圧力3000 Pa、液体・蒸気の流動損失の和2000 Pa、ρ_l=800 kg/m³、g=10 m/s²。蒸発部は凝縮部より0.20 m低い。蒸気静水圧を無視し、Δz=z_evap−z_cond、余裕=Δp_cap−(Δp_loss+ρ_l gΔz)とする。余裕はいくらか。",
+    "choices": [
+      "1.0×10³ Pa",
+      "4.6×10³ Pa",
+      "2.6×10³ Pa",
+      "−6.0×10² Pa"
+    ],
+    "answer": 2,
+    "difficulty": "標準・数値計算",
+    "explanation": "Δz=−0.20 m、ρ_l gΔz=−1600 Pa。必要圧力の単純和は2000−1600=400 Pa、余裕3000−400=2600 Pa。正の余裕は与えた毛管条件だけの結果で、他の限界まで満たしたとはしない。",
+    "distractors": [
+      "高低差による静水圧項を無視した。",
+      "損失の符号まで逆にして足した。",
+      "正解。液体の戻りを助ける負の重力項を使った。",
+      "蒸発部が高い場合の正の重力項を使った。"
+    ],
+    "hints": [
+      "液体は凝縮部から蒸発部へ戻る。",
+      "今回は下りの還流なので重力項は負。"
+    ],
+    "solutionSteps": [
+      "Δz=−0.20 mを設定する。",
+      "流動損失と重力項の和400 Pa。",
+      "3000−400=2600 Pa。"
+    ],
+    "beginnerPitfall": "流動損失は流れを妨げ、高低差の項は姿勢で符号が変わる。"
+  },
+  {
+    "id": "supp-heat-pipe-effective-resistance-v1",
+    "revision": "v1",
+    "field": "沸騰・相変化",
+    "prerequisites": [
+      "ヒートパイプ",
+      "熱抵抗"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "保存則・相平衡・流動と熱抵抗に基づく独立作問と仮想数値例。原本の本文・図・章末問題の転載ではない。",
+      "chapterId": "ch9",
+      "focusSectionId": "9.11",
+      "guideId": "chapter9-latent-boiling"
+    },
+    "createdStatus": "独立作問",
+    "reviewStatus": "AI内部で独立再計算・全選択肢を確認／原本網羅照合・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "新タスクで独立執筆。保存則から別コードで検算し、条件と誤答理由を確認。外部校閲ではない。"
+      }
+    ],
+    "prompt": "ある運転状態でヒートパイプの蒸発部温度60.0 ℃、凝縮部40.0 ℃、熱輸送率100 Wと測定した。R_eff=(T_evap−T_cond)/Q̇で定義した実効熱抵抗はいくらか。",
+    "choices": [
+      "5.0 K/W",
+      "20 K/W",
+      "2000 K/W",
+      "0.20 K/W"
+    ],
+    "answer": 3,
+    "difficulty": "標準・数値計算",
+    "explanation": "R_eff=20/100=0.20 K/W。熱伝導率W/(m·K)と単位も定義も異なり、指定した測定位置と熱負荷・姿勢等での指標。材料固有の一定kを測ったとは言えない。",
+    "distractors": [
+      "熱移動率を温度差で割って逆数にした。",
+      "温度差だけを熱抵抗の数値とした。",
+      "温度差と熱移動率を掛けた。",
+      "正解。温度差20 Kを熱移動率100 Wで割った。"
+    ],
+    "hints": [
+      "温度差は20 K。",
+      "定義の分母は熱輸送率。"
+    ],
+    "solutionSteps": [
+      "60.0−40.0=20.0 K。",
+      "20.0/100=0.20 K/W。",
+      "測定位置・負荷・姿勢と併記する。"
+    ],
+    "beginnerPitfall": "全体実効熱抵抗を、材料の熱伝導率と同一視しない。"
+  },
+  {
+    "id": "supp-heat-pipe-other-limits-v1",
+    "revision": "v1",
+    "field": "沸騰・相変化",
+    "prerequisites": [
+      "ヒートパイプ",
+      "近似"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "conceptual",
+    "source": {
+      "type": "supplement",
+      "reference": "保存則・相平衡・流動と熱抵抗に基づく独立作問と仮想数値例。原本の本文・図・章末問題の転載ではない。",
+      "chapterId": "ch9",
+      "focusSectionId": "9.11",
+      "guideId": "chapter9-latent-boiling"
+    },
+    "createdStatus": "独立作問",
+    "reviewStatus": "AI内部で独立再計算・全選択肢を確認／原本網羅照合・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "新タスクで独立執筆。保存則から別コードで検算し、条件と誤答理由を確認。外部校閲ではない。"
+      }
+    ],
+    "prompt": "仮想計算で毛管圧力に正の余裕が得られた。ヒートパイプの輸送限界の判断として適切なのはどれか。",
+    "choices": [
+      "毛管条件とは別に、音速・同伴・沸騰等の限界も確認する",
+      "毛管余裕が正なので、任意の熱負荷で全ての限界を満たす",
+      "毛管余裕が正なら、蒸気の速度と作動温度は評価から外す",
+      "毛管余裕が正なら、ウィック内の液体が局所的に沸騰しない"
+    ],
+    "answer": 0,
+    "difficulty": "基礎・概念",
+    "explanation": "液体還流を支える圧力条件は必要な確認の一つ。他に蒸気の音速限界、液体同伴、ウィック内沸騰、粘性影響、材料と作動範囲等がある。正の算術余裕だけを全体の許容熱負荷の証明としない。",
+    "distractors": [
+      "正解。一つの圧力条件の成立と全輸送機構の成立を分けた。",
+      "指定負荷での条件を全負荷へ一般化した。",
+      "蒸気限界や物性・飽和圧力への影響を落とした。",
+      "毛管条件だけでは局所沸騰の有無は決まらない。"
+    ],
+    "hints": [
+      "計算したのはどの機構の条件か。",
+      "液体以外に蒸気側の流れもある。"
+    ],
+    "solutionSteps": [
+      "毛管条件の対象を明記する。",
+      "他の輸送限界を列挙する。",
+      "作動条件に合う全ての限界を別に評価する。"
+    ],
+    "beginnerPitfall": "一つの条件を全体の性能保証へ読み替えない。"
+  },
+  {
+    "id": "supp-heat-pipe-pore-tradeoff-v1",
+    "revision": "v1",
+    "field": "沸騰・相変化",
+    "prerequisites": [
+      "ヒートパイプ",
+      "比例"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "applied",
+    "source": {
+      "type": "supplement",
+      "reference": "保存則・相平衡・流動と熱抵抗に基づく独立作問と仮想数値例。原本の本文・図・章末問題の転載ではない。",
+      "chapterId": "ch9",
+      "focusSectionId": "9.11",
+      "guideId": "chapter9-latent-boiling"
+    },
+    "createdStatus": "独立作問",
+    "reviewStatus": "AI内部で独立再計算・全選択肢を確認／原本網羅照合・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "新タスクで独立執筆。保存則から別コードで検算し、条件と誤答理由を確認。外部校閲ではない。"
+      }
+    ],
+    "prompt": "独立の単純モデルで毛管圧力をa/r、液流損失をbQ̇/r²とする（a,b>0一定）。蒸気損失と重力を無視し、毛管限界はa/r=bQ̇_max/r²。細孔半径だけを半分にすると、このモデルのQ̇_maxはどう変わるか。",
+    "choices": [
+      "変わらない",
+      "半分になる",
+      "2倍になる",
+      "4倍になる"
+    ],
+    "answer": 1,
+    "difficulty": "応用・条件判断",
+    "explanation": "両辺にr²を掛けるとa r=bQ̇_max。したがってQ̇_maxはrに比例する。この理想化では細孔を小さくして毛管圧力を増しても液体抵抗の増加がより強く、輸送上限は半分。実ウィックの設計をこの式だけで最適化しない。",
+    "distractors": [
+      "圧力と流動抵抗の半径依存を落とした。",
+      "正解。限界式からQ̇_max=(a/b)rとなる。",
+      "毛管圧力の増加だけを輸送熱へ流用した。",
+      "液流抵抗の4倍を能力の4倍と誤解した。"
+    ],
+    "hints": [
+      "圧力の増加だけでなく損失も変わる。",
+      "限界式をQ̇_maxについて解く。"
+    ],
+    "solutionSteps": [
+      "a r=bQ̇_maxへ変形する。",
+      "Q̇_max=(a/b)r。",
+      "rが半分なら上限も半分。"
+    ],
+    "beginnerPitfall": "細孔を小さくすれば無条件に性能が上がるとは限らない。"
+  },
+  {
+    "id": "supp-heat-pipe-startup-state-v1",
+    "revision": "v1",
+    "field": "沸騰・相変化",
+    "prerequisites": [
+      "ヒートパイプ",
+      "潜熱",
+      "非定常状態"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "applied",
+    "source": {
+      "type": "supplement",
+      "reference": "保存則・相平衡・流動と熱抵抗に基づく独立作問と仮想数値例。原本の本文・図・章末問題の転載ではない。",
+      "chapterId": "ch9",
+      "focusSectionId": "9.11",
+      "guideId": "chapter9-latent-boiling"
+    },
+    "createdStatus": "独立作問",
+    "reviewStatus": "AI内部で独立再計算・全選択肢を確認／原本網羅照合・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "新タスクで独立執筆。保存則から別コードで検算し、条件と誤答理由を確認。外部校閲ではない。"
+      }
+    ],
+    "prompt": "あるヒートパイプを、作動液が凝固した低温状態から起動したい。以前の定常・液体還流モデルに毛管余裕があったという情報の扱いとして適切なのはどれか。",
+    "choices": [
+      "凍結すると潜熱が必ずゼロになり、起動に熱を要しなくなる",
+      "定常条件を満たせば、低温時の圧力と材料の適合は省略する",
+      "融解・起動時の熱収支と作動流体の状態を別に評価する",
+      "毛管余裕があれば、固体のまま同じ循環流量を運ぶ"
+    ],
+    "answer": 2,
+    "difficulty": "応用・条件判断",
+    "explanation": "定常の液体流動損失と毛管圧力を比較した結果は、凍結状態の起動過程を解いていない。融解のエネルギー、熱源と冷却条件、蒸気圧、容器・流体の適合、起動時間等を別に扱う。",
+    "distractors": [
+      "凝固・融解と蒸発の潜熱を混同し、エネルギー収支を消した。",
+      "作動温度が変わると蒸気状態や材料適合も確認が必要。",
+      "正解。液体の定常還流という前提が成立するか確認した。",
+      "液体還流の式を固体の作動流体へ流用した。"
+    ],
+    "hints": [
+      "以前の計算で仮定した相と運転状態を確認する。",
+      "非定常の起動と定常の輸送は別。"
+    ],
+    "solutionSteps": [
+      "作動液が凍っていると整理する。",
+      "融解と起動の収支を立てる。",
+      "定常に達した後で定常の限界式を評価する。"
+    ],
+    "beginnerPitfall": "定常状態の確認を、全ての起動条件へ流用しない。"
   }
 ]

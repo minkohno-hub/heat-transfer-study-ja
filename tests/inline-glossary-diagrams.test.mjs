@@ -14,9 +14,9 @@ test('related terms resolve only exact unambiguous names and safely escape missi
  assert.doesNotMatch(html,/data-term-id="(?:duplicate-a|duplicate-b|current)"/);
 });
 test('expanded glossary has unique canonical Japanese labels and categorical, accurate supplement notes',()=>{
- assert.equal(glossary.length,150);
- assert.equal(new Set(glossary.map(x=>x.id)).size,150);
- assert.equal(new Set(glossary.map(x=>x.ja)).size,150);
+ assert.equal(glossary.length,157);
+ assert.equal(new Set(glossary.map(x=>x.id)).size,157);
+ assert.equal(new Set(glossary.map(x=>x.ja)).size,157);
  const labels=new Map();
  for(const term of glossary)for(const label of [term.ja,...term.aliases]){
   const previous=labels.get(label);

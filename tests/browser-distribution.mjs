@@ -199,7 +199,7 @@ try {
   await page.locator('[data-chapter-card="ch2"]').waitFor({state:'visible'});
   assert.match(await page.locator('[data-chapter-card="ch2"]').innerText(),/収録問題：36問/);
   assert.match(await page.locator('[data-chapter-card="ch1"]').innerText(),/原本の節を読了に記録：1\/5節/);
-  assert.match(await page.locator('[data-chapter-card="ch9"]').innerText(),/収録問題：68問/);
+  assert.match(await page.locator('[data-chapter-card="ch9"]').innerText(),/収録問題：95問/);
   assert.match(await page.locator('[data-chapter-card="ch2"]').innerText(),/未回答：36問/);
   await page.locator('[data-chapter-card="ch2"] [data-chapter-practice-mode="priority"]').click();
   await page.locator('.question-card').waitFor({state:'visible'});
@@ -217,10 +217,10 @@ try {
   await page.locator('[data-action="exit-quiz"]').click();
   await page.locator('[data-action="discard-quiz"]').click();
   await page.locator('#quiz-start-form select[name="chapter"]').selectOption('ch9');
-  await page.locator('#quiz-start-form select[name="count"]').selectOption('371');
+  await page.locator('#quiz-start-form select[name="count"]').selectOption('398');
   await page.locator('#quiz-start-form button[type="submit"]').click();
   await page.locator('.question-card').waitFor({state:'visible'});
-  assert.match(await page.locator('.page-heading h1').innerText(),/1 \/ 68 問/);
+  assert.match(await page.locator('.page-heading h1').innerText(),/1 \/ 95 問/);
   await page.locator('[data-action="exit-quiz"]').click();
   await page.locator('[data-action="discard-quiz"]').click();
   await nav('guide');
@@ -663,11 +663,11 @@ try {
     assert.ok(text.includes(answer),sectionId+' example result');
     assert.match(text,/AI内部/);assert.match(text,/外部学術専門家校閲前/);
   }
-  // Exercise all 38 reviewed additions through the public question bank, not
+  // Exercise the 38 reviewed additions and 27 new flow/phase questions through the bank, not
   // merely their JSON. A vocabulary tap must leave the answer draft intact.
   const pending=await page.evaluate(async()=>
-    (await (await fetch('./data/questions.json')).json()).filter(q=>q.reportHistory?.some(r=>r.type==='internal_independent_check')));
-  assert.equal(pending.length,38);
+    (await (await fetch('./data/questions.json')).json()).filter(q=>q.reportHistory?.some(r=>['internal_independent_check','authored_with_internal_check'].includes(r.type))));
+  assert.equal(pending.length,65);
   const replaceSuspended=dialog=>dialog.accept();
   page.on('dialog',replaceSuspended);
   for(const q of pending){
