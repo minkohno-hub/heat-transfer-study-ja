@@ -36219,5 +36219,453 @@
       "管内や別形状へ流用せず、適合する別モデルを選ぶ。"
     ],
     "beginnerPitfall": "計算可能性と、相関が物理的に適用できることを区別する。"
+  },
+  {
+    "id": "supp-heatpipe-limit-merit-v1",
+    "revision": "v1",
+    "field": "沸騰・相変化",
+    "prerequisites": [
+      "ヒートパイプ",
+      "圧力損失",
+      "相関式の適用条件"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "一般的な流体・相変化の法則と独自の仮想条件から作問。原本の文章・図・例題は転載しない。",
+      "chapterId": "ch9",
+      "focusSectionId": "9.11",
+      "guideId": "chapter9-latent-boiling"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "2026-10-30：内部の別式検算・単位・条件・全選択肢確認／原本網羅照合・包括的品質監査・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-30",
+        "type": "authored_with_internal_check",
+        "details": "docs/HEAT_PIPE_LIMITS_20261030.md。独立モデルの保存則・単位・数値・全候補を内部検算。実機の限界相関や外部専門家承認ではない。"
+      }
+    ],
+    "prompt": "作動流体の比較指標をM=h_fgσ/ν_l、ν_l=μ_l/ρ_lと定義する。h_fg=1.00×10⁶ J/kg、σ=0.0400 N/m、μ_l=0.00100 Pa·s、ρ_l=800 kg/m³のときMはいくらか。有効数字3桁とする。",
+    "choices": [
+      "3.20×10¹⁰ kg/s³",
+      "4.00×10⁷ kg/s³",
+      "3.20×10⁴ kg/s³",
+      "3.20×10¹³ kg/s³"
+    ],
+    "answer": 0,
+    "difficulty": "標準・数値計算",
+    "explanation": "ν_l=0.00100/800=1.25×10⁻⁶ m²/s。M=(1.00×10⁶)×0.0400/(1.25×10⁻⁶)=3.20×10¹⁰ kg/s³。これは流体比較の指標で、装置の熱輸送上限ではない。",
+    "distractors": [
+      "正解。動粘度1.25×10⁻⁶ m²/sを使った。",
+      "動粘度ではなく粘度を分母へ入れ、単位も取り違えた。",
+      "h_fgのJ/kgをMJ/kgへ換算した数値だけを式へ入れた。",
+      "粘度を1000分の1として扱った。"
+    ],
+    "hints": [
+      "粘度を密度で割り、動粘度へ換算する。",
+      "潜熱の単位はJ/kgでそろえる。"
+    ],
+    "solutionSteps": [
+      "粘度を密度で割り、動粘度へ換算する。",
+      "潜熱の単位はJ/kgでそろえる。",
+      "Mを計算し、有効数字3桁にする。",
+      "kg/s³であり熱伝導率の単位ではないと確認する。"
+    ],
+    "beginnerPitfall": "性能指数だけで作動温度・材料適合性を決めない。"
+  },
+  {
+    "id": "supp-heatpipe-limit-darcy-v1",
+    "revision": "v1",
+    "field": "沸騰・相変化",
+    "prerequisites": [
+      "ヒートパイプ",
+      "圧力損失",
+      "相関式の適用条件"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "一般的な流体・相変化の法則と独自の仮想条件から作問。原本の文章・図・例題は転載しない。",
+      "chapterId": "ch9",
+      "focusSectionId": "9.11",
+      "guideId": "chapter9-latent-boiling"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "2026-10-30：内部の別式検算・単位・条件・全選択肢確認／原本網羅照合・包括的品質監査・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-30",
+        "type": "authored_with_internal_check",
+        "details": "docs/HEAT_PIPE_LIMITS_20261030.md。独立モデルの保存則・単位・数値・全候補を内部検算。実機の限界相関や外部専門家承認ではない。"
+      }
+    ],
+    "prompt": "飽和ウィックをDarcy流れとし、Δp_l=μ_lL_lṁ/(K A_wρ_l)、ṁ=Q̇/h_fgを用いる。Q̇=20.0 W、h_fg=1.00×10⁶ J/kg、μ_l=0.00100 Pa·s、L_l=1.00 m、K=1.00×10⁻⁹ m²、A_w=1.00×10⁻⁵ m²、ρ_l=800 kg/m³のときΔp_lはいくらか。A_wはウィック全断面、有効数字3桁とする。",
+    "choices": [
+      "2.50×10² Pa",
+      "2.50×10³ Pa",
+      "2.00×10⁶ Pa",
+      "2.50×10⁹ Pa"
+    ],
+    "answer": 1,
+    "difficulty": "標準・数値計算",
+    "explanation": "ṁ=20.0/10⁶=2.00×10⁻⁵ kg/s、j_l=ṁ/(ρ_lA_w)=0.00250 m/s、Δp_l=0.00100×1.00×0.00250/10⁻⁹=2500 Pa。",
+    "distractors": [
+      "透過率Kを10倍に読み違えた。",
+      "正解。潜熱循環流量から体積流量へ換算した値。",
+      "体積流量への換算でρ_lによる除算を落とした。",
+      "Q̇の数値をそのまま質量流量として使った。"
+    ],
+    "hints": [
+      "熱移動率から循環質量流量を求める。",
+      "ρ_lA_wで割りDarcy速度へ換算する。"
+    ],
+    "solutionSteps": [
+      "熱移動率から循環質量流量を求める。",
+      "ρ_lA_wで割りDarcy速度へ換算する。",
+      "Darcy則へ代入する。",
+      "圧力の単位Paと、空隙内速度ではないことを確認する。"
+    ],
+    "beginnerPitfall": "空隙率の補正を面積へ二重に掛けない。"
+  },
+  {
+    "id": "supp-heatpipe-limit-capillary-load-v1",
+    "revision": "v1",
+    "field": "沸騰・相変化",
+    "prerequisites": [
+      "ヒートパイプ",
+      "圧力損失",
+      "相関式の適用条件"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "一般的な流体・相変化の法則と独自の仮想条件から作問。原本の文章・図・例題は転載しない。",
+      "chapterId": "ch9",
+      "focusSectionId": "9.11",
+      "guideId": "chapter9-latent-boiling"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "2026-10-30：内部の別式検算・単位・条件・全選択肢確認／原本網羅照合・包括的品質監査・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-30",
+        "type": "authored_with_internal_check",
+        "details": "docs/HEAT_PIPE_LIMITS_20261030.md。独立モデルの保存則・単位・数値・全候補を内部検算。実機の限界相関や外部専門家承認ではない。"
+      }
+    ],
+    "prompt": "仮想の線形圧損モデルで、利用可能毛管圧力4000 Pa、液体の還流を妨げる重力項800 Pa、流動圧損の和Δp_l+Δp_v=(125.10 Pa/W)Q̇とする。他の限界は別評価として、毛管条件が等号になるQ̇の候補値はいくらか。有効数字3桁とする。",
+    "choices": [
+      "38.4 W",
+      "2.56 W",
+      "25.6 W",
+      "32.0 W"
+    ],
+    "answer": 2,
+    "difficulty": "標準・数値計算",
+    "explanation": "4000=125.10Q̇+800。Q̇=3200/125.10≈25.5795 W、丸めて25.6 W。これは指定モデルの毛管条件の候補上限で、音速・同伴・沸騰等の確認を置き換えない。",
+    "distractors": [
+      "重力が還流を助けると逆符号にした。",
+      "圧損係数を10倍に読み違えた。",
+      "正解。(4000−800)/125.10を計算した。",
+      "重力による必要圧力を無視した。"
+    ],
+    "hints": [
+      "利用可能圧力から重力の必要分を引く。",
+      "流動へ使える圧力は3200 Pa。"
+    ],
+    "solutionSteps": [
+      "利用可能圧力から重力の必要分を引く。",
+      "流動へ使える圧力は3200 Pa。",
+      "Pa/Wの係数で割る。",
+      "他の限界を未評価として残す。"
+    ],
+    "beginnerPitfall": "正の圧力余裕だけで実機の最大熱負荷を保証しない。"
+  },
+  {
+    "id": "supp-heatpipe-limit-mach-v1",
+    "revision": "v1",
+    "field": "沸騰・相変化",
+    "prerequisites": [
+      "ヒートパイプ",
+      "圧力損失",
+      "相関式の適用条件"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "一般的な流体・相変化の法則と独自の仮想条件から作問。原本の文章・図・例題は転載しない。",
+      "chapterId": "ch9",
+      "focusSectionId": "9.11",
+      "guideId": "chapter9-latent-boiling"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "2026-10-30：内部の別式検算・単位・条件・全選択肢確認／原本網羅照合・包括的品質監査・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-30",
+        "type": "authored_with_internal_check",
+        "details": "docs/HEAT_PIPE_LIMITS_20261030.md。独立モデルの保存則・単位・数値・全候補を内部検算。実機の限界相関や外部専門家承認ではない。"
+      }
+    ],
+    "prompt": "潜熱輸送の運転点をṁ=Q̇/h_fg、v_v=ṁ/(ρ_vA_v)、Ma=v_v/a_sで評価する。Q̇=200 W、h_fg=1.00×10⁶ J/kg、ρ_v=2.00 kg/m³、蒸気流路断面積A_v=1.00×10⁻⁴ m²、局所音速a_s=400 m/sのときMaはいくらか。有効数字3桁とする。",
+    "choices": [
+      "2.50×10⁻¹",
+      "2.00×10⁻⁴",
+      "1.00×10⁰",
+      "2.50×10⁻³"
+    ],
+    "answer": 3,
+    "difficulty": "標準・数値計算",
+    "explanation": "ṁ=2.00×10⁻⁴ kg/s、ρ_vA_v=2.00×10⁻⁴ kg/m、v_v=1.00 m/s、Ma=1.00/400=0.00250。運転点での低速の確認であり、厳密な音速限界の熱負荷を求めたわけではない。",
+    "distractors": [
+      "音速を100分の1として扱った。",
+      "循環質量流量の数値を無次元Mach数として答えた。",
+      "蒸気速度の数値をそのままMach数にした。",
+      "正解。質量流量2.00×10⁻⁴ kg/sから速度1.00 m/sを求め、音速で割った。"
+    ],
+    "hints": [
+      "潜熱から循環流量を求める。",
+      "蒸気密度と流路断面積で割る。"
+    ],
+    "solutionSteps": [
+      "潜熱から循環流量を求める。",
+      "蒸気密度と流路断面積で割る。",
+      "局所の音速で速度を割る。",
+      "Mach数は無次元である。"
+    ],
+    "beginnerPitfall": "蒸気流路断面積と蒸発表面積を混同しない。"
+  },
+  {
+    "id": "supp-heatpipe-limit-entrainment-v1",
+    "revision": "v1",
+    "field": "沸騰・相変化",
+    "prerequisites": [
+      "ヒートパイプ",
+      "圧力損失",
+      "相関式の適用条件"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "一般的な流体・相変化の法則と独自の仮想条件から作問。原本の文章・図・例題は転載しない。",
+      "chapterId": "ch9",
+      "focusSectionId": "9.11",
+      "guideId": "chapter9-latent-boiling"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "2026-10-30：内部の別式検算・単位・条件・全選択肢確認／原本網羅照合・包括的品質監査・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-30",
+        "type": "authored_with_internal_check",
+        "details": "docs/HEAT_PIPE_LIMITS_20261030.md。独立モデルの保存則・単位・数値・全候補を内部検算。実機の限界相関や外部専門家承認ではない。"
+      }
+    ],
+    "prompt": "学習用に液体を静止とし、所与の同伴基準We_c=ρ_vv_v²ℓ/σを使えると仮定する。We_c=0.500、ρ_v=2.00 kg/m³、ℓ=0.00100 m、σ=0.0400 N/m、A_v=5.00×10⁻⁵ m²、h_fg=1.00×10⁶ J/kg。Q̇_ent=ρ_vA_vh_fgv_vの候補値はいくらか。有効数字3桁とし、普遍的な実機の同伴限界とはしない。",
+    "choices": [
+      "316 W",
+      "447 W",
+      "632 W",
+      "100 W"
+    ],
+    "answer": 0,
+    "difficulty": "標準・数値計算",
+    "explanation": "v_v=[0.500×0.0400/(2.00×0.00100)]^(1/2)=sqrt(10)≈3.16228 m/s。Q̇_ent=2.00×(5.00×10⁻⁵)×10⁶×3.16228≈316.228 W。所与の基準と長さの選択を実機で別途照合する。",
+    "distractors": [
+      "正解。速度sqrt(10) m/sから熱移動率へ換算した。",
+      "指定のWe_c=0.500を1.00へ置き換えた。",
+      "速度から熱移動率への換算で密度をもう一度掛けた。",
+      "Weber基準を解かず速度を1 m/sと置いた。"
+    ],
+    "hints": [
+      "所与のWe_cから速度の二乗を求める。",
+      "正の速度sqrt(10) m/sを使う。"
+    ],
+    "solutionSteps": [
+      "所与のWe_cから速度の二乗を求める。",
+      "正の速度sqrt(10) m/sを使う。",
+      "ρ_vA_vh_fgを掛ける。",
+      "元のWe_cへ戻して検算する。"
+    ],
+    "beginnerPitfall": "We_cや代表長さを別のウィックへ根拠なく転用しない。"
+  },
+  {
+    "id": "supp-heatpipe-limit-evaporator-area-v1",
+    "revision": "v1",
+    "field": "沸騰・相変化",
+    "prerequisites": [
+      "ヒートパイプ",
+      "圧力損失",
+      "相関式の適用条件"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "一般的な流体・相変化の法則と独自の仮想条件から作問。原本の文章・図・例題は転載しない。",
+      "chapterId": "ch9",
+      "focusSectionId": "9.11",
+      "guideId": "chapter9-latent-boiling"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "2026-10-30：内部の別式検算・単位・条件・全選択肢確認／原本網羅照合・包括的品質監査・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-30",
+        "type": "authored_with_internal_check",
+        "details": "docs/HEAT_PIPE_LIMITS_20261030.md。独立モデルの保存則・単位・数値・全候補を内部検算。実機の限界相関や外部専門家承認ではない。"
+      }
+    ],
+    "prompt": "同じ作動条件・ウィックで適合確認した許容熱流束q″_evap,lim=1.00×10⁵ W/m²を、均一な蒸発表面の合計面積A_evap=5.00×10⁻⁴ m²へ使う。蒸気流路の断面積はA_v=1.00×10⁻⁴ m²である。蒸発表面の熱流束条件による候補熱負荷Q̇_evapはいくらか。",
+    "choices": [
+      "100 W",
+      "50.0 W",
+      "10.0 W",
+      "500 W"
+    ],
+    "answer": 1,
+    "difficulty": "標準・数値計算",
+    "explanation": "Q̇_evap=q″_evap,lim A_evap=10⁵×(5.00×10⁻⁴)=50.0 W。A_vは蒸気速度の評価に用いる別の面積。適合条件の異なるプール沸騰のCHF等をそのまま使うものではない。",
+    "distractors": [
+      "与えられた合計表面積をさらに2倍した。",
+      "正解。許容熱流束に蒸発表面積を掛けた。",
+      "蒸気流路断面積A_vを掛けてしまった。",
+      "面積か熱流束を10倍に読み違えた。"
+    ],
+    "hints": [
+      "熱流束が作用する面積を選ぶ。",
+      "指定された蒸発表面の合計面積を使う。"
+    ],
+    "solutionSteps": [
+      "熱流束が作用する面積を選ぶ。",
+      "指定された蒸発表面の合計面積を使う。",
+      "W/m²にm²を掛ける。",
+      "蒸気速度に使うA_vとは別だと確認する。"
+    ],
+    "beginnerPitfall": "加熱される表面積と、流体が通る断面積を区別する。"
+  },
+  {
+    "id": "supp-heatpipe-limit-combined-v1",
+    "revision": "v1",
+    "field": "沸騰・相変化",
+    "prerequisites": [
+      "ヒートパイプ",
+      "圧力損失",
+      "相関式の適用条件"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "applied",
+    "source": {
+      "type": "supplement",
+      "reference": "一般的な流体・相変化の法則と独自の仮想条件から作問。原本の文章・図・例題は転載しない。",
+      "chapterId": "ch9",
+      "focusSectionId": "9.11",
+      "guideId": "chapter9-latent-boiling"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "2026-10-30：内部の別式検算・単位・条件・全選択肢確認／原本網羅照合・包括的品質監査・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-30",
+        "type": "authored_with_internal_check",
+        "details": "docs/HEAT_PIPE_LIMITS_20261030.md。独立モデルの保存則・単位・数値・全候補を内部検算。実機の限界相関や外部専門家承認ではない。"
+      }
+    ],
+    "prompt": "同じ動作温度・姿勢・流体・幾何で評価できた仮想の候補上限が、毛管80 W、音速120 W、同伴60 W、蒸発部100 Wである。未評価条件と設計余裕は別に残す。この四つを同時に超えない熱負荷の候補上限はいくらか。",
+    "choices": [
+      "100 W",
+      "120 W",
+      "60 W",
+      "80 W"
+    ],
+    "answer": 2,
+    "difficulty": "概念・適用判断",
+    "explanation": "同じ動作条件の候補上限を比較するなら最小値min(80,120,60,100)=60 W。これは未評価の条件まで満たす安全保証でも、境界値での運転推奨でもない。",
+    "distractors": [
+      "蒸発部条件だけを見て毛管・同伴を超えている。",
+      "最大の値を選び、他の三つの制約を超えている。",
+      "正解。最小の同伴限界が制約となる。",
+      "毛管条件だけを見て同伴の60 Wを超えている。"
+    ],
+    "hints": [
+      "四つの限界を同時に守る必要がある。",
+      "最大値ではなく最小値を選ぶ。"
+    ],
+    "solutionSteps": [
+      "四つの限界を同時に守る必要がある。",
+      "最大値ではなく最小値を選ぶ。",
+      "最小値は同伴の60 W。",
+      "未評価条件と設計余裕を残す。"
+    ],
+    "beginnerPitfall": "異なる温度で得た各限界の最大値を寄せ集めない。"
+  },
+  {
+    "id": "supp-heatpipe-limit-fluid-selection-v1",
+    "revision": "v1",
+    "field": "沸騰・相変化",
+    "prerequisites": [
+      "ヒートパイプ",
+      "圧力損失",
+      "相関式の適用条件"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "conceptual",
+    "source": {
+      "type": "supplement",
+      "reference": "一般的な流体・相変化の法則と独自の仮想条件から作問。原本の文章・図・例題は転載しない。",
+      "chapterId": "ch9",
+      "focusSectionId": "9.11",
+      "guideId": "chapter9-latent-boiling"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "2026-10-30：内部の別式検算・単位・条件・全選択肢確認／原本網羅照合・包括的品質監査・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-30",
+        "type": "authored_with_internal_check",
+        "details": "docs/HEAT_PIPE_LIMITS_20261030.md。独立モデルの保存則・単位・数値・全候補を内部検算。実機の限界相関や外部専門家承認ではない。"
+      }
+    ],
+    "prompt": "ヒートパイプの作動流体を性能指数M=h_fgσ/ν_lで比較した。最終選定として適切な方針はどれか。",
+    "choices": [
+      "Mが最大なら、作動温度に関係なく同じ流体を選ぶ",
+      "Mに粘度が含まれるので、容器の材料適合性は省く",
+      "Mが同じなら、ウィックの透過率も同じだと考える",
+      "Mに加え、作動温度・濡れ・材料適合性を確かめる"
+    ],
+    "answer": 3,
+    "difficulty": "概念・適用判断",
+    "explanation": "Mは潜熱・表面張力・動粘度による流体比較の指標。容器とウィックとの化学的適合、作動温度域、濡れ、熱抵抗等を別に確認する。同じMでも実装置の許容熱負荷は同じとは限らない。",
+    "distractors": [
+      "物性と飽和状態は温度に依存し、作動範囲の確認が必要。",
+      "流動の物性指標は腐食・ガス生成等の適合性を表さない。",
+      "透過率はウィックの構造にも依存し、流体のMだけでは決まらない。",
+      "正解。Mだけで扱えない温度・濡れ・化学的適合性も確認する。"
+    ],
+    "hints": [
+      "Mに含まれる物性と含まれない条件を分ける。",
+      "容器・ウィックの構造と材質はMだけで決まらない。"
+    ],
+    "solutionSteps": [
+      "Mに含まれる物性と含まれない条件を分ける。",
+      "容器・ウィックの構造と材質はMだけで決まらない。",
+      "作動温度域と濡れ・化学的適合性を確認する。",
+      "装置としての限界と熱抵抗を別に評価する。"
+    ],
+    "beginnerPitfall": "流体の性能指数を装置固有の最大熱輸送量と同一視しない。"
   }
 ]
