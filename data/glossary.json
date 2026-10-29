@@ -11269,5 +11269,399 @@
       "reference": "教材第5章の非定常・多次元熱伝導を解くための補足数学・数値計算用語。熱方程式の陽解法の安定条件・陰解法・格子収束はSolving PDE MOOC（https://aquaulb.github.io/book_solving_pde_mooc/solving_pde_mooc/notebooks/04_PartialDifferentialEquations/04_03_Diffusion_Explicit.html）とNumerical Analysis 2025（https://gustavdelius.github.io/NumericalAnalysis2025/nmPDE.html）を参考に独自記述。原書翻訳や図版転載ではなく外部専門家校閲前。"
     },
     "reviewStatus": "needs_review"
+  },
+  {
+    "id": "fanning-friction-factor",
+    "ja": "ファニング摩擦係数",
+    "en": "Fanning friction factor",
+    "aliases": [
+      "ファニングの摩擦係数"
+    ],
+    "category": "管内流動・対流",
+    "brief": "管内の壁面せん断応力を流れの動圧で無次元化した摩擦係数。",
+    "meaning": "管内の壁面せん断応力を流れの動圧で無次元化した摩擦係数。",
+    "beginner": "配管の流れにくさを表す摩擦係数には、定義が4倍違うものがあります。どちらを使うか間違えると圧力損失が4倍ずれます。",
+    "detail": "ファニング摩擦係数f_F=|τ_w|/(ρU²/2)は、壁面せん断応力の大きさと平均流速Uに基づく動圧との比。ダルシー摩擦係数f_D=4f_Fと区別する。十分発達した円管層流ならf_F=16/Re_D、f_D=64/Re_D。配管損失式のfの定義は文献によって異なるため係数と式を必ず照合する。",
+    "formula": "f_F=|τ_w|/(ρU²/2)=f_D/4",
+    "unit": "f_F,f_D: 無次元、τ_w: Pa、ρU²/2: Pa",
+    "example": "円管層流Re_D=1000ならf_F=16/1000=0.016、ダルシー係数f_D=0.064。",
+    "related": [
+      "ダルシー摩擦係数",
+      "壁面せん断応力",
+      "レイノルズ数",
+      "円管層流の摩擦係数"
+    ],
+    "relatedSections": [
+      "7.2",
+      "7.3"
+    ],
+    "relatedQuestions": [],
+    "relatedSimulators": [],
+    "confusions": [
+      "ファニング係数とダルシー係数を同じ数値で扱うと摩擦損失に4倍の誤差が出る。"
+    ],
+    "source": {
+      "type": "supplement",
+      "reference": "第7章の円管内流動・摩擦損失・乱流伝熱の一般理論を独立記述。式の適用範囲はIAEA Sodium Coolant Handbook, 2025（https://www-pub.iaea.org/MTCD/Publications/PDF/CRCP_SOD_003web.pdf）およびORNL/TM-2015/656のGnielinski相関（https://www.comsol.jp/paper/download/298121/Pub59883.pdf）も参考に確認。原書の翻訳・図版転載ではなく専門家校閲前。"
+    },
+    "reviewStatus": "needs_review"
+  },
+  {
+    "id": "darcy-weisbach-equation",
+    "ja": "ダルシー・ワイスバッハ式",
+    "en": "Darcy–Weisbach equation",
+    "aliases": [
+      "ダルシー・ワイスバッハの圧力損失式"
+    ],
+    "category": "管内流動・対流",
+    "brief": "管内流の壁面摩擦による圧力損失を摩擦係数と管の長さなどから見積もる式。",
+    "meaning": "管内流の壁面摩擦による圧力損失を摩擦係数と管の長さなどから見積もる式。",
+    "beginner": "流体が管を通ると、壁との摩擦で圧力が下がります。長い管ほど損失が増えるという基本関係を使います。",
+    "detail": "一様な円管の平均流速U、管内径D、長さL、密度ρに対し壁面摩擦損失をΔp_f=f_D(L/D)(ρU²/2)で評価する。f_Dはダルシー摩擦係数。曲がり・弁・出入口の局所損失、重力や加速による静圧変化は別途考える。円管以外では水力直径や適切な摩擦係数を用いる必要がある。",
+    "formula": "Δp_f=f_D(L/D)(ρU²/2)",
+    "unit": "Δp_f: Pa、f_D: 無次元、L,D: m、ρ: kg/m³、U: m/s",
+    "example": "f_D=0.04、L=10 m、D=0.05 m、ρ=1000 kg/m³、U=1 m/sなら摩擦圧損は4000 Pa。",
+    "related": [
+      "ダルシー摩擦係数",
+      "質量流量",
+      "断面平均流速",
+      "熱交換器の圧力損失"
+    ],
+    "relatedSections": [
+      "7.2",
+      "7.3",
+      "7.4"
+    ],
+    "relatedQuestions": [],
+    "relatedSimulators": [],
+    "confusions": [
+      "圧力差すべてが壁面摩擦とは限らず、局所損失や高さの変化は分けて計算する。"
+    ],
+    "source": {
+      "type": "supplement",
+      "reference": "第7章の円管内流動・摩擦損失・乱流伝熱の一般理論を独立記述。式の適用範囲はIAEA Sodium Coolant Handbook, 2025（https://www-pub.iaea.org/MTCD/Publications/PDF/CRCP_SOD_003web.pdf）およびORNL/TM-2015/656のGnielinski相関（https://www.comsol.jp/paper/download/298121/Pub59883.pdf）も参考に確認。原書の翻訳・図版転載ではなく専門家校閲前。"
+    },
+    "reviewStatus": "needs_review"
+  },
+  {
+    "id": "hagen-poiseuille-law",
+    "ja": "ハーゲン・ポアズイユ則",
+    "en": "Hagen–Poiseuille law",
+    "aliases": [
+      "ポアズイユの法則"
+    ],
+    "category": "管内流動・対流",
+    "brief": "十分発達した円管層流の体積流量と圧力損失を結ぶ厳密な関係。",
+    "meaning": "十分発達した円管層流の体積流量と圧力損失を結ぶ厳密な関係。",
+    "beginner": "細い管を通すほど流体を押し流すのに強い圧力差が必要です。流量は管径の4乗に非常に強く依存します。",
+    "detail": "非圧縮・ニュートン流体・一定粘度・十分発達した定常円管層流で、水平管などの摩擦圧力損失Δp_fと体積流量V̇はV̇=πD⁴Δp_f/(128μL)。管径Dの4乗で流量が変わる。入口助走域、乱流、非ニュートン流体、流路変形が大きい場合にはこの式はそのまま適用できない。",
+    "formula": "V̇=πD⁴Δp_f/(128μL)",
+    "unit": "V̇: m³/s、D,L: m、μ: Pa·s、Δp_f: Pa",
+    "example": "同じ管長・粘度・圧力差で内径Dを2倍にすると、理想的な十分発達した層流では体積流量が16倍になる。",
+    "related": [
+      "層流",
+      "粘度",
+      "体積流量",
+      "ダルシー・ワイスバッハ式"
+    ],
+    "relatedSections": [
+      "7.2"
+    ],
+    "relatedQuestions": [],
+    "relatedSimulators": [],
+    "confusions": [
+      "流量のD⁴依存は同じ圧力差の条件であり、流量を固定した場合の損失変化とは区別する。"
+    ],
+    "source": {
+      "type": "supplement",
+      "reference": "第7章の円管内流動・摩擦損失・乱流伝熱の一般理論を独立記述。式の適用範囲はIAEA Sodium Coolant Handbook, 2025（https://www-pub.iaea.org/MTCD/Publications/PDF/CRCP_SOD_003web.pdf）およびORNL/TM-2015/656のGnielinski相関（https://www.comsol.jp/paper/download/298121/Pub59883.pdf）も参考に確認。原書の翻訳・図版転載ではなく専門家校閲前。"
+    },
+    "reviewStatus": "needs_review"
+  },
+  {
+    "id": "laminar-circular-pipe-friction",
+    "ja": "円管層流の摩擦係数",
+    "en": "friction factor for fully developed laminar pipe flow",
+    "aliases": [
+      "円管層流f=64/Re"
+    ],
+    "category": "管内流動・対流",
+    "brief": "十分発達した円管層流でダルシー摩擦係数がレイノルズ数の逆数となる関係。",
+    "meaning": "十分発達した円管層流でダルシー摩擦係数がレイノルズ数の逆数となる関係。",
+    "beginner": "管の流れがなめらかな層流なら、壁との摩擦を表す数がReから直接求まります。乱流では同じ式は使えません。",
+    "detail": "非圧縮ニュートン流体の十分発達した円管層流では、ダルシー摩擦係数f_D=64/Re_Dが理論的に導かれる。対応するファニング係数は16/Re_Dである。入口助走区間や乱流では適用できず、非円形ダクトでは十分発達層流でも一般に64/Re_Dとならない。滑らか・粗い表面の区別はこの理想的層流の式に現れない。",
+    "formula": "f_D=64/Re_D、f_F=16/Re_D（十分発達円管層流）",
+    "unit": "f_D,f_F,Re_D: 無次元",
+    "example": "Re_D=800ならf_D=64/800=0.080、f_F=0.020。",
+    "related": [
+      "ダルシー摩擦係数",
+      "ファニング摩擦係数",
+      "層流",
+      "レイノルズ数"
+    ],
+    "relatedSections": [
+      "7.2",
+      "7.3"
+    ],
+    "relatedQuestions": [],
+    "relatedSimulators": [],
+    "confusions": [
+      "f_D=64/Re_Dは十分発達円管層流の値であり、すべての管・流動域の式ではない。"
+    ],
+    "source": {
+      "type": "supplement",
+      "reference": "第7章の円管内流動・摩擦損失・乱流伝熱の一般理論を独立記述。式の適用範囲はIAEA Sodium Coolant Handbook, 2025（https://www-pub.iaea.org/MTCD/Publications/PDF/CRCP_SOD_003web.pdf）およびORNL/TM-2015/656のGnielinski相関（https://www.comsol.jp/paper/download/298121/Pub59883.pdf）も参考に確認。原書の翻訳・図版転載ではなく専門家校閲前。"
+    },
+    "reviewStatus": "needs_review"
+  },
+  {
+    "id": "dynamic-pressure",
+    "ja": "動圧",
+    "en": "dynamic pressure",
+    "aliases": [
+      "流速に基づく動圧"
+    ],
+    "category": "管内流動・対流",
+    "brief": "流体密度と速度の二乗から作る、流れの運動エネルギーに対応する圧力尺度。",
+    "meaning": "流体密度と速度の二乗から作る、流れの運動エネルギーに対応する圧力尺度。",
+    "beginner": "速い流れほど配管の抵抗や物体に働く力が増えやすい理由を、圧力の単位で表した指標です。",
+    "detail": "動圧q=ρU²/2は運動エネルギー密度の単位Paを持ち、局所損失Δp=Kqやダルシー摩擦損失の式などで使う。流れの静圧pとは区別する。非圧縮・非粘性・同一流線などの条件下ではベルヌーイ式の静圧と動圧が関係するが、粘性損失や高さの変化を無視できない流れへ無条件に適用できない。",
+    "formula": "q=ρU²/2",
+    "unit": "q: Pa、ρ: kg/m³、U: m/s",
+    "example": "ρ=1000 kg/m³、U=2 m/sなら動圧は2000 Pa。",
+    "related": [
+      "密度",
+      "断面平均流速",
+      "ダルシー・ワイスバッハ式",
+      "局所損失係数"
+    ],
+    "relatedSections": [
+      "7.2",
+      "7.3",
+      "7.6"
+    ],
+    "relatedQuestions": [],
+    "relatedSimulators": [],
+    "confusions": [
+      "動圧ρU²/2は静圧そのものではなく、ベルヌーイ式で同一視しない。"
+    ],
+    "source": {
+      "type": "supplement",
+      "reference": "第7章の円管内流動・摩擦損失・乱流伝熱の一般理論を独立記述。式の適用範囲はIAEA Sodium Coolant Handbook, 2025（https://www-pub.iaea.org/MTCD/Publications/PDF/CRCP_SOD_003web.pdf）およびORNL/TM-2015/656のGnielinski相関（https://www.comsol.jp/paper/download/298121/Pub59883.pdf）も参考に確認。原書の翻訳・図版転載ではなく専門家校閲前。"
+    },
+    "reviewStatus": "needs_review"
+  },
+  {
+    "id": "minor-loss-coefficient",
+    "ja": "局所損失係数",
+    "en": "minor loss coefficient",
+    "aliases": [
+      "形状損失係数"
+    ],
+    "category": "管内流動・対流",
+    "brief": "曲がり・継手・弁・入口出口などで生じる局所的な圧力損失を動圧で無次元化した係数。",
+    "meaning": "曲がり・継手・弁・入口出口などで生じる局所的な圧力損失を動圧で無次元化した係数。",
+    "beginner": "管の曲がり角やバルブでも流れにくさが増えます。まっすぐな管の摩擦とは別に、追加の損失を計算します。",
+    "detail": "局所損失係数KはΔp_minor=KρU_ref²/2として定義される。U_refはどの断面の平均流速か明記する必要がある。曲がりの角度、曲率、弁開度、レイノルズ数、隣接する流路構造によってKが変わる。長い直管の壁面摩擦損失f_D(L/D)ρU²/2とは区別するが、適切に定義された同じ基準動圧で両者を足して装置損失を見積もれる。",
+    "formula": "Δp_minor=KρU_ref²/2",
+    "unit": "Δp_minor: Pa、K: 無次元、ρ: kg/m³、U_ref: m/s",
+    "example": "局所損失係数K=2、密度1000 kg/m³、基準流速1 m/sなら局所圧損は1000 Pa。",
+    "related": [
+      "動圧",
+      "ダルシー・ワイスバッハ式",
+      "熱交換器の圧力損失"
+    ],
+    "relatedSections": [
+      "7.3",
+      "7.4"
+    ],
+    "relatedQuestions": [],
+    "relatedSimulators": [],
+    "confusions": [
+      "局所損失のKは熱伝導率kやフィンパラメータmと物理的に別であり、適切な基準流速の指定が必要。"
+    ],
+    "source": {
+      "type": "supplement",
+      "reference": "第7章の円管内流動・摩擦損失・乱流伝熱の一般理論を独立記述。式の適用範囲はIAEA Sodium Coolant Handbook, 2025（https://www-pub.iaea.org/MTCD/Publications/PDF/CRCP_SOD_003web.pdf）およびORNL/TM-2015/656のGnielinski相関（https://www.comsol.jp/paper/download/298121/Pub59883.pdf）も参考に確認。原書の翻訳・図版転載ではなく専門家校閲前。"
+    },
+    "reviewStatus": "needs_review"
+  },
+  {
+    "id": "relative-pipe-roughness",
+    "ja": "相対粗さ（管内流）",
+    "en": "relative pipe roughness",
+    "aliases": [
+      "相対表面粗さ"
+    ],
+    "category": "管内流動・対流",
+    "brief": "管内面の代表粗さを管内径で割り、壁面凹凸の相対的な大きさを表す無次元比。",
+    "meaning": "管内面の代表粗さを管内径で割り、壁面凹凸の相対的な大きさを表す無次元比。",
+    "beginner": "同じ高さの凹凸でも、太い管と細い管では流れに与える影響が異なります。管径との比で比較します。",
+    "detail": "管の代表的な等価砂粒粗さε_rを管内径Dで割ったε_r/Dを相対粗さという。乱流のダルシー摩擦係数はReと相対粗さに依存する。実際の表面のRa等の算術平均粗さが、そのまま等価砂粒粗さと同じとは限らない。円管の十分発達層流では理想的な64/Re関係に粗さが陽には現れない。",
+    "formula": "相対粗さ=ε_r/D",
+    "unit": "ε_r,D: m、比: 無次元",
+    "example": "等価砂粒粗さε_r=0.05 mm、管径D=50 mmなら相対粗さ0.001。",
+    "related": [
+      "ダルシー摩擦係数",
+      "ムーディー線図",
+      "レイノルズ数"
+    ],
+    "relatedSections": [
+      "7.3",
+      "7.4"
+    ],
+    "relatedQuestions": [],
+    "relatedSimulators": [],
+    "confusions": [
+      "等価砂粒粗さをRaなど別の粗さ指標へ換算するには根拠が必要。"
+    ],
+    "source": {
+      "type": "supplement",
+      "reference": "第7章の円管内流動・摩擦損失・乱流伝熱の一般理論を独立記述。式の適用範囲はIAEA Sodium Coolant Handbook, 2025（https://www-pub.iaea.org/MTCD/Publications/PDF/CRCP_SOD_003web.pdf）およびORNL/TM-2015/656のGnielinski相関（https://www.comsol.jp/paper/download/298121/Pub59883.pdf）も参考に確認。原書の翻訳・図版転載ではなく専門家校閲前。"
+    },
+    "reviewStatus": "needs_review"
+  },
+  {
+    "id": "moody-diagram",
+    "ja": "ムーディー線図",
+    "en": "Moody chart",
+    "aliases": [
+      "Moody線図"
+    ],
+    "category": "管内流動・対流",
+    "brief": "レイノルズ数と相対粗さから、円管のダルシー摩擦係数を読み取る線図。",
+    "meaning": "レイノルズ数と相対粗さから、円管のダルシー摩擦係数を読み取る線図。",
+    "beginner": "管の中の流れが層流か乱流か、壁の凹凸がどの程度かを確認し、圧力損失計算に必要な摩擦係数を探します。",
+    "detail": "ムーディー線図は横軸Re、縦軸ダルシー摩擦係数f_D、パラメータとして相対粗さε_r/Dを用いる。十分発達円管層流域ではf_D=64/Re_D、乱流域では粗さとReに依存する。遷移域では流動が不安定で摩擦係数を一意に読みにくい。文献によりファニング係数を描いた線図もあるため軸の定義を照合する。",
+    "formula": "f_D=f(Re_D, ε_r/D)（図表で評価）",
+    "unit": "f_D,Re_D,ε_r/D: 無次元",
+    "example": "十分発達円管層流でRe_D=1000なら線図の層流直線からf_D=0.064。",
+    "related": [
+      "相対粗さ（管内流）",
+      "ダルシー摩擦係数",
+      "円管層流の摩擦係数",
+      "レイノルズ数"
+    ],
+    "relatedSections": [
+      "7.3",
+      "7.4"
+    ],
+    "relatedQuestions": [],
+    "relatedSimulators": [],
+    "confusions": [
+      "ムーディー線図は伝熱係数を読む図ではなく、圧力損失に用いる摩擦係数の図。"
+    ],
+    "source": {
+      "type": "supplement",
+      "reference": "第7章の円管内流動・摩擦損失・乱流伝熱の一般理論を独立記述。式の適用範囲はIAEA Sodium Coolant Handbook, 2025（https://www-pub.iaea.org/MTCD/Publications/PDF/CRCP_SOD_003web.pdf）およびORNL/TM-2015/656のGnielinski相関（https://www.comsol.jp/paper/download/298121/Pub59883.pdf）も参考に確認。原書の翻訳・図版転載ではなく専門家校閲前。"
+    },
+    "reviewStatus": "needs_review"
+  },
+  {
+    "id": "gnielinski-correlation",
+    "ja": "グニエリンスキー相関式",
+    "en": "Gnielinski correlation",
+    "aliases": [
+      "Gnielinskiの式"
+    ],
+    "category": "管内流動・対流",
+    "brief": "発達した管内乱流のヌセルト数をレイノルズ数・プラントル数・摩擦係数から見積もる経験式。",
+    "meaning": "発達した管内乱流のヌセルト数をレイノルズ数・プラントル数・摩擦係数から見積もる経験式。",
+    "beginner": "流れの速さ、流体の性質、管との摩擦をまとめて扱い、管壁から流体へ熱が移る強さを見積もる方法です。",
+    "detail": "十分発達した単相管内の代表的なGnielinski相関はNu_D=[(f_D/8)(Re_D−1000)Pr]/[1+12.7√(f_D/8)(Pr^(2/3)−1)]で、f_Dはダルシー摩擦係数。代表的な適用範囲はRe_D≈3000～5×10⁶、Pr≈0.5～2000であるが、入口長さ・物性温度依存・粗さ・流路形状に応じて根拠となる原相関の条件を確認する。層流・沸騰・凝縮には無条件で使えない。",
+    "formula": "Nu_D=[(f_D/8)(Re_D−1000)Pr]/[1+12.7√(f_D/8)(Pr^(2/3)−1)]",
+    "unit": "Nu_D,Re_D,Pr,f_D: 無次元",
+    "example": "Re_D=10000、Pr=1、f_D=0.032と仮定すると分母は1となりNu_D=0.032/8×9000=36.0。",
+    "related": [
+      "ヌセルト数",
+      "ダルシー摩擦係数",
+      "ディタス・ベルター式",
+      "乱流"
+    ],
+    "relatedSections": [
+      "7.3",
+      "7.7"
+    ],
+    "relatedQuestions": [],
+    "relatedSimulators": [],
+    "confusions": [
+      "相関に代入するfはダルシー係数であり、ファニング係数に置き換えると誤る。"
+    ],
+    "source": {
+      "type": "supplement",
+      "reference": "第7章の円管内流動・摩擦損失・乱流伝熱の一般理論を独立記述。式の適用範囲はIAEA Sodium Coolant Handbook, 2025（https://www-pub.iaea.org/MTCD/Publications/PDF/CRCP_SOD_003web.pdf）およびORNL/TM-2015/656のGnielinski相関（https://www.comsol.jp/paper/download/298121/Pub59883.pdf）も参考に確認。原書の翻訳・図版転載ではなく専門家校閲前。"
+    },
+    "reviewStatus": "needs_review"
+  },
+  {
+    "id": "fully-developed-laminar-velocity-profile",
+    "ja": "円管完全発達層流の速度分布",
+    "en": "fully developed laminar velocity profile in a circular pipe",
+    "aliases": [
+      "円管層流の放物線速度分布"
+    ],
+    "category": "管内流動・対流",
+    "brief": "円管内の十分発達した層流で、流速が管中心で最大、壁でゼロとなる放物線形になること。",
+    "meaning": "円管内の十分発達した層流で、流速が管中心で最大、壁でゼロとなる放物線形になること。",
+    "beginner": "管の内壁に接する流体はほぼ動かず、中心に近いほど速く流れます。中心の速さは平均流速の2倍になります。",
+    "detail": "非圧縮ニュートン流体の定常・十分発達円管層流で滑りなしの壁を考えると、半径Rの管内の軸速度u(r)=2U[1−(r/R)²]。Uは断面平均流速で、u_max=2U。入口助走域や乱流では分布は放物線ではない。壁面速度0と平均流速Uは区別し、圧力勾配による駆動が流れの条件として必要。",
+    "formula": "u(r)=2U[1−(r/R)²]（円管の十分発達層流）",
+    "unit": "u,U: m/s、r,R: m",
+    "example": "平均速度U=0.50 m/sの完全発達層流では管中心の速度は1.00 m/s、半径r=R/2では0.75 m/s。",
+    "related": [
+      "断面平均流速",
+      "層流",
+      "壁面せん断応力",
+      "ハーゲン・ポアズイユ則"
+    ],
+    "relatedSections": [
+      "7.2"
+    ],
+    "relatedQuestions": [],
+    "relatedSimulators": [],
+    "confusions": [
+      "平均流速と最大流速は同じではない。完全発達円管層流でのみu_max=2Uが成立する。"
+    ],
+    "source": {
+      "type": "supplement",
+      "reference": "第7章の円管内流動・摩擦損失・乱流伝熱の一般理論を独立記述。式の適用範囲はIAEA Sodium Coolant Handbook, 2025（https://www-pub.iaea.org/MTCD/Publications/PDF/CRCP_SOD_003web.pdf）およびORNL/TM-2015/656のGnielinski相関（https://www.comsol.jp/paper/download/298121/Pub59883.pdf）も参考に確認。原書の翻訳・図版転載ではなく専門家校閲前。"
+    },
+    "reviewStatus": "needs_review"
+  },
+  {
+    "id": "pipe-thermal-entrance-effects",
+    "ja": "管入口の熱的助走効果",
+    "en": "thermal entrance effects in a pipe",
+    "aliases": [
+      "管入口温度発達効果"
+    ],
+    "category": "管内流動・対流",
+    "brief": "流体が管に入った直後、温度境界層が成長するため熱伝達率が軸方向で変わる現象。",
+    "meaning": "流体が管に入った直後、温度境界層が成長するため熱伝達率が軸方向で変わる現象。",
+    "beginner": "管の入り口付近は温度分布がまだ整っておらず、十分奥まで進んだ場所と熱の伝わり方が違います。",
+    "detail": "流体の速度場が十分発達していても、入口で一様だった温度分布が壁面からの加熱・冷却により変化する間は熱的助走域となる。円管層流の熱的助走長は概ねL_t/D≈0.05Re_DPrという目安があるが、境界条件や定義で係数は異なる。熱的に十分発達した円管のNu=3.66（等温壁）や4.36（一様壁熱流束）を入口直後にそのまま用いない。",
+    "formula": "L_t/D≈0.05Re_DPr（円管層流の概算）",
+    "unit": "L_t,D: m、Re_D,Pr: 無次元",
+    "example": "Re_D=100、Pr=1、D=0.01 mなら熱的助走長の概算は0.05 m。",
+    "related": [
+      "熱的助走長",
+      "熱的に十分発達した流れ",
+      "グレーツ数",
+      "円管の等温壁条件"
+    ],
+    "relatedSections": [
+      "7.2",
+      "7.4"
+    ],
+    "relatedQuestions": [],
+    "relatedSimulators": [],
+    "confusions": [
+      "速度場の発達と温度場の発達は別であり、入口から同じ距離で完了するとは限らない。"
+    ],
+    "source": {
+      "type": "supplement",
+      "reference": "第7章の円管内流動・摩擦損失・乱流伝熱の一般理論を独立記述。式の適用範囲はIAEA Sodium Coolant Handbook, 2025（https://www-pub.iaea.org/MTCD/Publications/PDF/CRCP_SOD_003web.pdf）およびORNL/TM-2015/656のGnielinski相関（https://www.comsol.jp/paper/download/298121/Pub59883.pdf）も参考に確認。原書の翻訳・図版転載ではなく専門家校閲前。"
+    },
+    "reviewStatus": "needs_review"
   }
 ]

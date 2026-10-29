@@ -137,3 +137,11 @@
 - 陽解法の安定条件r≤0.5はPDE MOOC（https://aquaulb.github.io/book_solving_pde_mooc/solving_pde_mooc/notebooks/04_PartialDifferentialEquations/04_03_Diffusion_Explicit.html）およびNumerical Analysis 2025（https://gustavdelius.github.io/NumericalAnalysis2025/nmPDE.html）を参照。
 - **事前JS検証**：全340語のIDと日本語代表名/別名NFKC正規化、英語名の衝突なし。新規11語の必須欄・関連語・実在章節・シミュレーターID・数値例10件の計算に合格。既存329語の順序・内容は維持。
 - 未検証の関連問題IDは記載せずrelatedQuestions=[]。固定158語を前提にする既存Nodeテスト・CI・公開ビルド・実機・外部校閲は未実施で全品質ゲート未達。テスト・他担当ブランチや図解・教材・問題・PRには触れない。
+
+## 第18バッチ（2026-10-29 JST）
+- 前 **340語**、追加 **11語**、累計 **351語**。
+- 追加：ファニング摩擦係数、ダルシー・ワイスバッハ式、ハーゲン・ポアズイユ則、円管層流の摩擦係数、動圧、局所損失係数、相対粗さ（管内流）、ムーディー線図、グニエリンスキー相関式、円管完全発達層流の速度分布、管入口の熱的助走効果。
+- 第7章の管内圧損・ファニング/ダルシー係数の4倍差、ポアズイユ則、動圧と局所損失、相対粗さ・ムーディー線図、グニエリンスキーの対流相関、完全発達層流速度分布と熱的助走を独立補足。式の適用域・単位・数値例・混同防止を記載。needs_reviewで外部専門家校閲前。
+- 主要式はIAEA Sodium Coolant Handbook（https://www-pub.iaea.org/MTCD/Publications/PDF/CRCP_SOD_003web.pdf）とORNLのGnielinski相関の記述（https://www.comsol.jp/paper/download/298121/Pub59883.pdf）を参考照合した。
+- **事前JS検証**：全351語のID・NFKC正規化日本語名/別名・英語名の衝突なし、新規11語の完全フィールド・関連語/実在節の参照、数値例11件の演算検証合格。既存340語は不変。
+- 未確認問題IDのrelatedQuestions=[]。固定158語の既存Nodeテスト・CI・公開ビルド・ブラウザ実機・外部校閲は未実施で全品質ゲート未達。テストと他ラインには触れない。
