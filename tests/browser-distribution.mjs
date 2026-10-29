@@ -197,27 +197,28 @@ try {
   await page.locator('[data-action="discard-quiz"]').click();
   await nav('map');
   await page.locator('[data-chapter-card="ch2"]').waitFor({state:'visible'});
-  assert.match(await page.locator('[data-chapter-card="ch2"]').innerText(),/収録問題：36問/);
+  assert.match(await page.locator('[data-chapter-card="ch2"]').innerText(),/収録問題：39問/);
   assert.match(await page.locator('[data-chapter-card="ch1"]').innerText(),/原本の節を読了に記録：1\/5節/);
   assert.match(await page.locator('[data-chapter-card="ch9"]').innerText(),/収録問題：95問/);
-  assert.match(await page.locator('[data-chapter-card="ch2"]').innerText(),/未回答：36問/);
+  assert.match(await page.locator('[data-chapter-card="ch2"]').innerText(),/未回答：39問/);
   await page.locator('[data-chapter-card="ch2"] [data-chapter-practice-mode="priority"]').click();
   await page.locator('.question-card').waitFor({state:'visible'});
   assert.match(await page.locator('.page-heading h1').innerText(),/1 \/ 10 問/);
   const priorityIds=await page.evaluate(()=>JSON.parse(localStorage.getItem('heat-study-ja:v1')).quizDraft.ids);
   assert.equal(priorityIds.length,10);
-  assert.ok(priorityIds.every(id=>id.startsWith('supp-chapter-ch2-')||id.startsWith('supp-section-2-')||id.startsWith('supp-advanced-ch2-')||id.startsWith('supp-applied-2-')||id.startsWith('supp-deep-heat-')||id.startsWith('supp-found-')||id.startsWith('supp-next-')||id.startsWith('supp-batch2-')));
+  const chapter2Ids=new Set(await page.evaluate(async()=>(await (await fetch('./data/questions.json')).json()).filter(q=>q.source?.chapterId==='ch2'||q.source?.sectionNoteId?.startsWith('2.')||(q.source?.type==='book'&&q.source?.section?.startsWith('2.'))).map(q=>q.id)));
+  assert.ok(priorityIds.every(id=>chapter2Ids.has(id)),'priority practice contains only questions actually mapped to chapter 2');
   await page.locator('[data-action="exit-quiz"]').click();
   await page.locator('[data-action="discard-quiz"]').click();
   await nav('map');
   await page.locator('[data-chapter-card="ch2"] [data-chapter-practice="ch2"]:not([data-chapter-practice-mode])').click();
   await page.locator('.question-card').waitFor({state:'visible'});
-  assert.match(await page.locator('.page-heading h1').innerText(),/1 \/ 36 問/);
-  assert.equal((await page.evaluate(()=>JSON.parse(localStorage.getItem('heat-study-ja:v1')).quizDraft.ids)).every(id=>id.startsWith('supp-chapter-ch2-')||id.startsWith('supp-section-2-')||id.startsWith('supp-advanced-ch2-')||id.startsWith('supp-applied-2-')||id.startsWith('supp-deep-heat-')||id.startsWith('supp-found-')||id.startsWith('supp-next-')||id.startsWith('supp-batch2-')),true);
+  assert.match(await page.locator('.page-heading h1').innerText(),/1 \/ 39 問/);
+  assert.equal((await page.evaluate(()=>JSON.parse(localStorage.getItem('heat-study-ja:v1')).quizDraft.ids)).every(id=>chapter2Ids.has(id)),true);
   await page.locator('[data-action="exit-quiz"]').click();
   await page.locator('[data-action="discard-quiz"]').click();
   await page.locator('#quiz-start-form select[name="chapter"]').selectOption('ch9');
-  await page.locator('#quiz-start-form select[name="count"]').selectOption('495');
+  await page.locator('#quiz-start-form select[name="count"]').selectOption('515');
   await page.locator('#quiz-start-form button[type="submit"]').click();
   await page.locator('.question-card').waitFor({state:'visible'});
   assert.match(await page.locator('.page-heading h1').innerText(),/1 \/ 95 問/);
@@ -246,7 +247,7 @@ try {
   await page.locator('.result-card .result-link').first().click();
   await page.locator('#reader-original-note').waitFor({state:'visible'});
   assert.match(await page.locator('#reader-original-note').innerText(),/独立執筆・学術校閲前/);
-  await page.locator('#reader-original-note [data-start-question]').click();
+  await page.locator('#reader-original-note [data-start-question="supp-section-11-11"]').click();
   await page.locator('.question-card').waitFor({state:'visible'});
   assert.match(await page.locator('.question-card').innerText(),/独立学習ノート/);
   await page.locator('[data-action="exit-quiz"]').click();
@@ -667,7 +668,7 @@ try {
   // merely their JSON. A vocabulary tap must leave the answer draft intact.
   const pending=await page.evaluate(async()=>
     (await (await fetch('./data/questions.json')).json()).filter(q=>q.reportHistory?.some(r=>['internal_independent_check','authored_with_internal_check'].includes(r.type))));
-  assert.equal(pending.length,162);
+  assert.equal(pending.length,182);
   const replaceSuspended=dialog=>dialog.accept();
   page.on('dialog',replaceSuspended);
   for(const q of pending){

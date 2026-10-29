@@ -24666,5 +24666,1105 @@
       "結合した保存・拡散式で解釈。"
     ],
     "beginnerPitfall": "濃度に逆らう成分輸送から負のDと即断しない。"
+  },
+  {
+    "id": "supp-existing-heat-local-storage-v1",
+    "revision": "v1",
+    "field": "熱伝導",
+    "prerequisites": [
+      "エネルギー保存",
+      "単位と符号",
+      "対象モデルの適用条件"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "applied",
+    "source": {
+      "type": "supplement",
+      "reference": "既存の独立詳細講義の到達目標に沿った独立作問。原本翻訳や章末問題の複製ではない。",
+      "chapterId": "ch2",
+      "focusSectionId": "2.1",
+      "guideId": "chapter2-cylindrical-conduction"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "執筆原稿・基本算術と構造を確認／包括的品質監査待ち・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "執筆時の定義・収支・基本計算を確認。全問の独立科学監査・原本網羅照合・外部校閲は後工程。"
+      }
+    ],
+    "prompt": "静止固体の局所保存式ρc_p∂T/∂t=−∇·q″+q‴で、ρc_p=2.0×10⁶ J/(m³·K)、熱流束の発散8.0×10⁴ W/m³、発熱5.0×10⁴ W/m³。この瞬間の局所温度変化はどれか。",
+    "choices": [
+      "−0.015 K/sで、流出超過により冷却する",
+      "+0.015 K/sで、発熱があるため加熱する",
+      "−0.065 K/sで、両項をともに流出とする",
+      "+0.065 K/sで、両項をともに蓄積へ足す"
+    ],
+    "answer": 0,
+    "difficulty": "概念・適用判断",
+    "explanation": "蓄積率密度=−80000+50000=−30000 W/m³。∂T/∂t=−30000/(2.0×10⁶)=−0.015 K/s。発熱があっても流出超過なら局所温度は下がりうる。",
+    "distractors": [
+      "正解。正味流出が内部発熱を上回る収支を使った。",
+      "発熱の存在だけで蓄積の符号を決めた。",
+      "発熱を内部のエネルギー消費とした。",
+      "外向き発散も蓄積へ足した。"
+    ],
+    "hints": [
+      "流束の発散が正なら正味流出。",
+      "発熱との差を体積熱容量で割る。"
+    ],
+    "solutionSteps": [
+      "流出80000、生成50000。",
+      "正味蓄積−30000。",
+      "温度変化−0.015 K/s。"
+    ],
+    "beginnerPitfall": "内部発熱があるだけで必ず温度上昇としない。"
+  },
+  {
+    "id": "supp-existing-heat-variable-k-model-v1",
+    "revision": "v1",
+    "field": "熱伝導",
+    "prerequisites": [
+      "エネルギー保存",
+      "単位と符号",
+      "対象モデルの適用条件"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "applied",
+    "source": {
+      "type": "supplement",
+      "reference": "既存の独立詳細講義の到達目標に沿った独立作問。原本翻訳や章末問題の複製ではない。",
+      "chapterId": "ch2",
+      "focusSectionId": "2.1",
+      "guideId": "chapter2-cylindrical-conduction"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "執筆原稿・基本算術と構造を確認／包括的品質監査待ち・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "執筆時の定義・収支・基本計算を確認。全問の独立科学監査・原本網羅照合・外部校閲は後工程。"
+      }
+    ],
+    "prompt": "等方固体でkが位置や温度で大きく変化する。Fourier則q″=−k∇Tを局所保存式へ代入するとき、適切な熱伝導項はどれか。",
+    "choices": [
+      "kが変わるので、保存式の発熱項へ全て足す",
+      "∇·(k∇T)の発散形を保って扱う",
+      "k∇²Tへ条件なしに置き換えて扱う",
+      "∇kだけを用い、温度勾配は捨てる"
+    ],
+    "answer": 1,
+    "difficulty": "概念・適用判断",
+    "explanation": "保存式はρc_p∂T/∂t=∇·(k∇T)+q‴。k一定ならk∇²Tへ簡略化できる。温度依存kでは連成した非線形問題になりうる。",
+    "distractors": [
+      "熱伝導と体積発熱は役割と単位構造が異なる。",
+      "正解。可変の係数を微分の中に保つ。",
+      "係数の勾配による寄与を落とした。",
+      "温度勾配という熱流の駆動を消した。"
+    ],
+    "hints": [
+      "積の微分を考える。",
+      "kを定数として外へ出せるか確認。"
+    ],
+    "solutionSteps": [
+      "Fourier則を代入。",
+      "発散の中にkを置く。",
+      "一定kの条件があるときのみ簡略化。"
+    ],
+    "beginnerPitfall": "可変物性のモデルを定数物性式へ無条件に置換しない。"
+  },
+  {
+    "id": "supp-existing-heat-initial-boundary-v1",
+    "revision": "v1",
+    "field": "熱伝導",
+    "prerequisites": [
+      "エネルギー保存",
+      "単位と符号",
+      "対象モデルの適用条件"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "applied",
+    "source": {
+      "type": "supplement",
+      "reference": "既存の独立詳細講義の到達目標に沿った独立作問。原本翻訳や章末問題の複製ではない。",
+      "chapterId": "ch2",
+      "focusSectionId": "2.1",
+      "guideId": "chapter2-cylindrical-conduction"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "執筆原稿・基本算術と構造を確認／包括的品質監査待ち・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "執筆時の定義・収支・基本計算を確認。全問の独立科学監査・原本網羅照合・外部校閲は後工程。"
+      }
+    ],
+    "prompt": "同じ形状・k・ρc_pで、表面を時刻0から同じ温度へ保つ二つの固体がある。開始時の内部温度分布は異なる。熱伝導方程式からの予測として適切なのはどれか。",
+    "choices": [
+      "同じkなので、初期のエネルギー差は直ちに消える",
+      "同じ形状なので、どちらも必ず集中熱容量となる",
+      "同じ境界でも、初期分布により過渡応答は異なる",
+      "同じ境界なので、全時刻の内部温度は必ず同じ"
+    ],
+    "answer": 2,
+    "difficulty": "概念・適用判断",
+    "explanation": "非定常の熱方程式は初期の温度場と境界条件を一組にして解く。長時間に同じ定常解へ近づく場合でも、全ての時刻の応答が同じとは限らない。",
+    "distractors": [
+      "拡散的な過渡を瞬時平衡へ置き換えた。",
+      "集中熱容量の条件はBi等を別に評価する。",
+      "正解。非定常解には初期条件も必要である。",
+      "境界条件だけで初期値問題が決まるとした。"
+    ],
+    "hints": [
+      "内部の開始状態も条件に含む。",
+      "定常と過渡を分ける。"
+    ],
+    "solutionSteps": [
+      "初期分布を指定。",
+      "同じ境界で別々に解く。",
+      "過渡と長時間極限を区別。"
+    ],
+    "beginnerPitfall": "境界温度だけで過渡の内部温度が決まるとしない。"
+  },
+  {
+    "id": "supp-existing-lmtd-equal-end-limit-v1",
+    "revision": "v1",
+    "field": "熱交換器",
+    "prerequisites": [
+      "エネルギー保存",
+      "単位と符号",
+      "対象モデルの適用条件"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "既存の独立詳細講義の到達目標に沿った独立作問。原本翻訳や章末問題の複製ではない。",
+      "chapterId": "ch3",
+      "focusSectionId": "3.2",
+      "guideId": "chapter3-effectiveness-ntu"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "執筆原稿・基本算術と構造を確認／包括的品質監査待ち・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "執筆時の定義・収支・基本計算を確認。全問の独立科学監査・原本網羅照合・外部校閲は後工程。"
+      }
+    ],
+    "prompt": "通常のLMTD式(ΔT₁−ΔT₂)/ln(ΔT₁/ΔT₂)で、正の端点差が両方30 Kへ一致する極限を考える。正しいΔT_lmはどれか。",
+    "choices": [
+      "0 K",
+      "15 K",
+      "60 K",
+      "30 K"
+    ],
+    "answer": 3,
+    "difficulty": "標準・数値計算",
+    "explanation": "0/0を直接計算せず、ΔT₁→ΔT₂=ΔT>0の極限でΔT_lm=ΔT。対数平均はこの極限で一定の温度差30 Kに一致する。",
+    "distractors": [
+      "分子0だけを見て0とした。",
+      "同じ温度差をさらに半分にした。",
+      "二端の温度差を足した。",
+      "正解。同じ正の温度差へ連続する極限を使った。"
+    ],
+    "hints": [
+      "同じ温度差が全体で保たれる極限。",
+      "分母も同時に0へ向かう。"
+    ],
+    "solutionSteps": [
+      "正の共通温度差を確認。",
+      "連続極限を取る。",
+      "30 K。"
+    ],
+    "beginnerPitfall": "見かけの0/0を物理的な温度差ゼロと混同しない。"
+  },
+  {
+    "id": "supp-existing-lmtd-correction-area-v1",
+    "revision": "v1",
+    "field": "熱交換器",
+    "prerequisites": [
+      "エネルギー保存",
+      "単位と符号",
+      "対象モデルの適用条件"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "既存の独立詳細講義の到達目標に沿った独立作問。原本翻訳や章末問題の複製ではない。",
+      "chapterId": "ch3",
+      "focusSectionId": "3.2",
+      "guideId": "chapter3-effectiveness-ntu"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "執筆原稿・基本算術と構造を確認／包括的品質監査待ち・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "執筆時の定義・収支・基本計算を確認。全問の独立科学監査・原本網羅照合・外部校閲は後工程。"
+      }
+    ],
+    "prompt": "流路補正が必要な熱交換器でQ̇=10.0 kW、U=200 W/(m²·K)、基準LMTD=40.0 K、正しい補正係数F=0.80を与える。Q̇=UAFΔT_lmから面積Aはどれか。",
+    "choices": [
+      "1.56 m²",
+      "1.25 m²",
+      "1.00 m²",
+      "0.625 m²"
+    ],
+    "answer": 0,
+    "difficulty": "標準・数値計算",
+    "explanation": "A=10000/(200×0.80×40)=1.5625 m²。F<1なら同じQ,U,基準LMTDに必要な面積はFを無視した1.25 m²より増える。",
+    "distractors": [
+      "正解。kWをWへ直しU,F,LMTDで割った。",
+      "Fを無視した。",
+      "Fを割らず掛けた。",
+      "補正や単位の係数を取り違えた。"
+    ],
+    "hints": [
+      "Fは実際の流路と温度条件で与える。",
+      "面積は他の積で熱移動率を割る。"
+    ],
+    "solutionSteps": [
+      "分母6400 W/m²。",
+      "10000/6400。",
+      "約1.56 m²。"
+    ],
+    "beginnerPitfall": "流路補正Fを面積計算で逆に作用させない。"
+  },
+  {
+    "id": "supp-existing-lmtd-parallel-end-pairs-v1",
+    "revision": "v1",
+    "field": "熱交換器",
+    "prerequisites": [
+      "エネルギー保存",
+      "単位と符号",
+      "対象モデルの適用条件"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "applied",
+    "source": {
+      "type": "supplement",
+      "reference": "既存の独立詳細講義の到達目標に沿った独立作問。原本翻訳や章末問題の複製ではない。",
+      "chapterId": "ch3",
+      "focusSectionId": "3.2",
+      "guideId": "chapter3-effectiveness-ntu"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "執筆原稿・基本算術と構造を確認／包括的品質監査待ち・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "執筆時の定義・収支・基本計算を確認。全問の独立科学監査・原本網羅照合・外部校閲は後工程。"
+      }
+    ],
+    "prompt": "純粋な並流で高温側は100→60℃、低温側は20→40℃。LMTDに使う同じ位置の二端温度差の組合せはどれか。",
+    "choices": [
+      "入口120 K、出口100 K",
+      "入口80 K、出口20 K",
+      "入口60 K、出口40 K",
+      "入口40 K、出口20 K"
+    ],
+    "answer": 1,
+    "difficulty": "概念・適用判断",
+    "explanation": "並流では両流体が同じ向きへ進むため、入口差100−20=80 K、出口差60−40=20 K。向流なら入口と他側出口を対応させる。",
+    "distractors": [
+      "温度の差でなく和を取った。",
+      "正解。並流の入口同士と出口同士を対応させた。",
+      "向流の端点対応へ置き換えた。",
+      "高温側の温度降下を入口の流体間差とした。"
+    ],
+    "hints": [
+      "流体の向きを確認。",
+      "同じ物理的位置の差を取る。"
+    ],
+    "solutionSteps": [
+      "入口同士を引く。",
+      "出口同士を引く。",
+      "80 Kと20 K。"
+    ],
+    "beginnerPitfall": "一つの流体の温度変化と二流体間の温度差を区別する。"
+  },
+  {
+    "id": "supp-existing-lmtd-counterflow-outlet-order-v1",
+    "revision": "v1",
+    "field": "熱交換器",
+    "prerequisites": [
+      "エネルギー保存",
+      "単位と符号",
+      "対象モデルの適用条件"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "applied",
+    "source": {
+      "type": "supplement",
+      "reference": "既存の独立詳細講義の到達目標に沿った独立作問。原本翻訳や章末問題の複製ではない。",
+      "chapterId": "ch3",
+      "focusSectionId": "3.2",
+      "guideId": "chapter3-effectiveness-ntu"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "執筆原稿・基本算術と構造を確認／包括的品質監査待ち・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "執筆時の定義・収支・基本計算を確認。全問の独立科学監査・原本網羅照合・外部校閲は後工程。"
+      }
+    ],
+    "prompt": "完全向流・定常・外部熱漏れなし。高温側100→40℃、C_h=250 W/K、低温側20→60℃、C_c=375 W/K。冷側出口が熱側出口より高いことについて適切なのはどれか。",
+    "choices": [
+      "冷側出口は熱側入口よりも高く、条件が破れている",
+      "熱収支が両側で異なるので、定常ではありえない",
+      "異なる端の出口温度であり、この条件と矛盾しない",
+      "出口同士は同じ位置なので、必ず逆熱流を示す"
+    ],
+    "answer": 2,
+    "difficulty": "概念・適用判断",
+    "explanation": "熱側250×60=15000 W、冷側375×40=15000 W。端点差は100−60=40 Kと40−20=20 K。異なる端の出口60>40℃だけで局所的逆転としない。",
+    "distractors": [
+      "60℃は熱側入口100℃より低い。",
+      "両側の顕熱変化は共に15000 Wで一致する。",
+      "正解。向流の両出口は異なる位置で、端点差と熱収支が正。",
+      "向流の異なる端の出口を同じ位置とした。"
+    ],
+    "hints": [
+      "向流の出口は両端に分かれる。",
+      "局所的な差と二流体の収支を確認。"
+    ],
+    "solutionSteps": [
+      "両側Q=15000 W。",
+      "端点差40,20 K。",
+      "冷側出口>熱側出口は矛盾しない。"
+    ],
+    "beginnerPitfall": "異なる位置の温度を局所的な温度差として比較しない。"
+  },
+  {
+    "id": "supp-existing-lmtd-balance-consistency-v1",
+    "revision": "v1",
+    "field": "熱交換器",
+    "prerequisites": [
+      "エネルギー保存",
+      "単位と符号",
+      "対象モデルの適用条件"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "applied",
+    "source": {
+      "type": "supplement",
+      "reference": "既存の独立詳細講義の到達目標に沿った独立作問。原本翻訳や章末問題の複製ではない。",
+      "chapterId": "ch3",
+      "focusSectionId": "3.2",
+      "guideId": "chapter3-effectiveness-ntu"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "執筆原稿・基本算術と構造を確認／包括的品質監査待ち・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "執筆時の定義・収支・基本計算を確認。全問の独立科学監査・原本網羅照合・外部校閲は後工程。"
+      }
+    ],
+    "prompt": "定常・単相・外部との熱交換なしの熱交換器として、熱側の顕熱減少10 kW、冷側の顕熱増加15 kWという測定値が与えられた。まず必要な判断はどれか。",
+    "choices": [
+      "LMTDが正なら、両方のQをそのまま採用する",
+      "二つのQを足した25 kWを必ず正しいQとする",
+      "二つのQの平均12.5 kWを検証なしで確定する",
+      "定常・断熱の仮定と測定を調べ、不整合を解消する"
+    ],
+    "answer": 3,
+    "difficulty": "概念・適用判断",
+    "explanation": "与えた定常・断熱条件では熱側から失う量と冷側が受け取る量が等しい。5 kWの差の原因として熱経路、状態、測定、比熱や流量を確認してからUや面積を評価する。",
+    "distractors": [
+      "正のLMTDだけではエネルギー不整合を解消できない。",
+      "一つの移動を二重に足している。",
+      "不整合の原因を確認せず平均を真値と断定できない。",
+      "正解。熱漏れ・蓄熱なしの条件では両側のQが一致する必要がある。"
+    ],
+    "hints": [
+      "熱交換器全体の第一法則。",
+      "熱側と冷側の移動率は同じはず。"
+    ],
+    "solutionSteps": [
+      "10と15 kWを比較。",
+      "仮定と測定の不整合を記録。",
+      "原因確認後に設計式を使う。"
+    ],
+    "beginnerPitfall": "収支不整合を平均やLMTDで隠さない。"
+  },
+  {
+    "id": "supp-existing-lmtd-positive-range-v1",
+    "revision": "v1",
+    "field": "熱交換器",
+    "prerequisites": [
+      "エネルギー保存",
+      "単位と符号",
+      "対象モデルの適用条件"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "conceptual",
+    "source": {
+      "type": "supplement",
+      "reference": "既存の独立詳細講義の到達目標に沿った独立作問。原本翻訳や章末問題の複製ではない。",
+      "chapterId": "ch3",
+      "focusSectionId": "3.2",
+      "guideId": "chapter3-effectiveness-ntu"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "執筆原稿・基本算術と構造を確認／包括的品質監査待ち・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "執筆時の定義・収支・基本計算を確認。全問の独立科学監査・原本網羅照合・外部校閲は後工程。"
+      }
+    ],
+    "prompt": "二つの正の端点温度差がΔT₁>ΔT₂>0である通常のLMTDについて、正しい大小関係はどれか。",
+    "choices": [
+      "ΔT₂<ΔT_lm<ΔT₁",
+      "ΔT_lm<0<ΔT₂",
+      "ΔT_lm>ΔT₁+ΔT₂",
+      "ΔT_lm=ΔT₁−ΔT₂"
+    ],
+    "answer": 0,
+    "difficulty": "概念・適用判断",
+    "explanation": "正の異なる二値の対数平均は小さい値と大きい値の間にある。計算結果が端点の範囲を外れたら、符号・単位・lnの引数や端の対応を確認する。",
+    "distractors": [
+      "正解。正の対数平均は両端の間に入る。",
+      "正の分子と分母の比の符号を取り違えた。",
+      "平均が両端の和を超えるとした。",
+      "差を取っただけで対数による重みを落とした。"
+    ],
+    "hints": [
+      "平均値の範囲を検算に使う。",
+      "ln(ΔT₁/ΔT₂)>0。"
+    ],
+    "solutionSteps": [
+      "両差が正と確認。",
+      "対数平均を評価。",
+      "二端の間にあると検算。"
+    ],
+    "beginnerPitfall": "計算結果の物理的な範囲を確認する。"
+  },
+  {
+    "id": "supp-existing-fin-contact-loss-v1",
+    "revision": "v1",
+    "field": "熱伝導・フィン",
+    "prerequisites": [
+      "エネルギー保存",
+      "単位と符号",
+      "対象モデルの適用条件"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "applied",
+    "source": {
+      "type": "supplement",
+      "reference": "既存の独立詳細講義の到達目標に沿った独立作問。原本翻訳や章末問題の複製ではない。",
+      "chapterId": "ch4",
+      "focusSectionId": "4.5",
+      "guideId": "chapter4-fin-design"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "執筆原稿・基本算術と構造を確認／包括的品質監査待ち・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "執筆時の定義・収支・基本計算を確認。全問の独立科学監査・原本網羅照合・外部校閲は後工程。"
+      }
+    ],
+    "prompt": "基部温度一定の理想フィンを、実際は熱抵抗のある接触部を介して温度一定の壁へ取り付けた。壁温をそのままフィン基部温へ代入する扱いについて適切なのはどれか。",
+    "choices": [
+      "接触抵抗を入れると、熱伝導率kが必ず負となる",
+      "接触部の温度降下を収支と併せて確認する",
+      "壁温が一定なら、接触抵抗による差は必ずゼロ",
+      "フィンがあれば、接触部の熱流は必ずゼロ"
+    ],
+    "answer": 1,
+    "difficulty": "概念・適用判断",
+    "explanation": "壁から基部へQ̇=(T_wall−T_b)/R_contactで熱が流れ、フィンの基部熱流と整合させる。理想的なT_b指定の解へ壁温を無条件に代入すると過大予測になりうる。",
+    "distractors": [
+      "接触抵抗は負の物性を必要としない。",
+      "正解。実際の基部温度が壁温と異なりうることを考えた。",
+      "有限熱流と接触抵抗があれば温度降下が生じる。",
+      "フィンの存在だけで接触部の熱流は消えない。"
+    ],
+    "hints": [
+      "接触部も熱抵抗。",
+      "フィンへ入る熱と接触部を通る熱を合わせる。"
+    ],
+    "solutionSteps": [
+      "壁と基部の温度を分ける。",
+      "接触の温度差を評価。",
+      "フィン式と連立する。"
+    ],
+    "beginnerPitfall": "壁温と実際のフィン基部温を同じと決めつけない。"
+  },
+  {
+    "id": "supp-existing-fin-lateral-uniformity-v1",
+    "revision": "v1",
+    "field": "熱伝導・フィン",
+    "prerequisites": [
+      "エネルギー保存",
+      "単位と符号",
+      "対象モデルの適用条件"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "applied",
+    "source": {
+      "type": "supplement",
+      "reference": "既存の独立詳細講義の到達目標に沿った独立作問。原本翻訳や章末問題の複製ではない。",
+      "chapterId": "ch4",
+      "focusSectionId": "4.5",
+      "guideId": "chapter4-fin-design"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "執筆原稿・基本算術と構造を確認／包括的品質監査待ち・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "執筆時の定義・収支・基本計算を確認。全問の独立科学監査・原本網羅照合・外部校閲は後工程。"
+      }
+    ],
+    "prompt": "長手方向一次元の一定断面フィンを使う。断面内の温度差を無視できるか判断する考え方として適切なのはどれか。",
+    "choices": [
+      "フィン効率が正なら、断面温度は常に厳密に一様とする",
+      "先端が断熱なら、基部から先端まで全て同じ温度とする",
+      "横方向の伝導抵抗と表面対流の相対的な大きさを調べる",
+      "長さが与えられれば、断面温度は常に厳密に一様とする"
+    ],
+    "answer": 2,
+    "difficulty": "概念・適用判断",
+    "explanation": "断面内一様近似には、横方向の代表長さに対するBiなどで内部伝導と対流を比べる。フィンパラメータmLによる長手温度差の評価とは区別する。",
+    "distractors": [
+      "正の計算効率は仮定の妥当性の証明ではない。",
+      "断熱先端は先端の熱流0であり全体の等温ではない。",
+      "正解。断面の熱伝導が十分速いかを別の条件として評価した。",
+      "形状の長さだけでは断面内一様を保証しない。"
+    ],
+    "hints": [
+      "断面の内部伝導は十分速いか。",
+      "長手方向と横方向の尺度を分ける。"
+    ],
+    "solutionSteps": [
+      "断面の代表寸法を定義。",
+      "対流と内部伝導を比較。",
+      "一次元近似の適用を確認。"
+    ],
+    "beginnerPitfall": "長手の温度分布を扱う近似と断面内の一様近似を混ぜない。"
+  },
+  {
+    "id": "supp-existing-lumped-time-constant-v1",
+    "revision": "v1",
+    "field": "非定常伝導",
+    "prerequisites": [
+      "エネルギー保存",
+      "単位と符号",
+      "対象モデルの適用条件"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "既存の独立詳細講義の到達目標に沿った独立作問。原本翻訳や章末問題の複製ではない。",
+      "chapterId": "ch5",
+      "focusSectionId": "5.2",
+      "guideId": "chapter5-semi-infinite"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "執筆原稿・基本算術と構造を確認／包括的品質監査待ち・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "執筆時の定義・収支・基本計算を確認。全問の独立科学監査・原本網羅照合・外部校閲は後工程。"
+      }
+    ],
+    "prompt": "一様温度近似が妥当な固体でm=1.0 kg、c=500 J/(kg·K)、h=20 W/(m²·K)、対流面積A_s=0.10 m²。時定数τ=mc/(hA_s)はどれか。",
+    "choices": [
+      "25 s",
+      "1000 s",
+      "0.004 s",
+      "250 s"
+    ],
+    "answer": 3,
+    "difficulty": "標準・数値計算",
+    "explanation": "mc=500 J/K、hA_s=2.0 W/K、τ=500/2.0=250 s。数値が得られてもBiなどによる適用判断は別に必要。",
+    "distractors": [
+      "面積係数を入れずhで割った。",
+      "hAの位置又は係数を取り違えた。",
+      "時定数の逆数を時間として答えた。",
+      "正解。熱容量を対流コンダクタンスで割った。"
+    ],
+    "hints": [
+      "熱容量はmc。",
+      "熱の逃げやすさはhA。"
+    ],
+    "solutionSteps": [
+      "mc=500。",
+      "hA=2。",
+      "τ=250 s。"
+    ],
+    "beginnerPitfall": "面積と熱容量を含めて時定数を作る。"
+  },
+  {
+    "id": "supp-existing-lumped-heating-temperature-v1",
+    "revision": "v1",
+    "field": "非定常伝導",
+    "prerequisites": [
+      "エネルギー保存",
+      "単位と符号",
+      "対象モデルの適用条件"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "既存の独立詳細講義の到達目標に沿った独立作問。原本翻訳や章末問題の複製ではない。",
+      "chapterId": "ch5",
+      "focusSectionId": "5.2",
+      "guideId": "chapter5-semi-infinite"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "執筆原稿・基本算術と構造を確認／包括的品質監査待ち・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "執筆時の定義・収支・基本計算を確認。全問の独立科学監査・原本網羅照合・外部校閲は後工程。"
+      }
+    ],
+    "prompt": "集中熱容量モデルで初期20℃、一定周囲80℃、時定数100 s。t=100 s、exp(−1)=0.367879とするとT=T_∞+(T₀−T_∞)exp(−t/τ)はどれか。",
+    "choices": [
+      "約57.9℃",
+      "約7.36℃",
+      "約42.1℃",
+      "約102℃"
+    ],
+    "answer": 0,
+    "difficulty": "標準・数値計算",
+    "explanation": "T=80+(20−80)×0.367879=57.9273℃。初期と周囲の間で、加熱中も温度差T−T_∞の絶対値が減る。",
+    "distractors": [
+      "正解。周囲からの温度差が指数減衰する解を使った。",
+      "初期の摂氏温度自体へ指数を掛けた。",
+      "周囲と初期の役割を逆にした。",
+      "加熱で周囲を超える値として指数の符号を誤った。"
+    ],
+    "hints": [
+      "温度そのものではなく周囲との差。",
+      "加熱でも同じ指数式。"
+    ],
+    "solutionSteps": [
+      "初期差−60 K。",
+      "1/e倍は−22.0727 K。",
+      "80に足して57.9℃。"
+    ],
+    "beginnerPitfall": "加熱時の負の超過温度を正しく保つ。"
+  },
+  {
+    "id": "supp-existing-lumped-sensible-energy-v1",
+    "revision": "v1",
+    "field": "非定常伝導",
+    "prerequisites": [
+      "エネルギー保存",
+      "単位と符号",
+      "対象モデルの適用条件"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "既存の独立詳細講義の到達目標に沿った独立作問。原本翻訳や章末問題の複製ではない。",
+      "chapterId": "ch5",
+      "focusSectionId": "5.2",
+      "guideId": "chapter5-semi-infinite"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "執筆原稿・基本算術と構造を確認／包括的品質監査待ち・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "執筆時の定義・収支・基本計算を確認。全問の独立科学監査・原本網羅照合・外部校閲は後工程。"
+      }
+    ],
+    "prompt": "比熱一定500 J/(kg·K)、質量1.0 kgの物体が100℃から49.4℃へ冷却された。物体から放出した顕熱の正の大きさはどれか。相変化・仕事なし。",
+    "choices": [
+      "50.0 kJ",
+      "25.3 kJ",
+      "−25.3 kJ",
+      "24.7 kJ"
+    ],
+    "answer": 1,
+    "difficulty": "標準・数値計算",
+    "explanation": "放出量=1.0×500×(100−49.4)=25300 J=25.3 kJ。物体の顕熱変化は−25.3 kJで、放出の大きさとは符号の定義が異なる。",
+    "distractors": [
+      "初期摂氏温度を基準なしで全エネルギーとした。",
+      "正解。正の放出量としてmc(T₀−T)を使った。",
+      "物体の内部エネルギー変化の符号をそのまま放出量とした。",
+      "温度差でなく最終摂氏温度を使った。"
+    ],
+    "hints": [
+      "求めるのは放出量の正の大きさ。",
+      "顕熱は温度差で計算。"
+    ],
+    "solutionSteps": [
+      "低下50.6 K。",
+      "熱容量500 J/Kを掛ける。",
+      "25.3 kJ放出。"
+    ],
+    "beginnerPitfall": "エネルギー変化と外への放出の符号を区別する。"
+  },
+  {
+    "id": "supp-existing-lumped-half-time-inverse-v1",
+    "revision": "v1",
+    "field": "非定常伝導",
+    "prerequisites": [
+      "エネルギー保存",
+      "単位と符号",
+      "対象モデルの適用条件"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "既存の独立詳細講義の到達目標に沿った独立作問。原本翻訳や章末問題の複製ではない。",
+      "chapterId": "ch5",
+      "focusSectionId": "5.2",
+      "guideId": "chapter5-semi-infinite"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "執筆原稿・基本算術と構造を確認／包括的品質監査待ち・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "執筆時の定義・収支・基本計算を確認。全問の独立科学監査・原本網羅照合・外部校閲は後工程。"
+      }
+    ],
+    "prompt": "集中熱容量モデルで周囲との温度差が半分になる時間t_1/2=120 s、mc=600 J/K、A_s=0.050 m²。h=mc ln2/(A_s t_1/2)、ln2=0.693147を使うとhはどれか。",
+    "choices": [
+      "約144 W/(m²·K)",
+      "約3.47 W/(m²·K)",
+      "約69.3 W/(m²·K)",
+      "約100 W/(m²·K)"
+    ],
+    "answer": 2,
+    "difficulty": "標準・数値計算",
+    "explanation": "Θ=exp(−hA_st/(mc))=1/2からh=600×0.693147/(0.050×120)=69.3147 W/(m²·K)。逆算にも集中近似や一定hの条件が必要。",
+    "distractors": [
+      "ln2を掛けず割った。",
+      "面積A_sを含めずhA_sをhとした。",
+      "正解。半減時間と時定数を区別してhを逆算した。",
+      "半減時間をそのままτとして使った。"
+    ],
+    "hints": [
+      "半減にはt/τ=ln2。",
+      "hA_sを先に逆算してもよい。"
+    ],
+    "solutionSteps": [
+      "ln2を掛けた熱容量415.888。",
+      "A_s t=6.0。",
+      "h≈69.3。"
+    ],
+    "beginnerPitfall": "半減時間と1/eの時定数を同じにしない。"
+  },
+  {
+    "id": "supp-existing-lumped-h-validity-tradeoff-v1",
+    "revision": "v1",
+    "field": "非定常伝導",
+    "prerequisites": [
+      "エネルギー保存",
+      "単位と符号",
+      "対象モデルの適用条件"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "applied",
+    "source": {
+      "type": "supplement",
+      "reference": "既存の独立詳細講義の到達目標に沿った独立作問。原本翻訳や章末問題の複製ではない。",
+      "chapterId": "ch5",
+      "focusSectionId": "5.2",
+      "guideId": "chapter5-semi-infinite"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "執筆原稿・基本算術と構造を確認／包括的品質監査待ち・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "執筆時の定義・収支・基本計算を確認。全問の独立科学監査・原本網羅照合・外部校閲は後工程。"
+      }
+    ],
+    "prompt": "同じ固体・形状でhだけを2倍にすると、集中モデル上のτ=mc/(hA_s)とBi=h(V/A_s)/k_sはどう変わるか。",
+    "choices": [
+      "τは半分、Biも半分で、一様近似が必ず改善する",
+      "τは2倍、Biも2倍で、冷却は必ず遅くなる",
+      "τは不変、Biは不変で、hは応答に影響しない",
+      "τは半分、Biは2倍で、適用条件を再確認する"
+    ],
+    "answer": 3,
+    "difficulty": "概念・適用判断",
+    "explanation": "hを2倍にするとモデル上の応答は速くなるが、内部伝導に対する表面熱交換が強くなりBiは増す。以前妥当だった集中近似が保てるとは限らない。",
+    "distractors": [
+      "Biはhに比例するので逆ではない。",
+      "τはhに反比例する。",
+      "両式にhが入り変化する。",
+      "正解。冷却速度の変化と内部一様近似の厳しさを分けた。"
+    ],
+    "hints": [
+      "τとBiのhの位置を比較。",
+      "速い応答と近似の妥当性を分ける。"
+    ],
+    "solutionSteps": [
+      "τの分母hを2倍。",
+      "Biの分子hを2倍。",
+      "Biの条件を再評価。"
+    ],
+    "beginnerPitfall": "計算上の速い応答を一様温度近似の改善としない。"
+  },
+  {
+    "id": "supp-existing-lumped-variable-h-v1",
+    "revision": "v1",
+    "field": "非定常伝導",
+    "prerequisites": [
+      "エネルギー保存",
+      "単位と符号",
+      "対象モデルの適用条件"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "conceptual",
+    "source": {
+      "type": "supplement",
+      "reference": "既存の独立詳細講義の到達目標に沿った独立作問。原本翻訳や章末問題の複製ではない。",
+      "chapterId": "ch5",
+      "focusSectionId": "5.2",
+      "guideId": "chapter5-semi-infinite"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "執筆原稿・基本算術と構造を確認／包括的品質監査待ち・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "執筆時の定義・収支・基本計算を確認。全問の独立科学監査・原本網羅照合・外部校閲は後工程。"
+      }
+    ],
+    "prompt": "内部一様温度は保てるがh=h(t)が時間で大きく変化する。周囲温度・熱容量・面積は一定、他の熱経路なし。一定τの単一指数解を使う判断として適切なのはどれか。",
+    "choices": [
+      "h(t)を積分し、一定τ式の適用可能性を調べる",
+      "一様温度なら、どんなh(t)でも一定τ式は厳密である",
+      "hが変化する場合は、物体熱容量mcを必ずゼロにする",
+      "hが正なら、温度差は開始後ただちにゼロとなる"
+    ],
+    "answer": 0,
+    "difficulty": "概念・適用判断",
+    "explanation": "一定周囲・熱容量等の条件ならΘ=exp[−(A_s/(mc))∫₀ᵗh(τ)dτ]。hの時間依存を積分して扱い、一般に同じ一定時定数とはしない。",
+    "distractors": [
+      "正解。一様温度と係数一定という別の近似を分けた。",
+      "集中近似だけでは係数一定を保証しない。",
+      "時間変化する熱伝達率から熱容量0は導けない。",
+      "有限係数での過渡収支を瞬時平衡とした。"
+    ],
+    "hints": [
+      "収支mc dΘ/dt=−A_s h(t)Θ。",
+      "変数分離して時間積分する。"
+    ],
+    "solutionSteps": [
+      "dΘ/Θ=−A_s h(t)dt/(mc)。",
+      "0からtまで積分。",
+      "h一定の場合のみ単一の一定τへ戻す。"
+    ],
+    "beginnerPitfall": "集中近似とh一定を同じ条件としない。"
+  },
+  {
+    "id": "supp-existing-lumped-passive-range-v1",
+    "revision": "v1",
+    "field": "非定常伝導",
+    "prerequisites": [
+      "エネルギー保存",
+      "単位と符号",
+      "対象モデルの適用条件"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "applied",
+    "source": {
+      "type": "supplement",
+      "reference": "既存の独立詳細講義の到達目標に沿った独立作問。原本翻訳や章末問題の複製ではない。",
+      "chapterId": "ch5",
+      "focusSectionId": "5.2",
+      "guideId": "chapter5-semi-infinite"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "執筆原稿・基本算術と構造を確認／包括的品質監査待ち・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "執筆時の定義・収支・基本計算を確認。全問の独立科学監査・原本網羅照合・外部校閲は後工程。"
+      }
+    ],
+    "prompt": "集中熱容量の冷却でh>0、mc>0、周囲温度一定、発熱・仕事・相変化なし。初期100℃、周囲20℃の計算でt>0に10℃が得られた。適切な判断はどれか。",
+    "choices": [
+      "温度差と絶対温度の区別は、この計算に不要である",
+      "モデルの範囲外の値なので式や入力を調べる",
+      "指数解なら、周囲より低くなるのが通常である",
+      "hが正なら、物体は周囲を超えて振動する"
+    ],
+    "answer": 1,
+    "difficulty": "概念・適用判断",
+    "explanation": "0<exp(−t/τ)<1なのでT=20+80exp(−t/τ)は20℃と100℃の間。有限精度、符号、初期・周囲値、モデル外の熱経路を確認する。",
+    "distractors": [
+      "どの温度を指数減衰させるかは計算の核心。",
+      "正解。受動的な一次指数応答は初期と周囲の間を保つ。",
+      "一定周囲への指数減衰はオーバーシュートしない。",
+      "この一次の受動モデルに振動はない。"
+    ],
+    "hints": [
+      "指数の値は0と1の間。",
+      "温度も初期と周囲の間。"
+    ],
+    "solutionSteps": [
+      "τ>0を確認。",
+      "予測範囲20<T<100。",
+      "10℃は不整合として調べる。"
+    ],
+    "beginnerPitfall": "計算結果の範囲を物理的に検算する。"
+  },
+  {
+    "id": "supp-existing-semi-initial-corner-v1",
+    "revision": "v1",
+    "field": "非定常伝導",
+    "prerequisites": [
+      "エネルギー保存",
+      "単位と符号",
+      "対象モデルの適用条件"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "conceptual",
+    "source": {
+      "type": "supplement",
+      "reference": "既存の独立詳細講義の到達目標に沿った独立作問。原本翻訳や章末問題の複製ではない。",
+      "chapterId": "ch5",
+      "focusSectionId": "5.6",
+      "guideId": "chapter5-semi-infinite"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "執筆原稿・基本算術と構造を確認／包括的品質監査待ち・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "執筆時の定義・収支・基本計算を確認。全問の独立科学監査・原本網羅照合・外部校閲は後工程。"
+      }
+    ],
+    "prompt": "半無限固体で初期T(x,0)=T_i（x>0）、時刻0以降の表面T(0,t)=T_s（t>0）、T_s≠T_iという理想モデルを使う。適切な説明はどれか。",
+    "choices": [
+      "表面条件があれば、t=0に全内部もT_sとなる",
+      "初期条件を満たすため、表面は全時刻でT_iとする",
+      "表面の瞬時変更を理想化して、t>0の過渡解を使う",
+      "初期と表面の温度が異なるので、全ての解は存在しない"
+    ],
+    "answer": 2,
+    "difficulty": "概念・適用判断",
+    "explanation": "表面温度のステップ変更では(x,t)=(0,0)の隅に不連続がある。x>0でt→0の初期極限を満たし、t>0で表面値を保つ解を使う。理想表面流束のt→0特異性は実際の無限熱流の保証ではない。",
+    "distractors": [
+      "拡散に要する過渡を無視して瞬時に全体を変えた。",
+      "指定された表面境界条件を別条件へ置き換えた。",
+      "正解。時空間の隅での不連続を瞬時変更の理想化として扱った。",
+      "t>0とx>0で与える条件を区別せず全解を否定した。"
+    ],
+    "hints": [
+      "初期はx>0、表面はt>0。",
+      "瞬時変更は現実の変更時間を省く近似。"
+    ],
+    "solutionSteps": [
+      "条件を別の領域へ書く。",
+      "t>0の相似解を使う。",
+      "実表面の応答時間の限界を記録。"
+    ],
+    "beginnerPitfall": "時空間の隅の理想的不連続を全内部の瞬時変化としない。"
+  },
+  {
+    "id": "supp-existing-semi-model-selection-v1",
+    "revision": "v1",
+    "field": "非定常伝導",
+    "prerequisites": [
+      "エネルギー保存",
+      "単位と符号",
+      "対象モデルの適用条件"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "applied",
+    "source": {
+      "type": "supplement",
+      "reference": "既存の独立詳細講義の到達目標に沿った独立作問。原本翻訳や章末問題の複製ではない。",
+      "chapterId": "ch5",
+      "focusSectionId": "5.6",
+      "guideId": "chapter5-semi-infinite"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "執筆原稿・基本算術と構造を確認／包括的品質監査待ち・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "執筆時の定義・収支・基本計算を確認。全問の独立科学監査・原本網羅照合・外部校閲は後工程。"
+      }
+    ],
+    "prompt": "有限厚さの固体を半無限の一定表面温度解で近似したい。適用前の判断として適切なのはどれか。",
+    "choices": [
+      "αが正なら、板厚や経過時間に関係なく厳密である",
+      "表面温度が一定なら、裏面の条件は常に不要である",
+      "計算が有限値なら、集中熱容量法とも常に同じである",
+      "対象時刻で裏面からの影響が無視できるかを確かめる"
+    ],
+    "answer": 3,
+    "difficulty": "概念・適用判断",
+    "explanation": "√(αt)程度の温度変化の広がりと板厚を比較し、必要な誤差許容で裏面の影響を確認する。影響が無視できなければ有限領域と実際の裏面境界条件を含める。",
+    "distractors": [
+      "正の物性だけでは半無限条件を保証しない。",
+      "時間が経てば裏面の条件が温度場へ影響する。",
+      "半無限の分布と一様温度の集中近似は別モデル。",
+      "正解。拡散長さと実際の厚さ・裏面条件を評価した。"
+    ],
+    "hints": [
+      "温度変化の広がりは√(αt)。",
+      "裏面が遠方条件を満たすか確認。"
+    ],
+    "solutionSteps": [
+      "対象時間を決める。",
+      "拡散長さと板厚を比べる。",
+      "有限領域への切り替えも検討。"
+    ],
+    "beginnerPitfall": "半無限解を任意の厚さ・全時刻の厳密解としない。"
   }
 ]
