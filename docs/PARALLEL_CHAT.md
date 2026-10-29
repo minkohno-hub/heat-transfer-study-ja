@@ -208,3 +208,9 @@
 - 既存の統合障害は**未解決**：`scripts/build-public-site.mjs` は図解SVGを公開配信へコピーしておらず、`data/original-deep-lessons.json` の節への画像参照も未連携。統合担当Codexは、アセットの安全な許可リスト・公開ビルド・キャッシュ/オフライン版数更新・講義UIへの参照・レスポンシブ表示を明示的に実装する。単なるマージで公開完成を宣言しない。
 - 統合時は別ブランチの変更・未push作業を保護。直近の `chat/parallel-dev` HEADとこの引き継ぎ文書を照合し、図解SVG14点の専用テスト・既存テスト・CI・公開ビルド・Pages実表示・モバイルSafari・ダークモード・読み上げを順に検証する。§7.2と§8.4のローカルNodeテスト・PNG目視は、これまで**未実行**のままとして引き継ぐ。
 - Codex週次制限リセット予定はユーザー連絡による2026-11-04 15:57 JST。統合と全体監査はCodex側。本ラインは`chat/parallel-dev`内の図解だけを続け、Codex本線PR #1に触れない。
+
+### 第14図解・最新成果コミットの確定記録（2026-10-30 JST）
+
+- **図解14枚を収録した最新の図解成果コミット：`798e312ae3d30fed157fcfb38e7c7e0f42b802e0`**。変更は§8.5のSVG、専用テスト、`docs/PARALLEL_CHAT.md`の3ファイルのみ。Codex統合時はこのSHA（取り込み候補）と`chat/parallel-dev`の実際のHEADを比較する。
+- この最新成果SHAを追記する文書同期コミット自体のSHAは、同じ文書内に事前記録できない。文書同期を含む最新のブランチHEADは `https://github.com/minkohno-hub/heat-transfer-study-ja/commits/chat/parallel-dev/` で照合する。
+- **Codex本線・PR #1は一切更新していない**。SVGのアプリ組込、公開ビルド/キャッシュ登録、全体CI、実機・スクリーンリーダー、外部学術校閲はCodex統合後に検証する未完了事項として引き継ぐ。
