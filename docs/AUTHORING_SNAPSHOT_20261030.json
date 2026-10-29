@@ -1,13 +1,13 @@
 {
   "schemaVersion": 1,
-  "checkedAt": "2026-10-29T22:00:52.444062+00:00",
-  "basis": "9ef8242に§9.10の経験式の温度尺度・被覆連成の説明と6問を追加した作業ツリーの実データ。旧PC回収数とは別。",
+  "checkedAt": "2026-10-29T22:14:12.972586+00:00",
+  "basis": "e258072に§9.7の表面条件・開始と強制対流の結合・横流れ膜沸騰の説明と6問を追加した作業ツリーの実データ。旧PC回収数とは別。",
   "scope": "独立執筆原稿と節別問題の暫定最低条件。科学的・法的完成認定ではない。",
   "totals": {
     "sectionCount": 76,
     "shortConceptNoteDrafts": 76,
     "detailedLessonDrafts": 76,
-    "questionsInBank": 726,
+    "questionsInBank": 732,
     "draftAuthoringMinimumMet": 76,
     "remainingQuestionDraftMinimum": 0,
     "sectionsNeedingDetailedLesson": 0,
@@ -17,16 +17,16 @@
   "glossaryOnThisBranch": 158,
   "evidence": {
     "node": {
-      "total": 347,
-      "passed": 342,
+      "total": 353,
+      "passed": 348,
       "skipped": 5,
       "failed": 0
     },
     "publicBuild": "passed",
     "currentBatchBrowser": {
-      "previousSourceCI": "9ef8242:run40961168305 check and WebKit online passed; 76 lectures/392 exercise questions, bank720",
-      "currentChromiumProbe": "passed: section9.10 and 6 additional questions, mobile overflow absent, stored revision v1, pageerrors0",
-      "currentWebKit": "not yet executed: 76 lectures/398 exercise questions",
+      "previousSourceCI": "e258072:run40962566552 check and WebKit online passed; 76 lectures/398 exercise questions, bank726",
+      "currentChromiumProbe": "passed: section9.7 and 6 additional questions, mobile overflow absent, stored revision v1, pageerrors0",
+      "currentWebKit": "not yet executed: 76 lectures/404 exercise questions",
       "publicDeployment": "not performed; previously directly checked published bank72 is historical verification"
     },
     "expertReview": "not_completed",
@@ -1509,7 +1509,7 @@
       "shortConceptNoteDraft": true,
       "detailedLessonDraft": true,
       "legacyDraftRecorded": false,
-      "questionDraftCount": 8,
+      "questionDraftCount": 14,
       "questionKinds": 3,
       "missingQuestionDrafts": 0,
       "missingKinds": 0,
@@ -1519,15 +1519,16 @@
       "reviewedQuestionCount": 0,
       "verifiedRights": false,
       "finalAcceptance": false,
-      "learningObjective": "沸騰データを比べるために必要な状態と装置条件を整理できる。静水圧と純物質の相平衡から飽和温度の局所的変化を概算し、その計算だけでは沸騰熱流束が決まらないと説明できる。",
-      "detailedBlockCount": 8,
-      "equationCount": 4,
-      "workedExampleSteps": 5,
+      "learningObjective": "沸騰データを比べるために必要な状態と装置条件を整理できる。静水圧と純物質の相平衡から飽和温度の局所的変化を概算し、その計算だけでは沸騰熱流束が決まらないと説明できる。 表面粗さと後退接触角の限定的なCHF相関、沸騰開始を含む強制対流との結合、横流れの膜沸騰を別モデルとして評価し、指定単位と適用範囲を確認できる。",
+      "detailedBlockCount": 15,
+      "equationCount": 9,
+      "workedExampleSteps": 11,
       "questionReview": "comprehensive_scientific_review_pending",
-      "sourceCollation": "section_start_mapping_tracked_full_scope_unverified",
+      "sourceCollation": "PDF pp521/523-525 selected correlation definitions/conditions viewed as images; jets/figures/full scope unverified",
       "independentFigures": "parallel_line_assets_unintegrated_or_pending",
       "publicScreenCurrentBatch": "c5d35fc: built-artifact Chromium and WebKit-online passed; latest live deployment not performed",
-      "expertApproval": false
+      "expertApproval": false,
+      "currentRevisionScreenCheck": "passed: targeted Chromium reader/6questions/revision/mobile probe"
     },
     {
       "chapterId": "ch9",
@@ -1611,7 +1612,7 @@
       "independentFigures": "parallel_line_assets_unintegrated_or_pending",
       "publicScreenCurrentBatch": "c5d35fc: built-artifact Chromium and WebKit-online passed; latest live deployment not performed",
       "expertApproval": false,
-      "currentRevisionScreenCheck": "passed: targeted Chromium reader/6questions/revision/mobile probe"
+      "currentRevisionScreenCheck": "e258072:targeted Chromium and full WebKit online passed"
     },
     {
       "chapterId": "ch9",

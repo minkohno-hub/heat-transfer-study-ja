@@ -37451,5 +37451,341 @@
       "条件内の計算と実機の承認を分ける。"
     ],
     "beginnerPitfall": "式の数値入力ができることを、適用条件の確認の代わりにしない。"
+  },
+  {
+    "id": "supp-system-boiling-surface-factor-v1",
+    "revision": "v1",
+    "field": "沸騰・相変化",
+    "prerequisites": [
+      "沸騰曲線",
+      "表面と流動条件",
+      "相関式の適用範囲"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "一般的な沸騰の相関と独立の仮想例から作問。原本の文章・図・例題は転載しない。",
+      "chapterId": "ch9",
+      "focusSectionId": "9.7",
+      "guideId": "chapter9-latent-boiling"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "2026-10-30：内部の別式検算・単位・条件・全選択肢確認／原本網羅照合・包括的品質監査・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-30",
+        "type": "authored_with_internal_check",
+        "details": "docs/SYSTEM_BOILING_CORRELATIONS_20261030.md。対象式の指定単位・条件を画像確認し、別式と全誤答を内部検算。外部専門家校閲ではない。"
+      }
+    ],
+    "prompt": "大きな平板の表面相関q″_max/q″_max,Z=1.042(1−β_deg/180)^3 r_μ^0.125を使う。r_μはrms粗さのμm数値、β_degは後退接触角の度数値で、範囲は2≤r_μ≤12、0≤β_deg≤40。r=8.00 μm、β=20.0°、q″_max,Z=5.00×10⁵ W/m²のときq″_maxはいくらか。有効数字3桁とする。",
+    "choices": [
+      "4.75×10⁵ W/m²",
+      "8.44×10⁴ W/m²",
+      "6.76×10⁵ W/m²",
+      "5.00×10⁵ W/m²"
+    ],
+    "answer": 0,
+    "difficulty": "標準・数値計算",
+    "explanation": "r_μ=8.00、β_deg=20.0。倍率≈1.042×(8/9)^3×8^0.125≈0.94906597、q″_max≈474533 W/m²。rもβも指定範囲内で、倍率が必ず1より大きくなるわけではない。",
+    "distractors": [
+      "正解。倍率約0.949を基準熱流束へ掛けた。",
+      "rのm表示数値8×10⁻⁶を係数を変えず入れた。",
+      "後退接触角の項を落とした。",
+      "表面相関の倍率を全く加えていない。"
+    ],
+    "hints": [
+      "粗さと角度の種類・単位・範囲を確認する。",
+      "1−20/180=8/9。"
+    ],
+    "solutionSteps": [
+      "粗さと角度の種類・単位・範囲を確認する。",
+      "1−20/180=8/9。",
+      "倍率約0.949を求める。",
+      "5.00×10⁵ W/m²へ掛ける。"
+    ],
+    "beginnerPitfall": "経験式の入力数値と単位を切り離さない。"
+  },
+  {
+    "id": "supp-system-boiling-surface-data-v1",
+    "revision": "v1",
+    "field": "沸騰・相変化",
+    "prerequisites": [
+      "沸騰曲線",
+      "表面と流動条件",
+      "相関式の適用範囲"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "applied",
+    "source": {
+      "type": "supplement",
+      "reference": "一般的な沸騰の相関と独立の仮想例から作問。原本の文章・図・例題は転載しない。",
+      "chapterId": "ch9",
+      "focusSectionId": "9.7",
+      "guideId": "chapter9-latent-boiling"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "2026-10-30：内部の別式検算・単位・条件・全選択肢確認／原本網羅照合・包括的品質監査・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-30",
+        "type": "authored_with_internal_check",
+        "details": "docs/SYSTEM_BOILING_CORRELATIONS_20261030.md。対象式の指定単位・条件を画像確認し、別式と全誤答を内部検算。外部専門家校閲ではない。"
+      }
+    ],
+    "prompt": "ある表面CHF相関は、二乗平均平方根粗さ2〜12 μm、後退接触角0〜40°を条件とする。対応する測定量と範囲をそろえた使い方はどれか。",
+    "choices": [
+      "二乗平均平方根粗さ80 µmと後退接触角20°を使う",
+      "二乗平均平方根粗さ8 µmと後退接触角20°を使う",
+      "最大高さ粗さ8 µmと静的接触角20°を使う",
+      "二乗平均平方根粗さ8 µmと前進接触角20°を使う"
+    ],
+    "answer": 1,
+    "difficulty": "概念・適用と測定量の選択",
+    "explanation": "同じ数値を持っていてもrms粗さと最大高さ、後退と前進/静的接触角は異なる。指定した測定量をそろえ、次に数値の範囲を確認する。",
+    "distractors": [
+      "粗さが指定された上限12 μmを超える。",
+      "正解。粗さと角度の定義、両方の範囲を満たす。",
+      "粗さと接触角の測定量が両方とも違う。",
+      "同じ角度数値でも前進と後退は別の量である。"
+    ],
+    "hints": [
+      "式が求める粗さの定義を確認する。",
+      "接触角が前進・後退・静的のどれかを確認する。"
+    ],
+    "solutionSteps": [
+      "式が求める粗さの定義を確認する。",
+      "接触角が前進・後退・静的のどれかを確認する。",
+      "粗さ8 μmと後退20°なら両範囲内。",
+      "測定量の違いを単なる表記ゆれとして扱わない。"
+    ],
+    "beginnerPitfall": "一つの接触角で全ての濡れの履歴を代表させない。"
+  },
+  {
+    "id": "supp-system-boiling-combined-flux-v1",
+    "revision": "v1",
+    "field": "沸騰・相変化",
+    "prerequisites": [
+      "沸騰曲線",
+      "表面と流動条件",
+      "相関式の適用範囲"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "一般的な沸騰の相関と独立の仮想例から作問。原本の文章・図・例題は転載しない。",
+      "chapterId": "ch9",
+      "focusSectionId": "9.7",
+      "guideId": "chapter9-latent-boiling"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "2026-10-30：内部の別式検算・単位・条件・全選択肢確認／原本網羅照合・包括的品質監査・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-30",
+        "type": "authored_with_internal_check",
+        "details": "docs/SYSTEM_BOILING_CORRELATIONS_20261030.md。対象式の指定単位・条件を画像確認し、別式と全誤答を内部検算。外部専門家校閲ではない。"
+      }
+    ],
+    "prompt": "適合する沸騰開始後の流動条件で、Bergles–Rohsenowの第一近似q″=sqrt[(q″_FC)²+(q″_B−q″_i)²]を使う。単相側q″_FC=30.0、プール側q″_B=50.0、開始過熱度でのプール曲線の値q″_i=10.0 kW/m²と与える。q″はいくらか。",
+    "choices": [
+      "80.0 kW/m²",
+      "58.3 kW/m²",
+      "50.0 kW/m²",
+      "70.0 kW/m²"
+    ],
+    "answer": 2,
+    "difficulty": "標準・数値計算",
+    "explanation": "q″_B−q″_i=40.0、q″=sqrt(900+1600)=50.0 kW/m²。q″_iの参照する曲線と、開始後の条件をそろえる。",
+    "distractors": [
+      "単相とプールの全量を単純に足した。",
+      "開始時のプール曲線の値q″_iを引かず二乗和にした。",
+      "正解。sqrt(30²+40²)=50である。",
+      "単相側と差分を単純に足した。"
+    ],
+    "hints": [
+      "q″_Bとq″_iの差を先に求める。",
+      "熱流束の単位を同じにする。"
+    ],
+    "solutionSteps": [
+      "q″_Bとq″_iの差を先に求める。",
+      "熱流束の単位を同じにする。",
+      "30²+40²の平方根を取る。",
+      "加算、枝の最大値とは異なる結合モデルだと確認する。"
+    ],
+    "beginnerPitfall": "異なる相関の寄与の足し合わせ方を同じと決めつけない。"
+  },
+  {
+    "id": "supp-system-boiling-incipience-reference-v1",
+    "revision": "v1",
+    "field": "沸騰・相変化",
+    "prerequisites": [
+      "沸騰曲線",
+      "表面と流動条件",
+      "相関式の適用範囲"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "conceptual",
+    "source": {
+      "type": "supplement",
+      "reference": "一般的な沸騰の相関と独立の仮想例から作問。原本の文章・図・例題は転載しない。",
+      "chapterId": "ch9",
+      "focusSectionId": "9.7",
+      "guideId": "chapter9-latent-boiling"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "2026-10-30：内部の別式検算・単位・条件・全選択肢確認／原本網羅照合・包括的品質監査・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-30",
+        "type": "authored_with_internal_check",
+        "details": "docs/SYSTEM_BOILING_CORRELATIONS_20261030.md。対象式の指定単位・条件を画像確認し、別式と全誤答を内部検算。外部専門家校閲ではない。"
+      }
+    ],
+    "prompt": "流動沸騰を単相強制対流と結合する式で、q″_iは「流動中に沸騰が始まる壁面過熱度で、プール沸騰曲線を評価した熱流束」と定義される。どの値を読むか。",
+    "choices": [
+      "開始時の過熱度で、強制対流の式から読む値",
+      "現時点の過熱度で、プール沸騰曲線から読む値",
+      "現時点の過熱度で、強制対流の式から読む値",
+      "開始時の過熱度で、プール沸騰曲線から読む値"
+    ],
+    "answer": 3,
+    "difficulty": "概念・適用と測定量の選択",
+    "explanation": "q″_iは開始時の壁面過熱度を、プール曲線へ持ち込んだ値。開始温度を決める交点の単相熱流束と無条件に同じとしない。",
+    "distractors": [
+      "開始時の強制対流の値は、開始時のプール曲線の値とは一般に異なる。",
+      "現在のプール曲線の値はq″_Bでありq″_iではない。",
+      "現在の単相側の値はq″_FCでありq″_iではない。",
+      "正解。温度の評価点と参照曲線の両方が定義に合う。"
+    ],
+    "hints": [
+      "温度の評価点は現在か開始時かを分ける。",
+      "参照する曲線は単相側かプール側かを分ける。"
+    ],
+    "solutionSteps": [
+      "温度の評価点は現在か開始時かを分ける。",
+      "参照する曲線は単相側かプール側かを分ける。",
+      "開始時とプール側の組合せを選ぶ。",
+      "q″_FC、q″_B、q″_iを別に記録する。"
+    ],
+    "beginnerPitfall": "同じ温度でも別の曲線から読む熱流束は同じとは限らない。"
+  },
+  {
+    "id": "supp-system-boiling-forced-film-v1",
+    "revision": "v1",
+    "field": "沸騰・相変化",
+    "prerequisites": [
+      "沸騰曲線",
+      "表面と流動条件",
+      "相関式の適用範囲"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "一般的な沸騰の相関と独立の仮想例から作問。原本の文章・図・例題は転載しない。",
+      "chapterId": "ch9",
+      "focusSectionId": "9.7",
+      "guideId": "chapter9-latent-boiling"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "2026-10-30：内部の別式検算・単位・条件・全選択肢確認／原本網羅照合・包括的品質監査・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-30",
+        "type": "authored_with_internal_check",
+        "details": "docs/SYSTEM_BOILING_CORRELATIONS_20261030.md。対象式の指定単位・条件を画像確認し、別式と全誤答を内部検算。外部専門家校閲ではない。"
+      }
+    ],
+    "prompt": "外部液体が円筒を横切る膜沸騰でq″=2.70[k_vρ_vh_fg*ΔT_eu∞/D]^(1/2)を使えると仮定する。k_v=0.0500 W/(m·K)、ρ_v=2.00 kg/m³、h_fg*=1.50×10⁶ J/kg、ΔT_e=100 K、u∞=2.00 m/s、D=0.0500 m、g=10.0 m/s²。条件u∞²/(gD)≥4を確認した上でq″はいくらか。有効数字3桁とする。",
+    "choices": [
+      "66.1 kW/m²",
+      "24.5 kW/m²",
+      "73.0 kW/m²",
+      "93.5 kW/m²"
+    ],
+    "answer": 0,
+    "difficulty": "標準・数値計算",
+    "explanation": "u∞²/(gD)=4/0.500=8≥4。根号内は6.00×10⁸、q″≈2.70×24494.9≈66136 W/m²。これは蒸気膜の相関で、強い放射や他の幾何は別評価。",
+    "distractors": [
+      "正解。条件の比は8、根号内6.00×10⁸から求めた。",
+      "係数2.70を掛けていない。",
+      "球の係数2.98を円筒へ使った。",
+      "根号内のu∞をu∞²にしてしまった。"
+    ],
+    "hints": [
+      "外部液体の自由流速度で比を計算する。",
+      "円筒の係数2.70を使う。"
+    ],
+    "solutionSteps": [
+      "外部液体の自由流速度で比を計算する。",
+      "円筒の係数2.70を使う。",
+      "根号内の値をSI単位で計算する。",
+      "W/m²からkW/m²へ換算する。"
+    ],
+    "beginnerPitfall": "円筒と球、外部液体速度と膜内蒸気速度を取り違えない。"
+  },
+  {
+    "id": "supp-system-boiling-forced-film-range-v1",
+    "revision": "v1",
+    "field": "沸騰・相変化",
+    "prerequisites": [
+      "沸騰曲線",
+      "表面と流動条件",
+      "相関式の適用範囲"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "applied",
+    "source": {
+      "type": "supplement",
+      "reference": "一般的な沸騰の相関と独立の仮想例から作問。原本の文章・図・例題は転載しない。",
+      "chapterId": "ch9",
+      "focusSectionId": "9.7",
+      "guideId": "chapter9-latent-boiling"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "2026-10-30：内部の別式検算・単位・条件・全選択肢確認／原本網羅照合・包括的品質監査・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-30",
+        "type": "authored_with_internal_check",
+        "details": "docs/SYSTEM_BOILING_CORRELATIONS_20261030.md。対象式の指定単位・条件を画像確認し、別式と全誤答を内部検算。外部専門家校閲ではない。"
+      }
+    ],
+    "prompt": "円筒横流れの膜沸騰式がu∞²/(gD)≥4を必要条件とする。外部液体u∞=1.00 m/s、g=10.0 m/s²、D=0.0500 mのとき、比と判断の組合せはどれか。",
+    "choices": [
+      "8、条件内として提示されたモデルを使う",
+      "2、条件外として適合する別モデルを選ぶ",
+      "2、条件内として提示されたモデルを使う",
+      "4、条件内として提示されたモデルを使う"
+    ],
+    "answer": 1,
+    "difficulty": "概念・適用と測定量の選択",
+    "explanation": "比は1.00²/(10.0×0.0500)=2.00<4。式へ数値を入れて有限のq″が出ても適用根拠にならない。浮力と流れの条件に合う別モデル等を調べる。",
+    "distractors": [
+      "速度2 m/s等の別の条件を使った値で、実際の比は2。",
+      "正解。比は2で、必要条件を満たさない。",
+      "比が2なら4以上の条件を満たしていない。",
+      "分母を半分に扱った等の誤計算で、実際の比は2。"
+    ],
+    "hints": [
+      "自由流速度を二乗する。",
+      "gD=0.500 m²/s²。"
+    ],
+    "solutionSteps": [
+      "自由流速度を二乗する。",
+      "gD=0.500 m²/s²。",
+      "比2を条件4と比較する。",
+      "条件外では有限な計算値を採用理由にしない。"
+    ],
+    "beginnerPitfall": "流れが弱い側へ、流れ支配の式を無条件に外挿しない。"
   }
 ]
