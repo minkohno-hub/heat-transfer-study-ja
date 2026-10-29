@@ -15436,5 +15436,348 @@
       "等モル相互拡散ではなく、全流れの寄与を含むモデルを選ぶ。"
     ],
     "beginnerPitfall": "静止成分の全流束ゼロと、モル平均速度に対する拡散流束ゼロは異なる。"
+  },
+  {
+    "id": "supp-natural-beta-v1",
+    "revision": "v1",
+    "field": "対流",
+    "prerequisites": [
+      "自然対流",
+      "無次元数",
+      "相関式の条件"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "自然対流の一般法則と仮想条件から独立作問。原本の本文・原図・章末問題は転載しない。",
+      "chapterId": "ch8",
+      "focusSectionId": "8.4",
+      "guideId": "chapter8-buoyancy"
+    },
+    "createdStatus": "独立作問",
+    "reviewStatus": "式・単位・条件を内部検算／外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [],
+    "prompt": "理想気体を小さな温度差で扱い、体膨張係数β≈1/T_fと近似する。膜温度T_f=26.85 ℃のとき、βはいくらか。絶対温度換算には273.15を用い、有効数字3桁とする。",
+    "choices": [
+      "0.0372 K⁻¹",
+      "0.00333 K⁻¹",
+      "0.000333 K⁻¹",
+      "300 K⁻¹"
+    ],
+    "answer": 1,
+    "difficulty": "標準・数値計算",
+    "explanation": "T_f=26.85+273.15=300.00 K。β≈1/300=0.00333 K⁻¹。温度そのものの逆数なので摂氏を直接入れない。理想気体・小温度差という条件付きの近似である。",
+    "distractors": [
+      "摂氏26.85の逆数を使っている。",
+      "正解。絶対温度300 Kの逆数。",
+      "絶対温度の換算後に10倍の誤差がある。",
+      "逆数でなく温度の数値を係数としている。"
+    ],
+    "hints": [
+      "βの近似では温度差でなく絶対温度を使う。",
+      "摂氏に273.15を加えてから逆数を取る。"
+    ],
+    "solutionSteps": [
+      "膜温度を300 Kに換算する。",
+      "1/300 Kの逆数を計算する。",
+      "3桁で0.00333 K⁻¹と示し、理想気体近似の条件を確認する。"
+    ],
+    "beginnerPitfall": "自然対流の相関式は、代表長さ・向き・境界条件・物性の条件と一緒に用いる。"
+  },
+  {
+    "id": "supp-natural-rayleigh-v1",
+    "revision": "v1",
+    "field": "対流",
+    "prerequisites": [
+      "自然対流",
+      "無次元数",
+      "相関式の条件"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "自然対流の一般法則と仮想条件から独立作問。原本の本文・原図・章末問題は転載しない。",
+      "chapterId": "ch8",
+      "focusSectionId": "8.4",
+      "guideId": "chapter8-buoyancy"
+    },
+    "createdStatus": "独立作問",
+    "reviewStatus": "式・単位・条件を内部検算／外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [],
+    "prompt": "仮想の一定物性流体でg=10 m/s²、β=0.0040 K⁻¹、|T_s−T∞|=10 K、L=0.10 m、ν=2.0×10⁻⁵ m²/s、α=1.0×10⁻⁵ m²/sとする。Ra=gβ|ΔT|L³/(να)はいくらか。有効数字2桁とする。",
+    "choices": [
+      "2.0×10⁴",
+      "2.0×10⁵",
+      "2.0×10⁶",
+      "2.0×10⁷"
+    ],
+    "answer": 2,
+    "difficulty": "標準・数値計算",
+    "explanation": "分子は10×0.0040×10×0.10³=4.0×10⁻⁴ m⁴/s²。分母は2.0×10⁻¹⁰ m⁴/s²で、Ra=2.0×10⁶。単位は相殺して無次元となる。Raだけでは幾何や境界条件に合うNu相関は決まらない。",
+    "distractors": [
+      "L³を含む倍率の扱いが100分の1。",
+      "L³を含む倍率の扱いが10分の1。",
+      "正解。分子と分母の同じ次元を相殺する。",
+      "分母の指数計算で値を10倍にしている。"
+    ],
+    "hints": [
+      "0.10 mを3乗する。",
+      "νとαの積は2.0×10⁻¹⁰ m⁴/s²。"
+    ],
+    "solutionSteps": [
+      "L³=1.0×10⁻³ m³を計算する。",
+      "分子4.0×10⁻⁴を分母2.0×10⁻¹⁰で割る。",
+      "Ra=2.0×10⁶、無次元と確認する。"
+    ],
+    "beginnerPitfall": "自然対流の相関式は、代表長さ・向き・境界条件・物性の条件と一緒に用いる。"
+  },
+  {
+    "id": "supp-natural-length-scaling-v1",
+    "revision": "v1",
+    "field": "対流",
+    "prerequisites": [
+      "自然対流",
+      "無次元数",
+      "相関式の条件"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "自然対流の一般法則と仮想条件から独立作問。原本の本文・原図・章末問題は転載しない。",
+      "chapterId": "ch8",
+      "focusSectionId": "8.4",
+      "guideId": "chapter8-buoyancy"
+    },
+    "createdStatus": "独立作問",
+    "reviewStatus": "式・単位・条件を内部検算／外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [],
+    "prompt": "等温垂直平板の平均自然対流相関Nu_L=C Ra_L^(1/4)、h=Nu_L k/Lを用いる。他の物性、C、温度差を固定し、代表長さLを2倍にしても同じ相関の適用範囲内とする。平均hの倍率はどれか。小数第3位を四捨五入する。",
+    "choices": [
+      "0.50倍",
+      "0.84倍",
+      "1.68倍",
+      "2.00倍"
+    ],
+    "answer": 1,
+    "difficulty": "標準・数値計算",
+    "explanation": "Ra∝L³なのでNu∝L^(3/4)。h=Nu k/Lよりh∝L^(−1/4)で、2^(−1/4)=0.8409…、約0.84倍。面積まで変わる場合の全熱移動率の倍率を問うてはいない。",
+    "distractors": [
+      "hを単純なLの逆比例とした。",
+      "正解。Nuの変化と分母Lの両方を含めた。",
+      "Nuだけの倍率2^(3/4)をhの倍率とした。",
+      "Lを増やすとhも同比率で増えるとした。"
+    ],
+    "hints": [
+      "RaにはL³が含まれる。",
+      "NuのL依存とhの分母Lを合わせる。"
+    ],
+    "solutionSteps": [
+      "Raの倍率は2³=8。",
+      "Nuの倍率は8^(1/4)。",
+      "hの倍率は8^(1/4)/2=2^(−1/4)≈0.84。"
+    ],
+    "beginnerPitfall": "自然対流の相関式は、代表長さ・向き・境界条件・物性の条件と一緒に用いる。"
+  },
+  {
+    "id": "supp-natural-signed-heat-v1",
+    "revision": "v1",
+    "field": "対流",
+    "prerequisites": [
+      "自然対流",
+      "無次元数",
+      "相関式の条件"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "自然対流の一般法則と仮想条件から独立作問。原本の本文・原図・章末問題は転載しない。",
+      "chapterId": "ch8",
+      "focusSectionId": "8.4",
+      "guideId": "chapter8-buoyancy"
+    },
+    "createdStatus": "独立作問",
+    "reviewStatus": "式・単位・条件を内部検算／外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [],
+    "prompt": "仮想の自然対流条件で、対象の冷たい面に適合する平均h=5.0 W/(m²·K)が別途確認された。面積A=0.40 m²、表面T_s=15 ℃、遠方流体T∞=25 ℃。面から流体へ向かう熱移動率を正とし、Q̇=hA(T_s−T∞)を使うと値はどれか。有効数字2桁とする。",
+    "choices": [
+      "+20 W",
+      "−50 W",
+      "+50 W",
+      "−20 W"
+    ],
+    "answer": 3,
+    "difficulty": "標準・数値計算",
+    "explanation": "温度差は15−25=−10 K。Q̇=5.0×0.40×(−10)=−20 W。負号は熱が流体から面へ入ることを表す。Raを温度差の絶対値で整理しても、熱流の符号まで絶対値にしてはいけない。",
+    "distractors": [
+      "熱の大きさは合うが符号規約と逆。",
+      "面積を含めた積の大きさが違う。",
+      "面積の扱いと熱の方向の両方が違う。",
+      "正解。大きさ20 Wで流体から面へ向かう。"
+    ],
+    "hints": [
+      "正方向は面から流体であり、面の方が冷たい。",
+      "温度差は符号を保ち−10 K。"
+    ],
+    "solutionSteps": [
+      "T_s−T∞=−10 Kとする。",
+      "hA=2.0 W/Kと計算する。",
+      "Q̇=−20 Wで流体から面への熱移動と解釈する。"
+    ],
+    "beginnerPitfall": "自然対流の相関式は、代表長さ・向き・境界条件・物性の条件と一緒に用いる。"
+  },
+  {
+    "id": "supp-natural-horizontal-orientation-v1",
+    "revision": "v1",
+    "field": "対流",
+    "prerequisites": [
+      "自然対流",
+      "無次元数",
+      "相関式の条件"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "applied",
+    "source": {
+      "type": "supplement",
+      "reference": "自然対流の一般法則と仮想条件から独立作問。原本の本文・原図・章末問題は転載しない。",
+      "chapterId": "ch8",
+      "focusSectionId": "8.4",
+      "guideId": "chapter8-buoyancy"
+    },
+    "createdStatus": "独立作問",
+    "reviewStatus": "式・単位・条件を内部検算／外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [],
+    "prompt": "空気中で同じ大きさの等温水平板を加熱する。自然対流のモデルを選ぶ際、熱い上向き面と熱い下向き面について適切な判断はどれか。",
+    "choices": [
+      "同じRaなら、面の向きによらず同じhとする",
+      "温度差が等しければ、垂直板のhを両面に使う",
+      "浮力と面の向きを確認し、配置に合う式を使う",
+      "下向き面では、熱移動が常にゼロになるとする"
+    ],
+    "answer": 2,
+    "difficulty": "応用・適用判断",
+    "explanation": "熱い上向き面の上には軽い流体が生まれ、上昇して周囲流体が補給されやすい。熱い下向き面の下では暖かい流体が上側にとどまりやすい。配置により流動と相関が異なり、同じRaでも同じhとは限らない。下向き面でも伝導等による熱移動は存在する。",
+    "distractors": [
+      "Raだけでは幾何・向きの情報が不足。",
+      "垂直板と水平板は境界層の配置が異なる。",
+      "正解。浮力に対する向きと相関の条件を対応させる。",
+      "流動が抑えられても完全断熱にはならない。"
+    ],
+    "hints": [
+      "温められた空気は周囲より軽くなる。",
+      "軽い空気が面から離れやすい向きを考える。"
+    ],
+    "solutionSteps": [
+      "重力方向と加熱面の表裏を図示する。",
+      "暖かい流体が離脱しやすいか滞留しやすいか考える。",
+      "各配置に合う自然対流相関と代表長さを確認する。"
+    ],
+    "beginnerPitfall": "自然対流の相関式は、代表長さ・向き・境界条件・物性の条件と一緒に用いる。"
+  },
+  {
+    "id": "supp-natural-mixed-convection-v1",
+    "revision": "v1",
+    "field": "対流",
+    "prerequisites": [
+      "自然対流",
+      "無次元数",
+      "相関式の条件"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "applied",
+    "source": {
+      "type": "supplement",
+      "reference": "自然対流の一般法則と仮想条件から独立作問。原本の本文・原図・章末問題は転載しない。",
+      "chapterId": "ch8",
+      "focusSectionId": "8.4",
+      "guideId": "chapter8-buoyancy"
+    },
+    "createdStatus": "独立作問",
+    "reviewStatus": "式・単位・条件を内部検算／外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [],
+    "prompt": "垂直加熱板の近くに弱い送風があり、同じ代表長さに基づくGr/Re²が約1と見積もられた。モデル選定として適切な判断はどれか。",
+    "choices": [
+      "送風速度が非ゼロなので、強制対流のみで評価する",
+      "浮力と送風の向きを確認し、混合対流を検討する",
+      "自然対流なので、流速を必ずゼロとしてよい",
+      "比が1なので、全配置でhが同じ値になる"
+    ],
+    "answer": 1,
+    "difficulty": "応用・適用判断",
+    "explanation": "Gr/Re²≈1は、浮力と強制流がともに影響しうる目安。板沿いの流れが浮力を助けるか逆らうか、形状や適用範囲を確認して混合対流を検討する。この比だけからhの値や一律の境界を決めることはできない。",
+    "distractors": [
+      "弱い送風があっても浮力が無視できるとは限らない。",
+      "正解。双方の寄与と流れ方向を検討する。",
+      "実際の送風を消すと与条件を変更してしまう。",
+      "無次元数の比だけではhの次元値は決まらない。"
+    ],
+    "hints": [
+      "Grは浮力の尺度、Reは外部から与えた流れの尺度。",
+      "比が約1なら片方だけを無条件に落とせない。"
+    ],
+    "solutionSteps": [
+      "GrとReの代表長さ・評価物性をそろえる。",
+      "浮力と送風の両方の影響がありうると判断する。",
+      "流れの助長・対向と幾何に合う混合対流モデルを探す。"
+    ],
+    "beginnerPitfall": "自然対流の相関式は、代表長さ・向き・境界条件・物性の条件と一緒に用いる。"
+  },
+  {
+    "id": "supp-natural-length-definition-v1",
+    "revision": "v1",
+    "field": "対流",
+    "prerequisites": [
+      "自然対流",
+      "無次元数",
+      "相関式の条件"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "applied",
+    "source": {
+      "type": "supplement",
+      "reference": "自然対流の一般法則と仮想条件から独立作問。原本の本文・原図・章末問題は転載しない。",
+      "chapterId": "ch8",
+      "focusSectionId": "8.4",
+      "guideId": "chapter8-buoyancy"
+    },
+    "createdStatus": "独立作問",
+    "reviewStatus": "式・単位・条件を内部検算／外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [],
+    "prompt": "自然対流の相関を比較すると、ある水平面相関はL_c=A/P（面積/周長）、別の垂直面相関は板高さLを用いている。両者を使う際の適切な扱いはどれか。",
+    "choices": [
+      "長さの次元が共通なので、全ての式で同じ数値を使う",
+      "大きい長さを選び、常に安全側のhにする",
+      "Nuだけ長さを替え、Raの長さは据え置く",
+      "各式の定義に合わせ、RaとNuを一貫させる"
+    ],
+    "answer": 3,
+    "difficulty": "応用・適用判断",
+    "explanation": "代表長さは相関を定義する一部である。RaのL³とNu=hL/kのLを、その相関の幾何と長さ定義に合わせる。形状の違う相関の数値は、長さを統一しただけで互換にはならない。大きい長さを選んでも安全側になる保証はない。",
+    "distractors": [
+      "同じ次元であることと定義の一致は異なる。",
+      "長さの変更が安全側になる保証はない。",
+      "RaとNuで異なる長さを使うと相関の定義に反する。",
+      "正解。相関の代表長さと幾何・条件を一体で使う。"
+    ],
+    "hints": [
+      "NuとRaの両方に代表長さが入る。",
+      "式を使う前にLの定義と配置を確認する。"
+    ],
+    "solutionSteps": [
+      "採用する相関の幾何と代表長さの定義を読む。",
+      "同じ定義のLでRaとNuを計算する。",
+      "別配置の相関へ長さだけを交換して流用しない。"
+    ],
+    "beginnerPitfall": "自然対流の相関式は、代表長さ・向き・境界条件・物性の条件と一緒に用いる。"
   }
 ]
