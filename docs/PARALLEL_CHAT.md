@@ -231,3 +231,9 @@
 - **最重要未解決事項**：現行公開ビルド`scripts/build-public-site.mjs`は独自SVGを配布対象に含めておらず、各講義`sectionId`との表示・キャッシュ連携がない。Codex統合側で公開ビルドの独自資産許可リスト、オフラインキャッシュ更新、講義内の図への安全なリンク/拡大機能、ライト／ダーク表示を実装してから公開完成とみなす。
 - 最終統合時には、科学的適用条件を尊重して新規SVGだけを取り込み、テスト`node --test tests/lesson-diagram-*.test.mjs`とアプリ全体の`npm test`・公開ビルド/配信検証・実機・読み上げを実行する。§7.2、§8.4、§5.2の専用Nodeテスト/画像目視は未実施であることに注意し、検証済み扱いにしない。
 - 原著の転載素材とは異なる独自作図だが、公開機構に組み込む際は権利/配布監査を別途確認。Codex本線/PR #1はCodexの11月4日15:57 JST予定のリセット後に統合担当が扱う。本ラインは引き続き`chat/parallel-dev`だけにコミット。
+
+### 第15図解・最新成果コミット確定（2026-10-30 JST）
+
+- **15枚に到達した最新の図解成果コミット：`68c37bfea74e949e8c797f355e85e5e99b6cee33`**。今回の変更は`assets/lesson-diagrams/section-5-2-lumped-capacitance-exponential-cooling.svg`、`tests/lesson-diagram-5-2.test.mjs`、`docs/PARALLEL_CHAT.md`の3ファイルのみ。Codex統合時はこのSHAと最新の `chat/parallel-dev` HEADを比較し、ブランチ単位の全差分を評価する。
+- 最新の図解成果は**SVG15ファイル・専用テスト15ファイル**。この行を記録する文書同期コミットのSHA自身は作成前に書けないため、実際の最新HEADは `https://github.com/minkohno-hub/heat-transfer-study-ja/commits/chat/parallel-dev/` で確認する。
+- 未解決項目は変わらない。特に**SVGのビルド配信・オフラインキャッシュ・講義UI組み込み**はこの図解ブランチに存在しない。§5.2の専用NodeテストとSVG実表示、全体テスト、CI、iPhone Safari等の実機、外部校閲は今後の検証対象。**本線PR #1には一切変更なし。**
