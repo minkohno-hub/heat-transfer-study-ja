@@ -155,8 +155,14 @@ try {
   assert.match(await page.locator('.term-sheet').innerText(),/W\/\(m·K\)/);
   assert.equal(await page.locator('.answer-choice input:checked').count(),0,
     'dictionary lookup must not select an answer');
+  await page.locator('#term-overlay [data-term-id="heat-flux"]').focus();
+  await page.keyboard.press('Enter');
+  assert.match(await page.locator('#term-sheet-title').innerText(),/熱流束/);
+  assert.equal(await page.locator('#term-overlay').count(),1);
+  assert.equal(await page.locator('.answer-choice input:checked').count(),0);
   await page.keyboard.press('Escape');
   assert.equal(await page.locator('#term-overlay').count(),0);
+  assert.equal(await page.locator('.question-card h2 [data-term-id="thermal-conductivity"]').evaluate(el=>el===document.activeElement),true);
   await page.locator('.question-card h2 [data-term-id="thermal-conductivity"]').focus();
   await page.keyboard.press('Enter');
   await page.locator('#term-overlay [role="dialog"]').waitFor({state:'visible'});

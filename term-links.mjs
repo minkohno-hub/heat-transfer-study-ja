@@ -48,9 +48,13 @@ export function renderTermLinks(input,terms,{limit=4}={}){
   }
   return output+escapeText(text.slice(cursor));
 }
-export function renderTermSheet(term){
+export function renderTermSheet(term,terms=[]){
   const detail=term.detail||term.meaning,brief=term.brief||term.meaning;
   const related=Array.isArray(term.related)?term.related.slice(0,8):[];
+  const relatedMarkup=related.map(label=>{
+    const matches=terms.filter(item=>item.id!==term.id&&[item.ja,item.en,...(item.aliases||[])].includes(label));
+    return matches.length===1?`<button type="button" class="inline-term" data-term-id="${escapeText(matches[0].id)}" aria-label="${escapeText(label)}の意味を開く">${escapeText(label)}</button>`:escapeText(label);
+  }).join('・');
   return `<div class="modal-backdrop term-backdrop" data-term-backdrop>
     <section class="report-modal surface-card term-sheet" role="dialog" aria-modal="true" aria-labelledby="term-sheet-title" aria-describedby="term-sheet-brief" tabindex="-1">
     <button type="button" class="modal-close" data-close-term aria-label="用語の説明を閉じる">×</button>
@@ -61,7 +65,7 @@ export function renderTermSheet(term){
     <h3>詳しい説明</h3><p>${escapeText(detail)}</p>
     ${term.formula?`<p><strong>関連式：</strong> <span class="term-formula">${escapeText(term.formula)}</span></p>`:''}
     ${term.unit?`<p><strong>単位：</strong> ${escapeText(term.unit)}</p>`:''}
-    ${related.length?`<p><strong>関連語：</strong> ${related.map(escapeText).join('・')}</p>`:''}
+    ${related.length?`<p><strong>関連語：</strong> ${relatedMarkup}</p>`:''}
     <button type="button" class="button secondary" data-term-detail="${escapeText(term.id)}">用語集で詳しく見る</button>
     </section></div>`;
 }

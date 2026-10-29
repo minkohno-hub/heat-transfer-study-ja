@@ -1014,12 +1014,13 @@ function linkedQuizText(value,limit=4){
 }
 function openTermSheet(id,trigger){
   const term=glossary?.find(item=>item.id===id);if(!term)return;
-  if(ui.termId)closeTermSheet();
+  const returnFocus=ui.termId?ui.termReturnFocus:trigger||null;
+  document.getElementById('term-overlay')?.remove();
   const overlay=document.createElement('div');overlay.id='term-overlay';
-  overlay.innerHTML=renderTermSheet(term);
+  overlay.innerHTML=renderTermSheet(term,glossary||[]);
   root.append(overlay);
   ui.termId=id;
-  ui.termReturnFocus=trigger||null;
+  ui.termReturnFocus=returnFocus;
   overlay.querySelector('[data-close-term]')?.focus();
 }
 function closeTermSheet(){

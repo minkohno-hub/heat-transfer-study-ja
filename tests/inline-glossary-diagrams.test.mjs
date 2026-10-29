@@ -4,6 +4,15 @@ import {readFile} from 'node:fs/promises';
 import {termCandidates,matchTerms,renderTermLinks,renderTermSheet} from '../term-links.mjs';
 import {renderSimulationDiagram} from '../sim-diagrams.mjs';
 const glossary=JSON.parse(await readFile(new URL('../data/glossary.json',import.meta.url),'utf8'));
+test('related terms resolve only exact unambiguous names and safely escape missing labels',()=>{
+ const current={id:'current',ja:'現在',meaning:'説明',related:['熱流束','ぬれ性','未収録<語>','重複語','現在']};
+ const terms=[current,...glossary,{id:'duplicate-a',ja:'重複語'},{id:'duplicate-b',ja:'重複語'}];
+ const html=renderTermSheet(current,terms);
+ assert.match(html,/data-term-id="heat-flux"/);
+ assert.match(html,/data-term-id="wettability"/);
+ assert.match(html,/未収録&lt;語&gt;/);
+ assert.doesNotMatch(html,/data-term-id="(?:duplicate-a|duplicate-b|current)"/);
+});
 test('expanded glossary has unique canonical Japanese labels and categorical, accurate supplement notes',()=>{
  assert.equal(glossary.length,133);
  assert.equal(new Set(glossary.map(x=>x.id)).size,133);
