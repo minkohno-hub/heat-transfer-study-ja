@@ -2,7 +2,9 @@
 
 export const SLAB_DEFAULTS={"k":2,"h":80,"thickness":0.08,"faceArea":0.1,"density":2000,"cp":900,"initial":80,"ambient":20,"time":400};
 
-export const SLAB_MIN_FO=0.0001, SLAB_MAX_BI=100, SLAB_TERMS=128;
+export const SLAB_MIN_FO=0.0001;
+export const SLAB_MAX_BI=100;
+export const SLAB_TERMS=128;
 
 export const slabFields=[["k","熱伝導率 k","W/(m·K)",0.05,500,"温度依存を無視した固体の物性"],["h","両面の対流熱伝達率 h","W/(m²·K)",0.1,2000,"両表面に同じ熱伝達率"],["thickness","板の全厚さ d","m",0.001,1,"計算に使う半厚さ L=d/2"],["faceArea","片面の面積 A","m²",0.001,100,"放熱する2面は各A"],["density","密度 ρ","kg/m³",100,20000,"均質な固体"],["cp","比熱容量 cₚ","J/(kg·K)",100,6000,"一定の比熱容量"],["initial","初期温度 Ti","℃",-273.15,1500,"内部も表面も初期は一様"],["ambient","周囲流体の温度 T∞","℃",-273.15,1500,"両面で一定"],["time","経過時間 t","s",0,10000000,"初期直後の級数精度に注意"]];
 
