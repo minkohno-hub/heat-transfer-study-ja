@@ -5370,5 +5370,291 @@
       "reference": "一般的な保存則・熱伝導方程式・対流の原理に基づく独自作成の補足。原書翻訳ではなく、専門家校閲前。"
     },
     "reviewStatus": "needs_review"
+  },
+  {
+    "id": "stanton-number",
+    "ja": "スタントン数",
+    "en": "Stanton number",
+    "category": "対流",
+    "aliases": [
+      "St数"
+    ],
+    "brief": "対流熱伝達の強さと流体の熱容量輸送との比を示す無次元数。",
+    "meaning": "対流熱伝達の強さと流体の熱容量輸送との比を示す無次元数。",
+    "beginner": "流体が流れるとき、流れが運ぶ熱容量に対して、壁とどれほど熱を交換しやすいかを示す数値です。壁の材質だけでは決まりません。",
+    "detail": "St=h/(ρUcₚ)=Nu/(RePr)。hは熱伝達率、Uは代表流速、ρとcₚは流体の密度と比熱である。各無次元数で代表長さ・速度・物性評価条件を一致させる。局所値と面平均値を混同せず、入口領域や流れの状態によって変わる。",
+    "formula": "St=h/(ρUcₚ)=Nu/(RePr)",
+    "unit": "St: 無次元、h: W/(m²·K)",
+    "example": "h=100 W/(m²·K)、ρ=1000 kg/m³、U=0.50 m/s、cₚ=4200 J/(kg·K)ならSt≈4.76×10⁻⁵。",
+    "related": [
+      "ヌセルト数",
+      "プラントル数",
+      "レイノルズ数",
+      "対流熱伝達率"
+    ],
+    "relatedSections": [
+      "6.5",
+      "6.6",
+      "7.3"
+    ],
+    "relatedQuestions": [],
+    "relatedSimulators": [],
+    "confusions": [
+      "Stは流速そのものでも熱流束そのものでもない。"
+    ],
+    "source": {
+      "type": "supplement",
+      "reference": "伝熱・流体・物質移動の基本法則に基づき独自執筆した教材用補足。原書翻訳ではなく、外部校閲前。"
+    },
+    "reviewStatus": "needs_review"
+  },
+  {
+    "id": "colburn-j-factor",
+    "ja": "コルバーンj因子",
+    "en": "Colburn j factor",
+    "category": "対流",
+    "aliases": [
+      "コルバーンj_H因子"
+    ],
+    "brief": "熱伝達のスタントン数にPrの補正を掛けた、摩擦との類推に用いる無次元量。",
+    "meaning": "熱伝達のスタントン数にPrの補正を掛けた、摩擦との類推に用いる無次元量。",
+    "beginner": "温度の広がりやすさと運動量の広がりやすさを考慮して、流れの伝熱性能を整理するための指標です。摩擦の計算ともつながります。",
+    "detail": "熱伝達コルバーン因子はj_H=StPr^(2/3)。条件の合う乱流の類推ではj_H≈f_F/2、ダルシー摩擦係数f_Dを使えばj_H≈f_D/8と表される。f_Fはファニング摩擦係数でf_D=4f_F。入口や非標準的な流れにも無条件で当てはめない。",
+    "formula": "j_H=StPr^(2/3)",
+    "unit": "j_H、St、Pr: 無次元",
+    "example": "St=0.010、Pr=8.0なら8^(2/3)=4なのでj_H=0.040。",
+    "related": [
+      "プラントル数",
+      "対流熱伝達率",
+      "レイノルズ数"
+    ],
+    "relatedSections": [
+      "6.6",
+      "6.7",
+      "7.3"
+    ],
+    "relatedQuestions": [],
+    "relatedSimulators": [],
+    "confusions": [
+      "ファニングとダルシーの摩擦係数を取り違えると係数が4倍違う。"
+    ],
+    "source": {
+      "type": "supplement",
+      "reference": "伝熱・流体・物質移動の基本法則に基づき独自執筆した教材用補足。原書翻訳ではなく、外部校閲前。"
+    },
+    "reviewStatus": "needs_review"
+  },
+  {
+    "id": "minimum-heat-capacity-rate",
+    "ja": "最小熱容量流量",
+    "en": "minimum heat capacity rate",
+    "category": "熱交換器",
+    "aliases": [
+      "C_min"
+    ],
+    "brief": "熱交換器の高温側と低温側の熱容量流量のうち小さいほう。",
+    "meaning": "熱交換器の高温側と低温側の熱容量流量のうち小さいほう。",
+    "beginner": "流れる量と比熱が小さい側は、同じ熱量を受け渡したとき温度が大きく変わります。その側の熱容量流量を選びます。",
+    "detail": "相変化のない一定比熱の二流体熱交換器ではC_h=ṁ_hcₚ,h、C_c=ṁ_ccₚ,c、C_min=min(C_h,C_c)。理想的な最大熱移動率はQ̇_max=C_min(T_h,in−T_c,in)。流量だけを比較せず比熱も考慮する。相変化を伴う側には単純な一定比熱モデルを用いない。",
+    "formula": "C_min=min(C_h,C_c)、Q̇_max=C_minΔT_in",
+    "unit": "C_min: W/K、ṁ: kg/s、cₚ: J/(kg·K)",
+    "example": "高温側C_h=0.20×4000=800 W/K、低温側C_c=0.50×1000=500 W/KならC_min=500 W/K。",
+    "related": [
+      "熱容量流量",
+      "熱交換器有効度",
+      "熱交換器"
+    ],
+    "relatedSections": [
+      "3.3",
+      "3.4"
+    ],
+    "relatedQuestions": [],
+    "relatedSimulators": [],
+    "confusions": [
+      "最小熱容量流量の単位はW/Kであり、質量流量kg/sとは異なる。"
+    ],
+    "source": {
+      "type": "supplement",
+      "reference": "伝熱・流体・物質移動の基本法則に基づき独自執筆した教材用補足。原書翻訳ではなく、外部校閲前。"
+    },
+    "reviewStatus": "needs_review"
+  },
+  {
+    "id": "heat-capacity-rate-ratio",
+    "ja": "熱容量流量比",
+    "en": "heat capacity rate ratio",
+    "category": "熱交換器",
+    "aliases": [
+      "容量流量比"
+    ],
+    "brief": "熱交換器の最小熱容量流量を最大熱容量流量で割った比。",
+    "meaning": "熱交換器の最小熱容量流量を最大熱容量流量で割った比。",
+    "beginner": "高温側と低温側で、温度が変化しやすい程度がどれだけ異なるかを表し、熱交換器の性能計算に使います。",
+    "detail": "C_r=C_min/C_max。有限で正の熱容量流量を持つ二流体なら0<C_r≤1。一方の容量流量が非常に大きい場合は0に近づく。これは熱交換器の有効度εや伝熱単位数NTUとは別の無次元数であり、両者と組み合わせて性能を求める。",
+    "formula": "C_r=C_min/C_max",
+    "unit": "C_r: 無次元、C: W/K",
+    "example": "C_min=500 W/K、C_max=800 W/KならC_r=0.625。",
+    "related": [
+      "最小熱容量流量",
+      "熱交換器有効度",
+      "伝熱単位数"
+    ],
+    "relatedSections": [
+      "3.3",
+      "3.4"
+    ],
+    "relatedQuestions": [],
+    "relatedSimulators": [],
+    "confusions": [
+      "熱容量流量比と熱交換器有効度は同じ量ではない。"
+    ],
+    "source": {
+      "type": "supplement",
+      "reference": "伝熱・流体・物質移動の基本法則に基づき独自執筆した教材用補足。原書翻訳ではなく、外部校閲前。"
+    },
+    "reviewStatus": "needs_review"
+  },
+  {
+    "id": "molar-concentration",
+    "ja": "モル濃度",
+    "en": "molar concentration",
+    "category": "物質移動",
+    "aliases": [
+      "モル体積濃度"
+    ],
+    "brief": "単位体積に含まれる物質の量をモル数で表す濃度。",
+    "meaning": "単位体積に含まれる物質の量をモル数で表す濃度。",
+    "beginner": "空気や液体1 m³の中に、ある成分が何mol含まれているかを表します。全体に占める割合を表すモル分率とは異なります。",
+    "detail": "成分Aのモル濃度c_A=n_A/V、混合物の全モル濃度c=Σc_i、モル分率x_A=c_A/c。理想気体ならc=p/(RT)だが温度・圧力に依存する。液体や非理想気体へ理想気体の関係をそのまま使わない。モル分率は無次元、モル濃度はmol/m³である。",
+    "formula": "c_A=n_A/V、x_A=c_A/c",
+    "unit": "c_A: mol/m³、p: Pa、T: K",
+    "example": "全モル濃度40 mol/m³、成分Aのモル分率0.20ならc_A=8 mol/m³。",
+    "related": [
+      "モル分率",
+      "物質拡散",
+      "物質拡散係数"
+    ],
+    "relatedSections": [
+      "11.2",
+      "11.3"
+    ],
+    "relatedQuestions": [],
+    "relatedSimulators": [],
+    "confusions": [
+      "濃度の単位mol/m³を無次元のモル分率と混同しない。"
+    ],
+    "source": {
+      "type": "supplement",
+      "reference": "伝熱・流体・物質移動の基本法則に基づき独自執筆した教材用補足。原書翻訳ではなく、外部校閲前。"
+    },
+    "reviewStatus": "needs_review"
+  },
+  {
+    "id": "total-molar-flux",
+    "ja": "全モル流束",
+    "en": "total molar flux",
+    "category": "物質移動",
+    "aliases": [
+      "総モル流束"
+    ],
+    "brief": "固定面を通過するすべての成分のモル流束を足した量。",
+    "meaning": "固定面を通過するすべての成分のモル流束を足した量。",
+    "beginner": "拡散によって移動する量だけでなく、気体や液体全体の流れで運ばれる分も考慮するために使います。",
+    "detail": "N=ΣN_iであり、二成分ではN=N_A+N_B。モル平均基準の拡散流束J_Aと固定座標の成分全モル流束N_AはN_A=J_A+x_A Nで結ばれる。全体の流れがあればJ_AとN_Aは一致しない。面の法線方向と符号規約を確認する。",
+    "formula": "N=N_A+N_B、N_A=J_A+x_A N",
+    "unit": "N、J_A、N_A: mol/(m²·s)",
+    "example": "J_A=0.002、x_A=0.25、N=0.010 mol/(m²·s)ならN_A=0.0045 mol/(m²·s)。",
+    "related": [
+      "モル分率",
+      "フィック則の拡散モル流束",
+      "物質拡散"
+    ],
+    "relatedSections": [
+      "11.2",
+      "11.3",
+      "11.5"
+    ],
+    "relatedQuestions": [],
+    "relatedSimulators": [],
+    "confusions": [
+      "全モル流束とモル平均基準の拡散流束は異なる。"
+    ],
+    "source": {
+      "type": "supplement",
+      "reference": "伝熱・流体・物質移動の基本法則に基づき独自執筆した教材用補足。原書翻訳ではなく、外部校閲前。"
+    },
+    "reviewStatus": "needs_review"
+  },
+  {
+    "id": "equimolar-counterdiffusion",
+    "ja": "等モル向流拡散",
+    "en": "equimolar counterdiffusion",
+    "category": "物質移動",
+    "aliases": [
+      "等モル相互拡散"
+    ],
+    "brief": "二成分が互いに逆方向へ同数molずつ拡散し、全モル流束がゼロとなる状態。",
+    "meaning": "二成分が互いに逆方向へ同数molずつ拡散し、全モル流束がゼロとなる状態。",
+    "beginner": "Aが右へ進むのと同じmol数のBが左へ進むので、モル数で見た正味の流れはゼロとなります。",
+    "detail": "二成分系でN_A=−N_BならN=N_A+N_B=0、よってN_A=J_A。等温・等圧の理想気体で全モル濃度cとD_ABが一定ならN_A=−cD_AB dx_A/dzとなる。Bが静止するステファン流とは境界条件が異なる。等モルであっても分子量が異なれば等質量とは限らない。",
+    "formula": "N_A=−N_B、N_A=−cD_AB dx_A/dz",
+    "unit": "N_A: mol/(m²·s)、D_AB: m²/s",
+    "example": "c=40 mol/m³、D_AB=2×10⁻⁵ m²/s、厚さ0.010 mでx_Aが0.20から0.10へ減るならN_A=0.008 mol/(m²·s)。",
+    "related": [
+      "全モル流束",
+      "フィックの法則",
+      "モル分率",
+      "物質拡散係数"
+    ],
+    "relatedSections": [
+      "11.3",
+      "11.5"
+    ],
+    "relatedQuestions": [],
+    "relatedSimulators": [],
+    "confusions": [
+      "等モルは等質量を意味せず、B静止の拡散式とも異なる。"
+    ],
+    "source": {
+      "type": "supplement",
+      "reference": "伝熱・流体・物質移動の基本法則に基づき独自執筆した教材用補足。原書翻訳ではなく、外部校閲前。"
+    },
+    "reviewStatus": "needs_review"
+  },
+  {
+    "id": "stefan-flow",
+    "ja": "ステファン流",
+    "en": "Stefan flow",
+    "category": "物質移動",
+    "aliases": [
+      "ステファン流れ"
+    ],
+    "brief": "蒸発などによる正味の成分輸送が混合気体全体に生む流れ。",
+    "meaning": "蒸発などによる正味の成分輸送が混合気体全体に生む流れ。",
+    "beginner": "蒸気が液面から離れると、分子拡散だけでなく気体全体の正味の移動が生じることがあります。その影響を考えます。",
+    "detail": "等温・等圧の理想二成分気体でBが静止してN_B=0ならN_A=−cD_AB/(1−x_A)dx_A/dz。一定c、D_ABの一次元定常膜を積分するとN_A=(cD_AB/L)ln[(1−x_A,2)/(1−x_A,1)]。全モル流束ゼロの等モル向流拡散と区別する。",
+    "formula": "N_A=(cD_AB/L)ln[(1−x_A,2)/(1−x_A,1)]（B静止）",
+    "unit": "N_A: mol/(m²·s)、D_AB: m²/s",
+    "example": "c=40 mol/m³、D_AB=2×10⁻⁵ m²/s、L=0.010 m、x_A,1=0.20、x_A,2=0.10ならN_A≈0.00942 mol/(m²·s)。",
+    "related": [
+      "等モル向流拡散",
+      "全モル流束",
+      "物質拡散係数",
+      "モル分率"
+    ],
+    "relatedSections": [
+      "11.5",
+      "11.9"
+    ],
+    "relatedQuestions": [],
+    "relatedSimulators": [],
+    "confusions": [
+      "B静止の蒸発拡散は等モル向流拡散と同じ式ではない。"
+    ],
+    "source": {
+      "type": "supplement",
+      "reference": "伝熱・流体・物質移動の基本法則に基づき独自執筆した教材用補足。原書翻訳ではなく、外部校閲前。"
+    },
+    "reviewStatus": "needs_review"
   }
 ]
