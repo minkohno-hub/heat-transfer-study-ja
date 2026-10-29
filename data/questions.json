@@ -15779,5 +15779,299 @@
       "別配置の相関へ長さだけを交換して流用しない。"
     ],
     "beginnerPitfall": "自然対流の相関式は、代表長さ・向き・境界条件・物性の条件と一緒に用いる。"
+  },
+  {
+    "id": "supp-condensation-latent-rate-v1",
+    "revision": "v1",
+    "field": "対流",
+    "prerequisites": [
+      "膜状凝縮",
+      "液膜の熱抵抗",
+      "潜熱収支"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "膜状凝縮の一般的物理と仮想条件から独立作問。原本の翻訳・図版・章末問題ではない。",
+      "chapterId": "ch8",
+      "focusSectionId": "8.5",
+      "guideId": "chapter8-buoyancy"
+    },
+    "createdStatus": "独立作問",
+    "reviewStatus": "執筆下書き・包括的品質監査は後工程／外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [],
+    "prompt": "純蒸気が定常に凝縮し、顕熱変化と外部損失を無視できる。除去する熱移動率Q̇=2.4 kW、蒸発潜熱h_fg=2.0×10⁶ J/kgとする。凝縮質量流量ṁ=Q̇/h_fgはいくらか。有効数字2桁でkg/sにする。",
+    "choices": [
+      "1.2×10⁻⁶ kg/s",
+      "1.2×10⁻⁴ kg/s",
+      "1.2×10⁻³ kg/s",
+      "1.2×10⁻² kg/s"
+    ],
+    "answer": 2,
+    "difficulty": "標準・数値計算",
+    "explanation": "2.4 kW=2400 J/s。ṁ=2400/(2.0×10⁶)=1.2×10⁻³ kg/s。単位は(J/s)/(J/kg)=kg/s。潜熱のみの収支なので蒸気の過熱除去や凝縮液の過冷却を含む場合は追加のエンタルピー差が必要。",
+    "distractors": [
+      "kWからWへの換算を省いた。",
+      "10の指数の処理で流量を10分の1にした。",
+      "正解。熱移動率と単位質量当たり潜熱の比。",
+      "10の指数の処理で流量を10倍にした。"
+    ],
+    "hints": [
+      "kWをJ/sへ換算する。",
+      "J/sをJ/kgで割る。"
+    ],
+    "solutionSteps": [
+      "Q̇=2400 J/sとする。",
+      "ṁ=2400/(2.0×10⁶)=0.0012 kg/s。",
+      "2桁で1.2×10⁻³ kg/sとし、顕熱等を無視した条件を確認する。"
+    ],
+    "beginnerPitfall": "熱伝達率、熱流束、全熱移動率を区別し、液膜モデルの条件を確認する。"
+  },
+  {
+    "id": "supp-condensation-film-reynolds-v1",
+    "revision": "v1",
+    "field": "対流",
+    "prerequisites": [
+      "膜状凝縮",
+      "液膜の熱抵抗",
+      "潜熱収支"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "膜状凝縮の一般的物理と仮想条件から独立作問。原本の翻訳・図版・章末問題ではない。",
+      "chapterId": "ch8",
+      "focusSectionId": "8.5",
+      "guideId": "chapter8-buoyancy"
+    },
+    "createdStatus": "独立作問",
+    "reviewStatus": "執筆下書き・包括的品質監査は後工程／外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [],
+    "prompt": "垂直板の幅b=0.40 m、板下端の凝縮流量ṁ=5.0×10⁻⁴ kg/s、液体粘度μ_l=2.0×10⁻⁴ Pa·sとする。液膜Reの定義をRe_f=4ṁ/(bμ_l)としたとき値はいくらか。有効数字2桁とする。",
+    "choices": [
+      "6.3",
+      "13",
+      "25",
+      "50"
+    ],
+    "answer": 2,
+    "difficulty": "標準・数値計算",
+    "explanation": "4ṁ=0.0020 kg/s、bμ_l=8.0×10⁻⁵ kg/sなのでRe_f=25。係数4を含むこの定義で無次元となる。流量・粘度・幅の値だけから実機の非波状状態を保証することはできず、遷移の目安は同じ定義で使う。",
+    "distractors": [
+      "定義の係数4を落とすと6.25となる。",
+      "係数4を2として計算した。",
+      "正解。指定した定義の分子と分母を使った。",
+      "幅または粘度を半分にした取り違え。"
+    ],
+    "hints": [
+      "Pa·s=kg/(m·s)なのでbμ_lはkg/s。",
+      "分子に係数4がある。"
+    ],
+    "solutionSteps": [
+      "4ṁ=0.0020 kg/sとする。",
+      "bμ_l=0.40×2.0×10⁻⁴=8.0×10⁻⁵ kg/s。",
+      "比25が無次元であることを確認する。"
+    ],
+    "beginnerPitfall": "熱伝達率、熱流束、全熱移動率を区別し、液膜モデルの条件を確認する。"
+  },
+  {
+    "id": "supp-condensation-supercooling-scale-v1",
+    "revision": "v1",
+    "field": "対流",
+    "prerequisites": [
+      "膜状凝縮",
+      "液膜の熱抵抗",
+      "潜熱収支"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "膜状凝縮の一般的物理と仮想条件から独立作問。原本の翻訳・図版・章末問題ではない。",
+      "chapterId": "ch8",
+      "focusSectionId": "8.5",
+      "guideId": "chapter8-buoyancy"
+    },
+    "createdStatus": "独立作問",
+    "reviewStatus": "執筆下書き・包括的品質監査は後工程／外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [],
+    "prompt": "垂直板の理想的な非波状層流膜状凝縮で、物性一定かつ平均h̄∝(T_sat−T_w)^(−1/4)とする。壁面過冷却度ΔT=T_sat−T_wを16倍にしてもモデルが適用可能と仮定した場合、平均熱流束q̄″=h̄ΔTは何倍か。",
+    "choices": [
+      "1/2倍",
+      "2倍",
+      "8倍",
+      "16倍"
+    ],
+    "answer": 2,
+    "difficulty": "標準・数値計算",
+    "explanation": "ΔTが16倍ならh̄は16^(−1/4)=1/2倍。一方でq̄″はh̄とΔTの積なので(1/2)×16=8倍になる。h̄が小さくなっても熱流束が小さくなるとは限らない。実際には膜の流量・流動状態・物性変化も確認する。",
+    "distractors": [
+      "h̄だけの倍率を熱流束へ流用した。",
+      "温度差の4乗根だけで倍率を決めた。",
+      "正解。熱伝達率と温度差の変化を掛け合わせた。",
+      "温度差だけを変え、h̄の変化を落とした。"
+    ],
+    "hints": [
+      "h̄の倍率とΔTの倍率を別々に求める。",
+      "16の4乗根は2。"
+    ],
+    "solutionSteps": [
+      "h̄の倍率16^(−1/4)=1/2を得る。",
+      "熱流束はh̄ΔTの積である。",
+      "倍率は(1/2)×16=8倍。"
+    ],
+    "beginnerPitfall": "熱伝達率、熱流束、全熱移動率を区別し、液膜モデルの条件を確認する。"
+  },
+  {
+    "id": "supp-condensation-local-average-v1",
+    "revision": "v1",
+    "field": "対流",
+    "prerequisites": [
+      "膜状凝縮",
+      "液膜の熱抵抗",
+      "潜熱収支"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "膜状凝縮の一般的物理と仮想条件から独立作問。原本の翻訳・図版・章末問題ではない。",
+      "chapterId": "ch8",
+      "focusSectionId": "8.5",
+      "guideId": "chapter8-buoyancy"
+    },
+    "createdStatus": "独立作問",
+    "reviewStatus": "執筆下書き・包括的品質監査は後工程／外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [],
+    "prompt": "理想的な垂直板の凝縮液膜で局所係数h_x=Cx^(−1/4)が成立し、壁温と蒸気温度は一定とする。0<x≤Lの面積平均h̄_L=(1/L)∫₀ᴸh_x dxを使う。板下端の局所h_L=900 W/(m²·K)なら平均h̄_Lはいくらか。有効数字2桁とする。",
+    "choices": [
+      "6.8×10² W/(m²·K)",
+      "9.0×10² W/(m²·K)",
+      "1.2×10³ W/(m²·K)",
+      "1.8×10³ W/(m²·K)"
+    ],
+    "answer": 2,
+    "difficulty": "標準・数値計算",
+    "explanation": "∫₀ᴸCx^(−1/4)dx=(4/3)CL^(3/4)。Lで割るとh̄_L=(4/3)CL^(−1/4)=(4/3)h_L=1200 W/(m²·K)。先端の理想式は発散するが積分は有限。下流ほど液膜が厚くh_xが下がるため平均は下端値より大きい。",
+    "distractors": [
+      "平均と下端の比4/3を逆にした。",
+      "局所値と面積平均値を同じとした。",
+      "正解。位置依存を積分し、板長で割った。",
+      "位置依存を積分せず単純に2倍にした。"
+    ],
+    "hints": [
+      "x^(−1/4)の積分は(4/3)x^(3/4)。",
+      "積分後に板長Lで割る。"
+    ],
+    "solutionSteps": [
+      "理想式を0からLまで積分して(4/3)CL^(3/4)。",
+      "Lで割りh̄_L=(4/3)h_Lとする。",
+      "900×4/3=1200 W/(m²·K)。"
+    ],
+    "beginnerPitfall": "熱伝達率、熱流束、全熱移動率を区別し、液膜モデルの条件を確認する。"
+  },
+  {
+    "id": "supp-condensation-gas-mixture-v1",
+    "revision": "v1",
+    "field": "対流",
+    "prerequisites": [
+      "膜状凝縮",
+      "液膜の熱抵抗",
+      "潜熱収支"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "applied",
+    "source": {
+      "type": "supplement",
+      "reference": "膜状凝縮の一般的物理と仮想条件から独立作問。原本の翻訳・図版・章末問題ではない。",
+      "chapterId": "ch8",
+      "focusSectionId": "8.5",
+      "guideId": "chapter8-buoyancy"
+    },
+    "createdStatus": "独立作問",
+    "reviewStatus": "執筆下書き・包括的品質監査は後工程／外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [],
+    "prompt": "静穏な飽和純蒸気に対する液膜モデルで凝縮器を評価していたが、蒸気に空気が混入していると分かった。再評価として適切な方針はどれか。",
+    "choices": [
+      "空気は凝縮しないので、純蒸気の式を変更せずに使う",
+      "蒸気が界面へ届く拡散抵抗を含め、条件を再評価する",
+      "全圧をそのまま蒸気分圧として、飽和温度を決める",
+      "液膜熱伝導率を空気の熱伝導率へ替え、他は維持する"
+    ],
+    "answer": 1,
+    "difficulty": "応用・適用判断",
+    "explanation": "凝縮で蒸気が界面から除かれると非凝縮性ガスが界面近くに蓄積し、蒸気の拡散に抵抗が生じうる。純蒸気の液膜伝導だけでは不足する。混合気体では全圧と蒸気分圧を区別し、熱・物質移動の連成と局所状態を評価する。",
+    "distractors": [
+      "凝縮しない成分でも蒸気の輸送に影響する。",
+      "正解。純蒸気モデルの前提を変更して評価する。",
+      "混合物の全圧は蒸気分圧とは等しくない。",
+      "液膜の相を変えたことになり、拡散抵抗も表さない。"
+    ],
+    "hints": [
+      "純蒸気という前提が崩れている。",
+      "界面で蒸気が減ると空気の濃度が相対的に上がる。"
+    ],
+    "solutionSteps": [
+      "非凝縮性ガスの混入と分圧を確認する。",
+      "界面への蒸気輸送に物質移動抵抗が加わると判断する。",
+      "熱移動と物質移動を合わせたモデルで再評価する。"
+    ],
+    "beginnerPitfall": "熱伝達率、熱流束、全熱移動率を区別し、液膜モデルの条件を確認する。"
+  },
+  {
+    "id": "supp-condensation-model-limits-v1",
+    "revision": "v1",
+    "field": "対流",
+    "prerequisites": [
+      "膜状凝縮",
+      "液膜の熱抵抗",
+      "潜熱収支"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "applied",
+    "source": {
+      "type": "supplement",
+      "reference": "膜状凝縮の一般的物理と仮想条件から独立作問。原本の翻訳・図版・章末問題ではない。",
+      "chapterId": "ch8",
+      "focusSectionId": "8.5",
+      "guideId": "chapter8-buoyancy"
+    },
+    "createdStatus": "独立作問",
+    "reviewStatus": "執筆下書き・包括的品質監査は後工程／外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [],
+    "prompt": "静穏蒸気・非波状層流液膜を前提にしたNusselt型垂直板モデルを、強い蒸気流にさらされる板へ適用したい。最も適切な判断はどれか。",
+    "choices": [
+      "板が垂直であれば、蒸気流の速さを問わず同じ式を使う",
+      "液膜Reが小さければ、蒸気の界面せん断は無視できる",
+      "蒸気流で膜が受ける力を調べ、適合するモデルを選ぶ",
+      "潜熱が同じ物質なら、液膜流速は蒸気流に依存しない"
+    ],
+    "answer": 2,
+    "difficulty": "応用・適用判断",
+    "explanation": "強い蒸気流は気液界面にせん断力を及ぼし、液膜の速度や厚さを変えうる。凝縮流量から求めた小さな液膜Reだけでは界面せん断が無視できるとは言えない。蒸気の向き・速度・圧力・形状に応じてモデルを選び直す。",
+    "distractors": [
+      "向きが一致しても静穏蒸気の前提は崩れている。",
+      "液膜Reの小ささと界面せん断の小ささは別条件。",
+      "正解。元の力の釣り合いに欠けた項を確認する。",
+      "潜熱だけでは液膜の運動量収支は決まらない。"
+    ],
+    "hints": [
+      "元のモデルは蒸気側のせん断を小さいと置いた。",
+      "強い蒸気流は膜の厚さや速度にも影響しうる。"
+    ],
+    "solutionSteps": [
+      "元のモデルの力の釣り合いを確認する。",
+      "蒸気流による界面せん断を無視できるか調べる。",
+      "対象条件に合う凝縮モデルへ切り替える。"
+    ],
+    "beginnerPitfall": "熱伝達率、熱流束、全熱移動率を区別し、液膜モデルの条件を確認する。"
   }
 ]
