@@ -10458,5 +10458,398 @@
       "reference": "熱移動第3・4・8章の工学的基礎式から独立執筆した追加用語。自然対流の物性評価温度はASHRAE 2025 Heat Transfer Ch.4およびNIST SP1026を参考に適用条件を明記。原書翻訳・図版転載ではない。外部専門家校閲前。"
     },
     "reviewStatus": "needs_review"
+  },
+  {
+    "id": "radiative-surface-resistance",
+    "ja": "放射表面抵抗",
+    "en": "radiation surface resistance",
+    "aliases": [
+      "表面放射抵抗"
+    ],
+    "category": "熱放射",
+    "brief": "灰色拡散面の放射率が1未満である効果を、放射ネットワーク上の抵抗として表した量。",
+    "meaning": "灰色拡散面の放射率が1未満である効果を、放射ネットワーク上の抵抗として表した量。",
+    "beginner": "黒体と違って、実際の壁は出したり反射したりする放射の比が異なります。その効果を熱回路上の抵抗に置き換えます。",
+    "detail": "等温・不透明・拡散灰色面iの放射ネットワークでは表面抵抗R_s,i=(1−ε_i)/(A_iε_i)と表す。黒体ε_i=1では0となり、放射率が小さいほど増す。黒体放射発散度E_b,iと射度J_iとの間でQ̇_i=(E_b,i−J_i)/R_s,iという電気回路類推を使う。これはσT⁴やJをW/m²で扱うため単位はm⁻²で、伝導抵抗K/Wとは異なる。",
+    "formula": "R_s=(1−ε)/(Aε)、Q̇=(E_b−J)/R_s",
+    "unit": "R_s: m⁻²、ε: 無次元、A: m²、E_b,J: W/m²",
+    "example": "面積2 m²、放射率0.80の灰色面なら表面放射抵抗は(1−0.8)/(2×0.8)=0.125 m⁻²。",
+    "related": [
+      "灰色体",
+      "射度",
+      "放射率",
+      "放射ネットワーク"
+    ],
+    "relatedSections": [
+      "10.4"
+    ],
+    "relatedQuestions": [],
+    "relatedSimulators": [],
+    "confusions": [
+      "放射ネットワークの表面抵抗はm⁻²で、熱伝導の抵抗K/Wと単位が違う。"
+    ],
+    "source": {
+      "type": "supplement",
+      "reference": "第10章の放射ネットワークと第11章の気体混合・物質移動を独自解説。放射ネットワーク表現はDSPE Net-radiation method（https://www.dspe.nl/knowledge/thermomechanics/chapter-2-in-depth/2-4-thermal-radiation/2-4-4-net-radiation-method/）、理想混合気体の分圧はOpenStax Chemistry 2e §9.3（https://openstax.org/books/chemistry-2e/pages/9-3-stoichiometry-of-gaseous-substances-mixtures-and-reactions）を参考にした。教科書翻訳・図版転載ではなく、専門家校閲前。"
+    },
+    "reviewStatus": "needs_review"
+  },
+  {
+    "id": "radiative-space-resistance",
+    "ja": "放射空間抵抗",
+    "en": "radiation space resistance",
+    "aliases": [
+      "幾何学的放射抵抗"
+    ],
+    "category": "熱放射",
+    "brief": "二面間の放射形態係数と面積による交換効率を、放射ネットワーク上の抵抗で表す量。",
+    "meaning": "二面間の放射形態係数と面積による交換効率を、放射ネットワーク上の抵抗で表す量。",
+    "beginner": "同じ赤外線を出しても、向き合う面が小さかったり遠かったりすると、一方から他方へ届く割合が減ります。",
+    "detail": "二面i,jの射度間における空間抵抗はR_ij=1/(A_iF_ij)。形態係数の相反則A_iF_ij=A_jF_jiを使えばどちらの面から書いても同じ値になる。幾何の効果を表し、放射率の効果である表面抵抗と区別する。三つ以上の面や囲いの外部へ放射が逃げる場合、単純に一対の二面だけの直列抵抗で全熱収支を表してはならない。",
+    "formula": "R_ij=1/(A_iF_ij)=1/(A_jF_ji)",
+    "unit": "R_ij: m⁻²、A: m²、F_ij: 無次元",
+    "example": "A_i=2 m²、F_ij=0.25なら放射空間抵抗は1/(2×0.25)=2.0 m⁻²。",
+    "related": [
+      "放射形態係数",
+      "形態係数の相反則",
+      "放射ネットワーク",
+      "放射表面抵抗"
+    ],
+    "relatedSections": [
+      "10.3",
+      "10.4"
+    ],
+    "relatedQuestions": [],
+    "relatedSimulators": [],
+    "confusions": [
+      "空間抵抗は伝導材の厚さによる抵抗ではなく、形態係数に基づく幾何効果を表す。"
+    ],
+    "source": {
+      "type": "supplement",
+      "reference": "第10章の放射ネットワークと第11章の気体混合・物質移動を独自解説。放射ネットワーク表現はDSPE Net-radiation method（https://www.dspe.nl/knowledge/thermomechanics/chapter-2-in-depth/2-4-thermal-radiation/2-4-4-net-radiation-method/）、理想混合気体の分圧はOpenStax Chemistry 2e §9.3（https://openstax.org/books/chemistry-2e/pages/9-3-stoichiometry-of-gaseous-substances-mixtures-and-reactions）を参考にした。教科書翻訳・図版転載ではなく、専門家校閲前。"
+    },
+    "reviewStatus": "needs_review"
+  },
+  {
+    "id": "net-radiation-heat-flux",
+    "ja": "正味放射熱流束",
+    "en": "net radiative heat flux",
+    "aliases": [
+      "正味放射交換流束"
+    ],
+    "category": "熱放射",
+    "brief": "面から出る射度と面へ入る照射量の差で求める正味の放射熱流束。",
+    "meaning": "面から出る射度と面へ入る照射量の差で求める正味の放射熱流束。",
+    "beginner": "表面から出る赤外線と入ってくる赤外線はどちらも存在します。その差が、実際に表面から外へ移る放射の量です。",
+    "detail": "放射面における外向き正の正味放射熱流束はq″_rad=J−Gと表せる。Jは表面から出る放射（自己放射と反射分を含む射度）、Gは面に入射する放射（照射量）。黒体放射発散度E_b=σT⁴とはJが一般に一致しない。不透明拡散灰色面ならJ=εE_b+(1−ε)Gを併用できる。面積Aにわたり均一ならQ̇=Aq″となる。",
+    "formula": "q″_rad=J−G、J=εσT⁴+(1−ε)G（不透明拡散灰色面）",
+    "unit": "q″_rad,J,G: W/m²、Q̇: W、A: m²",
+    "example": "射度J=700 W/m²、照射量G=500 W/m²なら正味で面から出る放射熱流束は200 W/m²。",
+    "related": [
+      "射度",
+      "照射量",
+      "放射率",
+      "放射発散度"
+    ],
+    "relatedSections": [
+      "10.1",
+      "10.4"
+    ],
+    "relatedQuestions": [],
+    "relatedSimulators": [],
+    "confusions": [
+      "面から出る射度Jと、正味の放射熱流束J−Gは別の量。"
+    ],
+    "source": {
+      "type": "supplement",
+      "reference": "第10章の放射ネットワークと第11章の気体混合・物質移動を独自解説。放射ネットワーク表現はDSPE Net-radiation method（https://www.dspe.nl/knowledge/thermomechanics/chapter-2-in-depth/2-4-thermal-radiation/2-4-4-net-radiation-method/）、理想混合気体の分圧はOpenStax Chemistry 2e §9.3（https://openstax.org/books/chemistry-2e/pages/9-3-stoichiometry-of-gaseous-substances-mixtures-and-reactions）を参考にした。教科書翻訳・図版転載ではなく、専門家校閲前。"
+    },
+    "reviewStatus": "needs_review"
+  },
+  {
+    "id": "reradiating-surface",
+    "ja": "再放射面",
+    "en": "reradiating surface",
+    "aliases": [
+      "断熱再放射面"
+    ],
+    "category": "熱放射",
+    "brief": "正味の放射熱移動率がゼロになるが、他面の放射を吸収・再放射する面。",
+    "meaning": "正味の放射熱移動率がゼロになるが、他面の放射を吸収・再放射する面。",
+    "beginner": "周囲から赤外線を受けた壁が、同じだけ赤外線を外へ出す場合があります。熱が通らない面でも、放射のやり取り自体はあります。",
+    "detail": "放射が支配的で、定常状態で正味熱移動率Q̇_rad=0を満たす面は再放射面と呼ばれる。外向き正の放射収支からJ=Gとなるが、JもGもゼロである必要はない。もし非放射熱移動や発熱が同時に存在するなら、エネルギー収支全体を含めるまで放射だけがゼロとは言えない。複数面の囲い放射ネットワークで境界温度が未知の場合に用いられる。",
+    "formula": "Q̇_rad=A(J−G)=0 ⇒ J=G（正味放射ゼロ）",
+    "unit": "Q̇_rad: W、J,G: W/m²",
+    "example": "面積1 m²で入射照射量G=500 W/m²、射度J=500 W/m²なら正味放射熱移動率は0 W。",
+    "related": [
+      "正味放射熱流束",
+      "射度",
+      "照射量",
+      "放射ネットワーク"
+    ],
+    "relatedSections": [
+      "10.4"
+    ],
+    "relatedQuestions": [],
+    "relatedSimulators": [],
+    "confusions": [
+      "再放射面は何も放射しない面ではなく、入射と出射が釣り合った面。"
+    ],
+    "source": {
+      "type": "supplement",
+      "reference": "第10章の放射ネットワークと第11章の気体混合・物質移動を独自解説。放射ネットワーク表現はDSPE Net-radiation method（https://www.dspe.nl/knowledge/thermomechanics/chapter-2-in-depth/2-4-thermal-radiation/2-4-4-net-radiation-method/）、理想混合気体の分圧はOpenStax Chemistry 2e §9.3（https://openstax.org/books/chemistry-2e/pages/9-3-stoichiometry-of-gaseous-substances-mixtures-and-reactions）を参考にした。教科書翻訳・図版転載ではなく、専門家校閲前。"
+    },
+    "reviewStatus": "needs_review"
+  },
+  {
+    "id": "two-plate-effective-emissivity",
+    "ja": "平行灰色平板の有効放射率",
+    "en": "effective emissivity of two parallel gray plates",
+    "aliases": [
+      "二面間有効放射率"
+    ],
+    "category": "熱放射",
+    "brief": "互いに向かい合う二つの無限平行灰色面の正味交換を、一つの放射率の形で表す係数。",
+    "meaning": "互いに向かい合う二つの無限平行灰色面の正味交換を、一つの放射率の形で表す係数。",
+    "beginner": "二つの板の放射率がそれぞれ違う場合、板の組合せ全体として赤外線がどのくらい移動するかを一つの係数でまとめます。",
+    "detail": "無限平行・等温・不透明・拡散灰色の二面が互いに全てを見ているとき、正味放射熱流束はq″=ε_effσ(T₁⁴−T₂⁴)と書け、ε_eff=[1/ε₁+1/ε₂−1]⁻¹。ε_effは表面単独の放射率と同じ物性ではなく、相互反射を含む二面の有効値である。有限寸法や第三の面がある場合、単純に同じ式を使えない。",
+    "formula": "ε_eff=1/(1/ε₁+1/ε₂−1)",
+    "unit": "ε_eff,ε₁,ε₂: 無次元",
+    "example": "ε₁=ε₂=0.80の無限平行灰色面では有効放射率は1/1.5≈0.667。",
+    "related": [
+      "平行灰色面間の放射交換",
+      "灰色体",
+      "放射表面抵抗",
+      "放射率"
+    ],
+    "relatedSections": [
+      "10.3",
+      "10.4"
+    ],
+    "relatedQuestions": [],
+    "relatedSimulators": [],
+    "confusions": [
+      "有効放射率は二面の単純な積ε₁ε₂ではなく、また単独面の物性値でもない。"
+    ],
+    "source": {
+      "type": "supplement",
+      "reference": "第10章の放射ネットワークと第11章の気体混合・物質移動を独自解説。放射ネットワーク表現はDSPE Net-radiation method（https://www.dspe.nl/knowledge/thermomechanics/chapter-2-in-depth/2-4-thermal-radiation/2-4-4-net-radiation-method/）、理想混合気体の分圧はOpenStax Chemistry 2e §9.3（https://openstax.org/books/chemistry-2e/pages/9-3-stoichiometry-of-gaseous-substances-mixtures-and-reactions）を参考にした。教科書翻訳・図版転載ではなく、専門家校閲前。"
+    },
+    "reviewStatus": "needs_review"
+  },
+  {
+    "id": "partial-pressure",
+    "ja": "分圧",
+    "en": "partial pressure",
+    "aliases": [
+      "成分分圧"
+    ],
+    "category": "物質移動",
+    "brief": "混合気体中のある成分について、理想気体モデルでその成分のモル分率に全圧を掛けた圧力。",
+    "meaning": "混合気体中のある成分について、理想気体モデルでその成分のモル分率に全圧を掛けた圧力。",
+    "beginner": "空気に酸素と窒素が混ざっていても、それぞれが全体の圧力にどの程度寄与するかを分けて考えられます。",
+    "detail": "理想気体混合物の成分iについてp_i=x_i p、pは混合物の全圧、x_iはモル分率。分圧を使うとモル濃度c_i=p_i/(RT)を求められる。実在気体の高圧・強い非理想性では、分圧だけで化学ポテンシャルや拡散駆動力を厳密に表すことはできず、フガシティや活量に関する補正が必要となる。",
+    "formula": "p_i=x_i p（理想混合気体）",
+    "unit": "p_i,p: Pa、x_i: 無次元",
+    "example": "全圧100 kPaで成分Aのモル分率が0.20なら、Aの分圧は20 kPa。",
+    "related": [
+      "モル分率",
+      "モル濃度",
+      "ダルトンの分圧の法則",
+      "化学ポテンシャル"
+    ],
+    "relatedSections": [
+      "11.2",
+      "11.3"
+    ],
+    "relatedQuestions": [],
+    "relatedSimulators": [],
+    "confusions": [
+      "分圧は成分の体積の割合ではなく、理想気体での全圧とモル分率の積。"
+    ],
+    "source": {
+      "type": "supplement",
+      "reference": "第10章の放射ネットワークと第11章の気体混合・物質移動を独自解説。放射ネットワーク表現はDSPE Net-radiation method（https://www.dspe.nl/knowledge/thermomechanics/chapter-2-in-depth/2-4-thermal-radiation/2-4-4-net-radiation-method/）、理想混合気体の分圧はOpenStax Chemistry 2e §9.3（https://openstax.org/books/chemistry-2e/pages/9-3-stoichiometry-of-gaseous-substances-mixtures-and-reactions）を参考にした。教科書翻訳・図版転載ではなく、専門家校閲前。"
+    },
+    "reviewStatus": "needs_review"
+  },
+  {
+    "id": "dalton-law",
+    "ja": "ダルトンの分圧の法則",
+    "en": "Dalton's law of partial pressures",
+    "aliases": [
+      "ドルトンの法則"
+    ],
+    "category": "物質移動",
+    "brief": "理想混合気体の全圧が各成分気体の分圧の和になる関係。",
+    "meaning": "理想混合気体の全圧が各成分気体の分圧の和になる関係。",
+    "beginner": "混ざった気体全体の圧力は、理想気体ならそれぞれの成分が担う圧力を足したものとして考えられます。",
+    "detail": "理想気体混合物で各成分の分圧をp_i=n_iRT/Vと定義すると、全モル数n=Σn_iに対して全圧p=Σp_iとなる。分圧p_i=x_i pでありΣx_i=1。非理想混合気体では実在気体の状態方程式・フガシティの取り扱いが必要で、単純な分圧の和だけで活量を評価してはならない。",
+    "formula": "p=Σ_i p_i、p_i=x_i p（理想混合気体）",
+    "unit": "p,p_i: Pa、x_i: 無次元",
+    "example": "理想気体Aの分圧30 kPa、Bの分圧70 kPaなら全圧は100 kPa。",
+    "related": [
+      "分圧",
+      "モル分率",
+      "理想気体の全モル濃度"
+    ],
+    "relatedSections": [
+      "11.2",
+      "11.3"
+    ],
+    "relatedQuestions": [],
+    "relatedSimulators": [],
+    "confusions": [
+      "分圧の和は全圧を表すが、各成分の分子間相互作用まで無視できるとは限らない。"
+    ],
+    "source": {
+      "type": "supplement",
+      "reference": "第10章の放射ネットワークと第11章の気体混合・物質移動を独自解説。放射ネットワーク表現はDSPE Net-radiation method（https://www.dspe.nl/knowledge/thermomechanics/chapter-2-in-depth/2-4-thermal-radiation/2-4-4-net-radiation-method/）、理想混合気体の分圧はOpenStax Chemistry 2e §9.3（https://openstax.org/books/chemistry-2e/pages/9-3-stoichiometry-of-gaseous-substances-mixtures-and-reactions）を参考にした。教科書翻訳・図版転載ではなく、専門家校閲前。"
+    },
+    "reviewStatus": "needs_review"
+  },
+  {
+    "id": "ideal-gas-total-molar-concentration",
+    "ja": "理想気体の全モル濃度",
+    "en": "total molar concentration of an ideal gas mixture",
+    "aliases": [
+      "理想気体の総モル濃度"
+    ],
+    "category": "物質移動",
+    "brief": "理想気体の全モル数を体積で割り、圧力と絶対温度で表した量。",
+    "meaning": "理想気体の全モル数を体積で割り、圧力と絶対温度で表した量。",
+    "beginner": "同じ大きさの空間でも、圧力が高いほど分子は多く入り、温度が高いほど同じ圧力なら分子が少なくなります。",
+    "detail": "理想気体混合物ではpV=nRTから全モル濃度c=n/V=p/(RT)。成分モル濃度はc_i=x_i c=p_i/(RT)で、全成分の和はcとなる。圧力pは絶対圧力、温度Tは絶対温度Kを使う。非理想気体で圧縮係数Zが必要ならc=p/(ZRT)となり、単純な理想式とは一致しない。",
+    "formula": "c=p/(RT)、c_i=x_i c（理想混合気体）",
+    "unit": "c,c_i: mol/m³、p: Pa、R: J/(mol·K)、T: K",
+    "example": "p=100000 Pa、T=300 K、R=8.314 J/(mol·K)なら全モル濃度は約40.09 mol/m³。",
+    "related": [
+      "モル濃度",
+      "分圧",
+      "ダルトンの分圧の法則",
+      "絶対温度"
+    ],
+    "relatedSections": [
+      "11.2",
+      "11.3"
+    ],
+    "relatedQuestions": [],
+    "relatedSimulators": [],
+    "confusions": [
+      "全モル濃度は特定成分のモル濃度ではなく、すべての成分の和である。"
+    ],
+    "source": {
+      "type": "supplement",
+      "reference": "第10章の放射ネットワークと第11章の気体混合・物質移動を独自解説。放射ネットワーク表現はDSPE Net-radiation method（https://www.dspe.nl/knowledge/thermomechanics/chapter-2-in-depth/2-4-thermal-radiation/2-4-4-net-radiation-method/）、理想混合気体の分圧はOpenStax Chemistry 2e §9.3（https://openstax.org/books/chemistry-2e/pages/9-3-stoichiometry-of-gaseous-substances-mixtures-and-reactions）を参考にした。教科書翻訳・図版転載ではなく、専門家校閲前。"
+    },
+    "reviewStatus": "needs_review"
+  },
+  {
+    "id": "ideal-gas-mixture-density",
+    "ja": "理想混合気体の密度",
+    "en": "density of an ideal gas mixture",
+    "aliases": [
+      "理想気体混合物密度"
+    ],
+    "category": "物質移動",
+    "brief": "混合気体の平均モル質量と全圧・温度から理想気体近似で求めた質量密度。",
+    "meaning": "混合気体の平均モル質量と全圧・温度から理想気体近似で求めた質量密度。",
+    "beginner": "同じ圧力と温度の気体でも、重い分子が多い混合物ほど密度が大きくなります。混合比も考えて求めます。",
+    "detail": "理想気体の平均モル質量M̄=Σ_i x_i M_iを用いれば、質量密度はρ=pM̄/(RT)。全モル濃度c=p/(RT)との関係ρ=cM̄がある。モル質量の単位はkg/molで計算し、g/molの値をそのまま使うと1000倍の誤差が生じる。非理想気体では圧縮係数などの補正が必要となる。",
+    "formula": "ρ=pM̄/(RT)、M̄=Σ_i x_iM_i",
+    "unit": "ρ: kg/m³、M̄: kg/mol、p: Pa、T: K",
+    "example": "p=100 kPa、M̄=0.029 kg/mol、T=300 Kならρ≈1.163 kg/m³。",
+    "related": [
+      "密度",
+      "分圧",
+      "理想気体の全モル濃度",
+      "モル分率"
+    ],
+    "relatedSections": [
+      "11.2",
+      "11.10"
+    ],
+    "relatedQuestions": [],
+    "relatedSimulators": [],
+    "confusions": [
+      "モル質量の数値をg/molからkg/molへ直さず代入すると密度が1000倍ずれる。"
+    ],
+    "source": {
+      "type": "supplement",
+      "reference": "第10章の放射ネットワークと第11章の気体混合・物質移動を独自解説。放射ネットワーク表現はDSPE Net-radiation method（https://www.dspe.nl/knowledge/thermomechanics/chapter-2-in-depth/2-4-thermal-radiation/2-4-4-net-radiation-method/）、理想混合気体の分圧はOpenStax Chemistry 2e §9.3（https://openstax.org/books/chemistry-2e/pages/9-3-stoichiometry-of-gaseous-substances-mixtures-and-reactions）を参考にした。教科書翻訳・図版転載ではなく、専門家校閲前。"
+    },
+    "reviewStatus": "needs_review"
+  },
+  {
+    "id": "relative-humidity",
+    "ja": "相対湿度",
+    "en": "relative humidity",
+    "aliases": [
+      "RH"
+    ],
+    "category": "熱・物質移動",
+    "brief": "同温度での水蒸気分圧を、飽和水蒸気圧で割った割合。",
+    "meaning": "同温度での水蒸気分圧を、飽和水蒸気圧で割った割合。",
+    "beginner": "空気の中の水蒸気が、その温度で飽和する量の何割まで含まれているかを表します。蒸発のしやすさに影響します。",
+    "detail": "水蒸気を含む空気の相対湿度φ=p_v/p_sat(T)で、p_vは実際の水蒸気分圧、p_sat(T)は同じ温度Tでの純水の飽和蒸気圧。通常の未飽和状態では0≤φ≤1。飽和蒸気圧は温度で変わるので、同じ水蒸気分圧でも温度が変われば相対湿度は変わる。湿り空気における質量混合比や絶対水蒸気量と同じではない。",
+    "formula": "φ=p_v/p_sat(T)",
+    "unit": "φ: 無次元（%表示は100φ）、p_v,p_sat: Pa",
+    "example": "ある温度で飽和水蒸気圧が4 kPa、実際の水蒸気分圧が2 kPaなら相対湿度は50%。",
+    "related": [
+      "分圧",
+      "飽和圧力",
+      "湿球温度",
+      "蒸発冷却"
+    ],
+    "relatedSections": [
+      "11.5",
+      "11.7"
+    ],
+    "relatedQuestions": [],
+    "relatedSimulators": [],
+    "confusions": [
+      "相対湿度は水蒸気の質量比そのものではなく、温度依存する飽和圧力に対する割合。"
+    ],
+    "source": {
+      "type": "supplement",
+      "reference": "第10章の放射ネットワークと第11章の気体混合・物質移動を独自解説。放射ネットワーク表現はDSPE Net-radiation method（https://www.dspe.nl/knowledge/thermomechanics/chapter-2-in-depth/2-4-thermal-radiation/2-4-4-net-radiation-method/）、理想混合気体の分圧はOpenStax Chemistry 2e §9.3（https://openstax.org/books/chemistry-2e/pages/9-3-stoichiometry-of-gaseous-substances-mixtures-and-reactions）を参考にした。教科書翻訳・図版転載ではなく、専門家校閲前。"
+    },
+    "reviewStatus": "needs_review"
+  },
+  {
+    "id": "humidity-ratio",
+    "ja": "絶対湿度（乾き空気基準）",
+    "en": "humidity ratio of moist air",
+    "aliases": [
+      "乾き空気基準の湿度"
+    ],
+    "category": "熱・物質移動",
+    "brief": "湿り空気に含まれる水蒸気の質量を、乾き空気の質量で割った比。",
+    "meaning": "湿り空気に含まれる水蒸気の質量を、乾き空気の質量で割った比。",
+    "beginner": "湿った空気1kgのうち何kgが水か、ではなく、乾いた空気1kgに対して水蒸気が何kgあるかを表す方法です。",
+    "detail": "水蒸気と乾き空気を理想混合気体として扱い、乾き空気の平均モル質量に対する水のモル質量比を約0.622とすると、湿度比w=0.622p_v/(p−p_v)。全圧pと水蒸気分圧p_vは同じ単位の絶対圧を使う。分母は乾き空気分圧であり、水蒸気分圧が全圧に近い場合には極端な値となる。湿り空気1kg当たりの質量分率とは異なる。",
+    "formula": "w≈0.622p_v/(p−p_v)（理想混合気体）",
+    "unit": "w: kg-水蒸気/kg-乾き空気、p,p_v: Pa",
+    "example": "全圧100 kPa、水蒸気分圧2 kPaならw≈0.622×2/98≈0.01269 kg/kg-乾き空気。",
+    "related": [
+      "相対湿度",
+      "分圧",
+      "質量分率",
+      "湿球温度"
+    ],
+    "relatedSections": [
+      "11.2",
+      "11.7"
+    ],
+    "relatedQuestions": [],
+    "relatedSimulators": [],
+    "confusions": [
+      "絶対湿度という語にはg/m³を指す用法もあるため、ここでは乾き空気基準の質量比と必ず明記する。"
+    ],
+    "source": {
+      "type": "supplement",
+      "reference": "第10章の放射ネットワークと第11章の気体混合・物質移動を独自解説。放射ネットワーク表現はDSPE Net-radiation method（https://www.dspe.nl/knowledge/thermomechanics/chapter-2-in-depth/2-4-thermal-radiation/2-4-4-net-radiation-method/）、理想混合気体の分圧はOpenStax Chemistry 2e §9.3（https://openstax.org/books/chemistry-2e/pages/9-3-stoichiometry-of-gaseous-substances-mixtures-and-reactions）を参考にした。教科書翻訳・図版転載ではなく、専門家校閲前。"
+    },
+    "reviewStatus": "needs_review"
   }
 ]

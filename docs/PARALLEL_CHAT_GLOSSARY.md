@@ -121,3 +121,11 @@
 - 物性評価温度の一般的な扱いはASHRAE Handbook 2025 Ch.4（https://handbook.ashrae.org/Handbooks/F25/SI/f25_ch04/f25_ch04_si.aspx）とNIST SP1026（https://tsapps.nist.gov/publication/get_pdf.cfm?pub_id=916872）を参考にした。外部校閲済みとは宣言しない。
 - **JS事前検証**：全318件のID、日本語名/別名NFKC正規化・英語名の重複を確認、新規9語の必須欄・全関連語・実在章節・計算例9件を検査し合格。既存309件は無変更。
 - 未照合の関連問題は設定せずrelatedQuestions=[]。158語固定のNodeテストは他ライン担当で未変更。Nodeテスト・CI・公開ビルド・実機・専門家校閲は未実施で全品質ゲート未達。
+
+## 第16バッチ（2026-10-29 JST）
+- 直前 **318語** → 新規 **11語** → 合計 **329語**。
+- 追加：放射表面抵抗、放射空間抵抗、正味放射熱流束、再放射面、平行灰色平板の有効放射率、分圧、ダルトンの分圧の法則、理想気体の全モル濃度、理想混合気体の密度、相対湿度、絶対湿度（乾き空気基準）。
+- 第10章の放射表面抵抗・空間抵抗・正味放射流束・再放射面・二面の有効放射率、第11章の理想混合気体分圧とダルトン則・全モル濃度・混合気体密度・相対湿度・乾き空気基準の湿度比を追加。放射抵抗[m⁻²]と伝導抵抗[K/W]を区別し、放射二面式の適用範囲を限定。すべて独立説明でneeds_review。
+- 参照した外部教材：DSPE Net-radiation method（https://www.dspe.nl/knowledge/thermomechanics/chapter-2-in-depth/2-4-thermal-radiation/2-4-4-net-radiation-method/）およびOpenStax Chemistry 2e §9.3（https://openstax.org/books/chemistry-2e/pages/9-3-stoichiometry-of-gaseous-substances-mixtures-and-reactions）。原書翻訳・図版転載ではない。専門家校閲は未実施。
+- **JS事前検証**：全329語のID・NFKC正規化した日本語代表名/別名・英語名の重複なし、新規11語の必須欄・関連語・実在章節、数値例11件の独立演算検証に合格。既存318語は無変更。
+- 未照合の問題IDは書かずrelatedQuestions=[]。既存の158語固定テストは統合ライン担当。Nodeテスト/CI/公開ビルド/実機・外部校閲は未実施で、全品質ゲート未達。テストや図解・講義・問題・他ブランチ・PRは未変更。
