@@ -8,7 +8,7 @@ const read=async path=>JSON.parse(await readFile(new URL('../'+path,import.meta.
 test('boundary-value and internal-generation lessons are complete independent texts, not a falsely approved translation',async()=>{
  const [book,d]=await Promise.all(['data/book.json','data/original-deep-lessons.json'].map(read));
  assert.deepEqual(validateDeepLessons(book,d),[]);
- assert.equal(d.lessons.length,28);
+ assert.equal(d.lessons.length,29);
  for(const id of ['4.1','4.2']){
   const l=deepLessonForSection(d,id);
   assert.ok(l&&l.blocks.length>=6&&l.equations.length>=4,id);
@@ -40,7 +40,7 @@ test('new section 4.1/4.2 questions have section metadata, rationale, and no ans
   assert.ok(len>=Math.min(...wrong)&&len<=Math.max(...wrong),'length cue '+q.id);
  }
  const report=buildAuthoringQueue({book,originalNotes:notes,deepLessons:deep,questions,evidence});
- assert.equal(report.detailedLessonDrafts,28);
+ assert.equal(report.detailedLessonDrafts,29);
  assert.equal(report.draftAuthoringMinimumMet,19);
  assert.equal(report.remainingQuestionDraftMinimum,366);
  assert.equal(report.externallyAcceptedSections,0);

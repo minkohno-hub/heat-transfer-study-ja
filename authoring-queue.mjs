@@ -35,7 +35,7 @@ export function buildAuthoringQueue({book,originalNotes,deepLessons,questions,ev
   const next=backlog.slice().sort((a,b)=>
     Number(a.legacyDraftRecorded)-Number(b.legacyDraftRecorded)||
     Number(a.shortConceptNoteDraft)-Number(b.shortConceptNoteDraft)||
-    Number(a.detailedLessonDraft)-Number(b.detailedLessonDraft)||
+    Number(b.detailedLessonDraft)-Number(a.detailedLessonDraft)||
     a.order-b.order
   );
   return {
