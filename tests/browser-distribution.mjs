@@ -144,6 +144,23 @@ try {
     await card.waitFor({state:'attached'});
     assert.ok(await card.locator('[data-start-question="'+question+'"]').count(),term+' → '+question);
   }
+  for(const id of ['heat-conduction','transient-conduction','boundary-condition','initial-condition',
+    'characteristic-length','complementary-error-function','thermal-penetration','fin',
+    'insulated-fin-tip','fin-tip-convection','hyperbolic-tangent','stefan-boltzmann',
+    'fick-law','molar-fraction','schmidt-number','sherwood-number','mass-diffusivity']){
+    const card=page.locator('#term-'+id);
+    assert.ok((await card.locator('.term-example').innerText()).includes('独立作成の例'),id);
+    assert.ok(await card.locator('[data-section]').count(),id+' section link');
+  }
+  await page.locator('#glossary-query').fill('5.0 s');
+  await page.locator('#term-mass-diffusivity').waitFor({state:'visible'});
+  assert.equal(await page.locator('.term-card').count(),1,'independent examples are searchable');
+  await page.locator('#term-mass-diffusivity [data-section="11.3"]').click();
+  await page.locator('#reader-deep-lesson').waitFor();
+  assert.match(await page.locator('#reader-deep-lesson').innerText(),/Fick/);
+  await nav('glossary');
+  await page.locator('#glossary-query').fill('');
+  await page.locator('#term-thermal-conductivity').waitFor();
   await page.locator('#term-thermal-conductivity .term-links a').click();
   assert.match(page.url(),/#guide\/sim-conduction$/);
   await nav('glossary');
@@ -655,13 +672,15 @@ try {
     if(await term.count()){
       const before=await page.evaluate(()=>{
         const s=JSON.parse(localStorage.getItem('heat-study-ja:v1'));
-        return JSON.stringify({attempts:s.attempts,draft:s.quizDraft,reviews:s.reviews});
+        const {updatedAt,...draft}=s.quizDraft||{};
+        return JSON.stringify({attempts:s.attempts,draft,reviews:s.reviews});
       });
       await term.click();await page.locator('#term-overlay [role="dialog"]').waitFor();
       await page.keyboard.press('Escape');
       const after=await page.evaluate(()=>{
         const s=JSON.parse(localStorage.getItem('heat-study-ja:v1'));
-        return JSON.stringify({attempts:s.attempts,draft:s.quizDraft,reviews:s.reviews});
+        const {updatedAt,...draft}=s.quizDraft||{};
+        return JSON.stringify({attempts:s.attempts,draft,reviews:s.reviews});
       });
       assert.equal(after,before,q.id+' vocabulary preserves learning state');
     }

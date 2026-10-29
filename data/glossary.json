@@ -487,8 +487,18 @@
     "unit": "なし（0〜1）",
     "formula": "E=εσT⁴",
     "related": [
-      "黒体",
-      "ステファン＝ボルツマン定数"
+      "射度",
+      "放射発散度",
+      "吸収率"
+    ],
+    "example": "放射率ε=0.60は無次元。黒体の発散度E_b=1000 W/m²なら自己放出は600 W/m²であり、反射を含む射度は照射条件も必要。",
+    "relatedSections": [
+      "10.1",
+      "10.2",
+      "10.4"
+    ],
+    "relatedSimulators": [
+      "radiation"
     ]
   },
   {
@@ -576,7 +586,17 @@
     "formula": "α=k/(ρcp)",
     "related": [
       "熱伝導率",
-      "比熱容量"
+      "比熱容量",
+      "物質拡散係数"
+    ],
+    "example": "k=2.0 W/(m·K)、ρc=2.0×10⁶ J/(m³·K)ならα=1.0×10⁻⁶ m²/s。長さ0.010 mの時間尺度L²/α=100 s。",
+    "relatedSections": [
+      "5.1",
+      "5.2",
+      "5.6"
+    ],
+    "relatedSimulators": [
+      "transient"
     ]
   },
   {
@@ -931,7 +951,7 @@
     "id": "fin-efficiency",
     "ja": "フィン効率",
     "en": "fin efficiency",
-    "meaning": "フィン表面全体が基部温度で放熱した場合の理想熱移動率に対する実際のフィン放熱量の割合。一定断面・先端断熱の理想モデルではη_f=tanh(mL)/(mL)。",
+    "meaning": "フィン全面を基部温度に保った理想放熱量に対する、実際のフィン放熱量の比。",
     "source": {
       "type": "supplement",
       "reference": "アプリ独自の章別発展学習ガイド。",
@@ -947,17 +967,23 @@
         "label": "章別演習：フィン ch4-fin-eta"
       }
     ],
-    "brief": "フィン表面全体が基部温度で放熱した場合の理想熱移動率に対する実際のフィン放熱量の割合。",
-    "beginner": "フィン表面全体が基部温度で放熱した場合の理想熱移動率に対する実際のフィン放熱量の割合。一定断面・先端断熱の理想モデルではη_f=tanh(mL)/(mL)。",
-    "detail": "フィン表面全体が基部温度で放熱した場合の理想熱移動率に対する実際のフィン放熱量の割合。一定断面・先端断熱の理想モデルではη_f=tanh(mL)/(mL)。",
+    "brief": "フィン全面を基部温度に保った理想放熱量に対する、実際のフィン放熱量の比。",
+    "beginner": "フィンの先端は基部より冷えることがあります。全面が基部と同じ温度なら出せる理想の熱量に比べ、どれだけ働いているかを示します。",
+    "detail": "η_f=Q̇_f/[hA_f(T_b−T∞)]。一定hで、内部発熱や放射を含めない標準的な冷却フィンでは0<η_f≤1。先端断熱・一定断面ならη_f=tanh(mL)/(mL)、A_fは対流を含めるフィン面積。フィン無しの基部面積A_cと比較する有効度ε_fとは分母が違う。フィンを長くして効率が低下しても、面積の増加で総放熱量が増える場合がある。",
     "aliases": [],
     "category": "既存の原本関連・補足用語",
     "unit": "なし",
     "formula": "ηf=tanh(mL)/(mL)（先端断熱）",
     "related": [
       "フィン有効度",
-      "熱抵抗"
-    ]
+      "フィン",
+      "先端断熱"
+    ],
+    "example": "mL=1、先端断熱ならη_f=tanh(1)≈0.7616。基部面積に対する有効度を76%と答えてはいけない。",
+    "relatedSections": [
+      "4.5"
+    ],
+    "relatedSimulators": []
   },
   {
     "id": "semi-infinite-thermal-body",
@@ -1810,13 +1836,12 @@
     "en": "emissive power",
     "meaning": "表面が自ら単位面積・単位時間あたり放出する放射エネルギー。",
     "brief": "表面が自ら単位面積・単位時間あたり放出する放射エネルギー。",
-    "beginner": "表面が自ら単位面積・単位時間あたり放出する放射エネルギー。",
-    "detail": "黒体では E_b=σT⁴。全波長・全方向について灰色面として扱える場合は E=εσT⁴ と表せる。Tは絶対温度[K]、εは全半球放射率で、入射光の反射は含まれない。伝熱工学では『放射能』とも呼ばれるが、放射性物質の壊変能力（radioactivity、Bq）とは別の物理量であるため、ここでは『放射発散度』を優先する。",
+    "beginner": "面が自分自身の温度によって放射を出す量です。外から来て反射した分を含む射度とは違い、面積当たりの放出をW/m²で表します。",
+    "detail": "表面が自ら放出する熱放射の、単位面積・単位時間当たりのエネルギー。単位W/m²。黒体ならE_b=σT⁴、灰色面の自己放出はE=εE_b。射度Jは自己放出に反射を加えた量であり、Eと同じとは限らない。照射Gとの差J−Gが正味外向き流束となる。放射率εという無次元比や、放射性壊変の放射能[Bq]とも区別する。",
     "unit": "W/m²",
     "formula": "E=εσT⁴",
     "aliases": [
-      "全放射発散度",
-      "放射能"
+      "全放射発散度"
     ],
     "category": "熱放射",
     "source": {
@@ -1826,8 +1851,16 @@
     },
     "reviewStatus": "needs_review",
     "related": [
-      "黒体",
+      "射度",
+      "照射量",
       "放射率"
+    ],
+    "example": "300 Kの黒体はE_b≈459.300 W/m²。ε=0.60の灰色面の自己放出は約275.580 W/m²。",
+    "relatedSections": [
+      "10.1"
+    ],
+    "relatedSimulators": [
+      "radiation"
     ]
   },
   {
@@ -1961,12 +1994,13 @@
     "en": "radiosity",
     "meaning": "表面から外へ出る自己放出と反射を合わせた放射。",
     "brief": "表面から外へ出る自己放出と反射を合わせた放射。",
-    "beginner": "表面から外へ出る自己放出と反射を合わせた放射。",
-    "detail": "不透明・灰色・拡散面が熱平衡の物性で近似できるとき、外向きの射度 J=εσTs⁴+(1−ε)G。第1項は自己放出、第2項は入射量Gの反射。正味の外向き熱流束は J−G で、射度Jそのものとは異なる。透過性・鏡面性が強い面にはこの単純式をそのまま当てはめない。",
+    "beginner": "面が自分で出した放射と、外から来て反射した放射を合わせた外向きの量です。放射率という割合や、原子核に関する放射能とは違います。",
+    "detail": "熱放射の射度Jは単位面積当たりに表面から外へ出る放射エネルギーの時間率[W/m²]。不透明・灰色・拡散面でα=εのモデルならJ=εσT_s⁴+(1−ε)G。第1項は自己放出、第2項は照射Gの反射。正味外向き熱流束はJ−Gで、J自体ではない。古い訳語の「放射能」はこの熱放射の文脈を指定して使い、放射性物質の壊変率[Bq]と結び付けない。透過・鏡面反射が重要な面にはこの単純式をそのまま使わない。",
     "unit": "W/m²",
     "formula": "J=εσTs⁴+(1−ε)G",
     "aliases": [
-      "ラジオシティ"
+      "ラジオシティ",
+      "放射能（熱放射）"
     ],
     "category": "熱放射",
     "source": {
@@ -1976,8 +2010,23 @@
     },
     "reviewStatus": "needs_review",
     "related": [
-      "黒体",
-      "放射率"
+      "放射率",
+      "照射量",
+      "放射発散度"
+    ],
+    "example": "ε=0.60、E_b=1000 W/m²、G=400 W/m²ならJ=760 W/m²。正味外向き流束は360 W/m²。",
+    "relatedSections": [
+      "10.1",
+      "10.4"
+    ],
+    "relatedSimulators": [
+      "radiation"
+    ],
+    "relatedQuestions": [
+      {
+        "id": "supp-radiation-inverse-emissivity-v1",
+        "label": "射度の反射寄与から放射率を逆算"
+      }
     ]
   },
   {
@@ -2034,12 +2083,12 @@
     "id": "specific-heat",
     "ja": "比熱容量",
     "en": "specific heat capacity",
-    "meaning": "物質1kgを1K温めるのに必要なエネルギー。",
-    "brief": "物質1kgを1K温めるのに必要なエネルギー。",
-    "beginner": "物質1kgを1K温めるのに必要なエネルギー。",
-    "detail": "定圧比熱cpと定積比熱cvは物質・条件によって異なる。温度依存性を無視する近似に注意。",
+    "meaning": "単位質量当たりの温度変化に対応する、顕熱の蓄えやすさを表す物性。",
+    "brief": "単位質量当たりの温度変化に対応する、顕熱の蓄えやすさを表す物性。",
+    "beginner": "材料1 kgの温度を1 K変えるときのエネルギーの目安です。同じ材料なら1 kgと2 kgで比熱は同じでも、物体全体の熱容量は2倍になります。",
+    "detail": "定圧比熱c_p=(∂h/∂T)_p、定積比熱c_v=(∂u/∂T)_v。比エンタルピーh、比内部エネルギーuはJ/kgなので、比熱の単位はJ/(kg·K)。同じ物質でも温度・圧力・相に依存し、c_pとc_vは一般に異なる。一定圧力・相変化なしの流体の顕熱収支はQ≈mc_pΔT。物体全体の熱容量C=mcと区別し、潜熱を同じ式に押し込まない。",
     "unit": "J/(kg·K)",
-    "formula": "Q≈mcpΔT",
+    "formula": "c_p=(∂h/∂T)_p、c_v=(∂u/∂T)_v",
     "aliases": [
       "比熱"
     ],
@@ -2051,20 +2100,35 @@
     },
     "reviewStatus": "needs_review",
     "related": [
-      "熱拡散率",
-      "潜熱"
+      "熱容量",
+      "潜熱",
+      "熱拡散率"
+    ],
+    "example": "c=500 J/(kg·K)の材料2.0 kgでは熱容量C=1000 J/K。比熱そのものは500のまま。",
+    "relatedSections": [
+      "1.2",
+      "5.2"
+    ],
+    "relatedSimulators": [
+      "transient"
+    ],
+    "relatedQuestions": [
+      {
+        "id": "supp-minimum-instant-storage-v1",
+        "label": "熱容量・比熱と温度変化を区別"
+      }
     ]
   },
   {
     "id": "heat-capacity",
     "ja": "熱容量",
     "en": "heat capacity",
-    "meaning": "物体全体の温度を1K変えるのに必要な熱量の目安。",
-    "brief": "物体全体の温度を1K変えるのに必要な熱量の目安。",
-    "beginner": "物体全体の温度を1K変えるのに必要な熱量の目安。",
-    "detail": "同じ物質でも質量が増えれば熱容量は増える。比熱と混同しない。",
+    "meaning": "物体全体の温度変化に対する、顕熱の蓄えやすさを表す量。",
+    "brief": "物体全体の温度変化に対する、顕熱の蓄えやすさを表す量。",
+    "beginner": "同じ材料なら、大きな塊ほど同じ1 Kだけ温度を変えるために多くのエネルギーが必要です。物体全体の値が熱容量、1 kg当たりの値が比熱容量です。",
+    "detail": "質量mの物体で比熱cを一定とすれば熱容量C=mc、顕熱変化はΔE≈CΔT。単位J/Kであり、比熱容量のJ/(kg·K)と異なる。c_p,c_vの選択は過程と系のモデルに合わせる。集中熱容量法では物体内の温度を一様と置くが、Cが分かっただけでその近似は成立しない。相変化中の潜熱や大きな物性変化を、一定Cの顕熱式だけで扱わない。",
     "unit": "J/K",
-    "formula": "C=mcp",
+    "formula": "C=mc、ΔE≈CΔT（顕熱・一定比熱）",
     "aliases": [
       "蓄熱容量"
     ],
@@ -2076,8 +2140,23 @@
     },
     "reviewStatus": "needs_review",
     "related": [
-      "熱拡散率",
-      "比熱容量"
+      "比熱容量",
+      "潜熱",
+      "集中熱容量法"
+    ],
+    "example": "m=2.0 kg、c=500 J/(kg·K)ならC=1000 J/K。温度差10 Kに対する顕熱は10000 J。",
+    "relatedSections": [
+      "1.2",
+      "5.2"
+    ],
+    "relatedSimulators": [
+      "transient"
+    ],
+    "relatedQuestions": [
+      {
+        "id": "supp-minimum-instant-storage-v1",
+        "label": "熱容量から瞬間の温度変化率を求める"
+      }
     ]
   },
   {
@@ -2734,10 +2813,10 @@
     "id": "fin-effectiveness",
     "ja": "フィン有効度",
     "en": "fin effectiveness",
-    "meaning": "フィン有無による伝熱増加を表す無次元比。",
-    "brief": "フィン有無による伝熱増加を表す無次元比。",
-    "beginner": "フィン有無による伝熱増加を表す無次元比。",
-    "detail": "ηf（フィン効率）はフィン側面がすべて基部温度だった場合と比較し、εf（有効度）はフィン無しの基部面積と比較する。",
+    "meaning": "フィンを付けない基部面積の放熱量に対する、フィン放熱量の比。",
+    "brief": "フィンを付けない基部面積の放熱量に対する、フィン放熱量の比。",
+    "beginner": "ひだを付けたことで、元の小さな面から出す場合の何倍の熱を運べたかを示します。全面が基部温度だった理想と比べる効率とは別の比です。",
+    "detail": "ε_f=Q̇_f/[hA_c(T_b−T∞)]で、A_cはフィンを付けなければ露出する基部面積。同じhと温度差で比較する標準定義ではε_f=η_f A_f/A_c。η_fが1以下でも面積比が大きければε_fは1を超える。取付けの接触抵抗、流れの変化、放射等がある実装では仮定を見直す。フィン効率と有効度を同じ百分率や同じ分母として扱わない。",
     "unit": "なし",
     "formula": "εf=qfin/(hAcΔT)",
     "aliases": [
@@ -2751,8 +2830,20 @@
     },
     "reviewStatus": "needs_review",
     "related": [
-      "熱流束",
-      "熱伝導率"
+      "フィン効率",
+      "フィン",
+      "接触熱抵抗"
+    ],
+    "example": "η_f=0.80、フィン面積A_f=0.010 m²、基部A_c=0.00020 m²ならε_f=0.80×50=40。",
+    "relatedSections": [
+      "4.5"
+    ],
+    "relatedSimulators": [],
+    "relatedQuestions": [
+      {
+        "id": "supp-deep-fin-effectiveness-v1",
+        "label": "フィン有効度を基部面積から計算"
+      }
     ]
   },
   {
@@ -3573,5 +3664,653 @@
         "label": "関連問題を解く"
       }
     ]
+  },
+  {
+    "id": "heat-conduction",
+    "ja": "熱伝導",
+    "en": "heat conduction",
+    "aliases": [
+      "伝導"
+    ],
+    "category": "熱伝導",
+    "meaning": "物質の巨視的な移動を必要とせず、温度勾配に応じて内部をエネルギーが移る現象。",
+    "brief": "物質の巨視的な移動を必要とせず、温度勾配に応じて内部をエネルギーが移る現象。",
+    "beginner": "金属棒の片側を温めると離れた場所も温まります。棒全体が移動しなくても、内部でエネルギーが伝わるのが熱伝導です。",
+    "detail": "等方性物質の局所熱流束はq″=−k∇Tで表す。k>0なら温度が低くなる向きへ伝導する。対流は流体の巨視的運動を伴う輸送を含み、熱伝導と同じ現象名ではない。定常でも温度差が維持されれば伝導は続く。固体だけでなく静止流体にも熱伝導があり、流動中の流体内にも分子による伝導は存在する。",
+    "formula": "q″=−k∇T",
+    "unit": "q″: W/m²、k: W/(m·K)、∇T: K/m",
+    "example": "k=2 W/(m·K)、dT/dx=−10 K/mなら、q_x″=+20 W/m²。",
+    "related": [
+      "フーリエの法則",
+      "熱伝導率",
+      "対流"
+    ],
+    "relatedSections": [
+      "1.3",
+      "2.1",
+      "2.2"
+    ],
+    "relatedQuestions": [
+      {
+        "id": "supp-deep-heat-conduction-direction-v1",
+        "label": "熱伝導の確認問題"
+      }
+    ],
+    "relatedSimulators": [
+      "conduction"
+    ],
+    "reviewStatus": "needs_review",
+    "source": {
+      "type": "supplement",
+      "reference": "一般的な伝熱・数学・物質移動の法則と独自の数値例による補足説明。原本の翻訳ではない。外部専門家校閲前。",
+      "guideId": "sim-conduction"
+    }
+  },
+  {
+    "id": "transient-conduction",
+    "ja": "非定常熱伝導",
+    "en": "transient heat conduction",
+    "aliases": [
+      "過渡熱伝導"
+    ],
+    "category": "熱伝導",
+    "meaning": "物体内部の温度分布が時間とともに変わる熱伝導。",
+    "brief": "物体内部の温度分布が時間とともに変わる熱伝導。",
+    "beginner": "冷たい物体を温かい場所に置くと、表面から内部へ温度が変わっていきます。変化の途中では「どこか」に加えて「何秒後か」も必要です。",
+    "detail": "静止・等方・一定物性で内部発熱がなければ∂T/∂t=α∇²T。初期温度分布と境界条件を合わせて解く。熱が伝わるというだけで定常と決めず、温度の時間変化を確認する。集中熱容量法は内部の温度差を無視する追加近似で、非定常熱伝導の全てを表すわけではない。内部発熱がある場合はq‴/(ρc)を加える。",
+    "formula": "∂T/∂t=α∇²T（一定物性・内部発熱なし）",
+    "unit": "α: m²/s、∂T/∂t: K/s",
+    "example": "α=1.0×10⁻⁶ m²/s、L=0.010 mなら拡散時間の尺度L²/α=100 s。",
+    "related": [
+      "初期条件",
+      "境界条件",
+      "集中熱容量法"
+    ],
+    "relatedSections": [
+      "4.1",
+      "5.1",
+      "5.3"
+    ],
+    "relatedQuestions": [
+      {
+        "id": "supp-batch3-initial-condition-necessity-v1",
+        "label": "非定常熱伝導の確認問題"
+      }
+    ],
+    "relatedSimulators": [
+      "transient"
+    ],
+    "reviewStatus": "needs_review",
+    "source": {
+      "type": "supplement",
+      "reference": "一般的な伝熱・数学・物質移動の法則と独自の数値例による補足説明。原本の翻訳ではない。外部専門家校閲前。",
+      "guideId": "learn-dimensionless-transient"
+    }
+  },
+  {
+    "id": "boundary-condition",
+    "ja": "境界条件",
+    "en": "boundary condition",
+    "aliases": [],
+    "category": "熱伝導",
+    "meaning": "領域の面や端で、温度・熱流束・熱交換の関係などを指定する条件。",
+    "brief": "領域の面や端で、温度・熱流束・熱交換の関係などを指定する条件。",
+    "beginner": "同じ板でも、端を100 ℃に保つ場合と、端を断熱する場合では温度の分布が違います。この端での約束が境界条件です。",
+    "detail": "代表例は温度指定Dirichlet、法線方向熱流束指定Neumann、対流等のRobin条件。外向き単位法線nを使うと伝導の外向き流束は−k∂T/∂n。左右の面で外向き法線は逆なので符号をそろえる。周囲温度が既知でも有限hの表面温度が同じになるとは限らない。非定常問題では境界条件とは別に初期条件が必要。",
+    "formula": "−k∂T/∂n=h(T_s−T∞)（対流境界）",
+    "unit": "温度: K又は℃、流束: W/m²、h: W/(m²·K)",
+    "example": "右面から200 W/m²を放熱しk=2 W/(m·K)なら、右面dT/dx=−100 K/m。",
+    "related": [
+      "温度指定境界条件",
+      "熱流束指定境界条件",
+      "対流境界条件",
+      "初期条件"
+    ],
+    "relatedSections": [
+      "4.1",
+      "2.1"
+    ],
+    "relatedQuestions": [
+      {
+        "id": "supp-batch3-neumann-grad-v1",
+        "label": "境界条件の確認問題"
+      }
+    ],
+    "relatedSimulators": [
+      "conduction",
+      "transient"
+    ],
+    "reviewStatus": "needs_review",
+    "source": {
+      "type": "supplement",
+      "reference": "一般的な伝熱・数学・物質移動の法則と独自の数値例による補足説明。原本の翻訳ではない。外部専門家校閲前。",
+      "guideId": "learn-dimensionless-transient"
+    }
+  },
+  {
+    "id": "initial-condition",
+    "ja": "初期条件",
+    "en": "initial condition",
+    "aliases": [],
+    "category": "熱伝導",
+    "meaning": "非定常問題の開始時刻における、領域全体の状態の指定。",
+    "brief": "非定常問題の開始時刻における、領域全体の状態の指定。",
+    "beginner": "同じ温かい空気の中へ置いても、初めに冷えていた板と熱かった板では、その後の温度が違います。最初の板の温度を知らせる条件です。",
+    "detail": "熱伝導ではT(x,0)=T_i(x)のように初期分布を与える。一様な初期温度はその特別な場合。境界条件は面の条件、初期条件は時刻を固定した領域の条件であり、互いを代用できない。開始時に表面温度を急変させる理想モデルは、初期と境界の角点で不連続となることがある。実物の加熱時間や有限hと区別する。",
+    "formula": "T(x,0)=T_i(x)",
+    "unit": "温度: K又は℃、時刻: s",
+    "example": "周囲20 ℃の集中熱容量モデルで初期80 ℃なら、t=0で温度差は60 K。",
+    "related": [
+      "境界条件",
+      "非定常熱伝導",
+      "集中熱容量法"
+    ],
+    "relatedSections": [
+      "4.1",
+      "5.2"
+    ],
+    "relatedQuestions": [
+      {
+        "id": "supp-batch3-initial-condition-necessity-v1",
+        "label": "初期条件の確認問題"
+      }
+    ],
+    "relatedSimulators": [
+      "transient"
+    ],
+    "reviewStatus": "needs_review",
+    "source": {
+      "type": "supplement",
+      "reference": "一般的な伝熱・数学・物質移動の法則と独自の数値例による補足説明。原本の翻訳ではない。外部専門家校閲前。",
+      "guideId": "learn-dimensionless-transient"
+    }
+  },
+  {
+    "id": "characteristic-length",
+    "ja": "特性長さ",
+    "en": "characteristic length",
+    "aliases": [
+      "代表長さ"
+    ],
+    "category": "熱伝導",
+    "meaning": "無次元数や相関で形状を代表させる、定義を指定した長さ。",
+    "brief": "無次元数や相関で形状を代表させる、定義を指定した長さ。",
+    "beginner": "板の厚さ、半分の厚さ、管の直径など、式ごとに使う長さが違います。同じ物体でも、式の説明を読んで選びます。",
+    "detail": "集中熱容量法の判定ではL_c=V/A_sを用いる。両面から熱交換する大きな平板では厚さの半分となる一方、非定常平板の解析解も半厚さを採るなど定義を確認する。自然対流の水平面でA/P、内部流で水力直径4A_c/P_wを用いる場合もある。無次元数の数値を比較するとき、長さの定義が違えば同じBiやRaとして比較できない。",
+    "formula": "L_c=V/A_s（集中熱容量法の場合）",
+    "unit": "m",
+    "example": "V=2.0×10⁻⁴ m³、熱交換面積A_s=0.10 m²ならL_c=0.0020 m。",
+    "related": [
+      "ビオ数",
+      "水力直径",
+      "非定常熱伝導"
+    ],
+    "relatedSections": [
+      "5.2",
+      "5.3",
+      "7.1"
+    ],
+    "relatedQuestions": [
+      {
+        "id": "supp-found-slab-biot-v1",
+        "label": "特性長さの確認問題"
+      }
+    ],
+    "relatedSimulators": [
+      "transient"
+    ],
+    "reviewStatus": "needs_review",
+    "source": {
+      "type": "supplement",
+      "reference": "一般的な伝熱・数学・物質移動の法則と独自の数値例による補足説明。原本の翻訳ではない。外部専門家校閲前。",
+      "guideId": "learn-dimensionless-transient"
+    }
+  },
+  {
+    "id": "complementary-error-function",
+    "ja": "補誤差関数",
+    "en": "complementary error function",
+    "aliases": [
+      "erfc"
+    ],
+    "category": "数学・解析",
+    "meaning": "誤差関数erfの補数で、erfc(z)=1−erf(z)と定義される無次元関数。",
+    "brief": "誤差関数erfの補数で、erfc(z)=1−erf(z)と定義される無次元関数。",
+    "beginner": "表面の温度を変えたとき、その影響が奥へどれだけ届いたかを表す曲線に使います。erfとerfcは出発点での値が逆なので、表面の温度を代入して確かめます。",
+    "detail": "一様初期温度T_iの半無限固体でt>0の表面をT_sに保つと、T=T_i+(T_s−T_i)erfc[x/(2√(αt))]。erfc(0)=1で表面T_s、z→∞でerfc(z)→0となり奥でT_iを満たす。引数は無次元であり、erfcの値自体は温度ではない。有限体や有限hの境界には、同じ解を無条件に流用しない。",
+    "formula": "erfc(z)=1−erf(z)",
+    "unit": "関数値と引数zは無次元",
+    "example": "erfc(0.5)≈0.4795001。T_i=20 ℃、T_s=80 ℃ならT≈48.7700 ℃。",
+    "related": [
+      "誤差関数",
+      "半無限固体",
+      "熱浸透深さ"
+    ],
+    "relatedSections": [
+      "5.6"
+    ],
+    "relatedQuestions": [
+      {
+        "id": "supp-deep-semi-profile-v1",
+        "label": "補誤差関数の確認問題"
+      }
+    ],
+    "relatedSimulators": [],
+    "reviewStatus": "needs_review",
+    "source": {
+      "type": "supplement",
+      "reference": "一般的な伝熱・数学・物質移動の法則と独自の数値例による補足説明。原本の翻訳ではない。外部専門家校閲前。",
+      "guideId": "chapter5-semi-infinite"
+    }
+  },
+  {
+    "id": "thermal-penetration",
+    "ja": "熱浸透深さ",
+    "en": "thermal penetration depth",
+    "aliases": [],
+    "category": "熱伝導",
+    "meaning": "非定常伝導で温度変化が届く深さを、定めたしきい値で表す目安。",
+    "brief": "非定常伝導で温度変化が届く深さを、定めたしきい値で表す目安。",
+    "beginner": "短時間では表面近くが主に温まり、時間がたつと影響は奥へ広がります。どの小さな変化まで数えるかで「届いた深さ」は変わります。",
+    "detail": "半無限固体の相似変数はx/(2√(αt))なので、一定の無次元温度を与える深さは√(αt)に比例する。拡散方程式の理想解には厳密に切れる伝播前線はなく、温度変化が全くゼロとなる有限の境界を意味しない。何%変化を採るか、加熱境界の種類、反対面までの距離を指定して半無限近似の妥当性を確認する。",
+    "formula": "δ_T∝√(αt)（しきい値と境界条件を固定）",
+    "unit": "δ_T: m、α: m²/s、t: s",
+    "example": "α=1.0×10⁻⁶ m²/s、t=100 sで√(αt)=0.010 m。しきい値なしに浸透深さを1 cmと断定しない。",
+    "related": [
+      "半無限固体",
+      "補誤差関数",
+      "熱拡散率"
+    ],
+    "relatedSections": [
+      "5.6"
+    ],
+    "relatedQuestions": [
+      {
+        "id": "supp-section-5-6",
+        "label": "熱浸透深さの確認問題"
+      }
+    ],
+    "relatedSimulators": [],
+    "reviewStatus": "needs_review",
+    "source": {
+      "type": "supplement",
+      "reference": "一般的な伝熱・数学・物質移動の法則と独自の数値例による補足説明。原本の翻訳ではない。外部専門家校閲前。",
+      "guideId": "chapter5-semi-infinite"
+    }
+  },
+  {
+    "id": "fin",
+    "ja": "フィン",
+    "en": "fin",
+    "aliases": [
+      "放熱フィン"
+    ],
+    "category": "熱伝導",
+    "meaning": "熱交換面積を増やすため、基部に設ける突起や板状の部品。",
+    "brief": "熱交換面積を増やすため、基部に設ける突起や板状の部品。",
+    "beginner": "放熱器のひだは空気に触れる面を増やします。ただし先端まで同じ温度になるとは限らず、ひだの中を熱が伝わる抵抗もあります。",
+    "detail": "フィンは内部伝導と表面対流等が同時に起こる拡大伝熱面。一定断面・一定k,h・一次元・放射なしの場合、超過温度θ=T−T∞はθ″−m²θ=0、m²=hP/(kA_c)に従う。基部と先端の境界条件が必要であり、同じ面積でも形状と材料により温度分布や放熱は変わる。効率と有効度は比較対象が異なる。",
+    "formula": "d²θ/dx²−m²θ=0、m²=hP/(kA_c)",
+    "unit": "θ: K、m: m⁻¹、P: m、A_c: m²",
+    "example": "mL=1の断熱先端フィンではη_f=tanh(1)≈0.7616。全面が基部温度の理想放熱量の約76%。",
+    "related": [
+      "フィン効率",
+      "フィン有効度",
+      "先端断熱"
+    ],
+    "relatedSections": [
+      "4.4",
+      "4.5"
+    ],
+    "relatedQuestions": [
+      {
+        "id": "supp-deep-fin-base-heat-v1",
+        "label": "フィンの確認問題"
+      }
+    ],
+    "relatedSimulators": [],
+    "reviewStatus": "needs_review",
+    "source": {
+      "type": "supplement",
+      "reference": "一般的な伝熱・数学・物質移動の法則と独自の数値例による補足説明。原本の翻訳ではない。外部専門家校閲前。",
+      "guideId": "chapter4-fin-design"
+    }
+  },
+  {
+    "id": "insulated-fin-tip",
+    "ja": "先端断熱",
+    "en": "insulated fin tip",
+    "aliases": [
+      "断熱先端"
+    ],
+    "category": "熱伝導",
+    "meaning": "フィン先端面からの熱の出入りをゼロと置く境界条件。",
+    "brief": "フィン先端面からの熱の出入りをゼロと置く境界条件。",
+    "beginner": "先端から熱を逃がさない約束です。先端が周囲と同じ温度になるという約束ではなく、側面からは熱が出ていきます。",
+    "detail": "先端x=Lで−kA_c dT/dx=0。正のkとA_cならdT/dx=0であり、T(L)=T∞を意味しない。一定断面の解はθ(x)=θ_b cosh[m(L−x)]/cosh(mL)。先端の熱交換面積が側面に比べて小さい場合などに近似として用いるが、実際の先端対流を無視できるか確認する。",
+    "formula": "dT/dx|_(x=L)=0（kA_c>0）",
+    "unit": "温度勾配: K/m、先端の熱移動率: W",
+    "example": "mL=1、基部80 ℃、周囲20 ℃なら先端20+60/cosh(1)≈58.88 ℃であり、20 ℃ではない。",
+    "related": [
+      "先端対流",
+      "フィン",
+      "温度指定境界条件"
+    ],
+    "relatedSections": [
+      "4.5"
+    ],
+    "relatedQuestions": [
+      {
+        "id": "supp-deep-fin-tip-temperature-v1",
+        "label": "先端断熱の確認問題"
+      }
+    ],
+    "relatedSimulators": [],
+    "reviewStatus": "needs_review",
+    "source": {
+      "type": "supplement",
+      "reference": "一般的な伝熱・数学・物質移動の法則と独自の数値例による補足説明。原本の翻訳ではない。外部専門家校閲前。",
+      "guideId": "chapter4-fin-design"
+    }
+  },
+  {
+    "id": "fin-tip-convection",
+    "ja": "先端対流",
+    "en": "convective fin tip",
+    "aliases": [],
+    "category": "熱伝導",
+    "meaning": "フィン先端でも周囲流体へ対流で熱を交換する境界条件。",
+    "brief": "フィン先端でも周囲流体へ対流で熱を交換する境界条件。",
+    "beginner": "ひだの側面だけでなく先端も空気に触れていれば、その面からも熱が出入りします。断熱先端の解とは端の条件が変わります。",
+    "detail": "x軸を基部から先端へ向け、先端面積A_tとその係数h_tを使うと−kA_c dT/dx|_L=h_t A_t[T(L)−T∞]。先端までの伝導と先端から出る対流のエネルギー収支であり、常にT(L)=T∞となる条件ではない。補正長さで断熱先端解を近似する方法には形状・係数等の条件がある。側面係数hとh_tが同じとも限らない。",
+    "formula": "−kA_c T′(L)=h_t A_t[T(L)−T∞]",
+    "unit": "両辺: W、h_t: W/(m²·K)",
+    "example": "h_t=20 W/(m²·K)、A_t=1.0×10⁻⁴ m²、先端と周囲の差30 Kなら先端放熱0.060 W。",
+    "related": [
+      "先端断熱",
+      "フィン",
+      "対流境界条件"
+    ],
+    "relatedSections": [
+      "4.5"
+    ],
+    "relatedQuestions": [
+      {
+        "id": "supp-deep-fin-convective-tip-v1",
+        "label": "先端対流の確認問題"
+      }
+    ],
+    "relatedSimulators": [],
+    "reviewStatus": "needs_review",
+    "source": {
+      "type": "supplement",
+      "reference": "一般的な伝熱・数学・物質移動の法則と独自の数値例による補足説明。原本の翻訳ではない。外部専門家校閲前。",
+      "guideId": "chapter4-fin-design"
+    }
+  },
+  {
+    "id": "hyperbolic-tangent",
+    "ja": "双曲線正接",
+    "en": "hyperbolic tangent",
+    "aliases": [
+      "tanh"
+    ],
+    "category": "数学・解析",
+    "meaning": "指数関数から定義されるtanhで、フィンの解析解などに現れる関数。",
+    "brief": "指数関数から定義されるtanhで、フィンの解析解などに現れる関数。",
+    "beginner": "正の入力を大きくすると1に近づく滑らかな関数です。三角関数のtanとは違い、フィンでは長さを表す無次元の入力mLに使います。",
+    "detail": "tanh z=(e^z−e^(−z))/(e^z+e^(−z))。zが小さければtanh z≈z、正で十分大きければ1に近づく。断熱先端の一定断面フィンではη_f=tanh(mL)/(mL)となり、mL→0でη_f→1。mL=0を式へ直接代入して0/0として停止せず、極限を用いる。指数関数の定義を大きなzに直接計算すると桁あふれしうる。",
+    "formula": "tanh z=sinh z/cosh z",
+    "unit": "zと関数値は無次元",
+    "example": "tanh(1)≈0.761594、tanh(2)≈0.964028。mL=2のフィン効率は約0.482014。",
+    "related": [
+      "指数関数",
+      "フィン効率",
+      "近似"
+    ],
+    "relatedSections": [
+      "4.5"
+    ],
+    "relatedQuestions": [
+      {
+        "id": "supp-applied-4-5-v1",
+        "label": "双曲線正接の確認問題"
+      }
+    ],
+    "relatedSimulators": [],
+    "reviewStatus": "needs_review",
+    "source": {
+      "type": "supplement",
+      "reference": "一般的な伝熱・数学・物質移動の法則と独自の数値例による補足説明。原本の翻訳ではない。外部専門家校閲前。",
+      "guideId": "chapter4-fin-design"
+    }
+  },
+  {
+    "id": "stefan-boltzmann",
+    "ja": "ステファン＝ボルツマンの法則",
+    "en": "Stefan–Boltzmann law",
+    "aliases": [
+      "ステファン・ボルツマン則",
+      "Stefan-Boltzmann law"
+    ],
+    "category": "熱放射",
+    "meaning": "黒体の全半球放射発散度が絶対温度の4乗に比例する法則。",
+    "brief": "黒体の全半球放射発散度が絶対温度の4乗に比例する法則。",
+    "beginner": "物体は温度によって熱放射を出します。黒体の理想モデルではケルビンの温度を2倍にすると、面積当たりの放出は16倍になります。",
+    "detail": "黒体はE_b=σT⁴、σ≈5.670374419×10⁻⁸ W/(m²·K⁴)。灰色面の自己放出はεσT⁴で表せるが、射度には反射も含む。正味交換は入射も考える必要があり、放出量そのものではない。大きな黒体囲いを見込む面の正味流束εσ(T_s⁴−T_sur⁴)は別の境界条件を追加した式。摂氏温度の4乗や温度差の4乗へ置き換えない。",
+    "formula": "E_b=σT⁴",
+    "unit": "E_b: W/m²、T: K、σ: W/(m²·K⁴)",
+    "example": "300 Kの黒体はE_b≈459.300 W/m²。600 Kではその16倍。",
+    "related": [
+      "ステファン＝ボルツマン定数",
+      "射度",
+      "放射率"
+    ],
+    "relatedSections": [
+      "10.1"
+    ],
+    "relatedQuestions": [
+      {
+        "id": "supp-deep-rad-temperature-fourth-v1",
+        "label": "ステファン＝ボルツマンの法則の確認問題"
+      }
+    ],
+    "relatedSimulators": [
+      "radiation"
+    ],
+    "reviewStatus": "needs_review",
+    "source": {
+      "type": "supplement",
+      "reference": "一般的な伝熱・数学・物質移動の法則と独自の数値例による補足説明。原本の翻訳ではない。外部専門家校閲前。",
+      "guideId": "sim-radiation"
+    }
+  },
+  {
+    "id": "fick-law",
+    "ja": "フィックの法則",
+    "en": "Fick's law",
+    "aliases": [
+      "フィック則"
+    ],
+    "category": "物質移動",
+    "meaning": "平均の移動に相対的な成分拡散流束を、組成勾配と関係づける構成則。",
+    "brief": "平均の移動に相対的な成分拡散流束を、組成勾配と関係づける構成則。",
+    "beginner": "混合物の成分は濃い側から薄い側へ広がる傾向があります。混合物全体が流れて運ぶ分と、混合物の中で広がる分を分けて考えます。",
+    "detail": "等温・等圧の理想二成分混合物でモル平均速度基準ならJ_A=−cD_AB∇y_A。全濃度cが一定なら−D_AB∇C_Aとも書ける。固定座標系の全モル流束N_A=J_A+y_A N_tとは区別する。質量平均速度を使う質量流束では質量分率とρを使い、モル式へそのまま混ぜない。非理想・多成分系では化学ポテンシャルや交差拡散等の追加が必要となる。",
+    "formula": "J_A=−cD_AB∇y_A、N_A=J_A+y_A N_t",
+    "unit": "J_A,N_A: mol/(m²·s)、c: mol/m³、D_AB: m²/s",
+    "example": "D_AB=2.0×10⁻⁹ m²/s、dC_A/dx=−100 mol/m⁴ならJ_A=+2.0×10⁻⁷ mol/(m²·s)。",
+    "related": [
+      "フィック則の拡散モル流束",
+      "物質拡散係数",
+      "モル分率"
+    ],
+    "relatedSections": [
+      "11.3"
+    ],
+    "relatedQuestions": [
+      {
+        "id": "supp-fick-frame-total-flux-v1",
+        "label": "フィックの法則の確認問題"
+      }
+    ],
+    "relatedSimulators": [],
+    "reviewStatus": "needs_review",
+    "source": {
+      "type": "supplement",
+      "reference": "一般的な伝熱・数学・物質移動の法則と独自の数値例による補足説明。原本の翻訳ではない。外部専門家校閲前。",
+      "guideId": "chapter11-fick-mass"
+    }
+  },
+  {
+    "id": "molar-fraction",
+    "ja": "モル分率",
+    "en": "mole fraction",
+    "aliases": [
+      "モル割合"
+    ],
+    "category": "物質移動",
+    "meaning": "混合物の全モル数に対する、一成分のモル数の割合。",
+    "brief": "混合物の全モル数に対する、一成分のモル数の割合。",
+    "beginner": "Aが2 mol、Bが3 molなら、全5 molのうちAは2 molなのでAのモル分率は0.4です。質量で数えた割合とは通常異なります。",
+    "detail": "y_A=n_A/Σn_iで定義し、全成分の和は1。気相でy、液相でxと書くことがあるため記号の定義を読む。質量分率w_Aとの換算はy_A=(w_A/M_A)/Σ(w_i/M_i)。理想気体混合物のモル分率は分圧/全圧に等しいが、非理想系でも常に成立するとは限らない。モル分率が同じでもモル質量が違えば質量分率は異なる。",
+    "formula": "y_A=n_A/Σn_i",
+    "unit": "無次元（mol/mol）",
+    "example": "A=2 mol、B=3 molならy_A=0.40、y_B=0.60。百分率なら40 mol%。",
+    "related": [
+      "フィックの法則",
+      "物質拡散係数"
+    ],
+    "relatedSections": [
+      "11.2",
+      "11.3"
+    ],
+    "relatedQuestions": [
+      {
+        "id": "supp-section-11-2",
+        "label": "モル分率の確認問題"
+      }
+    ],
+    "relatedSimulators": [],
+    "reviewStatus": "needs_review",
+    "source": {
+      "type": "supplement",
+      "reference": "一般的な伝熱・数学・物質移動の法則と独自の数値例による補足説明。原本の翻訳ではない。外部専門家校閲前。",
+      "guideId": "chapter11-fick-mass"
+    }
+  },
+  {
+    "id": "schmidt-number",
+    "ja": "シュミット数",
+    "en": "Schmidt number",
+    "aliases": [
+      "Sc"
+    ],
+    "category": "物質移動",
+    "meaning": "動粘度を物質拡散係数で割った、運動量拡散と物質拡散の比。",
+    "brief": "動粘度を物質拡散係数で割った、運動量拡散と物質拡散の比。",
+    "beginner": "流れの速度の変化が広がる速さと、成分が広がる速さを比べます。500なら、係数としては動粘度が物質拡散係数の500倍です。",
+    "detail": "Sc=ν/D_AB。νとD_ABはいずれもm²/sなので無次元。熱移動のPr=ν/αと対応するが、αとD_ABを同じ値と仮定しない。Scが大きい場合、同じ流れの中で濃度境界層が速度境界層より薄くなる傾向があるが、その厚さ比を常にScやその逆数と断定できない。対流相関は流路・境界条件・Reの範囲も確認する。",
+    "formula": "Sc=ν/D_AB",
+    "unit": "無次元（ν,D_AB: m²/s）",
+    "example": "ν=1.0×10⁻⁶ m²/s、D_AB=2.0×10⁻⁹ m²/sならSc=500。",
+    "related": [
+      "プラントル数",
+      "物質拡散係数",
+      "シャーウッド数"
+    ],
+    "relatedSections": [
+      "11.6",
+      "11.10"
+    ],
+    "relatedQuestions": [
+      {
+        "id": "supp-section-11-6",
+        "label": "シュミット数の確認問題"
+      }
+    ],
+    "relatedSimulators": [],
+    "reviewStatus": "needs_review",
+    "source": {
+      "type": "supplement",
+      "reference": "一般的な伝熱・数学・物質移動の法則と独自の数値例による補足説明。原本の翻訳ではない。外部専門家校閲前。",
+      "guideId": "chapter11-fick-mass"
+    }
+  },
+  {
+    "id": "sherwood-number",
+    "ja": "シャーウッド数",
+    "en": "Sherwood number",
+    "aliases": [
+      "Sh"
+    ],
+    "category": "物質移動",
+    "meaning": "濃度差で定義した物質移動係数を、分子拡散の尺度で無次元化した数。",
+    "brief": "濃度差で定義した物質移動係数を、分子拡散の尺度で無次元化した数。",
+    "beginner": "流れによる成分の運ばれやすさを、静かな拡散の尺度と比べます。使う係数が何の濃度差を基準にしているかを確かめます。",
+    "detail": "Sh=k_c L/D_AB。ここではN_A=k_c(C_A,s−C_A,∞)という濃度差基準のk_c[m/s]を使う。圧力差基準やモル分率差基準の係数を同じ数値のまま代入しない。局所値と面積平均、代表長さ、流動と表面条件をそろえる。Nu=hL/kとの類推は有用だが、強い吹出しや熱・物質連成がある場合に係数をそのまま流用できるとは限らない。",
+    "formula": "Sh=k_c L/D_AB（濃度差基準）",
+    "unit": "Sh: 無次元、k_c: m/s、L: m、D_AB: m²/s",
+    "example": "k_c=2.0×10⁻⁵ m/s、L=0.010 m、D_AB=2.0×10⁻⁹ m²/sならSh=100。",
+    "related": [
+      "ヌセルト数",
+      "シュミット数",
+      "物質拡散係数"
+    ],
+    "relatedSections": [
+      "11.6"
+    ],
+    "relatedQuestions": [
+      {
+        "id": "supp-applied-11-6-v1",
+        "label": "シャーウッド数の確認問題"
+      }
+    ],
+    "relatedSimulators": [],
+    "reviewStatus": "needs_review",
+    "source": {
+      "type": "supplement",
+      "reference": "一般的な伝熱・数学・物質移動の法則と独自の数値例による補足説明。原本の翻訳ではない。外部専門家校閲前。",
+      "guideId": "chapter11-fick-mass"
+    }
+  },
+  {
+    "id": "mass-diffusivity",
+    "ja": "物質拡散係数",
+    "en": "mass diffusivity",
+    "aliases": [
+      "二成分拡散係数",
+      "分子拡散係数"
+    ],
+    "category": "物質移動",
+    "meaning": "成分の分子拡散の速さを、指定した系と条件で表す輸送係数。",
+    "brief": "成分の分子拡散の速さを、指定した系と条件で表す輸送係数。",
+    "beginner": "温度が広がる熱拡散率と同じm²/sという単位ですが、こちらは物質の組成が広がる性質です。同じ単位でも同じ値ではありません。",
+    "detail": "二成分のFick則に現れるD_ABは、成分の組合せ、温度、圧力や組成に依存する。熱拡散率α=k/(ρc)は熱伝導と蓄熱の比で、D_ABとは別の物性。単純な二成分Fickモデルの正のD_ABは組成勾配に逆らう拡散流束を与えるが、全成分流束には平均流による輸送も加わる。多成分・非理想拡散を一つの定数Dで必ず表せるわけではない。",
+    "formula": "J_A=−cD_AB∇y_A",
+    "unit": "m²/s",
+    "example": "D_AB=2.0×10⁻⁵ m²/s、L=0.010 mなら物質拡散時間の尺度L²/D_AB=5.0 s。",
+    "related": [
+      "熱拡散率",
+      "フィックの法則",
+      "シュミット数"
+    ],
+    "relatedSections": [
+      "11.3",
+      "11.10"
+    ],
+    "relatedQuestions": [
+      {
+        "id": "supp-applied-11-3-v1",
+        "label": "物質拡散係数の確認問題"
+      }
+    ],
+    "relatedSimulators": [],
+    "reviewStatus": "needs_review",
+    "source": {
+      "type": "supplement",
+      "reference": "一般的な伝熱・数学・物質移動の法則と独自の数値例による補足説明。原本の翻訳ではない。外部専門家校閲前。",
+      "guideId": "chapter11-fick-mass"
+    }
   }
 ]

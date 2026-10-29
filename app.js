@@ -4,7 +4,7 @@ import {questionChapter,questionsForChapter,chapterLearningOverview} from './cha
 import {validateOriginalNotes,independentNoteForSection} from './original-notes.mjs';
 import {validateDeepLessons,deepLessonForSection} from './original-deep-lessons.mjs';
 import {renderTransientFields,renderTransientSteps,transientGraph,transientFieldNames} from './transient-ui.mjs';
-import {matchTerms,renderTermLinks,renderTermSheet} from './term-links.mjs';
+import {matchTerms,renderTermLinks,renderTermSheet,renderTermExample,renderTermLearningLinks} from './term-links.mjs';
 import {renderSimulationDiagram} from './sim-diagrams.mjs';
 const CORE_DATA_FILES = ['./data/book.json', './data/questions.json', './data/glossary.json', './data/content-manifest.json', './data/original-notes.json', './data/original-deep-lessons.json'];
 const LEGACY_STORAGE_KEY = 'heat-study-ja:v1';
@@ -711,7 +711,7 @@ function buildSearchIndex() {
       target:{route:'guide',guideId:guide.id}});
   }
   for(const term of glossary) {
-    entries.push({kind:'glossary',kindLabel:'用語集',chapter:chapterKey(term.source.section),field:'用語集',title:`${term.ja} ${term.en||''}`,text:[term.meaning,term.meaningEn,term.brief,term.detail,term.unit,term.formula,...(term.aliases||[]),...(term.related||[])].filter(Boolean).join(' '),source:sourceLabel(term.source),target:{route:'glossary',term:term.id,language:'ja'}});
+    entries.push({kind:'glossary',kindLabel:'用語集',chapter:chapterKey(term.source.section),field:'用語集',title:`${term.ja} ${term.en||''}`,text:[term.meaning,term.meaningEn,term.brief,term.beginner,term.detail,term.example,term.unit,term.formula,...(term.aliases||[]),...(term.related||[])].filter(Boolean).join(' '),source:sourceLabel(term.source),target:{route:'glossary',term:term.id,language:'ja'}});
   }
   for(const q of questionBank) {
     const base={chapter:questionChapter(q,GUIDE_SECTIONS)||'supplement',field:q.field,source:sourceLabel(q.source),target:{route:'quiz',question:q.id}};
@@ -738,7 +738,7 @@ function renderSearch() {
 function renderGlossary() {
   const query = ui.glossaryQuery || '';
   const language = state.settings.contentLanguage === 'en' ? 'en' : 'ja';
-  const filtered = glossary.filter(item => !query || [item.ja,item.en,item.meaning,item.detail,item.brief,item.unit,item.formula,...(item.aliases||[])].filter(Boolean).join(' ').toLowerCase().includes(query.toLowerCase()));
+  const filtered = glossary.filter(item => !query || [item.ja,item.en,item.meaning,item.detail,item.brief,item.beginner,item.example,item.unit,item.formula,...(item.aliases||[])].filter(Boolean).join(' ').toLowerCase().includes(query.toLowerCase()));
   const termCards = filtered.map(term => {
     const primary = language === 'en' ? (term.en || term.ja) : term.ja;
     const secondary = language === 'en' ? term.ja : term.en;
@@ -751,7 +751,7 @@ function renderGlossary() {
     const relatedQuestions=(Array.isArray(term.relatedQuestions)?term.relatedQuestions:[]).filter(item=>item&&typeof item.id==='string'&&typeof item.label==='string'&&getQuestion(item.id));
     const questionLinks=relatedQuestions.length?`<div class="term-related"><strong>関連する問題</strong>${relatedQuestions.map(item=>`<button type="button" class="text-link" data-start-question="${escapeHTML(item.id)}">${escapeHTML(item.label)} →</button>`).join('')}</div>`:'';
     const reviewTag = term.reviewStatus === 'needs_review' ? statusPill('校閲前', 'amber') : '';
-    return `<article class="term-card surface-card" id="term-${escapeHTML(term.id)}" lang="ja"><div class="term-heading"><h2 lang="${primaryLanguage}">${escapeHTML(primary)}</h2>${secondary?`<span lang="${primaryLanguage==='en'?'ja':'en'}">${escapeHTML(secondary)}</span>`:''}</div><p lang="${meaningLanguage}">${escapeHTML(meaning)}</p>${term.detail&&term.detail!==term.meaning?`<details class="term-full"><summary>詳しい意味と使い方</summary><p>${escapeHTML(term.detail)}</p></details>`:''}${term.unit?`<p class="term-unit"><strong>単位：</strong>${escapeHTML(term.unit)}</p>`:''}${term.formula?`<p class="term-formula"><strong>式：</strong>${escapeHTML(term.formula)}</p>`:''}${term.aliases?.length?`<small>別名・表記：${escapeHTML(term.aliases.join('・'))}</small>`:''}<div class="term-source">${sourceLabel(term.source)}</div>${reviewTag}${sourceLink}${questionLinks}</article>`;
+    return `<article class="term-card surface-card" id="term-${escapeHTML(term.id)}" lang="ja"><div class="term-heading"><h2 lang="${primaryLanguage}">${escapeHTML(primary)}</h2>${secondary?`<span lang="${primaryLanguage==='en'?'ja':'en'}">${escapeHTML(secondary)}</span>`:''}</div><p lang="${meaningLanguage}">${escapeHTML(meaning)}</p>${term.beginner&&term.beginner!==term.meaning&&term.beginner!==term.detail?`<p class="term-beginner">${escapeHTML(term.beginner)}</p>`:''}${term.detail&&term.detail!==term.meaning?`<details class="term-full"><summary>詳しい意味と使い方</summary><p>${escapeHTML(term.detail)}</p></details>`:''}${term.unit?`<p class="term-unit"><strong>単位：</strong>${escapeHTML(term.unit)}</p>`:''}${term.formula?`<p class="term-formula"><strong>式：</strong>${escapeHTML(term.formula)}</p>`:''}${term.aliases?.length?`<small>別名・表記：${escapeHTML(term.aliases.join('・'))}</small>`:''}${renderTermExample(term)}<div class="term-source">${sourceLabel(term.source)}</div>${reviewTag}${sourceLink}${renderTermLearningLinks(term)}${questionLinks}</article>`;
   }).join('') || '<div class="empty-state"><p>一致する用語がありません。</p></div>';
   return `${pageHeading('用語集', '専門用語を、自分の言葉に。', '日本語の意味と英語の原語を確認できます。補足説明と本書に由来する内容を分けて表示します。')}
     <div class="reader-toolbar glossary-language-toolbar"><div class="language-toggle" role="group" aria-label="用語の表示言語"><button type="button" class="${language === 'ja' ? 'selected' : ''}" data-language="ja" aria-pressed="${language === 'ja'}">日本語</button><button type="button" class="${language === 'en' ? 'selected' : ''}" data-language="en" aria-pressed="${language === 'en'}">英語</button></div><span class="language-note">${language === 'ja' ? '日本語の用語名' : '英語名を優先・説明は収録言語で表示'}</span></div>

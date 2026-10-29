@@ -18,6 +18,17 @@ const fixtures=async()=>{
   return {book,questions,glossary,guides:structuredClone(GUIDE_SECTIONS)};
 };
 const find=errors=>errors.join(' / ');
+test('public glossary rejects ambiguous aliases, English labels and invalid section or model links',async()=>{
+ for(const mutate of [
+  a=>{a.glossary[1].aliases=[a.glossary[0].ja];},
+  a=>{a.glossary[1].en='  '+a.glossary[0].en.toUpperCase()+'  ';},
+  a=>{a.glossary[0].relatedSections=['99.1'];},
+  a=>{a.glossary[0].relatedSimulators=['cylindrical-conduction'];}
+ ]){
+  const a=await fixtures();mutate(a);
+  assert.match(find(checkPublicContent(a)),/重複|参照が無効/);
+ }
+});
 test('public contract accepts actual sanitized teaching content',async()=>{
   assert.deepEqual(checkPublicContent(await fixtures()),[]);
 });

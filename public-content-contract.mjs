@@ -124,6 +124,7 @@ export function checkPublicContent({book, questions, glossary, guides,originalNo
     }
   }
   const termIds = new Set();
+  const termLabels=new Map();
   for (const term of glossary) {
     const label = '用語 ' + String(term?.id ?? '(IDなし)');
     if (!object(term) || !present(term.id) || !present(term.ja) ||
@@ -132,6 +133,13 @@ export function checkPublicContent({book, questions, glossary, guides,originalNo
     }
     if (termIds.has(term.id)) error(label + ': 用語IDが重複しています。');
     termIds.add(term.id);
+    for(const value of [term.ja,term.en,...(Array.isArray(term.aliases)?term.aliases:[])]){
+      if(!present(value))continue;
+      const key=value.normalize('NFKC').trim().replace(/\s+/g,' ').toLowerCase();
+      const owner=termLabels.get(key);
+      if(owner&&owner!==term.id)error(label+': 名称・英語・別名が別の用語と重複しています: '+value);
+      termLabels.set(key,term.id);
+    }
     if (term.source.type === 'supplement') {
       if (!guideIds.has(term.source.guideId) || !present(term.source.reference)) {
         error(label + ': 補足の参照ガイドがありません。');
@@ -148,6 +156,14 @@ export function checkPublicContent({book, questions, glossary, guides,originalNo
       }
       if (linkedIds.has(link.id)) error(label + ': 同じ問題へのリンクが重複しています。');
       linkedIds.add(link.id);
+    }
+    for(const [key,allowed] of [
+      ['relatedSections',new Set(sections.keys())],
+      ['relatedSimulators',new Set(['conduction','convection','radiation','resistance','transient'])]
+    ]){
+      if(term[key]===undefined)continue;
+      if(!Array.isArray(term[key])||new Set(term[key]).size!==term[key].length||term[key].some(id=>!allowed.has(id)))
+        error(label+': '+key+'の参照が無効です。');
     }
   }
   if (originalNotes!==null) {
