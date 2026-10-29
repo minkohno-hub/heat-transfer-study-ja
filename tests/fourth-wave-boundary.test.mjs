@@ -8,7 +8,7 @@ const read=async path=>JSON.parse(await readFile(new URL('../'+path,import.meta.
 test('boundary-value and internal-generation lessons are complete independent texts, not a falsely approved translation',async()=>{
  const [book,d]=await Promise.all(['data/book.json','data/original-deep-lessons.json'].map(read));
  assert.deepEqual(validateDeepLessons(book,d),[]);
- assert.equal(d.lessons.length,63);
+ assert.equal(d.lessons.length,67);
  for(const id of ['4.1','4.2']){
   const l=deepLessonForSection(d,id);
   assert.ok(l&&l.blocks.length>=6&&l.equations.length>=4,id);
@@ -22,7 +22,7 @@ test('boundary-value and internal-generation lessons are complete independent te
 
 test('new section 4.1/4.2 questions have section metadata, rationale, and no answer-length giveaway',async()=>{
  const [book,notes,deep,questions,evidence]=await Promise.all(['data/book.json','data/original-notes.json','data/original-deep-lessons.json','data/questions.json','data/readiness-evidence.json'].map(read));
- assert.equal(questions.length,603);
+ assert.equal(questions.length,631);
  const items=questions.filter(q=>q.id.startsWith('supp-batch3-'));
  assert.equal(items.length,14);
  for(const q of items){
@@ -40,9 +40,9 @@ test('new section 4.1/4.2 questions have section metadata, rationale, and no ans
   assert.ok(len>=Math.min(...wrong)&&len<=Math.max(...wrong),'length cue '+q.id);
  }
  const report=buildAuthoringQueue({book,originalNotes:notes,deepLessons:deep,questions,evidence});
- assert.equal(report.detailedLessonDrafts,63);
- assert.equal(report.draftAuthoringMinimumMet,63);
- assert.equal(report.remainingQuestionDraftMinimum,89);
+ assert.equal(report.detailedLessonDrafts,67);
+ assert.equal(report.draftAuthoringMinimumMet,67);
+ assert.equal(report.remainingQuestionDraftMinimum,61);
  assert.equal(report.externallyAcceptedSections,0);
  for(const id of ['4.1','4.2']){
   const s=report.sections.find(s=>s.sectionId===id);

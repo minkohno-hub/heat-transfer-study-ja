@@ -4763,7 +4763,7 @@
     "field": "境界層・外部対流",
     "difficulty": "基礎・節別の概念確認",
     "prerequisites": [
-      "プラントル・コルバーンの類推",
+      "レイノルズ・コルバーンの類推",
       "物理量・式の前提"
     ],
     "source": {
@@ -30606,5 +30606,1545 @@
       "範囲外なら別モデル。"
     ],
     "beginnerPitfall": "Re一つで適用条件を全て承認しない。"
+  },
+  {
+    "id": "supp-turbulence-stanton-conversion-v1",
+    "revision": "v1",
+    "field": "境界層・外部対流",
+    "prerequisites": [
+      "境界層の運動量・熱輸送",
+      "係数の定義",
+      "相関の条件"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "輸送現象の一般法則と独自の仮想例から作問。原本の翻訳・原図・章末問題ではない。",
+      "chapterId": "ch6",
+      "focusSectionId": "6.6",
+      "guideId": "chapter6-flat-boundary"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "執筆原稿・基本算術と構造を確認／包括的品質監査待ち・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "執筆時の定義・収支・基本計算を確認。全問の独立科学監査・原本網羅照合・外部校閲は後工程。"
+      }
+    ],
+    "prompt": "h=12 W/(m²·K)、ρ=1.2 kg/m³、c_p=1000 J/(kg·K)、主流U=5.0 m/s。St=h/(ρc_pU)はどれか。",
+    "choices": [
+      "0.0020",
+      "0.010",
+      "0.0040",
+      "0.020"
+    ],
+    "answer": 0,
+    "difficulty": "標準・数値計算",
+    "explanation": "ρc_pU=6000 W/(m²·K)、St=12/6000=0.0020。Stは無次元でhとは別の量。",
+    "distractors": [
+      "正解。hを流れの体積熱容量尺度で規格化した。",
+      "速度Uを分母へ含めていない。",
+      "定義にない倍率2を掛けた。",
+      "比熱又は係数を10倍取り違えた。"
+    ],
+    "hints": [
+      "分母の単位もW/(m²·K)。",
+      "同じ流体の物性を使う。"
+    ],
+    "solutionSteps": [
+      "分母6000。",
+      "12で比を作る。",
+      "St=0.0020。"
+    ],
+    "beginnerPitfall": "Stと次元付きhを混同しない。"
+  },
+  {
+    "id": "supp-turbulence-colburn-predict-h-v1",
+    "revision": "v1",
+    "field": "境界層・外部対流",
+    "prerequisites": [
+      "境界層の運動量・熱輸送",
+      "係数の定義",
+      "相関の条件"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "輸送現象の一般法則と独自の仮想例から作問。原本の翻訳・原図・章末問題ではない。",
+      "chapterId": "ch6",
+      "focusSectionId": "6.6",
+      "guideId": "chapter6-flat-boundary"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "執筆原稿・基本算術と構造を確認／包括的品質監査待ち・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "執筆時の定義・収支・基本計算を確認。全問の独立科学監査・原本網羅照合・外部校閲は後工程。"
+      }
+    ],
+    "prompt": "類推成立を仮定してh=ρc_pU(C_f/2)Pr⁻²/³を使う。ρc_pU=6000 W/(m²·K)、C_f=0.0040、Pr⁻²/³=1.26843ならhはどれか。",
+    "choices": [
+      "約9.46 W/(m²·K)",
+      "約15.2 W/(m²·K)",
+      "約30.4 W/(m²·K)",
+      "約12.0 W/(m²·K)"
+    ],
+    "answer": 1,
+    "difficulty": "標準・数値計算",
+    "explanation": "h=6000×0.0020×1.26843=15.2212 W/(m²·K)。摩擦係数と類推の定義・範囲を確認した上での計算。",
+    "distractors": [
+      "与えたPr補正を掛けず割った。",
+      "正解。C_f/2とPr補正を掛けた。",
+      "C_fを2で割る工程を落とした。",
+      "Pr=1の関係へ置き換えた。"
+    ],
+    "hints": [
+      "まずC_f/2。",
+      "次にPr補正。"
+    ],
+    "solutionSteps": [
+      "0.0040/2=0.0020。",
+      "6000を掛け12。",
+      "1.26843を掛け15.2。"
+    ],
+    "beginnerPitfall": "摩擦係数の定義と2の因子を確認する。"
+  },
+  {
+    "id": "supp-turbulence-colburn-nu-identity-v1",
+    "revision": "v1",
+    "field": "境界層・外部対流",
+    "prerequisites": [
+      "境界層の運動量・熱輸送",
+      "係数の定義",
+      "相関の条件"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "輸送現象の一般法則と独自の仮想例から作問。原本の翻訳・原図・章末問題ではない。",
+      "chapterId": "ch6",
+      "focusSectionId": "6.6",
+      "guideId": "chapter6-flat-boundary"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "執筆原稿・基本算術と構造を確認／包括的品質監査待ち・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "執筆時の定義・収支・基本計算を確認。全問の独立科学監査・原本網羅照合・外部校閲は後工程。"
+      }
+    ],
+    "prompt": "Nu=100、Re=10000、Pr=0.50を同じ長さと状態で定義する。St=Nu/(RePr)はいくらか。",
+    "choices": [
+      "0.010",
+      "2.0",
+      "0.020",
+      "0.0050"
+    ],
+    "answer": 2,
+    "difficulty": "標準・数値計算",
+    "explanation": "St=100/(10000×0.50)=0.020。この定義関係自体と、j_H≈C_f/2がその流れで成り立つかは別の判定。",
+    "distractors": [
+      "Prを落とした。",
+      "Reの桁を100分の1にした。",
+      "正解。無次元数の定義を代数的に整理した。",
+      "Prを分母へ入れず分子へ掛けた。"
+    ],
+    "hints": [
+      "分母はRe×Pr。",
+      "同じLが打ち消される。"
+    ],
+    "solutionSteps": [
+      "分母5000。",
+      "100/5000。",
+      "0.020。"
+    ],
+    "beginnerPitfall": "定義の恒等関係と経験的類推を区別する。"
+  },
+  {
+    "id": "supp-turbulence-colburn-friction-definition-v1",
+    "revision": "v1",
+    "field": "境界層・外部対流",
+    "prerequisites": [
+      "境界層の運動量・熱輸送",
+      "係数の定義",
+      "相関の条件"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "applied",
+    "source": {
+      "type": "supplement",
+      "reference": "輸送現象の一般法則と独自の仮想例から作問。原本の翻訳・原図・章末問題ではない。",
+      "chapterId": "ch6",
+      "focusSectionId": "6.6",
+      "guideId": "chapter6-flat-boundary"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "執筆原稿・基本算術と構造を確認／包括的品質監査待ち・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "執筆時の定義・収支・基本計算を確認。全問の独立科学監査・原本網羅照合・外部校閲は後工程。"
+      }
+    ],
+    "prompt": "資料に摩擦係数fとあるが定義が不明。j_H≈C_f/2へそのまま入れる前に必要なのはどれか。",
+    "choices": [
+      "無次元係数なら、全て同じ数値として入れる",
+      "fが正なら、局所と平均の区別を省く",
+      "fの数値だけをhの値として入力する",
+      "係数の定義と速度・局所/平均を確認する"
+    ],
+    "answer": 3,
+    "difficulty": "概念・適用判断",
+    "explanation": "C_f=τ_w/(ρU²/2)の定義に合わせ、平均区間や主流/平均速度の対応も確認する。不明な係数を記号だけで変換しない。",
+    "distractors": [
+      "無次元でも定義が違えば倍率も異なる。",
+      "正値でも平均や位置の対応は必要。",
+      "hと摩擦係数は単位も定義も異なる。",
+      "正解。Darcy/Fanning等と平板係数の違いを確認した。"
+    ],
+    "hints": [
+      "記号だけでは定義は分からない。",
+      "応力との関係を読む。"
+    ],
+    "solutionSteps": [
+      "fの定義を確認。",
+      "必要ならC_fへ換算。",
+      "対象の類推範囲を確認。"
+    ],
+    "beginnerPitfall": "摩擦係数の名称だけで同じ値としない。"
+  },
+  {
+    "id": "supp-turbulence-reynolds-pr-one-v1",
+    "revision": "v1",
+    "field": "境界層・外部対流",
+    "prerequisites": [
+      "境界層の運動量・熱輸送",
+      "係数の定義",
+      "相関の条件"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "conceptual",
+    "source": {
+      "type": "supplement",
+      "reference": "輸送現象の一般法則と独自の仮想例から作問。原本の翻訳・原図・章末問題ではない。",
+      "chapterId": "ch6",
+      "focusSectionId": "6.6",
+      "guideId": "chapter6-flat-boundary"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "執筆原稿・基本算術と構造を確認／包括的品質監査待ち・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "執筆時の定義・収支・基本計算を確認。全問の独立科学監査・原本網羅照合・外部校閲は後工程。"
+      }
+    ],
+    "prompt": "理想的なReynolds類推St≈C_f/2と、Colburn形StPr²/³≈C_f/2の関係として適切なのはどれか。",
+    "choices": [
+      "Pr=1では両者とも同じ形へ戻る",
+      "Pr=1で両者の符号が逆になる",
+      "Prが1でなくても補正は常に1となる",
+      "Prの値でC_fの単位が変わる"
+    ],
+    "answer": 0,
+    "difficulty": "概念・適用判断",
+    "explanation": "Pr=1ならj_H=St。実際に類推が成立するかは、方程式・流れ・熱境界の対応を別に確認する。",
+    "distractors": [
+      "正解。1の冪は1で二つの形が一致する。",
+      "補正はPr=1で正の1。",
+      "Pr²/³は一般に1ではない。",
+      "摩擦係数は定義上無次元で単位は変わらない。"
+    ],
+    "hints": [
+      "Pr²/³に1を代入。",
+      "代数的な極限と物理条件は別。"
+    ],
+    "solutionSteps": [
+      "Pr=1。",
+      "補正1。",
+      "同じSt≈C_f/2。"
+    ],
+    "beginnerPitfall": "代数的一致だけで全流れの厳密性を主張しない。"
+  },
+  {
+    "id": "supp-turbulence-colburn-matching-average-v1",
+    "revision": "v1",
+    "field": "境界層・外部対流",
+    "prerequisites": [
+      "境界層の運動量・熱輸送",
+      "係数の定義",
+      "相関の条件"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "applied",
+    "source": {
+      "type": "supplement",
+      "reference": "輸送現象の一般法則と独自の仮想例から作問。原本の翻訳・原図・章末問題ではない。",
+      "chapterId": "ch6",
+      "focusSectionId": "6.6",
+      "guideId": "chapter6-flat-boundary"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "執筆原稿・基本算術と構造を確認／包括的品質監査待ち・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "執筆時の定義・収支・基本計算を確認。全問の独立科学監査・原本網羅照合・外部校閲は後工程。"
+      }
+    ],
+    "prompt": "局所C_f,xと全長平均h̄_Lを、同じ位置に対応する係数のように類推で結んだ。適切な修正はどれか。",
+    "choices": [
+      "平均h̄をC_fの単位へ変更すれば解決する",
+      "局所同士又は同じ区間の平均同士へ対応させる",
+      "局所と平均は同じ単位なので数値も常に等しい",
+      "壁温が一定なら、局所係数の分布は必ず消える"
+    ],
+    "answer": 1,
+    "difficulty": "概念・適用判断",
+    "explanation": "類推を使う位置・区間・主流速度・熱境界をそろえる。局所分布を積分して平均化する工程を必要に応じて行う。",
+    "distractors": [
+      "単位を付け替えても定義は対応しない。",
+      "正解。位置と平均範囲の定義をそろえた。",
+      "同じ単位でも局所値と平均値は異なる。",
+      "等温でも境界層の発達で局所hは変わる。"
+    ],
+    "hints": [
+      "同じxか、同じ平均区間か。",
+      "局所hは位置依存。"
+    ],
+    "solutionSteps": [
+      "係数の位置を確認。",
+      "同じ定義へそろえる。",
+      "類推の成立条件を確認。"
+    ],
+    "beginnerPitfall": "係数の単位だけで平均や位置の対応を省かない。"
+  },
+  {
+    "id": "supp-turbulence-analogy-scope-v1",
+    "revision": "v1",
+    "field": "境界層・外部対流",
+    "prerequisites": [
+      "境界層の運動量・熱輸送",
+      "係数の定義",
+      "相関の条件"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "conceptual",
+    "source": {
+      "type": "supplement",
+      "reference": "輸送現象の一般法則と独自の仮想例から作問。原本の翻訳・原図・章末問題ではない。",
+      "chapterId": "ch6",
+      "focusSectionId": "6.6",
+      "guideId": "chapter6-flat-boundary"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "執筆原稿・基本算術と構造を確認／包括的品質監査待ち・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "執筆時の定義・収支・基本計算を確認。全問の独立科学監査・原本網羅照合・外部校閲は後工程。"
+      }
+    ],
+    "prompt": "摩擦と熱の類推について正確な説明はどれか。",
+    "choices": [
+      "摩擦係数は熱伝導率という物性と同じ量である",
+      "熱が流れると、運動量保存式は使えなくなる",
+      "輸送と境界の対応を仮定する条件付き関係である",
+      "摩擦が分かれば、全ての熱境界のhが厳密に決まる"
+    ],
+    "answer": 2,
+    "difficulty": "概念・適用判断",
+    "explanation": "平滑付着流等に有用でも、剝離、粗さ、吹出し、圧縮性、極端なPrや可変物性などで条件を確認する。",
+    "distractors": [
+      "無次元係数とW/(m·K)の物性は別。",
+      "連成しても運動量とエネルギー保存は使う。",
+      "正解。類推の前提と限界を認めた。",
+      "圧力勾配、境界、物性等の条件を落とした。"
+    ],
+    "hints": [
+      "何が類似しているため使えるか。",
+      "違う境界や輸送もある。"
+    ],
+    "solutionSteps": [
+      "仮定を列挙。",
+      "対象との一致を確認。",
+      "必要なら別モデル。"
+    ],
+    "beginnerPitfall": "類推を普遍的な厳密則としない。"
+  },
+  {
+    "id": "supp-turbulence-friction-velocity-v1",
+    "revision": "v1",
+    "field": "境界層・外部対流",
+    "prerequisites": [
+      "境界層の運動量・熱輸送",
+      "係数の定義",
+      "相関の条件"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "輸送現象の一般法則と独自の仮想例から作問。原本の翻訳・原図・章末問題ではない。",
+      "chapterId": "ch6",
+      "focusSectionId": "6.7",
+      "guideId": "chapter6-flat-boundary"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "執筆原稿・基本算術と構造を確認／包括的品質監査待ち・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "執筆時の定義・収支・基本計算を確認。全問の独立科学監査・原本網羅照合・外部校閲は後工程。"
+      }
+    ],
+    "prompt": "τ_w=0.12 Pa、ρ=1.2 kg/m³。摩擦速度u_τ=√(τ_w/ρ)はどれか。",
+    "choices": [
+      "約0.100 m/s",
+      "約3.16 m/s",
+      "約0.346 m/s",
+      "約0.316 m/s"
+    ],
+    "answer": 3,
+    "difficulty": "標準・数値計算",
+    "explanation": "u_τ=√0.10=0.316228 m/s。壁応力を速度尺度へ変換した量で、主流速度そのものではない。",
+    "distractors": [
+      "平方根を取らずτ_w/ρを答えた。",
+      "比を逆にして平方根を取った。",
+      "密度で割らず応力の平方根を取った。",
+      "正解。応力を密度で割って平方根を取った。"
+    ],
+    "hints": [
+      "Pa/(kg/m³)=m²/s²。",
+      "最後に平方根。"
+    ],
+    "solutionSteps": [
+      "0.12/1.2=0.10。",
+      "平方根0.316。",
+      "m/sを付ける。"
+    ],
+    "beginnerPitfall": "摩擦速度と主流速度を同一視しない。"
+  },
+  {
+    "id": "supp-turbulence-wall-unit-near-wall-v1",
+    "revision": "v1",
+    "field": "境界層・外部対流",
+    "prerequisites": [
+      "境界層の運動量・熱輸送",
+      "係数の定義",
+      "相関の条件"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "輸送現象の一般法則と独自の仮想例から作問。原本の翻訳・原図・章末問題ではない。",
+      "chapterId": "ch6",
+      "focusSectionId": "6.7",
+      "guideId": "chapter6-flat-boundary"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "執筆原稿・基本算術と構造を確認／包括的品質監査待ち・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "執筆時の定義・収支・基本計算を確認。全問の独立科学監査・原本網羅照合・外部校閲は後工程。"
+      }
+    ],
+    "prompt": "y=0.10 mm、u_τ=0.316228 m/s、ν=1.5×10⁻⁵ m²/s。y⁺=yu_τ/νはどれか。",
+    "choices": [
+      "約2.11",
+      "約2110",
+      "約0.00211",
+      "約47.4"
+    ],
+    "answer": 0,
+    "difficulty": "標準・数値計算",
+    "explanation": "y=0.00010 mなのでy⁺=0.00010×0.316228/(1.5×10⁻⁵)=2.10819。壁単位は無次元。",
+    "distractors": [
+      "正解。mmをmへ換算し壁単位を求めた。",
+      "mmの数値をmへ直さず使った。",
+      "長さ又は係数を1000分の1にした。",
+      "壁単位の比を逆方向に組み立てた。"
+    ],
+    "hints": [
+      "先にmmをmへ。",
+      "y⁺は無次元。"
+    ],
+    "solutionSteps": [
+      "y=10⁻⁴ m。",
+      "u_τを掛けνで割る。",
+      "約2.11。"
+    ],
+    "beginnerPitfall": "実長さと壁単位の長さを混ぜない。"
+  },
+  {
+    "id": "supp-turbulence-viscous-layer-velocity-v1",
+    "revision": "v1",
+    "field": "境界層・外部対流",
+    "prerequisites": [
+      "境界層の運動量・熱輸送",
+      "係数の定義",
+      "相関の条件"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "輸送現象の一般法則と独自の仮想例から作問。原本の翻訳・原図・章末問題ではない。",
+      "chapterId": "ch6",
+      "focusSectionId": "6.7",
+      "guideId": "chapter6-flat-boundary"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "執筆原稿・基本算術と構造を確認／包括的品質監査待ち・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "執筆時の定義・収支・基本計算を確認。全問の独立科学監査・原本網羅照合・外部校閲は後工程。"
+      }
+    ],
+    "prompt": "粘性底層の近似u⁺≈y⁺が使える。y⁺=2.108、u_τ=0.3162 m/sなら平均速度ū=u⁺u_τはどれか。",
+    "choices": [
+      "約0.150 m/s",
+      "約0.667 m/s",
+      "約2.11 m/s",
+      "約6.67 m/s"
+    ],
+    "answer": 1,
+    "difficulty": "標準・数値計算",
+    "explanation": "ū≈2.108×0.3162=0.66655 m/s。小さいy⁺の近壁条件で使う近似で、外層全域へ直線を外挿しない。",
+    "distractors": [
+      "u_τをu⁺で割った。",
+      "正解。壁単位速度を摩擦速度で次元付きへ戻した。",
+      "無次元u⁺をそのまま速度とした。",
+      "係数の桁を10倍にした。"
+    ],
+    "hints": [
+      "u⁺=ū/u_τ。",
+      "摩擦速度を掛ける。"
+    ],
+    "solutionSteps": [
+      "u⁺≈2.108。",
+      "0.3162を掛ける。",
+      "約0.667 m/s。"
+    ],
+    "beginnerPitfall": "壁単位の無次元値を実速度としない。"
+  },
+  {
+    "id": "supp-turbulence-reynolds-correlation-v1",
+    "revision": "v1",
+    "field": "境界層・外部対流",
+    "prerequisites": [
+      "境界層の運動量・熱輸送",
+      "係数の定義",
+      "相関の条件"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "conceptual",
+    "source": {
+      "type": "supplement",
+      "reference": "輸送現象の一般法則と独自の仮想例から作問。原本の翻訳・原図・章末問題ではない。",
+      "chapterId": "ch6",
+      "focusSectionId": "6.7",
+      "guideId": "chapter6-flat-boundary"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "執筆原稿・基本算術と構造を確認／包括的品質監査待ち・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "執筆時の定義・収支・基本計算を確認。全問の独立科学監査・原本網羅照合・外部校閲は後工程。"
+      }
+    ],
+    "prompt": "u=ū+u′、v=v̄+v′、変動平均0とする。平均積overbar(uv)は一般にどうなるか。",
+    "choices": [
+      "overbar(u′v′)だけで、平均流の積は消える",
+      "u′v′は常に正なので、絶対値を足す",
+      "ūv̄+overbar(u′v′)となる",
+      "ūv̄だけで、変動の積の平均は必ず0"
+    ],
+    "answer": 2,
+    "difficulty": "概念・適用判断",
+    "explanation": "ūv̄+ūoverbar(v′)+v̄overbar(u′)+overbar(u′v′)で、中間2項は0。残る相関が平均運動量の追加輸送に関係する。",
+    "distractors": [
+      "平均流の輸送を落とした。",
+      "相関の符号は場に依存し常に正ではない。",
+      "正解。展開して単一変動の平均0を用いた。",
+      "変動平均0から積の相関0は導けない。"
+    ],
+    "hints": [
+      "積を展開。",
+      "変動一つと変動の積は違う。"
+    ],
+    "solutionSteps": [
+      "4項へ展開。",
+      "単一変動の平均項を落とす。",
+      "相関は残す。"
+    ],
+    "beginnerPitfall": "平均0の変動にも相関による輸送がありうる。"
+  },
+  {
+    "id": "supp-turbulence-eddy-viscosity-meaning-v1",
+    "revision": "v1",
+    "field": "境界層・外部対流",
+    "prerequisites": [
+      "境界層の運動量・熱輸送",
+      "係数の定義",
+      "相関の条件"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "conceptual",
+    "source": {
+      "type": "supplement",
+      "reference": "輸送現象の一般法則と独自の仮想例から作問。原本の翻訳・原図・章末問題ではない。",
+      "chapterId": "ch6",
+      "focusSectionId": "6.7",
+      "guideId": "chapter6-flat-boundary"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "執筆原稿・基本算術と構造を確認／包括的品質監査待ち・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "執筆時の定義・収支・基本計算を確認。全問の独立科学監査・原本網羅照合・外部校閲は後工程。"
+      }
+    ],
+    "prompt": "渦粘性ν_tについて適切な説明はどれか。",
+    "choices": [
+      "全ての流体で同じ値を取る分子物性である",
+      "粘度μと密度ρの比と常に厳密に一致する",
+      "乱流なら、壁面でも必ず無限大となる",
+      "流れの相関輸送を表す閉鎖モデル量である"
+    ],
+    "answer": 3,
+    "difficulty": "概念・適用判断",
+    "explanation": "−overbar(u′v′)=ν_t∂ū/∂y等の閉鎖に使う量。モデルと適用条件を確認し、物性表の値として扱わない。",
+    "distractors": [
+      "流れや場所で変わるモデル量を普遍物性とした。",
+      "μ/ρは分子動粘度νでありν_tとは別。",
+      "壁近傍の変動減衰と整合しない。",
+      "正解。分子粘性と乱流輸送モデルを分けた。"
+    ],
+    "hints": [
+      "νとν_tは何を表すか。",
+      "流れを変えると相関も変わる。"
+    ],
+    "solutionSteps": [
+      "乱流応力のモデルを確認。",
+      "ν_tの役割を定義。",
+      "分子物性と区別。"
+    ],
+    "beginnerPitfall": "同じm²/sという単位だけで同じ物性としない。"
+  },
+  {
+    "id": "supp-turbulence-log-law-near-wall-v1",
+    "revision": "v1",
+    "field": "境界層・外部対流",
+    "prerequisites": [
+      "境界層の運動量・熱輸送",
+      "係数の定義",
+      "相関の条件"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "applied",
+    "source": {
+      "type": "supplement",
+      "reference": "輸送現象の一般法則と独自の仮想例から作問。原本の翻訳・原図・章末問題ではない。",
+      "chapterId": "ch6",
+      "focusSectionId": "6.7",
+      "guideId": "chapter6-flat-boundary"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "執筆原稿・基本算術と構造を確認／包括的品質監査待ち・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "執筆時の定義・収支・基本計算を確認。全問の独立科学監査・原本網羅照合・外部校閲は後工程。"
+      }
+    ],
+    "prompt": "平滑壁の対数則をy⁺→0まで外挿すると負のu⁺が得られた。適切な対応はどれか。",
+    "choices": [
+      "対数域の範囲を外れており、近壁のモデルを使う",
+      "負の速度が必ず実在するので、壁条件を変更する",
+      "lnが計算できる全ての正のy⁺へ厳密に使える",
+      "負を避けるため、y⁺の単位だけを変更する"
+    ],
+    "answer": 0,
+    "difficulty": "概念・適用判断",
+    "explanation": "十分小さいy⁺ではu⁺≈y⁺等の粘性近壁関係を用いる。粗さ、応力、圧力勾配等の条件も確認し、対数式を壁へ伸ばさない。",
+    "distractors": [
+      "正解。対数則の適用領域と粘性底層を分けた。",
+      "外挿の結果だけで実際の逆流を主張できない。",
+      "数学的定義域と物理的適用範囲は異なる。",
+      "y⁺は無次元で単位の変更では直らない。"
+    ],
+    "hints": [
+      "lnは壁で発散する。",
+      "無滑りはū=0。"
+    ],
+    "solutionSteps": [
+      "適用範囲を確認。",
+      "近壁へ切り替える。",
+      "壁条件と整合させる。"
+    ],
+    "beginnerPitfall": "外挿した式の値を実現象と即断しない。"
+  },
+  {
+    "id": "supp-turbulence-wall-total-stress-v1",
+    "revision": "v1",
+    "field": "境界層・外部対流",
+    "prerequisites": [
+      "境界層の運動量・熱輸送",
+      "係数の定義",
+      "相関の条件"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "applied",
+    "source": {
+      "type": "supplement",
+      "reference": "輸送現象の一般法則と独自の仮想例から作問。原本の翻訳・原図・章末問題ではない。",
+      "chapterId": "ch6",
+      "focusSectionId": "6.7",
+      "guideId": "chapter6-flat-boundary"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "執筆原稿・基本算術と構造を確認／包括的品質監査待ち・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "執筆時の定義・収支・基本計算を確認。全問の独立科学監査・原本網羅照合・外部校閲は後工程。"
+      }
+    ],
+    "prompt": "静止した無滑り不透過壁でoverbar(u′v′)→0となる。壁応力について正しい判断はどれか。",
+    "choices": [
+      "乱流応力が0なら、全ての平均流速も0になる",
+      "分子粘性の速度勾配による壁応力は残りうる",
+      "乱流応力が0なので、全壁応力も必ず0になる",
+      "分子粘性が不要になり、壁の勾配も消える"
+    ],
+    "answer": 1,
+    "difficulty": "概念・適用判断",
+    "explanation": "τ_w=μ(∂ū/∂y)_wで非ゼロとなりうる。壁そのものでの乱流相関の消失と、壁面摩擦の消失を同じにしない。",
+    "distractors": [
+      "壁での変動相関0を全領域の速度0へ広げた。",
+      "正解。乱流輸送と分子せん断の分担を区別した。",
+      "全せん断の分子項を落とした。",
+      "壁近傍では分子粘性が重要。"
+    ],
+    "hints": [
+      "全せん断には二つの項。",
+      "壁ではどちらが残るか。"
+    ],
+    "solutionSteps": [
+      "乱流項0。",
+      "分子勾配項を評価。",
+      "壁応力を求める。"
+    ],
+    "beginnerPitfall": "乱流の壁でも分子粘性を消さない。"
+  },
+  {
+    "id": "supp-turbulence-turbulent-prandtl-v1",
+    "revision": "v1",
+    "field": "境界層・外部対流",
+    "prerequisites": [
+      "境界層の運動量・熱輸送",
+      "係数の定義",
+      "相関の条件"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "輸送現象の一般法則と独自の仮想例から作問。原本の翻訳・原図・章末問題ではない。",
+      "chapterId": "ch6",
+      "focusSectionId": "6.8",
+      "guideId": "chapter6-flat-boundary"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "執筆原稿・基本算術と構造を確認／包括的品質監査待ち・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "執筆時の定義・収支・基本計算を確認。全問の独立科学監査・原本網羅照合・外部校閲は後工程。"
+      }
+    ],
+    "prompt": "ある閉鎖モデルでν_t=8.5×10⁻⁴、α_t=1.0×10⁻³ m²/s。乱流Prandtl数Pr_t=ν_t/α_tはどれか。",
+    "choices": [
+      "8.5",
+      "0.085",
+      "0.85",
+      "1.18"
+    ],
+    "answer": 2,
+    "difficulty": "標準・数値計算",
+    "explanation": "Pr_t=0.85。分子のPr=ν/α_fとは別で、与えたモデルと位置の値である。全ての流れの普遍値として固定しない。",
+    "distractors": [
+      "指数を一桁取り違えた。",
+      "指数を一桁取り違え小さくした。",
+      "正解。乱流の二つの拡散係数の比を取った。",
+      "比を逆にした。"
+    ],
+    "hints": [
+      "添字tは乱流モデル量。",
+      "同じm²/sの比。"
+    ],
+    "solutionSteps": [
+      "8.5×10⁻⁴/10⁻³。",
+      "0.85。",
+      "分子Prとは区別。"
+    ],
+    "beginnerPitfall": "Pr_tと分子Prを混同しない。"
+  },
+  {
+    "id": "supp-turbulence-turbulent-local-average-v1",
+    "revision": "v1",
+    "field": "境界層・外部対流",
+    "prerequisites": [
+      "境界層の運動量・熱輸送",
+      "係数の定義",
+      "相関の条件"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "輸送現象の一般法則と独自の仮想例から作問。原本の翻訳・原図・章末問題ではない。",
+      "chapterId": "ch6",
+      "focusSectionId": "6.8",
+      "guideId": "chapter6-flat-boundary"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "執筆原稿・基本算術と構造を確認／包括的品質監査待ち・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "執筆時の定義・収支・基本計算を確認。全問の独立科学監査・原本網羅照合・外部校閲は後工程。"
+      }
+    ],
+    "prompt": "前縁から乱流とする同じ等温平板相関でh_x=Cx⁻¹/⁵。末端h_x(L)=32 W/(m²·K)なら、長さ平均h̄_L=(5/4)h_x(L)はどれか。",
+    "choices": [
+      "64 W/(m²·K)",
+      "32 W/(m²·K)",
+      "25.6 W/(m²·K)",
+      "40 W/(m²·K)"
+    ],
+    "answer": 3,
+    "difficulty": "標準・数値計算",
+    "explanation": "h̄_L=1.25×32=40 W/(m²·K)。相関の条件を変えると同じ倍率が成り立つとは限らない。",
+    "distractors": [
+      "層流の末端/平均倍率2を使った。",
+      "位置依存を無視して末端を平均とした。",
+      "倍率5/4を逆にした。",
+      "正解。x⁻¹/⁵を積分した倍率を使った。"
+    ],
+    "hints": [
+      "∫x⁻¹/⁵dx=(5/4)x⁴/⁵。",
+      "長さLで割る。"
+    ],
+    "solutionSteps": [
+      "平均=(5/4)C L⁻¹/⁵。",
+      "末端の1.25倍。",
+      "40 W/(m²·K)。"
+    ],
+    "beginnerPitfall": "層流の平均倍率を乱流へ転用しない。"
+  },
+  {
+    "id": "supp-turbulence-turbulent-heat-rate-v1",
+    "revision": "v1",
+    "field": "境界層・外部対流",
+    "prerequisites": [
+      "境界層の運動量・熱輸送",
+      "係数の定義",
+      "相関の条件"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "輸送現象の一般法則と独自の仮想例から作問。原本の翻訳・原図・章末問題ではない。",
+      "chapterId": "ch6",
+      "focusSectionId": "6.8",
+      "guideId": "chapter6-flat-boundary"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "執筆原稿・基本算術と構造を確認／包括的品質監査待ち・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "執筆時の定義・収支・基本計算を確認。全問の独立科学監査・原本網羅照合・外部校閲は後工程。"
+      }
+    ],
+    "prompt": "平均Nū_L=1498.63、k_f=0.026 W/(m·K)、L=1.0 m、幅0.20 m、一定温度差40 K。片面Q̇=(Nū_Lk_f/L)WLΔTはどれか。",
+    "choices": [
+      "約312 W",
+      "約156 W",
+      "約1560 W",
+      "約38.96 W"
+    ],
+    "answer": 0,
+    "difficulty": "標準・数値計算",
+    "explanation": "h̄≈38.9644 W/(m²·K)、Q̇≈38.9644×0.20×40=311.715 W。これは前縁から乱流とする仮定に対応する。",
+    "distractors": [
+      "正解。平均hへ戻して片面積と温度差を掛けた。",
+      "平均をさらに半分にした。",
+      "幅0.20を落とした。",
+      "hの数値を熱移動率へ流用した。"
+    ],
+    "hints": [
+      "Nuは無次元。",
+      "hと面積と温度差。"
+    ],
+    "solutionSteps": [
+      "h̄≈38.96。",
+      "A=0.20 m²。",
+      "Q̇≈312 W。"
+    ],
+    "beginnerPitfall": "平均係数と熱移動率の単位を区別する。"
+  },
+  {
+    "id": "supp-turbulence-turbulent-temperature-correlation-v1",
+    "revision": "v1",
+    "field": "境界層・外部対流",
+    "prerequisites": [
+      "境界層の運動量・熱輸送",
+      "係数の定義",
+      "相関の条件"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "conceptual",
+    "source": {
+      "type": "supplement",
+      "reference": "輸送現象の一般法則と独自の仮想例から作問。原本の翻訳・原図・章末問題ではない。",
+      "chapterId": "ch6",
+      "focusSectionId": "6.8",
+      "guideId": "chapter6-flat-boundary"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "執筆原稿・基本算術と構造を確認／包括的品質監査待ち・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "執筆時の定義・収支・基本計算を確認。全問の独立科学監査・原本網羅照合・外部校閲は後工程。"
+      }
+    ],
+    "prompt": "平均温度のエネルギー式に現れる乱流法線熱輸送の相関として適切なのはどれか。",
+    "choices": [
+      "平均温度の摂氏値だけから決まる熱量",
+      "overbar(v′T′)の速度と温度の相関",
+      "overbar(v′)overbar(T′)だけで決まる積",
+      "流体のk_fと固体k_sの単純な和"
+    ],
+    "answer": 1,
+    "difficulty": "概念・適用判断",
+    "explanation": "平均エネルギー式には−∂overbar(v′T′)/∂yが現れる。渦熱拡散モデルはこの相関を平均温度勾配へ結ぶ閉鎖近似である。",
+    "distractors": [
+      "熱輸送には流れ・温度分布・物性等が必要。",
+      "正解。法線の変動速度と温度変動の結合を考えた。",
+      "単一変動の平均0でも積の相関は0とは限らない。",
+      "乱流熱流の相関を別物性の和で代用できない。"
+    ],
+    "hints": [
+      "法線方向の速度変動。",
+      "温かい流体と冷たい流体の移動。"
+    ],
+    "solutionSteps": [
+      "v′とT′の積を考える。",
+      "平均相関を残す。",
+      "閉鎖モデルを確認。"
+    ],
+    "beginnerPitfall": "平均変動0を乱流輸送0としない。"
+  },
+  {
+    "id": "supp-turbulence-turbulent-pr-not-universal-v1",
+    "revision": "v1",
+    "field": "境界層・外部対流",
+    "prerequisites": [
+      "境界層の運動量・熱輸送",
+      "係数の定義",
+      "相関の条件"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "conceptual",
+    "source": {
+      "type": "supplement",
+      "reference": "輸送現象の一般法則と独自の仮想例から作問。原本の翻訳・原図・章末問題ではない。",
+      "chapterId": "ch6",
+      "focusSectionId": "6.8",
+      "guideId": "chapter6-flat-boundary"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "執筆原稿・基本算術と構造を確認／包括的品質監査待ち・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "執筆時の定義・収支・基本計算を確認。全問の独立科学監査・原本網羅照合・外部校閲は後工程。"
+      }
+    ],
+    "prompt": "モデルでPr_t=0.85を使った。適切な説明はどれか。",
+    "choices": [
+      "0.85は全ての位置と乱流の厳密な普遍値である",
+      "Pr_tを使えば、壁面の分子伝導は消える",
+      "対象に適した近似値で、分子Prと別に扱う",
+      "全流体の分子Prも常に0.85と決まる"
+    ],
+    "answer": 2,
+    "difficulty": "概念・適用判断",
+    "explanation": "ν_t/α_tのモデル近似として根拠と範囲を示す。分子のν/α_fや壁での熱伝導まで置き換えない。",
+    "distractors": [
+      "Pr_tは場・モデル・物性等で変わりうる。",
+      "壁面では分子伝導が重要である。",
+      "正解。乱流モデルの近似と分子物性を分けた。",
+      "分子の物性比は流体状態によって異なる。"
+    ],
+    "hints": [
+      "ν_tとα_tはモデル量。",
+      "物性表のPrは別。"
+    ],
+    "solutionSteps": [
+      "モデルの定数を確認。",
+      "適用範囲を記録。",
+      "分子物性と区別。"
+    ],
+    "beginnerPitfall": "便利な定数を全ての乱流の厳密値としない。"
+  },
+  {
+    "id": "supp-turbulence-turbulent-initial-laminar-v1",
+    "revision": "v1",
+    "field": "境界層・外部対流",
+    "prerequisites": [
+      "境界層の運動量・熱輸送",
+      "係数の定義",
+      "相関の条件"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "applied",
+    "source": {
+      "type": "supplement",
+      "reference": "輸送現象の一般法則と独自の仮想例から作問。原本の翻訳・原図・章末問題ではない。",
+      "chapterId": "ch6",
+      "focusSectionId": "6.8",
+      "guideId": "chapter6-flat-boundary"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "執筆原稿・基本算術と構造を確認／包括的品質監査待ち・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "執筆時の定義・収支・基本計算を確認。全問の独立科学監査・原本網羅照合・外部校閲は後工程。"
+      }
+    ],
+    "prompt": "平板の末端Reは乱流域だが、先端から相当の長さが層流だった。前縁から乱流の平均Nu式について適切なのはどれか。",
+    "choices": [
+      "末端が乱流なら、全長の履歴は必ず無関係",
+      "全長に末端局所hを掛ければ厳密となる",
+      "層流区間を除いても面積は全長のままでよい",
+      "層流開始部を含む区間の平均を検討する"
+    ],
+    "answer": 3,
+    "difficulty": "概念・適用判断",
+    "explanation": "適切な局所モデルや遷移を含む平均相関を使い、全加熱領域の熱流を積分する。前縁から乱流は特定の理想化である。",
+    "distractors": [
+      "発達と局所熱流の積分の違いを落とした。",
+      "局所末端から全平均は一般に決まらない。",
+      "どの区間の熱流と面積かを不整合にした。",
+      "正解。前半の局所熱流の寄与を残した。"
+    ],
+    "hints": [
+      "平均は全長の積分。",
+      "前半の流況と熱流を確認。"
+    ],
+    "solutionSteps": [
+      "各区間を定義。",
+      "熱流を積分。",
+      "全長で平均化。"
+    ],
+    "beginnerPitfall": "末端流況だけで全板平均を決めない。"
+  },
+  {
+    "id": "supp-turbulence-turbulent-property-variation-v1",
+    "revision": "v1",
+    "field": "境界層・外部対流",
+    "prerequisites": [
+      "境界層の運動量・熱輸送",
+      "係数の定義",
+      "相関の条件"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "applied",
+    "source": {
+      "type": "supplement",
+      "reference": "輸送現象の一般法則と独自の仮想例から作問。原本の翻訳・原図・章末問題ではない。",
+      "chapterId": "ch6",
+      "focusSectionId": "6.8",
+      "guideId": "chapter6-flat-boundary"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "執筆原稿・基本算術と構造を確認／包括的品質監査待ち・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "執筆時の定義・収支・基本計算を確認。全問の独立科学監査・原本網羅照合・外部校閲は後工程。"
+      }
+    ],
+    "prompt": "等温・一定物性用の乱流相関を、大温度差で粘度やkが大きく変わる流れへ使う。必要な判断はどれか。",
+    "choices": [
+      "物性変化と補正・適切な相関の範囲を確認する",
+      "乱流なら、物性や壁温の影響は全て消える",
+      "Reが大きいほど、k_fの入力は必ず不要となる",
+      "k_fを任意の定数へ変えれば、元の式は常に厳密"
+    ],
+    "answer": 0,
+    "difficulty": "概念・適用判断",
+    "explanation": "代表状態、壁/主流の物性比、対象に合う補正や可変物性解析を確認する。相関の条件が合わない場合を成功計算で隠さない。",
+    "distractors": [
+      "正解。モデルの一定物性近似と対象を比較した。",
+      "乱流でも物性や熱境界は輸送へ影響する。",
+      "Nuからhへ戻すには流体k_f等が必要。",
+      "根拠のない値の変更では適用性を保証できない。"
+    ],
+    "hints": [
+      "どの温度の物性か。",
+      "温度差が物性へ与える変化。"
+    ],
+    "solutionSteps": [
+      "評価状態を記録。",
+      "一定近似の影響を確認。",
+      "必要なら対応するモデル。"
+    ],
+    "beginnerPitfall": "乱流というだけで物性変化を無視しない。"
+  },
+  {
+    "id": "supp-turbulence-transition-location-v1",
+    "revision": "v1",
+    "field": "境界層・外部対流",
+    "prerequisites": [
+      "境界層の運動量・熱輸送",
+      "係数の定義",
+      "相関の条件"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "輸送現象の一般法則と独自の仮想例から作問。原本の翻訳・原図・章末問題ではない。",
+      "chapterId": "ch6",
+      "focusSectionId": "6.9",
+      "guideId": "chapter6-flat-boundary"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "執筆原稿・基本算術と構造を確認／包括的品質監査待ち・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "執筆時の定義・収支・基本計算を確認。全問の独立科学監査・原本網羅照合・外部校閲は後工程。"
+      }
+    ],
+    "prompt": "一定主流U=15 m/s、ν=1.5×10⁻⁵ m²/s、仮定した遷移Re_c=5.0×10⁵。x_c=Re_cν/Uはどれか。",
+    "choices": [
+      "0.050 m",
+      "0.50 m",
+      "7.5 m",
+      "2.0 m"
+    ],
+    "answer": 1,
+    "difficulty": "標準・数値計算",
+    "explanation": "x_c=500000×1.5×10⁻⁵/15=0.50 m。これは仮定した遷移点であり測定した値とは区別する。",
+    "distractors": [
+      "指数を一桁小さくした。",
+      "正解。遷移の無次元値を距離へ戻した。",
+      "Uで割る工程を落とした。",
+      "距離を求める比を逆にした。"
+    ],
+    "hints": [
+      "Re_c=Ux_c/ν。",
+      "x_cについて解く。"
+    ],
+    "solutionSteps": [
+      "Re_cν=7.5 m²/s。",
+      "U=15で割る。",
+      "0.50 m。"
+    ],
+    "beginnerPitfall": "仮定した遷移Reを実測点としない。"
+  },
+  {
+    "id": "supp-turbulence-transition-corrected-nu-v1",
+    "revision": "v1",
+    "field": "境界層・外部対流",
+    "prerequisites": [
+      "境界層の運動量・熱輸送",
+      "係数の定義",
+      "相関の条件"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "輸送現象の一般法則と独自の仮想例から作問。原本の翻訳・原図・章末問題ではない。",
+      "chapterId": "ch6",
+      "focusSectionId": "6.9",
+      "guideId": "chapter6-flat-boundary"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "執筆原稿・基本算術と構造を確認／包括的品質監査待ち・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "執筆時の定義・収支・基本計算を確認。全問の独立科学監査・原本網羅照合・外部校閲は後工程。"
+      }
+    ],
+    "prompt": "層流開始の等温板モデルで0.037 Re_L^0.8=2334.54、補正C=871.32、Pr^1/3=0.887904。Nū_L=(0.037 Re_L^0.8−C)Pr^1/3はどれか。",
+    "choices": [
+      "約2847",
+      "約1648",
+      "約1299",
+      "約2073"
+    ],
+    "answer": 2,
+    "difficulty": "標準・数値計算",
+    "explanation": "Nū_L≈(2334.54−871.32)×0.887904≈1299.20。Cは仮定したRe_cに依存する。",
+    "distractors": [
+      "補正を引かず足した。",
+      "Pr補正を掛けず割った。",
+      "正解。先に層流開始の補正を引いてPrを掛けた。",
+      "層流開始の補正を無視した。"
+    ],
+    "hints": [
+      "補正は全乱流の値から引く。",
+      "Prの因子は最後に掛ける。"
+    ],
+    "solutionSteps": [
+      "括弧内1463.22。",
+      "0.887904を掛ける。",
+      "約1299。"
+    ],
+    "beginnerPitfall": "層流開始の補正を足したり省いたりしない。"
+  },
+  {
+    "id": "supp-turbulence-transition-heat-rate-v1",
+    "revision": "v1",
+    "field": "境界層・外部対流",
+    "prerequisites": [
+      "境界層の運動量・熱輸送",
+      "係数の定義",
+      "相関の条件"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "輸送現象の一般法則と独自の仮想例から作問。原本の翻訳・原図・章末問題ではない。",
+      "chapterId": "ch6",
+      "focusSectionId": "6.9",
+      "guideId": "chapter6-flat-boundary"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "執筆原稿・基本算術と構造を確認／包括的品質監査待ち・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "執筆時の定義・収支・基本計算を確認。全問の独立科学監査・原本網羅照合・外部校閲は後工程。"
+      }
+    ],
+    "prompt": "遷移を含む平均Nū_L=1299.20、k_f=0.026 W/(m·K)、L=1.0 m、幅0.20 m、温度差40 K。片面Q̇はいくらか。",
+    "choices": [
+      "約1040 W",
+      "約33.8 W",
+      "約540 W",
+      "約270 W"
+    ],
+    "answer": 3,
+    "difficulty": "標準・数値計算",
+    "explanation": "h̄=1299.20×0.026=33.7792 W/(m²·K)、Q̇=33.7792×0.20×40=270.234 W。",
+    "distractors": [
+      "面積又は係数を誤って大きくした。",
+      "平均hの数値を全熱流へ流用した。",
+      "片面指定なのに2面を数えた。",
+      "正解。平均hから片面全熱流へ換算した。"
+    ],
+    "hints": [
+      "平均Nuからh。",
+      "片面積WL。"
+    ],
+    "solutionSteps": [
+      "h̄≈33.78。",
+      "A=0.20。",
+      "Q̇≈270 W。"
+    ],
+    "beginnerPitfall": "面積と熱移動率の単位を確認する。"
+  },
+  {
+    "id": "supp-turbulence-transition-c-dependence-v1",
+    "revision": "v1",
+    "field": "境界層・外部対流",
+    "prerequisites": [
+      "境界層の運動量・熱輸送",
+      "係数の定義",
+      "相関の条件"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "conceptual",
+    "source": {
+      "type": "supplement",
+      "reference": "輸送現象の一般法則と独自の仮想例から作問。原本の翻訳・原図・章末問題ではない。",
+      "chapterId": "ch6",
+      "focusSectionId": "6.9",
+      "guideId": "chapter6-flat-boundary"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "執筆原稿・基本算術と構造を確認／包括的品質監査待ち・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "執筆時の定義・収支・基本計算を確認。全問の独立科学監査・原本網羅照合・外部校閲は後工程。"
+      }
+    ],
+    "prompt": "補正C=0.037 Re_c^0.8−0.664 Re_c^1/2について適切なのはどれか。",
+    "choices": [
+      "Re_cを変えればCも計算し直す",
+      "どんなRe_cでもCは厳密に871である",
+      "Cは全ての形状に共通する流体物性である",
+      "Cは局所hと常に同じ数値である"
+    ],
+    "answer": 0,
+    "difficulty": "概念・適用判断",
+    "explanation": "約871はRe_c=5×10⁵の場合の目安。遷移位置を変えると層流区間の寄与が変わるので同じ定数を固定しない。",
+    "distractors": [
+      "正解。補正が層流/乱流の区間積分から決まる点を使った。",
+      "871程度は特定のRe_cから得る値。",
+      "遷移モデルの補正を分子物性と混同した。",
+      "無次元の補正と次元付き係数を混同した。"
+    ],
+    "hints": [
+      "Cの定義式に何が入るか。",
+      "Re_cは仮定に依存。"
+    ],
+    "solutionSteps": [
+      "Re_cを決める。",
+      "Cを計算。",
+      "平均Nuへ用いる。"
+    ],
+    "beginnerPitfall": "ある遷移条件の定数を普遍値としない。"
+  },
+  {
+    "id": "supp-turbulence-transition-below-threshold-v1",
+    "revision": "v1",
+    "field": "境界層・外部対流",
+    "prerequisites": [
+      "境界層の運動量・熱輸送",
+      "係数の定義",
+      "相関の条件"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "applied",
+    "source": {
+      "type": "supplement",
+      "reference": "輸送現象の一般法則と独自の仮想例から作問。原本の翻訳・原図・章末問題ではない。",
+      "chapterId": "ch6",
+      "focusSectionId": "6.9",
+      "guideId": "chapter6-flat-boundary"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "執筆原稿・基本算術と構造を確認／包括的品質監査待ち・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "執筆時の定義・収支・基本計算を確認。全問の独立科学監査・原本網羅照合・外部校閲は後工程。"
+      }
+    ],
+    "prompt": "仮定したRe_cに対してRe_L<Re_cの等温平板を扱う。層流/乱流の区間積分モデルではどの分岐を使うか。",
+    "choices": [
+      "乱流式のNuが負なら、負を絶対値へ直して使う",
+      "全長層流の適用条件を確認し、その平均式を使う",
+      "混合乱流の補正式を、Lが短くても無理に使う",
+      "Re_c未満なら、全ての熱流を必ずゼロにする"
+    ],
+    "answer": 1,
+    "difficulty": "概念・適用判断",
+    "explanation": "この区間モデルでは0≤x≤Lが層流。Nū_L≈0.664 Re_L^1/2 Pr^1/3等、対象と範囲の合う層流式を用いる。",
+    "distractors": [
+      "適用外の結果を絶対値で隠しても保存モデルは直らない。",
+      "正解。仮定した切替点が板の下流外にあることを反映した。",
+      "存在しない乱流区間を式へ含めた。",
+      "層流でも熱伝達は起こる。"
+    ],
+    "hints": [
+      "x_cがLより先か。",
+      "実際に積分する区間を確認。"
+    ],
+    "solutionSteps": [
+      "Re_L<Re_c。",
+      "乱流区間なし。",
+      "全層流の平均へ。"
+    ],
+    "beginnerPitfall": "適用外の負値を絶対値で成功扱いしない。"
+  },
+  {
+    "id": "supp-turbulence-transition-nonuniversal-re-v1",
+    "revision": "v1",
+    "field": "境界層・外部対流",
+    "prerequisites": [
+      "境界層の運動量・熱輸送",
+      "係数の定義",
+      "相関の条件"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "conceptual",
+    "source": {
+      "type": "supplement",
+      "reference": "輸送現象の一般法則と独自の仮想例から作問。原本の翻訳・原図・章末問題ではない。",
+      "chapterId": "ch6",
+      "focusSectionId": "6.9",
+      "guideId": "chapter6-flat-boundary"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "執筆原稿・基本算術と構造を確認／包括的品質監査待ち・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "執筆時の定義・収支・基本計算を確認。全問の独立科学監査・原本網羅照合・外部校閲は後工程。"
+      }
+    ],
+    "prompt": "平板のRe_c≈5×10⁵という値の適切な扱いはどれか。",
+    "choices": [
+      "流速と長さがなくても実際の位置を確定する値",
+      "Re_Lが大きければ、初期層流を消してよい値",
+      "粗さ・主流乱れ・圧力勾配等に依存する目安",
+      "全ての流体と表面で厳密に同じ普遍定数"
+    ],
+    "answer": 2,
+    "difficulty": "概念・適用判断",
+    "explanation": "使ったRe_cを仮定値又は測定値として記録し、必要なら感度を評価する。流れが変われば適切な遷移の扱いも見直す。",
+    "distractors": [
+      "x_c=Re_cν/Uへ戻すには物性と速度が必要。",
+      "末端Reだけで層流開始履歴は消せない。",
+      "正解。遷移条件が実際の流れの環境に依存する。",
+      "外部乱れや粗さ等の影響を落とした。"
+    ],
+    "hints": [
+      "同じ表面でも乱れで遷移は変わりうる。",
+      "仮定と測定を区別。"
+    ],
+    "solutionSteps": [
+      "環境条件を確認。",
+      "Re_cの根拠を記録。",
+      "必要な感度を検討。"
+    ],
+    "beginnerPitfall": "遷移の代表値を全条件の厳密閾値としない。"
+  },
+  {
+    "id": "supp-turbulence-transition-step-model-v1",
+    "revision": "v1",
+    "field": "境界層・外部対流",
+    "prerequisites": [
+      "境界層の運動量・熱輸送",
+      "係数の定義",
+      "相関の条件"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "applied",
+    "source": {
+      "type": "supplement",
+      "reference": "輸送現象の一般法則と独自の仮想例から作問。原本の翻訳・原図・章末問題ではない。",
+      "chapterId": "ch6",
+      "focusSectionId": "6.9",
+      "guideId": "chapter6-flat-boundary"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "執筆原稿・基本算術と構造を確認／包括的品質監査待ち・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "執筆時の定義・収支・基本計算を確認。全問の独立科学監査・原本網羅照合・外部校閲は後工程。"
+      }
+    ],
+    "prompt": "x_cで層流局所相関から乱流局所相関へ急に切り替えて熱流を積分した。この結果の正確な説明はどれか。",
+    "choices": [
+      "実際の遷移域の全変動を厳密に解いた結果である",
+      "切替で局所hが跳べば、物体の温度も必ず無限となる",
+      "積分ができれば、相関のReやPr範囲は確認不要となる",
+      "区間積分の近似で、有限の遷移域を解いたものではない"
+    ],
+    "answer": 3,
+    "difficulty": "概念・適用判断",
+    "explanation": "近似した局所モデルの全熱流を求めたもの。実物の遷移域、間欠性、粗さ等は別のモデルや測定で確認する。",
+    "distractors": [
+      "経験局所式の貼合せを乱流全場の解とした。",
+      "局所近似の不連続から温度発散は導けない。",
+      "積分可能でも相関の適用条件は必要。",
+      "正解。急切替の理想化と実際の有限遷移域を分けた。"
+    ],
+    "hints": [
+      "切替の幅をモデルで表したか。",
+      "計算した量と省いた現象を分ける。"
+    ],
+    "solutionSteps": [
+      "局所相関と切替点を記録。",
+      "全熱流を積分。",
+      "遷移域の未表現を明記。"
+    ],
+    "beginnerPitfall": "モデルの積分を現象全体の厳密解としない。"
   }
 ]
