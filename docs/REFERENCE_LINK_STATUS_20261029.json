@@ -1,0 +1,151 @@
+{
+  "checkedAt": "2026-10-29T14:21:40.904621+00:00",
+  "scope": "到達性のHTTP確認。本文の科学的妥当性・転載権・外部校閲の確認ではない。",
+  "currentUniqueReferenceUrls": 22,
+  "currentStatusCounts": {
+    "503": 1,
+    "200": 15,
+    "URLError": 1,
+    "403": 4,
+    "406": 1
+  },
+  "replaced404Urls": [
+    {
+      "url": "https://ocw.mit.edu/courses/10-50-analysis-of-transport-phenomena-fall-2004/",
+      "status": 404
+    },
+    {
+      "url": "https://sites.ualberta.ca/~ccwj/Assets/Teaching/CHE314/7_Transient_conduction-Semi-infinite_solid/Handout/LaTeX/transient_conduction_semi-infinite_solid.pdf",
+      "status": 404
+    }
+  ],
+  "correctedEntries": 37,
+  "replacementVerifiedUrl": "https://ocw.mit.edu/courses/2-51-intermediate-heat-and-mass-transfer-fall-2008/",
+  "currentReferences": [
+    {
+      "url": "https://ahtt.mit.edu/",
+      "status": 503,
+      "method": "HEAD"
+    },
+    {
+      "url": "https://archive.nptel.ac.in/content/storage2/courses/103103032/module8/lec35/1.html",
+      "status": 200,
+      "finalUrl": "https://archive.nptel.ac.in/content/storage2/courses/103103032/module8/lec35/1.html",
+      "method": "HEAD"
+    },
+    {
+      "url": "https://archive.nptel.ac.in/content/storage2/courses/112108149/pdf/M5/Student_Slides_M5.pdf",
+      "status": 200,
+      "finalUrl": "https://archive.nptel.ac.in/content/storage2/courses/112108149/pdf/M5/Student_Slides_M5.pdf",
+      "method": "HEAD"
+    },
+    {
+      "url": "https://bpb-us-e1.wpmucdn.com/sites.mit.edu/dist/6/1810/files/2024/04/AHTTv600.pdf",
+      "status": 200,
+      "finalUrl": "https://bpb-us-e1.wpmucdn.com/sites.mit.edu/dist/6/1810/files/2024/04/AHTTv600.pdf",
+      "method": "HEAD"
+    },
+    {
+      "url": "https://doi.org/10.1016/0017-9310(75)90243-4",
+      "status": "URLError",
+      "method": "HEAD"
+    },
+    {
+      "url": "https://handbook.ashrae.org/Handbooks/F17/SI/f17_ch04/f17_ch04_si.aspx",
+      "status": 200,
+      "finalUrl": "https://handbook.ashrae.org/Handbooks/F17/SI/f17_ch04/f17_ch04_si.aspx",
+      "method": "HEAD"
+    },
+    {
+      "url": "https://handbook.ashrae.org/handbooks/F17/SI/f17_ch05/f17_ch05_si.aspx",
+      "status": 200,
+      "finalUrl": "https://handbook.ashrae.org/handbooks/F17/SI/f17_ch05/f17_ch05_si.aspx",
+      "method": "HEAD"
+    },
+    {
+      "url": "https://help.ncees.org/article/87-ncees-exam-reference-handbooks",
+      "status": 403,
+      "method": "HEAD"
+    },
+    {
+      "url": "https://mmshah.org/publications/condensation.pdf",
+      "status": 406,
+      "method": "HEAD"
+    },
+    {
+      "url": "https://ocw.mit.edu/courses/10-302-transport-processes-fall-2004/",
+      "status": 200,
+      "finalUrl": "https://ocw.mit.edu/courses/10-302-transport-processes-fall-2004/",
+      "method": "HEAD"
+    },
+    {
+      "url": "https://ocw.mit.edu/courses/2-051-introduction-to-heat-transfer-fall-2015/",
+      "status": 200,
+      "finalUrl": "https://ocw.mit.edu/courses/2-051-introduction-to-heat-transfer-fall-2015/",
+      "method": "HEAD"
+    },
+    {
+      "url": "https://ocw.mit.edu/courses/2-051-introduction-to-heat-transfer-fall-2015/e32f70f7e00f34953447b606cea0421f_MIT2_051F15_EqnSheet_Q2_v3.pdf",
+      "status": 200,
+      "finalUrl": "https://ocw.mit.edu/courses/2-051-introduction-to-heat-transfer-fall-2015/e32f70f7e00f34953447b606cea0421f_MIT2_051F15_EqnSheet_Q2_v3.pdf",
+      "method": "HEAD"
+    },
+    {
+      "url": "https://ocw.mit.edu/courses/2-51-intermediate-heat-and-mass-transfer-fall-2008/",
+      "status": 200,
+      "method": "GET",
+      "title": "Intermediate Heat and Mass Transfer | Mechanical Engineering | MIT OpenCourseWare"
+    },
+    {
+      "url": "https://ocw.mit.edu/courses/5-60-thermodynamics-kinetics-spring-2008/",
+      "status": 200,
+      "finalUrl": "https://ocw.mit.edu/courses/5-60-thermodynamics-kinetics-spring-2008/",
+      "method": "HEAD"
+    },
+    {
+      "url": "https://ocw.mit.edu/courses/es-1803-differential-equations-spring-2024/mites_1803_s24_heat_equation.pdf",
+      "status": 200,
+      "finalUrl": "https://ocw.mit.edu/courses/es-1803-differential-equations-spring-2024/mites_1803_s24_heat_equation.pdf",
+      "method": "HEAD"
+    },
+    {
+      "url": "https://physics.nist.gov/cgi-bin/cuu/Value?sigma",
+      "status": 403,
+      "method": "HEAD"
+    },
+    {
+      "url": "https://pvpmc.sandia.gov/modeling-guide/1-weather-design-inputs/plane-of-array-poa-irradiance/",
+      "status": 200,
+      "finalUrl": "https://pvpmc.sandia.gov/modeling-guide/1-weather-design-inputs/plane-of-array-poa-irradiance/",
+      "method": "HEAD"
+    },
+    {
+      "url": "https://tmap8.inl.gov/modules/heat_transfer/index.html",
+      "status": 200,
+      "finalUrl": "https://tmap8.inl.gov/modules/heat_transfer/index.html",
+      "method": "HEAD"
+    },
+    {
+      "url": "https://web.mit.edu/snively/www/2_005%20Coursenotes-1.pdf",
+      "status": 200,
+      "finalUrl": "https://web.mit.edu/snively/www/2_005%20Coursenotes-1.pdf",
+      "method": "HEAD"
+    },
+    {
+      "url": "https://webbook.nist.gov/chemistry/",
+      "status": 403,
+      "method": "HEAD"
+    },
+    {
+      "url": "https://www.ashrae.org/technical-resources/ashrae-handbook",
+      "status": 403,
+      "method": "HEAD"
+    },
+    {
+      "url": "https://www.osti.gov/servlets/purl/789524",
+      "status": 200,
+      "finalUrl": "https://www.osti.gov/servlets/purl/789524",
+      "method": "HEAD"
+    }
+  ]
+}

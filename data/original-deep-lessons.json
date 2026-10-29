@@ -20,7 +20,7 @@
         },
         {
           "heading": "面積による積分と平均熱流束",
-          "text": "表面Sを通過する正味の熱移動率は、外向き法線をnとし、熱流束ベクトルq″を使えばQ̇_out=∫_S(q″·n)dAとなる。平面で法線方向成分が一定ならQ̇=q″A。分布がある場合は平均熱流束q″_avg=Q̇/Aと定義できるが、局所最大値とは別。向きが変わる面では符号付き積分を行う。"
+          "text": "熱流束ベクトルを矢印付きq⃗″[W/m²]、外向き単位法線をn⃗、法線成分の符号付きスカラーをq_n″=q⃗″·n⃗と区別する。表面Sの正味外向き移動率はQ̇_out=∫_S q_n″dA=∫_S(q⃗″·n⃗)dA。平面で法線成分が一様ならQ̇=q_n″Aとなる。法線が場所で変わる曲面でも点ごとの内積を取り、平均q_n,avg″=Q̇_out/Aを局所最大値やベクトル平均と混同しない。"
         },
         {
           "heading": "時間による積分と非定常の注意",
@@ -32,7 +32,7 @@
         },
         {
           "heading": "熱流束を与えるには物理モデルが必要",
-          "text": "固体伝導ならFourier則q″=−k∇T、壁と流体の対流ならNewtonの冷却則q″=h(T_s−T_∞)、放射なら絶対温度の4乗に関係するモデルが必要。これらは互いに異なる現象であり、温度差だけを見て同じ熱伝達率を当てはめることはできない。hは材料固有の定数ではなく流れと幾何条件にも依存する。"
+          "text": "等方固体の伝導ではベクトルFourier則q⃗″=−k∇Tを使い、一次元成分はq_x″=−k dT/dxとなる。壁から流体への法線対流ならスカラーq_n″=h(T_s−T_∞)とし、放射は絶対温度の4乗等の条件に対応するモデルを使う。異なる現象の式を、方向や定義を確認せず同じ一つのhへ置き換えない。hは材料固有の物性ではなく流れと幾何条件等にも依存する。"
         },
         {
           "heading": "初心者が実測データを読む手順",
@@ -47,8 +47,8 @@
         },
         {
           "label": "面上の正味外向き熱移動率",
-          "expression": "Q̇_out=∫_S q″·n dA ; q″_avg=Q̇_out/A",
-          "meaning": "q″は熱流束ベクトル[W/m²]、nは外向き単位法線。平均の定義は符号付き。"
+          "expression": "Q̇_out=∫_S(q⃗″·n⃗)dA=∫_S q_n″dA ; q_n,avg″=Q̇_out/A",
+          "meaning": "q⃗″は熱流束ベクトル[W/m²]、n⃗は外向き単位法線、q_n″は符号付き法線成分。平均は面上の符号付きスカラー平均。"
         },
         {
           "label": "閉じた系の第一法則",
@@ -63,11 +63,11 @@
       ],
       "workedExample": {
         "title": "非一様な熱流束と時間積分を組み合わせる",
-        "problem": "幅b=0.50 m、長さL=1.00 mの平面に、ある瞬間の法線方向の外向き熱流束q″(x)=100 W/m²+(200 W/m³)x（0≤x≤1.00 m）が分布する。この分布が20 s変化しないとき、面全体の外向き熱移動率、面積平均熱流束、20秒間の移動エネルギーを求める。",
+        "problem": "幅b=0.50 m、長さL=1.00 mの平面に、ある瞬間の法線方向の外向き熱流束q_n″(x)=100 W/m²+(200 W/m³)x（0≤x≤1.00 m）が分布する。この分布が20 s変化しないとき、面全体の外向き熱移動率、面積平均熱流束、20秒間の移動エネルギーを求める。",
         "steps": [
           "微小面積dA=b dxとおく。熱流束分布のxの係数200はxをm単位の数値として代入したときの値である。",
           "ξ=x/(1.00 m)で無次元化すると、Q̇_out=(0.50 m)(1.00 m)∫₀¹(100+200ξ) W/m² dξ=100 W。位置の傾き係数200 W/m³とx[m]の積はW/m²。",
-          "面積A=bL=0.50 m²なのでq″_avg=100/0.50=200 W/m²。入口側100 W/m²、出口側300 W/m²の中間値と一致する。",
+          "面積A=bL=0.50 m²なのでq_n,avg″=100/0.50=200 W/m²。入口側100 W/m²、出口側300 W/m²の中間値と一致する。",
           "20 sの間は分布が一定としたからQ_out=100 W×20 s=2000 J。WとJを区別する。",
           "符号は外向きを正とした。この熱移動だけで閉じた物体の内部エネルギーが変わるなら、外部仕事がない条件でΔU=−2000 Jとなる。"
         ],
@@ -112,7 +112,7 @@
         },
         {
           "heading": "定常と非定常を混同しない",
-          "text": "定常は制御体積のエネルギーが時間で変化しないことを意味する。定常の熱交換器でも一方から入った熱が他方へ一定率で移るので、熱移動率がゼロとは限らない。逆に加熱開始直後は材料や壁がエネルギーを蓄え、入口と出口で熱移動率が一致しない場合がある。定常の条件を温度変化の小ささだけで決めない。"
+          "text": "定常は、固定した位置での温度場や流れ等の対象が時間で変化しない条件である。その帰結として制御体積のエネルギー蓄積率は0となるが、逆は一般に成り立たない。例えば外部と断熱した二物体の間で熱が再配分されれば、全内部エネルギーが一定でも各温度は時間で変化する。定常熱交換器でも熱は一定率で移り、熱移動率0とは限らない。蓄積率0だけを定常の十分条件としない。"
         },
         {
           "heading": "開いた系ではエンタルピーが登場する",
@@ -347,8 +347,8 @@
           "url": "https://ahtt.mit.edu/"
         },
         {
-          "title": "MIT OpenCourseWare 10.50 Analysis of Transport Phenomena（輸送現象の背景）",
-          "url": "https://ocw.mit.edu/courses/10-50-analysis-of-transport-phenomena-fall-2004/"
+          "title": "MIT OpenCourseWare 2.51 Intermediate Heat and Mass Transfer（熱・物質移動の背景資料）",
+          "url": "https://ocw.mit.edu/courses/2-51-intermediate-heat-and-mass-transfer-fall-2008/"
         }
       ],
       "reviewStatus": "独立執筆の詳細講義原稿。基本定義・収支・例題算術を確認。原本の全文章・式・図表脚注の網羅照合、独自図解、包括的品質監査・外部学術専門家校閲前。"
@@ -441,8 +441,8 @@
           "url": "https://ahtt.mit.edu/"
         },
         {
-          "title": "MIT OpenCourseWare 10.50 Analysis of Transport Phenomena（輸送現象の背景）",
-          "url": "https://ocw.mit.edu/courses/10-50-analysis-of-transport-phenomena-fall-2004/"
+          "title": "MIT OpenCourseWare 2.51 Intermediate Heat and Mass Transfer（熱・物質移動の背景資料）",
+          "url": "https://ocw.mit.edu/courses/2-51-intermediate-heat-and-mass-transfer-fall-2008/"
         }
       ],
       "reviewStatus": "独立執筆の詳細講義原稿。基本定義・収支・例題算術を確認。原本の全文章・式・図表脚注の網羅照合、独自図解、包括的品質監査・外部学術専門家校閲前。"
@@ -873,8 +873,8 @@
           "url": "https://ahtt.mit.edu/"
         },
         {
-          "title": "MIT OpenCourseWare 10.50 Analysis of Transport Phenomena（輸送現象の背景）",
-          "url": "https://ocw.mit.edu/courses/10-50-analysis-of-transport-phenomena-fall-2004/"
+          "title": "MIT OpenCourseWare 2.51 Intermediate Heat and Mass Transfer（熱・物質移動の背景資料）",
+          "url": "https://ocw.mit.edu/courses/2-51-intermediate-heat-and-mass-transfer-fall-2008/"
         }
       ],
       "reviewStatus": "独立執筆の詳細講義原稿。基本定義・収支・例題算術を確認。原本の全文章・式・図表脚注の網羅照合、独自図解、包括的品質監査・外部学術専門家校閲前。"
@@ -1571,8 +1571,8 @@
           "url": "https://ahtt.mit.edu/"
         },
         {
-          "title": "MIT OpenCourseWare 10.50 Analysis of Transport Phenomena（輸送現象の背景）",
-          "url": "https://ocw.mit.edu/courses/10-50-analysis-of-transport-phenomena-fall-2004/"
+          "title": "MIT OpenCourseWare 2.51 Intermediate Heat and Mass Transfer（熱・物質移動の背景資料）",
+          "url": "https://ocw.mit.edu/courses/2-51-intermediate-heat-and-mass-transfer-fall-2008/"
         }
       ],
       "reviewStatus": "独立執筆の詳細講義原稿。基本定義・収支・例題算術を確認。原本の全文章・式・図表脚注の網羅照合、独自図解、包括的品質監査・外部学術専門家校閲前。"
@@ -1760,8 +1760,8 @@
           "url": "https://ahtt.mit.edu/"
         },
         {
-          "title": "MIT OpenCourseWare 10.50 Analysis of Transport Phenomena（輸送現象の背景）",
-          "url": "https://ocw.mit.edu/courses/10-50-analysis-of-transport-phenomena-fall-2004/"
+          "title": "MIT OpenCourseWare 2.51 Intermediate Heat and Mass Transfer（熱・物質移動の背景資料）",
+          "url": "https://ocw.mit.edu/courses/2-51-intermediate-heat-and-mass-transfer-fall-2008/"
         }
       ],
       "reviewStatus": "独立執筆の詳細講義原稿。基本定義・収支・例題算術を確認。原本の全文章・式・図表脚注の網羅照合、独自図解、包括的品質監査・外部学術専門家校閲前。"
@@ -2022,8 +2022,8 @@
           "url": "https://ahtt.mit.edu/"
         },
         {
-          "title": "MIT OpenCourseWare 10.50 Analysis of Transport Phenomena（輸送現象の背景）",
-          "url": "https://ocw.mit.edu/courses/10-50-analysis-of-transport-phenomena-fall-2004/"
+          "title": "MIT OpenCourseWare 2.51 Intermediate Heat and Mass Transfer（熱・物質移動の背景資料）",
+          "url": "https://ocw.mit.edu/courses/2-51-intermediate-heat-and-mass-transfer-fall-2008/"
         }
       ],
       "reviewStatus": "独立執筆の詳細講義原稿。基本定義・収支・例題算術を確認。原本の全文章・式・図表脚注の網羅照合、独自図解、包括的品質監査・外部学術専門家校閲前。"
@@ -2122,8 +2122,8 @@
           "url": "https://ahtt.mit.edu/"
         },
         {
-          "title": "MIT OpenCourseWare 10.50 Analysis of Transport Phenomena（輸送現象の背景）",
-          "url": "https://ocw.mit.edu/courses/10-50-analysis-of-transport-phenomena-fall-2004/"
+          "title": "MIT OpenCourseWare 2.51 Intermediate Heat and Mass Transfer（熱・物質移動の背景資料）",
+          "url": "https://ocw.mit.edu/courses/2-51-intermediate-heat-and-mass-transfer-fall-2008/"
         }
       ],
       "reviewStatus": "独立執筆の詳細講義原稿。基本定義・収支・例題算術を確認。原本の全文章・式・図表脚注の網羅照合、独自図解、包括的品質監査・外部学術専門家校閲前。"
@@ -2212,8 +2212,8 @@
           "url": "https://bpb-us-e1.wpmucdn.com/sites.mit.edu/dist/6/1810/files/2024/04/AHTTv600.pdf"
         },
         {
-          "title": "University of Alberta: Transient Conduction, Semi-infinite Solid（教育資料）",
-          "url": "https://sites.ualberta.ca/~ccwj/Assets/Teaching/CHE314/7_Transient_conduction-Semi-infinite_solid/Handout/LaTeX/transient_conduction_semi-infinite_solid.pdf"
+          "title": "MIT OpenCourseWare 2.51 Intermediate Heat and Mass Transfer（熱・物質移動の背景資料）",
+          "url": "https://ocw.mit.edu/courses/2-51-intermediate-heat-and-mass-transfer-fall-2008/"
         }
       ],
       "reviewStatus": "大学講義資料に基づく物理式と数値例を作成者が別式・電卓で再計算済み。書籍の全文翻訳・全式図表逐次照合は未完了、外部学術専門家校閲前。"
@@ -2306,8 +2306,8 @@
           "url": "https://ahtt.mit.edu/"
         },
         {
-          "title": "MIT OpenCourseWare 10.50 Analysis of Transport Phenomena（輸送現象の背景）",
-          "url": "https://ocw.mit.edu/courses/10-50-analysis-of-transport-phenomena-fall-2004/"
+          "title": "MIT OpenCourseWare 2.51 Intermediate Heat and Mass Transfer（熱・物質移動の背景資料）",
+          "url": "https://ocw.mit.edu/courses/2-51-intermediate-heat-and-mass-transfer-fall-2008/"
         }
       ],
       "reviewStatus": "独立執筆の詳細講義原稿。基本定義・収支・例題算術を確認。原本の全文章・式・図表脚注の網羅照合、独自図解、包括的品質監査・外部学術専門家校閲前。"
@@ -2401,8 +2401,8 @@
           "url": "https://ahtt.mit.edu/"
         },
         {
-          "title": "MIT OpenCourseWare 10.50 Analysis of Transport Phenomena（輸送現象の背景）",
-          "url": "https://ocw.mit.edu/courses/10-50-analysis-of-transport-phenomena-fall-2004/"
+          "title": "MIT OpenCourseWare 2.51 Intermediate Heat and Mass Transfer（熱・物質移動の背景資料）",
+          "url": "https://ocw.mit.edu/courses/2-51-intermediate-heat-and-mass-transfer-fall-2008/"
         }
       ],
       "reviewStatus": "独立執筆の詳細講義原稿。基本定義・収支・例題算術を確認。原本の全文章・式・図表脚注の網羅照合、独自図解、包括的品質監査・外部学術専門家校閲前。"
@@ -2583,8 +2583,8 @@
           "url": "https://ahtt.mit.edu/"
         },
         {
-          "title": "MIT OpenCourseWare 10.50 Analysis of Transport Phenomena（輸送現象の背景）",
-          "url": "https://ocw.mit.edu/courses/10-50-analysis-of-transport-phenomena-fall-2004/"
+          "title": "MIT OpenCourseWare 2.51 Intermediate Heat and Mass Transfer（熱・物質移動の背景資料）",
+          "url": "https://ocw.mit.edu/courses/2-51-intermediate-heat-and-mass-transfer-fall-2008/"
         }
       ],
       "reviewStatus": "独立執筆の詳細講義原稿。基本定義・収支・例題算術を確認。原本の全文章・式・図表脚注の網羅照合、独自図解、包括的品質監査・外部学術専門家校閲前。"
@@ -2682,8 +2682,8 @@
           "url": "https://ahtt.mit.edu/"
         },
         {
-          "title": "MIT OpenCourseWare 10.50 Analysis of Transport Phenomena（輸送現象の背景）",
-          "url": "https://ocw.mit.edu/courses/10-50-analysis-of-transport-phenomena-fall-2004/"
+          "title": "MIT OpenCourseWare 2.51 Intermediate Heat and Mass Transfer（熱・物質移動の背景資料）",
+          "url": "https://ocw.mit.edu/courses/2-51-intermediate-heat-and-mass-transfer-fall-2008/"
         }
       ],
       "reviewStatus": "独立執筆の詳細講義原稿。基本定義・収支・例題算術を確認。原本の全文章・式・図表脚注の網羅照合、独自図解、包括的品質監査・外部学術専門家校閲前。"
@@ -2776,8 +2776,8 @@
           "url": "https://ahtt.mit.edu/"
         },
         {
-          "title": "MIT OpenCourseWare 10.50 Analysis of Transport Phenomena（輸送現象の背景）",
-          "url": "https://ocw.mit.edu/courses/10-50-analysis-of-transport-phenomena-fall-2004/"
+          "title": "MIT OpenCourseWare 2.51 Intermediate Heat and Mass Transfer（熱・物質移動の背景資料）",
+          "url": "https://ocw.mit.edu/courses/2-51-intermediate-heat-and-mass-transfer-fall-2008/"
         }
       ],
       "reviewStatus": "独立執筆の詳細講義原稿。基本定義・収支・例題算術を確認。原本の全文章・式・図表脚注の網羅照合、独自図解、包括的品質監査・外部学術専門家校閲前。"
@@ -2870,8 +2870,8 @@
           "url": "https://ahtt.mit.edu/"
         },
         {
-          "title": "MIT OpenCourseWare 10.50 Analysis of Transport Phenomena（輸送現象の背景）",
-          "url": "https://ocw.mit.edu/courses/10-50-analysis-of-transport-phenomena-fall-2004/"
+          "title": "MIT OpenCourseWare 2.51 Intermediate Heat and Mass Transfer（熱・物質移動の背景資料）",
+          "url": "https://ocw.mit.edu/courses/2-51-intermediate-heat-and-mass-transfer-fall-2008/"
         }
       ],
       "reviewStatus": "独立執筆の詳細講義原稿。基本定義・収支・例題算術を確認。原本の全文章・式・図表脚注の網羅照合、独自図解、包括的品質監査・外部学術専門家校閲前。"
@@ -2964,8 +2964,8 @@
           "url": "https://ahtt.mit.edu/"
         },
         {
-          "title": "MIT OpenCourseWare 10.50 Analysis of Transport Phenomena（輸送現象の背景）",
-          "url": "https://ocw.mit.edu/courses/10-50-analysis-of-transport-phenomena-fall-2004/"
+          "title": "MIT OpenCourseWare 2.51 Intermediate Heat and Mass Transfer（熱・物質移動の背景資料）",
+          "url": "https://ocw.mit.edu/courses/2-51-intermediate-heat-and-mass-transfer-fall-2008/"
         }
       ],
       "reviewStatus": "独立執筆の詳細講義原稿。基本定義・収支・例題算術を確認。原本の全文章・式・図表脚注の網羅照合、独自図解、包括的品質監査・外部学術専門家校閲前。"
@@ -3063,8 +3063,8 @@
           "url": "https://ahtt.mit.edu/"
         },
         {
-          "title": "MIT OpenCourseWare 10.50 Analysis of Transport Phenomena（輸送現象の背景）",
-          "url": "https://ocw.mit.edu/courses/10-50-analysis-of-transport-phenomena-fall-2004/"
+          "title": "MIT OpenCourseWare 2.51 Intermediate Heat and Mass Transfer（熱・物質移動の背景資料）",
+          "url": "https://ocw.mit.edu/courses/2-51-intermediate-heat-and-mass-transfer-fall-2008/"
         }
       ],
       "reviewStatus": "独立執筆の詳細講義原稿。基本定義・収支・例題算術を確認。原本の全文章・式・図表脚注の網羅照合、独自図解、包括的品質監査・外部学術専門家校閲前。"
@@ -3157,8 +3157,8 @@
           "url": "https://ahtt.mit.edu/"
         },
         {
-          "title": "MIT OpenCourseWare 10.50 Analysis of Transport Phenomena（輸送現象の背景）",
-          "url": "https://ocw.mit.edu/courses/10-50-analysis-of-transport-phenomena-fall-2004/"
+          "title": "MIT OpenCourseWare 2.51 Intermediate Heat and Mass Transfer（熱・物質移動の背景資料）",
+          "url": "https://ocw.mit.edu/courses/2-51-intermediate-heat-and-mass-transfer-fall-2008/"
         }
       ],
       "reviewStatus": "独立執筆の詳細講義原稿。基本定義・収支・例題算術を確認。原本の全文章・式・図表脚注の網羅照合、独自図解、包括的品質監査・外部学術専門家校閲前。"
@@ -3256,8 +3256,8 @@
           "url": "https://ahtt.mit.edu/"
         },
         {
-          "title": "MIT OpenCourseWare 10.50 Analysis of Transport Phenomena（輸送現象の背景）",
-          "url": "https://ocw.mit.edu/courses/10-50-analysis-of-transport-phenomena-fall-2004/"
+          "title": "MIT OpenCourseWare 2.51 Intermediate Heat and Mass Transfer（熱・物質移動の背景資料）",
+          "url": "https://ocw.mit.edu/courses/2-51-intermediate-heat-and-mass-transfer-fall-2008/"
         }
       ],
       "reviewStatus": "独立執筆の詳細講義原稿。基本定義・収支・例題算術を確認。原本の全文章・式・図表脚注の網羅照合、独自図解、包括的品質監査・外部学術専門家校閲前。"
@@ -3350,8 +3350,8 @@
           "url": "https://ahtt.mit.edu/"
         },
         {
-          "title": "MIT OpenCourseWare 10.50 Analysis of Transport Phenomena（輸送現象の背景）",
-          "url": "https://ocw.mit.edu/courses/10-50-analysis-of-transport-phenomena-fall-2004/"
+          "title": "MIT OpenCourseWare 2.51 Intermediate Heat and Mass Transfer（熱・物質移動の背景資料）",
+          "url": "https://ocw.mit.edu/courses/2-51-intermediate-heat-and-mass-transfer-fall-2008/"
         }
       ],
       "reviewStatus": "独立執筆の詳細講義原稿。基本定義・収支・例題算術を確認。原本の全文章・式・図表脚注の網羅照合、独自図解、包括的品質監査・外部学術専門家校閲前。"
@@ -3527,8 +3527,8 @@
           "url": "https://ahtt.mit.edu/"
         },
         {
-          "title": "MIT OpenCourseWare 10.50 Analysis of Transport Phenomena（輸送現象の背景）",
-          "url": "https://ocw.mit.edu/courses/10-50-analysis-of-transport-phenomena-fall-2004/"
+          "title": "MIT OpenCourseWare 2.51 Intermediate Heat and Mass Transfer（熱・物質移動の背景資料）",
+          "url": "https://ocw.mit.edu/courses/2-51-intermediate-heat-and-mass-transfer-fall-2008/"
         }
       ],
       "reviewStatus": "独立執筆の詳細講義原稿。基本定義・収支・例題算術を確認。原本の全文章・式・図表脚注の網羅照合、独自図解、包括的品質監査・外部学術専門家校閲前。"
@@ -3626,8 +3626,8 @@
           "url": "https://ahtt.mit.edu/"
         },
         {
-          "title": "MIT OpenCourseWare 10.50 Analysis of Transport Phenomena（輸送現象の背景）",
-          "url": "https://ocw.mit.edu/courses/10-50-analysis-of-transport-phenomena-fall-2004/"
+          "title": "MIT OpenCourseWare 2.51 Intermediate Heat and Mass Transfer（熱・物質移動の背景資料）",
+          "url": "https://ocw.mit.edu/courses/2-51-intermediate-heat-and-mass-transfer-fall-2008/"
         }
       ],
       "reviewStatus": "独立執筆の詳細講義原稿。基本定義・収支・例題算術を確認。原本の全文章・式・図表脚注の網羅照合、独自図解、包括的品質監査・外部学術専門家校閲前。"
@@ -3720,8 +3720,8 @@
           "url": "https://ahtt.mit.edu/"
         },
         {
-          "title": "MIT OpenCourseWare 10.50 Analysis of Transport Phenomena（輸送現象の背景）",
-          "url": "https://ocw.mit.edu/courses/10-50-analysis-of-transport-phenomena-fall-2004/"
+          "title": "MIT OpenCourseWare 2.51 Intermediate Heat and Mass Transfer（熱・物質移動の背景資料）",
+          "url": "https://ocw.mit.edu/courses/2-51-intermediate-heat-and-mass-transfer-fall-2008/"
         }
       ],
       "reviewStatus": "独立執筆の詳細講義原稿。基本定義・収支・例題算術を確認。原本の全文章・式・図表脚注の網羅照合、独自図解、包括的品質監査・外部学術専門家校閲前。"
@@ -3814,8 +3814,8 @@
           "url": "https://ahtt.mit.edu/"
         },
         {
-          "title": "MIT OpenCourseWare 10.50 Analysis of Transport Phenomena（輸送現象の背景）",
-          "url": "https://ocw.mit.edu/courses/10-50-analysis-of-transport-phenomena-fall-2004/"
+          "title": "MIT OpenCourseWare 2.51 Intermediate Heat and Mass Transfer（熱・物質移動の背景資料）",
+          "url": "https://ocw.mit.edu/courses/2-51-intermediate-heat-and-mass-transfer-fall-2008/"
         }
       ],
       "reviewStatus": "独立執筆の詳細講義原稿。基本定義・収支・例題算術を確認。原本の全文章・式・図表脚注の網羅照合、独自図解、包括的品質監査・外部学術専門家校閲前。"
@@ -3908,8 +3908,8 @@
           "url": "https://ahtt.mit.edu/"
         },
         {
-          "title": "MIT OpenCourseWare 10.50 Analysis of Transport Phenomena（輸送現象の背景）",
-          "url": "https://ocw.mit.edu/courses/10-50-analysis-of-transport-phenomena-fall-2004/"
+          "title": "MIT OpenCourseWare 2.51 Intermediate Heat and Mass Transfer（熱・物質移動の背景資料）",
+          "url": "https://ocw.mit.edu/courses/2-51-intermediate-heat-and-mass-transfer-fall-2008/"
         }
       ],
       "reviewStatus": "独立執筆の詳細講義原稿。基本定義・収支・例題算術を確認。原本の全文章・式・図表脚注の網羅照合、独自図解、包括的品質監査・外部学術専門家校閲前。"
@@ -4002,8 +4002,8 @@
           "url": "https://ahtt.mit.edu/"
         },
         {
-          "title": "MIT OpenCourseWare 10.50 Analysis of Transport Phenomena（輸送現象の背景）",
-          "url": "https://ocw.mit.edu/courses/10-50-analysis-of-transport-phenomena-fall-2004/"
+          "title": "MIT OpenCourseWare 2.51 Intermediate Heat and Mass Transfer（熱・物質移動の背景資料）",
+          "url": "https://ocw.mit.edu/courses/2-51-intermediate-heat-and-mass-transfer-fall-2008/"
         }
       ],
       "reviewStatus": "独立執筆の詳細講義原稿。基本定義・収支・例題算術を確認。原本の全文章・式・図表脚注の網羅照合、独自図解、包括的品質監査・外部学術専門家校閲前。"
@@ -4101,8 +4101,8 @@
           "url": "https://ahtt.mit.edu/"
         },
         {
-          "title": "MIT OpenCourseWare 10.50 Analysis of Transport Phenomena（輸送現象の背景）",
-          "url": "https://ocw.mit.edu/courses/10-50-analysis-of-transport-phenomena-fall-2004/"
+          "title": "MIT OpenCourseWare 2.51 Intermediate Heat and Mass Transfer（熱・物質移動の背景資料）",
+          "url": "https://ocw.mit.edu/courses/2-51-intermediate-heat-and-mass-transfer-fall-2008/"
         }
       ],
       "reviewStatus": "独立執筆の詳細講義原稿。基本定義・収支・例題算術を確認。原本の全文章・式・図表脚注の網羅照合、独自図解、包括的品質監査・外部学術専門家校閲前。"
@@ -4195,8 +4195,8 @@
           "url": "https://ahtt.mit.edu/"
         },
         {
-          "title": "MIT OpenCourseWare 10.50 Analysis of Transport Phenomena（輸送現象の背景）",
-          "url": "https://ocw.mit.edu/courses/10-50-analysis-of-transport-phenomena-fall-2004/"
+          "title": "MIT OpenCourseWare 2.51 Intermediate Heat and Mass Transfer（熱・物質移動の背景資料）",
+          "url": "https://ocw.mit.edu/courses/2-51-intermediate-heat-and-mass-transfer-fall-2008/"
         }
       ],
       "reviewStatus": "独立執筆の詳細講義原稿。基本定義・収支・例題算術を確認。原本の全文章・式・図表脚注の網羅照合、独自図解、包括的品質監査・外部学術専門家校閲前。"
@@ -6017,8 +6017,8 @@
           "url": "https://ahtt.mit.edu/"
         },
         {
-          "title": "MIT OpenCourseWare 10.50 Analysis of Transport Phenomena（輸送現象の背景）",
-          "url": "https://ocw.mit.edu/courses/10-50-analysis-of-transport-phenomena-fall-2004/"
+          "title": "MIT OpenCourseWare 2.51 Intermediate Heat and Mass Transfer（熱・物質移動の背景資料）",
+          "url": "https://ocw.mit.edu/courses/2-51-intermediate-heat-and-mass-transfer-fall-2008/"
         }
       ],
       "reviewStatus": "独立執筆の詳細講義原稿。基本定義と例題の算術を確認。全原本の文章・式・図表脚注の網羅照合、独自図解、全問の包括監査・外部学術専門家校閲前。"
@@ -6117,8 +6117,8 @@
           "url": "https://ahtt.mit.edu/"
         },
         {
-          "title": "MIT OpenCourseWare 10.50 Analysis of Transport Phenomena（輸送現象の背景）",
-          "url": "https://ocw.mit.edu/courses/10-50-analysis-of-transport-phenomena-fall-2004/"
+          "title": "MIT OpenCourseWare 2.51 Intermediate Heat and Mass Transfer（熱・物質移動の背景資料）",
+          "url": "https://ocw.mit.edu/courses/2-51-intermediate-heat-and-mass-transfer-fall-2008/"
         }
       ],
       "reviewStatus": "独立執筆の詳細講義原稿。基本定義と例題の算術を確認。全原本の文章・式・図表脚注の網羅照合、独自図解、全問の包括監査・外部学術専門家校閲前。"
@@ -6300,8 +6300,8 @@
           "url": "https://ahtt.mit.edu/"
         },
         {
-          "title": "MIT OpenCourseWare 10.50 Analysis of Transport Phenomena（輸送現象の背景）",
-          "url": "https://ocw.mit.edu/courses/10-50-analysis-of-transport-phenomena-fall-2004/"
+          "title": "MIT OpenCourseWare 2.51 Intermediate Heat and Mass Transfer（熱・物質移動の背景資料）",
+          "url": "https://ocw.mit.edu/courses/2-51-intermediate-heat-and-mass-transfer-fall-2008/"
         }
       ],
       "reviewStatus": "独立執筆の詳細講義原稿。基本定義・収支・例題算術を確認。原本の全文章・式・図表脚注の網羅照合、独自図解、包括的品質監査・外部学術専門家校閲前。"
@@ -6395,8 +6395,8 @@
           "url": "https://ahtt.mit.edu/"
         },
         {
-          "title": "MIT OpenCourseWare 10.50 Analysis of Transport Phenomena（輸送現象の背景）",
-          "url": "https://ocw.mit.edu/courses/10-50-analysis-of-transport-phenomena-fall-2004/"
+          "title": "MIT OpenCourseWare 2.51 Intermediate Heat and Mass Transfer（熱・物質移動の背景資料）",
+          "url": "https://ocw.mit.edu/courses/2-51-intermediate-heat-and-mass-transfer-fall-2008/"
         }
       ],
       "reviewStatus": "独立執筆の詳細講義原稿。基本定義・収支・例題算術を確認。原本の全文章・式・図表脚注の網羅照合、独自図解、包括的品質監査・外部学術専門家校閲前。"
@@ -6489,8 +6489,8 @@
           "url": "https://ahtt.mit.edu/"
         },
         {
-          "title": "MIT OpenCourseWare 10.50 Analysis of Transport Phenomena（輸送現象の背景）",
-          "url": "https://ocw.mit.edu/courses/10-50-analysis-of-transport-phenomena-fall-2004/"
+          "title": "MIT OpenCourseWare 2.51 Intermediate Heat and Mass Transfer（熱・物質移動の背景資料）",
+          "url": "https://ocw.mit.edu/courses/2-51-intermediate-heat-and-mass-transfer-fall-2008/"
         }
       ],
       "reviewStatus": "独立執筆の詳細講義原稿。基本定義・収支・例題算術を確認。原本の全文章・式・図表脚注の網羅照合、独自図解、包括的品質監査・外部学術専門家校閲前。"
@@ -6584,8 +6584,8 @@
           "url": "https://ahtt.mit.edu/"
         },
         {
-          "title": "MIT OpenCourseWare 10.50 Analysis of Transport Phenomena（輸送現象の背景）",
-          "url": "https://ocw.mit.edu/courses/10-50-analysis-of-transport-phenomena-fall-2004/"
+          "title": "MIT OpenCourseWare 2.51 Intermediate Heat and Mass Transfer（熱・物質移動の背景資料）",
+          "url": "https://ocw.mit.edu/courses/2-51-intermediate-heat-and-mass-transfer-fall-2008/"
         }
       ],
       "reviewStatus": "独立執筆の詳細講義原稿。基本定義・収支・例題算術を確認。原本の全文章・式・図表脚注の網羅照合、独自図解、包括的品質監査・外部学術専門家校閲前。"
@@ -6684,8 +6684,8 @@
           "url": "https://ahtt.mit.edu/"
         },
         {
-          "title": "MIT OpenCourseWare 10.50 Analysis of Transport Phenomena（輸送現象の背景）",
-          "url": "https://ocw.mit.edu/courses/10-50-analysis-of-transport-phenomena-fall-2004/"
+          "title": "MIT OpenCourseWare 2.51 Intermediate Heat and Mass Transfer（熱・物質移動の背景資料）",
+          "url": "https://ocw.mit.edu/courses/2-51-intermediate-heat-and-mass-transfer-fall-2008/"
         }
       ],
       "reviewStatus": "独立執筆の詳細講義原稿。基本定義・収支・例題算術を確認。原本の全文章・式・図表脚注の網羅照合、独自図解、包括的品質監査・外部学術専門家校閲前。"
@@ -6779,8 +6779,8 @@
           "url": "https://ahtt.mit.edu/"
         },
         {
-          "title": "MIT OpenCourseWare 10.50 Analysis of Transport Phenomena（輸送現象の背景）",
-          "url": "https://ocw.mit.edu/courses/10-50-analysis-of-transport-phenomena-fall-2004/"
+          "title": "MIT OpenCourseWare 2.51 Intermediate Heat and Mass Transfer（熱・物質移動の背景資料）",
+          "url": "https://ocw.mit.edu/courses/2-51-intermediate-heat-and-mass-transfer-fall-2008/"
         }
       ],
       "reviewStatus": "独立執筆の詳細講義原稿。基本定義・収支・例題算術を確認。原本の全文章・式・図表脚注の網羅照合、独自図解、包括的品質監査・外部学術専門家校閲前。"
@@ -6874,8 +6874,8 @@
           "url": "https://ahtt.mit.edu/"
         },
         {
-          "title": "MIT OpenCourseWare 10.50 Analysis of Transport Phenomena（輸送現象の背景）",
-          "url": "https://ocw.mit.edu/courses/10-50-analysis-of-transport-phenomena-fall-2004/"
+          "title": "MIT OpenCourseWare 2.51 Intermediate Heat and Mass Transfer（熱・物質移動の背景資料）",
+          "url": "https://ocw.mit.edu/courses/2-51-intermediate-heat-and-mass-transfer-fall-2008/"
         }
       ],
       "reviewStatus": "独立執筆の詳細講義原稿。基本定義・収支・例題算術を確認。原本の全文章・式・図表脚注の網羅照合、独自図解、包括的品質監査・外部学術専門家校閲前。"
@@ -6974,8 +6974,8 @@
           "url": "https://ahtt.mit.edu/"
         },
         {
-          "title": "MIT OpenCourseWare 10.50 Analysis of Transport Phenomena（輸送現象の背景）",
-          "url": "https://ocw.mit.edu/courses/10-50-analysis-of-transport-phenomena-fall-2004/"
+          "title": "MIT OpenCourseWare 2.51 Intermediate Heat and Mass Transfer（熱・物質移動の背景資料）",
+          "url": "https://ocw.mit.edu/courses/2-51-intermediate-heat-and-mass-transfer-fall-2008/"
         }
       ],
       "reviewStatus": "独立執筆の詳細講義原稿。基本定義・収支・例題算術を確認。原本の全文章・式・図表脚注の網羅照合、独自図解、包括的品質監査・外部学術専門家校閲前。"

@@ -16,7 +16,7 @@ test('every original Japanese note has exactly one published question with a sin
   const items=optionSets.flatMap(d=>d.items),generated=source.questions;
   assert.equal(items.length,76);
   assert.equal(new Set(items.map(x=>x.sectionId)).size,76);
-  assert.equal(generated.filter(q=>q.revision!=='v1').length,55,'answer wording and scientific conditions must be versioned');
+  assert.equal(generated.filter(q=>q.revision!=='v1').length,56,'answer wording and scientific conditions must be versioned');
   assert.equal(generated.length,76);
   assert.ok(all.length>=298);
   assert.equal(all.filter(q=>q.source?.type==='supplement').length,all.length-all.filter(q=>q.source?.type==='book').length);

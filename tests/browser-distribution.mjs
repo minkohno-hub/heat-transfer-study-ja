@@ -686,8 +686,8 @@ try {
   // Exercise all internally checked earlier additions and every new question authored here.
   // A vocabulary tap must leave the answer draft and persisted learning state intact.
   const pending=await page.evaluate(async()=>
-    (await (await fetch('./data/questions.json')).json()).filter(q=>q.reportHistory?.some(r=>['internal_independent_check','authored_with_internal_check'].includes(r.type))));
-  assert.equal(pending.length,359);
+    (await (await fetch('./data/questions.json')).json()).filter(q=>q.reportHistory?.some(r=>['internal_independent_check','authored_with_internal_check','internal_audit_followup'].includes(r.type))));
+  assert.equal(pending.length,364);
   const replaceSuspended=dialog=>dialog.accept();
   page.on('dialog',replaceSuspended);
   for(const q of pending){
