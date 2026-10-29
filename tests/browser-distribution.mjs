@@ -603,6 +603,9 @@ try {
   if([200,206].includes(missingPdf.status))assert.equal(missingPdf.signature,'%PDF','別領域のHTTPキャッシュがPDFを返した場合も署名を確認する');
   }
   await nav('reader');
+  const allLectures=await page.evaluate(async()=>(await (await fetch('./data/original-deep-lessons.json')).json()).lessons);
+  assert.equal(allLectures.length,76);
+  const lessonFor=id=>allLectures.find(lesson=>lesson.sectionId===id);
   // In-depth original Japanese lessons must be accessible on both fresh and
   // previously cached distributions, independently of copyrighted book text.
   // Verify newly added independent advanced lessons through the real reader UI.
@@ -613,7 +616,7 @@ try {
   await page.locator('#reader-deep-lesson').waitFor({state:'visible'});
   assert.match(await page.locator('#reader-deep-lesson').innerText(),/熱伝導方程式を保存則から導く/);
   assert.match(await page.locator('#reader-deep-lesson').innerText(),/30\.8 ℃/);
-  assert.equal(await page.locator('#reader-deep-lesson .deep-lesson-block').count(),7);
+  assert.equal(await page.locator('#reader-deep-lesson .deep-lesson-block').count(),lessonFor('2.1').blocks.length);
   await page.locator('.reader-toc [data-section="11.3"]').evaluate(element=>{
     for(let n=element.parentElement;n;n=n.parentElement)if(n.tagName==='DETAILS')n.open=true;
   });
@@ -621,7 +624,7 @@ try {
   await page.locator('#reader-deep-lesson').waitFor({state:'visible'});
   assert.match(await page.locator('#reader-deep-lesson').innerText(),/Fickの法則/);
   assert.match(await page.locator('#reader-deep-lesson').innerText(),/0\.01396/);
-  assert.equal(await page.locator('#reader-deep-lesson .deep-lesson-block').count(),7);
+  assert.equal(await page.locator('#reader-deep-lesson .deep-lesson-block').count(),lessonFor('11.3').blocks.length);
   await page.locator('.reader-toc [data-section="3.2"]').evaluate(element=>{
     for(let n=element.parentElement;n;n=n.parentElement)if(n.tagName==='DETAILS')n.open=true;
   });
@@ -629,7 +632,7 @@ try {
   await page.locator('#reader-deep-lesson').waitFor({state:'visible'});
   assert.match(await page.locator('#reader-deep-lesson').innerText(),/対数平均温度差の導出/);
   assert.match(await page.locator('#reader-deep-lesson').innerText(),/202\.73 W\/K/);
-  assert.equal(await page.locator('#reader-deep-lesson .deep-lesson-block').count(),6);
+  assert.equal(await page.locator('#reader-deep-lesson .deep-lesson-block').count(),lessonFor('3.2').blocks.length);
   await page.locator('.reader-toc [data-section="5.2"]').evaluate(element=>{
     for(let n=element.parentElement;n;n=n.parentElement)if(n.tagName==='DETAILS')n.open=true;
   });
@@ -644,7 +647,7 @@ try {
   await page.locator('#reader-deep-lesson').waitFor({state:'visible'});
   assert.match(await page.locator('#reader-deep-lesson').innerText(),/独立作成の発展学習教材/);
   assert.match(await page.locator('#reader-deep-lesson').innerText(),/Ra≈7\.85×10⁶/);
-  assert.equal(await page.locator('#reader-deep-lesson .deep-lesson-block').count(),6);
+  assert.equal(await page.locator('#reader-deep-lesson .deep-lesson-block').count(),lessonFor('8.4').blocks.length);
   await page.locator('.reader-toc [data-section="8.5"]').evaluate(element=>{
     for(let n=element.parentElement;n;n=n.parentElement)if(n.tagName==='DETAILS')n.open=true;
   });
@@ -653,7 +656,7 @@ try {
   assert.match(await page.locator('#reader-deep-lesson').innerText(),/膜状凝縮の液膜抵抗/);
   assert.match(await page.locator('#reader-deep-lesson').innerText(),/1\.724 kW/);
   assert.match(await page.locator('#reader-deep-lesson').innerText(),/Re_f≈21\.9/);
-  assert.equal(await page.locator('#reader-deep-lesson .deep-worked-example li').count(),6);
+  assert.equal(await page.locator('#reader-deep-lesson .deep-worked-example li').count(),lessonFor('8.5').workedExample.steps.length);
   // Check every formerly pending lecture in the actual reader. Chromium/Firefox
   // are still offline here; WebKit checks the same content online.
   for(const [sectionId,answer] of [
@@ -668,8 +671,6 @@ try {
     assert.match(text,/AI内部/);assert.match(text,/外部学術専門家校閲前/);
   }
   // Render every detailed lecture in the built distribution, including its actual example.
-  const allLectures=await page.evaluate(async()=>(await (await fetch('./data/original-deep-lessons.json')).json()).lessons);
-  assert.equal(allLectures.length,76);
   for(const lesson of allLectures){
     const link=page.locator(`.reader-toc [data-section="${lesson.sectionId}"]`);
     await link.evaluate(element=>{for(let n=element.parentElement;n;n=n.parentElement)if(n.tagName==='DETAILS')n.open=true;});
@@ -730,7 +731,7 @@ try {
   await page.locator('#reader-deep-lesson').waitFor({state:'visible'});
   assert.match(await page.locator('#reader-deep-lesson').innerText(),/放射交換の基礎：黒体、放射率/);
   assert.match(await page.locator('#reader-deep-lesson').innerText(),/396\.926 W/);
-  assert.equal(await page.locator('#reader-deep-lesson .deep-worked-example li').count(),6);
+  assert.equal(await page.locator('#reader-deep-lesson .deep-worked-example li').count(),lessonFor('10.1').workedExample.steps.length);
   assert.deepEqual(errors,[]);
   assert.deepEqual(external,[]);
   console.log(engine==='webkit'?'WebKitで公開配信物の主要画面・保存・PDFキャッシュのオンライン範囲取得を確認。Playwright WebKitのオフライン通信・再訪は内部エラーのため未検証。':`${engine}で公開配信物：原本PDFとオフラインの範囲取得、訳文・抽出原図なし、ガイド・演習・計算・保存・画面幅・数字キーとEnter・3種類の表示モードを確認。`);
