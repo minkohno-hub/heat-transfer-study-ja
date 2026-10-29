@@ -129,3 +129,11 @@
 - 参照した外部教材：DSPE Net-radiation method（https://www.dspe.nl/knowledge/thermomechanics/chapter-2-in-depth/2-4-thermal-radiation/2-4-4-net-radiation-method/）およびOpenStax Chemistry 2e §9.3（https://openstax.org/books/chemistry-2e/pages/9-3-stoichiometry-of-gaseous-substances-mixtures-and-reactions）。原書翻訳・図版転載ではない。専門家校閲は未実施。
 - **JS事前検証**：全329語のID・NFKC正規化した日本語代表名/別名・英語名の重複なし、新規11語の必須欄・関連語・実在章節、数値例11件の独立演算検証に合格。既存318語は無変更。
 - 未照合の問題IDは書かずrelatedQuestions=[]。既存の158語固定テストは統合ライン担当。Nodeテスト/CI/公開ビルド/実機・外部校閲は未実施で、全品質ゲート未達。テストや図解・講義・問題・他ブランチ・PRは未変更。
+
+## 第17バッチ（2026-10-29 JST）
+- 直前 **329語** → 追加 **11語** → 合計 **340語**。
+- 追加：空間格子幅、時間刻み、中心差分、熱伝導方程式の差分化、陽的差分法、格子フーリエ数、陽解法の安定条件、陰的差分法、離散化誤差、格子収束性、クランク・ニコルソン法。
+- 第5章の非定常熱伝導を理解するための数値計算補足として、格子幅、時間刻み、中心差分、熱伝導方程式の差分化、陽/陰解法、格子フーリエ数、FTCS安定条件、離散化誤差、格子収束、クランク・ニコルソン法を解説。熱伝導シミュレーターへ関連付け、式の前提と安定性≠精度を明記。教科書の本文の逐語翻訳ではなく数値解析の一般論として独立執筆。すべてneeds_review。
+- 陽解法の安定条件r≤0.5はPDE MOOC（https://aquaulb.github.io/book_solving_pde_mooc/solving_pde_mooc/notebooks/04_PartialDifferentialEquations/04_03_Diffusion_Explicit.html）およびNumerical Analysis 2025（https://gustavdelius.github.io/NumericalAnalysis2025/nmPDE.html）を参照。
+- **事前JS検証**：全340語のIDと日本語代表名/別名NFKC正規化、英語名の衝突なし。新規11語の必須欄・関連語・実在章節・シミュレーターID・数値例10件の計算に合格。既存329語の順序・内容は維持。
+- 未検証の関連問題IDは記載せずrelatedQuestions=[]。固定158語を前提にする既存Nodeテスト・CI・公開ビルド・実機・外部校閲は未実施で全品質ゲート未達。テスト・他担当ブランチや図解・教材・問題・PRには触れない。

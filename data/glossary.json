@@ -10851,5 +10851,423 @@
       "reference": "第10章の放射ネットワークと第11章の気体混合・物質移動を独自解説。放射ネットワーク表現はDSPE Net-radiation method（https://www.dspe.nl/knowledge/thermomechanics/chapter-2-in-depth/2-4-thermal-radiation/2-4-4-net-radiation-method/）、理想混合気体の分圧はOpenStax Chemistry 2e §9.3（https://openstax.org/books/chemistry-2e/pages/9-3-stoichiometry-of-gaseous-substances-mixtures-and-reactions）を参考にした。教科書翻訳・図版転載ではなく、専門家校閲前。"
     },
     "reviewStatus": "needs_review"
+  },
+  {
+    "id": "spatial-grid-spacing",
+    "ja": "空間格子幅",
+    "en": "spatial grid spacing",
+    "aliases": [
+      "格子間隔"
+    ],
+    "category": "熱伝導の数値解析",
+    "brief": "温度場を数値計算する際に、隣り合う格子点の間に取る距離。",
+    "meaning": "温度場を数値計算する際に、隣り合う格子点の間に取る距離。",
+    "beginner": "物体を小さな区間へ分けて計算するときの、区間一つ分の長さです。細かくすると位置の変化を詳しく扱えます。",
+    "detail": "一次元領域0≤x≤LをN個の等間隔のセルに分けるなら格子幅Δx=L/N、格子点はN+1点。有限差分法の二階空間微分ではΔx²が分母になるので、細分化は精度と時間刻みの安定条件に影響する。有限体積法ではセル中心の位置・面位置などが異なるため、格子点数とセル数を混同しない。",
+    "formula": "Δx=L/N（N個の等間隔区間）",
+    "unit": "Δx,L: m、N: 無次元の区間数",
+    "example": "長さ0.10 mを10区間に分けると格子幅Δx=0.010 m、両端を含め格子点は11点。",
+    "related": [
+      "一次元熱伝導",
+      "熱伝導方程式",
+      "中心差分",
+      "格子フーリエ数"
+    ],
+    "relatedSections": [
+      "5.3",
+      "5.7",
+      "5.8"
+    ],
+    "relatedQuestions": [],
+    "relatedSimulators": [
+      "transient"
+    ],
+    "confusions": [
+      "10区間の分割には通常11個の節点があり、区間数と格子点数は同じとは限らない。"
+    ],
+    "source": {
+      "type": "supplement",
+      "reference": "教材第5章の非定常・多次元熱伝導を解くための補足数学・数値計算用語。熱方程式の陽解法の安定条件・陰解法・格子収束はSolving PDE MOOC（https://aquaulb.github.io/book_solving_pde_mooc/solving_pde_mooc/notebooks/04_PartialDifferentialEquations/04_03_Diffusion_Explicit.html）とNumerical Analysis 2025（https://gustavdelius.github.io/NumericalAnalysis2025/nmPDE.html）を参考に独自記述。原書翻訳や図版転載ではなく外部専門家校閲前。"
+    },
+    "reviewStatus": "needs_review"
+  },
+  {
+    "id": "simulation-time-step",
+    "ja": "時間刻み",
+    "en": "time step in numerical simulation",
+    "aliases": [
+      "タイムステップ"
+    ],
+    "category": "熱伝導の数値解析",
+    "brief": "時間依存の計算で、数値解を更新する時刻の間隔。",
+    "meaning": "時間依存の計算で、数値解を更新する時刻の間隔。",
+    "beginner": "温度の変化を1秒ごとに計算するか、0.1秒ごとに計算するかの違いです。細かいほど通常は計算回数が増えます。",
+    "detail": "非定常伝導の計算を時刻t_nからt_{n+1}=t_n+Δtへ進める際のΔtを時間刻みという。陽解法では熱拡散率αと格子幅Δxの組み合わせが安定条件を制限する。陰解法は安定であっても大きなΔtでは過渡応答の誤差が増す。必ずしも時間刻みが細かいほど自動的に物性・境界条件の誤りまで解消するわけではない。",
+    "formula": "t_{n+1}=t_n+Δt",
+    "unit": "t,Δt: s、n: 無次元のステップ番号",
+    "example": "120秒間の応答を60等間隔ステップで計算するならΔt=2 s。",
+    "related": [
+      "非定常熱伝導",
+      "格子フーリエ数",
+      "陽的差分法",
+      "陰的差分法"
+    ],
+    "relatedSections": [
+      "5.3",
+      "5.8"
+    ],
+    "relatedQuestions": [],
+    "relatedSimulators": [
+      "transient"
+    ],
+    "confusions": [
+      "時間刻みを小さくすることは時間離散化誤差への対策だが、空間格子やモデル自体の誤差とは別問題。"
+    ],
+    "source": {
+      "type": "supplement",
+      "reference": "教材第5章の非定常・多次元熱伝導を解くための補足数学・数値計算用語。熱方程式の陽解法の安定条件・陰解法・格子収束はSolving PDE MOOC（https://aquaulb.github.io/book_solving_pde_mooc/solving_pde_mooc/notebooks/04_PartialDifferentialEquations/04_03_Diffusion_Explicit.html）とNumerical Analysis 2025（https://gustavdelius.github.io/NumericalAnalysis2025/nmPDE.html）を参考に独自記述。原書翻訳や図版転載ではなく外部専門家校閲前。"
+    },
+    "reviewStatus": "needs_review"
+  },
+  {
+    "id": "central-difference",
+    "ja": "中心差分",
+    "en": "central finite difference",
+    "aliases": [
+      "中央差分"
+    ],
+    "category": "熱伝導の数値解析",
+    "brief": "ある格子点の両隣を用いて微分を近似する数値計算の方法。",
+    "meaning": "ある格子点の両隣を用いて微分を近似する数値計算の方法。",
+    "beginner": "真ん中の点と左右の温度を使い、温度曲線の傾きや曲がり具合を計算します。隣り合う温度の違いが材料内の伝熱に結びつきます。",
+    "detail": "等間隔Δxの格子で温度の二階微分を評価する中心差分は∂²T/∂x²≈(T_{i+1}−2T_i+T_{i−1})/Δx²。十分に滑らかな関数ではこの近似の空間打切り誤差はO(Δx²)。境界近くで対称な2点がない場合や異方性・温度依存性が強い場合は、そのまま同じ離散式だけで適切に扱えない場合がある。",
+    "formula": "∂²T/∂x²≈(T_{i+1}−2T_i+T_{i−1})/Δx²",
+    "unit": "∂²T/∂x²: K/m²、Δx: m",
+    "example": "左20℃、中央30℃、右50℃、Δx=0.010 mなら二階微分の近似値は(50−60+20)/0.0001=100000 K/m²。",
+    "related": [
+      "空間格子幅",
+      "熱伝導方程式",
+      "離散化誤差",
+      "陽的差分法"
+    ],
+    "relatedSections": [
+      "5.7",
+      "5.8"
+    ],
+    "relatedQuestions": [],
+    "relatedSimulators": [
+      "transient"
+    ],
+    "confusions": [
+      "中心差分は元の微分式の数値近似であり、格子幅が有限なら打切り誤差が存在する。"
+    ],
+    "source": {
+      "type": "supplement",
+      "reference": "教材第5章の非定常・多次元熱伝導を解くための補足数学・数値計算用語。熱方程式の陽解法の安定条件・陰解法・格子収束はSolving PDE MOOC（https://aquaulb.github.io/book_solving_pde_mooc/solving_pde_mooc/notebooks/04_PartialDifferentialEquations/04_03_Diffusion_Explicit.html）とNumerical Analysis 2025（https://gustavdelius.github.io/NumericalAnalysis2025/nmPDE.html）を参考に独自記述。原書翻訳や図版転載ではなく外部専門家校閲前。"
+    },
+    "reviewStatus": "needs_review"
+  },
+  {
+    "id": "finite-difference-heat-equation",
+    "ja": "熱伝導方程式の差分化",
+    "en": "finite difference discretization of the heat equation",
+    "aliases": [
+      "熱方程式の差分離散化"
+    ],
+    "category": "熱伝導の数値解析",
+    "brief": "熱伝導方程式の時間微分・空間微分を、格子点の温度差による計算式へ置き換える操作。",
+    "meaning": "熱伝導方程式の時間微分・空間微分を、格子点の温度差による計算式へ置き換える操作。",
+    "beginner": "連続した温度分布をコンピューターで扱えるよう、小さな区間と時刻に区切り、隣り合う点との温度差で計算します。",
+    "detail": "一次元・等方・熱拡散率一定・内部発熱なしの熱方程式∂T/∂t=α∂²T/∂x²に対し、空間二階微分を中心差分、時間微分を前進差分にすると(T_i^{n+1}−T_i^n)/Δt≈α(T_{i+1}^n−2T_i^n+T_{i−1}^n)/Δx²。変化する物性・境界条件を扱うときは熱流束・エネルギー保存の扱いを確認する。",
+    "formula": "(T_i^{n+1}−T_i^n)/Δt≈α(T_{i+1}^n−2T_i^n+T_{i−1}^n)/Δx²",
+    "unit": "左辺: K/s、α: m²/s、右辺: K/s",
+    "example": "α=10⁻⁶ m²/s、温度の二階差分値100000 K/m²なら、その点の温度変化率は0.10 K/s。",
+    "related": [
+      "熱伝導方程式",
+      "中心差分",
+      "時間刻み",
+      "格子フーリエ数"
+    ],
+    "relatedSections": [
+      "5.3",
+      "5.8"
+    ],
+    "relatedQuestions": [],
+    "relatedSimulators": [
+      "transient"
+    ],
+    "confusions": [
+      "差分化は物理法則を変更する操作ではなく、有限の格子で近似して計算する操作。"
+    ],
+    "source": {
+      "type": "supplement",
+      "reference": "教材第5章の非定常・多次元熱伝導を解くための補足数学・数値計算用語。熱方程式の陽解法の安定条件・陰解法・格子収束はSolving PDE MOOC（https://aquaulb.github.io/book_solving_pde_mooc/solving_pde_mooc/notebooks/04_PartialDifferentialEquations/04_03_Diffusion_Explicit.html）とNumerical Analysis 2025（https://gustavdelius.github.io/NumericalAnalysis2025/nmPDE.html）を参考に独自記述。原書翻訳や図版転載ではなく外部専門家校閲前。"
+    },
+    "reviewStatus": "needs_review"
+  },
+  {
+    "id": "explicit-difference-heat-equation",
+    "ja": "陽的差分法",
+    "en": "explicit finite difference method for heat conduction",
+    "aliases": [
+      "FTCS法"
+    ],
+    "category": "熱伝導の数値解析",
+    "brief": "次の時刻の温度を、現在の時刻に既に分かっている格子点温度から直接求める方式。",
+    "meaning": "次の時刻の温度を、現在の時刻に既に分かっている格子点温度から直接求める方式。",
+    "beginner": "いまの温度と両隣の温度が分かれば、次の時刻の温度をすぐ計算します。ただし時間を大きく進めすぎると不安定になります。",
+    "detail": "等間隔格子の一次元熱方程式に前進時間・中心空間FTCS法を用いるとT_i^{n+1}=T_i^n+r(T_{i+1}^n−2T_i^n+T_{i−1}^n)、r=αΔt/Δx²。全ての右辺温度は時刻nの既知値なので直接更新できる。ただし一定物性・単純な境界条件の一次元問題ではr≤1/2が安定条件であり、多次元系などには異なる制限がある。",
+    "formula": "T_i^{n+1}=T_i^n+r(T_{i+1}^n−2T_i^n+T_{i−1}^n)",
+    "unit": "T_i: Kまたは℃、r: 無次元",
+    "example": "左20℃、中央30℃、右50℃でr=0.20なら次の中央温度は30+0.2(50−60+20)=32℃。",
+    "related": [
+      "中心差分",
+      "時間刻み",
+      "格子フーリエ数",
+      "陽解法の安定条件"
+    ],
+    "relatedSections": [
+      "5.3",
+      "5.8"
+    ],
+    "relatedQuestions": [],
+    "relatedSimulators": [
+      "transient"
+    ],
+    "confusions": [
+      "陽的差分法は時間刻みを無制限に大きくしても安定とは限らない。"
+    ],
+    "source": {
+      "type": "supplement",
+      "reference": "教材第5章の非定常・多次元熱伝導を解くための補足数学・数値計算用語。熱方程式の陽解法の安定条件・陰解法・格子収束はSolving PDE MOOC（https://aquaulb.github.io/book_solving_pde_mooc/solving_pde_mooc/notebooks/04_PartialDifferentialEquations/04_03_Diffusion_Explicit.html）とNumerical Analysis 2025（https://gustavdelius.github.io/NumericalAnalysis2025/nmPDE.html）を参考に独自記述。原書翻訳や図版転載ではなく外部専門家校閲前。"
+    },
+    "reviewStatus": "needs_review"
+  },
+  {
+    "id": "grid-fourier-number",
+    "ja": "格子フーリエ数",
+    "en": "grid Fourier number",
+    "aliases": [
+      "差分フーリエ数"
+    ],
+    "category": "熱伝導の数値解析",
+    "brief": "数値計算の1ステップ中に、格子幅に比べてどれほど熱が拡散するかを表す無次元量。",
+    "meaning": "数値計算の1ステップ中に、格子幅に比べてどれほど熱が拡散するかを表す無次元量。",
+    "beginner": "格子幅が細かく、時間刻みが長いほど、1回の計算で熱が遠くまで広がることになります。その程度の比です。",
+    "detail": "格子フーリエ数r=αΔt/(Δx)²は、代表長さに格子幅、代表時間に数値計算の時間刻みを用いたフーリエ数。一般的な物理現象のフーリエ数Fo=αt/L²と同じ形でも、長さと時間の定義が異なる。一次元のFTCS陽解法ではr≤1/2が必要な安定条件の一つとなる。高次元・不等間隔格子や異方性では別の条件が必要。",
+    "formula": "r=αΔt/(Δx)²",
+    "unit": "r: 無次元、α: m²/s、Δt: s、Δx: m",
+    "example": "α=10⁻⁶ m²/s、Δt=10 s、Δx=0.010 mなら格子フーリエ数r=0.10。",
+    "related": [
+      "フーリエ数",
+      "空間格子幅",
+      "時間刻み",
+      "陽解法の安定条件"
+    ],
+    "relatedSections": [
+      "5.3",
+      "5.8"
+    ],
+    "relatedQuestions": [],
+    "relatedSimulators": [
+      "transient"
+    ],
+    "confusions": [
+      "格子フーリエ数と、物体の大きさを代表長さにした物理的フーリエ数は尺度が異なる。"
+    ],
+    "source": {
+      "type": "supplement",
+      "reference": "教材第5章の非定常・多次元熱伝導を解くための補足数学・数値計算用語。熱方程式の陽解法の安定条件・陰解法・格子収束はSolving PDE MOOC（https://aquaulb.github.io/book_solving_pde_mooc/solving_pde_mooc/notebooks/04_PartialDifferentialEquations/04_03_Diffusion_Explicit.html）とNumerical Analysis 2025（https://gustavdelius.github.io/NumericalAnalysis2025/nmPDE.html）を参考に独自記述。原書翻訳や図版転載ではなく外部専門家校閲前。"
+    },
+    "reviewStatus": "needs_review"
+  },
+  {
+    "id": "explicit-heat-equation-stability",
+    "ja": "陽解法の安定条件",
+    "en": "explicit heat equation stability condition",
+    "aliases": [
+      "FTCS安定条件"
+    ],
+    "category": "熱伝導の数値解析",
+    "brief": "陽的差分法で数値誤差が時間とともに増幅しないために必要となる時間刻みの条件。",
+    "meaning": "陽的差分法で数値誤差が時間とともに増幅しないために必要となる時間刻みの条件。",
+    "beginner": "計算を1回で進めすぎると、温度が不自然に振動したり発散したりします。安定して動かすための上限です。",
+    "detail": "一定熱拡散率・等間隔格子・一次元熱方程式のFTCS法で、単純な固定温度境界等を考えるとr=αΔt/Δx²≤1/2が標準的な安定条件。したがってΔt≤Δx²/(2α)。格子幅を半分にすると時間刻みの許容上限は1/4になる。安定であっても数値解の正確性は別に評価し、内部発熱・境界・多次元などを含む離散化へ条件をそのまま適用しない。",
+    "formula": "αΔt/(Δx)²≤1/2 ⇒ Δt≤(Δx)²/(2α)（一次元FTCS）",
+    "unit": "Δt: s、α: m²/s、Δx: m、r: 無次元",
+    "example": "α=10⁻⁶ m²/s、Δx=0.010 mならFTCS法の時間刻みは50 s以下が安定条件の上限。",
+    "related": [
+      "陽的差分法",
+      "格子フーリエ数",
+      "時間刻み",
+      "陰的差分法"
+    ],
+    "relatedSections": [
+      "5.3",
+      "5.8"
+    ],
+    "relatedQuestions": [],
+    "relatedSimulators": [
+      "transient"
+    ],
+    "confusions": [
+      "r≤1/2は一定物性の一次元FTCS条件であり、全ての数値手法に共通の普遍的な上限ではない。"
+    ],
+    "source": {
+      "type": "supplement",
+      "reference": "教材第5章の非定常・多次元熱伝導を解くための補足数学・数値計算用語。熱方程式の陽解法の安定条件・陰解法・格子収束はSolving PDE MOOC（https://aquaulb.github.io/book_solving_pde_mooc/solving_pde_mooc/notebooks/04_PartialDifferentialEquations/04_03_Diffusion_Explicit.html）とNumerical Analysis 2025（https://gustavdelius.github.io/NumericalAnalysis2025/nmPDE.html）を参考に独自記述。原書翻訳や図版転載ではなく外部専門家校閲前。"
+    },
+    "reviewStatus": "needs_review"
+  },
+  {
+    "id": "implicit-difference-heat-equation",
+    "ja": "陰的差分法",
+    "en": "implicit finite difference method for heat conduction",
+    "aliases": [
+      "BTCS法"
+    ],
+    "category": "熱伝導の数値解析",
+    "brief": "次の時刻の温度を含む連立方程式を解いて、温度場を更新する方法。",
+    "meaning": "次の時刻の温度を含む連立方程式を解いて、温度場を更新する方法。",
+    "beginner": "次の温度を点ごとにすぐ計算せず、隣の点の次の温度も含めた式をまとめて解きます。安定性に優れますが、計算が複雑になります。",
+    "detail": "一次元・一定αの熱方程式の後退時間・中心空間BTCS法は−rT_{i−1}^{n+1}+(1+2r)T_i^{n+1}−rT_{i+1}^{n+1}=T_i^n。全格子点で次時刻の未知値を連立して解く。通常の線形拡散系では時間刻みによる安定制約を受けないが、Δtが大きいと物理的な時間応答の精度が落ちる。非線形物性や複雑な境界では別の収束・解法の確認も必要。",
+    "formula": "−rT_{i−1}^{n+1}+(1+2r)T_i^{n+1}−rT_{i+1}^{n+1}=T_i^n",
+    "unit": "r: 無次元、T: Kまたは℃",
+    "example": "r=0.20、現在の中央30℃、隣の次時刻温度が20℃と50℃なら中央の次時刻温度は(30+0.2×70)/1.4≈31.43℃。",
+    "related": [
+      "陽的差分法",
+      "格子フーリエ数",
+      "時間刻み",
+      "熱伝導方程式の差分化"
+    ],
+    "relatedSections": [
+      "5.3",
+      "5.8"
+    ],
+    "relatedQuestions": [],
+    "relatedSimulators": [
+      "transient"
+    ],
+    "confusions": [
+      "陰的差分法が時間刻みに関して安定でも、どんな時間刻みでも精度がよいとは限らない。"
+    ],
+    "source": {
+      "type": "supplement",
+      "reference": "教材第5章の非定常・多次元熱伝導を解くための補足数学・数値計算用語。熱方程式の陽解法の安定条件・陰解法・格子収束はSolving PDE MOOC（https://aquaulb.github.io/book_solving_pde_mooc/solving_pde_mooc/notebooks/04_PartialDifferentialEquations/04_03_Diffusion_Explicit.html）とNumerical Analysis 2025（https://gustavdelius.github.io/NumericalAnalysis2025/nmPDE.html）を参考に独自記述。原書翻訳や図版転載ではなく外部専門家校閲前。"
+    },
+    "reviewStatus": "needs_review"
+  },
+  {
+    "id": "discretization-error",
+    "ja": "離散化誤差",
+    "en": "discretization error",
+    "aliases": [
+      "打切り誤差（離散化）"
+    ],
+    "category": "熱伝導の数値解析",
+    "brief": "連続した微分方程式を有限の格子点と時間刻みで近似することにより生じる誤差。",
+    "meaning": "連続した微分方程式を有限の格子点と時間刻みで近似することにより生じる誤差。",
+    "beginner": "本当は滑らかに変わる温度を、点と点の間の計算で表すと近似になります。そのずれがどれくらいかという問題です。",
+    "detail": "中心二階差分の局所空間打切り誤差は、十分滑らかな解でO(Δx²)。時間前進・後退オイラーの局所近似誤差はそれぞれ時間微分に対してO(Δt)と評価される。全体の数値誤差には境界近似・丸め誤差・反復収束誤差・物理モデル誤差も影響するため、格子を細かくしてもすべてが消えるわけではない。",
+    "formula": "誤差の代表的次数：O(Δt+(Δx)²)（一次元FTCS・滑らかな解）",
+    "unit": "Δx: m、Δt: s、誤差の単位は評価する温度量と同じ",
+    "example": "空間二次精度が支配的な範囲では、Δxを半分にすると対応する離散化誤差が概ね1/4になる。",
+    "related": [
+      "中心差分",
+      "空間格子幅",
+      "時間刻み",
+      "格子収束性"
+    ],
+    "relatedSections": [
+      "5.7",
+      "5.8"
+    ],
+    "relatedQuestions": [],
+    "relatedSimulators": [
+      "transient"
+    ],
+    "confusions": [
+      "離散化誤差と、物性値の誤りや境界条件のモデル誤差は別の問題。"
+    ],
+    "source": {
+      "type": "supplement",
+      "reference": "教材第5章の非定常・多次元熱伝導を解くための補足数学・数値計算用語。熱方程式の陽解法の安定条件・陰解法・格子収束はSolving PDE MOOC（https://aquaulb.github.io/book_solving_pde_mooc/solving_pde_mooc/notebooks/04_PartialDifferentialEquations/04_03_Diffusion_Explicit.html）とNumerical Analysis 2025（https://gustavdelius.github.io/NumericalAnalysis2025/nmPDE.html）を参考に独自記述。原書翻訳や図版転載ではなく外部専門家校閲前。"
+    },
+    "reviewStatus": "needs_review"
+  },
+  {
+    "id": "mesh-convergence",
+    "ja": "格子収束性",
+    "en": "mesh convergence",
+    "aliases": [
+      "格子独立性"
+    ],
+    "category": "熱伝導の数値解析",
+    "brief": "格子を細かくしていったとき、計算結果が特定の値へ近づく性質。",
+    "meaning": "格子を細かくしていったとき、計算結果が特定の値へ近づく性質。",
+    "beginner": "物体を10分割しても100分割しても結果がほぼ同じなら、格子の粗さによる誤差が小さくなっている可能性があります。",
+    "detail": "格子収束性はΔxを縮めながら数値解の重要な出力（壁面熱流束や温度など）が変化しなくなる傾向を確認するもの。時間依存問題では時間刻みを適切に制御し、反復解法の収束や保存則の満足も別に調べる。二次精度の漸近領域なら誤差がΔx²に比例するが、境界特異性や不連続な物性がある場合はこの次数が保証されない。格子独立は物理モデルの妥当性の証明ではない。",
+    "formula": "二次収束の典型例：|E(Δx/2)|≈|E(Δx)|/4（漸近領域）",
+    "unit": "Δx: m、温度誤差E: K",
+    "example": "二次精度が成立する条件で格子幅0.02 mの誤差が4 Kなら、0.01 mでは誤差が約1 Kとなることが期待される。",
+    "related": [
+      "離散化誤差",
+      "空間格子幅",
+      "熱伝導方程式の差分化"
+    ],
+    "relatedSections": [
+      "5.7",
+      "5.8"
+    ],
+    "relatedQuestions": [],
+    "relatedSimulators": [
+      "transient"
+    ],
+    "confusions": [
+      "格子を細かくしただけで境界条件や熱物性の誤りまで検証できるわけではない。"
+    ],
+    "source": {
+      "type": "supplement",
+      "reference": "教材第5章の非定常・多次元熱伝導を解くための補足数学・数値計算用語。熱方程式の陽解法の安定条件・陰解法・格子収束はSolving PDE MOOC（https://aquaulb.github.io/book_solving_pde_mooc/solving_pde_mooc/notebooks/04_PartialDifferentialEquations/04_03_Diffusion_Explicit.html）とNumerical Analysis 2025（https://gustavdelius.github.io/NumericalAnalysis2025/nmPDE.html）を参考に独自記述。原書翻訳や図版転載ではなく外部専門家校閲前。"
+    },
+    "reviewStatus": "needs_review"
+  },
+  {
+    "id": "crank-nicolson-method",
+    "ja": "クランク・ニコルソン法",
+    "en": "Crank–Nicolson method",
+    "aliases": [
+      "CN法"
+    ],
+    "category": "熱伝導の数値解析",
+    "brief": "前の時刻と次の時刻の空間差分を平均して更新する、時間方向二次精度の陰的解法。",
+    "meaning": "前の時刻と次の時刻の空間差分を平均して更新する、時間方向二次精度の陰的解法。",
+    "beginner": "今の温度分布と次の温度分布の両方を使う解法です。時間方向の精度を高められますが、連立方程式を解く必要があります。",
+    "detail": "線形・熱拡散率一定の一次元熱方程式に対し、CN法は(T_i^{n+1}−T_i^n)=r/2[(T_{i+1}^n−2T_i^n+T_{i−1}^n)+(T_{i+1}^{n+1}−2T_i^{n+1}+T_{i−1}^{n+1})]を使う。時間二次精度、空間中心差分で二次精度。線形拡散問題では無条件安定だが、大きすぎる時間刻みでは解に非物理的な振動が現れることがあり、時間精度の検証は必要。",
+    "formula": "T_i^{n+1}−T_i^n=(r/2)(δ_x²T_i^n+δ_x²T_i^{n+1})",
+    "unit": "r: 無次元、T: Kまたは℃、δ_x²T: 温度の無次元格子二階差",
+    "example": "r=0.2、現在の隣接温度20℃・30℃・50℃、次時刻の左右を20℃・50℃と固定すると、中央の次時刻温度は約31.67℃。",
+    "related": [
+      "陰的差分法",
+      "中心差分",
+      "時間刻み",
+      "離散化誤差"
+    ],
+    "relatedSections": [
+      "5.3",
+      "5.8"
+    ],
+    "relatedQuestions": [],
+    "relatedSimulators": [
+      "transient"
+    ],
+    "confusions": [
+      "時間二次精度や無条件安定は、時間刻みが大きくても振動が起きないという保証ではない。"
+    ],
+    "source": {
+      "type": "supplement",
+      "reference": "教材第5章の非定常・多次元熱伝導を解くための補足数学・数値計算用語。熱方程式の陽解法の安定条件・陰解法・格子収束はSolving PDE MOOC（https://aquaulb.github.io/book_solving_pde_mooc/solving_pde_mooc/notebooks/04_PartialDifferentialEquations/04_03_Diffusion_Explicit.html）とNumerical Analysis 2025（https://gustavdelius.github.io/NumericalAnalysis2025/nmPDE.html）を参考に独自記述。原書翻訳や図版転載ではなく外部専門家校閲前。"
+    },
+    "reviewStatus": "needs_review"
   }
 ]
