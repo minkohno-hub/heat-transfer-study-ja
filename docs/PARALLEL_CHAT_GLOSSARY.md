@@ -201,3 +201,11 @@
 - 参考照合：Chemical Engineering Science（https://www.sciencedirect.com/science/article/pii/S0009250918307516）、RSC Chem Soc Rev（https://pubs.rsc.org/en/content/articlehtml/2015/CS/C4CS00440J）、HESS 2025（https://hess.copernicus.org/articles/29/2097/2025/）、Fluids 2017（https://www.mdpi.com/2311-5521/2/2/17）。転載・翻訳なし。
 - **JS事前検証**：全434語のID・NFKC正規化日本語名/別名・英語名の重複なし。新規11語の完全欄・関連語・実在節参照、独立数値例10件を検算。既存423語の順序・内容は不変。
 - 未検証の問題IDは追加せずrelatedQuestions=[]。Nodeテスト・CI・Pages公開ビルド・ブラウザ実機・専門家校閲は未実施、全品質ゲートは未達。テスト、教材、図、他ライン、PR、mainは変更しない。
+
+## 第26バッチ（2026-10-30 JST）
+- 直前 **434語** → 今回 **11語** → 計 **445語**。
+- 追加：ぬれ縁長さ、矩形流路のアスペクト比、矩形流路の水力直径、広い平行平板流路の水力直径、同心二重管の環状流路水力直径、非円形流路のポアズイユ数、正方形流路の十分発達層流摩擦係数、直交流熱交換器の混合・非混合条件、プレート式熱交換器、多管式熱交換器のバッフル、汚れを考慮した総括熱伝達係数。
+- 第7.5節のぬれ縁・矩形縦横比・矩形/広い平行板/同心環状流路の水力直径、非円形流路のPoiseuille数・正方形ダクト層流摩擦、第3章の直交流の横方向混合分類、プレート熱交換器、シェル側バッフル、汚れ後の総括Uを追加。円管のf=64/Reと正方形の≈56.91/Reを明示的に区別。全新語needs_review。
+- 公開資料照合：ASHRAE Duct Design（https://handbook.ashrae.org/Handbooks/F25/IP/F25_Ch21/F25_Ch21_ip.aspx）、Middle East Technical University 論文（https://etd.lib.metu.edu.tr/upload/12624477/index.pdf）。教科書翻訳や図版転載はなく独立執筆。
+- **事前JS検証**：全445語のID・NFKC正規化見出し/別名・英語名重複なし。新規11語の必須欄・関連語ID/実在節・計算例9件に合格。既存434語は内容不変。
+- 未確認の問題IDは追加せずrelatedQuestions=[]。固定158語を前提とする既存Nodeテスト・CI・公開ビルド・実機・外部校閲は未実施で品質ゲート未達。他ライン、テスト、図、教材、問題、PR、mainは変更しない。

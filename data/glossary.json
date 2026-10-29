@@ -14576,5 +14576,388 @@
       "化学ポテンシャル",
       "マクスウェル・ステファン拡散"
     ]
+  },
+  {
+    "id": "wetted-perimeter",
+    "ja": "ぬれ縁長さ",
+    "en": "wetted perimeter",
+    "aliases": [
+      "流路ぬれ周長"
+    ],
+    "category": "非円形ダクト",
+    "brief": "流れに接する流路断面の境界線を足し合わせた長さ。",
+    "meaning": "流れに接する流路断面の境界線を足し合わせた長さ。",
+    "beginner": "流路の断面を見たとき、液体や気体が壁と接する周囲の長さです。水力直径を計算するときに使います。",
+    "detail": "流路断面積Aと、流体に接する固体壁の全境界長P_wを用いて水力直径D_h=4A/P_wと定義する。閉じた矩形流路では四辺を数え、環状流路では内管と外管の両方の壁を数える。自由水面を持つ開水路では、通常は自由表面をぬれ縁に含めない。温度だけが指定された断熱壁も流体と接していれば流動のぬれ縁には含む。",
+    "formula": "P_w=壁に接する断面境界の長さの和、D_h=4A/P_w",
+    "unit": "P_w,D_h: m、A: m²",
+    "example": "幅0.20 m、高さ0.10 mの閉じた矩形流路のぬれ縁長さは2(0.20+0.10)=0.60 m。",
+    "relatedSections": [
+      "7.5"
+    ],
+    "relatedQuestions": [],
+    "relatedSimulators": [],
+    "confusions": [
+      "ぬれ縁長さは流路断面積と別の量であり、自由表面を常に壁として数えるわけではない。"
+    ],
+    "source": {
+      "type": "supplement",
+      "reference": "第7.5節の非円形ダクトと第3章の熱交換器設計の独立補足。水力直径と形状による層流抵抗差はASHRAE Handbook Duct Design https://handbook.ashrae.org/Handbooks/F25/IP/F25_Ch21/F25_Ch21_ip.aspx 、非円形ダクトのPoiseuille値は中東工科大学論文 https://etd.lib.metu.edu.tr/upload/12624477/index.pdf を照合。原書の翻訳・図版転載ではなく専門家校閲前。"
+    },
+    "reviewStatus": "needs_review",
+    "related": [
+      "水力直径",
+      "矩形流路の水力直径",
+      "動圧"
+    ]
+  },
+  {
+    "id": "rectangular-duct-aspect-ratio",
+    "ja": "矩形流路のアスペクト比",
+    "en": "rectangular duct aspect ratio",
+    "aliases": [
+      "矩形ダクト縦横比"
+    ],
+    "category": "非円形ダクト",
+    "brief": "矩形流路の短辺長を長辺長で割った形状の無次元比。",
+    "meaning": "矩形流路の短辺長を長辺長で割った形状の無次元比。",
+    "beginner": "同じ面積でも正方形の流路と細長い流路では、壁の割合が変わって流れにくさも変わります。",
+    "detail": "矩形断面の長辺aと短辺b（a≥b>0）に対しα=b/a、0<α≤1とする。α=1は正方形、αが小さいほど幅の広い薄い隙間に近い。水力直径や十分発達した層流の摩擦係数・熱伝達係数はαに依存する。どちらを分子に置くかを文献で確認し、単純な矩形面積A=abとは混同しない。",
+    "formula": "α=b/a（a≥b>0）",
+    "unit": "α: 無次元、a,b: m",
+    "example": "幅a=0.20 m、高さb=0.05 mならアスペクト比は0.25。",
+    "relatedSections": [
+      "7.5"
+    ],
+    "relatedQuestions": [],
+    "relatedSimulators": [],
+    "confusions": [
+      "矩形流路のアスペクト比は無次元形状比であり、断面積そのものではない。"
+    ],
+    "source": {
+      "type": "supplement",
+      "reference": "第7.5節の非円形ダクトと第3章の熱交換器設計の独立補足。水力直径と形状による層流抵抗差はASHRAE Handbook Duct Design https://handbook.ashrae.org/Handbooks/F25/IP/F25_Ch21/F25_Ch21_ip.aspx 、非円形ダクトのPoiseuille値は中東工科大学論文 https://etd.lib.metu.edu.tr/upload/12624477/index.pdf を照合。原書の翻訳・図版転載ではなく専門家校閲前。"
+    },
+    "reviewStatus": "needs_review",
+    "related": [
+      "矩形流路の水力直径",
+      "水力直径",
+      "ぬれ縁長さ"
+    ]
+  },
+  {
+    "id": "rectangular-duct-hydraulic-diameter",
+    "ja": "矩形流路の水力直径",
+    "en": "hydraulic diameter of a rectangular duct",
+    "aliases": [
+      "矩形ダクト相当直径"
+    ],
+    "category": "非円形ダクト",
+    "brief": "矩形断面の面積と周長から求める、摩擦と対流の評価に用いる代表長さ。",
+    "meaning": "矩形断面の面積と周長から求める、摩擦と対流の評価に用いる代表長さ。",
+    "beginner": "細長い四角い風の通り道でも、流れの摩擦を円管と比べるための代表的な直径を決められます。",
+    "detail": "幅a、高さbの閉じた矩形流路では面積A=ab、ぬれ縁P_w=2(a+b)だからD_h=4A/P_w=2ab/(a+b)。D_hは流路の物理的な円形直径ではなく、圧力損失や伝熱相関の代表長さである。特に完全発達層流では形状依存が残るので、円管のf_D=64/ReをD_hに置き換えるだけでは厳密値と一致しない場合がある。",
+    "formula": "D_h=2ab/(a+b)",
+    "unit": "D_h,a,b: m",
+    "example": "幅a=0.20 m、高さb=0.05 mの矩形流路ならD_h=2×0.20×0.05/0.25=0.080 m。",
+    "relatedSections": [
+      "7.5"
+    ],
+    "relatedQuestions": [],
+    "relatedSimulators": [],
+    "confusions": [
+      "水力直径を用いても非円形流路の完全発達層流摩擦係数は円管と同じとは限らない。"
+    ],
+    "source": {
+      "type": "supplement",
+      "reference": "第7.5節の非円形ダクトと第3章の熱交換器設計の独立補足。水力直径と形状による層流抵抗差はASHRAE Handbook Duct Design https://handbook.ashrae.org/Handbooks/F25/IP/F25_Ch21/F25_Ch21_ip.aspx 、非円形ダクトのPoiseuille値は中東工科大学論文 https://etd.lib.metu.edu.tr/upload/12624477/index.pdf を照合。原書の翻訳・図版転載ではなく専門家校閲前。"
+    },
+    "reviewStatus": "needs_review",
+    "related": [
+      "水力直径",
+      "矩形流路のアスペクト比",
+      "ぬれ縁長さ",
+      "非円形流路のポアズイユ数"
+    ]
+  },
+  {
+    "id": "parallel-plate-hydraulic-diameter",
+    "ja": "広い平行平板流路の水力直径",
+    "en": "hydraulic diameter between wide parallel plates",
+    "aliases": [
+      "平行平板の相当直径"
+    ],
+    "category": "非円形ダクト",
+    "brief": "幅が隙間より十分大きい二枚の平行板で、水力直径が隙間の約2倍となる近似。",
+    "meaning": "幅が隙間より十分大きい二枚の平行板で、水力直径が隙間の約2倍となる近似。",
+    "beginner": "幅の広い二枚の板の間を流れる流体では、壁と壁の間隔の2倍を代表直径として近似できます。",
+    "detail": "幅W、高さHの矩形流路でW≫Hなら水力直径D_h=2WH/(W+H)≈2Hとなる。これは断面の幅方向の端部効果を無視できる極限であり、WがHと同程度なら厳密な矩形式を用いる。水力直径だけでは完全発達した平行平板層流の摩擦関係を円管と同じ64/Reにできない。",
+    "formula": "D_h=2WH/(W+H)≈2H（W≫H）",
+    "unit": "D_h,W,H: m",
+    "example": "板間隔H=0.005 mで幅が十分広ければD_h≈0.010 m。",
+    "relatedSections": [
+      "7.5"
+    ],
+    "relatedQuestions": [],
+    "relatedSimulators": [],
+    "confusions": [
+      "板間距離Hが水力直径そのものではなく、広幅極限では約2Hになる。"
+    ],
+    "source": {
+      "type": "supplement",
+      "reference": "第7.5節の非円形ダクトと第3章の熱交換器設計の独立補足。水力直径と形状による層流抵抗差はASHRAE Handbook Duct Design https://handbook.ashrae.org/Handbooks/F25/IP/F25_Ch21/F25_Ch21_ip.aspx 、非円形ダクトのPoiseuille値は中東工科大学論文 https://etd.lib.metu.edu.tr/upload/12624477/index.pdf を照合。原書の翻訳・図版転載ではなく専門家校閲前。"
+    },
+    "reviewStatus": "needs_review",
+    "related": [
+      "矩形流路の水力直径",
+      "ぬれ縁長さ",
+      "水力直径"
+    ]
+  },
+  {
+    "id": "annular-duct-hydraulic-diameter",
+    "ja": "同心二重管の環状流路水力直径",
+    "en": "hydraulic diameter of a concentric annulus",
+    "aliases": [
+      "同心環状流路の相当直径"
+    ],
+    "category": "非円形ダクト",
+    "brief": "外管内径と内管外径の差で表せる、同心環状流路の水力直径。",
+    "meaning": "外管内径と内管外径の差で表せる、同心環状流路の水力直径。",
+    "beginner": "太い管の中に細い管があり、その隙間を流れる場合、流路の面積と両方の壁の周長から代表直径を求めます。",
+    "detail": "同心二重管の環状流路で外側の流路壁内径D_o、内側の流路壁外径D_i（D_o>D_i）を使うと、流路断面積A=π(D_o²−D_i²)/4、ぬれ縁P_w=π(D_o+D_i)。よってD_h=4A/P_w=D_o−D_i。どちらか一方の壁だけが加熱されても、流動のぬれ縁長さには両側の壁を含む。ただし伝熱面積の基準は別に確認する。",
+    "formula": "D_h=D_o−D_i（同心環状流路）",
+    "unit": "D_h,D_o,D_i: m",
+    "example": "外側壁内径0.05 m、内側壁外径0.03 mなら流路水力直径D_h=0.02 m。",
+    "relatedSections": [
+      "7.5",
+      "3.1"
+    ],
+    "relatedQuestions": [],
+    "relatedSimulators": [],
+    "confusions": [
+      "伝熱面の周長と、摩擦計算に用いるぬれ縁長さは同じとは限らない。"
+    ],
+    "source": {
+      "type": "supplement",
+      "reference": "第7.5節の非円形ダクトと第3章の熱交換器設計の独立補足。水力直径と形状による層流抵抗差はASHRAE Handbook Duct Design https://handbook.ashrae.org/Handbooks/F25/IP/F25_Ch21/F25_Ch21_ip.aspx 、非円形ダクトのPoiseuille値は中東工科大学論文 https://etd.lib.metu.edu.tr/upload/12624477/index.pdf を照合。原書の翻訳・図版転載ではなく専門家校閲前。"
+    },
+    "reviewStatus": "needs_review",
+    "related": [
+      "水力直径",
+      "ぬれ縁長さ",
+      "熱交換器"
+    ]
+  },
+  {
+    "id": "noncircular-duct-poiseuille-number",
+    "ja": "非円形流路のポアズイユ数",
+    "en": "Poiseuille number for noncircular ducts",
+    "aliases": [
+      "f_D Re_{D_h}積"
+    ],
+    "category": "非円形ダクト",
+    "brief": "十分発達した層流の摩擦係数と水力直径基準Reの積で、断面形状によって変わる値。",
+    "meaning": "十分発達した層流の摩擦係数と水力直径基準Reの積で、断面形状によって変わる値。",
+    "beginner": "管が丸か四角かでも、層流の壁面摩擦は変わります。摩擦係数とレイノルズ数の積を形ごとに比較します。",
+    "detail": "完全発達した定常・非圧縮ニュートン流体の層流においてダルシー摩擦係数f_Dを用いると、Po_D=f_D Re_{D_h}と定義できる。円管のPo_D=64に対し、正方形流路では約56.91、幅が十分広い平行平板の極限では96となる。文献によってファニング係数f_Fを用いてPo=f_FReと定義する場合は値が4分の1になるので、係数の種類を記す。",
+    "formula": "Po_D=f_D Re_{D_h}（ダルシー係数の定義）",
+    "unit": "Po_D, f_D, Re_{D_h}: 無次元",
+    "example": "正方形流路のPo_D≈56.91ならRe_{D_h}=1000でf_D≈0.05691。",
+    "relatedSections": [
+      "7.5"
+    ],
+    "relatedQuestions": [],
+    "relatedSimulators": [],
+    "confusions": [
+      "ポアズイユ数は使用する摩擦係数のダルシー/ファニング定義で4倍違う。"
+    ],
+    "source": {
+      "type": "supplement",
+      "reference": "第7.5節の非円形ダクトと第3章の熱交換器設計の独立補足。水力直径と形状による層流抵抗差はASHRAE Handbook Duct Design https://handbook.ashrae.org/Handbooks/F25/IP/F25_Ch21/F25_Ch21_ip.aspx 、非円形ダクトのPoiseuille値は中東工科大学論文 https://etd.lib.metu.edu.tr/upload/12624477/index.pdf を照合。原書の翻訳・図版転載ではなく専門家校閲前。"
+    },
+    "reviewStatus": "needs_review",
+    "related": [
+      "ダルシー摩擦係数",
+      "ファニング摩擦係数",
+      "水力直径",
+      "正方形流路の十分発達層流摩擦係数"
+    ]
+  },
+  {
+    "id": "square-duct-laminar-friction",
+    "ja": "正方形流路の十分発達層流摩擦係数",
+    "en": "fully developed laminar friction factor in a square duct",
+    "aliases": [
+      "正方形ダクト層流摩擦"
+    ],
+    "category": "非円形ダクト",
+    "brief": "正方形断面で十分発達した層流のダルシー摩擦係数をReから求める関係。",
+    "meaning": "正方形断面で十分発達した層流のダルシー摩擦係数をReから求める関係。",
+    "beginner": "同じ水力直径でも、正方形の流路では円管と壁面摩擦の分布が違うため、摩擦係数の式の数字も違います。",
+    "detail": "滑りなし、非圧縮・ニュートン流体の定常十分発達正方形ダクト層流で、水力直径D_hに基づくレイノルズ数とダルシー係数を用いるとf_D≈56.91/Re_{D_h}。同じ円管の64/Reとは係数が異なる。入口助走域、乱流、角部の特殊な境界条件、粗さが支配的な状況に無条件で適用しない。",
+    "formula": "f_D≈56.91/Re_{D_h}（十分発達正方形層流）",
+    "unit": "f_D,Re_{D_h}: 無次元",
+    "example": "Re_{D_h}=1000の正方形ダクトではf_D≈0.05691。円管の0.064とは異なる。",
+    "relatedSections": [
+      "7.5"
+    ],
+    "relatedQuestions": [],
+    "relatedSimulators": [],
+    "confusions": [
+      "正方形流路の層流摩擦を円管の64/Reと同一視しない。"
+    ],
+    "source": {
+      "type": "supplement",
+      "reference": "第7.5節の非円形ダクトと第3章の熱交換器設計の独立補足。水力直径と形状による層流抵抗差はASHRAE Handbook Duct Design https://handbook.ashrae.org/Handbooks/F25/IP/F25_Ch21/F25_Ch21_ip.aspx 、非円形ダクトのPoiseuille値は中東工科大学論文 https://etd.lib.metu.edu.tr/upload/12624477/index.pdf を照合。原書の翻訳・図版転載ではなく専門家校閲前。"
+    },
+    "reviewStatus": "needs_review",
+    "related": [
+      "非円形流路のポアズイユ数",
+      "矩形流路のアスペクト比",
+      "円管層流の摩擦係数"
+    ]
+  },
+  {
+    "id": "crossflow-mixing-pattern",
+    "ja": "直交流熱交換器の混合・非混合条件",
+    "en": "mixed and unmixed crossflow heat exchanger",
+    "aliases": [
+      "直交流の混合有無"
+    ],
+    "category": "熱交換器",
+    "brief": "直交流の各流体が流れの横方向に混ざれるかどうかによる熱交換器の分類。",
+    "meaning": "直交流の各流体が流れの横方向に混ざれるかどうかによる熱交換器の分類。",
+    "beginner": "空気と水が直角に流れる熱交換器でも、横方向に混ざれる構造か仕切られている構造かで出口温度分布が変わります。",
+    "detail": "直交流熱交換器では、流れの方向に直角な面内で流体が自由に混ざれる場合をmixed、流路やフィンなどで横方向の混合が抑えられる場合をunmixedとして区別する。両流体非混合、一方混合・他方非混合などの組合せごとに有効度NTU関係が異なる。外部から完全に混ざる撹拌槽の意味ではなく、選んだ交換面内の横方向混合を指す。",
+    "formula": "ε=f(NTU,C_r,混合・非混合配置)",
+    "unit": "ε,NTU,C_r: 無次元",
+    "example": "同じNTU=1、C_r=0.5でも、一方の流体が横方向に混ざる場合と両流体が仕切られる場合では有効度が一般に異なる。",
+    "relatedSections": [
+      "3.1",
+      "3.3"
+    ],
+    "relatedQuestions": [],
+    "relatedSimulators": [],
+    "confusions": [
+      "直交流のmixedは流体全体が一つの槽で完全混合されることとは限らない。"
+    ],
+    "source": {
+      "type": "supplement",
+      "reference": "第7.5節の非円形ダクトと第3章の熱交換器設計の独立補足。水力直径と形状による層流抵抗差はASHRAE Handbook Duct Design https://handbook.ashrae.org/Handbooks/F25/IP/F25_Ch21/F25_Ch21_ip.aspx 、非円形ダクトのPoiseuille値は中東工科大学論文 https://etd.lib.metu.edu.tr/upload/12624477/index.pdf を照合。原書の翻訳・図版転載ではなく専門家校閲前。"
+    },
+    "reviewStatus": "needs_review",
+    "related": [
+      "直交流熱交換器",
+      "熱交換器有効度",
+      "熱容量流量比"
+    ]
+  },
+  {
+    "id": "plate-heat-exchanger",
+    "ja": "プレート式熱交換器",
+    "en": "plate heat exchanger",
+    "aliases": [
+      "板式熱交換器"
+    ],
+    "category": "熱交換器",
+    "brief": "多数の薄い板の両側へ別の流体を流し、板を介して熱交換する装置。",
+    "meaning": "多数の薄い板の両側へ別の流体を流し、板を介して熱交換する装置。",
+    "beginner": "薄い金属板をたくさん重ね、隣の通り道に異なる温度の液体を流すことで、小さな装置でも広い伝熱面積を確保します。",
+    "detail": "プレート式熱交換器は複数の薄い伝熱板に隣接する二流体流路を形成し、板を介して対流と伝導で熱を交換する。波形や凹凸の板で対流伝熱を高められる一方、圧力損失や汚れ・閉塞・シールの耐圧/耐温条件とのトレードオフがある。パス構成は向流・並流・混合構造となり得るので、単一のLMTD補正や有効度式を無条件で適用しない。",
+    "formula": "Q̇≈U A ΔT_lm F（適用可能なLMTD設計）",
+    "unit": "Q̇: W、U: W/(m²·K)、A: m²、ΔT_lm: K",
+    "example": "U=500 W/(m²·K)、面積A=2 m²、有効平均温度差20 K、補正係数F=1なら熱移動率は20 kW。",
+    "relatedSections": [
+      "3.1",
+      "3.4"
+    ],
+    "relatedQuestions": [],
+    "relatedSimulators": [],
+    "confusions": [
+      "プレート式は板が薄いだけで無条件に効率が高いわけではなく、流路形状と圧損も評価する。"
+    ],
+    "source": {
+      "type": "supplement",
+      "reference": "第7.5節の非円形ダクトと第3章の熱交換器設計の独立補足。水力直径と形状による層流抵抗差はASHRAE Handbook Duct Design https://handbook.ashrae.org/Handbooks/F25/IP/F25_Ch21/F25_Ch21_ip.aspx 、非円形ダクトのPoiseuille値は中東工科大学論文 https://etd.lib.metu.edu.tr/upload/12624477/index.pdf を照合。原書の翻訳・図版転載ではなく専門家校閲前。"
+    },
+    "reviewStatus": "needs_review",
+    "related": [
+      "熱交換器",
+      "総括伝熱係数",
+      "熱交換器の圧力損失",
+      "対数平均温度差"
+    ]
+  },
+  {
+    "id": "shell-side-baffle",
+    "ja": "多管式熱交換器のバッフル",
+    "en": "shell-side baffle in a shell-and-tube exchanger",
+    "aliases": [
+      "シェル側邪魔板"
+    ],
+    "category": "熱交換器",
+    "brief": "多管式熱交換器でシェル側流体の流れを導き、管群の伝熱と機械支持を助ける内部板。",
+    "meaning": "多管式熱交換器でシェル側流体の流れを導き、管群の伝熱と機械支持を助ける内部板。",
+    "beginner": "太い筒の中の管を流れる液体の外側にも別の流体が流れます。その外側の流れを曲げて熱を移しやすくする仕切り板です。",
+    "detail": "シェル＆チューブ式熱交換器のバッフルはシェル側流体の流路を曲げ、管群への横流れや混合を促すことがある。また管を支持し振動を抑える役割もある。バッフル間隔・カット率・漏れ経路が伝熱係数と圧力損失へ影響し、増やせば必ず装置性能が良くなるわけではない。",
+    "formula": "Δp_shell と h_shell はバッフル配置に依存（単一普遍式なし）",
+    "unit": "Δp_shell: Pa、h_shell: W/(m²·K)、バッフル間隔: m",
+    "example": "同じ管群でもバッフル数や配置を変えると、シェル側の圧力損失と対流係数の両方が変わり得る。",
+    "relatedSections": [
+      "3.1",
+      "3.4"
+    ],
+    "relatedQuestions": [],
+    "relatedSimulators": [],
+    "confusions": [
+      "バッフルは流れを改善する一方で圧損を増す場合があるため単純に数を増やせばよいわけではない。"
+    ],
+    "source": {
+      "type": "supplement",
+      "reference": "第7.5節の非円形ダクトと第3章の熱交換器設計の独立補足。水力直径と形状による層流抵抗差はASHRAE Handbook Duct Design https://handbook.ashrae.org/Handbooks/F25/IP/F25_Ch21/F25_Ch21_ip.aspx 、非円形ダクトのPoiseuille値は中東工科大学論文 https://etd.lib.metu.edu.tr/upload/12624477/index.pdf を照合。原書の翻訳・図版転載ではなく専門家校閲前。"
+    },
+    "reviewStatus": "needs_review",
+    "related": [
+      "多管式熱交換器",
+      "円柱横流れ",
+      "熱交換器の圧力損失"
+    ]
+  },
+  {
+    "id": "fouled-overall-heat-transfer-coefficient",
+    "ja": "汚れを考慮した総括熱伝達係数",
+    "en": "fouled overall heat transfer coefficient",
+    "aliases": [
+      "汚れ後のU"
+    ],
+    "category": "熱交換器",
+    "brief": "伝熱面の汚れ抵抗を含めて評価した、運転中の実効的な総括熱伝達係数。",
+    "meaning": "伝熱面の汚れ抵抗を含めて評価した、運転中の実効的な総括熱伝達係数。",
+    "beginner": "熱交換器の表面に汚れが付くと熱が伝わりにくくなります。その影響を総括熱伝達係数の低下として計算します。",
+    "detail": "清浄状態の総括熱伝達係数U_cleanと、同じ基準面積で換算した追加汚れ熱抵抗R_f″[m²·K/W]を用いる単純直列近似では1/U_fouled=1/U_clean+R_f″。両流体側で面積が違う場合は各側の汚れ抵抗を同じ基準面積へ換算する必要がある。汚れによる流路閉塞が流れやhを変える場合、単純抵抗加算だけでは実際の性能劣化をすべて表せない。",
+    "formula": "1/U_fouled=1/U_clean+R_f″（同じ面積基準）",
+    "unit": "U: W/(m²·K)、R_f″: m²·K/W",
+    "example": "U_clean=1000 W/(m²·K)、R_f″=0.0005 m²·K/WならU_fouled≈666.7 W/(m²·K)。",
+    "relatedSections": [
+      "2.4",
+      "3.4"
+    ],
+    "relatedQuestions": [],
+    "relatedSimulators": [],
+    "confusions": [
+      "汚れ抵抗と総括Uの面積基準を一致させ、汚れによる流路変形の影響は別に評価する。"
+    ],
+    "source": {
+      "type": "supplement",
+      "reference": "第7.5節の非円形ダクトと第3章の熱交換器設計の独立補足。水力直径と形状による層流抵抗差はASHRAE Handbook Duct Design https://handbook.ashrae.org/Handbooks/F25/IP/F25_Ch21/F25_Ch21_ip.aspx 、非円形ダクトのPoiseuille値は中東工科大学論文 https://etd.lib.metu.edu.tr/upload/12624477/index.pdf を照合。原書の翻訳・図版転載ではなく専門家校閲前。"
+    },
+    "reviewStatus": "needs_review",
+    "related": [
+      "汚れ熱抵抗",
+      "総括伝熱係数",
+      "熱通過率の面積基準",
+      "熱交換器"
+    ]
   }
 ]
