@@ -8062,5 +8062,475 @@
       "reference": "教科書第2・4・5章に対応する熱伝導と数学的解法の基本法則から独自執筆した補足。原書本文の翻訳ではなく、外部専門家校閲前。"
     },
     "reviewStatus": "needs_review"
+  },
+  {
+    "id": "displacement-thickness",
+    "ja": "排除厚さ",
+    "en": "displacement thickness",
+    "category": "境界層",
+    "aliases": [
+      "境界層排除厚さ"
+    ],
+    "brief": "壁近くで流速が遅くなるために失われる流量を、主流速で換算した厚さ。",
+    "meaning": "壁近くで流速が遅くなるために失われる流量を、主流速で換算した厚さ。",
+    "beginner": "壁に近い流体は遅く流れます。その分だけ流量が減る影響を、壁が少し厚くなったように置き換えます。",
+    "detail": "非圧縮性の二次元境界層で主流速U∞、接線速度u(y)なら排除厚さδ*=∫₀∞[1−u(y)/U∞]dy。圧力勾配のない滑らかな平板のブラジウス層流解ではδ*/x≈1.7208/√Re_x。圧縮性が高い流れでは密度を含めた定義となる。99%速度境界層厚さδと定義も値も異なる。",
+    "formula": "δ*=∫₀∞[1−u(y)/U∞]dy（非圧縮性二次元境界層）",
+    "unit": "δ*,x,y: m、u/U∞: 無次元",
+    "example": "ブラジウス層流でx=0.10 m、Re_x=10000ならδ*≈1.7208×0.10/100=0.00172 m。",
+    "related": [
+      "速度境界層",
+      "レイノルズ数",
+      "ブラジウス境界層",
+      "運動量厚さ"
+    ],
+    "relatedSections": [
+      "6.2",
+      "6.7"
+    ],
+    "relatedQuestions": [],
+    "relatedSimulators": [],
+    "confusions": [
+      "排除厚さは速度が主流速の99%に達する距離とは異なる。"
+    ],
+    "source": {
+      "type": "supplement",
+      "reference": "第6〜7章の境界層・管内対流の基礎理論から独自執筆。管内完全発達層流のNu=3.66/4.36および平板層流相関はASHRAE Handbook 2025 Ch.4・A Heat Transfer Textbook公開資料と値を照合。専門家校閲前。"
+    },
+    "reviewStatus": "needs_review"
+  },
+  {
+    "id": "momentum-thickness",
+    "ja": "運動量厚さ",
+    "en": "momentum thickness",
+    "category": "境界層",
+    "aliases": [
+      "境界層運動量厚さ"
+    ],
+    "brief": "境界層の速度分布による運動量流束の不足を主流速で換算した厚さ。",
+    "meaning": "境界層の速度分布による運動量流束の不足を主流速で換算した厚さ。",
+    "beginner": "壁で流れが遅くなると、流体が運ぶ運動量も減ります。その減少を厚さに換算したものです。",
+    "detail": "非圧縮性二次元の境界層ではθ=∫₀∞(u/U∞)(1−u/U∞)dy。平板ゼロ圧力勾配のブラジウス層流解ではθ/x≈0.664/√Re_x。運動量積分方程式や壁面摩擦の評価で用いられる。排除厚さδ*とは被積分関数が異なるので、両者の比H=δ*/θは速度分布の形を示す。",
+    "formula": "θ=∫₀∞(u/U∞)(1−u/U∞)dy",
+    "unit": "θ,y,x: m、u/U∞: 無次元",
+    "example": "x=0.10 m、Re_x=10000のブラジウス層流ならθ≈0.664×0.10/100=0.000664 m。",
+    "related": [
+      "速度境界層",
+      "排除厚さ",
+      "境界層形状係数",
+      "壁面せん断応力"
+    ],
+    "relatedSections": [
+      "6.2",
+      "6.7"
+    ],
+    "relatedQuestions": [],
+    "relatedSimulators": [],
+    "confusions": [
+      "運動量厚さは排除厚さとも99%境界層厚さとも異なる。"
+    ],
+    "source": {
+      "type": "supplement",
+      "reference": "第6〜7章の境界層・管内対流の基礎理論から独自執筆。管内完全発達層流のNu=3.66/4.36および平板層流相関はASHRAE Handbook 2025 Ch.4・A Heat Transfer Textbook公開資料と値を照合。専門家校閲前。"
+    },
+    "reviewStatus": "needs_review"
+  },
+  {
+    "id": "boundary-layer-shape-factor",
+    "ja": "境界層形状係数",
+    "en": "boundary-layer shape factor",
+    "category": "境界層",
+    "aliases": [
+      "速度境界層形状係数"
+    ],
+    "brief": "排除厚さを運動量厚さで割った、速度境界層の形を示す無次元指標。",
+    "meaning": "排除厚さを運動量厚さで割った、速度境界層の形を示す無次元指標。",
+    "beginner": "境界層がどんな速度の形をしているかを、一つの比で比較します。流れが変化する様子を判断するのに使います。",
+    "detail": "境界層形状係数H=δ*/θ。圧力勾配のないブラジウス平板層流ではH≈1.7208/0.664≈2.59。乱流では典型的なHはこれより低いが、値は圧力勾配や境界層状態で変化し、H単独で流動状態を普遍的に識別する基準とはならない。熱伝達率hやエンタルピーHと記号が重なるときは区別する。",
+    "formula": "H=δ*/θ",
+    "unit": "H: 無次元、δ*,θ: m",
+    "example": "排除厚さδ*=1.72 mm、運動量厚さθ=0.664 mmなら形状係数H≈2.59。",
+    "related": [
+      "排除厚さ",
+      "運動量厚さ",
+      "速度境界層",
+      "層流"
+    ],
+    "relatedSections": [
+      "6.2",
+      "6.7"
+    ],
+    "relatedQuestions": [],
+    "relatedSimulators": [],
+    "confusions": [
+      "形状係数Hは熱伝達率h[W/(m²·K)]と記号が似ても全く別の量。"
+    ],
+    "source": {
+      "type": "supplement",
+      "reference": "第6〜7章の境界層・管内対流の基礎理論から独自執筆。管内完全発達層流のNu=3.66/4.36および平板層流相関はASHRAE Handbook 2025 Ch.4・A Heat Transfer Textbook公開資料と値を照合。専門家校閲前。"
+    },
+    "reviewStatus": "needs_review"
+  },
+  {
+    "id": "local-reynolds-number",
+    "ja": "局所レイノルズ数",
+    "en": "local Reynolds number",
+    "category": "境界層",
+    "aliases": [
+      "位置レイノルズ数"
+    ],
+    "brief": "平板の先端からの位置を代表長さとして定義したレイノルズ数。",
+    "meaning": "平板の先端からの位置を代表長さとして定義したレイノルズ数。",
+    "beginner": "同じ速度で流れても、板の先端から遠くなると境界層が発達します。その位置を含めて流れを評価します。",
+    "detail": "滑らかな平板に沿う一定主流速U∞、動粘度νの外部流れならRe_x=U∞x/ν。境界層発達や遷移、局所ヌセルト数の相関式で用いる。管径基準のRe_Dとは代表長さが異なり、平板での遷移位置は主流乱れ、表面粗さ、圧力勾配でも変わる。",
+    "formula": "Re_x=U∞x/ν",
+    "unit": "Re_x: 無次元、U∞: m/s、x: m、ν: m²/s",
+    "example": "U∞=1 m/s、x=0.20 m、ν=2.0×10⁻⁵ m²/sならRe_x=10000。",
+    "related": [
+      "レイノルズ数",
+      "速度境界層",
+      "ブラジウス境界層",
+      "境界層剥離"
+    ],
+    "relatedSections": [
+      "6.2",
+      "6.5",
+      "6.9"
+    ],
+    "relatedQuestions": [],
+    "relatedSimulators": [],
+    "confusions": [
+      "平板のRe_xと管内流のRe_Dは代表長さが違い、遷移の判断基準も同じではない。"
+    ],
+    "source": {
+      "type": "supplement",
+      "reference": "第6〜7章の境界層・管内対流の基礎理論から独自執筆。管内完全発達層流のNu=3.66/4.36および平板層流相関はASHRAE Handbook 2025 Ch.4・A Heat Transfer Textbook公開資料と値を照合。専門家校閲前。"
+    },
+    "reviewStatus": "needs_review"
+  },
+  {
+    "id": "blasius-boundary-layer",
+    "ja": "ブラジウス境界層",
+    "en": "Blasius boundary layer",
+    "category": "境界層",
+    "aliases": [
+      "ブラジウス解"
+    ],
+    "brief": "滑らかな平板上のゼロ圧力勾配・定常層流境界層を記述する相似解。",
+    "meaning": "滑らかな平板上のゼロ圧力勾配・定常層流境界層を記述する相似解。",
+    "beginner": "平板を流れる流体は壁で止まり、外側の流れへ滑らかにつながります。その速度分布を理論的に解いた代表的なモデルです。",
+    "detail": "非圧縮・一定物性・定常の二次元層流で主流速が一定、圧力勾配ゼロ、平板先端から発達する境界層にはブラジウス相似解がある。相似変数η=y√(U∞/(νx))を用い、99%境界層厚さはδ₉₉≈5x/√Re_x。高レイノルズ数の境界層近似に基づくもので、乱流や強い圧力勾配下の流れには直接使えない。",
+    "formula": "η=y√(U∞/(νx))、δ₉₉≈5x/√Re_x",
+    "unit": "η,Re_x: 無次元、δ₉₉,x,y: m",
+    "example": "平板のx=0.10 mでRe_x=10000ならδ₉₉≈5×0.10/100=0.005 m。",
+    "related": [
+      "局所レイノルズ数",
+      "速度境界層",
+      "排除厚さ",
+      "運動量厚さ"
+    ],
+    "relatedSections": [
+      "6.2",
+      "6.4"
+    ],
+    "relatedQuestions": [],
+    "relatedSimulators": [],
+    "confusions": [
+      "ブラジウス解は乱流の速度境界層分布を表すものではない。"
+    ],
+    "source": {
+      "type": "supplement",
+      "reference": "第6〜7章の境界層・管内対流の基礎理論から独自執筆。管内完全発達層流のNu=3.66/4.36および平板層流相関はASHRAE Handbook 2025 Ch.4・A Heat Transfer Textbook公開資料と値を照合。専門家校閲前。"
+    },
+    "reviewStatus": "needs_review"
+  },
+  {
+    "id": "laminar-flat-plate-local-nusselt",
+    "ja": "平板層流の局所ヌセルト相関",
+    "en": "laminar flat plate local Nusselt correlation",
+    "category": "対流",
+    "aliases": [
+      "等温平板の局所ヌセルト式"
+    ],
+    "brief": "滑らかな等温平板を流れる層流の位置別熱伝達率を与える相関式。",
+    "meaning": "滑らかな等温平板を流れる層流の位置別熱伝達率を与える相関式。",
+    "beginner": "同じ平板でも先端近くの温度境界層は薄いため、熱が伝わりやすくなります。位置による違いを計算できます。",
+    "detail": "一定温度T_wの平板上を非圧縮・一定物性・ゼロ圧力勾配の層流が先端から発達し、Pr≳0.6などの適用条件を満たせばNu_x=h_xx/k≈0.332Re_x^(1/2)Pr^(1/3)。ここでkは流体の熱伝導率。x→0では局所熱伝達率の理想相関に特異性があるが、有限長の平均値は求められる。壁面熱流束一定の平板には係数が違う。",
+    "formula": "Nu_x≈0.332Re_x^(1/2)Pr^(1/3)（等温平板層流）",
+    "unit": "Nu_x,Re_x,Pr: 無次元、h_x: W/(m²·K)",
+    "example": "Re_x=10000、Pr=1ならNu_x≈0.332×100=33.2。",
+    "related": [
+      "ヌセルト数",
+      "局所レイノルズ数",
+      "プラントル数",
+      "温度境界層厚さ"
+    ],
+    "relatedSections": [
+      "6.4",
+      "6.5"
+    ],
+    "relatedQuestions": [],
+    "relatedSimulators": [],
+    "confusions": [
+      "等温平板の局所係数0.332を、熱流束一定平板や乱流へ無条件で使わない。"
+    ],
+    "source": {
+      "type": "supplement",
+      "reference": "第6〜7章の境界層・管内対流の基礎理論から独自執筆。管内完全発達層流のNu=3.66/4.36および平板層流相関はASHRAE Handbook 2025 Ch.4・A Heat Transfer Textbook公開資料と値を照合。専門家校閲前。"
+    },
+    "reviewStatus": "needs_review"
+  },
+  {
+    "id": "laminar-flat-plate-average-nusselt",
+    "ja": "平板層流の平均ヌセルト相関",
+    "en": "laminar flat plate average Nusselt correlation",
+    "category": "対流",
+    "aliases": [
+      "等温平板の平均ヌセルト式"
+    ],
+    "brief": "滑らかな等温平板の先端から長さLまでの平均熱伝達率を与える相関式。",
+    "meaning": "滑らかな等温平板の先端から長さLまでの平均熱伝達率を与える相関式。",
+    "beginner": "局所的な熱の伝わり方は位置で変わりますが、先端から長さLまでまとめた平均値を求める式です。",
+    "detail": "等温平板で層流が0≤x≤Lにわたり維持され、ゼロ圧力勾配・一定物性・Pr≳0.6などの条件ならNu_L=h̄_LL/k≈0.664Re_L^(1/2)Pr^(1/3)。h̄_L=(1/L)∫₀ᴸh_xdxで、同じ条件の下ではh̄_L=2h_{x=L}。このNu_Lは局所ヌセルト数Nu_xをそのまま算術平均した数値ではない。",
+    "formula": "Nu_L≈0.664Re_L^(1/2)Pr^(1/3)（等温平板・全長層流）",
+    "unit": "Nu_L,Re_L,Pr: 無次元、h̄_L: W/(m²·K)",
+    "example": "Re_L=10000、Pr=1で先端から全長層流ならNu_L≈0.664×100=66.4。",
+    "related": [
+      "ヌセルト数",
+      "局所・平均ヌセルト数",
+      "平板層流の局所ヌセルト相関",
+      "局所レイノルズ数"
+    ],
+    "relatedSections": [
+      "6.5"
+    ],
+    "relatedQuestions": [],
+    "relatedSimulators": [],
+    "confusions": [
+      "Nu_LとNu_xでは基準長さが異なる。平均Nu_LをNu_xの単純平均とみなさない。"
+    ],
+    "source": {
+      "type": "supplement",
+      "reference": "第6〜7章の境界層・管内対流の基礎理論から独自執筆。管内完全発達層流のNu=3.66/4.36および平板層流相関はASHRAE Handbook 2025 Ch.4・A Heat Transfer Textbook公開資料と値を照合。専門家校閲前。"
+    },
+    "reviewStatus": "needs_review"
+  },
+  {
+    "id": "circular-tube-constant-wall-temperature",
+    "ja": "円管の等温壁条件",
+    "en": "constant wall temperature in a circular tube",
+    "category": "管内対流",
+    "aliases": [
+      "円管内の壁温一定"
+    ],
+    "brief": "管壁温度を流れ方向に一定に保つ管内対流の境界条件。",
+    "meaning": "管壁温度を流れ方向に一定に保つ管内対流の境界条件。",
+    "beginner": "管の壁をずっと同じ温度に保つと、流れる液体は進むにつれて温度が変わります。完全発達した層流では決まったヌセルト数が得られます。",
+    "detail": "円形管内で流体物性が一定、十分発達した定常層流で軸方向熱伝導・粘性散逸を無視でき、管壁温度T_wが長手方向に一様ならNu_D=hD/k≈3.66。これは流路全体にわたり熱的に十分発達した領域の代表値。入口助走区間や非円形ダクトではこの値に固定できず、壁面熱流束一定の境界条件では別の値となる。",
+    "formula": "Nu_D=hD/k≈3.66（円管・完全発達層流・壁温一定）",
+    "unit": "Nu_D: 無次元、h: W/(m²·K)、D: m、k: W/(m·K)",
+    "example": "流体k=0.60 W/(m·K)、円管径D=0.010 mなら完全発達域のh≈3.66×0.60/0.010=219.6 W/(m²·K)。",
+    "related": [
+      "熱的に十分発達した流れ",
+      "ヌセルト数",
+      "混合平均温度",
+      "円管の一様壁熱流束条件"
+    ],
+    "relatedSections": [
+      "7.2",
+      "7.4"
+    ],
+    "relatedQuestions": [],
+    "relatedSimulators": [],
+    "confusions": [
+      "壁温一定のNu=3.66は、管内流れの全条件や熱流束一定条件に適用できない。"
+    ],
+    "source": {
+      "type": "supplement",
+      "reference": "第6〜7章の境界層・管内対流の基礎理論から独自執筆。管内完全発達層流のNu=3.66/4.36および平板層流相関はASHRAE Handbook 2025 Ch.4・A Heat Transfer Textbook公開資料と値を照合。専門家校閲前。"
+    },
+    "reviewStatus": "needs_review"
+  },
+  {
+    "id": "circular-tube-constant-heat-flux",
+    "ja": "円管の一様壁熱流束条件",
+    "en": "uniform wall heat flux in a circular tube",
+    "category": "管内対流",
+    "aliases": [
+      "円管内の壁熱流束一定"
+    ],
+    "brief": "管の内壁から流体へ渡る局所熱流束を流れ方向に一定とする境界条件。",
+    "meaning": "管の内壁から流体へ渡る局所熱流束を流れ方向に一定とする境界条件。",
+    "beginner": "管の壁を同じ熱流束で加熱すると、進むほど流体の温度と壁温が変化します。等温壁とは違う温度分布になります。",
+    "detail": "円形管内で流体物性一定、十分発達した定常層流、軸方向熱伝導と粘性散逸が無視でき、壁面熱流束q″_wが一様ならNu_D=hD/k≈4.36。これは円管での理論解であり、等温壁条件に対応する3.66とは異なる。平均流体温度T_m(x)が上昇すると壁温T_w(x)も変化し得るため、『壁熱流束一定』は『壁温一定』を意味しない。",
+    "formula": "Nu_D=hD/k≈4.36（円管・完全発達層流・一様壁熱流束）",
+    "unit": "Nu_D: 無次元、h: W/(m²·K)、q″_w: W/m²",
+    "example": "k=0.60 W/(m·K)、円管径D=0.010 mなら完全発達域のh≈4.36×0.60/0.010=261.6 W/(m²·K)。",
+    "related": [
+      "熱的に十分発達した流れ",
+      "ヌセルト数",
+      "混合平均温度",
+      "円管の等温壁条件"
+    ],
+    "relatedSections": [
+      "7.2",
+      "7.4"
+    ],
+    "relatedQuestions": [],
+    "relatedSimulators": [],
+    "confusions": [
+      "一様壁熱流束条件は壁温一定条件と異なり、Nu=4.36と3.66を混同しない。"
+    ],
+    "source": {
+      "type": "supplement",
+      "reference": "第6〜7章の境界層・管内対流の基礎理論から独自執筆。管内完全発達層流のNu=3.66/4.36および平板層流相関はASHRAE Handbook 2025 Ch.4・A Heat Transfer Textbook公開資料と値を照合。専門家校閲前。"
+    },
+    "reviewStatus": "needs_review"
+  },
+  {
+    "id": "turbulent-prandtl-number",
+    "ja": "乱流プラントル数",
+    "en": "turbulent Prandtl number",
+    "category": "乱流",
+    "aliases": [
+      "Pr_t"
+    ],
+    "brief": "乱流渦による運動量の拡散率と熱の拡散率の比。",
+    "meaning": "乱流渦による運動量の拡散率と熱の拡散率の比。",
+    "beginner": "乱流の渦が運動量と熱を運ぶ強さは必ずしも同じではありません。その違いを表す無次元数です。",
+    "detail": "渦粘性係数ν_tと渦熱拡散率α_tを使いPr_t=ν_t/α_tと定義する。分子の動粘度νと熱拡散率αから定義する通常のPr=ν/αとは別物。簡略化した乱流モデルではPr_tを経験的な一定値とするが、壁面近傍・流体・乱流構造により変化し、普遍的定数ではない。",
+    "formula": "Pr_t=ν_t/α_t、Pr=ν/α（分子物性）",
+    "unit": "Pr_t: 無次元、ν_t,α_t: m²/s",
+    "example": "仮にν_t=9×10⁻⁵ m²/s、α_t=1×10⁻⁴ m²/sならPr_t=0.90。",
+    "related": [
+      "プラントル数",
+      "乱流",
+      "境界層",
+      "渦粘性係数"
+    ],
+    "relatedSections": [
+      "6.7",
+      "6.8"
+    ],
+    "relatedQuestions": [],
+    "relatedSimulators": [],
+    "confusions": [
+      "乱流プラントル数は分子物性だけから計算する通常のプラントル数と異なる。"
+    ],
+    "source": {
+      "type": "supplement",
+      "reference": "第6〜7章の境界層・管内対流の基礎理論から独自執筆。管内完全発達層流のNu=3.66/4.36および平板層流相関はASHRAE Handbook 2025 Ch.4・A Heat Transfer Textbook公開資料と値を照合。専門家校閲前。"
+    },
+    "reviewStatus": "needs_review"
+  },
+  {
+    "id": "eddy-viscosity",
+    "ja": "渦粘性係数",
+    "en": "eddy viscosity",
+    "category": "乱流",
+    "aliases": [
+      "乱流動粘性係数"
+    ],
+    "brief": "乱流による運動量輸送を、動粘度と似た形でモデル化する係数。",
+    "meaning": "乱流による運動量輸送を、動粘度と似た形でモデル化する係数。",
+    "beginner": "乱流の渦は分子の粘性以外にも流れの勢いを混ぜます。その効果を計算しやすくしたモデル上の係数です。",
+    "detail": "渦粘性モデルではレイノルズ応力を平均速度の変形速度と結びつけ、非圧縮の単純せん断流では−ρ⟨u′v′⟩≈ρν_t∂U/∂yと近似する。ν_tは分子動粘度νとは違い、平均流れと乱流状態から決まるモデル量で場所や流れで変化する。近壁や複雑な異方性乱流では単純なスカラー渦粘性で十分とは限らない。",
+    "formula": "−ρ⟨u′v′⟩≈ρν_t∂U/∂y（単純せん断のモデル）",
+    "unit": "ν_t: m²/s、ρ: kg/m³、−ρ⟨u′v′⟩: Pa",
+    "example": "ρ=1 kg/m³、ν_t=0.010 m²/s、∂U/∂y=2 s⁻¹なら乱流せん断応力のモデル値は0.020 Pa。",
+    "related": [
+      "乱流",
+      "粘度",
+      "乱流プラントル数",
+      "壁面せん断応力"
+    ],
+    "relatedSections": [
+      "6.7",
+      "6.8"
+    ],
+    "relatedQuestions": [],
+    "relatedSimulators": [],
+    "confusions": [
+      "渦粘性係数は分子がもつ粘度という物性定数ではなく、流れのモデル量である。"
+    ],
+    "source": {
+      "type": "supplement",
+      "reference": "第6〜7章の境界層・管内対流の基礎理論から独自執筆。管内完全発達層流のNu=3.66/4.36および平板層流相関はASHRAE Handbook 2025 Ch.4・A Heat Transfer Textbook公開資料と値を照合。専門家校閲前。"
+    },
+    "reviewStatus": "needs_review"
+  },
+  {
+    "id": "boundary-layer-separation",
+    "ja": "境界層剥離",
+    "en": "boundary layer separation",
+    "category": "流体力学",
+    "aliases": [
+      "流れの剥離"
+    ],
+    "brief": "壁面近くの流れが逆圧力勾配などで減速し、壁から離れて循環域を作る現象。",
+    "meaning": "壁面近くの流れが逆圧力勾配などで減速し、壁から離れて循環域を作る現象。",
+    "beginner": "流れる水や空気が曲面を通ると、壁の近くの流れが前へ進めなくなり、壁から離れることがあります。",
+    "detail": "流れ方向に圧力が増える逆圧力勾配などの影響で境界層内の流体が減速し、壁面せん断応力がゼロとなる点を経て局所的な逆流・剥離が起き得る。非定常・三次元では単純な二次元定常の判定が十分でない。剥離により熱伝達・圧力損失・後流が変わるため、円柱横流れ等の相関式を選ぶ際に重要。",
+    "formula": "τ_w=μ(∂u/∂y)_w≈0（定常二次元剥離開始点の典型的条件）",
+    "unit": "τ_w: Pa、∂u/∂y: s⁻¹、μ: Pa·s",
+    "example": "壁面せん断応力が流れに沿い+0.2 Paから0 Paを経て負の値へ変われば、単純な定常二次元流れでは剥離・逆流の兆候となる。",
+    "related": [
+      "壁面せん断応力",
+      "逆圧力勾配",
+      "速度境界層",
+      "乱流"
+    ],
+    "relatedSections": [
+      "6.7",
+      "6.9",
+      "7.6"
+    ],
+    "relatedQuestions": [],
+    "relatedSimulators": [],
+    "confusions": [
+      "壁面せん断応力ゼロは一般の三次元非定常流れでの剥離を完全に規定するものではない。"
+    ],
+    "source": {
+      "type": "supplement",
+      "reference": "第6〜7章の境界層・管内対流の基礎理論から独自執筆。管内完全発達層流のNu=3.66/4.36および平板層流相関はASHRAE Handbook 2025 Ch.4・A Heat Transfer Textbook公開資料と値を照合。専門家校閲前。"
+    },
+    "reviewStatus": "needs_review"
+  },
+  {
+    "id": "adverse-pressure-gradient",
+    "ja": "逆圧力勾配",
+    "en": "adverse pressure gradient",
+    "category": "流体力学",
+    "aliases": [
+      "不利な圧力勾配"
+    ],
+    "brief": "主流の進行方向に向かって圧力が増加し、流れを減速させる圧力勾配。",
+    "meaning": "主流の進行方向に向かって圧力が増加し、流れを減速させる圧力勾配。",
+    "beginner": "流体が前へ進むほど圧力の高い場所へ向かうと、壁に近い遅い流れはとくに減速しやすくなります。",
+    "detail": "外部主流の進行方向xに対しdp_e/dx>0の圧力増加を逆圧力勾配と呼ぶ。非圧縮・非粘性の外部主流ではベルヌーイ関係からU_e dU_e/dx=−(1/ρ)dp_e/dxとなり、dp_e/dx>0なら主流が減速する。境界層の速度分布・壁せん断応力に影響し剥離を誘発し得るが、必ず剥離するとは限らない。",
+    "formula": "dp_e/dx>0、U_e dU_e/dx=−(1/ρ)dp_e/dx（非粘性主流近似）",
+    "unit": "dp_e/dx: Pa/m、U_e: m/s、ρ: kg/m³",
+    "example": "主流方向へ1 m進む間に静圧が100 Pa増える流れなら、平均的な圧力勾配は+100 Pa/m。",
+    "related": [
+      "境界層剥離",
+      "速度境界層",
+      "壁面せん断応力",
+      "層流"
+    ],
+    "relatedSections": [
+      "6.2",
+      "6.7",
+      "7.6"
+    ],
+    "relatedQuestions": [],
+    "relatedSimulators": [],
+    "confusions": [
+      "逆圧力勾配は流れ方向に圧力が増加する条件であり、必ず逆流しているという意味ではない。"
+    ],
+    "source": {
+      "type": "supplement",
+      "reference": "第6〜7章の境界層・管内対流の基礎理論から独自執筆。管内完全発達層流のNu=3.66/4.36および平板層流相関はASHRAE Handbook 2025 Ch.4・A Heat Transfer Textbook公開資料と値を照合。専門家校閲前。"
+    },
+    "reviewStatus": "needs_review"
   }
 ]
