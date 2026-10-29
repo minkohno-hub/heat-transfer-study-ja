@@ -14191,5 +14191,390 @@
       "レイノルズ数",
       "濃度境界層"
     ]
+  },
+  {
+    "id": "soret-effect",
+    "ja": "ソレー効果",
+    "en": "Soret effect",
+    "aliases": [
+      "熱拡散効果（温度勾配）"
+    ],
+    "category": "熱・物質移動の交差効果",
+    "brief": "混合物の温度勾配が、濃度勾配だけでは説明できない成分拡散を引き起こす現象。",
+    "meaning": "混合物の温度勾配が、濃度勾配だけでは説明できない成分拡散を引き起こす現象。",
+    "beginner": "濃度が一様でも、片側を温めると成分によって温かい側や冷たい側へ偏って移動することがあります。",
+    "detail": "二成分混合物では通常の濃度勾配による分子拡散のほかに、温度勾配が成分の相対移動を引き起こすソレー効果があり得る。質量分率wの一つの慣用形はj_A=−ρD[∇w+S_Tw(1−w)∇T]。S_Tの符号によって高温側・低温側のどちらに富化するかが変わる。定義はモデルと濃度基準で異なり、単純な濃度拡散の式から勝手に符号を決められない。",
+    "formula": "j_A=−ρD[∇w+S_T w(1−w)∇T]（代表的な二成分モデル）",
+    "unit": "j_A: kg/(m²·s)、ρ: kg/m³、D: m²/s、S_T: K⁻¹",
+    "example": "仮に濃度勾配が0でS_T>0なら、上式では温度が上がる向きと反対に成分Aの熱拡散流束が生じる。",
+    "relatedSections": [
+      "11.10",
+      "11.11"
+    ],
+    "relatedQuestions": [],
+    "relatedSimulators": [],
+    "confusions": [
+      "ソレー効果による移動方向は成分系と係数の符号に依存し、常に低温側へ向かうわけではない。"
+    ],
+    "source": {
+      "type": "supplement",
+      "reference": "第11.10・11.11節を理解するための多成分拡散・温度交差効果の独自補足。参考：Chemical Engineering Science https://www.sciencedirect.com/science/article/pii/S0009250918307516 、RSC Chemical Society Reviews https://pubs.rsc.org/en/content/articlehtml/2015/CS/C4CS00440J 、HESS 2025 https://hess.copernicus.org/articles/29/2097/2025/ 、Fluids 2017 https://www.mdpi.com/2311-5521/2/2/17 。本文・図版の転載ではなく、専門家校閲前。"
+    },
+    "reviewStatus": "needs_review",
+    "related": [
+      "フィックの法則",
+      "質量分率",
+      "ソレー係数",
+      "化学ポテンシャル"
+    ]
+  },
+  {
+    "id": "soret-coefficient",
+    "ja": "ソレー係数",
+    "en": "Soret coefficient",
+    "aliases": [
+      "熱拡散比係数S_T"
+    ],
+    "category": "熱・物質移動の交差効果",
+    "brief": "温度勾配が成分拡散へ与える影響を分子拡散係数で規格化した係数。",
+    "meaning": "温度勾配が成分拡散へ与える影響を分子拡散係数で規格化した係数。",
+    "beginner": "温度差が混合物の組成をどれだけ偏らせるかを、通常の混ざる速さと比較した指標です。",
+    "detail": "二成分系の代表的な熱拡散モデルj_A=−ρD[∇w+S_Tw(1−w)∇T]では、S_T=D_T/Dと置く。通常の分子拡散係数Dはm²/s、熱拡散係数D_Tはm²/(s·K)と定義した場合S_Tの単位はK⁻¹。定義・符号は文献や質量分率・モル分率の使い分けに依存する。温度勾配のない系ではこの項は寄与しない。",
+    "formula": "S_T=D_T/D（D_Tの定義を合わせる）",
+    "unit": "S_T: K⁻¹、D_T: m²/(s·K)、D: m²/s",
+    "example": "D_T=2×10⁻¹¹ m²/(s·K)、D=1×10⁻⁹ m²/sならS_T=0.020 K⁻¹。",
+    "relatedSections": [
+      "11.10",
+      "11.11"
+    ],
+    "relatedQuestions": [],
+    "relatedSimulators": [],
+    "confusions": [
+      "ソレー係数にはK⁻¹の定義があり、必ずしも無次元の熱拡散比と同じではない。"
+    ],
+    "source": {
+      "type": "supplement",
+      "reference": "第11.10・11.11節を理解するための多成分拡散・温度交差効果の独自補足。参考：Chemical Engineering Science https://www.sciencedirect.com/science/article/pii/S0009250918307516 、RSC Chemical Society Reviews https://pubs.rsc.org/en/content/articlehtml/2015/CS/C4CS00440J 、HESS 2025 https://hess.copernicus.org/articles/29/2097/2025/ 、Fluids 2017 https://www.mdpi.com/2311-5521/2/2/17 。本文・図版の転載ではなく、専門家校閲前。"
+    },
+    "reviewStatus": "needs_review",
+    "related": [
+      "ソレー効果",
+      "物質拡散係数",
+      "質量分率"
+    ]
+  },
+  {
+    "id": "dufour-effect",
+    "ja": "デュフール効果",
+    "en": "Dufour effect",
+    "aliases": [
+      "拡散熱効果"
+    ],
+    "category": "熱・物質移動の交差効果",
+    "brief": "混合物の濃度勾配が、通常の熱伝導以外の熱流束を生む交差現象。",
+    "meaning": "混合物の濃度勾配が、通常の熱伝導以外の熱流束を生む交差現象。",
+    "beginner": "温度差がなくても、成分の混ざり方の違いによって熱が移動する場合があります。熱伝導とは別の寄与です。",
+    "detail": "非平衡熱力学の交差輸送効果の一つで、成分の濃度勾配に伴って熱流束に追加の寄与が生じる。ソレー効果が温度勾配から物質流束を生むのと対になるが、数値係数は熱流束の定義と熱力学的な駆動力の取り方によって変わる。単純な一次モデルでq″_D=−K_D∇wと表す場合、K_Dの単位をW/mと定義する。すべての成分拡散によるエンタルピー輸送をデュフール効果と同一視しない。",
+    "formula": "q″_D=−K_D ∇w（選択した濃度基準のモデル式）",
+    "unit": "q″_D: W/m²、K_D: W/m、∇w: m⁻¹",
+    "example": "仮の係数K_D=0.10 W/m、質量分率勾配5 m⁻¹なら追加熱流束は−0.50 W/m²。",
+    "relatedSections": [
+      "11.7",
+      "11.11"
+    ],
+    "relatedQuestions": [],
+    "relatedSimulators": [],
+    "confusions": [
+      "デュフール効果は温度勾配による通常のフーリエ熱伝導とは別で、成分エンタルピーの単純移流とも区別する。"
+    ],
+    "source": {
+      "type": "supplement",
+      "reference": "第11.10・11.11節を理解するための多成分拡散・温度交差効果の独自補足。参考：Chemical Engineering Science https://www.sciencedirect.com/science/article/pii/S0009250918307516 、RSC Chemical Society Reviews https://pubs.rsc.org/en/content/articlehtml/2015/CS/C4CS00440J 、HESS 2025 https://hess.copernicus.org/articles/29/2097/2025/ 、Fluids 2017 https://www.mdpi.com/2311-5521/2/2/17 。本文・図版の転載ではなく、専門家校閲前。"
+    },
+    "reviewStatus": "needs_review",
+    "related": [
+      "ソレー効果",
+      "熱流束",
+      "質量分率",
+      "熱・物質移動の類推"
+    ]
+  },
+  {
+    "id": "uphill-diffusion",
+    "ja": "上り坂拡散",
+    "en": "uphill diffusion",
+    "aliases": [
+      "逆濃度勾配拡散"
+    ],
+    "category": "多成分・非理想拡散",
+    "brief": "成分が自身の濃度勾配に逆らう向きへ拡散流束を持つ現象。",
+    "meaning": "成分が自身の濃度勾配に逆らう向きへ拡散流束を持つ現象。",
+    "beginner": "普通は濃い方から薄い方へ広がりますが、ほかの成分との相互作用によって、ある成分が濃い方へ動く場合があります。",
+    "detail": "多成分系や非理想混合物では、拡散の熱力学的駆動力が単一成分の濃度勾配とは必ずしも平行にならず、ある成分がその濃度勾配に沿って高濃度側へ流れることがある。化学ポテンシャル勾配と他成分の流束との結合を用いるMaxwell–Stefan型記述が適する場合がある。系全体が平衡へ向かうことと矛盾せず、必ずしも第二法則に反する移動ではない。",
+    "formula": "一例：J_A·∇x_A>0（モル平均基準での上り坂成分）",
+    "unit": "J_A: mol/(m²·s)、∇x_A: m⁻¹",
+    "example": "右向きにモル分率が0.20から0.40へ増える領域で、成分Aの拡散流束が右向きなら、Aは自身の濃度勾配に沿う上り坂拡散を示す。",
+    "relatedSections": [
+      "11.11"
+    ],
+    "relatedQuestions": [],
+    "relatedSimulators": [],
+    "confusions": [
+      "上り坂拡散はエネルギーを無から作ることではなく、他成分との結合や化学ポテンシャルによって生じる。"
+    ],
+    "source": {
+      "type": "supplement",
+      "reference": "第11.10・11.11節を理解するための多成分拡散・温度交差効果の独自補足。参考：Chemical Engineering Science https://www.sciencedirect.com/science/article/pii/S0009250918307516 、RSC Chemical Society Reviews https://pubs.rsc.org/en/content/articlehtml/2015/CS/C4CS00440J 、HESS 2025 https://hess.copernicus.org/articles/29/2097/2025/ 、Fluids 2017 https://www.mdpi.com/2311-5521/2/2/17 。本文・図版の転載ではなく、専門家校閲前。"
+    },
+    "reviewStatus": "needs_review",
+    "related": [
+      "マクスウェル・ステファン拡散",
+      "化学ポテンシャル",
+      "活量係数",
+      "交差拡散"
+    ]
+  },
+  {
+    "id": "cross-diffusion",
+    "ja": "交差拡散",
+    "en": "cross diffusion",
+    "aliases": [
+      "多成分の交差拡散"
+    ],
+    "category": "多成分・非理想拡散",
+    "brief": "ある成分の拡散流束が、別の成分の濃度勾配によっても変化する現象。",
+    "meaning": "ある成分の拡散流束が、別の成分の濃度勾配によっても変化する現象。",
+    "beginner": "成分Aだけでなく成分Bの濃度の変わり方も、Aがどちらへ動くかを左右することがあります。",
+    "detail": "三成分以上などの混合物を濃度勾配形式で表すと、独立した成分組成x_jに対しJ_i=−cΣ_jD_ij∇x_jという係数行列を用いることがある。この行列の非対角項はほかの成分の勾配がJ_iへ与える影響を表す。濃度勾配だけの表現が可能な条件と採用する基準速度・独立成分に依存し、Maxwell–Stefanの二成分間拡散係数そのものと行列要素を同一視しない。",
+    "formula": "J_i=−c Σ_j D_ij ∇x_j（独立成分の勾配基準）",
+    "unit": "J_i: mol/(m²·s)、c: mol/m³、D_ij: m²/s",
+    "example": "仮の二勾配モデルで∇x_A=0、∇x_B=10 m⁻¹、D_AB,eff=2×10⁻⁹ m²/s、c=1000 mol/m³なら交差項のJ_Aは−2×10⁻⁵ mol/(m²·s)。",
+    "relatedSections": [
+      "11.11"
+    ],
+    "relatedQuestions": [],
+    "relatedSimulators": [],
+    "confusions": [
+      "濃度勾配表現の非対角拡散係数と、Maxwell–Stefan拡散係数は同じ表現とは限らない。"
+    ],
+    "source": {
+      "type": "supplement",
+      "reference": "第11.10・11.11節を理解するための多成分拡散・温度交差効果の独自補足。参考：Chemical Engineering Science https://www.sciencedirect.com/science/article/pii/S0009250918307516 、RSC Chemical Society Reviews https://pubs.rsc.org/en/content/articlehtml/2015/CS/C4CS00440J 、HESS 2025 https://hess.copernicus.org/articles/29/2097/2025/ 、Fluids 2017 https://www.mdpi.com/2311-5521/2/2/17 。本文・図版の転載ではなく、専門家校閲前。"
+    },
+    "reviewStatus": "needs_review",
+    "related": [
+      "マクスウェル・ステファン拡散",
+      "モル分率",
+      "上り坂拡散",
+      "多成分拡散係数行列"
+    ]
+  },
+  {
+    "id": "multicomponent-diffusion-matrix",
+    "ja": "多成分拡散係数行列",
+    "en": "multicomponent Fick diffusion coefficient matrix",
+    "aliases": [
+      "拡散係数の行列表現"
+    ],
+    "category": "多成分・非理想拡散",
+    "brief": "独立した複数成分の濃度勾配と拡散流束をまとめて関係付ける係数行列。",
+    "meaning": "独立した複数成分の濃度勾配と拡散流束をまとめて関係付ける係数行列。",
+    "beginner": "三つ以上の物質が混ざると、一つの拡散係数だけでは足りない場合があります。複数の移動を一度に扱う表です。",
+    "detail": "成分数Nの混合物で全モル分率の和が1のため独立成分は通常N−1個となる。モル平均基準の流束ベクトルJと独立組成の勾配ベクトル∇xを使いJ=−cD_F∇xと置く場合、D_Fは(N−1)×(N−1)の多成分Fick拡散行列となる。行列の数値と対称性は基準速度・独立成分・熱力学的性質に依存し、単純な二成分D_ABの表ではない。",
+    "formula": "J=−c D_F ∇x（独立N−1成分、選択した基準）",
+    "unit": "D_F: m²/s、J各成分: mol/(m²·s)、∇x: m⁻¹",
+    "example": "3成分混合物では、独立なモル分率は通常2個で、対応するFick拡散係数行列は2×2になる。",
+    "relatedSections": [
+      "11.11"
+    ],
+    "relatedQuestions": [],
+    "relatedSimulators": [],
+    "confusions": [
+      "多成分Fick行列を、物質対ごとに定義するMaxwell–Stefan係数と同じ表として扱わない。"
+    ],
+    "source": {
+      "type": "supplement",
+      "reference": "第11.10・11.11節を理解するための多成分拡散・温度交差効果の独自補足。参考：Chemical Engineering Science https://www.sciencedirect.com/science/article/pii/S0009250918307516 、RSC Chemical Society Reviews https://pubs.rsc.org/en/content/articlehtml/2015/CS/C4CS00440J 、HESS 2025 https://hess.copernicus.org/articles/29/2097/2025/ 、Fluids 2017 https://www.mdpi.com/2311-5521/2/2/17 。本文・図版の転載ではなく、専門家校閲前。"
+    },
+    "reviewStatus": "needs_review",
+    "related": [
+      "交差拡散",
+      "マクスウェル・ステファン拡散",
+      "モル分率"
+    ]
+  },
+  {
+    "id": "barrier-diffusion",
+    "ja": "障壁拡散",
+    "en": "barrier diffusion",
+    "aliases": [
+      "濃度勾配と逆の相殺拡散"
+    ],
+    "category": "多成分・非理想拡散",
+    "brief": "成分自身には濃度勾配があるのに、他成分との結合で正味拡散流束がゼロになる状態。",
+    "meaning": "成分自身には濃度勾配があるのに、他成分との結合で正味拡散流束がゼロになる状態。",
+    "beginner": "濃い方と薄い方があっても、ほかの成分が与える移動の影響が釣り合うと、その成分の正味の拡散が止まることがあります。",
+    "detail": "多成分濃度勾配モデルの例でJ_A=−c(D_AA∇x_A+D_AB∇x_B)と書くと、二つの項が打ち消し合う場合に∇x_A≠0であってもJ_A=0となる。これは多成分間の結合を反映する障壁拡散の単純な説明。濃度勾配がないときしか拡散が止まらないとする単独Fick式とは違い、一般には化学ポテンシャルと他成分の移動も評価する。",
+    "formula": "D_AA∇x_A+D_AB∇x_B=0 ⇒ J_A=0（上記の線形モデル）",
+    "unit": "D: m²/s、∇x: m⁻¹、J_A: mol/(m²·s)",
+    "example": "仮にD_AA=2、D_AB=1（同じ任意の単位）、∇x_A=1 m⁻¹、∇x_B=−2 m⁻¹なら交差項が相殺してJ_A=0。",
+    "relatedSections": [
+      "11.11"
+    ],
+    "relatedQuestions": [],
+    "relatedSimulators": [],
+    "confusions": [
+      "障壁拡散は壁が物質を遮断する意味ではなく、成分間の拡散結合により流束が相殺される現象。"
+    ],
+    "source": {
+      "type": "supplement",
+      "reference": "第11.10・11.11節を理解するための多成分拡散・温度交差効果の独自補足。参考：Chemical Engineering Science https://www.sciencedirect.com/science/article/pii/S0009250918307516 、RSC Chemical Society Reviews https://pubs.rsc.org/en/content/articlehtml/2015/CS/C4CS00440J 、HESS 2025 https://hess.copernicus.org/articles/29/2097/2025/ 、Fluids 2017 https://www.mdpi.com/2311-5521/2/2/17 。本文・図版の転載ではなく、専門家校閲前。"
+    },
+    "reviewStatus": "needs_review",
+    "related": [
+      "交差拡散",
+      "多成分拡散係数行列",
+      "モル分率"
+    ]
+  },
+  {
+    "id": "diffusive-concentration-overshoot",
+    "ja": "多成分拡散の濃度オーバーシュート",
+    "en": "concentration overshoot in multicomponent diffusion",
+    "aliases": [
+      "拡散の過渡オーバーシュート"
+    ],
+    "category": "多成分・非理想拡散",
+    "brief": "混合物が平衡へ近づく途中で、ある成分の濃度が最終平衡値を一時的に越える現象。",
+    "meaning": "混合物が平衡へ近づく途中で、ある成分の濃度が最終平衡値を一時的に越える現象。",
+    "beginner": "最終的には30%になる成分が、途中で35%まで増えてから30%へ戻る場合があります。複数の成分が連動して移動するためです。",
+    "detail": "多成分拡散では流束間の結合により、ある場所の成分濃度が最終平衡組成を越えた後に戻る非単調な過渡応答が生じ得る。これは単一成分の独立Fick拡散では予測しにくい現象の一例である。実際の濃度オーバーシュートの有無や量は初期分布・境界条件・拡散行列・熱力学的非理想性に依存する。",
+    "formula": "例：x_A(t_1)>x_A,eq かつ最終的にx_A→x_A,eq",
+    "unit": "x_A: 無次元、t: s",
+    "example": "初期x_A=0.20、途中で0.35、平衡時0.30になる仮想過程では、途中で平衡値を0.05超える。",
+    "relatedSections": [
+      "11.11"
+    ],
+    "relatedQuestions": [],
+    "relatedSimulators": [],
+    "confusions": [
+      "数値計算の不安定性による振動と、物理的に生じる濃度オーバーシュートは区別して検証する。"
+    ],
+    "source": {
+      "type": "supplement",
+      "reference": "第11.10・11.11節を理解するための多成分拡散・温度交差効果の独自補足。参考：Chemical Engineering Science https://www.sciencedirect.com/science/article/pii/S0009250918307516 、RSC Chemical Society Reviews https://pubs.rsc.org/en/content/articlehtml/2015/CS/C4CS00440J 、HESS 2025 https://hess.copernicus.org/articles/29/2097/2025/ 、Fluids 2017 https://www.mdpi.com/2311-5521/2/2/17 。本文・図版の転載ではなく、専門家校閲前。"
+    },
+    "reviewStatus": "needs_review",
+    "related": [
+      "交差拡散",
+      "上り坂拡散",
+      "非定常状態"
+    ]
+  },
+  {
+    "id": "turbulent-schmidt-number",
+    "ja": "乱流シュミット数",
+    "en": "turbulent Schmidt number",
+    "aliases": [
+      "Sc_t"
+    ],
+    "category": "乱流の物質輸送",
+    "brief": "乱流による運動量の拡散係数と、乱流による物質の拡散係数の比。",
+    "meaning": "乱流による運動量の拡散係数と、乱流による物質の拡散係数の比。",
+    "beginner": "乱流の渦が速度を混ぜる速さと、成分を混ぜる速さが同じとは限りません。その比を表す数です。",
+    "detail": "乱流渦動粘度ν_t [m²/s]と乱流物質拡散係数D_t[m²/s]に対しSc_t=ν_t/D_t。分子拡散係数Dと分子動粘度νによるSchmidt数Sc=ν/Dとは別である。Sc_tは流動・壁距離・乱流モデルなどで変わり、0.7や1.0などの一定値を使うこともあるが普遍定数ではない。",
+    "formula": "Sc_t=ν_t/D_t",
+    "unit": "Sc_t: 無次元、ν_t,D_t: m²/s",
+    "example": "ν_t=7×10⁻⁴ m²/s、D_t=1×10⁻³ m²/sならSc_t=0.70。",
+    "relatedSections": [
+      "11.6",
+      "11.10"
+    ],
+    "relatedQuestions": [],
+    "relatedSimulators": [],
+    "confusions": [
+      "分子シュミット数Scと乱流シュミット数Sc_tは異なり、乱流モデルの値を物質固有値とみなさない。"
+    ],
+    "source": {
+      "type": "supplement",
+      "reference": "第11.10・11.11節を理解するための多成分拡散・温度交差効果の独自補足。参考：Chemical Engineering Science https://www.sciencedirect.com/science/article/pii/S0009250918307516 、RSC Chemical Society Reviews https://pubs.rsc.org/en/content/articlehtml/2015/CS/C4CS00440J 、HESS 2025 https://hess.copernicus.org/articles/29/2097/2025/ 、Fluids 2017 https://www.mdpi.com/2311-5521/2/2/17 。本文・図版の転載ではなく、専門家校閲前。"
+    },
+    "reviewStatus": "needs_review",
+    "related": [
+      "シュミット数",
+      "渦粘性係数",
+      "乱流物質拡散係数"
+    ]
+  },
+  {
+    "id": "turbulent-species-diffusivity",
+    "ja": "乱流物質拡散係数",
+    "en": "turbulent species diffusivity",
+    "aliases": [
+      "渦物質拡散係数"
+    ],
+    "category": "乱流の物質輸送",
+    "brief": "乱流の混合効果を、分子拡散と同じ次元の有効係数として近似した量。",
+    "meaning": "乱流の混合効果を、分子拡散と同じ次元の有効係数として近似した量。",
+    "beginner": "乱流では渦が成分を運ぶため、分子だけで混ざるより速く濃度が均一になる場合があります。",
+    "detail": "渦拡散近似では、乱流による平均濃度勾配と乱流拡散流束をJ_t≈−ρD_t∇wのようにモデル化する。ここでD_t=ν_t/Sc_tと置くことが多い。分子拡散係数DとD_tは異なる量で、両方を考える単純モデルではD_eff=D+D_tとなる。ただし異方的な乱流や逆勾配輸送では単純スカラー拡散係数では不十分な場合がある。",
+    "formula": "D_t=ν_t/Sc_t、J_t≈−ρD_t∇w（渦拡散近似）",
+    "unit": "D_t,ν_t: m²/s、J_t: kg/(m²·s)、∇w: m⁻¹",
+    "example": "ν_t=0.001 m²/s、Sc_t=0.5ならD_t=0.002 m²/s。",
+    "relatedSections": [
+      "11.6",
+      "11.10"
+    ],
+    "relatedQuestions": [],
+    "relatedSimulators": [],
+    "confusions": [
+      "渦拡散係数は流れに依存する近似で、分子種固有の分子拡散係数とは違う。"
+    ],
+    "source": {
+      "type": "supplement",
+      "reference": "第11.10・11.11節を理解するための多成分拡散・温度交差効果の独自補足。参考：Chemical Engineering Science https://www.sciencedirect.com/science/article/pii/S0009250918307516 、RSC Chemical Society Reviews https://pubs.rsc.org/en/content/articlehtml/2015/CS/C4CS00440J 、HESS 2025 https://hess.copernicus.org/articles/29/2097/2025/ 、Fluids 2017 https://www.mdpi.com/2311-5521/2/2/17 。本文・図版の転載ではなく、専門家校閲前。"
+    },
+    "reviewStatus": "needs_review",
+    "related": [
+      "乱流シュミット数",
+      "渦粘性係数",
+      "物質拡散係数",
+      "乱流"
+    ]
+  },
+  {
+    "id": "binary-thermodynamic-factor",
+    "ja": "二成分拡散の熱力学因子",
+    "en": "thermodynamic factor for binary diffusion",
+    "aliases": [
+      "非理想拡散の熱力学補正因子"
+    ],
+    "category": "多成分・非理想拡散",
+    "brief": "非理想混合物の化学ポテンシャル勾配と濃度勾配の差を補正する係数。",
+    "meaning": "非理想混合物の化学ポテンシャル勾配と濃度勾配の差を補正する係数。",
+    "beginner": "成分同士の相互作用があると、濃度だけで拡散のしやすさを決められません。活量の変化を使った補正が必要です。",
+    "detail": "二成分等温・定圧系で成分Aの活量をa_A=x_Aγ_Aと定義すると、熱力学因子Γ=∂ln a_A/∂ln x_A=1+∂lnγ_A/∂ln x_A。非理想性がないγ_A一定ならΓ=1となる。単純な二成分相互拡散の条件ではFick係数とMaxwell–Stefan係数にD_F≈ΓĐ_ABの関係が使われるが、組成・圧力・輸送機構などの前提が必要で普遍的な変換式ではない。",
+    "formula": "Γ=1+∂lnγ_A/∂lnx_A（等温・定圧二成分）",
+    "unit": "Γ,x_A,γ_A: 無次元",
+    "example": "ある組成で∂lnγ_A/∂lnx_A=0.5なら熱力学因子Γ=1.5。",
+    "relatedSections": [
+      "11.11"
+    ],
+    "relatedQuestions": [],
+    "relatedSimulators": [],
+    "confusions": [
+      "熱力学因子Γを温度そのものや、すべての多成分系へ適用できる単独の定数とみなさない。"
+    ],
+    "source": {
+      "type": "supplement",
+      "reference": "第11.10・11.11節を理解するための多成分拡散・温度交差効果の独自補足。参考：Chemical Engineering Science https://www.sciencedirect.com/science/article/pii/S0009250918307516 、RSC Chemical Society Reviews https://pubs.rsc.org/en/content/articlehtml/2015/CS/C4CS00440J 、HESS 2025 https://hess.copernicus.org/articles/29/2097/2025/ 、Fluids 2017 https://www.mdpi.com/2311-5521/2/2/17 。本文・図版の転載ではなく、専門家校閲前。"
+    },
+    "reviewStatus": "needs_review",
+    "related": [
+      "活量",
+      "活量係数",
+      "化学ポテンシャル",
+      "マクスウェル・ステファン拡散"
+    ]
   }
 ]

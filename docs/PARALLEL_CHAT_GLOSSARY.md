@@ -193,3 +193,11 @@
 - 公開理論との確認：CRE https://cre.smilelab.dev/content/slides/09-external-and-internal-diffusion-effects/ 、Spalding https://www.mdpi.com/1099-4300/25/8/1232 、Brinkman https://dimless.org/docs/numbers/brinkman/ 。翻訳・図版転載なし、全新語needs_review。
 - **事前JS検証**：全423語のID・日本語名/別名・英語名（NFKC正規化）の重複なし。新規13語の必須欄・関連語・実在節、計算例13件検算合格。既存410語は無変更。
 - 関連問題IDは確認できないため関連付けずrelatedQuestions=[]。Nodeテスト、CI、Pagesビルド、実機、専門家校閲は未実施で全品質ゲート未達。他ライン/PR/テスト/図解/教材/問題は変更しない。
+
+## 第25バッチ（2026-10-30 JST）
+- 直前 **423語** → 追加 **11語** → 計 **434語**。
+- 追加：ソレー効果、ソレー係数、デュフール効果、上り坂拡散、交差拡散、多成分拡散係数行列、障壁拡散、多成分拡散の濃度オーバーシュート、乱流シュミット数、乱流物質拡散係数、二成分拡散の熱力学因子。
+- 第11.10・11.11節の補足として、ソレー/デュフール交差効果、上り坂拡散、交差拡散・多成分行列・障壁拡散・濃度過渡オーバーシュート、乱流Schmidt数・渦拡散係数、非理想二成分の熱力学因子を追加。全て独立執筆の教育用補足で、本文が直接この範囲の全概念を扱うとの保証ではない。全新語needs_review。
+- 参考照合：Chemical Engineering Science（https://www.sciencedirect.com/science/article/pii/S0009250918307516）、RSC Chem Soc Rev（https://pubs.rsc.org/en/content/articlehtml/2015/CS/C4CS00440J）、HESS 2025（https://hess.copernicus.org/articles/29/2097/2025/）、Fluids 2017（https://www.mdpi.com/2311-5521/2/2/17）。転載・翻訳なし。
+- **JS事前検証**：全434語のID・NFKC正規化日本語名/別名・英語名の重複なし。新規11語の完全欄・関連語・実在節参照、独立数値例10件を検算。既存423語の順序・内容は不変。
+- 未検証の問題IDは追加せずrelatedQuestions=[]。Nodeテスト・CI・Pages公開ビルド・ブラウザ実機・専門家校閲は未実施、全品質ゲートは未達。テスト、教材、図、他ライン、PR、mainは変更しない。
