@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="840" height="1200" viewBox="0 0 840 1200" style="max-width:100%" role="img" aria-labelledby="title72 desc72" data-origin="original-app-diagram" data-lesson="7.2" data-diameter="0.020" data-re="200" data-pr="5.0" data-kf="0.60" data-factor="0.05" data-lh="0.20" data-lt="1.00" data-observation="0.50" data-nu-tw="3.66" data-h-tw="109.8">
+<title id="title72">§7.2 円管内層流：速度場と温度場の助走長を比較</title>
+<desc id="desc72">アプリ独自作図。内径0.020メートル、レイノルズ数200、プラントル数5の層流円管で、水力学的助走長の近似が0.20メートル、熱的助走長の近似が1.00メートルとなる。共通距離軸に比例した2本の横棒で示す。管入口から0.50メートルでは速度場は概ね発達済みだが温度場はまだ助走中。両方が十分発達した壁温一定の円管層流で、ヌセルト数3.66、流体熱伝導率0.60ワット毎メートルケルビンを用いると熱伝達率109.8ワット毎平方メートルケルビン。ただしこれは熱的助走中の位置には適用できない。助走長の係数0.05は目安であり、境界は急に切り替わらない。管断面は模式的。</desc>
+<style>
+text{font-family:'Noto Sans CJK JP','Hiragino Kaku Gothic ProN',sans-serif;font-size:23px}
+.bg{fill:#fff}.panel{fill:#f4f7fb;stroke:#bfd0df;stroke-width:2}.ink{fill:#193148}.muted{fill:#476074}
+.pipe{fill:#dceaf3;stroke:#56809a;stroke-width:3}.wall{stroke:#3c6078;stroke-width:6}.flow{stroke:#287da4;stroke-width:3.7;fill:none;stroke-linecap:round;stroke-linejoin:round}
+.hyd{fill:#287b9e}.therm{fill:#b66837}.developed{fill:#b6cbd9}.guide{stroke:#647b8e;stroke-width:1.7;stroke-dasharray:5 7}.focus{stroke:#a04677;stroke-width:3;stroke-dasharray:8 6}.focus-text{fill:#96386e}
+.title{font-size:34px;font-weight:750}.section{font-size:27px;font-weight:700}.small{font-size:21px}.micro{font-size:18px}.formula{font-size:25px;font-weight:650}
+@media(prefers-color-scheme:dark){.bg{fill:#111b26}.panel{fill:#1c2b3b;stroke:#617c91}.ink{fill:#edf6fe}.muted{fill:#c6d8e5}.pipe{fill:#26475e;stroke:#9ac5de}.wall{stroke:#d2e6f2}.flow{stroke:#9fdaf7}.hyd{fill:#3688ac}.therm{fill:#ad6d47}.developed{fill:#576d7e}.guide{stroke:#8198ac}.focus{stroke:#f6a7da}.focus-text{fill:#ffc1e5}}
+</style>
+<rect class="bg" width="840" height="1200"/>
+<text x="30" y="59" class="title ink">§7.2 円管の速度と熱の助走区間</text>
+<text x="31" y="100" class="small muted">速度場が先に発達しても、温度場は発達途中のことがある</text>
+<rect class="panel" x="24" y="122" width="792" height="506" rx="18"/>
+<text x="44" y="164" class="section ink">① 同じ距離軸で、二つの助走長を比べる</text>
+<text x="45" y="204" class="small muted">内径 D = 0.020 m ／ Re_D = 200 ／ Pr = 5.0</text>
+<rect class="pipe" x="166" y="227" width="552" height="86" rx="3"/>
+<path class="wall" d="M166 227 H718 M166 313 H718"/>
+<path class="flow" d="M196 292 H681 M666 279 L681 292 L666 305"/>
+<text x="440" y="264" text-anchor="middle" class="small ink">流れの向き →</text>
+<text x="45" y="351" class="small muted">色：助走区間の目安 ／ 灰：概ね十分発達</text>
+<text x="46" y="407" class="small ink">速度場</text>
+<text x="46" y="477" class="small ink">温度場</text>
+<rect id="h-entrance" class="hyd" x="166" y="379" width="92" height="37" rx="3"/>
+<rect id="h-developed" class="developed" x="258" y="379" width="460" height="37" rx="3"/>
+<rect id="t-entrance" class="therm" x="166" y="449" width="460" height="37" rx="3"/>
+<rect id="t-developed" class="developed" x="626" y="449" width="92" height="37" rx="3"/>
+<path class="guide" d="M258 364 V499 M626 364 V499"/>
+<path class="focus" d="M396 364 V499"/>
+<text x="166" y="533" text-anchor="middle" class="micro ink">0</text>
+<text x="258" y="533" text-anchor="middle" class="micro ink">0.20 m</text>
+<text x="396" y="533" text-anchor="middle" class="micro focus-text">0.50 m</text>
+<text x="626" y="533" text-anchor="middle" class="micro ink">1.00 m</text>
+<text x="718" y="533" text-anchor="middle" class="micro ink">1.20 m</text>
+<text x="45" y="573" class="micro muted">水力学的助走長の目安 L_h ≈ 0.20 m</text>
+<text x="45" y="604" class="micro muted">熱的助走長の目安 L_t ≈ 1.00 m（急な境界ではない）</text>
+<rect class="panel" x="24" y="647" width="792" height="210" rx="18"/>
+<text x="44" y="691" class="section ink">② x = 0.50 m の場所はどうなる？</text>
+<text x="45" y="744" class="small ink">速度場：0.50 m ＞ L_h ≈ 0.20 m</text>
+<text x="45" y="784" class="small ink">温度場：0.50 m ＜ L_t ≈ 1.00 m</text>
+<text x="45" y="830" class="small muted">速度は概ね発達済み。温度場はまだ助走域。</text>
+<rect class="panel" x="24" y="875" width="792" height="263" rx="18"/>
+<text x="44" y="919" class="section ink">③ 計算とNuの適用条件</text>
+<text x="45" y="960" class="small ink">L_h ≈ 0.05 Re_D D = 0.20 m</text>
+<text x="45" y="1000" class="small ink">L_t ≈ 0.05 Re_D Pr D = 1.00 m</text>
+<text x="45" y="1040" class="small ink">壁温一定・流動と熱が十分発達：Nu_D ≈ 3.66</text>
+<text x="45" y="1080" class="formula ink">h = Nu_D k_f / D = 109.8 W/(m²·K)</text>
+<text x="45" y="1121" class="micro muted">熱的助走中の全区間へNu_D = 3.66を適用しない。</text>
+<text x="420" y="1182" text-anchor="middle" class="micro muted">アプリ作成の独自模式図｜原著図版の転載・翻訳なし</text>
+</svg>
