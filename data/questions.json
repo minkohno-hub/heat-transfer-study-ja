@@ -35542,5 +35542,453 @@
       "約6.85 W。"
     ],
     "beginnerPitfall": "対流だけの熱流を全ての放熱としない。"
+  },
+  {
+    "id": "supp-phase-correlation-cylinder-h-v1",
+    "revision": "v1",
+    "field": "沸騰・相変化",
+    "prerequisites": [
+      "膜沸騰",
+      "最小熱流束",
+      "相関式の適用条件"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "一般的な相変化相関と独自の条件から作問。原本の文章・図・例題を転載しない。",
+      "chapterId": "ch9",
+      "focusSectionId": "9.4",
+      "guideId": "chapter9-latent-boiling"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "2026-10-30：内部の別式検算・単位・条件・全選択肢確認／原本網羅照合・包括的品質監査・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-30",
+        "type": "authored_with_internal_check",
+        "details": "docs/PHASE_CORRELATIONS_20261030.md。原本の対象式を画像確認し、仮想数値を別式・単位から内部検算。外部校閲ではない。"
+      }
+    ],
+    "prompt": "静止飽和液中の水平円筒を連続層流蒸気膜が覆うと仮定する。小径補正・放射を除くBromley形h_b=0.62[k_v³ρ_v(ρ_l−ρ_v)g h_fg*/(μ_v DΔT)]^(1/4)を使う。k_v=0.100 W/(m·K)、ρ_v=0.500 kg/m³、ρ_l=900 kg/m³、g=10.0 m/s²、h_fg*=2.45855×10⁶ J/kg、μ_v=4.00×10⁻⁵ Pa·s、D=0.0500 m、ΔT=300 Kのときh_bはいくらか。指定した物性評価条件は満たすものとし、有効数字3桁とする。",
+    "choices": [
+      "2.28×10² W/(m²·K)",
+      "1.14×10² W/(m²·K)",
+      "4.57×10² W/(m²·K)",
+      "3.68×10² W/(m²·K)"
+    ],
+    "answer": 0,
+    "difficulty": "標準・数値計算",
+    "explanation": "式へ代入してh_b≈228.437 W/(m²·K)。別式ではν_v=8.00×10⁻⁵ m²/s、Nu_D≈114.218、h_b=Nu_D k_v/Dで同じ値になる。どちらの式も直径を使い、放射はまだ含まない。",
+    "distractors": [
+      "正解。四乗根と係数0.62を使うと約228.44となる。",
+      "Nu_Dの数値114.22を、次元を持つh_bと混同した。",
+      "Nu_Dを計算後、hへの換算で直径Dの代わりに半径D/2を使った。",
+      "相関の係数0.62を落として計算した。"
+    ],
+    "hints": [
+      "まず動粘度ν_v=μ_v/ρ_vを確認する。",
+      "Nu_D=h_bD/k_vとして同じ関係を別式でも計算できる。"
+    ],
+    "solutionSteps": [
+      "まず動粘度ν_v=μ_v/ρ_vを確認する。",
+      "Nu_D=h_bD/k_vとして同じ関係を別式でも計算できる。",
+      "Nu_D≈114.218、k_v/D=2.00 W/(m²·K)。",
+      "h_b≈228.437を3桁に丸める。"
+    ],
+    "beginnerPitfall": "ヌセルト数は無次元で、h_bの単位とは異なる。"
+  },
+  {
+    "id": "supp-phase-correlation-latent-correction-v1",
+    "revision": "v1",
+    "field": "沸騰・相変化",
+    "prerequisites": [
+      "膜沸騰",
+      "最小熱流束",
+      "相関式の適用条件"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "一般的な相変化相関と独自の条件から作問。原本の文章・図・例題を転載しない。",
+      "chapterId": "ch9",
+      "focusSectionId": "9.4",
+      "guideId": "chapter9-latent-boiling"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "2026-10-30：内部の別式検算・単位・条件・全選択肢確認／原本網羅照合・包括的品質監査・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-30",
+        "type": "authored_with_internal_check",
+        "details": "docs/PHASE_CORRELATIONS_20261030.md。原本の対象式を画像確認し、仮想数値を別式・単位から内部検算。外部校閲ではない。"
+      }
+    ],
+    "prompt": "有効潜熱にh_fg*=h_fg[1+(0.968−0.163/Pr_v)Ja_v]、Ja_v=c_pvΔT/h_fg（Pr_v≥0.6）を採用する。Pr_v=0.800、c_pv=2000 J/(kg·K)、ΔT=300 K、h_fg=2.00×10⁶ J/kgのときh_fg*は何MJ/kgか。小数第3位まで求める。",
+    "choices": [
+      "2.000 MJ/kg",
+      "2.459 MJ/kg",
+      "2.240 MJ/kg",
+      "2.600 MJ/kg"
+    ],
+    "answer": 1,
+    "difficulty": "標準・数値計算",
+    "explanation": "Pr_v=0.800≥0.6、Ja_v=0.300、補正係数0.968−0.163/0.800=0.76425。h_fg*=2.00×10⁶+0.76425×2000×300=2458550 J/kg=2.45855 MJ/kg、丸めて2.459 MJ/kg。",
+    "distractors": [
+      "顕熱補正を全く行わない元の潜熱。",
+      "正解。Ja_v=0.300と指定補正を使った値。",
+      "別の0.4 c_pvΔT補正へ入れ替えた値。",
+      "c_pvΔTを係数なしで全て加えた値。"
+    ],
+    "hints": [
+      "Pr_vの適用条件を確認する。",
+      "Ja_vと補正係数を別々に求める。"
+    ],
+    "solutionSteps": [
+      "Pr_vの適用条件を確認する。",
+      "Ja_vと補正係数を別々に求める。",
+      "増分は458550 J/kgである。",
+      "J/kgを10⁶で割りMJ/kgとする。"
+    ],
+    "beginnerPitfall": "異なる文献の有効潜熱補正を無断で混ぜない。"
+  },
+  {
+    "id": "supp-phase-correlation-diameter-scaling-v1",
+    "revision": "v1",
+    "field": "沸騰・相変化",
+    "prerequisites": [
+      "膜沸騰",
+      "最小熱流束",
+      "相関式の適用条件"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "conceptual",
+    "source": {
+      "type": "supplement",
+      "reference": "一般的な相変化相関と独自の条件から作問。原本の文章・図・例題を転載しない。",
+      "chapterId": "ch9",
+      "focusSectionId": "9.4",
+      "guideId": "chapter9-latent-boiling"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "2026-10-30：内部の別式検算・単位・条件・全選択肢確認／原本網羅照合・包括的品質監査・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-30",
+        "type": "authored_with_internal_check",
+        "details": "docs/PHASE_CORRELATIONS_20261030.md。原本の対象式を画像確認し、仮想数値を別式・単位から内部検算。外部校閲ではない。"
+      }
+    ],
+    "prompt": "同じ連続膜のBromley形で、蒸気・液物性、g、h_fg*、壁面過熱度をすべて固定する。小径補正が不要な範囲の水平円筒で、直径Dだけを16倍にしたとき、平均h_bの元の値に対する倍率はいくらか。放射は除く。",
+    "choices": [
+      "0.250 倍",
+      "1.000 倍",
+      "0.500 倍",
+      "2.000 倍"
+    ],
+    "answer": 2,
+    "difficulty": "応用・式変形と次元解析",
+    "explanation": "h_b形の四乗根の中にD^(−1)があるためh_b∝D^(−1/4)。Nu_D形ではNu_D∝D^(3/4)、h_b=Nu_D k_v/Dなので同じ指数−1/4を得る。全熱移動率は面積も変わるため別に評価する。",
+    "distractors": [
+      "Dの指数を−1/2と取り違えた倍率。",
+      "直径による膜流動の変化を無視した倍率。",
+      "正解。h_b∝D^(−1/4)なので16^(−1/4)=1/2。",
+      "Dの指数を+1/4と取り違えた倍率。"
+    ],
+    "hints": [
+      "係数の式をh_bとNu_Dのどちらで読むか決める。",
+      "物性・h_fg*・過熱度はこの比較で固定されている。"
+    ],
+    "solutionSteps": [
+      "係数の式をh_bとNu_Dのどちらで読むか決める。",
+      "物性・h_fg*・過熱度はこの比較で固定されている。",
+      "16の四乗根は2。",
+      "逆数を取り0.500倍となる。"
+    ],
+    "beginnerPitfall": "実際にΔTや膜温度を変える比較では物性まで一定とは限らない。"
+  },
+  {
+    "id": "supp-phase-correlation-radiation-coupling-v1",
+    "revision": "v1",
+    "field": "沸騰・相変化",
+    "prerequisites": [
+      "膜沸騰",
+      "最小熱流束",
+      "相関式の適用条件"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "applied",
+    "source": {
+      "type": "supplement",
+      "reference": "一般的な相変化相関と独自の条件から作問。原本の文章・図・例題を転載しない。",
+      "chapterId": "ch9",
+      "focusSectionId": "9.4",
+      "guideId": "chapter9-latent-boiling"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "2026-10-30：内部の別式検算・単位・条件・全選択肢確認／原本網羅照合・包括的品質監査・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-30",
+        "type": "authored_with_internal_check",
+        "details": "docs/PHASE_CORRELATIONS_20261030.md。原本の対象式を画像確認し、仮想数値を別式・単位から内部検算。外部校閲ではない。"
+      }
+    ],
+    "prompt": "水平円筒の限定的な放射補正h_total≈h_b+(3/4)h_r（h_r<h_b）を採用できるとする。h_b=40.0 W/(m²·K)、h_r=20.0 W/(m²·K)、ΔT=300 Kのとき、補正後の係数と熱流束の組合せはどれか。",
+    "choices": [
+      "60.0 W/(m²·K)、18.0 kW/m²",
+      "45.0 W/(m²·K)、13.5 kW/m²",
+      "50.0 W/(m²·K)、15.0 kW/m²",
+      "55.0 W/(m²·K)、16.5 kW/m²"
+    ],
+    "answer": 3,
+    "difficulty": "応用・条件と式の選択",
+    "explanation": "20.0<40.0なので指定の選択条件を満たす。h_total≈40.0+0.75×20.0=55.0 W/(m²·K)、q″≈55.0×300=16500 W/m²。この補正は一般形状や強い放射へ無条件には適用しない。",
+    "distractors": [
+      "膜流動への放射の影響を落とし、単純に全量を加えた。",
+      "3/4を1/4と取り違えている。",
+      "放射係数の半分だけを加えている。",
+      "正解。40.0+0.75×20.0=55.0、さらに300 Kを掛ける。"
+    ],
+    "hints": [
+      "まずh_r<h_bを確認する。",
+      "放射係数に掛けるのは3/4である。"
+    ],
+    "solutionSteps": [
+      "まずh_r<h_bを確認する。",
+      "放射係数に掛けるのは3/4である。",
+      "h_totalとΔTを掛ける。",
+      "1000 W/m²=1 kW/m²として換算する。"
+    ],
+    "beginnerPitfall": "h_rは単位面積の放射を温度差で割った係数で、熱流束そのものではない。"
+  },
+  {
+    "id": "supp-phase-correlation-flat-minimum-v1",
+    "revision": "v1",
+    "field": "沸騰・相変化",
+    "prerequisites": [
+      "膜沸騰",
+      "最小熱流束",
+      "相関式の適用条件"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "一般的な相変化相関と独自の条件から作問。原本の文章・図・例題を転載しない。",
+      "chapterId": "ch9",
+      "focusSectionId": "9.5",
+      "guideId": "chapter9-latent-boiling"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "2026-10-30：内部の別式検算・単位・条件・全選択肢確認／原本網羅照合・包括的品質監査・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-30",
+        "type": "authored_with_internal_check",
+        "details": "docs/PHASE_CORRELATIONS_20261030.md。原本の対象式を画像確認し、仮想数値を別式・単位から内部検算。外部校閲ではない。"
+      }
+    ],
+    "prompt": "大きな水平平板の飽和液中における基準式q″_min,B=0.09ρ_v h_fg[σ_s g(ρ_l−ρ_v)/(ρ_l+ρ_v)²]^(1/4)を使う。ρ_l=800 kg/m³、ρ_v=4.00 kg/m³、h_fg=1.00×10⁶ J/kg、σ_s=0.0200 N/m、g=10.0 m/s²のとき、q″_min,Bはいくらか。有効数字3桁の仮想計算であり、実機の遷移保証ではない。",
+    "choices": [
+      "45.1 kW/m²",
+      "639 kW/m²",
+      "180 kW/m²",
+      "4.51 kW/m²"
+    ],
+    "answer": 0,
+    "difficulty": "標準・数値計算",
+    "explanation": "密度差796、密度和804を使い、速度尺度は約0.125273 m/s。0.09×4.00×10⁶を掛けて45098.3 W/m²、すなわち45.1 kW/m²。",
+    "distractors": [
+      "正解。四乗根が0.125273 m/s、熱流束は約45098 W/m²。",
+      "分母の密度和の二乗を蒸気密度の二乗に誤置換した。",
+      "ρ_vを外側に2回掛けてしまった。",
+      "無次元係数0.09を0.009としてしまった。"
+    ],
+    "hints": [
+      "密度の差と和を分けて計算する。",
+      "分母全体は804²である。"
+    ],
+    "solutionSteps": [
+      "密度の差と和を分けて計算する。",
+      "分母全体は804²である。",
+      "四乗根は平方根を2回取って検算できる。",
+      "0.09ρ_vh_fgを掛け、kW/m²へ換算する。"
+    ],
+    "beginnerPitfall": "係数の0.09をCHFの係数へ取り替えない。"
+  },
+  {
+    "id": "supp-phase-correlation-minimum-dimension-v1",
+    "revision": "v1",
+    "field": "沸騰・相変化",
+    "prerequisites": [
+      "膜沸騰",
+      "最小熱流束",
+      "相関式の適用条件"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "conceptual",
+    "source": {
+      "type": "supplement",
+      "reference": "一般的な相変化相関と独自の条件から作問。原本の文章・図・例題を転載しない。",
+      "chapterId": "ch9",
+      "focusSectionId": "9.5",
+      "guideId": "chapter9-latent-boiling"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "2026-10-30：内部の別式検算・単位・条件・全選択肢確認／原本網羅照合・包括的品質監査・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-30",
+        "type": "authored_with_internal_check",
+        "details": "docs/PHASE_CORRELATIONS_20261030.md。原本の対象式を画像確認し、仮想数値を別式・単位から内部検算。外部校閲ではない。"
+      }
+    ],
+    "prompt": "表面張力σ_s [N/m]、重力g [m/s²]、液密度ρ_lと蒸気密度ρ_v [kg/m³]について、u_σ=[σ_s g(ρ_l−ρ_v)/(ρ_l+ρ_v)²]^(1/4)のSI単位はどれか。最小熱流束の次元検算をしている。",
+    "choices": [
+      "kg·s⁻¹",
+      "m·s⁻¹",
+      "m²·s⁻¹",
+      "m·s⁻²"
+    ],
+    "answer": 1,
+    "difficulty": "応用・式変形と次元解析",
+    "explanation": "σ_s=[kg/s²]。分子はkg²/(m²·s⁴)、分母はkg²/m⁶なので根号内はm⁴/s⁴、結果はm/s。さらにρ_v h_fg u_σはkg/m³×J/kg×m/s=W/m²となる。",
+    "distractors": [
+      "体積流れに密度を掛けた質量流量の単位である。",
+      "正解。根号内はm⁴/s⁴で、四乗根は速度となる。",
+      "動粘度と速度の次元を取り違えている。",
+      "重力加速度の単位をそのまま結果に残している。"
+    ],
+    "hints": [
+      "N=kg·m/s²なのでN/m=kg/s²。",
+      "密度の和の二乗はkg²/m⁶。"
+    ],
+    "solutionSteps": [
+      "N=kg·m/s²なのでN/m=kg/s²。",
+      "密度の和の二乗はkg²/m⁶。",
+      "分子と分母を割り、四乗根を取る。",
+      "ρ_v h_fgを掛けると熱流束になる。"
+    ],
+    "beginnerPitfall": "表面張力のσ_sとステファン＝ボルツマン定数を混同しない。"
+  },
+  {
+    "id": "supp-phase-correlation-minimum-gravity-v1",
+    "revision": "v1",
+    "field": "沸騰・相変化",
+    "prerequisites": [
+      "膜沸騰",
+      "最小熱流束",
+      "相関式の適用条件"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "applied",
+    "source": {
+      "type": "supplement",
+      "reference": "一般的な相変化相関と独自の条件から作問。原本の文章・図・例題を転載しない。",
+      "chapterId": "ch9",
+      "focusSectionId": "9.5",
+      "guideId": "chapter9-latent-boiling"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "2026-10-30：内部の別式検算・単位・条件・全選択肢確認／原本網羅照合・包括的品質監査・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-30",
+        "type": "authored_with_internal_check",
+        "details": "docs/PHASE_CORRELATIONS_20261030.md。原本の対象式を画像確認し、仮想数値を別式・単位から内部検算。外部校閲ではない。"
+      }
+    ],
+    "prompt": "大きな水平平板の式q″_min,B∝g^(1/4)について、飽和物性と他の仮定を維持したままgだけを16倍にする仮想比較を行う。新しい最小熱流束の基準値は、元の値の何倍か。細線の幾何補正や微小重力への外挿は行わない。",
+    "choices": [
+      "16.0 倍",
+      "0.50 倍",
+      "2.00 倍",
+      "4.00 倍"
+    ],
+    "answer": 2,
+    "difficulty": "応用・条件と式の選択",
+    "explanation": "物性固定の大平板では比q_new/q_old=(g_new/g_old)^(1/4)=16^(1/4)=2。細線なら無次元半径もgで変わるので、この比だけでは決まらない。",
+    "distractors": [
+      "重力に比例すると誤読した倍率。",
+      "gの正の指数を負と誤読した倍率。",
+      "正解。16^(1/4)=2である。",
+      "四乗根を平方根と誤読した倍率。"
+    ],
+    "hints": [
+      "他の因子を固定した比の式にする。",
+      "重力の指数は1/4である。"
+    ],
+    "solutionSteps": [
+      "他の因子を固定した比の式にする。",
+      "重力の指数は1/4である。",
+      "2⁴=16を使う。",
+      "大平板の仮定を維持した比較だと明記する。"
+    ],
+    "beginnerPitfall": "g→0の形式的極限を、重力波を前提とする式の有効性の証明にしない。"
+  },
+  {
+    "id": "supp-phase-correlation-wire-geometry-v1",
+    "revision": "v1",
+    "field": "沸騰・相変化",
+    "prerequisites": [
+      "膜沸騰",
+      "最小熱流束",
+      "相関式の適用条件"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "一般的な相変化相関と独自の条件から作問。原本の文章・図・例題を転載しない。",
+      "chapterId": "ch9",
+      "focusSectionId": "9.5",
+      "guideId": "chapter9-latent-boiling"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "2026-10-30：内部の別式検算・単位・条件・全選択肢確認／原本網羅照合・包括的品質監査・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-30",
+        "type": "authored_with_internal_check",
+        "details": "docs/PHASE_CORRELATIONS_20261030.md。原本の対象式を画像確認し、仮想数値を別式・単位から内部検算。外部校閲ではない。"
+      }
+    ],
+    "prompt": "水平細線の式q″_min,wire/q″_min,B=0.515[18/{R*²(2R*²+1)}]^(1/4)を使う。半径を毛管長で割ったR*=0.500、同じ物性の平板基準値q″_min,B=45.0 kW/m²を与える。細線の基準熱流束はいくらか。有効数字3桁とする。",
+    "choices": [
+      "36.3 kW/m²",
+      "118 kW/m²",
+      "45.0 kW/m²",
+      "61.0 kW/m²"
+    ],
+    "answer": 3,
+    "difficulty": "標準・数値計算",
+    "explanation": "R*²=0.25、2R*²+1=1.50、根号内18/(0.25×1.50)=48。倍率は約1.35556、45.0×1.35556≈61.0 kW/m²。実測の膜崩壊が必ずこの値で起きる保証ではない。",
+    "distractors": [
+      "R*を2倍にして、直径を使う誤りをした。",
+      "係数0.515を落として四乗根だけを掛けた。",
+      "細線の幾何補正を全く加えていない。",
+      "正解。補正倍率0.515×48^(1/4)≈1.35556を使った。"
+    ],
+    "hints": [
+      "R*が半径に基づくことを確認する。",
+      "分母0.25×1.50を計算する。"
+    ],
+    "solutionSteps": [
+      "R*が半径に基づくことを確認する。",
+      "分母0.25×1.50を計算する。",
+      "四乗根と係数0.515を掛ける。",
+      "平板基準の45.0 kW/m²へ倍率を掛ける。"
+    ],
+    "beginnerPitfall": "平板と細線を同じ幾何の相関として扱わない。"
   }
 ]
