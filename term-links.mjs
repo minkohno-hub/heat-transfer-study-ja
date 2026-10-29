@@ -38,17 +38,55 @@ export function matchTerms(input,terms,maxMatches=4){
   }
   return matches;
 }
-export function renderTermLinks(input,terms,{limit=4}={}){
+export function renderTermLinks(input,terms,{limit=4,highlights=[]}={}){
   const text=String(input??''),hits=matchTerms(text,terms,limit);
+  const ranges=[];
+  for(const [start,end] of (Array.isArray(highlights)?highlights:[])
+    .filter(r=>Array.isArray(r)&&r.length===2&&r.every(Number.isInteger)&&r[0]>=0&&r[1]>r[0]&&r[1]<=text.length)
+    .sort((a,b)=>a[0]-b[0])){
+    if(ranges.length&&start<=ranges.at(-1)[1])ranges.at(-1)[1]=Math.max(end,ranges.at(-1)[1]);
+    else ranges.push([start,end]);
+  }
+  // Split highlights at term boundaries without losing matches that span a term
+  // and adjacent prose. All text remains escaped; equations retain raw subscripts.
+  const slice=(start,end)=>{
+    let out='',at=start;
+    for(const [a,b] of ranges){
+      if(b<=at||a>=end)continue;
+      const left=Math.max(at,a),right=Math.min(end,b);
+      out+=escapeText(text.slice(at,left))+'<mark>'+escapeText(text.slice(left,right))+'</mark>';
+      at=right;
+    }
+    return out+escapeText(text.slice(at,end));
+  };
   let output='',cursor=0;
   for(const hit of hits){
-    output+=escapeText(text.slice(cursor,hit.start));
+    output+=slice(cursor,hit.start);
     // Span with role=button avoids nesting a labelable button in answer-choice labels.
     // Native delegated pointer/keyboard handling must suppress the label's radio default.
-    output+=`<span role="button" tabindex="0" class="inline-term" data-term-id="${escapeText(hit.id)}" aria-label="${escapeText(hit.label)}の意味を開く" aria-haspopup="dialog">${escapeText(hit.label)}</span>`;
+    output+=`<span role="button" tabindex="0" class="inline-term" data-term-id="${escapeText(hit.id)}" aria-label="${escapeText(hit.label)}の意味を開く" aria-haspopup="dialog">${slice(hit.start,hit.end)}</span>`;
     cursor=hit.end;
   }
-  return output+escapeText(text.slice(cursor));
+  return output+slice(cursor,text.length);
+}
+export function linkTermTextNodes(container,terms,{limit=3}={}){
+  const doc=container?.ownerDocument;
+  if(!doc||!Number.isInteger(limit)||limit<1)return;
+  const walker=doc.createTreeWalker(container,4),nodes=[];
+  while(walker.nextNode())nodes.push(walker.currentNode);
+  const budget=new Map();
+  for(const node of nodes){
+    const parent=node.parentElement;
+    // Do not nest controls or alter editable fields, formula markup or diagrams.
+    if(!parent||parent.closest('a,button,summary,label,input,textarea,select,option,code,pre,svg,math,script,style,[data-term-id]'))continue;
+    const block=parent.closest('p,li,td,dd')||parent,left=limit-(budget.get(block)||0);
+    if(left<=0)continue;
+    const hits=matchTerms(node.textContent,terms,left);
+    if(!hits.length)continue;
+    const template=doc.createElement('template');
+    template.innerHTML=renderTermLinks(node.textContent,terms,{limit:left});
+    node.replaceWith(template.content);budget.set(block,(budget.get(block)||0)+hits.length);
+  }
 }
 // The same examples and navigation are available in the full glossary and the
 // in-place panel. IDs are validated at public-build time; text is still escaped.

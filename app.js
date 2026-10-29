@@ -4,7 +4,7 @@ import {questionChapter,questionsForChapter,chapterLearningOverview} from './cha
 import {validateOriginalNotes,independentNoteForSection} from './original-notes.mjs';
 import {validateDeepLessons,deepLessonForSection} from './original-deep-lessons.mjs';
 import {renderTransientFields,renderTransientSteps,transientGraph,transientFieldNames} from './transient-ui.mjs';
-import {matchTerms,renderTermLinks,renderTermSheet,renderTermExample,renderTermLearningLinks} from './term-links.mjs';
+import {matchTerms,renderTermLinks,renderTermSheet,renderTermExample,renderTermLearningLinks,linkTermTextNodes} from './term-links.mjs';
 import {renderSimulationDiagram} from './sim-diagrams.mjs';
 const CORE_DATA_FILES = ['./data/book.json', './data/questions.json', './data/glossary.json', './data/content-manifest.json', './data/original-notes.json', './data/original-deep-lessons.json'];
 const LEGACY_STORAGE_KEY = 'heat-study-ja:v1';
@@ -386,6 +386,7 @@ function render() {
       </div>
       <footer class="app-footer"><span>学習データはこのブラウザー内に保存されます。</span><span>教材進捗：${translatedSectionCount()}節の日本語訳・下書きを収録</span></footer>
     </div>`;
+  for(const block of root.querySelectorAll('.guide-body,.simulation-steps'))linkTermTextNodes(block,glossary||[]);
   if(ui.reportId)document.querySelector('.report-modal button')?.focus();
 }
 
@@ -495,8 +496,11 @@ function renderHome() {
     </div>`;
 }
 
+function linkedReaderText(value,limit=3){
+  return renderTermLinks(value,glossary||[],{limit,highlights:ui.readerQuery?searchRanges(value,ui.readerQuery):[]});
+}
 function renderDeepLesson(lesson) {
-  const esc=escapeHTML, mark=value=>ui.readerQuery?highlight(value,ui.readerQuery):renderTermLinks(value,glossary||[],{limit:3});
+  const esc=escapeHTML, mark=value=>linkedReaderText(value);
   const paragraphs=lesson.blocks.map((b,i)=>'<section class="deep-lesson-block" id="reader-block-'+esc(lesson.sectionId+'-deep-'+i)+'"><h4>'+mark(b.heading)+'</h4><p>'+mark(b.text)+'</p></section>').join('');
   const equations=lesson.equations.map((e,i)=>'<div class="deep-equation" id="reader-block-'+esc(lesson.sectionId+'-equation-'+i)+'"><strong>'+mark(e.label)+'</strong><p class="deep-expression">'+mark(e.expression)+'</p><p>'+mark(e.meaning)+'</p></div>').join('');
   const example=lesson.workedExample;
@@ -586,7 +590,7 @@ function renderReader() {
 }
 
 function renderBookBlock(block, language = 'ja') {
-  const text = (ui.readerQuery ? highlight(block.text || '',ui.readerQuery) : renderTermLinks(block.text||'',glossary||[],{limit:5})).replaceAll('\n', '<br>');
+  const text = linkedReaderText(block.text||'',5).replaceAll('\n', '<br>');
   if (block.type === 'heading') return `<h3 class="book-subheading">${text}</h3>`;
   if (block.type === 'subheading') return `<h4 class="book-subheading book-subheading-minor">${text}</h4>`;
   if (block.type === 'example') return `<section class="book-example"><h4>${escapeHTML(block.title || (language === 'en' ? 'Example' : '例題'))}</h4><p>${text}</p></section>`;
@@ -1336,6 +1340,7 @@ function onInput(event) {
 function renderSimulatorOutputsOnly() {
   if (ui.route !== 'simulator') return;
   const temporary=document.createElement('div'); temporary.innerHTML=renderSimulator();
+  for(const block of temporary.querySelectorAll('.simulation-steps'))linkTermTextNodes(block,glossary||[]);
   const output=temporary.querySelector('.sim-output-card'); const current=document.querySelector('.sim-output-card');
   if(output&&current) current.replaceWith(output);
   const liveFigure=document.querySelector('.sim-input-card .simulation-figure');

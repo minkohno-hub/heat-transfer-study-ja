@@ -99,6 +99,11 @@ try {
   await nav('guide');
   await page.locator('.guide-section').first().waitFor();
   assert.equal(await page.locator('.guide-section').count(),33);
+  const guideTerm=page.locator('#guide-sim-conduction .guide-body [data-term-id]').first();
+  await guideTerm.click();await page.locator('#term-overlay [role="dialog"]').waitFor();
+  await page.keyboard.press('Escape');
+  assert.equal(await guideTerm.evaluate(el=>el===document.activeElement),true);
+  assert.equal(await page.locator('.guide-body a [data-term-id],.guide-body button [data-term-id],.guide-body summary [data-term-id]').count(),0);
   for(const id of ['learn-dimensionless-transient','learn-lumped-cooling','learn-convection-dimensionless','learn-heat-exchanger'])
     assert.equal(await page.locator('#guide-'+id).count(),1,'発展学習ガイド: '+id);
   for(let ch=1;ch<=11;ch++){
@@ -326,6 +331,12 @@ try {
   assert.match(await page.locator('.sim-physical-diagram desc').textContent(),/右から左/);
   await page.locator('#sim-form input[name="hot"]').fill('80');
   assert.match(await page.locator('.sim-physical-diagram desc').textContent(),/左から右/);
+  const explanation=page.locator('.simulation-steps details').first();
+  await explanation.locator('summary').click();
+  const calculationTerm=explanation.locator('[data-term-id]').first();
+  await calculationTerm.click();await page.locator('#term-overlay [role="dialog"]').waitFor();
+  await page.keyboard.press('Escape');
+  assert.equal(await page.locator('#sim-form input[name="hot"]').inputValue(),'80');
 
   await page.locator('#sim-form input[name="k"]').fill('0.000001');
   assert.match(await page.locator('.result-number').innerText(),/3\.750×10⁻⁴/);

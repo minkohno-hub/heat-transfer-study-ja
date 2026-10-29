@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {readFile} from 'node:fs/promises';
-import {matchTerms,renderTermSheet,renderTermLearningLinks} from '../term-links.mjs';
+import {matchTerms,renderTermLinks,renderTermSheet,renderTermLearningLinks} from '../term-links.mjs';
 const read=async p=>JSON.parse(await readFile(new URL('../'+p,import.meta.url)));
 const [terms,book,questions]=await Promise.all(['data/glossary.json','data/book.json','data/questions.json'].map(read));
 const byId=new Map(terms.map(t=>[t.id,t]));
@@ -78,4 +78,16 @@ test('panel examples and study links are escaped and expose the same learning ta
  const markup=renderTermSheet(hostile,terms);
  assert.doesNotMatch(markup,/<script>|<img /);assert.match(markup,/&lt;script&gt;/);
  assert.doesNotMatch(renderTermLearningLinks(hostile),/sim-.*script/);
+});
+
+test('search highlighting can cross terminology boundaries without removing vocabulary access or changing raw math',()=>{
+ const text='熱伝導率一定の式 Nu_x=1 <入力>';
+ const html=renderTermLinks(text,terms,{highlights:[[0,6],[5,7]]});
+ assert.match(html,/data-term-id="thermal-conductivity"[^>]*><mark>熱伝導率<\/mark>/);
+ assert.match(html,/<mark>一定の<\/mark>/);
+ assert.match(html,/Nu_x=1/);assert.match(html,/&lt;入力&gt;/);
+ const plain=html.replace(/<[^>]+>/g,'').replaceAll('&lt;','<').replaceAll('&gt;','>');
+ assert.equal(plain,text);
+ const invalid=renderTermLinks(text,terms,{highlights:[null,[0,999],[-1,2],[2,1],['0',2]]});
+ assert.doesNotMatch(invalid,/<mark>/);
 });
