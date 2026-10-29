@@ -36,7 +36,7 @@ test('relative diffusion survives a constant observer shift while fixed-surface 
  assert.equal(q.choices[q.answer],'N_A=30、J_A=12 mol/(m²·s)');
 });
 test('two new lecture drafts and fourteen questions preserve three skills and explicitly unreviewed status',()=>{
- const added=questions.filter(q=>q.id.startsWith('supp-mass-intro-')||q.id.startsWith('supp-mixture-'));
+ const added=questions.filter(q=>q.id.startsWith('supp-mass-intro-')||(q.id.startsWith('supp-mixture-')&&q.source?.focusSectionId==='11.2'));
  assert.equal(added.length,14);
  for(const q of added){
   assert.equal(q.choices.length,4);assert.equal(new Set(q.choices).size,4);

@@ -217,7 +217,7 @@ try {
   await page.locator('[data-action="exit-quiz"]').click();
   await page.locator('[data-action="discard-quiz"]').click();
   await page.locator('#quiz-start-form select[name="chapter"]').selectOption('ch9');
-  await page.locator('#quiz-start-form select[name="count"]').selectOption('467');
+  await page.locator('#quiz-start-form select[name="count"]').selectOption('495');
   await page.locator('#quiz-start-form button[type="submit"]').click();
   await page.locator('.question-card').waitFor({state:'visible'});
   assert.match(await page.locator('.page-heading h1').innerText(),/1 \/ 95 問/);
@@ -226,7 +226,7 @@ try {
   await nav('guide');
   await page.locator('#guide-chapter11-fick-mass [data-chapter-practice="ch11"]').click();
   await page.locator('.question-card').waitFor({state:'visible'});
-  assert.match(await page.locator('.page-heading h1').innerText(),/1 \/ 65 問/);
+  assert.match(await page.locator('.page-heading h1').innerText(),/1 \/ 93 問/);
   await page.locator('[data-action="exit-quiz"]').click();
   await page.locator('[data-action="discard-quiz"]').click();
   await nav('search');
@@ -667,7 +667,7 @@ try {
   // merely their JSON. A vocabulary tap must leave the answer draft intact.
   const pending=await page.evaluate(async()=>
     (await (await fetch('./data/questions.json')).json()).filter(q=>q.reportHistory?.some(r=>['internal_independent_check','authored_with_internal_check'].includes(r.type))));
-  assert.equal(pending.length,134);
+  assert.equal(pending.length,162);
   const replaceSuspended=dialog=>dialog.accept();
   page.on('dialog',replaceSuspended);
   for(const q of pending){

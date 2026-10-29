@@ -23126,5 +23126,1545 @@
       "W/m²を確認。"
     ],
     "beginnerPitfall": "質量基準とモル基準の潜熱を混ぜない。"
+  },
+  {
+    "id": "supp-film-model-peclet-v1",
+    "revision": "v1",
+    "field": "物質移動",
+    "prerequisites": [
+      "成分保存",
+      "フィックの法則",
+      "流束の基準"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "輸送現象の一般法則と独自の仮想例から作問。原本の翻訳・原図・章末問題ではない。",
+      "chapterId": "ch11",
+      "focusSectionId": "11.8",
+      "guideId": "chapter11-fick-mass"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "執筆原稿・基本算術と構造を確認／包括的品質監査待ち・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "執筆時の定義・収支・基本計算を確認。全問の独立科学監査・原本網羅照合・外部校閲は後工程。"
+      }
+    ],
+    "prompt": "一次元膜でモル平均法線速度v_n=+0.0020 m/s、厚さδ=0.0050 m、D_AB=2.0×10⁻⁵ m²/s。Pe_m=v_nδ/D_ABはどれか。外向き吹出しを正とする。",
+    "choices": [
+      "+0.50",
+      "+2.00",
+      "−0.50",
+      "+0.05"
+    ],
+    "answer": 0,
+    "difficulty": "標準・数値計算",
+    "explanation": "Pe_m=0.0020×0.0050/(2.0×10⁻⁵)=+0.50。無次元であり、接線主流のReとは異なる。",
+    "distractors": [
+      "正解。法線移流と拡散の比を正しい符号で求めた。",
+      "Péclet数の逆数を使った。",
+      "吹出しを負にした。",
+      "長さ又は速度の桁を取り違えた。"
+    ],
+    "hints": [
+      "v_nは法線方向の平均速度。",
+      "m/s×mをm²/sで割る。"
+    ],
+    "solutionSteps": [
+      "積1.0×10⁻⁵ m²/s。",
+      "Dで割る。",
+      "Pe_m=+0.50。"
+    ],
+    "beginnerPitfall": "法線流の符号と接線流の速度を混ぜない。"
+  },
+  {
+    "id": "supp-film-model-total-partition-v1",
+    "revision": "v1",
+    "field": "物質移動",
+    "prerequisites": [
+      "成分保存",
+      "フィックの法則",
+      "流束の基準"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "輸送現象の一般法則と独自の仮想例から作問。原本の翻訳・原図・章末問題ではない。",
+      "chapterId": "ch11",
+      "focusSectionId": "11.8",
+      "guideId": "chapter11-fick-mass"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "執筆原稿・基本算術と構造を確認／包括的品質監査待ち・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "執筆時の定義・収支・基本計算を確認。全問の独立科学監査・原本網羅照合・外部校閲は後工程。"
+      }
+    ],
+    "prompt": "定常理想二成分膜で全モル濃度c=40 mol/m³、モル平均法線速度v_n=+0.0020 m/s、N_A=+0.03450 mol/(m²·s)。N_B=N_t−N_A、N_t=cv_nからN_Bを求める。小数第5位まで。",
+    "choices": [
+      "+0.11450 mol/(m²·s)",
+      "+0.04550 mol/(m²·s)",
+      "−0.03450 mol/(m²·s)",
+      "+0.08000 mol/(m²·s)"
+    ],
+    "answer": 1,
+    "difficulty": "標準・数値計算",
+    "explanation": "N_t=40×0.0020=0.08000、N_B=0.08000−0.03450=+0.04550 mol/(m²·s)。N_B=0という追加仮定は満たさない。",
+    "distractors": [
+      "全体へAを足して二重に数えた。",
+      "正解。全体からAの全流束を引いた。",
+      "与条件を捨て等モル逆拡散とした。",
+      "全体のモル流束をBのみの流束にした。"
+    ],
+    "hints": [
+      "全モル流束の定義を使う。",
+      "N_AとN_Bの和がN_t。"
+    ],
+    "solutionSteps": [
+      "N_t=0.08000。",
+      "Aを差し引く。",
+      "B=+0.04550。"
+    ],
+    "beginnerPitfall": "任意の平均流を指定した膜へB静止を追加しない。"
+  },
+  {
+    "id": "supp-film-model-surface-diffusion-v1",
+    "revision": "v1",
+    "field": "物質移動",
+    "prerequisites": [
+      "成分保存",
+      "フィックの法則",
+      "流束の基準"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "輸送現象の一般法則と独自の仮想例から作問。原本の翻訳・原図・章末問題ではない。",
+      "chapterId": "ch11",
+      "focusSectionId": "11.8",
+      "guideId": "chapter11-fick-mass"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "執筆原稿・基本算術と構造を確認／包括的品質監査待ち・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "執筆時の定義・収支・基本計算を確認。全問の独立科学監査・原本網羅照合・外部校閲は後工程。"
+      }
+    ],
+    "prompt": "モル平均基準でN_A=0.03450、N_t=0.08000 mol/(m²·s)、表面モル分率y_A=0.20。表面拡散流束J_A=N_A−y_AN_tはどれか。",
+    "choices": [
+      "+0.05050 mol/(m²·s)",
+      "+0.01600 mol/(m²·s)",
+      "+0.01850 mol/(m²·s)",
+      "+0.03450 mol/(m²·s)"
+    ],
+    "answer": 2,
+    "difficulty": "標準・数値計算",
+    "explanation": "J_A=0.03450−0.20×0.08000=0.01850。全N_Aが一定でも、y_Aが場所で変わればJ_Aと平均流寄与の配分は変わる。",
+    "distractors": [
+      "平均流寄与を引かず足した。",
+      "平均流による部分だけを拡散とした。",
+      "正解。表面の平均流による部分を引いた。",
+      "全流束をそのまま拡散とした。"
+    ],
+    "hints": [
+      "拡散は全流束から平均移動を差し引く。",
+      "平均移動はy_AN_t。"
+    ],
+    "solutionSteps": [
+      "平均寄与0.01600。",
+      "N_Aから引く。",
+      "表面J_A=0.01850。"
+    ],
+    "beginnerPitfall": "定常で一定なのは全流束であり拡散部分とは限らない。"
+  },
+  {
+    "id": "supp-film-model-zero-limit-v1",
+    "revision": "v1",
+    "field": "物質移動",
+    "prerequisites": [
+      "成分保存",
+      "フィックの法則",
+      "流束の基準"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "applied",
+    "source": {
+      "type": "supplement",
+      "reference": "輸送現象の一般法則と独自の仮想例から作問。原本の翻訳・原図・章末問題ではない。",
+      "chapterId": "ch11",
+      "focusSectionId": "11.8",
+      "guideId": "chapter11-fick-mass"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "執筆原稿・基本算術と構造を確認／包括的品質監査待ち・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "執筆時の定義・収支・基本計算を確認。全問の独立科学監査・原本網羅照合・外部校閲は後工程。"
+      }
+    ],
+    "prompt": "一定c,Dの一次元膜の全流束式にexp(Pe_m)−1が現れる。平均法線速度v_n→0の極限を扱う方法として適切なのはどれか。",
+    "choices": [
+      "分母が0なので、物理的流束も必ず無限とする",
+      "分子のv_nが0なので、流束を必ず0とする",
+      "分母を1へ置き換え、同じ式を使い続ける",
+      "極限を取り、通常の線形定常拡散式へ戻す"
+    ],
+    "answer": 3,
+    "difficulty": "概念・適用判断",
+    "explanation": "exp(Pe_m)−1≈Pe_m=v_nδ/D_ABを使うと、v_nが相殺して定常拡散式に戻る。小Peの実装ではexpm1や極限式を用い、数値桁落ちと物理を分ける。",
+    "distractors": [
+      "式の見かけの0/0を物理的発散と混同した。",
+      "分母も同時に小さくなる効果を無視した。",
+      "恣意的な分母置換で元の保存式を満たさない。",
+      "正解。分子分母の小量を一緒に展開して有限の拡散極限を得る。"
+    ],
+    "hints": [
+      "指数を小Peで展開。",
+      "分子と分母を同じ次数で比較。"
+    ],
+    "solutionSteps": [
+      "exp(Pe)≈1+Pe。",
+      "共通のv_nを相殺。",
+      "有限の拡散極限へ戻す。"
+    ],
+    "beginnerPitfall": "0/0の表現を物理的に輸送不能と決めつけない。"
+  },
+  {
+    "id": "supp-film-model-stagnant-B-v1",
+    "revision": "v1",
+    "field": "物質移動",
+    "prerequisites": [
+      "成分保存",
+      "フィックの法則",
+      "流束の基準"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "applied",
+    "source": {
+      "type": "supplement",
+      "reference": "輸送現象の一般法則と独自の仮想例から作問。原本の翻訳・原図・章末問題ではない。",
+      "chapterId": "ch11",
+      "focusSectionId": "11.8",
+      "guideId": "chapter11-fick-mass"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "執筆原稿・基本算術と構造を確認／包括的品質監査待ち・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "執筆時の定義・収支・基本計算を確認。全問の独立科学監査・原本網羅照合・外部校閲は後工程。"
+      }
+    ],
+    "prompt": "理想二成分の膜でN_B=0、c一定、y_A(0)=0.20、y_A(δ)=0.05。B静止と整合するPe_mはln[(1−0.05)/(1−0.20)]である。ln(0.95/0.80)=0.17185とするとどれか。",
+    "choices": [
+      "Pe_m≈+0.172で、N_t=N_Aを満たす",
+      "Pe_m=+0.500で、任意指定の流れを保つ",
+      "Pe_m=0で、N_B=0なら全体流も消える",
+      "Pe_m≈−0.172で、外向きA輸送に吸込みを課す"
+    ],
+    "answer": 0,
+    "difficulty": "概念・適用判断",
+    "explanation": "N_B=0ならN_t=N_A=cv_n。両端値からPe_m=ln(0.95/0.80)=0.17185となる。一般の指定v_n=0.0020 m/sの例と同時には課せない。",
+    "distractors": [
+      "正解。B静止が平均流にも課す拘束を使った。",
+      "別の指定速度の例をB静止へ流用した。",
+      "Bの全流束0と全体流0を混同した。",
+      "対数比を逆にし平均流の向きを取り違えた。"
+    ],
+    "hints": [
+      "N_tはA+B。",
+      "B静止でN_t=N_A。"
+    ],
+    "solutionSteps": [
+      "対数比を計算。",
+      "Pe=0.17185。",
+      "与速度と独立でないと確認。"
+    ],
+    "beginnerPitfall": "B静止条件と法線流を互いに独立な入力としない。"
+  },
+  {
+    "id": "supp-film-model-couette-directions-v1",
+    "revision": "v1",
+    "field": "物質移動",
+    "prerequisites": [
+      "成分保存",
+      "フィックの法則",
+      "流束の基準"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "conceptual",
+    "source": {
+      "type": "supplement",
+      "reference": "輸送現象の一般法則と独自の仮想例から作問。原本の翻訳・原図・章末問題ではない。",
+      "chapterId": "ch11",
+      "focusSectionId": "11.8",
+      "guideId": "chapter11-fick-mass"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "執筆原稿・基本算術と構造を確認／包括的品質監査待ち・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "執筆時の定義・収支・基本計算を確認。全問の独立科学監査・原本網羅照合・外部校閲は後工程。"
+      }
+    ],
+    "prompt": "多孔平行板のクエット膜モデルで、uは板に沿う接線速度、v_nは膜を横切る法線速度とする。適切な説明はどれか。",
+    "choices": [
+      "法線流があれば、分子拡散係数は必ずゼロとする",
+      "uは接線、v_nは法線の吹出し速度とする",
+      "uとv_nは同方向の同じ速度とする",
+      "板の接線運動があれば、法線流は必ずゼロとする"
+    ],
+    "answer": 1,
+    "difficulty": "概念・適用判断",
+    "explanation": "接線境界の移動はuの境界条件、吹出し・吸込みはv_nの条件。両者が温度・組成と結び付く場合も、速度成分の定義を保つ。",
+    "distractors": [
+      "法線の全体流と分子拡散は併存できる。",
+      "正解。接線のクエット運動と法線輸送を分けた。",
+      "異なる速度成分を同一視した。",
+      "多孔面からの法線流を接線運動と併存できないとした。"
+    ],
+    "hints": [
+      "方向を図の代わりに座標で確認。",
+      "膜厚方向と板に沿う方向を分ける。"
+    ],
+    "solutionSteps": [
+      "zを法線と定義。",
+      "uは接線速度。",
+      "v_nで法線輸送を扱う。"
+    ],
+    "beginnerPitfall": "主流と吹出しの方向を混同しない。"
+  },
+  {
+    "id": "supp-film-model-thickness-prediction-v1",
+    "revision": "v1",
+    "field": "物質移動",
+    "prerequisites": [
+      "成分保存",
+      "フィックの法則",
+      "流束の基準"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "conceptual",
+    "source": {
+      "type": "supplement",
+      "reference": "輸送現象の一般法則と独自の仮想例から作問。原本の翻訳・原図・章末問題ではない。",
+      "chapterId": "ch11",
+      "focusSectionId": "11.8",
+      "guideId": "chapter11-fick-mass"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "執筆原稿・基本算術と構造を確認／包括的品質監査待ち・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "執筆時の定義・収支・基本計算を確認。全問の独立科学監査・原本網羅照合・外部校閲は後工程。"
+      }
+    ],
+    "prompt": "停滞膜モデルに厚さδを与え、境界組成から流束を計算した。この計算について正確な説明はどれか。",
+    "choices": [
+      "任意の流れの実境界層厚さを、厳密に決定した",
+      "δは結果に影響せず、任意の値へ変えてもよい",
+      "与えた膜厚の仮想条件下で、全流束を計算した",
+      "膜厚も全流れも、入力なしに同時に予測した"
+    ],
+    "answer": 2,
+    "difficulty": "概念・適用判断",
+    "explanation": "δや無移動係数の設定には実験・相関・別の流動解析が必要となりうる。膜モデル内の収支が合うことと実流れへの適合を分ける。",
+    "distractors": [
+      "一次元膜だけでは任意の実流れ全体は決まらない。",
+      "δは拡散抵抗やPeに影響する。",
+      "正解。モデルの入力と出力を区別した。",
+      "δを与えているのに予測したと主張した。"
+    ],
+    "hints": [
+      "何を既知として代入したか確認。",
+      "入力値の根拠は別に必要。"
+    ],
+    "solutionSteps": [
+      "δを入力として列挙。",
+      "条件付きの流束と記録。",
+      "実場への適用を別評価。"
+    ],
+    "beginnerPitfall": "モデルへ与えた値をモデルから予測した値としない。"
+  },
+  {
+    "id": "supp-highrate-thermal-number-v1",
+    "revision": "v1",
+    "field": "物質移動",
+    "prerequisites": [
+      "成分保存",
+      "フィックの法則",
+      "流束の基準"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "輸送現象の一般法則と独自の仮想例から作問。原本の翻訳・原図・章末問題ではない。",
+      "chapterId": "ch11",
+      "focusSectionId": "11.9",
+      "guideId": "chapter11-fick-mass"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "執筆原稿・基本算術と構造を確認／包括的品質監査待ち・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "執筆時の定義・収支・基本計算を確認。全問の独立科学監査・原本網羅照合・外部校閲は後工程。"
+      }
+    ],
+    "prompt": "仮想蒸発膜でc_p=1000 J/(kg·K)、T_∞−T_s=100 K、h_fg=2.0×10⁵ J/kg。B_T=c_p(T_∞−T_s)/h_fgはどれか。",
+    "choices": [
+      "2.00",
+      "0.05",
+      "500",
+      "0.50"
+    ],
+    "answer": 3,
+    "difficulty": "標準・数値計算",
+    "explanation": "B_T=1000×100/(2.0×10⁵)=0.50。無次元。仮想物性であり水などの実在物性ではない。",
+    "distractors": [
+      "比を逆にした。",
+      "物性又は温度差の桁を取り違えた。",
+      "kgとgの基準を混ぜ1000倍にした。",
+      "正解。同じkg基準の顕熱と潜熱の比を求めた。"
+    ],
+    "hints": [
+      "分子と分母はいずれもJ/kg。",
+      "温度差を使う。"
+    ],
+    "solutionSteps": [
+      "顕熱尺度10⁵ J/kg。",
+      "潜熱2×10⁵で割る。",
+      "0.50。"
+    ],
+    "beginnerPitfall": "温度差と絶対温度、実在値と仮想値を区別する。"
+  },
+  {
+    "id": "supp-highrate-effective-h-v1",
+    "revision": "v1",
+    "field": "物質移動",
+    "prerequisites": [
+      "成分保存",
+      "フィックの法則",
+      "流束の基準"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "輸送現象の一般法則と独自の仮想例から作問。原本の翻訳・原図・章末問題ではない。",
+      "chapterId": "ch11",
+      "focusSectionId": "11.9",
+      "guideId": "chapter11-fick-mass"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "執筆原稿・基本算術と構造を確認／包括的品質監査待ち・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "執筆時の定義・収支・基本計算を確認。全問の独立科学監査・原本網羅照合・外部校閲は後工程。"
+      }
+    ],
+    "prompt": "単純な吹出し熱膜でh_0=100 W/(m²·K)、Pe_h=0.405465、exp(Pe_h)−1=0.50。h_eff/h_0=Pe_h/[exp(Pe_h)−1]ならh_effはどれか。",
+    "choices": [
+      "約81.1 W/(m²·K)",
+      "約40.5 W/(m²·K)",
+      "約123 W/(m²·K)",
+      "約100 W/(m²·K)"
+    ],
+    "answer": 0,
+    "difficulty": "標準・数値計算",
+    "explanation": "比は0.405465/0.50=0.81093、h_eff=81.093 W/(m²·K)。この一定物性膜では正の吹出しで表面供給係数が小さくなる。",
+    "distractors": [
+      "正解。指定された補正率を無移動係数へ掛けた。",
+      "分母0.50で割る工程を落とした。",
+      "補正率の逆数を掛けた。",
+      "吹出しの影響を無視した。"
+    ],
+    "hints": [
+      "比を先に計算。",
+      "吹出しで比が1より小さいか確認。"
+    ],
+    "solutionSteps": [
+      "補正比0.81093。",
+      "100を掛ける。",
+      "約81.1。"
+    ],
+    "beginnerPitfall": "h_0と吹出し時の有効係数を分ける。"
+  },
+  {
+    "id": "supp-highrate-latent-consistency-v1",
+    "revision": "v1",
+    "field": "物質移動",
+    "prerequisites": [
+      "成分保存",
+      "フィックの法則",
+      "流束の基準"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "輸送現象の一般法則と独自の仮想例から作問。原本の翻訳・原図・章末問題ではない。",
+      "chapterId": "ch11",
+      "focusSectionId": "11.9",
+      "guideId": "chapter11-fick-mass"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "執筆原稿・基本算術と構造を確認／包括的品質監査待ち・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "執筆時の定義・収支・基本計算を確認。全問の独立科学監査・原本網羅照合・外部校閲は後工程。"
+      }
+    ],
+    "prompt": "仮想蒸発膜で表面供給熱q_in″=8109.3 W/m²、潜熱h_fg=2.0×10⁵ J/kg。他の熱経路なしでṁ″=q_in″/h_fgはいくらか。",
+    "choices": [
+      "約40.55 kg/(m²·s)",
+      "約0.04055 kg/(m²·s)",
+      "約0.08109 kg/(m²·s)",
+      "約24.66 kg/(m²·s)"
+    ],
+    "answer": 1,
+    "difficulty": "標準・数値計算",
+    "explanation": "ṁ″=8109.3/200000=0.0405465 kg/(m²·s)。h_0=100、c_p=1000ならPe_h=ṁ″c_p/h_0=0.405465とも一致する。",
+    "distractors": [
+      "kgとgの基準を混ぜ1000倍にした。",
+      "正解。供給熱を質量当たり潜熱で割った。",
+      "潜熱を半分に取り違えた。",
+      "熱と潜熱の比を逆にした。"
+    ],
+    "hints": [
+      "J/sをJ/kgで割る。",
+      "面積当たりを保つ。"
+    ],
+    "solutionSteps": [
+      "8109.3/200000。",
+      "0.0405465。",
+      "kg/(m²·s)で表す。"
+    ],
+    "beginnerPitfall": "潜熱のkg基準を確認する。"
+  },
+  {
+    "id": "supp-highrate-suction-factor-v1",
+    "revision": "v1",
+    "field": "物質移動",
+    "prerequisites": [
+      "成分保存",
+      "フィックの法則",
+      "流束の基準"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "applied",
+    "source": {
+      "type": "supplement",
+      "reference": "輸送現象の一般法則と独自の仮想例から作問。原本の翻訳・原図・章末問題ではない。",
+      "chapterId": "ch11",
+      "focusSectionId": "11.9",
+      "guideId": "chapter11-fick-mass"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "執筆原稿・基本算術と構造を確認／包括的品質監査待ち・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "執筆時の定義・収支・基本計算を確認。全問の独立科学監査・原本網羅照合・外部校閲は後工程。"
+      }
+    ],
+    "prompt": "一定物性熱膜でh_eff/h_0=Pe_h/[exp(Pe_h)−1]。吸込みPe_h=−0.50でexp(−0.50)=0.60653なら、係数比はどうなるか。",
+    "choices": [
+      "約−1.27で、係数の符号が反転する",
+      "約0で、吸込みにより伝導が消える",
+      "約1.27で、無移動時より大きい",
+      "約0.77で、無移動時より小さい"
+    ],
+    "answer": 2,
+    "difficulty": "概念・適用判断",
+    "explanation": "−0.50/(0.60653−1)=1.27075。ここで正負は法線質量流の向きで、正のh_effが表面へ入る/出る熱の向きを単独で決めるわけではなくΔTも必要。",
+    "distractors": [
+      "分母も負になることを落とした。",
+      "吸込みはこのモデルで伝導を消さない。",
+      "正解。負の分子と分母の比が正で1より大きい。",
+      "吹出しの係数低下を吸込みへ流用した。"
+    ],
+    "hints": [
+      "分母は負。",
+      "負/負は正。"
+    ],
+    "solutionSteps": [
+      "exp(Pe)−1=−0.39347。",
+      "−0.5で割り比1.27。",
+      "吸込みで増加。"
+    ],
+    "beginnerPitfall": "吹出しと吸込みの符号を区別する。"
+  },
+  {
+    "id": "supp-highrate-definition-v1",
+    "revision": "v1",
+    "field": "物質移動",
+    "prerequisites": [
+      "成分保存",
+      "フィックの法則",
+      "流束の基準"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "conceptual",
+    "source": {
+      "type": "supplement",
+      "reference": "輸送現象の一般法則と独自の仮想例から作問。原本の翻訳・原図・章末問題ではない。",
+      "chapterId": "ch11",
+      "focusSectionId": "11.9",
+      "guideId": "chapter11-fick-mass"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "執筆原稿・基本算術と構造を確認／包括的品質監査待ち・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "執筆時の定義・収支・基本計算を確認。全問の独立科学監査・原本網羅照合・外部校閲は後工程。"
+      }
+    ],
+    "prompt": "高い物質移動率での熱伝達を扱う理由として適切なのはどれか。",
+    "choices": [
+      "主流速度が高ければ熱物性が全てゼロになるため",
+      "高温なら質量保存が成立しなくなるため",
+      "蒸発の潜熱が温度差なしに常にゼロとなるため",
+      "界面の移動による法線流が温度場を変えるため"
+    ],
+    "answer": 3,
+    "difficulty": "概念・適用判断",
+    "explanation": "強い蒸発などでは界面を横切る流れが伝導と対流の配分を変える。high ratesはこの移動の大きさであり、単なる外部主流の高速とは区別する。",
+    "distractors": [
+      "主流の速度から熱物性の消失は導けない。",
+      "高温でも通常のモデルでは質量保存を用いる。",
+      "温度差と潜熱の定義を混同した。",
+      "正解。吹出し等による温度境界層への作用を考えた。"
+    ],
+    "hints": [
+      "何のrateが高いか確認。",
+      "表面から気体が吹き出す場を考える。"
+    ],
+    "solutionSteps": [
+      "界面質量流を確認。",
+      "温度勾配への影響を考える。",
+      "低移動率式の限界と説明。"
+    ],
+    "beginnerPitfall": "界面移動率と主流速度を同じ量としない。"
+  },
+  {
+    "id": "supp-highrate-energy-flux-kind-v1",
+    "revision": "v1",
+    "field": "物質移動",
+    "prerequisites": [
+      "成分保存",
+      "フィックの法則",
+      "流束の基準"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "conceptual",
+    "source": {
+      "type": "supplement",
+      "reference": "輸送現象の一般法則と独自の仮想例から作問。原本の翻訳・原図・章末問題ではない。",
+      "chapterId": "ch11",
+      "focusSectionId": "11.9",
+      "guideId": "chapter11-fick-mass"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "執筆原稿・基本算術と構造を確認／包括的品質監査待ち・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "執筆時の定義・収支・基本計算を確認。全問の独立科学監査・原本網羅照合・外部校閲は後工程。"
+      }
+    ],
+    "prompt": "熱膜モデルでq_in″=kT′(0)を表面へ向かう伝導供給熱として定義した。全エンタルピー流束との関係で適切なのはどれか。",
+    "choices": [
+      "全エンタルピー輸送には質量が運ぶ部分も含まれる",
+      "全エンタルピー流束は伝導部分だけと常に一致する",
+      "表面の伝導流束は温度勾配によらず決まる",
+      "質量が動く場合、エネルギー保存は使わない"
+    ],
+    "answer": 0,
+    "difficulty": "概念・適用判断",
+    "explanation": "全エネルギー収支には移動する成分のエンタルピーがある。表面へ供給する伝導熱をどの向きに正とするかを定義し、潜熱項との二重計上を避ける。",
+    "distractors": [
+      "正解。熱流の定義と対流のエンタルピーを分けた。",
+      "質量が運ぶエンタルピーを無条件に落とした。",
+      "Fourier則の温度勾配を落とした。",
+      "質量移動と同時にエネルギー保存も必要。"
+    ],
+    "hints": [
+      "熱膜の式は何を保存しているか。",
+      "質量流にはエンタルピーも伴う。"
+    ],
+    "solutionSteps": [
+      "伝導部分を定義。",
+      "質量に伴う輸送を区別。",
+      "一貫した界面収支を作る。"
+    ],
+    "beginnerPitfall": "定義の異なる熱流や係数を混ぜない。"
+  },
+  {
+    "id": "supp-highrate-model-conditions-v1",
+    "revision": "v1",
+    "field": "物質移動",
+    "prerequisites": [
+      "成分保存",
+      "フィックの法則",
+      "流束の基準"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "applied",
+    "source": {
+      "type": "supplement",
+      "reference": "輸送現象の一般法則と独自の仮想例から作問。原本の翻訳・原図・章末問題ではない。",
+      "chapterId": "ch11",
+      "focusSectionId": "11.9",
+      "guideId": "chapter11-fick-mass"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "執筆原稿・基本算術と構造を確認／包括的品質監査待ち・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "執筆時の定義・収支・基本計算を確認。全問の独立科学監査・原本網羅照合・外部校閲は後工程。"
+      }
+    ],
+    "prompt": "一定k,c_pの一次元熱膜補正が計算できた。実際は組成による比熱差が大きく、放射と液体側の熱供給も重要である。適切な扱いはどれか。",
+    "choices": [
+      "比熱差があれば、物質流束を必ずゼロにする",
+      "必要な成分輸送と各熱経路を含む収支を検討する",
+      "補正が有限値なら、全条件で設計値として確定する",
+      "放射も液体供給も、常に潜熱の値へ足して隠す"
+    ],
+    "answer": 1,
+    "difficulty": "概念・適用判断",
+    "explanation": "一定物性・単一顕熱モデルが満たせるか確認し、必要な成分エンタルピー輸送、放射、液側伝熱を加える。相関や実験の適用範囲も必要。",
+    "distractors": [
+      "比熱差から移動停止は導けない。",
+      "正解。単純膜の省略項と物性近似を再検討した。",
+      "計算可能性だけでは適用条件を満たさない。",
+      "異なる経路を根拠なく物性へ合算できない。"
+    ],
+    "hints": [
+      "近似で何を無視したか列挙。",
+      "実際に大きい項を戻す。"
+    ],
+    "solutionSteps": [
+      "比熱モデルを確認。",
+      "各熱経路を分ける。",
+      "一貫した保存式へ拡張。"
+    ],
+    "beginnerPitfall": "有限な計算結果を適用可能性の証拠としない。"
+  },
+  {
+    "id": "supp-mixture-property-mass-weight-v1",
+    "revision": "v1",
+    "field": "物質移動",
+    "prerequisites": [
+      "成分保存",
+      "フィックの法則",
+      "流束の基準"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "輸送現象の一般法則と独自の仮想例から作問。原本の翻訳・原図・章末問題ではない。",
+      "chapterId": "ch11",
+      "focusSectionId": "11.10",
+      "guideId": "chapter11-fick-mass"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "執筆原稿・基本算術と構造を確認／包括的品質監査待ち・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "執筆時の定義・収支・基本計算を確認。全問の独立科学監査・原本網羅照合・外部校閲は後工程。"
+      }
+    ],
+    "prompt": "仮想理想二成分混合物でy_A=0.30、y_B=0.70、M_A=0.010、M_B=0.040 kg/mol。質量比熱c_p,A=1000、c_p,B=2000 J/(kg·K)。固定組成のc_p=Σw_i c_p,iはどれか。",
+    "choices": [
+      "約1500 J/(kg·K)",
+      "約1097 J/(kg·K)",
+      "約1903 J/(kg·K)",
+      "約1700 J/(kg·K)"
+    ],
+    "answer": 2,
+    "difficulty": "標準・数値計算",
+    "explanation": "M̄=0.031 kg/mol、w_A=0.003/0.031=0.096774、w_B=0.903226。c_p=96.774+1806.452=1903.226 J/(kg·K)。",
+    "distractors": [
+      "両成分を等質量とした。",
+      "質量分率の重みをAとBで逆にした。",
+      "正解。モルから質量分率へ直して平均した。",
+      "質量比熱へモル分率をそのまま用いた。"
+    ],
+    "hints": [
+      "質量比熱には質量分率。",
+      "先にw_i=y_iM_i/M̄。"
+    ],
+    "solutionSteps": [
+      "M̄=0.031。",
+      "w_A≈0.09677。",
+      "c_p≈1903。"
+    ],
+    "beginnerPitfall": "質量比熱をモル分率で平均しない。"
+  },
+  {
+    "id": "supp-mixture-property-wilke-v1",
+    "revision": "v1",
+    "field": "物質移動",
+    "prerequisites": [
+      "成分保存",
+      "フィックの法則",
+      "流束の基準"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "輸送現象の一般法則と独自の仮想例から作問。原本の翻訳・原図・章末問題ではない。",
+      "chapterId": "ch11",
+      "focusSectionId": "11.10",
+      "guideId": "chapter11-fick-mass"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "執筆原稿・基本算術と構造を確認／包括的品質監査待ち・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "執筆時の定義・収支・基本計算を確認。全問の独立科学監査・原本網羅照合・外部校閲は後工程。"
+      }
+    ],
+    "prompt": "希薄気体の仮想例でy_A=0.30、y_B=0.70、μ_A=1.0×10⁻⁵、μ_B=3.0×10⁻⁵ Pa·s、Φ_AB=1.043444、Φ_BA=0.782583、Φ_AA=Φ_BB=1。Wilke式μ_mix=y_Aμ_A/(y_A+y_BΦ_AB)+y_Bμ_B/(y_B+y_AΦ_BA)の結果はどれか。",
+    "choices": [
+      "約2.400×10⁻⁵ Pa·s",
+      "約2.000×10⁻⁵ Pa·s",
+      "約4.000×10⁻⁵ Pa·s",
+      "約2.538×10⁻⁵ Pa·s"
+    ],
+    "answer": 3,
+    "difficulty": "標準・数値計算",
+    "explanation": "A項=3.0×10⁻⁶/(0.30+0.70×1.043444)、B項=2.1×10⁻⁵/(0.70+0.30×0.782583)。和は約2.53768×10⁻⁵ Pa·s。希薄気体の近似式で、実測保証値ではない。",
+    "distractors": [
+      "単純モル平均に置き換えた。",
+      "組成を捨て等しい重みで平均した。",
+      "純成分粘度をそのまま加算した。",
+      "正解。各成分の相互作用分母を計算して足した。"
+    ],
+    "hints": [
+      "各分母を別々に求める。",
+      "Φ_ABとΦ_BAを交換しない。"
+    ],
+    "solutionSteps": [
+      "Aの寄与を計算。",
+      "Bの寄与を計算。",
+      "和≈2.538×10⁻⁵。"
+    ],
+    "beginnerPitfall": "Wilke式を単純モル平均に置き換えない。"
+  },
+  {
+    "id": "supp-mixture-property-diffusivities-v1",
+    "revision": "v1",
+    "field": "物質移動",
+    "prerequisites": [
+      "成分保存",
+      "フィックの法則",
+      "流束の基準"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "輸送現象の一般法則と独自の仮想例から作問。原本の翻訳・原図・章末問題ではない。",
+      "chapterId": "ch11",
+      "focusSectionId": "11.10",
+      "guideId": "chapter11-fick-mass"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "執筆原稿・基本算術と構造を確認／包括的品質監査待ち・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "執筆時の定義・収支・基本計算を確認。全問の独立科学監査・原本網羅照合・外部校閲は後工程。"
+      }
+    ],
+    "prompt": "同じ状態の仮想物性でμ=2.0×10⁻⁵ Pa·s、ρ=1.0 kg/m³、k=0.030 W/(m·K)、c_p=1000 J/(kg·K)。ν=μ/ρとα=k/(ρc_p)はどれか。",
+    "choices": [
+      "ν=2.0×10⁻⁵、α=3.0×10⁻⁵ m²/s",
+      "ν=2.0×10⁻⁵、α=3.0×10¹ m²/s",
+      "ν=3.0×10⁻⁵、α=2.0×10⁻⁵ m²/s",
+      "ν=2.0×10⁻²、α=3.0×10⁻² m²/s"
+    ],
+    "answer": 0,
+    "difficulty": "標準・数値計算",
+    "explanation": "ν=2.0×10⁻⁵/1.0=2.0×10⁻⁵、α=0.030/(1.0×1000)=3.0×10⁻⁵ m²/s。単位が同じでも別の物性。",
+    "distractors": [
+      "正解。粘度と熱伝導率に対応する定義を用いた。",
+      "体積熱容量で割る代わりに比熱を掛けた。",
+      "運動量と熱の拡散率を交換した。",
+      "単位又は指数を1000倍に取り違えた。"
+    ],
+    "hints": [
+      "νは運動量、αは熱。",
+      "αの分母はρc_p。"
+    ],
+    "solutionSteps": [
+      "μ/ρを計算。",
+      "k/(ρc_p)を計算。",
+      "両者の単位m²/sを確認。"
+    ],
+    "beginnerPitfall": "同じ単位から同じ値や物理量としない。"
+  },
+  {
+    "id": "supp-mixture-property-pure-limit-v1",
+    "revision": "v1",
+    "field": "物質移動",
+    "prerequisites": [
+      "成分保存",
+      "フィックの法則",
+      "流束の基準"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "applied",
+    "source": {
+      "type": "supplement",
+      "reference": "輸送現象の一般法則と独自の仮想例から作問。原本の翻訳・原図・章末問題ではない。",
+      "chapterId": "ch11",
+      "focusSectionId": "11.10",
+      "guideId": "chapter11-fick-mass"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "執筆原稿・基本算術と構造を確認／包括的品質監査待ち・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "執筆時の定義・収支・基本計算を確認。全問の独立科学監査・原本網羅照合・外部校閲は後工程。"
+      }
+    ],
+    "prompt": "Wilke式でΦ_AA=1とする。y_A→1、他の成分のモル分率→0という純成分極限の検算で、μ_mixはどうなるべきか。",
+    "choices": [
+      "組成が純粋なので0へ戻るべきである",
+      "純成分の粘度μ_Aへ戻るべきである",
+      "μ_Aの2倍へ戻るべきである",
+      "全ての純成分粘度の和へ戻るべきである"
+    ],
+    "answer": 1,
+    "difficulty": "概念・適用判断",
+    "explanation": "μ_mix=Σ y_iμ_i/(Σy_jΦ_ij)で、純AならA項のみが残りμ_A/1となる。既知の純成分極限は混合則の添字や実装を検算する基準。",
+    "distractors": [
+      "純物質にも粘度はありゼロとは限らない。",
+      "正解。残るA項がμ_A/Φ_AA=μ_Aになる。",
+      "純成分を二重に数えた。",
+      "存在しない成分の粘度まで加算した。"
+    ],
+    "hints": [
+      "A以外のyを0とする。",
+      "Φ_AA=1を使う。"
+    ],
+    "solutionSteps": [
+      "残る分子μ_A。",
+      "分母1。",
+      "μ_mix=μ_A。"
+    ],
+    "beginnerPitfall": "純成分極限を検算に使う。"
+  },
+  {
+    "id": "supp-mixture-property-transport-laws-v1",
+    "revision": "v1",
+    "field": "物質移動",
+    "prerequisites": [
+      "成分保存",
+      "フィックの法則",
+      "流束の基準"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "conceptual",
+    "source": {
+      "type": "supplement",
+      "reference": "輸送現象の一般法則と独自の仮想例から作問。原本の翻訳・原図・章末問題ではない。",
+      "chapterId": "ch11",
+      "focusSectionId": "11.10",
+      "guideId": "chapter11-fick-mass"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "執筆原稿・基本算術と構造を確認／包括的品質監査待ち・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "執筆時の定義・収支・基本計算を確認。全問の独立科学監査・原本網羅照合・外部校閲は後工程。"
+      }
+    ],
+    "prompt": "Wilke粘度式を学んだ。熱伝導率kの混合物値について適切な姿勢はどれか。",
+    "choices": [
+      "μとkは単位が違うだけで、数値は常に等しい",
+      "粘度が分かれば、組成や温度を調べる必要は一切ない",
+      "kを対象とする混合則や測定資料の適用性を確認する",
+      "μをkへ置換すれば、常に厳密なkが得られる"
+    ],
+    "answer": 2,
+    "difficulty": "概念・適用判断",
+    "explanation": "粘度は運動量、kは熱輸送を表す。気体のkにも専用の近似や相関があるが、その定義・範囲を確認する。液体や高圧にも無条件に転用しない。",
+    "distractors": [
+      "異なる物性を数値だけ等置した。",
+      "混合物の輸送物性は状態や組成に依存する。",
+      "正解。別の輸送物性には適用するモデルの根拠が必要。",
+      "粘度用の式を別物性へ無条件に拡張した。"
+    ],
+    "hints": [
+      "何を運ぶ物性かを確認。",
+      "別物性には別の根拠。"
+    ],
+    "solutionSteps": [
+      "粘度モデルの用途を確認。",
+      "kの資料を探す。",
+      "適用範囲と不確かさを記録。"
+    ],
+    "beginnerPitfall": "物性の混合則を機械的に流用しない。"
+  },
+  {
+    "id": "supp-mixture-property-reference-state-v1",
+    "revision": "v1",
+    "field": "物質移動",
+    "prerequisites": [
+      "成分保存",
+      "フィックの法則",
+      "流束の基準"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "applied",
+    "source": {
+      "type": "supplement",
+      "reference": "輸送現象の一般法則と独自の仮想例から作問。原本の翻訳・原図・章末問題ではない。",
+      "chapterId": "ch11",
+      "focusSectionId": "11.10",
+      "guideId": "chapter11-fick-mass"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "執筆原稿・基本算術と構造を確認／包括的品質監査待ち・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "執筆時の定義・収支・基本計算を確認。全問の独立科学監査・原本網羅照合・外部校閲は後工程。"
+      }
+    ],
+    "prompt": "ReとScを作るため、温度と組成が大きく異なる資料からμ、ρ、Dを一つずつ選んだ。改善として適切なのはどれか。",
+    "choices": [
+      "単位がSIなら、異なる状態を無条件に混ぜる",
+      "計算結果が正なら、状態の違いは影響しない",
+      "全ての物性を1と置き、状態差の問題を消す",
+      "同じ代表状態で評価し、変動の影響も調べる"
+    ],
+    "answer": 3,
+    "difficulty": "概念・適用判断",
+    "explanation": "μ,ρ,Dは状態に依存し、ν=μ/ρも同じ状態で作る。温度・組成変動が大きければ代表値の感度や可変物性モデルを検討する。",
+    "distractors": [
+      "SIへの統一だけでは物理的な状態差を解消しない。",
+      "正の有限値だけではモデルの妥当性を保証しない。",
+      "根拠なく値を変更しても予測は正しくならない。",
+      "正解。状態を統一し一定物性近似の影響を確認した。"
+    ],
+    "hints": [
+      "数値の単位と評価状態は別。",
+      "物性表の温度・圧力・組成を読む。"
+    ],
+    "solutionSteps": [
+      "代表状態を定義。",
+      "対応する物性を取得。",
+      "変動範囲で感度を確認。"
+    ],
+    "beginnerPitfall": "同じ単位でも異なる状態の物性を無計画に組み合わせない。"
+  },
+  {
+    "id": "supp-mixture-property-gas-D-scaling-v1",
+    "revision": "v1",
+    "field": "物質移動",
+    "prerequisites": [
+      "成分保存",
+      "フィックの法則",
+      "流束の基準"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "conceptual",
+    "source": {
+      "type": "supplement",
+      "reference": "輸送現象の一般法則と独自の仮想例から作問。原本の翻訳・原図・章末問題ではない。",
+      "chapterId": "ch11",
+      "focusSectionId": "11.10",
+      "guideId": "chapter11-fick-mass"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "執筆原稿・基本算術と構造を確認／包括的品質監査待ち・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "執筆時の定義・収支・基本計算を確認。全問の独立科学監査・原本網羅照合・外部校閲は後工程。"
+      }
+    ],
+    "prompt": "ある希薄気体の限定範囲でD_AB∝T^n/pという経験的近似が使える。適切な扱いはどれか。",
+    "choices": [
+      "指数・基準値・範囲と絶対温度を確認する",
+      "全ての液体と高圧気体にも同じ指数を使う",
+      "Tには℃を入れて、温度差だけで換算する",
+      "基準のDが不明でも、比例関係だけで値を確定する"
+    ],
+    "answer": 0,
+    "difficulty": "概念・適用判断",
+    "explanation": "温度はK、圧力は絶対圧を使い、対象の成分対・範囲・指数と基準Dを明記する。普遍的な全物質の法則とは扱わない。",
+    "distractors": [
+      "正解。近似の定義と必要な基準情報を確認した。",
+      "希薄気体の近似を無条件に別領域へ広げた。",
+      "状態依存式の絶対温度を摂氏へ置き換えた。",
+      "比例定数又は基準値なしで絶対値は定まらない。"
+    ],
+    "hints": [
+      "比例式だけでは係数が不足。",
+      "状態式・物性相関は絶対温度を使う。"
+    ],
+    "solutionSteps": [
+      "対象と範囲を確認。",
+      "基準値と指数を確認。",
+      "適用可能な範囲で推定。"
+    ],
+    "beginnerPitfall": "限定された気体相関を普遍式としない。"
+  },
+  {
+    "id": "supp-multicomponent-linear-system-v1",
+    "revision": "v1",
+    "field": "物質移動",
+    "prerequisites": [
+      "成分保存",
+      "フィックの法則",
+      "流束の基準"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "輸送現象の一般法則と独自の仮想例から作問。原本の翻訳・原図・章末問題ではない。",
+      "chapterId": "ch11",
+      "focusSectionId": "11.11",
+      "guideId": "chapter11-fick-mass"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "執筆原稿・基本算術と構造を確認／包括的品質監査待ち・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "執筆時の定義・収支・基本計算を確認。全問の独立科学監査・原本網羅照合・外部校閲は後工程。"
+      }
+    ],
+    "prompt": "ある理想三成分のMaxwell–Stefan式から、1625J_A−250J_B=2、−250J_A+1833.3333J_B=−1を得た。Jの単位はmol/(m²·s)。解として正しい組合せはどれか。",
+    "choices": [
+      "J_A≈+8.000×10⁻⁴、J_B≈−4.000×10⁻⁴",
+      "J_A≈+1.171×10⁻³、J_B≈−3.857×10⁻⁴",
+      "J_A≈+1.231×10⁻³、J_B≈−5.455×10⁻⁴",
+      "J_A≈−1.171×10⁻³、J_B≈+3.857×10⁻⁴"
+    ],
+    "answer": 1,
+    "difficulty": "標準・数値計算",
+    "explanation": "行列式1625×1833.3333−250²≈2.916667×10⁶。分子2×1833.3333−250=3416.6666を割ると0.0011714286。J_B=(−1625+500)/det=−0.0003857143。",
+    "distractors": [
+      "成分対Dが全て同じ別条件の値を使った。",
+      "正解。交差項も含め二つの式を同時に満たした。",
+      "交差係数−250を捨て独立式として解いた。",
+      "両流束の符号を反転した。"
+    ],
+    "hints": [
+      "交差項を落とさず連立する。",
+      "求めた値を両方の式へ戻す。"
+    ],
+    "solutionSteps": [
+      "行列式≈2.916667×10⁶。",
+      "J_A分子3416.6666、J_B分子−1125。",
+      "各分子/行列式で解を得る。"
+    ],
+    "beginnerPitfall": "多成分の交差結合を独立なFick式へ置換しない。"
+  },
+  {
+    "id": "supp-multicomponent-third-flux-v1",
+    "revision": "v1",
+    "field": "物質移動",
+    "prerequisites": [
+      "成分保存",
+      "フィックの法則",
+      "流束の基準"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "輸送現象の一般法則と独自の仮想例から作問。原本の翻訳・原図・章末問題ではない。",
+      "chapterId": "ch11",
+      "focusSectionId": "11.11",
+      "guideId": "chapter11-fick-mass"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "執筆原稿・基本算術と構造を確認／包括的品質監査待ち・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "執筆時の定義・収支・基本計算を確認。全問の独立科学監査・原本網羅照合・外部校閲は後工程。"
+      }
+    ],
+    "prompt": "モル平均基準でJ_A=+0.0011714286、J_B=−0.0003857143 mol/(m²·s)。ΣJ_i=0からJ_Cはどれか。",
+    "choices": [
+      "約−1.55714×10⁻³ mol/(m²·s)",
+      "約0.00000 mol/(m²·s)",
+      "約−7.85714×10⁻⁴ mol/(m²·s)",
+      "約+7.85714×10⁻⁴ mol/(m²·s)"
+    ],
+    "answer": 2,
+    "difficulty": "標準・数値計算",
+    "explanation": "J_C=−J_A−J_B=−0.0011714286+0.0003857143=−0.0007857143。ΣJ=0はモル平均の定義であり、全モル流束が0という条件ではない。",
+    "distractors": [
+      "Bの負号を無視して絶対値を足した。",
+      "総和ゼロをC単独もゼロとした。",
+      "正解。CをA+Bの和の負として求めた。",
+      "総和を打ち消す符号を逆にした。"
+    ],
+    "hints": [
+      "三つの和を0にする。",
+      "Bは負の値。"
+    ],
+    "solutionSteps": [
+      "J_A+J_B=0.0007857143。",
+      "負を取る。",
+      "J_C≈−7.85714×10⁻⁴。"
+    ],
+    "beginnerPitfall": "拡散の総和拘束と各流束ゼロを混同しない。"
+  },
+  {
+    "id": "supp-multicomponent-equal-D-limit-v1",
+    "revision": "v1",
+    "field": "物質移動",
+    "prerequisites": [
+      "成分保存",
+      "フィックの法則",
+      "流束の基準"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "輸送現象の一般法則と独自の仮想例から作問。原本の翻訳・原図・章末問題ではない。",
+      "chapterId": "ch11",
+      "focusSectionId": "11.11",
+      "guideId": "chapter11-fick-mass"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "執筆原稿・基本算術と構造を確認／包括的品質監査待ち・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "執筆時の定義・収支・基本計算を確認。全問の独立科学監査・原本網羅照合・外部校閲は後工程。"
+      }
+    ],
+    "prompt": "等温等圧の理想三成分で全ての成分対D_ij=D=1.0×10⁻⁵ m²/s、c=40 mol/m³、dx_i/dz=(−2,+1,+1) m⁻¹。モル平均基準のJ_i=−cD dx_i/dzはどれか。",
+    "choices": [
+      "(−8.0,+4.0,+4.0)×10⁻⁴ mol/(m²·s)",
+      "(+8.0,+4.0,+4.0)×10⁻⁴ mol/(m²·s)",
+      "(+2.0,−1.0,−1.0)×10⁻⁴ mol/(m²·s)",
+      "(+8.0,−4.0,−4.0)×10⁻⁴ mol/(m²·s)"
+    ],
+    "answer": 3,
+    "difficulty": "標準・数値計算",
+    "explanation": "cD=4.0×10⁻⁴ mol/(m·s)。勾配を掛けてJ=(8,−4,−4)×10⁻⁴、和0。異なるD_ijや非理想では同じ簡略式へ戻せるとは限らない。",
+    "distractors": [
+      "Fickの負号を落とした。",
+      "勾配の符号を全て同じにした。",
+      "cDの係数を正しい値の4分の1にした。",
+      "正解。同一Dの理想極限で勾配へ−cDを掛けた。"
+    ],
+    "hints": [
+      "全対のDが同じという限定条件。",
+      "Fick則の負号を保つ。"
+    ],
+    "solutionSteps": [
+      "cD=4×10⁻⁴。",
+      "各勾配へ負号付きで掛ける。",
+      "総和0で検算。"
+    ],
+    "beginnerPitfall": "同一Dの検算極限を一般の多成分へ広げない。"
+  },
+  {
+    "id": "supp-multicomponent-dependent-equation-v1",
+    "revision": "v1",
+    "field": "物質移動",
+    "prerequisites": [
+      "成分保存",
+      "フィックの法則",
+      "流束の基準"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "applied",
+    "source": {
+      "type": "supplement",
+      "reference": "輸送現象の一般法則と独自の仮想例から作問。原本の翻訳・原図・章末問題ではない。",
+      "chapterId": "ch11",
+      "focusSectionId": "11.11",
+      "guideId": "chapter11-fick-mass"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "執筆原稿・基本算術と構造を確認／包括的品質監査待ち・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "執筆時の定義・収支・基本計算を確認。全問の独立科学監査・原本網羅照合・外部校閲は後工程。"
+      }
+    ],
+    "prompt": "n成分のモル平均基準Maxwell–Stefan式を連立する。全成分の式を足すと恒等的に0となった。適切な処理はどれか。",
+    "choices": [
+      "n−1の独立式を選び、ΣJ_i=0を合わせて解く",
+      "全n式が独立とし、特異行列を無理に反転する",
+      "ΣJ_i=0を捨て、流束の基準を未定のままにする",
+      "恒等式があるので、各J_iを全て0に固定する"
+    ],
+    "answer": 0,
+    "difficulty": "概念・適用判断",
+    "explanation": "Σx_i=1と成分対の項の相殺で一つの式は依存する。平均基準を定めた総和拘束と独立式で解き、残り式の残差を検算する。",
+    "distractors": [
+      "正解。依存する式と平均基準の拘束を整理した。",
+      "総和による線形従属を無視した。",
+      "平均基準の必要な拘束を失った。",
+      "式の依存性は全輸送がゼロという意味ではない。"
+    ],
+    "hints": [
+      "組成の和は1。",
+      "流束にも平均基準の拘束がある。"
+    ],
+    "solutionSteps": [
+      "独立な式を選ぶ。",
+      "ΣJ=0を加える。",
+      "未使用式も残差確認。"
+    ],
+    "beginnerPitfall": "線形従属を計算失敗として隠さず拘束を正しく使う。"
+  },
+  {
+    "id": "supp-multicomponent-chemical-potential-v1",
+    "revision": "v1",
+    "field": "物質移動",
+    "prerequisites": [
+      "成分保存",
+      "フィックの法則",
+      "流束の基準"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "conceptual",
+    "source": {
+      "type": "supplement",
+      "reference": "輸送現象の一般法則と独自の仮想例から作問。原本の翻訳・原図・章末問題ではない。",
+      "chapterId": "ch11",
+      "focusSectionId": "11.11",
+      "guideId": "chapter11-fick-mass"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "執筆原稿・基本算術と構造を確認／包括的品質監査待ち・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "執筆時の定義・収支・基本計算を確認。全問の独立科学監査・原本網羅照合・外部校閲は後工程。"
+      }
+    ],
+    "prompt": "等温等圧・外力なしの非理想混合物でμ_i=μ_i°+RT ln a_iと書く。このμ_iの意味と単位はどれか。",
+    "choices": [
+      "質量分率そのものを表し、無次元である",
+      "モル化学ポテンシャルで、J/molである",
+      "動粘度を表す物性で、m²/sである",
+      "せん断の粘度を表す物性で、Pa·sである"
+    ],
+    "answer": 1,
+    "difficulty": "概念・適用判断",
+    "explanation": "μ_iはJ/mol、RはJ/(mol·K)、TはK、a_iは無次元。質量基準J/kgを用いる場合は成分モル質量による換算が必要。",
+    "distractors": [
+      "組成の熱力学的ポテンシャルを分率と同じにした。",
+      "正解。式のRTと整合するモル基準の化学ポテンシャル。",
+      "同じ文字に見えても動粘度νとは別。",
+      "粘度μとは単位と物理的意味が異なる。"
+    ],
+    "hints": [
+      "RTの単位を確認。",
+      "添字iのμと粘度μを区別。"
+    ],
+    "solutionSteps": [
+      "R×TはJ/mol。",
+      "ln aは無次元。",
+      "μ_iもJ/mol。"
+    ],
+    "beginnerPitfall": "記号だけで粘度と化学ポテンシャルを混同しない。"
+  },
+  {
+    "id": "supp-multicomponent-activity-ideal-v1",
+    "revision": "v1",
+    "field": "物質移動",
+    "prerequisites": [
+      "成分保存",
+      "フィックの法則",
+      "流束の基準"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "applied",
+    "source": {
+      "type": "supplement",
+      "reference": "輸送現象の一般法則と独自の仮想例から作問。原本の翻訳・原図・章末問題ではない。",
+      "chapterId": "ch11",
+      "focusSectionId": "11.11",
+      "guideId": "chapter11-fick-mass"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "執筆原稿・基本算術と構造を確認／包括的品質監査待ち・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "執筆時の定義・収支・基本計算を確認。全問の独立科学監査・原本網羅照合・外部校閲は後工程。"
+      }
+    ],
+    "prompt": "等温等圧でa_i=x_iの理想混合を考える。μ_i=μ_i°+RT ln x_iより、−x_i∇μ_i/(RT)はどれか。μ_i°はこの場で一定。",
+    "choices": [
+      "−∇ln x_iへ戻る",
+      "+∇x_iへ戻る",
+      "−∇x_iへ戻る",
+      "−x_i∇x_iへ戻る"
+    ],
+    "answer": 2,
+    "difficulty": "概念・適用判断",
+    "explanation": "∇μ_i=RT∇x_i/x_i。これへ−x_i/(RT)を掛けると−∇x_iで、理想Maxwell–Stefan式の駆動力へ戻る。温度勾配がある場合の追加項はこの式に含めない。",
+    "distractors": [
+      "前に掛かるx_iを落とした。",
+      "前に付く負号を正へ反転した。",
+      "正解。対数の微分1/x_iと前のx_iが相殺する。",
+      "lnの微分で現れる1/x_iを落とした。"
+    ],
+    "hints": [
+      "∇ln x_i=(1/x_i)∇x_i。",
+      "温度と標準状態を一定にする。"
+    ],
+    "solutionSteps": [
+      "μの勾配を取る。",
+      "−x_i/(RT)を掛ける。",
+      "−∇x_iへ簡約。"
+    ],
+    "beginnerPitfall": "限定した等温式を温度勾配のある場へそのまま拡張しない。"
+  },
+  {
+    "id": "supp-multicomponent-uphill-interpretation-v1",
+    "revision": "v1",
+    "field": "物質移動",
+    "prerequisites": [
+      "成分保存",
+      "フィックの法則",
+      "流束の基準"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "conceptual",
+    "source": {
+      "type": "supplement",
+      "reference": "輸送現象の一般法則と独自の仮想例から作問。原本の翻訳・原図・章末問題ではない。",
+      "chapterId": "ch11",
+      "focusSectionId": "11.11",
+      "guideId": "chapter11-fick-mass"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "執筆原稿・基本算術と構造を確認／包括的品質監査待ち・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "執筆時の定義・収支・基本計算を確認。全問の独立科学監査・原本網羅照合・外部校閲は後工程。"
+      }
+    ],
+    "prompt": "多成分・非理想の系で、一成分の拡散流束がその成分の濃度勾配だけから予想した向きと異なった。適切な解釈はどれか。",
+    "choices": [
+      "成分対のD_ijが必ず負になった証拠と断定する",
+      "質量保存が必ず破れた証拠として式を捨てる",
+      "濃度以外の駆動力や他成分の影響を全て除く",
+      "成分間結合と活動度・流束基準を含めて調べる"
+    ],
+    "answer": 3,
+    "difficulty": "概念・適用判断",
+    "explanation": "化学ポテンシャルの勾配と成分間摩擦の結合を調べ、全流束か拡散か、どの平均基準かも確認する。一つの濃度勾配からの単純Fick予測が一般に十分とは限らない。",
+    "distractors": [
+      "観測された向きだけで正の相互拡散係数を負としない。",
+      "逆向きの成分流束と保存則は両立しうる。",
+      "多成分・非理想という条件の主要な効果を落とした。",
+      "正解。単一成分の勾配だけでは決まらない場合を考えた。"
+    ],
+    "hints": [
+      "非理想では活動度が濃度に単純比例しない。",
+      "他成分との結合と基準を確認。"
+    ],
+    "solutionSteps": [
+      "流束の定義を確認。",
+      "活動度と成分対Dを確認。",
+      "結合した保存・拡散式で解釈。"
+    ],
+    "beginnerPitfall": "濃度に逆らう成分輸送から負のDと即断しない。"
   }
 ]
