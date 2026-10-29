@@ -37787,5 +37787,509 @@
       "条件外では有限な計算値を採用理由にしない。"
     ],
     "beginnerPitfall": "流れが弱い側へ、流れ支配の式を無条件に外挿しない。"
+  },
+  {
+    "id": "supp-natural-geometry-cylinder-coefficient-v1",
+    "revision": "v1",
+    "field": "対流",
+    "prerequisites": [
+      "自然対流",
+      "代表長さ",
+      "熱境界条件"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "自然対流の一般法則と独自の形状・仮想条件から作問。原本の文章・図・例題を転載しない。",
+      "chapterId": "ch8",
+      "focusSectionId": "8.4",
+      "guideId": "chapter8-buoyancy"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "2026-10-30：内部の別式検算・単位・条件・全選択肢確認／原本網羅照合・包括的品質監査・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-30",
+        "type": "authored_with_internal_check",
+        "details": "docs/NATURAL_GEOMETRY_20261030.md。形状・範囲を対象式の画像で確認し、独立例・保存則・次元・全候補を内部検算。外部専門家校閲ではない。"
+      }
+    ],
+    "prompt": "等温水平円柱に適合するNu_D=0.36+0.518Ra_D^(1/4)/[1+(0.559/Pr)^(9/16)]^(4/9)を使う。Ra_D=64327.8689、Pr=0.800、k=0.0280 W/(m·K)、直径D=0.0400 mのときh=Nu_Dk/Dはいくらか。有効数字3桁とする。放射や端面を含めない。",
+    "choices": [
+      "4.68 W/(m²·K)",
+      "6.69 W/(m²·K)",
+      "9.36 W/(m²·K)",
+      "4.43 W/(m²·K)"
+    ],
+    "answer": 0,
+    "difficulty": "標準・数値計算",
+    "explanation": "Nu_D≈6.6858506、h=6.6858506×0.0280/0.0400≈4.680095 W/(m²·K)。与えたRaはこの層流形の10⁻⁶〜10⁹の範囲内。",
+    "distractors": [
+      "正解。Nu_D≈6.68585をk/D=0.700で換算した。",
+      "無次元Nu_Dをhの数値として使った。",
+      "hの換算で直径の代わりに半径を使った。",
+      "相関の加算定数0.36を落とした。"
+    ],
+    "hints": [
+      "相関の幾何が水平円柱であることを確認する。",
+      "Nu_Dを求める。"
+    ],
+    "solutionSteps": [
+      "相関の幾何が水平円柱であることを確認する。",
+      "Nu_Dを求める。",
+      "直径に基づくk/Dを掛ける。",
+      "hの単位と3桁丸めを確認する。"
+    ],
+    "beginnerPitfall": "球・垂直板・水平円柱で係数を混ぜない。"
+  },
+  {
+    "id": "supp-natural-geometry-sphere-conduction-v1",
+    "revision": "v1",
+    "field": "対流",
+    "prerequisites": [
+      "自然対流",
+      "代表長さ",
+      "熱境界条件"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "conceptual",
+    "source": {
+      "type": "supplement",
+      "reference": "自然対流の一般法則と独自の形状・仮想条件から作問。原本の文章・図・例題を転載しない。",
+      "chapterId": "ch8",
+      "focusSectionId": "8.4",
+      "guideId": "chapter8-buoyancy"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "2026-10-30：内部の別式検算・単位・条件・全選択肢確認／原本網羅照合・包括的品質監査・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-30",
+        "type": "authored_with_internal_check",
+        "details": "docs/NATURAL_GEOMETRY_20261030.md。形状・範囲を対象式の画像で確認し、独立例・保存則・次元・全候補を内部検算。外部専門家校閲ではない。"
+      }
+    ],
+    "prompt": "半径Rの等温球から、一定kの無限な静止流体への定常伝導だけを考える。Q̇=4πkR(T_s−T∞)、面積A=4πR²、直径D=2Rとする。h=Q̇/[A(T_s−T∞)]、Nu_D=hD/kから、浮力が消える極限のNu_Dはいくらか。",
+    "choices": [
+      "1.00",
+      "2.00",
+      "0.00",
+      "0.360"
+    ],
+    "answer": 1,
+    "difficulty": "概念・形状と条件の選択",
+    "explanation": "h=4πkR/(4πR²)=k/R。Nu_D=(k/R)(2R)/k=2。無限に広い周囲の球対称定常伝導という条件で、円柱や囲いへ無条件に移す極限ではない。",
+    "distractors": [
+      "直径ではなく半径をNuの基準に使った。",
+      "正解。h=k/RとD=2Rから2となる。",
+      "浮力がなくても定常伝導は残る。",
+      "水平円柱の相関の加算定数を別形状へ流用した。"
+    ],
+    "hints": [
+      "熱移動率を面積と温度差で割る。",
+      "h=k/Rを得る。"
+    ],
+    "solutionSteps": [
+      "熱移動率を面積と温度差で割る。",
+      "h=k/Rを得る。",
+      "Nuの長さが直径D=2Rであることを確認する。",
+      "定常伝導が残るのでゼロではない。"
+    ],
+    "beginnerPitfall": "自然対流が弱いことを、熱伝導までゼロになる意味としない。"
+  },
+  {
+    "id": "supp-natural-geometry-plate-length-v1",
+    "revision": "v1",
+    "field": "対流",
+    "prerequisites": [
+      "自然対流",
+      "代表長さ",
+      "熱境界条件"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "自然対流の一般法則と独自の形状・仮想条件から作問。原本の文章・図・例題を転載しない。",
+      "chapterId": "ch8",
+      "focusSectionId": "8.4",
+      "guideId": "chapter8-buoyancy"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "2026-10-30：内部の別式検算・単位・条件・全選択肢確認／原本網羅照合・包括的品質監査・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-30",
+        "type": "authored_with_internal_check",
+        "details": "docs/NATURAL_GEOMETRY_20261030.md。形状・範囲を対象式の画像で確認し、独立例・保存則・次元・全候補を内部検算。外部専門家校閲ではない。"
+      }
+    ],
+    "prompt": "低Raの上向き加熱水平板の相関が代表長さL*=A/Pを要求する。一辺0.100 mの正方形の片面で、A=0.0100 m²、周長P=0.400 mのときL*はいくらか。",
+    "choices": [
+      "0.0500 m",
+      "0.00250 m",
+      "0.0250 m",
+      "0.100 m"
+    ],
+    "answer": 2,
+    "difficulty": "標準・数値計算",
+    "explanation": "L*=0.0100/0.400=0.0250 m。RaはこのL*の三乗、Nuからhへの換算にも同じL*を使う。",
+    "distractors": [
+      "一辺の半分を使った。",
+      "面積か周長を10倍違う値に扱った。",
+      "正解。面積を周長で割った。",
+      "板の一辺をそのまま使った。"
+    ],
+    "hints": [
+      "採用する式の代表長さの定義を確認する。",
+      "面積の単位はm²、周長はm。"
+    ],
+    "solutionSteps": [
+      "採用する式の代表長さの定義を確認する。",
+      "面積の単位はm²、周長はm。",
+      "A/Pを計算する。",
+      "RaとNuの両方に同じL*を使う。"
+    ],
+    "beginnerPitfall": "辺長と面積/周長はどちらも長さだが、同じ値ではない。"
+  },
+  {
+    "id": "supp-natural-geometry-thick-layer-v1",
+    "revision": "v1",
+    "field": "対流",
+    "prerequisites": [
+      "自然対流",
+      "代表長さ",
+      "熱境界条件"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "自然対流の一般法則と独自の形状・仮想条件から作問。原本の文章・図・例題を転載しない。",
+      "chapterId": "ch8",
+      "focusSectionId": "8.4",
+      "guideId": "chapter8-buoyancy"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "2026-10-30：内部の別式検算・単位・条件・全選択肢確認／原本網羅照合・包括的品質監査・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-30",
+        "type": "authored_with_internal_check",
+        "details": "docs/NATURAL_GEOMETRY_20261030.md。形状・範囲を対象式の画像で確認し、独立例・保存則・次元・全候補を内部検算。外部専門家校閲ではない。"
+      }
+    ],
+    "prompt": "適合する不安定水平面の低Ra相関で未補正Nu_0=5.00が得られた。厚い境界層への補正Nu_corr=1.4/ln(1+1.4/Nu_0)を使うとき、Nu_corrはいくらか。lnは自然対数、有効数字3桁とする。",
+    "choices": [
+      "5.00",
+      "0.346",
+      "13.1",
+      "5.67"
+    ],
+    "answer": 3,
+    "difficulty": "標準・数値計算",
+    "explanation": "Nu_corr=1.4/ln(1.28)≈5.67122887。未補正値をそのまま使わず、採用式の低Nu補正と対数の種類を確認する。",
+    "distractors": [
+      "低Nuで必要な補正を加えなかった。",
+      "1.4と対数を掛け、割り算を取り違えた。",
+      "常用対数を自然対数の代わりに使った。",
+      "正解。1.4/ln(1.28)を計算した。"
+    ],
+    "hints": [
+      "Nu_0が約10以下かを確認する。",
+      "1+1.4/5.00=1.28。"
+    ],
+    "solutionSteps": [
+      "Nu_0が約10以下かを確認する。",
+      "1+1.4/5.00=1.28。",
+      "自然対数を取る。",
+      "1.4をその値で割る。"
+    ],
+    "beginnerPitfall": "lnとlog10を混同しない。"
+  },
+  {
+    "id": "supp-natural-geometry-stable-plate-v1",
+    "revision": "v1",
+    "field": "対流",
+    "prerequisites": [
+      "自然対流",
+      "代表長さ",
+      "熱境界条件"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "自然対流の一般法則と独自の形状・仮想条件から作問。原本の文章・図・例題を転載しない。",
+      "chapterId": "ch8",
+      "focusSectionId": "8.4",
+      "guideId": "chapter8-buoyancy"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "2026-10-30：内部の別式検算・単位・条件・全選択肢確認／原本網羅照合・包括的品質監査・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-30",
+        "type": "authored_with_internal_check",
+        "details": "docs/NATURAL_GEOMETRY_20261030.md。形状・範囲を対象式の画像で確認し、独立例・保存則・次元・全候補を内部検算。外部専門家校閲ではない。"
+      }
+    ],
+    "prompt": "端効果を抑えたほぼ水平な二次元板の熱い下面に、適合するNu_L=0.58Ra_L^(1/5)を使う。鉛直からの角度90°、Ra_L=1.00×10⁷、幅L=0.100 m、k=0.0300 W/(m·K)のときh=Nu_Lk/Lはいくらか。有効数字3桁とし、Raはgを使った値である。",
+    "choices": [
+      "4.37 W/(m²·K)",
+      "14.6 W/(m²·K)",
+      "0.000 W/(m²·K)",
+      "2.19 W/(m²·K)"
+    ],
+    "answer": 0,
+    "difficulty": "標準・数値計算",
+    "explanation": "Nu_L=0.58×(10⁷)^(1/5)≈14.5689413、h≈14.5689413×0.0300/0.100≈4.370682 W/(m²·K)。この安定面の式は指定の幅と全gを使う。",
+    "distractors": [
+      "正解。Nu_L≈14.5689をk/L=0.300で換算した。",
+      "無次元Nu_Lをhとして使った。",
+      "gcos90°を代入し、別の板モデルへ置き換えてしまった。",
+      "幅Lを2倍としてhへ換算した。"
+    ],
+    "hints": [
+      "熱い下面という安定な向きを確認する。",
+      "指定されたRaと角度が式の範囲にあることを確認する。"
+    ],
+    "solutionSteps": [
+      "熱い下面という安定な向きを確認する。",
+      "指定されたRaと角度が式の範囲にあることを確認する。",
+      "Nu_Lを計算する。",
+      "同じ幅Lでhへ換算する。"
+    ],
+    "beginnerPitfall": "不安定な正方形上面のA/Pモデルと、幅Lの二次元板を同じ幾何にしない。"
+  },
+  {
+    "id": "supp-natural-geometry-high-ra-length-v1",
+    "revision": "v1",
+    "field": "対流",
+    "prerequisites": [
+      "自然対流",
+      "代表長さ",
+      "熱境界条件"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "conceptual",
+    "source": {
+      "type": "supplement",
+      "reference": "自然対流の一般法則と独自の形状・仮想条件から作問。原本の文章・図・例題を転載しない。",
+      "chapterId": "ch8",
+      "focusSectionId": "8.4",
+      "guideId": "chapter8-buoyancy"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "2026-10-30：内部の別式検算・単位・条件・全選択肢確認／原本網羅照合・包括的品質監査・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-30",
+        "type": "authored_with_internal_check",
+        "details": "docs/NATURAL_GEOMETRY_20261030.md。形状・範囲を対象式の画像で確認し、独立例・保存則・次元・全候補を内部検算。外部専門家校閲ではない。"
+      }
+    ],
+    "prompt": "高Raの水平面相関Nu_L=C(Pr)Ra_L^(1/3)を採用できるとする。物性・重力・温度差を固定して長さLだけを2倍にし、前後とも同じ相関の領域内とする。Ra_L∝L³、h=Nu_Lk/Lならhの倍率はいくらか。全熱移動率ではなくhだけを比べる。",
+    "choices": [
+      "1.26 倍",
+      "1.00 倍",
+      "2.00 倍",
+      "0.50 倍"
+    ],
+    "answer": 1,
+    "difficulty": "概念・形状と条件の選択",
+    "explanation": "L→2LでRa→8Ra、Nu→2Nu。h_new/h_old=(2Nu/2L)/(Nu/L)=1。これは指定の1/3乗モデルの係数hに限る性質で、面積や他の相関のhまで不変ではない。",
+    "distractors": [
+      "Raの長さの三乗を落として指数1/3だけを適用した。",
+      "正解。Raの8倍でNuは2倍、Lも2倍なので相殺する。",
+      "Nuの2倍だけをhの倍率とした。",
+      "長さの分母だけを変えた。"
+    ],
+    "hints": [
+      "RaがLの三乗で変わることを使う。",
+      "NuはRaの1/3乗で変わる。"
+    ],
+    "solutionSteps": [
+      "RaがLの三乗で変わることを使う。",
+      "NuはRaの1/3乗で変わる。",
+      "hの分母Lの変化も含める。",
+      "全体Q̇と係数hを区別する。"
+    ],
+    "beginnerPitfall": "温度差や物性を変える比較にも同じ相殺を無条件に使わない。"
+  },
+  {
+    "id": "supp-natural-geometry-modified-ra-length-v1",
+    "revision": "v1",
+    "field": "対流",
+    "prerequisites": [
+      "自然対流",
+      "代表長さ",
+      "熱境界条件"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "conceptual",
+    "source": {
+      "type": "supplement",
+      "reference": "自然対流の一般法則と独自の形状・仮想条件から作問。原本の文章・図・例題を転載しない。",
+      "chapterId": "ch8",
+      "focusSectionId": "8.4",
+      "guideId": "chapter8-buoyancy"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "2026-10-30：内部の別式検算・単位・条件・全選択肢確認／原本網羅照合・包括的品質監査・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-30",
+        "type": "authored_with_internal_check",
+        "details": "docs/NATURAL_GEOMETRY_20261030.md。形状・範囲を対象式の画像で確認し、独立例・保存則・次元・全候補を内部検算。外部専門家校閲ではない。"
+      }
+    ],
+    "prompt": "一様熱流束q″が既知の自然対流で、修正Ra*=gβq″L⁴/(kνα_f)を使う。q″・物性・重力を固定し、Lだけを2倍にしたときRa*の倍率はいくらか。温度差を既知とする通常のRaとは区別する。",
+    "choices": [
+      "4.00 倍",
+      "2.00 倍",
+      "16.0 倍",
+      "8.00 倍"
+    ],
+    "answer": 2,
+    "difficulty": "概念・形状と条件の選択",
+    "explanation": "Ra*_new/Ra*_old=(2L)⁴/L⁴=16。一様熱流束から温度差を消去した定義であり、通常のRa_L∝ΔT L³とは固定する入力が異なる。",
+    "distractors": [
+      "長さを二乗と誤読した。",
+      "長さに比例すると誤読した。",
+      "正解。修正Raでは長さが四乗となる。",
+      "通常の温度差基準Raの三乗を使った。"
+    ],
+    "hints": [
+      "固定するのは全熱移動率でなく熱流束q″。",
+      "定義の長さの指数を読む。"
+    ],
+    "solutionSteps": [
+      "固定するのは全熱移動率でなく熱流束q″。",
+      "定義の長さの指数を読む。",
+      "2⁴=16。",
+      "未知温度差に依存する物性の反復等は別確認。"
+    ],
+    "beginnerPitfall": "熱流束指定と温度指定を同じ境界条件として扱わない。"
+  },
+  {
+    "id": "supp-natural-geometry-cylinder-range-v1",
+    "revision": "v1",
+    "field": "対流",
+    "prerequisites": [
+      "自然対流",
+      "代表長さ",
+      "熱境界条件"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "applied",
+    "source": {
+      "type": "supplement",
+      "reference": "自然対流の一般法則と独自の形状・仮想条件から作問。原本の文章・図・例題を転載しない。",
+      "chapterId": "ch8",
+      "focusSectionId": "8.4",
+      "guideId": "chapter8-buoyancy"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "2026-10-30：内部の別式検算・単位・条件・全選択肢確認／原本網羅照合・包括的品質監査・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-30",
+        "type": "authored_with_internal_check",
+        "details": "docs/NATURAL_GEOMETRY_20261030.md。形状・範囲を対象式の画像で確認し、独立例・保存則・次元・全候補を内部検算。外部専門家校閲ではない。"
+      }
+    ],
+    "prompt": "等温水平円柱のある層流相関は10⁻⁶≤Ra_D≤10⁹を推奨範囲とする。対象のRa_D=2.00×10¹⁰と計算されたとき、適切な判断はどれか。",
+    "choices": [
+      "式が有限値を返すので、同じ層流相関を外挿する",
+      "球の相関の範囲が広いので、係数を同じまま転用する",
+      "直径の代わりに面積を使い、Raの数値だけ小さくする",
+      "範囲外として、乱流等に適合する別相関を確認する"
+    ],
+    "answer": 3,
+    "difficulty": "概念・形状と条件の選択",
+    "explanation": "2.00×10¹⁰は指定した上限10⁹を超える。より広い水平円柱相関等を、Pr・物性・境界条件とともに確認する。数値が小さくなるように代表長さを操作しない。",
+    "distractors": [
+      "有限の計算値は推奨範囲外の妥当性を証明しない。",
+      "形状と境界条件が違う球の係数をそのまま使えない。",
+      "代表長さを恣意的に変更すると定義と次元が変わる。",
+      "正解。与えた層流形の上限を超え、形状と領域が合う式を別に選ぶ。"
+    ],
+    "hints": [
+      "形状が水平円柱であることを確認する。",
+      "Ra_Dを指定範囲と比較する。"
+    ],
+    "solutionSteps": [
+      "形状が水平円柱であることを確認する。",
+      "Ra_Dを指定範囲と比較する。",
+      "上限を超えるため別の適合式を探す。",
+      "他形状への係数流用や恣意的な長さ変更をしない。"
+    ],
+    "beginnerPitfall": "推奨範囲と数式の計算可能性を分ける。"
+  },
+  {
+    "id": "supp-natural-geometry-temperature-average-v1",
+    "revision": "v1",
+    "field": "対流",
+    "prerequisites": [
+      "自然対流",
+      "代表長さ",
+      "熱境界条件"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "自然対流の一般法則と独自の形状・仮想条件から作問。原本の文章・図・例題を転載しない。",
+      "chapterId": "ch8",
+      "focusSectionId": "8.4",
+      "guideId": "chapter8-buoyancy"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "2026-10-30：内部の別式検算・単位・条件・全選択肢確認／原本網羅照合・包括的品質監査・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-30",
+        "type": "authored_with_internal_check",
+        "details": "docs/NATURAL_GEOMETRY_20261030.md。形状・範囲を対象式の画像で確認し、独立例・保存則・次元・全候補を内部検算。外部専門家校閲ではない。"
+      }
+    ],
+    "prompt": "一様熱流束板の仮想温度差モデルがΔT(x)=ΔT_L(x/L)^(1/5)、0≤x≤Lである。ΔT_L=12.0 Kとしたとき、長さ方向の平均(1/L)∫₀ᴸΔT(x)dxはいくらか。中点温度差や下流端とは区別する。",
+    "choices": [
+      "10.0 K",
+      "10.4 K",
+      "12.0 K",
+      "6.00 K"
+    ],
+    "answer": 0,
+    "difficulty": "標準・数値計算",
+    "explanation": "s=x/Lと置き、平均=12.0∫₀¹s^(1/5)ds=12.0×5/6=10.0 K。中点の値は約10.447 Kで、平均より約4.5%大きい。",
+    "distractors": [
+      "正解。積分から(5/6)×12.0=10.0となる。",
+      "中点12.0×2^(−1/5)≈10.447を平均とした。",
+      "下流端の温度差をそのまま平均とした。",
+      "指数1/5の分布を直線分布の平均に置き換えた。"
+    ],
+    "hints": [
+      "無次元の位置s=x/Lへ変換する。",
+      "s^(1/5)を0から1まで積分する。"
+    ],
+    "solutionSteps": [
+      "無次元の位置s=x/Lへ変換する。",
+      "s^(1/5)を0から1まで積分する。",
+      "積分値は5/6。",
+      "下流端12.0 Kへ掛ける。"
+    ],
+    "beginnerPitfall": "Cとxの単位を省略したまま温度分布を平均しない。"
   }
 ]

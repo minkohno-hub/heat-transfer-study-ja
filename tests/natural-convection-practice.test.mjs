@@ -6,9 +6,9 @@ const read=async path=>JSON.parse(await readFile(new URL('../'+path,import.meta.
 test('natural convection exercises cover conditions and preserve independent physical checks',async()=>{
  const [book,originalNotes,deepLessons,questions,evidence]=await Promise.all(['data/book.json','data/original-notes.json','data/original-deep-lessons.json','data/questions.json','data/readiness-evidence.json'].map(read));
  const added=questions.filter(q=>q.id.startsWith('supp-natural-'));
- assert.equal(added.length,7);
+ assert.equal(added.length,16);
  const row=buildAuthoringQueue({book,originalNotes,deepLessons,questions,evidence}).sections.find(s=>s.sectionId==='8.4');
- assert.equal(row.questionDraftCount,8);assert.ok(row.questionKinds>=3);
+ assert.equal(row.questionDraftCount,17);assert.ok(row.questionKinds>=3);
  assert.equal(row.authoringMinimumMet,true);assert.equal(row.finalAcceptance,false);
  for(const q of added){
   assert.equal(q.source.focusSectionId,'8.4');assert.equal(q.expertReviewed,false);

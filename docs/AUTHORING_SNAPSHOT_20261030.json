@@ -1,13 +1,13 @@
 {
   "schemaVersion": 1,
-  "checkedAt": "2026-10-29T22:14:12.972586+00:00",
-  "basis": "e258072に§9.7の表面条件・開始と強制対流の結合・横流れ膜沸騰の説明と6問を追加した作業ツリーの実データ。旧PC回収数とは別。",
+  "checkedAt": "2026-10-29T22:35:40.576813+00:00",
+  "basis": "9cb61fbに§8.4の形状別自然対流・修正Ra・平均の説明と9問を追加した作業ツリーの実データ。旧PC回収数とは別。",
   "scope": "独立執筆原稿と節別問題の暫定最低条件。科学的・法的完成認定ではない。",
   "totals": {
     "sectionCount": 76,
     "shortConceptNoteDrafts": 76,
     "detailedLessonDrafts": 76,
-    "questionsInBank": 732,
+    "questionsInBank": 741,
     "draftAuthoringMinimumMet": 76,
     "remainingQuestionDraftMinimum": 0,
     "sectionsNeedingDetailedLesson": 0,
@@ -17,16 +17,16 @@
   "glossaryOnThisBranch": 158,
   "evidence": {
     "node": {
-      "total": 353,
-      "passed": 348,
+      "total": 359,
+      "passed": 354,
       "skipped": 5,
       "failed": 0
     },
     "publicBuild": "passed",
     "currentBatchBrowser": {
-      "previousSourceCI": "e258072:run40962566552 check and WebKit online passed; 76 lectures/398 exercise questions, bank726",
-      "currentChromiumProbe": "passed: section9.7 and 6 additional questions, mobile overflow absent, stored revision v1, pageerrors0",
-      "currentWebKit": "not yet executed: 76 lectures/404 exercise questions",
+      "previousSourceCI": "9cb61fb: CI40964423180 check and WebKit-online passed (76 lectures/404 exercise questions); not transferred to current source",
+      "currentChromiumProbe": "passed: section8.4 and all9 additional questions; correct scoring and revision v1 saved, mobile390px no overflow, pageerror0",
+      "currentWebKit": "not yet executed: 76 lectures/413 exercise questions",
       "publicDeployment": "not performed; previously directly checked published bank72 is historical verification"
     },
     "expertReview": "not_completed",
@@ -1291,7 +1291,7 @@
       "shortConceptNoteDraft": true,
       "detailedLessonDraft": true,
       "legacyDraftRecorded": false,
-      "questionDraftCount": 8,
+      "questionDraftCount": 17,
       "questionKinds": 3,
       "missingQuestionDrafts": 0,
       "missingKinds": 0,
@@ -1301,15 +1301,16 @@
       "reviewedQuestionCount": 0,
       "verifiedRights": false,
       "finalAcceptance": false,
-      "learningObjective": "浮力の向きと熱境界条件を手掛かりに、垂直面・水平面・円柱・密閉空間の自然対流モデルを使い分ける。",
-      "detailedBlockCount": 6,
-      "equationCount": 2,
-      "workedExampleSteps": 4,
+      "learningObjective": "浮力の向きと熱境界条件を手掛かりに、垂直面・水平面・円柱・密閉空間の自然対流モデルを使い分ける。 水平円柱・気体中の球・水平板の代表長さと適用範囲を使い分け、球の伝導極限を保存則から確かめる。一様熱流束の修正Raと、表面温度の空間平均も区別できる。",
+      "detailedBlockCount": 14,
+      "equationCount": 10,
+      "workedExampleSteps": 11,
       "questionReview": "comprehensive_scientific_review_pending",
-      "sourceCollation": "section_start_mapping_tracked_full_scope_unverified",
+      "sourceCollation": "PDF pp444/447/449-452 selected shape/flux conditions viewed as images; full scope unverified",
       "independentFigures": "parallel_line_assets_unintegrated_or_pending",
       "publicScreenCurrentBatch": "c5d35fc: built-artifact Chromium and WebKit-online passed; latest live deployment not performed",
-      "expertApproval": false
+      "expertApproval": false,
+      "currentRevisionScreenCheck": "passed: section8.4 and all9 additional questions; correct scoring and revision v1 saved, mobile390px no overflow, pageerror0"
     },
     {
       "chapterId": "ch8",
