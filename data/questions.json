@@ -32146,5 +32146,1160 @@
       "遷移域の未表現を明記。"
     ],
     "beginnerPitfall": "モデルの積分を現象全体の厳密解としない。"
+  },
+  {
+    "id": "supp-internal-flow-hydraulic-diameter-v1",
+    "revision": "v1",
+    "field": "強制対流",
+    "prerequisites": [
+      "流量と平均速度",
+      "流路の幾何",
+      "流体エネルギー収支"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "輸送現象の一般法則と独自の仮想例から作問。原本の翻訳・原図・章末問題ではない。",
+      "chapterId": "ch7",
+      "focusSectionId": "7.1",
+      "guideId": "chapter7-internal-flow"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "執筆原稿・基本算術と構造を確認／包括的品質監査待ち・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "執筆時の定義・収支・基本計算を確認。全問の独立科学監査・原本網羅照合・外部校閲は後工程。"
+      }
+    ],
+    "prompt": "長方形流路の辺0.020 mと0.010 mが全て濡れている。D_h=4A_c/P_w、A_c=ab、P_w=2(a+b)からD_hはどれか。",
+    "choices": [
+      "約0.0133 m",
+      "約0.0300 m",
+      "約0.00667 m",
+      "約0.0224 m"
+    ],
+    "answer": 0,
+    "difficulty": "標準・数値計算",
+    "explanation": "A_c=0.00020 m²、P_w=0.060 m、D_h=0.00080/0.060=0.013333 m。面積と周長の比は長さの次元。",
+    "distractors": [
+      "正解。断面積と全濡れ周長で水力直径を作った。",
+      "二辺の和をそのままD_hとした。",
+      "4A/Pでなく2A/Pを使った。",
+      "断面の対角線をD_hとした。"
+    ],
+    "hints": [
+      "P_wは全ての濡れた辺の和。",
+      "4A_c/P_w。"
+    ],
+    "solutionSteps": [
+      "A_c=0.00020。",
+      "P_w=0.060。",
+      "D_h=0.01333 m。"
+    ],
+    "beginnerPitfall": "水力直径を対角線や幅と同じにしない。"
+  },
+  {
+    "id": "supp-internal-flow-mass-flow-v1",
+    "revision": "v1",
+    "field": "強制対流",
+    "prerequisites": [
+      "流量と平均速度",
+      "流路の幾何",
+      "流体エネルギー収支"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "輸送現象の一般法則と独自の仮想例から作問。原本の翻訳・原図・章末問題ではない。",
+      "chapterId": "ch7",
+      "focusSectionId": "7.1",
+      "guideId": "chapter7-internal-flow"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "執筆原稿・基本算術と構造を確認／包括的品質監査待ち・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "執筆時の定義・収支・基本計算を確認。全問の独立科学監査・原本網羅照合・外部校閲は後工程。"
+      }
+    ],
+    "prompt": "流路断面A_c=2.0×10⁻⁴ m²、断面平均U_b=2.0 m/s、ρ=1.2 kg/m³。ṁ=ρU_bA_cはどれか。",
+    "choices": [
+      "4.8×10⁻¹ kg/s",
+      "4.8×10⁻⁴ kg/s",
+      "4.0×10⁻⁴ kg/s",
+      "1.2×10⁻⁴ kg/s"
+    ],
+    "answer": 1,
+    "difficulty": "標準・数値計算",
+    "explanation": "q_v=2.0×2.0×10⁻⁴=4.0×10⁻⁴ m³/s、ṁ=1.2q_v=4.8×10⁻⁴ kg/s。中心速度をU_bへ無断で代入しない。",
+    "distractors": [
+      "kgとgの基準を混ぜ1000倍にした。",
+      "正解。平均速度・断面積・密度を掛けた。",
+      "体積流量をそのまま質量流量にした。",
+      "速度を掛けず割った。"
+    ],
+    "hints": [
+      "先に体積流量。",
+      "密度で質量へ。"
+    ],
+    "solutionSteps": [
+      "q_v=4.0×10⁻⁴ m³/s。",
+      "ρ=1.2を掛ける。",
+      "ṁ=4.8×10⁻⁴ kg/s。"
+    ],
+    "beginnerPitfall": "断面積と加熱表面積を混同しない。"
+  },
+  {
+    "id": "supp-internal-flow-duct-reynolds-v1",
+    "revision": "v1",
+    "field": "強制対流",
+    "prerequisites": [
+      "流量と平均速度",
+      "流路の幾何",
+      "流体エネルギー収支"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "輸送現象の一般法則と独自の仮想例から作問。原本の翻訳・原図・章末問題ではない。",
+      "chapterId": "ch7",
+      "focusSectionId": "7.1",
+      "guideId": "chapter7-internal-flow"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "執筆原稿・基本算術と構造を確認／包括的品質監査待ち・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "執筆時の定義・収支・基本計算を確認。全問の独立科学監査・原本網羅照合・外部校閲は後工程。"
+      }
+    ],
+    "prompt": "非円形流路でρ=1.2 kg/m³、U_b=2.0 m/s、D_h=0.0133333 m、μ=1.8×10⁻⁵ Pa·s。Re_Dh=ρU_bD_h/μはどれか。",
+    "choices": [
+      "約889",
+      "約1.78×10⁶",
+      "約1778",
+      "約5333"
+    ],
+    "answer": 2,
+    "difficulty": "標準・数値計算",
+    "explanation": "Re≈1.2×2.0×0.0133333/(1.8×10⁻⁵)=1777.77。Reだけで非円形の発達状態やNuまで決まるわけではない。",
+    "distractors": [
+      "係数又は速度を半分にした。",
+      "粘度の単位換算又は桁を1000倍誤った。",
+      "正解。指定した平均速度と水力直径を用いた。",
+      "D_hでなく別の長さを3倍で使った。"
+    ],
+    "hints": [
+      "μは動粘度でなく粘度。",
+      "ρを含む定義を使う。"
+    ],
+    "solutionSteps": [
+      "分子≈0.032。",
+      "μで割る。",
+      "Re≈1778。"
+    ],
+    "beginnerPitfall": "Reの長さと速度の定義を対応させる。"
+  },
+  {
+    "id": "supp-internal-flow-wetted-vs-heated-v1",
+    "revision": "v1",
+    "field": "強制対流",
+    "prerequisites": [
+      "流量と平均速度",
+      "流路の幾何",
+      "流体エネルギー収支"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "applied",
+    "source": {
+      "type": "supplement",
+      "reference": "輸送現象の一般法則と独自の仮想例から作問。原本の翻訳・原図・章末問題ではない。",
+      "chapterId": "ch7",
+      "focusSectionId": "7.1",
+      "guideId": "chapter7-internal-flow"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "執筆原稿・基本算術と構造を確認／包括的品質監査待ち・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "執筆時の定義・収支・基本計算を確認。全問の独立科学監査・原本網羅照合・外部校閲は後工程。"
+      }
+    ],
+    "prompt": "長方形ダクトで全ての壁が濡れているが、底面だけを加熱する。D_hと伝熱面積を作る周長について適切なのはどれか。",
+    "choices": [
+      "両方とも加熱周長だけで作る",
+      "両方とも常に同じ全面積を使う",
+      "D_hは周長なしで、断面積だけから厳密に決まる",
+      "D_hは濡れ周長、伝熱面積は加熱周長で作る"
+    ],
+    "answer": 3,
+    "difficulty": "概念・適用判断",
+    "explanation": "D_h=4A_c/P_w、A_s=P_hL。部分加熱ではP_w≠P_hとなり、対応するNuの熱境界条件も確認する。",
+    "distractors": [
+      "流体が接する他の壁の幾何を落とした。",
+      "非加熱面を熱供給面へ二重に含めた。",
+      "断面形状の周長も水力直径に必要。",
+      "正解。流れの幾何と熱の供給面を区別した。"
+    ],
+    "hints": [
+      "濡れている面と加熱面は同じか。",
+      "二つの周長を別記号に。"
+    ],
+    "solutionSteps": [
+      "P_wを全壁から。",
+      "P_hを加熱面から。",
+      "Nuの境界条件も確認。"
+    ],
+    "beginnerPitfall": "濡れ周長と加熱周長を混同しない。"
+  },
+  {
+    "id": "supp-internal-flow-entrance-state-v1",
+    "revision": "v1",
+    "field": "強制対流",
+    "prerequisites": [
+      "流量と平均速度",
+      "流路の幾何",
+      "流体エネルギー収支"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "applied",
+    "source": {
+      "type": "supplement",
+      "reference": "輸送現象の一般法則と独自の仮想例から作問。原本の翻訳・原図・章末問題ではない。",
+      "chapterId": "ch7",
+      "focusSectionId": "7.1",
+      "guideId": "chapter7-internal-flow"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "執筆原稿・基本算術と構造を確認／包括的品質監査待ち・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "執筆時の定義・収支・基本計算を確認。全問の独立科学監査・原本網羅照合・外部校閲は後工程。"
+      }
+    ],
+    "prompt": "管長L/D=20、Re=1000、Pr=10の層流円管。目安L_h/D≈0.05Re、L_t/D≈0.05RePrから、発達についてどう扱うか。",
+    "choices": [
+      "速度も温度も、十分発達の仮定はまだ確認を要する",
+      "L/Dが10以上なら、両者は必ず十分発達とする",
+      "速度入口長さだけを見て、温度も同じとする",
+      "Prが大きいので、温度の入口長さを必ず0とする"
+    ],
+    "answer": 0,
+    "difficulty": "概念・適用判断",
+    "explanation": "L_h/D≈50、L_t/D≈500。目安からも十分発達の定数Nuを無条件に使えない。実際の境界と必要精度に合う入口モデルを確認する。",
+    "distractors": [
+      "正解。目安の50と500が実長20より長い。",
+      "層流の入口長さはReとPrにも依存する。",
+      "温度と速度の発達尺度は異なる。",
+      "大Prではこの尺度の熱入口長さは増える。"
+    ],
+    "hints": [
+      "二つの入口長さを別々に計算。",
+      "実際のL/Dと比較。"
+    ],
+    "solutionSteps": [
+      "速度尺度50。",
+      "熱尺度500。",
+      "実長20では発達途中を検討。"
+    ],
+    "beginnerPitfall": "速度と熱の十分発達を同じにしない。"
+  },
+  {
+    "id": "supp-internal-flow-internal-external-speed-v1",
+    "revision": "v1",
+    "field": "強制対流",
+    "prerequisites": [
+      "流量と平均速度",
+      "流路の幾何",
+      "流体エネルギー収支"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "conceptual",
+    "source": {
+      "type": "supplement",
+      "reference": "輸送現象の一般法則と独自の仮想例から作問。原本の翻訳・原図・章末問題ではない。",
+      "chapterId": "ch7",
+      "focusSectionId": "7.1",
+      "guideId": "chapter7-internal-flow"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "執筆原稿・基本算術と構造を確認／包括的品質監査待ち・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "執筆時の定義・収支・基本計算を確認。全問の独立科学監査・原本網羅照合・外部校閲は後工程。"
+      }
+    ],
+    "prompt": "内部流と外部流のReを選ぶ基本として適切なのはどれか。",
+    "choices": [
+      "外部流にも必ず流路の濡れ周長を定義して使う",
+      "流路と配置に対応する平均又は主流速度を使う",
+      "全ての流れで壁面速度0をReの速度へ使う",
+      "内部流は中心速度しか使えず、平均速度は使わない"
+    ],
+    "answer": 1,
+    "difficulty": "概念・適用判断",
+    "explanation": "内部の円管等ではU_bとD等、外部円柱では主流Uと外径等を確認する。同じReという名前だけで基準を流用しない。",
+    "distractors": [
+      "外部物体の代表長さは配置に応じて定義する。",
+      "正解。相関に指定された幾何と速度基準を合わせた。",
+      "壁面速度は主流・流量の慣性尺度ではない。",
+      "内部相関の多くは断面平均速度を用いる。"
+    ],
+    "hints": [
+      "相関にどの速度が書かれているか。",
+      "配置と代表長さを確認。"
+    ],
+    "solutionSteps": [
+      "内部/外部を分類。",
+      "指定速度と長さ。",
+      "物性を同じ状態へ。"
+    ],
+    "beginnerPitfall": "流れの配置と異なるReを持ち込まない。"
+  },
+  {
+    "id": "supp-internal-flow-thermal-developed-v1",
+    "revision": "v1",
+    "field": "強制対流",
+    "prerequisites": [
+      "流量と平均速度",
+      "流路の幾何",
+      "流体エネルギー収支"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "conceptual",
+    "source": {
+      "type": "supplement",
+      "reference": "輸送現象の一般法則と独自の仮想例から作問。原本の翻訳・原図・章末問題ではない。",
+      "chapterId": "ch7",
+      "focusSectionId": "7.1",
+      "guideId": "chapter7-internal-flow"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "執筆原稿・基本算術と構造を確認／包括的品質監査待ち・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "執筆時の定義・収支・基本計算を確認。全問の独立科学監査・原本網羅照合・外部校閲は後工程。"
+      }
+    ],
+    "prompt": "熱的に十分発達した加熱管で、流体混合平均温度T_bについて正しい説明はどれか。",
+    "choices": [
+      "速度が発達すれば、温度分布も瞬時に発達する",
+      "十分発達なら、壁から流体への熱流は必ずゼロ",
+      "分布形が発達しても、T_bは下流で変わりうる",
+      "十分発達なら、T_bも壁温も常に下流で不変である"
+    ],
+    "answer": 2,
+    "difficulty": "概念・適用判断",
+    "explanation": "熱的十分発達は適切に規格化した温度形が流れ方向へ変わらない条件で、流体のエンタルピー増加が0という意味ではない。",
+    "distractors": [
+      "熱と運動量の発達はPrや境界等に依存する。",
+      "十分発達でも加熱や冷却は続けられる。",
+      "正解。分布の発達と平均温度の上昇を区別した。",
+      "温度形の定義を全ての温度一定とした。"
+    ],
+    "hints": [
+      "何が変わらないと定義したか。",
+      "平均温度と分布形を分ける。"
+    ],
+    "solutionSteps": [
+      "規格化分布を確認。",
+      "T_bの収支を残す。",
+      "下流の変化を計算。"
+    ],
+    "beginnerPitfall": "十分発達を等温や熱流ゼロと同一視しない。"
+  },
+  {
+    "id": "supp-internal-flow-pipe-friction-pressure-v1",
+    "revision": "v1",
+    "field": "強制対流",
+    "prerequisites": [
+      "流量と平均速度",
+      "流路の幾何",
+      "流体エネルギー収支"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "輸送現象の一般法則と独自の仮想例から作問。原本の翻訳・原図・章末問題ではない。",
+      "chapterId": "ch7",
+      "focusSectionId": "7.3",
+      "guideId": "chapter7-internal-flow"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "執筆原稿・基本算術と構造を確認／包括的品質監査待ち・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "執筆時の定義・収支・基本計算を確認。全問の独立科学監査・原本網羅照合・外部校閲は後工程。"
+      }
+    ],
+    "prompt": "Darcy f_D=0.0180、L/D=50、ρ=1000 kg/m³、U_b=5.0 m/s。Δp_f=f_D(L/D)ρU_b²/2はどれか。",
+    "choices": [
+      "約45.0 kPa",
+      "約2.81 kPa",
+      "約0.225 kPa",
+      "約11.25 kPa"
+    ],
+    "answer": 3,
+    "difficulty": "標準・数値計算",
+    "explanation": "Δp_f=0.0180×50×12500=11250 Pa=11.25 kPa。局所損失や重力・加速による変化はこの摩擦式と分ける。",
+    "distractors": [
+      "Fanning/Darcyの4倍差を余分に入れた。",
+      "4で割る必要がないのに割った。",
+      "L/Dの係数50を落とした。",
+      "正解。Darcy定義で動圧と長さ比を掛けた。"
+    ],
+    "hints": [
+      "動圧はρU_b²/2。",
+      "f_DはDarcy。"
+    ],
+    "solutionSteps": [
+      "動圧12500 Pa。",
+      "長さ比50と係数0.018。",
+      "11250 Pa。"
+    ],
+    "beginnerPitfall": "DarcyとFanningの定義を混ぜない。"
+  },
+  {
+    "id": "supp-internal-flow-pipe-nu-to-h-v1",
+    "revision": "v1",
+    "field": "強制対流",
+    "prerequisites": [
+      "流量と平均速度",
+      "流路の幾何",
+      "流体エネルギー収支"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "輸送現象の一般法則と独自の仮想例から作問。原本の翻訳・原図・章末問題ではない。",
+      "chapterId": "ch7",
+      "focusSectionId": "7.3",
+      "guideId": "chapter7-internal-flow"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "執筆原稿・基本算術と構造を確認／包括的品質監査待ち・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "執筆時の定義・収支・基本計算を確認。全問の独立科学監査・原本網羅照合・外部校閲は後工程。"
+      }
+    ],
+    "prompt": "管内の平均Nu_D=599.1、流体k_f=0.60 W/(m·K)、D=0.020 m。h=Nu_Dk_f/Dはどれか。",
+    "choices": [
+      "約1.80×10⁴ W/(m²·K)",
+      "約7.19×10⁰ W/(m²·K)",
+      "約3.59×10² W/(m²·K)",
+      "約5.99×10² W/(m²·K)"
+    ],
+    "answer": 0,
+    "difficulty": "標準・数値計算",
+    "explanation": "h=599.1×0.60/0.020=17973 W/(m²·K)。壁内部のk_sではなく流体側k_fを使用する。",
+    "distractors": [
+      "正解。流体k_fと管径でhへ戻した。",
+      "Dを割らず掛けた。",
+      "Nuへk_fを掛けた後Dで割っていない。",
+      "無次元Nuをそのまま次元付きhへ使った。"
+    ],
+    "hints": [
+      "Nu_D=hD/k_f。",
+      "Dをmで使用。"
+    ],
+    "solutionSteps": [
+      "Nu k_f=359.46 W/(m·K)。",
+      "0.020で割る。",
+      "約1.80×10⁴。"
+    ],
+    "beginnerPitfall": "Nuとh、固体と流体のkを区別する。"
+  },
+  {
+    "id": "supp-internal-flow-pipe-pumping-power-v1",
+    "revision": "v1",
+    "field": "強制対流",
+    "prerequisites": [
+      "流量と平均速度",
+      "流路の幾何",
+      "流体エネルギー収支"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "輸送現象の一般法則と独自の仮想例から作問。原本の翻訳・原図・章末問題ではない。",
+      "chapterId": "ch7",
+      "focusSectionId": "7.3",
+      "guideId": "chapter7-internal-flow"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "執筆原稿・基本算術と構造を確認／包括的品質監査待ち・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "執筆時の定義・収支・基本計算を確認。全問の独立科学監査・原本網羅照合・外部校閲は後工程。"
+      }
+    ],
+    "prompt": "ポンプが克服する圧力差10 kPa、体積流量0.0020 m³/s、ポンプ効率0.50。他の追加損失はこの圧力差へ含めたとする。流体動力と必要入力動力はどれか。",
+    "choices": [
+      "流体0.020 W、入力0.040 W",
+      "流体20 W、入力40 W",
+      "流体20 W、入力10 W",
+      "流体40 W、入力20 W"
+    ],
+    "answer": 1,
+    "difficulty": "標準・数値計算",
+    "explanation": "P_fluid=10000×0.0020=20 W、P_in=P_fluid/0.50=40 W。熱伝達率の値だけではこの動力は決まらない。",
+    "distractors": [
+      "kPaをPaへ直していない。",
+      "正解。Δp q_vで流体動力、効率で割り入力を求めた。",
+      "効率を掛けて入力を流体動力より小さくした。",
+      "入力と流体へ渡る動力を逆にした。"
+    ],
+    "hints": [
+      "Pa×m³/s=W。",
+      "効率=流体へ渡る動力/入力。"
+    ],
+    "solutionSteps": [
+      "流体動力20 W。",
+      "効率0.50で割る。",
+      "入力40 W。"
+    ],
+    "beginnerPitfall": "流体動力と機器入力を混同しない。"
+  },
+  {
+    "id": "supp-internal-flow-pipe-gnielinski-f-v1",
+    "revision": "v1",
+    "field": "強制対流",
+    "prerequisites": [
+      "流量と平均速度",
+      "流路の幾何",
+      "流体エネルギー収支"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "applied",
+    "source": {
+      "type": "supplement",
+      "reference": "輸送現象の一般法則と独自の仮想例から作問。原本の翻訳・原図・章末問題ではない。",
+      "chapterId": "ch7",
+      "focusSectionId": "7.3",
+      "guideId": "chapter7-internal-flow"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "執筆原稿・基本算術と構造を確認／包括的品質監査待ち・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "執筆時の定義・収支・基本計算を確認。全問の独立科学監査・原本網羅照合・外部校閲は後工程。"
+      }
+    ],
+    "prompt": "Gnielinski式のf_D/8へ、Darcy値の1/4であるFanning係数f_Fを同じ記号fとして入れた。適切なのはどれか。",
+    "choices": [
+      "f_D/8をf_F/8とし、分母だけを任意に調整する",
+      "熱の式なら摩擦係数の定義は影響しない",
+      "元の式の定義を確認し、f_D=4f_Fへ換算する",
+      "どちらも無次元なので、同じ数値として続ける"
+    ],
+    "answer": 2,
+    "difficulty": "概念・適用判断",
+    "explanation": "DarcyとFanningは同じ物理的応力に異なる定義の倍率を持つ。相関のfの定義と圧力損失式の定義を対応させる。",
+    "distractors": [
+      "式の一部だけ任意に変えても同じ相関にならない。",
+      "fはNuの分子分母に入り値へ影響する。",
+      "正解。相関で指定された摩擦係数に合わせた。",
+      "無次元でも係数の定義が異なる。"
+    ],
+    "hints": [
+      "資料のfの定義を読む。",
+      "DarcyはFanningの4倍。"
+    ],
+    "solutionSteps": [
+      "f_Fを特定。",
+      "4倍してf_D。",
+      "同じ定義でNu式へ。"
+    ],
+    "beginnerPitfall": "記号や単位だけで摩擦係数を交換しない。"
+  },
+  {
+    "id": "supp-internal-flow-pipe-large-property-change-v1",
+    "revision": "v1",
+    "field": "強制対流",
+    "prerequisites": [
+      "流量と平均速度",
+      "流路の幾何",
+      "流体エネルギー収支"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "applied",
+    "source": {
+      "type": "supplement",
+      "reference": "輸送現象の一般法則と独自の仮想例から作問。原本の翻訳・原図・章末問題ではない。",
+      "chapterId": "ch7",
+      "focusSectionId": "7.3",
+      "guideId": "chapter7-internal-flow"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "執筆原稿・基本算術と構造を確認／包括的品質監査待ち・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "執筆時の定義・収支・基本計算を確認。全問の独立科学監査・原本網羅照合・外部校閲は後工程。"
+      }
+    ],
+    "prompt": "壁と流体の温度差が大きく粘度が大幅に変化する。単純な一定物性のDittus–Boelter式を使う判断で適切なのはどれか。",
+    "choices": [
+      "乱流なら粘度の温度変化は全て無関係とする",
+      "加熱/冷却の指数だけ変えれば全変化を厳密に表せる",
+      "Reが正なら、同じNuは全流量と全物性で使える",
+      "物性評価と相関の範囲を調べ、補正等を検討する"
+    ],
+    "answer": 3,
+    "difficulty": "概念・適用判断",
+    "explanation": "代表状態や壁/主流物性比、適切な相関・補正又は可変物性モデルを調べる。別条件の便利な式を無条件に厳密としない。",
+    "distractors": [
+      "乱流でも粘度は流動と熱輸送へ関係する。",
+      "指数の変更だけで大物性差を一般に表せない。",
+      "正値だけでNuの適用や普遍性は保証できない。",
+      "正解。相関が想定する物性近似を再評価した。"
+    ],
+    "hints": [
+      "物性をどの温度で評価したか。",
+      "元の相関の条件。"
+    ],
+    "solutionSteps": [
+      "物性変動を確認。",
+      "範囲と補正を確認。",
+      "必要なモデルへ変更。"
+    ],
+    "beginnerPitfall": "加熱/冷却指数だけで物性変動全体を扱ったとしない。"
+  },
+  {
+    "id": "supp-internal-flow-pipe-correlation-difference-v1",
+    "revision": "v1",
+    "field": "強制対流",
+    "prerequisites": [
+      "流量と平均速度",
+      "流路の幾何",
+      "流体エネルギー収支"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "conceptual",
+    "source": {
+      "type": "supplement",
+      "reference": "輸送現象の一般法則と独自の仮想例から作問。原本の翻訳・原図・章末問題ではない。",
+      "chapterId": "ch7",
+      "focusSectionId": "7.3",
+      "guideId": "chapter7-internal-flow"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "執筆原稿・基本算術と構造を確認／包括的品質監査待ち・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "執筆時の定義・収支・基本計算を確認。全問の独立科学監査・原本網羅照合・外部校閲は後工程。"
+      }
+    ],
+    "prompt": "同じ仮想条件で二つの管内乱流相関が異なるNuを返した。適切な判断はどれか。",
+    "choices": [
+      "根拠・定義・範囲・精度を比較して使い分ける",
+      "必ず丸め誤差なので、条件の確認は不要である",
+      "二つの平均値を無条件に厳密な真値とする",
+      "数値が大きい方は必ず高品質なので採用する"
+    ],
+    "answer": 0,
+    "difficulty": "概念・適用判断",
+    "explanation": "適用する壁・流れ・物性評価と実験範囲、局所/平均の定義を確認する。どちらも対象外なら別の根拠を求める。",
+    "distractors": [
+      "正解。相関ごとの前提や誤差を比較する。",
+      "経験式の違いは丸め以外の要因もある。",
+      "根拠なしの平均は正しさの保証にならない。",
+      "大きなhが相関の妥当性や品質を表すわけではない。"
+    ],
+    "hints": [
+      "相関は同じ仮定か。",
+      "経験範囲や定義も読む。"
+    ],
+    "solutionSteps": [
+      "入力と定義を照合。",
+      "適用条件を比較。",
+      "必要精度を判断。"
+    ],
+    "beginnerPitfall": "都合の良い数字や平均だけで相関を選ばない。"
+  },
+  {
+    "id": "supp-internal-flow-pipe-pressure-loss-scope-v1",
+    "revision": "v1",
+    "field": "強制対流",
+    "prerequisites": [
+      "流量と平均速度",
+      "流路の幾何",
+      "流体エネルギー収支"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "conceptual",
+    "source": {
+      "type": "supplement",
+      "reference": "輸送現象の一般法則と独自の仮想例から作問。原本の翻訳・原図・章末問題ではない。",
+      "chapterId": "ch7",
+      "focusSectionId": "7.3",
+      "guideId": "chapter7-internal-flow"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "執筆原稿・基本算術と構造を確認／包括的品質監査待ち・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "執筆時の定義・収支・基本計算を確認。全問の独立科学監査・原本網羅照合・外部校閲は後工程。"
+      }
+    ],
+    "prompt": "Δp_f=f_D(L/D)ρU_b²/2という十分発達管摩擦の式について適切な説明はどれか。",
+    "choices": [
+      "f_Dが正なら、長さに関係なく同じ圧力差となる",
+      "入口・継手・重力・加速等は別に確認する",
+      "この式だけで全ての継手と標高差も自動で含む",
+      "熱伝達がある管では圧力損失は生じない"
+    ],
+    "answer": 1,
+    "difficulty": "概念・適用判断",
+    "explanation": "全体の圧力収支には必要な局所損失や位置・運動エネルギー変化等を含める。摩擦だけの計算を全装置のポンプ設計完了としない。",
+    "distractors": [
+      "式はL/Dに比例し形状と長さが関係する。",
+      "正解。管摩擦と他の圧力変化を分けた。",
+      "別の機構を長い直管摩擦へ無条件に含めた。",
+      "熱移動と摩擦損失は併存する。"
+    ],
+    "hints": [
+      "式がどの損失を表すか。",
+      "流路の継手や標高も確認。"
+    ],
+    "solutionSteps": [
+      "直管摩擦を計算。",
+      "他の項を列挙。",
+      "全体収支へまとめる。"
+    ],
+    "beginnerPitfall": "摩擦損失だけを全ての圧力変化としない。"
+  },
+  {
+    "id": "supp-internal-flow-surface-ntu-v1",
+    "revision": "v1",
+    "field": "強制対流",
+    "prerequisites": [
+      "流量と平均速度",
+      "流路の幾何",
+      "流体エネルギー収支"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "輸送現象の一般法則と独自の仮想例から作問。原本の翻訳・原図・章末問題ではない。",
+      "chapterId": "ch7",
+      "focusSectionId": "7.4",
+      "guideId": "chapter7-internal-flow"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "執筆原稿・基本算術と構造を確認／包括的品質監査待ち・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "執筆時の定義・収支・基本計算を確認。全問の独立科学監査・原本網羅照合・外部校閲は後工程。"
+      }
+    ],
+    "prompt": "一定壁温の一流体加熱でh=50 W/(m²·K)、加熱周長0.20 m、長さ10 m、ṁc_p=100 W/K。NTU=hA_s/(ṁc_p)はどれか。",
+    "choices": [
+      "10",
+      "50",
+      "1.0",
+      "0.10"
+    ],
+    "answer": 2,
+    "difficulty": "標準・数値計算",
+    "explanation": "A_s=0.20×10=2.0 m²、hA_s=100 W/K、NTU=100/100=1。面積は流路断面でなく加熱表面。",
+    "distractors": [
+      "熱容量流量の桁を取り違えた。",
+      "hをそのまま無次元数とした。",
+      "正解。加熱面積と熱容量流量の比を用いた。",
+      "長さ10 mを面積へ含めていない。"
+    ],
+    "hints": [
+      "A_s=P_hL。",
+      "hA_sとṁc_pはいずれもW/K。"
+    ],
+    "solutionSteps": [
+      "面積2 m²。",
+      "hA_s=100 W/K。",
+      "NTU=1。"
+    ],
+    "beginnerPitfall": "流路断面積と加熱表面積を混同しない。"
+  },
+  {
+    "id": "supp-internal-flow-surface-outlet-v1",
+    "revision": "v1",
+    "field": "強制対流",
+    "prerequisites": [
+      "流量と平均速度",
+      "流路の幾何",
+      "流体エネルギー収支"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "輸送現象の一般法則と独自の仮想例から作問。原本の翻訳・原図・章末問題ではない。",
+      "chapterId": "ch7",
+      "focusSectionId": "7.4",
+      "guideId": "chapter7-internal-flow"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "執筆原稿・基本算術と構造を確認／包括的品質監査待ち・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "執筆時の定義・収支・基本計算を確認。全問の独立科学監査・原本網羅照合・外部校閲は後工程。"
+      }
+    ],
+    "prompt": "一定壁80℃、流体入口20℃、NTU=1、exp(−1)=0.367879。T_out=T_s−(T_s−T_in)exp(−NTU)はどれか。",
+    "choices": [
+      "約7.36℃",
+      "約42.1℃",
+      "約102℃",
+      "約57.9℃"
+    ],
+    "answer": 3,
+    "difficulty": "標準・数値計算",
+    "explanation": "T_out=80−60×0.367879=57.9273℃。入口と壁温の間にある。これは固体の時間応答でなく流路方向の流体収支に基づく。",
+    "distractors": [
+      "入口の摂氏値をそのまま指数減衰させた。",
+      "入口と壁の基準を交換した。",
+      "有限の受動加熱で壁を超える式とした。",
+      "正解。壁との温度差の指数減衰を使った。"
+    ],
+    "hints": [
+      "差はT_s−T_b。",
+      "最後に壁温から残る差を引く。"
+    ],
+    "solutionSteps": [
+      "残差60/e≈22.07 K。",
+      "80から引く。",
+      "57.9℃。"
+    ],
+    "beginnerPitfall": "同じ指数の形でも対象の収支と変数を区別する。"
+  },
+  {
+    "id": "supp-internal-flow-surface-energy-rate-v1",
+    "revision": "v1",
+    "field": "強制対流",
+    "prerequisites": [
+      "流量と平均速度",
+      "流路の幾何",
+      "流体エネルギー収支"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "輸送現象の一般法則と独自の仮想例から作問。原本の翻訳・原図・章末問題ではない。",
+      "chapterId": "ch7",
+      "focusSectionId": "7.4",
+      "guideId": "chapter7-internal-flow"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "執筆原稿・基本算術と構造を確認／包括的品質監査待ち・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "執筆時の定義・収支・基本計算を確認。全問の独立科学監査・原本網羅照合・外部校閲は後工程。"
+      }
+    ],
+    "prompt": "一流体の一定比熱加熱でC=ṁc_p=100 W/K、入口20℃、出口57.927℃。熱移動率の正の大きさはどれか。",
+    "choices": [
+      "約3.79 kW",
+      "約5.79 kW",
+      "約6.00 kW",
+      "約0.379 kW"
+    ],
+    "answer": 0,
+    "difficulty": "標準・数値計算",
+    "explanation": "Q̇=C(T_out−T_in)=100×37.927=3792.7 W≈3.79 kW。hA_sLMTDでも同じ値へ戻るか確認する。",
+    "distractors": [
+      "正解。流体の温度上昇へ熱容量流量を掛けた。",
+      "入口基準を落とし出口摂氏温度へ掛けた。",
+      "壁温80℃との差を入口差のまま全体へ用いた。",
+      "WとkWの桁を10倍誤った。"
+    ],
+    "hints": [
+      "温度上昇は出口−入口。",
+      "W/K×K。"
+    ],
+    "solutionSteps": [
+      "上昇37.927 K。",
+      "100を掛ける。",
+      "約3.79 kW。"
+    ],
+    "beginnerPitfall": "出口温度そのものをエンタルピー変化に使わない。"
+  },
+  {
+    "id": "supp-internal-flow-surface-inlet-overestimate-v1",
+    "revision": "v1",
+    "field": "強制対流",
+    "prerequisites": [
+      "流量と平均速度",
+      "流路の幾何",
+      "流体エネルギー収支"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "applied",
+    "source": {
+      "type": "supplement",
+      "reference": "輸送現象の一般法則と独自の仮想例から作問。原本の翻訳・原図・章末問題ではない。",
+      "chapterId": "ch7",
+      "focusSectionId": "7.4",
+      "guideId": "chapter7-internal-flow"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "執筆原稿・基本算術と構造を確認／包括的品質監査待ち・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "執筆時の定義・収支・基本計算を確認。全問の独立科学監査・原本網羅照合・外部校閲は後工程。"
+      }
+    ],
+    "prompt": "一定壁温の加熱管で入口温度差だけを使いQ̇=hA_s(T_s−T_in)とした。流体が下流で温まる場合の扱いとして適切なのはどれか。",
+    "choices": [
+      "hが一定なら、流体温度も必ず一定となる",
+      "減少する温度差を収支又はLMTDで反映する",
+      "入口差が既知なら、下流の温まりは常に不要である",
+      "流体が温まるほど温度差は必ず増える"
+    ],
+    "answer": 1,
+    "difficulty": "概念・適用判断",
+    "explanation": "C dT_b/dx=hP_h(T_s−T_b)を解くか、整合した端点差からLMTDを求める。入口差だけでは一般に全熱流を過大評価する。",
+    "distractors": [
+      "h一定は平均温度の下流変化を消さない。",
+      "正解。局所的に変化する駆動差を残した。",
+      "全長の温度差を入口値へ固定した。",
+      "一定壁より流体が温まれば差は減る。"
+    ],
+    "hints": [
+      "壁と流体の差は下流でどうなるか。",
+      "全熱流は局所熱流の積分。"
+    ],
+    "solutionSteps": [
+      "流体の温まりを求める。",
+      "温度差の変化を含める。",
+      "全流体収支で検算。"
+    ],
+    "beginnerPitfall": "入口温度差を全長の同じ温度差としない。"
+  },
+  {
+    "id": "supp-internal-flow-surface-variable-h-integral-v1",
+    "revision": "v1",
+    "field": "強制対流",
+    "prerequisites": [
+      "流量と平均速度",
+      "流路の幾何",
+      "流体エネルギー収支"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "applied",
+    "source": {
+      "type": "supplement",
+      "reference": "輸送現象の一般法則と独自の仮想例から作問。原本の翻訳・原図・章末問題ではない。",
+      "chapterId": "ch7",
+      "focusSectionId": "7.4",
+      "guideId": "chapter7-internal-flow"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "執筆原稿・基本算術と構造を確認／包括的品質監査待ち・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "執筆時の定義・収支・基本計算を確認。全問の独立科学監査・原本網羅照合・外部校閲は後工程。"
+      }
+    ],
+    "prompt": "一定壁温・一流体・一定Cの流路でh=h(x)、加熱周長P_hも既知。指数応答に使うNTUとして適切なのはどれか。",
+    "choices": [
+      "hが変わるのでCを必ず0にする",
+      "hの最大値だけをそのままNTUとする",
+      "∫h(x)P_h dx/Cを使う",
+      "入口hだけを全長へ必ず厳密に使う"
+    ],
+    "answer": 2,
+    "difficulty": "概念・適用判断",
+    "explanation": "分離した収支d ln(T_s−T_b)/dx=−h(x)P_h/Cを積分する。一定hならhA_s/Cへ戻る。壁温も変わる場合は同じ単純形とはしない。",
+    "distractors": [
+      "係数の変化から熱容量流量0は導けない。",
+      "単位も長さ・面積・Cの基準も合わない。",
+      "正解。局所コンダクタンスを流路に沿って積分した。",
+      "hの位置依存を無条件に落とした。"
+    ],
+    "hints": [
+      "局所の収支から変数分離。",
+      "位置で変わるhを積分へ残す。"
+    ],
+    "solutionSteps": [
+      "局所hP_h/C。",
+      "流路全長で積分。",
+      "一定hの極限で確認。"
+    ],
+    "beginnerPitfall": "位置依存の係数を入口値へ無条件に固定しない。"
+  },
+  {
+    "id": "supp-internal-flow-surface-capacity-model-v1",
+    "revision": "v1",
+    "field": "強制対流",
+    "prerequisites": [
+      "流量と平均速度",
+      "流路の幾何",
+      "流体エネルギー収支"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "conceptual",
+    "source": {
+      "type": "supplement",
+      "reference": "輸送現象の一般法則と独自の仮想例から作問。原本の翻訳・原図・章末問題ではない。",
+      "chapterId": "ch7",
+      "focusSectionId": "7.4",
+      "guideId": "chapter7-internal-flow"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "執筆原稿・基本算術と構造を確認／包括的品質監査待ち・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "執筆時の定義・収支・基本計算を確認。全問の独立科学監査・原本網羅照合・外部校閲は後工程。"
+      }
+    ],
+    "prompt": "ε=1−exp(−NTU)という一流体・一定壁温の有効度式について適切なのはどれか。",
+    "choices": [
+      "有限な二流体の全配置にも同じ式が厳密に使える",
+      "εが正なら、流量や熱容量流量は不要になる",
+      "壁温一定なら、hの単位はW/Kへ変わる",
+      "一定温度熱源との交換の限定モデルである"
+    ],
+    "answer": 3,
+    "difficulty": "概念・適用判断",
+    "explanation": "もう一方の熱容量流量が実質無限大で一定温度の条件に対応する。有限二流体は容量比と流路配置に合うε–NTU関係を使う。",
+    "distractors": [
+      "容量比や並流/向流等の影響を落とした。",
+      "NTUと可能な最大熱流にCが関係する。",
+      "hの定義単位は面積と温度差当たりで変わらない。",
+      "正解。熱源温度を固定する仮定と一般の二流体を分けた。"
+    ],
+    "hints": [
+      "壁温はどのように保たれているか。",
+      "一般の二流体では両温度が変わる。"
+    ],
+    "solutionSteps": [
+      "一定温度源の仮定を確認。",
+      "有限容量なら別式。",
+      "Cと流路を対応。"
+    ],
+    "beginnerPitfall": "一流体壁温一定の解を全ての熱交換器へ転用しない。"
+  },
+  {
+    "id": "supp-internal-flow-surface-flux-boundary-v1",
+    "revision": "v1",
+    "field": "強制対流",
+    "prerequisites": [
+      "流量と平均速度",
+      "流路の幾何",
+      "流体エネルギー収支"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "conceptual",
+    "source": {
+      "type": "supplement",
+      "reference": "輸送現象の一般法則と独自の仮想例から作問。原本の翻訳・原図・章末問題ではない。",
+      "chapterId": "ch7",
+      "focusSectionId": "7.4",
+      "guideId": "chapter7-internal-flow"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "執筆原稿・基本算術と構造を確認／包括的品質監査待ち・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "執筆時の定義・収支・基本計算を確認。全問の独立科学監査・原本網羅照合・外部校閲は後工程。"
+      }
+    ],
+    "prompt": "一定比熱の流体へ一様な壁熱流束q_w″を与える定常流路で、加熱周長一定・熱漏れなし。T_b(x)の変化の基本形はどれか。",
+    "choices": [
+      "一定の単位長さ入熱により、T_bはxに線形となる",
+      "壁温を与えなくても、T_bは必ず一定壁へ指数接近",
+      "十分発達なら、加熱中でもT_bは下流で不変",
+      "q_w″が一定なら、流体の温度勾配は必ずゼロ"
+    ],
+    "answer": 0,
+    "difficulty": "概念・適用判断",
+    "explanation": "積分してT_b=T_in+q_w″P_hx/C。h一定で十分発達ならT_s−T_b=q_w″/hが一定となり壁温も変わる。",
+    "distractors": [
+      "正解。単位長さの一定入熱と流体エンタルピー変化を結んだ。",
+      "熱流束指定を壁温一定へ置き換えた。",
+      "十分発達と平均温度一定を混同した。",
+      "熱を受け取る収支に反する。"
+    ],
+    "hints": [
+      "単位長さの入熱はq_w″P_h。",
+      "Cは一定。"
+    ],
+    "solutionSteps": [
+      "微分の右辺一定。",
+      "xで積分。",
+      "温度は線形。"
+    ],
+    "beginnerPitfall": "壁熱流束一定と壁温一定を同じ境界としない。"
   }
 ]

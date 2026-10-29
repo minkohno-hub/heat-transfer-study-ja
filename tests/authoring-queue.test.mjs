@@ -13,11 +13,11 @@ test('the authoring queue counts actually authored lessons and focus-section pra
  const r=buildAuthoringQueue({book,originalNotes,deepLessons,questions,evidence});
  assert.equal(r.sectionCount,76);
  assert.equal(r.shortConceptNoteDrafts,76);
- assert.equal(r.detailedLessonDrafts,67);
- assert.equal(r.questionsInBank,631);
- assert.equal(r.remainingQuestionDraftMinimum,61);
- assert.equal(r.draftAuthoringMinimumMet,67);
- assert.equal(r.sectionsNeedingDetailedLesson,9);
+ assert.equal(r.detailedLessonDrafts,70);
+ assert.equal(r.questionsInBank,652);
+ assert.equal(r.remainingQuestionDraftMinimum,40);
+ assert.equal(r.draftAuthoringMinimumMet,70);
+ assert.equal(r.sectionsNeedingDetailedLesson,6);
  assert.equal(r.legacyDraftRecordedSections,44);
  assert.equal(r.externallyAcceptedSections,0);
  assert.equal(r.next.length,Math.min(12,r.sections.filter(x=>!x.authoringMinimumMet).length));
@@ -28,8 +28,8 @@ test('the authoring queue counts actually authored lessons and focus-section pra
  const firstLegacy=r.next.findIndex(x=>x.legacyDraftRecorded);
  if(firstLegacy>=0)assert.ok(r.next.slice(firstLegacy).every(x=>x.legacyDraftRecorded),
    'recorded legacy drafts must never displace remaining unrecorded work');
- assert.equal(r.next[0].sectionId,'7.1','finish section practice for an existing detailed lesson before opening another');
- assert.equal(r.next[0].missingQuestionDrafts,7);
+ assert.equal(r.next[0].sectionId,'7.5','finish section practice for an existing detailed lesson before opening another');
+ assert.equal(r.next[0].missingQuestionDrafts,6);
  assert.ok(r.sections.some(x=>x.sectionId==='4.4'&&x.legacyDraftRecorded));
  assert.ok(r.sections.some(x=>x.sectionId==='9.3'&&!x.legacyDraftRecorded));
  const s=r.sections.find(x=>x.sectionId==='2.2');
