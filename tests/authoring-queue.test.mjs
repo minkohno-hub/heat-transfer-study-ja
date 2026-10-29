@@ -13,18 +13,23 @@ test('the authoring queue counts actually authored lessons and focus-section pra
  const r=buildAuthoringQueue({book,originalNotes,deepLessons,questions,evidence});
  assert.equal(r.sectionCount,76);
  assert.equal(r.shortConceptNoteDrafts,76);
- assert.equal(r.detailedLessonDrafts,37);
- assert.equal(r.questionsInBank,405);
- assert.equal(r.remainingQuestionDraftMinimum,286);
- assert.equal(r.draftAuthoringMinimumMet,32);
- assert.equal(r.sectionsNeedingDetailedLesson,39);
+ assert.equal(r.detailedLessonDrafts,40);
+ assert.equal(r.questionsInBank,425);
+ assert.equal(r.remainingQuestionDraftMinimum,266);
+ assert.equal(r.draftAuthoringMinimumMet,35);
+ assert.equal(r.sectionsNeedingDetailedLesson,36);
  assert.equal(r.legacyDraftRecordedSections,44);
  assert.equal(r.externallyAcceptedSections,0);
  assert.ok(r.next.length===12);
  assert.ok(r.next.every(x=>!x.authoringMinimumMet));
- assert.ok(r.next.every(x=>!x.legacyDraftRecorded),'unmigrated legacy drafts should be checked before recreating their range');
- assert.equal(r.next[0].sectionId,'10.4','finish section practice for an existing detailed lesson before opening another');
- assert.equal(r.next[0].missingQuestionDrafts,6);
+ const unrecordedBacklog=r.sections.filter(x=>!x.authoringMinimumMet&&!x.legacyDraftRecorded).length;
+ assert.equal(r.next.filter(x=>!x.legacyDraftRecorded).length,Math.min(12,unrecordedBacklog),
+   'every available priority slot must prefer work without an unmigrated legacy draft');
+ const firstLegacy=r.next.findIndex(x=>x.legacyDraftRecorded);
+ if(firstLegacy>=0)assert.ok(r.next.slice(firstLegacy).every(x=>x.legacyDraftRecorded),
+   'recorded legacy drafts must never displace remaining unrecorded work');
+ assert.equal(r.next[0].sectionId,'11.1','finish section practice for an existing detailed lesson before opening another');
+ assert.equal(r.next[0].missingQuestionDrafts,7);
  assert.ok(r.sections.some(x=>x.sectionId==='4.4'&&x.legacyDraftRecorded));
  assert.ok(r.sections.some(x=>x.sectionId==='9.3'&&!x.legacyDraftRecorded));
  const s=r.sections.find(x=>x.sectionId==='2.2');

@@ -19736,5 +19736,1085 @@
       "放射の熱平衡を別の条件として確認する。"
     ],
     "beginnerPitfall": "定常状態を熱平衡と同義に使わない。"
+  },
+  {
+    "id": "supp-gray-parallel-flux-v1",
+    "revision": "v1",
+    "field": "放射",
+    "prerequisites": [
+      "放射率",
+      "放射のモデルと適用条件"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "放射輸送・幾何・エネルギー保存の一般法則による独立作問と仮想例。原本の翻訳・原図・章末問題ではない。",
+      "chapterId": "ch10",
+      "focusSectionId": "10.4",
+      "guideId": "chapter10-view-factors"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "執筆原稿・最低限の算術と構造を確認／包括的品質監査待ち・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "独立執筆。執筆中の基本計算と参照を確認。全問の独立科学監査・原本網羅照合・外部校閲は後工程。"
+      }
+    ],
+    "prompt": "互いだけを見込む大きな平行灰色面でT_1=400 K、T_2=300 K、ε_1=0.80、ε_2=0.60、σ=5.67×10⁻⁸ W/(m²·K⁴)。不透明・拡散、面間媒体は非参加性とする。q″=σ(T_1⁴−T_2⁴)/(1/ε_1+1/ε_2−1)を有効数字3桁で求める。",
+    "choices": [
+      "5.18×10² W/m²",
+      "7.94×10² W/m²",
+      "9.92×10² W/m²",
+      "4.76×10² W/m²"
+    ],
+    "answer": 0,
+    "difficulty": "標準・数値計算",
+    "explanation": "黒体差は992.25 W/m²、分母1.25+1.6666667−1=23/12。q″=517.69565≈5.18×10² W/m²。灰色の両面では反射を連立した分母が必要。",
+    "distractors": [
+      "正解。両面の反射を含む分母を使った。",
+      "面2を黒体とするε_1だけの式を使った。",
+      "両面を黒体とした。",
+      "二つの放射率を単純に掛けた。"
+    ],
+    "hints": [
+      "先に各絶対温度の四乗差を求める。",
+      "放射率の逆数を使う。"
+    ],
+    "solutionSteps": [
+      "黒体差992.25 W/m²。",
+      "分母は23/12。",
+      "商を3桁で5.18×10² W/m²。"
+    ],
+    "beginnerPitfall": "大きな黒体周囲の式を、両方が灰色の面対に流用しない。"
+  },
+  {
+    "id": "supp-gray-two-surface-resistance-v1",
+    "revision": "v1",
+    "field": "放射",
+    "prerequisites": [
+      "放射率",
+      "放射のモデルと適用条件"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "放射輸送・幾何・エネルギー保存の一般法則による独立作問と仮想例。原本の翻訳・原図・章末問題ではない。",
+      "chapterId": "ch10",
+      "focusSectionId": "10.4",
+      "guideId": "chapter10-view-factors"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "執筆原稿・最低限の算術と構造を確認／包括的品質監査待ち・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "独立執筆。執筆中の基本計算と参照を確認。全問の独立科学監査・原本網羅照合・外部校閲は後工程。"
+      }
+    ],
+    "prompt": "二面だけの閉じた拡散灰色囲いの節点モデルで、A_1=A_2=0.50 m²、F_12=F_21=0.50、残りは各面自身への形態係数とする。ε_1=0.50、ε_2=0.80、E_b,1−E_b,2=600 W/m²。表面・空間・表面の三抵抗式からQ̇_12を有効数字3桁で求める。",
+    "choices": [
+      "2.40×10² W",
+      "9.23×10¹ W",
+      "3.00×10² W",
+      "1.50×10² W"
+    ],
+    "answer": 1,
+    "difficulty": "標準・数値計算",
+    "explanation": "R_1=(1−0.5)/(0.5×0.5)=2.0、R_space=1/(0.5×0.5)=4.0、R_2=0.2/(0.5×0.8)=0.50 m⁻²。Q̇=600/6.5=92.3077 W。駆動差は黒体の放射発散度の差で、温度差ではない。",
+    "distractors": [
+      "表面抵抗だけを用いて空間抵抗を落とした。",
+      "正解。抵抗2.0+4.0+0.50=6.50 m⁻²を使った。",
+      "面積を掛けただけで反射と幾何を無視した。",
+      "空間抵抗だけを用いて表面抵抗を落とした。"
+    ],
+    "hints": [
+      "表面抵抗と空間抵抗を別に計算する。",
+      "面積を含む分母の単位を確認する。"
+    ],
+    "solutionSteps": [
+      "三抵抗は2.0、4.0、0.50 m⁻²。",
+      "和6.50 m⁻²。",
+      "600/6.50=9.23×10¹ W。"
+    ],
+    "beginnerPitfall": "放射の抵抗のm⁻²を、温度差基準のK/Wと混同しない。"
+  },
+  {
+    "id": "supp-gray-one-shield-v1",
+    "revision": "v1",
+    "field": "放射",
+    "prerequisites": [
+      "放射率",
+      "放射のモデルと適用条件"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "放射輸送・幾何・エネルギー保存の一般法則による独立作問と仮想例。原本の翻訳・原図・章末問題ではない。",
+      "chapterId": "ch10",
+      "focusSectionId": "10.4",
+      "guideId": "chapter10-view-factors"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "執筆原稿・最低限の算術と構造を確認／包括的品質監査待ち・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "独立執筆。執筆中の基本計算と参照を確認。全問の独立科学監査・原本網羅照合・外部校閲は後工程。"
+      }
+    ],
+    "prompt": "大きな平行面の両側を一定温度T_hot>T_coldに保ち、全ての面の放射率を0.50とする。間に同面積・不透明・両面同温の薄い遮熱板を1枚置き、定常・端部損失なし・非参加性媒体とする。遮熱板なしの流束に対する流束の比はいくらか。",
+    "choices": [
+      "2倍",
+      "変わらない",
+      "1/2倍",
+      "1/3倍"
+    ],
+    "answer": 2,
+    "difficulty": "標準・数値計算",
+    "explanation": "板なしの分母は1/0.5+1/0.5−1=3。板ありは熱い面と板、板と冷たい面の二経路が各3で、合計6。定常で同じ流束が両経路を通るため比は3/6=1/2。",
+    "distractors": [
+      "抵抗の増加を熱流の増加と取り違えた。",
+      "遮熱板で生じる二つの交換経路を無視した。",
+      "正解。同じ無次元抵抗3の空間が二つ直列となる。",
+      "板を置いた面数3を、そのまま抵抗比にした。"
+    ],
+    "hints": [
+      "遮熱板は定常で入熱と出熱が等しい。",
+      "各隙間の抵抗を直列に足す。"
+    ],
+    "solutionSteps": [
+      "板なしの抵抗係数3。",
+      "板ありは3+3=6。",
+      "同じ黒体差で流束比3/6=1/2。"
+    ],
+    "beginnerPitfall": "遮熱板を、入射を全て消す無放射の板としない。"
+  },
+  {
+    "id": "supp-gray-resistance-driving-potential-v1",
+    "revision": "v1",
+    "field": "放射",
+    "prerequisites": [
+      "放射率",
+      "放射のモデルと適用条件"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "conceptual",
+    "source": {
+      "type": "supplement",
+      "reference": "放射輸送・幾何・エネルギー保存の一般法則による独立作問と仮想例。原本の翻訳・原図・章末問題ではない。",
+      "chapterId": "ch10",
+      "focusSectionId": "10.4",
+      "guideId": "chapter10-view-factors"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "執筆原稿・最低限の算術と構造を確認／包括的品質監査待ち・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "独立執筆。執筆中の基本計算と参照を確認。全問の独立科学監査・原本網羅照合・外部校閲は後工程。"
+      }
+    ],
+    "prompt": "射度を用いる放射抵抗ネットワークで、表面抵抗(1−ε)/(Aε)の単位はm⁻²である。抵抗の両端に対応する量として適切なのはどれか。",
+    "choices": [
+      "面の温度Tと周囲温度の差で、単位は必ずKとなる",
+      "放射率εと形態係数Fの差で、単位は無次元となる",
+      "全熱移動率Q̇と面積Aの差で、単位は必ずWとなる",
+      "黒体放射発散度E_bと射度Jの差、単位はW/m²"
+    ],
+    "answer": 3,
+    "difficulty": "概念・適用判断",
+    "explanation": "表面の収支を整理するとQ̇=(E_b−J)/[(1−ε)/(Aε)]。電気回路の形は似ても、駆動する量の単位は温度ではない。ε=1では抵抗ゼロの極限でJ=E_bとなる。",
+    "distractors": [
+      "この抵抗は温度差基準のK/Wとは異なる。",
+      "無次元の差をm⁻²で割っても熱移動率にならない。",
+      "異なる次元のQ̇とAは差を取れない。",
+      "正解。(W/m²)/(m⁻²)=Wとなり、表面の射度式と一致する。"
+    ],
+    "hints": [
+      "抵抗の単位から、Wを得るための分子を考える。",
+      "面の射度式を整理する。"
+    ],
+    "solutionSteps": [
+      "射度と黒体放射発散度はW/m²。",
+      "その差をm⁻²で割る。",
+      "結果は全熱移動率W。"
+    ],
+    "beginnerPitfall": "異なる物理量を使う抵抗の類推では、単位をその都度確認する。"
+  },
+  {
+    "id": "supp-gray-open-plates-environment-v1",
+    "revision": "v1",
+    "field": "放射",
+    "prerequisites": [
+      "放射率",
+      "放射のモデルと適用条件"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "applied",
+    "source": {
+      "type": "supplement",
+      "reference": "放射輸送・幾何・エネルギー保存の一般法則による独立作問と仮想例。原本の翻訳・原図・章末問題ではない。",
+      "chapterId": "ch10",
+      "focusSectionId": "10.4",
+      "guideId": "chapter10-view-factors"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "執筆原稿・最低限の算術と構造を確認／包括的品質監査待ち・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "独立執筆。執筆中の基本計算と参照を確認。全問の独立科学監査・原本網羅照合・外部校閲は後工程。"
+      }
+    ],
+    "prompt": "有限な二枚の板を室内に置いた。板同士の形態係数F_12<1で、放射の一部は室内の他の面へ届く。二枚だけの閉囲いの直列式を使う際の適切な判断はどれか。",
+    "choices": [
+      "周囲への交換も節点に含め、閉じた系として収支を立て直す",
+      "二枚の温度が分かれば、周囲の照射は常に省略してよい",
+      "F_12を1へ置き換え、周囲へ向かう分も板2へ届くとする",
+      "面積が等しければ、開放されていても周囲への交換はゼロとする"
+    ],
+    "answer": 0,
+    "difficulty": "概念・適用判断",
+    "explanation": "二面の閉囲い式は二面以外への経路がない条件の結果。室内の面を外部節点として含め、和則と相反則を満たす形態係数で射度を連立する。",
+    "distractors": [
+      "正解。二枚以外の放射経路と境界条件を含めた。",
+      "周囲の温度・射度も各板の収支に入る。",
+      "与えられた幾何と異なるモデルへ変更している。",
+      "面積の等しさは放射の全到達先を決めない。"
+    ],
+    "hints": [
+      "面1を出た放射の残り1−F_12の行き先を考える。",
+      "その行き先から戻る照射もある。"
+    ],
+    "solutionSteps": [
+      "二板以外の経路を列挙する。",
+      "周囲の節点と境界を加える。",
+      "各面の収支を連立する。"
+    ],
+    "beginnerPitfall": "計算しやすい閉囲いへ、開放系を無条件に置き換えない。"
+  },
+  {
+    "id": "supp-gray-nonuniform-temperature-v1",
+    "revision": "v1",
+    "field": "放射",
+    "prerequisites": [
+      "放射率",
+      "放射のモデルと適用条件"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "applied",
+    "source": {
+      "type": "supplement",
+      "reference": "放射輸送・幾何・エネルギー保存の一般法則による独立作問と仮想例。原本の翻訳・原図・章末問題ではない。",
+      "chapterId": "ch10",
+      "focusSectionId": "10.4",
+      "guideId": "chapter10-view-factors"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "執筆原稿・最低限の算術と構造を確認／包括的品質監査待ち・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "独立執筆。執筆中の基本計算と参照を確認。全問の独立科学監査・原本網羅照合・外部校閲は後工程。"
+      }
+    ],
+    "prompt": "放射率一定の面で、半分が300 K、半分が500 Kだった。自己放出の面積平均を求める方法として適切なのはどれか。周囲の照射はこの問いに含めない。",
+    "choices": [
+      "二つの温度を摂氏へ換算し、その四乗の平均を使う",
+      "各領域のT⁴を面積平均し、その値にεσを掛ける",
+      "平均温度400 Kを先に求め、その四乗を常に厳密値にする",
+      "温度差200 Kだけを四乗し、面全体の自己放出に使う"
+    ],
+    "answer": 1,
+    "difficulty": "概念・適用判断",
+    "explanation": "平均自己放出はεσ(300⁴+500⁴)/2。平均温度の四乗400⁴とは異なる。温度分布の大きい面を一様節点へ近似する際はこの誤差を評価する。",
+    "distractors": [
+      "絶対温度を使う法則へ摂氏値を代入している。",
+      "正解。自己放出の局所式を面積積分した。",
+      "非線形な四乗の平均と、平均の四乗は異なる。",
+      "自己放出は各絶対温度の四乗で定まる。"
+    ],
+    "hints": [
+      "放射の式は温度について非線形。",
+      "局所の熱流束を先に求めて平均する。"
+    ],
+    "solutionSteps": [
+      "各領域でεσT_i⁴。",
+      "面積割合を掛けて和を取る。",
+      "平均温度を代入する近似との違いを確認する。"
+    ],
+    "beginnerPitfall": "平均と非線形演算の順序を無条件に交換しない。"
+  },
+  {
+    "id": "supp-gas-optical-thickness-v1",
+    "revision": "v1",
+    "field": "放射",
+    "prerequisites": [
+      "放射率",
+      "放射のモデルと適用条件"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "放射輸送・幾何・エネルギー保存の一般法則による独立作問と仮想例。原本の翻訳・原図・章末問題ではない。",
+      "chapterId": "ch10",
+      "focusSectionId": "10.5",
+      "guideId": "chapter10-view-factors"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "執筆原稿・最低限の算術と構造を確認／包括的品質監査待ち・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "独立執筆。執筆中の基本計算と参照を確認。全問の独立科学監査・原本網羅照合・外部校閲は後工程。"
+      }
+    ],
+    "prompt": "一様な非散乱気体の吸収係数κ=0.40 m⁻¹、光線に沿う長さL=2.5 m。光学的厚さχ=κLを求める。",
+    "choices": [
+      "6.25",
+      "0.40",
+      "1.00",
+      "0.16"
+    ],
+    "answer": 2,
+    "difficulty": "標準・数値計算",
+    "explanation": "χ=0.40×2.5=1.0。光学的厚さは無次元で、物理的長さmそのものではない。波長や状態を変えればκも変わりうる。",
+    "distractors": [
+      "Lをκで割った。",
+      "光路長を掛けなかった。",
+      "正解。逆長さと長さを掛けて無次元にした。",
+      "κをLで割った。"
+    ],
+    "hints": [
+      "m⁻¹とmの積の単位を確認する。",
+      "光路方向の長さを使う。"
+    ],
+    "solutionSteps": [
+      "κLを書き出す。",
+      "0.40×2.5=1.0。",
+      "単位が打ち消されると確認する。"
+    ],
+    "beginnerPitfall": "吸収係数の逆長さの単位を忘れない。"
+  },
+  {
+    "id": "supp-gas-ray-transmittance-v1",
+    "revision": "v1",
+    "field": "放射",
+    "prerequisites": [
+      "放射率",
+      "放射のモデルと適用条件"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "放射輸送・幾何・エネルギー保存の一般法則による独立作問と仮想例。原本の翻訳・原図・章末問題ではない。",
+      "chapterId": "ch10",
+      "focusSectionId": "10.5",
+      "guideId": "chapter10-view-factors"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "執筆原稿・最低限の算術と構造を確認／包括的品質監査待ち・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "独立執筆。執筆中の基本計算と参照を確認。全問の独立科学監査・原本網羅照合・外部校閲は後工程。"
+      }
+    ],
+    "prompt": "一帯について一様な非散乱気体のκ=0.30 m⁻¹、光路長2.0 m。入口の放射のうち吸収されずに残る透過率𝒯=e^(−κL)はいくらか。有効数字3桁。",
+    "choices": [
+      "0.451",
+      "1.82",
+      "0.600",
+      "0.549"
+    ],
+    "answer": 3,
+    "difficulty": "標準・数値計算",
+    "explanation": "κL=0.60、e^(−0.60)≈0.548812なので0.549。透過率は入口光の残りを表し、気体自身の放射が加わる出口全強度とは異なる。",
+    "distractors": [
+      "吸収される割合1−𝒯を答えた。",
+      "指数の符号を正とした。",
+      "光学的厚さを透過率そのものとした。",
+      "正解。指数−0.60から残る割合を求めた。"
+    ],
+    "hints": [
+      "先に光学的厚さを求める。",
+      "求めるのは指数関数の値。"
+    ],
+    "solutionSteps": [
+      "χ=0.60。",
+      "𝒯=e^(−0.60)。",
+      "0.549とし、0から1の範囲を確認。"
+    ],
+    "beginnerPitfall": "透過率と、気体放射を含む出口の全強度を同一視しない。"
+  },
+  {
+    "id": "supp-gas-emission-increases-ray-v1",
+    "revision": "v1",
+    "field": "放射",
+    "prerequisites": [
+      "放射率",
+      "放射のモデルと適用条件"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "放射輸送・幾何・エネルギー保存の一般法則による独立作問と仮想例。原本の翻訳・原図・章末問題ではない。",
+      "chapterId": "ch10",
+      "focusSectionId": "10.5",
+      "guideId": "chapter10-view-factors"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "執筆原稿・最低限の算術と構造を確認／包括的品質監査待ち・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "独立執筆。執筆中の基本計算と参照を確認。全問の独立科学監査・原本網羅照合・外部校閲は後工程。"
+      }
+    ],
+    "prompt": "一様・等温・非散乱気体の一帯で透過率𝒯=0.50、入口方向強度I_in=10、気体の黒体方向強度I_b=50 W/(m²·sr)。I_out=𝒯I_in+(1−𝒯)I_bなら出口強度はいくらか。",
+    "choices": [
+      "30 W/(m²·sr)",
+      "5 W/(m²·sr)",
+      "25 W/(m²·sr)",
+      "60 W/(m²·sr)"
+    ],
+    "answer": 0,
+    "difficulty": "標準・数値計算",
+    "explanation": "I_out=0.5×10+0.5×50=30 W/(m²·sr)。気体の放射が強いため、吸収性の媒体でも出口強度が入口より大きくなることがある。",
+    "distractors": [
+      "正解。入口からの残り5と気体放射25を足した。",
+      "気体の自己放出を落とした。",
+      "入口から残る成分を落とした。",
+      "入口と黒体強度を透過係数なしに足した。"
+    ],
+    "hints": [
+      "入口光の残りと気体の放射を分ける。",
+      "I_bが入口より大きい。"
+    ],
+    "solutionSteps": [
+      "透過する入口光は5。",
+      "気体放射の寄与25。",
+      "合計30 W/(m²·sr)。"
+    ],
+    "beginnerPitfall": "吸収性という言葉だけで、出口強度が必ず減るとしない。"
+  },
+  {
+    "id": "supp-gas-absorption-inverse-v1",
+    "revision": "v1",
+    "field": "放射",
+    "prerequisites": [
+      "放射率",
+      "放射のモデルと適用条件"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "放射輸送・幾何・エネルギー保存の一般法則による独立作問と仮想例。原本の翻訳・原図・章末問題ではない。",
+      "chapterId": "ch10",
+      "focusSectionId": "10.5",
+      "guideId": "chapter10-view-factors"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "執筆原稿・最低限の算術と構造を確認／包括的品質監査待ち・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "独立執筆。執筆中の基本計算と参照を確認。全問の独立科学監査・原本網羅照合・外部校閲は後工程。"
+      }
+    ],
+    "prompt": "一帯の非散乱・一様吸収層で、入口由来の光の透過率が0.250、光路長2.00 mと測定された。気体の自己放出は分離して測定済み。𝒯=e^(−κL)からκはいくらか。有効数字3桁。",
+    "choices": [
+      "0.301 m⁻¹",
+      "0.693 m⁻¹",
+      "0.125 m⁻¹",
+      "1.39 m⁻¹"
+    ],
+    "answer": 1,
+    "difficulty": "標準・数値計算",
+    "explanation": "κ=−ln(0.250)/2.00=1.386294/2=0.693147 m⁻¹。出口全強度をそのまま入口強度で割った比は、自己放出が含まれる場合この透過率ではない。",
+    "distractors": [
+      "自然対数の代わりに常用対数を使った。",
+      "正解。自然対数で逆算し光路長で割った。",
+      "透過率を直接光路長で割った。",
+      "自然対数の値を光路長で割らなかった。"
+    ],
+    "hints": [
+      "両辺の自然対数を取る。",
+      "光路長で割ればm⁻¹になる。"
+    ],
+    "solutionSteps": [
+      "ln𝒯=−κL。",
+      "κ=−ln(0.250)/2.00。",
+      "0.693 m⁻¹。"
+    ],
+    "beginnerPitfall": "指数関数の逆算と、自己放出を分離した測定の条件を確認する。"
+  },
+  {
+    "id": "supp-gas-intensity-versus-flux-v1",
+    "revision": "v1",
+    "field": "放射",
+    "prerequisites": [
+      "放射率",
+      "放射のモデルと適用条件"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "conceptual",
+    "source": {
+      "type": "supplement",
+      "reference": "放射輸送・幾何・エネルギー保存の一般法則による独立作問と仮想例。原本の翻訳・原図・章末問題ではない。",
+      "chapterId": "ch10",
+      "focusSectionId": "10.5",
+      "guideId": "chapter10-view-factors"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "執筆原稿・最低限の算術と構造を確認／包括的品質監査待ち・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "独立執筆。執筆中の基本計算と参照を確認。全問の独立科学監査・原本網羅照合・外部校閲は後工程。"
+      }
+    ],
+    "prompt": "一方向の帯内放射強度IがW/(m²·sr)で得られた。面が受ける照射量G[W/m²]を求めるには何が必要か。",
+    "choices": [
+      "面の温度を摂氏からKへ直せば、そのままGが決まる",
+      "一方向の強度に面積を掛ければ、全方向のGとなる",
+      "入射方向の分布を、面法線との余弦とともに積分する",
+      "強度の数値からsrという単位の文字だけを削除する"
+    ],
+    "answer": 2,
+    "difficulty": "概念・適用判断",
+    "explanation": "Gは入射半球についてI cosθ dΩを積分した量。一帯の値から全波長のGを求めるには、必要に応じて波長積分も行う。等方の特別な場合の係数を任意の方向分布へ流用しない。",
+    "distractors": [
+      "温度換算だけでは方向分布の情報は得られない。",
+      "面積は立体角の分布を与えず、Gの面積当たりの単位とも違う。",
+      "正解。方向ごとの強度を投影と立体角で足す。",
+      "方向積分という物理操作を単位表記の変更で代用できない。"
+    ],
+    "hints": [
+      "srは方向の立体角に対応する。",
+      "面へ斜めに届く光の投影を含める。"
+    ],
+    "solutionSteps": [
+      "入射半球の各方向を定める。",
+      "I cosθを立体角で積分。",
+      "全波長が必要なら波長も積分する。"
+    ],
+    "beginnerPitfall": "方向強度と照射量を、同じ物理量として扱わない。"
+  },
+  {
+    "id": "supp-gas-layer-order-v1",
+    "revision": "v1",
+    "field": "放射",
+    "prerequisites": [
+      "放射率",
+      "放射のモデルと適用条件"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "applied",
+    "source": {
+      "type": "supplement",
+      "reference": "放射輸送・幾何・エネルギー保存の一般法則による独立作問と仮想例。原本の翻訳・原図・章末問題ではない。",
+      "chapterId": "ch10",
+      "focusSectionId": "10.5",
+      "guideId": "chapter10-view-factors"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "執筆原稿・最低限の算術と構造を確認／包括的品質監査待ち・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "独立執筆。執筆中の基本計算と参照を確認。全問の独立科学監査・原本網羅照合・外部校閲は後工程。"
+      }
+    ],
+    "prompt": "非散乱の等温層を二つ通す。一帯の各層の透過率は共に0.50で、黒体方向強度は層Aが100、層Bが20 W/(m²·sr)。入口強度0、境界反射なし。A→Bの出口と、B→Aの出口の組合せはどれか。各層でI_out=0.5I_in+0.5I_bを使う。",
+    "choices": [
+      "A→B: 25、B→A: 25 W/(m²·sr)",
+      "A→B: 60、B→A: 60 W/(m²·sr)",
+      "A→B: 55、B→A: 35 W/(m²·sr)",
+      "A→B: 35、B→A: 55 W/(m²·sr)"
+    ],
+    "answer": 3,
+    "difficulty": "概念・適用判断",
+    "explanation": "A→Bでは0→50→0.5×50+10=35。B→Aでは0→10→0.5×10+50=55。入口由来の全透過率はどちらも0.25でも、異なる温度の層の自己放出は順序に依存する。",
+    "distractors": [
+      "全透過率だけで自己放出を表そうとした。",
+      "両層の自己放出を後続層の減衰なしに足した。",
+      "層の順序と出口の値を逆にした。",
+      "正解。前の層の放射が後の層で減衰することを含めた。"
+    ],
+    "hints": [
+      "まず一層目の出口を求める。",
+      "その値を二層目の入口にする。"
+    ],
+    "solutionSteps": [
+      "A→Bは50を経て35。",
+      "B→Aは10を経て55。",
+      "全透過率の一致だけで全出口強度が一致しないと確認する。"
+    ],
+    "beginnerPitfall": "不均一な温度分布を、光学的厚さの和だけで消去しない。"
+  },
+  {
+    "id": "supp-gas-scattering-model-limit-v1",
+    "revision": "v1",
+    "field": "放射",
+    "prerequisites": [
+      "放射率",
+      "放射のモデルと適用条件"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "applied",
+    "source": {
+      "type": "supplement",
+      "reference": "放射輸送・幾何・エネルギー保存の一般法則による独立作問と仮想例。原本の翻訳・原図・章末問題ではない。",
+      "chapterId": "ch10",
+      "focusSectionId": "10.5",
+      "guideId": "chapter10-view-factors"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "執筆原稿・最低限の算術と構造を確認／包括的品質監査待ち・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "独立執筆。執筆中の基本計算と参照を確認。全問の独立科学監査・原本網羅照合・外部校閲は後工程。"
+      }
+    ],
+    "prompt": "吸収と熱的自己放出だけを含む光線モデルを、粒子の散乱が重要な媒体へ適用したい。適切な方針はどれか。",
+    "choices": [
+      "散乱で方向が変わる成分も含め、輸送モデルを見直す",
+      "散乱はエネルギーを消すので、全て吸収として置き換える",
+      "散乱しても光路の方向は変わらないとして元の式を使う",
+      "粒子があると全ての波長で透過率をゼロに設定する"
+    ],
+    "answer": 0,
+    "difficulty": "概念・適用判断",
+    "explanation": "散乱は進行方向からの除去と、他方向からの流入を伴う。吸収・熱放出のみの式でその角度分布を表せない。光学特性と散乱の重要度を確認してモデルを選ぶ。",
+    "distractors": [
+      "正解。方向間での出入りという元のモデルにない項を扱った。",
+      "吸収と、他方向へ移る散乱は同じ作用ではない。",
+      "散乱の方向再分布を落としている。",
+      "粒子の存在だけでは全波長・全条件の透過は決まらない。"
+    ],
+    "hints": [
+      "吸収と散乱でエネルギーの行き先が異なる。",
+      "一方向の式へ他方向からの寄与が必要。"
+    ],
+    "solutionSteps": [
+      "元の式に含む作用を列挙する。",
+      "散乱の方向再分布がないと確認する。",
+      "適切な輸送式へ切り替える。"
+    ],
+    "beginnerPitfall": "モデルにない作用を、計算できるという理由だけで省略しない。"
+  },
+  {
+    "id": "supp-solar-plane-projection-v1",
+    "revision": "v1",
+    "field": "放射",
+    "prerequisites": [
+      "放射率",
+      "放射のモデルと適用条件"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "放射輸送・幾何・エネルギー保存の一般法則による独立作問と仮想例。原本の翻訳・原図・章末問題ではない。",
+      "chapterId": "ch10",
+      "focusSectionId": "10.6",
+      "guideId": "chapter10-view-factors"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "執筆原稿・最低限の算術と構造を確認／包括的品質監査待ち・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "独立執筆。執筆中の基本計算と参照を確認。全問の独立科学監査・原本網羅照合・外部校閲は後工程。"
+      }
+    ],
+    "prompt": "法線直達日射800 W/m²、受光面入射角60°（cosθ=0.50）、受光面換算済みの天空散乱100と地面反射20 W/m²。表側一面のG_planeはいくらか。",
+    "choices": [
+      "260 W/m²",
+      "520 W/m²",
+      "920 W/m²",
+      "400 W/m²"
+    ],
+    "answer": 1,
+    "difficulty": "標準・数値計算",
+    "explanation": "G_plane=800×0.50+100+20=520 W/m²。散乱と地面反射は既に受光面基準なので、直達のcosθを再び掛けない。",
+    "distractors": [
+      "投影を済ませた全量へさらにcosθを掛けた。",
+      "正解。直達だけを投影して三成分を足した。",
+      "法線直達日射を投影せず加えた。",
+      "散乱と地面反射を落とした。"
+    ],
+    "hints": [
+      "法線直達と受光面日射の基準が違う。",
+      "投影済みの成分を区別する。"
+    ],
+    "solutionSteps": [
+      "直達投影400 W/m²。",
+      "散乱100と反射20を加える。",
+      "合計520 W/m²。"
+    ],
+    "beginnerPitfall": "実面積と投影面積で二重の角度補正をしない。"
+  },
+  {
+    "id": "supp-solar-isotropic-sky-v1",
+    "revision": "v1",
+    "field": "放射",
+    "prerequisites": [
+      "放射率",
+      "放射のモデルと適用条件"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "放射輸送・幾何・エネルギー保存の一般法則による独立作問と仮想例。原本の翻訳・原図・章末問題ではない。",
+      "chapterId": "ch10",
+      "focusSectionId": "10.6",
+      "guideId": "chapter10-view-factors"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "執筆原稿・最低限の算術と構造を確認／包括的品質監査待ち・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "独立執筆。執筆中の基本計算と参照を確認。全問の独立科学監査・原本網羅照合・外部校閲は後工程。"
+      }
+    ],
+    "prompt": "等方天空・影なしの近似で、水平面散乱日射DHI=120 W/m²、面の傾斜β=60°（cosβ=0.50）。天空散乱成分G_d,plane=DHI(1+cosβ)/2を求める。地面反射はこの問いに含めない。有効数字2桁。",
+    "choices": [
+      "3.0×10¹ W/m²",
+      "6.0×10¹ W/m²",
+      "9.0×10¹ W/m²",
+      "1.2×10² W/m²"
+    ],
+    "answer": 2,
+    "difficulty": "標準・数値計算",
+    "explanation": "天空の重みは(1+0.50)/2=0.75。120×0.75=90 W/m²。傾斜面へ変換するモデルの仮定を確認し、直達光の入射角と混同しない。",
+    "distractors": [
+      "地面側の重み(1−cosβ)/2を使った。",
+      "cosβだけを掛けた。",
+      "正解。天空を見込む重み0.75を使った。",
+      "水平面のDHIをそのまま使った。"
+    ],
+    "hints": [
+      "傾斜角の余弦を式へ入れる。",
+      "地面と天空の重みは符号が違う。"
+    ],
+    "solutionSteps": [
+      "天空の重み0.75。",
+      "120×0.75=90。",
+      "2桁で9.0×10¹ W/m²。"
+    ],
+    "beginnerPitfall": "水平面測定値を、任意の傾斜面へ無条件に流用しない。"
+  },
+  {
+    "id": "supp-solar-absorbed-power-v1",
+    "revision": "v1",
+    "field": "放射",
+    "prerequisites": [
+      "放射率",
+      "放射のモデルと適用条件"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "放射輸送・幾何・エネルギー保存の一般法則による独立作問と仮想例。原本の翻訳・原図・章末問題ではない。",
+      "chapterId": "ch10",
+      "focusSectionId": "10.6",
+      "guideId": "chapter10-view-factors"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "執筆原稿・最低限の算術と構造を確認／包括的品質監査待ち・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "独立執筆。執筆中の基本計算と参照を確認。全問の独立科学監査・原本網羅照合・外部校閲は後工程。"
+      }
+    ],
+    "prompt": "受光面基準の日射600 W/m²、面積A=0.40 m²、その照射に対する太陽吸収率α_s=0.80。吸収した太陽熱移動率はいくらか。有効数字3桁。",
+    "choices": [
+      "2.40×10² W",
+      "4.80×10² W",
+      "1.20×10³ W",
+      "1.92×10² W"
+    ],
+    "answer": 3,
+    "difficulty": "標準・数値計算",
+    "explanation": "Q̇_abs=0.80×0.40×600=192 W。これは吸収であり、周囲への損失を差し引いた有効取り出し熱ではない。",
+    "distractors": [
+      "入射全量を吸収全量とした。",
+      "面積を掛けなかった。",
+      "面積を掛けず割った。",
+      "正解。日射・実面積・吸収率を掛けた。"
+    ],
+    "hints": [
+      "W/m²をWにするには面積を掛ける。",
+      "そのうち吸収する割合を使う。"
+    ],
+    "solutionSteps": [
+      "面への入射は240 W。",
+      "その80%を吸収する。",
+      "吸収192 W。"
+    ],
+    "beginnerPitfall": "受光・吸収・有効出力を同じ値として扱わない。"
+  },
+  {
+    "id": "supp-solar-time-integral-v1",
+    "revision": "v1",
+    "field": "放射",
+    "prerequisites": [
+      "放射率",
+      "放射のモデルと適用条件"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "放射輸送・幾何・エネルギー保存の一般法則による独立作問と仮想例。原本の翻訳・原図・章末問題ではない。",
+      "chapterId": "ch10",
+      "focusSectionId": "10.6",
+      "guideId": "chapter10-view-factors"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "執筆原稿・最低限の算術と構造を確認／包括的品質監査待ち・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "独立執筆。執筆中の基本計算と参照を確認。全問の独立科学監査・原本網羅照合・外部校閲は後工程。"
+      }
+    ],
+    "prompt": "面積0.50 m²の面に届く日射が、最初の30分は400 W/m²、次の30分は800 W/m²で一定だった。この1時間の全入射エネルギーを求める。吸収率や熱損失は考えない。有効数字3桁。",
+    "choices": [
+      "1.08×10⁶ J",
+      "3.00×10² J",
+      "2.16×10⁶ J",
+      "7.20×10⁵ J"
+    ],
+    "answer": 0,
+    "difficulty": "標準・数値計算",
+    "explanation": "30分=1800 s。E=0.50(400×1800+800×1800)=1080000 J。平均日射600 W/m²、平均入射300 Wに3600 sを掛けても同じ結果。",
+    "distractors": [
+      "正解。二つの区間の面積・日射・時間を積分した。",
+      "平均の入射熱移動率WをJと取り違えた。",
+      "面積0.50 m²を掛けなかった。",
+      "最初の400 W/m²だけが1時間続くとした。"
+    ],
+    "hints": [
+      "分を秒へ直す。",
+      "各区間でJを求めて足す。"
+    ],
+    "solutionSteps": [
+      "最初の区間360000 J。",
+      "次の区間720000 J。",
+      "合計1.08×10⁶ J。"
+    ],
+    "beginnerPitfall": "日射W/m²と一日のエネルギーを混同しない。"
+  },
+  {
+    "id": "supp-solar-instant-storage-v1",
+    "revision": "v1",
+    "field": "放射",
+    "prerequisites": [
+      "放射率",
+      "放射のモデルと適用条件"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "放射輸送・幾何・エネルギー保存の一般法則による独立作問と仮想例。原本の翻訳・原図・章末問題ではない。",
+      "chapterId": "ch10",
+      "focusSectionId": "10.6",
+      "guideId": "chapter10-view-factors"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "執筆原稿・最低限の算術と構造を確認／包括的品質監査待ち・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "独立執筆。執筆中の基本計算と参照を確認。全問の独立科学監査・原本網羅照合・外部校閲は後工程。"
+      }
+    ],
+    "prompt": "一様温度の受光体で、ある瞬間の太陽吸収300 W、外向き対流220 W、外向き熱放射30 W、熱の取り出しなし。熱容量1000 J/K、他の経路なし。瞬間のdT/dtはいくらか。",
+    "choices": [
+      "+0.080 K/s",
+      "+0.050 K/s",
+      "−0.050 K/s",
+      "+0.300 K/s"
+    ],
+    "answer": 1,
+    "difficulty": "標準・数値計算",
+    "explanation": "蓄熱率300−220−30=+50 W。dT/dt=50/1000=+0.050 K/s。後の損失は温度で変わるため、同じ速度で無期限に昇温するとは言えない。",
+    "distractors": [
+      "放射による30 Wの出力を引き忘れた。",
+      "正解。正味の蓄熱50 Wを熱容量で割った。",
+      "蓄熱の符号を逆にした。",
+      "損失を引かず吸収だけで計算した。"
+    ],
+    "hints": [
+      "入熱から全ての外向き出力を引く。",
+      "J/sをJ/Kで割る。"
+    ],
+    "solutionSteps": [
+      "正味蓄熱+50 J/s。",
+      "熱容量1000 J/Kで割る。",
+      "瞬間温度変化率+0.050 K/s。"
+    ],
+    "beginnerPitfall": "入力と出力の差を温度変化へつなげる。"
+  },
+  {
+    "id": "supp-solar-tilt-not-incidence-v1",
+    "revision": "v1",
+    "field": "放射",
+    "prerequisites": [
+      "放射率",
+      "放射のモデルと適用条件"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "conceptual",
+    "source": {
+      "type": "supplement",
+      "reference": "放射輸送・幾何・エネルギー保存の一般法則による独立作問と仮想例。原本の翻訳・原図・章末問題ではない。",
+      "chapterId": "ch10",
+      "focusSectionId": "10.6",
+      "guideId": "chapter10-view-factors"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "執筆原稿・最低限の算術と構造を確認／包括的品質監査待ち・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "独立執筆。執筆中の基本計算と参照を確認。全問の独立科学監査・原本網羅照合・外部校閲は後工程。"
+      }
+    ],
+    "prompt": "受光面の傾斜角β=30°だけが分かった。この情報から直達光の入射角θが30°と確定するか。",
+    "choices": [
+      "面積が分かれば、方位と太陽方向を使わずθが確定できる",
+      "同じ日の同じ場所なら、太陽の方向は全時刻で変化しない",
+      "太陽の方向と面の方位も必要で、傾斜角だけでは確定しない",
+      "傾斜角が30°なら、時刻や太陽の位置によらずθは30°となる"
+    ],
+    "answer": 2,
+    "difficulty": "概念・適用判断",
+    "explanation": "傾斜角は水平に対する面の傾き、入射角は太陽方向と面法線の間の角。直達投影に使うのは後者であり、時刻・太陽位置・面方位をそろえる。",
+    "distractors": [
+      "面積だけでは二方向の関係は決まらない。",
+      "太陽の見かけの方向は時間で変化する。",
+      "正解。面法線と光線方向のなす角を求める情報を確認した。",
+      "入射角は太陽位置と面の方位にも依存する。"
+    ],
+    "hints": [
+      "二つの角度の基準線を描いて考える。",
+      "直達日射は面法線へ投影する。"
+    ],
+    "solutionSteps": [
+      "面の法線方向を定める。",
+      "太陽方向を定める。",
+      "両者の角度がθでありβとは別と確認する。"
+    ],
+    "beginnerPitfall": "角度の数値だけでなく、何と何の間の角かを確認する。"
+  },
+  {
+    "id": "supp-solar-negative-useful-balance-v1",
+    "revision": "v1",
+    "field": "放射",
+    "prerequisites": [
+      "放射率",
+      "放射のモデルと適用条件"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "applied",
+    "source": {
+      "type": "supplement",
+      "reference": "放射輸送・幾何・エネルギー保存の一般法則による独立作問と仮想例。原本の翻訳・原図・章末問題ではない。",
+      "chapterId": "ch10",
+      "focusSectionId": "10.6",
+      "guideId": "chapter10-view-factors"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "執筆原稿・最低限の算術と構造を確認／包括的品質監査待ち・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "独立執筆。執筆中の基本計算と参照を確認。全問の独立科学監査・原本網羅照合・外部校閲は後工程。"
+      }
+    ],
+    "prompt": "ある温度を定常維持したい受光面で、太陽吸収100 W、外向き対流150 W、外向き放射20 W、他経路なしとする。Q̇_useを外向き取り出しとして計算すると−70 W。この結果の解釈はどれか。",
+    "choices": [
+      "符号を絶対値へ変更し、補助入力なしに70 Wの熱を外へ取り出してよい",
+      "吸収100 Wがあるので、損失170 Wとは別に100 Wを定常に取り出せる",
+      "負の結果は計算不能を意味するので、蓄熱を無視したまま出力をゼロとする",
+      "温度維持には70 Wの補助入力が必要で、そのまま正の取り出しはできない"
+    ],
+    "answer": 3,
+    "difficulty": "概念・適用判断",
+    "explanation": "定常収支は100−150−20−Q̇_use=0。負のQ̇_useは、取り出しとは逆向きに70 Wを入れないと温度を保てないことを表す。補助なしなら温度は下がり、損失も変わる。",
+    "distractors": [
+      "エネルギー不足の符号を消し、保存則に反する。",
+      "同じ入力を損失と取り出しに二重に使った。",
+      "出力ゼロでも入力不足は残り、定常ではなく冷却へ向かう。",
+      "正解。指定温度で出力が入力を超える不足分を解釈した。"
+    ],
+    "hints": [
+      "定常で蓄熱率はゼロ。",
+      "負の取り出しは逆向きの入熱。"
+    ],
+    "solutionSteps": [
+      "入力不足は170−100=70 W。",
+      "その温度を保つには補助70 Wが必要。",
+      "補助なしで正の取り出しが可能とはしない。"
+    ],
+    "beginnerPitfall": "負号を消して、物理的に不可能な有効出力を作らない。"
   }
 ]
