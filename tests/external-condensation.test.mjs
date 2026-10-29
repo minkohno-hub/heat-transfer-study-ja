@@ -30,6 +30,9 @@ test('low speed and shear dominated limits are continuous, dimensionless, and ob
  close(fast,716.886703169677);close(approx,701.0848736066126);assert.ok((fast-approx)/fast<.023);
  assert.ok(Re<1e6);assert.ok(rho*20*D/mu>1e6);
  const fastItem=q('high-speed-limit');assert.equal(fastItem.choices[fastItem.answer],'128（無次元）');
+ assert.equal(fastItem.revision,'v2');
+ const R=20000,expected=[Math.sqrt(2*R),.64*2*Math.sqrt(R),.64*Math.sqrt(2*R),.64*Math.sqrt(R)];
+ fastItem.choices.forEach((choice,i)=>assert.ok(Math.abs(parseFloat(choice)-expected[i])/expected[i]<.005,'each distractor must match its stated numerical misconception'));
  // kg,m,s exponents for V_g^2 = g * latent * mu * D / (k * deltaT).
  const units=[[0,1,-2],[0,2,-2],[1,-1,-1],[0,1,0],[-1,-1,3]];
  assert.deepEqual(units.reduce((sum,row)=>sum.map((n,i)=>n+row[i]),[0,0,0]),[0,2,-2]);
@@ -48,12 +51,14 @@ test('fixed-film zero mass flow and zero integrated closure are not interchangea
 
 test('four distinct new questions keep liquid properties, limits, keyed reasons and internal-only review',()=>{
  const items=bank.filter(q=>q.id.startsWith('supp-condensation-external-'));
- assert.equal(items.length,4);assert.equal(new Set(items.map(q=>q.questionKind)).size,3);
+ assert.equal(items.length,4);assert.deepEqual(items.map(q=>q.questionKind),['numerical','numerical','numerical','applied']);
+ const sectionItems=bank.filter(q=>q.source.focusSectionId==='9.9'||q.source.sectionNoteId==='9.9');
+ assert.deepEqual([...new Set(sectionItems.map(q=>q.questionKind))].sort(),['applied','conceptual','numerical']);
  assert.deepEqual(items.map(q=>q.answer),[0,1,2,3]);
  const Re=q('liquid-reynolds');assert.equal(Re.choices[Re.answer],'6.00×10³');
  const range=q('range-selection');assert.equal(range.choices[range.answer],'上限外なので、適合する別相関を探す');
  for(const item of items){
-  assert.equal(item.source.focusSectionId,'9.9');assert.equal(item.revision,'v1');assert.equal(item.expertReviewed,false);
+  assert.equal(item.source.focusSectionId,'9.9');assert.equal(item.revision,item.id.includes('high-speed-limit')?'v2':'v1');assert.equal(item.expertReviewed,false);
   assert.match(item.reviewStatus,/外部専門家校閲前/);assert.equal(item.distractors.filter(s=>s.startsWith('正解。')).length,1);
   assert.ok(item.distractors[item.answer].startsWith('正解。'));assert.equal(item.solutionSteps.length,4);
  }

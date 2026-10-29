@@ -36105,7 +36105,7 @@
   },
   {
     "id": "supp-condensation-external-high-speed-limit-v1",
-    "revision": "v1",
+    "revision": "v2",
     "field": "沸騰・相変化",
     "prerequisites": [
       "膜状凝縮",
@@ -36113,7 +36113,7 @@
       "相関式の適用条件"
     ],
     "questionGroup": "original_independent_applied_v1",
-    "questionKind": "conceptual",
+    "questionKind": "numerical",
     "source": {
       "type": "supplement",
       "reference": "一般的な凝縮相関と独自の仮想条件から作問。原本の文章・図・例題を転載しない。",
@@ -36129,17 +36129,22 @@
         "date": "2026-10-30",
         "type": "authored_with_internal_check",
         "details": "docs/EXTERNAL_CONDENSATION_20261030.md。対象式を画像確認し、等価形・極限・別コードで内部検算。外部校閲ではない。"
+      },
+      {
+        "date": "2026-10-30",
+        "type": "internal_audit_followup",
+        "details": "最終の全選択肢確認：根号内の係数2を外へ出す誤用は0.64×2×sqrt(20000)≈181であり256ではない。該当誤答を181へ訂正。正答128と位置は保持し、revision v2で履歴を保護。 この設問は与式への数値代入が主なのでnumericalに整理。節全体の3技能分類は既存の概念・適用判断問と合わせて維持。"
       }
     ],
     "prompt": "水平円筒外面の凝縮相関で、重力補正が十分小さく、Re_D=20000が適用範囲内にあるとする。高速極限Nu_D≈0.64√(2Re_D)の値に最も近いものはどれか。",
     "choices": [
       "200（無次元）",
-      "256（無次元）",
+      "181（無次元）",
       "128（無次元）",
       "90.5（無次元）"
     ],
     "answer": 2,
-    "difficulty": "応用・極限と適用判断",
+    "difficulty": "標準・数値計算",
     "explanation": "Nu_D≈0.64×√(2×20000)=0.64×200=128。重力補正を無視できるという条件と、Re_Dの適用上限は別々に確認する。",
     "distractors": [
       "係数0.64を掛けていない。",

@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "checkedAt": "2026-10-29T15:27:39.842018+00:00",
-  "basis": "c5d35fcに§9.9の水平円筒外面凝縮の原稿と4問を追加した作業ツリーの実データ再集計。旧PC回収数ではない。",
+  "checkedAt": "2026-10-29T15:34:38.231224+00:00",
+  "basis": "3bab0abに新規高速極限問題の誤答対応と分類の訂正（revision v2）を加えた作業ツリーの実データ。問題704・原稿76、旧PC回収数ではない。",
   "scope": "独立執筆原稿と節別問題の暫定最低条件。科学的・法的完成認定ではない。",
   "totals": {
     "sectionCount": 76,
@@ -26,7 +26,7 @@
     "currentBatchBrowser": {
       "previousSourceChromium": "c5d35fc:76 lectures and 372 questions passed, bank 700",
       "previousSourceCI": "c5d35fc:run40900167775 check and WebKit online passed",
-      "currentChromiumProbe": "passed: section9.9 and 4 additional questions, mobile overflow absent, stored revision v1, pageerrors0",
+      "currentChromiumProbe": "passed after v2 correction: section9.9 and 4 questions; mobile overflow absent, correct question revisions persisted, pageerrors0",
       "currentWebKit": "not yet executed: total exercise target 376",
       "publicDeployment": "not performed; previous published count72 is historical verification"
     },
@@ -1583,7 +1583,7 @@
       "independentFigures": "parallel_line_assets_unintegrated_or_pending",
       "publicScreenCurrentBatch": "c5d35fc: built-artifact Chromium and WebKit-online passed; latest live deployment not performed",
       "expertApproval": false,
-      "currentRevisionScreenCheck": "passed: targeted Chromium reader/question/revision/mobile probe"
+      "currentRevisionScreenCheck": "passed after v2 correction: targeted Chromium reader/4questions/revision/mobile probe"
     },
     {
       "chapterId": "ch9",
