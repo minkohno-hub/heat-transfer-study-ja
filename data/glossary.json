@@ -13296,5 +13296,432 @@
       "比熱容量",
       "断面平均流速"
     ]
+  },
+  {
+    "id": "reynolds-shear-stress",
+    "ja": "レイノルズせん断応力",
+    "en": "Reynolds shear stress",
+    "aliases": [
+      "乱流レイノルズ応力"
+    ],
+    "category": "乱流境界層・壁面則",
+    "brief": "乱流の速度変動の相関による平均運動量の輸送を、応力として表す量。",
+    "meaning": "乱流の速度変動の相関による平均運動量の輸送を、応力として表す量。",
+    "beginner": "流れの渦によって、速い流体と遅い流体が入れ替わり、運動量が運ばれます。その効果を壁面摩擦に似た単位で表します。",
+    "detail": "非圧縮・密度一定の流れのレイノルズ平均では、流れ方向速度変動u′と壁面法線方向v′の相関によるせん断応力をτ_R=−ρ⟨u′v′⟩と定義する。分子の粘性による応力μ∂U/∂yとは物理的に別であり、両者の和が平均のせん断輸送を構成する。単純な渦粘性モデルはこの相関を近似する方法で、厳密な恒等式ではない。",
+    "formula": "τ_R=−ρ⟨u′v′⟩",
+    "unit": "τ_R: Pa、ρ: kg/m³、⟨u′v′⟩: m²/s²",
+    "example": "密度1 kg/m³、速度変動の相関⟨u′v′⟩=−0.20 m²/s²ならレイノルズせん断応力は+0.20 Pa。",
+    "relatedSections": [
+      "6.7",
+      "6.8"
+    ],
+    "relatedQuestions": [],
+    "relatedSimulators": [],
+    "confusions": [
+      "レイノルズ応力は分子粘性による応力と別であり、温度変動に関係する乱流熱流束とも異なる。"
+    ],
+    "source": {
+      "type": "supplement",
+      "reference": "第6〜7章の乱流境界層の壁スケーリングを独立執筆。OpenFOAM wall functions https://doc.openfoam.com/2606/tools/processing/models/turbulence/ras/wall-functions/ と九州大学 https://api.lib.kyushu-u.ac.jp/opac_download_md/6796070/eng3329.pdf で代表式とy⁺範囲を確認。原書翻訳・図版転載でなく専門家校閲前。"
+    },
+    "reviewStatus": "needs_review",
+    "related": [
+      "乱流",
+      "渦粘性係数",
+      "壁面せん断応力"
+    ]
+  },
+  {
+    "id": "turbulent-kinetic-energy",
+    "ja": "乱流運動エネルギー",
+    "en": "turbulent kinetic energy",
+    "aliases": [
+      "TKE"
+    ],
+    "category": "乱流境界層・壁面則",
+    "brief": "流速の変動成分による単位質量当たりの平均運動エネルギー。",
+    "meaning": "流速の変動成分による単位質量当たりの平均運動エネルギー。",
+    "beginner": "風が一定方向へ流れるだけでなく、小さな渦で前後左右にも揺れるとき、その速度の揺れが持つエネルギーを表します。",
+    "detail": "三方向の速度変動u′,v′,w′について乱流運動エネルギーk_t=(⟨u′²⟩+⟨v′²⟩+⟨w′²⟩)/2と定義する。流れの平均速度が運ぶ運動エネルギーU²/2とは別であり、乱流モデルではk_tの生成・輸送・散逸を扱う。単一方向の乱流強度から全ての速度変動成分を決定するには追加の仮定が必要となる。",
+    "formula": "k_t=(⟨u′²⟩+⟨v′²⟩+⟨w′²⟩)/2",
+    "unit": "k_t: m²/s²=J/kg、速度変動: m/s",
+    "example": "三つの方向で速度変動の二乗平均がそれぞれ0.04 m²/s²ならk_t=0.06 m²/s²。",
+    "relatedSections": [
+      "6.7",
+      "6.8"
+    ],
+    "relatedQuestions": [],
+    "relatedSimulators": [],
+    "confusions": [
+      "平均流速Uの運動エネルギーU²/2と乱流速度変動の運動エネルギーを混同しない。"
+    ],
+    "source": {
+      "type": "supplement",
+      "reference": "第6〜7章の乱流境界層の壁スケーリングを独立執筆。OpenFOAM wall functions https://doc.openfoam.com/2606/tools/processing/models/turbulence/ras/wall-functions/ と九州大学 https://api.lib.kyushu-u.ac.jp/opac_download_md/6796070/eng3329.pdf で代表式とy⁺範囲を確認。原書翻訳・図版転載でなく専門家校閲前。"
+    },
+    "reviewStatus": "needs_review",
+    "related": [
+      "乱流強度",
+      "乱流",
+      "レイノルズせん断応力"
+    ]
+  },
+  {
+    "id": "viscous-length-scale",
+    "ja": "粘性長さ尺度",
+    "en": "viscous length scale",
+    "aliases": [
+      "壁単位の長さ尺度"
+    ],
+    "category": "乱流境界層・壁面則",
+    "brief": "動粘度を摩擦速度で割った、乱流壁面近傍の代表長さ。",
+    "meaning": "動粘度を摩擦速度で割った、乱流壁面近傍の代表長さ。",
+    "beginner": "壁に非常に近い細かい流れを観察するとき、物体の長さよりも粘性と摩擦の強さから決まる小さな長さが便利です。",
+    "detail": "乱流壁面近傍のスケーリングでは粘性長さδ_ν=ν/u_τを用いる。νは動粘度、u_τ=√(|τ_w|/ρ)は摩擦速度であり、両者は実流速に沿った距離ではなく壁面法線の長さ尺度を決める。無次元壁座標y⁺=y/δ_νを定義でき、壁面せん断応力・流体物性が変われば同じ実距離yでも壁座標は変化する。",
+    "formula": "δ_ν=ν/u_τ",
+    "unit": "δ_ν: m、ν: m²/s、u_τ: m/s",
+    "example": "ν=1×10⁻⁵ m²/s、摩擦速度u_τ=0.05 m/sなら粘性長さは0.0002 m。",
+    "relatedSections": [
+      "6.7",
+      "6.8"
+    ],
+    "relatedQuestions": [],
+    "relatedSimulators": [],
+    "confusions": [
+      "粘性長さは物体固有の寸法ではなく、流れと物性から変わる近壁尺度。"
+    ],
+    "source": {
+      "type": "supplement",
+      "reference": "第6〜7章の乱流境界層の壁スケーリングを独立執筆。OpenFOAM wall functions https://doc.openfoam.com/2606/tools/processing/models/turbulence/ras/wall-functions/ と九州大学 https://api.lib.kyushu-u.ac.jp/opac_download_md/6796070/eng3329.pdf で代表式とy⁺範囲を確認。原書翻訳・図版転載でなく専門家校閲前。"
+    },
+    "reviewStatus": "needs_review",
+    "related": [
+      "動粘度",
+      "摩擦速度",
+      "無次元壁座標"
+    ]
+  },
+  {
+    "id": "wall-unit-coordinate",
+    "ja": "無次元壁座標",
+    "en": "dimensionless wall distance",
+    "aliases": [
+      "壁座標yプラス"
+    ],
+    "category": "乱流境界層・壁面則",
+    "brief": "壁からの距離を粘性長さで割った無次元の距離。",
+    "meaning": "壁からの距離を粘性長さで割った無次元の距離。",
+    "beginner": "壁のすぐ近くを細かく表すため、実際の距離を摩擦速度と動粘度で割り直した指標です。数値計算の格子設計でも使います。",
+    "detail": "壁面から法線方向の距離y、摩擦速度u_τ、動粘度νを用いy⁺=yu_τ/ν。壁のごく近くは粘性支配、離れると乱流変動が重要になる。y⁺の範囲は一般的な目安であり、流路・粗さ・圧力勾配に応じて近壁構造は変化する。CFDの第一格子点位置を解釈する指標でもある。",
+    "formula": "y⁺=yu_τ/ν",
+    "unit": "y⁺: 無次元、y: m、u_τ: m/s、ν: m²/s",
+    "example": "壁からy=0.001 m、u_τ=0.05 m/s、ν=1×10⁻⁵ m²/sならy⁺=5。",
+    "relatedSections": [
+      "6.7",
+      "6.8"
+    ],
+    "relatedQuestions": [],
+    "relatedSimulators": [],
+    "confusions": [
+      "y⁺はm単位の距離ではなく、流れの壁面せん断に応じた無次元座標。"
+    ],
+    "source": {
+      "type": "supplement",
+      "reference": "第6〜7章の乱流境界層の壁スケーリングを独立執筆。OpenFOAM wall functions https://doc.openfoam.com/2606/tools/processing/models/turbulence/ras/wall-functions/ と九州大学 https://api.lib.kyushu-u.ac.jp/opac_download_md/6796070/eng3329.pdf で代表式とy⁺範囲を確認。原書翻訳・図版転載でなく専門家校閲前。"
+    },
+    "reviewStatus": "needs_review",
+    "related": [
+      "粘性長さ尺度",
+      "摩擦速度",
+      "粘性底層",
+      "壁関数（乱流モデル）"
+    ]
+  },
+  {
+    "id": "dimensionless-wall-velocity",
+    "ja": "無次元壁面速度",
+    "en": "dimensionless wall velocity",
+    "aliases": [
+      "壁速度uプラス"
+    ],
+    "category": "乱流境界層・壁面則",
+    "brief": "壁近傍の平均流速を摩擦速度で割った無次元速度。",
+    "meaning": "壁近傍の平均流速を摩擦速度で割った無次元速度。",
+    "beginner": "壁の近くの流体速度を、摩擦の強さから定義した速度で割ると、異なる流れの速度分布を比較しやすくなります。",
+    "detail": "壁に平行な平均流速U(y)と摩擦速度u_τを用いてU⁺=U(y)/u_τと定義する。壁面で滑りなしならU⁺=0。粘性底層ではU⁺≈y⁺となり、対数領域ではU⁺≈(1/κ)ln y⁺+Bという近似を用いる。平均流速U(y)は変動速度そのものではない。",
+    "formula": "U⁺=U(y)/u_τ",
+    "unit": "U⁺: 無次元、U(y),u_τ: m/s",
+    "example": "壁からある距離の平均流速U=1 m/s、摩擦速度u_τ=0.05 m/sならU⁺=20。",
+    "relatedSections": [
+      "6.7",
+      "6.8"
+    ],
+    "relatedQuestions": [],
+    "relatedSimulators": [],
+    "confusions": [
+      "U⁺は平均流速を摩擦速度で規格化したもので、速度変動の乱流強度とは異なる。"
+    ],
+    "source": {
+      "type": "supplement",
+      "reference": "第6〜7章の乱流境界層の壁スケーリングを独立執筆。OpenFOAM wall functions https://doc.openfoam.com/2606/tools/processing/models/turbulence/ras/wall-functions/ と九州大学 https://api.lib.kyushu-u.ac.jp/opac_download_md/6796070/eng3329.pdf で代表式とy⁺範囲を確認。原書翻訳・図版転載でなく専門家校閲前。"
+    },
+    "reviewStatus": "needs_review",
+    "related": [
+      "摩擦速度",
+      "無次元壁座標",
+      "粘性底層",
+      "壁面の対数則"
+    ]
+  },
+  {
+    "id": "viscous-sublayer",
+    "ja": "粘性底層",
+    "en": "viscous sublayer",
+    "aliases": [
+      "乱流粘性底層"
+    ],
+    "category": "乱流境界層・壁面則",
+    "brief": "乱流壁面近くで分子粘性による応力が特に重要となる薄い領域。",
+    "meaning": "乱流壁面近くで分子粘性による応力が特に重要となる薄い領域。",
+    "beginner": "乱流でも壁に非常に近いところでは、分子の粘性が中心的な役割を果たします。その部分を粘性底層といいます。",
+    "detail": "滑らかな壁の典型的な壁法則ではy⁺≲5を粘性底層の目安とし、U⁺≈y⁺という線形近似が成り立つ。乱流全体が層流に変化したわけではなく、近壁の力の釣り合いで分子粘性応力が重要なだけである。粗さ、圧力勾配、三次元性が強ければ単純な目安は変わり得る。",
+    "formula": "U⁺≈y⁺（滑らかな壁、y⁺≲5）",
+    "unit": "U⁺,y⁺: 無次元",
+    "example": "y⁺=3の典型的な粘性底層ではU⁺≈3。",
+    "relatedSections": [
+      "6.7",
+      "6.8"
+    ],
+    "relatedQuestions": [],
+    "relatedSimulators": [],
+    "confusions": [
+      "粘性底層は乱流の壁近傍の一部分で、流路全体が層流という意味ではない。"
+    ],
+    "source": {
+      "type": "supplement",
+      "reference": "第6〜7章の乱流境界層の壁スケーリングを独立執筆。OpenFOAM wall functions https://doc.openfoam.com/2606/tools/processing/models/turbulence/ras/wall-functions/ と九州大学 https://api.lib.kyushu-u.ac.jp/opac_download_md/6796070/eng3329.pdf で代表式とy⁺範囲を確認。原書翻訳・図版転載でなく専門家校閲前。"
+    },
+    "reviewStatus": "needs_review",
+    "related": [
+      "無次元壁座標",
+      "無次元壁面速度",
+      "緩衝層（乱流）",
+      "壁面せん断応力"
+    ]
+  },
+  {
+    "id": "buffer-layer",
+    "ja": "緩衝層（乱流）",
+    "en": "buffer layer in turbulent wall flow",
+    "aliases": [
+      "乱流バッファ層"
+    ],
+    "category": "乱流境界層・壁面則",
+    "brief": "粘性底層と対数層の中間で、粘性と乱流輸送がともに重要な領域。",
+    "meaning": "粘性底層と対数層の中間で、粘性と乱流輸送がともに重要な領域。",
+    "beginner": "壁のすぐ近くでは粘性が支配的ですが、離れると乱流の渦も熱や運動量を運びます。二つが競い合う中間領域です。",
+    "detail": "滑らかな乱流壁面の代表的な分類では5≲y⁺≲30を緩衝層と呼ぶ。粘性応力とレイノルズ応力の両方が重要であり、U⁺=y⁺の直線則も、対数速度則も単独では正確でない。範囲は流動・表面・モデルで変わり、数値計算では近壁格子の扱いに注意が必要となる。",
+    "formula": "5≲y⁺≲30（代表的な緩衝層範囲）",
+    "unit": "y⁺: 無次元",
+    "example": "y⁺=15の位置は、滑らかな壁面の代表的な緩衝層範囲内にある。",
+    "relatedSections": [
+      "6.7",
+      "6.8"
+    ],
+    "relatedQuestions": [],
+    "relatedSimulators": [],
+    "confusions": [
+      "緩衝層は物理的な薄膜があるという意味ではなく、近壁の流動構造による分類。"
+    ],
+    "source": {
+      "type": "supplement",
+      "reference": "第6〜7章の乱流境界層の壁スケーリングを独立執筆。OpenFOAM wall functions https://doc.openfoam.com/2606/tools/processing/models/turbulence/ras/wall-functions/ と九州大学 https://api.lib.kyushu-u.ac.jp/opac_download_md/6796070/eng3329.pdf で代表式とy⁺範囲を確認。原書翻訳・図版転載でなく専門家校閲前。"
+    },
+    "reviewStatus": "needs_review",
+    "related": [
+      "粘性底層",
+      "対数層（乱流）",
+      "レイノルズせん断応力",
+      "無次元壁座標"
+    ]
+  },
+  {
+    "id": "logarithmic-layer",
+    "ja": "対数層（乱流）",
+    "en": "logarithmic layer in turbulent wall flow",
+    "aliases": [
+      "乱流対数領域"
+    ],
+    "category": "乱流境界層・壁面則",
+    "brief": "壁近傍の平均流速が壁距離の対数に従う近似が成り立つ領域。",
+    "meaning": "壁近傍の平均流速が壁距離の対数に従う近似が成り立つ領域。",
+    "beginner": "乱流の壁から少し離れた場所では、速度の変化が距離の対数で表されることがあります。その領域を対数層といいます。",
+    "detail": "十分高いReの滑らかな壁面乱流では、粘性底層・緩衝層より外側で30≲y⁺という対数領域が現れる場合があり、U⁺≈(1/κ)ln y⁺+Bを用いる。ただし境界層全体の外端まで無限に続くわけではなく、圧力勾配や粗さ・自由表面などがあると適用範囲や定数が変化する。",
+    "formula": "U⁺≈(1/κ)ln y⁺+B（滑らかな壁の対数層）",
+    "unit": "U⁺,y⁺,κ,B: 無次元",
+    "example": "y⁺=100、κ=0.41、B=5.2ならU⁺≈16.43。",
+    "relatedSections": [
+      "6.7",
+      "6.8"
+    ],
+    "relatedQuestions": [],
+    "relatedSimulators": [],
+    "confusions": [
+      "対数則が全境界層で正確に成り立つわけではなく、外側の後流領域とも異なる。"
+    ],
+    "source": {
+      "type": "supplement",
+      "reference": "第6〜7章の乱流境界層の壁スケーリングを独立執筆。OpenFOAM wall functions https://doc.openfoam.com/2606/tools/processing/models/turbulence/ras/wall-functions/ と九州大学 https://api.lib.kyushu-u.ac.jp/opac_download_md/6796070/eng3329.pdf で代表式とy⁺範囲を確認。原書翻訳・図版転載でなく専門家校閲前。"
+    },
+    "reviewStatus": "needs_review",
+    "related": [
+      "無次元壁座標",
+      "無次元壁面速度",
+      "壁面の対数則",
+      "緩衝層（乱流）"
+    ]
+  },
+  {
+    "id": "logarithmic-law-wall",
+    "ja": "壁面の対数則",
+    "en": "logarithmic law of the wall",
+    "aliases": [
+      "対数速度則"
+    ],
+    "category": "乱流境界層・壁面則",
+    "brief": "乱流壁面近くの平均速度を無次元距離の対数で近似する経験的関係。",
+    "meaning": "乱流壁面近くの平均速度を無次元距離の対数で近似する経験的関係。",
+    "beginner": "滑らかな壁の乱流速度分布は、壁から少し離れた範囲では対数の式で整理できることがあります。設計と数値計算に使われます。",
+    "detail": "十分発達した乱流壁面の対数領域では、平均流速の無次元量U⁺≈(1/κ)ln y⁺+Bと表す。滑らかな壁では典型値κ≈0.41、B≈5.2が用いられるが、外部圧力勾配や粗さ・Re依存の影響で調整される。粘性底層のU⁺=y⁺と同じ式ではないため適用範囲を分ける。",
+    "formula": "U⁺≈(1/κ)ln y⁺+B（自然対数、対数層）",
+    "unit": "U⁺,y⁺,κ,B: 無次元",
+    "example": "κ=0.41、B=5.2でy⁺=100ならU⁺≈16.43。",
+    "relatedSections": [
+      "6.7",
+      "6.8"
+    ],
+    "relatedQuestions": [],
+    "relatedSimulators": [],
+    "confusions": [
+      "壁法則の対数は自然対数であり、粘性底層へ延長して使わない。"
+    ],
+    "source": {
+      "type": "supplement",
+      "reference": "第6〜7章の乱流境界層の壁スケーリングを独立執筆。OpenFOAM wall functions https://doc.openfoam.com/2606/tools/processing/models/turbulence/ras/wall-functions/ と九州大学 https://api.lib.kyushu-u.ac.jp/opac_download_md/6796070/eng3329.pdf で代表式とy⁺範囲を確認。原書翻訳・図版転載でなく専門家校閲前。"
+    },
+    "reviewStatus": "needs_review",
+    "related": [
+      "対数層（乱流）",
+      "フォン・カルマン定数",
+      "無次元壁座標",
+      "粘性底層"
+    ]
+  },
+  {
+    "id": "von-karman-constant",
+    "ja": "フォン・カルマン定数",
+    "en": "von Kármán constant",
+    "aliases": [
+      "カルマン定数κ"
+    ],
+    "category": "乱流境界層・壁面則",
+    "brief": "壁乱流の対数速度則で、傾きを表す経験的な無次元定数。",
+    "meaning": "壁乱流の対数速度則で、傾きを表す経験的な無次元定数。",
+    "beginner": "乱流の壁面近くで速度が対数的に変化する式に現れる定数です。異なる条件でも使える目安として扱います。",
+    "detail": "対数壁法則U⁺=(1/κ)ln y⁺+Bのκをフォン・カルマン定数と呼び、滑らかな壁の典型値は約0.40～0.41とされる。実験条件やRe、圧力勾配などにより推定値が異なる場合があり、普遍的に厳密な数と考えない。自然対流の熱膨張係数βや熱伝導率kとは全く別の係数である。",
+    "formula": "dU⁺/d(ln y⁺)≈1/κ（対数領域）",
+    "unit": "κ: 無次元、U⁺,y⁺: 無次元",
+    "example": "κ=0.41なら、ln y⁺が1増えるごとのU⁺の増加量は約2.44。",
+    "relatedSections": [
+      "6.7",
+      "6.8"
+    ],
+    "relatedQuestions": [],
+    "relatedSimulators": [],
+    "confusions": [
+      "κは熱伝導率k[W/(m·K)]とは別の無次元経験定数。"
+    ],
+    "source": {
+      "type": "supplement",
+      "reference": "第6〜7章の乱流境界層の壁スケーリングを独立執筆。OpenFOAM wall functions https://doc.openfoam.com/2606/tools/processing/models/turbulence/ras/wall-functions/ と九州大学 https://api.lib.kyushu-u.ac.jp/opac_download_md/6796070/eng3329.pdf で代表式とy⁺範囲を確認。原書翻訳・図版転載でなく専門家校閲前。"
+    },
+    "reviewStatus": "needs_review",
+    "related": [
+      "壁面の対数則",
+      "対数層（乱流）",
+      "乱流"
+    ]
+  },
+  {
+    "id": "friction-reynolds-number",
+    "ja": "摩擦レイノルズ数",
+    "en": "friction Reynolds number",
+    "aliases": [
+      "Re_τ"
+    ],
+    "category": "乱流境界層・壁面則",
+    "brief": "摩擦速度と境界層厚さを用い、近壁の粘性尺度と外側の尺度の比を示す無次元数。",
+    "meaning": "摩擦速度と境界層厚さを用い、近壁の粘性尺度と外側の尺度の比を示す無次元数。",
+    "beginner": "壁のすぐ近くの小さな尺度と境界層全体の厚さがどれほど違うかを表します。乱流の分解能を考える指標です。",
+    "detail": "摩擦速度u_τ、代表半幅または境界層厚さδ、動粘度νからRe_τ=u_τδ/ν=δ/δ_νと定義する。管では半径、チャネルでは半幅などの幾何学的代表長さを使い、主流速・管径基準の通常のReとは値が異なる。壁近くの細かい乱流構造と外側のスケールの分離を表す。",
+    "formula": "Re_τ=u_τδ/ν=δ/δ_ν",
+    "unit": "Re_τ: 無次元、u_τ: m/s、δ: m、ν: m²/s",
+    "example": "u_τ=0.05 m/s、δ=0.010 m、ν=1×10⁻⁵ m²/sならRe_τ=50。",
+    "relatedSections": [
+      "6.7",
+      "6.8"
+    ],
+    "relatedQuestions": [],
+    "relatedSimulators": [],
+    "confusions": [
+      "摩擦レイノルズ数の長さは管径Re_Dと異なる場合があるため基準を明記する。"
+    ],
+    "source": {
+      "type": "supplement",
+      "reference": "第6〜7章の乱流境界層の壁スケーリングを独立執筆。OpenFOAM wall functions https://doc.openfoam.com/2606/tools/processing/models/turbulence/ras/wall-functions/ と九州大学 https://api.lib.kyushu-u.ac.jp/opac_download_md/6796070/eng3329.pdf で代表式とy⁺範囲を確認。原書翻訳・図版転載でなく専門家校閲前。"
+    },
+    "reviewStatus": "needs_review",
+    "related": [
+      "摩擦速度",
+      "粘性長さ尺度",
+      "レイノルズ数"
+    ]
+  },
+  {
+    "id": "wall-function",
+    "ja": "壁関数（乱流モデル）",
+    "en": "wall function in turbulent flow modeling",
+    "aliases": [
+      "近壁壁関数"
+    ],
+    "category": "乱流境界層・壁面則",
+    "brief": "格子で近壁の速度分布を細かく解かず、壁法則を用いて壁面せん断を近似する方法。",
+    "meaning": "格子で近壁の速度分布を細かく解かず、壁法則を用いて壁面せん断を近似する方法。",
+    "beginner": "コンピューターで壁のごく近くまで小さな格子を作ると計算量が増えます。壁付近を経験式で補う方法があります。",
+    "detail": "乱流数値解析の壁関数は壁面法則を用い、第一格子点から壁までの平均速度分布や壁面せん断応力をモデル化する。対数則ベースの通常の壁関数は適切なy⁺範囲に最初の格子点を置く必要があるが、低Re壁モデルや自動切替型壁関数では推奨範囲が異なる。壁関数の使用だけでCFDの近壁伝熱精度が保証されるわけではない。",
+    "formula": "y⁺=y_cell u_τ/ν（第一セル位置を確認）",
+    "unit": "y⁺: 無次元、y_cell: m、u_τ: m/s、ν: m²/s",
+    "example": "y_cell=0.01 m、u_τ=0.05 m/s、ν=1×10⁻⁵ m²/sなら第一セル中心y⁺=50。",
+    "relatedSections": [
+      "6.7",
+      "6.8"
+    ],
+    "relatedQuestions": [],
+    "relatedSimulators": [],
+    "confusions": [
+      "壁関数は近壁の実測や直接解法の代わりとなる近似で、全てのy⁺で同じ設定を使えない。"
+    ],
+    "source": {
+      "type": "supplement",
+      "reference": "第6〜7章の乱流境界層の壁スケーリングを独立執筆。OpenFOAM wall functions https://doc.openfoam.com/2606/tools/processing/models/turbulence/ras/wall-functions/ と九州大学 https://api.lib.kyushu-u.ac.jp/opac_download_md/6796070/eng3329.pdf で代表式とy⁺範囲を確認。原書翻訳・図版転載でなく専門家校閲前。"
+    },
+    "reviewStatus": "needs_review",
+    "related": [
+      "無次元壁座標",
+      "壁面の対数則",
+      "粘性底層",
+      "乱流"
+    ]
   }
 ]
