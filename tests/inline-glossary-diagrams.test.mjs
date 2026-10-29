@@ -5,9 +5,9 @@ import {termCandidates,matchTerms,renderTermLinks,renderTermSheet} from '../term
 import {renderSimulationDiagram} from '../sim-diagrams.mjs';
 const glossary=JSON.parse(await readFile(new URL('../data/glossary.json',import.meta.url),'utf8'));
 test('expanded glossary has unique canonical Japanese labels and categorical, accurate supplement notes',()=>{
- assert.equal(glossary.length,125);
- assert.equal(new Set(glossary.map(x=>x.id)).size,125);
- assert.equal(new Set(glossary.map(x=>x.ja)).size,125);
+ assert.equal(glossary.length,133);
+ assert.equal(new Set(glossary.map(x=>x.id)).size,133);
+ assert.equal(new Set(glossary.map(x=>x.ja)).size,133);
  const labels=new Map();
  for(const term of glossary)for(const label of [term.ja,...term.aliases]){
   const previous=labels.get(label);
@@ -31,6 +31,15 @@ test('longest glossary match wins and generic one-letter units do not wreck read
  assert.deepEqual(matchTerms('熱伝達率と対流熱伝達率',glossary,4).map(x=>x.id),['convection-coefficient','convection-coefficient']);
  assert.ok(termCandidates(glossary).length>=95);
  assert.ok(matchTerms('Nu Pr and Biot number',glossary,5).some(x=>x.id==='biot-number'));
+});
+
+test('phase-change terms retain context and distinguish subcooling from freezing',()=>{
+ const term=id=>glossary.find(x=>x.id===id);
+ assert.match(term('subcooled-liquid').detail,/凍結点以下/);
+ assert.match(term('noncondensable-gas').detail,/永久に凝縮しない物質という意味ではない/);
+ assert.match(term('vapor-film').detail,/実際の膜厚や膜沸騰熱伝達を予測する相関ではない/);
+ assert.match(term('condensate-film-reynolds').formula,/4ṁ/);
+ assert.deepEqual(matchTerms('飽和温度と過冷却液体と毛管長',glossary,5).map(x=>x.id),['saturation-temperature','subcooled-liquid','capillary-length']);
 });
 test('foundational lookalike quantities have distinct beginner and technical explanations',()=>{
  const byId=new Map(glossary.map(term=>[term.id,term]));

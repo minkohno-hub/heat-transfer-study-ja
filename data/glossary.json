@@ -3334,5 +3334,244 @@
     "related": [
       "流体・対流"
     ]
+  },
+  {
+    "id": "saturation-temperature",
+    "ja": "飽和温度",
+    "en": "saturation temperature",
+    "meaning": "指定した圧力で、純物質の液体と蒸気が平衡で共存できる温度。",
+    "brief": "指定した圧力で、純物質の液体と蒸気が平衡で共存できる温度。",
+    "beginner": "沸騰の基準温度です。水でも圧力が変われば100 ℃とは限りません。",
+    "detail": "純物質の液体・蒸気平衡では圧力を決めると飽和温度が決まる。混合物では組成も関係し、沸点と露点が異なることがある。壁面温度や周囲液体の温度そのものとは区別する。",
+    "unit": "K または ℃",
+    "formula": "T_sat=T_sat(p)（純物質の液体・蒸気平衡）",
+    "aliases": [],
+    "category": "相変化・界面",
+    "related": [
+      "壁面過熱度",
+      "核沸騰"
+    ],
+    "source": {
+      "type": "supplement",
+      "reference": "一般的な熱移動・相平衡の物理概念を独立執筆した補足説明。原本の翻訳・転載ではありません。",
+      "guideId": "chapter9-latent-boiling"
+    },
+    "reviewStatus": "needs_review",
+    "relatedQuestions": [
+      {
+        "id": "supp-nucleate-subcooling-v1",
+        "label": "関連問題を解く"
+      }
+    ]
+  },
+  {
+    "id": "subcooled-liquid",
+    "ja": "過冷却液体",
+    "en": "subcooled liquid",
+    "meaning": "その圧力の飽和温度より低い温度の液体。",
+    "brief": "その圧力の飽和温度より低い温度の液体。",
+    "beginner": "周囲の液体が沸点より冷たくても、十分に熱い壁の近くでは泡が生じる場合があります。",
+    "detail": "沸騰の文脈ではサブクール液とも呼ぶ。過冷却度T_sat−T_bulkを正で表す。凍結点以下の準安定な液体を指す過冷却とは文脈が異なる。局所壁面過熱T_w−T_satと液体全体の温度差を混同しない。",
+    "unit": "K",
+    "formula": "ΔT_sub=T_sat−T_bulk>0",
+    "aliases": [
+      "サブクール液"
+    ],
+    "category": "相変化・界面",
+    "related": [
+      "飽和温度",
+      "壁面過熱度"
+    ],
+    "source": {
+      "type": "supplement",
+      "reference": "一般的な熱移動・相平衡の物理概念を独立執筆した補足説明。原本の翻訳・転載ではありません。",
+      "guideId": "chapter9-latent-boiling"
+    },
+    "reviewStatus": "needs_review",
+    "relatedQuestions": [
+      {
+        "id": "supp-nucleate-subcooling-v1",
+        "label": "関連問題を解く"
+      }
+    ]
+  },
+  {
+    "id": "superheated-vapor",
+    "ja": "過熱蒸気",
+    "en": "superheated vapor",
+    "meaning": "その圧力の飽和温度より高い温度の蒸気。",
+    "brief": "その圧力の飽和温度より高い温度の蒸気。",
+    "beginner": "蒸気も、液体が沸騰する温度からさらに温められます。",
+    "detail": "純物質について蒸気温度と同じ圧力の飽和温度を比べる。蒸気の顕熱と液体から蒸気への相変化の潜熱は異なる。高温壁と飽和界面の間の蒸気膜には温度勾配がありうる。",
+    "unit": "K または ℃",
+    "formula": "T_v>T_sat(p)",
+    "aliases": [],
+    "category": "相変化・界面",
+    "related": [
+      "飽和温度",
+      "顕熱",
+      "潜熱"
+    ],
+    "source": {
+      "type": "supplement",
+      "reference": "一般的な熱移動・相平衡の物理概念を独立執筆した補足説明。原本の翻訳・転載ではありません。",
+      "guideId": "chapter9-latent-boiling"
+    },
+    "reviewStatus": "needs_review",
+    "relatedQuestions": [
+      {
+        "id": "supp-nucleate-latent-rate-v1",
+        "label": "関連問題を解く"
+      }
+    ]
+  },
+  {
+    "id": "vapor-film",
+    "ja": "蒸気膜",
+    "en": "vapor film",
+    "meaning": "高温の固体と液体の間を隔てる蒸気の層。",
+    "brief": "高温の固体と液体の間を隔てる蒸気の層。",
+    "beginner": "蒸気の層が熱の通り道に入ると、液体が面を濡らす場合と伝熱の仕方が変わります。",
+    "detail": "膜沸騰の蒸気膜は流れや界面の変形を伴い、一定厚さとは限らない。厚さδ_g、一定熱伝導率k_gの静止平板膜に限れば面積当たり伝導抵抗はδ_g/k_g。これは実際の膜厚や膜沸騰熱伝達を予測する相関ではない。",
+    "unit": "厚さ:m",
+    "formula": "R″_g=δ_g/k_g（静止・一定厚さの平板膜近似）",
+    "aliases": [],
+    "category": "相変化・界面",
+    "related": [
+      "膜沸騰",
+      "熱抵抗"
+    ],
+    "source": {
+      "type": "supplement",
+      "reference": "一般的な熱移動・相平衡の物理概念を独立執筆した補足説明。原本の翻訳・転載ではありません。",
+      "guideId": "chapter9-latent-boiling"
+    },
+    "reviewStatus": "needs_review",
+    "relatedQuestions": [
+      {
+        "id": "supp-section-9-4",
+        "label": "関連問題を解く"
+      }
+    ]
+  },
+  {
+    "id": "capillary-length",
+    "ja": "毛管長",
+    "en": "capillary length",
+    "meaning": "表面張力と重力による密度差の作用を比べる長さの尺度。",
+    "brief": "表面張力と重力による密度差の作用を比べる長さの尺度。",
+    "beginner": "界面の形に、表面張力と重力のどちらが強く影響するかを考える目安です。",
+    "detail": "ρ_l>ρ_v、σ>0、g>0の条件で定義する。密度差が小さいほど大きくなるが、重力ゼロではこの式は使えない。実際の泡径や蒸気柱の間隔そのものを与える式ではない。",
+    "unit": "m",
+    "formula": "ℓ_c=√[σ/{g(ρ_l−ρ_v)}]",
+    "aliases": [],
+    "category": "相変化・界面",
+    "related": [
+      "表面張力",
+      "密度",
+      "限界熱流束"
+    ],
+    "source": {
+      "type": "supplement",
+      "reference": "一般的な熱移動・相平衡の物理概念を独立執筆した補足説明。原本の翻訳・転載ではありません。",
+      "guideId": "chapter9-latent-boiling"
+    },
+    "reviewStatus": "needs_review",
+    "relatedQuestions": [
+      {
+        "id": "supp-chf-capillary-length-v1",
+        "label": "関連問題を解く"
+      }
+    ]
+  },
+  {
+    "id": "wettability",
+    "ja": "濡れ性",
+    "en": "wettability",
+    "meaning": "固体表面に液体が広がりやすいかを表す性質。",
+    "brief": "固体表面に液体が広がりやすいかを表す性質。",
+    "beginner": "同じ液体でも、表面処理や汚れによって広がり方が変わります。",
+    "detail": "接触角などで評価するが、静的な角度だけで動的な沸騰・液体補給の全挙動は決まらない。表面粗さ、化学状態、履歴が関係する。濡れ性だけから核沸騰開始温度やCHFを一意に求めない。",
+    "unit": "接触角:度 または rad",
+    "formula": "接触角は液体側から測るなど定義を明示する",
+    "aliases": [
+      "ぬれ性"
+    ],
+    "category": "相変化・界面",
+    "related": [
+      "核沸騰",
+      "限界熱流束",
+      "表面張力"
+    ],
+    "source": {
+      "type": "supplement",
+      "reference": "一般的な熱移動・相平衡の物理概念を独立執筆した補足説明。原本の翻訳・転載ではありません。",
+      "guideId": "chapter9-latent-boiling"
+    },
+    "reviewStatus": "needs_review",
+    "relatedQuestions": [
+      {
+        "id": "supp-nucleate-onset-limit-v1",
+        "label": "関連問題を解く"
+      }
+    ]
+  },
+  {
+    "id": "noncondensable-gas",
+    "ja": "非凝縮性ガス",
+    "en": "noncondensable gas",
+    "meaning": "対象の温度・圧力条件で凝縮しない気体成分。",
+    "brief": "対象の温度・圧力条件で凝縮しない気体成分。",
+    "beginner": "水蒸気を冷やして凝縮させる場に空気が混じる場合などです。",
+    "detail": "蒸気が凝縮すると界面近くに非凝縮性ガスが濃縮し、蒸気の拡散に対する抵抗が加わる場合がある。純蒸気の膜状凝縮相関をそのまま適用できない理由になる。永久に凝縮しない物質という意味ではない。",
+    "unit": "組成・分圧など条件に応じて指定",
+    "formula": "p_total=p_vapor+p_gas（理想気体混合物）",
+    "aliases": [],
+    "category": "相変化・界面",
+    "related": [
+      "物質拡散",
+      "潜熱"
+    ],
+    "source": {
+      "type": "supplement",
+      "reference": "一般的な熱移動・相平衡の物理概念を独立執筆した補足説明。原本の翻訳・転載ではありません。",
+      "guideId": "chapter8-buoyancy"
+    },
+    "reviewStatus": "needs_review",
+    "relatedQuestions": [
+      {
+        "id": "supp-applied-8-5-v1",
+        "label": "関連問題を解く"
+      }
+    ]
+  },
+  {
+    "id": "condensate-film-reynolds",
+    "ja": "液膜レイノルズ数",
+    "en": "condensate film Reynolds number",
+    "meaning": "凝縮液膜の流量と粘度から膜の流動状態を整理する無次元数。",
+    "brief": "凝縮液膜の流量と粘度から膜の流動状態を整理する無次元数。",
+    "beginner": "板を流れ落ちる液体の量が増えると、膜の波立ちや乱れを考える必要が出ます。",
+    "detail": "幅bの垂直板についてΓ=ṁ/bを単位幅流量としRe_f=4Γ/μ_lと定義する場合がある。係数の異なる定義もあるため、遷移の目安は定義とセットで確認する。この数だけで実機の非波状・層流状態を保証しない。",
+    "unit": "無次元",
+    "formula": "Re_f=4ṁ/(bμ_l)（この定義の場合）",
+    "aliases": [],
+    "category": "相変化・界面",
+    "related": [
+      "レイノルズ数",
+      "粘度"
+    ],
+    "source": {
+      "type": "supplement",
+      "reference": "一般的な熱移動・相平衡の物理概念を独立執筆した補足説明。原本の翻訳・転載ではありません。",
+      "guideId": "chapter8-buoyancy"
+    },
+    "reviewStatus": "needs_review",
+    "relatedQuestions": [
+      {
+        "id": "supp-applied-8-5-v1",
+        "label": "関連問題を解く"
+      }
+    ]
   }
 ]
