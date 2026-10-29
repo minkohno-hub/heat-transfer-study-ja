@@ -81,3 +81,44 @@ tests/heat-exchanger.test.mjs に9つのテストケースを用意し、GitHub�
 - 既存5モデルは保護したまま。新規モデルはフィン効率と熱交換器の**2件**。
 - 新規モジュール2ファイル、対応する専用テスト2ファイル、本進捗文書のみがchat/simulatorsの変更対象。
 - PRは作成しない。共有レジストリ・公開ビルド許可リストは書き換えない。統合は他ラインの担当へ引き継ぐ。
+
+
+## 第3モデル：§5.3〜5.5 両面対流の非定常平板伝導
+
+追加：transient-slab.mjs、tests/transient-slab.test.mjs。既存5モデル、他ライン、レッスン、問題、用語集、共有レジストリに変更なし。専門家校閲前の独立作成教育モデルであり、原本の翻訳・図・数値データの転載は含まない。
+
+### 物理モデル
+
+- 全厚さd、片面面積Aの広い平板。初期温度Tiは一様。両面で同じ流体温度T∞、対流熱伝達率h。物性k、ρ、cpは一定。端面・側面熱流、発熱、放射、相変化は無視。
+- 中心から表面の半厚さL=d/2、中心対称条件 dT/dx=0、表面対流条件 −k dT/dx=h(Ts−T∞)。α=k/(ρcp) [m²/s]、Bi=hL/k、Fo=αt/L²。この2つに全厚さdを代入してはならない。
+- 固有値μnは μn tanμn=Bi の正の根を各区間(nπ, (n+1/2)π)の二分探索で算出。Cn=4sinμn/(2μn+sin2μn)。正規化温度 θ=Σ Cn cos(μn x/L) exp(−μn² Fo)。解は128項の級数。t=0では指定した一様温度をそのまま採用する。
+- この教育用実装は級数の打切り誤差を管理するため、Bi≤100かつt=0またはFo≥1e-4に限定。Foが正で小さすぎる場合は結果を推測せず入力エラーとして案内。これは方程式自体の物理的成立範囲ではなく、実装上の数値精度の制約。
+- 出力は中心・表面・板厚平均温度、集中熱容量近似の比較温度、片面表面熱流束 [W/m²]、両面合計の瞬間熱移動率 Qdot=2hA(Ts−T∞) [W]、累積の放熱量 E=ρcpdA(Ti−Tavg) [J]。冷却の放熱を正、加熱の吸熱を負とする。
+- SVG模式図、中心から表面への温度分布曲線、中心・表面のFoに対する温度履歴曲線、単位付きの計算手順を新規モジュール内で生成。グラフの表示Fo上限8は描画の制約であり、計算そのものの上限ではない。
+
+外部の照合先：
+- University of Washington, Transient one-dimensional heat conduction: https://faculty.washington.edu/baneyx/340/Transient_conduction.pdf （固有値と級数解）
+- LearnChemE / University of Colorado Boulder, Transient Conduction Through a Plane Wall: https://learncheme.com/simulations/heat-transfer/transient-conduction-through-a-plane-wall/ （空間分布と集中熱容量近似の差）
+
+上記の一般的な数式の形式を独立照合した。図や文章の複製は行わず、原本教材の全ページ照合や第三者の専門家評価が完了したとみなさない。
+
+### 専用テスト
+
+専用ファイル tests/transient-slab.test.mjs に11件の検証を追加。GitHub保存後のモジュールを読み直してJavaScript実行環境でテストし、11成功・0失敗。
+
+内容：①半厚さとBi/Fo、②固有値方程式と既知の最小固有値、③中心対称・表面対流の境界条件、④蓄積熱量の数値時間微分と表面放熱の一致、⑤加熱への反転、⑥t=0と初期温度差0、⑦Bi小の集中熱容量法比較とBi大の勾配、⑧長時間極限、⑨最小Foで128項対192項、⑩入力・数値制約、⑪HTMLエスケープとグラフ表示。
+
+Node.jsでの標準テストランナー実行、GitHub Pages配信ビルド、Safariを含む実ブラウザ・実機操作は未実施。統合時に node --test tests/transient-slab.test.mjs を実行すること。
+
+### 共有ファイル統合メモ（本ラインは編集しない）
+
+1. app.js にtransient-slab.mjsをimport。SIM_META、ui.simValues、タブに新規モードslabを登録。既存transient（集中熱容量法）と別モードにする。
+2. 計算関数calculateSlabTransient、入力renderSlabFields、手順renderSlabSteps、模式図renderSlabDiagram、分布slabProfileGraph、履歴slabHistoryGraphを専用の表示経路へ接続。既存の定常ΔT–Qdotグラフや集中熱容量法グラフへ混入させない。
+3. onInputとonChangeをslabFieldNamesへ対応させ、エラー時も元入力値を維持する。保存比較を実装する場合はstudy-core.mjsのvalidateLearningDataのsimComparisons検証を同時に変更し、既存の保存データを破損させない。
+4. scripts/build-public-site.mjsの明示配信許可リスト、sw.jsのキャッシュとguide.mjsの説明・読書導線は統合担当が作業。未登録モジュールを公開済みと扱わない。
+5. 統合時の追加確認：Node.js全テスト、公開ビルド、モバイル320/390px、t=0・極小Fo・高Bi、加熱/冷却、比較・保存復元、オフライン動作。
+
+## 第3モデル時点の進捗
+
+独立した追加モデルは計3件：§4.5 フィン効率、§3.2〜3.3 熱交換器ε–NTU・LMTD、§5.3〜5.5 非定常平板。既存5件は保護し、合計8種類に相当する計算モジュールが存在。ただし追加3件はいずれも公開アプリに未登録。
+独立JavaScriptテストは7+9+11=27件成功。公開ブラウザのE2Eテストや専門家校閲の完了ではない。PRは作らない。ブランチchat/simulators以外は編集しない。PR #1側の進捗との再統合は後工程。
