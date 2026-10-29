@@ -122,3 +122,51 @@ Node.jsでの標準テストランナー実行、GitHub Pages配信ビルド、S
 
 独立した追加モデルは計3件：§4.5 フィン効率、§3.2〜3.3 熱交換器ε–NTU・LMTD、§5.3〜5.5 非定常平板。既存5件は保護し、合計8種類に相当する計算モジュールが存在。ただし追加3件はいずれも公開アプリに未登録。
 独立JavaScriptテストは7+9+11=27件成功。公開ブラウザのE2Eテストや専門家校閲の完了ではない。PRは作らない。ブランチchat/simulators以外は編集しない。PR #1側の進捗との再統合は後工程。
+
+
+---
+
+## 【最新版：2026-10-30】第4モデル追加とCodex本線向け引き継ぎ
+
+**この節が最新の到達点です。** 上の「第2/第3モデル時点」の件数と実装状況は当時の履歴であり、統合時は以下を優先してください。本線PR #1はこのラインから更新せず、Codexが週次制限リセット後に統合する前提です。
+
+### 新規実装：§10.3・10.4　二面閉鎖系の放射熱交換
+
+- 新規モジュール：radiation-enclosure.mjs
+- 新規専用テスト：tests/radiation-enclosure.test.mjs
+- モジュール最新実装コミット：9243d27cfda981c433bbdc9dd3c7ac31fdc961b4
+- 専用テストのコミット：b3a5f895db31baa317f8c7e363ddcc2eb165036d
+- 作業ブランチ：chat/simulators。上記の機能コミット以降、本進捗記録の追記コミットによってブランチHEADはさらに進む。統合時の正しい最新HEADはGitHub上のchat/simulators参照そのもので確認すること。
+- PR #1の最新確認HEAD：9cb61fb93e1d9b14a4b689231f961eafa4f9dc07（2026-10-30確認）。この値は本線側が動けば変わる。ラインBの分岐起点は c8d207710374411694898093ca9d6adc16fa0fcf のまま。
+
+**物理的な前提と対象範囲：** 閉じた2表面のうち面1は凸で自己照射なし、面2が面1を完全に取り囲み、F11=0、F12=1、F21=A1/A2、F22=1−F21。A2≥A1を強制し、面積比から形態係数を決める。球や端効果を無視できる同心長円筒、十分広い対向平板（面積が等しい極限）などの理想問題を想定。任意の離れた2枚の有限平板でF12を1とみなしてはならず、形態係数を自由入力する形式ではない。
+
+2面は不透明・拡散・灰色・等温、媒質は非参加。各面の放射率ε1、ε2は0より大きく1以下。入力は面積A1/A2[m²]、ε1/ε2、表面温度T1/T2[℃]。T[K]=T[℃]+273.15に換算し、温度の4乗差は (T1−T2)(T1+T2)(T1²+T2²) に因数分解して数値誤差を抑制。
+
+放射抵抗 R1=(1−ε1)/(ε1 A1)、Rspace=1/A1、R2=(1−ε2)/(ε2 A2)、Rtotal=R1+Rspace+R2 [m⁻²]。正味の熱移動率 Qdot=σ(T1^4−T2^4)/Rtotal [W] を面1から面2への正方向で計算。実効放射率εeff=1/(A1 Rtotal)、表面熱流束、各面の黒体放射発散度、ラジオシティJ1/J2、照射量G1/G2、各面の正味収支を表示する。
+
+SVG模式図、計算過程の詳細、面1温度に対するQdotの温度応答グラフ、比較条件曲線を新規モジュール内に実装。現在の既存radiationモードは単純な黒い周囲環境を仮定するモデルなので、**置き換えず別モード**とする。
+
+**第4モデルの物理的検査：** ローカルNode.js v22.16.0の標準ランナーで専用の12テストすべて成功・失敗0。黒体極限、等面積平行平板、外側面積が非常に大きい極限、形態係数の総和と相反則、独立した2×2ラジオシティ線形方程式による熱収支、熱流の反転、等温時のゼロ、近接温度差の安定性、面積に対する比例、異常入力拒否とエスケープ、グラフ表示を確認。
+
+基本例：A1=1m²、A2=4m²、ε1=0.8、ε2=0.6、T1=200℃、T2=25℃では、F21=0.25、F22=0.75、εeff=12/17≈0.705882、Qdot≈1689.75087W。面1と面2の正味熱移動率は同じ大きさで逆符号。
+
+独立照合した一般式の参考：
+- 放射ネットワーク・閉鎖2面の式：https://madar-ju.com/storage/images/files/file_1738891122cRBDf.pdf （章13.3）。
+- 形態係数の相反則と総和則：https://standards.iteh.ai/catalog/standards/cen/71917d89-5888-4d2b-9702-5026855480ed/cen-clc-tr-17603-31-09-2021 。
+- 上記教材や出典からの画像の複製、本文の翻訳、数値表の抽出は行っていない。
+
+### 統合時の前提・注意事項（Codex本線専任）
+
+1. **本線・共有ファイルはラインBでは変更しない。** 2026-10-30時点のラインBの変更対象は、新規の4モジュール、専用テスト4ファイル、本記録のみ。PRは新設・更新しない。起点c8d2077から本線PR #1のHEADは先に進んでいるため、現時点の本線に対して新しいソースを取り込み、共有ファイルへ反映する際は現行実装を読み直して調整すること。
+2. 追加済み4モジュールと名称：①fin-efficiency.mjs / tests/fin-efficiency.test.mjs、②heat-exchanger.mjs / tests/heat-exchanger.test.mjs、③transient-slab.mjs / tests/transient-slab.test.mjs、④radiation-enclosure.mjs / tests/radiation-enclosure.test.mjs。各モジュールは原則ESMの独立した純関数群であり、既存の5モードを壊さない。
+3. app.js のSIM_META、ui.simValues、calculateSimulation、renderSimulator、renderSimulatorOutputsOnly、タブとモード切替、onInput/onChangeに4つの新モードを追加する。推奨モードIDはfin、exchanger、slab、enclosure。現行mode radiation、transient、resistanceとは別の計算・グラフ表示経路とする。
+4. radiation-enclosure.mjs から統合する主なexports：RADIATION_ENCLOSURE_DEFAULTS、radiationEnclosureFieldNames、calculateRadiationEnclosure、renderRadiationEnclosureFields、renderRadiationEnclosureSteps、renderRadiationEnclosureDiagram、radiationEnclosureHeatGraph。無効入力はerrorを返すため、出力関数や保存処理の前に処理すること。
+5. heat-exchanger.mjsはflowというselect形式の追加入力を持つ。slabはt=0またはFo≥1e-4、Bi≤100という実装の数値制限を持つ。finは独立した空間温度分布。これらを従来の共通ΔT–Qdot表示に誤接続しない。面積・温度・放射率の単位検証と早期Foのエラー表示を維持する。
+6. study-core.mjs のvalidateLearningData内simComparisonsのモード検証は既存モード専用。端末に4つの新モードの比較結果を保存する場合、合法な計算値だけを検証する形で分岐を追加し、旧データ・インポート/エクスポートとの後方互換を確認する。ここを更新せずsave-comparisonを有効にすると復元時に不正扱いされ得る。
+7. scripts/build-public-site.mjsはESMを明示的に配信許可するため4モジュールを登録。sw.js、キャッシュバージョンとオフライン対応、guide.mjsや各節の学習導線も統合担当が確認する。追加ファイルは2026-10-30時点でGitHub Pagesの既存アプリ画面に未登録。
+8. PR #1統合後は、node --testによる全テスト、公開ビルド、表示エラー・SVGの安全性・320/390px UI・端末保存/復元・オフライン・ブラウザE2Eに加え、4モジュールの理論式・物理的適用範囲を改めて監査する。既存レッスン/問題/用語集の正確性とライセンスも本線で別途監査する。
+
+### 本ライン最新の数量と残課題
+
+**既存5モデル（未変更）＋新規4モデル（未統合）＝総計9種類に相当する実装。** 新規専用テスト7+9+11+12=**39件**を個別実行してすべて成功（第1〜3モデルはGitHub取得ソースの独立JavaScript環境で検証、第4モデルはNode.js標準テストランナーで検証）。新規モデルをアプリの実際のタブで使える状態にする統合作業、公開ビルド・実ブラウザ・実機テスト、専門家校閲は未実施。Codex本線の週次制限が解けるまで、このラインでは自分の担当範囲と専用ブランチの開発・整備を継続する。
