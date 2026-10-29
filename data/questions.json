@@ -16073,5 +16073,691 @@
       "対象条件に合う凝縮モデルへ切り替える。"
     ],
     "beginnerPitfall": "熱伝達率、熱流束、全熱移動率を区別し、液膜モデルの条件を確認する。"
+  },
+  {
+    "id": "supp-film-fixed-flux-v1",
+    "revision": "v1",
+    "field": "沸騰・相変化",
+    "prerequisites": [
+      "沸騰曲線",
+      "熱流束と熱移動率",
+      "モデルの適用条件"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "独立日本語講義§9.4に対応する独自の条件・例題から作問。原本の翻訳・図版・章末問題は転載しない。",
+      "chapterId": "ch9",
+      "focusSectionId": "9.4",
+      "guideId": "chapter9-latent-boiling"
+    },
+    "createdStatus": "独立作問下書き",
+    "reviewStatus": "執筆下書き・包括的品質監査は後工程／外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [],
+    "prompt": "学習用に蒸気層を静止した一定厚さの平板とする。k_g=0.025 W/(m·K)、δ_g=0.50 mm、壁温200 ℃、界面100 ℃。放射・流れを無視したq″=k_g(T_w−T_i)/δ_gはいくらか。有効数字2桁とする。",
+    "choices": [
+      "5.0×10³ W/m²",
+      "5.0 W/m²",
+      "5.0×10⁴ W/m²",
+      "5.0×10² W/m²"
+    ],
+    "answer": 0,
+    "difficulty": "標準・数値計算",
+    "explanation": "0.50 mm=5.0×10⁻⁴ m、温度差100 K。q″=0.025×100/(5.0×10⁻⁴)=5000 W/m²。この静止・固定膜厚モデルから、実際の沸騰中の膜厚や総伝熱は予測できない。",
+    "distractors": [
+      "正解。膜厚をmへ換算して伝導式を使った。",
+      "膜厚のmmをmへ換算していない。",
+      "膜厚を実際より10分の1として扱った。",
+      "膜厚を実際より10倍として扱った。"
+    ],
+    "hints": [
+      "膜厚をmに直す。",
+      "温度差は100 K。温度そのものとは区別する。"
+    ],
+    "solutionSteps": [
+      "δ_g=5.0×10⁻⁴ mとする。",
+      "k_gΔT=2.5 W/m。",
+      "膜厚で割りq″=5000 W/m²と得る。"
+    ],
+    "beginnerPitfall": "固定膜厚の仮想伝導を膜沸騰相関と呼ばない。"
+  },
+  {
+    "id": "supp-film-area-resistance-v1",
+    "revision": "v1",
+    "field": "沸騰・相変化",
+    "prerequisites": [
+      "沸騰曲線",
+      "熱流束と熱移動率",
+      "モデルの適用条件"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "独立日本語講義§9.4に対応する独自の条件・例題から作問。原本の翻訳・図版・章末問題は転載しない。",
+      "chapterId": "ch9",
+      "focusSectionId": "9.4",
+      "guideId": "chapter9-latent-boiling"
+    },
+    "createdStatus": "独立作問下書き",
+    "reviewStatus": "執筆下書き・包括的品質監査は後工程／外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [],
+    "prompt": "固定厚さの平板蒸気層でδ_g=0.30 mm、k_g=0.030 W/(m·K)、面積A=0.20 m²。面積当たり抵抗R″=δ_g/k_gと全体抵抗R=δ_g/(k_g A)の組合せはどれか。SI単位で有効数字2桁とする。",
+    "choices": [
+      "R″=0.050 m²·K/W、R=0.010 K/W",
+      "R″=0.010 m²·K/W、R=0.050 K/W",
+      "R″=0.010 m²·K/W、R=0.0020 K/W",
+      "R″=10 m²·K/W、R=50 K/W"
+    ],
+    "answer": 1,
+    "difficulty": "標準・数値計算",
+    "explanation": "δ_g=3.0×10⁻⁴ m。R″=0.00030/0.030=0.010 m²·K/W。R=R″/A=0.010/0.20=0.050 K/W。R″は熱流束に、Rは全熱移動率に対応する抵抗で、面積の有無と単位が違う。",
+    "distractors": [
+      "二種類の抵抗の数値を入れ替えた。",
+      "正解。R″を面積で割るとR。",
+      "R″を面積で割らず掛けている。",
+      "膜厚をmmのまま代入している。"
+    ],
+    "hints": [
+      "R″に面積は含まれない。",
+      "温度差を全熱移動率で割ったRの単位はK/W。"
+    ],
+    "solutionSteps": [
+      "δ_gをmへ換算する。",
+      "δ_g/k_g=0.010 m²·K/W。",
+      "面積で割り0.050 K/Wを得る。"
+    ],
+    "beginnerPitfall": "面積当たり抵抗と全体抵抗を同じ数値・単位として扱わない。"
+  },
+  {
+    "id": "supp-film-thickness-interpretation-v1",
+    "revision": "v1",
+    "field": "沸騰・相変化",
+    "prerequisites": [
+      "沸騰曲線",
+      "熱流束と熱移動率",
+      "モデルの適用条件"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "applied",
+    "source": {
+      "type": "supplement",
+      "reference": "独立日本語講義§9.4に対応する独自の条件・例題から作問。原本の翻訳・図版・章末問題は転載しない。",
+      "chapterId": "ch9",
+      "focusSectionId": "9.4",
+      "guideId": "chapter9-latent-boiling"
+    },
+    "createdStatus": "独立作問下書き",
+    "reviewStatus": "執筆下書き・包括的品質監査は後工程／外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [],
+    "prompt": "平板蒸気層の固定膜厚モデルq″=k_gΔT/δ_gで、k_gとΔTを固定してδ_gを2倍にする。モデル内の結果と実際の膜沸騰の解釈として適切なものはどれか。",
+    "choices": [
+      "モデル値は2倍となり、実機の膜厚も必ず2倍となる",
+      "モデル値は不変であり、実機の膜厚も必ず不変となる",
+      "モデル値は半分だが、実機の膜厚は流動等で決まる",
+      "モデル値はゼロとなり、実機でも熱流は遮断される"
+    ],
+    "answer": 2,
+    "difficulty": "標準・概念と適用判断",
+    "explanation": "この式でq″はδ_gの逆数に比例し、固定膜厚を2倍にすると半分となる。実際の蒸気膜は蒸発・重力・粘性・界面変形と連成し、膜厚だけを任意に指定した比較と同一ではない。",
+    "distractors": [
+      "固定膜厚モデルの逆比例と逆の結果。",
+      "式の分母にある膜厚の影響を落としている。",
+      "正解。仮定を変えた計算と実機の膜形成を区別した。",
+      "有限の膜厚で伝導がゼロになるとは限らない。"
+    ],
+    "hints": [
+      "分母のδ_gだけを2倍にする。",
+      "現実の膜厚を決める方程式はこの式に含まれていない。"
+    ],
+    "solutionSteps": [
+      "固定膜厚モデルの比例関係q″∝1/δ_gを読む。",
+      "モデル値は1/2倍と計算する。",
+      "実際の膜厚を予測するには流れと相変化の評価が必要と判断する。"
+    ],
+    "beginnerPitfall": "計算モデルの入力値を変えることと実機で同じ変化が起きることを区別する。"
+  },
+  {
+    "id": "supp-film-radiation-kelvin-v1",
+    "revision": "v1",
+    "field": "沸騰・相変化",
+    "prerequisites": [
+      "沸騰曲線",
+      "熱流束と熱移動率",
+      "モデルの適用条件"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "独立日本語講義§9.4に対応する独自の条件・例題から作問。原本の翻訳・図版・章末問題は転載しない。",
+      "chapterId": "ch9",
+      "focusSectionId": "9.4",
+      "guideId": "chapter9-latent-boiling"
+    },
+    "createdStatus": "独立作問下書き",
+    "reviewStatus": "執筆下書き・包括的品質監査は後工程／外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [],
+    "prompt": "膜沸騰で高温放射が重要となる理由を考えるため、別の単純モデルとして黒い周囲を見込む灰色面の放射だけを計算する。T_w=400 K、T_sur=300 K、ε=0.80、σ=5.67×10⁻⁸ W/(m²·K⁴)。q″_rad=εσ(T_w⁴−T_sur⁴)はいくらか。有効数字2桁とする。",
+    "choices": [
+      "4.5 W/m²",
+      "1.2×10³ W/m²",
+      "9.9×10² W/m²",
+      "7.9×10² W/m²"
+    ],
+    "answer": 3,
+    "difficulty": "標準・数値計算",
+    "explanation": "400⁴−300⁴=2.56×10¹⁰−8.10×10⁹=1.75×10¹⁰ K⁴。0.80×5.67×10⁻⁸×1.75×10¹⁰=793.8 W/m²。二桁で7.9×10² W/m²。これは仮定した面の放射寄与で、膜沸騰の総熱流束ではない。",
+    "distractors": [
+      "各温度の四乗差を温度差の四乗にした。",
+      "四乗差や放射率の計算が条件に一致しない。",
+      "放射率0.80を掛け忘れた値。",
+      "正解。各絶対温度を四乗し、放射率を掛けた。"
+    ],
+    "hints": [
+      "(400−300)⁴ではなく400⁴−300⁴。",
+      "εは0.80であり黒体そのものではない。"
+    ],
+    "solutionSteps": [
+      "絶対温度をそれぞれ四乗する。",
+      "四乗差1.75×10¹⁰ K⁴を求める。",
+      "εσを掛けて793.8 W/m²を二桁へ丸める。"
+    ],
+    "beginnerPitfall": "黒い周囲の仮定と実際の蒸気・液体への放射の行先は別途確認する。"
+  },
+  {
+    "id": "supp-film-radiation-coupling-v1",
+    "revision": "v1",
+    "field": "沸騰・相変化",
+    "prerequisites": [
+      "沸騰曲線",
+      "熱流束と熱移動率",
+      "モデルの適用条件"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "applied",
+    "source": {
+      "type": "supplement",
+      "reference": "独立日本語講義§9.4に対応する独自の条件・例題から作問。原本の翻訳・図版・章末問題は転載しない。",
+      "chapterId": "ch9",
+      "focusSectionId": "9.4",
+      "guideId": "chapter9-latent-boiling"
+    },
+    "createdStatus": "独立作問下書き",
+    "reviewStatus": "執筆下書き・包括的品質監査は後工程／外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [],
+    "prompt": "放射を無視して求めた膜沸騰係数h_fに、独立な灰色面モデルから求めたh_radを加え、h_total=h_f+h_radとしたい。実際の蒸気膜への適用で必要な判断はどれか。",
+    "choices": [
+      "放射による膜厚・界面の変化と、連成モデルを確認する",
+      "放射と伝導は別現象なので、全条件で足せば厳密となる",
+      "膜が蒸気なので、放射の寄与は全条件でゼロと見なす",
+      "灰色面の式が計算できれば、他の境界条件は省略する"
+    ],
+    "answer": 0,
+    "difficulty": "標準・概念と適用判断",
+    "explanation": "放射が界面へ入ると蒸発量や蒸気膜の厚み等を変え、非放射条件で求めたh_fを固定してよいとは限らない。放射の吸収先・物性・幾何を含む境界条件と、対象に合う連成・補正モデルを確認する。",
+    "distractors": [
+      "正解。各寄与を独立に固定できるか確認する。",
+      "異なる現象でも同じ界面条件を通じて影響し合う。",
+      "蒸気膜の存在だけでは放射ゼロと結論できない。",
+      "数値が有限でも対象モデルとの整合は別問題。"
+    ],
+    "hints": [
+      "放射で加わるエネルギーは相変化へ影響しうる。",
+      "元のh_fがどの膜厚・境界条件で得られたか確認する。"
+    ],
+    "solutionSteps": [
+      "h_fは非放射の仮定で求めたと認識する。",
+      "放射による膜厚・蒸発量の変化を検討する。",
+      "対象条件に適合する連成モデル等を確認する。"
+    ],
+    "beginnerPitfall": "独立した伝熱計算の和を、実際の膜沸騰の厳密解とみなさない。"
+  },
+  {
+    "id": "supp-film-versus-condensation-v1",
+    "revision": "v1",
+    "field": "沸騰・相変化",
+    "prerequisites": [
+      "沸騰曲線",
+      "熱流束と熱移動率",
+      "モデルの適用条件"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "conceptual",
+    "source": {
+      "type": "supplement",
+      "reference": "独立日本語講義§9.4に対応する独自の条件・例題から作問。原本の翻訳・図版・章末問題は転載しない。",
+      "chapterId": "ch9",
+      "focusSectionId": "9.4",
+      "guideId": "chapter9-latent-boiling"
+    },
+    "createdStatus": "独立作問下書き",
+    "reviewStatus": "執筆下書き・包括的品質監査は後工程／外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [],
+    "prompt": "膜沸騰と膜状凝縮における、壁に接する膜の相と壁温の関係として適切なのはどれか。純物質の飽和条件を基準に考える。",
+    "choices": [
+      "どちらも液膜で、壁温はどちらも飽和温度より高い",
+      "膜沸騰は高温壁上の蒸気膜、膜状凝縮は低温壁上の液膜",
+      "どちらも蒸気膜で、壁温はどちらも飽和温度より低い",
+      "膜沸騰は低温壁上の液膜、膜状凝縮は高温壁上の蒸気膜"
+    ],
+    "answer": 1,
+    "difficulty": "標準・概念と適用判断",
+    "explanation": "膜沸騰では高温壁と液体が蒸気膜で隔てられる。膜状凝縮では飽和温度より冷たい壁に液膜が形成される。膜の物性と界面での蒸発・凝縮の向きが異なるため、同一の係数をそのまま流用できない。",
+    "distractors": [
+      "膜沸騰の膜の相と凝縮の壁温を取り違えた。",
+      "正解。相と温度関係を区別している。",
+      "膜状凝縮の膜の相と沸騰の壁温を取り違えた。",
+      "両現象の膜の相と壁温関係を逆にした。"
+    ],
+    "hints": [
+      "高温壁で蒸発してできる層はどちらの相か考える。",
+      "冷たい壁で蒸気が凝縮すると液体が残る。"
+    ],
+    "solutionSteps": [
+      "膜沸騰の熱の向きは高温壁から液体側。",
+      "膜状凝縮の熱の向きは蒸気から冷たい壁。",
+      "壁に接する相はそれぞれ蒸気と液体。"
+    ],
+    "beginnerPitfall": "膜を通る伝導という共通点だけから、両者を同じ式として扱わない。"
+  },
+  {
+    "id": "supp-film-geometry-limit-v1",
+    "revision": "v1",
+    "field": "沸騰・相変化",
+    "prerequisites": [
+      "沸騰曲線",
+      "熱流束と熱移動率",
+      "モデルの適用条件"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "applied",
+    "source": {
+      "type": "supplement",
+      "reference": "独立日本語講義§9.4に対応する独自の条件・例題から作問。原本の翻訳・図版・章末問題は転載しない。",
+      "chapterId": "ch9",
+      "focusSectionId": "9.4",
+      "guideId": "chapter9-latent-boiling"
+    },
+    "createdStatus": "独立作問下書き",
+    "reviewStatus": "執筆下書き・包括的品質監査は後工程／外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [],
+    "prompt": "固定厚さδ_gの平板蒸気層の伝導式がある。これを使って、小径円筒周りの実際の膜沸騰熱伝達率を予測するときの適切な判断はどれか。",
+    "choices": [
+      "直径を板厚δ_gに代入し、膜厚を指定したと見なす",
+      "円筒の全表面積だけを使えば、膜の流れは省略できる",
+      "曲率・周方向の膜厚と流動を含むモデルを検討する",
+      "同じ蒸気であれば、平板と円筒は全条件で等価となる"
+    ],
+    "answer": 2,
+    "difficulty": "標準・概念と適用判断",
+    "explanation": "平板で静止・固定厚さという仮定は、円筒周りの流れ、曲率、周方向の膜厚変化を表していない。円筒の直径は蒸気膜の厚さとは異なる。対象の形状・温度・物性に合うモデルを確認する。",
+    "distractors": [
+      "物体の直径と膜厚は異なる量。",
+      "全表面積だけでは局所膜厚と熱抵抗を決められない。",
+      "正解。平板モデルにない幾何と流れを確認する。",
+      "物質が同じでも幾何と境界条件は異なる。"
+    ],
+    "hints": [
+      "直径と蒸気膜厚は同じ量ではない。",
+      "円筒の周囲を流れる蒸気の厚みは一様とは限らない。"
+    ],
+    "solutionSteps": [
+      "平板固定膜厚モデルの仮定を列挙する。",
+      "円筒で曲率・周方向変化・浮力流が加わると考える。",
+      "円筒膜沸騰に適合した相関等を検討する。"
+    ],
+    "beginnerPitfall": "幾何が異なるモデルへ長さや面積だけを取り替えて使わない。"
+  },
+  {
+    "id": "supp-minimum-area-rate-v1",
+    "revision": "v1",
+    "field": "沸騰・相変化",
+    "prerequisites": [
+      "沸騰曲線",
+      "熱流束と熱移動率",
+      "モデルの適用条件"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "独立日本語講義§9.5に対応する独自の条件・例題から作問。原本の翻訳・図版・章末問題は転載しない。",
+      "chapterId": "ch9",
+      "focusSectionId": "9.5",
+      "guideId": "chapter9-latent-boiling"
+    },
+    "createdStatus": "独立作問下書き",
+    "reviewStatus": "執筆下書き・包括的品質監査は後工程／外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [],
+    "prompt": "仮想の一様加熱面で、特定条件の最小熱流束がq″_min=1.5×10⁴ W/m²、面積がA=0.040 m²と測定された。その点の全熱移動率Q̇=Aq″_minはいくらか。有効数字2桁とする。",
+    "choices": [
+      "6.0×10² W",
+      "3.8×10⁵ W",
+      "6.0×10⁻² W",
+      "1.5×10⁴ W"
+    ],
+    "answer": 0,
+    "difficulty": "標準・数値計算",
+    "explanation": "Q̇=0.040×15000=600 W。q″_minは面積当たりの量であり、Wへ直すには対応する面積を掛ける。面内の不均一があれば局所流束を積分する必要がある。",
+    "distractors": [
+      "正解。熱流束と面積の積。",
+      "面積を掛けず割っている。",
+      "面積または指数の換算を誤っている。",
+      "熱流束の数値をそのまま全熱移動率にした。"
+    ],
+    "hints": [
+      "W/m²にm²を掛ける。",
+      "最小という名前は全熱移動率を直接意味しない。"
+    ],
+    "solutionSteps": [
+      "熱流束と面積が同じ面を表すことを確認する。",
+      "15000×0.040=600。",
+      "Q̇=6.0×10² Wと単位を示す。"
+    ],
+    "beginnerPitfall": "熱流束の最小値と、全熱移動率の数値を混同しない。"
+  },
+  {
+    "id": "supp-minimum-effective-h-v1",
+    "revision": "v1",
+    "field": "沸騰・相変化",
+    "prerequisites": [
+      "沸騰曲線",
+      "熱流束と熱移動率",
+      "モデルの適用条件"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "独立日本語講義§9.5に対応する独自の条件・例題から作問。原本の翻訳・図版・章末問題は転載しない。",
+      "chapterId": "ch9",
+      "focusSectionId": "9.5",
+      "guideId": "chapter9-latent-boiling"
+    },
+    "createdStatus": "独立作問下書き",
+    "reviewStatus": "執筆下書き・包括的品質監査は後工程／外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [],
+    "prompt": "同じ測定点でq″_min=2.0×10⁴ W/m²と壁面過熱度ΔT_e=200 Kが与えられた。h_eff=q″_min/ΔT_eとして定義する実効熱伝達係数はいくらか。有効数字2桁とする。",
+    "choices": [
+      "4.0×10⁶ W/(m²·K)",
+      "1.0×10² W/(m²·K)",
+      "1.0×10⁻² W/(m²·K)",
+      "2.0×10⁴ W/(m²·K)"
+    ],
+    "answer": 1,
+    "difficulty": "標準・数値計算",
+    "explanation": "20000/200=100 W/(m²·K)。この点の実効比であり、沸騰曲線全体に共通の一定係数ではない。またq″_minだけからΔT_eを決めたわけではない。",
+    "distractors": [
+      "熱流束と温度差を掛けている。",
+      "正解。与えられた同じ状態の熱流束を温度差で割った。",
+      "温度差と熱流束の比を逆にしている。",
+      "温度差による除算を省略した。"
+    ],
+    "hints": [
+      "温度差は既にKで与えられている。",
+      "h_effは熱流束を温度差で割る定義。"
+    ],
+    "solutionSteps": [
+      "q″とΔT_eが同時点の値であると確認する。",
+      "20000/200=100。",
+      "h_eff=1.0×10² W/(m²·K)とする。"
+    ],
+    "beginnerPitfall": "一点の実効係数を、異なる沸騰状態へ一定値として外挿しない。"
+  },
+  {
+    "id": "supp-minimum-instant-storage-v1",
+    "revision": "v1",
+    "field": "沸騰・相変化",
+    "prerequisites": [
+      "沸騰曲線",
+      "熱流束と熱移動率",
+      "モデルの適用条件"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "独立日本語講義§9.5に対応する独自の条件・例題から作問。原本の翻訳・図版・章末問題は転載しない。",
+      "chapterId": "ch9",
+      "focusSectionId": "9.5",
+      "guideId": "chapter9-latent-boiling"
+    },
+    "createdStatus": "独立作問下書き",
+    "reviewStatus": "執筆下書き・包括的品質監査は後工程／外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [],
+    "prompt": "一様温度で一定熱容量C=1000 J/Kの物体へP=600 Wを供給する。ある瞬間にA=0.020 m²からq″=2.0×10⁴ W/m²だけ除熱され、他の損失はない。C dT/dt=P−Aq″から、この瞬間のdT/dtはいくらか。有効数字2桁とする。",
+    "choices": [
+      "−0.20 K/s",
+      "+0.60 K/s",
+      "+0.20 K/s",
+      "−0.40 K/s"
+    ],
+    "answer": 2,
+    "difficulty": "標準・数値計算",
+    "explanation": "除熱はAq″=0.020×20000=400 W。蓄熱率は600−400=+200 Wで、dT/dt=200/1000=+0.20 K/s。後の熱流束は温度や膜の変化で変わりうるため、同じ速度で無期限に上昇するとは言えない。",
+    "distractors": [
+      "蓄熱率の符号を逆にした。",
+      "除熱を引かず入力だけで温度上昇率を求めた。",
+      "正解。正味蓄熱を熱容量で割った。",
+      "除熱だけを負の蓄熱率としている。"
+    ],
+    "hints": [
+      "入力と出力を先にWでそろえる。",
+      "正味の200 WをJ/Kで割る。"
+    ],
+    "solutionSteps": [
+      "Aq″=400 W。",
+      "P−Aq″=+200 J/s。",
+      "dT/dt=+200/(1000)=+0.20 K/s。"
+    ],
+    "beginnerPitfall": "熱入力と除熱の差を、熱移動率そのものの最小値と混同しない。"
+  },
+  {
+    "id": "supp-minimum-branch-definition-v1",
+    "revision": "v1",
+    "field": "沸騰・相変化",
+    "prerequisites": [
+      "沸騰曲線",
+      "熱流束と熱移動率",
+      "モデルの適用条件"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "conceptual",
+    "source": {
+      "type": "supplement",
+      "reference": "独立日本語講義§9.5に対応する独自の条件・例題から作問。原本の翻訳・図版・章末問題は転載しない。",
+      "chapterId": "ch9",
+      "focusSectionId": "9.5",
+      "guideId": "chapter9-latent-boiling"
+    },
+    "createdStatus": "独立作問下書き",
+    "reviewStatus": "執筆下書き・包括的品質監査は後工程／外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [],
+    "prompt": "沸騰の最小熱流束q″_minについて、本講義での適切な意味はどれか。",
+    "choices": [
+      "熱平衡のゼロ熱流束も含めた、曲線全体の絶対最小値",
+      "核沸騰の上限にある、限界熱流束CHFと同じ値",
+      "任意の面で共通に使える、液体固有の一定熱流束",
+      "膜沸騰側で蒸気膜を維持しにくくなる下限付近の値"
+    ],
+    "answer": 3,
+    "difficulty": "標準・概念と適用判断",
+    "explanation": "最小熱流束は膜沸騰枝の下限付近に関係する用語である。曲線全体の全ての温度差を含めた数学的な最小値ではなく、核沸騰側の高い限界熱流束とも異なる。流体・圧力・表面・形状等の条件に依存する。",
+    "distractors": [
+      "温度差ゼロなど別の状態まで含めて定義している。",
+      "核沸騰側の上限と膜沸騰側の下限を混同した。",
+      "幾何・表面・圧力等の条件依存を落としている。",
+      "正解。対象とする膜沸騰枝を指定した。"
+    ],
+    "hints": [
+      "最小という名前だけで対象範囲を拡張しない。",
+      "CHFとは曲線上の別の場所。"
+    ],
+    "solutionSteps": [
+      "沸騰曲線上で膜沸騰側の下限に注目する。",
+      "核沸騰側のCHFと区別する。",
+      "熱平衡のゼロ値を含む絶対最小とは区別する。"
+    ],
+    "beginnerPitfall": "最小・最大という名前だけで、対象とする枝を省略しない。"
+  },
+  {
+    "id": "supp-minimum-temperature-insufficient-v1",
+    "revision": "v1",
+    "field": "沸騰・相変化",
+    "prerequisites": [
+      "沸騰曲線",
+      "熱流束と熱移動率",
+      "モデルの適用条件"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "applied",
+    "source": {
+      "type": "supplement",
+      "reference": "独立日本語講義§9.5に対応する独自の条件・例題から作問。原本の翻訳・図版・章末問題は転載しない。",
+      "chapterId": "ch9",
+      "focusSectionId": "9.5",
+      "guideId": "chapter9-latent-boiling"
+    },
+    "createdStatus": "独立作問下書き",
+    "reviewStatus": "執筆下書き・包括的品質監査は後工程／外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [],
+    "prompt": "ある流体の特定条件でq″_min=20 kW/m²という情報だけがある。膜崩壊時の壁面温度T_wを求める際の適切な判断はどれか。",
+    "choices": [
+      "20 kW/m²の数値を℃へ換え、T_w=20 ℃とする",
+      "q″_minだけでは不足し、圧力や温度関係等を確認する",
+      "飽和温度と必ず一致するので、T_w=T_satとする",
+      "壁面温度は流体によらず同じなので、一定値を使う"
+    ],
+    "answer": 1,
+    "difficulty": "標準・概念と適用判断",
+    "explanation": "熱流束と温度は異なる量で、単位換算で結び付かない。壁温を得るには対象の圧力に対応する飽和温度や、過熱度と熱流束を結ぶ実験・モデル等が必要である。膜崩壊条件の履歴や表面依存も確認する。",
+    "distractors": [
+      "異なる次元の量を単位換算で結び付けている。",
+      "正解。温度を決めるための状態と関係式が不足している。",
+      "膜崩壊時の過熱度が必ずゼロとは言えない。",
+      "流体・圧力・表面等の影響を無視している。"
+    ],
+    "hints": [
+      "W/m²と℃は同じ種類の量ではない。",
+      "q″とT_wを結ぶ条件が与えられていない。"
+    ],
+    "solutionSteps": [
+      "求める量と与えられた量の次元を確認する。",
+      "熱流束だけでは壁面過熱度が決まらない。",
+      "圧力・飽和温度・適合する熱流束と温度の関係を確認する。"
+    ],
+    "beginnerPitfall": "熱流束の数値をそのまま温度へ読み替えない。"
+  },
+  {
+    "id": "supp-minimum-negative-slope-feedback-v1",
+    "revision": "v1",
+    "field": "沸騰・相変化",
+    "prerequisites": [
+      "沸騰曲線",
+      "熱流束と熱移動率",
+      "モデルの適用条件"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "applied",
+    "source": {
+      "type": "supplement",
+      "reference": "独立日本語講義§9.5に対応する独自の条件・例題から作問。原本の翻訳・図版・章末問題は転載しない。",
+      "chapterId": "ch9",
+      "focusSectionId": "9.5",
+      "guideId": "chapter9-latent-boiling"
+    },
+    "createdStatus": "独立作問下書き",
+    "reviewStatus": "執筆下書き・包括的品質監査は後工程／外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [],
+    "prompt": "C dT/dt=P−Aq″(T)という一様温度モデルで、C>0、PとAは一定とする。定常点近傍でdq″/dT<0のとき、温度がわずかに上がると起こる応答はどれか。モデル外の損失や制御応答は含めない。",
+    "choices": [
+      "除熱が増えて、元の温度へ戻る向きに働く",
+      "入力Pが自動的に減って、元の温度へ戻る向きに働く",
+      "除熱が減って、さらに温度を上げる向きに働く",
+      "熱容量Cがゼロとなって、温度変化が停止する"
+    ],
+    "answer": 2,
+    "difficulty": "標準・概念と適用判断",
+    "explanation": "負の傾きでは温度上昇に対しq″が減る。入力一定ならP−Aq″が増え、蓄熱が温度上昇を強める。これは単純な局所モデルの応答であり、他の損失や制御系を含む実機の安定性の一般的な証明ではない。",
+    "distractors": [
+      "傾きdq″/dTの符号と逆の除熱変化。",
+      "入力P一定という与条件を変更している。",
+      "正解。負の傾きがこのモデルで増幅方向へ働く。",
+      "Cは正の一定値として与えられている。"
+    ],
+    "hints": [
+      "温度が上がったときq″がどう変わるか考える。",
+      "一定入力から減った出力を引くと正味蓄熱は増える。"
+    ],
+    "solutionSteps": [
+      "dq″/dT<0なので温度上昇時に除熱が減る。",
+      "P−Aq″が正方向に変化する。",
+      "正のCで割ると温度上昇を強める応答となる。"
+    ],
+    "beginnerPitfall": "この一変数・一定入力モデルの結論を全制御方式や実機へ一般化しない。"
+  },
+  {
+    "id": "supp-minimum-control-history-v1",
+    "revision": "v1",
+    "field": "沸騰・相変化",
+    "prerequisites": [
+      "沸騰曲線",
+      "熱流束と熱移動率",
+      "モデルの適用条件"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "applied",
+    "source": {
+      "type": "supplement",
+      "reference": "独立日本語講義§9.5に対応する独自の条件・例題から作問。原本の翻訳・図版・章末問題は転載しない。",
+      "chapterId": "ch9",
+      "focusSectionId": "9.5",
+      "guideId": "chapter9-latent-boiling"
+    },
+    "createdStatus": "独立作問下書き",
+    "reviewStatus": "執筆下書き・包括的品質監査は後工程／外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [],
+    "prompt": "同じ流体と加熱面で、核沸騰から入力を増やす実験と、高温の膜沸騰から冷却する実験を比べる。遷移点の読み方として適切なものはどれか。",
+    "choices": [
+      "CHFと膜崩壊を区別し、制御方式と履歴を記録する",
+      "同じ面なので、加熱と冷却で全ての遷移点を同一とする",
+      "温度と入力の制御は、どの点でも同じ応答と見なす",
+      "高温面を冷やせば、核沸騰側のCHFだけで経路が決まる"
+    ],
+    "answer": 0,
+    "difficulty": "標準・概念と適用判断",
+    "explanation": "核沸騰側の上限と膜沸騰側の維持下限は別の状態である。加熱と冷却で履歴依存や急変が現れうる。入力制御・壁温制御・熱容量・表面状態等を記録して経路を比較する。",
+    "distractors": [
+      "正解。異なる遷移と実験条件を分けて扱う。",
+      "同一面でも履歴や制御条件で経路が異なりうる。",
+      "温度と入力を制御する場合の応答は同一とは限らない。",
+      "膜の崩壊には膜沸騰側の条件が関係する。"
+    ],
+    "hints": [
+      "核沸騰側のCHFと膜沸騰側の下限は別の点。",
+      "壁温を指定するか熱入力を指定するかを確認する。"
+    ],
+    "solutionSteps": [
+      "両実験の出発する沸騰状態を特定する。",
+      "CHFと膜の維持下限を分けて記録する。",
+      "制御方式・温度履歴・表面条件を合わせて比較する。"
+    ],
+    "beginnerPitfall": "沸騰曲線に描かれた点と、実際にたどる運転経路を同一視しない。"
   }
 ]
