@@ -8969,5 +8969,373 @@
       "reference": "熱移動・熱力学の関係（第1章）、熱交換器（第3章）、流動と自然対流（第7・8章）の基本保存則に基づき独自執筆した補足。原書の翻訳・図の転載ではない。専門家校閲前。"
     },
     "reviewStatus": "needs_review"
+  },
+  {
+    "id": "overall-fin-surface-efficiency",
+    "ja": "フィン付き面の総合表面効率",
+    "en": "overall finned-surface efficiency",
+    "category": "フィン",
+    "aliases": [
+      "総合フィン面効率"
+    ],
+    "brief": "フィンと露出した基部を合わせた表面全体の実際の熱移動率を、理想的な全表面の熱移動率で割った比。",
+    "meaning": "フィンと露出した基部を合わせた表面全体の実際の熱移動率を、理想的な全表面の熱移動率で割った比。",
+    "beginner": "フィンを付けても先端まで基部と同じ温度にはなりません。フィンの温度低下と、フィンを付けていない部分の両方を考えた効率です。",
+    "detail": "フィン全表面積A_f、露出基部面積A_b、合計A_t=A_f+A_b、フィン効率η_fが共通で、周囲温度T∞と対流熱伝達率hが一様なら、Q̇=h[A_b+η_fA_f](T_b−T∞)。これをη_o hA_tΔTと表すとη_o=1−(A_f/A_t)(1−η_f)。フィン本数で面積を数え間違えない。基部温度が不均一なら追加解析が必要。",
+    "formula": "η_o=1−(A_f/A_t)(1−η_f)",
+    "unit": "η_o,η_f: 無次元、A_f,A_t: m²",
+    "example": "A_f=0.8 m²、A_t=1.0 m²、η_f=0.75ならη_o=1−0.8×0.25=0.80。",
+    "related": [
+      "フィン効率",
+      "フィン",
+      "対流熱伝達率",
+      "フィン有効度"
+    ],
+    "relatedSections": [
+      "4.5"
+    ],
+    "relatedQuestions": [],
+    "relatedSimulators": [],
+    "confusions": [
+      "総合表面効率は単体フィン効率ともフィン有効度とも別の量。"
+    ],
+    "source": {
+      "type": "supplement",
+      "reference": "熱伝導・フィン・熱放射・熱交換器の支配則をもとに独自執筆した教育用補足。原書翻訳・図版転載ではない。外部専門家校閲前。"
+    },
+    "reviewStatus": "needs_review"
+  },
+  {
+    "id": "fin-thermal-resistance",
+    "ja": "フィンの等価熱抵抗",
+    "en": "equivalent thermal resistance of a fin",
+    "category": "フィン",
+    "aliases": [
+      "フィン等価伝熱抵抗"
+    ],
+    "brief": "フィン基部と周囲流体の温度差を、フィンからの熱移動率で割って定義する抵抗。",
+    "meaning": "フィン基部と周囲流体の温度差を、フィンからの熱移動率で割って定義する抵抗。",
+    "beginner": "フィンが熱を逃がす効果を、電気回路の抵抗と似た一つの数字に置き換えます。抵抗が小さいほど熱を逃がしやすくなります。",
+    "detail": "フィンの対流面積A_fとフィン効率η_f、均一な熱伝達率hを用いれば、定常のフィン熱移動率Q̇_f=η_fhA_f(T_b−T∞)。したがって基部温度から周囲への等価熱抵抗はR_f=1/(η_fhA_f)。周囲との放射交換やフィン根元の接触抵抗を加える場合は別途評価し、単なる材料の伝導抵抗L/(kA)と混同しない。",
+    "formula": "R_f=(T_b−T∞)/Q̇_f=1/(η_fhA_f)",
+    "unit": "R_f: K/W、h: W/(m²·K)、A_f: m²",
+    "example": "η_f=0.80、h=20 W/(m²·K)、A_f=0.50 m²ならR_f=0.125 K/W。",
+    "related": [
+      "フィン効率",
+      "フィン",
+      "熱抵抗",
+      "対流熱伝達率"
+    ],
+    "relatedSections": [
+      "4.5"
+    ],
+    "relatedQuestions": [],
+    "relatedSimulators": [
+      "resistance"
+    ],
+    "confusions": [
+      "フィン等価抵抗にはフィン内伝導と外面対流の効果が含まれ、単純な平板の伝導抵抗ではない。"
+    ],
+    "source": {
+      "type": "supplement",
+      "reference": "熱伝導・フィン・熱放射・熱交換器の支配則をもとに独自執筆した教育用補足。原書翻訳・図版転載ではない。外部専門家校閲前。"
+    },
+    "reviewStatus": "needs_review"
+  },
+  {
+    "id": "insulated-tip-fin-temperature-profile",
+    "ja": "先端断熱フィンの温度分布",
+    "en": "temperature profile of an insulated-tip fin",
+    "category": "フィン",
+    "aliases": [
+      "先端断熱フィン温度分布"
+    ],
+    "brief": "一定断面フィンで先端を断熱したときの、基部からの距離による温度差の変化。",
+    "meaning": "一定断面フィンで先端を断熱したときの、基部からの距離による温度差の変化。",
+    "beginner": "基部は温かくても、先端へ向かうにつれて周囲へ熱が逃げます。どれだけ先端が冷えるかを式で求められます。",
+    "detail": "定常一次元、一定k・h・断面A_c・周長P、基部温度T_bが一定、先端x=LでdT/dx=0の直線フィンを考える。過剰温度θ(x)=T(x)−T∞はθ(x)/θ_b=cosh[m(L−x)]/cosh(mL)、m=√(hP/(kA_c))となる。基部で温度比1、先端で1/cosh(mL)。先端から熱を出すモデルでは分布が変わる。",
+    "formula": "θ(x)/θ_b=cosh[m(L−x)]/cosh(mL)",
+    "unit": "θ: K、m: m⁻¹、L,x: m、比: 無次元",
+    "example": "mL=1なら先端x=Lでθ_tip/θ_b=1/cosh(1)≈0.648。",
+    "related": [
+      "先端断熱",
+      "フィンパラメータ",
+      "フィン効率",
+      "過剰温度"
+    ],
+    "relatedSections": [
+      "4.5"
+    ],
+    "relatedQuestions": [],
+    "relatedSimulators": [],
+    "confusions": [
+      "先端断熱とはフィン側面も断熱する意味ではなく、側面からは対流で熱を逃がす。"
+    ],
+    "source": {
+      "type": "supplement",
+      "reference": "熱伝導・フィン・熱放射・熱交換器の支配則をもとに独自執筆した教育用補足。原書翻訳・図版転載ではない。外部専門家校閲前。"
+    },
+    "reviewStatus": "needs_review"
+  },
+  {
+    "id": "combined-convection-radiation",
+    "ja": "対流と放射の同時熱移動",
+    "en": "combined convection and radiation heat transfer",
+    "category": "熱放射",
+    "aliases": [
+      "対流・放射の併存"
+    ],
+    "brief": "表面から周囲流体への対流と、周囲面への熱放射を合わせて扱う熱移動。",
+    "meaning": "表面から周囲流体への対流と、周囲面への熱放射を合わせて扱う熱移動。",
+    "beginner": "熱い物体は空気を温めるだけでなく、周囲の壁へ赤外線でも熱を渡します。この二つの経路を同時に計算します。",
+    "detail": "温度T_sの拡散灰色不透明面が、大きな等温囲い面T_surと放射交換し、流体温度T∞との対流係数hが既知なら、外向き正の熱流束はq″=h(T_s−T∞)+εσ(T_s⁴−T_sur⁴)。放射式の温度は絶対温度K。T_surとT∞が同じとは限らない。反射や囲いの幾何、非灰色性、対流hの変化が大きい場合には別モデルが必要。",
+    "formula": "q″=h(T_s−T∞)+εσ(T_s⁴−T_sur⁴)（大きな囲い面の近似）",
+    "unit": "q″: W/m²、h: W/(m²·K)、T_s,T_sur: K",
+    "example": "T_s=400 K、T∞=T_sur=300 K、h=10、ε=0.8なら対流1000 W/m²と放射約794 W/m²、合計約1794 W/m²。",
+    "related": [
+      "対流熱伝達率",
+      "放射率",
+      "ステファン＝ボルツマンの法則",
+      "熱流束"
+    ],
+    "relatedSections": [
+      "10.1",
+      "10.4"
+    ],
+    "relatedQuestions": [],
+    "relatedSimulators": [
+      "radiation",
+      "convection"
+    ],
+    "confusions": [
+      "放射計算に℃の数値をそのまま4乗してはならず、対流の周囲流体温度と放射の周囲面温度も別に指定する。"
+    ],
+    "source": {
+      "type": "supplement",
+      "reference": "熱伝導・フィン・熱放射・熱交換器の支配則をもとに独自執筆した教育用補足。原書翻訳・図版転載ではない。外部専門家校閲前。"
+    },
+    "reviewStatus": "needs_review"
+  },
+  {
+    "id": "linearized-radiation-coefficient",
+    "ja": "線形化放射熱伝達率",
+    "en": "linearized radiative heat transfer coefficient",
+    "category": "熱放射",
+    "aliases": [
+      "等価放射熱伝達率"
+    ],
+    "brief": "温度の4乗で表される放射熱流束を、温度差に比例する形で表すための係数。",
+    "meaning": "温度の4乗で表される放射熱流束を、温度差に比例する形で表すための係数。",
+    "beginner": "熱放射は温度の4乗で変わるので、周囲との温度差に対して線形の式へ変換すると、対流との比較が容易になります。",
+    "detail": "大きな黒い等温囲い面に向けて放射する灰色拡散面ではq″_rad=εσ(T_s⁴−T_sur⁴)。4乗差を因数分解するとq″_rad=h_r(T_s−T_sur)、h_r=εσ(T_s+T_sur)(T_s²+T_sur²)となる。この形は与えられた二温度に対して代数的に厳密だが、h_rを一定に固定して広い温度範囲に使うことは近似となる。",
+    "formula": "h_r=εσ(T_s+T_sur)(T_s²+T_sur²)",
+    "unit": "h_r: W/(m²·K)、T_s,T_sur: K、ε: 無次元",
+    "example": "ε=0.80、T_s=400 K、T_sur=300 Kならh_r≈7.94 W/(m²·K)、放射熱流束は約794 W/m²。",
+    "related": [
+      "放射率",
+      "ステファン＝ボルツマンの法則",
+      "対流と放射の同時熱移動"
+    ],
+    "relatedSections": [
+      "10.1",
+      "10.4"
+    ],
+    "relatedQuestions": [],
+    "relatedSimulators": [
+      "radiation"
+    ],
+    "confusions": [
+      "温度が変われば線形化係数h_rも変わる。流体との対流hに固定的に等しいわけではない。"
+    ],
+    "source": {
+      "type": "supplement",
+      "reference": "熱伝導・フィン・熱放射・熱交換器の支配則をもとに独自執筆した教育用補足。原書翻訳・図版転載ではない。外部専門家校閲前。"
+    },
+    "reviewStatus": "needs_review"
+  },
+  {
+    "id": "parallel-plate-gray-radiation",
+    "ja": "平行灰色面間の放射交換",
+    "en": "radiation exchange between two parallel gray plates",
+    "category": "熱放射",
+    "aliases": [
+      "無限平行灰色平板の放射"
+    ],
+    "brief": "向き合う二つの大きな灰色面が放射を交換するとき、相互反射を含む正味熱流束。",
+    "meaning": "向き合う二つの大きな灰色面が放射を交換するとき、相互反射を含む正味熱流束。",
+    "beginner": "二つの板の間では、出た赤外線が反射されて行き来します。板の放射率が低いと、黒体同士より正味の熱移動は小さくなります。",
+    "detail": "無限平行・等温・拡散灰色・不透明な二面だけの放射交換で形態係数F₁₂=1なら、正味熱流束はq″=σ(T₁⁴−T₂⁴)/(1/ε₁+1/ε₂−1)。反射を含んだ結果であり、各面の放射率を単純に掛けた式ではない。有限面積や第三の囲い面、参加媒質の吸収がある場合は形態係数や放射回路を別途評価する。",
+    "formula": "q″=σ(T₁⁴−T₂⁴)/(1/ε₁+1/ε₂−1)",
+    "unit": "q″: W/m²、ε₁,ε₂: 無次元、T₁,T₂: K",
+    "example": "ε₁=ε₂=0.8、T₁=400 K、T₂=300 Kなら分母1.5、熱流束は約661.6 W/m²。",
+    "related": [
+      "灰色体",
+      "放射ネットワーク",
+      "放射率",
+      "放射形態係数"
+    ],
+    "relatedSections": [
+      "10.3",
+      "10.4"
+    ],
+    "relatedQuestions": [],
+    "relatedSimulators": [
+      "radiation"
+    ],
+    "confusions": [
+      "二面の放射率を単純に掛ける式や有限形状でF₁₂=1を仮定する式とは違う。"
+    ],
+    "source": {
+      "type": "supplement",
+      "reference": "熱伝導・フィン・熱放射・熱交換器の支配則をもとに独自執筆した教育用補足。原書翻訳・図版転載ではない。外部専門家校閲前。"
+    },
+    "reviewStatus": "needs_review"
+  },
+  {
+    "id": "counterflow-effectiveness-relation",
+    "ja": "向流熱交換器の有効度NTU関係",
+    "en": "counterflow effectiveness-NTU relation",
+    "category": "熱交換器",
+    "aliases": [
+      "向流ε-NTU式"
+    ],
+    "brief": "向流熱交換器の有効度を伝熱単位数と熱容量流量比から求める関係式。",
+    "meaning": "向流熱交換器の有効度を伝熱単位数と熱容量流量比から求める関係式。",
+    "beginner": "向流の熱交換器が理想上限の何割の熱を実際に渡せるか、伝熱面の能力と両流体の熱容量の比から予測します。",
+    "detail": "単相、一定熱容量流量、熱損失なし、総括熱伝達係数U一定の理想的な向流熱交換器で、C_r=C_min/C_max（0≤C_r<1）、NTU=UA/C_minのときε=[1−exp(−NTU(1−C_r))]/[1−C_r exp(−NTU(1−C_r))]。C_r=1では極限式ε=NTU/(1+NTU)。複数パス・直交流・大きな物性変化には別の相関が必要。",
+    "formula": "ε=[1−e^(−NTU(1−C_r))]/[1−C_r e^(−NTU(1−C_r))]（C_r<1）",
+    "unit": "ε、NTU、C_r: 無次元",
+    "example": "NTU=1、C_r=0.5ならε≈0.565。実際の熱移動率はQ̇=εQ̇_maxで求める。",
+    "related": [
+      "向流",
+      "熱交換器有効度",
+      "伝熱単位数",
+      "熱容量流量比"
+    ],
+    "relatedSections": [
+      "3.3",
+      "3.4"
+    ],
+    "relatedQuestions": [],
+    "relatedSimulators": [],
+    "confusions": [
+      "同じNTU・C_rでも向流と並流の有効度は一般に等しくない。"
+    ],
+    "source": {
+      "type": "supplement",
+      "reference": "熱伝導・フィン・熱放射・熱交換器の支配則をもとに独自執筆した教育用補足。原書翻訳・図版転載ではない。外部専門家校閲前。"
+    },
+    "reviewStatus": "needs_review"
+  },
+  {
+    "id": "parallelflow-effectiveness-relation",
+    "ja": "並流熱交換器の有効度NTU関係",
+    "en": "parallel-flow effectiveness-NTU relation",
+    "category": "熱交換器",
+    "aliases": [
+      "並流ε-NTU式"
+    ],
+    "brief": "並流熱交換器の有効度を伝熱単位数と熱容量流量比から求める関係式。",
+    "meaning": "並流熱交換器の有効度を伝熱単位数と熱容量流量比から求める関係式。",
+    "beginner": "二つの流体が同じ向きに流れると、温度差が入口から減りやすく、向流と違う式で熱交換性能を計算します。",
+    "detail": "単相・定常・熱容量流量一定・外部熱損失なし・U一定の理想的な並流熱交換器ではε=[1−exp(−NTU(1+C_r))]/(1+C_r)。C_r=1ならNTUを大きくしてもεは1/2に近づく。相変化や多パス構造を無条件で当てはめられず、出口温度交差は通常の並流で生じない。",
+    "formula": "ε=[1−e^(−NTU(1+C_r))]/(1+C_r)",
+    "unit": "ε、NTU、C_r: 無次元",
+    "example": "NTU=1、C_r=1ならε=(1−e^(−2))/2≈0.432。",
+    "related": [
+      "並流",
+      "熱交換器有効度",
+      "伝熱単位数",
+      "熱容量流量比"
+    ],
+    "relatedSections": [
+      "3.3",
+      "3.4"
+    ],
+    "relatedQuestions": [],
+    "relatedSimulators": [],
+    "confusions": [
+      "並流のεは向流と同式ではなく、C_r=1での高NTU極限は1/2となる。"
+    ],
+    "source": {
+      "type": "supplement",
+      "reference": "熱伝導・フィン・熱放射・熱交換器の支配則をもとに独自執筆した教育用補足。原書翻訳・図版転載ではない。外部専門家校閲前。"
+    },
+    "reviewStatus": "needs_review"
+  },
+  {
+    "id": "internally-heated-slab-profile",
+    "ja": "内部発熱平板の放物線温度分布",
+    "en": "parabolic temperature profile in a heat-generating slab",
+    "category": "熱伝導",
+    "aliases": [
+      "一様発熱平板の温度分布"
+    ],
+    "brief": "一様な体積発熱がある定常平板で、温度が位置の二乗関数として変わる解。",
+    "meaning": "一様な体積発熱がある定常平板で、温度が位置の二乗関数として変わる解。",
+    "beginner": "板の中で熱が発生すると、両面を冷やしても中心は高温になります。温度の形は単なる直線でなく、曲線になります。",
+    "detail": "半厚さLで中心x=0に対称面を持つ平板に一様な体積発熱q̇'''があり、一定k、両面温度T_s、定常一次元とするとd²T/dx²=−q̇'''/kよりT(x)=T_s+(q̇'''/(2k))(L²−x²)。内部発熱が正なら最高温度は中心にありT(0)−T_s=q̇'''L²/(2k)。発熱の空間分布や物性が変化すれば形は変わる。",
+    "formula": "T(x)=T_s+[q̇'''/(2k)](L²−x²)",
+    "unit": "q̇''': W/m³、k: W/(m·K)、L,x: m",
+    "example": "q̇'''=1000 W/m³、L=0.10 m、k=1 W/(m·K)なら中心温度は表面より5 K高い。",
+    "related": [
+      "内部発熱",
+      "平板",
+      "熱伝導方程式",
+      "熱的対称面"
+    ],
+    "relatedSections": [
+      "2.1",
+      "2.2",
+      "4.2"
+    ],
+    "relatedQuestions": [],
+    "relatedSimulators": [
+      "conduction"
+    ],
+    "confusions": [
+      "内部発熱がある板の温度分布は、無発熱の直線分布とは異なる。"
+    ],
+    "source": {
+      "type": "supplement",
+      "reference": "熱伝導・フィン・熱放射・熱交換器の支配則をもとに独自執筆した教育用補足。原書翻訳・図版転載ではない。外部専門家校閲前。"
+    },
+    "reviewStatus": "needs_review"
+  },
+  {
+    "id": "layer-interface-temperature",
+    "ja": "多層壁の界面温度",
+    "en": "interface temperature in a layered wall",
+    "category": "熱伝導",
+    "aliases": [
+      "多層平板の界面温度"
+    ],
+    "brief": "熱抵抗が直列に並ぶ多層壁で、材料の境界に生じる温度。",
+    "meaning": "熱抵抗が直列に並ぶ多層壁で、材料の境界に生じる温度。",
+    "beginner": "二種類の壁を重ねると、温度は各層の熱抵抗に応じて低下します。途中の温度を計算すると、どの材料が高温にさらされるか分かります。",
+    "detail": "定常一次元、内部発熱なし、各層の熱抵抗R_iが直列に並びQ̇が共通なら、熱流方向に沿う第j界面温度はT_j=T_hot−Q̇Σ_{i≤j}R_i。接触熱抵抗がある場合はその界面に温度の跳びが生じ、接触が理想的なら温度は連続する。熱流が分岐する多次元壁では単純な直列式が正確でない場合がある。",
+    "formula": "T_j=T_hot−Q̇Σ_{i≤j}R_i（定常一次元）",
+    "unit": "T_j: Kまたは℃、Q̇: W、R_i: K/W",
+    "example": "高温端100℃、Q̇=200 W、最初の層の抵抗0.10 K/Wなら第1界面温度は80℃。",
+    "related": [
+      "複合平板壁",
+      "熱抵抗の直列接続",
+      "接触熱抵抗",
+      "界面熱流束の連続条件"
+    ],
+    "relatedSections": [
+      "2.2",
+      "2.3"
+    ],
+    "relatedQuestions": [],
+    "relatedSimulators": [],
+    "confusions": [
+      "接触抵抗がある場合は、界面の両側が同じ温度とは限らない。"
+    ],
+    "source": {
+      "type": "supplement",
+      "reference": "熱伝導・フィン・熱放射・熱交換器の支配則をもとに独自執筆した教育用補足。原書翻訳・図版転載ではない。外部専門家校閲前。"
+    },
+    "reviewStatus": "needs_review"
   }
 ]
