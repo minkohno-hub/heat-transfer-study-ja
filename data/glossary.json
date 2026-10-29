@@ -7613,5 +7613,454 @@
       "reference": "第10章の日射・太陽放射および第11章の境膜・多成分物質移動に関連する一般的な基礎法則から独立執筆。原書翻訳と図版転載ではない。専門家校閲前。"
     },
     "reviewStatus": "needs_review"
+  },
+  {
+    "id": "conduction-shape-factor",
+    "ja": "熱伝導形状係数",
+    "en": "conduction shape factor",
+    "category": "熱伝導",
+    "aliases": [
+      "形状係数（熱伝導）"
+    ],
+    "brief": "幾何形状による定常熱伝導の通りやすさを、熱伝導率と温度差から分けて表す量。",
+    "meaning": "幾何形状による定常熱伝導の通りやすさを、熱伝導率と温度差から分けて表す量。",
+    "beginner": "同じ材質・同じ温度差でも、熱が通る立体的な形によって熱量が変わります。その形だけの効果を表す数値です。",
+    "detail": "等方・一定熱伝導率kの定常伝導で、境界がそれぞれ一様温度T₁,T₂に保たれ、ほかの条件が適切な場合、熱移動率をQ̇=kS(T₁−T₂)と書き、Sを伝導形状係数と呼ぶ。Sの次元は長さであり、無次元の放射形態係数とは異なる。発熱や境界面の対流などを含む場合は単一Sで表せないことがある。",
+    "formula": "Q̇=kS(T₁−T₂)（一定k・適切な定常伝導問題）",
+    "unit": "S: m、k: W/(m·K)、Q̇: W",
+    "example": "k=2 W/(m·K)、S=0.5 m、温度差30 Kの定常モデルならQ̇=30 W。",
+    "related": [
+      "熱伝導率",
+      "熱抵抗",
+      "多次元熱伝導",
+      "放射形態係数"
+    ],
+    "relatedSections": [
+      "4.4",
+      "5.7"
+    ],
+    "relatedQuestions": [],
+    "relatedSimulators": [
+      "conduction"
+    ],
+    "confusions": [
+      "熱伝導形状係数はm単位で、放射形態係数（無次元）と同一ではない。"
+    ],
+    "source": {
+      "type": "supplement",
+      "reference": "教科書第2・4・5章に対応する熱伝導と数学的解法の基本法則から独自執筆した補足。原書本文の翻訳ではなく、外部専門家校閲前。"
+    },
+    "reviewStatus": "needs_review"
+  },
+  {
+    "id": "spherical-shell-conduction-resistance",
+    "ja": "球殻の伝導熱抵抗",
+    "en": "thermal resistance of a spherical shell",
+    "category": "熱抵抗",
+    "aliases": [
+      "球殻熱抵抗"
+    ],
+    "brief": "一定熱伝導率の球殻を半径方向に熱が通る場合の全熱抵抗。",
+    "meaning": "一定熱伝導率の球殻を半径方向に熱が通る場合の全熱抵抗。",
+    "beginner": "球殻では外側ほど熱が通る面積が大きくなります。平板と同じ面積で計算せず、半径の変化を組み込みます。",
+    "detail": "内半径r_i、外半径r_o（r_o>r_i）、一定熱伝導率kの同心球殻で、定常・半径方向一次元・内部発熱なしならR_s=(1/(4πk))(1/r_i−1/r_o)。内外面の温度差はΔT=Q̇R_s。対流抵抗を加える際は内外面積が異なるため、各面積4πr²を対応させる。",
+    "formula": "R_s=(1/(4πk))(1/r_i−1/r_o)",
+    "unit": "R_s: K/W、r_i,r_o: m、k: W/(m·K)",
+    "example": "r_i=0.10 m、r_o=0.20 m、k=1 W/(m·K)ならR_s=5/(4π)≈0.3979 K/W。",
+    "related": [
+      "球殻",
+      "熱抵抗",
+      "熱伝導率",
+      "熱抵抗の直列接続"
+    ],
+    "relatedSections": [
+      "2.2",
+      "2.3"
+    ],
+    "relatedQuestions": [],
+    "relatedSimulators": [
+      "resistance"
+    ],
+    "confusions": [
+      "球殻の熱抵抗は、面積一定を仮定する平板のL/(kA)とは異なる。"
+    ],
+    "source": {
+      "type": "supplement",
+      "reference": "教科書第2・4・5章に対応する熱伝導と数学的解法の基本法則から独自執筆した補足。原書本文の翻訳ではなく、外部専門家校閲前。"
+    },
+    "reviewStatus": "needs_review"
+  },
+  {
+    "id": "cylindrical-logarithmic-temperature-profile",
+    "ja": "円筒壁の対数温度分布",
+    "en": "logarithmic temperature profile in a cylinder",
+    "category": "熱伝導",
+    "aliases": [
+      "円筒の対数温度分布"
+    ],
+    "brief": "定常の半径方向熱伝導で、円筒壁内の温度が半径の対数に沿って変わること。",
+    "meaning": "定常の半径方向熱伝導で、円筒壁内の温度が半径の対数に沿って変わること。",
+    "beginner": "平板では温度が距離に比例して変わる場合がありますが、円筒の壁では外側ほど伝熱面積が増えるため、温度の形が対数になります。",
+    "detail": "長い円筒で軸方向・周方向の変化がなく、熱伝導率一定、内部発熱なし、内外面が一様温度T_i,T_oならT(r)=T_i+(T_o−T_i)ln(r/r_i)/ln(r_o/r_i)。ここでr_i≤r≤r_o。局所熱流束は半径に応じて変わるが、円筒全体の半径方向熱移動率Q̇は定常条件で一定。",
+    "formula": "T(r)=T_i+(T_o−T_i)ln(r/r_i)/ln(r_o/r_i)",
+    "unit": "T: Kまたは℃、r: m、lnの引数: 無次元",
+    "example": "r_i=1 cm、r_o=4 cm、T_i=100℃、T_o=20℃ならr=2 cmの温度は100−80×ln2/ln4=60℃。",
+    "related": [
+      "円筒壁",
+      "円筒壁の熱抵抗",
+      "対数",
+      "フーリエの法則"
+    ],
+    "relatedSections": [
+      "2.2",
+      "4.2"
+    ],
+    "relatedQuestions": [],
+    "relatedSimulators": [
+      "conduction"
+    ],
+    "confusions": [
+      "円筒の半径に関する温度分布は、一定kの無発熱条件でも一般に直線ではない。"
+    ],
+    "source": {
+      "type": "supplement",
+      "reference": "教科書第2・4・5章に対応する熱伝導と数学的解法の基本法則から独自執筆した補足。原書本文の翻訳ではなく、外部専門家校閲前。"
+    },
+    "reviewStatus": "needs_review"
+  },
+  {
+    "id": "temperature-dependent-conductivity",
+    "ja": "温度依存熱伝導率",
+    "en": "temperature-dependent thermal conductivity",
+    "category": "熱伝導",
+    "aliases": [
+      "熱伝導率の温度依存性"
+    ],
+    "brief": "材料の熱伝導率が温度によって変化する性質。",
+    "meaning": "材料の熱伝導率が温度によって変化する性質。",
+    "beginner": "同じ材料でも低温と高温で熱の伝わりやすさが異なることがあります。温度差が大きいと無視できません。",
+    "detail": "k=k(T)の場合は一定kの伝導式の積分をそのまま使えず、定常一次元で内部発熱がなければq″=−k(T)dT/dxを温度について積分できる。厚さLの平板ならq″=(1/L)∫_{T_c}^{T_h}k(T)dT。k(T)を線形近似できるとき、温度区間平均のkが両端のkの算術平均になるが、任意の非線形kには当てはまらない。",
+    "formula": "q″=(1/L)∫_{T_c}^{T_h}k(T)dT（平板定常・発熱なし）",
+    "unit": "k: W/(m·K)、q″: W/m²、L: m",
+    "example": "k(T)=1+0.01(T−300 K) W/(m·K)で300～400 Kならkの温度区間平均は1.5 W/(m·K)。",
+    "related": [
+      "熱伝導率",
+      "平均熱伝導率",
+      "フーリエの法則",
+      "複合平板壁"
+    ],
+    "relatedSections": [
+      "2.2",
+      "4.2"
+    ],
+    "relatedQuestions": [],
+    "relatedSimulators": [
+      "conduction"
+    ],
+    "confusions": [
+      "熱伝導率を一定値に置く近似は、物性が温度で変わる場合に誤差を生じ得る。"
+    ],
+    "source": {
+      "type": "supplement",
+      "reference": "教科書第2・4・5章に対応する熱伝導と数学的解法の基本法則から独自執筆した補足。原書本文の翻訳ではなく、外部専門家校閲前。"
+    },
+    "reviewStatus": "needs_review"
+  },
+  {
+    "id": "temperature-averaged-conductivity",
+    "ja": "平均熱伝導率",
+    "en": "temperature-averaged thermal conductivity",
+    "category": "熱伝導",
+    "aliases": [
+      "温度区間平均熱伝導率"
+    ],
+    "brief": "指定された温度範囲で熱伝導率を積分し、温度差で割った平均値。",
+    "meaning": "指定された温度範囲で熱伝導率を積分し、温度差で割った平均値。",
+    "beginner": "温度によって熱伝導率が変わるとき、温度の低い側から高い側までの値を平均して使う方法です。",
+    "detail": "温度区間[T_c,T_h]でk_mean=(T_h−T_c)⁻¹∫_{T_c}^{T_h}k(T)dTと定義する。この平均は定常・一次元・無発熱の平板の熱流束をq″=k_mean(T_h−T_c)/Lと書く場合に厳密に対応する。時間変化や温度分布を問わず万能な一定kに置き換える意味ではなく、材料の種類、異方性、温度範囲を明示する必要がある。",
+    "formula": "k_mean=(∫_{T_c}^{T_h}k(T)dT)/(T_h−T_c)",
+    "unit": "k_mean: W/(m·K)、T_h−T_c: K",
+    "example": "kが温度範囲で1.0から2.0 W/(m·K)まで直線的に変化する場合、温度区間平均は1.5 W/(m·K)。",
+    "related": [
+      "温度依存熱伝導率",
+      "熱伝導率",
+      "フーリエの法則"
+    ],
+    "relatedSections": [
+      "2.2",
+      "4.2"
+    ],
+    "relatedQuestions": [],
+    "relatedSimulators": [],
+    "confusions": [
+      "算術平均が成り立つのはk(T)が線形など特定条件で、一般には積分平均が必要。"
+    ],
+    "source": {
+      "type": "supplement",
+      "reference": "教科書第2・4・5章に対応する熱伝導と数学的解法の基本法則から独自執筆した補足。原書本文の翻訳ではなく、外部専門家校閲前。"
+    },
+    "reviewStatus": "needs_review"
+  },
+  {
+    "id": "thermal-symmetry-plane",
+    "ja": "熱的対称面",
+    "en": "thermal symmetry plane",
+    "category": "熱伝導",
+    "aliases": [
+      "温度対称面"
+    ],
+    "brief": "温度分布が鏡映対称なため、法線方向の温度勾配がゼロになる面。",
+    "meaning": "温度分布が鏡映対称なため、法線方向の温度勾配がゼロになる面。",
+    "beginner": "物体を真ん中で切って左右対称に加熱しているなら、中心面の両側に熱が一方的に流れることはありません。",
+    "detail": "左右で形状・物性・発熱・初期条件・境界条件が対称な熱伝導問題では、対称面上で∂T/∂n=0となる。等方・有限kなら法線熱流束もゼロなので断熱境界と同じ数学的条件で半領域を計算できる。しかし対称面は実際の断熱材を置いた場所ではない。非対称な境界や物性があれば条件は崩れる。",
+    "formula": "∂T/∂n=0（対称面）、q″_n=−k∂T/∂n=0（等方媒体）",
+    "unit": "∂T/∂n: K/m、q″_n: W/m²",
+    "example": "厚さ20 mmの平板を両面から同条件で冷却するとき、中心x=0を対称面とした計算では∂T/∂x|_{x=0}=0。",
+    "related": [
+      "断熱境界条件",
+      "平板",
+      "非定常熱伝導",
+      "境界条件"
+    ],
+    "relatedSections": [
+      "4.1",
+      "5.3",
+      "5.8"
+    ],
+    "relatedQuestions": [],
+    "relatedSimulators": [
+      "conduction",
+      "transient"
+    ],
+    "confusions": [
+      "数学的な対称条件は、実際に断熱された物理的な壁と必ずしも同一ではない。"
+    ],
+    "source": {
+      "type": "supplement",
+      "reference": "教科書第2・4・5章に対応する熱伝導と数学的解法の基本法則から独自執筆した補足。原書本文の翻訳ではなく、外部専門家校閲前。"
+    },
+    "reviewStatus": "needs_review"
+  },
+  {
+    "id": "superposition-principle",
+    "ja": "重ね合わせの原理",
+    "en": "superposition principle",
+    "category": "数学・解析",
+    "aliases": [
+      "線形重ね合わせ"
+    ],
+    "brief": "線形方程式で、複数の解の適切な和も解になるという性質。",
+    "meaning": "線形方程式で、複数の解の適切な和も解になるという性質。",
+    "beginner": "熱源が二つある場合、条件が線形ならそれぞれの温度変化を計算して足し合わせる方法を使えます。",
+    "detail": "線形な伝導演算子LについてL[T₁+T₂]=L[T₁]+L[T₂]。同次境界条件を満たす二つの解の線形結合も同次問題の解となる。非同次な境界条件や初期条件は基準解と偏差解へ分けるなど、条件全体を整合させる。温度依存k、T⁴放射境界などの非線形要素があると一般にはそのまま使えない。",
+    "formula": "L[aT₁+bT₂]=aL[T₁]+bL[T₂]（線形演算子）",
+    "unit": "温度の重ね合わせ: K（温度差）、a,b: 無次元",
+    "example": "ある位置で熱源Aによる基準からの上昇が4 K、Bによる上昇が6 Kなら、線形条件での両方の寄与は10 K。",
+    "related": [
+      "熱伝導方程式",
+      "境界条件",
+      "変数分離法",
+      "非定常熱伝導"
+    ],
+    "relatedSections": [
+      "4.2",
+      "5.3",
+      "5.7"
+    ],
+    "relatedQuestions": [],
+    "relatedSimulators": [],
+    "confusions": [
+      "境界条件まで線形・整合している必要があり、どんな温度場でも無条件に足せるわけではない。"
+    ],
+    "source": {
+      "type": "supplement",
+      "reference": "教科書第2・4・5章に対応する熱伝導と数学的解法の基本法則から独自執筆した補足。原書本文の翻訳ではなく、外部専門家校閲前。"
+    },
+    "reviewStatus": "needs_review"
+  },
+  {
+    "id": "eigenfunction-expansion",
+    "ja": "固有関数展開",
+    "en": "eigenfunction expansion",
+    "category": "非定常熱伝導",
+    "aliases": [
+      "固有関数級数"
+    ],
+    "brief": "境界条件を満たす固有関数を重ねて、任意の初期温度分布を表す方法。",
+    "meaning": "境界条件を満たす固有関数を重ねて、任意の初期温度分布を表す方法。",
+    "beginner": "熱が広がる様子を、減り方の違ういくつもの温度分布の形に分解します。長時間では遅く減る形が残ります。",
+    "detail": "線形熱伝導方程式で時間・空間を分離すると、適切な境界条件に対応する固有関数φ_n(x)と固有値λ_nが得られる。初期温度分布をφ_nの重み付き級数へ展開すれば、各項はexp(−λ_n²Fo)で減衰する。係数は初期条件と固有関数の直交性などで決める。第一項だけ残す一項近似は時間が十分経過した場合の近似である。",
+    "formula": "θ(x,t)/θ_i=Σ_n A_n φ_n(x) exp(−λ_n²Fo)（典型的な一定物性系）",
+    "unit": "A_n,φ_n,λ_n,Fo: 無次元（正規化した場合）",
+    "example": "2モードの初期係数A₁=0.8、A₂=0.2で各時間因子が0.9と0.1なら、対応するモードの振幅合計は0.8×0.9+0.2×0.1=0.74。",
+    "related": [
+      "変数分離法",
+      "非定常伝導の固有値",
+      "一項近似解",
+      "フーリエ数"
+    ],
+    "relatedSections": [
+      "5.3",
+      "5.4",
+      "5.5"
+    ],
+    "relatedQuestions": [],
+    "relatedSimulators": [
+      "transient"
+    ],
+    "confusions": [
+      "全時刻で第1項だけで十分とは限らず、短時間は高次モードの寄与が大きい。"
+    ],
+    "source": {
+      "type": "supplement",
+      "reference": "教科書第2・4・5章に対応する熱伝導と数学的解法の基本法則から独自執筆した補足。原書本文の翻訳ではなく、外部専門家校閲前。"
+    },
+    "reviewStatus": "needs_review"
+  },
+  {
+    "id": "heisler-charts",
+    "ja": "ハイスラー線図",
+    "en": "Heisler charts",
+    "category": "非定常熱伝導",
+    "aliases": [
+      "Heisler線図"
+    ],
+    "brief": "単純形状の過渡熱伝導解を、ビオ数・フーリエ数などで読めるようにした線図。",
+    "meaning": "単純形状の過渡熱伝導解を、ビオ数・フーリエ数などで読めるようにした線図。",
+    "beginner": "板や円柱や球が冷える過程を、毎回微分方程式を解かずに線図からおおよそ読み取る方法です。",
+    "detail": "平板・長い円柱・球などで、初期温度が一様、物性と表面熱伝達率が一定、周囲温度一定などを想定した過渡伝導解をグラフ化したもの。一般に中心温度比、内部位置温度比、熱移動量の補助線図がある。形状や代表長さの定義、BiとFoの適用範囲を確認する。集中熱容量が有効な極小Bi条件や複雑な境界には別の扱いが適する。",
+    "formula": "Bi=hL_c/k、Fo=αt/L_c²（線図の指定する代表長さL_cを使用）",
+    "unit": "Bi,Fo,温度比: 無次元",
+    "example": "平板の半厚さL_c=0.010 m、h=100 W/(m²·K)、k=10 W/(m·K)ならBi=0.10。線図を使う際はFoも指定する。",
+    "related": [
+      "ビオ数",
+      "フーリエ数",
+      "非定常伝導の固有値",
+      "一項近似解"
+    ],
+    "relatedSections": [
+      "5.3",
+      "5.4",
+      "5.5"
+    ],
+    "relatedQuestions": [],
+    "relatedSimulators": [],
+    "confusions": [
+      "同じL_c表記でも集中熱容量法のV/Aと線図の半厚さ等は一致するとは限らない。"
+    ],
+    "source": {
+      "type": "supplement",
+      "reference": "教科書第2・4・5章に対応する熱伝導と数学的解法の基本法則から独自執筆した補足。原書本文の翻訳ではなく、外部専門家校閲前。"
+    },
+    "reviewStatus": "needs_review"
+  },
+  {
+    "id": "isotherm",
+    "ja": "等温線",
+    "en": "isotherm",
+    "category": "多次元熱伝導",
+    "aliases": [
+      "等温曲線"
+    ],
+    "brief": "温度が等しい位置をつないで示した線。",
+    "meaning": "温度が等しい位置をつないで示した線。",
+    "beginner": "温度の地図で同じ温度の点を結んだ線です。線の間隔が狭いほど温度の変化が急な場所を表す場合があります。",
+    "detail": "二次元の温度場T(x,y)においてT(x,y)=T₀の等値線を等温線と呼ぶ。温度勾配∇Tは滑らかな等温線へ直交する。等方性・スカラーkのフーリエ則では熱流束は勾配の逆向きで、等温線と直交する。異方性材料では熱流束の向きが温度勾配と一致しないことがある。等温面は三次元の対応物である。",
+    "formula": "T(x,y)=T₀、∇T·t̂=0（等温線への接線t̂）",
+    "unit": "T: Kまたは℃、∇T: K/m、t̂: 無次元",
+    "example": "T(x,y)=20+2x（xはm、Tは℃）ならx=1 mの直線全体が22℃の等温線。",
+    "related": [
+      "温度勾配",
+      "多次元熱伝導",
+      "異方性熱伝導率",
+      "熱流束"
+    ],
+    "relatedSections": [
+      "5.7",
+      "5.8"
+    ],
+    "relatedQuestions": [],
+    "relatedSimulators": [],
+    "confusions": [
+      "等温線は熱が流れる線そのものではなく、等方媒体では熱流方向と直交する。"
+    ],
+    "source": {
+      "type": "supplement",
+      "reference": "教科書第2・4・5章に対応する熱伝導と数学的解法の基本法則から独自執筆した補足。原書本文の翻訳ではなく、外部専門家校閲前。"
+    },
+    "reviewStatus": "needs_review"
+  },
+  {
+    "id": "cumulative-heat-transfer",
+    "ja": "累積熱移動量",
+    "en": "cumulative heat transfer",
+    "category": "熱移動",
+    "aliases": [
+      "時間積分熱量"
+    ],
+    "brief": "一定時間に移動した熱移動率を積分して得られるエネルギー量。",
+    "meaning": "一定時間に移動した熱移動率を積分して得られるエネルギー量。",
+    "beginner": "熱が1秒間に何J流れるかと、10秒間に合計何J流れたかは違います。その合計を累積熱移動量といいます。",
+    "detail": "熱移動率Q̇(t)が時刻で変わる場合、区間[t₁,t₂]での正味の熱移動量はQ=∫_{t₁}^{t₂}Q̇(t)dtで表す。符号規約は面への流入か流出かで決める。熱移動率Wと熱量Jを混同しないこと。熱移動量Qは蓄熱の内部エネルギー変化と一致するとは限らず、ほかの熱流経路や仕事があると収支が必要。",
+    "formula": "Q=∫_{t₁}^{t₂}Q̇(t)dt",
+    "unit": "Q: J、Q̇: W=J/s、t: s",
+    "example": "熱移動率が最初の5秒間100 W、次の5秒間40 Wなら累積熱移動量は100×5+40×5=700 J。",
+    "related": [
+      "熱移動率",
+      "熱エネルギー",
+      "検査体積のエネルギー収支",
+      "非定常熱伝導"
+    ],
+    "relatedSections": [
+      "1.2",
+      "5.1",
+      "5.2"
+    ],
+    "relatedQuestions": [],
+    "relatedSimulators": [],
+    "confusions": [
+      "熱移動率Wとその時間積分である熱移動量Jは別の単位・量。"
+    ],
+    "source": {
+      "type": "supplement",
+      "reference": "教科書第2・4・5章に対応する熱伝導と数学的解法の基本法則から独自執筆した補足。原書本文の翻訳ではなく、外部専門家校閲前。"
+    },
+    "reviewStatus": "needs_review"
+  },
+  {
+    "id": "well-posed-heat-conduction-problem",
+    "ja": "適切に設定された熱伝導問題",
+    "en": "well-posed heat conduction problem",
+    "category": "数学・解析",
+    "aliases": [
+      "良設定の熱伝導問題"
+    ],
+    "brief": "境界・初期条件を含め、解の存在・一意性・データへの安定性が成立する問題。",
+    "meaning": "境界・初期条件を含め、解の存在・一意性・データへの安定性が成立する問題。",
+    "beginner": "熱伝導の式だけでは温度は決まりません。最初の温度と周囲の条件をそろえて、結果が一つに決まる問題にする必要があります。",
+    "detail": "アダマールの意味で適切に設定された問題は、解が存在し、一意で、入力データの小さな変化に対して連続的に変化する。例えば定常一次元の無発熱平板d²T/dx²=0に両端温度T(0)=T₀、T(L)=T_Lを与えると一意な線形温度分布が得られる。一方、両端熱流束のみを与える定常無発熱問題には基準温度が不定となる場合がある。",
+    "formula": "d²T/dx²=0、T(0)=T₀、T(L)=T_L ⇒ T(x)=T₀+(T_L−T₀)x/L",
+    "unit": "T: K、x,L: m",
+    "example": "長さ0.10 m、左端20℃、右端40℃の定常無発熱平板ならx=0.05 mでT=30℃。",
+    "related": [
+      "境界条件",
+      "初期条件",
+      "温度指定境界条件",
+      "熱伝導方程式"
+    ],
+    "relatedSections": [
+      "4.1",
+      "4.2"
+    ],
+    "relatedQuestions": [],
+    "relatedSimulators": [],
+    "confusions": [
+      "偏微分方程式が存在するだけでは、解が一つに決まり数値的に安定とはいえない。"
+    ],
+    "source": {
+      "type": "supplement",
+      "reference": "教科書第2・4・5章に対応する熱伝導と数学的解法の基本法則から独自執筆した補足。原書本文の翻訳ではなく、外部専門家校閲前。"
+    },
+    "reviewStatus": "needs_review"
   }
 ]
