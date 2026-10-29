@@ -197,10 +197,10 @@ try {
   await page.locator('[data-action="discard-quiz"]').click();
   await nav('map');
   await page.locator('[data-chapter-card="ch2"]').waitFor({state:'visible'});
-  assert.match(await page.locator('[data-chapter-card="ch2"]').innerText(),/収録問題：39問/);
+  assert.match(await page.locator('[data-chapter-card="ch2"]').innerText(),/収録問題：46問/);
   assert.match(await page.locator('[data-chapter-card="ch1"]').innerText(),/原本の節を読了に記録：1\/5節/);
   assert.match(await page.locator('[data-chapter-card="ch9"]').innerText(),/収録問題：95問/);
-  assert.match(await page.locator('[data-chapter-card="ch2"]').innerText(),/未回答：39問/);
+  assert.match(await page.locator('[data-chapter-card="ch2"]').innerText(),/未回答：46問/);
   await page.locator('[data-chapter-card="ch2"] [data-chapter-practice-mode="priority"]').click();
   await page.locator('.question-card').waitFor({state:'visible'});
   assert.match(await page.locator('.page-heading h1').innerText(),/1 \/ 10 問/);
@@ -213,12 +213,12 @@ try {
   await nav('map');
   await page.locator('[data-chapter-card="ch2"] [data-chapter-practice="ch2"]:not([data-chapter-practice-mode])').click();
   await page.locator('.question-card').waitFor({state:'visible'});
-  assert.match(await page.locator('.page-heading h1').innerText(),/1 \/ 39 問/);
+  assert.match(await page.locator('.page-heading h1').innerText(),/1 \/ 46 問/);
   assert.equal((await page.evaluate(()=>JSON.parse(localStorage.getItem('heat-study-ja:v1')).quizDraft.ids)).every(id=>chapter2Ids.has(id)),true);
   await page.locator('[data-action="exit-quiz"]').click();
   await page.locator('[data-action="discard-quiz"]').click();
   await page.locator('#quiz-start-form select[name="chapter"]').selectOption('ch9');
-  await page.locator('#quiz-start-form select[name="count"]').selectOption('515');
+  await page.locator('#quiz-start-form select[name="count"]').selectOption('543');
   await page.locator('#quiz-start-form button[type="submit"]').click();
   await page.locator('.question-card').waitFor({state:'visible'});
   assert.match(await page.locator('.page-heading h1').innerText(),/1 \/ 95 問/);
@@ -668,7 +668,7 @@ try {
   // merely their JSON. A vocabulary tap must leave the answer draft intact.
   const pending=await page.evaluate(async()=>
     (await (await fetch('./data/questions.json')).json()).filter(q=>q.reportHistory?.some(r=>['internal_independent_check','authored_with_internal_check'].includes(r.type))));
-  assert.equal(pending.length,182);
+  assert.equal(pending.length,210);
   const replaceSuspended=dialog=>dialog.accept();
   page.on('dialog',replaceSuspended);
   for(const q of pending){

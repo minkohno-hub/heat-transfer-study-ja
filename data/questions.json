@@ -25766,5 +25766,1545 @@
       "有限領域への切り替えも検討。"
     ],
     "beginnerPitfall": "半無限解を任意の厚さ・全時刻の厳密解としない。"
+  },
+  {
+    "id": "supp-roadmap-system-storage-v1",
+    "revision": "v1",
+    "field": "基礎・熱収支",
+    "prerequisites": [
+      "エネルギー保存",
+      "単位と次元",
+      "モデルの条件"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "輸送現象の一般法則と独自の仮想例から作問。原本の翻訳・原図・章末問題ではない。",
+      "chapterId": "ch1",
+      "focusSectionId": "1.4",
+      "guideId": "chapter1-energy-balance"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "執筆原稿・基本算術と構造を確認／包括的品質監査待ち・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "執筆時の定義・収支・基本計算を確認。全問の独立科学監査・原本網羅照合・外部校閲は後工程。"
+      }
+    ],
+    "prompt": "静止した閉じた系に熱500 Wが入り、350 Wが出て、内部発熱50 Wがある。仕事・質量移動なし。dU/dt=Q̇_in−Q̇_out+Q̇_genはいくらか。",
+    "choices": [
+      "+200 J/s",
+      "+100 J/s",
+      "+900 J/s",
+      "−200 J/s"
+    ],
+    "answer": 0,
+    "difficulty": "標準・数値計算",
+    "explanation": "dU/dt=500−350+50=+200 W=+200 J/s。内部エネルギーが増加する。温度変化へ直すには熱容量等の追加情報が必要。",
+    "distractors": [
+      "正解。流入から流出を引き発熱を足した。",
+      "発熱を内部消費として引いた。",
+      "流出まで蓄積へ足した。",
+      "正味蓄積の符号を逆にした。"
+    ],
+    "hints": [
+      "入る・出る・生成を別々に数える。",
+      "WはJ/s。"
+    ],
+    "solutionSteps": [
+      "正味熱流150 W。",
+      "発熱50 Wを足す。",
+      "蓄積+200 J/s。"
+    ],
+    "beginnerPitfall": "熱の時間率と蓄積したエネルギーを混同しない。"
+  },
+  {
+    "id": "supp-roadmap-wall-path-v1",
+    "revision": "v1",
+    "field": "基礎・熱収支",
+    "prerequisites": [
+      "エネルギー保存",
+      "単位と次元",
+      "モデルの条件"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "輸送現象の一般法則と独自の仮想例から作問。原本の翻訳・原図・章末問題ではない。",
+      "chapterId": "ch1",
+      "focusSectionId": "1.4",
+      "guideId": "chapter1-energy-balance"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "執筆原稿・基本算術と構造を確認／包括的品質監査待ち・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "執筆時の定義・収支・基本計算を確認。全問の独立科学監査・原本網羅照合・外部校閲は後工程。"
+      }
+    ],
+    "prompt": "内面80℃、外部流体20℃の平板壁。A=0.20 m²、L=0.010 m、k=0.20 W/(m·K)、外側h=20 W/(m²·K)。内面温度直接指定、発熱放射なしの定常一次元でQ̇=ΔT/[L/(kA)+1/(hA)]はいくらか。",
+    "choices": [
+      "30 W",
+      "120 W",
+      "240 W",
+      "60 W"
+    ],
+    "answer": 1,
+    "difficulty": "標準・数値計算",
+    "explanation": "R_cond=0.010/(0.20×0.20)=0.25 K/W、R_conv=1/(20×0.20)=0.25 K/W。Q̇=60/0.50=120 W。外面は50℃で両側の降下30 Kずつ。",
+    "distractors": [
+      "抵抗又は面積を二重に数えた。",
+      "正解。伝導と対流の直列抵抗を足した。",
+      "対流又は伝導の片方だけを残した。",
+      "直列合計抵抗を正しい値の2倍にした。"
+    ],
+    "hints": [
+      "同じ熱が壁と外面対流を順に通る。",
+      "直列の抵抗を足す。"
+    ],
+    "solutionSteps": [
+      "R_cond=0.25。",
+      "R_conv=0.25、合計0.50。",
+      "60/0.50=120 W。"
+    ],
+    "beginnerPitfall": "一つの抵抗だけで流体までの全温度差を使わない。"
+  },
+  {
+    "id": "supp-roadmap-parallel-surface-v1",
+    "revision": "v1",
+    "field": "基礎・熱収支",
+    "prerequisites": [
+      "エネルギー保存",
+      "単位と次元",
+      "モデルの条件"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "輸送現象の一般法則と独自の仮想例から作問。原本の翻訳・原図・章末問題ではない。",
+      "chapterId": "ch1",
+      "focusSectionId": "1.4",
+      "guideId": "chapter1-energy-balance"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "執筆原稿・基本算術と構造を確認／包括的品質監査待ち・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "執筆時の定義・収支・基本計算を確認。全問の独立科学監査・原本網羅照合・外部校閲は後工程。"
+      }
+    ],
+    "prompt": "一様表面から同時に外へ出る対流熱流束200 W/m²、正味放射熱流束150 W/m²。面積0.40 m²、蓄熱なし。この2経路の合計放熱率はいくらか。",
+    "choices": [
+      "350 W",
+      "875 W",
+      "140 W",
+      "20 W"
+    ],
+    "answer": 2,
+    "difficulty": "標準・数値計算",
+    "explanation": "Q̇=A(q_conv″+q_rad,net″)=0.40×350=140 W。正味放射と対流は別の外向き経路であり、直列抵抗として同じQ̇を二重に通す扱いではない。",
+    "distractors": [
+      "面積当たりの和を全熱流の単位へ流用した。",
+      "面積を掛けず割った。",
+      "正解。並列の二経路の熱流束を足して面積を掛けた。",
+      "同じ方向の二経路を差し引いた。"
+    ],
+    "hints": [
+      "二つとも外向き。",
+      "全熱流へは面積を掛ける。"
+    ],
+    "solutionSteps": [
+      "流束の和350 W/m²。",
+      "面積0.40を掛ける。",
+      "合計140 W。"
+    ],
+    "beginnerPitfall": "同時の別経路と直列経路を混ぜない。"
+  },
+  {
+    "id": "supp-roadmap-steady-uniform-v1",
+    "revision": "v1",
+    "field": "基礎・熱収支",
+    "prerequisites": [
+      "エネルギー保存",
+      "単位と次元",
+      "モデルの条件"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "conceptual",
+    "source": {
+      "type": "supplement",
+      "reference": "輸送現象の一般法則と独自の仮想例から作問。原本の翻訳・原図・章末問題ではない。",
+      "chapterId": "ch1",
+      "focusSectionId": "1.4",
+      "guideId": "chapter1-energy-balance"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "執筆原稿・基本算術と構造を確認／包括的品質監査待ち・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "執筆時の定義・収支・基本計算を確認。全問の独立科学監査・原本網羅照合・外部校閲は後工程。"
+      }
+    ],
+    "prompt": "定常の伝導と空間一様温度の区別として適切なのはどれか。",
+    "choices": [
+      "定常なら、全ての場所が同じ温度となる",
+      "空間一様なら、温度は時間でも必ず一定である",
+      "熱流があれば、定常という状態は存在しない",
+      "定常でも、場所による温度差はありうる"
+    ],
+    "answer": 3,
+    "difficulty": "概念・適用判断",
+    "explanation": "一定の端面温度を持つ壁は時間的に定常でも内部に温度勾配がある。集中熱容量モデルは空間一様を近似しても時間変化を扱う。",
+    "distractors": [
+      "定常を等温と同じにした。",
+      "一様温度の加熱冷却でも時間依存はある。",
+      "定常の温度勾配で熱は流れうる。",
+      "正解。時間と空間への依存を分けた。"
+    ],
+    "hints": [
+      "何に対する変化がないか。",
+      "壁の端が違う温度の定常伝導を考える。"
+    ],
+    "solutionSteps": [
+      "時間と位置を分ける。",
+      "定常の定義を確認。",
+      "一様とは別と説明。"
+    ],
+    "beginnerPitfall": "時間一定と位置一定を同一視しない。"
+  },
+  {
+    "id": "supp-roadmap-input-h-vs-predict-v1",
+    "revision": "v1",
+    "field": "基礎・熱収支",
+    "prerequisites": [
+      "エネルギー保存",
+      "単位と次元",
+      "モデルの条件"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "applied",
+    "source": {
+      "type": "supplement",
+      "reference": "輸送現象の一般法則と独自の仮想例から作問。原本の翻訳・原図・章末問題ではない。",
+      "chapterId": "ch1",
+      "focusSectionId": "1.4",
+      "guideId": "chapter1-energy-balance"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "執筆原稿・基本算術と構造を確認／包括的品質監査待ち・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "執筆時の定義・収支・基本計算を確認。全問の独立科学監査・原本網羅照合・外部校閲は後工程。"
+      }
+    ],
+    "prompt": "対流シミュレーターへhを入力し、Q̇=hA(T_s−T_∞)を計算した。正しい説明はどれか。",
+    "choices": [
+      "指定hでの計算であり、hの予測は別工程",
+      "流速と形状からhも自動的に予測できた",
+      "入力したhは、全ての流れで同じ物性として使える",
+      "式の値が有限なら、流れの条件確認は不要となる"
+    ],
+    "answer": 0,
+    "difficulty": "概念・適用判断",
+    "explanation": "hの設定には対象の流れ・形状・状態に合う相関や測定等が要る。入力hでQ̇を求める機能の成功を、hの予測・検証済みとしない。",
+    "distractors": [
+      "正解。モデルが受け取る入力と計算する出力を区別した。",
+      "流速や相関を使っていない予測を主張した。",
+      "hは流れ・形状・状態等に依存する。",
+      "入力の妥当性と式の適用条件は別に必要。"
+    ],
+    "hints": [
+      "何を入力したか列挙。",
+      "相関を使った工程があったか。"
+    ],
+    "solutionSteps": [
+      "hを既知と確認。",
+      "Q̇を計算したと記録。",
+      "hの根拠を別に検討。"
+    ],
+    "beginnerPitfall": "入力値の根拠まで自動で得たとしない。"
+  },
+  {
+    "id": "supp-roadmap-model-shape-selection-v1",
+    "revision": "v1",
+    "field": "基礎・熱収支",
+    "prerequisites": [
+      "エネルギー保存",
+      "単位と次元",
+      "モデルの条件"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "applied",
+    "source": {
+      "type": "supplement",
+      "reference": "輸送現象の一般法則と独自の仮想例から作問。原本の翻訳・原図・章末問題ではない。",
+      "chapterId": "ch1",
+      "focusSectionId": "1.4",
+      "guideId": "chapter1-energy-balance"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "執筆原稿・基本算術と構造を確認／包括的品質監査待ち・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "執筆時の定義・収支・基本計算を確認。全問の独立科学監査・原本網羅照合・外部校閲は後工程。"
+      }
+    ],
+    "prompt": "平板のみを対象とする伝導モデルで、厚い円筒壁の半径方向熱流を設計したい。適切な進め方はどれか。",
+    "choices": [
+      "内側面積だけを入れれば、全厚さで厳密になる",
+      "円筒壁の面積変化に合う伝導式やモデルを選ぶ",
+      "形状表示だけ円筒に変え、平板式を厳密解とする",
+      "円筒は伝導しないので、熱流を必ずゼロにする"
+    ],
+    "answer": 1,
+    "difficulty": "概念・適用判断",
+    "explanation": "円筒壁の一次元定常抵抗はln(r_o/r_i)/(2πkL_z)。薄い壁で平板近似する場合も誤差と代表面積を評価し、図の見た目を対応機能と混同しない。",
+    "distractors": [
+      "厚い円筒では半径方向の面積変化を無視できない。",
+      "正解。対象の幾何と法則を対応させた。",
+      "図だけ変えても計算モデルは変わらない。",
+      "円筒にも伝導熱流はある。"
+    ],
+    "hints": [
+      "熱が通る面積は半径で変わる。",
+      "モデルの対応形状を確認。"
+    ],
+    "solutionSteps": [
+      "半径方向の面積を考える。",
+      "円筒抵抗を選ぶ。",
+      "近似なら誤差を確認。"
+    ],
+    "beginnerPitfall": "表示形状と計算モデルを一致させる。"
+  },
+  {
+    "id": "supp-roadmap-open-system-enthalpy-v1",
+    "revision": "v1",
+    "field": "基礎・熱収支",
+    "prerequisites": [
+      "エネルギー保存",
+      "単位と次元",
+      "モデルの条件"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "conceptual",
+    "source": {
+      "type": "supplement",
+      "reference": "輸送現象の一般法則と独自の仮想例から作問。原本の翻訳・原図・章末問題ではない。",
+      "chapterId": "ch1",
+      "focusSectionId": "1.4",
+      "guideId": "chapter1-energy-balance"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "執筆原稿・基本算術と構造を確認／包括的品質監査待ち・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "執筆時の定義・収支・基本計算を確認。全問の独立科学監査・原本網羅照合・外部校閲は後工程。"
+      }
+    ],
+    "prompt": "流体が出入りする熱装置の収支を作る。閉じた静止固体の熱収支に加えて確認すべき輸送はどれか。",
+    "choices": [
+      "面積の数字だけであり、流体組成は常に不要",
+      "対流があれば、流体のエネルギー保存は不要",
+      "質量が持ち込む・持ち出すエンタルピー",
+      "温度の数字だけであり、流量は常に不要"
+    ],
+    "answer": 2,
+    "difficulty": "概念・適用判断",
+    "explanation": "一般の開いた系にはṁhの流入出等を含める。必要に応じ運動・位置エネルギーや仕事も数え、閉じた静止系の簡略式だけで全装置を扱わない。",
+    "distractors": [
+      "状態・組成・流量も必要となりうる。",
+      "対流でもエネルギー保存は必要。",
+      "正解。開いた系の質量輸送に伴うエネルギーを数える。",
+      "流量がエネルギー輸送率へ影響する。"
+    ],
+    "hints": [
+      "系の境界を質量が横切るか。",
+      "流れる物質にもエネルギーがある。"
+    ],
+    "solutionSteps": [
+      "流入出を確認。",
+      "各流路のエンタルピー率を数える。",
+      "全体収支へ含める。"
+    ],
+    "beginnerPitfall": "熱流だけで全ての装置の収支が閉じるとしない。"
+  },
+  {
+    "id": "supp-roadmap-problem-infer-k-v1",
+    "revision": "v1",
+    "field": "基礎・熱収支",
+    "prerequisites": [
+      "エネルギー保存",
+      "単位と次元",
+      "モデルの条件"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "輸送現象の一般法則と独自の仮想例から作問。原本の翻訳・原図・章末問題ではない。",
+      "chapterId": "ch1",
+      "focusSectionId": "1.5",
+      "guideId": "chapter1-energy-balance"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "執筆原稿・基本算術と構造を確認／包括的品質監査待ち・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "執筆時の定義・収支・基本計算を確認。全問の独立科学監査・原本網羅照合・外部校閲は後工程。"
+      }
+    ],
+    "prompt": "定常一次元・発熱熱漏れなしの平板でQ̇=20 W、L=0.010 m、A=0.020 m²、温度差20 K。k=Q̇L/(AΔT)はいくらか。",
+    "choices": [
+      "2.0 W/(m·K)",
+      "50 W/(m·K)",
+      "0.010 W/(m·K)",
+      "0.50 W/(m·K)"
+    ],
+    "answer": 3,
+    "difficulty": "標準・数値計算",
+    "explanation": "k=20×0.010/(0.020×20)=0.50 W/(m·K)。この推定には熱漏れ・接触等の無視が妥当である確認も必要。",
+    "distractors": [
+      "積と商又は比を逆にした。",
+      "長さ又は面積の桁を100倍にした。",
+      "面積による換算を落とした。",
+      "正解。条件付きの平板式をkについて解いた。"
+    ],
+    "hints": [
+      "まず記号式でkを孤立させる。",
+      "W·m/(m²·K)の単位。"
+    ],
+    "solutionSteps": [
+      "分子0.20 W·m。",
+      "分母0.40 m²·K。",
+      "0.50 W/(m·K)。"
+    ],
+    "beginnerPitfall": "物性の逆算でも元モデルの条件を確認する。"
+  },
+  {
+    "id": "supp-roadmap-problem-independent-uncertainty-v1",
+    "revision": "v1",
+    "field": "基礎・熱収支",
+    "prerequisites": [
+      "エネルギー保存",
+      "単位と次元",
+      "モデルの条件"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "輸送現象の一般法則と独自の仮想例から作問。原本の翻訳・原図・章末問題ではない。",
+      "chapterId": "ch1",
+      "focusSectionId": "1.5",
+      "guideId": "chapter1-energy-balance"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "執筆原稿・基本算術と構造を確認／包括的品質監査待ち・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "執筆時の定義・収支・基本計算を確認。全問の独立科学監査・原本網羅照合・外部校閲は後工程。"
+      }
+    ],
+    "prompt": "k=Q̇L/(AΔT)で、4つの独立な入力の相対標準不確かさが各5.0%。小さい誤差の一次伝播で、u_k/kはどれか。",
+    "choices": [
+      "10%",
+      "20%",
+      "5%",
+      "2.5%"
+    ],
+    "answer": 0,
+    "difficulty": "標準・数値計算",
+    "explanation": "u_k/k≈√(4×0.05²)=0.10。独立な標準不確かさの扱いであり、相関やモデル偏りは別に考える。",
+    "distractors": [
+      "正解。相対分散4×0.05²の平方根を取った。",
+      "標準不確かさを最悪幅のように単純加算した。",
+      "四入力の寄与を一入力だけとした。",
+      "入力が増えると必ず誤差が減るとした。"
+    ],
+    "hints": [
+      "独立なら分散を足す。",
+      "最後に平方根。"
+    ],
+    "solutionSteps": [
+      "各相対分散0.0025。",
+      "和0.0100。",
+      "平方根0.10。"
+    ],
+    "beginnerPitfall": "標準不確かさと最悪幅の加算を区別する。"
+  },
+  {
+    "id": "supp-roadmap-problem-temperature-difference-error-v1",
+    "revision": "v1",
+    "field": "基礎・熱収支",
+    "prerequisites": [
+      "エネルギー保存",
+      "単位と次元",
+      "モデルの条件"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "輸送現象の一般法則と独自の仮想例から作問。原本の翻訳・原図・章末問題ではない。",
+      "chapterId": "ch1",
+      "focusSectionId": "1.5",
+      "guideId": "chapter1-energy-balance"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "執筆原稿・基本算術と構造を確認／包括的品質監査待ち・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "執筆時の定義・収支・基本計算を確認。全問の独立科学監査・原本網羅照合・外部校閲は後工程。"
+      }
+    ],
+    "prompt": "二つの温度測定が21.0℃と20.0℃、それぞれ独立な標準不確かさ0.050 Kを持つ。温度差1.0 Kの標準不確かさと相対値はどれか。",
+    "choices": [
+      "約0.050 K、約5.0%",
+      "約0.0707 K、約7.07%",
+      "約0.1000 K、約10.00%",
+      "約0 K、約0%"
+    ],
+    "answer": 1,
+    "difficulty": "標準・数値計算",
+    "explanation": "u_ΔT=√(0.050²+0.050²)=0.0707107 K、相対値0.0707107/1.0=7.07107%。共通校正等で相関があれば共分散項を確認する。",
+    "distractors": [
+      "二つの温度のうち片方だけの誤差を使った。",
+      "正解。差でも独立な分散は加算される。",
+      "独立標準不確かさを最大偏差のように加算した。",
+      "平均温度が近いので誤差も相殺するとした。"
+    ],
+    "hints": [
+      "差の偏微分は+1と−1。",
+      "分散では二乗する。"
+    ],
+    "solutionSteps": [
+      "分散の和0.0050 K²。",
+      "平方根0.0707 K。",
+      "1 Kに対し7.07%。"
+    ],
+    "beginnerPitfall": "二つの近い温度の差は相対不確かさが大きくなりうる。"
+  },
+  {
+    "id": "supp-roadmap-problem-uncertainty-vs-confidence-v1",
+    "revision": "v1",
+    "field": "基礎・熱収支",
+    "prerequisites": [
+      "エネルギー保存",
+      "単位と次元",
+      "モデルの条件"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "conceptual",
+    "source": {
+      "type": "supplement",
+      "reference": "輸送現象の一般法則と独自の仮想例から作問。原本の翻訳・原図・章末問題ではない。",
+      "chapterId": "ch1",
+      "focusSectionId": "1.5",
+      "guideId": "chapter1-energy-balance"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "執筆原稿・基本算術と構造を確認／包括的品質監査待ち・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "執筆時の定義・収支・基本計算を確認。全問の独立科学監査・原本網羅照合・外部校閲は後工程。"
+      }
+    ],
+    "prompt": "推定値k=0.50 W/(m·K)、標準不確かさu_k=0.05 W/(m·K)が得られた。適切な表現はどれか。",
+    "choices": [
+      "±0.05は必ず全ての誤差の絶対上限を表す",
+      "標準不確かさがあれば、モデル偏りは存在しない",
+      "標準不確かさと95%区間の扱いは異なる",
+      "±0.05は必ず95%信頼区間を表す"
+    ],
+    "answer": 2,
+    "difficulty": "概念・適用判断",
+    "explanation": "標準不確かさは標準偏差に相当する尺度。包含確率を伴う拡張不確かさや信頼区間には分布、自由度、包含係数などの根拠が必要である。",
+    "distractors": [
+      "標準不確かさは全ての誤差の厳密上限ではない。",
+      "モデルや校正の偏りは別の検討が必要。",
+      "正解。標準不確かさと包含確率や上限を区別した。",
+      "分布・包含係数等なしに95%とは決められない。"
+    ],
+    "hints": [
+      "標準という語が何の尺度か。",
+      "確率と最大幅は別。"
+    ],
+    "solutionSteps": [
+      "uの定義を記録。",
+      "分布や包含係数を確認。",
+      "根拠なく95%と書かない。"
+    ],
+    "beginnerPitfall": "不確かさの種類と確率水準を混ぜない。"
+  },
+  {
+    "id": "supp-roadmap-problem-missing-property-v1",
+    "revision": "v1",
+    "field": "基礎・熱収支",
+    "prerequisites": [
+      "エネルギー保存",
+      "単位と次元",
+      "モデルの条件"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "applied",
+    "source": {
+      "type": "supplement",
+      "reference": "輸送現象の一般法則と独自の仮想例から作問。原本の翻訳・原図・章末問題ではない。",
+      "chapterId": "ch1",
+      "focusSectionId": "1.5",
+      "guideId": "chapter1-energy-balance"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "執筆原稿・基本算術と構造を確認／包括的品質監査待ち・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "執筆時の定義・収支・基本計算を確認。全問の独立科学監査・原本網羅照合・外部校閲は後工程。"
+      }
+    ],
+    "prompt": "伝導熱流を求める問題で形状と温度差は分かるが、kも材料名もない。適切な解答の進め方はどれか。",
+    "choices": [
+      "手近な材料のkを無断で使い、確定値として答える",
+      "kは全物質で等しいので、任意の1を代入する",
+      "kがないなら、熱流は必ずゼロだと結論する",
+      "不足情報を示し、記号式又は条件付きで答える"
+    ],
+    "answer": 3,
+    "difficulty": "概念・適用判断",
+    "explanation": "例えば平板の条件ならQ̇=kAΔT/Lまで示し、kの値と評価状態が必要と述べる。仮想値を使う練習なら仮定と明示して確定値と区別する。",
+    "distractors": [
+      "材料の異なる値で確定的な予測を作った。",
+      "熱伝導率は物質や状態に依存する。",
+      "情報不足は物理的に熱流ゼロという意味ではない。",
+      "正解。未知物性を根拠なく補わず条件を明示した。"
+    ],
+    "hints": [
+      "何が与えられ何が未知か。",
+      "未知量を記号として残せる。"
+    ],
+    "solutionSteps": [
+      "モデルの条件を確認。",
+      "記号式を示す。",
+      "不足物性と状態を記録。"
+    ],
+    "beginnerPitfall": "不足データを勝手に確定値で埋めない。"
+  },
+  {
+    "id": "supp-roadmap-problem-correct-units-not-model-v1",
+    "revision": "v1",
+    "field": "基礎・熱収支",
+    "prerequisites": [
+      "エネルギー保存",
+      "単位と次元",
+      "モデルの条件"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "applied",
+    "source": {
+      "type": "supplement",
+      "reference": "輸送現象の一般法則と独自の仮想例から作問。原本の翻訳・原図・章末問題ではない。",
+      "chapterId": "ch1",
+      "focusSectionId": "1.5",
+      "guideId": "chapter1-energy-balance"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "執筆原稿・基本算術と構造を確認／包括的品質監査待ち・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "執筆時の定義・収支・基本計算を確認。全問の独立科学監査・原本網羅照合・外部校閲は後工程。"
+      }
+    ],
+    "prompt": "ある式は次元が一致し数値も有限だが、層流平板用の相関を乱流円管に使っていた。適切な判断はどれか。",
+    "choices": [
+      "対象の適用条件を調べ、使う相関を選び直す",
+      "次元が合えば、どの形状や流れでも正しい",
+      "有限値なら、相関の条件が違っても誤差はない",
+      "数値が正なら、幾何や境界条件の記録は不要"
+    ],
+    "answer": 0,
+    "difficulty": "概念・適用判断",
+    "explanation": "単位一致は必要な確認の一つ。流れ、形状、代表長さ、局所/平均、物性と範囲が合う式や相関を選び直す。",
+    "distractors": [
+      "正解。単位検算と科学的な適用条件は別だとした。",
+      "次元解析は無次元関数や適用条件まで決めない。",
+      "有限な計算値だけで精度を保証できない。",
+      "適用根拠を確認するには幾何と条件が必要。"
+    ],
+    "hints": [
+      "次元が合う誤った式も作れる。",
+      "対象と相関の前提を比較。"
+    ],
+    "solutionSteps": [
+      "単位確認は保持。",
+      "形状と流れの不一致を記録。",
+      "合うモデルを選ぶ。"
+    ],
+    "beginnerPitfall": "次元一致や有限値をモデルの承認としない。"
+  },
+  {
+    "id": "supp-roadmap-problem-independent-check-v1",
+    "revision": "v1",
+    "field": "基礎・熱収支",
+    "prerequisites": [
+      "エネルギー保存",
+      "単位と次元",
+      "モデルの条件"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "conceptual",
+    "source": {
+      "type": "supplement",
+      "reference": "輸送現象の一般法則と独自の仮想例から作問。原本の翻訳・原図・章末問題ではない。",
+      "chapterId": "ch1",
+      "focusSectionId": "1.5",
+      "guideId": "chapter1-energy-balance"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "執筆原稿・基本算術と構造を確認／包括的品質監査待ち・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "執筆時の定義・収支・基本計算を確認。全問の独立科学監査・原本網羅照合・外部校閲は後工程。"
+      }
+    ],
+    "prompt": "数値解答の確認方法のうち、転記確認に加えて独立性が高いのはどれか。",
+    "choices": [
+      "過去の別コミットの成功を今の結果へ置き換える",
+      "別の保存関係や計算経路から結果を再構成する",
+      "同じ式と同じ入力をそのまま画面へ再表示する",
+      "正答の選択肢だけを長くして分かりやすくする"
+    ],
+    "answer": 1,
+    "difficulty": "概念・適用判断",
+    "explanation": "例えば各抵抗の温度降下を戻す、収支を積分する、別コードで再計算するなど、元の計算の写しではない確認を行う。内部確認と外部専門家レビューも分ける。",
+    "distractors": [
+      "対象が違う試験結果を転用できない。",
+      "正解。別の経路で収支や数値の整合を調べる。",
+      "表示が一致しても同じ式の誤りは残りうる。",
+      "解答の手掛かりを作ると学習評価を損なう。"
+    ],
+    "hints": [
+      "同じ誤りを二度コピーしていないか。",
+      "独立の法則や尺度を使う。"
+    ],
+    "solutionSteps": [
+      "対象と入力を固定。",
+      "別の経路で再構成。",
+      "一致と未確認範囲を記録。"
+    ],
+    "beginnerPitfall": "単なる出力の一致を独立監査としない。"
+  },
+  {
+    "id": "supp-roadmap-summary-parallel-resistance-v1",
+    "revision": "v1",
+    "field": "熱伝導",
+    "prerequisites": [
+      "エネルギー保存",
+      "単位と次元",
+      "モデルの条件"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "輸送現象の一般法則と独自の仮想例から作問。原本の翻訳・原図・章末問題ではない。",
+      "chapterId": "ch2",
+      "focusSectionId": "2.5",
+      "guideId": "chapter2-cylindrical-conduction"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "執筆原稿・基本算術と構造を確認／包括的品質監査待ち・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "執筆時の定義・収支・基本計算を確認。全問の独立科学監査・原本網羅照合・外部校閲は後工程。"
+      }
+    ],
+    "prompt": "共通の端点温度差60 Kに対して、R₁=2.0、R₂=3.0 K/Wの独立な並列伝導経路がある。合計Q̇=ΔT/R₁+ΔT/R₂はどれか。",
+    "choices": [
+      "30 W",
+      "20 W",
+      "50 W",
+      "12 W"
+    ],
+    "answer": 2,
+    "difficulty": "標準・数値計算",
+    "explanation": "Q̇₁=30 W、Q̇₂=20 Wで計50 W。等価抵抗は1/(1/2+1/3)=1.2 K/W、60/1.2でも同じ。",
+    "distractors": [
+      "1番目の経路だけを数えた。",
+      "2番目の経路だけを数えた。",
+      "正解。共通温度差で各経路の熱流を足した。",
+      "並列抵抗を直列として足した。"
+    ],
+    "hints": [
+      "並列は共通温度差。",
+      "熱流が分かれて合流する。"
+    ],
+    "solutionSteps": [
+      "経路1は30 W。",
+      "経路2は20 W。",
+      "和50 W。"
+    ],
+    "beginnerPitfall": "直列と並列の接続を区別する。"
+  },
+  {
+    "id": "supp-roadmap-summary-contact-jump-v1",
+    "revision": "v1",
+    "field": "熱伝導",
+    "prerequisites": [
+      "エネルギー保存",
+      "単位と次元",
+      "モデルの条件"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "輸送現象の一般法則と独自の仮想例から作問。原本の翻訳・原図・章末問題ではない。",
+      "chapterId": "ch2",
+      "focusSectionId": "2.5",
+      "guideId": "chapter2-cylindrical-conduction"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "執筆原稿・基本算術と構造を確認／包括的品質監査待ち・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "執筆時の定義・収支・基本計算を確認。全問の独立科学監査・原本網羅照合・外部校閲は後工程。"
+      }
+    ],
+    "prompt": "面積当たり接触抵抗r_c″=0.010 m²·K/W、面積A=0.20 m²、界面を通る一様なQ̇=50 W。接触部の温度降下Q̇r_c″/Aはいくらか。",
+    "choices": [
+      "0.50 K",
+      "0.10 K",
+      "10 K",
+      "2.5 K"
+    ],
+    "answer": 3,
+    "difficulty": "標準・数値計算",
+    "explanation": "R_c=r_c″/A=0.010/0.20=0.050 K/W、ΔT_c=50×0.050=2.5 K。接触界面の両側温度は異なりうる。",
+    "distractors": [
+      "r_c″をそのままK/Wとして使った。",
+      "面積を割らず掛けた。",
+      "面積の換算係数を取り違えた。",
+      "正解。面積当たり抵抗をK/Wへ換算した。"
+    ],
+    "hints": [
+      "接触抵抗の単位に面積がある。",
+      "まずR_cへ直す。"
+    ],
+    "solutionSteps": [
+      "R_c=0.050 K/W。",
+      "熱流50 Wを掛ける。",
+      "降下2.5 K。"
+    ],
+    "beginnerPitfall": "面積当たり抵抗と全抵抗を区別する。"
+  },
+  {
+    "id": "supp-roadmap-summary-targeted-improvement-v1",
+    "revision": "v1",
+    "field": "熱伝導",
+    "prerequisites": [
+      "エネルギー保存",
+      "単位と次元",
+      "モデルの条件"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "applied",
+    "source": {
+      "type": "supplement",
+      "reference": "輸送現象の一般法則と独自の仮想例から作問。原本の翻訳・原図・章末問題ではない。",
+      "chapterId": "ch2",
+      "focusSectionId": "2.5",
+      "guideId": "chapter2-cylindrical-conduction"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "執筆原稿・基本算術と構造を確認／包括的品質監査待ち・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "執筆時の定義・収支・基本計算を確認。全問の独立科学監査・原本網羅照合・外部校閲は後工程。"
+      }
+    ],
+    "prompt": "直列経路の抵抗が0.10、0.30、0.10 K/W。温度差一定のまま中央の抵抗だけを半減するとQ̇_new/Q̇_oldはどれか。",
+    "choices": [
+      "約1.43倍になる",
+      "2.00倍になる",
+      "約0.70倍になる",
+      "1.00倍で変わらない"
+    ],
+    "answer": 0,
+    "difficulty": "概念・適用判断",
+    "explanation": "Q̇∝1/R_total。R_old=0.50、R_new=0.35 K/Wなので比0.50/0.35=1.42857。最大抵抗の改善でも全体が同じ倍率で変わるとは限らない。",
+    "distractors": [
+      "正解。合計抵抗0.50から0.35への比を用いた。",
+      "一部分の半減を合計の半減とした。",
+      "抵抗比と熱流比を逆にした。",
+      "中央抵抗の寄与を無視した。"
+    ],
+    "hints": [
+      "合計抵抗を新旧で求める。",
+      "熱流は抵抗に反比例。"
+    ],
+    "solutionSteps": [
+      "旧合計0.50。",
+      "新合計0.35。",
+      "比1.43。"
+    ],
+    "beginnerPitfall": "一部の抵抗改善を全体の倍率と同じにしない。"
+  },
+  {
+    "id": "supp-roadmap-summary-cylinder-area-v1",
+    "revision": "v1",
+    "field": "熱伝導",
+    "prerequisites": [
+      "エネルギー保存",
+      "単位と次元",
+      "モデルの条件"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "applied",
+    "source": {
+      "type": "supplement",
+      "reference": "輸送現象の一般法則と独自の仮想例から作問。原本の翻訳・原図・章末問題ではない。",
+      "chapterId": "ch2",
+      "focusSectionId": "2.5",
+      "guideId": "chapter2-cylindrical-conduction"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "執筆原稿・基本算術と構造を確認／包括的品質監査待ち・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "執筆時の定義・収支・基本計算を確認。全問の独立科学監査・原本網羅照合・外部校閲は後工程。"
+      }
+    ],
+    "prompt": "長い円筒壁の内外で対流がある。半径方向一次元モデルで対流抵抗の面積を選ぶ方法はどれか。",
+    "choices": [
+      "内πr_i²、外πr_i²",
+      "内2πr_iL_z、外2πr_oL_z",
+      "内2πr_iL_z、外2πr_iL_z",
+      "内2πr_oL_z、外2πr_oL_z"
+    ],
+    "answer": 1,
+    "difficulty": "概念・適用判断",
+    "explanation": "R_i=1/(h_i2πr_iL_z)、R_o=1/(h_o2πr_oL_z)。固体の抵抗はln(r_o/r_i)/(2πkL_z)で、全熱流の保存と局所流束の違いを保つ。",
+    "distractors": [
+      "半径方向の側面対流を端断面に置き換えた。",
+      "正解。実際に対流する内外の面を対応させた。",
+      "外側の面積変化を無条件に無視した。",
+      "内側の面積を外側と同じにした。"
+    ],
+    "hints": [
+      "対流している面はどこか。",
+      "円筒の側面積は半径に比例。"
+    ],
+    "solutionSteps": [
+      "内面の半径を確認。",
+      "外面の半径を確認。",
+      "各面で抵抗を作る。"
+    ],
+    "beginnerPitfall": "円筒の内外の面積を混ぜない。"
+  },
+  {
+    "id": "supp-roadmap-summary-source-limit-v1",
+    "revision": "v1",
+    "field": "熱伝導",
+    "prerequisites": [
+      "エネルギー保存",
+      "単位と次元",
+      "モデルの条件"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "conceptual",
+    "source": {
+      "type": "supplement",
+      "reference": "輸送現象の一般法則と独自の仮想例から作問。原本の翻訳・原図・章末問題ではない。",
+      "chapterId": "ch2",
+      "focusSectionId": "2.5",
+      "guideId": "chapter2-cylindrical-conduction"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "執筆原稿・基本算術と構造を確認／包括的品質監査待ち・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "執筆時の定義・収支・基本計算を確認。全問の独立科学監査・原本網羅照合・外部校閲は後工程。"
+      }
+    ],
+    "prompt": "内部発熱のある定常壁を、発熱なしの一つの両端抵抗だけで扱うときの注意はどれか。",
+    "choices": [
+      "両端温度が同じなら、発熱した熱は出ていかない",
+      "内部発熱はkへ足せば常に厳密に扱える",
+      "経路に沿う全熱流は一般に一定ではない",
+      "定常なら、発熱があっても熱流は必ず同じ"
+    ],
+    "answer": 2,
+    "difficulty": "概念・適用判断",
+    "explanation": "一次元定常ではdq_x″/dx=q‴。発熱があれば温度分布と熱流の分担を保存式で求め、最高温度を単純な両端差だけで決めない。",
+    "distractors": [
+      "同じ両端温度でも内部が高温となり両側へ放熱しうる。",
+      "発熱率と熱伝導率は単位も役割も異なる。",
+      "正解。内部生成により熱流が位置で変わることを考えた。",
+      "定常の全体収支と内部生成を無視した。"
+    ],
+    "hints": [
+      "熱が内部で加わる。",
+      "位置ごとの収支を取る。"
+    ],
+    "solutionSteps": [
+      "生成項を含める。",
+      "熱流の勾配を求める。",
+      "発熱なし抵抗だけの限界を示す。"
+    ],
+    "beginnerPitfall": "定常というだけで発熱を熱流一定へ消さない。"
+  },
+  {
+    "id": "supp-roadmap-summary-fluid-surface-v1",
+    "revision": "v1",
+    "field": "熱伝導",
+    "prerequisites": [
+      "エネルギー保存",
+      "単位と次元",
+      "モデルの条件"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "conceptual",
+    "source": {
+      "type": "supplement",
+      "reference": "輸送現象の一般法則と独自の仮想例から作問。原本の翻訳・原図・章末問題ではない。",
+      "chapterId": "ch2",
+      "focusSectionId": "2.5",
+      "guideId": "chapter2-cylindrical-conduction"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "執筆原稿・基本算術と構造を確認／包括的品質監査待ち・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "執筆時の定義・収支・基本計算を確認。全問の独立科学監査・原本網羅照合・外部校閲は後工程。"
+      }
+    ],
+    "prompt": "壁の対流境界でhを使う温度差として適切なのはどれか。",
+    "choices": [
+      "固体の反対側の面と室外流体の温度差",
+      "固体内部の任意の二点の温度差",
+      "摂氏の表面温度だけを使い、流体温度を省く",
+      "固体表面と対応するバルク流体の温度差"
+    ],
+    "answer": 3,
+    "difficulty": "概念・適用判断",
+    "explanation": "Q̇=hA(T_s−T_∞)。流体から流体までの全温度差を使う場合は、壁や両面対流等を合わせた総括熱通過率Uと区別する。",
+    "distractors": [
+      "壁伝導等の経路を一つのhへ混ぜた。",
+      "内部の差は伝導モデルで扱う。",
+      "対流は表面と流体の差で符号と大きさが決まる。",
+      "正解。対流する面とその流体の駆動差を使う。"
+    ],
+    "hints": [
+      "hがどの面の対流を表すか。",
+      "hと総括Uは同じ定義ではない。"
+    ],
+    "solutionSteps": [
+      "対応する表面を選ぶ。",
+      "対応するバルク流体を選ぶ。",
+      "その二つの差を取る。"
+    ],
+    "beginnerPitfall": "表面のhと装置全体のUを混同しない。"
+  },
+  {
+    "id": "supp-roadmap-summary-temperature-drop-v1",
+    "revision": "v1",
+    "field": "熱伝導",
+    "prerequisites": [
+      "エネルギー保存",
+      "単位と次元",
+      "モデルの条件"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "輸送現象の一般法則と独自の仮想例から作問。原本の翻訳・原図・章末問題ではない。",
+      "chapterId": "ch2",
+      "focusSectionId": "2.5",
+      "guideId": "chapter2-cylindrical-conduction"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "執筆原稿・基本算術と構造を確認／包括的品質監査待ち・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "執筆時の定義・収支・基本計算を確認。全問の独立科学監査・原本網羅照合・外部校閲は後工程。"
+      }
+    ],
+    "prompt": "同じ定常Q̇=100 Wが通る直列抵抗0.10、0.20、0.05 K/W。入口温度60℃なら、3抵抗を通過した出口温度はどれか。",
+    "choices": [
+      "25℃",
+      "35℃",
+      "95℃",
+      "40℃"
+    ],
+    "answer": 0,
+    "difficulty": "標準・数値計算",
+    "explanation": "降下100×(0.10+0.20+0.05)=35 K。出口60−35=25℃。経路方向の正熱流を保ち各部の降下10,20,5 Kでも確認できる。",
+    "distractors": [
+      "正解。各温度降下の和35 Kを入口から引いた。",
+      "降下量を出口温度として答えた。",
+      "温度降下を加熱として足した。",
+      "最大の抵抗だけを数えた。"
+    ],
+    "hints": [
+      "ΔT_i=Q̇R_i。",
+      "入口から合計降下を引く。"
+    ],
+    "solutionSteps": [
+      "合計R=0.35 K/W。",
+      "降下35 K。",
+      "出口25℃。"
+    ],
+    "beginnerPitfall": "温度差と温度そのものを区別する。"
+  },
+  {
+    "id": "supp-roadmap-dimension-shape-factor-v1",
+    "revision": "v1",
+    "field": "熱伝導・フィン",
+    "prerequisites": [
+      "エネルギー保存",
+      "単位と次元",
+      "モデルの条件"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "輸送現象の一般法則と独自の仮想例から作問。原本の翻訳・原図・章末問題ではない。",
+      "chapterId": "ch4",
+      "focusSectionId": "4.4",
+      "guideId": "chapter4-fin-design"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "執筆原稿・基本算術と構造を確認／包括的品質監査待ち・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "執筆時の定義・収支・基本計算を確認。全問の独立科学監査・原本網羅照合・外部校閲は後工程。"
+      }
+    ],
+    "prompt": "一定k・二つの等温境界・残り断熱の伝導体でS/L=2.50、L=0.040 m、k=15 W/(m·K)、ΔT=80 Kを与える。Q̇=kSΔTはどれか。",
+    "choices": [
+      "4.8 W",
+      "120 W",
+      "3000 W",
+      "48 W"
+    ],
+    "answer": 1,
+    "difficulty": "標準・数値計算",
+    "explanation": "S=2.50×0.040=0.100 m、Q̇=15×0.100×80=120 W。S/Lの値は別の解や実験等から与えるもので、次元解析だけでは決まらない。",
+    "distractors": [
+      "Lを二重に掛けた。",
+      "正解。無次元係数へLを掛けてSを求めた。",
+      "S/Lをそのまま単位mのSとして使った。",
+      "与えた無次元係数2.50を掛けていない。"
+    ],
+    "hints": [
+      "Sには長さの単位。",
+      "まずS=(S/L)L。"
+    ],
+    "solutionSteps": [
+      "S=0.100 m。",
+      "kとΔTを掛ける。",
+      "120 W。"
+    ],
+    "beginnerPitfall": "形状係数と無次元形状係数を混ぜない。"
+  },
+  {
+    "id": "supp-roadmap-dimension-geometric-scale-v1",
+    "revision": "v1",
+    "field": "熱伝導・フィン",
+    "prerequisites": [
+      "エネルギー保存",
+      "単位と次元",
+      "モデルの条件"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "輸送現象の一般法則と独自の仮想例から作問。原本の翻訳・原図・章末問題ではない。",
+      "chapterId": "ch4",
+      "focusSectionId": "4.4",
+      "guideId": "chapter4-fin-design"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "執筆原稿・基本算術と構造を確認／包括的品質監査待ち・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "執筆時の定義・収支・基本計算を確認。全問の独立科学監査・原本網羅照合・外部校閲は後工程。"
+      }
+    ],
+    "prompt": "三次元の全形状を2倍に相似拡大し、一定k、同じ等温・断熱の境界配置、同じΔTを保つ。元の全熱流120 Wなら新しい全熱流と対応面の平均流束の倍率はどれか。",
+    "choices": [
+      "960 W、流束は2.00倍",
+      "60.0 W、流束は0.125倍",
+      "240 W、流束は0.50倍",
+      "480 W、流束は1.00倍"
+    ],
+    "answer": 2,
+    "difficulty": "標準・数値計算",
+    "explanation": "Q̇∝kLΔTなので2倍の240 W。面積は4倍、Q̇/Aは2/4=1/2倍。全ての寸法を相似に変えた条件が必要。",
+    "distractors": [
+      "全熱流を体積に比例させた。",
+      "全熱流の長さ依存を逆にした。",
+      "正解。全熱流は長さ、面積は長さの二乗で拡大する。",
+      "全熱流を面積に比例させた。"
+    ],
+    "hints": [
+      "全熱流の尺度はkLΔT。",
+      "面積は4倍。"
+    ],
+    "solutionSteps": [
+      "Q̇を2倍。",
+      "Aを4倍。",
+      "平均流束は半分。"
+    ],
+    "beginnerPitfall": "定常の全熱流を体積の倍率へ置き換えない。"
+  },
+  {
+    "id": "supp-roadmap-dimension-convection-similarity-v1",
+    "revision": "v1",
+    "field": "熱伝導・フィン",
+    "prerequisites": [
+      "エネルギー保存",
+      "単位と次元",
+      "モデルの条件"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "applied",
+    "source": {
+      "type": "supplement",
+      "reference": "輸送現象の一般法則と独自の仮想例から作問。原本の翻訳・原図・章末問題ではない。",
+      "chapterId": "ch4",
+      "focusSectionId": "4.4",
+      "guideId": "chapter4-fin-design"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "執筆原稿・基本算術と構造を確認／包括的品質監査待ち・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "執筆時の定義・収支・基本計算を確認。全問の独立科学監査・原本網羅照合・外部校閲は後工程。"
+      }
+    ],
+    "prompt": "対流境界を持つ相似形状で代表長さを2倍にする。同じkでBi=hL/kも同じに保つにはhをどう変えるか。",
+    "choices": [
+      "hを2.00倍にする",
+      "hを4.00倍にする",
+      "hを1.00倍に保つ",
+      "hを0.50倍にする"
+    ],
+    "answer": 3,
+    "difficulty": "概念・適用判断",
+    "explanation": "h_new(2L)/k=h_old L/kからh_new=h_old/2。幾何比だけが同じでも、Bi等の無次元境界条件が違えば同じ無次元場とは限らない。",
+    "distractors": [
+      "Biが4倍となり相似を保てない。",
+      "Biが8倍となり相似を保てない。",
+      "Biが2倍となり境界の無次元条件が変わる。",
+      "正解。hLの積を一定にした。"
+    ],
+    "hints": [
+      "Biの積hLを保つ。",
+      "長さ増加をhで補う。"
+    ],
+    "solutionSteps": [
+      "新旧Biを等置。",
+      "2を移項。",
+      "hは半分。"
+    ],
+    "beginnerPitfall": "h一定の拡大を同じ無次元境界とみなさない。"
+  },
+  {
+    "id": "supp-roadmap-dimension-source-similarity-v1",
+    "revision": "v1",
+    "field": "熱伝導・フィン",
+    "prerequisites": [
+      "エネルギー保存",
+      "単位と次元",
+      "モデルの条件"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "applied",
+    "source": {
+      "type": "supplement",
+      "reference": "輸送現象の一般法則と独自の仮想例から作問。原本の翻訳・原図・章末問題ではない。",
+      "chapterId": "ch4",
+      "focusSectionId": "4.4",
+      "guideId": "chapter4-fin-design"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "執筆原稿・基本算術と構造を確認／包括的品質監査待ち・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "執筆時の定義・収支・基本計算を確認。全問の独立科学監査・原本網羅照合・外部校閲は後工程。"
+      }
+    ],
+    "prompt": "定常発熱の無次元群Π_gen=q‴L²/(kΔT)を持つ系で、全長さを2倍、kとΔTは同じにする。同じΠ_genを保つq‴_newはどれか。",
+    "choices": [
+      "q‴_oldの1/4倍",
+      "q‴_oldの1/2倍",
+      "q‴_oldの2倍",
+      "q‴_oldの4倍"
+    ],
+    "answer": 0,
+    "difficulty": "概念・適用判断",
+    "explanation": "q‴_new(2L)²=q‴_old L²よりq‴_new=q‴_old/4。発熱なしの二等温境界だけの形状係数則を、そのまま発熱ありへ使わない。",
+    "distractors": [
+      "正解。L²の4倍を生成率の1/4で打ち消した。",
+      "長さの二乗でなく一次だけを補った。",
+      "生成率も増して群が8倍となる。",
+      "生成率も4倍として群が16倍となる。"
+    ],
+    "hints": [
+      "生成の群にはL²。",
+      "同じ群になる条件を解く。"
+    ],
+    "solutionSteps": [
+      "長さ二乗は4倍。",
+      "q‴を4で割る。",
+      "Π_gen一定を確認。"
+    ],
+    "beginnerPitfall": "追加の無次元群を落として相似を主張しない。"
+  },
+  {
+    "id": "supp-roadmap-dimension-undetermined-number-v1",
+    "revision": "v1",
+    "field": "熱伝導・フィン",
+    "prerequisites": [
+      "エネルギー保存",
+      "単位と次元",
+      "モデルの条件"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "conceptual",
+    "source": {
+      "type": "supplement",
+      "reference": "輸送現象の一般法則と独自の仮想例から作問。原本の翻訳・原図・章末問題ではない。",
+      "chapterId": "ch4",
+      "focusSectionId": "4.4",
+      "guideId": "chapter4-fin-design"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "執筆原稿・基本算術と構造を確認／包括的品質監査待ち・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "執筆時の定義・収支・基本計算を確認。全問の独立科学監査・原本網羅照合・外部校閲は後工程。"
+      }
+    ],
+    "prompt": "Q̇/(kLΔT)が無次元だと分かった。ある複雑形状でのその数値について適切なのはどれか。",
+    "choices": [
+      "次元が合えば、任意の数値を厳密値とできる",
+      "幾何と境界に応じた解や実験等が必要である",
+      "無次元であれば、その値は必ず1となる",
+      "単位が消えたので、全ての形状で同じとなる"
+    ],
+    "answer": 1,
+    "difficulty": "概念・適用判断",
+    "explanation": "無次元化で整理できる依存性と、方程式を解いて得る係数や関数を分ける。解析、検証した数値解、妥当な資料や実験を用いる。",
+    "distractors": [
+      "根拠のない数値設定を厳密解とできない。",
+      "正解。次元解析は無次元関数の数値まで決めない。",
+      "無次元量は1とは限らない。",
+      "幾何比や境界配置で値は変わる。"
+    ],
+    "hints": [
+      "単位の情報だけで形状は決まらない。",
+      "係数を得る工程を確認。"
+    ],
+    "solutionSteps": [
+      "無次元群を作る。",
+      "必要な幾何比を定める。",
+      "解や実験から関数を求める。"
+    ],
+    "beginnerPitfall": "次元解析を無次元係数の数値予測としない。"
+  },
+  {
+    "id": "supp-roadmap-dimension-per-length-v1",
+    "revision": "v1",
+    "field": "熱伝導・フィン",
+    "prerequisites": [
+      "エネルギー保存",
+      "単位と次元",
+      "モデルの条件"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "conceptual",
+    "source": {
+      "type": "supplement",
+      "reference": "輸送現象の一般法則と独自の仮想例から作問。原本の翻訳・原図・章末問題ではない。",
+      "chapterId": "ch4",
+      "focusSectionId": "4.4",
+      "guideId": "chapter4-fin-design"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "執筆原稿・基本算術と構造を確認／包括的品質監査待ち・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "執筆時の定義・収支・基本計算を確認。全問の独立科学監査・原本網羅照合・外部校閲は後工程。"
+      }
+    ],
+    "prompt": "二次元断面で単位奥行き当たりの熱流Q̇′[W/m]を考える。一定k・発熱なしの温度差ΔTに対し、次元が合う規格化はどれか。",
+    "choices": [
+      "Q̇′/(kL²ΔT)",
+      "Q̇′/ΔT",
+      "Q̇′/(kΔT)",
+      "Q̇′/(kLΔT)"
+    ],
+    "answer": 2,
+    "difficulty": "概念・適用判断",
+    "explanation": "k[W/(m·K)]×ΔT[K]=W/m。全熱流WならkLΔTが尺度になる。奥行き方向の長さを含めたかどうかを確認する。",
+    "distractors": [
+      "面積まで掛け、単位が一致しない。",
+      "熱伝導率を落としW/(m·K)の単位が残る。",
+      "正解。kΔTもW/mで、単位奥行きの熱流に対応する。",
+      "全三次元熱流W用の尺度を使い長さの逆数が残る。"
+    ],
+    "hints": [
+      "求める量はWではなくW/m。",
+      "分母にもW/mが必要。"
+    ],
+    "solutionSteps": [
+      "kΔTの単位を作る。",
+      "Q̇′で割る。",
+      "無次元を確認。"
+    ],
+    "beginnerPitfall": "全熱流と単位長さ当たりの熱流を混同しない。"
+  },
+  {
+    "id": "supp-roadmap-dimension-partial-scale-v1",
+    "revision": "v1",
+    "field": "熱伝導・フィン",
+    "prerequisites": [
+      "エネルギー保存",
+      "単位と次元",
+      "モデルの条件"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "applied",
+    "source": {
+      "type": "supplement",
+      "reference": "輸送現象の一般法則と独自の仮想例から作問。原本の翻訳・原図・章末問題ではない。",
+      "chapterId": "ch4",
+      "focusSectionId": "4.4",
+      "guideId": "chapter4-fin-design"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "執筆原稿・基本算術と構造を確認／包括的品質監査待ち・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "執筆時の定義・収支・基本計算を確認。全問の独立科学監査・原本網羅照合・外部校閲は後工程。"
+      }
+    ],
+    "prompt": "平板の面積を固定して厚さだけ2倍にした。これを全形状の相似拡大L→2Lと同じとしてQ̇を2倍と予測した。適切な修正はどれか。",
+    "choices": [
+      "長さが一つでも2倍なら、全熱流も必ず2倍となる",
+      "面積固定でも、全体の体積倍率を熱流へ使う",
+      "相似でないなら、Fourier則そのものを捨てる",
+      "変更した寸法を確認し、平板抵抗を作り直す"
+    ],
+    "answer": 3,
+    "difficulty": "概念・適用判断",
+    "explanation": "一定k、面積と両表面温度差固定の平板ならR=L/(kA)で厚さ2倍はQ̇半分。全寸法2倍の相似系とは異なる操作である。",
+    "distractors": [
+      "全ての幾何比が一定という条件を落とした。",
+      "体積の倍率は伝導の全熱流の倍率ではない。",
+      "相似則を使えなくても保存則と構成則は使える。",
+      "正解。全相似の仮定と実際の変更の違いを確認した。"
+    ],
+    "hints": [
+      "Aも拡大されたか確認。",
+      "元の抵抗式に戻す。"
+    ],
+    "solutionSteps": [
+      "実際はA一定。",
+      "Rは2倍。",
+      "同じΔTならQ̇半分。"
+    ],
+    "beginnerPitfall": "一つの長さの変更を全相似の拡大と同じにしない。"
   }
 ]
