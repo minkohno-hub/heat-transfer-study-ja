@@ -69,7 +69,7 @@ test('all 27 independent flow/phase additions have four keyed reasons, section c
  }
  for(const section of ['9.8','9.9','9.10','9.11']){
   const qs=all.filter(q=>q.source?.focusSectionId===section||q.source?.sectionNoteId===section);
-  assert.equal(qs.length,({'9.9':12,'9.11':16}[section]||8),section);assert.equal(new Set(qs.map(q=>q.questionKind)).size,3,section);
+  assert.equal(qs.length,({'9.8':16,'9.9':12,'9.11':16}[section]||8),section);assert.equal(new Set(qs.map(q=>q.questionKind)).size,3,section);
  }
  assert.equal(new Set(all.map(q=>q.prompt.normalize('NFKC').replace(/\s/g,''))).size,all.length);
 });

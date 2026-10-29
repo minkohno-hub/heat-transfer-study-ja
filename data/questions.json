@@ -36667,5 +36667,453 @@
       "装置としての限界と熱抵抗を別に評価する。"
     ],
     "beginnerPitfall": "流体の性能指数を装置固有の最大熱輸送量と同一視しない。"
+  },
+  {
+    "id": "supp-tube-correlation-convection-number-v1",
+    "revision": "v1",
+    "field": "沸騰・相変化",
+    "prerequisites": [
+      "管内沸騰",
+      "質量乾き度",
+      "無次元数と適用条件"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "一般的な管内沸騰相関と独自の仮想条件から作問。原本の文章・図・例題を転載しない。",
+      "chapterId": "ch9",
+      "focusSectionId": "9.8",
+      "guideId": "chapter9-latent-boiling"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "2026-10-30：内部の別式検算・単位・条件・全選択肢確認／原本網羅照合・包括的品質監査・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-30",
+        "type": "authored_with_internal_check",
+        "details": "docs/TUBE_BOILING_CORRELATIONS_20261030.md。対象式を画像確認し、独立数値と各誤答を内部検算。全体網羅照合・外部専門家校閲ではない。"
+      }
+    ],
+    "prompt": "飽和管内沸騰の対流数をCo=[(1−x)/x]^0.8(ρ_v/ρ_l)^0.5とする。質量乾き度x=0.250、ρ_v=4.00 kg/m³、ρ_l=800 kg/m³のときCoはいくらか。有効数字3桁とする。",
+    "choices": [
+      "1.70×10⁻¹",
+      "2.94×10⁻²",
+      "2.41×10⁰",
+      "3.41×10¹"
+    ],
+    "answer": 0,
+    "difficulty": "標準・数値計算",
+    "explanation": "(1−x)/x=3、sqrt(ρ_v/ρ_l)=sqrt(0.005)≈0.0707107。Co≈2.40822×0.0707107≈0.170287。",
+    "distractors": [
+      "正解。3^0.8に密度比の平方根を掛けた。",
+      "乾き度比(1−x)/xを逆数にした。",
+      "密度比の平方根を掛けていない。",
+      "密度比をρ_l/ρ_vへ逆転した。"
+    ],
+    "hints": [
+      "質量乾き度から(1−x)/xを求める。",
+      "密度比は蒸気/液体である。"
+    ],
+    "solutionSteps": [
+      "質量乾き度から(1−x)/xを求める。",
+      "密度比は蒸気/液体である。",
+      "それぞれのべき乗を取って掛ける。",
+      "無次元の0.170へ丸める。"
+    ],
+    "beginnerPitfall": "乾き度をボイド率に置き換えない。"
+  },
+  {
+    "id": "supp-tube-correlation-boiling-number-v1",
+    "revision": "v1",
+    "field": "沸騰・相変化",
+    "prerequisites": [
+      "管内沸騰",
+      "質量乾き度",
+      "無次元数と適用条件"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "一般的な管内沸騰相関と独自の仮想条件から作問。原本の文章・図・例題を転載しない。",
+      "chapterId": "ch9",
+      "focusSectionId": "9.8",
+      "guideId": "chapter9-latent-boiling"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "2026-10-30：内部の別式検算・単位・条件・全選択肢確認／原本網羅照合・包括的品質監査・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-30",
+        "type": "authored_with_internal_check",
+        "details": "docs/TUBE_BOILING_CORRELATIONS_20261030.md。対象式を画像確認し、独立数値と各誤答を内部検算。全体網羅照合・外部専門家校閲ではない。"
+      }
+    ],
+    "prompt": "沸騰数Boi=q″_w/(Gh_fg)を使う。壁面熱流束q″_w=4.00×10⁴ W/m²、質量流束G=500 kg/(m²·s)、h_fg=1.00×10⁶ J/kgのときBoiはいくらか。",
+    "choices": [
+      "1.25×10⁴",
+      "8.00×10⁻⁵",
+      "8.00×10⁻²",
+      "8.00×10⁻⁴"
+    ],
+    "answer": 1,
+    "difficulty": "標準・数値計算",
+    "explanation": "Gh_fg=500×10⁶=5.00×10⁸ W/m²、Boi=4.00×10⁴/(5.00×10⁸)=8.00×10⁻⁵。全熱移動率ではなく壁面熱流束を使う。",
+    "distractors": [
+      "定義した比を逆転した。",
+      "正解。分母は5.00×10⁸ W/m²である。",
+      "潜熱をkJ/kgの数値1000のまま扱った。",
+      "質量流束を50.0として扱った。"
+    ],
+    "hints": [
+      "分母のGとh_fgを掛ける。",
+      "熱流束の単位同士が相殺される。"
+    ],
+    "solutionSteps": [
+      "分母のGとh_fgを掛ける。",
+      "熱流束の単位同士が相殺される。",
+      "分子を分母で割る。",
+      "表面張力と重力のBond数とは別と確認する。"
+    ],
+    "beginnerPitfall": "熱流束W/m²と全熱移動率Wを取り違えない。"
+  },
+  {
+    "id": "supp-tube-correlation-liquid-only-reynolds-v1",
+    "revision": "v1",
+    "field": "沸騰・相変化",
+    "prerequisites": [
+      "管内沸騰",
+      "質量乾き度",
+      "無次元数と適用条件"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "一般的な管内沸騰相関と独自の仮想条件から作問。原本の文章・図・例題を転載しない。",
+      "chapterId": "ch9",
+      "focusSectionId": "9.8",
+      "guideId": "chapter9-latent-boiling"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "2026-10-30：内部の別式検算・単位・条件・全選択肢確認／原本網羅照合・包括的品質監査・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-30",
+        "type": "authored_with_internal_check",
+        "details": "docs/TUBE_BOILING_CORRELATIONS_20261030.md。対象式を画像確認し、独立数値と各誤答を内部検算。全体網羅照合・外部専門家校閲ではない。"
+      }
+    ],
+    "prompt": "Kandlikar形の液単相基準Re_lo=GD/μ_lを求める。全質量流束G=500 kg/(m²·s)、D=0.0200 m、μ_l=2.00×10⁻⁴ Pa·s、実際の乾き度x=0.250とする。Re_loはいくらか。",
+    "choices": [
+      "6.67×10⁴",
+      "2.50×10⁴",
+      "5.00×10⁴",
+      "3.75×10⁴"
+    ],
+    "answer": 2,
+    "difficulty": "標準・数値計算",
+    "explanation": "Re_lo=500×0.0200/(2.00×10⁻⁴)=50000。実液体流量基準なら37500だが、ここで定義した液単相基準とは異なる。",
+    "distractors": [
+      "Gを(1−x)で割ってしまった。",
+      "直径ではなく半径を使った。",
+      "正解。全質量を液体とした基準Gを使った。",
+      "実際の液体流束G(1−x)を基準式へ入れた。"
+    ],
+    "hints": [
+      "loは全質量を液体とした比較用の基準。",
+      "Gに(1−x)を重ねて掛けない。"
+    ],
+    "solutionSteps": [
+      "loは全質量を液体とした比較用の基準。",
+      "Gに(1−x)を重ねて掛けない。",
+      "G D=10.0 kg/(m·s)。",
+      "液体の粘度で割る。"
+    ],
+    "beginnerPitfall": "二相相関に既に含まれる乾き度依存を基準へ二重に入れない。"
+  },
+  {
+    "id": "supp-tube-correlation-branch-choice-v1",
+    "revision": "v1",
+    "field": "沸騰・相変化",
+    "prerequisites": [
+      "管内沸騰",
+      "質量乾き度",
+      "無次元数と適用条件"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "applied",
+    "source": {
+      "type": "supplement",
+      "reference": "一般的な管内沸騰相関と独自の仮想条件から作問。原本の文章・図・例題を転載しない。",
+      "chapterId": "ch9",
+      "focusSectionId": "9.8",
+      "guideId": "chapter9-latent-boiling"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "2026-10-30：内部の別式検算・単位・条件・全選択肢確認／原本網羅照合・包括的品質監査・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-30",
+        "type": "authored_with_internal_check",
+        "details": "docs/TUBE_BOILING_CORRELATIONS_20261030.md。対象式を画像確認し、独立数値と各誤答を内部検算。全体網羅照合・外部専門家校閲ではない。"
+      }
+    ],
+    "prompt": "Kandlikarの二つの予測枝がh_fb,nbd/h_lo=2.00、h_fb,cbd/h_lo=5.00で、h_lo=2000 W/(m²·K)と得られた。相関は大きい枝を採ると定める。このときh_fbはいくらか。",
+    "choices": [
+      "4.00×10³ W/(m²·K)",
+      "1.40×10⁴ W/(m²·K)",
+      "7.00×10³ W/(m²·K)",
+      "1.00×10⁴ W/(m²·K)"
+    ],
+    "answer": 3,
+    "difficulty": "概念・式と適用条件の選択",
+    "explanation": "h_fb=h_lo max(2.00,5.00)=2000×5.00=10000 W/(m²·K)。この最大枝の選択は、独立した装置限界の最小値を選ぶ操作とは別のモデルである。",
+    "distractors": [
+      "小さい枝を採ってしまった。",
+      "独立した並列経路とみなし二つを足した。",
+      "二つの枝を平均した。",
+      "正解。大きい5.00を基準係数へ掛けた。"
+    ],
+    "hints": [
+      "設問に示す相関の選択規則を確認する。",
+      "二つの比は2.00と5.00。"
+    ],
+    "solutionSteps": [
+      "設問に示す相関の選択規則を確認する。",
+      "二つの比は2.00と5.00。",
+      "大きい5.00をh_loへ掛ける。",
+      "加算や平均、最小値の操作と区別する。"
+    ],
+    "beginnerPitfall": "相関モデルが違えば寄与の組合せ規則も異なる。"
+  },
+  {
+    "id": "supp-tube-correlation-single-phase-reference-v1",
+    "revision": "v1",
+    "field": "沸騰・相変化",
+    "prerequisites": [
+      "管内沸騰",
+      "質量乾き度",
+      "無次元数と適用条件"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "一般的な管内沸騰相関と独自の仮想条件から作問。原本の文章・図・例題を転載しない。",
+      "chapterId": "ch9",
+      "focusSectionId": "9.8",
+      "guideId": "chapter9-latent-boiling"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "2026-10-30：内部の別式検算・単位・条件・全選択肢確認／原本網羅照合・包括的品質監査・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-30",
+        "type": "authored_with_internal_check",
+        "details": "docs/TUBE_BOILING_CORRELATIONS_20261030.md。対象式を画像確認し、独立数値と各誤答を内部検算。全体網羅照合・外部専門家校閲ではない。"
+      }
+    ],
+    "prompt": "液単相基準にGnielinski形Nu_lo=(f_D/8)(Re_lo−1000)Pr_l/[1+12.7sqrt(f_D/8)(Pr_l^(2/3)−1)]を採用できるとする。Re_lo=50000、Pr_l=4.00、Darcy係数f_D=0.0210、k_l=0.200 W/(m·K)、D=0.0200 mのときh_lo=Nu_lok_l/Dはいくらか。有効数字3桁とする。",
+    "choices": [
+      "2.59×10³ W/(m²·K)",
+      "2.59×10² W/(m²·K)",
+      "2.59×10⁴ W/(m²·K)",
+      "1.03×10⁴ W/(m²·K)"
+    ],
+    "answer": 0,
+    "difficulty": "標準・数値計算",
+    "explanation": "分母は1+12.7sqrt(0.0210/8)(4^(2/3)−1)、Nu_lo≈258.681。h_lo≈258.681×0.200/0.0200≈2586.814 W/(m²·K)。これは単相基準で、実際の二相のh_fbではない。",
+    "distractors": [
+      "正解。Nu_lo≈258.681にk_l/D=10を掛けた。",
+      "無次元のNu_loを係数h_loとして答えた。",
+      "k_l/Dを実際より10倍にした。",
+      "Gnielinski式の比熱側係数Prをさらに4倍に重ねた。"
+    ],
+    "hints": [
+      "Darcy摩擦係数のf_D/8を使う。",
+      "内側のべき乗と分母を先に評価する。"
+    ],
+    "solutionSteps": [
+      "Darcy摩擦係数のf_D/8を使う。",
+      "内側のべき乗と分母を先に評価する。",
+      "Nu_lo≈258.681を得る。",
+      "k_l/Dを掛けてh_loへ換算する。"
+    ],
+    "beginnerPitfall": "Darcy係数とFanning係数を混ぜない。"
+  },
+  {
+    "id": "supp-tube-correlation-horizontal-factor-v1",
+    "revision": "v1",
+    "field": "沸騰・相変化",
+    "prerequisites": [
+      "管内沸騰",
+      "質量乾き度",
+      "無次元数と適用条件"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "一般的な管内沸騰相関と独自の仮想条件から作問。原本の文章・図・例題を転載しない。",
+      "chapterId": "ch9",
+      "focusSectionId": "9.8",
+      "guideId": "chapter9-latent-boiling"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "2026-10-30：内部の別式検算・単位・条件・全選択肢確認／原本網羅照合・包括的品質監査・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-30",
+        "type": "authored_with_internal_check",
+        "details": "docs/TUBE_BOILING_CORRELATIONS_20261030.md。対象式を画像確認し、独立数値と各誤答を内部検算。全体網羅照合・外部専門家校閲ではない。"
+      }
+    ],
+    "prompt": "水平管の方向因子はFr_lo=G²/(ρ_l²gD)、Fr_lo<0.04でf_o=(25Fr_lo)^0.3、それ以外は1である。G=50.0 kg/(m²·s)、ρ_l=800 kg/m³、g=10.0 m/s²、D=0.0200 mのときf_oはいくらか。有効数字3桁とする。",
+    "choices": [
+      "0.488",
+      "0.806",
+      "1.00",
+      "0.699"
+    ],
+    "answer": 1,
+    "difficulty": "標準・数値計算",
+    "explanation": "Fr_lo=2500/(800²×10×0.0200)=0.01953125。f_o=(25×0.01953125)^0.3≈0.806494。Gを変える比較ではBoiやh_loも変わるため、f_oの比だけでh_fbの比は決まらない。",
+    "distractors": [
+      "25Fr_loを0.3乗せず使った。",
+      "正解。Fr_lo=0.01953125から0.3乗を取った。",
+      "Fr_loの上限側の枝を誤って使った。",
+      "25Fr_loの平方根を取った。"
+    ],
+    "hints": [
+      "Fr_loを全質量流束から計算する。",
+      "0.04より小さい枝を選ぶ。"
+    ],
+    "solutionSteps": [
+      "Fr_loを全質量流束から計算する。",
+      "0.04より小さい枝を選ぶ。",
+      "25Fr_lo=0.48828125を0.3乗する。",
+      "方向因子は各枝のCoの項に掛ける。"
+    ],
+    "beginnerPitfall": "Gを変えても他の無次元数が不変だと仮定しない。"
+  },
+  {
+    "id": "supp-tube-correlation-orientation-placement-v1",
+    "revision": "v1",
+    "field": "沸騰・相変化",
+    "prerequisites": [
+      "管内沸騰",
+      "質量乾き度",
+      "無次元数と適用条件"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "conceptual",
+    "source": {
+      "type": "supplement",
+      "reference": "一般的な管内沸騰相関と独自の仮想条件から作問。原本の文章・図・例題を転載しない。",
+      "chapterId": "ch9",
+      "focusSectionId": "9.8",
+      "guideId": "chapter9-latent-boiling"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "2026-10-30：内部の別式検算・単位・条件・全選択肢確認／原本網羅照合・包括的品質監査・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-30",
+        "type": "authored_with_internal_check",
+        "details": "docs/TUBE_BOILING_CORRELATIONS_20261030.md。対象式を画像確認し、独立数値と各誤答を内部検算。全体網羅照合・外部専門家校閲ではない。"
+      }
+    ],
+    "prompt": "水平管のKandlikar形でR=(1−x)^0.8とし、各枝の係数をa,b、指数をm,nと略記する。f_oは方向因子、Fは流体・伝熱面の係数である。正しい方向因子の置き方はどれか。",
+    "choices": [
+      "R[a Co^m+b Boi^n F f_o]",
+      "R[a Co^m/f_o+b Boi^n F]",
+      "R[a Co^m f_o+b Boi^n F]",
+      "R[a Co^m+b Boi^n F]f_o"
+    ],
+    "answer": 2,
+    "difficulty": "概念・式と適用条件の選択",
+    "explanation": "両枝ともf_oはCoのべき乗を含む項だけに掛かる。FとBoiの項は相関で指定された形のままにする。f_oと流体係数Fは別の役割である。",
+    "distractors": [
+      "方向因子をBoiの項へ移し、Coの項から落としてしまう。",
+      "方向因子で割ると、低Frの補正の向きが逆になる。",
+      "正解。方向因子はCoの項だけに掛ける。",
+      "Boiの項まで同じ方向因子で縮小してしまう。"
+    ],
+    "hints": [
+      "f_oとFは同じ係数ではない。",
+      "元の相関でf_oはCoと並んでいる。"
+    ],
+    "solutionSteps": [
+      "f_oとFは同じ係数ではない。",
+      "元の相関でf_oはCoと並んでいる。",
+      "括弧全体へは掛けない。",
+      "低Frでf_o<1ならCo側の項が減る。"
+    ],
+    "beginnerPitfall": "方向因子と流体・面の係数を入れ替えない。"
+  },
+  {
+    "id": "supp-tube-correlation-quality-range-v1",
+    "revision": "v1",
+    "field": "沸騰・相変化",
+    "prerequisites": [
+      "管内沸騰",
+      "質量乾き度",
+      "無次元数と適用条件"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "applied",
+    "source": {
+      "type": "supplement",
+      "reference": "一般的な管内沸騰相関と独自の仮想条件から作問。原本の文章・図・例題を転載しない。",
+      "chapterId": "ch9",
+      "focusSectionId": "9.8",
+      "guideId": "chapter9-latent-boiling"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "2026-10-30：内部の別式検算・単位・条件・全選択肢確認／原本網羅照合・包括的品質監査・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-30",
+        "type": "authored_with_internal_check",
+        "details": "docs/TUBE_BOILING_CORRELATIONS_20261030.md。対象式を画像確認し、独立数値と各誤答を内部検算。全体網羅照合・外部専門家校閲ではない。"
+      }
+    ],
+    "prompt": "候補の管内沸騰相関が「乾き前の飽和沸騰、0<x≤0.8」を条件とする。質量乾き度x=0.950で熱流束と全物性を入力できたとき、適切な判断はどれか。",
+    "choices": [
+      "計算が有限なら乾き後でも、同じ相関をそのまま使う",
+      "x≤1なので範囲内とし、係数Fだけを1に置き換える",
+      "対流優勢の枝があるため、乾き度の上限は考慮しない",
+      "範囲外として乾きと流動状態を調べ、別モデルを探す"
+    ],
+    "answer": 3,
+    "difficulty": "概念・式と適用条件の選択",
+    "explanation": "x=0.950は指定範囲を外れる。壁面の濡れ・流動様式・乾きの状態を調べ、それらに適合する別相関・実測等を使う。Fや枝を操作して上限を無視しない。",
+    "distractors": [
+      "有限な計算結果は乾き後の適用根拠にならない。",
+      "物理的なx≤1と、相関の上限0.8は異なる条件である。",
+      "枝の選択は相関の乾き度範囲を取り消さない。",
+      "正解。数値を計算できても指定した適用範囲を外れている。"
+    ],
+    "hints": [
+      "実際のxの物理範囲と、相関の範囲を分ける。",
+      "0.950は0.8を超える。"
+    ],
+    "solutionSteps": [
+      "実際のxの物理範囲と、相関の範囲を分ける。",
+      "0.950は0.8を超える。",
+      "乾き後を同じ熱移動機構とはしない。",
+      "流動状態に適合する別モデルを選ぶ。"
+    ],
+    "beginnerPitfall": "入力値がそろうことを、相関の有効性の証拠としない。"
   }
 ]

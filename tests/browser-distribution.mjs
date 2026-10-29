@@ -202,7 +202,7 @@ try {
   await page.locator('[data-chapter-card="ch2"]').waitFor({state:'visible'});
   assert.match(await page.locator('[data-chapter-card="ch2"]').innerText(),/収録問題：46問/);
   assert.match(await page.locator('[data-chapter-card="ch1"]').innerText(),/原本の節を読了に記録：1\/5節/);
-  assert.match(await page.locator('[data-chapter-card="ch9"]').innerText(),/収録問題：115問/);
+  assert.match(await page.locator('[data-chapter-card="ch9"]').innerText(),/収録問題：123問/);
   assert.match(await page.locator('[data-chapter-card="ch2"]').innerText(),/未回答：46問/);
   await page.locator('[data-chapter-card="ch2"] [data-chapter-practice-mode="priority"]').click();
   await page.locator('.question-card').waitFor({state:'visible'});
@@ -221,10 +221,10 @@ try {
   await page.locator('[data-action="exit-quiz"]').click();
   await page.locator('[data-action="discard-quiz"]').click();
   await page.locator('#quiz-start-form select[name="chapter"]').selectOption('ch9');
-  await page.locator('#quiz-start-form select[name="count"]').selectOption('712');
+  await page.locator('#quiz-start-form select[name="count"]').selectOption('720');
   await page.locator('#quiz-start-form button[type="submit"]').click();
   await page.locator('.question-card').waitFor({state:'visible'});
-  assert.match(await page.locator('.page-heading h1').innerText(),/1 \/ 115 問/);
+  assert.match(await page.locator('.page-heading h1').innerText(),/1 \/ 123 問/);
   await page.locator('[data-action="exit-quiz"]').click();
   await page.locator('[data-action="discard-quiz"]').click();
   await nav('guide');
@@ -687,7 +687,7 @@ try {
   // A vocabulary tap must leave the answer draft and persisted learning state intact.
   const pending=await page.evaluate(async()=>
     (await (await fetch('./data/questions.json')).json()).filter(q=>q.reportHistory?.some(r=>['internal_independent_check','authored_with_internal_check','internal_audit_followup'].includes(r.type))));
-  assert.equal(pending.length,384);
+  assert.equal(pending.length,392);
   const replaceSuspended=dialog=>dialog.accept();
   page.on('dialog',replaceSuspended);
   for(const q of pending){

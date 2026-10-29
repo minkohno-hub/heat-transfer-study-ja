@@ -1,13 +1,13 @@
 {
   "schemaVersion": 1,
-  "checkedAt": "2026-10-29T21:38:19.996017+00:00",
-  "basis": "6a0af9fに§9.11の圧力損失と輸送限界の独立補足・8問を追加した作業ツリーの実データ。旧PC回収数ではない。",
+  "checkedAt": "2026-10-29T21:50:05.122672+00:00",
+  "basis": "c7aff29に§9.8の管内沸騰相関の詳細説明と8問を追加した作業ツリーの実データ再集計。旧PC回収数とは別。",
   "scope": "独立執筆原稿と節別問題の暫定最低条件。科学的・法的完成認定ではない。",
   "totals": {
     "sectionCount": 76,
     "shortConceptNoteDrafts": 76,
     "detailedLessonDrafts": 76,
-    "questionsInBank": 712,
+    "questionsInBank": 720,
     "draftAuthoringMinimumMet": 76,
     "remainingQuestionDraftMinimum": 0,
     "sectionsNeedingDetailedLesson": 0,
@@ -17,16 +17,16 @@
   "glossaryOnThisBranch": 158,
   "evidence": {
     "node": {
-      "total": 336,
-      "passed": 331,
+      "total": 342,
+      "passed": 337,
       "skipped": 5,
       "failed": 0
     },
     "publicBuild": "passed",
     "currentBatchBrowser": {
-      "previousSourceCI": "6a0af9f:run40902978383 check and WebKit online passed; 76 lectures/376 exercise questions, bank704",
-      "currentChromiumProbe": "passed: section9.11 and 8 additional questions, mobile overflow absent, stored revision v1, pageerrors0",
-      "currentWebKit": "not yet executed: 76 lectures/384 exercise questions",
+      "previousSourceCI": "c7aff29:run40959557653 check and WebKit online passed; 76 lectures/384 exercise questions, bank712",
+      "currentChromiumProbe": "passed: section9.8 and 8 additional questions, mobile overflow absent, stored revision v1, pageerrors0",
+      "currentWebKit": "not yet executed: 76 lectures/392 exercise questions",
       "publicDeployment": "not performed; previously directly checked published bank72 is historical verification"
     },
     "expertReview": "not_completed",
@@ -1536,7 +1536,7 @@
       "shortConceptNoteDraft": true,
       "detailedLessonDraft": true,
       "legacyDraftRecorded": false,
-      "questionDraftCount": 8,
+      "questionDraftCount": 16,
       "questionKinds": 3,
       "missingQuestionDrafts": 0,
       "missingKinds": 0,
@@ -1546,15 +1546,16 @@
       "reviewedQuestionCount": 0,
       "verifiedRights": false,
       "finalAcceptance": false,
-      "learningObjective": "管内の加熱で状態が流れ方向に変わる理由を説明できる。質量流束、質量乾き度、ボイド率を区別し、条件付きの定常エネルギー収支から乾き度の変化を計算できる。プール沸騰相関をそのまま流用しない。",
-      "detailedBlockCount": 8,
-      "equationCount": 5,
-      "workedExampleSteps": 5,
+      "learningObjective": "管内の加熱で状態が流れ方向に変わる理由を説明できる。質量流束、質量乾き度、ボイド率を区別し、条件付きの定常エネルギー収支から乾き度の変化を計算できる。プール沸騰相関をそのまま流用しない。 液単相基準h_lo、対流数Co、沸騰数Boiを使ってKandlikarの二つの枝を比較し、水平管の方向因子と乾き度の適用範囲を確認できる。熱伝達相関と限界熱流束の評価を区別する。",
+      "detailedBlockCount": 15,
+      "equationCount": 12,
+      "workedExampleSteps": 12,
       "questionReview": "comprehensive_scientific_review_pending",
-      "sourceCollation": "section_start_mapping_tracked_full_scope_unverified",
+      "sourceCollation": "PDF pp530-531/533-534 equations and conditions viewed as images; full section including figures/limits/pressure correlations unverified",
       "independentFigures": "parallel_line_assets_unintegrated_or_pending",
       "publicScreenCurrentBatch": "c5d35fc: built-artifact Chromium and WebKit-online passed; latest live deployment not performed",
-      "expertApproval": false
+      "expertApproval": false,
+      "currentRevisionScreenCheck": "passed: targeted Chromium reader/8questions/revision/mobile probe"
     },
     {
       "chapterId": "ch9",
@@ -1637,7 +1638,7 @@
       "independentFigures": "parallel_line_assets_unintegrated_or_pending",
       "publicScreenCurrentBatch": "c5d35fc: built-artifact Chromium and WebKit-online passed; latest live deployment not performed",
       "expertApproval": false,
-      "currentRevisionScreenCheck": "passed: targeted Chromium reader/8questions/revision/mobile probe"
+      "currentRevisionScreenCheck": "c7aff29:targeted Chromium and full WebKit online passed"
     },
     {
       "chapterId": "ch10",
