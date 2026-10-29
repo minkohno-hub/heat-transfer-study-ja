@@ -13723,5 +13723,473 @@
       "粘性底層",
       "乱流"
     ]
+  },
+  {
+    "id": "stagnant-gas-stefan-diffusion",
+    "ja": "停滞気体中のステファン拡散式",
+    "en": "Stefan diffusion through a stagnant gas",
+    "aliases": [
+      "停滞B成分を通るAの拡散"
+    ],
+    "category": "物質移動",
+    "brief": "気体Bの正味流束がゼロの二成分気体で、Aの拡散と随伴する流れを含む移動率の式。",
+    "meaning": "気体Bの正味流束がゼロの二成分気体で、Aの拡散と随伴する流れを含む移動率の式。",
+    "beginner": "蒸発した成分Aが気体Bの中を通ると、B自身の正味の移動はゼロでも、気体全体の流れが生まれます。",
+    "detail": "等温・定圧の理想二成分気体で全モル濃度cと拡散係数D_ABが一定、成分Bの正味モル流束N_B=0なら、厚さLの平面停滞膜でN_A=(cD_AB/L)ln[(1−y_A,2)/(1−y_A,1)]。位置1から2へAが移り、y_A,1>y_A,2とする。これは分子拡散項とステファン流の和であり、単純なFick式−cD dy_A/dzを全流束とする場合と異なる。",
+    "formula": "N_A=(cD_AB/L) ln[(1−y_A,2)/(1−y_A,1)]（N_B=0）",
+    "unit": "N_A: mol/(m²·s)、c: mol/m³、D_AB: m²/s、L: m",
+    "example": "c=40 mol/m³、D_AB=1×10⁻⁵ m²/s、L=0.01 m、y_A,1=0.30、y_A,2=0.10ならN_A≈0.01005 mol/(m²·s)。",
+    "relatedSections": [
+      "11.3",
+      "11.5",
+      "11.8"
+    ],
+    "relatedQuestions": [],
+    "relatedSimulators": [],
+    "confusions": [
+      "Bの正味流束がゼロでも、Bの分子拡散流束と対流流束はそれぞれゼロとは限らない。"
+    ],
+    "source": {
+      "type": "supplement",
+      "reference": "第11.3・11.5・11.6・11.7・11.8・11.9節の二成分移動、11章の熱物質連成、6.3節の粘性発熱に関わる一般理論に基づき独自に執筆した補足。参考照合：CRE Chemical Reaction Engineering https://cre.smilelab.dev/content/slides/09-external-and-internal-diffusion-effects/ 、Spalding質量移動数 https://www.mdpi.com/1099-4300/25/8/1232 、Brinkman数 https://dimless.org/docs/numbers/brinkman/ 。教科書原文の翻訳・転載ではなく専門家校閲前。"
+    },
+    "reviewStatus": "needs_review",
+    "related": [
+      "ステファン流",
+      "フィックの法則",
+      "モル分率",
+      "停滞膜モデル"
+    ]
+  },
+  {
+    "id": "logarithmic-mean-inert-fraction",
+    "ja": "対数平均不活性成分モル分率",
+    "en": "logarithmic mean inert-gas mole fraction",
+    "aliases": [
+      "停滞気体の対数平均モル分率"
+    ],
+    "category": "物質移動",
+    "brief": "停滞成分Bのモル分率が膜厚方向に変化する効果を対数平均した量。",
+    "meaning": "停滞成分Bのモル分率が膜厚方向に変化する効果を対数平均した量。",
+    "beginner": "蒸発面の近くと遠くで空気などのB成分の割合が違うとき、単純平均ではなく対数平均を使うと正味流束を整理できます。",
+    "detail": "成分Bの両端モル分率y_B,1とy_B,2が正のとき、y_B,lm=(y_B,2−y_B,1)/ln(y_B,2/y_B,1)と定義する。等温・定圧・一定D_ABでBが停滞する二成分膜ではN_A=(cD_AB/L)(y_A,1−y_A,2)/y_B,lm。両端が等しい極限は共通値に一致する。Bが共に移流する一般の多成分気体に無条件で適用しない。",
+    "formula": "y_B,lm=(y_B,2−y_B,1)/ln(y_B,2/y_B,1)",
+    "unit": "y_B,lm,y_B: 無次元",
+    "example": "y_B,1=0.70、y_B,2=0.90なら対数平均y_B,lm≈0.7959。",
+    "relatedSections": [
+      "11.5",
+      "11.8"
+    ],
+    "relatedQuestions": [],
+    "relatedSimulators": [],
+    "confusions": [
+      "対数平均のB成分分率と、熱交換器の対数平均温度差は対象の物理量が異なる。"
+    ],
+    "source": {
+      "type": "supplement",
+      "reference": "第11.3・11.5・11.6・11.7・11.8・11.9節の二成分移動、11章の熱物質連成、6.3節の粘性発熱に関わる一般理論に基づき独自に執筆した補足。参考照合：CRE Chemical Reaction Engineering https://cre.smilelab.dev/content/slides/09-external-and-internal-diffusion-effects/ 、Spalding質量移動数 https://www.mdpi.com/1099-4300/25/8/1232 、Brinkman数 https://dimless.org/docs/numbers/brinkman/ 。教科書原文の翻訳・転載ではなく専門家校閲前。"
+    },
+    "reviewStatus": "needs_review",
+    "related": [
+      "停滞気体中のステファン拡散式",
+      "モル分率",
+      "停滞膜モデル"
+    ]
+  },
+  {
+    "id": "stefan-flow-enhancement-factor",
+    "ja": "ステファン流による移動補正係数",
+    "en": "Stefan-flow flux enhancement factor",
+    "aliases": [
+      "ステファン流の流束補正"
+    ],
+    "category": "物質移動",
+    "brief": "停滞B成分を通るAの全流束と、同じ端濃度差の単純なFick拡散流束の比。",
+    "meaning": "停滞B成分を通るAの全流束と、同じ端濃度差の単純なFick拡散流束の比。",
+    "beginner": "蒸発が強くなると、蒸気自身が作る流れが物質をさらに運びます。その増分を単純拡散の見積もりと比べます。",
+    "detail": "等温・定圧、一定cとD_ABの平面二成分停滞膜で、Aの高濃度側と低濃度側のモル分率y_1>y_2なら、F_S=ln[(1−y_2)/(1−y_1)]/(y_1−y_2)。Bの正味流束ゼロの場合、Aの正味流束は単純な濃度差式(cD/L)(y_1−y_2)のF_S倍となる。Aが希薄な極限ではF_S→1。これは特定の分率基準の補正であり、他の濃度基準へ無条件に移せない。",
+    "formula": "F_S=ln[(1−y_2)/(1−y_1)]/(y_1−y_2)",
+    "unit": "F_S: 無次元、y_1,y_2: モル分率",
+    "example": "y_1=0.30、y_2=0.10ならF_S≈1.2566で、単純なモル分率差式より約25.7%大きい。",
+    "relatedSections": [
+      "11.5",
+      "11.8",
+      "11.9"
+    ],
+    "relatedQuestions": [],
+    "relatedSimulators": [],
+    "confusions": [
+      "この補正は停滞B成分の仮定で導かれ、等モル相互拡散の補正係数ではない。"
+    ],
+    "source": {
+      "type": "supplement",
+      "reference": "第11.3・11.5・11.6・11.7・11.8・11.9節の二成分移動、11章の熱物質連成、6.3節の粘性発熱に関わる一般理論に基づき独自に執筆した補足。参考照合：CRE Chemical Reaction Engineering https://cre.smilelab.dev/content/slides/09-external-and-internal-diffusion-effects/ 、Spalding質量移動数 https://www.mdpi.com/1099-4300/25/8/1232 、Brinkman数 https://dimless.org/docs/numbers/brinkman/ 。教科書原文の翻訳・転載ではなく専門家校閲前。"
+    },
+    "reviewStatus": "needs_review",
+    "related": [
+      "停滞気体中のステファン拡散式",
+      "等モル向流拡散",
+      "モル分率"
+    ]
+  },
+  {
+    "id": "spalding-mass-transfer-number",
+    "ja": "スポルディング物質移動数",
+    "en": "Spalding mass transfer number",
+    "aliases": [
+      "Spalding数B_M"
+    ],
+    "category": "熱・物質移動",
+    "brief": "蒸発面と周囲の蒸気質量分率差を、表面の非蒸気質量分率で割った無次元の駆動力。",
+    "meaning": "蒸発面と周囲の蒸気質量分率差を、表面の非蒸気質量分率で割った無次元の駆動力。",
+    "beginner": "表面に蒸気が多いほど蒸発の影響が強くなります。周囲との差を、表面に残るほかの気体の割合と比べます。",
+    "detail": "蒸発成分Aの表面質量分率Y_A,sと周囲質量分率Y_A,∞を用いB_M=(Y_A,s−Y_A,∞)/(1−Y_A,s)。非蒸発性成分の正味流束がゼロの定密度二成分モデルでは、蒸発流束がln(1+B_M)に比例する関係が現れる。モル分率で定義する類似量もあるため、Yかyかを必ず明示する。凝縮時には符号が変わり得る。",
+    "formula": "B_M=(Y_A,s−Y_A,∞)/(1−Y_A,s)",
+    "unit": "B_M,Y_A,s,Y_A,∞: 無次元",
+    "example": "表面蒸気質量分率0.30、周囲0.10ならB_M=0.20/0.70≈0.2857。",
+    "relatedSections": [
+      "11.7",
+      "11.9"
+    ],
+    "relatedQuestions": [],
+    "relatedSimulators": [],
+    "confusions": [
+      "スポルディング物質移動数と沸騰のボイリング数、ボンド数は異なる無次元数。"
+    ],
+    "source": {
+      "type": "supplement",
+      "reference": "第11.3・11.5・11.6・11.7・11.8・11.9節の二成分移動、11章の熱物質連成、6.3節の粘性発熱に関わる一般理論に基づき独自に執筆した補足。参考照合：CRE Chemical Reaction Engineering https://cre.smilelab.dev/content/slides/09-external-and-internal-diffusion-effects/ 、Spalding質量移動数 https://www.mdpi.com/1099-4300/25/8/1232 、Brinkman数 https://dimless.org/docs/numbers/brinkman/ 。教科書原文の翻訳・転載ではなく専門家校閲前。"
+    },
+    "reviewStatus": "needs_review",
+    "related": [
+      "質量分率",
+      "ステファン流",
+      "蒸発冷却",
+      "物質移動スタントン数"
+    ]
+  },
+  {
+    "id": "species-flux-decomposition",
+    "ja": "成分モル流束の分解",
+    "en": "decomposition of species molar flux",
+    "aliases": [
+      "成分の拡散流束と移流流束"
+    ],
+    "category": "物質移動",
+    "brief": "成分の正味モル流束を、モル平均速度に伴う移流分と相対拡散分に分ける表現。",
+    "meaning": "成分の正味モル流束を、モル平均速度に伴う移流分と相対拡散分に分ける表現。",
+    "beginner": "同じ成分の移動でも、流体全体が流れる分と、周囲との濃度差で混ざる分があります。両方を足したものが正味の移動です。",
+    "detail": "二成分混合物のモル平均基準ではN_A=y_A N_total+J_A、J_A=−cD_AB∂y_A/∂zという形で表す。N_total=N_A+N_Bで、J_AとJ_Bの和はゼロ。これは同じ速度基準の分解であり、質量平均基準で定義した拡散流束j_A[kg/(m²·s)]とは異なる。多成分・非理想混合物には対応する輸送モデルを別途指定する。",
+    "formula": "N_A=y_A N_total−cD_AB ∂y_A/∂z（二成分、モル平均基準）",
+    "unit": "N_A,N_total,J_A: mol/(m²·s)、c: mol/m³、D_AB: m²/s",
+    "example": "N_total=0.010 mol/(m²·s)、y_A=0.40、J_A=0.003ならN_A=0.007 mol/(m²·s)。",
+    "relatedSections": [
+      "11.2",
+      "11.3",
+      "11.4"
+    ],
+    "relatedQuestions": [],
+    "relatedSimulators": [],
+    "confusions": [
+      "正味の成分流束と、平均流れに対する拡散流束は同一ではない。"
+    ],
+    "source": {
+      "type": "supplement",
+      "reference": "第11.3・11.5・11.6・11.7・11.8・11.9節の二成分移動、11章の熱物質連成、6.3節の粘性発熱に関わる一般理論に基づき独自に執筆した補足。参考照合：CRE Chemical Reaction Engineering https://cre.smilelab.dev/content/slides/09-external-and-internal-diffusion-effects/ 、Spalding質量移動数 https://www.mdpi.com/1099-4300/25/8/1232 、Brinkman数 https://dimless.org/docs/numbers/brinkman/ 。教科書原文の翻訳・転載ではなく専門家校閲前。"
+    },
+    "reviewStatus": "needs_review",
+    "related": [
+      "全モル流束",
+      "拡散質量流束",
+      "モル平均速度",
+      "モル分率"
+    ]
+  },
+  {
+    "id": "binary-diffusive-flux-balance",
+    "ja": "二成分拡散流束の和がゼロ",
+    "en": "zero-sum binary diffusive molar fluxes",
+    "aliases": [
+      "モル平均基準の拡散流束和"
+    ],
+    "category": "物質移動",
+    "brief": "モル平均速度を基準にした二成分の拡散モル流束が互いに打ち消し合う関係。",
+    "meaning": "モル平均速度を基準にした二成分の拡散モル流束が互いに打ち消し合う関係。",
+    "beginner": "濃度差で成分Aが右へ動くと、平均の流れを差し引いた基準では、成分Bは左へ同じモル数だけ移ります。",
+    "detail": "二成分系のモル平均速度に対する拡散流束J_A=N_A−y_A N_total、J_B=N_B−y_BN_totalを定義する。y_A+y_B=1、N_total=N_A+N_BからJ_A+J_B=0が恒等的に成り立つ。これは拡散成分の和がゼロということで、N_A+N_Bの正味全流束がゼロであることは意味しない。質量平均基準の拡散流束にも別の対応する和ゼロの性質がある。",
+    "formula": "J_A+J_B=0（モル平均基準）",
+    "unit": "J_A,J_B: mol/(m²·s)",
+    "example": "J_A=+0.004 mol/(m²·s)ならモル平均基準のJ_B=−0.004 mol/(m²·s)。",
+    "relatedSections": [
+      "11.2",
+      "11.3"
+    ],
+    "relatedQuestions": [],
+    "relatedSimulators": [],
+    "confusions": [
+      "拡散流束の和がゼロでも、移流を含む全流束N_totalがゼロとは限らない。"
+    ],
+    "source": {
+      "type": "supplement",
+      "reference": "第11.3・11.5・11.6・11.7・11.8・11.9節の二成分移動、11章の熱物質連成、6.3節の粘性発熱に関わる一般理論に基づき独自に執筆した補足。参考照合：CRE Chemical Reaction Engineering https://cre.smilelab.dev/content/slides/09-external-and-internal-diffusion-effects/ 、Spalding質量移動数 https://www.mdpi.com/1099-4300/25/8/1232 、Brinkman数 https://dimless.org/docs/numbers/brinkman/ 。教科書原文の翻訳・転載ではなく専門家校閲前。"
+    },
+    "reviewStatus": "needs_review",
+    "related": [
+      "モル平均速度",
+      "等モル向流拡散",
+      "全モル流束",
+      "成分モル流束の分解"
+    ]
+  },
+  {
+    "id": "mass-transfer-film-resistance",
+    "ja": "物質移動の境膜抵抗",
+    "en": "mass transfer film resistance",
+    "aliases": [
+      "対流物質移動抵抗"
+    ],
+    "category": "物質移動",
+    "brief": "濃度差をモル移動率で割り、境膜による物質移動のしにくさとして表した量。",
+    "meaning": "濃度差をモル移動率で割り、境膜による物質移動のしにくさとして表した量。",
+    "beginner": "濃度差が同じなら、物質が移りにくい膜ほど時間当たりの移動量は減ります。その抵抗を数値で表します。",
+    "detail": "濃度差Δc [mol/m³]に基づく物質移動係数k_c [m/s]が一定で流束N_A=k_cΔcと置ける場合、面積Aを通るモル移動率ṅ_A=k_cAΔc。したがって境膜抵抗R_m=Δc/ṅ_A=1/(k_cA)で単位はs/m³。質量分率・モル分率・分圧基準の物質移動係数を混ぜると抵抗の単位も値も変わる。",
+    "formula": "R_m=1/(k_c A)（濃度差Δc基準）",
+    "unit": "R_m: s/m³、k_c: m/s、A: m²、ṅ_A: mol/s",
+    "example": "k_c=0.01 m/s、面積A=2 m²ならR_m=50 s/m³。",
+    "relatedSections": [
+      "11.5",
+      "11.6"
+    ],
+    "relatedQuestions": [],
+    "relatedSimulators": [],
+    "confusions": [
+      "濃度基準の物質移動抵抗s/m³を熱抵抗K/Wと同じ単位で扱ってはならない。"
+    ],
+    "source": {
+      "type": "supplement",
+      "reference": "第11.3・11.5・11.6・11.7・11.8・11.9節の二成分移動、11章の熱物質連成、6.3節の粘性発熱に関わる一般理論に基づき独自に執筆した補足。参考照合：CRE Chemical Reaction Engineering https://cre.smilelab.dev/content/slides/09-external-and-internal-diffusion-effects/ 、Spalding質量移動数 https://www.mdpi.com/1099-4300/25/8/1232 、Brinkman数 https://dimless.org/docs/numbers/brinkman/ 。教科書原文の翻訳・転載ではなく専門家校閲前。"
+    },
+    "reviewStatus": "needs_review",
+    "related": [
+      "対流物質移動係数",
+      "モル濃度",
+      "停滞膜モデル"
+    ]
+  },
+  {
+    "id": "couette-linear-velocity-profile",
+    "ja": "平行平板クエット流の線形速度分布",
+    "en": "linear velocity profile of plane Couette flow",
+    "aliases": [
+      "平行平板クエット速度分布"
+    ],
+    "category": "流体と熱の連成",
+    "brief": "一定速度で動く平行板によって生まれる定常層流の直線的な速度分布。",
+    "meaning": "一定速度で動く平行板によって生まれる定常層流の直線的な速度分布。",
+    "beginner": "平らな二枚の板の片方が動くと、その動きが粘性によって中間の流体へ伝わり、速度が直線的に変わります。",
+    "detail": "間隔Hの二枚の無限に広い平行板で、下壁y=0は静止し上壁y=Hが一定速度Uで動く。非圧縮ニュートン流体、定常、圧力勾配なし、滑りなしの純クエット流ではu(y)=Uy/H、壁でのせん断応力の大きさはμU/H。圧力勾配が存在するクエット・ポアズイユ流や時間依存の起動流では、速度分布はこの単純な直線から変わる。",
+    "formula": "u(y)=U y/H、|τ|=μU/H",
+    "unit": "u,U: m/s、H,y: m、τ: Pa、μ: Pa·s",
+    "example": "上壁速度2 m/s、板間隔0.01 mなら中央y=0.005 mの速度は1 m/s。",
+    "relatedSections": [
+      "11.8",
+      "6.3"
+    ],
+    "relatedQuestions": [],
+    "relatedSimulators": [],
+    "confusions": [
+      "純クエット流の線形速度分布は圧力勾配がゼロで、壁の滑りがない場合の結果。"
+    ],
+    "source": {
+      "type": "supplement",
+      "reference": "第11.3・11.5・11.6・11.7・11.8・11.9節の二成分移動、11章の熱物質連成、6.3節の粘性発熱に関わる一般理論に基づき独自に執筆した補足。参考照合：CRE Chemical Reaction Engineering https://cre.smilelab.dev/content/slides/09-external-and-internal-diffusion-effects/ 、Spalding質量移動数 https://www.mdpi.com/1099-4300/25/8/1232 、Brinkman数 https://dimless.org/docs/numbers/brinkman/ 。教科書原文の翻訳・転載ではなく専門家校閲前。"
+    },
+    "reviewStatus": "needs_review",
+    "related": [
+      "クエット流れ",
+      "粘度",
+      "壁面せん断応力",
+      "粘性散逸"
+    ]
+  },
+  {
+    "id": "couette-viscous-heating-profile",
+    "ja": "クエット流の粘性発熱温度分布",
+    "en": "temperature rise from viscous dissipation in plane Couette flow",
+    "aliases": [
+      "クエット流の粘性散逸温度上昇"
+    ],
+    "category": "流体と熱の連成",
+    "brief": "二枚の板が同じ温度でも、間を流れる流体が粘性摩擦で内部から温まる温度分布。",
+    "meaning": "二枚の板が同じ温度でも、間を流れる流体が粘性摩擦で内部から温まる温度分布。",
+    "beginner": "板を同じ温度に冷やしていても、片方の板を速く動かすと、液体の内部が摩擦で温まって中央が最も高温になります。",
+    "detail": "平行板間隔H、上壁速度U、下壁速度0、同温度T_w、定常一次元で圧力勾配がなく、μとkが一定の非圧縮ニュートン流体を考える。u=Uy/Hより粘性散逸Φ=μ(U/H)²。流れ方向の温度変化がなく熱の逃げ道が板への熱伝導のみなら、k d²T/dy²+Φ=0を解いてT(y)−T_w=(μU²/2k)(y/H)(1−y/H)。最大上昇はμU²/(8k)となる。",
+    "formula": "T(y)−T_w=(μU²/(2k))(y/H)(1−y/H)",
+    "unit": "T−T_w: K、μ: Pa·s、U: m/s、k: W/(m·K)",
+    "example": "粘度μ=1 Pa·s、上壁速度U=2 m/s、熱伝導率k=0.5 W/(m·K)なら中央の温度上昇は1 K。",
+    "relatedSections": [
+      "6.3",
+      "11.8"
+    ],
+    "relatedQuestions": [],
+    "relatedSimulators": [],
+    "confusions": [
+      "壁の温度が等しくても粘性による体積発熱があれば、内部の最高温度は壁温より高くなり得る。"
+    ],
+    "source": {
+      "type": "supplement",
+      "reference": "第11.3・11.5・11.6・11.7・11.8・11.9節の二成分移動、11章の熱物質連成、6.3節の粘性発熱に関わる一般理論に基づき独自に執筆した補足。参考照合：CRE Chemical Reaction Engineering https://cre.smilelab.dev/content/slides/09-external-and-internal-diffusion-effects/ 、Spalding質量移動数 https://www.mdpi.com/1099-4300/25/8/1232 、Brinkman数 https://dimless.org/docs/numbers/brinkman/ 。教科書原文の翻訳・転載ではなく専門家校閲前。"
+    },
+    "reviewStatus": "needs_review",
+    "related": [
+      "平行平板クエット流の線形速度分布",
+      "粘性散逸",
+      "熱伝導率",
+      "ブリンクマン数"
+    ]
+  },
+  {
+    "id": "brinkman-number",
+    "ja": "ブリンクマン数",
+    "en": "Brinkman number",
+    "aliases": [
+      "Br数"
+    ],
+    "category": "流体と熱の連成",
+    "brief": "粘性散逸による発熱の重要度を、温度差による熱伝導と比較する無次元数。",
+    "meaning": "粘性散逸による発熱の重要度を、温度差による熱伝導と比較する無次元数。",
+    "beginner": "流体をかき混ぜたり速く動かしたりすると摩擦で熱が出ます。冷却による熱移動に対してどれくらい重要かを比べます。",
+    "detail": "代表速度U、粘度μ、熱伝導率k、温度差ΔTを用いてBr=μU²/(kΔT)と定義する。Ec=U²/(c_pΔT)、Pr=μc_p/kとすればBr=EcPr。流れと温度差の基準を一致させる必要があり、Brが大きい場合はエネルギー方程式の粘性散逸項を無視しにくい。ΔT→0の状況ではこの尺度は適さない場合がある。",
+    "formula": "Br=μU²/(kΔT)=Ec·Pr",
+    "unit": "Br,Ec,Pr: 無次元、μ: Pa·s、k: W/(m·K)、ΔT: K",
+    "example": "μ=0.01 Pa·s、U=2 m/s、k=0.5 W/(m·K)、ΔT=0.2 KならBr=0.4。",
+    "relatedSections": [
+      "6.3",
+      "11.8"
+    ],
+    "relatedQuestions": [],
+    "relatedSimulators": [],
+    "confusions": [
+      "ブリンクマン数は流量や速度だけでなく、どの温度差を代表量に選んだかで変わる。"
+    ],
+    "source": {
+      "type": "supplement",
+      "reference": "第11.3・11.5・11.6・11.7・11.8・11.9節の二成分移動、11章の熱物質連成、6.3節の粘性発熱に関わる一般理論に基づき独自に執筆した補足。参考照合：CRE Chemical Reaction Engineering https://cre.smilelab.dev/content/slides/09-external-and-internal-diffusion-effects/ 、Spalding質量移動数 https://www.mdpi.com/1099-4300/25/8/1232 、Brinkman数 https://dimless.org/docs/numbers/brinkman/ 。教科書原文の翻訳・転載ではなく専門家校閲前。"
+    },
+    "reviewStatus": "needs_review",
+    "related": [
+      "粘性散逸",
+      "エッカート数",
+      "プラントル数",
+      "クエット流の粘性発熱温度分布"
+    ]
+  },
+  {
+    "id": "surface-evaporation-energy-balance",
+    "ja": "蒸発界面のエネルギー収支",
+    "en": "energy balance at an evaporating interface",
+    "aliases": [
+      "蒸発表面の熱収支"
+    ],
+    "category": "流体と熱の連成",
+    "brief": "界面へ供給された熱が潜熱と顕熱、伝導・対流・放射などに分配される関係。",
+    "meaning": "界面へ供給された熱が潜熱と顕熱、伝導・対流・放射などに分配される関係。",
+    "beginner": "水が蒸発するとき、周囲から入った熱は水を温めるだけでなく、水蒸気に変えるためにも必要になります。",
+    "detail": "定常の薄い蒸発界面で熱流の正方向を界面へ流入する向きと定義し、界面での相変化が主要な熱消費なら、正味流入熱流束q″_net≈m″_evap h_fgとなる。実際には液体と蒸気の顕熱、壁内伝導、周囲への放射・対流、蓄熱、流入・流出するエンタルピーを含む完全なエネルギー収支が必要。潜熱項の符号は蒸発と凝縮で変わる。",
+    "formula": "q″_net≈m″_evap h_fg（定常・潜熱支配の近似）",
+    "unit": "q″_net: W/m²、m″_evap: kg/(m²·s)、h_fg: J/kg",
+    "example": "潜熱h_fg=2.4×10⁶ J/kg、蒸発質量流束m″=0.001 kg/(m²·s)なら必要潜熱流束は2400 W/m²。",
+    "relatedSections": [
+      "11.7",
+      "11.9"
+    ],
+    "relatedQuestions": [],
+    "relatedSimulators": [],
+    "confusions": [
+      "蒸発潜熱流束だけで表面温度を決めたり、全顕熱経路を含むと誤認してはならない。"
+    ],
+    "source": {
+      "type": "supplement",
+      "reference": "第11.3・11.5・11.6・11.7・11.8・11.9節の二成分移動、11章の熱物質連成、6.3節の粘性発熱に関わる一般理論に基づき独自に執筆した補足。参考照合：CRE Chemical Reaction Engineering https://cre.smilelab.dev/content/slides/09-external-and-internal-diffusion-effects/ 、Spalding質量移動数 https://www.mdpi.com/1099-4300/25/8/1232 、Brinkman数 https://dimless.org/docs/numbers/brinkman/ 。教科書原文の翻訳・転載ではなく専門家校閲前。"
+    },
+    "reviewStatus": "needs_review",
+    "related": [
+      "蒸発冷却",
+      "潜熱",
+      "熱・物質移動の類推",
+      "質量流束"
+    ]
+  },
+  {
+    "id": "heat-mass-lewis-relation",
+    "ja": "熱・物質移動のルイス関係",
+    "en": "Lewis relation between heat and mass transfer coefficients",
+    "aliases": [
+      "ルイス関係（物質移動）"
+    ],
+    "category": "熱・物質移動",
+    "brief": "熱移動と物質移動のコルバーン類推から、熱伝達率と物質移動係数を関連付ける近似。",
+    "meaning": "熱移動と物質移動のコルバーン類推から、熱伝達率と物質移動係数を関連付ける近似。",
+    "beginner": "熱と蒸気の移動は違う現象ですが、流れ方が似ているときには、一方の係数から他方のおおよその大きさを求められます。",
+    "detail": "熱移動j_H=St_hPr^(2/3)と物質移動j_D=St_mSc^(2/3)が等しい条件で、St_h=h/(ρc_pU)、St_m=k_c/Uを用いるとh/(ρc_pk_c)=(Sc/Pr)^(2/3)=Le^(2/3)。ここでLe=α/D=Sc/Pr。熱と物質の境界条件・流れの相似性が適切で、物性差や強い吹出しが小さい場合の近似であり、全ての蒸発・凝縮問題に厳密な等式ではない。",
+    "formula": "h/(ρc_p k_c)≈Le^(2/3)（j_H≈j_Dの条件）",
+    "unit": "h: W/(m²·K)、ρ: kg/m³、c_p: J/(kg·K)、k_c: m/s、Le: 無次元",
+    "example": "Le=1、ρ=1 kg/m³、c_p=1000 J/(kg·K)、k_c=0.01 m/sなら予測h≈10 W/(m²·K)。",
+    "relatedSections": [
+      "11.7",
+      "11.9"
+    ],
+    "relatedQuestions": [],
+    "relatedSimulators": [],
+    "confusions": [
+      "ルイス数Leの定義とLewis関係の近似を区別し、係数の単位基準を揃える。"
+    ],
+    "source": {
+      "type": "supplement",
+      "reference": "第11.3・11.5・11.6・11.7・11.8・11.9節の二成分移動、11章の熱物質連成、6.3節の粘性発熱に関わる一般理論に基づき独自に執筆した補足。参考照合：CRE Chemical Reaction Engineering https://cre.smilelab.dev/content/slides/09-external-and-internal-diffusion-effects/ 、Spalding質量移動数 https://www.mdpi.com/1099-4300/25/8/1232 、Brinkman数 https://dimless.org/docs/numbers/brinkman/ 。教科書原文の翻訳・転載ではなく専門家校閲前。"
+    },
+    "reviewStatus": "needs_review",
+    "related": [
+      "ルイス数",
+      "チルトン・コルバーンのアナロジー",
+      "対流物質移動係数",
+      "対流熱伝達率"
+    ]
+  },
+  {
+    "id": "laminar-flat-plate-mass-transfer-correlation",
+    "ja": "層流平板の平均シャーウッド数相関",
+    "en": "average Sherwood correlation for laminar flat-plate flow",
+    "aliases": [
+      "平板層流の物質移動相関"
+    ],
+    "category": "熱・物質移動",
+    "brief": "一様な界面濃度の平板に沿う層流で、平均物質移動係数をReとScから見積もる相関。",
+    "meaning": "一様な界面濃度の平板に沿う層流で、平均物質移動係数をReとScから見積もる相関。",
+    "beginner": "空気が湿った板に沿って流れると、板の先端では蒸気が移りやすく、後方では境界層が成長して移りにくくなります。",
+    "detail": "非圧縮・一定物性・ゼロ圧力勾配の平滑平板層流で、全長Lに沿った界面濃度が一定、物質移動が十分弱く流れを変えない条件ではSh_L≈0.664Re_L^(1/2)Sc^(1/3)が代表的な相関。Scが極端な場合や濃度境界条件が変わる場合、強い蒸発・吹出し、乱流遷移を含む場合には別の相関や補正を使う。",
+    "formula": "Sh_L≈0.664 Re_L^(1/2) Sc^(1/3)（等濃度平板層流）",
+    "unit": "Sh_L,Re_L,Sc: 無次元",
+    "example": "Re_L=10000、Sc=1ならSh_L≈0.664×100=66.4。",
+    "relatedSections": [
+      "11.6",
+      "11.7"
+    ],
+    "relatedQuestions": [],
+    "relatedSimulators": [],
+    "confusions": [
+      "これは板全長の平均係数であり、局所的なSh_xの前係数は異なる。"
+    ],
+    "source": {
+      "type": "supplement",
+      "reference": "第11.3・11.5・11.6・11.7・11.8・11.9節の二成分移動、11章の熱物質連成、6.3節の粘性発熱に関わる一般理論に基づき独自に執筆した補足。参考照合：CRE Chemical Reaction Engineering https://cre.smilelab.dev/content/slides/09-external-and-internal-diffusion-effects/ 、Spalding質量移動数 https://www.mdpi.com/1099-4300/25/8/1232 、Brinkman数 https://dimless.org/docs/numbers/brinkman/ 。教科書原文の翻訳・転載ではなく専門家校閲前。"
+    },
+    "reviewStatus": "needs_review",
+    "related": [
+      "シャーウッド数",
+      "シュミット数",
+      "レイノルズ数",
+      "濃度境界層"
+    ]
   }
 ]

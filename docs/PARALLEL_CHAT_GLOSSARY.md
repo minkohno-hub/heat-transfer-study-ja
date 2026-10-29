@@ -185,3 +185,11 @@
 - 確認資料：OpenFOAM Wall Functions（https://doc.openfoam.com/2606/tools/processing/models/turbulence/ras/wall-functions/）、九州大学論文（https://api.lib.kyushu-u.ac.jp/opac_download_md/6796070/eng3329.pdf）。原書翻訳・転載ではなく独自説明、専門家校閲前。
 - **JS事前検証**：全410語のID・NFKC正規化日本語名/別名・英語名の重複なし。新規12語の必須欄、関連語の実在・節ID・数値例12件に合格。既存398語は不変。
 - relatedQuestions=[]。既存158語固定テスト、Node/CI/ビルド/ブラウザ・実機/外部校閲は未実施で品質ゲート未達。テストや他ラインのファイル・PR・教材・図解は未変更。
+
+## 第24バッチ（2026-10-30 JST）
+- 直前 **410語** → 新規 **13語** → 計 **423語**。
+- 追加：停滞気体中のステファン拡散式、対数平均不活性成分モル分率、ステファン流による移動補正係数、スポルディング物質移動数、成分モル流束の分解、二成分拡散流束の和がゼロ、物質移動の境膜抵抗、平行平板クエット流の線形速度分布、クエット流の粘性発熱温度分布、ブリンクマン数、蒸発界面のエネルギー収支、熱・物質移動のルイス関係、層流平板の平均シャーウッド数相関。
+- 第11章の停滞気体へのステファン拡散・対数平均不活性分率・Stefan移動補正・Spalding質量移動数・成分流束の移流/拡散分解・境膜抵抗、クエット流の速度と粘性発熱、ブリンクマン数、界面熱収支、ルイス関係、平板の平均Sh相関を独立執筆。物理的な適用条件・単位・例題・混同防止を含む。
+- 公開理論との確認：CRE https://cre.smilelab.dev/content/slides/09-external-and-internal-diffusion-effects/ 、Spalding https://www.mdpi.com/1099-4300/25/8/1232 、Brinkman https://dimless.org/docs/numbers/brinkman/ 。翻訳・図版転載なし、全新語needs_review。
+- **事前JS検証**：全423語のID・日本語名/別名・英語名（NFKC正規化）の重複なし。新規13語の必須欄・関連語・実在節、計算例13件検算合格。既存410語は無変更。
+- 関連問題IDは確認できないため関連付けずrelatedQuestions=[]。Nodeテスト、CI、Pagesビルド、実機、専門家校閲は未実施で全品質ゲート未達。他ライン/PR/テスト/図解/教材/問題は変更しない。
