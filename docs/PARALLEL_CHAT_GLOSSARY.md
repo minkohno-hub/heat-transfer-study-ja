@@ -169,3 +169,11 @@
 - 照合：FU Berlin放射輸送（https://refubium.fu-berlin.de/bitstream/handle/fub188/7514/02_JM_02.pdf）、Sandia PVPMC地表反射日射（https://pvpmc.sandia.gov/modeling-guide/1-weather-design-inputs/plane-of-array-poa-irradiance/calculating-poa-irradiance/poa-ground-reflected/）。原書翻訳・図版転載ではない。新語はneeds_review。
 - **JS事前検証**：全387語のID・NFKC正規化日本語名/別名・英語名の衝突なし。新規12語の必須欄・関連語・節ID、数値例13件の検算に合格。
 - relatedQuestions=[]。既存Nodeテスト・CI・公開ビルド・実機・専門家校閲は未実施、全品質ゲート未達。テスト・他担当ブランチ/PR/図/教材/問題は変更しない。
+
+## 第22バッチ（2026-10-29 JST）
+- 実測 **387語** → 今回 **11語** → 合計 **398語**。
+- 追加：レイノルズのアナロジー、チルトン・コルバーンのアナロジー、物質移動スタントン数、物質移動のコルバーンj因子、平板の局所表面摩擦係数、平板層流の局所摩擦係数、平板層流の平均摩擦係数、乱流強度、乱流熱流束、粘性散逸、エッカート数。
+- 第6章の摩擦・熱伝達類推、平板の局所/全長平均摩擦、乱流強度・乱流熱流束・粘性散逸・エッカート数、第11章の物質移動スタントン数とj_D因子を補足。関連語の参照は登録IDから見出しに解決し表記差を防止。全新語は独立執筆のneeds_review。
+- 公開資料の式と定義：日本機械学会のコルバーンj因子（https://www.jsme.or.jp/jsme-medwiki/doku.php?id=10%3A1004320）、ASHRAE Mass Transfer（https://handbook.ashrae.org/Handbooks/F21/IP/F21_Ch06/F21_Ch06_ip.aspx）。原書翻訳や図の転載ではない。外部専門家校閲は未実施。
+- **事前JS検証**：全398語のID、NFKC正規化日本語名/別名、英語名の重複なし。新規11語の必須説明・関連語/実在節参照、数値例11件に合格。既存387語は無変更。
+- relatedQuestions=[]。既存158語固定Nodeテスト・CI・公開ビルド・実機・専門家校閲は未実施で全品質ゲート未達。図解・教材・テスト・問題・PR・他ブランチを変更しない。

@@ -12907,5 +12907,394 @@
       "reference": "気体放射と太陽放射の一般理論に基づく独立執筆。FU Berlin Radiative Transfer https://refubium.fu-berlin.de/bitstream/handle/fub188/7514/02_JM_02.pdf、Sandia PVPMC https://pvpmc.sandia.gov/modeling-guide/1-weather-design-inputs/plane-of-array-poa-irradiance/calculating-poa-irradiance/poa-ground-reflected/ を数式の参考とした。翻訳転載でなく専門家校閲前。"
     },
     "reviewStatus": "needs_review"
+  },
+  {
+    "id": "reynolds-analogy",
+    "ja": "レイノルズのアナロジー",
+    "en": "Reynolds analogy",
+    "aliases": [
+      "レイノルズ類推則"
+    ],
+    "category": "境界層・移動現象の類推",
+    "brief": "運動量の摩擦輸送と熱輸送の無次元指標が条件付きで対応する近似。",
+    "meaning": "運動量の摩擦輸送と熱輸送の無次元指標が条件付きで対応する近似。",
+    "beginner": "流体が壁をこする強さから、熱がどのくらい伝わるかも予測できる場合があります。ただしどんな流れでも使えるわけではありません。",
+    "detail": "レイノルズ類推ではプラントル数Prが1に近いことなどを前提として、壁面の表面摩擦係数C_fと熱移動のスタントン数St_hにSt_h≈C_f/2を適用する。局所係数と平均係数は同じ基準で対応させる。形状抗力、圧力勾配、物性の変化や強い三次元性がある場合には近似精度が落ちる。",
+    "formula": "St_h≈C_f/2（Pr≈1など）",
+    "unit": "St_h,C_f,Pr: 無次元",
+    "example": "C_f=0.010なら同条件のSt_h≈0.005。",
+    "relatedSections": [
+      "6.6",
+      "6.8"
+    ],
+    "relatedQuestions": [],
+    "relatedSimulators": [],
+    "confusions": [
+      "表面摩擦係数と全抗力係数を混同せず、局所と平均を揃える。"
+    ],
+    "source": {
+      "type": "supplement",
+      "reference": "第6章の境界層・乱流熱移動と第11章の熱物質移動類推の一般的理論から独立執筆。コルバーンj因子は日本機械学会事典 https://www.jsme.or.jp/jsme-medwiki/doku.php?id=10%3A1004320、物質移動はASHRAE Mass Transfer https://handbook.ashrae.org/Handbooks/F21/IP/F21_Ch06/F21_Ch06_ip.aspx と照合。教科書翻訳・図の転載ではなく専門家校閲前。"
+    },
+    "reviewStatus": "needs_review",
+    "related": [
+      "スタントン数",
+      "平板の局所表面摩擦係数",
+      "プラントル数"
+    ]
+  },
+  {
+    "id": "chilton-colburn-analogy",
+    "ja": "チルトン・コルバーンのアナロジー",
+    "en": "Chilton–Colburn analogy",
+    "aliases": [
+      "Chilton–Colburn類推"
+    ],
+    "category": "境界層・移動現象の類推",
+    "brief": "摩擦・熱・物質移動の間にj因子を用いた近似的な対応を与える関係。",
+    "meaning": "摩擦・熱・物質移動の間にj因子を用いた近似的な対応を与える関係。",
+    "beginner": "壁に沿って流れる液体や気体で、摩擦の強さから熱や物質が移る強さを推測できます。流路や物性の条件が合う場合の近似です。",
+    "detail": "熱のj_H=St_hPr^(2/3)、物質のj_D=St_mSc^(2/3)を定義し、適切な流れの壁面近傍でj_H≈j_D≈C_f/2とする。C_fは壁面せん断に基づく表面摩擦係数である。形状抗力や強い圧力勾配、相変化や強い物質移動で流れが変わる場合は、この類推を無条件で適用できない。",
+    "formula": "j_H=St_hPr^(2/3)≈j_D=St_mSc^(2/3)≈C_f/2",
+    "unit": "j_H,j_D,St_h,St_m,Pr,Sc,C_f: 無次元",
+    "example": "C_f=0.012なら対応する条件のj因子は約0.006。",
+    "relatedSections": [
+      "6.6",
+      "11.7"
+    ],
+    "relatedQuestions": [],
+    "relatedSimulators": [],
+    "confusions": [
+      "摩擦係数は全抗力でなく表面せん断で定義し、類推の適用条件を確認する。"
+    ],
+    "source": {
+      "type": "supplement",
+      "reference": "第6章の境界層・乱流熱移動と第11章の熱物質移動類推の一般的理論から独立執筆。コルバーンj因子は日本機械学会事典 https://www.jsme.or.jp/jsme-medwiki/doku.php?id=10%3A1004320、物質移動はASHRAE Mass Transfer https://handbook.ashrae.org/Handbooks/F21/IP/F21_Ch06/F21_Ch06_ip.aspx と照合。教科書翻訳・図の転載ではなく専門家校閲前。"
+    },
+    "reviewStatus": "needs_review",
+    "related": [
+      "コルバーンj因子",
+      "物質移動のコルバーンj因子",
+      "熱・物質移動の類推"
+    ]
+  },
+  {
+    "id": "mass-transfer-stanton-number",
+    "ja": "物質移動スタントン数",
+    "en": "mass transfer Stanton number",
+    "aliases": [
+      "St_m（物質移動）"
+    ],
+    "category": "境界層・移動現象の類推",
+    "brief": "物質移動係数を流れの速度で割って定義する無次元の移動指標。",
+    "meaning": "物質移動係数を流れの速度で割って定義する無次元の移動指標。",
+    "beginner": "流れる流体の速さと、壁から成分が移る速さの割合を比べる数字です。熱伝達で使うスタントン数とは区別して考えます。",
+    "detail": "濃度差に対する物質移動係数k_cがm/s単位で定義されている場合、St_m=k_c/U=Sh/(ReSc)。Sh、Re、Scには同じ代表長さと物性を使う。大きな物質移動やステファン流があると係数定義や補正が変わる場合があり、熱移動のSt_h=h/(ρc_pU)と係数の意味を混ぜない。",
+    "formula": "St_m=k_c/U=Sh/(Re Sc)",
+    "unit": "St_m,Sh,Re,Sc: 無次元、k_c,U: m/s",
+    "example": "k_c=0.010 m/s、流速U=2 m/sならSt_m=0.005。",
+    "relatedSections": [
+      "11.6",
+      "11.7"
+    ],
+    "relatedQuestions": [],
+    "relatedSimulators": [],
+    "confusions": [
+      "熱移動のSt_hとは移動する物理量が異なり、濃度基準にも注意する。"
+    ],
+    "source": {
+      "type": "supplement",
+      "reference": "第6章の境界層・乱流熱移動と第11章の熱物質移動類推の一般的理論から独立執筆。コルバーンj因子は日本機械学会事典 https://www.jsme.or.jp/jsme-medwiki/doku.php?id=10%3A1004320、物質移動はASHRAE Mass Transfer https://handbook.ashrae.org/Handbooks/F21/IP/F21_Ch06/F21_Ch06_ip.aspx と照合。教科書翻訳・図の転載ではなく専門家校閲前。"
+    },
+    "reviewStatus": "needs_review",
+    "related": [
+      "対流物質移動係数",
+      "シャーウッド数",
+      "シュミット数",
+      "物質移動のコルバーンj因子"
+    ]
+  },
+  {
+    "id": "mass-transfer-colburn-j-factor",
+    "ja": "物質移動のコルバーンj因子",
+    "en": "Colburn j-factor for mass transfer",
+    "aliases": [
+      "j_D因子"
+    ],
+    "category": "境界層・移動現象の類推",
+    "brief": "物質移動スタントン数とシュミット数から組み立てる無次元数。",
+    "meaning": "物質移動スタントン数とシュミット数から組み立てる無次元数。",
+    "beginner": "熱移動で使うコルバーンj因子と同じ考え方を、物質が移る速さにも適用する指標です。流れの相似性を調べるときに役立ちます。",
+    "detail": "物質移動のj_D=St_mSc^(2/3)=Sh/(ReSc^(1/3))と定義する。熱移動のj_H=St_hPr^(2/3)と比較し、適切な流動条件ではj_D≈j_H≈C_f/2というチルトン・コルバーン類推を使える。物質移動係数の濃度基準や強い吹出し・吸込みの影響は別途検証する。",
+    "formula": "j_D=St_mSc^(2/3)=Sh/(ReSc^(1/3))",
+    "unit": "j_D,St_m,Sc,Sh,Re: 無次元",
+    "example": "St_m=0.005、Sc=8ではj_D=0.005×4=0.020。",
+    "relatedSections": [
+      "11.6",
+      "11.7"
+    ],
+    "relatedQuestions": [],
+    "relatedSimulators": [],
+    "confusions": [
+      "物質移動j_Dと熱移動j_Hは定義上別で、一般に等しい保証はない。"
+    ],
+    "source": {
+      "type": "supplement",
+      "reference": "第6章の境界層・乱流熱移動と第11章の熱物質移動類推の一般的理論から独立執筆。コルバーンj因子は日本機械学会事典 https://www.jsme.or.jp/jsme-medwiki/doku.php?id=10%3A1004320、物質移動はASHRAE Mass Transfer https://handbook.ashrae.org/Handbooks/F21/IP/F21_Ch06/F21_Ch06_ip.aspx と照合。教科書翻訳・図の転載ではなく専門家校閲前。"
+    },
+    "reviewStatus": "needs_review",
+    "related": [
+      "物質移動スタントン数",
+      "シュミット数",
+      "コルバーンj因子",
+      "チルトン・コルバーンのアナロジー"
+    ]
+  },
+  {
+    "id": "local-skin-friction-coefficient",
+    "ja": "平板の局所表面摩擦係数",
+    "en": "local skin-friction coefficient on a flat plate",
+    "aliases": [
+      "局所摩擦抗力係数"
+    ],
+    "category": "境界層・移動現象の類推",
+    "brief": "平板上の位置ごとの壁面せん断応力を主流の動圧で割った摩擦係数。",
+    "meaning": "平板上の位置ごとの壁面せん断応力を主流の動圧で割った摩擦係数。",
+    "beginner": "平らな板に沿う風の摩擦は、先端と後方で大きさが異なります。その位置の壁面摩擦を流れの強さと比較する量です。",
+    "detail": "平板に沿う外部流の位置xにおいてC_f,x=|τ_w(x)|/(ρU∞²/2)と定義する。τ_wは表面のせん断応力、U∞は主流速である。円管の摩擦圧力損失に用いるダルシー摩擦係数f_Dとは定義が異なり、また表面の逆流ではτ_wの符号も区別する。",
+    "formula": "C_f,x=|τ_w(x)|/(ρU∞²/2)",
+    "unit": "C_f,x: 無次元、τ_w: Pa、ρU∞²/2: Pa",
+    "example": "τ_w=2 Pa、主流の動圧200 Paなら局所C_f,x=0.010。",
+    "relatedSections": [
+      "6.2",
+      "6.7"
+    ],
+    "relatedQuestions": [],
+    "relatedSimulators": [],
+    "confusions": [
+      "平板の表面摩擦係数と円管のダルシー係数を同じものとして扱わない。"
+    ],
+    "source": {
+      "type": "supplement",
+      "reference": "第6章の境界層・乱流熱移動と第11章の熱物質移動類推の一般的理論から独立執筆。コルバーンj因子は日本機械学会事典 https://www.jsme.or.jp/jsme-medwiki/doku.php?id=10%3A1004320、物質移動はASHRAE Mass Transfer https://handbook.ashrae.org/Handbooks/F21/IP/F21_Ch06/F21_Ch06_ip.aspx と照合。教科書翻訳・図の転載ではなく専門家校閲前。"
+    },
+    "reviewStatus": "needs_review",
+    "related": [
+      "壁面せん断応力",
+      "動圧",
+      "局所レイノルズ数",
+      "平板層流の局所摩擦係数"
+    ]
+  },
+  {
+    "id": "laminar-flat-plate-local-friction",
+    "ja": "平板層流の局所摩擦係数",
+    "en": "laminar flat plate local skin-friction correlation",
+    "aliases": [
+      "ブラジウスの局所摩擦係数"
+    ],
+    "category": "境界層・移動現象の類推",
+    "brief": "ゼロ圧力勾配の平板層流における局所的な摩擦係数の相関式。",
+    "meaning": "ゼロ圧力勾配の平板層流における局所的な摩擦係数の相関式。",
+    "beginner": "滑らかな板に沿って流れる層流では、先端から遠いほど壁面の摩擦係数が下がる傾向があります。代表的なブラジウス解で求められます。",
+    "detail": "定常・非圧縮・一定物性・ゼロ圧力勾配の滑らかな平板層流では、ブラジウス相似解によりC_f,x≈0.664/√Re_x。Re_x=U∞x/νである。平板に沿って乱流へ遷移した場合、強い圧力勾配や表面粗さの影響が大きい場合にはこの関係は成立しない。",
+    "formula": "C_f,x≈0.664/√Re_x",
+    "unit": "C_f,x,Re_x: 無次元",
+    "example": "局所Re_x=10000ならC_f,x=0.00664。",
+    "relatedSections": [
+      "6.2",
+      "6.7"
+    ],
+    "relatedQuestions": [],
+    "relatedSimulators": [],
+    "confusions": [
+      "局所係数0.664と全長平均に用いる係数1.328を混同しない。"
+    ],
+    "source": {
+      "type": "supplement",
+      "reference": "第6章の境界層・乱流熱移動と第11章の熱物質移動類推の一般的理論から独立執筆。コルバーンj因子は日本機械学会事典 https://www.jsme.or.jp/jsme-medwiki/doku.php?id=10%3A1004320、物質移動はASHRAE Mass Transfer https://handbook.ashrae.org/Handbooks/F21/IP/F21_Ch06/F21_Ch06_ip.aspx と照合。教科書翻訳・図の転載ではなく専門家校閲前。"
+    },
+    "reviewStatus": "needs_review",
+    "related": [
+      "ブラジウス境界層",
+      "平板の局所表面摩擦係数",
+      "局所レイノルズ数"
+    ]
+  },
+  {
+    "id": "laminar-flat-plate-mean-friction",
+    "ja": "平板層流の平均摩擦係数",
+    "en": "laminar flat plate average skin-friction correlation",
+    "aliases": [
+      "全長平均表面摩擦係数"
+    ],
+    "category": "境界層・移動現象の類推",
+    "brief": "平板の先端から全長までの摩擦係数を平均した値。",
+    "meaning": "平板の先端から全長までの摩擦係数を平均した値。",
+    "beginner": "板の先端の強い摩擦から後方の弱い摩擦まで、板全体をまとめて評価します。局所値とは別の指標です。",
+    "detail": "滑らかな平板で先端から長さLまで二次元層流・ゼロ圧力勾配が成り立つ場合、平均C_f,L=(1/L)∫₀ᴸC_f,x dx≈1.328/√Re_L。局所ブラジウス式の積分から得られる。途中で乱流遷移する板や表面条件が変化する板では別の平均評価が必要となる。",
+    "formula": "C_f,L≈1.328/√Re_L（全長層流）",
+    "unit": "C_f,L,Re_L: 無次元",
+    "example": "Re_L=10000なら平均C_f,L=0.01328。",
+    "relatedSections": [
+      "6.7"
+    ],
+    "relatedQuestions": [],
+    "relatedSimulators": [],
+    "confusions": [
+      "全長平均と後端での局所値は一致しない。"
+    ],
+    "source": {
+      "type": "supplement",
+      "reference": "第6章の境界層・乱流熱移動と第11章の熱物質移動類推の一般的理論から独立執筆。コルバーンj因子は日本機械学会事典 https://www.jsme.or.jp/jsme-medwiki/doku.php?id=10%3A1004320、物質移動はASHRAE Mass Transfer https://handbook.ashrae.org/Handbooks/F21/IP/F21_Ch06/F21_Ch06_ip.aspx と照合。教科書翻訳・図の転載ではなく専門家校閲前。"
+    },
+    "reviewStatus": "needs_review",
+    "related": [
+      "平板層流の局所摩擦係数",
+      "ブラジウス境界層",
+      "局所レイノルズ数"
+    ]
+  },
+  {
+    "id": "turbulence-intensity",
+    "ja": "乱流強度",
+    "en": "turbulence intensity",
+    "aliases": [
+      "乱れ強さ"
+    ],
+    "category": "境界層・移動現象の類推",
+    "brief": "速度変動の実効値を平均速度で割った乱れの強さ。",
+    "meaning": "速度変動の実効値を平均速度で割った乱れの強さ。",
+    "beginner": "平均の風速が同じでも瞬間的な速度の揺れ方には違いがあります。その揺れの大きさを割合で表した指標です。",
+    "detail": "ある速度方向の変動u′についてu_rms=√⟨u′²⟩、乱流強度I_u=u_rms/|U|とする。一方向成分だけを使うか三方向の変動を使うかにより定義が違う。平均速度が非常に小さい場合、この比は大きくなりやすく、単一の乱流強度から熱伝達率を一意に計算できるわけではない。",
+    "formula": "I_u=√⟨u′²⟩/|U|（一方向定義）",
+    "unit": "I_u: 無次元、u_rms,U: m/s",
+    "example": "平均流速10 m/s、変動の実効値0.2 m/sならI_u=0.02=2%。",
+    "relatedSections": [
+      "6.7",
+      "6.9"
+    ],
+    "relatedQuestions": [],
+    "relatedSimulators": [],
+    "confusions": [
+      "乱流強度は速度変動の定義と平均速度の基準を揃えて比較する。"
+    ],
+    "source": {
+      "type": "supplement",
+      "reference": "第6章の境界層・乱流熱移動と第11章の熱物質移動類推の一般的理論から独立執筆。コルバーンj因子は日本機械学会事典 https://www.jsme.or.jp/jsme-medwiki/doku.php?id=10%3A1004320、物質移動はASHRAE Mass Transfer https://handbook.ashrae.org/Handbooks/F21/IP/F21_Ch06/F21_Ch06_ip.aspx と照合。教科書翻訳・図の転載ではなく専門家校閲前。"
+    },
+    "reviewStatus": "needs_review",
+    "related": [
+      "乱流",
+      "境界層",
+      "渦粘性係数"
+    ]
+  },
+  {
+    "id": "turbulent-heat-flux",
+    "ja": "乱流熱流束",
+    "en": "turbulent heat flux",
+    "aliases": [
+      "乱流による顕熱流束"
+    ],
+    "category": "境界層・移動現象の類推",
+    "brief": "乱流の速度変動と温度変動の相関によって流れる熱流束。",
+    "meaning": "乱流の速度変動と温度変動の相関によって流れる熱流束。",
+    "beginner": "乱流では、暖かい流体のかたまりが移動することで熱が運ばれます。分子の熱伝導だけでなく混合による熱輸送が生じます。",
+    "detail": "非圧縮・密度ρと比熱c_pがほぼ一定の乱流では、法線方向の乱流顕熱流束をq″_t=ρc_p⟨v′T′⟩と表す。v′とT′はそれぞれ平均からの速度・温度変動。相関の符号が熱輸送の方向を決め、分子伝導の−k∂T/∂yとは別の寄与となる。",
+    "formula": "q″_t=ρc_p⟨v′T′⟩",
+    "unit": "q″_t: W/m²、ρ: kg/m³、c_p: J/(kg·K)、⟨v′T′⟩: m·K/s",
+    "example": "ρ=1 kg/m³、c_p=1000 J/(kg·K)、⟨v′T′⟩=0.02 m·K/sなら乱流熱流束は20 W/m²。",
+    "relatedSections": [
+      "6.7",
+      "6.8"
+    ],
+    "relatedQuestions": [],
+    "relatedSimulators": [],
+    "confusions": [
+      "乱流による熱流束は、平均温度勾配だけから常に厳密に決定できない。"
+    ],
+    "source": {
+      "type": "supplement",
+      "reference": "第6章の境界層・乱流熱移動と第11章の熱物質移動類推の一般的理論から独立執筆。コルバーンj因子は日本機械学会事典 https://www.jsme.or.jp/jsme-medwiki/doku.php?id=10%3A1004320、物質移動はASHRAE Mass Transfer https://handbook.ashrae.org/Handbooks/F21/IP/F21_Ch06/F21_Ch06_ip.aspx と照合。教科書翻訳・図の転載ではなく専門家校閲前。"
+    },
+    "reviewStatus": "needs_review",
+    "related": [
+      "乱流",
+      "渦粘性係数",
+      "熱流束",
+      "温度勾配"
+    ]
+  },
+  {
+    "id": "viscous-dissipation",
+    "ja": "粘性散逸",
+    "en": "viscous dissipation",
+    "aliases": [
+      "粘性による発熱"
+    ],
+    "category": "境界層・移動現象の類推",
+    "brief": "流体の摩擦で機械的エネルギーが内部エネルギーへ変換される現象。",
+    "meaning": "流体の摩擦で機械的エネルギーが内部エネルギーへ変換される現象。",
+    "beginner": "流体の粘りによって、運動しているエネルギーが熱に変わります。速度勾配が大きい流れで重要になることがあります。",
+    "detail": "ニュートン流体の単純せん断流u(y)では粘性散逸率Φ=μ(du/dy)²で、単位体積当たりの発熱率となる。一般の三次元流れでは応力と変形速度のテンソル積が必要である。高粘度の液体や大きな速度勾配で重要になり、低速低粘度の計算では無視できる場合もある。",
+    "formula": "Φ=μ(du/dy)²（単純せん断）",
+    "unit": "Φ: W/m³、μ: Pa·s、du/dy: s⁻¹",
+    "example": "μ=0.001 Pa·s、速度勾配100 s⁻¹なら粘性散逸率は10 W/m³。",
+    "relatedSections": [
+      "6.3",
+      "7.2"
+    ],
+    "relatedQuestions": [],
+    "relatedSimulators": [],
+    "confusions": [
+      "体積発熱率W/m³と表面の熱流束W/m²を取り違えない。"
+    ],
+    "source": {
+      "type": "supplement",
+      "reference": "第6章の境界層・乱流熱移動と第11章の熱物質移動類推の一般的理論から独立執筆。コルバーンj因子は日本機械学会事典 https://www.jsme.or.jp/jsme-medwiki/doku.php?id=10%3A1004320、物質移動はASHRAE Mass Transfer https://handbook.ashrae.org/Handbooks/F21/IP/F21_Ch06/F21_Ch06_ip.aspx と照合。教科書翻訳・図の転載ではなく専門家校閲前。"
+    },
+    "reviewStatus": "needs_review",
+    "related": [
+      "粘度",
+      "クエット流れ",
+      "熱伝導方程式",
+      "エッカート数"
+    ]
+  },
+  {
+    "id": "eckert-number",
+    "ja": "エッカート数",
+    "en": "Eckert number",
+    "aliases": [
+      "Ec数"
+    ],
+    "category": "境界層・移動現象の類推",
+    "brief": "代表的な流れの運動エネルギー尺度と温度差の比を示す無次元数。",
+    "meaning": "代表的な流れの運動エネルギー尺度と温度差の比を示す無次元数。",
+    "beginner": "高速の流れでは運動のエネルギーが温度変化に影響することがあります。その重要性を考える指標です。",
+    "detail": "代表速度U、定圧比熱c_p、温度差ΔTを用い、Ec=U²/(c_pΔT)と定義する。粘性散逸や運動エネルギー変化が熱の収支で重要かを見積もるために使う。ただし代表温度差の選択と流れの条件に依存し、Ecだけで実際の発熱率を求める式ではない。",
+    "formula": "Ec=U²/(c_pΔT)",
+    "unit": "Ec: 無次元、U: m/s、c_p: J/(kg·K)、ΔT: K",
+    "example": "流速10 m/s、c_p=1000 J/(kg·K)、ΔT=0.1 KならEc=1。",
+    "relatedSections": [
+      "6.3",
+      "6.8"
+    ],
+    "relatedQuestions": [],
+    "relatedSimulators": [],
+    "confusions": [
+      "流速だけでなく温度差の選び方でもEcは変わる。"
+    ],
+    "source": {
+      "type": "supplement",
+      "reference": "第6章の境界層・乱流熱移動と第11章の熱物質移動類推の一般的理論から独立執筆。コルバーンj因子は日本機械学会事典 https://www.jsme.or.jp/jsme-medwiki/doku.php?id=10%3A1004320、物質移動はASHRAE Mass Transfer https://handbook.ashrae.org/Handbooks/F21/IP/F21_Ch06/F21_Ch06_ip.aspx と照合。教科書翻訳・図の転載ではなく専門家校閲前。"
+    },
+    "reviewStatus": "needs_review",
+    "related": [
+      "粘性散逸",
+      "比熱容量",
+      "断面平均流速"
+    ]
   }
 ]
