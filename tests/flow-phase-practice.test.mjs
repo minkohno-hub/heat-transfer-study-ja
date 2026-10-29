@@ -69,7 +69,7 @@ test('all 27 independent flow/phase additions have four keyed reasons, section c
  }
  for(const section of ['9.8','9.9','9.10','9.11']){
   const qs=all.filter(q=>q.source?.focusSectionId===section||q.source?.sectionNoteId===section);
-  assert.equal(qs.length,8,section);assert.equal(new Set(qs.map(q=>q.questionKind)).size,3,section);
+  assert.equal(qs.length,section==='9.9'?12:8,section);assert.equal(new Set(qs.map(q=>q.questionKind)).size,3,section);
  }
  assert.equal(new Set(all.map(q=>q.prompt.normalize('NFKC').replace(/\s/g,''))).size,all.length);
 });
@@ -84,7 +84,7 @@ test('external condensation velocity independently satisfies wall/shear boundari
  const opposed=rho*(rho*g*delta**3/3-tau*delta**2/2)/mu;
  close(opposed,.0028333333333333335);assert.ok(opposed<gamma);
  assert.match(lesson.blocks.map(b=>b.text).join(' '),/u\(0\)=0/);
- assert.match(lesson.blocks.map(b=>b.text).join(' '),/形状別相関.*未展開/);
+ assert.match(lesson.blocks.map(b=>b.text).join(' '),/水平円筒外面の相関/);
 });
 test('capillary pore tradeoff follows loss scaling rather than capillary pressure alone',()=>{
  const limit=r=>3*r;

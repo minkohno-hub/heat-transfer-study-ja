@@ -35990,5 +35990,229 @@
       "平板基準の45.0 kW/m²へ倍率を掛ける。"
     ],
     "beginnerPitfall": "平板と細線を同じ幾何の相関として扱わない。"
+  },
+  {
+    "id": "supp-condensation-external-liquid-reynolds-v1",
+    "revision": "v1",
+    "field": "沸騰・相変化",
+    "prerequisites": [
+      "膜状凝縮",
+      "レイノルズ数",
+      "相関式の適用条件"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "一般的な凝縮相関と独自の仮想条件から作問。原本の文章・図・例題を転載しない。",
+      "chapterId": "ch9",
+      "focusSectionId": "9.9",
+      "guideId": "chapter9-latent-boiling"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "2026-10-30：内部の別式検算・単位・条件・全選択肢確認／原本網羅照合・包括的品質監査・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-30",
+        "type": "authored_with_internal_check",
+        "details": "docs/EXTERNAL_CONDENSATION_20261030.md。対象式を画像確認し、等価形・極限・別コードで内部検算。外部校閲ではない。"
+      }
+    ],
+    "prompt": "水平円筒外面の凝縮相関でRe_D=ρ_lu∞D/μ_lを定義する。自由流速度u∞=0.100 m/s、直径D=0.0200 m、液体密度ρ_l=900 kg/m³、液体粘度μ_l=3.00×10⁻⁴ Pa·sのときRe_Dはいくらか。飽和純蒸気の適合する外部流れモデルを仮定する。",
+    "choices": [
+      "6.00×10³",
+      "6.00×10⁴",
+      "6.00×10²",
+      "3.00×10³"
+    ],
+    "answer": 0,
+    "difficulty": "標準・数値計算",
+    "explanation": "Re_D=6000で、液体物性で定義した上限10⁶以内。蒸気の自由流速度が現れることを理由に、密度や粘度まで蒸気の値へ入れ替えない。",
+    "distractors": [
+      "正解。900×0.100×0.0200/(3.00×10⁻⁴)=6000。",
+      "液体粘度を10分の1に読み違えた。",
+      "液体粘度を10倍に読み違えた。",
+      "直径の代わりに半径を使った。"
+    ],
+    "hints": [
+      "Re_Dの密度と粘度が液体側であることを確認する。",
+      "分子ρ_lu∞D=1.80 kg/(m·s)。"
+    ],
+    "solutionSteps": [
+      "Re_Dの密度と粘度が液体側であることを確認する。",
+      "分子ρ_lu∞D=1.80 kg/(m·s)。",
+      "粘度3.00×10⁻⁴ Pa·sで割る。",
+      "単位が相殺され6000となる。"
+    ],
+    "beginnerPitfall": "このRe_Dを、蒸気密度で定義する別の相関のReと混同しない。"
+  },
+  {
+    "id": "supp-condensation-external-mean-coefficient-v1",
+    "revision": "v1",
+    "field": "沸騰・相変化",
+    "prerequisites": [
+      "膜状凝縮",
+      "レイノルズ数",
+      "相関式の適用条件"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "一般的な凝縮相関と独自の仮想条件から作問。原本の文章・図・例題を転載しない。",
+      "chapterId": "ch9",
+      "focusSectionId": "9.9",
+      "guideId": "chapter9-latent-boiling"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "2026-10-30：内部の別式検算・単位・条件・全選択肢確認／原本網羅照合・包括的品質監査・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-30",
+        "type": "authored_with_internal_check",
+        "details": "docs/EXTERNAL_CONDENSATION_20261030.md。対象式を画像確認し、等価形・極限・別コードで内部検算。外部校閲ではない。"
+      }
+    ],
+    "prompt": "水平円筒外面の相関Nu_D=0.64{Re_D[1+(1+B)^(1/2)]}^(1/2)でRe_D=6000、B=1906.5735を与える。液体熱伝導率k_l=0.600 W/(m·K)、直径D=0.0200 mのとき、h=Nu_Dk_l/Dはいくらか。純蒸気・膜状態等の適用条件は満たすものとし、有効数字3桁とする。",
+    "choices": [
+      "1.99×10⁴ W/(m²·K)",
+      "9.94×10³ W/(m²·K)",
+      "2.10×10³ W/(m²·K)",
+      "3.31×10² W/(m²·K)"
+    ],
+    "answer": 1,
+    "difficulty": "標準・数値計算",
+    "explanation": "Nu_D≈331.354、h≈9940.607 W/(m²·K)。B≈1907は小さくないため、高速極限Nu_D≈0.64√(2Re_D)≈70.1では重力の寄与を落としてしまう。",
+    "distractors": [
+      "hへの換算で直径の代わりに半径を使った。",
+      "正解。Nu_D≈331.354にk_l/D=30.0を掛けた。",
+      "Bを無視した高速極限だけを使った。",
+      "無次元のNu_Dをそのままhとして答えた。"
+    ],
+    "hints": [
+      "二重根号を内側から計算する。",
+      "Nu_Dに液体のk_l/Dを掛ける。"
+    ],
+    "solutionSteps": [
+      "二重根号を内側から計算する。",
+      "Nu_Dに液体のk_l/Dを掛ける。",
+      "k_l/D=30.0 W/(m²·K)。",
+      "h≈9940.607を有効数字3桁に丸める。"
+    ],
+    "beginnerPitfall": "Nu_Dの単位は無次元で、hの単位とは異なる。"
+  },
+  {
+    "id": "supp-condensation-external-high-speed-limit-v1",
+    "revision": "v1",
+    "field": "沸騰・相変化",
+    "prerequisites": [
+      "膜状凝縮",
+      "レイノルズ数",
+      "相関式の適用条件"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "conceptual",
+    "source": {
+      "type": "supplement",
+      "reference": "一般的な凝縮相関と独自の仮想条件から作問。原本の文章・図・例題を転載しない。",
+      "chapterId": "ch9",
+      "focusSectionId": "9.9",
+      "guideId": "chapter9-latent-boiling"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "2026-10-30：内部の別式検算・単位・条件・全選択肢確認／原本網羅照合・包括的品質監査・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-30",
+        "type": "authored_with_internal_check",
+        "details": "docs/EXTERNAL_CONDENSATION_20261030.md。対象式を画像確認し、等価形・極限・別コードで内部検算。外部校閲ではない。"
+      }
+    ],
+    "prompt": "水平円筒外面の凝縮相関で、重力補正が十分小さく、Re_D=20000が適用範囲内にあるとする。高速極限Nu_D≈0.64√(2Re_D)の値に最も近いものはどれか。",
+    "choices": [
+      "200（無次元）",
+      "256（無次元）",
+      "128（無次元）",
+      "90.5（無次元）"
+    ],
+    "answer": 2,
+    "difficulty": "応用・極限と適用判断",
+    "explanation": "Nu_D≈0.64×√(2×20000)=0.64×200=128。重力補正を無視できるという条件と、Re_Dの適用上限は別々に確認する。",
+    "distractors": [
+      "係数0.64を掛けていない。",
+      "係数2を根号の外へ出してしまった。",
+      "正解。√40000=200に0.64を掛ける。",
+      "根号内の係数2を落とした。"
+    ],
+    "hints": [
+      "Re_Dの前に2が入る。",
+      "根号全体を計算してから0.64を掛ける。"
+    ],
+    "solutionSteps": [
+      "Re_Dの前に2が入る。",
+      "根号全体を計算してから0.64を掛ける。",
+      "√40000=200。",
+      "結果は無次元である。"
+    ],
+    "beginnerPitfall": "高速という呼び名だけで、重力の寄与を小さいと決めつけない。"
+  },
+  {
+    "id": "supp-condensation-external-range-selection-v1",
+    "revision": "v1",
+    "field": "沸騰・相変化",
+    "prerequisites": [
+      "膜状凝縮",
+      "レイノルズ数",
+      "相関式の適用条件"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "applied",
+    "source": {
+      "type": "supplement",
+      "reference": "一般的な凝縮相関と独自の仮想条件から作問。原本の文章・図・例題を転載しない。",
+      "chapterId": "ch9",
+      "focusSectionId": "9.9",
+      "guideId": "chapter9-latent-boiling"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "2026-10-30：内部の別式検算・単位・条件・全選択肢確認／原本網羅照合・包括的品質監査・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-30",
+        "type": "authored_with_internal_check",
+        "details": "docs/EXTERNAL_CONDENSATION_20261030.md。対象式を画像確認し、等価形・極限・別コードで内部検算。外部校閲ではない。"
+      }
+    ],
+    "prompt": "純蒸気が流れる水平円筒外面で、液体のρ_l=900 kg/m³、μ_l=3.00×10⁻⁴ Pa·s、D=0.0200 m、u∞=20.0 m/sとする。候補相関は液体物性によるRe_D≤10⁶を条件とする。Re_D=1.20×10⁶と計算されたときの判断はどれか。",
+    "choices": [
+      "上限外でも、高速近似なら常に使える",
+      "液体物性を使うので、上限を外せる",
+      "管内凝縮でも、同じ上限で適用できる",
+      "上限外なので、適合する別相関を探す"
+    ],
+    "answer": 3,
+    "difficulty": "応用・極限と適用判断",
+    "explanation": "Re_D=900×20.0×0.0200/(3.00×10⁻⁴)=1200000>10⁶。計算結果が有限でも、上限外の相関を採用する根拠にはならない。流動様式等に合う別相関・実測を調べる。",
+    "distractors": [
+      "高速近似は元の相関の適用上限を取り消さない。",
+      "液体物性で定義されたRe_Dに対する上限である。",
+      "外部水平円筒と管内の二相流は異なるモデルである。",
+      "正解。与えられた適用条件を外れるため、別モデル等が必要。"
+    ],
+    "hints": [
+      "上限と今回のRe_Dを同じ物性基準で比較する。",
+      "1.20×10⁶は10⁶を超える。"
+    ],
+    "solutionSteps": [
+      "上限と今回のRe_Dを同じ物性基準で比較する。",
+      "1.20×10⁶は10⁶を超える。",
+      "高速極限への代入は範囲の拡張を意味しない。",
+      "管内や別形状へ流用せず、適合する別モデルを選ぶ。"
+    ],
+    "beginnerPitfall": "計算可能性と、相関が物理的に適用できることを区別する。"
   }
 ]

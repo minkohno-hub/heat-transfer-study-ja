@@ -1,13 +1,13 @@
 {
   "schemaVersion": 1,
-  "checkedAt": "2026-10-29T15:17:21.611552+00:00",
-  "basis": "c6c1502から§9.4/§9.5の相関式・仮想例と8問を追加した作業ツリーの実データ再集計。旧PC回収数ではない。",
+  "checkedAt": "2026-10-29T15:27:39.842018+00:00",
+  "basis": "c5d35fcに§9.9の水平円筒外面凝縮の原稿と4問を追加した作業ツリーの実データ再集計。旧PC回収数ではない。",
   "scope": "独立執筆原稿と節別問題の暫定最低条件。科学的・法的完成認定ではない。",
   "totals": {
     "sectionCount": 76,
     "shortConceptNoteDrafts": 76,
     "detailedLessonDrafts": 76,
-    "questionsInBank": 700,
+    "questionsInBank": 704,
     "draftAuthoringMinimumMet": 76,
     "remainingQuestionDraftMinimum": 0,
     "sectionsNeedingDetailedLesson": 0,
@@ -17,17 +17,18 @@
   "glossaryOnThisBranch": 158,
   "evidence": {
     "node": {
-      "total": 327,
-      "passed": 322,
+      "total": 331,
+      "passed": 326,
       "skipped": 5,
       "failed": 0
     },
     "publicBuild": "passed",
     "currentBatchBrowser": {
-      "previousSourceCI": "20b1483:check and WebKit online passed at run 40892348419",
-      "currentChromium": "running; not yet counted as passed",
-      "currentWebKit": "not yet executed",
-      "publicDeployment": "not performed; previous published count 72 is historical verification"
+      "previousSourceChromium": "c5d35fc:76 lectures and 372 questions passed, bank 700",
+      "previousSourceCI": "c5d35fc:run40900167775 check and WebKit online passed",
+      "currentChromiumProbe": "passed: section9.9 and 4 additional questions, mobile overflow absent, stored revision v1, pageerrors0",
+      "currentWebKit": "not yet executed: total exercise target 376",
+      "publicDeployment": "not performed; previous published count72 is historical verification"
     },
     "expertReview": "not_completed",
     "fullSourceCollation": "not_completed",
@@ -63,7 +64,7 @@
       "questionReview": "comprehensive_scientific_review_pending",
       "sourceCollation": "section_start_mapping_tracked_full_scope_unverified",
       "independentFigures": "parallel_line_assets_unintegrated_or_pending",
-      "publicScreenCurrentBatch": "built-artifact Chromium at b52c44a; live latest deployment not performed",
+      "publicScreenCurrentBatch": "c5d35fc: built-artifact Chromium and WebKit-online passed; latest live deployment not performed",
       "expertApproval": false,
       "currentRevisionScreenCheck": "targeted Chromium probe passed"
     },
@@ -91,7 +92,7 @@
       "questionReview": "comprehensive_scientific_review_pending",
       "sourceCollation": "section_start_mapping_tracked_full_scope_unverified",
       "independentFigures": "parallel_line_assets_unintegrated_or_pending",
-      "publicScreenCurrentBatch": "built-artifact Chromium at b52c44a; live latest deployment not performed",
+      "publicScreenCurrentBatch": "c5d35fc: built-artifact Chromium and WebKit-online passed; latest live deployment not performed",
       "expertApproval": false,
       "currentRevisionScreenCheck": "targeted Chromium probe passed"
     },
@@ -119,7 +120,7 @@
       "questionReview": "comprehensive_scientific_review_pending",
       "sourceCollation": "section_start_mapping_tracked_full_scope_unverified",
       "independentFigures": "parallel_line_assets_unintegrated_or_pending",
-      "publicScreenCurrentBatch": "built-artifact Chromium at b52c44a; live latest deployment not performed",
+      "publicScreenCurrentBatch": "c5d35fc: built-artifact Chromium and WebKit-online passed; latest live deployment not performed",
       "expertApproval": false
     },
     {
@@ -146,7 +147,7 @@
       "questionReview": "comprehensive_scientific_review_pending",
       "sourceCollation": "section_start_mapping_tracked_full_scope_unverified",
       "independentFigures": "parallel_line_assets_unintegrated_or_pending",
-      "publicScreenCurrentBatch": "built-artifact Chromium at b52c44a; live latest deployment not performed",
+      "publicScreenCurrentBatch": "c5d35fc: built-artifact Chromium and WebKit-online passed; latest live deployment not performed",
       "expertApproval": false
     },
     {
@@ -173,7 +174,7 @@
       "questionReview": "comprehensive_scientific_review_pending",
       "sourceCollation": "section_start_mapping_tracked_full_scope_unverified",
       "independentFigures": "parallel_line_assets_unintegrated_or_pending",
-      "publicScreenCurrentBatch": "built-artifact Chromium at b52c44a; live latest deployment not performed",
+      "publicScreenCurrentBatch": "c5d35fc: built-artifact Chromium and WebKit-online passed; latest live deployment not performed",
       "expertApproval": false
     },
     {
@@ -200,7 +201,7 @@
       "questionReview": "comprehensive_scientific_review_pending",
       "sourceCollation": "section_start_mapping_tracked_full_scope_unverified",
       "independentFigures": "parallel_line_assets_unintegrated_or_pending",
-      "publicScreenCurrentBatch": "built-artifact Chromium at b52c44a; live latest deployment not performed",
+      "publicScreenCurrentBatch": "c5d35fc: built-artifact Chromium and WebKit-online passed; latest live deployment not performed",
       "expertApproval": false
     },
     {
@@ -227,7 +228,7 @@
       "questionReview": "comprehensive_scientific_review_pending",
       "sourceCollation": "section_start_mapping_tracked_full_scope_unverified",
       "independentFigures": "parallel_line_assets_unintegrated_or_pending",
-      "publicScreenCurrentBatch": "built-artifact Chromium at b52c44a; live latest deployment not performed",
+      "publicScreenCurrentBatch": "c5d35fc: built-artifact Chromium and WebKit-online passed; latest live deployment not performed",
       "expertApproval": false
     },
     {
@@ -254,7 +255,7 @@
       "questionReview": "comprehensive_scientific_review_pending",
       "sourceCollation": "section_start_mapping_tracked_full_scope_unverified",
       "independentFigures": "parallel_line_assets_unintegrated_or_pending",
-      "publicScreenCurrentBatch": "built-artifact Chromium at b52c44a; live latest deployment not performed",
+      "publicScreenCurrentBatch": "c5d35fc: built-artifact Chromium and WebKit-online passed; latest live deployment not performed",
       "expertApproval": false
     },
     {
@@ -281,7 +282,7 @@
       "questionReview": "comprehensive_scientific_review_pending",
       "sourceCollation": "section_start_mapping_tracked_full_scope_unverified",
       "independentFigures": "parallel_line_assets_unintegrated_or_pending",
-      "publicScreenCurrentBatch": "built-artifact Chromium at b52c44a; live latest deployment not performed",
+      "publicScreenCurrentBatch": "c5d35fc: built-artifact Chromium and WebKit-online passed; latest live deployment not performed",
       "expertApproval": false
     },
     {
@@ -308,7 +309,7 @@
       "questionReview": "comprehensive_scientific_review_pending",
       "sourceCollation": "section_start_mapping_tracked_full_scope_unverified",
       "independentFigures": "parallel_line_assets_unintegrated_or_pending",
-      "publicScreenCurrentBatch": "built-artifact Chromium at b52c44a; live latest deployment not performed",
+      "publicScreenCurrentBatch": "c5d35fc: built-artifact Chromium and WebKit-online passed; latest live deployment not performed",
       "expertApproval": false
     },
     {
@@ -335,7 +336,7 @@
       "questionReview": "comprehensive_scientific_review_pending",
       "sourceCollation": "section_start_mapping_tracked_full_scope_unverified",
       "independentFigures": "parallel_line_assets_unintegrated_or_pending",
-      "publicScreenCurrentBatch": "built-artifact Chromium at b52c44a; live latest deployment not performed",
+      "publicScreenCurrentBatch": "c5d35fc: built-artifact Chromium and WebKit-online passed; latest live deployment not performed",
       "expertApproval": false
     },
     {
@@ -362,7 +363,7 @@
       "questionReview": "comprehensive_scientific_review_pending",
       "sourceCollation": "section_start_mapping_tracked_full_scope_unverified",
       "independentFigures": "parallel_line_assets_unintegrated_or_pending",
-      "publicScreenCurrentBatch": "built-artifact Chromium at b52c44a; live latest deployment not performed",
+      "publicScreenCurrentBatch": "c5d35fc: built-artifact Chromium and WebKit-online passed; latest live deployment not performed",
       "expertApproval": false
     },
     {
@@ -389,7 +390,7 @@
       "questionReview": "comprehensive_scientific_review_pending",
       "sourceCollation": "section_start_mapping_tracked_full_scope_unverified",
       "independentFigures": "parallel_line_assets_unintegrated_or_pending",
-      "publicScreenCurrentBatch": "built-artifact Chromium at b52c44a; live latest deployment not performed",
+      "publicScreenCurrentBatch": "c5d35fc: built-artifact Chromium and WebKit-online passed; latest live deployment not performed",
       "expertApproval": false
     },
     {
@@ -416,7 +417,7 @@
       "questionReview": "comprehensive_scientific_review_pending",
       "sourceCollation": "section_start_mapping_tracked_full_scope_unverified",
       "independentFigures": "parallel_line_assets_unintegrated_or_pending",
-      "publicScreenCurrentBatch": "built-artifact Chromium at b52c44a; live latest deployment not performed",
+      "publicScreenCurrentBatch": "c5d35fc: built-artifact Chromium and WebKit-online passed; latest live deployment not performed",
       "expertApproval": false
     },
     {
@@ -443,7 +444,7 @@
       "questionReview": "comprehensive_scientific_review_pending",
       "sourceCollation": "section_start_mapping_tracked_full_scope_unverified",
       "independentFigures": "parallel_line_assets_unintegrated_or_pending",
-      "publicScreenCurrentBatch": "built-artifact Chromium at b52c44a; live latest deployment not performed",
+      "publicScreenCurrentBatch": "c5d35fc: built-artifact Chromium and WebKit-online passed; latest live deployment not performed",
       "expertApproval": false
     },
     {
@@ -470,7 +471,7 @@
       "questionReview": "comprehensive_scientific_review_pending",
       "sourceCollation": "section_start_mapping_tracked_full_scope_unverified",
       "independentFigures": "parallel_line_assets_unintegrated_or_pending",
-      "publicScreenCurrentBatch": "built-artifact Chromium at b52c44a; live latest deployment not performed",
+      "publicScreenCurrentBatch": "c5d35fc: built-artifact Chromium and WebKit-online passed; latest live deployment not performed",
       "expertApproval": false
     },
     {
@@ -497,7 +498,7 @@
       "questionReview": "comprehensive_scientific_review_pending",
       "sourceCollation": "section_start_mapping_tracked_full_scope_unverified",
       "independentFigures": "parallel_line_assets_unintegrated_or_pending",
-      "publicScreenCurrentBatch": "built-artifact Chromium at b52c44a; live latest deployment not performed",
+      "publicScreenCurrentBatch": "c5d35fc: built-artifact Chromium and WebKit-online passed; latest live deployment not performed",
       "expertApproval": false
     },
     {
@@ -524,7 +525,7 @@
       "questionReview": "comprehensive_scientific_review_pending",
       "sourceCollation": "section_start_mapping_tracked_full_scope_unverified",
       "independentFigures": "parallel_line_assets_unintegrated_or_pending",
-      "publicScreenCurrentBatch": "built-artifact Chromium at b52c44a; live latest deployment not performed",
+      "publicScreenCurrentBatch": "c5d35fc: built-artifact Chromium and WebKit-online passed; latest live deployment not performed",
       "expertApproval": false
     },
     {
@@ -551,7 +552,7 @@
       "questionReview": "comprehensive_scientific_review_pending",
       "sourceCollation": "section_start_mapping_tracked_full_scope_unverified",
       "independentFigures": "parallel_line_assets_unintegrated_or_pending",
-      "publicScreenCurrentBatch": "built-artifact Chromium at b52c44a; live latest deployment not performed",
+      "publicScreenCurrentBatch": "c5d35fc: built-artifact Chromium and WebKit-online passed; latest live deployment not performed",
       "expertApproval": false
     },
     {
@@ -578,7 +579,7 @@
       "questionReview": "comprehensive_scientific_review_pending",
       "sourceCollation": "section_start_mapping_tracked_full_scope_unverified",
       "independentFigures": "parallel_line_assets_unintegrated_or_pending",
-      "publicScreenCurrentBatch": "built-artifact Chromium at b52c44a; live latest deployment not performed",
+      "publicScreenCurrentBatch": "c5d35fc: built-artifact Chromium and WebKit-online passed; latest live deployment not performed",
       "expertApproval": false
     },
     {
@@ -605,7 +606,7 @@
       "questionReview": "comprehensive_scientific_review_pending",
       "sourceCollation": "section_start_mapping_tracked_full_scope_unverified",
       "independentFigures": "parallel_line_assets_unintegrated_or_pending",
-      "publicScreenCurrentBatch": "built-artifact Chromium at b52c44a; live latest deployment not performed",
+      "publicScreenCurrentBatch": "c5d35fc: built-artifact Chromium and WebKit-online passed; latest live deployment not performed",
       "expertApproval": false
     },
     {
@@ -632,7 +633,7 @@
       "questionReview": "comprehensive_scientific_review_pending",
       "sourceCollation": "section_start_mapping_tracked_full_scope_unverified",
       "independentFigures": "parallel_line_assets_unintegrated_or_pending",
-      "publicScreenCurrentBatch": "built-artifact Chromium at b52c44a; live latest deployment not performed",
+      "publicScreenCurrentBatch": "c5d35fc: built-artifact Chromium and WebKit-online passed; latest live deployment not performed",
       "expertApproval": false
     },
     {
@@ -659,7 +660,7 @@
       "questionReview": "comprehensive_scientific_review_pending",
       "sourceCollation": "section_start_mapping_tracked_full_scope_unverified",
       "independentFigures": "parallel_line_assets_unintegrated_or_pending",
-      "publicScreenCurrentBatch": "built-artifact Chromium at b52c44a; live latest deployment not performed",
+      "publicScreenCurrentBatch": "c5d35fc: built-artifact Chromium and WebKit-online passed; latest live deployment not performed",
       "expertApproval": false
     },
     {
@@ -686,7 +687,7 @@
       "questionReview": "comprehensive_scientific_review_pending",
       "sourceCollation": "section_start_mapping_tracked_full_scope_unverified",
       "independentFigures": "parallel_line_assets_unintegrated_or_pending",
-      "publicScreenCurrentBatch": "built-artifact Chromium at b52c44a; live latest deployment not performed",
+      "publicScreenCurrentBatch": "c5d35fc: built-artifact Chromium and WebKit-online passed; latest live deployment not performed",
       "expertApproval": false
     },
     {
@@ -713,7 +714,7 @@
       "questionReview": "comprehensive_scientific_review_pending",
       "sourceCollation": "section_start_mapping_tracked_full_scope_unverified",
       "independentFigures": "parallel_line_assets_unintegrated_or_pending",
-      "publicScreenCurrentBatch": "built-artifact Chromium at b52c44a; live latest deployment not performed",
+      "publicScreenCurrentBatch": "c5d35fc: built-artifact Chromium and WebKit-online passed; latest live deployment not performed",
       "expertApproval": false,
       "currentRevisionScreenCheck": "targeted Chromium probe passed"
     },
@@ -741,7 +742,7 @@
       "questionReview": "comprehensive_scientific_review_pending",
       "sourceCollation": "section_start_mapping_tracked_full_scope_unverified",
       "independentFigures": "parallel_line_assets_unintegrated_or_pending",
-      "publicScreenCurrentBatch": "built-artifact Chromium at b52c44a; live latest deployment not performed",
+      "publicScreenCurrentBatch": "c5d35fc: built-artifact Chromium and WebKit-online passed; latest live deployment not performed",
       "expertApproval": false
     },
     {
@@ -768,7 +769,7 @@
       "questionReview": "comprehensive_scientific_review_pending",
       "sourceCollation": "section_start_mapping_tracked_full_scope_unverified",
       "independentFigures": "parallel_line_assets_unintegrated_or_pending",
-      "publicScreenCurrentBatch": "built-artifact Chromium at b52c44a; live latest deployment not performed",
+      "publicScreenCurrentBatch": "c5d35fc: built-artifact Chromium and WebKit-online passed; latest live deployment not performed",
       "expertApproval": false
     },
     {
@@ -795,7 +796,7 @@
       "questionReview": "comprehensive_scientific_review_pending",
       "sourceCollation": "section_start_mapping_tracked_full_scope_unverified",
       "independentFigures": "parallel_line_assets_unintegrated_or_pending",
-      "publicScreenCurrentBatch": "built-artifact Chromium at b52c44a; live latest deployment not performed",
+      "publicScreenCurrentBatch": "c5d35fc: built-artifact Chromium and WebKit-online passed; latest live deployment not performed",
       "expertApproval": false
     },
     {
@@ -822,7 +823,7 @@
       "questionReview": "comprehensive_scientific_review_pending",
       "sourceCollation": "section_start_mapping_tracked_full_scope_unverified",
       "independentFigures": "parallel_line_assets_unintegrated_or_pending",
-      "publicScreenCurrentBatch": "built-artifact Chromium at b52c44a; live latest deployment not performed",
+      "publicScreenCurrentBatch": "c5d35fc: built-artifact Chromium and WebKit-online passed; latest live deployment not performed",
       "expertApproval": false
     },
     {
@@ -849,7 +850,7 @@
       "questionReview": "comprehensive_scientific_review_pending",
       "sourceCollation": "section_start_mapping_tracked_full_scope_unverified",
       "independentFigures": "parallel_line_assets_unintegrated_or_pending",
-      "publicScreenCurrentBatch": "built-artifact Chromium at b52c44a; live latest deployment not performed",
+      "publicScreenCurrentBatch": "c5d35fc: built-artifact Chromium and WebKit-online passed; latest live deployment not performed",
       "expertApproval": false
     },
     {
@@ -876,7 +877,7 @@
       "questionReview": "comprehensive_scientific_review_pending",
       "sourceCollation": "section_start_mapping_tracked_full_scope_unverified",
       "independentFigures": "parallel_line_assets_unintegrated_or_pending",
-      "publicScreenCurrentBatch": "built-artifact Chromium at b52c44a; live latest deployment not performed",
+      "publicScreenCurrentBatch": "c5d35fc: built-artifact Chromium and WebKit-online passed; latest live deployment not performed",
       "expertApproval": false
     },
     {
@@ -903,7 +904,7 @@
       "questionReview": "comprehensive_scientific_review_pending",
       "sourceCollation": "section_start_mapping_tracked_full_scope_unverified",
       "independentFigures": "parallel_line_assets_unintegrated_or_pending",
-      "publicScreenCurrentBatch": "built-artifact Chromium at b52c44a; live latest deployment not performed",
+      "publicScreenCurrentBatch": "c5d35fc: built-artifact Chromium and WebKit-online passed; latest live deployment not performed",
       "expertApproval": false
     },
     {
@@ -930,7 +931,7 @@
       "questionReview": "comprehensive_scientific_review_pending",
       "sourceCollation": "section_start_mapping_tracked_full_scope_unverified",
       "independentFigures": "parallel_line_assets_unintegrated_or_pending",
-      "publicScreenCurrentBatch": "built-artifact Chromium at b52c44a; live latest deployment not performed",
+      "publicScreenCurrentBatch": "c5d35fc: built-artifact Chromium and WebKit-online passed; latest live deployment not performed",
       "expertApproval": false
     },
     {
@@ -957,7 +958,7 @@
       "questionReview": "comprehensive_scientific_review_pending",
       "sourceCollation": "section_start_mapping_tracked_full_scope_unverified",
       "independentFigures": "parallel_line_assets_unintegrated_or_pending",
-      "publicScreenCurrentBatch": "built-artifact Chromium at b52c44a; live latest deployment not performed",
+      "publicScreenCurrentBatch": "c5d35fc: built-artifact Chromium and WebKit-online passed; latest live deployment not performed",
       "expertApproval": false
     },
     {
@@ -984,7 +985,7 @@
       "questionReview": "comprehensive_scientific_review_pending",
       "sourceCollation": "section_start_mapping_tracked_full_scope_unverified",
       "independentFigures": "parallel_line_assets_unintegrated_or_pending",
-      "publicScreenCurrentBatch": "built-artifact Chromium at b52c44a; live latest deployment not performed",
+      "publicScreenCurrentBatch": "c5d35fc: built-artifact Chromium and WebKit-online passed; latest live deployment not performed",
       "expertApproval": false
     },
     {
@@ -1011,7 +1012,7 @@
       "questionReview": "comprehensive_scientific_review_pending",
       "sourceCollation": "section_start_mapping_tracked_full_scope_unverified",
       "independentFigures": "parallel_line_assets_unintegrated_or_pending",
-      "publicScreenCurrentBatch": "built-artifact Chromium at b52c44a; live latest deployment not performed",
+      "publicScreenCurrentBatch": "c5d35fc: built-artifact Chromium and WebKit-online passed; latest live deployment not performed",
       "expertApproval": false
     },
     {
@@ -1038,7 +1039,7 @@
       "questionReview": "comprehensive_scientific_review_pending",
       "sourceCollation": "section_start_mapping_tracked_full_scope_unverified",
       "independentFigures": "parallel_line_assets_unintegrated_or_pending",
-      "publicScreenCurrentBatch": "built-artifact Chromium at b52c44a; live latest deployment not performed",
+      "publicScreenCurrentBatch": "c5d35fc: built-artifact Chromium and WebKit-online passed; latest live deployment not performed",
       "expertApproval": false
     },
     {
@@ -1065,7 +1066,7 @@
       "questionReview": "comprehensive_scientific_review_pending",
       "sourceCollation": "section_start_mapping_tracked_full_scope_unverified",
       "independentFigures": "parallel_line_assets_unintegrated_or_pending",
-      "publicScreenCurrentBatch": "built-artifact Chromium at b52c44a; live latest deployment not performed",
+      "publicScreenCurrentBatch": "c5d35fc: built-artifact Chromium and WebKit-online passed; latest live deployment not performed",
       "expertApproval": false
     },
     {
@@ -1092,7 +1093,7 @@
       "questionReview": "comprehensive_scientific_review_pending",
       "sourceCollation": "section_start_mapping_tracked_full_scope_unverified",
       "independentFigures": "parallel_line_assets_unintegrated_or_pending",
-      "publicScreenCurrentBatch": "built-artifact Chromium at b52c44a; live latest deployment not performed",
+      "publicScreenCurrentBatch": "c5d35fc: built-artifact Chromium and WebKit-online passed; latest live deployment not performed",
       "expertApproval": false
     },
     {
@@ -1119,7 +1120,7 @@
       "questionReview": "comprehensive_scientific_review_pending",
       "sourceCollation": "section_start_mapping_tracked_full_scope_unverified",
       "independentFigures": "parallel_line_assets_unintegrated_or_pending",
-      "publicScreenCurrentBatch": "built-artifact Chromium at b52c44a; live latest deployment not performed",
+      "publicScreenCurrentBatch": "c5d35fc: built-artifact Chromium and WebKit-online passed; latest live deployment not performed",
       "expertApproval": false
     },
     {
@@ -1146,7 +1147,7 @@
       "questionReview": "comprehensive_scientific_review_pending",
       "sourceCollation": "section_start_mapping_tracked_full_scope_unverified",
       "independentFigures": "parallel_line_assets_unintegrated_or_pending",
-      "publicScreenCurrentBatch": "built-artifact Chromium at b52c44a; live latest deployment not performed",
+      "publicScreenCurrentBatch": "c5d35fc: built-artifact Chromium and WebKit-online passed; latest live deployment not performed",
       "expertApproval": false
     },
     {
@@ -1173,7 +1174,7 @@
       "questionReview": "comprehensive_scientific_review_pending",
       "sourceCollation": "section_start_mapping_tracked_full_scope_unverified",
       "independentFigures": "parallel_line_assets_unintegrated_or_pending",
-      "publicScreenCurrentBatch": "built-artifact Chromium at b52c44a; live latest deployment not performed",
+      "publicScreenCurrentBatch": "c5d35fc: built-artifact Chromium and WebKit-online passed; latest live deployment not performed",
       "expertApproval": false
     },
     {
@@ -1200,7 +1201,7 @@
       "questionReview": "comprehensive_scientific_review_pending",
       "sourceCollation": "section_start_mapping_tracked_full_scope_unverified",
       "independentFigures": "parallel_line_assets_unintegrated_or_pending",
-      "publicScreenCurrentBatch": "built-artifact Chromium at b52c44a; live latest deployment not performed",
+      "publicScreenCurrentBatch": "c5d35fc: built-artifact Chromium and WebKit-online passed; latest live deployment not performed",
       "expertApproval": false
     },
     {
@@ -1227,7 +1228,7 @@
       "questionReview": "comprehensive_scientific_review_pending",
       "sourceCollation": "section_start_mapping_tracked_full_scope_unverified",
       "independentFigures": "parallel_line_assets_unintegrated_or_pending",
-      "publicScreenCurrentBatch": "built-artifact Chromium at b52c44a; live latest deployment not performed",
+      "publicScreenCurrentBatch": "c5d35fc: built-artifact Chromium and WebKit-online passed; latest live deployment not performed",
       "expertApproval": false
     },
     {
@@ -1254,7 +1255,7 @@
       "questionReview": "comprehensive_scientific_review_pending",
       "sourceCollation": "section_start_mapping_tracked_full_scope_unverified",
       "independentFigures": "parallel_line_assets_unintegrated_or_pending",
-      "publicScreenCurrentBatch": "built-artifact Chromium at b52c44a; live latest deployment not performed",
+      "publicScreenCurrentBatch": "c5d35fc: built-artifact Chromium and WebKit-online passed; latest live deployment not performed",
       "expertApproval": false
     },
     {
@@ -1281,7 +1282,7 @@
       "questionReview": "comprehensive_scientific_review_pending",
       "sourceCollation": "section_start_mapping_tracked_full_scope_unverified",
       "independentFigures": "parallel_line_assets_unintegrated_or_pending",
-      "publicScreenCurrentBatch": "built-artifact Chromium at b52c44a; live latest deployment not performed",
+      "publicScreenCurrentBatch": "c5d35fc: built-artifact Chromium and WebKit-online passed; latest live deployment not performed",
       "expertApproval": false
     },
     {
@@ -1308,7 +1309,7 @@
       "questionReview": "comprehensive_scientific_review_pending",
       "sourceCollation": "section_start_mapping_tracked_full_scope_unverified",
       "independentFigures": "parallel_line_assets_unintegrated_or_pending",
-      "publicScreenCurrentBatch": "built-artifact Chromium at b52c44a; live latest deployment not performed",
+      "publicScreenCurrentBatch": "c5d35fc: built-artifact Chromium and WebKit-online passed; latest live deployment not performed",
       "expertApproval": false
     },
     {
@@ -1335,7 +1336,7 @@
       "questionReview": "comprehensive_scientific_review_pending",
       "sourceCollation": "section_start_mapping_tracked_full_scope_unverified",
       "independentFigures": "parallel_line_assets_unintegrated_or_pending",
-      "publicScreenCurrentBatch": "built-artifact Chromium at b52c44a; live latest deployment not performed",
+      "publicScreenCurrentBatch": "c5d35fc: built-artifact Chromium and WebKit-online passed; latest live deployment not performed",
       "expertApproval": false
     },
     {
@@ -1362,7 +1363,7 @@
       "questionReview": "comprehensive_scientific_review_pending",
       "sourceCollation": "section_start_mapping_tracked_full_scope_unverified",
       "independentFigures": "parallel_line_assets_unintegrated_or_pending",
-      "publicScreenCurrentBatch": "built-artifact Chromium at b52c44a; live latest deployment not performed",
+      "publicScreenCurrentBatch": "c5d35fc: built-artifact Chromium and WebKit-online passed; latest live deployment not performed",
       "expertApproval": false
     },
     {
@@ -1389,7 +1390,7 @@
       "questionReview": "comprehensive_scientific_review_pending",
       "sourceCollation": "section_start_mapping_tracked_full_scope_unverified",
       "independentFigures": "parallel_line_assets_unintegrated_or_pending",
-      "publicScreenCurrentBatch": "built-artifact Chromium at b52c44a; live latest deployment not performed",
+      "publicScreenCurrentBatch": "c5d35fc: built-artifact Chromium and WebKit-online passed; latest live deployment not performed",
       "expertApproval": false
     },
     {
@@ -1416,7 +1417,7 @@
       "questionReview": "comprehensive_scientific_review_pending",
       "sourceCollation": "section_start_mapping_tracked_full_scope_unverified",
       "independentFigures": "parallel_line_assets_unintegrated_or_pending",
-      "publicScreenCurrentBatch": "built-artifact Chromium at b52c44a; live latest deployment not performed",
+      "publicScreenCurrentBatch": "c5d35fc: built-artifact Chromium and WebKit-online passed; latest live deployment not performed",
       "expertApproval": false
     },
     {
@@ -1443,9 +1444,9 @@
       "questionReview": "comprehensive_scientific_review_pending",
       "sourceCollation": "targeted equations at PDF pp515-517 viewed as images; full section scope not verified",
       "independentFigures": "parallel_line_assets_unintegrated_or_pending",
-      "publicScreenCurrentBatch": "built-artifact Chromium at b52c44a; live latest deployment not performed",
+      "publicScreenCurrentBatch": "c5d35fc: built-artifact Chromium and WebKit-online passed; latest live deployment not performed",
       "expertApproval": false,
-      "currentRevisionScreenCheck": "pending"
+      "currentRevisionScreenCheck": "c5d35fc: Chromium full and WebKit online passed"
     },
     {
       "chapterId": "ch9",
@@ -1471,9 +1472,9 @@
       "questionReview": "comprehensive_scientific_review_pending",
       "sourceCollation": "targeted equations at PDF pp515-517 viewed as images; full section scope not verified",
       "independentFigures": "parallel_line_assets_unintegrated_or_pending",
-      "publicScreenCurrentBatch": "built-artifact Chromium at b52c44a; live latest deployment not performed",
+      "publicScreenCurrentBatch": "c5d35fc: built-artifact Chromium and WebKit-online passed; latest live deployment not performed",
       "expertApproval": false,
-      "currentRevisionScreenCheck": "pending"
+      "currentRevisionScreenCheck": "c5d35fc: Chromium full and WebKit online passed"
     },
     {
       "chapterId": "ch9",
@@ -1499,7 +1500,7 @@
       "questionReview": "comprehensive_scientific_review_pending",
       "sourceCollation": "section_start_mapping_tracked_full_scope_unverified",
       "independentFigures": "parallel_line_assets_unintegrated_or_pending",
-      "publicScreenCurrentBatch": "built-artifact Chromium at b52c44a; live latest deployment not performed",
+      "publicScreenCurrentBatch": "c5d35fc: built-artifact Chromium and WebKit-online passed; latest live deployment not performed",
       "expertApproval": false
     },
     {
@@ -1526,7 +1527,7 @@
       "questionReview": "comprehensive_scientific_review_pending",
       "sourceCollation": "section_start_mapping_tracked_full_scope_unverified",
       "independentFigures": "parallel_line_assets_unintegrated_or_pending",
-      "publicScreenCurrentBatch": "built-artifact Chromium at b52c44a; live latest deployment not performed",
+      "publicScreenCurrentBatch": "c5d35fc: built-artifact Chromium and WebKit-online passed; latest live deployment not performed",
       "expertApproval": false
     },
     {
@@ -1553,7 +1554,7 @@
       "questionReview": "comprehensive_scientific_review_pending",
       "sourceCollation": "section_start_mapping_tracked_full_scope_unverified",
       "independentFigures": "parallel_line_assets_unintegrated_or_pending",
-      "publicScreenCurrentBatch": "built-artifact Chromium at b52c44a; live latest deployment not performed",
+      "publicScreenCurrentBatch": "c5d35fc: built-artifact Chromium and WebKit-online passed; latest live deployment not performed",
       "expertApproval": false
     },
     {
@@ -1563,7 +1564,7 @@
       "shortConceptNoteDraft": true,
       "detailedLessonDraft": true,
       "legacyDraftRecorded": false,
-      "questionDraftCount": 8,
+      "questionDraftCount": 12,
       "questionKinds": 3,
       "missingQuestionDrafts": 0,
       "missingKinds": 0,
@@ -1573,15 +1574,16 @@
       "reviewedQuestionCount": 0,
       "verifiedRights": false,
       "finalAcceptance": false,
-      "learningObjective": "外部垂直面の液膜に作用する重力・界面せん断と、管内凝縮の質量・エネルギー収支を区別して整理する。各モデルの入力・適用範囲を説明し、凝縮量・出口乾き度・冷却側温度を求められる。",
-      "detailedBlockCount": 11,
-      "equationCount": 6,
-      "workedExampleSteps": 5,
+      "learningObjective": "外部垂直面の液膜に作用する重力・界面せん断と、管内凝縮の質量・エネルギー収支を区別して整理する。各モデルの入力・適用範囲を説明し、凝縮量・出口乾き度・冷却側温度を求められる。 水平円筒外面の凝縮相関で、液体物性に基づくRe_DとNu_Dを計算し、低速・高速の極限と適用上限を確認できる。",
+      "detailedBlockCount": 15,
+      "equationCount": 9,
+      "workedExampleSteps": 10,
       "questionReview": "comprehensive_scientific_review_pending",
-      "sourceCollation": "section_start_mapping_tracked_full_scope_unverified",
+      "sourceCollation": "PDF p535 equations9.55/9.56 viewed as image; opposing shear interpretation and full scope pending",
       "independentFigures": "parallel_line_assets_unintegrated_or_pending",
-      "publicScreenCurrentBatch": "built-artifact Chromium at b52c44a; live latest deployment not performed",
-      "expertApproval": false
+      "publicScreenCurrentBatch": "c5d35fc: built-artifact Chromium and WebKit-online passed; latest live deployment not performed",
+      "expertApproval": false,
+      "currentRevisionScreenCheck": "passed: targeted Chromium reader/question/revision/mobile probe"
     },
     {
       "chapterId": "ch9",
@@ -1607,7 +1609,7 @@
       "questionReview": "comprehensive_scientific_review_pending",
       "sourceCollation": "section_start_mapping_tracked_full_scope_unverified",
       "independentFigures": "parallel_line_assets_unintegrated_or_pending",
-      "publicScreenCurrentBatch": "built-artifact Chromium at b52c44a; live latest deployment not performed",
+      "publicScreenCurrentBatch": "c5d35fc: built-artifact Chromium and WebKit-online passed; latest live deployment not performed",
       "expertApproval": false
     },
     {
@@ -1634,7 +1636,7 @@
       "questionReview": "comprehensive_scientific_review_pending",
       "sourceCollation": "section_start_mapping_tracked_full_scope_unverified",
       "independentFigures": "parallel_line_assets_unintegrated_or_pending",
-      "publicScreenCurrentBatch": "built-artifact Chromium at b52c44a; live latest deployment not performed",
+      "publicScreenCurrentBatch": "c5d35fc: built-artifact Chromium and WebKit-online passed; latest live deployment not performed",
       "expertApproval": false
     },
     {
@@ -1661,7 +1663,7 @@
       "questionReview": "comprehensive_scientific_review_pending",
       "sourceCollation": "section_start_mapping_tracked_full_scope_unverified",
       "independentFigures": "parallel_line_assets_unintegrated_or_pending",
-      "publicScreenCurrentBatch": "built-artifact Chromium at b52c44a; live latest deployment not performed",
+      "publicScreenCurrentBatch": "c5d35fc: built-artifact Chromium and WebKit-online passed; latest live deployment not performed",
       "expertApproval": false
     },
     {
@@ -1688,7 +1690,7 @@
       "questionReview": "comprehensive_scientific_review_pending",
       "sourceCollation": "section_start_mapping_tracked_full_scope_unverified",
       "independentFigures": "parallel_line_assets_unintegrated_or_pending",
-      "publicScreenCurrentBatch": "built-artifact Chromium at b52c44a; live latest deployment not performed",
+      "publicScreenCurrentBatch": "c5d35fc: built-artifact Chromium and WebKit-online passed; latest live deployment not performed",
       "expertApproval": false
     },
     {
@@ -1715,7 +1717,7 @@
       "questionReview": "comprehensive_scientific_review_pending",
       "sourceCollation": "section_start_mapping_tracked_full_scope_unverified",
       "independentFigures": "parallel_line_assets_unintegrated_or_pending",
-      "publicScreenCurrentBatch": "built-artifact Chromium at b52c44a; live latest deployment not performed",
+      "publicScreenCurrentBatch": "c5d35fc: built-artifact Chromium and WebKit-online passed; latest live deployment not performed",
       "expertApproval": false
     },
     {
@@ -1742,7 +1744,7 @@
       "questionReview": "comprehensive_scientific_review_pending",
       "sourceCollation": "section_start_mapping_tracked_full_scope_unverified",
       "independentFigures": "parallel_line_assets_unintegrated_or_pending",
-      "publicScreenCurrentBatch": "built-artifact Chromium at b52c44a; live latest deployment not performed",
+      "publicScreenCurrentBatch": "c5d35fc: built-artifact Chromium and WebKit-online passed; latest live deployment not performed",
       "expertApproval": false
     },
     {
@@ -1769,7 +1771,7 @@
       "questionReview": "comprehensive_scientific_review_pending",
       "sourceCollation": "section_start_mapping_tracked_full_scope_unverified",
       "independentFigures": "parallel_line_assets_unintegrated_or_pending",
-      "publicScreenCurrentBatch": "built-artifact Chromium at b52c44a; live latest deployment not performed",
+      "publicScreenCurrentBatch": "c5d35fc: built-artifact Chromium and WebKit-online passed; latest live deployment not performed",
       "expertApproval": false
     },
     {
@@ -1796,7 +1798,7 @@
       "questionReview": "comprehensive_scientific_review_pending",
       "sourceCollation": "section_start_mapping_tracked_full_scope_unverified",
       "independentFigures": "parallel_line_assets_unintegrated_or_pending",
-      "publicScreenCurrentBatch": "built-artifact Chromium at b52c44a; live latest deployment not performed",
+      "publicScreenCurrentBatch": "c5d35fc: built-artifact Chromium and WebKit-online passed; latest live deployment not performed",
       "expertApproval": false
     },
     {
@@ -1823,7 +1825,7 @@
       "questionReview": "comprehensive_scientific_review_pending",
       "sourceCollation": "section_start_mapping_tracked_full_scope_unverified",
       "independentFigures": "parallel_line_assets_unintegrated_or_pending",
-      "publicScreenCurrentBatch": "built-artifact Chromium at b52c44a; live latest deployment not performed",
+      "publicScreenCurrentBatch": "c5d35fc: built-artifact Chromium and WebKit-online passed; latest live deployment not performed",
       "expertApproval": false
     },
     {
@@ -1850,7 +1852,7 @@
       "questionReview": "comprehensive_scientific_review_pending",
       "sourceCollation": "section_start_mapping_tracked_full_scope_unverified",
       "independentFigures": "parallel_line_assets_unintegrated_or_pending",
-      "publicScreenCurrentBatch": "built-artifact Chromium at b52c44a; live latest deployment not performed",
+      "publicScreenCurrentBatch": "c5d35fc: built-artifact Chromium and WebKit-online passed; latest live deployment not performed",
       "expertApproval": false
     },
     {
@@ -1877,7 +1879,7 @@
       "questionReview": "comprehensive_scientific_review_pending",
       "sourceCollation": "section_start_mapping_tracked_full_scope_unverified",
       "independentFigures": "parallel_line_assets_unintegrated_or_pending",
-      "publicScreenCurrentBatch": "built-artifact Chromium at b52c44a; live latest deployment not performed",
+      "publicScreenCurrentBatch": "c5d35fc: built-artifact Chromium and WebKit-online passed; latest live deployment not performed",
       "expertApproval": false
     },
     {
@@ -1904,7 +1906,7 @@
       "questionReview": "comprehensive_scientific_review_pending",
       "sourceCollation": "section_start_mapping_tracked_full_scope_unverified",
       "independentFigures": "parallel_line_assets_unintegrated_or_pending",
-      "publicScreenCurrentBatch": "built-artifact Chromium at b52c44a; live latest deployment not performed",
+      "publicScreenCurrentBatch": "c5d35fc: built-artifact Chromium and WebKit-online passed; latest live deployment not performed",
       "expertApproval": false
     },
     {
@@ -1931,7 +1933,7 @@
       "questionReview": "comprehensive_scientific_review_pending",
       "sourceCollation": "section_start_mapping_tracked_full_scope_unverified",
       "independentFigures": "parallel_line_assets_unintegrated_or_pending",
-      "publicScreenCurrentBatch": "built-artifact Chromium at b52c44a; live latest deployment not performed",
+      "publicScreenCurrentBatch": "c5d35fc: built-artifact Chromium and WebKit-online passed; latest live deployment not performed",
       "expertApproval": false
     },
     {
@@ -1958,7 +1960,7 @@
       "questionReview": "comprehensive_scientific_review_pending",
       "sourceCollation": "section_start_mapping_tracked_full_scope_unverified",
       "independentFigures": "parallel_line_assets_unintegrated_or_pending",
-      "publicScreenCurrentBatch": "built-artifact Chromium at b52c44a; live latest deployment not performed",
+      "publicScreenCurrentBatch": "c5d35fc: built-artifact Chromium and WebKit-online passed; latest live deployment not performed",
       "expertApproval": false
     },
     {
@@ -1985,7 +1987,7 @@
       "questionReview": "comprehensive_scientific_review_pending",
       "sourceCollation": "section_start_mapping_tracked_full_scope_unverified",
       "independentFigures": "parallel_line_assets_unintegrated_or_pending",
-      "publicScreenCurrentBatch": "built-artifact Chromium at b52c44a; live latest deployment not performed",
+      "publicScreenCurrentBatch": "c5d35fc: built-artifact Chromium and WebKit-online passed; latest live deployment not performed",
       "expertApproval": false
     },
     {
@@ -2012,7 +2014,7 @@
       "questionReview": "comprehensive_scientific_review_pending",
       "sourceCollation": "section_start_mapping_tracked_full_scope_unverified",
       "independentFigures": "parallel_line_assets_unintegrated_or_pending",
-      "publicScreenCurrentBatch": "built-artifact Chromium at b52c44a; live latest deployment not performed",
+      "publicScreenCurrentBatch": "c5d35fc: built-artifact Chromium and WebKit-online passed; latest live deployment not performed",
       "expertApproval": false
     },
     {
@@ -2039,7 +2041,7 @@
       "questionReview": "comprehensive_scientific_review_pending",
       "sourceCollation": "section_start_mapping_tracked_full_scope_unverified",
       "independentFigures": "parallel_line_assets_unintegrated_or_pending",
-      "publicScreenCurrentBatch": "built-artifact Chromium at b52c44a; live latest deployment not performed",
+      "publicScreenCurrentBatch": "c5d35fc: built-artifact Chromium and WebKit-online passed; latest live deployment not performed",
       "expertApproval": false
     },
     {
@@ -2066,7 +2068,7 @@
       "questionReview": "comprehensive_scientific_review_pending",
       "sourceCollation": "section_start_mapping_tracked_full_scope_unverified",
       "independentFigures": "parallel_line_assets_unintegrated_or_pending",
-      "publicScreenCurrentBatch": "built-artifact Chromium at b52c44a; live latest deployment not performed",
+      "publicScreenCurrentBatch": "c5d35fc: built-artifact Chromium and WebKit-online passed; latest live deployment not performed",
       "expertApproval": false
     },
     {
@@ -2093,7 +2095,7 @@
       "questionReview": "comprehensive_scientific_review_pending",
       "sourceCollation": "section_start_mapping_tracked_full_scope_unverified",
       "independentFigures": "parallel_line_assets_unintegrated_or_pending",
-      "publicScreenCurrentBatch": "built-artifact Chromium at b52c44a; live latest deployment not performed",
+      "publicScreenCurrentBatch": "c5d35fc: built-artifact Chromium and WebKit-online passed; latest live deployment not performed",
       "expertApproval": false
     }
   ]
