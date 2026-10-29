@@ -27306,5 +27306,1875 @@
       "同じΔTならQ̇半分。"
     ],
     "beginnerPitfall": "一つの長さの変更を全相似の拡大と同じにしない。"
+  },
+  {
+    "id": "supp-transient-gap-diffusion-scale-v1",
+    "revision": "v1",
+    "field": "非定常伝導",
+    "prerequisites": [
+      "熱拡散率",
+      "初期・境界条件",
+      "無次元数"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "輸送現象の一般法則と独自の仮想例から作問。原本の翻訳・原図・章末問題ではない。",
+      "chapterId": "ch5",
+      "focusSectionId": "5.1",
+      "guideId": "chapter5-semi-infinite"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "執筆原稿・基本算術と構造を確認／包括的品質監査待ち・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "執筆時の定義・収支・基本計算を確認。全問の独立科学監査・原本網羅照合・外部校閲は後工程。"
+      }
+    ],
+    "prompt": "固体のα=1.0×10⁻⁶ m²/s、代表長さL=0.010 m。内部拡散の時間尺度t_D=L²/αはどれか。",
+    "choices": [
+      "100 s",
+      "10000 s",
+      "1 s",
+      "0.010 s"
+    ],
+    "answer": 0,
+    "difficulty": "標準・数値計算",
+    "explanation": "t_D=0.010²/10⁻⁶=100 s。境界条件や到達の判定で係数が変わるため厳密な完了時間ではない。",
+    "distractors": [
+      "正解。長さを二乗して熱拡散率で割った。",
+      "長さの二乗を取らずαで割った。",
+      "長さ又はαの指数を取り違えた。",
+      "時間尺度の逆数を時間とした。"
+    ],
+    "hints": [
+      "長さをmで二乗。",
+      "m²をm²/sで割る。"
+    ],
+    "solutionSteps": [
+      "L²=10⁻⁴ m²。",
+      "αで割る。",
+      "100 sの尺度。"
+    ],
+    "beginnerPitfall": "時間尺度を厳密な到達時刻としない。"
+  },
+  {
+    "id": "supp-transient-gap-sphere-lumped-length-v1",
+    "revision": "v1",
+    "field": "非定常伝導",
+    "prerequisites": [
+      "熱拡散率",
+      "初期・境界条件",
+      "無次元数"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "輸送現象の一般法則と独自の仮想例から作問。原本の翻訳・原図・章末問題ではない。",
+      "chapterId": "ch5",
+      "focusSectionId": "5.1",
+      "guideId": "chapter5-semi-infinite"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "執筆原稿・基本算術と構造を確認／包括的品質監査待ち・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "執筆時の定義・収支・基本計算を確認。全問の独立科学監査・原本網羅照合・外部校閲は後工程。"
+      }
+    ],
+    "prompt": "半径R=0.030 mの球が全面で対流する。集中近似のL_c=V/A_s=R/3、h=10 W/(m²·K)、k=5.0 W/(m·K)。このL_c基準のBiはどれか。",
+    "choices": [
+      "2.0",
+      "0.020",
+      "0.060",
+      "0.00667"
+    ],
+    "answer": 1,
+    "difficulty": "標準・数値計算",
+    "explanation": "L_c=0.010 m、Bi=hL_c/k=10×0.010/5=0.020。球の応答線図が半径基準ならBi_R=0.060なので定義を混ぜない。",
+    "distractors": [
+      "長さ又は物性の桁を取り違えた。",
+      "正解。V/A_sに対応する長さを使った。",
+      "半径基準のBiをそのまま集中基準とした。",
+      "Rを3で割る操作を二重にした。"
+    ],
+    "hints": [
+      "球の体積と表面積の比。",
+      "集中近似の長さはR/3。"
+    ],
+    "solutionSteps": [
+      "L_c=0.010 m。",
+      "10×0.010/5。",
+      "Bi=0.020。"
+    ],
+    "beginnerPitfall": "半径基準とV/A_s基準を明記する。"
+  },
+  {
+    "id": "supp-transient-gap-conductivity-time-scales-v1",
+    "revision": "v1",
+    "field": "非定常伝導",
+    "prerequisites": [
+      "熱拡散率",
+      "初期・境界条件",
+      "無次元数"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "applied",
+    "source": {
+      "type": "supplement",
+      "reference": "輸送現象の一般法則と独自の仮想例から作問。原本の翻訳・原図・章末問題ではない。",
+      "chapterId": "ch5",
+      "focusSectionId": "5.1",
+      "guideId": "chapter5-semi-infinite"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "執筆原稿・基本算術と構造を確認／包括的品質監査待ち・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "執筆時の定義・収支・基本計算を確認。全問の独立科学監査・原本網羅照合・外部校閲は後工程。"
+      }
+    ],
+    "prompt": "同じ形状・ρc_p・hの固体でkだけを2倍にした。内部拡散尺度L_c²/αと外部尺度ρc_pL_c/hの変化はどれか。",
+    "choices": [
+      "内部尺度は不変、外部尺度は半分",
+      "内部尺度も外部尺度も2倍",
+      "内部尺度は半分、外部尺度は不変",
+      "内部尺度は2倍、外部尺度は不変"
+    ],
+    "answer": 2,
+    "difficulty": "概念・適用判断",
+    "explanation": "α=k/(ρc_p)は2倍、L_c²/αは半分。外部熱交換の尺度は変わらず、Bi=hL_c/kは半分となる。内部一様近似の検討にもつながる。",
+    "distractors": [
+      "kの役割を外部熱交換へ移した。",
+      "同じρc_pとhという条件を無視した。",
+      "正解。αが2倍で内部が速くなり、外部式にはkがない。",
+      "αと内部拡散時間の関係を逆にした。"
+    ],
+    "hints": [
+      "αの定義。",
+      "各時間尺度にkが入る位置。"
+    ],
+    "solutionSteps": [
+      "αを2倍。",
+      "内部時間を半分。",
+      "外部時間は不変。"
+    ],
+    "beginnerPitfall": "材料の拡散と表面の熱交換を分ける。"
+  },
+  {
+    "id": "supp-transient-gap-finite-early-boundary-v1",
+    "revision": "v1",
+    "field": "非定常伝導",
+    "prerequisites": [
+      "熱拡散率",
+      "初期・境界条件",
+      "無次元数"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "applied",
+    "source": {
+      "type": "supplement",
+      "reference": "輸送現象の一般法則と独自の仮想例から作問。原本の翻訳・原図・章末問題ではない。",
+      "chapterId": "ch5",
+      "focusSectionId": "5.1",
+      "guideId": "chapter5-semi-infinite"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "執筆原稿・基本算術と構造を確認／包括的品質監査待ち・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "執筆時の定義・収支・基本計算を確認。全問の独立科学監査・原本網羅照合・外部校閲は後工程。"
+      }
+    ],
+    "prompt": "厚い固体の表面条件を急に変えた短時間を扱い、温度変化の深さが厚さより十分小さく裏面影響も小さい。候補となるモデルはどれか。",
+    "choices": [
+      "厚さによらず厳密とする一様温度の集中モデル",
+      "内部に時間変化はないとする定常モデル",
+      "初期温度を使わず、全体を周囲温度とするモデル",
+      "表面の条件に対応した半無限非定常モデル"
+    ],
+    "answer": 3,
+    "difficulty": "概念・適用判断",
+    "explanation": "半無限解も表面温度指定、流束指定、対流等で式が違う。実際の境界条件を選び、遠方に影響が小さい時間範囲を確認する。",
+    "distractors": [
+      "厚い固体の短時間で内部一様とは限らない。",
+      "表面変更直後の蓄積を無視した。",
+      "非定常に必要な初期状態を落とした。",
+      "正解。遠方が初期状態に近い短時間の近似を考えた。"
+    ],
+    "hints": [
+      "温度変化の広がりと厚さを比べる。",
+      "裏面をまだ感じない近似。"
+    ],
+    "solutionSteps": [
+      "時間と長さ尺度を確認。",
+      "表面境界を確認。",
+      "対応する半無限解を検討。"
+    ],
+    "beginnerPitfall": "半無限というだけで全境界条件に同じ式を使わない。"
+  },
+  {
+    "id": "supp-transient-gap-bi-fo-roles-v1",
+    "revision": "v1",
+    "field": "非定常伝導",
+    "prerequisites": [
+      "熱拡散率",
+      "初期・境界条件",
+      "無次元数"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "conceptual",
+    "source": {
+      "type": "supplement",
+      "reference": "輸送現象の一般法則と独自の仮想例から作問。原本の翻訳・原図・章末問題ではない。",
+      "chapterId": "ch5",
+      "focusSectionId": "5.1",
+      "guideId": "chapter5-semi-infinite"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "執筆原稿・基本算術と構造を確認／包括的品質監査待ち・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "執筆時の定義・収支・基本計算を確認。全問の独立科学監査・原本網羅照合・外部校閲は後工程。"
+      }
+    ],
+    "prompt": "BiとFoの役割として適切な説明はどれか。",
+    "choices": [
+      "Biは内部と外部の比、Foは拡散尺度に対する時間",
+      "BiもFoも同じく温度差だけで決まる数",
+      "Foが大きければ、Biによらず内部は全時刻一様",
+      "Biが小さければ、経過時間は温度応答に影響しない"
+    ],
+    "answer": 0,
+    "difficulty": "概念・適用判断",
+    "explanation": "Bi=hL/kは抵抗の相対的な目安、Fo=αt/L²は経過時間の無次元化。Lの定義を用いる解や近似へ合わせる。",
+    "distractors": [
+      "正解。二つの指標の定義と役割を区別した。",
+      "両者は物性・長さや時間にも依存する。",
+      "大きなFoだけで全過程の一様温度は保証されない。",
+      "小Biでも時間とともに平均温度は変わる。"
+    ],
+    "hints": [
+      "Biに時間は入るか。",
+      "Foには経過時間tが入る。"
+    ],
+    "solutionSteps": [
+      "各式を確認。",
+      "抵抗比と時間を分ける。",
+      "特性長さを統一。"
+    ],
+    "beginnerPitfall": "二つの無次元数を同じ条件としない。"
+  },
+  {
+    "id": "supp-transient-gap-surface-vs-ambient-v1",
+    "revision": "v1",
+    "field": "非定常伝導",
+    "prerequisites": [
+      "熱拡散率",
+      "初期・境界条件",
+      "無次元数"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "conceptual",
+    "source": {
+      "type": "supplement",
+      "reference": "輸送現象の一般法則と独自の仮想例から作問。原本の翻訳・原図・章末問題ではない。",
+      "chapterId": "ch5",
+      "focusSectionId": "5.1",
+      "guideId": "chapter5-semi-infinite"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "執筆原稿・基本算術と構造を確認／包括的品質監査待ち・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "執筆時の定義・収支・基本計算を確認。全問の独立科学監査・原本網羅照合・外部校閲は後工程。"
+      }
+    ],
+    "prompt": "有限のhを介して冷却する固体で、周囲流体温度T_∞を一定にした。表面温度T_sについて適切なのはどれか。",
+    "choices": [
+      "冷却中でも、T_sは必ず初期温度のまま変わらない",
+      "T_sは未知で、内部伝導と対流の収支で決まる",
+      "周囲一定なら、T_sも常にT_∞と等しい",
+      "hが有限なら、表面の熱流は必ずゼロとなる"
+    ],
+    "answer": 1,
+    "difficulty": "概念・適用判断",
+    "explanation": "対流境界は−k∂T/∂n=h(T_s−T_∞)。周囲を変えた直後に全ての表面や内部が瞬時に周囲温度となるわけではない。",
+    "distractors": [
+      "表面も過渡の温度場の一部である。",
+      "正解。周囲の指定と表面の温度指定を区別した。",
+      "対流境界を表面温度固定へ置き換えた。",
+      "有限hと有限温度差なら熱流はありうる。"
+    ],
+    "hints": [
+      "何を実際に固定したか。",
+      "対流には表面と流体の差がある。"
+    ],
+    "solutionSteps": [
+      "T_∞指定を確認。",
+      "T_sを未知として境界式へ。",
+      "内部解と合わせる。"
+    ],
+    "beginnerPitfall": "表面温度固定と周囲温度固定を混同しない。"
+  },
+  {
+    "id": "supp-transient-gap-chart-center-temperature-v1",
+    "revision": "v1",
+    "field": "非定常伝導",
+    "prerequisites": [
+      "熱拡散率",
+      "初期・境界条件",
+      "無次元数"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "輸送現象の一般法則と独自の仮想例から作問。原本の翻訳・原図・章末問題ではない。",
+      "chapterId": "ch5",
+      "focusSectionId": "5.4",
+      "guideId": "chapter5-semi-infinite"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "執筆原稿・基本算術と構造を確認／包括的品質監査待ち・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "執筆時の定義・収支・基本計算を確認。全問の独立科学監査・原本網羅照合・外部校閲は後工程。"
+      }
+    ],
+    "prompt": "初期100℃、周囲20℃。対応する有限体解から中心応答Θ_0=(T_0−T_∞)/(T_i−T_∞)=0.773を得た。中心温度はどれか。",
+    "choices": [
+      "約61.8℃",
+      "約35.5℃",
+      "約81.8℃",
+      "約77.3℃"
+    ],
+    "answer": 2,
+    "difficulty": "標準・数値計算",
+    "explanation": "T_0=20+(100−20)×0.773=81.84℃。Θは絶対温度や摂氏値の割合ではなく周囲との差の割合。",
+    "distractors": [
+      "周囲温度へ戻す加算を落とした。",
+      "1−Θを中心応答と取り違えた。",
+      "正解。周囲との差で規格化した値を元の温度へ戻した。",
+      "初期の摂氏温度へそのままΘを掛けた。"
+    ],
+    "hints": [
+      "元の式をT_0について解く。",
+      "初期差は80 K。"
+    ],
+    "solutionSteps": [
+      "80×0.773=61.84 K。",
+      "周囲20℃を足す。",
+      "81.84℃。"
+    ],
+    "beginnerPitfall": "規格化された温度差と温度自体を分ける。"
+  },
+  {
+    "id": "supp-transient-gap-chart-position-ratio-v1",
+    "revision": "v1",
+    "field": "非定常伝導",
+    "prerequisites": [
+      "熱拡散率",
+      "初期・境界条件",
+      "無次元数"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "輸送現象の一般法則と独自の仮想例から作問。原本の翻訳・原図・章末問題ではない。",
+      "chapterId": "ch5",
+      "focusSectionId": "5.4",
+      "guideId": "chapter5-semi-infinite"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "執筆原稿・基本算術と構造を確認／包括的品質監査待ち・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "執筆時の定義・収支・基本計算を確認。全問の独立科学監査・原本網羅照合・外部校閲は後工程。"
+      }
+    ],
+    "prompt": "有限体の線図で中心Θ_0=0.80、指定位置の比Θ/Θ_0=0.90を読み取った。指定位置のΘはどれか。",
+    "choices": [
+      "1.70",
+      "0.10",
+      "0.889",
+      "0.72"
+    ],
+    "answer": 3,
+    "difficulty": "標準・数値計算",
+    "explanation": "Θ=Θ_0×(Θ/Θ_0)=0.80×0.90=0.72。二つの図の量が何を規格化しているかを先に確認する。",
+    "distractors": [
+      "中心値と位置比を足した。",
+      "二つの値の差を取った。",
+      "比の向きを取り違え割った。",
+      "正解。中心値と位置比を掛けた。"
+    ],
+    "hints": [
+      "比の分母は中心Θ_0。",
+      "中心値を掛けて復元。"
+    ],
+    "solutionSteps": [
+      "0.80×0.90。",
+      "0.72。",
+      "元の温度へはT_∞を戻す。"
+    ],
+    "beginnerPitfall": "中心応答と位置補正を足さない。"
+  },
+  {
+    "id": "supp-transient-gap-chart-average-energy-v1",
+    "revision": "v1",
+    "field": "非定常伝導",
+    "prerequisites": [
+      "熱拡散率",
+      "初期・境界条件",
+      "無次元数"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "輸送現象の一般法則と独自の仮想例から作問。原本の翻訳・原図・章末問題ではない。",
+      "chapterId": "ch5",
+      "focusSectionId": "5.4",
+      "guideId": "chapter5-semi-infinite"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "執筆原稿・基本算術と構造を確認／包括的品質監査待ち・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "執筆時の定義・収支・基本計算を確認。全問の独立科学監査・原本網羅照合・外部校閲は後工程。"
+      }
+    ],
+    "prompt": "一定比熱の冷却で、有限体解の平均規格化温度Θ̄=0.68を得た。初期と周囲の温度差に相当する顕熱を基準にした放出割合はどれか。",
+    "choices": [
+      "32%",
+      "68%",
+      "100%",
+      "47%"
+    ],
+    "answer": 0,
+    "difficulty": "標準・数値計算",
+    "explanation": "Q_out/[ρc_pV(T_i−T_∞)]=1−Θ̄=0.32。中心温度だけからこの割合を求めない。",
+    "distractors": [
+      "正解。残る割合を1から引いた。",
+      "内部に残る規格化顕熱を放出割合とした。",
+      "時間が経過しただけで全放出とした。",
+      "定義のない比へ置き換えた。"
+    ],
+    "hints": [
+      "平均応答は残っている温度差の割合。",
+      "放出は初期との差。"
+    ],
+    "solutionSteps": [
+      "1−0.68。",
+      "0.32。",
+      "32%。"
+    ],
+    "beginnerPitfall": "中心と平均、残存と放出を区別する。"
+  },
+  {
+    "id": "supp-transient-gap-chart-log-axis-v1",
+    "revision": "v1",
+    "field": "非定常伝導",
+    "prerequisites": [
+      "熱拡散率",
+      "初期・境界条件",
+      "無次元数"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "輸送現象の一般法則と独自の仮想例から作問。原本の翻訳・原図・章末問題ではない。",
+      "chapterId": "ch5",
+      "focusSectionId": "5.4",
+      "guideId": "chapter5-semi-infinite"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "執筆原稿・基本算術と構造を確認／包括的品質監査待ち・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "執筆時の定義・収支・基本計算を確認。全問の独立科学監査・原本網羅照合・外部校閲は後工程。"
+      }
+    ],
+    "prompt": "温度応答線図の横軸Foが対数目盛で、0.10と1.0のちょうど中間にある点を読む。Foはいくらか。",
+    "choices": [
+      "約0.900",
+      "約0.316",
+      "約0.550",
+      "約0.100"
+    ],
+    "answer": 1,
+    "difficulty": "標準・数値計算",
+    "explanation": "log Fo=(log0.10+log1.0)/2なのでFo=√(0.10×1.0)=0.316228。線図の軸が対数か線形かを確認して補間する。",
+    "distractors": [
+      "端点差を中間値とした。",
+      "正解。対数目盛の中間は幾何平均となる。",
+      "線形目盛の算術平均を使った。",
+      "左端の値をそのまま使った。"
+    ],
+    "hints": [
+      "中間なのは対数値。",
+      "正の二値の幾何平均。"
+    ],
+    "solutionSteps": [
+      "積は0.10。",
+      "平方根を取る。",
+      "約0.316。"
+    ],
+    "beginnerPitfall": "対数目盛を線形の中間値で読まない。"
+  },
+  {
+    "id": "supp-transient-gap-chart-radius-definition-v1",
+    "revision": "v1",
+    "field": "非定常伝導",
+    "prerequisites": [
+      "熱拡散率",
+      "初期・境界条件",
+      "無次元数"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "applied",
+    "source": {
+      "type": "supplement",
+      "reference": "輸送現象の一般法則と独自の仮想例から作問。原本の翻訳・原図・章末問題ではない。",
+      "chapterId": "ch5",
+      "focusSectionId": "5.4",
+      "guideId": "chapter5-semi-infinite"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "執筆原稿・基本算術と構造を確認／包括的品質監査待ち・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "執筆時の定義・収支・基本計算を確認。全問の独立科学監査・原本網羅照合・外部校閲は後工程。"
+      }
+    ],
+    "prompt": "球の温度応答線図に「Bi=hR/k、Fo=αt/R²」とある。集中近似で使ったL_c=R/3のBiをそのまま入れようとしている。適切なのはどれか。",
+    "choices": [
+      "Biだけ半径へ直し、Foは別の長さのままにする",
+      "長さは入力に関係しないので、どちらも同じとなる",
+      "線図の半径基準に合わせ、BiとFoを計算し直す",
+      "L_cを使う方が常に正しいので、そのまま入れる"
+    ],
+    "answer": 2,
+    "difficulty": "概念・適用判断",
+    "explanation": "球の半径基準はBi_R=3Bi_Lc、Fo_R=Fo_Lc/9。形状・境界とともに、その図に指定された定義を守る。",
+    "distractors": [
+      "両無次元数の長さを対応させていない。",
+      "BiとFoは特性長さに依存する。",
+      "正解。線図に定義された特性長さへ合わせた。",
+      "集中近似の定義と線図の定義を混ぜた。"
+    ],
+    "hints": [
+      "図の定義が基準。",
+      "BiはL、Foは1/L²。"
+    ],
+    "solutionSteps": [
+      "半径Rを確認。",
+      "Bi=hR/kへ。",
+      "Fo=αt/R²へ。"
+    ],
+    "beginnerPitfall": "適用する図と異なる特性長さを持ち込まない。"
+  },
+  {
+    "id": "supp-transient-gap-chart-time-dependent-boundary-v1",
+    "revision": "v1",
+    "field": "非定常伝導",
+    "prerequisites": [
+      "熱拡散率",
+      "初期・境界条件",
+      "無次元数"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "applied",
+    "source": {
+      "type": "supplement",
+      "reference": "輸送現象の一般法則と独自の仮想例から作問。原本の翻訳・原図・章末問題ではない。",
+      "chapterId": "ch5",
+      "focusSectionId": "5.4",
+      "guideId": "chapter5-semi-infinite"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "執筆原稿・基本算術と構造を確認／包括的品質監査待ち・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "執筆時の定義・収支・基本計算を確認。全問の独立科学監査・原本網羅照合・外部校閲は後工程。"
+      }
+    ],
+    "prompt": "初期一様・h一定・周囲一定の温度応答線図がある。実験では周囲温度が大きく時間変化した。どう扱うか。",
+    "choices": [
+      "最後の周囲温度を入れれば、全履歴を厳密に表せる",
+      "Foが正なら、周囲の変化を全て無視できる",
+      "線図の色を変えれば、境界条件の違いはなくなる",
+      "境界の時間変化を含む解法やモデルを検討する"
+    ],
+    "answer": 3,
+    "difficulty": "概念・適用判断",
+    "explanation": "線形性が使える場合の重ね合わせ・畳み込みや、時間依存境界の数値解等を検討する。一定条件の図を無条件に最終状態だけで置換しない。",
+    "distractors": [
+      "物体の応答は過去の境界履歴にも依存する。",
+      "Foの正だけでは境界一定を保証しない。",
+      "表示の変更は物理モデルを変えない。",
+      "正解。線図の仮定と実験の履歴の違いを確認した。"
+    ],
+    "hints": [
+      "境界履歴はいつから変わったか。",
+      "元の図の一定周囲条件を確認。"
+    ],
+    "solutionSteps": [
+      "前提との不一致を記録。",
+      "履歴を含める方法を選ぶ。",
+      "初期条件と合わせて解く。"
+    ],
+    "beginnerPitfall": "過去の境界履歴を最後の温度だけで置き換えない。"
+  },
+  {
+    "id": "supp-transient-gap-chart-data-status-v1",
+    "revision": "v1",
+    "field": "非定常伝導",
+    "prerequisites": [
+      "熱拡散率",
+      "初期・境界条件",
+      "無次元数"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "conceptual",
+    "source": {
+      "type": "supplement",
+      "reference": "輸送現象の一般法則と独自の仮想例から作問。原本の翻訳・原図・章末問題ではない。",
+      "chapterId": "ch5",
+      "focusSectionId": "5.4",
+      "guideId": "chapter5-semi-infinite"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "執筆原稿・基本算術と構造を確認／包括的品質監査待ち・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "執筆時の定義・収支・基本計算を確認。全問の独立科学監査・原本網羅照合・外部校閲は後工程。"
+      }
+    ],
+    "prompt": "独立した一項計算の値を「線図の照合用目安」として使った。正確な記録はどれか。",
+    "choices": [
+      "一項近似の計算値で、原本図の読取値とは分ける",
+      "原本の図を読んだ値として、照合完了と記録する",
+      "図に似た値なら、外部専門家の承認値と記録する",
+      "未掲載の図も、アプリに収録済みとして表示する"
+    ],
+    "answer": 0,
+    "difficulty": "概念・適用判断",
+    "explanation": "図を読む方法の独立補足と、実際の図や原本との照合記録は別。一項近似、全級数、実測、原本読取りの種類を明示する。",
+    "distractors": [
+      "正解。算出方法と資料・検証の状態を区別した。",
+      "実際に行っていない原本図の読取りを主張した。",
+      "数値の類似だけでは外部承認にならない。",
+      "未収録の図を利用可能とする虚偽表示。"
+    ],
+    "hints": [
+      "値がどこから得られたか。",
+      "実施した確認だけを書く。"
+    ],
+    "solutionSteps": [
+      "独立計算と明記。",
+      "近似の種類を記録。",
+      "原本照合・外部承認は別。"
+    ],
+    "beginnerPitfall": "参考値の出所や検証状態を偽らない。"
+  },
+  {
+    "id": "supp-transient-gap-one-term-eigen-root-v1",
+    "revision": "v1",
+    "field": "非定常伝導",
+    "prerequisites": [
+      "熱拡散率",
+      "初期・境界条件",
+      "無次元数"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "輸送現象の一般法則と独自の仮想例から作問。原本の翻訳・原図・章末問題ではない。",
+      "chapterId": "ch5",
+      "focusSectionId": "5.5",
+      "guideId": "chapter5-semi-infinite"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "執筆原稿・基本算術と構造を確認／包括的品質監査待ち・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "執筆時の定義・収支・基本計算を確認。全問の独立科学監査・原本網羅照合・外部校閲は後工程。"
+      }
+    ],
+    "prompt": "対称両面対流平板でλ_1=0.860333589、tanλ_1≈1.162339。固有値条件Bi=λ_1tanλ_1からBiはどれか。",
+    "choices": [
+      "約1.35",
+      "約1.00",
+      "約0.740",
+      "約0.860"
+    ],
+    "answer": 1,
+    "difficulty": "標準・数値計算",
+    "explanation": "Bi≈0.860333589×1.162339≈1.000。根の値を使う前に形状・境界条件に対応する方程式の残差を確かめる。",
+    "distractors": [
+      "tanλをλで割った。",
+      "正解。指定された根条件の積を計算した。",
+      "λの二乗をBiとした。",
+      "λそのものをBiとした。"
+    ],
+    "hints": [
+      "根条件は積。",
+      "λだけをBiとしない。"
+    ],
+    "solutionSteps": [
+      "与えたλとtanを対応。",
+      "積を取る。",
+      "Bi≈1。"
+    ],
+    "beginnerPitfall": "固有値とBiを同じ数値とみなさない。"
+  },
+  {
+    "id": "supp-transient-gap-one-term-mode-decay-v1",
+    "revision": "v1",
+    "field": "非定常伝導",
+    "prerequisites": [
+      "熱拡散率",
+      "初期・境界条件",
+      "無次元数"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "輸送現象の一般法則と独自の仮想例から作問。原本の翻訳・原図・章末問題ではない。",
+      "chapterId": "ch5",
+      "focusSectionId": "5.5",
+      "guideId": "chapter5-semi-infinite"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "執筆原稿・基本算術と構造を確認／包括的品質監査待ち・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "執筆時の定義・収支・基本計算を確認。全問の独立科学監査・原本網羅照合・外部校閲は後工程。"
+      }
+    ],
+    "prompt": "Bi=1の平板の中心で、第二項/第一項の絶対値は|A₂/A₁|exp[−(λ₂²−λ₁²)Fo]。|A₂/A₁|=0.13555、λ₂²−λ₁²=10.9947、Fo=0.50、exp(−5.49735)=0.0040977を与える。比はどれか。",
+    "choices": [
+      "約3.31×10¹",
+      "約7.45×10⁻¹",
+      "約5.55×10⁻⁴",
+      "約1.36×10⁻¹"
+    ],
+    "answer": 2,
+    "difficulty": "標準・数値計算",
+    "explanation": "比≈0.13555×0.0040977=0.0005554、約0.0555%。これは中心の第二項寄与であり、全位置の全高次項誤差の保証ではない。",
+    "distractors": [
+      "指数減衰で割った。",
+      "指数の中身をそのまま係数比へ掛けた。",
+      "正解。係数比と時間減衰を掛けた。",
+      "第二項が速く減衰する効果を落とした。"
+    ],
+    "hints": [
+      "高次固有値ほど速く減る。",
+      "係数比に指数を掛ける。"
+    ],
+    "solutionSteps": [
+      "指数引数−5.49735。",
+      "指数値0.0040977。",
+      "積≈5.55×10⁻⁴。"
+    ],
+    "beginnerPitfall": "一項の比較を全領域の誤差保証としない。"
+  },
+  {
+    "id": "supp-transient-gap-one-term-average-factor-v1",
+    "revision": "v1",
+    "field": "非定常伝導",
+    "prerequisites": [
+      "熱拡散率",
+      "初期・境界条件",
+      "無次元数"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "輸送現象の一般法則と独自の仮想例から作問。原本の翻訳・原図・章末問題ではない。",
+      "chapterId": "ch5",
+      "focusSectionId": "5.5",
+      "guideId": "chapter5-semi-infinite"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "執筆原稿・基本算術と構造を確認／包括的品質監査待ち・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "執筆時の定義・収支・基本計算を確認。全問の独立科学監査・原本網羅照合・外部校閲は後工程。"
+      }
+    ],
+    "prompt": "対称平板一項近似で中心Θ_0=0.772956、sinλ_1/λ_1=0.881119を与える。平均Θ̄=Θ_0sinλ_1/λ_1はどれか。",
+    "choices": [
+      "約0.773",
+      "約0.877",
+      "約1.654",
+      "約0.681"
+    ],
+    "answer": 3,
+    "difficulty": "標準・数値計算",
+    "explanation": "Θ̄≈0.772956×0.881119≈0.6811。平均値から熱量を求める。与えた丸め値による近似で、実際の係数は根から計算できる。",
+    "distractors": [
+      "中心値をそのまま平均にした。",
+      "平均係数を掛けず割った。",
+      "中心値と係数を足した。",
+      "正解。平板の体積平均を取る係数を掛けた。"
+    ],
+    "hints": [
+      "中心値より平均の残存温度差は小さい。",
+      "指定の平均係数を掛ける。"
+    ],
+    "solutionSteps": [
+      "0.772956×0.881119。",
+      "約0.681。",
+      "熱量は1−平均で評価。"
+    ],
+    "beginnerPitfall": "中心温度を全体の熱量へ直接使わない。"
+  },
+  {
+    "id": "supp-transient-gap-one-term-initial-overshoot-v1",
+    "revision": "v1",
+    "field": "非定常伝導",
+    "prerequisites": [
+      "熱拡散率",
+      "初期・境界条件",
+      "無次元数"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "applied",
+    "source": {
+      "type": "supplement",
+      "reference": "輸送現象の一般法則と独自の仮想例から作問。原本の翻訳・原図・章末問題ではない。",
+      "chapterId": "ch5",
+      "focusSectionId": "5.5",
+      "guideId": "chapter5-semi-infinite"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "執筆原稿・基本算術と構造を確認／包括的品質監査待ち・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "執筆時の定義・収支・基本計算を確認。全問の独立科学監査・原本網羅照合・外部校閲は後工程。"
+      }
+    ],
+    "prompt": "初期一様冷却の一項式でA₁=1.119。式をt=0へ外挿した中心Θ_0>1について適切なのはどれか。",
+    "choices": [
+      "高次項を省いた短時間近似の限界として扱う",
+      "外部からの供給なしに、実際に中心が初期より加熱する",
+      "熱拡散率が負になった証拠として物性を訂正する",
+      "A₁を1へ変えれば、全時刻で厳密となる"
+    ],
+    "answer": 0,
+    "difficulty": "概念・適用判断",
+    "explanation": "全級数は初期Θ=1を表すが、第一項単独は一般に満たさない。短時間は多項解や適切な別解を用い、一項を使用する時間範囲を示す。",
+    "distractors": [
+      "正解。第一項だけで初期分布を再現できない点を説明した。",
+      "近似の外挿を実現象のオーバーシュートとした。",
+      "係数の値から負のαは導けない。",
+      "係数を変更すると元の展開・境界値問題と異なる。"
+    ],
+    "hints": [
+      "一項近似が省いているもの。",
+      "初期条件は全級数で満たす。"
+    ],
+    "solutionSteps": [
+      "外挿先を確認。",
+      "高次項の不足を指摘。",
+      "適用時間を限定。"
+    ],
+    "beginnerPitfall": "近似限界を実際の無供給加熱と誤解しない。"
+  },
+  {
+    "id": "supp-transient-gap-one-term-cylinder-shape-v1",
+    "revision": "v1",
+    "field": "非定常伝導",
+    "prerequisites": [
+      "熱拡散率",
+      "初期・境界条件",
+      "無次元数"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "conceptual",
+    "source": {
+      "type": "supplement",
+      "reference": "輸送現象の一般法則と独自の仮想例から作問。原本の翻訳・原図・章末問題ではない。",
+      "chapterId": "ch5",
+      "focusSectionId": "5.5",
+      "guideId": "chapter5-semi-infinite"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "執筆原稿・基本算術と構造を確認／包括的品質監査待ち・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "執筆時の定義・収支・基本計算を確認。全問の独立科学監査・原本網羅照合・外部校閲は後工程。"
+      }
+    ],
+    "prompt": "長い円柱の半径方向対流冷却で、固有関数と根条件の組合せはどれか。",
+    "choices": [
+      "exp(λr/R)、λ=Bi_R²",
+      "J_0(λr/R)、λJ_1(λ)=Bi_R J_0(λ)",
+      "cos(λr/R)、λtanλ=Bi_R",
+      "sin(λr/R)/(λr/R)、1−λcotλ=Bi_R"
+    ],
+    "answer": 1,
+    "difficulty": "概念・適用判断",
+    "explanation": "円柱では半径方向のLaplace演算子に(1/r)∂T/∂rがあり、平板のcosとは異なる。Bi_R=hR/k。軸方向の端面影響を無視する条件も必要。",
+    "distractors": [
+      "この円柱の境界値問題から得る根条件ではない。",
+      "正解。円筒座標の半径方向でBessel関数を使う。",
+      "平板の固有関数を円柱へ転用した。",
+      "球の固有関数を円柱へ転用した。"
+    ],
+    "hints": [
+      "座標系が空間関数を変える。",
+      "円柱の根条件を確認。"
+    ],
+    "solutionSteps": [
+      "半径方向の式を選ぶ。",
+      "J_0の分布。",
+      "対流境界でλJ_1=Bi_RJ_0。"
+    ],
+    "beginnerPitfall": "形状の異なる一項係数や根を混ぜない。"
+  },
+  {
+    "id": "supp-transient-gap-one-term-fourier-range-v1",
+    "revision": "v1",
+    "field": "非定常伝導",
+    "prerequisites": [
+      "熱拡散率",
+      "初期・境界条件",
+      "無次元数"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "applied",
+    "source": {
+      "type": "supplement",
+      "reference": "輸送現象の一般法則と独自の仮想例から作問。原本の翻訳・原図・章末問題ではない。",
+      "chapterId": "ch5",
+      "focusSectionId": "5.5",
+      "guideId": "chapter5-semi-infinite"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "執筆原稿・基本算術と構造を確認／包括的品質監査待ち・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "執筆時の定義・収支・基本計算を確認。全問の独立科学監査・原本網羅照合・外部校閲は後工程。"
+      }
+    ],
+    "prompt": "Fo≳0.2を一項近似の目安として使った。誤差の判断として適切なのはどれか。",
+    "choices": [
+      "Foだけを見れば、境界条件の違いは考えなくてよい",
+      "中心で一項が近ければ、全表面熱流も厳密となる",
+      "Bi・形状・位置・必要精度と高次項も確認する",
+      "Foが0.2を超えれば、全ての量の誤差は厳密に0"
+    ],
+    "answer": 2,
+    "difficulty": "概念・適用判断",
+    "explanation": "第二項や多項解との比較を使い、どの出力・位置にどの誤差を許容するか記録する。単一のFo閾値だけで全条件を承認しない。",
+    "distractors": [
+      "固有値は境界条件に依存する。",
+      "温度の中心値と勾配・全位置の誤差は別。",
+      "正解。目安と対象の要求精度を区別した。",
+      "近似の目安を厳密性の保証とした。"
+    ],
+    "hints": [
+      "近似の誤差は何に対して測るか。",
+      "高次項の大きさを比較。"
+    ],
+    "solutionSteps": [
+      "Biと境界を確認。",
+      "評価位置と出力を定める。",
+      "必要精度を検証。"
+    ],
+    "beginnerPitfall": "目安を科学的完成や厳密解の認定としない。"
+  },
+  {
+    "id": "supp-transient-gap-one-term-small-bi-limit-v1",
+    "revision": "v1",
+    "field": "非定常伝導",
+    "prerequisites": [
+      "熱拡散率",
+      "初期・境界条件",
+      "無次元数"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "conceptual",
+    "source": {
+      "type": "supplement",
+      "reference": "輸送現象の一般法則と独自の仮想例から作問。原本の翻訳・原図・章末問題ではない。",
+      "chapterId": "ch5",
+      "focusSectionId": "5.5",
+      "guideId": "chapter5-semi-infinite"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "執筆原稿・基本算術と構造を確認／包括的品質監査待ち・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "執筆時の定義・収支・基本計算を確認。全問の独立科学監査・原本網羅照合・外部校閲は後工程。"
+      }
+    ],
+    "prompt": "対称平板でBiが十分小さく、λ_1tanλ_1=Biの最小根も小さい。tanλ≈λを使った極限はどれか。",
+    "choices": [
+      "λ_1≈Bi²となる",
+      "λ_1²≈1/Biとなる",
+      "λ_1≈πとなる",
+      "λ_1²≈Biとなる"
+    ],
+    "answer": 3,
+    "difficulty": "概念・適用判断",
+    "explanation": "λtanλ≈λ²=Bi。A₁→1と合わせ、Θ≈exp(−BiFo)となって集中解の極限へつながる。同じ半厚さ基準で比較する。",
+    "distractors": [
+      "tanλの展開から得るべき二乗を逆にした。",
+      "小Biで根が大きくなる逆の関係を作った。",
+      "指定温度等の別の極限のような一定根へ変えた。",
+      "正解。小さい根の方程式を二次で近似した。"
+    ],
+    "hints": [
+      "tanλをλに置く。",
+      "積はλ²。"
+    ],
+    "solutionSteps": [
+      "λtanλ=Bi。",
+      "小λの展開。",
+      "λ²≈Bi。"
+    ],
+    "beginnerPitfall": "固有値の小Bi極限を逆数や別の境界へ取り違えない。"
+  },
+  {
+    "id": "supp-transient-gap-multidim-steady-center-v1",
+    "revision": "v1",
+    "field": "非定常伝導",
+    "prerequisites": [
+      "熱拡散率",
+      "初期・境界条件",
+      "無次元数"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "輸送現象の一般法則と独自の仮想例から作問。原本の翻訳・原図・章末問題ではない。",
+      "chapterId": "ch5",
+      "focusSectionId": "5.7",
+      "guideId": "chapter5-semi-infinite"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "執筆原稿・基本算術と構造を確認／包括的品質監査待ち・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "執筆時の定義・収支・基本計算を確認。全問の独立科学監査・原本網羅照合・外部校閲は後工程。"
+      }
+    ],
+    "prompt": "正方形の定常二次元伝導で三辺20℃、一辺100℃、一定k・発熱なし。内部中心の規格化応答が対称性より1/4と分かる。中心温度はどれか。",
+    "choices": [
+      "40℃",
+      "25℃",
+      "80℃",
+      "60℃"
+    ],
+    "answer": 0,
+    "difficulty": "標準・数値計算",
+    "explanation": "T_center=20+(100−20)/4=40℃。線形性と正方形の回転対称性のある条件に限った中心値で、任意形状の四境界平均とはしない。",
+    "distractors": [
+      "正解。低温境界を基準にした温度差の1/4を戻した。",
+      "高温の摂氏値へ1/4を掛けた。",
+      "温度差80 Kを温度そのものとした。",
+      "二つの異なる境界温度を単純2平均にした。"
+    ],
+    "hints": [
+      "規格化はT_c基準。",
+      "差は80 K。"
+    ],
+    "solutionSteps": [
+      "80/4=20 K。",
+      "低温20℃を足す。",
+      "中心40℃。"
+    ],
+    "beginnerPitfall": "摂氏値の割合と規格化温度差を混同しない。"
+  },
+  {
+    "id": "supp-transient-gap-multidim-grid-weights-v1",
+    "revision": "v1",
+    "field": "非定常伝導",
+    "prerequisites": [
+      "熱拡散率",
+      "初期・境界条件",
+      "無次元数"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "輸送現象の一般法則と独自の仮想例から作問。原本の翻訳・原図・章末問題ではない。",
+      "chapterId": "ch5",
+      "focusSectionId": "5.7",
+      "guideId": "chapter5-semi-infinite"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "執筆原稿・基本算術と構造を確認／包括的品質監査待ち・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "執筆時の定義・収支・基本計算を確認。全問の独立科学監査・原本網羅照合・外部校閲は後工程。"
+      }
+    ],
+    "prompt": "一定k・発熱なしの定常2D差分。Δx=2Δy、隣接温度E=100,W=20,N=20,S=20℃。T_P=[(T_E+T_W)/Δx²+(T_N+T_S)/Δy²]/[2/Δx²+2/Δy²]はいくらか。",
+    "choices": [
+      "20℃",
+      "28℃",
+      "40℃",
+      "60℃"
+    ],
+    "answer": 1,
+    "difficulty": "標準・数値計算",
+    "explanation": "Δyを1の尺度にするとΔx²=4。分子(100+20)/4+(20+20)=70、分母2/4+2=2.5、T_P=28℃。等間隔の4平均へ無条件に戻さない。",
+    "distractors": [
+      "高温の東側の寄与を無視した。",
+      "正解。異なる格子幅に対応する重みを用いた。",
+      "不等間隔なのに4温度の単純平均を使った。",
+      "東西だけの平均を取った。"
+    ],
+    "hints": [
+      "東西の重みは南北の1/4。",
+      "分母にも同じ重み。"
+    ],
+    "solutionSteps": [
+      "東西寄与30。",
+      "南北40、分母2.5。",
+      "70/2.5=28℃。"
+    ],
+    "beginnerPitfall": "不等間隔格子の重みを落とさない。"
+  },
+  {
+    "id": "supp-transient-gap-multidim-flux-components-v1",
+    "revision": "v1",
+    "field": "非定常伝導",
+    "prerequisites": [
+      "熱拡散率",
+      "初期・境界条件",
+      "無次元数"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "輸送現象の一般法則と独自の仮想例から作問。原本の翻訳・原図・章末問題ではない。",
+      "chapterId": "ch5",
+      "focusSectionId": "5.7",
+      "guideId": "chapter5-semi-infinite"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "執筆原稿・基本算術と構造を確認／包括的品質監査待ち・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "執筆時の定義・収支・基本計算を確認。全問の独立科学監査・原本網羅照合・外部校閲は後工程。"
+      }
+    ],
+    "prompt": "等方・一定k=2.0 W/(m·K)の2D温度場で、局所勾配∂T/∂x=+10、∂T/∂y=−20 K/m。Fourier則による(q_x″,q_y″)はどれか。",
+    "choices": [
+      "(−10,+20) W/m²",
+      "(+40,−20) W/m²",
+      "(−20,+40) W/m²",
+      "(+20,−40) W/m²"
+    ],
+    "answer": 2,
+    "difficulty": "標準・数値計算",
+    "explanation": "q″=−k∇Tなのでq_x″=−2×10=−20、q_y″=−2×(−20)=+40 W/m²。全熱流線は一般に座標軸と同じ向きではない。",
+    "distractors": [
+      "熱伝導率kを掛けていない。",
+      "方向成分を交換し符号も取り違えた。",
+      "正解。各方向の温度勾配へ−kを掛けた。",
+      "Fourier則の負号を落とした。"
+    ],
+    "hints": [
+      "熱流は各成分で温度低下側へ。",
+      "x,yそれぞれへFourier則。"
+    ],
+    "solutionSteps": [
+      "x成分−20。",
+      "y成分+40。",
+      "単位W/m²。"
+    ],
+    "beginnerPitfall": "一方向の勾配だけで多次元の熱流全体を決めない。"
+  },
+  {
+    "id": "supp-transient-gap-multidim-superposition-v1",
+    "revision": "v1",
+    "field": "非定常伝導",
+    "prerequisites": [
+      "熱拡散率",
+      "初期・境界条件",
+      "無次元数"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "conceptual",
+    "source": {
+      "type": "supplement",
+      "reference": "輸送現象の一般法則と独自の仮想例から作問。原本の翻訳・原図・章末問題ではない。",
+      "chapterId": "ch5",
+      "focusSectionId": "5.7",
+      "guideId": "chapter5-semi-infinite"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "執筆原稿・基本算術と構造を確認／包括的品質監査待ち・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "執筆時の定義・収支・基本計算を確認。全問の独立科学監査・原本網羅照合・外部校閲は後工程。"
+      }
+    ],
+    "prompt": "温度場の重ね合わせをそのまま使える基本条件として適切なのはどれか。",
+    "choices": [
+      "どのk(T)でも、同じ解を足せば厳密となる",
+      "放射のT⁴境界でも、温度解の単純和が常に厳密",
+      "画像が滑らかなら、方程式の線形性は不要となる",
+      "方程式と対応する境界関係が線形と確認できる"
+    ],
+    "answer": 3,
+    "difficulty": "概念・適用判断",
+    "explanation": "一定k等の線形な伝導式と線形境界で、基準温度等を整えて解を足す。非線形問題では別の扱いや局所線形化の妥当性検証が要る。",
+    "distractors": [
+      "温度依存物性は一般に非線形性を生じる。",
+      "T⁴は温度の単純な重ね合わせを満たさない。",
+      "見た目から数学的な性質は保証できない。",
+      "正解。方程式だけでなく境界も含む線形性を確認した。"
+    ],
+    "hints": [
+      "解を足したときに同じ式を満たすか。",
+      "境界も確認する。"
+    ],
+    "solutionSteps": [
+      "線形な方程式か確認。",
+      "境界条件の線形性も確認。",
+      "基準を合わせて足す。"
+    ],
+    "beginnerPitfall": "重ね合わせを非線形な問題へ無条件に拡張しない。"
+  },
+  {
+    "id": "supp-transient-gap-multidim-corner-singularity-v1",
+    "revision": "v1",
+    "field": "非定常伝導",
+    "prerequisites": [
+      "熱拡散率",
+      "初期・境界条件",
+      "無次元数"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "applied",
+    "source": {
+      "type": "supplement",
+      "reference": "輸送現象の一般法則と独自の仮想例から作問。原本の翻訳・原図・章末問題ではない。",
+      "chapterId": "ch5",
+      "focusSectionId": "5.7",
+      "guideId": "chapter5-semi-infinite"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "執筆原稿・基本算術と構造を確認／包括的品質監査待ち・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "執筆時の定義・収支・基本計算を確認。全問の独立科学監査・原本網羅照合・外部校閲は後工程。"
+      }
+    ],
+    "prompt": "一辺100℃、隣接辺20℃の理想矩形解で、内部温度は収束した。角付近の境界熱流について適切な判断はどれか。",
+    "choices": [
+      "境界不連続の特異性と実際の角の条件を確認する",
+      "内部温度が収束したので、全境界熱流も有限で厳密",
+      "角の流束は、内部中心温度をそのまま使えば求まる",
+      "全ての角を消去しても、熱流は必ず不変となる"
+    ],
+    "answer": 0,
+    "difficulty": "概念・適用判断",
+    "explanation": "異なる指定温度が接する理想角で勾配が特異になりうる。全熱流の設計には実際の丸み・接触・温度遷移などをモデル化し、熱流の収束と収支を別に確認する。",
+    "distractors": [
+      "正解。内部温度と境界勾配・熱流の収束を分けた。",
+      "温度収束から角の勾配や積分の有限性は導けない。",
+      "流束は温度勾配とkから求める。",
+      "角の境界や丸みは局所・全体熱流へ影響しうる。"
+    ],
+    "hints": [
+      "温度とその勾配は別の出力。",
+      "境界の温度切替に注目。"
+    ],
+    "solutionSteps": [
+      "不連続な角を特定。",
+      "実際の境界を確認。",
+      "熱流の収束を検証。"
+    ],
+    "beginnerPitfall": "内部温度の確認だけで角の熱流を承認しない。"
+  },
+  {
+    "id": "supp-transient-gap-multidim-mesh-check-v1",
+    "revision": "v1",
+    "field": "非定常伝導",
+    "prerequisites": [
+      "熱拡散率",
+      "初期・境界条件",
+      "無次元数"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "applied",
+    "source": {
+      "type": "supplement",
+      "reference": "輸送現象の一般法則と独自の仮想例から作問。原本の翻訳・原図・章末問題ではない。",
+      "chapterId": "ch5",
+      "focusSectionId": "5.7",
+      "guideId": "chapter5-semi-infinite"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "執筆原稿・基本算術と構造を確認／包括的品質監査待ち・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "執筆時の定義・収支・基本計算を確認。全問の独立科学監査・原本網羅照合・外部校閲は後工程。"
+      }
+    ],
+    "prompt": "数値の2D伝導温度図が滑らかに描けた。検証として優先すべき組合せはどれか。",
+    "choices": [
+      "計算が終了したら、任意の場で厳密解と呼ぶ",
+      "格子細分化・熱収支・境界・既知解との比較",
+      "色の数を増やし、全ての境界条件の記録を消す",
+      "最大温度が正なら、収支や格子の検査を省く"
+    ],
+    "answer": 1,
+    "difficulty": "概念・適用判断",
+    "explanation": "境界・物性・単位を確認し、細分化で必要出力が収束するか、入熱と出熱が合うか、一次元や対称の極限を再現するかを調べる。",
+    "distractors": [
+      "計算終了は離散化誤差やモデルの保証ではない。",
+      "正解。離散化と保存・条件・比較の根拠を確認する。",
+      "装飾は誤差や境界の確認の代わりにならない。",
+      "温度の符号だけで数値解の妥当性は分からない。"
+    ],
+    "hints": [
+      "図の見た目と保存則の整合を分ける。",
+      "格子を変えて同じ出力を比べる。"
+    ],
+    "solutionSteps": [
+      "境界と物性を点検。",
+      "格子・収支を検証。",
+      "既知解と比較。"
+    ],
+    "beginnerPitfall": "滑らかな表示だけで数値精度を判断しない。"
+  },
+  {
+    "id": "supp-transient-gap-multidim-stationary-vs-1d-v1",
+    "revision": "v1",
+    "field": "非定常伝導",
+    "prerequisites": [
+      "熱拡散率",
+      "初期・境界条件",
+      "無次元数"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "conceptual",
+    "source": {
+      "type": "supplement",
+      "reference": "輸送現象の一般法則と独自の仮想例から作問。原本の翻訳・原図・章末問題ではない。",
+      "chapterId": "ch5",
+      "focusSectionId": "5.7",
+      "guideId": "chapter5-semi-infinite"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "執筆原稿・基本算術と構造を確認／包括的品質監査待ち・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "執筆時の定義・収支・基本計算を確認。全問の独立科学監査・原本網羅照合・外部校閲は後工程。"
+      }
+    ],
+    "prompt": "定常二次元伝導の温度T(x,y)について適切なのはどれか。",
+    "choices": [
+      "定常なら、全ての位置の温度は必ず同じとなる",
+      "二次元なら、エネルギー保存式は使えない",
+      "時間変化なしでも、xとyの両方で変わりうる",
+      "定常なら、温度は必ずxだけの関数となる"
+    ],
+    "answer": 2,
+    "difficulty": "概念・適用判断",
+    "explanation": "∂T/∂t=0でも∂T/∂xや∂T/∂yは非ゼロとなりうる。形状と各面の境界が何方向へ分布するかを決める。",
+    "distractors": [
+      "定常から等温は導けない。",
+      "多次元でも局所・全体の保存則を使う。",
+      "正解。時間への依存と空間の次元を分けた。",
+      "定常から一次元は導けない。"
+    ],
+    "hints": [
+      "定常が除くのは時間微分。",
+      "二つの空間方向の境界を考える。"
+    ],
+    "solutionSteps": [
+      "時間微分0。",
+      "空間勾配は残る。",
+      "各方向の伝導を含める。"
+    ],
+    "beginnerPitfall": "定常と一次元・等温を同じとしない。"
+  },
+  {
+    "id": "supp-transient-gap-product-center-v1",
+    "revision": "v1",
+    "field": "非定常伝導",
+    "prerequisites": [
+      "熱拡散率",
+      "初期・境界条件",
+      "無次元数"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "輸送現象の一般法則と独自の仮想例から作問。原本の翻訳・原図・章末問題ではない。",
+      "chapterId": "ch5",
+      "focusSectionId": "5.8",
+      "guideId": "chapter5-semi-infinite"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "執筆原稿・基本算術と構造を確認／包括的品質監査待ち・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "執筆時の定義・収支・基本計算を確認。全問の独立科学監査・原本網羅照合・外部校閲は後工程。"
+      }
+    ],
+    "prompt": "分離可能な矩形の冷却で方向別の中心規格化応答X_0=0.80、Y_0=0.70。初期100℃、共通周囲20℃。Θ_center=X_0Y_0なら中心温度はどれか。",
+    "choices": [
+      "76.0℃",
+      "120℃",
+      "56.0℃",
+      "64.8℃"
+    ],
+    "answer": 3,
+    "difficulty": "標準・数値計算",
+    "explanation": "Θ_center=0.80×0.70=0.56、T=20+80×0.56=64.8℃。温度そのものを掛けず、共通周囲基準で規格化した応答を掛ける。",
+    "distractors": [
+      "Yだけの応答を使った。",
+      "規格化応答を足して温度へ戻した。",
+      "規格化値へ初期温度だけを掛けた。",
+      "正解。規格化応答の積を温度差へ戻した。"
+    ],
+    "hints": [
+      "まず無次元応答の積。",
+      "温度へ戻すのは最後。"
+    ],
+    "solutionSteps": [
+      "積0.56。",
+      "初期差80 Kを掛ける。",
+      "20℃を足して64.8℃。"
+    ],
+    "beginnerPitfall": "摂氏温度を直接掛けない。"
+  },
+  {
+    "id": "supp-transient-gap-product-average-heat-v1",
+    "revision": "v1",
+    "field": "非定常伝導",
+    "prerequisites": [
+      "熱拡散率",
+      "初期・境界条件",
+      "無次元数"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "輸送現象の一般法則と独自の仮想例から作問。原本の翻訳・原図・章末問題ではない。",
+      "chapterId": "ch5",
+      "focusSectionId": "5.8",
+      "guideId": "chapter5-semi-infinite"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "執筆原稿・基本算術と構造を確認／包括的品質監査待ち・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "執筆時の定義・収支・基本計算を確認。全問の独立科学監査・原本網羅照合・外部校閲は後工程。"
+      }
+    ],
+    "prompt": "分離可能な二方向冷却で方向別の平均応答X̄=0.80、Ȳ=0.70。平均Θ̄=X̄Ȳとすると、基準顕熱に対する放出割合はどれか。",
+    "choices": [
+      "44%",
+      "50%",
+      "56%",
+      "6%"
+    ],
+    "answer": 0,
+    "difficulty": "標準・数値計算",
+    "explanation": "Θ̄=0.56、放出割合1−0.56=0.44。二つの一次元からの放出割合をそのまま足すと同じ物体の冷却を二重に数える。",
+    "distractors": [
+      "正解。平均応答の積を1から引いた。",
+      "一次元放出割合0.20と0.30を足した。",
+      "残る割合を放出量とした。",
+      "一次元放出割合を掛けた。"
+    ],
+    "hints": [
+      "平均応答は残存割合。",
+      "先に積、後で1から引く。"
+    ],
+    "solutionSteps": [
+      "0.80×0.70=0.56。",
+      "1−0.56。",
+      "44%。"
+    ],
+    "beginnerPitfall": "一次元の放出割合を単純に足さない。"
+  },
+  {
+    "id": "supp-transient-gap-product-direction-fourier-v1",
+    "revision": "v1",
+    "field": "非定常伝導",
+    "prerequisites": [
+      "熱拡散率",
+      "初期・境界条件",
+      "無次元数"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "source": {
+      "type": "supplement",
+      "reference": "輸送現象の一般法則と独自の仮想例から作問。原本の翻訳・原図・章末問題ではない。",
+      "chapterId": "ch5",
+      "focusSectionId": "5.8",
+      "guideId": "chapter5-semi-infinite"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "執筆原稿・基本算術と構造を確認／包括的品質監査待ち・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "執筆時の定義・収支・基本計算を確認。全問の独立科学監査・原本網羅照合・外部校閲は後工程。"
+      }
+    ],
+    "prompt": "同じ固体・同じ時刻の矩形で半寸法a=2b。Fo_x=αt/a²、Fo_y=αt/b²ならFo_x/Fo_yはどれか。",
+    "choices": [
+      "4",
+      "1/4",
+      "1/2",
+      "2"
+    ],
+    "answer": 1,
+    "difficulty": "標準・数値計算",
+    "explanation": "Fo_x/Fo_y=b²/a²=1/4。同時刻でも方向ごとの無次元時間は異なり、各一次元解へ対応するFoを入れる。",
+    "distractors": [
+      "長さ二乗比を逆にした。",
+      "正解。各方向の長さの二乗を使った。",
+      "長さの二乗でなく一次の比を使った。",
+      "長さ比をそのままFo比とした。"
+    ],
+    "hints": [
+      "同じαとtは打ち消す。",
+      "Foは長さの二乗に反比例。"
+    ],
+    "solutionSteps": [
+      "比b²/a²。",
+      "a=2bを代入。",
+      "1/4。"
+    ],
+    "beginnerPitfall": "同じ時間だから全方向のFoも同じとしない。"
+  },
+  {
+    "id": "supp-transient-gap-product-common-ambient-v1",
+    "revision": "v1",
+    "field": "非定常伝導",
+    "prerequisites": [
+      "熱拡散率",
+      "初期・境界条件",
+      "無次元数"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "applied",
+    "source": {
+      "type": "supplement",
+      "reference": "輸送現象の一般法則と独自の仮想例から作問。原本の翻訳・原図・章末問題ではない。",
+      "chapterId": "ch5",
+      "focusSectionId": "5.8",
+      "guideId": "chapter5-semi-infinite"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "執筆原稿・基本算術と構造を確認／包括的品質監査待ち・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "執筆時の定義・収支・基本計算を確認。全問の独立科学監査・原本網羅照合・外部校閲は後工程。"
+      }
+    ],
+    "prompt": "標準的な一次元冷却応答の積で矩形の温度を求めたいが、x方向とy方向の周囲温度が異なる。どう扱うか。",
+    "choices": [
+      "共通周囲でない影響は、Foを正にすれば消える",
+      "矩形なら、初期や境界に関係なく同じ積が厳密となる",
+      "共通周囲の仮定が成り立たず、別の解法を検討する",
+      "それぞれ摂氏温度を直接掛ければ必ず正しい"
+    ],
+    "answer": 2,
+    "difficulty": "概念・適用判断",
+    "explanation": "共通の周囲基準で同次化できる条件が重要。定常場を差し引く等の方法もあるが初期分布の展開も変わり、単純な標準応答の積を流用しない。",
+    "distractors": [
+      "正のFoだけでは周囲条件の違いを解消しない。",
+      "幾何だけでは分離可能な初期境界条件を保証しない。",
+      "正解。標準応答を規格化して積にできる条件を確認した。",
+      "温度の積は次元も境界も合わない。"
+    ],
+    "hints": [
+      "どのT_∞でΘを定義するか。",
+      "境界条件も積で満たせるか。"
+    ],
+    "solutionSteps": [
+      "周囲の違いを確認。",
+      "標準積の前提不成立を記録。",
+      "対応するBVPを解く。"
+    ],
+    "beginnerPitfall": "幾何が矩形というだけで全ての境界へ積を使わない。"
+  },
+  {
+    "id": "supp-transient-gap-product-average-center-v1",
+    "revision": "v1",
+    "field": "非定常伝導",
+    "prerequisites": [
+      "熱拡散率",
+      "初期・境界条件",
+      "無次元数"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "conceptual",
+    "source": {
+      "type": "supplement",
+      "reference": "輸送現象の一般法則と独自の仮想例から作問。原本の翻訳・原図・章末問題ではない。",
+      "chapterId": "ch5",
+      "focusSectionId": "5.8",
+      "guideId": "chapter5-semi-infinite"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "執筆原稿・基本算術と構造を確認／包括的品質監査待ち・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "執筆時の定義・収支・基本計算を確認。全問の独立科学監査・原本網羅照合・外部校閲は後工程。"
+      }
+    ],
+    "prompt": "分離可能な矩形冷却で、中心X_0Y_0と体積平均X̄Ȳが得られた。全体の顕熱評価に使う量はどれか。",
+    "choices": [
+      "中心の積X_0Y_0を常に平均として使う",
+      "X_0とY_0の和を使う",
+      "X̄とȲの差を使う",
+      "体積平均の積X̄Ȳを使う"
+    ],
+    "answer": 3,
+    "difficulty": "概念・適用判断",
+    "explanation": "一定ρc_pの矩形で積解なら体積積分が方向別積へ分かれ、Θ̄=X̄Ȳ。中心温度は局所的な出力として分ける。",
+    "distractors": [
+      "分布があると中心と平均は一般に異なる。",
+      "応答の積である条件を足し算へ変えた。",
+      "平均の構成と無関係な差を使った。",
+      "正解。熱容量で重み付けする一定物性の平均を用いる。"
+    ],
+    "hints": [
+      "全熱量は体積積分。",
+      "積の積分は矩形で分離。"
+    ],
+    "solutionSteps": [
+      "局所値と平均を区別。",
+      "平均X̄Ȳ。",
+      "1−平均から顕熱。"
+    ],
+    "beginnerPitfall": "中心温度を全体の熱量へ流用しない。"
+  },
+  {
+    "id": "supp-transient-gap-product-each-direction-validity-v1",
+    "revision": "v1",
+    "field": "非定常伝導",
+    "prerequisites": [
+      "熱拡散率",
+      "初期・境界条件",
+      "無次元数"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "applied",
+    "source": {
+      "type": "supplement",
+      "reference": "輸送現象の一般法則と独自の仮想例から作問。原本の翻訳・原図・章末問題ではない。",
+      "chapterId": "ch5",
+      "focusSectionId": "5.8",
+      "guideId": "chapter5-semi-infinite"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "執筆原稿・基本算術と構造を確認／包括的品質監査待ち・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "執筆時の定義・収支・基本計算を確認。全問の独立科学監査・原本網羅照合・外部校閲は後工程。"
+      }
+    ],
+    "prompt": "二方向の一項積近似でFo_x=1.0、Fo_y=0.01。精度を判断する適切な方法はどれか。",
+    "choices": [
+      "各方向の一項誤差を確認し、必要なら多項等を使う",
+      "Fo_xが大きいので、Fo_yによらず全積は厳密",
+      "二つのFoを足せば、必ず一項の誤差が消える",
+      "Fo_yが小さいので、y方向の冷却を必ずゼロにする"
+    ],
+    "answer": 0,
+    "difficulty": "概念・適用判断",
+    "explanation": "一次元の解ごとにBi、位置、時間と必要出力の誤差を確認する。片方向が一項の適用外なら、その方向を多項や別解に置き換えて積の条件も再確認する。",
+    "distractors": [
+      "正解。短時間側の高次項も積へ影響する。",
+      "一方の条件だけで他方の近似誤差は保証できない。",
+      "Foの和だけでは固有関数の誤差を消せない。",
+      "小さいFoでも表面近くの温度変化はありうる。"
+    ],
+    "hints": [
+      "積に入る両方が近似。",
+      "短時間では高次項が残りやすい。"
+    ],
+    "solutionSteps": [
+      "Fo_xとFo_yを別評価。",
+      "必要なら高次項を追加。",
+      "最終出力の誤差を確認。"
+    ],
+    "beginnerPitfall": "一方向の妥当性だけで全ての方向を承認しない。"
+  },
+  {
+    "id": "supp-transient-gap-product-pde-check-v1",
+    "revision": "v1",
+    "field": "非定常伝導",
+    "prerequisites": [
+      "熱拡散率",
+      "初期・境界条件",
+      "無次元数"
+    ],
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "conceptual",
+    "source": {
+      "type": "supplement",
+      "reference": "輸送現象の一般法則と独自の仮想例から作問。原本の翻訳・原図・章末問題ではない。",
+      "chapterId": "ch5",
+      "focusSectionId": "5.8",
+      "guideId": "chapter5-semi-infinite"
+    },
+    "createdStatus": "独立作問原稿",
+    "reviewStatus": "執筆原稿・基本算術と構造を確認／包括的品質監査待ち・外部専門家校閲前",
+    "expertReviewed": false,
+    "reportHistory": [
+      {
+        "date": "2026-10-29",
+        "type": "authored_with_internal_check",
+        "details": "執筆時の定義・収支・基本計算を確認。全問の独立科学監査・原本網羅照合・外部校閲は後工程。"
+      }
+    ],
+    "prompt": "X_t=αX_xx、Y_t=αY_yyを満たす関数でΘ=XYとする。二次元熱方程式を満たすことを示す正しい式はどれか。",
+    "choices": [
+      "Θ_t=X_tY−XY_t=α(Θ_xx−Θ_yy)",
+      "Θ_t=X_tY+XY_t=α(Θ_xx+Θ_yy)",
+      "Θ_t=X_tY_t=α(Θ_xx+Θ_yy)",
+      "Θ_t=X_t+Y_t=α(Θ_xx+Θ_yy)"
+    ],
+    "answer": 1,
+    "difficulty": "概念・適用判断",
+    "explanation": "Θ_xx=X_xxY、Θ_yy=XY_yyなので積の時間微分が二次元の右辺に一致する。方程式だけでなく初期・境界も同時に満たす条件が必要。",
+    "distractors": [
+      "積の微分でy方向の項を引き、二方向の和を差へ変えた。",
+      "正解。積の時間微分を用い二方向の拡散を合成した。",
+      "積の微分を二つの微分の積と取り違えた。",
+      "積の微分で必要な他方の関数を落とした。"
+    ],
+    "hints": [
+      "積の微分則。",
+      "各方向の二階微分と対応。"
+    ],
+    "solutionSteps": [
+      "Θ_t=X_tY+XY_t。",
+      "各1D式を代入。",
+      "初期・境界の条件も確認。"
+    ],
+    "beginnerPitfall": "PDEを満たすだけで任意の境界も満たすとしない。"
   }
 ]
