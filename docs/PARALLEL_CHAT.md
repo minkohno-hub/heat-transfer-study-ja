@@ -395,3 +395,9 @@
 - **公開アプリ未搭載**：`scripts/build-public-site.mjs`の配布ファイル許可リスト、`sectionId`とSVGの対応表/講義画面UI、Service Workerキャッシュ/オフライン対応、拡大表示・スマートフォン・ライト/ダーク・読み上げ機能は未統合。SVGコミット成功のみで完成扱いにしない。
 - §9.3は飽和プール沸騰・大きな水平面・仮想物性・指定Cに限定。CHF1.073 MW/m²は普遍的な安全閾値でなく、q_op=0.800 MW/m²や算術M≈0.254だけで局所乾き/熱暴走がないと主張しない。§9.1沸騰曲線の定性形状、§9.2球形泡のラプラス平衡も、異なる適用モデルである。
 - Codex統合後は`node --test tests/lesson-diagram-*.test.mjs`、`npm test`、公開ビルド/Pages CDN配信・404/キャッシュ更新、実機Safariとダークモード/スクリーンリーダー・学術/権利監査を実施。現在の5件成功は第22図単体のみの事実。**Codex本線・PR #1へのコミット・PR作成・マージをこの図解ラインから行わない**。11月4日15:57 JSTの週次制限リセット予定後の統合はCodex担当。
+
+### 第22図解・最新成果コミットの確定記録（2026-10-30 JST）
+
+- **独自SVG22点・専用Nodeテスト22ファイルを収録した§9.3実装コミット：`8f41e16c5ea96bd380423a159b2d39635552b770`**。§9.3 SVG、対応Nodeテスト、`docs/PARALLEL_CHAT.md`の3ファイルのみ変更。Codexはこの成果コミットと実際の`chat/parallel-dev`最新HEADを比較して統合対象差分を特定する。
+- このコミットのSHAを追記する「文書のみ同期コミット」の自身のSHAは事前に同じ文書へ埋め込めない。**最新HEADは `https://github.com/minkohno-hub/heat-transfer-study-ja/commits/chat/parallel-dev/` で直接確認**する。
+- §9.3は**ローカルNodeテスト5/5成功、XML解析、CairoSVG PNG描画目視、GitHub SHA一致**。一方で公開配信・講義UI・オフライン・全体CI・実機・スクリーンリーダー・外部学術校閲は未完了。本線PR #1、main、Codex担当・他並行開発ラインには変更なし。
