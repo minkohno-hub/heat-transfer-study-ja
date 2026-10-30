@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="840" height="1280" viewBox="0 0 840 1280" role="img" aria-labelledby="semi-title semi-desc" style="max-width:100%" data-origin="original-app-diagram" data-lesson="5.6" data-initial-c="20" data-surface-c="80" data-k="2" data-alpha="0.000001000" data-depth-m="0.010" data-eval-time-s="100" data-eta="0.5" data-temperature="48.770007331217" data-flux="6770.275002573076" data-energy-per-area="1354055.000514615094" data-penetration-length="0.010000000" data-profile-points="61">
+<title id="semi-title">§5.6 半無限固体の非定常熱伝導：誤差関数解と熱流の時間変化</title>
+<desc id="semi-desc">アプリの独自図解。半無限固体x≧0が全域20℃から始まり、t&gt;0に表面x=0を80℃で一定に保持する。熱拡散率は10のマイナス6乗平方メートル毎秒、固体の熱伝導率は2ワット毎メートルケルビン。25秒、100秒、400秒の温度分布を厳密な誤差関数解の61点ずつで描く。時刻が進むほど加熱が深くまで達し、表面温度はいつも80℃で、十分深い場所は20℃に近い。100秒後の深さ10ミリメートルでは温度48.77℃。内部へのプラスx方向の表面熱流束は6770.28ワット毎平方メートル、開始から100秒までに入ったエネルギーは1.35406メガジュール毎平方メートル。時間積分した熱量は同時刻の熱流束に100秒を単純に掛けた値の2倍。瞬時に表面温度を変更する理想境界条件のためt→0+で表面熱流束が数学的に発散するが、現実の無限大の熱流を意味せず積分は有限。有限厚さ、表面熱抵抗、対流境界、放射、相変化などには流用しない。</desc>
+<style>
+text{font-family:'Noto Sans CJK JP','Hiragino Kaku Gothic ProN',sans-serif;font-size:23px}
+.bg{fill:#fff}.panel{fill:#f4f7fb;stroke:#bdcedc;stroke-width:2}.ink{fill:#1b3145}.muted{fill:#4d6677}
+.surface{stroke:#b45839;stroke-width:8}.solid{fill:#dcebf2;stroke:#8caabc;stroke-width:2}.warming{fill:#f7dec6;opacity:.95}
+.flow{stroke:#ad5831;stroke-width:3.5;fill:none;stroke-linecap:round;stroke-linejoin:round}.axis{stroke:#486379;stroke-width:2.5;fill:none}.gridline{stroke:#b8cad7;stroke-width:1.4;stroke-dasharray:5 6}
+.profile{fill:none;stroke-width:4.6;stroke-linejoin:round;stroke-linecap:round}.early{stroke:#4182a4}.reference{stroke:#ce633d}.late{stroke:#8060aa}
+.markguide{stroke:#ad4b62;stroke-width:2;stroke-dasharray:7 6}.mark{fill:#ad4b62;stroke:#fff;stroke-width:2}.title{font-size:32px;font-weight:750}.section{font-size:26px;font-weight:700}.small{font-size:20px}.micro{font-size:18px}.eq{font-size:23px;font-weight:650}
+@media(prefers-color-scheme:dark){.bg{fill:#111b26}.panel{fill:#1c2c3b;stroke:#698399}.ink{fill:#edf6fc}.muted{fill:#c2d7e5}.surface{stroke:#ffb892}.solid{fill:#274c63;stroke:#85adc4}.warming{fill:#825139;opacity:.9}.flow{stroke:#ffbc91}.axis{stroke:#d0e2ef}.gridline{stroke:#60798a}.early{stroke:#8bc7ea}.reference{stroke:#ffad89}.late{stroke:#d1b2ff}.markguide{stroke:#ff9bb0}.mark{fill:#f9a0b5;stroke:#344b5f}}
+</style>
+<rect class="bg" width="840" height="1280"/>
+<text class="title ink" x="29" y="58">§5.6 半無限固体：熱は時間とともに内部へ</text>
+<text class="small muted" x="31" y="102">突然高温になった表面から、温度変化が広がる</text>
+
+<rect class="panel" x="23" y="124" width="794" height="257" rx="18"/>
+<text class="section ink" x="43" y="166">① 初期20℃の固体：表面を80℃に保持</text>
+<rect class="solid" x="171" y="214" width="555" height="95" rx="2"/>
+<rect class="warming" x="171" y="214" width="126" height="95"/>
+<path class="surface" d="M171 212 V311"/>
+<path class="flow" d="M197 254 H311 M297 242 L311 254 L297 266"/>
+<text class="small ink" x="44" y="212">Ts=80℃</text>
+<text class="small ink" x="487" y="267">深い位置は Ti=20℃に近い</text>
+<text class="micro muted" x="170" y="341">x=0（表面）</text>
+<text class="micro muted" x="518" y="341">+x → 固体内部</text>
+<text class="micro muted" x="43" y="366">x≥0、初期は全域20℃。表面温度指定・一定物性の理想モデル。</text>
+
+<rect class="panel" x="23" y="401" width="794" height="514" rx="18"/>
+<text class="section ink" x="43" y="443">② 深さごとの温度分布：3時刻で比較</text>
+<text class="micro muted" x="43" y="477">T = Ti + (Ts−Ti) erfc[x/(2√(αt))] ／ α=1×10^(-6) m²/s</text>
+<path class="early profile" d="M66 506 H102"/><text class="micro ink" x="110" y="514">25秒</text>
+<path class="reference profile" d="M219 506 H255"/><text class="micro ink" x="263" y="514">100秒</text>
+<path class="late profile" d="M395 506 H431"/><text class="micro ink" x="439" y="514">400秒</text>
+<text class="micro muted" x="570" y="514">縦：温度 [℃]</text>
+<path id="temperature-axes" class="axis" d="M154 562 V782 H747 M735 774 L747 782 L735 790"/>
+<path class="gridline" d="M154 635.333 H740 M154 708.667 H740 M154 782 H740"/>
+<text x="137" y="569" text-anchor="end" class="micro ink">80</text>
+<text x="137" y="642" text-anchor="end" class="micro ink">60</text>
+<text x="137" y="715" text-anchor="end" class="micro ink">40</text>
+<text x="137" y="789" text-anchor="end" class="micro ink">20</text>
+<path id="profile-t25" class="profile early" data-seconds="25" data-points="61" d="M154.0000,562.0000 L163.7667,586.7418 L173.5333,610.9946 L183.3000,634.2979 L193.0667,656.2463 L202.8333,676.5100 L212.6000,694.8483 L222.3667,711.1163 L232.1333,725.2622 L241.9000,737.3198 L251.6667,747.3942 L261.4333,755.6451 L271.2000,762.2691 L280.9667,767.4817 L290.7333,771.5027 L300.5000,774.5431 L310.2667,776.7966 L320.0333,778.4339 L329.8000,779.5999 L339.5667,780.4139 L349.3333,780.9709 L359.1000,781.3445 L368.8667,781.5902 L378.6333,781.7485 L388.4000,781.8485 L398.1667,781.9105 L407.9333,781.9481 L417.7000,781.9704 L427.4667,781.9835 L437.2333,781.9910 L447.0000,781.9951 L456.7667,781.9974 L466.5333,781.9987 L476.3000,781.9993 L486.0667,781.9997 L495.8333,781.9998 L505.6000,781.9999 L515.3667,782.0000 L525.1333,782.0000 L534.9000,782.0000 L544.6667,782.0000 L554.4333,782.0000 L564.2000,782.0000 L573.9667,782.0000 L583.7333,782.0000 L593.5000,782.0000 L603.2667,782.0000 L613.0333,782.0000 L622.8000,782.0000 L632.5667,782.0000 L642.3333,782.0000 L652.1000,782.0000 L661.8667,782.0000 L671.6333,782.0000 L681.4000,782.0000 L691.1667,782.0000 L700.9333,782.0000 L710.7000,782.0000 L720.4667,782.0000 L730.2333,782.0000 L740.0000,782.0000"/>
+<path id="profile-t100" class="profile reference" data-seconds="100" data-points="61" d="M154.0000,562.0000 L163.7667,574.4018 L173.5333,586.7418 L183.3000,598.9591 L193.0667,610.9946 L202.8333,622.7918 L212.6000,634.2979 L222.3667,645.4641 L232.1333,656.2463 L241.9000,666.6060 L251.6667,676.5100 L261.4333,685.9311 L271.2000,694.8483 L280.9667,703.2465 L290.7333,711.1163 L300.5000,718.4542 L310.2667,725.2622 L320.0333,731.5470 L329.8000,737.3198 L339.5667,742.5960 L349.3333,747.3942 L359.1000,751.7359 L368.8667,755.6451 L378.6333,759.1472 L388.4000,762.2691 L398.1667,765.0380 L407.9333,767.4817 L417.7000,769.6277 L427.4667,771.5027 L437.2333,773.1329 L447.0000,774.5431 L456.7667,775.7570 L466.5333,776.7966 L476.3000,777.6826 L486.0667,778.4339 L495.8333,779.0678 L505.6000,779.5999 L515.3667,780.0444 L525.1333,780.4139 L534.9000,780.7195 L544.6667,780.9709 L554.4333,781.1768 L564.2000,781.3445 L573.9667,781.4805 L583.7333,781.5902 L593.5000,781.6782 L603.2667,781.7485 L613.0333,781.8044 L622.8000,781.8485 L632.5667,781.8833 L642.3333,781.9105 L652.1000,781.9317 L661.8667,781.9481 L671.6333,781.9607 L681.4000,781.9704 L691.1667,781.9779 L700.9333,781.9835 L710.7000,781.9878 L720.4667,781.9910 L730.2333,781.9934 L740.0000,781.9951"/>
+<path id="profile-t400" class="profile late" data-seconds="400" data-points="61" d="M154.0000,562.0000 L163.7667,568.2048 L173.5333,574.4018 L183.3000,580.5834 L193.0667,586.7418 L202.8333,592.8696 L212.6000,598.9591 L222.3667,605.0032 L232.1333,610.9946 L241.9000,616.9264 L251.6667,622.7918 L261.4333,628.5844 L271.2000,634.2979 L280.9667,639.9263 L290.7333,645.4641 L300.5000,650.9057 L310.2667,656.2463 L320.0333,661.4812 L329.8000,666.6060 L339.5667,671.6168 L349.3333,676.5100 L359.1000,681.2824 L368.8667,685.9311 L378.6333,690.4538 L388.4000,694.8483 L398.1667,699.1130 L407.9333,703.2465 L417.7000,707.2477 L427.4667,711.1163 L437.2333,714.8517 L447.0000,718.4542 L456.7667,721.9242 L466.5333,725.2622 L476.3000,728.4694 L486.0667,731.5470 L495.8333,734.4965 L505.6000,737.3198 L515.3667,740.0189 L525.1333,742.5960 L534.9000,745.0535 L544.6667,747.3942 L554.4333,749.6207 L564.2000,751.7359 L573.9667,753.7430 L583.7333,755.6451 L593.5000,757.4454 L603.2667,759.1472 L613.0333,760.7540 L622.8000,762.2691 L632.5667,763.6959 L642.3333,765.0380 L652.1000,766.2988 L661.8667,767.4817 L671.6333,768.5902 L681.4000,769.6277 L691.1667,770.5974 L700.9333,771.5027 L710.7000,772.3468 L720.4667,773.1329 L730.2333,773.8640 L740.0000,774.5431"/>
+<path class="markguide" d="M251.667 562.000 V782.000"/>
+<circle id="reference-temperature-point" class="mark" cx="251.667" cy="676.510" r="7"/>
+<text x="154" y="808" text-anchor="middle" class="micro ink">0</text>
+<text x="251.667" y="808" text-anchor="middle" class="micro ink">10</text>
+<text x="349.333" y="808" text-anchor="middle" class="micro ink">20</text>
+<text x="544.667" y="808" text-anchor="middle" class="micro ink">40</text>
+<text x="740" y="808" text-anchor="middle" class="micro ink">60</text>
+<text x="427" y="841" text-anchor="middle" class="micro muted">表面からの深さ x [mm] →</text>
+<text class="small ink" x="43" y="880">100秒・深さ10 mmの温度 ≈ 48.77℃（図の点）</text>
+
+<rect class="panel" x="23" y="932" width="794" height="290" rx="18"/>
+<text class="section ink" x="43" y="974">③ 熱流束と累積熱量は違う</text>
+<text class="micro ink" x="43" y="1011">η = x/(2√αt) = 0.5 ／ √(αt) = 0.010 m</text>
+<text class="eq ink" x="43" y="1051">q_x″(0,100 s) = k(Ts−Ti)/√(παt)</text>
+<text class="eq ink" x="43" y="1085">= +6,770 W/m²（内部への +x が正）</text>
+<text class="eq ink" x="43" y="1126">E/A = ∫q_x″ dt = 2q_x″(100 s)×100 s</text>
+<text class="eq ink" x="43" y="1160">= +1.354 MJ/m²（積分値）</text>
+<text class="micro muted" x="43" y="1196">t→0+の流束発散は理想化による。実測の無限大ではない。</text>
+<text class="micro muted" x="420" y="1259" text-anchor="middle">独自作図｜有限板・有限h・放射・相変化への流用不可</text>
+</svg>
