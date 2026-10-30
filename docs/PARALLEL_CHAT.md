@@ -467,3 +467,9 @@
 - **既存の公開統合ブロッカーは未解決**：`scripts/build-public-site.mjs` にSVG図解の公開配信追加がなく、講義`sectionId`とアセットの紐付け・拡大表示・SWキャッシュ・オフライン版数の更新も未実装。**図解がGitHubの独立ブランチにあることと公開アプリに表示されることは別**。統合Codex側で安全なファイルリスト、コピー、UI参照・画面幅や配色、音声読み上げ・キャッシュ対策を行い、PagesでHTTP取得/404を確認する。
 - Codex統合側は別ラインの未push作業を保護し、直前の実際の`chat/parallel-dev` HEADと本書を照合して図解を取り込む。統合後に`node --test tests/lesson-diagram-*.test.mjs`、`npm test`、公開ビルド、CI、Pages/CDN、モバイルSafari、ダークモード、スクリーンリーダー、教材学術/権利監査を実施。§1.2の「局所熱伝導方程式」と「一様温度・一定損失の加熱時間」の適用条件を分けた表示を維持する。
 - **図解ラインはCodex本線・PR #1・main・他のチャット作業ラインにコミットしない**。本線PR #1への統合と全体監査はCodex担当。
+
+### 第25図解・確定実装コミットと最新HEAD照合要点（2026-10-30 JST）
+
+- **独自SVG25点・専用Nodeテスト25ファイルを収録した§1.2実装コミット：`32080399979c9c9a968558ada11095ac05d31856`**。§1.2 SVG、対応するNodeテスト、`docs/PARALLEL_CHAT.md`の3ファイルだけ変更。ローカルNode 5件成功、lxml XML構文解析、CairoSVG PNG目視、SVGとテストのローカル/git blob SHA一致を確認した。
+- 今回のSHAを文書に記録する「文書のみ同期コミット」自身のSHAは作成前に記録できないため、最新の`chat/parallel-dev` HEADは`https://github.com/minkohno-hub/heat-transfer-study-ja/commits/chat/parallel-dev/`から直接確認すること。
+- **節番号順で次は§1.3**。§1.2の閉じた一様塊の温度–時間直線と、別モデルである局所熱伝導方程式を同一条件として誤接続しない。公開アプリへのSVGコピー・講義UI/SW・全体CI・Safari等実機と学術校閲は統合担当Codex側で実施し、保存済み25点を公開済みと扱わない。Codex本線・PR #1・main・他の並行ラインへの変更なし。
