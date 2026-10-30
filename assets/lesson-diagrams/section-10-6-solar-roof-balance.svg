@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="840" height="1154" viewBox="0 0 840 1154" style="max-width:100%" role="img" aria-labelledby="title10-6 desc10-6" data-lesson="10.6" data-origin="original-app-diagram" data-sigma="5.670374419e-8" data-qsolar="600" data-tair="308.15" data-h="8" data-tsky="291.15" data-black-alpha="0.9" data-black-eps="0.9" data-black-t="338.11564" data-white-alpha="0.26" data-white-eps="0.9" data-white-t="312.58549" data-solar-constant="1361" data-surface-frac="0.45" data-surface-avg="235">
+<title id="title10-6">§10.6 太陽エネルギー：選択性表面と屋根の温度</title>
+<desc id="desc10-6">アプリ独自作成の模式図。例題10.12の条件（日射600ワット毎平方メートル、気温35度、対流熱伝達係数8ワット毎平方メートル毎ケルビン、天空温度18度）で屋根表面の放射収支を解くと、黒色塗料では338.12ケルビン（65.0度）、白色アクリル塗料では312.59ケルビン（39.4度）になる。太陽吸収率と赤外放射率を独立に設計できる選択性表面の例と、大気上端の太陽放射照度1361ワット毎平方メートル、地表に届く割合約45パーセント、全球平均約235ワット毎平方メートルを示す。原著の図版の転載ではない。</desc>
+<style>
+text{font-family:system-ui,'Noto Sans CJK JP','Hiragino Kaku Gothic ProN',sans-serif;font-size:23px}
+.bg{fill:#ffffff}.panel{fill:#f4f7fa;stroke:#c2d1dd;stroke-width:2}.ink{fill:#173044}.muted{fill:#43596c}.warm{fill:#a84429}.cool{fill:#146b83}
+.roof{fill:#8a97a3;stroke:#43596c;stroke-width:2}.sunarrow{stroke:#d98a16;stroke-width:4.5;fill:none;stroke-linejoin:round;stroke-linecap:round}
+.irarrow{stroke:#a84429;stroke-width:3.6;fill:none;stroke-linejoin:round;stroke-linecap:round}
+.convarrow{stroke:#146b83;stroke-width:3.6;fill:none;stroke-linejoin:round;stroke-linecap:round}
+.baralpha{fill:#e8a13a}.bareps{fill:#5396b4}
+.title{font-size:34px;font-weight:750}.section{font-size:27px;font-weight:700}.small{font-size:20px}.tiny{font-size:19px}.equation{font-size:23px;font-weight:650}
+@media(prefers-color-scheme:dark){.bg{fill:#101b26}.panel{fill:#1d2d3d;stroke:#657d91}.ink{fill:#f1f7fb}.muted{fill:#c8d8e5}.warm{fill:#ffb599}.cool{fill:#8fdaef}.roof{fill:#5a6d7d;stroke:#c8d8e5}.sunarrow{stroke:#ffc45e}.irarrow{stroke:#ffb599}.convarrow{stroke:#8fdaef}.baralpha{fill:#b97e22}.bareps{fill:#2c6d88}}
+</style>
+<rect class="bg" width="840" height="1154"/>
+<text class="title ink" x="31" y="58">§10.6 太陽エネルギーと選択性表面</text>
+<text class="small muted" x="33" y="97">α_solar と ε_IR は波長帯が違うので独立に設計できる</text>
+<rect class="panel" x="23" y="119" width="794" height="330" rx="19"/>
+<text class="section ink" x="43" y="161">① 屋根表面の収支（例題10.12の条件）</text>
+<path class="sunarrow" d="M170 210 L268 292 M252 274 L268 292 L250 296"/>
+<path class="irarrow" d="M470 292 L560 214 M542 216 L560 214 L556 232"/>
+<path class="convarrow" d="M640 292 L700 222 M684 224 L700 222 L696 240"/>
+<rect class="roof" x="120" y="296" width="600" height="26" rx="4"/>
+<text class="small warm" x="92" y="200">日射 600 W/m²</text>
+<text class="small ink" x="420" y="200" text-anchor="middle">天空放射（T_sky = 18 ℃）</text>
+<text class="small cool" x="706" y="200" text-anchor="end">対流 h = 8</text>
+<text class="equation ink" x="43" y="368">α_s·q_solar + ε σT_sky⁴ = h(T − T_air) + ε σT⁴</text>
+<text class="small ink" x="43" y="404">T_air = 35 ℃、σT_sky⁴ = 407.45 W/m²（ε の掛かる分は別）</text>
+<text class="small muted" x="43" y="434">内部への損失は無視した上限評価。T はこの式の反復解</text>
+<rect class="panel" x="23" y="467" width="794" height="252" rx="19"/>
+<text class="section ink" x="43" y="509">② 解：塗料で 26 K 違う</text>
+<text class="small ink" x="43" y="549">黒色塗料 α = ε = 0.90： 吸収 540.0 + 天空 366.7</text>
+<text class="small ink" x="43" y="583">= 対流 239.7 + 放射 667.0 → T = 338.12 K（65.0 ℃）</text>
+<text class="small ink" x="43" y="627">白色アクリル α = 0.26、ε = 0.90： 吸収 156.0 + 天空 366.7</text>
+<text class="small ink" x="43" y="661">= 対流 35.5 + 放射 487.2 → T = 312.59 K（39.4 ℃）</text>
+<text class="small muted" x="43" y="701">本書の結果は黒 65 ℃・白 39 ℃（丸め）。違いは α_solar だけから生じる</text>
+<rect class="panel" x="23" y="737" width="794" height="252" rx="19"/>
+<text class="section ink" x="43" y="779">③ 選択性表面（α_solar ／ ε_IR）</text>
+<text class="small ink" x="43" y="821">黒色クロム（吸収面）</text>
+<rect class="baralpha" x="330" y="800" width="361" height="17"/><rect class="bareps" x="330" y="821" width="34" height="17"/>
+<text class="tiny ink" x="706" y="821">0.95 / 0.09</text>
+<text class="small ink" x="43" y="879">サーメット（吸収面）</text>
+<rect class="baralpha" x="330" y="858" width="365" height="17"/><rect class="bareps" x="330" y="879" width="61" height="17"/>
+<text class="tiny ink" x="706" y="879">0.96 / 0.16</text>
+<text class="small ink" x="43" y="937">白色アクリル（反射面）</text>
+<rect class="baralpha" x="330" y="916" width="99" height="17"/><rect class="bareps" x="330" y="937" width="342" height="17"/>
+<text class="tiny ink" x="706" y="937">0.26 / 0.90</text>
+<text class="tiny muted" x="43" y="982">橙 = α_solar、青 = ε_IR（バーは 0–1 の線形目盛）</text>
+<rect class="panel" x="23" y="1007" width="794" height="100" rx="19"/>
+<text class="section ink" x="43" y="1049">④ 地球の規模感</text>
+<text class="small ink" x="43" y="1085">大気上端 1361 W/m² → 地表到達は約45% → 平均 約235 W/m²</text>
+<text class="tiny muted" x="420" y="1136" text-anchor="middle">アプリ作成の独自模式図｜原著の図版・描画の転載なし</text>
+</svg>

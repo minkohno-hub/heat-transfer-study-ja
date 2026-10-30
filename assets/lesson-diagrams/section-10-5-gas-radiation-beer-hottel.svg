@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="840" height="1264" viewBox="0 0 840 1264" style="max-width:100%" role="img" aria-labelledby="title10-5 desc10-5" data-lesson="10.5" data-origin="original-app-diagram" data-sigma="5.670374419e-8" data-delta-band="2" data-delta-window="0.02" data-tau-band="0.13533528" data-alpha-band="0.86466472" data-tau-window="0.98019867" data-alpha-window="0.01980133" data-d-sphere="0.6" data-l0-sphere="0.4" data-d-cyl="0.4" data-l0-cyl="0.4" data-gap="0.25" data-l0-plates="0.5" data-pa="0.2" data-pal="8.106" data-eg="0.085" data-ag="0.12" data-tg="1473" data-tw="573" data-q="27591.797">
+<title id="title10-5">§10.5 気体放射：Beerの法則と平均光路長</title>
+<desc id="desc10-5">アプリ独自作成の模式図。気体は帯状にだけ吸収・放射する。Beerの法則により単色強度は光学的深さで指数減衰し、帯内（光学的深さ2.0）では透過率0.1353、吸収率0.8647、帯外の窓（光学的深さ0.02）では透過率0.9802、吸収率0.0198。平均光路長は体積の4倍を面積で割ったもので、直径0.6メートルの球で0.40メートル、直径0.4メートルの無限円筒で0.40メートル、間隔0.25メートルの平行平板で0.50メートル。例題10.11の条件では放射率0.085、吸収率0.12で壁への正味放射は単位長さ当たり27.59キロワット（本書は約27キロワット）。原著の図版の転載ではない。</desc>
+<style>
+text{font-family:system-ui,'Noto Sans CJK JP','Hiragino Kaku Gothic ProN',sans-serif;font-size:23px}
+.bg{fill:#ffffff}.panel{fill:#f4f7fa;stroke:#c2d1dd;stroke-width:2}.ink{fill:#173044}.muted{fill:#43596c}.warm{fill:#a84429}.cool{fill:#146b83}
+.axis{stroke:#43596c;stroke-width:2}.grid{stroke:#c2d1dd;stroke-width:1.4}
+.curveband{stroke:#a84429;stroke-width:4;fill:none;stroke-linejoin:round;stroke-linecap:round}
+.curvewin{stroke:#146b83;stroke-width:4;fill:none;stroke-linejoin:round;stroke-linecap:round}
+.ptband{fill:#a84429}.ptwin{fill:#146b83}.bandmark{fill:#e8a13a}.bandmark2{fill:#5396b4}
+.title{font-size:34px;font-weight:750}.section{font-size:27px;font-weight:700}.small{font-size:20px}.tiny{font-size:19px}.equation{font-size:23px;font-weight:650}
+@media(prefers-color-scheme:dark){.bg{fill:#101b26}.panel{fill:#1d2d3d;stroke:#657d91}.ink{fill:#f1f7fb}.muted{fill:#c8d8e5}.warm{fill:#ffb599}.cool{fill:#8fdaef}.axis{stroke:#c8d8e5}.grid{stroke:#30465c}.curveband{stroke:#ffb599}.curvewin{stroke:#8fdaef}.ptband{fill:#ffb599}.ptwin{fill:#8fdaef}.bandmark{fill:#b97e22}.bandmark2{fill:#2c6d88}}
+</style>
+<rect class="bg" width="840" height="1264"/>
+<text class="title ink" x="31" y="58">§10.5 気体放射：帯でだけ吸収する</text>
+<text class="small muted" x="33" y="97">N2・O2 はほぼ透明。CO2 と H2O が特定の波長帯でのみ相互作用する</text>
+<rect class="panel" x="23" y="119" width="794" height="262" rx="19"/>
+<text class="section ink" x="43" y="161">① Beerの法則（単色）</text>
+<text class="equation ink" x="43" y="205">di_λ = −ρ κ_λ i_λ dx　（10.47）</text>
+<text class="equation ink" x="43" y="247">i_λ(L) = i_λ0 · exp(−ρ κ_λ L)　（10.48）</text>
+<text class="equation ink" x="43" y="289">τ_λ = exp(−δ)、α_λ = 1 − τ_λ　（10.49）（10.50）</text>
+<text class="small ink" x="43" y="327">δ = ρκ_λ L が光学的深さ。非散乱気体は反射しない</text>
+<text class="small muted" x="43" y="359">単色では ε_λ = α_λ（10.54）でも、全量では一般に ε_g ≠ α_g</text>
+<rect class="panel" x="23" y="399" width="794" height="368" rx="19"/>
+<text class="section ink" x="43" y="441">② 減衰曲線：帯内と帯外</text>
+<line class="grid" x1="150" y1="600" x2="710" y2="600"/>
+<line class="axis" x1="150" y1="470" x2="150" y2="730"/><line class="axis" x1="150" y1="730" x2="710" y2="730"/>
+<polyline class="curveband" points="150,470 290,572.3 430,634.35 570,671.99 710,694.81"/>
+<polyline class="curvewin" points="150,470 290,471.3 430,472.59 570,473.87 710,475.15"/>
+<g class="ptband"><circle cx="150" cy="470" r="6"/><circle cx="290" cy="572.3" r="6"/><circle cx="430" cy="634.35" r="6"/><circle cx="570" cy="671.99" r="6"/><circle cx="710" cy="694.81" r="6"/></g>
+<g class="ptwin"><circle cx="150" cy="470" r="6"/><circle cx="290" cy="471.3" r="6"/><circle cx="430" cy="472.59" r="6"/><circle cx="570" cy="473.87" r="6"/><circle cx="710" cy="475.15" r="6"/></g>
+<text class="tiny ink" x="140" y="476" text-anchor="end">1</text>
+<text class="tiny ink" x="140" y="606" text-anchor="end">0.5</text>
+<text class="tiny ink" x="140" y="736" text-anchor="end">0</text>
+<text class="tiny ink" x="150" y="758" text-anchor="middle">0</text>
+<text class="tiny ink" x="430" y="758" text-anchor="middle">x/L = 0.5</text>
+<text class="tiny ink" x="710" y="758" text-anchor="middle">1</text>
+<text class="small ink" x="43" y="476">i_λ/i_λ0</text>
+<text class="small warm" x="200" y="716">帯内 δ=2.0： τ = 0.1353、α = 0.8647</text>
+<text class="small cool" x="200" y="500">帯外 δ=0.02： τ = 0.9802、α = 0.0198</text>
+<rect class="panel" x="23" y="785" width="794" height="224" rx="19"/>
+<text class="section ink" x="43" y="827">③ 主な吸収帯の所在（模式）</text>
+<line class="axis" x1="60" y1="880" x2="780" y2="880"/><line class="axis" x1="60" y1="930" x2="780" y2="930"/>
+<rect class="bandmark" x="176" y="862" width="18" height="36"/>
+<rect class="bandmark" x="581" y="862" width="18" height="36"/>
+<rect class="bandmark" x="116" y="862" width="16" height="36"/>
+<rect class="bandmark2" x="116" y="912" width="16" height="36"/>
+<rect class="bandmark2" x="252" y="912" width="18" height="36"/>
+<rect class="bandmark2" x="544" y="912" width="56" height="36"/>
+<text class="small ink" x="43" y="852">CO2</text>
+<text class="small ink" x="43" y="902">H2O</text>
+<text class="tiny ink" x="185" y="990" text-anchor="middle">4.3 μm</text>
+<text class="tiny ink" x="590" y="990" text-anchor="middle">15 μm</text>
+<text class="tiny ink" x="261" y="990" text-anchor="middle">6.3 μm</text>
+<text class="tiny muted" x="60" y="990">1 μm</text>
+<text class="tiny muted" x="780" y="990" text-anchor="end">20 μm</text>
+<rect class="panel" x="23" y="1027" width="794" height="190" rx="19"/>
+<text class="section ink" x="43" y="1069">④ 平均光路長 L0 = 4V/A（10.58）と Hottel の手順</text>
+<text class="small ink" x="43" y="1107">球 D=0.6 m → 0.40 m／無限円筒 D=0.4 m → 0.40 m／平板間隔 0.25 m → 0.50 m</text>
+<text class="small ink" x="43" y="1143">例題10.11： paL = 8.11 bar·cm → ε_g = 0.085、α_g = 0.12（図表）</text>
+<text class="small ink" x="43" y="1179">Q' = πD[ε_g σT_g⁴ − α_g σT_w⁴] = 27.59 kW/m（本書 約27 kW/m）</text>
+<text class="tiny muted" x="420" y="1246" text-anchor="middle">アプリ作成の独自模式図｜原著の図版・描画の転載なし</text>
+</svg>
