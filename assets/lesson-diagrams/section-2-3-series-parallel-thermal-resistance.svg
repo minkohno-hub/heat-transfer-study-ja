@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="860" height="1280" viewBox="0 0 860 1280" style="max-width:100%" role="img" aria-labelledby="res-title res-desc" data-origin="original-app-diagram" data-lesson="2.3" data-hot-c="80" data-cold-c="20" data-delta-t-k="60" data-r1-k-per-w="0.10" data-r2-k-per-w="0.20" data-series-r="0.30" data-series-q="200" data-series-drop-1="20" data-series-drop-2="40" data-series-mid-c="60" data-parallel-r="0.066666666667" data-parallel-q1="600" data-parallel-q2="300" data-parallel-qtotal="900" data-series-heat-bar-width="120" data-parallel-heat-bar-width="540">
+<title id="res-title">§2.3 熱抵抗の直列・並列比較：共通熱流率と共通温度差</title>
+<desc id="res-desc">アプリ独自の熱抵抗図。高温節点80℃、低温節点20℃、抵抗R1が0.10ケルビン毎ワット、R2が0.20ケルビン毎ワットの線形定常例。直列では200ワットが両抵抗を通り、温度降下は20ケルビンと40ケルビン、中間温度は60℃。並列では各抵抗の両端温度差はともに60ケルビンで、各枝の熱移動率は600ワットと300ワット、合計900ワット。等しい温度差なら並列の合成熱抵抗0.06667ケルビン毎ワットは直列の0.30より小さい。熱移動率の棒は200対900を正確に表し、各枝の抵抗の大小を面積当たり熱抵抗と混同しないようにした。単純な節点回路であり、実際の二次元熱橋、接触抵抗、熱漏れ、内部発熱、蓄熱、材料物性の温度依存を解かない。</desc>
+<style>
+text{font-family:'Noto Sans CJK JP','Hiragino Kaku Gothic ProN',system-ui,sans-serif;font-size:22px}
+.bg{fill:#fff}.panel{fill:#f3f7fa;stroke:#bfcfda;stroke-width:2}.ink{fill:#172f43}.muted{fill:#486073}.wire{stroke:#45677d;stroke-width:4;fill:none;stroke-linecap:round}.node{fill:#44667f}.resistor{fill:#dbeaf3;stroke:#5386a1;stroke-width:3}.hot{fill:#ab5435}.cold{fill:#266b95}.series{fill:#4e88aa}.parallel{fill:#cb7845}.divider{stroke:#bfccd6;stroke-width:1.5;stroke-dasharray:6 6}.barseries{fill:#5189ad}.barparallel{fill:#c57746}.point{fill:#744d8c}
+.heading{font-size:34px;font-weight:750}.section{font-size:28px;font-weight:700}.small{font-size:21px}.tiny{font-size:18px}.formula{font-size:24px;font-weight:650}
+@media(prefers-color-scheme:dark){.bg{fill:#101b27}.panel{fill:#1d2e3e;stroke:#607d92}.ink{fill:#eaf5ff}.muted{fill:#c8d9e5}.wire{stroke:#b7d7ec}.node{fill:#cee4f6}.resistor{fill:#294c63;stroke:#86c8ed}.hot{fill:#f4a687}.cold{fill:#94cefa}.series{fill:#95d2fa}.parallel{fill:#ffc496}.divider{stroke:#698397}.barseries{fill:#4d9bc5}.barparallel{fill:#c27a4f}.point{fill:#cca4ee}}
+</style>
+<rect class="bg" width="860" height="1280"/>
+<text class="heading ink" x="29" y="58">§2.3 直列と並列の熱抵抗</text>
+<text class="small muted" x="30" y="99">同じ抵抗でも、つなぎ方で「等しくなる量」が違う</text>
+<rect class="panel" x="23" y="119" width="814" height="390" rx="19"/>
+<text class="section ink" x="43" y="163">① 直列：どの抵抗も熱移動率が200 W</text>
+<text class="small muted" x="44" y="203">R1 = 0.10 K/W、R2 = 0.20 K/W、両端温度差60 K</text>
+<path class="wire" d="M105 296 H220 M320 296 H530 M630 296 H759"/>
+<rect id="series-resistor-1" class="resistor" x="220" y="270" width="100" height="52" rx="4"/>
+<rect id="series-resistor-2" class="resistor" x="530" y="270" width="100" height="52" rx="4"/>
+<circle class="node" cx="105" cy="296" r="7"/><circle id="series-mid-node" class="point" cx="422" cy="296" r="7"/><circle class="node" cx="759" cy="296" r="7"/>
+<text x="270" y="304" text-anchor="middle" class="small ink">R1</text>
+<text x="580" y="304" text-anchor="middle" class="small ink">R2</text>
+<text x="105" y="258" text-anchor="middle" class="small hot">80℃</text>
+<text x="422" y="258" text-anchor="middle" class="small ink">60℃</text>
+<text x="759" y="258" text-anchor="middle" class="small cold">20℃</text>
+<text x="270" y="356" text-anchor="middle" class="tiny ink">ΔT1 = 20 K</text>
+<text x="580" y="356" text-anchor="middle" class="tiny ink">ΔT2 = 40 K</text>
+<text x="44" y="415" class="formula ink">R_total = 0.10 + 0.20 = 0.30 K/W</text>
+<text x="44" y="458" class="small series">Q = 60/0.30 = 200 W（各抵抗に同じQが流れる）</text>
+<rect class="panel" x="23" y="527" width="814" height="407" rx="19"/>
+<text class="section ink" x="43" y="570">② 並列：どの枝も温度差が60 K</text>
+<path class="wire" d="M113 730 H195 V646 H278 M398 646 H654 V730 H753 M195 730 V824 H278 M398 824 H654 V730"/>
+<rect id="parallel-resistor-1" class="resistor" x="278" y="620" width="120" height="52" rx="4"/>
+<rect id="parallel-resistor-2" class="resistor" x="278" y="798" width="120" height="52" rx="4"/>
+<circle id="parallel-hot-node" class="node" cx="113" cy="730" r="8"/><circle id="parallel-cold-node" class="node" cx="753" cy="730" r="8"/>
+<text x="338" y="653" text-anchor="middle" class="small ink">R1</text><text x="338" y="831" text-anchor="middle" class="small ink">R2</text>
+<text x="112" y="693" text-anchor="middle" class="small hot">80℃</text><text x="754" y="693" text-anchor="middle" class="small cold">20℃</text>
+<text x="485" y="618" class="small parallel">Q1 = 600 W</text>
+<text x="485" y="802" class="small parallel">Q2 = 300 W</text>
+<text x="44" y="886" class="small ink">R_eq = 1/(1/R1 + 1/R2) ≈ 0.06667 K/W</text>
+<text x="44" y="916" class="small parallel">Q_total = 600 + 300 = 900 W（各枝のΔTが共通）</text>
+<rect class="panel" x="23" y="951" width="814" height="273" rx="19"/>
+<text class="section ink" x="43" y="994">③ 同じ温度差なら、並列ほど熱は流れる</text>
+<text x="45" y="1033" class="small ink">直列 200 W</text><rect id="series-heat-bar" class="barseries" x="211" y="1011" width="120" height="28" rx="3"/>
+<text x="45" y="1074" class="small ink">並列 900 W</text><rect id="parallel-heat-bar" class="barparallel" x="211" y="1052" width="540" height="28" rx="3"/>
+<text x="44" y="1119" class="tiny muted">棒の幅は熱移動率に比例。両回路とも両端温度差60 K。</text>
+<text x="44" y="1157" class="tiny muted">線形・定常・節点等温の近似。実際の二次元熱橋は別途解析。</text>
+<text x="430" y="1254" text-anchor="middle" class="tiny muted">アプリ独自作図｜原著図版の転載・トレース・逐語訳なし</text>
+</svg>

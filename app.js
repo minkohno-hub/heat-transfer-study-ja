@@ -6,6 +6,7 @@ import {validateDeepLessons,deepLessonForSection} from './original-deep-lessons.
 import {renderTransientFields,renderTransientSteps,transientGraph,transientFieldNames} from './transient-ui.mjs';
 import {matchTerms,renderTermLinks,renderTermSheet,renderTermExample,renderTermLearningLinks,linkTermTextNodes} from './term-links.mjs';
 import {renderSimulationDiagram} from './sim-diagrams.mjs';
+import {lessonDiagramPath} from './lesson-diagrams.mjs';
 const CORE_DATA_FILES = ['./data/book.json', './data/questions.json', './data/glossary.json', './data/content-manifest.json', './data/original-notes.json', './data/original-deep-lessons.json'];
 const LEGACY_STORAGE_KEY = 'heat-study-ja:v1';
 const PROFILES_KEY = 'heat-study-ja:profiles:v1';
@@ -577,6 +578,7 @@ function renderReader() {
         <div class="button-row">${independentQuestion?`<button type="button" class="button secondary" data-start-question="${escapeHTML(independentQuestion.id)}">この節の確認問題を解く →</button>`:''}${independentApplications.map(q=>`<button type="button" class="button secondary" data-start-question="${escapeHTML(q.id)}">この節の応用計算を解く →</button>`).join('')}<a class="text-link" href="#guide/${escapeHTML(independentChapterGuide?.id||'start')}">章別の独立補助講座を読む →</a></div>
         </section>` : ''}
         ${deepLesson ? renderDeepLesson(deepLesson) : ''}
+        ${renderLessonDiagram(section.id)}
         ${independentChapterGuide ? `<aside class="notice-card" aria-label="独立作成の章別補助講座"><span class="notice-icon" aria-hidden="true">i</span><div><strong>この章の日本語補助講座</strong><p>原本の翻訳・節本文ではありません。伝熱・物質移動の考え方を独立した例と式で説明します。</p><a class="text-link" href="#guide/${escapeHTML(independentChapterGuide.id)}"> ${escapeHTML(independentChapterGuide.title)} を開く →</a></div></aside>` : ''}
         ${available ? `<div class="book-content" lang="${contentLanguage}">${blocks}</div>` : blocks}
           <p class="small-note">原本PDFを読んだ後の読了・しおり・メモは自分で記録してください。PDFビューアー内の位置は自動取得できません。</p>
@@ -904,6 +906,11 @@ function figureZoomLink(src) {
 function figureSizeAttributes(figure) {
   const width=Number(figure.width),height=Number(figure.height);
   return Number.isInteger(width)&&width>0&&width<=10000&&Number.isInteger(height)&&height>0&&height<=10000 ? `width="${width}" height="${height}"` : '';
+}
+function renderLessonDiagram(sectionId) {
+  const src=lessonDiagramPath(sectionId);
+  if(!src)return '';
+  return `<figure class="lesson-diagram"><img src="${escapeHTML(src)}" alt="第${escapeHTML(sectionId)}節のアプリ作成の独自図解" loading="lazy"/><figcaption><a class="figure-zoom text-link" href="${escapeHTML(src)}" target="_blank" rel="noopener noreferrer">図を別のタブで拡大する ↗</a><span>アプリ作成の独自図解です。原本の図版の転載・トレースではありません。図の適用条件と数値は図の中に明記しています。</span></figcaption></figure>`;
 }
 function renderSimulationSteps(mode,result) {
   const v=result.values,n=value=>Number(value).toLocaleString('ja-JP',{maximumSignificantDigits:7});

@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="840" height="1280" viewBox="0 0 840 1280" role="img" aria-labelledby="cond-title cond-desc" style="max-width:100%" data-origin="original-app-diagram" data-lesson="8.5" data-rho-l="950" data-rho-v="0.6" data-k-l="0.68" data-mu-l="0.0002800" data-h-fg="2.25e+06" data-g="9.81" data-length="0.02" data-width="0.5" data-delta-t="10" data-coefficient="0.943" data-h-average="17242.588353583" data-q="1724.258835358" data-mass-rate="0.000766337260" data-re-film="21.895350290" data-thickness-end-m="0.000052593630" data-model="ideal-laminar-film">
+<title id="cond-title">§8.5 垂直冷却面の膜状凝縮：液膜厚さと平均伝熱</title>
+<desc id="cond-desc">アプリが独自に作図した模式図。静穏な飽和蒸気が温度の低い垂直面で凝縮すると、非波状層流液膜が重力で下向きに流れ、膜は下流に向かって厚くなる。液膜内の伝導が支配的なら、同じ温度差では局所熱流束は膜厚に反比例する。理想モデルでの膜厚は下降距離の4分の1乗に比例し、横のグラフは正規化された膜厚の形だけを表示する。仮想物性からNusselt型平均熱伝達率は約17.24キロワット毎平方メートルケルビン、放熱率は約1.724キロワット、凝縮量は約7.66かける10のマイナス4乗キログラム毎秒、液膜レイノルズ数は約21.9となる。膜厚の横幅は実寸ではなく、非凝縮性ガス、波立ち、蒸気せん断、物性の変化は含めない。</desc>
+<style>
+text{font-family:'Noto Sans CJK JP','Hiragino Kaku Gothic ProN',sans-serif;font-size:22px}
+.bg{fill:#fff}.panel{fill:#f4f8fb;stroke:#c2d1de;stroke-width:2}.ink{fill:#1b3247}.muted{fill:#455f70}
+.wall{fill:#516b7e;stroke:#304e64;stroke-width:2}.film{fill:#8bd0e2;stroke:#167d9c;stroke-width:2}.filmEdge{fill:none;stroke:#127da0;stroke-width:4}
+.flux{fill:none;stroke:#ac542f;stroke-width:3;stroke-linecap:round;stroke-linejoin:round}.gravity{fill:none;stroke:#6d7587;stroke-width:3;stroke-linecap:round;stroke-linejoin:round}
+.axis{fill:none;stroke:#466176;stroke-width:2}.guide{fill:none;stroke:#b7cbd9;stroke-width:1.3;stroke-dasharray:6 5}.graph{fill:none;stroke:#1680a3;stroke-width:4;stroke-linecap:round;stroke-linejoin:round}
+.title{font-size:34px;font-weight:750}.section{font-size:27px;font-weight:700}.small{font-size:20px}.micro{font-size:18px}.eq{font-size:24px;font-weight:650}
+@media(prefers-color-scheme:dark){.bg{fill:#111b27}.panel{fill:#1e2e3e;stroke:#69869a}.ink{fill:#edf5fc}.muted{fill:#c7d9e6}.wall{fill:#526c80;stroke:#a1c1d5}.film{fill:#285d74;stroke:#9fdef4}.filmEdge{stroke:#a8e4ff}.flux{stroke:#ffb38c}.gravity{stroke:#c9d0df}.axis{stroke:#c0dbea}.guide{stroke:#627c8e}.graph{stroke:#8bdcf4}}
+</style>
+<rect class="bg" width="840" height="1280"/>
+<text class="title ink" x="30" y="59">§8.5 膜状凝縮：液膜が熱抵抗になる</text>
+<text class="small muted" x="30" y="101">垂直冷却壁に沿う、理想的な非波状層流液膜</text>
+<rect class="panel" x="23" y="126" width="794" height="477" rx="18"/>
+<text class="section ink" x="43" y="169">① 蒸気 → 液膜 → 冷却壁へ熱が移る</text>
+<text class="small muted" x="45" y="210">壁温 T_w ＜ 飽和温度 T_sat ／ 重力方向 ↓</text>
+<rect class="wall" x="187" y="275" width="26" height="279" rx="3"/>
+<path id="film-shape" class="film" d="M 213.000 276.000 L 246.799 282.950 L 253.194 289.900 L 257.482 296.850 L 260.799 303.800 L 263.541 310.750 L 265.898 317.700 L 267.977 324.650 L 269.843 331.600 L 271.542 338.550 L 273.104 345.500 L 274.553 352.450 L 275.907 359.400 L 277.179 366.350 L 278.379 373.300 L 279.516 380.250 L 280.598 387.200 L 281.630 394.150 L 282.618 401.100 L 283.565 408.050 L 284.476 415.000 L 285.353 421.950 L 286.200 428.900 L 287.018 435.850 L 287.809 442.800 L 288.577 449.750 L 289.322 456.700 L 290.045 463.650 L 290.749 470.600 L 291.434 477.550 L 292.101 484.500 L 292.753 491.450 L 293.388 498.400 L 294.009 505.350 L 294.616 512.300 L 295.209 519.250 L 295.790 526.200 L 296.359 533.150 L 296.917 540.100 L 297.464 547.050 L 298.000 554.000 L 213.000 554.000 Z"/>
+<path id="film-boundary" class="filmEdge" d="M 213.000 276.000 L 246.799 282.950 L 253.194 289.900 L 257.482 296.850 L 260.799 303.800 L 263.541 310.750 L 265.898 317.700 L 267.977 324.650 L 269.843 331.600 L 271.542 338.550 L 273.104 345.500 L 274.553 352.450 L 275.907 359.400 L 277.179 366.350 L 278.379 373.300 L 279.516 380.250 L 280.598 387.200 L 281.630 394.150 L 282.618 401.100 L 283.565 408.050 L 284.476 415.000 L 285.353 421.950 L 286.200 428.900 L 287.018 435.850 L 287.809 442.800 L 288.577 449.750 L 289.322 456.700 L 290.045 463.650 L 290.749 470.600 L 291.434 477.550 L 292.101 484.500 L 292.753 491.450 L 293.388 498.400 L 294.009 505.350 L 294.616 512.300 L 295.209 519.250 L 295.790 526.200 L 296.359 533.150 L 296.917 540.100 L 297.464 547.050 L 298.000 554.000"/>
+<path class="gravity" d="M112 352 V478 M101 465 L112 478 L123 465"/>
+<text class="small ink" x="76" y="334">下降方向</text>
+<path class="flux" d="M359 339 H273 M287 328 L273 339 L287 350"/>
+<path class="flux" d="M359 450 H295 M309 439 L295 450 L309 461"/>
+<text class="small ink" x="371" y="327">飽和蒸気から潜熱を放出</text>
+<text class="small ink" x="371" y="362">液膜を横切る伝導が支配的</text>
+<text class="small ink" x="371" y="425">流下するほど液膜が厚くなる</text>
+<text class="small ink" x="371" y="460">同じ温度差なら局所流束は低下</text>
+<text class="small muted" x="45" y="584">※膜の描画幅は模式的。実際の長さ・厚さの比は表さない。</text>
+<rect class="panel" x="23" y="621" width="794" height="293" rx="18"/>
+<text class="section ink" x="43" y="662">② 理想液膜の厚さは下降距離の 1/4 乗</text>
+<path class="axis" d="M140 681 V826 H710 M699 818 L710 826 L699 834"/>
+<path class="guide" d="M140 690 H710 M140 758 H710"/>
+<path id="thickness-profile" class="graph" d="M 140.000 826.000 L 154.225 771.922 L 168.450 761.690 L 182.675 754.829 L 196.900 749.522 L 211.125 745.134 L 225.350 741.363 L 239.575 738.037 L 253.800 735.051 L 268.025 732.333 L 282.250 729.833 L 296.475 727.515 L 310.700 725.349 L 324.925 723.314 L 339.150 721.394 L 353.375 719.574 L 367.600 717.843 L 381.825 716.191 L 396.050 714.611 L 410.275 713.095 L 424.500 711.638 L 438.725 710.235 L 452.950 708.880 L 467.175 707.572 L 481.400 706.305 L 495.625 705.077 L 509.850 703.885 L 524.075 702.728 L 538.300 701.602 L 552.525 700.506 L 566.750 699.438 L 580.975 698.396 L 595.200 697.379 L 609.425 696.386 L 623.650 695.415 L 637.875 694.465 L 652.100 693.535 L 666.325 692.625 L 680.550 691.733 L 694.775 690.858 L 709.000 690.000"/>
+<text x="45" y="705" class="micro ink">1.0</text><text x="45" y="763" class="micro ink">0.5</text><text x="46" y="831" class="micro ink">0</text>
+<text x="152" y="852" class="micro ink">0</text><text x="425" y="852" text-anchor="middle" class="micro ink">0.5</text><text x="707" y="852" text-anchor="end" class="micro ink">1.0</text>
+<text x="425" y="884" text-anchor="middle" class="micro muted">下降距離 x/L → ／ 縦：膜厚 δ(x)/δ(L)</text>
+<rect class="panel" x="23" y="932" width="794" height="291" rx="18"/>
+<text class="section ink" x="43" y="973">③ Nusselt型の平均凝縮伝熱率</text>
+<text class="micro muted" x="43" y="1005">ρ_l=950、ρ_v=0.60 kg/m³、k_l=0.68 W/(m·K)</text>
+<text class="micro muted" x="43" y="1034">μ_l=2.8×10^(-4) Pa·s、h_fg=2.25×10^6 J/kg、g=9.81 m/s²</text>
+<text class="micro muted" x="43" y="1063">L=0.020 m、幅 b=0.50 m、ΔT=10 K、A=0.010 m²</text>
+<text class="eq ink" x="43" y="1104">平均 h ≈ 17.24 kW/(m²·K)　 Q ≈ 1.724 kW</text>
+<text class="eq ink" x="43" y="1141">凝縮量 ≈ 0.000766 kg/s　 Re_f ≈ 21.9</text>
+<text class="micro muted" x="43" y="1181">Re_f ≲ 30 は目安。非凝縮ガス・波立ち・蒸気せん断は未評価。</text>
+<text class="micro muted" x="420" y="1255" text-anchor="middle">アプリ作成の独自模式図｜原著図版の転載・トレースなし</text>
+</svg>

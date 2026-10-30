@@ -1,8 +1,36 @@
 const CACHE_NAME='heat-study-ja-v12';
 const PDF_CACHE_NAME='heat-study-ja-pdf-v1';
 const PDF_URL='./book/AHTTv600.pdf';
-const APP_SHELL=['./','./index.html','./styles.css','./app.js','./study-core.mjs','./guide.mjs','./chapter-curriculum.mjs','./original-notes.mjs','./original-deep-lessons.mjs','./manifest.json',
-  './data/book.json','./data/questions.json','./data/glossary.json','./data/content-manifest.json','./data/original-notes.json','./data/original-deep-lessons.json'];
+const APP_SHELL=['./','./index.html','./styles.css','./app.js','./study-core.mjs','./guide.mjs','./chapter-curriculum.mjs','./original-notes.mjs','./original-deep-lessons.mjs','./lesson-diagrams.mjs','./manifest.json',
+  './data/book.json','./data/questions.json','./data/glossary.json','./data/content-manifest.json','./data/original-notes.json','./data/original-deep-lessons.json',
+  './assets/lesson-diagrams/section-1-1-heat-rate-flux-integrals.svg',
+  './assets/lesson-diagrams/section-1-2-energy-balance-vs-heat-equation.svg',
+  './assets/lesson-diagrams/section-2-3-series-parallel-thermal-resistance.svg',
+  './assets/lesson-diagrams/section-2-4-cylindrical-wall-resistance.svg',
+  './assets/lesson-diagrams/section-3-2-counterflow-lmtd.svg',
+  './assets/lesson-diagrams/section-3-3-ntu-isothermal-heat-exchanger.svg',
+  './assets/lesson-diagrams/section-3-4-required-heat-transfer-area.svg',
+  './assets/lesson-diagrams/section-4-2-uniform-generation-plane-wall.svg',
+  './assets/lesson-diagrams/section-4-3-bi-fo-similarity-scaling.svg',
+  './assets/lesson-diagrams/section-4-5-adiabatic-fin-efficiency-effectiveness.svg',
+  './assets/lesson-diagrams/section-5-2-lumped-capacitance-exponential-cooling.svg',
+  './assets/lesson-diagrams/section-5-3-transient-slab-cooling.svg',
+  './assets/lesson-diagrams/section-5-6-semi-infinite-error-function.svg',
+  './assets/lesson-diagrams/section-6-1-velocity-thermal-boundary-layers.svg',
+  './assets/lesson-diagrams/section-7-2-laminar-pipe-entrance-lengths.svg',
+  './assets/lesson-diagrams/section-8-4-natural-convection-orientation.svg',
+  './assets/lesson-diagrams/section-8-5-film-condensation-liquid-film.svg',
+  './assets/lesson-diagrams/section-9-1-pool-boiling-curve-regimes.svg',
+  './assets/lesson-diagrams/section-9-2-spherical-bubble-laplace-pressure.svg',
+  './assets/lesson-diagrams/section-9-3-critical-heat-flux-liquid-vapor-counterflow.svg',
+  './assets/lesson-diagrams/section-9-4-film-boiling-vapor-layer-resistance.svg',
+  './assets/lesson-diagrams/section-10-1-radiosity-irradiation-balance.svg',
+  './assets/lesson-diagrams/section-10-2-kirchhoff-spectral-bands.svg',
+  './assets/lesson-diagrams/section-10-3-view-factor-reciprocity.svg',
+  './assets/lesson-diagrams/section-10-4-gray-surface-radiation-network.svg',
+  './assets/lesson-diagrams/section-10-5-gas-radiation-beer-hottel.svg',
+  './assets/lesson-diagrams/section-10-6-solar-roof-balance.svg',
+  './assets/lesson-diagrams/section-11-3-fick-molar-diffusion-comparison.svg'];
 self.addEventListener('install',event=>{event.waitUntil(caches.open(CACHE_NAME).then(cache=>cache.addAll(APP_SHELL)));self.skipWaiting();});
 self.addEventListener('activate',event=>{event.waitUntil(caches.keys().then(keys=>Promise.all(keys.filter(k=>k.startsWith('heat-study-ja-')&&k!==CACHE_NAME&&k!==PDF_CACHE_NAME).map(k=>caches.delete(k)))));self.clients.claim();});
 self.addEventListener('message',event=>{

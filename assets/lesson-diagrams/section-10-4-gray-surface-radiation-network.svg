@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="840" height="1110" viewBox="0 0 840 1110" style="max-width:100%" role="img" aria-labelledby="title10-4 desc10-4" data-lesson="10.4" data-origin="original-app-diagram" data-sigma="5.670374419e-8" data-t1="400" data-t2="300" data-e1="0.8" data-e2="0.6" data-area="0.5" data-f12="1" data-eb1="1451.615851264" data-eb2="459.300327939" data-j1="1322.183391700" data-j2="804.453553443" data-q="258.864919128">
+<title id="title10-4">§10.4 灰色面の放射：射度と三つの放射抵抗</title>
+<desc id="desc10-4">アプリ独自作成の模式図。面1は400ケルビン、放射率0.8。面2は300ケルビン、放射率0.6。両面積はそれぞれ0.5平方メートル。十分大きい平行面として形態係数1、媒質は非参加性。二つの表面抵抗0.5と1.333および空間抵抗2.0を直列に接続し、黒体放射能と射度を比較する。正味放射熱移動率は左から右へ258.86ワット、射度は1322.18と804.45ワット毎平方メートル。放射抵抗の単位は平方メートルの逆数。図形の寸法から形態係数を算出したものではない。</desc>
+<style>
+text{font-family:system-ui,'Noto Sans CJK JP','Hiragino Kaku Gothic ProN',sans-serif;font-size:23px}
+.bg{fill:#ffffff}.panel{fill:#f4f7fa;stroke:#c2d1dd;stroke-width:2}.ink{fill:#173044}.muted{fill:#43596c}.warm{fill:#a84429}.cool{fill:#146b83}
+.hotplate{fill:#d76f4b;stroke:#913923;stroke-width:2}.coldplate{fill:#5396b4;stroke:#226b85;stroke-width:2}
+.wire{stroke:#364f60;stroke-width:3;fill:none}.res{fill:#e3ebf2;stroke:#55748b;stroke-width:2.3}.node{fill:#364f60}
+.arrow{stroke:#146b83;stroke-width:4.2;fill:none;stroke-linejoin:round;stroke-linecap:round}
+.ray{stroke:#a84429;stroke-width:2.4;fill:none;stroke-dasharray:7 5}
+.title{font-size:34px;font-weight:750}.section{font-size:27px;font-weight:700}.small{font-size:20px}.tiny{font-size:19px}.equation{font-size:23px;font-weight:650}
+@media(prefers-color-scheme:dark){.bg{fill:#101b26}.panel{fill:#1d2d3d;stroke:#657d91}.ink{fill:#f1f7fb}.muted{fill:#c8d8e5}.warm{fill:#ffb599}.cool{fill:#8fdaef}.hotplate{fill:#93452e;stroke:#ffc1a8}.coldplate{fill:#285c74;stroke:#9fdef4}.wire{stroke:#d6e5ef}.res{fill:#304c63;stroke:#a8c8dc}.node{fill:#d6e5ef}.arrow{stroke:#8fdaef}.ray{stroke:#ffb599}}
+</style>
+<rect class="bg" width="840" height="1110"/>
+<text class="title ink" x="31" y="58">§10.4 灰色面の放射抵抗ネットワーク</text>
+<text class="small muted" x="33" y="97">黒体の直接交換と違い、表面反射を射度 J で考える</text>
+<rect class="panel" x="23" y="119" width="794" height="278" rx="19"/>
+<text class="section ink" x="43" y="161">① 二つの灰色面からの正味放射交換</text>
+<text class="small warm" x="93" y="206">面1：400 K</text>
+<text class="small cool" x="629" y="206">面2：300 K</text>
+<rect class="hotplate" x="177" y="221" width="29" height="110" rx="4"/>
+<rect class="coldplate" x="633" y="221" width="29" height="110" rx="4"/>
+<path class="ray" d="M210 243 H629 M615 230 L629 243 L615 256 M629 312 H210 M224 299 L210 312 L224 325"/>
+<path class="arrow" d="M290 279 H548 M533 265 L548 279 L533 293"/>
+<text class="ink" x="420" y="263" text-anchor="middle">正味 1 → 2</text>
+<text class="cool" x="420" y="315" text-anchor="middle">258.86 W</text>
+<text class="small ink" x="60" y="363">A1=A2=0.50 m²／ε1=0.80、ε2=0.60</text>
+<text class="tiny muted" x="60" y="387">大きい平行面（端部無視）・F12=1・非参加性媒質</text>
+<rect class="panel" x="23" y="415" width="794" height="410" rx="19"/>
+<text class="section ink" x="43" y="458">② 「電位」は温度ではなく E_b と射度 J</text>
+<text class="small muted" x="43" y="495">E_b=σT⁴ [W/m²]。抵抗の単位は m⁻²（K/Wではない）</text>
+<path class="wire" d="M95 611 H176 M266 611 H302 M302 611 H370 M472 611 H544 M544 611 H581 M682 611 H742"/>
+<rect class="res" x="176" y="589" width="90" height="45" rx="5"/>
+<rect class="res" x="370" y="589" width="102" height="45" rx="5"/>
+<rect class="res" x="581" y="589" width="101" height="45" rx="5"/>
+<text class="small ink" x="221" y="618" text-anchor="middle">R_s1</text>
+<text class="small ink" x="421" y="618" text-anchor="middle">R_12</text>
+<text class="small ink" x="631" y="618" text-anchor="middle">R_s2</text>
+<g class="node"><circle cx="95" cy="611" r="8"/><circle cx="302" cy="611" r="8"/><circle cx="544" cy="611" r="8"/><circle cx="742" cy="611" r="8"/></g>
+<text class="small ink" x="95" y="565" text-anchor="middle">E_b1</text>
+<text class="small ink" x="302" y="565" text-anchor="middle">J1</text>
+<text class="small ink" x="544" y="565" text-anchor="middle">J2</text>
+<text class="small ink" x="742" y="565" text-anchor="middle">E_b2</text>
+<text class="tiny ink" x="44" y="687">R_s1 = 0.500 m⁻²</text>
+<text class="tiny ink" x="314" y="687">R_12 = 2.000 m⁻²</text>
+<text class="tiny ink" x="579" y="687">R_s2 = 1.333 m⁻²</text>
+<text class="small warm" x="44" y="744">E_b1 = 1451.62 W/m²</text>
+<text class="small warm" x="451" y="744">J1 = 1322.18 W/m²</text>
+<text class="small cool" x="44" y="788">J2 = 804.45 W/m²</text>
+<text class="small cool" x="451" y="788">E_b2 = 459.30 W/m²</text>
+<rect class="panel" x="23" y="844" width="794" height="229" rx="19"/>
+<text class="section ink" x="43" y="885">③ 熱収支と射度の検算</text>
+<text class="equation ink" x="44" y="924">R_total = R_s1 + R_12 + R_s2 = 3.833 m⁻²</text>
+<text class="equation ink" x="44" y="962">Qdot = (E_b1−E_b2)/R_total = 258.86 W</text>
+<text class="equation ink" x="44" y="1001">q'' = Qdot/A = 517.73 W/m²</text>
+<text class="small ink" x="44" y="1041">J1−J2 = 517.73 W/m²（空間の正味流束）</text>
+<text class="tiny muted" x="420" y="1095" text-anchor="middle">アプリ作成の独自模式図｜原著の図版・描画の転載なし</text>
+</svg>

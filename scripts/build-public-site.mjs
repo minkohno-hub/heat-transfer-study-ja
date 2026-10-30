@@ -5,6 +5,7 @@ import {createHash} from 'node:crypto';
 import {checkPublicContent} from '../public-content-contract.mjs';
 import {publicCacheName,stampServiceWorker} from './public-cache-version.mjs';
 import {GUIDE_SECTIONS} from '../guide.mjs';
+import {LESSON_DIAGRAM_PATHS} from '../lesson-diagrams.mjs';
 
 const root=resolve(dirname(fileURLToPath(import.meta.url)),'..');
 const output=join(root,'dist');
@@ -32,7 +33,7 @@ const deepLessons=JSON.parse(await readFile(join(root,'data/original-deep-lesson
 const issues=checkPublicContent({book,questions,glossary,guides:GUIDE_SECTIONS,originalNotes,deepLessons});
 if(issues.length)throw new Error('公開教材の整合性検査に失敗しました:\n'+issues.join('\n'));
 
-const files=['index.html','styles.css','app.js','study-core.mjs','guide.mjs','chapter-curriculum.mjs','original-notes.mjs','original-deep-lessons.mjs','transient-ui.mjs','term-links.mjs','sim-diagrams.mjs','sw.js','manifest.json','data/glossary.json'];
+const files=['index.html','styles.css','app.js','study-core.mjs','guide.mjs','chapter-curriculum.mjs','original-notes.mjs','original-deep-lessons.mjs','transient-ui.mjs','term-links.mjs','sim-diagrams.mjs','lesson-diagrams.mjs','sw.js','manifest.json','data/glossary.json',...LESSON_DIAGRAM_PATHS];
 for(const path of new Set(files)){
   const source=join(root,path),target=join(output,path);
   await mkdir(dirname(target),{recursive:true});await copyFile(source,target);
