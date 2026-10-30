@@ -325,3 +325,9 @@
 - **重要な未解決事項**：`scripts/build-public-site.mjs` の公開配信リストに`assets/lesson-diagrams/`を含めていないため、このSVGも**まだ公開アプリには表示されない**。Codexが統合後、許可済み独自SVGのコピー、Service Workerキャッシュ、講義`sectionId`との対応、図の拡大・レスポンシブ・ライト/ダーク・読み上げを実装し、配信先で404にならないことを確認する必要がある。
 - 統合前に図解ラインの全差分・他ブランチの未push変更・衝突を確認。統合後は専用全テスト`node --test tests/lesson-diagram-*.test.mjs`、アプリの`npm test`、公開ビルド・CI・HTTP取得・オフライン・Safari/Android・アクセシビリティ・科学的校閲を実施。§7.2・§8.4・§5.2・§4.5・§9.1のNode実行/PNGは各当時の未検証記録のままとし、今回の§2.3は5件Node成功とPNGレンダリングを実施した。
 - このブランチは図解素材のみ担当。Codex本線・PR #1の**マージと全体監査はCodexに委ねる**。本ラインから本線を変更しない。ユーザー報告によるCodexの再開予定は2026-11-04 15:57 JST。
+
+### 第19図解の確定成果コミットとCodex引き継ぎチェックポイント（2026-10-30 JST）
+
+- **独自SVG19ファイル・専用テスト19ファイルに到達した最新の図解実装コミット：`885042e830dfcf432e40da743ae2841fa3e74471`**。変更は§2.3の新規SVG、専用Nodeテスト、`docs/PARALLEL_CHAT.md`の3ファイルのみ。Codexは統合時にこの実装SHAと`chat/parallel-dev`の最終HEADを照合して全差分を評価する。
+- このSHAを文書に追記する**文書同期コミット自身のSHA**は事前に同じ文書へ書き込めない。最新ブランチHEADは `https://github.com/minkohno-hub/heat-transfer-study-ja/commits/chat/parallel-dev/` から直接取得する。
+- §2.3はローカルNodeテスト**5/5成功**、lxml XML解析、CairoSVG PNG目視、GitHubとのblob SHA一致済み。ただしGitHub CI・既存全体テスト・iPhone実機・講義画面・配信ビルドへの統合・学術校閲は**未実施**。本線PR #1、main、Codexと他ラインには変更なし。
