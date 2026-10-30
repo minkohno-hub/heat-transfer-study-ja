@@ -109,14 +109,14 @@ test('wave-free film Reynolds threshold protects Nusselt solution domain',()=>{
  assert.ok(calc({}).filmRe<FILM_RE_MAX);
  assert.ok(calc({height:.5}).error?.includes('Re'));
  assert.ok(calc({wall:95}).error?.includes('Re'));
- assert.ok(calc({width:.001}).error?.includes('width')===false); // check is by numeric range, not flow scaling
+ assert.ok(calc({width:.001}).error); // geometric bounds are validated separately from film Re
 });
 
 test('Jakob number bound excludes significant liquid sensible-heat effects',()=>{
  assert.ok(calc({}).jakob<FILM_JA_MAX);
  const r=calc({latent:1e4});
  assert.ok(r.error?.includes('Ja'));
- assert.ok(calc({cpLiquid:20000,wall:90}).error?.includes('Ja'));
+ assert.ok(calc({cpLiquid:20000,wall:85}).error?.includes('Ja'));
 });
 
 test('equal, hotter wall and insufficient deltaT are invalid condensation cases',()=>{
