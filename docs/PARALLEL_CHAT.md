@@ -419,3 +419,9 @@
 - **重要な既存ブロッカー**：`scripts/build-public-site.mjs`は図解SVGを公開配信対象としてコピーせず、既存講義の`sectionId`とSVGの表示リンク・拡大UIの連携も未実装。Service Workerのキャッシュ版数・オフライン登録、公開URLのHTTP実取得・404/古いキャッシュの確認も統合担当Codexの作業。このラインは独自素材の作成だけで、**公開アプリへの搭載は未完了**。
 - 統合時には他ブランチの未push差分を保護し、`node --test tests/lesson-diagram-*.test.mjs`、アプリ全体`npm test`、公開サイトビルド、CI、配信HTTP・オフライン・CDNキャッシュ/404、iPhone Safari、ダークモード・スクリーンリーダー・学術校閲を実施する。今回のNodeテスト5件は単独成功であり、全23件・既存アプリ全体・実機テストに合格したことを意味しない。
 - Codexの最終統合・本線PR #1操作はCodex担当。図解チャットからPR #1を変更せず、`chat/parallel-dev`のみを継続する。
+
+### 第23図解・実装成果コミットの確定チェックポイント（2026-10-30 JST）
+
+- **独自SVG23点・専用Nodeテスト23ファイルに到達した最新の図解実装コミット：`a75482e6387637e6c5cd232baf6ba5fc5a46f1ca`**。変更は§9.4の独自SVG、専用テスト、本進捗記録の3ファイルだけ。CodexはこのSHAと取り込み時の実際の`chat/parallel-dev` HEADを照合する。
+- この確定SHAを記録する「文書のみ同期コミット」のSHA自身は、作成前に同じ文書へ埋め込めないため、ブランチの最新HEADは`https://github.com/minkohno-hub/heat-transfer-study-ja/commits/chat/parallel-dev/`で直接確認する。
+- §9.4はNodeテスト**5/5成功**、XML解析、CairoSVG PNG描画目視、ローカルとGitHubのblob SHA照合完了。公開アプリへの組込、全体`npm test`、GitHub CI、実機Safari・スクリーンリーダー、外部学術校閲・実施設計の安全確認は未完了。Codex本線・PR #1・main・他の並行ラインへの変更なし。
