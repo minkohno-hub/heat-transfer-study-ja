@@ -327,3 +327,49 @@ node --test tests/forced-convection-flat-plate.test.mjs
 既存5モデルを保護し、新規の独立7モデル（フィン効率、熱交換器、非定常平板、二面放射、円筒断熱、半無限固体、平板層流強制対流）を追加。**合計12モデルに相当する計算コードが存在**するが、新規7件は全てアプリ本体・公開ページには未統合である。
 
 専用テストの履歴は7+9+11+12+12+12+12=**75件成功・0失敗**。最初の3モデルの27件は独立JavaScript実行環境で、後の4モデルの48件はNode.js標準ランナーで個別実行した。最新追加コードとテストはGitHubから再取得し、検証済みのローカルソースと一致を確認した。公開ビルド、GitHub Pagesの操作試験、端末保存・オフライン・実ブラウザE2E、全体監査は残課題。PRは作成せず、本線PR #1、他ライン、既存レッスン、問題、用語集を変更していない。統合はCodexが行う。
+
+
+## 第8モデル（2026-10-30）：§7.3 円管内の発達乱流強制対流
+
+### 確定済み成果・最新実装コミット
+
+- ブランチ：chat/simulators。PR #1本線／他ラインへ変更なし。起点はPR #1の旧SHA c8d207710374411694898093ca9d6adc16fa0fcf。
+- 追加コード：turbulent-pipe-convection.mjs（実装コミット 7c4b3f439f211f98a0e34d140ee2cf89fe2560e9）。
+- 追加専用テスト：tests/turbulent-pipe-convection.test.mjs（テストコミット ace8328d714931917073981b7e5cdd1ad14abcaf）。
+- この後に本記録を更新したコミットがラインBの最新HEADとなる。常にchat/simulatorsのHEADを確認すること。
+- 今回変更したのは上記の新規2ファイルとこの進捗記録のみ。他のシミュレータや既存アプリを編集しない。PRは作成しない。
+
+### 計算モデルと適用範囲
+
+- 対象は単相・定常・非圧縮・平滑な円管の十分に発達した乱流。内壁温度Twは長さ方向で一定、流体の密度ρ・粘度μ・比熱cp・熱伝導率kfは代表温度で一定とする。断面平均流速u、内径D、加熱長さL、入口混合平均温度Tinを指定する。
+- Re=ρuD/μ、Pr=μcp/kf。Darcy摩擦係数 f=(0.79 ln Re−1.64)^(-2)。Gnielinskiの乱流相関 Nu=[(f/8)(Re−1000)Pr]/[1+12.7 sqrt(f/8)(Pr^(2/3)−1)]。平均熱伝達率h=Nu kf/D。ここではFanning係数とDarcy係数を混用しない。
+- 相関式の代表的な文献範囲はRe≥3000、0.5≤Pr≤2000だが、本学習モデルは遷移域の曖昧さを抑えるため **10000≤Re≤5000000、0.5≤Pr≤2000** の保守的な範囲へ制限した。入口助走区間の影響を減らすため、独自の教育用判定として L/D≥30 も要求。これを完全発達の物理的保証とみなしてはいけない。
+- 流路断面Ac=πD²/4、流体との伝熱面積As=πDL、質量流量ṁ=ρuAc、熱容量流量C=ṁcp、NTU=hAs/C。流れに沿った混合平均温度は T(x)=Tw−(Tw−Tin)exp[−hπDx/(ṁcp)]。Tout=T(L)。壁から流体へ向かう正味熱移動率Qdot=ṁcp(Tout−Tin)。加熱の符号を正、冷却の符号を負とする。
+- hAsΔTlm = Qdotとの一致を検算。ΔTlmはTw−TinとTw−Toutの対数平均であり、数値上の差の丸めを回避するため、ΔTlm=(Tw−Tin)(1−exp(−NTU))/NTUから計算。微小NTUではexpm1を使う。実装は流体の物性を温度依存で再計算しない。
+- 追加出力はDarcy-Weisbach摩擦損失Δpf=f(L/D)ρu²/2 [Pa]、体積流量Vdot=uAc [m³/s]、理想水力動力Δpf Vdot [W]。これは配管継手損失、ポンプ実消費電力・ポンプ効率、入口・出口の局所損失を含まない。
+- UIでは入力フォーム、日本語の式と単位の段階解説、流動方向と壁の加熱・冷却方向を示す独自SVG模式図、位置x/Lに対する流体温度分布、流速に対するhの感度グラフ、比較条件の曲線を用意した。グラフは新規モジュール内で描画し、既存の定常ΔT–Qdotグラフを使わない。感度グラフの横軸0〜1は表示用の正規化座標で、両端の流速m/sを明示している。
+- 主要制約：相関式の平均hを全長へ一様に適用。入口助走・非円形ダクト・粗面・混合対流・自然対流・二相流・温度依存物性・管壁伝導・外側境界・放射・局所損失は含まない。学術・設計への利用前に、物性の代表温度、壁温度、流入乱れ、実物の流路長さ・材質の適合性を別途確認する。
+- 標準例：ρ=996kg/m³、u=1.2m/s、μ=0.000797Pa s、cp=4180J/(kg K)、kf=0.613W/(m K)、D=0.025m、L=3m、Tin=25℃、Tw=60℃。Re=37490.5897、Pr=5.43468、Nu=230.9268、h=5662.3244W/(m² K)、NTU=0.5440、Tout=39.68575℃、Qdot=36014.9505W、管内摩擦圧力損失≈1928.41Pa、理想水力動力≈1.13593W。
+- 一般相関式の照合先：CERN講義資料のGnielinski・Petukhov式 https://indico.cern.ch/event/341722/contribution/10/attachments/671377/922740/Thermal_QA_Coolant_Performance_WP4_25_Sept_2014.pdf 、ならびにIdaho National Laboratory MOOSE実装 https://mooseframework.inl.gov/docs/doxygen/modules/classADWallHeatTransferCoefficientGnielinskiMaterial.html 。数式のみを独立に検証し、文章・図・表の転載はしない。
+
+### 第8モデルのテスト・残留リスク
+
+- Node.js標準ランナーコマンド：node --test tests/turbulent-pipe-convection.test.mjs。**13件成功・0失敗**。実装後のローカルコードで実行し、GitHubへの追加後は取得した実装とテストが一致するか確認する。
+- 内訳：①Re/Pr/Nu/f/質量流量、②出口・LMTD・熱収支、③管軸方向の局所対流量の数値積分と全体熱収支、④入口・出口温度と単調性、⑤温度逆転と等温の極限、⑥流速上昇によるh・圧力損失の増加、⑦長さによるhと温度の分離、⑧摩擦圧力損失と理想水力動力、⑨別相関によるオーダー照合、⑩層流・遷移域拒否、⑪Pr範囲・L/D保護、⑫不正入力の拒否、⑬HTMLエスケープ・SVG・比較グラフ。
+- 公開ビルド、アプリ結合、GitHub Pages上の動作、スマートフォン・Safari/Chrome、キャッシュ・保存復元、第三者の専門家校閲は未実施。数式とNodeの計算検査が通ったことは、実際のアプリ公開完了を意味しない。
+
+### Codexによる本線統合時の注意点
+
+1. PR #1の最新HEADを統合時点で再取得すること。ラインBの変更をPR #1へ直接コミットしたり、本線の新しい変更を古い起点へ巻き戻さない。
+2. 追加対象はturbulent-pipe-convection.mjsとtests/turbulent-pipe-convection.test.mjs。既存のconvection（一定h入力）、flatplate（平板層流強制対流）とは区別し、推奨新モードIDはpipe。
+3. app.jsのimport、SIM_META、ui.simValues、モードタブ、calculateSimulation、renderSimulator、renderSimulatorOutputsOnly、onInput/onChangeへ新モードを安全に追加する。主なexport：PIPE_DEFAULTS、pipeFieldNames、calculatePipeConvection、gnielinskiPipe、pipeBulkTemperatureAt、renderPipeFields、renderPipeSteps、renderPipeDiagram、pipeBulkGraph、pipeVelocityGraph。
+4. 結果表示ではhとNu、Re、Pr、出口温度、熱移動率、圧力損失、理想水力動力を単位とともに区別。負の熱移動率、等温時のゼロ、相関式の入力エラーを確認する。圧力損失や水力動力をポンプ実消費電力と誤認させない。
+5. 既存の共通ΔT–Qdotグラフではなく、新規のx/L対T(x)と流速対hの2グラフを表示。感度グラフのラベルは流速範囲を必ず表示する。
+6. study-core.mjsのvalidateLearningData内simComparisonsに新モードの保存・復元検証を追加してから永続比較を有効化。過去の保存データとインポート・エクスポートの後方互換を監査。
+7. scripts/build-public-site.mjsの明示配信許可リスト、sw.jsのキャッシュ・オフライン、guide.mjsの第7章導線を統合側が更新。モバイル320/390px、Safari/Chrome、ライト/ダーク、E2E、Node全テスト、公開ビルドを実施する。
+8. 入口・出口温度差と流れの変化で物性が変わる実環境を想定する場合は別モデルや補正が必要。既存モデルの機能を削除しない。ユーザー入力の型・範囲・符号に対する保護を維持。
+
+### 第8モデル時点のラインB総括
+
+既存5モデルは未変更。独立新規モデルは8件（フィン効率、熱交換器、非定常平板、二面放射、円筒断熱、半無限体、平板層流強制対流、円管内乱流強制対流）。**合計13モデルに相当する計算モジュールが存在**するが、追加8件は全てGitHub Pagesのアプリ画面へ未統合。
+新規モデルの専用テスト累計は7+9+11+12+12+12+12+13=**88件成功、0失敗**。第1〜3モデルはGitHub保存ソースの独立JavaScript実行、第4〜8モデルはNode.js標準テストランナーで個別検査した。全体のNode一括テスト・公開ビルド・実機E2Eと専門家監査は未実施。監視・Codexは本専用記録とchat/simulatorsのHEAD、および8組の新規ファイルを参照すること。PR作成なし。共有ファイル・本線PR #1・他ラインは改変していない。
