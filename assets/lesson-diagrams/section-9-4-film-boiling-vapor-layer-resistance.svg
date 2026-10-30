@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="860" height="1490" viewBox="0 0 860 1490" role="img" aria-labelledby="film-title film-description" style="max-width:100%" data-origin="original-app-diagram" data-lesson="9.4" data-k-gas="0.030" data-t-wall="180" data-t-saturation="100" data-area="0.10" data-thickness-1="0.0002500" data-thickness-2="0.0005000" data-heat-flux-1="9600.000" data-heat-flux-2="4800.000" data-heat-rate-1="960.000" data-heat-rate-2="480.000" data-resistance-area-1="0.008333333333" data-resistance-area-2="0.016666666667" data-point-count="41" data-model="fixed-stagnant-one-dimensional-conduction-only">
+<title id="film-title">§9.4 蒸気膜の厚さと伝導熱抵抗</title>
+<desc id="film-description">独自の教育用模式図。高温の壁180℃と飽和温度100℃の間に静止した均一蒸気層を仮定し、蒸気の伝導熱流束が厚さに反比例することを比較する。蒸気の熱伝導率0.030 W毎メートルケルビン、面積0.10平方メートル、温度差80ケルビン。蒸気層厚0.25ミリメートルでは面積当たり抵抗0.008333平方メートルケルビン毎ワット、熱流束9600ワット毎平方メートル、熱移動率960ワット。厚さ0.50ミリメートルなら抵抗は0.016667、熱流束4800ワット毎平方メートル、熱移動率480ワット。下段のグラフは厚さ0.25から0.50ミリメートルに対する逆比例曲線41点で、モデルの計算上の数値であり実験測定ではない。実際の膜沸騰で膜厚が自由に一定となるわけではなく、蒸気流・蒸発・放射・界面連成・形状変化が存在する。この固定膜厚・一次元伝導モデルを総伝熱率や安全限界に使用しない。</desc>
+<style>
+ text{font-family:'Noto Sans CJK JP','Hiragino Kaku Gothic ProN',system-ui,sans-serif;font-size:22px}
+ .bg{fill:#fff}.panel{fill:#f3f7fa;stroke:#b6cad8;stroke-width:2}.ink{fill:#1c3345}.muted{fill:#496272}
+ .wall{fill:#c67551;stroke:#995232;stroke-width:2}.vapor{fill:#e9dca7;stroke:#af9b5e;stroke-width:1.5}
+ .liquid{fill:#b7dfeb;stroke:#67aac5;stroke-width:2}.arrow{stroke:#af5b35;stroke-width:4.1;fill:none;stroke-linecap:round;stroke-linejoin:round}
+ .axis{stroke:#3f5f72;stroke-width:2.6;fill:none}.gridline{stroke:#b8cad7;stroke-width:1.5;stroke-dasharray:5 6}
+ .curve{stroke:#1b87ac;stroke-width:4.8;fill:none;stroke-linecap:round}.mark{fill:#a54b7e;stroke:#fff;stroke-width:2}
+ .heading{font-size:33px;font-weight:750}.subhead{font-size:27px;font-weight:700}.small{font-size:20px}.micro{font-size:18px}.value{font-size:25px;font-weight:660}
+ @media(prefers-color-scheme:dark){.bg{fill:#101c27}.panel{fill:#1d3040;stroke:#648195}.ink{fill:#f0f7fc}.muted{fill:#c1d4e2}.wall{fill:#75452e;stroke:#eeb28d}.vapor{fill:#716644;stroke:#d2be83}.liquid{fill:#32677f;stroke:#9dcfe8}.arrow{stroke:#ffa981}.axis{stroke:#c2deef}.gridline{stroke:#70889b}.curve{stroke:#92ddf8}.mark{fill:#ffb3df;stroke:#1d3040}}
+</style>
+<rect class="bg" width="860" height="1490"/>
+<text x="27" y="56" class="heading ink">§9.4 蒸気膜の熱抵抗と膜厚の関係</text>
+<text x="28" y="97" class="small muted">均一・静止した固定厚さの蒸気層だけを考える</text>
+<rect class="panel" x="22" y="115" width="816" height="332" rx="17"/>
+<text x="42" y="159" class="subhead ink">① 壁から蒸気層を通り、液体側へ熱が流れる</text>
+<rect id="wall" class="wall" x="100" y="211" width="110" height="135" rx="4"/>
+<rect id="vapor-film" class="vapor" x="210" y="211" width="170" height="135"/>
+<rect id="liquid" class="liquid" x="380" y="211" width="340" height="135" rx="4"/>
+<path class="arrow" d="M130 279 H460 M448 268 L460 279 L448 290"/>
+<text x="103" y="199" class="micro ink">高温の壁</text>
+<text x="231" y="199" class="micro ink">蒸気膜</text>
+<text x="461" y="199" class="micro ink">液体側</text>
+<text x="100" y="384" class="small ink">T_w = 180 ℃</text>
+<text x="405" y="384" class="small ink">T_sat = 100 ℃</text>
+<text x="44" y="421" class="micro muted">模式図：層幅・矢印は縮尺ではない。壁→液体側が熱の正方向。</text>
+<rect class="panel" x="22" y="463" width="816" height="299" rx="17"/>
+<text x="42" y="508" class="subhead ink">② 固定膜厚モデルの数値比較</text>
+<text x="43" y="549" class="small ink">k_g = 0.030 W/(m·K)、A = 0.10 m²、ΔT = 80 K</text>
+<text x="43" y="595" class="small ink">蒸気膜厚 0.25 mm</text>
+<text x="42" y="629" class="value ink">q″ = 9,600 W/m²　｜　Q = 960 W</text>
+<text x="43" y="676" class="small ink">蒸気膜厚 0.50 mm（2倍）</text>
+<text x="42" y="711" class="value ink">q″ = 4,800 W/m²　｜　Q = 480 W</text>
+<text x="43" y="746" class="micro muted">面積当たり抵抗 R″_g = δ_g/k_g。膜厚2倍で抵抗2倍。</text>
+<rect class="panel" x="22" y="778" width="816" height="610" rx="17"/>
+<text x="42" y="821" class="subhead ink">③ モデル内の逆比例：q″ = k_g ΔT / δ_g</text>
+<path class="axis" d="M170 900 V1118 H753 M158 915 L170 900 L182 915 M743 1107 L753 1118 L743 1129"/>
+<path class="gridline" d="M170 910 H745 M170 1014 H745 M170 1118 H745"/>
+<path id="film-flux-curve" class="curve" d="M170.000 910.000 L184.375 915.073 L198.750 919.905 L213.125 924.512 L227.500 928.909 L241.875 933.111 L256.250 937.130 L270.625 940.979 L285.000 944.667 L299.375 948.204 L313.750 951.600 L328.125 954.863 L342.500 958.000 L356.875 961.019 L371.250 963.926 L385.625 966.727 L400.000 969.429 L414.375 972.035 L428.750 974.552 L443.125 976.983 L457.500 979.333 L471.875 981.607 L486.250 983.806 L500.625 985.937 L515.000 988.000 L529.375 990.000 L543.750 991.939 L558.125 993.821 L572.500 995.647 L586.875 997.420 L601.250 999.143 L615.625 1000.817 L630.000 1002.444 L644.375 1004.027 L658.750 1005.568 L673.125 1007.067 L687.500 1008.526 L701.875 1009.948 L716.250 1011.333 L730.625 1012.684 L745.000 1014.000"/>
+<circle id="thin-point" class="mark" cx="170" cy="910" r="7"/>
+<circle id="thick-point" class="mark" cx="745" cy="1014" r="7"/>
+<text x="153" y="916" text-anchor="end" class="micro ink">9,600</text>
+<text x="153" y="1020" text-anchor="end" class="micro ink">4,800</text>
+<text x="153" y="1124" text-anchor="end" class="micro ink">0</text>
+<text x="170" y="1151" text-anchor="middle" class="micro ink">0.25</text>
+<text x="457" y="1151" text-anchor="middle" class="micro ink">0.375</text>
+<text x="745" y="1151" text-anchor="middle" class="micro ink">0.50</text>
+<text x="458" y="1181" text-anchor="middle" class="micro muted">蒸気膜の仮定厚さ δ_g [mm]</text>
+<text x="42" y="1225" class="micro muted">縦軸：伝導熱流束 q″ [W/m²]。測定値ではない。</text>
+<text x="42" y="1262" class="small ink">限界：この線は実際の膜沸騰の相関曲線ではない。</text>
+<text x="42" y="1298" class="micro muted">蒸気流、蒸発、放射、膜の形状変化、界面連成は除外。</text>
+<text x="42" y="1332" class="micro muted">放射を勝手に足して安全限界や総伝熱量を保証しない。</text>
+<text x="43" y="1372" class="micro muted">R″ = δ/k の単位は m²·K/W（全抵抗 K/W ではない）。</text>
+<text x="430" y="1452" text-anchor="middle" class="micro muted">アプリ独自の教育用作図｜原著図版の転載・トレースなし</text>
+</svg>
