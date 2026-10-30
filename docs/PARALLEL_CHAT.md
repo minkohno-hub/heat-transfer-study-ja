@@ -372,3 +372,9 @@
 - **公開アプリへの連携は未着手**：`scripts/build-public-site.mjs`の公開許可リスト/コピーに図解SVGはまだ含まれず、詳細講義`sectionId`との安全なアセット参照・図解拡大UIとService Workerオフラインキャッシュの統合も未実装。Codexはマージ・配信を分けて実施し、公開URLでのHTTP取得、404、キャッシュ更新、iPhone Safari等の表示・読み上げを検査する。図解がGitHubに存在するだけではアプリの図解完成としない。
 - §9.2の理想球形気泡の式を§9.1のCHF、§9.3のCHFモデル、実在の気泡離脱径や沸騰開始に流用しない。数値例は表面張力一定・圧力差正の仮想条件。統合後は既存の全21専用テスト`node --test tests/lesson-diagram-*.test.mjs`、既存`npm test`、公開ビルド、GitHub CI、実配信・実機、スクリーンリーダー、科学的校閲を実施し、他ラインの未push変更を保護する。
 - Codex週次制限のユーザー報告によるリセット予定は2026-11-04 15:57 JST。**本線統合および最終監査はCodex担当**。図解ラインからPR #1へpush、merge、PR作成、Codexタスクへのメッセージ送信を行わない。
+
+### 第21図解・確定成果コミットと最新統合チェックポイント（2026-10-30 JST）
+
+- **独自SVG21点・対応Nodeテスト21ファイルに到達した最新図解実装コミット：`1cfd37ce20182bee98dac7ce1d53813495d5a451`**。§9.2 SVG・専用テスト・`docs/PARALLEL_CHAT.md`の3ファイルだけを変更した。図解成果コミットと、統合直前の`chat/parallel-dev`最新HEADをCodexが比較し、安全に全差分を取り込む。
+- この確定SHAを追記する文書同期コミット自身のSHAは事前に同じ文書へ書き込めないため、**最新HEADは `https://github.com/minkohno-hub/heat-transfer-study-ja/commits/chat/parallel-dev/` で確認**する。次の図解ができれば新しい到達点・コミットを追記する。
+- §9.2は**Node 5/5成功・XML解析・PNG目視・GitHub SHA一致**。21図が公開アプリへ搭載済みという意味ではなく、講義画面/公開ビルド/キャッシュへの統合、既存全体テスト、GitHub CI、実機、スクリーンリーダー、外部校閲は未完了。Codex本線・PR #1・main・他の並行ラインには一切変更していない。
