@@ -173,6 +173,18 @@ test('diagram and explanatory steps distinguish fluxes and satisfy accessibility
  assert.equal(renderBinaryDiffusionDiagram({error:'bad'}),'');
 });
 
+test('both A and B directional arrows reverse when the equimolar gradient reverses',()=>{
+ const forward=renderBinaryDiffusionDiagram(calc({regime:'equimolar'}));
+ const reverse=renderBinaryDiffusionDiagram(calc({regime:'equimolar',yA1:.05,yA2:.3}));
+ const stagnant=renderBinaryDiffusionDiagram(calc({regime:'stagnant'}));
+ assert.match(forward,/M175 110 L335 110/);
+ assert.match(forward,/M335 155 L175 155/);
+ assert.match(reverse,/M335 110 L175 110/);
+ assert.match(reverse,/M175 155 L335 155/);
+ assert.ok(!stagnant.includes('M335 155 L175 155'));
+ assert.ok(!stagnant.includes('M175 155 L335 155'));
+});
+
 test('two SVG graphs provide physical axes, regime comparison and numerical safety',()=>{
  for(const regime of ['equimolar','stagnant']){
   const r=calc({regime});
