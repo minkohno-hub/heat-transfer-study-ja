@@ -583,3 +583,58 @@ GitHub上へ追加したソースとテストを再取得し、独立JavaScript�
 保護済み既存5種類＋新規独立12種類＝17種類のシミュレータモジュールに相当。ただし新規12種類はまだ公開アプリに未統合。
 専用テストの個別実行履歴：7+9+11+12+12+12+12+13+14+15+13+15＝**145件成功・0失敗**。最初の3種類の計27件と今回第12モデルの15件は独立JavaScript実行環境、残り第4〜11モデルの103件は各Node.js標準ランナーの履歴。累計145件は統合アプリの全体E2Eではない。
 ブランチchat/simulatorsでは新規モジュール・専用テストと本進捗記録のみ編集する。PR #1、本線コード、他ライン、教材や問題は変更しない。監視とCodexは、本記録とブランチの最新HEAD、12組の新規実装＋テストを引き継ぎ、統合後に全体監査を行う。
+
+
+## 第13モデル（2026-10-30）：第11章§11.3・§11.5 二成分気体膜の定常拡散
+
+### 未着手節優先の根拠
+
+教材の章・節一覧（data/book.json）および現在の専用ブランチ内のモデルを照合。既存の12モデルに物質移動専用モデルはなかったため、未着手の第11章「物質移動の導入」の§11.3「二成分混合物におけるフィックの拡散法則」と§11.5「静止媒体中の物質移動」に関連する独立モジュールを追加した。本モデルがこの2節の全文や全課題を網羅することを意味しない。第9章「沸騰とその他の相変化における熱伝達」は引き続き専用モデル未着手であり、次の新規候補として優先度が高い。
+
+### 追加ファイルと正確な個別コミット
+
+- 新規モジュール：binary-gas-diffusion.mjs。初回実装 3cef384a342a9ee2cd0bc3ac21bab0b1d3f8ce13。等モル流と逆濃度勾配時の模式図を修正した最終ソースコミット 39f2be127f1ac3560730d25a3d3300285cbd3e53。
+- 専用テスト：tests/binary-gas-diffusion.test.mjs。初回追加 9b50752fd95aec9d04dfd9e45735408aab38d0fb。逆向きのB成分矢印の回帰テストを追加した最終テストコミット f020b700a64ae5d7bf1d47afa490826c9333dcfa。
+- この後の進捗記録の更新を含む最新のブランチHEADは chat/simulators を正とする。既存5モード・以前の12新規モデル・共有レジストリ・他ライン・本線PR #1を編集しない。
+
+### 理論式・数値精度・単位
+
+対象は理想二成分気体A/Bの静止した平面気体膜内における一次元・等温・等圧・定常の分子拡散。入力は拡散係数DAB [m²/s]、全圧P [Pa]、絶対温度T [K]、膜厚L [m]、面積A [m²]、Aの両端モル分率yA,1とyA,2、Aのモル質量MA [kg/mol]、境界条件を指定するregime。R=8.31446261815324 J/(mol K)、全モル濃度C=P/(RT) [mol/m³]。流束はz=0からz=Lを正方向に表し、逆方向を負で表示する。
+
+1. 等モル相互拡散（regime=equimolar）：NA=−NB、総モル流束N=0、NA=C DAB/L×(yA,1−yA,2)。濃度分率分布yA(z)=yA,1+(yA,2−yA,1)z/Lは直線。
+2. Bが正味静止（regime=stagnant）：NB=0、総モル流束N=NA。分子拡散とモル平均流れを区別し、NA=−C DAB dyA/dz + yA(NA+NB) とする。積分により NA=C DAB/L×ln[(1−yA,2)/(1−yA,1)]。正規化位置u=z/Lに対し1−yA(u)=(1−yA,1)exp{u ln[(1−yA,2)/(1−yA,1)]}。濃度分布は一般に曲線。
+3. Bの対数平均モル分率yB,lm=(yA,1−yA,2)/ln[(1−yA,2)/(1−yA,1)]。同じ端点条件での流束倍率はNA,stagnant/NA,equimolar=1/yB,lm（両端組成差がゼロのとき流束の比は定義されずnullを返す）。数値計算では log1p および expm1 を使用し、小さい濃度差でも桁落ちを抑制。
+4. 成分Aのモル移動速度 [mol/s]=NA A、質量移動速度 [kg/s]=NA A MA。局所拡散流束 JA=NA−yA(NA+NB)、JB=NB−(1−yA)(NA+NB)。JBが負でも、B静止モデルの正味NB=0と矛盾しない。Bの拡散成分とモル平均流れの寄与が相殺される。
+5. yA,1,yA,2の教育用入力を0〜0.95に制限し、yA→1に伴う対数発散を回避。有限の十進数だけ受け付け、入力の物理的な上限・下限を検証。気液界面の平衡、化学反応、乱流・強制流動、圧力勾配、液体拡散、Stefan–Maxwell多成分拡散、高圧非理想気体、温度依存物性は実装範囲外。
+6. 日本語で数式と物理的前提を示す解説、入力フォーム（regimeはselect）、正味流束の矢印が組成反転に対応するSVG模式図、両端間のAモル分率分布グラフ、入口分率yA,1を動かした成分A流束グラフを実装。各グラフで等モルとB静止を同一入力で重ねて比較する。入力値はHTMLエスケープする。
+
+理論の独立照合先：
+- University of Michigan / Elements of Chemical Reaction Engineering Chapter 14, External Diffusion Effects, equimolar counterdiffusion versus stagnant film: https://websites.umich.edu/~elements/7e/14chap/summary-example2.html
+- 上記は一般に公開された方程式の照合であり、図・本文・数値表の転載や原著教材の承認を主張しない。研究設計に適用する場合は拡散係数・相平衡・境界層の厚さの決定や物性仮定を別途検証する。
+
+### 基準計算・テスト
+
+初期値：DAB=2.5×10^-5 m²/s、P=101325 Pa、T=298.15 K、L=0.002 m、A=0.01 m²、yA,1=0.30、yA,2=0.05、MA=0.018 kg/mol。C≈40.8740445 mol/m³。等モルNA≈0.1277313891 mol/(m² s)、B静止NA≈0.1560272893 mol/(m² s)、倍率≈1.2215266。B静止のNA面積積分≈0.00156027289 mol/s。全て入力条件に依存する理想二成分気体モデルの例であり、実測値ではない。
+
+GitHub保存済みの新規ソース・テストを再取得して、独立JavaScript検査環境で18件のテストを実行、**18件成功・0件失敗**。範囲：①理想気体濃度と直接算式、②等モルの正味流束収支、③B静止の拡散/対流成分、④等モルの直線濃度分布、⑤B静止の対数型濃度分布、⑥濃度勾配とFick+Stefan移流項、⑦対数平均B分率、⑧濃度差の反転と符号、⑨端点同濃度でのゼロ流束、⑩DAB/P/T/L/面積/質量換算のスケーリング、⑪極小組成差と高濃度、⑫境界位置の検証、⑬不正入力、⑭HTMLエスケープと選択式入力、⑮アクセシブルSVG・解説、⑯A/Bの逆向き矢印回帰、⑰2グラフの軸とモード比較、⑱決定論的入力探索。
+
+追加の360条件で濃度勾配の数値微分と局所Fick流束を独立照合し、最大相対残差（分母1+|流束|）は約3.6×10^-11。360条件すべてのグラフ表示にNaN/Infinity/undefinedが存在しないことを確認。
+
+**このモデルについてNode.js標準ランナーそのものは未実行**。Nodeでの全テスト一括検証・公開ビルド・GitHub Pages実表示・ブラウザE2E・スマートフォン操作・専門家校閲はCodex統合時の残課題。
+
+### Codex統合担当への手順・未解決事項
+
+1. PR #1の最新HEADを統合時に再取得。本ラインの分岐起点c8d207710374411694898093ca9d6adc16fa0fcfへ本線の変更を巻き戻さない。追加するのは新規モジュールbinary-gas-diffusion.mjsとtests/binary-gas-diffusion.test.mjs。このラインではPR #1を編集・マージ・PR化しない。
+2. app.jsのSIM_META、ui.simValues、タブ、calculateSimulation、renderSimulator、renderSimulatorOutputsOnly、onInput/onChangeへ推奨新モード diffusion を登録。regimeは数値入力ではなくselectで、equimolar/stagnantのみ合法。旧conductionやconvection、相変化・熱抵抗のモードと区別する。
+3. 主なexports：BINARY_DIFFUSION_DEFAULTS、binaryDiffusionFieldNames、calculateBinaryDiffusion、binaryDiffusionMoleFractionAt、binaryDiffusionFluxComponentsAt、renderBinaryDiffusionFields、renderBinaryDiffusionSteps、renderBinaryDiffusionDiagram、binaryDiffusionProfileGraph、binaryDiffusionBoundaryGraph。結果がerrorなら計算出力や比較保存へ進めず、入力内容を維持する。
+4. 出力は濃度[mol/m³]、流束[mol/(m² s)]、移動速度[mol/s]、質量移動速度[kg/s]を区別。熱流束W/m²や温度グラフを流用しない。等モルのNB=−NA、B静止のNB=0、モル平均の輸送項を正しく表示する。モード切替により符号・Bの矢印が変わることを確認。
+5. study-core.mjsのvalidateLearningData内simComparisonsについて新しいdiffusionモードの許容・合法値チェックを追加してから比較条件を永続化し、既存保存データの後方互換性を保つ。新規のモードに保存UIが未対応なら保存ボタンは無効化する。
+6. scripts/build-public-site.mjsの明示配信許可リスト、必要なsw.jsのキャッシュバージョン・オフライン配信、guide.mjs第11章の導線を更新する。関連章は§11.3、§11.5。全76節の網羅を本モジュールの存在だけで主張しない。
+7. 全Nodeテスト・公開ビルド・Safari/Chrome・iPhone・320/390px・ライト/ダーク・保存復元・オフラインE2E、負の流束、同一モル分率、0〜0.95境界、2つのグラフのラベルを統合後に監査する。
+8. 未着手の第9章（沸騰）と、第11章のその他の物質移動節について追加モデルを検討する。ただし独自相関式の適用性が曖昧な領域を物理的に保証して数値化しない。
+
+### ラインB総括：第13モデル追加後
+
+既存5モデル（共有コード未変更）＋独立新規13モデル＝計18種類に相当する計算モジュール。ただし追加13モデルは**全て公開アプリのタブには未統合**。
+
+各モデルの個別テスト履歴の合算は145+18=**163件成功、0件失敗**。今回の18件と第1〜3モデル等は独立JavaScript環境で検証した履歴であり、Node.jsの全件一括実行や統合済みアプリのE2Eではない。本ラインは独立ソースと専用テストの13組および進捗記録のみを編集し、元の5モデル・共有レジストリ・教材・問題・他ライン・本線PR #1を変更しない。
