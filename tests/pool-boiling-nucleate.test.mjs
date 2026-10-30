@@ -109,9 +109,11 @@ test('viscosity and thermal conductivity enter through liquid Prandtl number',()
  const a=calc({}),b=calc({viscosity:.000282*2});
  close(b.pr/a.pr,2);
  close(b.flux/a.flux,.25,1e-9);
- const c=calc({conductivity:.679*2});
- close(c.pr/a.pr,.5);
- close(c.flux/a.flux,8);
+ const doubled={...NUCLEATE_DEFAULTS,conductivity:.679*2};
+ close((doubled.viscosity*doubled.cp/doubled.conductivity)/a.pr,.5);
+ close(rohsenowHeatFlux(doubled,doubled.superheat)/a.flux,8);
+ // Raw correlation predicts beyond CHF, so the public calculator must reject the case.
+ assert.match(calc({conductivity:.679*2}).error,/CHF/);
 });
 
 test('fluid inputs with unsupported Pr or invalid density relationship are rejected',()=>{
