@@ -98,7 +98,7 @@ export function renderBinaryDiffusionDiagram(r){
  if(!r||r.error)return "";
  const v=r.values,F=binaryFmt,forward=r.fluxA>=0;
  const arrowA=forward?"M175 110 L335 110 M325 103 L335 110 L325 117":"M335 110 L175 110 M185 103 L175 110 L185 117";
- const arrowB=v.regime==="stagnant"?"":"M335 155 L175 155 M185 148 L175 155 L185 162";
+ const arrowB=v.regime==="stagnant"?"":forward?"M335 155 L175 155 M185 148 L175 155 L185 162":"M175 155 L335 155 M325 148 L335 155 L325 162";
  const desc=`膜の両端Aモル分率${F(v.yA1)}と${F(v.yA2)}。Aの正味移動方向は${forward?"右":"左"}。Bは${v.regime==="stagnant"?"正味静止":"Aと逆向きに等モル移動"}。`;
  return `<figure class="simulation-figure"><svg role="img" class="sim-physical-diagram" viewBox="0 0 520 225" xmlns="http://www.w3.org/2000/svg"><title>二成分気体膜の分子拡散模式図</title><desc>${binaryEsc(desc)}</desc><rect x="172" y="50" width="168" height="140" class="diagram-fluid"/><path d="${arrowA}" class="diagram-arrow"/><path d="${arrowB}" class="diagram-arrow"/><text x="9" y="74" class="chart-label">z=0</text><text x="400" y="74" class="chart-label">z=L</text><text x="190" y="39" class="chart-label">等温・等圧の気体膜</text><text x="196" y="98" class="chart-label">Aの正味流束</text><text x="196" y="183" class="chart-label">${v.regime==="stagnant"?"Bは正味静止":"Bは逆方向に拡散"}</text><text x="8" y="207" class="chart-label">yA,1=${binaryEsc(F(v.yA1))}</text><text x="375" y="207" class="chart-label">yA,2=${binaryEsc(F(v.yA2))}</text></svg><figcaption>独自の概念図。実際の組成分布は濃度グラフに示します。矢印は分子の個々の運動ではなく、正味流束です。</figcaption></figure>`;
 }
