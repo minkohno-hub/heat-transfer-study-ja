@@ -638,3 +638,69 @@ GitHub保存済みの新規ソース・テストを再取得して、独立JavaS
 既存5モデル（共有コード未変更）＋独立新規13モデル＝計18種類に相当する計算モジュール。ただし追加13モデルは**全て公開アプリのタブには未統合**。
 
 各モデルの個別テスト履歴の合算は145+18=**163件成功、0件失敗**。今回の18件と第1〜3モデル等は独立JavaScript環境で検証した履歴であり、Node.jsの全件一括実行や統合済みアプリのE2Eではない。本ラインは独立ソースと専用テストの13組および進捗記録のみを編集し、元の5モデル・共有レジストリ・教材・問題・他ライン・本線PR #1を変更しない。
+
+
+## 第14・15モデル（2026-10-30）：第9章§9.2核沸騰と§9.3限界熱流束
+
+### 未着手節優先と作業の境界
+
+data/book.jsonにある第9章§9.2「核沸騰」と§9.3「プール沸騰の限界熱流束」を初めて対象にした。第9章はこれ以前の追加13モデルで専用モデル未着手。今回は相関式の信頼範囲の異なる2現象を別々の独立モデルとして作成した。§9.1沸騰曲線、§9.4膜沸騰、§9.5最小熱流束、§9.6遷移沸騰、§9.7〜9.11の応用は未着手。今回の追加を「第9章の完成」や節の全問題のカバレッジとして数えない。
+
+- §9.3 新規実装：pool-boiling-chf.mjs。ソースコミット 70599182fb48c1bf36ab373b1ed169a803ec562c。
+- §9.3 新規テスト：tests/pool-boiling-chf.test.mjs。初回コミット 31eabfc0ca3377f2f1af50d1555e3734bd22bca0、検査条件の修正コミット b21202c8e63b137dccfd36c1ec914f7dcf33a8da。
+- §9.2 新規実装：pool-boiling-nucleate.mjs。ソースコミット 2bd3d93e172d25aad7981d43d3686617b737fda4。
+- §9.2 新規テスト：tests/pool-boiling-nucleate.test.mjs。初回コミット 3c4640e86caf39142aa8452f9c1f442875b30237、CHFが正しく拒否したケースを相関式単体検査と分けた最終テストコミット a369bbc8919145564b9f5b123e474f8f83c25ef0。
+- 本記録追記後の最新コミットはchat/simulatorsのHEADを正とする。起点c8d207710374411694898093ca9d6adc16fa0fcfから既存モード・他の新規モデル・共有アプリ・教材・本線PR #1を変更しない。PR作成なし。
+
+### §9.3 Zuber型CHFの物理モデル
+
+対象：流れのない飽和単一液体のプール沸騰で、十分大きい上向き水平加熱面を理想化したモデル。入力はρl [kg/m³]、ρv [kg/m³]、hfg [J/kg]、σ [N/m]、面積A [m²]、比較する熱流束q″applied [W/m²]。g=9.80665 m/s²、係数0.131を固定する。密度はρl>ρv>0が必須。圧力から物性を推定せず、飽和圧力に適合する物性を利用者が入力する。モデル値は推定であって安全設計上の許容値ではない。
+
+q″CHF=0.131 hfg sqrt(ρv)[σg(ρl−ρv)]^(1/4) [W/m²]。
+QCHF=A q″CHF [W]、熱流束比 q″applied/q″CHF、差 q″CHF−q″applied [W/m²]、毛管長さLc=sqrt(σ/[g(ρl−ρv)]) [m]、CHF換算の蒸気質量流束 q″CHF/hfg [kg/(m² s)]。入力熱流束がCHF以上でも比較は計算するが「核沸騰を安定に継続できる」という推論は拒否する。CHF比80%以上で警告。表面張力倍率に対する形式的なqCHF感度曲線と模式SVG、日本語の式・単位・注意点を追加。
+
+この0.131は普遍的な安全係数ではない。ヘーターの形状・寸法・姿勢・表面濡れ性・粗さ、液体過冷度・入口流速・圧力・容器拘束・低重力等により実測CHFが大きく変動し得る。飽和液体と蒸気の密度比が小さい領域、相界面が不明瞭になる臨界点近傍などで相関を無条件に使わない。
+
+### §9.2 Rohsenow核沸騰の物理モデル
+
+対象：静止・飽和した単一液体の大面積プールで、十分発達した核沸騰の経験相関。入力はρl、ρv、液体の粘度μl [Pa s]、熱伝導率kl [W/(m K)]、比熱cpl [J/(kg K)]、潜熱hfg、表面張力σ、流体・加熱面の組合せと仕上げに依存する係数Csf、経験指数n、壁面過熱度ΔTe=Tw−Tsat [K]、面積A。Prl=μl cpl/kl。標準例では水に近い飽和物性とCsf=0.013、n=1を仮入力するが、これはすべての流体・表面に通用する値ではない。
+
+q″R=μl hfg sqrt[g(ρl−ρv)/σ] × [cpl ΔTe/(Csf hfg Prl^n)]³。
+h=q″R/ΔTe [W/(m² K)]、Q=q″R A [W]、理想化した蒸気の生成率 Q/hfg [kg/s]。実際の蒸気生成率や核沸騰開始点を予測するモデルではない。
+ΔTe>0の教育用範囲は0.1〜100 K、0.1≤Prl≤1000。Rohsenow予測q″Rが上記Zuberの推定q″CHF以上の場合には結果を計算可能な核沸騰状態として返さず、エラーで外挿禁止を明示。CHF比80%以上では警告する。2つの異なる経験相関の形式的な交点ΔTe*を逆算するが、「実測のCHF時壁温」や「沸騰開始温度」として扱わない。
+表示は入力フォーム、核沸騰と気泡の独自模式SVG、過熱度対熱流束グラフ、Csf倍率に対する熱流束感度、式・単位・適用性の日本語解説。過熱度曲線ではCHF超過部分の表示を打ち切り、膜沸騰や遷移沸騰の架空曲線を描かない。
+
+外部根拠の照合先（一般式のみを独自実装。図・本文の転載なし）：
+- Rohsenow核沸騰式とCsf・nの役割：https://doc.comsol.com/6.3/doc/com.comsol.help.heat/heat_ug_theory.07.102.html
+- Rohsenow原著の書誌情報：https://cir.nii.ac.jp/crid/1360576284679903104 （1952年、DOI 10.1115/1.4015984）
+- Zuberと0.149を含む他のモデル係数との差、実機寸法・核沸騰サイトへの依存：https://www.sciencedirect.com/science/article/pii/S1290072915000149
+- CHFの姿勢・表面形状・濡れ性等による変動：https://www.tandfonline.com/doi/full/10.1080/00223131.2016.1209138
+
+### 基準計算と検証
+
+水に近い仮想飽和物性ρl=958.4 kg/m³、ρv=0.597 kg/m³、hfg=2257000 J/kg、σ=0.0589 N/m、A=0.01 m²で、q″CHF≈1107944.64085 W/m²、QCHF≈11079.4464 W（0.131係数）。
+核沸騰は上記にμl=0.000282 Pa s、kl=0.679 W/(m K)、cpl=4216 J/(kg K)、Csf=0.013、n=1、ΔTe=10 Kを追加。Prl≈1.750975、q″R≈140461.957985 W/m²、Q≈1404.61958 W、h≈14046.1958 W/(m² K)。形式上の相関交点ΔTe*≈19.9061 K。実測値や推奨運転条件ではない。
+
+GitHubに保存した実装・テストを再取得し、それらを独立JavaScript環境で実行して§9.3テスト17件、§9.2テスト19件、**計36件すべて成功・失敗0**。物性・密度差・潜熱・σの尺度則、直接式による熱・質量収支、CsfとΔTeの3乗則、液体Prとn、固定面積に対する熱流束不変性、CHF近傍/超過時の警告・計算拒否、誤入力・数値範囲、HTMLエスケープ、模式図・感度グラフを検査。加えて420の決定論的な物性/過熱度の組合せを横断検査し、核沸騰モデル243組を受理、177組はCHF超過として意図どおり拒否。別モジュールのZuber CHF同士に数値不一致なし。有効なグラフにNaN/Infinity/undefinedの混入なし。
+
+専用Nodeテストのコマンド：
+node --test tests/pool-boiling-chf.test.mjs tests/pool-boiling-nucleate.test.mjs
+この2件は今回、Node.js標準ランナー実機ではなく、GitHub取得ソースの独立JavaScript検査環境で実行。統合担当がNodeで再実行すること。公開ビルド、ブラウザでの動作、iPhone、保存/復元、オフライン、専門家による実機の安全評価は未実施。
+
+### Codex統合担当への具体的な引き継ぎ
+
+1. 本線PR #1の最新HEADを必ず確認。ラインBの起点c8d2077に巻き戻さず、今回の独立した新規2モジュールと2テストを安全に取り込む。モジュールは相互依存なし、別々にESM import可能。本ラインからPRを作成・更新・統合しない。
+2. 推奨新モードID：nucleate（§9.2）、chf（§9.3）。app.jsにおけるSIM_META、ui.simValues、計算関数分岐、入出力フォーム、解説、模式図、専用グラフ、イベント処理を新規2モードに対応。既存radiation、convection、condensation等を置き換えない。
+3. 核沸騰の主なexport：NUCLEATE_DEFAULTS、nucleateFieldNames、rohsenowHeatFlux、nucleateZuberLimit、calculateNucleateBoiling、renderNucleateFields、renderNucleateSteps、renderNucleateDiagram、nucleateHeatFluxGraph、nucleateSurfaceSensitivityGraph。
+4. CHFの主なexport：CHF_DEFAULTS、CHF_COEFFICIENT、chfFieldNames、zuberHeatFlux、calculateCriticalHeatFlux、renderCriticalHeatFluxFields、renderCriticalHeatFluxSteps、renderCriticalHeatFluxDiagram、criticalHeatFluxSensitivityGraph。
+5. 核沸騰の高い過熱度ではcalculateNucleateBoilingがCHF超過をerrorとして返す。無効条件で予測値・グラフ・保存を表示せず、入力を維持。CHF側は比較用入力appliedFlux≥CHFでもratioと警告を返すが、安全な核沸騰を保証する情報に変換しない。条件不足を数値で補間しない。
+6. 結果の単位を区別：過熱度K、q″[W/m²]、h[W/(m² K)]、Q[W]、蒸気質量流量[kg/s]、形状を表す面積[m²]。核沸騰曲線とCHFの相関推定を同一の物理現象と誤認させない。核沸騰グラフのCHF超過部分は描画しない。
+7. study-core.mjsのvalidateLearningData内simComparisonsの新規モード合法値検証を実装するまでは比較条件を端末保存しない。旧保存データを壊さずに追加する。scripts/build-public-site.mjsの明示配信許可リスト、sw.jsのオフラインキャッシュ、guide.mjs第9章の導線も統合担当が更新。
+8. Node全テスト・公開ビルド・Safari/Chrome・iPhone・320px/390px・ライト/ダーク・比較表示・端末保存復元・オフラインE2Eを実施。Csfの表面依存、CHF値の安全性に関わる注記、CHF跨ぎのエラー表示を優先して確認。
+9. 第9章の残り未着手§9.1、§9.4〜9.11は別途モデルの適用範囲を検証して優先的に着手する。追加だけで節内容を「完成」と数えない。外部専門家による機器安全設計への適用審査は未実施。
+
+### ラインB最新到達点（第15モデル時点）
+
+既存5モデル保護＋新規独立15モデル＝**計20種類の計算モードに相当するコード**。追加15モデルはまだ公開アプリに未統合。新規専用テストの個別実行履歴の合計はこれまで163件＋今回36件＝**199件成功・0失敗**。これは独立モデルのテスト合算であり、Nodeでの全件一括実行、公開ページ・実機のE2Eや専門家による工学設計保証ではない。
+
+本ラインで変更したのは新規モジュール15ファイル、専用テスト15ファイル、および本進捗記録のみ。他ライン・教材・問題・共有レジストリ、本線PR #1を変更しない。監視とCodexが統合する際にはchat/simulators最新HEADと本記録を採用すること。
