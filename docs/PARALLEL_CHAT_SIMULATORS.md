@@ -534,3 +534,52 @@ Node.js v22.16.0 の標準ランナー実行：node --test tests/laminar-pipe-co
 既存5モデルを保護し、新規11モデルを追加。今回追加のlaminar-pipe-convection.mjsと専用テストは、他の10組と同じく独立モジュールのままで公開アプリには未登録。
 独立テストの履歴は **7+9+11+12+12+12+12+13+14+15+13=130件成功・0失敗**。これらは各モジュールの個別テストであり、全体のGitHub Pages結合・公開ビルド・実ブラウザE2Eの完了ではない。
 起点はPR #1のc8d2077。共有ファイルの変更・削除なし、新しいPRなし。chat/simulatorsの最新HEADから必要な新規ファイル11組を取り込み、既存の5モードと教材を保護する。統合の担当はCodexであり、このラインでは実施しない。
+
+## 第12モデル（2026-10-30）：§8.5 鉛直平板上の平滑な層流膜状凝縮
+
+### 追加ファイル・最新の個別コミット
+- 実装：laminar-film-condensation.mjs、実装コミット 75af1b72aeea24b5775c09d0ec1e53a4060fb2b0。
+- テスト：tests/laminar-film-condensation.test.mjs、最新テスト修正コミット 93b910b156eecded0df1db4a2baeaff083fc00a9。
+- 本記録の更新後の最新HEADはchat/simulatorsブランチを参照する。本線PR #1、既存の5シミュレータ、既存11追加モデル、教材・問題・用語集、他ラインのファイルは編集しない。PR作成・統合も実施しない。
+
+### 科学モデルと前提
+対象は静止した純粋な飽和蒸気が、等温の鉛直平板の片面で膜状凝縮する現象。凝縮液が重力で滑らかに流下する、波立たない薄膜・層流・一定物性・薄膜内伝導支配・上端に液膜流入なしを仮定。流体物性は代表膜温度で使用者が評価して入力する。
+
+記号：凝縮液の密度ρl、蒸気密度ρv、凝縮液の粘度μl、凝縮液熱伝導率kl、潜熱hfg、凝縮液比熱cpl、板高さL、片面幅W、飽和温度Tsat、壁温Tw。g=9.80665 m/s²、正の温度差ΔT=Tsat−Tw。新規モデルでは凝縮が成立するΔT≥0.01 Kを入力要件とし、温度逆転やΔT=0は本モデルの適用外として計算を拒否する。
+
+- 平均熱伝達率 hbar=(2√2/3)[gρl(ρl−ρv)hfg kl³/(μl LΔT)]^(1/4) [W/(m² K)]。定数は約0.942809。一般に0.943と丸めて示されるNusseltの平滑層流液膜解と同等。
+- x=0を平板上端、x=Lを下端とすると、膜厚 δ(x)=[4μl kl ΔT x/{gρl(ρl−ρv)hfg}]^(1/4) [m]。局所熱伝達率hx=kl/δ(x)。x=0では局所hが数学的に発散するため、局所h(0)はエラーとして拒否し、グラフはx/L=0.01〜1のみ表示。膜厚グラフはx/L=0〜1。
+- 全放熱 Qdot=hbar L W ΔT [W]。凝縮の質量流量 mdot≈Qdot/hfg [kg/s]。上端からxまでの液膜累積質量流量はmdot(x)=mdot(L)(x/L)^(3/4)。積分から求めた放熱量と、液膜流量の独立運動量収支 Γ=ρl(ρl−ρv)gδ³/(3μl)が一致する。
+- 出口の液膜Re=4 mdot/(Wμl)。理想的な平滑（波立たない）液膜の保守的な適用基準としてRe≤30。波立つ層流領域や乱流領域では計算エラーとし、適切な別相関が必要と通知。
+- Jakob数Ja=cpl ΔT/hfg≤0.1を、膜の顕熱を無視する近似の教育上の閾値として使用。Jaが大きい場合はRohsenow型の潜熱補正や別モデルを検討するようエラーを返す。この閾値を普遍的な工学設計基準と誤解しない。
+- 熱移動率、凝縮量[kg/s, kg/h]、平均Nu、液膜出口厚さ[mm]、局所hおよびxに沿う膜厚と局所hのSVGグラフ、流下・熱流方向の模式図、計算式・仮定・制限を説明する日本語UIを追加。比較条件を描画できるが公開アプリへの比較保存は未登録。
+- 蒸気の主流せん断、非凝縮ガス、滴状凝縮、表面張力・波立ち・滴下、顕熱の厳密な評価、凝縮液の粘度・熱伝導率の温度依存、管・曲面、二次元端部効果は含まない。
+- 他の既存convection、natural（単相自然対流）および各管内モデルとは**別モード**であり置き換えない。
+
+独立の理論照合：Perry's Handbook の古典的Nusselt式、Scientific/engineering software ht Nusselt_laminar https://ht.readthedocs.io/en/latest/ht.condensation.html 、ScienceDirectの液膜波立ち境界 https://www.sciencedirect.com/topics/engineering/condensate-film 、ASMEの液膜不安定性論文 https://doi.org/10.1115/1.2198249 。一般に周知された方程式を独立実装し、原教材・外部書籍の画像・文章・表をコピーしていない。出典先を表示することと当該機関の専門家査読を得たことは別。
+
+### 基準条件・検算
+ρl=958 kg/m³、ρv=0.6 kg/m³、μl=2.82e−4 Pa s、kl=0.68 W/(m K)、hfg=2.26e6 J/kg、cpl=4200 J/(kg K)、L=0.1 m、W=0.4 m、Tsat=100 ℃、Tw=98 ℃。
+hbar=17298.468658 W/(m² K)、Qdot=1383.877493 W、mdot=0.00061233517 kg/s、液膜出口Re=21.7140、出口膜厚=0.0524131 mm、Ja=0.00371681。上端は理想化された数学的特異点のため局所hは表示しない。
+
+### 専用テストと未検証事項
+GitHub上へ追加したソースとテストを再取得し、独立JavaScript実行環境で15件を実行、**15成功・0失敗**。確認項目：①既知の他物性条件でのNusselt係数、②標準例の独立算式、③膜厚と局所hのべき乗則、④凝縮液運動量収支と潜熱収支、⑤局所hの積分と全放熱の一致、⑥流下高さごとの凝縮質量流量、⑦幅の比例則、⑧高さ感度、⑨温度差感度、⑩粘度・熱伝導率・蒸気密度感度、⑪膜Reによる適用拒否、⑫Jaによる適用拒否、⑬温度差ゼロ・逆向きの拒否、⑭不正入力・絶対零度・密度順序、⑮日本語表示・HTMLエスケープ・SVGグラフ・比較曲線。
+
+追加の決定論的な360入力組合せの探索では、成立した106条件すべての解説・両グラフにNaN/Infinity/undefinedがないことを確認。残り254条件は物性入力または理論適用域外として計算拒否。**今回のテストはNode.js標準ランナー実行ではなく、GitHub保存済みのJavaScriptを独立実行した検査。** 統合担当はnode --test tests/laminar-film-condensation.test.mjsを含む全テストをNode.jsで再実行する。
+
+公開ビルド、GitHub Pages実画面、Safari・Chrome/iPhone 320/390px、端末比較保存復元、Service Worker/オフライン、外部の専門家による適用精度監査は未実施。
+
+### Codexによる本線最終統合時のチェックリスト
+1. PR #1最新HEADを統合直前に再取得し、古い起点c8d207710374411694898093ca9d6adc16fa0fcfに巻き戻さず、新規ファイル2件を現在の本線に取り込む。ここではPR #1を変更しない。
+2. 新モードID候補condensation。app.jsのimport・SIM_META・ui.simValues初期値・モードタブ・calculateSimulation・renderSimulator・renderSimulatorOutputsOnly・onInput/onChangeへ新規分岐を追加。
+3. 主なexports：CONDENSATION_DEFAULTS、condensationFieldNames、nusseltFilmCoefficient、calculateFilmCondensation、filmThicknessAt、filmLocalCoefficient、filmCumulativeMassFlow、renderCondensationFields、renderCondensationSteps、renderCondensationDiagram、condensationThicknessGraph、condensationLocalGraph。計算結果がerrorの場合は出力や保存を止め、入力値を保つ。
+4. 表示にはhbar、Nu、Re、Ja、膜厚、Qdot、mdotをそれぞれ適切な単位で出す。厚さδグラフの横軸x/Lと局所hグラフの横軸x/Lは既存のΔT対Qdotグラフでは代用しない。x=0における発散を有限値と表記しない。
+5. study-core.mjsのvalidateLearningData・simComparisonsに合法なcondensationモードを追加し、保存・インポート/エクスポート・旧データの後方互換を維持する。許容される物性値の上限下限と凝縮前提を保存時に検証する。
+6. scripts/build-public-site.mjsの配信許可リストへ新規ESMを追加し、sw.jsのオフラインキャッシュを更新。guide.mjsと§8.5からの導線は最新本線に合わせて整備する。
+7. Node全テストと公開ビルド、実ブラウザ・320/390px・アクセシビリティ・端末保存復元・オフラインE2Eを実施。膜Re>30・Ja>0.1・温度逆転時のエラーUI、グラフ単位、数値入力の不正値を確認する。
+8. 膜の波立ち、非凝縮性ガス、温度依存物性を含む実機性能はこの理論解では保証しない。全モデル統合後に専門家を交えた相関式と適用範囲の再監査を行う。
+
+### ラインB最新到達点（第12モデル）
+保護済み既存5種類＋新規独立12種類＝17種類のシミュレータモジュールに相当。ただし新規12種類はまだ公開アプリに未統合。
+専用テストの個別実行履歴：7+9+11+12+12+12+12+13+14+15+13+15＝**145件成功・0失敗**。最初の3種類の計27件と今回第12モデルの15件は独立JavaScript実行環境、残り第4〜11モデルの103件は各Node.js標準ランナーの履歴。累計145件は統合アプリの全体E2Eではない。
+ブランチchat/simulatorsでは新規モジュール・専用テストと本進捗記録のみ編集する。PR #1、本線コード、他ライン、教材や問題は変更しない。監視とCodexは、本記録とブランチの最新HEAD、12組の新規実装＋テストを引き継ぎ、統合後に全体監査を行う。
