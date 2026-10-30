@@ -373,3 +373,52 @@ node --test tests/forced-convection-flat-plate.test.mjs
 
 既存5モデルは未変更。独立新規モデルは8件（フィン効率、熱交換器、非定常平板、二面放射、円筒断熱、半無限体、平板層流強制対流、円管内乱流強制対流）。**合計13モデルに相当する計算モジュールが存在**するが、追加8件は全てGitHub Pagesのアプリ画面へ未統合。
 新規モデルの専用テスト累計は7+9+11+12+12+12+12+13=**88件成功、0失敗**。第1〜3モデルはGitHub保存ソースの独立JavaScript実行、第4〜8モデルはNode.js標準テストランナーで個別検査した。全体のNode一括テスト・公開ビルド・実機E2Eと専門家監査は未実施。監視・Codexは本専用記録とchat/simulatorsのHEAD、および8組の新規ファイルを参照すること。PR作成なし。共有ファイル・本線PR #1・他ラインは改変していない。
+
+
+## 第9モデル（2026-10-30）：円柱まわりの横流れ強制対流
+
+### 最新の成果・専用コミット
+
+- 専用ブランチ：chat/simulators。起点はPR #1の古いc8d207710374411694898093ca9d6adc16fa0fcf。本線PR #1および他ラインのファイルは一切変更しない。
+- 新規計算・描画モジュール：cylinder-crossflow.mjs。最終内容確定コミット：ba36c1171f66e5fffc21bfa261fd2a1c1dcf5650。
+- 専用Node.jsテスト：tests/cylinder-crossflow.test.mjs。最終内容確定コミット：819b30cbdf2cd9067df4ad34ee1cc7a136800625。
+- 本記録の追記によってブランチHEADがさらに進むため、最新HEADの完全なSHAはchat/simulatorsの参照先を取得すること。追加PRは作らない。
+- 新規2ファイルと専用進捗記録以外の既存ファイルは一切変更しない。配信アプリへの統合はCodexが行う。
+
+### 対象・数式・適用条件
+
+第7章§7.6「円柱横流れの熱伝達」の補助教材。等温の長い平滑円柱の側面を、軸と直角の定常・一様な強制主流が流れる場合に、円周平均の熱伝達率hおよび熱移動率を推定する。管内の乱流モデル、平板表面上の層流モデルとは別の相関を用い、後流や局所速度・温度場を数値的に解くCFDではない。
+
+- 入力：流体密度ρ [kg/m³]、速度u∞ [m/s]、流体粘度μ [Pa·s]、比熱cp [J/(kg·K)]、熱伝導率kf [W/(m·K)]、円柱外径D [m]、長さL [m]、一定表面温度Ts [℃]、主流温度T∞ [℃]。流体物性は原則として膜温度(Ts+T∞)/2付近で評価した値を入力する。物性の自動推定はしない。
+- ν=μ/ρ [m²/s]、αf=kf/(ρcp) [m²/s]、ReD=ρu∞D/μ、Pr=μcp/kf、PeD=ReD Pr。NuD=0.3+[0.62 ReD^(1/2) Pr^(1/3)/(1+(0.4/Pr)^(2/3))^(1/4)]×[1+(ReD/282000)^(5/8)]^(4/5)（Churchill–Bernstein 1977）。平均h=NuD kf/D。
+- 円柱側面積A=πDL（端面は含まない）、符号付き熱移動率Qdot=hA(Ts−T∞) [W]。正を円柱から流体への放熱、負を円柱が吸熱する方向とする。円周平均の表面熱流束q''=h(Ts−T∞) [W/m²]。
+- 相関式の使用条件はReD Pr>0.2。独自の教育用保守的制限として、ReD≤10^7、0.1≤Pr≤1000、L/D≥10も設定。これら後3条件は元論文が全条件で「適用不可」と主張した範囲ではなく、学習者が桁外れ・短い円柱・未検証物性を使わないための追加チェックである。
+- 円柱の浮力による自然対流が無視できるか、周囲の流れ場と乱れ、表面の粗さ、端面の影響、物性の温度依存、放射、円柱内部の伝導、後流、管群干渉、下流の主流温度変化、流体抵抗と抗力は**計算しない**。実設計では適切な補正・別モデル・実測照合が必要。膜温度は計算に使う物性の参考値で、物性表の代用ではない。
+- UI：9項目の単位付き入力、数式と計算手順、流路方向と放熱・吸熱の方向を描いた独自SVG、実際の流速u∞に対するhの曲線、円柱外径Dに対する符号付きQdotの曲線（保存比較条件を重畳可能）。それぞれ軸の物理量と表示範囲を日本語で説明。グラフ描画点も経験式の入力条件外へ外挿しない。HTMLユーザー入力はエスケープする。
+
+理論式の出典確認：
+- 元論文の書誌と注意事項：S. W. Churchill and M. Bernstein, A Correlating Equation for Forced Convection From Gases and Liquids to a Circular Cylinder in Crossflow, J. Heat Transfer (1977), DOI 10.1115/1.3450685。https://cir.nii.ac.jp/crid/1362825894077898624
+- 式・RePr>0.2の独立照合： https://docs.aerosim.io/nassu/validation/thermal/02_heated_cylinder/02_heated_cylinder.html
+- 数式・定義以外の原文・図・表・測定値を転載していない。原本教材との節内対応、研究設計の精度保証、専門家による技術校閲は未完了。
+
+### 第9モデルの検証と残課題
+
+Node.jsの標準テストランナーで node --test tests/cylinder-crossflow.test.mjs を実行し、**14件成功・0失敗**。検証内容：①Re/Pr/Pe/ν/αfとNu式の独立算式、②側面積・表面熱流束と熱量、③円柱長さによるQdotの比例則とhの不変性、④温度差を反転した熱流符号、⑤等温でのゼロ、⑥流速によるRe/Nu/h/Qdotの増加、⑦外径によるRe/Nu/面積の変化、⑧複数Re/Prでの相関式、⑨RePr境界拒否、⑩Re/Pr/長径比の保守的制限、⑪絶対零度以下・数値型・範囲外など、⑫HTMLエスケープと単位、⑬SVG・両グラフと比較、⑭相関の領域境界でのグラフ座標の安全性。
+
+追加の決定論的な900条件の入力探索でも、計算が成立した356条件すべてのグラフにNaN/Infinity/undefinedが現れないことを確認（残りは数値または物理的範囲のため計算拒否）。計算精度・有限円柱への適用性・現実の浮力や後流との誤差を定量保証する試験ではない。GitHub保存ファイルは専用テストにより数値計算と描画を確認したが、公開アプリのページ内で動作するE2Eは未実施。
+
+### Codex最終統合への手順
+
+1. PR #1は最新HEADを統合時点で再取得。ラインBの古い分岐起点へ本線を巻き戻さない。新規ファイルcylinder-crossflow.mjsおよびtests/cylinder-crossflow.test.mjsを最新本線へ取り込む。PR #1へのコミットやマージは本線担当のCodexだけが行う。
+2. 新規モードIDの推奨はcrossflow。app.jsのSIM_META、ui.simValues、タブ、calculateSimulation、renderSimulator、renderSimulatorOutputsOnly、onInput/onChangeへ固有の分岐を追加。既存のconvection・flatplate・pipeを置き換えない。
+3. 主なexports：CROSSFLOW_DEFAULTS、crossflowFieldNames、calculateCylinderCrossflow、churchillBernsteinNu、renderCrossflowFields、renderCrossflowSteps、renderCrossflowDiagram、crossflowVelocityGraph、crossflowDiameterGraph。calculateCylinderCrossflowは不適合時にerrorを返す。結果のh、Nu、Re、Pr、熱移動率、警告をそれぞれ表示し、符号を勝手に絶対値に変えない。
+4. h対流速およびQdot対円柱外径のグラフは既存のΔT対Qdotのグラフと物理的な意味が異なるので共通グラフへ誤配線しない。RePr、長径比、Pr/Re範囲の拒否をUIでも維持。描画領域で適用外となる比較条件の曲線は自動的に省略する。
+5. 比較条件を端末へ永続保存する前にstudy-core.mjsのvalidateLearningDataのsimComparisonsに新モードを追加し、有界で合法なデータのみ保存・復元。旧モードの履歴・インポート・エクスポート後方互換を保つ。
+6. scripts/build-public-site.mjsの明示配信許可リスト、sw.jsのキャッシュ、guide.mjs第7章§7.6への導線を統合担当が更新。公開ビルド、node --test、Safari/Chrome、320px/390px、ライト/ダーク、エラーUI、保存比較、オフラインの回帰検証を実施。
+7. 最終的な専門家確認では、RePrが小さい条件、遷移・剥離、有限円柱端部、自然対流との混在、物性の膜温度依存、粗さ等の実際の適用限界を別途調べる。
+
+### 第9モデル時点の総括
+
+既存5モデルは保護し、独立新規9モデル（フィン効率、熱交換器、非定常平板、二面放射、円筒断熱、半無限体、平板層流強制対流、円管内乱流強制対流、円柱横流れ）を追加。**合計14種類に相当するモジュール**が存在するが、追加9モデルはまだ公開アプリ画面には未統合。
+
+専用テスト累計：7+9+11+12+12+12+12+13+14＝**102件成功、0失敗**（モデルごとの実行履歴。すべてを本線の統合済みアプリ上で一括検証した結果ではない）。アプリ本体の結合、公開ビルド、GitHub Pages操作・端末保存・オフラインのE2E、全体教材精査、専門家校閲は引き続き未解決。監視とCodexには、chat/simulatorsの現行HEADと本記録、9組の新規ソース・テストを引き継ぐこと。PRは作らず、他ラインの成果や本線PR #1へ手を出さない。
