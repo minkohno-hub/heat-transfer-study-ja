@@ -254,3 +254,9 @@
 - **未解決の統合ブロッカー**：`scripts/build-public-site.mjs`は`assets/lesson-diagrams/`のSVGを現在の公開配布ファイルリストに含まず、詳細講義の節IDに対応づけて表示するUIも未実装。Codex統合側で許可リスト／コピー／キャッシュ／レスポンシブ図解表示を設計・実装し、公開サイト上の実取得と表示を確認するまでは完成扱いにしない。
 - 統合前の差分衝突確認と未push変更保護、統合後の専用`node --test tests/lesson-diagram-*.test.mjs`、全体`npm test`、`npm run build:public`、CI、公開サイトとSafari等の実機表示、ダークモードと読み上げ、外部学術校閲を引き継ぐ。過去の§7.2・§8.4・§5.2、今回の§4.5はNode/実画像未検証として扱う。
 - **統合権限はCodex本線側のみ**。このラインは`chat/parallel-dev`に限って継続し、Codex本線・PR #1・mainと他開発ラインにはコミットしない。
+
+### 第16図解の確定成果SHAと最新統合メモ（2026-10-30 JST）
+
+- **独自SVG16点・専用テスト16点に到達した実装コミット：`651b54bb718a1dc4d6c481884dd9f4d448f636ce`**。変更は§4.5の新規SVG、対応Nodeテスト、`docs/PARALLEL_CHAT.md`のみ。統合時はこの実装コミットとブランチの最新HEADの差分を確認してからCodexが取り込む。
+- このSHAを記録する文書同期コミット自身のSHAは事前に書き込めないため、**最新ブランチHEADは `https://github.com/minkohno-hub/heat-transfer-study-ja/commits/chat/parallel-dev/` の先頭を一次情報として確認**する。
+- **PR #1とCodex本線は変更していない**。未完了のビルド配信・講義UI連携・全体テスト・ブラウザ目視・学術校閲を引き継ぐ。§4.5の数値と曲線は静的検算したが、実Nodeテストランナーを実行したとは記録しない。
