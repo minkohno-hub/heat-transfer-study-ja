@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="1310" viewBox="0 0 900 1310" role="img" aria-labelledby="chf-title chf-desc" style="max-width:100%" data-origin="original-app-diagram" data-lesson="9.3" data-rho-liquid="950.00" data-rho-vapor="0.60" data-sigma="0.059" data-gravity="9.81" data-latent-heat="2200000" data-correlation-coefficient="0.13" data-heat-rate="160000" data-area="0.20" data-capillary-length="0.002516905376" data-chf-model="1072591.176338033" data-average-operating-flux="800000.000000000" data-arithmetic-ratio="0.745857338423" data-arithmetic-margin="0.254142661577" data-chf-bar-width="620" data-operation-bar-width="462.431550" data-geometry="idealized-large-horizontal-pool" data-safety-verified="false">
+<title id="chf-title">§9.3 限界熱流束：蒸気の排出と液体の補給、CHFモデルの限界</title>
+<desc id="chf-desc">アプリ独自の模式図。大きな水平加熱面から上向きに蒸気が排出され、隣の領域から液体が面へ供給される競合を描く。これは仮説的機構の概念図であり、蒸気柱の間隔・直径・泡径の実寸は示さない。仮想飽和流体の密度は液体950、蒸気0.6キログラム毎立方メートル、表面張力0.059ニュートン毎メートル、潜熱2.2メガジュール毎キログラム、重力加速度9.81メートル毎秒毎秒。理想係数0.13の水平面CHF相関から約1.073メガワット毎平方メートルを計算する。毛管長の尺度は2.517ミリメートルだが、実際の気泡径ではない。液体に渡る熱160キロワット、有効面積0.20平方メートルから平均運転熱流束0.800メガワット毎平方メートルとなる。算術比は0.74586、差の比は0.25414。棒グラフは同一ゼロ基準・同一尺度の単純な数値比較であり、実機の安全余裕を保証しない。条件に適合する実測CHF、局所熱流束、幾何、表面、圧力、過渡制御、損失は未検証。</desc>
+<style>
+text{font-family:'Noto Sans CJK JP','Hiragino Kaku Gothic ProN','Yu Gothic',sans-serif;font-size:22px}
+.bg{fill:#ffffff}.panel{fill:#f4f8fb;stroke:#b7cbd9;stroke-width:2}.ink{fill:#173449}.subtle{fill:#455f73}.accent{fill:#a34d30}
+.hotwall{fill:#be714d;stroke:#86462a;stroke-width:2}.liquid{fill:#b7e2ee;stroke:#348fb1;stroke-width:2}
+.steam{fill:#d6d2ea;stroke:#7066a2;stroke-width:2}.liquidArrow{fill:none;stroke:#147caa;stroke-width:5;stroke-linecap:round;stroke-linejoin:round}.vaporArrow{fill:none;stroke:#8d55a2;stroke-width:5;stroke-linecap:round;stroke-linejoin:round}
+.baseline{stroke:#47677c;stroke-width:2}.chfBar{fill:#61869e}.opBar{fill:#e7a064}.warning{fill:#fff2e7;stroke:#e3b692;stroke-width:2}
+.heading{font-size:33px;font-weight:750}.section{font-size:27px;font-weight:720}.small{font-size:20px}.micro{font-size:18px}.formula{font-size:23px;font-weight:650}
+@media(prefers-color-scheme:dark){.bg{fill:#111c29}.panel{fill:#1c3040;stroke:#607e92}.ink{fill:#f0f8fe}.subtle{fill:#c0d9e8}.accent{fill:#ffc19f}.hotwall{fill:#804931;stroke:#e6ad8b}.liquid{fill:#255772;stroke:#87cdec}.steam{fill:#4a4369;stroke:#b5ace0}.liquidArrow{stroke:#8cd2f2}.vaporArrow{stroke:#dab7f2}.baseline{stroke:#badbea}.chfBar{fill:#83b5d2}.opBar{fill:#ffc293}.warning{fill:#443428;stroke:#9e785a}}
+</style>
+<rect width="900" height="1310" class="bg"/>
+<text x="30" y="59" class="heading ink">§9.3 限界熱流束（CHF）を理解する</text>
+<text x="30" y="99" class="small subtle">蒸気の排出と液体の補給の競合を、理想化モデルで考える</text>
+
+<rect class="panel" x="23" y="123" width="854" height="450" rx="18"/>
+<text x="44" y="168" class="section ink">① 加熱面で起きる競合の模式図</text>
+<text x="44" y="205" class="small subtle">蒸気が上がる一方、液体が面に届く必要がある</text>
+<rect id="pool-liquid" class="liquid" x="107" y="255" width="686" height="233" rx="8"/>
+<rect id="heated-surface" class="hotwall" x="101" y="488" width="698" height="28" rx="4"/>
+<!-- vapor rising: pictorial flow; dimensions not to scale -->
+<path class="steam" d="M309 488 C302 453 302 417 312 393 C289 371 303 341 322 330 C351 312 352 285 343 255 L427 255 C428 285 413 315 442 333 C458 353 466 377 439 394 C451 431 449 465 442 488 Z"/>
+<path class="vaporArrow" d="M375 449 V293 M360 309 L375 292 L390 309"/>
+<path class="liquidArrow" d="M215 293 V443 M200 429 L215 444 L230 429 M585 293 V443 M570 429 L585 444 L600 429"/>
+<text x="365" y="276" text-anchor="middle" class="small ink">蒸気 ↑</text>
+<text x="150" y="280" class="small ink">液体 ↓</text>
+<text x="559" y="280" class="small ink">液体 ↓</text>
+<text x="44" y="550" class="micro subtle">※矢印・蒸気柱の形状は定性的。実寸や流動様式の実測値ではない。</text>
+
+<rect class="panel" x="23" y="593" width="854" height="372" rx="18"/>
+<text x="44" y="637" class="section ink">② 相関によるCHF尺度と平均運転熱流束</text>
+<text x="44" y="670" class="micro subtle">同じW/m²の尺度で比較。限界値は仮想流体の理想相関。</text>
+<line class="baseline" x1="161" y1="710" x2="161" y2="844"/>
+<text x="44" y="712" class="micro ink">CHF相関</text>
+<rect id="chf-model-bar" class="chfBar" x="161" y="691" width="620" height="46" rx="5"/>
+<text x="176" y="721" class="small ink">1.073 MW/m²</text>
+<text x="44" y="792" class="micro ink">平均運転</text>
+<rect id="operating-heat-flux-bar" class="opBar" x="161" y="771" width="462.431550" height="46" rx="5"/>
+<text x="176" y="802" class="small ink">0.800 MW/m²</text>
+<text x="44" y="875" class="small ink">形式上の比：q_op / q_CHF ≈ 0.746</text>
+<text x="44" y="909" class="small ink">算術量 M = 1 − q_op / q_CHF ≈ 0.254</text>
+<text x="44" y="941" class="micro subtle">これは安全率・設計許容値を意味しない。</text>
+
+<rect class="panel" x="23" y="986" width="854" height="258" rx="18"/>
+<text x="44" y="1028" class="section ink">③ 条件と適用限界</text>
+<text x="44" y="1060" class="micro ink">ρ_l=950、ρ_v=0.60 kg/m³、σ=0.059 N/m、g=9.81 m/s²</text>
+<text x="44" y="1088" class="micro ink">h_fg=2.2×10^6 J/kg、C=0.13（仮想条件）</text>
+<text x="44" y="1120" class="micro ink">q_CHF=C h_fg √ρ_v [σg(ρ_l−ρ_v)]^(1/4)</text>
+<text x="44" y="1152" class="micro ink">毛管長 ℓ_c ≈ 2.517 mm（泡径・蒸気柱間隔ではない）</text>
+<rect class="warning" x="42" y="1167" width="815" height="61" rx="9"/>
+<text x="55" y="1193" class="micro ink">実際の面・圧力・局所乾き・制御条件は未検証。</text>
+<text x="55" y="1218" class="micro ink">平均熱流束がCHF相関値より低くても安全を保証しない。</text>
+<text x="450" y="1290" text-anchor="middle" class="micro subtle">独自作図｜原著図版の転載・トレース・逐文訳なし</text>
+</svg>
