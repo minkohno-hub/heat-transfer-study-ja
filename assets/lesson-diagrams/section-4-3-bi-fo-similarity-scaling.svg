@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="1230" viewBox="0 0 800 1230" style="max-width:100%" role="img" aria-labelledby="similarity-title similarity-description"
+     data-origin="original-app-diagram" data-lesson="4.3" data-length-base="0.020" data-length-scaled="0.040" data-h-base="40" data-h-scaled="20"
+     data-time-base="100" data-time-scaled="400" data-conductivity="8" data-diffusivity="0.000002" data-length-definition="slab-half-thickness">
+  <title id="similarity-title">§4.3 熱拡散の相似則：長さを2倍にしてBiとFoを保つ</title>
+  <desc id="similarity-description">アプリ独自作成の図解。左右対称の平板を例に半厚さLを0.020メートルから0.040メートルへ2倍にする。熱伝導率8ワット毎メートルケルビン、熱拡散率毎秒2.0かける10のマイナス6乗平方メートルを共通とする。元の平板は熱伝達率40ワット毎平方メートルケルビン、100秒。相似モデルは熱伝達率20、400秒にする。するとBiは両方0.10、Foは両方0.50と一致する。両面は同条件の対流境界とし、初期・周囲の無次元温度条件も一致する必要がある。図では厚さ方向の寸法比だけを2倍で表示しており、縦方向は実寸比ではない。温度の実測値や平板の詳細な温度分布は表現しない。</desc>
+  <style>
+    text{font-family:"Noto Sans CJK JP","Hiragino Kaku Gothic ProN",sans-serif;font-size:24px}
+    .bg{fill:#fff}.panel{fill:#f3f7fa;stroke:#becdd8;stroke-width:2}
+    .ink{fill:#193147}.muted{fill:#4b6171}.blue{fill:#176887}.orange{fill:#9f4c24}
+    .slab{fill:#d8e7f2;stroke:#386e8e;stroke-width:2.5}.center{stroke:#537f9a;stroke-width:2;stroke-dasharray:5 6}
+    .dim{stroke:#375b71;stroke-width:2;fill:none}.flow{stroke:#176887;stroke-width:4;fill:none;stroke-linecap:round;stroke-linejoin:round}
+    .chip{fill:#e7f0f6;stroke:#c2d5e4;stroke-width:1.5}.chiplater{fill:#fff0df;stroke:#e9c9a7;stroke-width:1.5}
+    .title{font-size:32px;font-weight:750}.section{font-size:27px;font-weight:700}.sub{font-size:22px}.small{font-size:20px}
+    .result{font-size:26px;font-weight:700}.equation{font-size:24px;font-weight:650}
+    @media(prefers-color-scheme:dark){
+      .bg{fill:#101b27}.panel{fill:#192b3c;stroke:#60798c}.ink{fill:#edf5fd}.muted{fill:#c6d8e5}.blue{fill:#86d9f7}.orange{fill:#f5bd91}
+      .slab{fill:#294d68;stroke:#8cbfe0}.center{stroke:#a4c6d9}.dim{stroke:#bdd8e8}.flow{stroke:#86d9f7}
+      .chip{fill:#203f55;stroke:#4e7b99}.chiplater{fill:#483728;stroke:#916b49}
+    }
+  </style>
+  <rect class="bg" width="800" height="1230"/>
+  <text x="32" y="57" class="title ink">§4.3 Bi・Foを保つスケーリング</text>
+  <text x="33" y="99" class="sub muted">固体の代表長さを2倍にしても、相似条件を作れる</text>
+
+  <rect class="panel" x="23" y="124" width="754" height="306" rx="18"/>
+  <text x="45" y="165" class="section ink">① 元の平板：半厚さ L = 0.020 m</text>
+  <text x="45" y="202" class="small muted">全厚さ 2L = 0.040 m ／ 両面は同じ対流条件</text>
+  <rect id="slab-base" x="320" y="233" width="160" height="77" rx="4" class="slab"/>
+  <path class="center" d="M400 230 V317"/>
+  <path class="flow" d="M305 273 H213 M226 261 L213 273 L226 285 M495 273 H587 M574 261 L587 273 L574 285"/>
+  <text x="191" y="232" class="small blue" text-anchor="middle">外向き放熱</text>
+  <text x="608" y="232" class="small blue" text-anchor="middle">外向き放熱</text>
+  <path class="dim" d="M401 329 V343 M400 336 H480 M480 329 V343"/>
+  <text x="439" y="365" class="small ink" text-anchor="middle">L = 20 mm</text>
+  <rect class="chip" x="44" y="382" width="338" height="34" rx="8"/>
+  <rect class="chip" x="399" y="382" width="337" height="34" rx="8"/>
+  <text x="213" y="407" class="small ink" text-anchor="middle">h = 40 W/(m²·K)</text>
+  <text x="568" y="407" class="small ink" text-anchor="middle">t = 100 s</text>
+
+  <path class="flow" d="M399 440 V460 M388 450 L399 460 L410 450"/>
+  <text x="433" y="457" class="small orange">L × 2, h ÷ 2, t × 4</text>
+
+  <rect class="panel" x="23" y="479" width="754" height="318" rx="18"/>
+  <text x="45" y="521" class="section ink">② 拡大した平板：半厚さ L = 0.040 m</text>
+  <text x="45" y="558" class="small muted">同じ物性・同じ境界条件 ／ 全厚さ 2L = 0.080 m</text>
+  <rect id="slab-scaled" x="240" y="587" width="320" height="77" rx="4" class="slab"/>
+  <path class="center" d="M400 584 V671"/>
+  <path class="flow" d="M226 626 H139 M152 614 L139 626 L152 638 M574 626 H661 M648 614 L661 626 L648 638"/>
+  <text x="116" y="590" class="small blue" text-anchor="middle">外向き放熱</text>
+  <text x="684" y="590" class="small blue" text-anchor="middle">外向き放熱</text>
+  <path class="dim" d="M401 682 V696 M400 689 H560 M560 682 V696"/>
+  <text x="480" y="718" class="small ink" text-anchor="middle">L = 40 mm</text>
+  <rect class="chiplater" x="44" y="744" width="338" height="35" rx="8"/>
+  <rect class="chiplater" x="399" y="744" width="337" height="35" rx="8"/>
+  <text x="213" y="769" class="small ink" text-anchor="middle">h = 20 W/(m²·K)</text>
+  <text x="568" y="769" class="small ink" text-anchor="middle">t = 400 s</text>
+
+  <rect class="panel" x="23" y="817" width="754" height="366" rx="18"/>
+  <text x="45" y="861" class="section ink">③ 無次元数は同じ値になる</text>
+  <text x="45" y="903" class="small muted">両モデルとも k = 8 W/(m·K)、α = 2.0×10^(-6) m²/s</text>
+  <text x="45" y="948" class="equation ink">Bi = hL/k</text>
+  <text x="279" y="948" class="small ink">(40×0.020)/8 = (20×0.040)/8</text>
+  <text x="745" y="948" class="result blue" text-anchor="end">0.10</text>
+  <text x="45" y="992" class="equation ink">Fo = αt/L²</text>
+  <text x="279" y="992" class="small ink">α×100/0.020² = α×400/0.040²</text>
+  <text x="745" y="992" class="result blue" text-anchor="end">0.50</text>
+  <path class="dim" d="M46 1019 H752"/>
+  <text x="45" y="1057" class="small ink">重要：幾何形状・無次元初期条件・境界条件も一致が必要。</text>
+  <text x="45" y="1092" class="small muted">BiとFoだけで実温度や熱流束まで同じとは断定しない。</text>
+  <text x="45" y="1134" class="small muted">Lは平板の半厚さ。集中熱容量の V/A_s とは区別。</text>
+  <text x="45" y="1167" class="small muted">冷却の前提：初期温度 T_i &gt; 周囲温度 T∞。</text>
+  <text x="400" y="1214" text-anchor="middle" class="small muted">アプリ作成の独自模式図｜原書の図版・転載ではない</text>
+</svg>

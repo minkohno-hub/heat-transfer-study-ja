@@ -21,7 +21,7 @@ test('§9.3 independent lesson names its model limits and does not assert finish
  assert.ok(lesson.blocks.reduce((n,b)=>n+b.text.length,0)>=1150);
  assert.ok(lesson.equations.length>=4&&lesson.pitfalls.length>=5);
  assert.ok(lesson.workedExample.steps.length>=5);
- assert.match(lesson.blocks.map(b=>b.text).join(' '),/大きな水平面の説明用にはC≈0\.13/);
+ assert.match(lesson.blocks.map(b=>b.text).join(' '),/大きな水平面の説明用には原書推奨の0\.149/);
  assert.match(lesson.blocks.map(b=>b.text).join(' '),/実機の許容電力や事故防止条件を与えない/);
  assert.match(lesson.reviewStatus,/外部学術専門家校閲前/);
  assert.equal(deep.translation,false);
@@ -33,7 +33,7 @@ test('§9.3 six exercises explain all choices, vary cognitive skill and avoid le
   'data/book.json','data/original-notes.json','data/original-deep-lessons.json',
   'data/questions.json','data/readiness-evidence.json'
  ].map(read));
- assert.equal(all.length,741);
+ assert.equal(all.length,750);
  const qs=all.filter(q=>ids.includes(q.id));
  assert.equal(qs.length,6);
  assert.equal(new Set(all.map(q=>q.id)).size,all.length);
@@ -59,18 +59,18 @@ test('§9.3 six exercises explain all choices, vary cognitive skill and avoid le
 });
 
 test('CHF length scale and idealized correlation independently satisfy their numeric and unit examples',()=>{
- const sigma=.059,g=9.81,rhoL=950,rhoV=.60,hfg=2.2e6,C=.13;
+ const sigma=.059,g=9.81,rhoL=950,rhoV=.60,hfg=2.2e6,C=.149;
  const capillary=Math.sqrt(sigma/(g*(rhoL-rhoV)));
  near(capillary,.002516905376279981);
  const fourth=Math.pow(sigma*g*(rhoL-rhoV),.25);
  near(fourth,4.841640749704226);
  const qChf=C*hfg*Math.sqrt(rhoV)*fourth;
- near(qChf,1072591.1763380333);
+ near(qChf,1229354.502110515);
  const qOperating=160_000/.20;
  near(qOperating,800_000);
- near(1-qOperating/qChf,.2541426615765153);
+ near(1-qOperating/qChf,.3492519866103825);
  near(Math.sqrt(.060/(10*1000))*1000,2.449489742783178); // m to mm
- near(.13*2e6*Math.sqrt(.64)*Math.pow(.0625*10*1000,.25),1.04e6);
+ near(.149*2e6*Math.sqrt(.64)*Math.pow(.0625*10*1000,.25),1.192e6);
  near(Math.pow(16,.25),2);
  assert.ok(.80>.70&&.80<1.20,'an uncertainty interval spanning operation cannot prove safety');
 });

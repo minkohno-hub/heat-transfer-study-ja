@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="860" height="1320" viewBox="0 0 860 1320" role="img" aria-labelledby="rad-title rad-desc" style="max-width:100%" data-origin="original-app-diagram" data-lesson="10.1" data-sigma="5.670374419e-08" data-ts-k="400" data-tenclosure-k="300" data-emissivity="0.8" data-area-m2="0.5" data-view-factor="1" data-eb="1451.6158512640" data-irradiation="459.3003279390" data-self-emission="1161.2926810112" data-reflected="91.8600655878" data-radiosity="1253.1527465990" data-net-flux="793.8524186600" data-net-heat="396.9262093300" data-bar-scale="0.275554995939" data-geometry="gray-patch-in-large-black-enclosure">
+<title id="rad-title">§10.1 熱放射の収支：黒体放射、照射量G、射度Jと正味の放熱</title>
+<desc id="rad-desc">アプリ独自作図。温度400ケルビン、放射率0.8、面積0.5平方メートルの等温不透明拡散灰色面が、300ケルビンの大きな黒体等温囲いを完全に見込む。放射に参加しない媒体、形態係数1、定常を仮定。面の黒体放射発散度Ebは1451.616ワット毎平方メートル。自己放出は0.8Ebで1161.293、反射は0.2Gで91.860、入射照射量Gは459.300、射度Jは自己放出と反射の和で1253.153ワット毎平方メートルとなる。正味の外向き放射流束J引くGは793.852ワット毎平方メートル。面積を掛けた放熱は396.926ワット。三つの棒は同じ線形尺度に従い、射度の棒には自己放出と反射成分の区切りがある。全放出J、入射G、正味qは異なる量。放射温度は必ず絶対温度ケルビンを用いる。有限な灰色面同士、参加性ガス、波長依存物性、周囲温度の異なる多面系にはこの囲いの公式を無条件に使用しない。</desc>
+<style>
+text{font-family:'Noto Sans CJK JP','Hiragino Kaku Gothic ProN',system-ui,sans-serif;font-size:23px}
+.bg{fill:#fff}.panel{fill:#f4f7fa;stroke:#bfcedb;stroke-width:2}.ink{fill:#1a3044}.muted{fill:#486074}
+.wall{fill:#d3a27a;stroke:#956044;stroke-width:2.8}.surround{fill:none;stroke:#7c8fa4;stroke-width:7;stroke-linecap:round}
+.incoming{stroke:#357fa8;fill:none;stroke-width:4;stroke-linecap:round;stroke-linejoin:round}
+.outgoing{stroke:#a85636;fill:none;stroke-width:4;stroke-linecap:round;stroke-linejoin:round}
+.reflected{stroke:#8a64b0;fill:none;stroke-width:4;stroke-linecap:round;stroke-linejoin:round}
+.axis{stroke:#6a7e8c;fill:none;stroke-width:2}
+.blackbody{fill:#aabaca}.emitted{fill:#bc7848}.refBar{fill:#8566aa}.incomingBar{fill:#377fa2}.netBar{fill:#429887}
+.heading{font-size:34px;font-weight:750}.section{font-size:27px;font-weight:700}.small{font-size:20px}.micro{font-size:18px}.formula{font-size:25px;font-weight:650}
+@media(prefers-color-scheme:dark){.bg{fill:#111b27}.panel{fill:#1e2e3c;stroke:#637e92}.ink{fill:#eff7fd}.muted{fill:#c6d9e7}.wall{fill:#76523b;stroke:#ffbe8d}.surround{stroke:#9eb6c8}.incoming{stroke:#91d5f3}.outgoing{stroke:#ffb485}.reflected{stroke:#d1b1ff}.axis{stroke:#bacfdc}.blackbody{fill:#637c90}.emitted{fill:#bd7c56}.refBar{fill:#896db1}.incomingBar{fill:#387f9f}.netBar{fill:#43937f}}
+</style>
+<rect class="bg" width="860" height="1320"/>
+<text x="29" y="59" class="heading ink">§10.1 照射量 G・射度 J・正味放射</text>
+<text x="31" y="100" class="small muted">「面に入る」「面から出る」「差し引き」は別の量</text>
+
+<rect class="panel" x="22" y="125" width="816" height="404" rx="19"/>
+<text x="43" y="169" class="section ink">① 大きな黒体囲いの中の灰色面</text>
+<path class="surround" d="M137 257 V454 H748 V257"/>
+<text x="438" y="476" text-anchor="middle" class="micro muted">黒体囲い：300 K（形態係数 F = 1）</text>
+<rect class="wall" x="354" y="332" width="176" height="31" rx="5"/>
+<text class="small ink" x="442" y="353" text-anchor="middle">灰色面 400 K</text>
+<path class="incoming" d="M240 236 V320 H349 M337 310 L349 320 L337 331"/>
+<text x="156" y="222" class="small ink">照射 G（入射）</text>
+<path class="outgoing" d="M560 316 H681 V235 M669 250 L681 235 L693 250"/>
+<text x="587" y="220" class="small ink">自己放出 εEb</text>
+<path class="reflected" d="M557 361 H716 V398 M704 386 L716 398 L728 386"/>
+<text x="584" y="431" class="small ink">反射 (1−ε)G</text>
+<text x="157" y="397" class="micro muted">不透明・拡散・灰色</text>
+<text x="157" y="423" class="micro muted">非参加性媒体</text>
+<text x="43" y="505" class="micro muted">射度 J = 自己放出 + 反射、正味流束 q″ = J − G</text>
+
+<rect class="panel" x="22" y="548" width="816" height="338" rx="19"/>
+<text x="43" y="590" class="section ink">② 同じ尺度で放射量の内訳を比較</text>
+<text x="43" y="622" class="micro muted">単位：W/m²。棒の長さは数値に比例（最大を Eb に設定）</text>
+<text x="44" y="674" class="small ink">黒体 Eb</text>
+<rect id="bar-eb" class="blackbody" x="234" y="648" width="400.000" height="35" rx="3"/>
+<text x="772" y="673" class="micro ink" text-anchor="end">1451.616</text>
+<text x="44" y="724" class="small ink">入射 G</text>
+<rect id="bar-g" class="incomingBar" x="234" y="698" width="126.562" height="35" rx="3"/>
+<text x="772" y="724" class="micro ink" text-anchor="end">459.300</text>
+<text x="44" y="774" class="small ink">射度 J</text>
+<rect id="bar-emission" class="emitted" x="234" y="748" width="320.000" height="35" rx="3"/>
+<rect id="bar-reflection" class="refBar" x="554.000" y="748" width="25.312" height="35" rx="3"/>
+<text x="772" y="774" class="micro ink" text-anchor="end">1253.153</text>
+<text x="44" y="824" class="small ink">正味 J−G</text>
+<rect id="bar-net" class="netBar" x="234" y="798" width="218.750" height="35" rx="3"/>
+<text x="772" y="824" class="micro ink" text-anchor="end">+793.852</text>
+<text x="43" y="867" class="micro muted">射度Jの棒：茶＝自己放出 εEb ／ 紫＝反射 (1−ε)G</text>
+
+<rect class="panel" x="22" y="903" width="816" height="361" rx="19"/>
+<text x="43" y="947" class="section ink">③ 例題の熱収支を二つの式で検算</text>
+<text x="43" y="987" class="small ink">表面温度 400 K、囲い温度 300 K、ε = 0.8、A = 0.50 m²</text>
+<text x="43" y="1021" class="small muted">σ = 5.670374419×10^(-8) W/(m²·K⁴)</text>
+<text x="43" y="1061" class="formula ink">G = σ×300⁴ = 459.300 W/m²</text>
+<text x="43" y="1100" class="formula ink">J = εσ×400⁴ + (1−ε)G = 1253.153 W/m²</text>
+<text x="43" y="1139" class="formula ink">q″ = J−G = εσ(400⁴−300⁴) = +793.852 W/m²</text>
+<text x="43" y="1178" class="formula ink">Q = A q″ = +396.926 W（外向き放熱）</text>
+<text x="43" y="1226" class="micro muted">温度はK。有限灰色面同士・参加性ガスへ無条件に流用しない。</text>
+<text x="430" y="1298" text-anchor="middle" class="micro muted">アプリ独自図解｜原著図版の転載・トレース・翻訳なし</text>
+</svg>

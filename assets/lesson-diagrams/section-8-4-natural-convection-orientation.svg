@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="820" height="1260" viewBox="0 0 820 1260" role="img" aria-labelledby="natural-title natural-desc" data-origin="original-app-diagram" data-lesson="8.4" data-g="9.81" data-beta="0.003" data-dt="10" data-length="0.2" data-nu="0.000015" data-alpha="0.00002" data-fluid-k="0.026" data-area="0.5" data-gr="10464000.000000002" data-pr="0.75" data-ra="7848000.000000002" data-nusselt="31.22782668" data-h="4.05961747" data-q="20.29808734" data-correlation-min-ra="10000" data-correlation-max-ra="1000000000">
+<title id="natural-title">§8.4 自然対流：面の向きと浮力の違い、Rayleigh数の例題</title>
+<desc id="natural-desc">アプリ独自の自然対流模式図。周囲流体が静かで物体表面の方が熱いとき、加熱垂直面の近傍の流体は壁に沿って上昇しやすい。水平板の上面が熱いと軽い流体が上に発達しやすく、下面が熱いと暖かい流体は下側に滞留しやすく対流が相対的に抑えられることがある。三つの図は定性的な説明であり、速度場を解いた結果ではない。数値例は等温垂直平板のみに適用し、重力加速度9.81、体膨張係数0.003、温度差10ケルビン、高さ0.20メートル、動粘度1.5かける10のマイナス5乗、熱拡散率2.0かける10のマイナス5乗、流体熱伝導率0.026、面積0.50平方メートルの条件でRaが7848000、Nu約31.23、h約4.06、対流熱量約20.30ワットとなる。Nuと熱量は経験相関式0.59掛けるRaの4分の1乗から推定したもので、放射損失は含めない。垂直平板の式を水平板や円柱などに転用しない。</desc>
+<style>
+text{font-family:'Noto Sans CJK JP','Hiragino Kaku Gothic ProN',sans-serif;font-size:24px}
+.bg{fill:#fff}.panel{fill:#f4f7fb;stroke:#c0d0db;stroke-width:2}.ink{fill:#183047}.muted{fill:#455e72}
+.hot{fill:#ce774f;stroke:#a4502c;stroke-width:2.5}.fluid{fill:#dbeef4;stroke:#8bb6c9;stroke-width:1.7}
+.flow{stroke:#227fa3;stroke-width:4;fill:none;stroke-linecap:round;stroke-linejoin:round}.gravity{stroke:#738091;stroke-width:2.7;fill:none;stroke-linecap:round}
+.rule{stroke:#c0cfdb;stroke-width:1.5;stroke-dasharray:6 6}
+.heading{font-size:33px;font-weight:750}.section{font-size:27px;font-weight:700}.small{font-size:20px}.tiny{font-size:18px}.formula{font-size:24px;font-weight:650}
+@media(prefers-color-scheme:dark){.bg{fill:#101b25}.panel{fill:#192b3c;stroke:#637e92}.ink{fill:#eef6fd}.muted{fill:#c4d7e7}.hot{fill:#99553b;stroke:#ffb28a}.fluid{fill:#264d61;stroke:#6995ac}.flow{stroke:#90dbfa}.gravity{stroke:#c1c9d4}.rule{stroke:#647f94}}
+</style>
+<rect class="bg" width="820" height="1260"/>
+<text class="heading ink" x="30" y="58">§8.4 自然対流：面の向きで流れが変わる</text>
+<text class="small muted" x="31" y="101">表面が主流より熱い場合、温まった流体は浮力で上昇しやすい</text>
+<rect class="panel" x="22" y="122" width="776" height="677" rx="18"/>
+<text class="section ink" x="42" y="165">① 加熱面の向きと浮力の関係</text>
+<text class="small ink" x="44" y="219">A. 加熱された垂直平板</text>
+<rect class="hot" x="155" y="248" width="28" height="125" rx="3"/>
+<path class="flow" d="M206 352 Q215 314 214 265 M204 279 L214 265 L225 279"/>
+<path class="flow" d="M254 350 Q270 306 265 250 M254 264 L265 250 L275 264"/>
+<text class="small muted" x="330" y="282">壁面近くの流体が上昇し、</text>
+<text class="small muted" x="330" y="315">境界層が発達しやすい</text>
+<text class="tiny muted" x="330" y="350">例題の相関式はこの垂直面だけに使用</text>
+<path class="rule" d="M45 395 H776"/>
+<text class="small ink" x="44" y="434">B. 水平板の熱い上面</text>
+<rect class="hot" x="142" y="540" width="160" height="22" rx="3"/>
+<path class="flow" d="M181 527 Q164 485 182 453 M170 467 L182 453 L193 468"/>
+<path class="flow" d="M253 527 Q269 485 251 453 M239 468 L251 453 L262 467"/>
+<text class="small muted" x="342" y="492">軽い暖気が板の上に生まれ、</text>
+<text class="small muted" x="342" y="528">上昇流が発達しやすい</text>
+<path class="rule" d="M45 591 H776"/>
+<text class="small ink" x="44" y="630">C. 水平板の熱い下面</text>
+<rect class="hot" x="142" y="668" width="160" height="22" rx="3"/>
+<rect class="fluid" x="151" y="695" width="142" height="46" rx="8"/>
+<text class="tiny ink" x="222" y="725" text-anchor="middle">暖気が下側に滞留</text>
+<text class="small muted" x="342" y="685">暖まった軽い流体が下側に残り、</text>
+<text class="small muted" x="342" y="720">上面より流れが抑えられる場合がある</text>
+<text class="tiny muted" x="43" y="780">模式図。安定性は温度・配置・周囲条件にも左右される。</text>
+<rect class="panel" x="22" y="818" width="776" height="390" rx="18"/>
+<text class="section ink" x="43" y="860">② 垂直等温平板の例題：相関式の範囲内</text>
+<text class="small ink" x="43" y="902">L = 0.20 m、ΔT = 10 K、A = 0.50 m²</text>
+<text class="small muted" x="43" y="937">g = 9.81 m/s²、β = 0.003 K⁻¹、ν = 1.5×10⁻⁵ m²/s</text>
+<text class="small muted" x="43" y="972">α_f = 2.0×10⁻⁵ m²/s、k_f = 0.026 W/(m·K)</text>
+<text class="formula ink" x="43" y="1014">Ra = gβΔTL³/(ν α_f) = 7.848×10⁶</text>
+<text class="formula ink" x="43" y="1055">平均Nu = 0.59 Ra^(1/4) ≈ 31.23</text>
+<text class="formula ink" x="43" y="1096">平均h = Nu k_f/L ≈ 4.06 W/(m²·K)</text>
+<text class="formula ink" x="43" y="1137">Q = h A ΔT ≈ 20.30 W（対流成分のみ）</text>
+<text class="tiny muted" x="43" y="1182">適用：等温垂直面、静穏流体、10⁴ ≲ Ra ≲ 10⁹、近似相関</text>
+<text class="tiny muted" x="410" y="1243" text-anchor="middle">アプリ作成の独自模式図｜水平板・円柱に上式を流用しない</text>
+</svg>

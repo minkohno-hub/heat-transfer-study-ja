@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="840" height="1300" viewBox="0 0 840 1300" style="max-width:100%" role="img" aria-labelledby="tube-title tube-desc" data-origin="original-app-diagram" data-lesson="2.4" data-inner-radius-m="0.010" data-outer-radius-m="0.012" data-length-m="2.0" data-conductivity="15" data-hi="1000" data-ho="100" data-delta-temp-k="40" data-area-inner="0.125663706144" data-area-outer="0.150796447372" data-ri="0.007957747155" data-rwall="0.000967245900" data-ro="0.066314559622" data-rtotal="0.075239552676" data-ua="13.290881782686" data-ui="105.765476688225" data-uo="88.137897240187" data-q="531.635271307440">
+<title id="tube-title">§2.4 円筒管壁：内外面積の違い、直列熱抵抗と総括熱伝達係数</title>
+<desc id="tube-desc">アプリ独自の図解。内半径0.010メートル、外半径0.012メートル、長さ2メートルの円筒管壁。熱伝導率15ワット毎メートルケルビン、内側熱伝達率1000、外側100ワット毎平方メートルケルビン。熱抵抗は内側対流0.00795775、円筒壁伝導0.00096725、外側対流0.06631456ケルビン毎ワットの直列接続。大部分の抵抗は外側対流にある。内面積0.125664と外面積0.150796平方メートルに対応した総括熱伝達係数はそれぞれ約105.77と88.14ワット毎平方メートルケルビンで異なるが、面積を掛けると同じUA約13.29088ワット毎ケルビン。代表温度差40ケルビンで熱移動率531.64ワット。熱流矢印は内側の流体の方が高温である場合を示す。長さ方向の温度差変化、汚れ、軸方向伝導は考えない。</desc>
+<style>
+text{font-family:'Noto Sans CJK JP','Hiragino Kaku Gothic ProN',system-ui,sans-serif;font-size:24px}
+.bg{fill:#fff}.panel{fill:#f4f7fa;stroke:#bed0df;stroke-width:2}.ink{fill:#192f42}.muted{fill:#456074}
+.inner{fill:#d4eef8;stroke:#25748f;stroke-width:2.5}.wall{fill:#e5b176;stroke:#ac612f;stroke-width:2.5}
+.heat{stroke:#bd5b2d;stroke-width:4.1;fill:none;stroke-linecap:round;stroke-linejoin:round}.thin{stroke:#47677b;stroke-width:2;fill:none}
+.wire{stroke:#39566a;stroke-width:3;fill:none}.resistor{fill:#e6edf3;stroke:#45677e;stroke-width:2.3}.node{fill:#39566a}
+.rin{fill:#6ab6d0}.rwall{fill:#e5b176}.rout{fill:#c27454}.legendin{fill:#176987}.legendwall{fill:#9a582f}.legendout{fill:#ae4f31}
+.heading{font-size:34px;font-weight:750}.section{font-size:27px;font-weight:700}.small{font-size:20px}.micro{font-size:18px}.figure{font-size:27px;font-weight:700}.formula{font-size:24px;font-weight:650}
+@media(prefers-color-scheme:dark){.bg{fill:#101b27}.panel{fill:#1b2c3b;stroke:#617d93}.ink{fill:#edf6fe}.muted{fill:#c2d7e6}.inner{fill:#28556b;stroke:#91d6f2}.wall{fill:#785039;stroke:#efb686}.heat{stroke:#ffb58b}.thin{stroke:#bad5e8}.wire{stroke:#c9dfef}.resistor{fill:#314d61;stroke:#a2cadf}.node{fill:#d4eafa}.rin{fill:#397e9b}.rwall{fill:#aa754c}.rout{fill:#8b4d3b}.legendin{fill:#94e2fb}.legendwall{fill:#f4c19a}.legendout{fill:#f3a88d}}
+</style>
+<rect class="bg" width="840" height="1300"/>
+<text class="heading ink" x="30" y="57">§2.4 円筒壁の熱抵抗と面積基準</text>
+<text class="small muted" x="31" y="100">内外の面積が異なる管でも、UAは同じ値になる</text>
+
+<rect class="panel" x="22" y="123" width="796" height="344" rx="18"/>
+<text class="section ink" x="43" y="166">① 円筒断面：熱は半径方向に移動</text>
+<circle class="wall" cx="214" cy="320" r="104"/>
+<circle class="inner" cx="214" cy="320" r="86.667"/>
+<path class="heat" d="M215 320 H344 M331 307 L344 320 L331 333"/>
+<circle cx="214" cy="320" r="3" fill="#426b85"/>
+<text class="small ink" x="164" y="277">内側流体</text>
+<text class="micro muted" x="355" y="224">内側が高温の場合の熱流方向 →</text>
+<text class="small ink" x="354" y="268">r_i = 10 mm、r_o = 12 mm</text>
+<text class="small ink" x="354" y="308">長さ L = 2.0 m、k = 15 W/(m·K)</text>
+<text class="small ink" x="354" y="348">A_i = 0.125664 m²</text>
+<text class="small ink" x="354" y="388">A_o = 0.150796 m²</text>
+<text class="micro muted" x="42" y="440">円筒断面は概念図。内外半径比は1.2だが絶対寸法は非実寸。</text>
+
+<rect class="panel" x="22" y="484" width="796" height="447" rx="18"/>
+<text class="section ink" x="43" y="528">② 同じ熱量が三つの直列抵抗を通る</text>
+<text class="micro muted" x="44" y="567">各抵抗の単位：K/W（放射抵抗の 1/m² と混同しない）</text>
+<path class="wire" d="M79 652 H175 M266 652 H368 M461 652 H550 M643 652 H759"/>
+<rect class="resistor" x="175" y="630" width="91" height="44" rx="5"/>
+<rect class="resistor" x="368" y="630" width="93" height="44" rx="5"/>
+<rect class="resistor" x="550" y="630" width="93" height="44" rx="5"/>
+<circle class="node" cx="79" cy="652" r="7"/>
+<circle class="node" cx="759" cy="652" r="7"/>
+<text class="small ink" x="220" y="659" text-anchor="middle">R_i</text>
+<text class="small ink" x="414" y="659" text-anchor="middle">R_wall</text>
+<text class="small ink" x="597" y="659" text-anchor="middle">R_o</text>
+<text class="micro muted" x="40" y="605">内側流体</text>
+<text class="micro muted" x="687" y="605">外側流体</text>
+<text class="micro ink" x="43" y="713">R_i = 0.007958 K/W</text>
+<text class="micro ink" x="285" y="713">R_wall = 0.000967 K/W</text>
+<text class="micro ink" x="554" y="713">R_o = 0.066315 K/W</text>
+<text class="small ink" x="43" y="759">R_total = R_i + R_wall + R_o = 0.075240 K/W</text>
+<text class="micro muted" x="43" y="796">全抵抗に対する割合（幅を正確な比率で表示）</text>
+<rect id="resistance-ri" class="rin" x="92" y="831" width="68.11297" height="34"/>
+<rect id="resistance-wall" class="rwall" x="160.11297" y="831" width="8.27897" height="34"/>
+<rect id="resistance-ro" class="rout" x="168.39194" y="831" width="567.60806" height="34"/>
+<text class="micro legendin" x="43" y="901">内側 10.6%</text>
+<text class="micro legendwall" x="249" y="901">管壁 1.3%</text>
+<text class="micro legendout" x="456" y="901">外側 88.1%</text>
+
+<rect class="panel" x="22" y="949" width="796" height="284" rx="18"/>
+<text class="section ink" x="43" y="993">③ 基準面積でUは変わる。UAは不変</text>
+<text class="small ink" x="43" y="1036">内面基準 U_i = 105.77 W/(m²·K)</text>
+<text class="small ink" x="43" y="1072">外面基準 U_o = 88.14 W/(m²·K)</text>
+<text class="formula ink" x="43" y="1113">U_i A_i = U_o A_o = 1/R_total = 13.29 W/K</text>
+<text class="formula ink" x="43" y="1152">Q = ΔT/R_total = 40/0.075240 = 531.64 W</text>
+<text class="micro muted" x="43" y="1201">定常・一定物性・代表温度差40 K・汚れと軸方向温度変化なし</text>
+<text class="micro muted" x="420" y="1282" text-anchor="middle">アプリ独自の模式図｜原著図版のトレース・転載・翻訳なし</text>
+</svg>

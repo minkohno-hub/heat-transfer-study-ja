@@ -12,7 +12,7 @@ const recovered=['heat-conduction','transient-conduction','boundary-condition','
 test('all 16 concepts from PR14 plus diffusivity have complete original explanations and valid learning targets',()=>{
  const sections=new Set(book.chapters.flatMap(c=>c.sections.map(s=>s.id)));
  const qIds=new Set(questions.map(q=>q.id));
- assert.equal(terms.length,158);
+ assert.equal(terms.length,byId.size);
  for(const id of [...recovered,'mass-diffusivity']){
   const t=byId.get(id);assert.ok(t,id);
   assert.ok(t.en&&t.category&&t.brief.length>=15&&t.beginner.length>=35&&t.detail.length>=100,id);

@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="1350" viewBox="0 0 880 1350" role="img" aria-labelledby="heating-title heating-desc" style="max-width:100%" data-origin="original-app-diagram" data-lesson="1.2" data-mass-kg="2.0" data-heat-capacity-j-kg-k="500" data-t-in-c="20" data-t-target-c="30" data-heater-power-w="200" data-loss-power-w="50" data-capacity-j-k="1000" data-net-power-w="150" data-stored-energy-j="10000" data-heating-time-s="66.666666666667" data-no-loss-time-s="50.000000000000" data-graph-points="41" data-curve-time-range="75" data-curve-temp-range="20,36" data-heating-model="lumped-fixed-power-fixed-loss" data-local-equation-model="constant-properties-conduction">
+<title id="heating-title">§1.2 第一法則・熱移動率・熱伝導方程式：何が決まるかを区別する</title>
+<desc id="heating-desc">独自作図。2キログラム、比熱500ジュール毎キログラム毎ケルビンの金属塊を20度から30度へ加熱する。一定のヒーター入力200ワット、周囲への損失50ワットとすると、熱容量1000ジュール毎ケルビン、蓄積速度150ワット、必要内部エネルギー増分10000ジュール、所要時間66.67秒。損失ゼロの場合は50秒。温度の時間変化を41点ずつ2曲線で比較する。閉じた系で仕事とその他の入出を無視するという条件を示す。保存則だけではヒーター入力や損失速度が求まらないため、熱移動の構成則と境界条件が別に必要。下段は別モデルとして、一次元・一定熱伝導率・物性の固体で局所の熱伝導方程式が保存則とFourier則を連立して導かれることを示す。上段の一様温度モデルと、下段の内部温度分布を解く偏微分方程式は同一の近似ではない。実装値は仮想の学習用数値であり、実機安全設計には使えない。</desc>
+<style>
+ text{font-family:'Noto Sans CJK JP','Hiragino Kaku Gothic ProN',system-ui,sans-serif;font-size:22px}
+ .bg{fill:#fff} .panel{fill:#f3f7fa;stroke:#c6d5df;stroke-width:2} .ink{fill:#162f43} .muted{fill:#486476}
+ .big{font-size:33px;font-weight:750} .head{font-size:26px;font-weight:700} .small{font-size:19px} .tiny{font-size:17px} .formula{font-size:23px;font-weight:650}
+ .solid{fill:#d3e5ef;stroke:#53819d;stroke-width:2.5} .heater{fill:#edb885;stroke:#a96029;stroke-width:2.5} .ambient{fill:#d5e9e6;stroke:#579384;stroke-width:2.5}
+ .in{stroke:#b66531;stroke-width:5;fill:none;stroke-linecap:round;stroke-linejoin:round} .out{stroke:#428d84;stroke-width:5;fill:none;stroke-linecap:round;stroke-linejoin:round}
+ .axes{stroke:#46647a;stroke-width:2.8;fill:none;stroke-linecap:round;stroke-linejoin:round} .grid{stroke:#bacbd6;stroke-width:1.5;stroke-dasharray:5 6}
+ .net{stroke:#16809f;stroke-width:5;fill:none;stroke-linecap:round;stroke-linejoin:round} .ideal{stroke:#c67b41;stroke-width:4.5;fill:none;stroke-linecap:round;stroke-dasharray:9 5}
+ .mark{fill:#16809f;stroke:#fff;stroke-width:2} .idealMark{fill:#c67b41;stroke:#fff;stroke-width:2} .event{stroke:#9b517a;stroke-width:2;stroke-dasharray:7 5}
+ .callout{fill:#fcf4e6;stroke:#dfcaa2;stroke-width:1.5} .focus{fill:#176e89} .warning{fill:#93572f}
+ @media(prefers-color-scheme:dark){.bg{fill:#101b27}.panel{fill:#1d2e3e;stroke:#5b798f}.ink{fill:#eff7ff}.muted{fill:#bfd5e4}.solid{fill:#304a5c;stroke:#94c8e4}.heater{fill:#704d32;stroke:#ffc086}.ambient{fill:#2d4b49;stroke:#9ed5c6}.in{stroke:#ffb47b}.out{stroke:#89d0c3}.axes{stroke:#bdd7e8}.grid{stroke:#668194}.net{stroke:#8bdef7}.ideal{stroke:#ffb87b}.mark{fill:#8bdef7;stroke:#294257}.idealMark{fill:#ffb87b;stroke:#294257}.event{stroke:#f1afd1}.callout{fill:#3e3429;stroke:#927a5d}.focus{fill:#9ae3fb}.warning{fill:#ffc59a}}
+</style>
+<rect class="bg" width="880" height="1350"/>
+<text x="30" y="58" class="big ink">§1.2 保存則だけでは速度は決まらない</text>
+<text x="31" y="97" class="small muted">第一法則による熱収支と、伝熱則が必要な理由</text>
+<rect class="panel" x="23" y="117" width="834" height="333" rx="18"/>
+<text x="43" y="159" class="head ink">① 閉じた金属塊：入力・損失・蓄積を分ける</text>
+<rect id="heater" class="heater" x="54" y="222" width="162" height="100" rx="12"/>
+<text x="135" y="258" text-anchor="middle" class="small ink">ヒーターから</text>
+<text x="135" y="289" text-anchor="middle" class="formula ink">200 W</text>
+<path id="heater-arrow" class="in" d="M218 272 H306 M293 259 L306 272 L293 285"/>
+<rect id="thermal-mass" class="solid" x="307" y="209" width="250" height="130" rx="12"/>
+<text x="432" y="243" text-anchor="middle" class="small ink">金属塊：2.0 kg</text>
+<text x="432" y="279" text-anchor="middle" class="formula ink">m c = 1000 J/K</text>
+<text x="432" y="315" text-anchor="middle" class="small ink">20 ℃ → 30 ℃</text>
+<path id="loss-arrow" class="out" d="M560 272 H648 M635 259 L648 272 L635 285"/>
+<rect class="ambient" x="650" y="222" width="168" height="100" rx="12"/>
+<text x="734" y="258" text-anchor="middle" class="small ink">周囲へ損失</text>
+<text x="734" y="289" text-anchor="middle" class="formula ink">50 W</text>
+<text x="45" y="381" class="formula ink">蓄積速度 = 200 − 50 = 150 W</text>
+<text x="46" y="418" class="small muted">仕事・質量出入り・他の熱経路なし／一定物性・一定損失</text>
+
+<rect class="panel" x="23" y="468" width="834" height="468" rx="18"/>
+<text x="44" y="509" class="head ink">② 同じ10,000 Jでも、加熱時間は違う</text>
+<text x="45" y="540" class="small muted">横軸：経過時間 [s] ／ 縦軸：塊の一様温度 [℃]</text>
+<path class="axes" d="M185 607 V862 H747 M738 854 L747 862 L738 870"/>
+<path class="grid" d="M185 705.750 H733 M185 783.875 H733"/>
+<path id="fixed-loss-curve" class="net" d="M185.000,862.000 L198.625,857.605 L212.250,853.211 L225.875,848.816 L239.500,844.422 L253.125,840.027 L266.750,835.633 L280.375,831.238 L294.000,826.844 L307.625,822.449 L321.250,818.055 L334.875,813.660 L348.500,809.266 L362.125,804.871 L375.750,800.477 L389.375,796.082 L403.000,791.688 L416.625,787.293 L430.250,782.898 L443.875,778.504 L457.500,774.109 L471.125,769.715 L484.750,765.320 L498.375,760.926 L512.000,756.531 L525.625,752.137 L539.250,747.742 L552.875,743.348 L566.500,738.953 L580.125,734.559 L593.750,730.164 L607.375,725.770 L621.000,721.375 L634.625,716.980 L648.250,712.586 L661.875,708.191 L675.500,703.797 L689.125,699.402 L702.750,695.008 L716.375,690.613 L730.000,686.219"/>
+<path id="no-loss-curve" class="ideal" d="M185.000,862.000 L198.625,856.141 L212.250,850.281 L225.875,844.422 L239.500,838.562 L253.125,832.703 L266.750,826.844 L280.375,820.984 L294.000,815.125 L307.625,809.266 L321.250,803.406 L334.875,797.547 L348.500,791.688 L362.125,785.828 L375.750,779.969 L389.375,774.109 L403.000,768.250 L416.625,762.391 L430.250,756.531 L443.875,750.672 L457.500,744.812 L471.125,738.953 L484.750,733.094 L498.375,727.234 L512.000,721.375 L525.625,715.516 L539.250,709.656 L552.875,703.797 L566.500,697.938 L580.125,692.078 L593.750,686.219 L607.375,680.359 L621.000,674.500 L634.625,668.641 L648.250,662.781 L661.875,656.922 L675.500,651.062 L689.125,645.203 L702.750,639.344 L716.375,633.484 L730.000,627.625"/>
+<path id="time-50" class="event" d="M548.333 705.750 V862"/>
+<path id="time-66" class="event" d="M669.444 705.750 V862"/>
+<circle id="no-loss-30c" class="idealMark" cx="548.333" cy="705.750" r="7"/>
+<circle id="with-loss-30c" class="mark" cx="669.444" cy="705.750" r="7"/>
+<text x="168" y="711.750" text-anchor="end" class="small ink">30</text>
+<text x="168" y="789.875" text-anchor="end" class="small ink">25</text>
+<text x="168" y="868" text-anchor="end" class="small ink">20</text>
+<text x="185" y="894" text-anchor="middle" class="small ink">0</text>
+<text x="548.333" y="894" text-anchor="middle" class="small ink">50</text>
+<text x="669.444" y="894" text-anchor="middle" class="small ink">66.7</text>
+<text x="730" y="894" text-anchor="middle" class="small ink">75</text>
+<path class="ideal" d="M548 555 H588"/><text x="601" y="561" class="tiny ink">損失なし（200 W）</text>
+<path class="net" d="M548 585 H588"/><text x="601" y="591" class="tiny ink">損失50 W（正味150 W）</text>
+<text x="45" y="920" class="small muted">線形上昇は入出力一定・内部温度一様の場合のみ。</text>
+
+<rect class="panel" x="23" y="953" width="834" height="351" rx="18"/>
+<text x="44" y="997" class="head ink">③ 保存則＋構成則＋境界条件が必要</text>
+<text x="44" y="1036" class="formula ink">ΔU = m c ΔT = 10,000 J</text>
+<text x="44" y="1076" class="formula ink">m c dT/dt = P − Q_loss = 150 W</text>
+<text x="44" y="1116" class="formula ink">t = ΔU/(P − Q_loss) ≈ 66.67 s</text>
+<rect class="callout" x="43" y="1140" width="792" height="139" rx="12"/>
+<text x="60" y="1173" class="small ink">温度分布を解く別モデル：局所保存則＋Fourier則</text>
+<text x="60" y="1205" class="formula ink">ρc ∂T/∂t = k ∂²T/∂x² + q_gen</text>
+<text x="60" y="1244" class="tiny muted">1次元・均質・一定 k, ρ, c／q_gen は体積発熱率 [W/m³]</text>
+<text x="440" y="1334" text-anchor="middle" class="tiny muted">独自作図｜温度一様の物体モデルと局所PDEを混同しない</text>
+</svg>

@@ -23,5 +23,5 @@ test('published practice must not reveal the correct answer through unique lengt
     return q.choices.every((choice,i)=>i===q.answer||/[。．.!?！？]$/.test(choice)!==correct);
   });
   assert.equal(punctuationCue.length,0,'Correct answer must not be the only choice with different terminal punctuation');
-  assert.equal(questions.filter(q=>q.revision!=='v1').length,56);
+  assert.equal(questions.filter(q=>q.revision!=='v1').length,57);
 });

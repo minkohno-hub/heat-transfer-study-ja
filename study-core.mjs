@@ -1,4 +1,45 @@
 // Browser-independent learning rules shared by the app and its automated checks.
+import { calculateFinEfficiency } from './fin-efficiency.mjs';
+import { calculateExchanger } from './heat-exchanger.mjs';
+import { calculateSlabTransient } from './transient-slab.mjs';
+import { calculateRadiationEnclosure } from './radiation-enclosure.mjs';
+import { calculateCylindricalInsulation } from './cylindrical-insulation.mjs';
+import { calculateSemiInfinite } from './semi-infinite-solid.mjs';
+import { calculateFlatPlateConvection } from './forced-convection-flat-plate.mjs';
+import { calculatePipeConvection } from './turbulent-pipe-convection.mjs';
+import { calculateCylinderCrossflow } from './cylinder-crossflow.mjs';
+import { calculateNaturalConvection } from './natural-convection-vertical.mjs';
+import { calculateLaminarPipe } from './laminar-pipe-convection.mjs';
+import { calculateFilmCondensation } from './laminar-film-condensation.mjs';
+import { calculateBinaryDiffusion } from './binary-gas-diffusion.mjs';
+import { calculateNucleateBoiling } from './pool-boiling-nucleate.mjs';
+import { calculateCriticalHeatFlux } from './pool-boiling-chf.mjs';
+// Calculators for the simulator modes added after the original five. Stored
+// comparison conditions for these modes are valid only when the mode's own
+// calculator accepts them; unknown modes keep failing validation exactly as
+// before, so older saved data is never reinterpreted.
+export const SIM_MODEL_CALCULATORS = {
+  fin: calculateFinEfficiency,
+  exchanger: calculateExchanger,
+  slab: calculateSlabTransient,
+  enclosure: calculateRadiationEnclosure,
+  cylinder: calculateCylindricalInsulation,
+  halfspace: calculateSemiInfinite,
+  flatplate: calculateFlatPlateConvection,
+  pipe: calculatePipeConvection,
+  crossflow: calculateCylinderCrossflow,
+  natural: calculateNaturalConvection,
+  laminarpipe: calculateLaminarPipe,
+  condensation: calculateFilmCondensation,
+  diffusion: calculateBinaryDiffusion,
+  nucleate: calculateNucleateBoiling,
+  chf: calculateCriticalHeatFlux
+};
+export function calculateSimulationModel(mode, values) {
+  if (mode === 'transient') return calculateLumpedCooling(values);
+  if (Object.hasOwn(SIM_MODEL_CALCULATORS, mode)) return SIM_MODEL_CALCULATORS[mode](values);
+  return calculateHeatTransfer(mode, values);
+}
 export const DATA_FORMAT = 'heat-study-ja-learning-data';
 export function createEmptyState() {
   return { schemaVersion: 1, settings: { theme: 'system', contentLanguage: 'ja', fontScale: 1, lineHeight: 1.8, width: 'reading' },
@@ -60,7 +101,7 @@ export function validateLearningData(data, {stored=false}={}) {
   if (!optional(data,'readerPositions',v=>record(v)&&Object.values(v).every(p=>(finite(p)&&p>=0)||(record(p)&&finite(p.scrollY)&&p.scrollY>=0&&optional(p,'blockId',text)&&optional(p,'updatedAt',time))))) return invalid('読書位置の形式が正しくありません。');
   if (!optional(data,'readSections',v=>record(v)&&Object.values(v).every(x=>typeof x==='boolean'))) return invalid('読了記録の形式が正しくありません。');
   if (!optional(data,'lastSection',text)) return invalid('最後に読んだ節の形式が正しくありません。');
-  if (!optional(data,'simComparisons',v=>record(v)&&Object.entries(v).every(([mode,values])=>record(values)&&!(mode==='transient'?calculateLumpedCooling(values):calculateHeatTransfer(mode,values)).error))) return invalid('比較用シミュレーター条件が正しくありません。');
+  if (!optional(data,'simComparisons',v=>record(v)&&Object.entries(v).every(([mode,values])=>record(values)&&!calculateSimulationModel(mode,values).error))) return invalid('比較用シミュレーター条件が正しくありません。');
   if (!optional(data,'activities',v=>Array.isArray(v)&&v.length<=100000&&v.every(a=>record(a)&&text(a.id)&&validDay(a.date)&&['reading','practice','review','simulation','glossary'].includes(a.kind)&&finite(a.seconds)&&a.seconds>=0&&a.seconds<=86400&&time(a.updatedAt)&&['sectionId','sessionId','field'].every(k=>optional(a,k,text))))) return invalid('学習時間の記録の形式が正しくありません。');
   if (!optional(data,'quizDraft',v=>v===null||quizDraftOK(v))) return invalid('中断した演習の形式が正しくありません。');
   return '';

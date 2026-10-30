@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="1220" viewBox="0 0 760 1220" role="img" aria-labelledby="hx-title hx-desc" data-origin="original-app-diagram" data-lesson="3.3" data-hot-c="60" data-cold-in-c="20" data-ua-w-per-k="300" data-cmin-w-per-k="300" data-ntu="1" data-cold-out-c="45.284822353" data-heat-w="7585.446705943">
+  <title id="hx-title">§3.3 熱交換器：相変化側が等温のときの有効度と冷側温度変化</title>
+  <desc id="hx-desc">アプリ独自作成の熱交換器の模式図。高温側は60℃でほぼ等温、冷側流体は入口20℃から出口45.28℃に加熱される。熱通過率と面積の積UAは300W毎K、冷側熱容量流量は300W毎KでNTUは1。有効度は0.6321、熱移動率は7585.4W。横軸は累積伝熱面積比sで、熱通過率一様のとき冷側温度は60から40かけるexpのマイナスs乗を引いた曲線になる。実際の形状、寸法比、流動の予測を表すものではない。</desc>
+  <style>
+    .canvas{fill:#fff}.panel{fill:#f4f7fb;stroke:#cbd5e1;stroke-width:2}.ink{fill:#132e42}.secondary{fill:#40576a}.red{fill:#b34228}.blue{fill:#176982}
+    .hot-band{fill:#fee0c9;stroke:#b34228;stroke-width:2}.cold-band{fill:#d8f0f7;stroke:#176982;stroke-width:2}
+    .heat-line{stroke:#b34228;stroke-width:4;fill:none;stroke-linecap:round}.cold-line{stroke:#176982;stroke-width:5;fill:none;stroke-linecap:round;stroke-linejoin:round}
+    .flow-arrow{stroke:#176982;stroke-width:4;fill:none;stroke-linecap:round;stroke-linejoin:round}
+    .axis{stroke:#304c60;stroke-width:2.5;fill:none}.guide{stroke:#b5c3d0;stroke-width:1.5;stroke-dasharray:6 7}
+    text{font-family:'Noto Sans CJK JP','Hiragino Kaku Gothic ProN',system-ui,sans-serif;font-size:25px}.title{font-size:35px;font-weight:750}.section{font-size:27px;font-weight:750}.small{font-size:21px}.formula{font-size:26px;font-weight:650}
+    @media(prefers-color-scheme:dark){.canvas{fill:#101923}.panel{fill:#1b2b39;stroke:#587183}.ink{fill:#edf5fa}.secondary{fill:#c0d3e0}.red{fill:#ffba92}.blue{fill:#8fdaee}.hot-band{fill:#713825;stroke:#ffba92}.cold-band{fill:#194356;stroke:#8fdaee}.heat-line{stroke:#ffba92}.cold-line,.flow-arrow{stroke:#8fdaee}.axis{stroke:#d5e4ec}.guide{stroke:#668092}}
+  </style>
+  <rect class="canvas" width="760" height="1220"/>
+  <text class="title ink" x="35" y="62">§3.3 熱交換器の有効度とNTU</text>
+  <text class="secondary small" x="36" y="103">片側がほぼ等温なら、冷側は上限温度へ近づく</text>
+  <rect class="panel" x="24" y="126" rx="18" width="712" height="320"/>
+  <text class="section ink" x="48" y="170">① 熱を渡す側と受け取る側</text>
+  <rect class="hot-band" x="144" y="210" rx="9" width="490" height="51"/>
+  <text class="ink" text-anchor="middle" x="389" y="244">高温側：60 ℃（相変化・等温）</text>
+  <path class="heat-line" d="M270 265 V314 M258 302 L270 314 L282 302 M400 265 V314 M388 302 L400 314 L412 302 M530 265 V314 M518 302 L530 314 L542 302"/>
+  <rect class="cold-band" x="144" y="322" rx="9" width="490" height="51"/>
+  <path class="flow-arrow" d="M640 347 H699 M687 336 L699 347 L687 358"/>
+  <text class="ink" text-anchor="middle" x="389" y="355">冷側：20 ℃ → 45.28 ℃</text>
+  <text class="secondary small" x="49" y="406">流路の形状・長さは模式的。冷側の流れは左→右。</text>
+  <rect class="panel" x="24" y="464" rx="18" width="712" height="431"/>
+  <text class="section ink" x="48" y="509">② 冷側温度の変化（Uが一定）</text>
+  <text class="small secondary" x="47" y="549">温度 (℃)</text>
+  <path class="guide" d="M182 590 H664 M182 665 H664 M182 790 H664"/>
+  <path class="axis" d="M181 565 V811 H673 M660 803 L673 811 L660 819"/>
+  <path class="heat-line" d="M202 590 H650"/>
+  <path id="cold-temperature-profile" class="cold-line" d="M202.00,790.00 L224.40,780.25 L246.80,770.97 L269.20,762.14 L291.60,753.75 L314.00,745.76 L336.40,738.16 L358.80,730.94 L381.20,724.06 L403.60,717.53 L426.00,711.31 L448.40,705.39 L470.80,699.76 L493.20,694.41 L515.60,689.32 L538.00,684.47 L560.40,679.87 L582.80,675.48 L605.20,671.31 L627.60,667.35 L650.00,663.58"/>
+  <circle cx="202" cy="790" r="6" fill="#176982"/>
+  <circle cx="650" cy="663.58" r="6" fill="#176982"/>
+  <text class="small ink" x="93" y="597">60</text>
+  <text class="small ink" x="93" y="797">20</text>
+  <text class="small red" x="425" y="580">高温側：60 ℃</text>
+  <text class="small blue" x="465" y="640">冷側出口：45.28 ℃</text>
+  <text class="small blue" x="208" y="704">入口：20 ℃</text>
+  <text class="small secondary" text-anchor="middle" x="202" y="846">0</text>
+  <text class="small secondary" text-anchor="middle" x="650" y="846">1</text>
+  <text class="small secondary" text-anchor="middle" x="429" y="877">累積伝熱面積比 s = A(x)/A</text>
+  <rect class="panel" x="24" y="914" rx="18" width="712" height="260"/>
+  <text class="section ink" x="48" y="957">③ 数値例：NTU = 1.00</text>
+  <text class="formula ink" x="48" y="997">NTU = UA/C_min = 300/300 = 1.00</text>
+  <text class="formula ink" x="48" y="1036">ε = 1 − exp(−NTU) = 0.6321</text>
+  <text class="formula ink" x="48" y="1075">熱移動率 = 12,000 × ε = 7,585.4 W</text>
+  <text class="formula ink" x="48" y="1114">冷側出口 = 20 + 7,585.4/300 = 45.28 ℃</text>
+  <text class="small secondary" x="48" y="1151">定常・熱漏れなし・Cr ≈ 0・Uは面積方向に一定</text>
+  <text class="small secondary" text-anchor="middle" x="380" y="1203">アプリ作成の独自模式図・原書図版の転載ではない</text>
+</svg>

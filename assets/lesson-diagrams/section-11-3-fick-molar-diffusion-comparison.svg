@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="1500" viewBox="0 0 760 1500" role="img" aria-labelledby="fick-title fick-desc" style="max-width:100%" data-origin="original-app-diagram" data-lesson="11.3" data-pressure-pa="101325" data-temperature-k="300" data-gas-constant="8.3144626" data-diffusivity-m2-s="0.00002" data-length-m="0.010" data-y-a-left="0.20" data-y-a-right="0.05">
+<title id="fick-title">§11.3 Fickの法則：等モル相互拡散と成分B停滞の違い</title>
+<desc id="fick-desc">アプリ独自作成の学習図。二成分理想気体、圧力101325パスカル、温度300ケルビン、層厚0.010メートル、成分Aのモル分率が左0.20、右0.05、拡散係数2.0×10のマイナス5乗平方メートル毎秒という共通条件。左から右へのAの輸送は、等モル相互拡散では0.01219モル毎平方メートル毎秒、Bが停滞するときは0.01396モル毎平方メートル毎秒。前者のBの全モル流束はAと逆向きで、後者のBの全モル流束はゼロ。相対拡散流束と全モル流束は異なる。図は模式図で流体を実寸描画したものではない。</desc>
+<style>
+  .bg{fill:#fff}.panel{fill:#f4f7fb;stroke:#bdcad8;stroke-width:2}.ink{fill:#142b3f}.secondary{fill:#415b6f}.a{fill:#a43f24}.b{fill:#176f77}.solid{fill:#d5eaf4;stroke:#39728c;stroke-width:2}.a-stroke{stroke:#a43f24}.b-stroke{stroke:#176f77}.axis{stroke:#415b6f;stroke-width:2.5}.guide{stroke:#bac8d4;stroke-width:2;stroke-dasharray:6 6}.plot-a{fill:none;stroke:#a43f24;stroke-width:5;stroke-linecap:round;stroke-linejoin:round}.arrow-a{fill:none;stroke:#a43f24;stroke-width:5;stroke-linecap:round;stroke-linejoin:round}.arrow-b{fill:none;stroke:#176f77;stroke-width:5;stroke-linecap:round;stroke-linejoin:round}
+  text{font-family:'Noto Sans CJK JP','Hiragino Kaku Gothic ProN',system-ui,sans-serif;font-size:24px}.title{font-size:33px;font-weight:700}.heading{font-size:28px;font-weight:700}.small{font-size:21px}.equation{font-size:25px;font-weight:600}
+  @media(prefers-color-scheme:dark){.bg{fill:#111b27}.panel{fill:#192a3a;stroke:#5b7891}.ink{fill:#eff6ff}.secondary{fill:#c4d7e4}.a{fill:#ffb494}.b{fill:#8fdfdf}.solid{fill:#23475e;stroke:#8ccde9}.a-stroke{stroke:#ffb494}.b-stroke{stroke:#8fdfdf}.axis{stroke:#c4d7e4}.guide{stroke:#617c91}.plot-a{stroke:#ffb494}.arrow-a{stroke:#ffb494}.arrow-b{stroke:#8fdfdf}}
+</style>
+<rect class="bg" width="760" height="1500"/>
+<text x="34" y="62" class="title ink">§11.3 Fickの法則：流束を区別する</text>
+<text x="36" y="104" class="small secondary">同じ濃度差でも、Bの移動条件でAの全流束が変わる</text>
+<rect x="24" y="128" width="712" height="237" rx="18" class="panel"/>
+<text x="46" y="173" class="heading ink">共通の二成分気体・一次元層</text>
+<rect x="185" y="208" width="390" height="75" rx="5" class="solid"/>
+<path d="M189 245 H572 M555 234 L572 245 L555 256" class="arrow-a"/>
+<text x="117" y="229" text-anchor="middle" class="small ink">x=0</text>
+<text x="644" y="229" text-anchor="middle" class="small ink">x=L</text>
+<text x="117" y="258" text-anchor="middle" class="small ink">y_A=0.20</text>
+<text x="644" y="258" text-anchor="middle" class="small ink">y_A=0.05</text>
+<text x="380" y="316" text-anchor="middle" class="small ink">厚さ L=0.010 m、Aの高濃度側 → 低濃度側</text>
+<text x="380" y="345" text-anchor="middle" class="small secondary">T=300 K、P=101325 Pa、D_AB=2.0×10^(-5) m²/s</text>
+
+<rect x="24" y="384" width="712" height="347" rx="18" class="panel"/>
+<text x="45" y="431" class="heading ink">① 等モル相互拡散：N_A + N_B = 0</text>
+<text x="60" y="465" class="small secondary">y_A</text>
+<path d="M120 468 V605 H365" class="axis" fill="none"/>
+<path d="M120 472 H352 M120 587 H352" class="guide"/>
+<polyline id="equimolar-profile" points="120.000,472.000 131.600,477.750 143.200,483.500 154.800,489.250 166.400,495.000 178.000,500.750 189.600,506.500 201.200,512.250 212.800,518.000 224.400,523.750 236.000,529.500 247.600,535.250 259.200,541.000 270.800,546.750 282.400,552.500 294.000,558.250 305.600,564.000 317.200,569.750 328.800,575.500 340.400,581.250 352.000,587.000" class="plot-a"/>
+<text x="75" y="483" class="small ink">0.20</text>
+<text x="75" y="590" class="small ink">0.05</text>
+<text x="118" y="636" class="small ink">0</text><text x="342" y="636" class="small ink">L</text>
+<text x="246" y="663" text-anchor="middle" class="small secondary">位置 x →</text>
+<text x="418" y="493" class="small a">Aの全流束：右向き</text>
+<path d="M425 513 H680 M664 500 L680 513 L664 526" class="arrow-a"/>
+<text x="418" y="565" class="small b">Bの全流束：左向き</text>
+<path d="M679 587 H424 M440 574 L424 587 L440 600" class="arrow-b"/>
+<text x="418" y="645" class="small ink">N_B = −N_A</text>
+<text x="44" y="702" class="equation ink">N_A = −N_B = +0.01219 mol/(m²·s)</text>
+
+<rect x="24" y="750" width="712" height="349" rx="18" class="panel"/>
+<text x="45" y="797" class="heading ink">② 成分Bが停滞：N_B = 0</text>
+<text x="60" y="823" class="small secondary">y_A</text>
+<path d="M120 824 V961 H365" class="axis" fill="none"/>
+<path d="M120 828 H352 M120 943 H352" class="guide"/>
+<polyline id="stagnant-b-profile" points="120.000,828.000 131.600,833.293 143.200,838.631 154.800,844.016 166.400,849.447 178.000,854.925 189.600,860.450 201.200,866.023 212.800,871.643 224.400,877.313 236.000,883.031 247.600,888.799 259.200,894.616 270.800,900.484 282.400,906.402 294.000,912.372 305.600,918.392 317.200,924.465 328.800,930.591 340.400,936.769 352.000,943.000" class="plot-a"/>
+<text x="75" y="839" class="small ink">0.20</text>
+<text x="75" y="946" class="small ink">0.05</text>
+<text x="118" y="992" class="small ink">0</text><text x="342" y="992" class="small ink">L</text>
+<text x="246" y="1019" text-anchor="middle" class="small secondary">位置 x →</text>
+<text x="418" y="851" class="small a">Aの全流束：右向き</text>
+<path d="M425 872 H680 M664 859 L680 872 L664 885" class="arrow-a"/>
+<text x="418" y="924" class="small b">Bの全流束：ゼロ</text>
+<text x="418" y="963" class="small ink">N_B = 0</text>
+<text x="418" y="1006" class="small secondary">J_A は位置で変化</text>
+<text x="44" y="1071" class="equation ink">N_A = +0.01396 mol/(m²·s)</text>
+
+<rect x="24" y="1118" width="712" height="326" rx="18" class="panel"/>
+<text x="44" y="1163" class="heading ink">③ 同じ境界条件で計算すると</text>
+<text x="44" y="1207" class="small ink">c = P/(RT) = 40.62 mol/m³</text>
+<text x="44" y="1244" class="small ink">cD_AB/L = 0.08124 mol/(m²·s)</text>
+<text x="44" y="1281" class="small ink">等モル：N_A = (cD_AB/L)(0.20 − 0.05)</text>
+<text x="44" y="1318" class="small ink">B停滞：N_A = (cD_AB/L)ln(0.95/0.80)</text>
+<text x="44" y="1355" class="small a">停滞BのA全流束は約14.6%大きい</text>
+<text x="44" y="1390" class="small secondary">注意：J_A = −cD_AB dy_A/dx、</text>
+<text x="125" y="1416" class="small secondary">N_A = J_A + y_A(N_A+N_B)</text>
+<text x="380" y="1480" text-anchor="middle" class="small secondary">アプリ作成の独自図・模式図（原書図版ではない）</text>
+</svg>

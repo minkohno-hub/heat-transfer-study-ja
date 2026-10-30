@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="820" height="1230" viewBox="0 0 820 1230" role="img" aria-labelledby="slab-title slab-desc" style="max-width:100%" data-origin="original-app-diagram" data-lesson="5.3" data-biot="0.2" data-fourier-1="0.25" data-fourier-2="1.0" data-k="5" data-h="50" data-alpha="0.000001" data-half-thickness="0.02">
+  <title id="slab-title">§5.3 対称平板の非定常冷却：中心と表面の温度差</title>
+  <desc id="slab-desc">アプリ作成の独自図解。厚さ40ミリメートルの平板を同じ環境で両側から冷却する。初期温度は一様。半厚さ20ミリメートル、熱伝導率5ワット毎メートルケルビン、熱伝達率50ワット毎平方メートルケルビン、熱拡散率毎秒10のマイナス6乗平方メートル。Biは0.20。図の縦軸は無次元温度で、初期Foゼロは1.0の水平線、100秒後のFo0.25と400秒後のFo1では両表面が先に冷え、中心の無次元温度が高くなる。温度プロファイルは、境界条件を満たす固有関数級数から求めた。実温度の指定がないため温度を摂氏で示していない。</desc>
+  <style>
+    .background{fill:#fff}.panel{fill:#f4f7fb;stroke:#bbccd9;stroke-width:2}
+    .ink{fill:#193043}.secondary{fill:#465b6c}.cold{fill:#1c7194}.later{fill:#8b4eae}
+    .slab{fill:#d6e9ef;stroke:#528096;stroke-width:3}.axis{stroke:#304c60;stroke-width:2.4;fill:none}
+    .guide{stroke:#aebfcc;stroke-width:1.4;stroke-dasharray:6 7}.initial{stroke:#5c6e7c;stroke-width:3.4;fill:none;stroke-dasharray:10 6}
+    .quarter{stroke:#1c7194;stroke-width:4.6;fill:none;stroke-linejoin:round}.one{stroke:#8b4eae;stroke-width:4.6;fill:none;stroke-linejoin:round}
+    .arrow{stroke:#1c7194;stroke-width:4.4;fill:none;stroke-linecap:round;stroke-linejoin:round}
+    text{font-family:'Noto Sans CJK JP','Hiragino Kaku Gothic ProN',system-ui,sans-serif;font-size:25px}.title{font-size:35px;font-weight:700}.section{font-size:27px;font-weight:700}.small{font-size:22px}.formula{font-size:25px;font-weight:600}
+    @media(prefers-color-scheme:dark){.background{fill:#111a24}.panel{fill:#1c2c3b;stroke:#60798a}.ink{fill:#eef6ff}.secondary{fill:#cad9e4}.cold{fill:#89d8f4}.later{fill:#dbb4ff}.slab{fill:#22485f;stroke:#91c2dc}.axis{stroke:#d3e4ef}.guide{stroke:#647e90}.initial{stroke:#bed0da}.quarter,.arrow{stroke:#89d8f4}.one{stroke:#dbb4ff}}
+  </style>
+  <rect class="background" width="820" height="1230"/>
+  <text x="36" y="58" class="title ink">§5.3 非定常冷却と内部温度分布</text>
+  <text x="36" y="100" class="small secondary">表面が先に冷える。中心温度は時間遅れをもつ。</text>
+  <rect x="24" y="123" width="772" height="326" rx="19" class="panel"/>
+  <text x="48" y="166" class="section ink">① 両面から冷却する対称平板</text>
+  <rect x="260" y="229" width="300" height="124" rx="3" class="slab"/>
+  <path class="guide" d="M410 215 V378"/>
+  <path class="arrow" d="M245 294 H132 M145 281 L132 294 L145 307 M575 294 H688 M675 281 L688 294 L675 307"/>
+  <text x="107" y="219" class="small cold" text-anchor="middle">外向き熱流</text>
+  <text x="713" y="219" class="small cold" text-anchor="middle">外向き熱流</text>
+  <text x="410" y="270" text-anchor="middle" class="ink">中心 x = 0</text>
+  <text x="410" y="308" text-anchor="middle" class="small ink">初期温度は一様</text>
+  <text x="278" y="389" class="small ink">−L</text>
+  <text x="406" y="389" class="small ink">0</text>
+  <text x="551" y="389" class="small ink">+L</text>
+  <text x="48" y="427" class="small secondary">全厚 2L = 0.040 m ｜ 両側は同じ h・周囲温度</text>
+  <rect x="24" y="468" width="772" height="533" rx="19" class="panel"/>
+  <text x="48" y="512" class="section ink">② 無次元温度の空間分布</text>
+  <path class="initial" d="M50 552 H91"/><text x="100" y="559" class="small ink">初期 Fo = 0</text>
+  <path class="quarter" d="M301 552 H341"/><text x="350" y="559" class="small cold">100 s (Fo = 0.25)</text>
+  <path class="one" d="M566 552 H598"/><text x="603" y="559" class="small later">400 s (Fo=1)</text>
+  <path class="guide" d="M150 610 H710 M150 720 H710 M150 830 H710 M150 885 H710 M430 593 V924"/>
+  <path class="axis" d="M137 580 V925 H719 M706 917 L719 925 L706 933"/>
+  <path class="initial" d="M155 610 H705"/>
+  <path id="theta-fo-025" class="quarter" d="M155.00,724.30 L168.75,714.71 L182.50,705.67 L196.25,697.18 L210.00,689.24 L223.75,681.85 L237.50,674.99 L251.25,668.68 L265.00,662.89 L278.75,657.61 L292.50,652.85 L306.25,648.58 L320.00,644.80 L333.75,641.50 L347.50,638.66 L361.25,636.28 L375.00,634.34 L388.75,632.84 L402.50,631.77 L416.25,631.14 L430.00,630.93 L443.75,631.14 L457.50,631.77 L471.25,632.84 L485.00,634.34 L498.75,636.28 L512.50,638.66 L526.25,641.50 L540.00,644.80 L553.75,648.58 L567.50,652.85 L581.25,657.61 L595.00,662.89 L608.75,668.68 L622.50,674.99 L636.25,681.85 L650.00,689.24 L663.75,697.18 L677.50,705.67 L691.25,714.71 L705.00,724.30"/>
+  <path id="theta-fo-1" class="one" d="M155.00,856.30 L168.75,847.97 L182.50,840.04 L196.25,832.51 L210.00,825.40 L223.75,818.70 L237.50,812.41 L251.25,806.55 L265.00,801.11 L278.75,796.10 L292.50,791.52 L306.25,787.36 L320.00,783.64 L333.75,780.35 L347.50,777.50 L361.25,775.08 L375.00,773.10 L388.75,771.56 L402.50,770.46 L416.25,769.80 L430.00,769.58 L443.75,769.80 L457.50,770.46 L471.25,771.56 L485.00,773.10 L498.75,775.08 L512.50,777.50 L526.25,780.35 L540.00,783.64 L553.75,787.36 L567.50,791.52 L581.25,796.10 L595.00,801.11 L608.75,806.55 L622.50,812.41 L636.25,818.70 L650.00,825.40 L663.75,832.51 L677.50,840.04 L691.25,847.97 L705.00,856.30"/>
+  <text x="48" y="599" class="small ink">θ (−)</text>
+  <text x="72" y="617" class="small secondary">1.00</text>
+  <text x="72" y="727" class="small secondary">0.90</text>
+  <text x="72" y="837" class="small secondary">0.80</text>
+  <text x="72" y="892" class="small secondary">0.75</text>
+  <text x="155" y="958" text-anchor="middle" class="small ink">−1（左面）</text>
+  <text x="430" y="958" text-anchor="middle" class="small ink">0（中心）</text>
+  <text x="705" y="958" text-anchor="middle" class="small ink">+1（右面）</text>
+  <text x="430" y="991" text-anchor="middle" class="small secondary">無次元位置 x/L（両面で対称）</text>
+  <rect x="24" y="1018" width="772" height="165" rx="19" class="panel"/>
+  <text x="48" y="1056" class="small ink">Bi = hL/k = 50×0.020/5 = 0.20</text>
+  <text x="48" y="1093" class="small ink">Fo = αt/L²：100 s → 0.25 ／ 400 s → 1.00</text>
+  <text x="48" y="1130" class="small ink">θ = (T−T∞)/(T_i−T∞)：高いほど冷却前の温度に近い</text>
+  <text x="48" y="1163" class="small secondary">一定物性・発熱なし・両側同条件・中心対称の級数解</text>
+  <text x="410" y="1215" text-anchor="middle" class="small secondary">アプリ作成の独自図・原書図版の転載ではない</text>
+</svg>

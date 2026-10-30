@@ -472,6 +472,11 @@ input[type="range"] { width: 100%; accent-color: var(--accent); }
  .reader-deep-lesson h4{margin-top:1.15rem}
 }
 
+/* Original lesson diagrams (assets/lesson-diagrams/, registered in lesson-diagrams.mjs). */
+.lesson-diagram{margin:22px auto;max-width:640px;text-align:center}
+.lesson-diagram img{display:block;width:100%;height:auto;margin:0 auto;border:1px solid var(--line);border-radius:8px;background:#fff}
+.lesson-diagram figcaption{display:grid;gap:5px;margin-top:8px;color:var(--muted);font-size:.78em;text-align:left}
+
 
 /* Small, accessible offline dictionary and responsive, nondecorative physics diagrams. */
 .inline-term {display:inline; padding:0 2px; margin:0 1px; border:0; border-bottom:2px dotted var(--accent); background:color-mix(in srgb,var(--accent-soft) 55%,transparent); color:var(--ink); border-radius:3px; cursor:help; font:inherit; line-height:inherit; text-underline-offset:3px; box-decoration-break:clone;}

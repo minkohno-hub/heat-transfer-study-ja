@@ -15,7 +15,7 @@ test('smooth turbulent pipe example uses consistent Darcy friction in heat, pres
  const Nu=(f/8)*(Re-1000)*Pr/(1+12.7*Math.sqrt(f/8)*(Pr**(2/3)-1)),h=Nu*k/D;
  const dp=f*L/D*rho*U*U/2,flow=U*Math.PI*D*D/4;
  close(Re,1e5);close(Pr,7);close(f,.017992027544212322);close(Nu,599.066226153163);close(h,17971.98678459489,1e-8);close(dp,11245.0172151327,1e-8);close(dp*flow,17.663631736275825);
- close(.023*Re**.8*Pr**.4,500.9184776310397);close(10000*.002/.5,40);
+ close(.023*Re**.8*Pr**(1/3),439.9741720376497);close(.0243*Re**.8*Pr**.4,529.2312611493159);close(.0225*Re**.8*Pr**.4,490.0289455086258);close(10000*.002/.5,40);
 });
 test('constant-wall-temperature surface model closes fluid and LMTD heat balances',()=>{
  const m=.10,cp=1000,C=m*cp,h=50,P=.20,L=10,As=P*L,Ts=80,Tin=20,NTU=h*As/C;
