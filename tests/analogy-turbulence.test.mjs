@@ -24,21 +24,21 @@ test('turbulent wall units use measured stress and separate viscous and assumed 
 });
 test('fully turbulent plate power law has a five-fourths average rather than the laminar factor two',()=>{
  const L=1,U=10,nu=1.5e-5,Pr=.7,k=.026,W=.20,dt=40,Re=U*L/nu;
- const Nu=.037*Re**.8*Pr**(1/3),h=Nu*k/L,local=.0296*Re**.8*Pr**(1/3)*k/L;
- close(Nu,1498.6310627590174);close(h,38.96440763173445);close(h/local,1.25);close(h*W*L*dt,311.7152610538756);
+ const Nu=.037*Re**.8*Pr**.6,h=Nu*k/L,local=.0296*Re**.8*Pr**.6*k/L;
+ close(Nu,1362.660104036614);close(h,35.42916270495196);close(h/local,1.25);close(h*W*L*dt,283.4333016396157);
  close((5/4)*local, h);close(1.25*32,40);
 });
 test('transition correction matches independent numerical integration of laminar and turbulent local heat laws',()=>{
  const U=15,L=1,nu=1.5e-5,Rec=5e5,Pr=.7,k=.026,Re=U*L/nu,xc=Rec*nu/U;
- const C=.037*Rec**.8-.664*Math.sqrt(Rec),Nu=(.037*Re**.8-C)*Pr**(1/3);
- close(xc,.50);close(C,871.3234750958699);close(Nu,1299.1977386936471);close(Nu*k*.20*40,270.2331296482786);
+ const Cp=.037*Rec**.8*Pr**.6-.664*Math.sqrt(Rec)*Pr**(1/3),Nu=.037*Re**.8*Pr**.6-Cp;
+ close(xc,.50);close(Cp,665.633839473117);close(Nu,1219.145654415897);close(Nu*k*.20*40,253.5822961185066);
  const simpson=(f,a,b,n=1000)=>{const h=(b-a)/n;let s=f(a)+f(b);for(let i=1;i<n;i++)s+=(i%2?4:2)*f(a+i*h);return s*h/3;};
  // x=s^2 removes the laminar leading-edge singularity; the transformed integrand is constant.
  const lamIntegral=simpson(()=>2*.332*k*Math.sqrt(U/nu)*Pr**(1/3),0,Math.sqrt(xc));
- const turbIntegral=simpson(x=>.0296*k*(U/nu)**.8*x**(-.2)*Pr**(1/3),xc,L);
+ const turbIntegral=simpson(x=>.0296*k*(U/nu)**.8*x**(-.2)*Pr**.6,xc,L);
  close((lamIntegral+turbIntegral)/k,Nu,1e-7);
- const atTransition=(.037*Rec**.8-C)*Pr**(1/3);close(atTransition,.664*Math.sqrt(Rec)*Pr**(1/3));
- assert.ok(Nu<.037*Re**.8*Pr**(1/3));
+ const atTransition=.037*Rec**.8*Pr**.6-Cp;close(atTransition,.664*Math.sqrt(Rec)*Pr**(1/3));
+ assert.ok(Nu<.037*Re**.8*Pr**.6);
 });
 test('four analogy and turbulence drafts add 28 pending questions with three skills in every section',()=>{
  const added=questions.filter(q=>q.id.startsWith('supp-turbulence-'));assert.equal(added.length,28);
