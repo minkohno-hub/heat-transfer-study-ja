@@ -41,8 +41,8 @@ test('capillary length is independent of latent heat and vapor flux uses latent 
 
 test('surface tension scales critical heat flux with power 1/4',()=>{
  const a=calc({}),b=calc({surfaceTension:.0589*16});
- // The public form limits sigma to 1 N/m; use a physically admitted 2x example.
- assert.ok(b.error);
+ close(b.criticalFlux/a.criticalFlux,2);
+ assert.ok(calc({surfaceTension:.0589*32}).error);
  const c=calc({surfaceTension:.0589*2});
  close(c.criticalFlux/a.criticalFlux,2**.25);
  close(c.capillaryLength/a.capillaryLength,2**.5);
