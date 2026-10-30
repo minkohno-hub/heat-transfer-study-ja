@@ -1,4 +1,19 @@
-import { createEmptyState, validateLearningData, normalizeLearningData, mergeLearningData, calculateHeatTransfer, calculateLumpedCooling, chapterKey, searchEntries, searchSnippet, searchRanges, localDay, validDay, shiftMonth, nextReviewDays, planMinutes, validateQuestion, safeLocalFigurePath, speechChunks, questionFingerprint, quizChoiceOrder, quizResumeIssue, recordStudyActivity, fieldProgress, studyDuration, isCurrentQuestionAnswer } from './study-core.mjs';
+import { createEmptyState, validateLearningData, normalizeLearningData, mergeLearningData, calculateHeatTransfer, calculateLumpedCooling, calculateSimulationModel, chapterKey, searchEntries, searchSnippet, searchRanges, localDay, validDay, shiftMonth, nextReviewDays, planMinutes, validateQuestion, safeLocalFigurePath, speechChunks, questionFingerprint, quizChoiceOrder, quizResumeIssue, recordStudyActivity, fieldProgress, studyDuration, isCurrentQuestionAnswer } from './study-core.mjs';
+import { FIN_DEFAULTS, finFieldNames, renderFinFields, renderFinSteps, renderFinDiagram, finTemperatureGraph } from './fin-efficiency.mjs';
+import { EXCHANGER_DEFAULTS, exchangerFieldNames, renderExchangerFields, renderExchangerSteps, renderExchangerDiagram, exchangerEffectivenessGraph } from './heat-exchanger.mjs';
+import { SLAB_DEFAULTS, slabFieldNames, renderSlabFields, renderSlabSteps, renderSlabDiagram, slabProfileGraph, slabHistoryGraph } from './transient-slab.mjs';
+import { RADIATION_ENCLOSURE_DEFAULTS, radiationEnclosureFieldNames, renderRadiationEnclosureFields, renderRadiationEnclosureSteps, renderRadiationEnclosureDiagram, radiationEnclosureHeatGraph } from './radiation-enclosure.mjs';
+import { CYLINDER_DEFAULTS, cylinderFieldNames, renderCylinderFields, renderCylinderSteps, renderCylinderDiagram, cylinderTemperatureGraph, cylinderThicknessGraph } from './cylindrical-insulation.mjs';
+import { SEMI_INFINITE_DEFAULTS, semiInfiniteFieldNames, renderSemiInfiniteFields, renderSemiInfiniteSteps, renderSemiInfiniteDiagram, semiInfiniteProfileGraph, semiInfiniteHistoryGraph } from './semi-infinite-solid.mjs';
+import { FLAT_PLATE_DEFAULTS, flatPlateFieldNames, renderFlatPlateFields, renderFlatPlateSteps, renderFlatPlateDiagram, flatPlateLocalGraph, flatPlateVelocityGraph } from './forced-convection-flat-plate.mjs';
+import { PIPE_DEFAULTS, pipeFieldNames, renderPipeFields, renderPipeSteps, renderPipeDiagram, pipeBulkGraph, pipeVelocityGraph } from './turbulent-pipe-convection.mjs';
+import { CROSSFLOW_DEFAULTS, crossflowFieldNames, renderCrossflowFields, renderCrossflowSteps, renderCrossflowDiagram, crossflowVelocityGraph, crossflowDiameterGraph } from './cylinder-crossflow.mjs';
+import { NATURAL_DEFAULTS, naturalFieldNames, renderNaturalFields, renderNaturalSteps, renderNaturalDiagram, naturalTemperatureGraph, naturalHeightGraph } from './natural-convection-vertical.mjs';
+import { LAMINAR_PIPE_DEFAULTS, laminarPipeFieldNames, renderLaminarPipeFields, renderLaminarPipeSteps, renderLaminarPipeDiagram, laminarPipeBulkGraph, laminarPipeNusseltGraph } from './laminar-pipe-convection.mjs';
+import { CONDENSATION_DEFAULTS, condensationFieldNames, renderCondensationFields, renderCondensationSteps, renderCondensationDiagram, condensationThicknessGraph, condensationLocalGraph } from './laminar-film-condensation.mjs';
+import { BINARY_DIFFUSION_DEFAULTS, binaryDiffusionFieldNames, renderBinaryDiffusionFields, renderBinaryDiffusionSteps, renderBinaryDiffusionDiagram, binaryDiffusionProfileGraph, binaryDiffusionBoundaryGraph } from './binary-gas-diffusion.mjs';
+import { NUCLEATE_DEFAULTS, nucleateFieldNames, renderNucleateFields, renderNucleateSteps, renderNucleateDiagram, nucleateHeatFluxGraph, nucleateSurfaceSensitivityGraph } from './pool-boiling-nucleate.mjs';
+import { CHF_DEFAULTS, chfFieldNames, renderCriticalHeatFluxFields, renderCriticalHeatFluxSteps, renderCriticalHeatFluxDiagram, criticalHeatFluxSensitivityGraph } from './pool-boiling-chf.mjs';
 import { GUIDE_SECTIONS, searchGuide } from './guide.mjs';
 import {questionChapter,questionsForChapter,chapterLearningOverview} from './chapter-curriculum.mjs';
 import {validateOriginalNotes,independentNoteForSection} from './original-notes.mjs';
@@ -53,7 +68,23 @@ let ui = {
     convection: { h: 25, area: 1, surface: 80, fluid: 20 },
     radiation: { emissivity: 0.85, area: 1, surface: 150, surrounding: 25 },
     resistance:{area:1,hot:80,cold:20,hHot:10,hCold:20,k1:0.5,k2:0.1,L1:0.1,L2:0.05},
-    transient:{h:20,area:0.1,volume:0.001,density:1000,cp:4000,k:10,initial:60,ambient:20,time:2000}
+    transient:{h:20,area:0.1,volume:0.001,density:1000,cp:4000,k:10,initial:60,ambient:20,time:2000},
+    // Initial values for the added modes mirror each model module's *_DEFAULTS.
+    fin:{k:200,h:40,length:0.1,radius:0.01,base:80,ambient:20},
+    exchanger:{flow:'counter',hotMass:0.2,hotCp:2000,coldMass:0.4,coldCp:1000,u:100,area:2,hotIn:80,coldIn:20},
+    slab:{k:2,h:80,thickness:0.08,faceArea:0.1,density:2000,cp:900,initial:80,ambient:20,time:400},
+    enclosure:{area1:1,area2:4,epsilon1:0.8,epsilon2:0.6,temp1:200,temp2:25},
+    cylinder:{radius:0.004,thickness:0.003,length:1,k:0.05,h:5,base:80,ambient:20},
+    halfspace:{k:15,density:7800,cp:500,initial:20,surface:100,time:60,depth:0.01,area:0.2,availableDepth:0.1},
+    flatplate:{density:1.184,velocity:3,viscosity:0.00001849,cp:1007,conductivity:0.0263,length:0.5,width:0.2,surface:80,fluid:25},
+    pipe:{density:996,velocity:1.2,viscosity:0.000797,cp:4180,conductivity:0.613,diameter:0.025,length:3,inlet:25,wall:60},
+    crossflow:{density:1.184,velocity:3,viscosity:0.00001849,cp:1007,conductivity:0.0263,diameter:0.05,length:1,surface:80,ambient:25},
+    natural:{density:1.184,viscosity:0.00001849,cp:1007,conductivity:0.0263,beta:0.00319,height:0.5,width:0.4,faces:1,surface:60,ambient:20},
+    laminarpipe:{density:998,velocity:0.04,viscosity:0.001,cp:4180,conductivity:0.6,diameter:0.02,length:1,inlet:20,wall:60},
+    condensation:{rhoLiquid:958,rhoVapor:0.6,viscosity:0.000282,conductivity:0.68,latent:2260000,cpLiquid:4200,height:0.1,width:0.4,saturation:100,wall:98},
+    diffusion:{regime:'stagnant',diffusivity:0.000025,pressure:101325,temperature:298.15,thickness:0.002,area:0.01,yA1:0.3,yA2:0.05,molarMassA:0.018},
+    nucleate:{rhoLiquid:958.4,rhoVapor:0.597,viscosity:0.000282,conductivity:0.679,cp:4216,latent:2257000,surfaceTension:0.0589,csf:0.013,n:1,superheat:10,area:0.01},
+    chf:{rhoLiquid:958.4,rhoVapor:0.597,latent:2257000,surfaceTension:0.0589,area:0.01,appliedFlux:500000}
   }
 };
 
@@ -896,8 +927,105 @@ const SIM_META = {
     description:'物体温度が時間とともに変わる様子を、内部温度が一様と仮定して学びます。',
     formula:'T(t) = T∞ + (T₀ − T∞) exp(−t/τ), τ = ρVcₚ/(hA)',
     note:'物体内部の温度がほぼ均一、周囲流体の温度とh・物性は一定、放射・内部発熱・相変化なし。Bi=h(V/A)/k＜0.1は近似検討の目安です。'},
-  radiation: { title: '熱放射', description: '表面間で電磁波として移る熱を、単純化した灰色面モデルで見ます。', formula: 'Q̇ = ε σ A (Tₛ,K⁴ − Tsur,K⁴)', note: '大きな黒い周囲を見込む不透明な灰色面、形態係数1、周囲からの一様な照射を仮定。吸収率と放射率を等しいとします。対流、複数面間の反射の連成、波長による特性の変化は解いていません。温度は必ずKへ換算します。' }
+  radiation: { title: '熱放射', description: '表面間で電磁波として移る熱を、単純化した灰色面モデルで見ます。', formula: 'Q̇ = ε σ A (Tₛ,K⁴ − Tsur,K⁴)', note: '大きな黒い周囲を見込む不透明な灰色面、形態係数1、周囲からの一様な照射を仮定。吸収率と放射率を等しいとします。対流、複数面間の反射の連成、波長による特性の変化は解いていません。温度は必ずKへ換算します。' },
+  fin:{title:'フィン効率（断熱先端）',description:'根元から流体へ熱を逃がす円柱フィンの効率と温度分布を計算します。',formula:'ηf = tanh(mL)/(mL)、m = √(hP/(kAc))、Q̇ = ηf h As (Tb − T∞)',note:'一定断面の直線円柱フィン、軸方向一次元・定常、先端は断熱。側面積のみで効率を定義し、先端の対流・放射・接触抵抗・温度依存物性は含みません。関連：§4.5。'},
+  exchanger:{title:'熱交換器（ε–NTU）',description:'向流・並流の有効度と出口温度、対数平均温度差を計算します。',formula:'Q̇ = ε Cmin (Th,in − Tc,in)、NTU = UA/Cmin',note:'定常・単相・外部熱損失なし・比熱とUは一定。向流と並流のみで、多パス・交差流・相変化・圧力損失は含みません。関連：§3.2・§3.3。'},
+  slab:{title:'非定常平板（両面対流）',description:'両面から冷やされる／温められる平板の内部温度分布を級数解で計算します。',formula:'θ = Σ Cn cos(μn x/L) exp(−μn² Fo)、μn tan μn = Bi',note:'初期温度は一様、両面とも同じ流体温度とh、物性は一定。数値精度のため Fo≧10⁻⁴（または t=0）かつ Bi≦100 に限ります。関連：§5.3。'},
+  enclosure:{title:'二面間の放射熱交換',description:'取り囲む2つの灰色面の間の正味放射熱交換を、放射抵抗の直列として計算します。',formula:'Q̇ = σ (T1⁴ − T2⁴) / Rtotal',note:'面1は自己照射なし（F12=1）で面2が面1を取り囲む理想化。形態係数は面積比からのみ決まり、自由入力はしません。既存の「熱放射」（黒い周囲を見込むモデル）とは別モデルです。関連：第10章。'},
+  cylinder:{title:'円筒断熱と臨界半径',description:'円筒に断熱材を巻いたときの熱移動率と、臨界半径の効果を計算します。',formula:'Q̇ = (Tb − T∞) / Rtotal、rcrit = k/h',note:'定常・半径方向一次元、hは一定。臨界半径は固定hを仮定した理論上の極値であり、保温設計の推奨厚さではありません。関連：§2.4。'},
+  halfspace:{title:'半無限固体の応答',description:'表面温度をステップ状に変えた半無限固体の温度応答と表面熱流束を計算します。',formula:'(T − Ti)/(Ts − Ti) = erfc(x / (2√(αt)))',note:'表面温度を指定する境界条件です。表面温度そのものを予測するモデルではなく、裏側の影響が届かない時間と深さの範囲でのみ使えます。関連：§5.6。'},
+  flatplate:{title:'平板の層流強制対流',description:'等温平板上の層流境界層について、平均と局所のヌセルト数を計算します。',formula:'NūL = 0.664 ReL^(1/2) Pr^(1/3)',note:'等温平板・層流の範囲に限ります。遷移・乱流、温度依存物性、圧力勾配は含みません。関連：§6.2〜§6.5。'},
+  pipe:{title:'円管内の乱流強制対流',description:'Gnielinski相関で円管内乱流の平均ヌセルト数、出口温度、圧力損失を計算します。',formula:'Nu = (f/8)(Re − 1000)Pr / (1 + 12.7 (f/8)^(1/2) (Pr^(2/3) − 1))',note:'十分発達した乱流と平滑管を対象とし、適用範囲外のRe・Prは受け付けません。関連：§7.3。'},
+  crossflow:{title:'円柱まわりの横流れ',description:'Churchill–Bernstein相関で、単独円柱を横切る流れの熱伝達を計算します。',formula:'NuD = Churchill–Bernstein相関（ReD と Pr の関数）',note:'単独で滑らかな円柱、物性は膜温度。管群・フィン付き円柱・相変化は含みません。関連：§7.6。'},
+  natural:{title:'鉛直平板の自然対流',description:'Churchill–Chu相関で、鉛直平板の平均ヌセルト数を計算します。',formula:'NuL = [0.825 + 0.387 RaL^(1/6) / (1 + (0.492/Pr)^(9/16))^(8/27)]²',note:'等温の鉛直平板、物性は膜温度。壁温と流体温が等しいときは相関を適用しません。関連：§8.3。'},
+  laminarpipe:{title:'円管内の層流強制対流',description:'Hausen相関で、入口の速度分布が発達した円管内層流の平均ヌセルト数を計算します。',formula:'Nū = 3.66 + 0.0668 Gz / (1 + 0.04 Gz^(2/3))、Gz = Re Pr D/L',note:'等温壁で、加熱区間の入口では速度分布が発達済みであることが前提。径方向の温度分布ではなく混合平均温度を扱います。関連：§7.2。'},
+  condensation:{title:'鉛直平板の膜状凝縮',description:'Nusseltの平滑層流液膜解で、平均熱伝達率と液膜の厚さを計算します。',formula:'h̄ = 0.943 [g ρl (ρl − ρv) hfg kl³ / (μl L ΔT)]^(1/4)',note:'静止した純粋な飽和蒸気と、波立たない層流液膜を仮定。液膜Re≦30とJa≦0.1を適用の目安とし、範囲外は計算を拒否します。潜熱は入力値をそのまま使い、補正潜熱への換算は含みません。関連：§8.5。'},
+  diffusion:{title:'二成分気体の拡散',description:'静止した気体膜の中の等モル相互拡散と、Bが静止する条件の拡散を計算します。',formula:'NA = C DAB/L × (yA,1 − yA,2)（等モル相互拡散）',note:'理想二成分気体、等温・等圧・定常の一次元拡散。気液平衡・化学反応・多成分のStefan–Maxwell拡散は含みません。関連：§11.3・§11.5。'},
+  nucleate:{title:'プール核沸騰（Rohsenow）',description:'Rohsenow相関で核沸騰の熱流束を推算し、限界熱流束との比も確認します。',formula:'q″ = μl hfg √[g(ρl − ρv)/σ] × [cpl ΔTe / (Csf hfg Prl^n)]³',note:'係数Csfと指数nは流体と加熱面の組合せに依存します。予測がZuberの限界熱流束の推定以上になる条件は、外挿として計算を拒否します。関連：§9.2。'},
+  chf:{title:'限界熱流束（Zuber）',description:'大きな上向き水平面のプール沸騰について、限界熱流束をZuberの式で推算します。',formula:'q″CHF = 0.131 hfg √ρv [σg(ρl − ρv)]^(1/4)',note:'係数0.131はZuber–Kutateladzeの値です。レッスン側で推奨する0.149（Lienhard–Dhir）とは別系統であり、安全設計の許容値ではありません。関連：§9.3。'}
 };
+const SIM_ICONS = {transient:'◷',conduction:'▥',convection:'↝',radiation:'☼',resistance:'▤',fin:'⊥',exchanger:'⇄',slab:'▭',enclosure:'◎',cylinder:'○',halfspace:'◒',flatplate:'⇉',pipe:'⇒',crossflow:'⊕',natural:'↑',laminarpipe:'→',condensation:'≋',diffusion:'⇌',nucleate:'∴',chf:'△'};
+function renderSimTabs(mode) {
+  return `<div class="sim-tabs" role="tablist" aria-label="熱移動の種類">${Object.entries(SIM_META).map(([key,item])=>`<button type="button" role="tab" aria-selected="${mode===key}" class="sim-tab ${mode===key?'selected':''}" data-sim-mode="${key}"><span aria-hidden="true">${SIM_ICONS[key]||'●'}</span>${item.title}</button>`).join('')}</div>`;
+}
+const simNum = value => value===null||value===undefined||!Number.isFinite(Number(value)) ? '—' : Number(value).toLocaleString('ja-JP',{maximumSignificantDigits:7});
+// Registry for the simulator models added after the original five. Each model
+// module owns its fields, steps, diagram and graphs; the app only wires them
+// into the shared simulator screen, comparison storage and guide links. The
+// registry is built lazily, on first use, so that simply evaluating this file
+// does not depend on the model modules' bindings.
+let extendedSimsCache = null;
+function extendedSims() {
+  if (extendedSimsCache) return extendedSimsCache;
+  extendedSimsCache = {
+  fin:{fieldNames:finFieldNames,renderFields:renderFinFields,renderSteps:renderFinSteps,renderDiagram:renderFinDiagram,section:'4.5',
+    headline:r=>({label:'フィンの熱移動率 Q̇',value:formatHeatRate(r.watts),unit:'W',sub:`効率 ηf = ${simNum(r.efficiency)}、先端温度 ${simNum(r.tipTemperature)} ℃、根元の伝導熱流でも同じ値になります。`}),
+    graphs:[{title:'フィン内の温度分布',note:'横軸：根元からの相対位置 x/L ／ 縦軸：温度 ℃。',render:(r,c)=>finTemperatureGraph(r,c)}]},
+  exchanger:{fieldNames:exchangerFieldNames,extraFields:['flow'],renderFields:renderExchangerFields,renderSteps:renderExchangerSteps,renderDiagram:renderExchangerDiagram,section:'3.2',
+    headline:r=>({label:'熱交換器の熱移動率 Q̇',value:formatHeatRate(r.watts),unit:'W',sub:`有効度 ε = ${simNum(r.effectiveness)}、出口温度 高温側 ${simNum(r.hotOut)} ℃・低温側 ${simNum(r.coldOut)} ℃、対数平均温度差 ${simNum(r.logMean)} K。`}),
+    graphs:[{title:'有効度とNTU',note:'横軸：NTU ／ 縦軸：有効度 ε。現在の熱容量比での曲線です。',render:(r,c)=>exchangerEffectivenessGraph(r,c)}]},
+  slab:{fieldNames:slabFieldNames,renderFields:renderSlabFields,renderSteps:renderSlabSteps,renderDiagram:renderSlabDiagram,section:'5.3',
+    headline:r=>({label:'中心温度（指定した時刻）',value:simNum(r.centerTemperature),unit:'℃',sub:`表面 ${simNum(r.surfaceTemperature)} ℃、板厚平均 ${simNum(r.averageTemperature)} ℃、Fo = ${simNum(r.fo)}、Bi = ${simNum(r.bi)}。集中熱容量近似では ${simNum(r.lumpedTemperature)} ℃。`}),
+    graphs:[{title:'平板内の温度分布',note:'横軸：中心からの相対位置 ／ 縦軸：温度 ℃。',render:(r,c)=>slabProfileGraph(r,c)},{title:'中心・表面温度の履歴',note:'横軸：フーリエ数 Fo ／ 縦軸：温度 ℃。',render:r=>slabHistoryGraph(r)}]},
+  enclosure:{fieldNames:radiationEnclosureFieldNames,renderFields:renderRadiationEnclosureFields,renderSteps:renderRadiationEnclosureSteps,renderDiagram:renderRadiationEnclosureDiagram,section:'10.3',
+    headline:r=>({label:'面1からの正味熱移動率',value:formatHeatRate(r.netFrom1),unit:'W',sub:`実効放射率 ${simNum(r.effectiveEmissivity)}、熱流束（面1基準） ${simNum(r.flux1)} W/m²。面2の正味は逆向きに同じ大きさです。`}),
+    graphs:[{title:'面1の温度と熱移動率',note:'横軸：面1の温度 ／ 縦軸：正味熱移動率 W。',render:(r,c)=>radiationEnclosureHeatGraph(r,c)}]},
+  cylinder:{fieldNames:cylinderFieldNames,renderFields:renderCylinderFields,renderSteps:renderCylinderSteps,renderDiagram:renderCylinderDiagram,section:'2.4',
+    headline:r=>({label:'熱移動率 Q̇（単位長さあたり）',value:formatHeatRate(r.watts),unit:'W',sub:`臨界半径 ${simNum(r.criticalRadius)} m、熱抵抗合計 ${simNum(r.resistance)} K/W、外面温度 ${simNum(r.outerTemperature)} ℃。`}),
+    graphs:[{title:'断熱材内の温度分布',note:'横軸：相対半径位置 ／ 縦軸：温度 ℃。',render:(r,c)=>cylinderTemperatureGraph(r,c)},{title:'断熱厚さと熱移動率',note:'横軸：断熱厚さ ／ 縦軸：|Q̇|。臨界厚さの位置も示します。',render:(r,c)=>cylinderThicknessGraph(r,c)}]},
+  halfspace:{fieldNames:semiInfiniteFieldNames,renderFields:renderSemiInfiniteFields,renderSteps:renderSemiInfiniteSteps,renderDiagram:renderSemiInfiniteDiagram,section:'5.6',
+    headline:r=>({label:'指定した深さ・時刻の温度',value:simNum(r.temperature),unit:'℃',sub:`表面熱流束 ${simNum(r.surfaceFluxIn)} W/m²（固体内部向きを正）、拡散長さ √(αt) = ${simNum(r.diffusionLength)} m。`}),
+    graphs:[{title:'深さ方向の温度分布',note:'横軸：深さ ／ 縦軸：温度 ℃。',render:(r,c)=>semiInfiniteProfileGraph(r,c)},{title:'指定深さの温度履歴',note:'横軸：経過時間 ／ 縦軸：温度 ℃。',render:r=>semiInfiniteHistoryGraph(r)}]},
+  flatplate:{fieldNames:flatPlateFieldNames,renderFields:renderFlatPlateFields,renderSteps:renderFlatPlateSteps,renderDiagram:renderFlatPlateDiagram,section:'6.2',
+    headline:r=>({label:'熱移動率 Q̇',value:formatHeatRate(r.watts),unit:'W',sub:`平均 h̄ = ${simNum(r.hAverage)} W/(m²·K)、平均 Nu = ${simNum(r.nuAverage)}、ReL = ${simNum(r.re)}、Pr = ${simNum(r.pr)}。`}),
+    graphs:[{title:'局所熱伝達率 h(x)',note:'横軸：先端からの距離 x ／ 縦軸：局所 h W/(m²·K)。',render:(r,c)=>flatPlateLocalGraph(r,c)},{title:'流速に対する平均熱伝達率',note:'横軸：流速の範囲（最小〜最大）／ 縦軸：平均 h W/(m²·K)。',render:r=>flatPlateVelocityGraph(r)}]},
+  pipe:{fieldNames:pipeFieldNames,renderFields:renderPipeFields,renderSteps:renderPipeSteps,renderDiagram:renderPipeDiagram,section:'7.3',
+    headline:r=>({label:'熱移動率 Q̇',value:formatHeatRate(r.watts),unit:'W',sub:`出口温度 ${simNum(r.outlet)} ℃、h = ${simNum(r.h)} W/(m²·K)、圧力損失 ${simNum(r.pressureDrop)} Pa、水力動力 ${simNum(r.hydraulicWatts)} W。`}),
+    graphs:[{title:'混合平均温度の軸方向変化',note:'横軸：相対位置 x/L ／ 縦軸：混合平均温度 ℃。',render:(r,c)=>pipeBulkGraph(r,c)},{title:'流速に対する熱伝達率',note:'横軸：流速の範囲（最小〜最大）／ 縦軸：h W/(m²·K)。',render:(r,c)=>pipeVelocityGraph(r,c)}]},
+  crossflow:{fieldNames:crossflowFieldNames,renderFields:renderCrossflowFields,renderSteps:renderCrossflowSteps,renderDiagram:renderCrossflowDiagram,section:'7.6',
+    headline:r=>({label:'熱移動率 Q̇',value:formatHeatRate(r.watts),unit:'W',sub:`h = ${simNum(r.h)} W/(m²·K)、NuD = ${simNum(r.nusselt)}、ReD = ${simNum(r.reynolds)}、Pr = ${simNum(r.prandtl)}。${r.warning?` ${r.warning}`:''}`}),
+    graphs:[{title:'流速に対する熱伝達率',note:'横軸：流速の範囲（最小〜最大）／ 縦軸：h W/(m²·K)。',render:(r,c)=>crossflowVelocityGraph(r,c)},{title:'直径に対する熱伝達率',note:'横軸：直径の範囲（最小〜最大）／ 縦軸：h W/(m²·K)。',render:(r,c)=>crossflowDiameterGraph(r,c)}]},
+  natural:{fieldNames:naturalFieldNames,renderFields:renderNaturalFields,renderSteps:renderNaturalSteps,renderDiagram:renderNaturalDiagram,section:'8.3',
+    headline:r=>({label:'熱移動率 Q̇',value:formatHeatRate(r.watts),unit:'W',sub:r.h===null||r.h===undefined?'壁温と流体温が等しいため、相関は適用していません。':`平均 h = ${simNum(r.h)} W/(m²·K)、Nu = ${simNum(r.nusselt)}、Ra = ${simNum(r.rayleigh)}、熱流束 ${simNum(r.heatFlux)} W/m²。`}),
+    graphs:[{title:'温度差と熱移動率',note:'横軸：温度差 ／ 縦軸：熱移動率 W。',render:(r,c)=>naturalTemperatureGraph(r,c)},{title:'高さと平均熱伝達率',note:'横軸：平板の高さの範囲 ／ 縦軸：平均 h W/(m²·K)。',render:(r,c)=>naturalHeightGraph(r,c)}]},
+  laminarpipe:{fieldNames:laminarPipeFieldNames,renderFields:renderLaminarPipeFields,renderSteps:renderLaminarPipeSteps,renderDiagram:renderLaminarPipeDiagram,section:'7.2',
+    headline:r=>({label:'熱移動率 Q̇',value:formatHeatRate(r.watts),unit:'W',sub:`出口温度 ${simNum(r.outlet)} ℃、区間平均 Nu = ${simNum(r.nu)}、平均 h = ${simNum(r.h)} W/(m²·K)、圧力損失 ${simNum(r.pressureDrop)} Pa。`}),
+    graphs:[{title:'混合平均温度の軸方向変化',note:'横軸：相対位置 x/L ／ 縦軸：混合平均温度 ℃。',render:(r,c)=>laminarPipeBulkGraph(r,c)},{title:'区間平均ヌセルト数',note:'横軸：相対位置 x/L ／ 縦軸：加熱開始からの区間平均 Nu。',render:(r,c)=>laminarPipeNusseltGraph(r,c)}]},
+  condensation:{fieldNames:condensationFieldNames,renderFields:renderCondensationFields,renderSteps:renderCondensationSteps,renderDiagram:renderCondensationDiagram,section:'8.5',
+    headline:r=>({label:'平均熱伝達率 h̄',value:simNum(r.h),unit:'W/(m²·K)',sub:`熱移動率 ${formatHeatRate(r.watts)} W、下端の膜厚 ${simNum(r.filmThickness*1000)} mm、液膜 Re = ${simNum(r.filmRe)}、Ja = ${simNum(r.jakob)}、凝縮量 ${simNum(r.massFlowPerHour)} kg/h。`}),
+    graphs:[{title:'液膜の厚さ δ(x)',note:'横軸：相対位置 x/L ／ 縦軸：膜厚。',render:(r,c)=>condensationThicknessGraph(r,c)},{title:'局所熱伝達率 h(x)',note:'横軸：相対位置 x/L（0.01〜1）／ 縦軸：局所 h W/(m²·K)。x=0 の発散は表示しません。',render:(r,c)=>condensationLocalGraph(r,c)}]},
+  diffusion:{fieldNames:binaryDiffusionFieldNames,extraFields:['regime'],renderFields:renderBinaryDiffusionFields,renderSteps:renderBinaryDiffusionSteps,renderDiagram:renderBinaryDiffusionDiagram,section:'11.3',
+    headline:r=>({label:'成分Aのモル流束 NA',value:simNum(r.fluxA),unit:'mol/(m²·s)',sub:`全モル濃度 ${simNum(r.totalConcentration)} mol/m³、モル移動速度 ${simNum(r.molarRateA)} mol/s、質量移動速度 ${simNum(r.massRateA)} kg/s。等モル条件では ${simNum(r.equimolarFlux)}、B静止条件では ${simNum(r.stagnantFlux)} mol/(m²·s)。`}),
+    graphs:[{title:'モル分率の分布',note:'横軸：相対位置 z/L ／ 縦軸：成分Aのモル分率。等モルとB静止を重ねます。',render:r=>binaryDiffusionProfileGraph(r)},{title:'入口分率と成分Aの流束',note:'横軸：入口のモル分率 yA,1 ／ 縦軸：流束 mol/(m²·s)。',render:r=>binaryDiffusionBoundaryGraph(r)}]},
+  nucleate:{fieldNames:nucleateFieldNames,renderFields:renderNucleateFields,renderSteps:renderNucleateSteps,renderDiagram:renderNucleateDiagram,section:'9.2',
+    headline:r=>({label:'核沸騰の熱流束 q″',value:simNum(r.flux),unit:'W/m²',sub:`h = ${simNum(r.h)} W/(m²·K)、熱移動率 ${formatHeatRate(r.watts)} W、Zuber推定CHFに対する比 ${simNum(r.chfRatio*100)} %。${r.warning?` ${r.warning}`:''}`}),
+    graphs:[{title:'過熱度と熱流束',note:'横軸：壁面過熱度 ΔTe ／ 縦軸：熱流束 W/m²。CHFを超える部分は描きません。',render:(r,c)=>nucleateHeatFluxGraph(r,c)},{title:'表面係数 Csf に対する熱流束',note:'横軸：Csf の倍率 ／ 縦軸：熱流束 W/m²。',render:r=>nucleateSurfaceSensitivityGraph(r)}]},
+  chf:{fieldNames:chfFieldNames,renderFields:renderCriticalHeatFluxFields,renderSteps:renderCriticalHeatFluxSteps,renderDiagram:renderCriticalHeatFluxDiagram,section:'9.3',
+    headline:r=>({label:'限界熱流束 q″CHF',value:simNum(r.criticalFlux),unit:'W/m²',sub:`比較する熱流束との比 ${simNum(r.ratio)}、限界の熱移動率 ${formatHeatRate(r.criticalWatts)} W、毛管長さ ${simNum(r.capillaryLength)} m。係数0.131はZuber–Kutateladzeの値で、推奨の0.149とは別系統です。${r.warning?` ${r.warning}`:''}`}),
+    graphs:[{title:'表面張力に対する限界熱流束',note:'横軸：表面張力の倍率 ／ 縦軸：限界熱流束 W/m²。',render:(r,c)=>criticalHeatFluxSensitivityGraph(r,c)}]}
+  };
+  return extendedSimsCache;
+}
+function renderExtendedSimulator(mode) {
+  const ext = extendedSims()[mode]; const meta = SIM_META[mode]; const values = simRead(mode);
+  const result = calculateSimulation(mode, values); const baseline = state.simComparisons[mode];
+  const comparison = baseline && !result.error ? calculateSimulation(mode, baseline) : null;
+  const compare = comparison && !comparison.error ? comparison : null;
+  const related = ext.section ? getSection(ext.section) : null;
+  const head = result.error ? null : ext.headline(result);
+  const resultView = result.error
+    ? `<div class="sim-error" role="alert"><strong>計算できませんでした</strong><p>${escapeHTML(result.error)}</p></div>`
+    : `<div class="result-number"><span>${head.label}（理想化モデル）</span><strong>${head.value}<i>${head.unit}</i></strong><small>${head.sub}</small></div>`;
+  const savedView = compare ? ext.headline(compare) : null;
+  return `${pageHeading('簡易シミュレーター', '条件を変えて、熱の動きを見る。', '入力値を変えると計算結果とグラフが更新されます。設計値を決めるためのものではなく、基本式の動きを試す学習用モデルです。')}
+    ${renderSimTabs(mode)}
+    <div class="sim-layout"><section class="surface-card sim-input-card"><div class="sim-intro"><p class="eyebrow">${meta.title}</p><h2>${linkedQuizText(meta.description,4)}</h2>${ext.renderDiagram(result)}<a class="text-link" href="#guide/sim-${mode}">このモデルの理論・単位・手計算例 →</a></div><form id="sim-form" class="sim-form"><div class="sim-fields">${ext.renderFields(values)}</div></form><div class="formula-card"><span>使用する式</span><strong>${meta.formula}</strong><p>正の値は、各モデルで定義した基準方向への移動を表します。負の値なら向きが逆です。</p></div><div class="assumption-card"><strong>前提と適用範囲</strong><p>${linkedQuizText(meta.note,5)}</p></div></section>
+      <section class="surface-card sim-output-card"><div class="card-heading"><div><p class="eyebrow">現在の条件</p><h2>計算結果</h2></div>${statusPill('追加モデル', 'blue')}</div>${resultView}${!result.error ? ext.renderSteps(result) : ''}
+        ${!result.error ? ext.graphs.map(graph => { const svg = graph.render(result, compare); return svg ? `<div class="chart-heading"><h3>${graph.title}</h3><span>${graph.note}</span></div>${svg}${compare ? '<div class="chart-legend"><span><i class="legend-current"></i>現在の条件</span><span><i class="legend-baseline"></i>保存した比較条件</span></div>' : ''}` : ''; }).join('') : ''}
+        <div class="comparison-controls"><button type="button" class="button secondary" data-action="save-comparison">この条件を比較用に保存</button>${baseline ? '<button type="button" class="text-button" data-action="clear-comparison">比較条件を削除</button>' : ''}${savedView ? `<small>保存条件の結果：${savedView.label} ${savedView.value} ${savedView.unit}</small>` : ''}</div>
+      <div class="related-reading"><strong>関連する本書の範囲</strong>${related ? `<a href="#reader" data-section="${escapeHTML(related.id)}">第${escapeHTML(related.id)}節：${escapeHTML(related.title)}</a>${sourcePdfLink({}, related)}` : ''}<small>日本語の計算説明はアプリ独自の補足モデルです。原本の翻訳ではありません。</small></div>
+      </section></div>`;
+}
 const STEFAN_BOLTZMANN = 5.670374419e-8;
 function figureZoomLink(src) {
   if(!safeLocalFigurePath(src))return '';
@@ -925,7 +1053,7 @@ function renderSimulationSteps(mode,result) {
   return `<div class="simulation-steps"><p><strong>補足説明：式と計算の手順</strong></p><details><summary>1. 現象と式の選び方</summary><p>${principles[mode]}</p></details><details><summary>2. 数値と単位を代入する</summary><p class="calculation-line">${calculation}</p><p>温度差1 ℃は温度差1 Kと同じ大きさです。放射の四乗には温度差ではなく絶対温度を使います。</p></details><details><summary>3. 答えと途中の値を確認する</summary><p>Q̇ = ${n(result.watts)} W。1 Wは1秒あたり1 Jの熱エネルギー移動を表します。内部計算は丸めず、途中の表示は有効数字7桁、主結果は小数第3位までです。</p>${extra}</details><small>アプリ作成の補足説明。根拠：フーリエの法則、ニュートンの冷却法則、ステファン・ボルツマンの法則と定常エネルギー収支。本書の翻訳とは区別しています。</small></div>`;
 }
 function simRead(mode) { return ui.simValues[mode]; }
-function calculateSimulation(mode, values) { return mode==='transient'?calculateLumpedCooling(values):calculateHeatTransfer(mode, values); }
+function calculateSimulation(mode, values) { return calculateSimulationModel(mode, values); }
 function renderSimInputs(mode, values) {
   const field = (name, label, unit, min = '', step = 'any', help = '') => `<label class="sim-field">${label}<span class="input-unit"><input type="number" name="${name}" value="${escapeHTML(values[name])}" min="${min}" step="${step}" inputmode="decimal" required/><i>${unit}</i></span>${help ? `<small>${help}</small>` : ''}</label>`;
   if(mode==='resistance')return `${field('area','共通の面積 A','m²','0.000001')}${field('hot','高温側の流体 Tₕ','℃')}${field('cold','低温側の流体 T𝑐','℃')}${field('hHot','高温側の熱伝達率 hₕ','W/(m²·K)','0.000001')}${field('hCold','低温側の熱伝達率 h𝑐','W/(m²·K)','0.000001')}${field('k1','第1層の熱伝導率 k₁','W/(m·K)','0.000001')}${field('L1','第1層の厚さ L₁','m','0.000001')}${field('k2','第2層の熱伝導率 k₂','W/(m·K)','0.000001')}${field('L2','第2層の厚さ L₂','m','0.000001')}`;
@@ -970,8 +1098,7 @@ function renderTransientSimulator(){
        <small>外向き熱移動率：${formatHeatRate(x.watts)} W。累積放熱量：${formatHeatRate(x.energyJ)} J。負の値なら吸熱します。</small></div>
        <div class="assumption-card" role="status"><strong>適用性：ビオ数 Bi = ${x.biot.toPrecision(4)}</strong><p>${escapeHTML(x.applicability)}</p></div>`;
   return `${pageHeading('簡易シミュレーター','時間とともに変わる物体温度','物体・周囲の条件を変えて、非定常の冷却と加熱を比較します。')}
-    <div class="sim-tabs" role="tablist" aria-label="熱移動の種類">
-      ${Object.entries(SIM_META).map(([key,item])=>`<button type="button" role="tab" aria-selected="${mode===key}" class="sim-tab ${mode===key?'selected':''}" data-sim-mode="${key}"><span aria-hidden="true">${key==='transient'?'◷':key==='conduction'?'▥':key==='convection'?'↝':'☼'}</span>${item.title}</button>`).join('')}</div>
+    ${renderSimTabs(mode)}
     <div class="sim-layout"><section class="surface-card sim-input-card">
       <div class="sim-intro"><p class="eyebrow">${meta.title}</p><h2>${linkedQuizText(meta.description,4)}</h2>${renderSimulationDiagram(mode,v,x)}
       <a class="text-link" href="#guide/sim-transient">物理的背景・単位・手計算例 →</a></div>
@@ -999,12 +1126,13 @@ function renderTransientSimulator(){
 }
 function renderSimulator() {
   if(ui.simMode==='transient')return renderTransientSimulator();
+  if(extendedSims()[ui.simMode])return renderExtendedSimulator(ui.simMode);
   const mode = ui.simMode; const values = simRead(mode); const result = calculateSimulation(mode, values); const baseline = state.simComparisons[mode]; const meta = SIM_META[mode];
   const resultView = result.error ? `<div class="sim-error" role="alert"><strong>計算できませんでした</strong><p>${escapeHTML(result.error)}</p></div>` : `<div class="result-number"><span>計算結果（理想化モデル）</span><strong>${formatHeatRate(result.watts)}<i>W</i></strong><small>${result.delta===0 ? '温度差がないため、このモデルでは熱移動率は0 Wです。' : result.watts===0 ? 'この条件でのモデル計算結果は0 Wです。' : result.watts > 0 ? '高温側・表面から低温側・周囲へ熱が移動します。' : '入力した温度関係に従い、逆向きに熱が移動します。'}${mode === 'radiation' && !result.error ? ` 温度換算：${result.surfaceK.toFixed(2)} K と ${result.surroundingK.toFixed(2)} K` : ''}</small></div>`;
   const comparison = baseline && !result.error ? calculateSimulation(mode, baseline) : null;
   const related=getSection(['conduction','resistance'].includes(mode)?'2.2':mode==='convection'?'6.1':'10.1');
   return `${pageHeading('簡易シミュレーター', '条件を変えて、熱の動きを見る。', '入力値を変えると計算結果とグラフが更新されます。設計値を決めるためのものではなく、基本式の動きを試す学習用モデルです。')}
-    <div class="sim-tabs" role="tablist" aria-label="熱移動の種類">${Object.entries(SIM_META).map(([key,item]) => `<button type="button" role="tab" aria-selected="${mode === key}" class="sim-tab ${mode === key ? 'selected' : ''}" data-sim-mode="${key}"><span>${key === 'conduction' ? '▥' : key === 'convection' ? '↝' : '☼'}</span>${item.title}</button>`).join('')}</div>
+    ${renderSimTabs(mode)}
     <div class="sim-layout"><section class="surface-card sim-input-card"><div class="sim-intro"><p class="eyebrow">${meta.title}</p><h2>${linkedQuizText(meta.description,4)}</h2>${renderSimulationDiagram(mode,values,result)}<a class="text-link" href="#guide/sim-${mode}">このモデルの理論・単位・手計算例 →</a></div><form id="sim-form" class="sim-form"><div class="sim-fields">${renderSimInputs(mode, values)}</div></form><div class="formula-card"><span>使用する式</span><strong>${meta.formula}</strong><p>正の値は、入力欄の「高温側」または「表面」から反対側へ移る向きを表します。負の値なら向きが逆です。</p></div><div class="assumption-card"><strong>前提と適用範囲</strong><p>${linkedQuizText(meta.note,5)}</p></div></section>
       <section class="surface-card sim-output-card"><div class="card-heading"><div><p class="eyebrow">現在の条件</p><h2>熱移動率</h2></div>${statusPill(mode === 'radiation' ? '℃からKへ換算' : '定常モデル', 'blue')}</div>${resultView}${!result.error?renderSimulationSteps(mode,result):''}
         ${!result.error ? `<div class="chart-heading"><h3>温度差を変えたとき</h3><span>現在・保存条件の温度差を含む範囲${mode==='radiation'?'。各曲線は表面温度が0 Kより高い範囲のみ表示':''}</span></div>${simGraph(mode, result, baseline)}<div class="chart-legend"><span><i class="legend-current"></i>現在の条件</span>${baseline ? '<span><i class="legend-baseline"></i>保存した比較条件</span>' : ''}</div>` : ''}
@@ -1337,12 +1465,20 @@ function onChange(event) {
   else if (target.dataset.reviewDate) setReviewDate(target.dataset.reviewDate,target.value);
   else if (target.dataset.date) { ui.calendarDate=target.dataset.date; render(); }
   else if (target.id === 'import-file' && target.files?.[0]) readImportFile(target.files[0]);
-  else if (target.name && [...transientFieldNames,'thickness','hot','cold','surface','fluid','emissivity','surrounding','hHot','hCold','k1','k2','L1','L2'].includes(target.name)) { ui.simValues[ui.simMode][target.name]=target.value; renderSimulatorOutputsOnly(); }
+  else if (isCurrentSimField(target.name)) { ui.simValues[ui.simMode][target.name]=target.value; renderSimulatorOutputsOnly(); }
 }
 function onInput(event) {
   const target=event.target;
   if (target.id === 'glossary-query') { ui.glossaryQuery=target.value; const at=target.selectionStart; render(); const field=document.getElementById('glossary-query'); field?.focus(); field?.setSelectionRange(at,at); }
-  else if (target.name && [...transientFieldNames,'thickness','hot','cold','surface','fluid','emissivity','surrounding','hHot','hCold','k1','k2','L1','L2'].includes(target.name)) { ui.simValues[ui.simMode][target.name]=target.value; renderSimulatorOutputsOnly(); }
+  else if (isCurrentSimField(target.name)) { ui.simValues[ui.simMode][target.name]=target.value; renderSimulatorOutputsOnly(); }
+}
+function isCurrentSimField(name) {
+  if (!name) return false;
+  if ([...transientFieldNames,'thickness','hot','cold','surface','fluid','emissivity','surrounding','hHot','hCold','k1','k2','L1','L2'].includes(name)) return true;
+  const ext = extendedSims()[ui.simMode];
+  // Select inputs such as the exchanger's flow arrangement are rendered by the
+  // model modules outside their numeric field lists, so they are named here.
+  return Boolean(ext && (ext.fieldNames.includes(name) || (ext.extraFields || []).includes(name)));
 }
 function renderSimulatorOutputsOnly() {
   if (ui.route !== 'simulator') return;
