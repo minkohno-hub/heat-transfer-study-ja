@@ -16,13 +16,13 @@ text{font-family:'Noto Sans CJK JP','Hiragino Kaku Gothic ProN',sans-serif;font-
 <text class="small muted" x="30" y="101">Ramilison らの相関（原書 9.36）：流体力学理論からのずれを表面で説明</text>
 <rect class="panel" x="23" y="126" width="794" height="477" rx="18"/>
 <text class="section ink" x="43" y="169">① 補正係数 vs 後退接触角 β（粗さ r=8 μm）</text>
-<path class="axis" d="M170 690 V826 H660 M649 818 L660 826 L649 834"/>
-<path class="guide" d="M170 758.0 H660"/>
-<path id="factor-curve" class="graph" d="M 170.000 698.278 L 193.500 705.850 L 217.000 713.255 L 240.500 720.493 L 264.000 727.566 L 287.500 734.477 L 311.000 741.227 L 334.500 747.819 L 358.000 754.253 L 381.500 760.533 L 405.000 766.659 L 428.500 772.634 L 452.000 778.459 L 475.500 784.138 L 499.000 789.670 L 522.500 795.059 L 546.000 800.306 L 569.500 805.413 L 593.000 810.382 L 616.500 815.215 L 640.000 819.914"/>
-<circle id="factor-point" class="point" cx="405.000" cy="766.659" r="9"/>
-<text class="small ink" x="490" y="745">β=20° で係数 ≈ 0.949</text>
-<text x="60" y="700" class="micro ink">1.4</text><text x="60" y="765" class="micro ink">1.0</text><text x="60" y="831" class="micro ink">0.6</text>
-<text x="180" y="852" class="micro ink">0°</text><text x="640" y="852" class="micro ink">40°</text>
+<path class="axis" d="M170 230 V366 H660 M649 358 L660 366 L649 374"/>
+<path class="guide" d="M170 298.0 H660"/>
+<path id="factor-curve" class="graph" d="M 170.000 238.278 L 193.500 245.850 L 217.000 253.255 L 240.500 260.493 L 264.000 267.566 L 287.500 274.477 L 311.000 281.227 L 334.500 287.819 L 358.000 294.253 L 381.500 300.533 L 405.000 306.659 L 428.500 312.634 L 452.000 318.459 L 475.500 324.138 L 499.000 329.670 L 522.500 335.059 L 546.000 340.306 L 569.500 345.413 L 593.000 350.382 L 616.500 355.215 L 640.000 359.914"/>
+<circle id="factor-point" class="point" cx="405.000" cy="306.659" r="9"/>
+<text class="small ink" x="490" y="285">β=20° で係数 ≈ 0.949</text>
+<text x="60" y="240" class="micro ink">1.4</text><text x="60" y="305" class="micro ink">1.0</text><text x="60" y="371" class="micro ink">0.6</text>
+<text x="180" y="392" class="micro ink">0°</text><text x="640" y="392" class="micro ink">40°</text>
 <text x="797" y="545" text-anchor="end" class="micro muted">適用範囲：2 ≦ r ≦ 12 μm、0 ≦ β ≦ 40°。範囲外へ外挿しない。</text>
 <text class="small muted" x="45" y="584">粗さは上げる方向、接触角は下げる方向に働き、倍率は常に1以上とは限らない。</text>
 <rect class="panel" x="23" y="621" width="794" height="293" rx="18"/>
