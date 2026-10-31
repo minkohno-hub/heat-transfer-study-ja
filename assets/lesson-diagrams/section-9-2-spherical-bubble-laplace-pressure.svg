@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="1470" viewBox="0 0 880 1470" style="max-width:100%" role="img" aria-labelledby="bubble-title bubble-description" data-origin="original-app-diagram" data-lesson="9.2" data-surface-tension-nm="0.05" data-pressure-a-pa="2500" data-pressure-b-pa="5000" data-radius-a-m="0.000040000000" data-radius-b-m="0.000020000000" data-drawing-radius-a="100" data-drawing-radius-b="50" data-graph-points="21" data-equilibrium-model="static-spherical-laplace">
+<title id="bubble-title">§9.2 理想球形蒸気泡の表面張力とラプラス圧力差</title>
+<desc id="bubble-description">アプリ独自の模式図。球形で静止した蒸気泡が液体中にあり、内外圧力差は正で、表面張力は一定とする。ラプラス圧力差は蒸気側p_vから液体側p_lを引いたΔp=2σ/Rであり、σ=0.050ニュートン毎メートル、圧力差2.5キロパスカルでは平衡半径40マイクロメートル、5キロパスカルでは20マイクロメートル。泡の描画半径は2対1で比例するが実寸大ではない。下段は横軸Rを20から100マイクロメートル、縦軸Δpをキロパスカルとして21点で計算した反比例曲線。これは力学的な静止球形界面モデルに限られ、実際の壁付着泡の核生成開始、離脱直径、限界熱流束、安全運転条件を予測しない。</desc>
+<style>
+text{font-family:'Noto Sans CJK JP','Hiragino Kaku Gothic ProN',system-ui,sans-serif;font-size:23px}
+.bg{fill:#fff}.panel{fill:#f3f7fa;stroke:#c2d0dc;stroke-width:2}.ink{fill:#192f44}.muted{fill:#496175}
+.liquid{fill:#d8eff7;stroke:#93bbcb;stroke-width:2}.vapor{fill:#d1ad8a;stroke:#915832;stroke-width:3}
+.radius{stroke:#b35636;stroke-width:3;stroke-linecap:round;fill:none}.axis{stroke:#486377;stroke-width:2.5;fill:none}
+.gridline{stroke:#b9cbd8;stroke-width:1.5;stroke-dasharray:5 7}.curve{stroke:#1e829e;stroke-width:4.5;fill:none;stroke-linejoin:round;stroke-linecap:round}
+.markerA{fill:#b45735;stroke:#fff;stroke-width:2}.markerB{fill:#9251a2;stroke:#fff;stroke-width:2}
+.heading{font-size:33px;font-weight:750}.section{font-size:27px;font-weight:700}.small{font-size:21px}.micro{font-size:18px}.formula{font-size:25px;font-weight:650}.value{font-size:27px;font-weight:700}
+@media(prefers-color-scheme:dark){.bg{fill:#111b26}.panel{fill:#1d2c3b;stroke:#607e94}.ink{fill:#edf6fc}.muted{fill:#c5d8e5}.liquid{fill:#203f52;stroke:#779db3}.vapor{fill:#6d4e36;stroke:#f9b77d}.radius{stroke:#ffb38b}.axis{stroke:#bed8e8}.gridline{stroke:#536d7c}.curve{stroke:#9ce0f6}.markerA{fill:#ffba9b;stroke:#263f51}.markerB{fill:#ebbdff;stroke:#263f51}}
+</style>
+<rect class="bg" width="880" height="1470"/>
+<text class="heading ink" x="30" y="59">§9.2 気泡の半径と表面張力の関係</text>
+<text class="small muted" x="31" y="100">理想的な静止・球形界面で、内側の圧力が外側より高い場合</text>
+<rect class="panel" x="23" y="125" width="834" height="505" rx="18"/>
+<text class="section ink" x="44" y="172">① 同じ表面張力でも、圧力差が変わると半径も変化</text>
+<text class="micro muted" x="44" y="205">液体中の球形蒸気泡の断面：半径の比だけを正しく描画</text>
+<rect class="liquid" x="47" y="227" width="381" height="276" rx="15"/>
+<rect class="liquid" x="450" y="227" width="381" height="276" rx="15"/>
+<text class="micro ink" x="64" y="257">外側：液体 p_l</text>
+<text class="micro ink" x="466" y="257">外側：液体 p_l</text>
+<circle id="bubble-a" class="vapor" cx="235" cy="361" r="100"/>
+<circle id="bubble-b" class="vapor" cx="637" cy="361" r="50"/>
+<text class="small ink" x="235" y="355" text-anchor="middle">蒸気</text>
+<text class="micro ink" x="235" y="382" text-anchor="middle">p_v</text>
+<text class="micro ink" x="637" y="354" text-anchor="middle">蒸気</text>
+<text class="micro ink" x="637" y="380" text-anchor="middle">p_v</text>
+<path id="radius-arrow-a" class="radius" d="M235 402 H335 M323 393 L335 402 L323 411"/>
+<path id="radius-arrow-b" class="radius" d="M637 390 H687 M675 381 L687 390 L675 399"/>
+<text class="small ink" x="235" y="529" text-anchor="middle">A. Δp = 2.5 kPa → R = 40 μm</text>
+<text class="small ink" x="637" y="529" text-anchor="middle">B. Δp = 5.0 kPa → R = 20 μm</text>
+<text class="small ink" x="44" y="577">σ = 0.050 N/m ／ Δp = p_v − p_l = 2σ/R</text>
+<text class="micro muted" x="44" y="607">※円の大きさは相対半径2:1のみを表示。実寸・壁付着泡ではない。</text>
+<rect class="panel" x="23" y="650" width="834" height="458" rx="18"/>
+<text class="section ink" x="44" y="692">② 半径が小さいほど、必要な内外圧力差は大きい</text>
+<text class="micro muted" x="45" y="722">Δp = 2σ/R （σ一定）。横軸：半径 R [μm] ／ 縦軸：Δp [kPa]</text>
+<path class="axis" d="M140 738 V1010 H748 M736 1001 L748 1010 L736 1019"/>
+<path class="gridline" d="M140 760 H690 M140 885 H690 M140 1010 H690"/>
+<path id="laplace-pressure-curve" class="curve" d="M140.000 760.000 L166.400 801.667 L192.800 831.429 L219.200 853.750 L245.600 871.111 L272.000 885.000 L298.400 896.364 L324.800 905.833 L351.200 913.846 L377.600 920.714 L404.000 926.667 L430.400 931.875 L456.800 936.471 L483.200 940.556 L509.600 944.211 L536.000 947.500 L562.400 950.476 L588.800 953.182 L615.200 955.652 L641.600 957.917 L668.000 960.000"/>
+<circle id="point-b" class="markerB" cx="140" cy="760" r="7"/>
+<circle id="point-a" class="markerA" cx="272" cy="885" r="7"/>
+<text class="micro ink" x="120" y="765" text-anchor="end">5.0</text>
+<text class="micro ink" x="120" y="891" text-anchor="end">2.5</text>
+<text class="micro ink" x="120" y="1016" text-anchor="end">0</text>
+<text class="micro ink" x="140" y="1040" text-anchor="middle">20</text>
+<text class="micro ink" x="272" y="1040" text-anchor="middle">40</text>
+<text class="micro ink" x="404" y="1040" text-anchor="middle">60</text>
+<text class="micro ink" x="536" y="1040" text-anchor="middle">80</text>
+<text class="micro ink" x="668" y="1040" text-anchor="middle">100</text>
+<text class="micro ink" x="413" y="1082" text-anchor="middle">半径 R [μm] →</text>
+<rect class="panel" x="23" y="1126" width="834" height="287" rx="18"/>
+<text class="section ink" x="44" y="1168">③ 単位をそろえて検算</text>
+<text class="formula ink" x="44" y="1212">R = 2σ/Δp ／ 2.5 kPa = 2500 Pa</text>
+<text class="formula ink" x="44" y="1255">R_A = 0.100/2500 m = 40 μm</text>
+<text class="formula ink" x="44" y="1298">R_B = 0.100/5000 m = 20 μm</text>
+<text class="micro muted" x="44" y="1342">球形・静止・表面張力一定の力学モデルのみ。</text>
+<text class="micro muted" x="44" y="1375">実際の核生成開始・離脱径・CHF・安全条件は予測しない。</text>
+<text class="micro muted" x="440" y="1448" text-anchor="middle">アプリ独自作図｜原著図版の転載・トレースなし</text>
+</svg>

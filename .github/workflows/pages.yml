@@ -1,0 +1,32 @@
+name: Check public learning app
+on:
+  push:
+    branches: [codex/quality-audit-local-pack]
+permissions:
+  contents: read
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: npm test
+      - run: npm run build:public
+  browser-webkit-online:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: npm install --no-save --package-lock=false playwright@1.56.1
+      - name: Install WebKit and runtime dependencies
+        run: npx playwright install --with-deps webkit
+      - run: npm run build:public
+      - name: Check online UI and PDF cache ranges in WebKit
+        run: npm run test:browser:public
+        env:
+          BROWSER_ENGINE: webkit

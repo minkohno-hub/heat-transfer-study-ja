@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="840" height="1230" viewBox="0 0 840 1230" style="max-width:100%" role="img" aria-labelledby="lumped-title lumped-desc" data-origin="original-app-diagram" data-lesson="5.2" data-mass="1" data-heat-capacity="500" data-density="5000" data-conductivity-solid="50" data-area-convection="0.1" data-h-convection="20" data-temp-initial="100" data-temp-ambient="20" data-time-eval="250" data-volume="0.0002" data-characteristic-length="0.002" data-biot="0.0008" data-thermal-capacitance="500" data-conductance="2" data-tau="250" data-temperature-at-tau="49.4303552937" data-heat-released="25284.822353142" data-alpha-solid="0.00002" data-fourier-at-tau="1250" data-plot-points="41">
+<title id="lumped-title">§5.2 集中熱容量法：小さいBiot数、時定数と指数冷却</title>
+<desc id="lumped-desc">アプリ独自図。内部がほぼ一様温度であると仮定できる固体の対流冷却を示す。初期100℃、周囲20℃、質量1.0キログラム、比熱500ジュール毎キログラムケルビン、密度5000キログラム毎立方メートル、固体熱伝導率50ワット毎メートルケルビン、露出対流面積0.10平方メートル、熱伝達率20ワット毎平方メートルケルビン。特性長さは体積÷対流面積で0.002メートル、Biot数0.0008。熱容量500ジュール毎ケルビン、対流コンダクタンス2ワット毎ケルビン、時定数250秒。指数冷却曲線は無次元温度差θ＝expマイナスt割るτを41点計算して描き、横軸は0から1000秒。250秒後には温度差が初期の約36.8パーセント残り、温度は49.43℃。放出した顕熱は約25.28キロジュール。縦軸の0.368は温度の摂氏値に対する割合ではない。Biot数が0.1より小さいという判定は経験的な近似目安であり、放射・内部発熱・接触面・温度依存物性は含まない。</desc>
+<style>
+text{font-family:'Noto Sans CJK JP','Hiragino Kaku Gothic ProN',system-ui,sans-serif;font-size:23px}
+.bg{fill:#fff}.panel{fill:#f4f7fa;stroke:#bfd0dc;stroke-width:2}.ink{fill:#173045}.muted{fill:#475f70}.highlight{fill:#176f91}.warm{fill:#a6512f}
+.solid{fill:#e2a57e;stroke:#ad623a;stroke-width:2.6}.flow{stroke:#bc623e;stroke-width:4;fill:none;stroke-linecap:round;stroke-linejoin:round}
+.axis{stroke:#37556d;stroke-width:2.5;fill:none}.guides{stroke:#b8ccda;stroke-width:1.6;stroke-dasharray:5 6}.curve{stroke:#1880a5;stroke-width:4.8;fill:none;stroke-linecap:round;stroke-linejoin:round}.mark{fill:#a74b7c;stroke:#fff;stroke-width:2}.event{stroke:#a74b7c;stroke-width:2.4;stroke-dasharray:8 5}.eventLabel{fill:#99406d}
+.title{font-size:33px;font-weight:750}.section{font-size:27px;font-weight:700}.small{font-size:20px}.micro{font-size:18px}.formula{font-size:24px;font-weight:650}
+@media(prefers-color-scheme:dark){.bg{fill:#101b27}.panel{fill:#1b2d3c;stroke:#637c91}.ink{fill:#eff7fc}.muted{fill:#bfd5e3}.highlight{fill:#8cddfa}.warm{fill:#ffb48a}.solid{fill:#754a35;stroke:#ffc198}.flow{stroke:#ffb08b}.axis{stroke:#c2dbea}.guides{stroke:#647e91}.curve{stroke:#93dcfa}.mark{fill:#ffb6db;stroke:#344b5d}.event{stroke:#ffc2e2}.eventLabel{fill:#ffc2e2}}
+</style>
+<rect class="bg" width="840" height="1230"/>
+<text class="title ink" x="31" y="58">§5.2 集中熱容量法：指数冷却と時定数</text>
+<text class="small muted" x="32" y="100">内部温度を一様とみなす近似と、周囲との差の減り方</text>
+
+<rect class="panel" x="23" y="121" width="794" height="289" rx="19"/>
+<text class="section ink" x="44" y="166">① 小さいBi：内部伝導が十分速い場合</text>
+<rect class="solid" x="160" y="208" width="159" height="111" rx="10"/>
+<text class="small ink" text-anchor="middle" x="239" y="252">固体内は</text>
+<text class="small ink" text-anchor="middle" x="239" y="283">一様温度 T(t)</text>
+<path class="flow" d="M144 264 H84 M97 252 L84 264 L97 276 M336 264 H402 M388 252 L402 264 L388 276"/>
+<text class="small warm" x="424" y="253">対流で外へ放熱</text>
+<text class="small muted" x="425" y="285">周囲温度 20 ℃</text>
+<text class="small ink" x="44" y="357">L_c = V/A_s = 0.0020 m ／ Bi = hL_c/k_s = 0.00080</text>
+<text class="micro muted" x="44" y="390">Bi &lt; 0.1は一般的な近似目安。k_sは固体の熱伝導率。</text>
+
+<rect class="panel" x="23" y="426" width="794" height="430" rx="19"/>
+<text class="section ink" x="44" y="467">② 時間で減るのは「周囲との温度差」</text>
+<text class="micro muted" x="44" y="500">縦軸：Θ = (T−T∞)/(T₀−T∞) ／ 横軸：時間 [s]</text>
+<path class="axis" d="M195 507 V722 H708 M700 715 L708 722 L700 729"/>
+<path class="guides" d="M195 502 H699 M195 612 H699 M195 641.067 H699"/>
+<path id="lumped-exponential-curve" class="curve" d="M195.000 502.000 L207.600 522.936 L220.200 541.879 L232.800 559.020 L245.400 574.530 L258.000 588.563 L270.600 601.261 L283.200 612.751 L295.800 623.148 L308.400 632.555 L321.000 641.067 L333.600 648.768 L346.200 655.737 L358.800 662.043 L371.400 667.749 L384.000 672.911 L396.600 677.583 L409.200 681.810 L421.800 685.634 L434.400 689.095 L447.000 692.226 L459.600 695.060 L472.200 697.623 L484.800 699.943 L497.400 702.042 L510.000 703.941 L522.600 705.660 L535.200 707.215 L547.800 708.622 L560.400 709.895 L573.000 711.047 L585.600 712.089 L598.200 713.032 L610.800 713.886 L623.400 714.658 L636.000 715.357 L648.600 715.989 L661.200 716.561 L673.800 717.078 L686.400 717.547 L699.000 717.971"/>
+<path id="tau-marker" class="event" d="M321 507 V722"/>
+<circle class="mark" cx="321.000" cy="641.067" r="7"/>
+<text x="177" y="515" text-anchor="end" class="micro ink">1.0</text>
+<text x="177" y="618" text-anchor="end" class="micro ink">0.5</text>
+<text x="177" y="647" text-anchor="end" class="micro eventLabel">0.368</text>
+<text x="177" y="726" text-anchor="end" class="micro ink">0</text>
+<text x="195" y="749" text-anchor="middle" class="micro ink">0</text>
+<text x="321" y="749" text-anchor="middle" class="micro ink">250</text>
+<text x="447" y="749" text-anchor="middle" class="micro ink">500</text>
+<text x="573" y="749" text-anchor="middle" class="micro ink">750</text>
+<text x="699" y="749" text-anchor="middle" class="micro ink">1000</text>
+<text x="46" y="803" class="small ink">t = τ = 250 s なら Θ = e^(−1) ≈ 0.368</text>
+<text x="46" y="836" class="micro muted">※摂氏温度そのものが36.8%になるという意味ではない。</text>
+
+<rect class="panel" x="23" y="875" width="794" height="306" rx="19"/>
+<text class="section ink" x="44" y="919">③ 熱収支と例題の検算</text>
+<text class="small ink" x="44" y="963">m = 1.0 kg、c = 500 J/(kg·K)、h = 20 W/(m²·K)</text>
+<text class="small ink" x="44" y="998">A_s = 0.10 m²、T₀ = 100 ℃、T∞ = 20 ℃</text>
+<text class="formula ink" x="44" y="1037">τ = mc/(hA_s) = 500/2 = 250 s</text>
+<text class="formula ink" x="44" y="1076">T(250 s) = 20 + 80e^(−1) ≈ 49.43 ℃</text>
+<text class="formula ink" x="44" y="1115">Q_release = mc(T₀−T) ≈ 25.28 kJ</text>
+<text class="micro muted" x="44" y="1157">一定物性・初期一様温度。放射、発熱、相変化を無視。</text>
+<text x="420" y="1212" text-anchor="middle" class="micro muted">アプリ独自作図｜原著図版の転載・トレースなし</text>
+</svg>

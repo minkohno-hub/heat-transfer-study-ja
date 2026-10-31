@@ -1,0 +1,3765 @@
+{
+  "updatedAt": "2026-10-27T07:43:13+00:00",
+  "sourceExtractedAt": "2026-10-20T12:09:01.745528+00:00",
+  "source": "AHTTv600.pdf",
+  "sourceSha256": "d318176a9cac997d415ec5ee95b30979dcdaed0392705185393735c7d59a447a",
+  "pdfPages": 810,
+  "scopeNote": "原文の抽出、下書きの存在、部分的な照合記録、アプリ収録を分ける。全ページの翻訳・照合完了率ではない。",
+  "currentPublicRelease": {
+    "checkedAt": "2026-10-21",
+    "availableBookSections": [],
+    "note": "以前の§1.1・§1.2は非公開教材リポジトリへ保全。以下の節ごとの旧PCの作成・収録記録と公開配信状態を区別する。"
+  },
+  "sections": [
+    {
+      "id": "1.1",
+      "chapter": "ch1",
+      "title": "熱移動",
+      "pdfStart": 17,
+      "pdfEndCandidate": 20,
+      "bookStart": 3,
+      "bookEndRecorded": 6,
+      "extraction": {
+        "status": "page_text_extracted",
+        "pages": 4,
+        "sourceSha256": "d318176a9cac997d415ec5ee95b30979dcdaed0392705185393735c7d59a447a",
+        "sectionBoundary": "needs_review",
+        "formulaFidelity": "not_verified"
+      },
+      "translation": {
+        "status": "text_available",
+        "japaneseBlocks": 15,
+        "englishDraftExists": false,
+        "fullCoverage": "not_verified"
+      },
+      "sourceReview": {
+        "recordedStatus": "not_recorded",
+        "record": null,
+        "expertReviewed": false
+      },
+      "visualChecks": {
+        "figures": 0,
+        "equations": 0,
+        "tables": 0,
+        "completeCheck": "not_verified"
+      },
+      "questions": {
+        "count": 7,
+        "sourceCheckedCount": 0,
+        "expertReviewed": false
+      },
+      "app": {
+        "localReadable": true,
+        "file": "./data/sections/1-1-ja.json",
+        "publicDistributionPermission": "not_confirmed"
+      },
+      "remaining": [
+        "逐文の網羅性と訳語の統一を確認する",
+        "節の境界、図・式・表・脚注・ページ参照を確認する"
+      ]
+    },
+    {
+      "id": "1.2",
+      "chapter": "ch1",
+      "title": "熱移動と熱力学の関係",
+      "pdfStart": 20,
+      "pdfEndCandidate": 23,
+      "bookStart": 6,
+      "bookEndRecorded": 9,
+      "extraction": {
+        "status": "page_text_extracted",
+        "pages": 4,
+        "sourceSha256": "d318176a9cac997d415ec5ee95b30979dcdaed0392705185393735c7d59a447a",
+        "sectionBoundary": "needs_review",
+        "formulaFidelity": "not_verified"
+      },
+      "translation": {
+        "status": "text_available",
+        "japaneseBlocks": 33,
+        "englishDraftExists": false,
+        "fullCoverage": "not_verified"
+      },
+      "sourceReview": {
+        "recordedStatus": "not_recorded",
+        "record": null,
+        "expertReviewed": false
+      },
+      "visualChecks": {
+        "figures": 2,
+        "equations": 9,
+        "tables": 0,
+        "completeCheck": "not_verified"
+      },
+      "questions": {
+        "count": 6,
+        "sourceCheckedCount": 1,
+        "expertReviewed": false,
+        "publicQuestionIds": [
+          "book-1-2-closed-energy-rate"
+        ]
+      },
+      "app": {
+        "localReadable": true,
+        "file": "./data/sections/1-2-ja.json",
+        "publicDistributionPermission": "not_confirmed"
+      },
+      "remaining": [
+        "逐文の網羅性と訳語の統一を確認する",
+        "節の境界、図・式・表・脚注・ページ参照を確認する"
+      ]
+    },
+    {
+      "id": "1.3",
+      "chapter": "ch1",
+      "title": "熱移動の形態",
+      "pdfStart": 25,
+      "pdfEndCandidate": 48,
+      "bookStart": 11,
+      "bookEndRecorded": 34,
+      "extraction": {
+        "status": "page_text_extracted",
+        "pages": 24,
+        "sourceSha256": "d318176a9cac997d415ec5ee95b30979dcdaed0392705185393735c7d59a447a",
+        "sectionBoundary": "needs_review",
+        "formulaFidelity": "not_verified"
+      },
+      "translation": {
+        "status": "draft_exists",
+        "japaneseBlocks": 177,
+        "englishDraftExists": true,
+        "fullCoverage": "not_verified"
+      },
+      "sourceReview": {
+        "recordedStatus": "not_recorded",
+        "record": null,
+        "expertReviewed": false
+      },
+      "visualChecks": {
+        "figures": 14,
+        "equations": 50,
+        "tables": 2,
+        "completeCheck": "not_verified"
+      },
+      "questions": {
+        "count": 0,
+        "sourceCheckedCount": 0,
+        "expertReviewed": false
+      },
+      "app": {
+        "localReadable": false,
+        "file": null,
+        "publicDistributionPermission": "not_confirmed"
+      },
+      "remaining": [
+        "逐文の網羅性と訳語の統一を確認する",
+        "節の境界、図・式・表・脚注・ページ参照を確認する",
+        "4択問題と全選択肢の理由を作成・確認する",
+        "確認後にローカル教材パックへ取り込む"
+      ]
+    },
+    {
+      "id": "1.4",
+      "chapter": "ch1",
+      "title": "この先の見通し",
+      "pdfStart": 48,
+      "pdfEndCandidate": 49,
+      "bookStart": 34,
+      "bookEndRecorded": 35,
+      "extraction": {
+        "status": "page_text_extracted",
+        "pages": 2,
+        "sourceSha256": "d318176a9cac997d415ec5ee95b30979dcdaed0392705185393735c7d59a447a",
+        "sectionBoundary": "needs_review",
+        "formulaFidelity": "not_verified"
+      },
+      "translation": {
+        "status": "draft_exists",
+        "japaneseBlocks": 5,
+        "englishDraftExists": true,
+        "fullCoverage": "not_verified"
+      },
+      "sourceReview": {
+        "recordedStatus": "not_recorded",
+        "record": null,
+        "expertReviewed": false
+      },
+      "visualChecks": {
+        "figures": 0,
+        "equations": 0,
+        "tables": 0,
+        "completeCheck": "not_verified"
+      },
+      "questions": {
+        "count": 0,
+        "sourceCheckedCount": 0,
+        "expertReviewed": false
+      },
+      "app": {
+        "localReadable": false,
+        "file": null,
+        "publicDistributionPermission": "not_confirmed"
+      },
+      "remaining": [
+        "逐文の網羅性と訳語の統一を確認する",
+        "節の境界、図・式・表・脚注・ページ参照を確認する",
+        "4択問題と全選択肢の理由を作成・確認する",
+        "確認後にローカル教材パックへ取り込む"
+      ]
+    },
+    {
+      "id": "1.5",
+      "chapter": "ch1",
+      "title": "章末問題について",
+      "pdfStart": 49,
+      "pdfEndCandidate": 49,
+      "bookStart": 35,
+      "bookEndRecorded": 35,
+      "extraction": {
+        "status": "page_text_extracted",
+        "pages": 1,
+        "sourceSha256": "d318176a9cac997d415ec5ee95b30979dcdaed0392705185393735c7d59a447a",
+        "sectionBoundary": "needs_review",
+        "formulaFidelity": "not_verified"
+      },
+      "translation": {
+        "status": "draft_exists",
+        "japaneseBlocks": 4,
+        "englishDraftExists": true,
+        "fullCoverage": "not_verified"
+      },
+      "sourceReview": {
+        "recordedStatus": "not_recorded",
+        "record": null,
+        "expertReviewed": false
+      },
+      "visualChecks": {
+        "figures": 0,
+        "equations": 0,
+        "tables": 0,
+        "completeCheck": "not_verified"
+      },
+      "questions": {
+        "count": 0,
+        "sourceCheckedCount": 0,
+        "expertReviewed": false
+      },
+      "app": {
+        "localReadable": false,
+        "file": null,
+        "publicDistributionPermission": "not_confirmed"
+      },
+      "remaining": [
+        "逐文の網羅性と訳語の統一を確認する",
+        "節の境界、図・式・表・脚注・ページ参照を確認する",
+        "4択問題と全選択肢の理由を作成・確認する",
+        "確認後にローカル教材パックへ取り込む"
+      ]
+    },
+    {
+      "id": "2.1",
+      "chapter": "ch2",
+      "title": "熱伝導方程式",
+      "pdfStart": 63,
+      "pdfEndCandidate": 71,
+      "bookStart": 49,
+      "bookEndRecorded": 57,
+      "extraction": {
+        "status": "page_text_extracted",
+        "pages": 9,
+        "sourceSha256": "d318176a9cac997d415ec5ee95b30979dcdaed0392705185393735c7d59a447a",
+        "sectionBoundary": "needs_review",
+        "formulaFidelity": "not_verified"
+      },
+      "translation": {
+        "status": "draft_exists",
+        "japaneseBlocks": 58,
+        "englishDraftExists": true,
+        "fullCoverage": "not_verified"
+      },
+      "sourceReview": {
+        "recordedStatus": "not_recorded",
+        "record": null,
+        "expertReviewed": false
+      },
+      "visualChecks": {
+        "figures": 5,
+        "equations": 20,
+        "tables": 0,
+        "completeCheck": "not_verified"
+      },
+      "questions": {
+        "count": 0,
+        "sourceCheckedCount": 0,
+        "expertReviewed": false
+      },
+      "app": {
+        "localReadable": false,
+        "file": null,
+        "publicDistributionPermission": "not_confirmed"
+      },
+      "remaining": [
+        "逐文の網羅性と訳語の統一を確認する",
+        "節の境界、図・式・表・脚注・ページ参照を確認する",
+        "4択問題と全選択肢の理由を作成・確認する",
+        "確認後にローカル教材パックへ取り込む"
+      ]
+    },
+    {
+      "id": "2.2",
+      "chapter": "ch2",
+      "title": "平板の定常熱伝導：解法",
+      "pdfStart": 70,
+      "pdfEndCandidate": 76,
+      "bookStart": 56,
+      "bookEndRecorded": 62,
+      "extraction": {
+        "status": "page_text_extracted",
+        "pages": 7,
+        "sourceSha256": "d318176a9cac997d415ec5ee95b30979dcdaed0392705185393735c7d59a447a",
+        "sectionBoundary": "needs_review",
+        "formulaFidelity": "not_verified"
+      },
+      "translation": {
+        "status": "draft_exists",
+        "japaneseBlocks": 44,
+        "englishDraftExists": true,
+        "fullCoverage": "not_verified"
+      },
+      "sourceReview": {
+        "recordedStatus": "not_recorded",
+        "record": null,
+        "expertReviewed": false
+      },
+      "visualChecks": {
+        "figures": 3,
+        "equations": 9,
+        "tables": 0,
+        "completeCheck": "not_verified"
+      },
+      "questions": {
+        "count": 0,
+        "sourceCheckedCount": 0,
+        "expertReviewed": false
+      },
+      "app": {
+        "localReadable": false,
+        "file": null,
+        "publicDistributionPermission": "not_confirmed"
+      },
+      "remaining": [
+        "逐文の網羅性と訳語の統一を確認する",
+        "節の境界、図・式・表・脚注・ページ参照を確認する",
+        "4択問題と全選択肢の理由を作成・確認する",
+        "確認後にローカル教材パックへ取り込む"
+      ]
+    },
+    {
+      "id": "2.3",
+      "chapter": "ch2",
+      "title": "熱抵抗と電気回路の類推",
+      "pdfStart": 77,
+      "pdfEndCandidate": 91,
+      "bookStart": 63,
+      "bookEndRecorded": 77,
+      "extraction": {
+        "status": "page_text_extracted",
+        "pages": 15,
+        "sourceSha256": "d318176a9cac997d415ec5ee95b30979dcdaed0392705185393735c7d59a447a",
+        "sectionBoundary": "needs_review",
+        "formulaFidelity": "not_verified"
+      },
+      "translation": {
+        "status": "draft_exists",
+        "japaneseBlocks": 71,
+        "englishDraftExists": true,
+        "fullCoverage": "not_verified"
+      },
+      "sourceReview": {
+        "recordedStatus": "not_recorded",
+        "record": null,
+        "expertReviewed": false
+      },
+      "visualChecks": {
+        "figures": 9,
+        "equations": 25,
+        "tables": 1,
+        "completeCheck": "not_verified"
+      },
+      "questions": {
+        "count": 0,
+        "sourceCheckedCount": 0,
+        "expertReviewed": false
+      },
+      "app": {
+        "localReadable": false,
+        "file": null,
+        "publicDistributionPermission": "not_confirmed"
+      },
+      "remaining": [
+        "逐文の網羅性と訳語の統一を確認する",
+        "節の境界、図・式・表・脚注・ページ参照を確認する",
+        "4択問題と全選択肢の理由を作成・確認する",
+        "確認後にローカル教材パックへ取り込む"
+      ]
+    },
+    {
+      "id": "2.4",
+      "chapter": "ch2",
+      "title": "総括熱伝達係数 U",
+      "pdfStart": 92,
+      "pdfEndCandidate": 99,
+      "bookStart": 78,
+      "bookEndRecorded": 85,
+      "extraction": {
+        "status": "page_text_extracted",
+        "pages": 8,
+        "sourceSha256": "d318176a9cac997d415ec5ee95b30979dcdaed0392705185393735c7d59a447a",
+        "sectionBoundary": "needs_review",
+        "formulaFidelity": "not_verified"
+      },
+      "translation": {
+        "status": "draft_exists",
+        "japaneseBlocks": 42,
+        "englishDraftExists": true,
+        "fullCoverage": "not_verified"
+      },
+      "sourceReview": {
+        "recordedStatus": "not_recorded",
+        "record": null,
+        "expertReviewed": false
+      },
+      "visualChecks": {
+        "figures": 4,
+        "equations": 11,
+        "tables": 2,
+        "completeCheck": "not_verified"
+      },
+      "questions": {
+        "count": 0,
+        "sourceCheckedCount": 0,
+        "expertReviewed": false
+      },
+      "app": {
+        "localReadable": false,
+        "file": null,
+        "publicDistributionPermission": "not_confirmed"
+      },
+      "remaining": [
+        "逐文の網羅性と訳語の統一を確認する",
+        "節の境界、図・式・表・脚注・ページ参照を確認する",
+        "4択問題と全選択肢の理由を作成・確認する",
+        "確認後にローカル教材パックへ取り込む"
+      ]
+    },
+    {
+      "id": "2.5",
+      "chapter": "ch2",
+      "title": "まとめ",
+      "pdfStart": 99,
+      "pdfEndCandidate": 100,
+      "bookStart": 85,
+      "bookEndRecorded": 86,
+      "extraction": {
+        "status": "page_text_extracted",
+        "pages": 2,
+        "sourceSha256": "d318176a9cac997d415ec5ee95b30979dcdaed0392705185393735c7d59a447a",
+        "sectionBoundary": "needs_review",
+        "formulaFidelity": "not_verified"
+      },
+      "translation": {
+        "status": "draft_exists",
+        "japaneseBlocks": 5,
+        "englishDraftExists": true,
+        "fullCoverage": "not_verified"
+      },
+      "sourceReview": {
+        "recordedStatus": "not_recorded",
+        "record": null,
+        "expertReviewed": false
+      },
+      "visualChecks": {
+        "figures": 0,
+        "equations": 0,
+        "tables": 0,
+        "completeCheck": "not_verified"
+      },
+      "questions": {
+        "count": 0,
+        "sourceCheckedCount": 0,
+        "expertReviewed": false
+      },
+      "app": {
+        "localReadable": false,
+        "file": null,
+        "publicDistributionPermission": "not_confirmed"
+      },
+      "remaining": [
+        "逐文の網羅性と訳語の統一を確認する",
+        "節の境界、図・式・表・脚注・ページ参照を確認する",
+        "4択問題と全選択肢の理由を作成・確認する",
+        "確認後にローカル教材パックへ取り込む"
+      ]
+    },
+    {
+      "id": "3.1",
+      "chapter": "ch3",
+      "title": "熱交換器の機能と構成",
+      "pdfStart": 113,
+      "pdfEndCandidate": 117,
+      "bookStart": 99,
+      "bookEndRecorded": 103,
+      "extraction": {
+        "status": "page_text_extracted",
+        "pages": 5,
+        "sourceSha256": "d318176a9cac997d415ec5ee95b30979dcdaed0392705185393735c7d59a447a",
+        "sectionBoundary": "needs_review",
+        "formulaFidelity": "not_verified"
+      },
+      "translation": {
+        "status": "draft_exists",
+        "japaneseBlocks": 22,
+        "englishDraftExists": true,
+        "fullCoverage": "not_verified"
+      },
+      "sourceReview": {
+        "recordedStatus": "not_recorded",
+        "record": null,
+        "expertReviewed": false
+      },
+      "visualChecks": {
+        "figures": 8,
+        "equations": 0,
+        "tables": 0,
+        "completeCheck": "not_verified"
+      },
+      "questions": {
+        "count": 0,
+        "sourceCheckedCount": 0,
+        "expertReviewed": false
+      },
+      "app": {
+        "localReadable": false,
+        "file": null,
+        "publicDistributionPermission": "not_confirmed"
+      },
+      "remaining": [
+        "逐文の網羅性と訳語の統一を確認する",
+        "節の境界、図・式・表・脚注・ページ参照を確認する",
+        "4択問題と全選択肢の理由を作成・確認する",
+        "確認後にローカル教材パックへ取り込む"
+      ]
+    },
+    {
+      "id": "3.2",
+      "chapter": "ch3",
+      "title": "熱交換器の平均温度差の評価",
+      "pdfStart": 117,
+      "pdfEndCandidate": 133,
+      "bookStart": 103,
+      "bookEndRecorded": 119,
+      "extraction": {
+        "status": "page_text_extracted",
+        "pages": 17,
+        "sourceSha256": "d318176a9cac997d415ec5ee95b30979dcdaed0392705185393735c7d59a447a",
+        "sectionBoundary": "needs_review",
+        "formulaFidelity": "not_verified"
+      },
+      "translation": {
+        "status": "draft_exists",
+        "japaneseBlocks": 65,
+        "englishDraftExists": true,
+        "fullCoverage": "not_verified"
+      },
+      "sourceReview": {
+        "recordedStatus": "not_recorded",
+        "record": null,
+        "expertReviewed": false
+      },
+      "visualChecks": {
+        "figures": 7,
+        "equations": 23,
+        "tables": 0,
+        "completeCheck": "not_verified"
+      },
+      "questions": {
+        "count": 0,
+        "sourceCheckedCount": 0,
+        "expertReviewed": false
+      },
+      "app": {
+        "localReadable": false,
+        "file": null,
+        "publicDistributionPermission": "not_confirmed"
+      },
+      "remaining": [
+        "逐文の網羅性と訳語の統一を確認する",
+        "節の境界、図・式・表・脚注・ページ参照を確認する",
+        "4択問題と全選択肢の理由を作成・確認する",
+        "確認後にローカル教材パックへ取り込む"
+      ]
+    },
+    {
+      "id": "3.3",
+      "chapter": "ch3",
+      "title": "熱交換器の有効度",
+      "pdfStart": 134,
+      "pdfEndCandidate": 141,
+      "bookStart": 120,
+      "bookEndRecorded": 127,
+      "extraction": {
+        "status": "page_text_extracted",
+        "pages": 8,
+        "sourceSha256": "d318176a9cac997d415ec5ee95b30979dcdaed0392705185393735c7d59a447a",
+        "sectionBoundary": "needs_review",
+        "formulaFidelity": "not_verified"
+      },
+      "translation": {
+        "status": "draft_exists",
+        "japaneseBlocks": 53,
+        "englishDraftExists": true,
+        "fullCoverage": "not_verified"
+      },
+      "sourceReview": {
+        "recordedStatus": "not_recorded",
+        "record": null,
+        "expertReviewed": false
+      },
+      "visualChecks": {
+        "figures": 3,
+        "equations": 16,
+        "tables": 1,
+        "completeCheck": "not_verified"
+      },
+      "questions": {
+        "count": 0,
+        "sourceCheckedCount": 0,
+        "expertReviewed": false
+      },
+      "app": {
+        "localReadable": false,
+        "file": null,
+        "publicDistributionPermission": "not_confirmed"
+      },
+      "remaining": [
+        "逐文の網羅性と訳語の統一を確認する",
+        "節の境界、図・式・表・脚注・ページ参照を確認する",
+        "4択問題と全選択肢の理由を作成・確認する",
+        "確認後にローカル教材パックへ取り込む"
+      ]
+    },
+    {
+      "id": "3.4",
+      "chapter": "ch3",
+      "title": "熱交換器の設計",
+      "pdfStart": 141,
+      "pdfEndCandidate": 144,
+      "bookStart": 127,
+      "bookEndRecorded": 130,
+      "extraction": {
+        "status": "page_text_extracted",
+        "pages": 4,
+        "sourceSha256": "d318176a9cac997d415ec5ee95b30979dcdaed0392705185393735c7d59a447a",
+        "sectionBoundary": "needs_review",
+        "formulaFidelity": "not_verified"
+      },
+      "translation": {
+        "status": "draft_exists",
+        "japaneseBlocks": 15,
+        "englishDraftExists": true,
+        "fullCoverage": "not_verified"
+      },
+      "sourceReview": {
+        "recordedStatus": "not_recorded",
+        "record": null,
+        "expertReviewed": false
+      },
+      "visualChecks": {
+        "figures": 0,
+        "equations": 1,
+        "tables": 0,
+        "completeCheck": "not_verified"
+      },
+      "questions": {
+        "count": 0,
+        "sourceCheckedCount": 0,
+        "expertReviewed": false
+      },
+      "app": {
+        "localReadable": false,
+        "file": null,
+        "publicDistributionPermission": "not_confirmed"
+      },
+      "remaining": [
+        "逐文の網羅性と訳語の統一を確認する",
+        "節の境界、図・式・表・脚注・ページ参照を確認する",
+        "4択問題と全選択肢の理由を作成・確認する",
+        "確認後にローカル教材パックへ取り込む"
+      ]
+    },
+    {
+      "id": "4.1",
+      "chapter": "ch4",
+      "title": "適切に設定された問題",
+      "pdfStart": 155,
+      "pdfEndCandidate": 157,
+      "bookStart": 141,
+      "bookEndRecorded": 143,
+      "extraction": {
+        "status": "page_text_extracted",
+        "pages": 3,
+        "sourceSha256": "d318176a9cac997d415ec5ee95b30979dcdaed0392705185393735c7d59a447a",
+        "sectionBoundary": "needs_review",
+        "formulaFidelity": "not_verified"
+      },
+      "translation": {
+        "status": "draft_exists",
+        "japaneseBlocks": 25,
+        "englishDraftExists": true,
+        "fullCoverage": "not_verified"
+      },
+      "sourceReview": {
+        "recordedStatus": "not_recorded",
+        "record": null,
+        "expertReviewed": false
+      },
+      "visualChecks": {
+        "figures": 1,
+        "equations": 3,
+        "tables": 0,
+        "completeCheck": "not_verified"
+      },
+      "questions": {
+        "count": 0,
+        "sourceCheckedCount": 0,
+        "expertReviewed": false
+      },
+      "app": {
+        "localReadable": false,
+        "file": null,
+        "publicDistributionPermission": "not_confirmed"
+      },
+      "remaining": [
+        "逐文の網羅性と訳語の統一を確認する",
+        "節の境界、図・式・表・脚注・ページ参照を確認する",
+        "4択問題と全選択肢の理由を作成・確認する",
+        "確認後にローカル教材パックへ取り込む"
+      ]
+    },
+    {
+      "id": "4.2",
+      "chapter": "ch4",
+      "title": "熱伝導方程式の一般解",
+      "pdfStart": 157,
+      "pdfEndCandidate": 164,
+      "bookStart": 143,
+      "bookEndRecorded": 150,
+      "extraction": {
+        "status": "page_text_extracted",
+        "pages": 8,
+        "sourceSha256": "d318176a9cac997d415ec5ee95b30979dcdaed0392705185393735c7d59a447a",
+        "sectionBoundary": "needs_review",
+        "formulaFidelity": "not_verified"
+      },
+      "translation": {
+        "status": "draft_exists",
+        "japaneseBlocks": 68,
+        "englishDraftExists": true,
+        "fullCoverage": "not_verified"
+      },
+      "sourceReview": {
+        "recordedStatus": "not_recorded",
+        "record": null,
+        "expertReviewed": false
+      },
+      "visualChecks": {
+        "figures": 2,
+        "equations": 24,
+        "tables": 0,
+        "completeCheck": "not_verified"
+      },
+      "questions": {
+        "count": 0,
+        "sourceCheckedCount": 0,
+        "expertReviewed": false
+      },
+      "app": {
+        "localReadable": false,
+        "file": null,
+        "publicDistributionPermission": "not_confirmed"
+      },
+      "remaining": [
+        "逐文の網羅性と訳語の統一を確認する",
+        "節の境界、図・式・表・脚注・ページ参照を確認する",
+        "4択問題と全選択肢の理由を作成・確認する",
+        "確認後にローカル教材パックへ取り込む"
+      ]
+    },
+    {
+      "id": "4.3",
+      "chapter": "ch4",
+      "title": "次元解析",
+      "pdfStart": 164,
+      "pdfEndCandidate": 173,
+      "bookStart": 150,
+      "bookEndRecorded": 159,
+      "extraction": {
+        "status": "page_text_extracted",
+        "pages": 10,
+        "sourceSha256": "d318176a9cac997d415ec5ee95b30979dcdaed0392705185393735c7d59a447a",
+        "sectionBoundary": "needs_review",
+        "formulaFidelity": "not_verified"
+      },
+      "translation": {
+        "status": "draft_exists",
+        "japaneseBlocks": 78,
+        "englishDraftExists": true,
+        "fullCoverage": "not_verified"
+      },
+      "sourceReview": {
+        "recordedStatus": "not_recorded",
+        "record": null,
+        "expertReviewed": false
+      },
+      "visualChecks": {
+        "figures": 1,
+        "equations": 23,
+        "tables": 0,
+        "completeCheck": "not_verified"
+      },
+      "questions": {
+        "count": 0,
+        "sourceCheckedCount": 0,
+        "expertReviewed": false
+      },
+      "app": {
+        "localReadable": false,
+        "file": null,
+        "publicDistributionPermission": "not_confirmed"
+      },
+      "remaining": [
+        "逐文の網羅性と訳語の統一を確認する",
+        "節の境界、図・式・表・脚注・ページ参照を確認する",
+        "4択問題と全選択肢の理由を作成・確認する",
+        "確認後にローカル教材パックへ取り込む"
+      ]
+    },
+    {
+      "id": "4.4",
+      "chapter": "ch4",
+      "title": "複雑な定常熱伝導問題における次元解析の例",
+      "pdfStart": 173,
+      "pdfEndCandidate": 176,
+      "bookStart": 159,
+      "bookEndRecorded": 162,
+      "extraction": {
+        "status": "page_text_extracted",
+        "pages": 4,
+        "sourceSha256": "d318176a9cac997d415ec5ee95b30979dcdaed0392705185393735c7d59a447a",
+        "sectionBoundary": "needs_review",
+        "formulaFidelity": "not_verified"
+      },
+      "translation": {
+        "status": "draft_exists",
+        "japaneseBlocks": 37,
+        "englishDraftExists": true,
+        "fullCoverage": "not_verified"
+      },
+      "sourceReview": {
+        "recordedStatus": "not_recorded",
+        "record": null,
+        "expertReviewed": false
+      },
+      "visualChecks": {
+        "figures": 1,
+        "equations": 13,
+        "tables": 0,
+        "completeCheck": "not_verified"
+      },
+      "questions": {
+        "count": 0,
+        "sourceCheckedCount": 0,
+        "expertReviewed": false
+      },
+      "app": {
+        "localReadable": false,
+        "file": null,
+        "publicDistributionPermission": "not_confirmed"
+      },
+      "remaining": [
+        "逐文の網羅性と訳語の統一を確認する",
+        "節の境界、図・式・表・脚注・ページ参照を確認する",
+        "4択問題と全選択肢の理由を作成・確認する",
+        "確認後にローカル教材パックへ取り込む"
+      ]
+    },
+    {
+      "id": "4.5",
+      "chapter": "ch4",
+      "title": "フィン設計",
+      "pdfStart": 177,
+      "pdfEndCandidate": 197,
+      "bookStart": 163,
+      "bookEndRecorded": 183,
+      "extraction": {
+        "status": "page_text_extracted",
+        "pages": 21,
+        "sourceSha256": "d318176a9cac997d415ec5ee95b30979dcdaed0392705185393735c7d59a447a",
+        "sectionBoundary": "needs_review",
+        "formulaFidelity": "not_verified"
+      },
+      "translation": {
+        "status": "draft_exists",
+        "japaneseBlocks": 181,
+        "englishDraftExists": true,
+        "fullCoverage": "not_verified"
+      },
+      "sourceReview": {
+        "recordedStatus": "not_recorded",
+        "record": null,
+        "expertReviewed": false
+      },
+      "visualChecks": {
+        "figures": 8,
+        "equations": 61,
+        "tables": 0,
+        "completeCheck": "not_verified"
+      },
+      "questions": {
+        "count": 0,
+        "sourceCheckedCount": 0,
+        "expertReviewed": false
+      },
+      "app": {
+        "localReadable": false,
+        "file": null,
+        "publicDistributionPermission": "not_confirmed"
+      },
+      "remaining": [
+        "逐文の網羅性と訳語の統一を確認する",
+        "節の境界、図・式・表・脚注・ページ参照を確認する",
+        "4択問題と全選択肢の理由を作成・確認する",
+        "確認後にローカル教材パックへ取り込む"
+      ]
+    },
+    {
+      "id": "5.1",
+      "chapter": "ch5",
+      "title": "導入",
+      "pdfStart": 207,
+      "pdfEndCandidate": 208,
+      "bookStart": 193,
+      "bookEndRecorded": 194,
+      "extraction": {
+        "status": "page_text_extracted",
+        "pages": 2,
+        "sourceSha256": "d318176a9cac997d415ec5ee95b30979dcdaed0392705185393735c7d59a447a",
+        "sectionBoundary": "needs_review",
+        "formulaFidelity": "not_verified"
+      },
+      "translation": {
+        "status": "draft_exists",
+        "japaneseBlocks": 8,
+        "englishDraftExists": true,
+        "fullCoverage": "not_verified"
+      },
+      "sourceReview": {
+        "recordedStatus": "not_recorded",
+        "record": null,
+        "expertReviewed": false
+      },
+      "visualChecks": {
+        "figures": 0,
+        "equations": 0,
+        "tables": 0,
+        "completeCheck": "not_verified"
+      },
+      "questions": {
+        "count": 0,
+        "sourceCheckedCount": 0,
+        "expertReviewed": false
+      },
+      "app": {
+        "localReadable": false,
+        "file": null,
+        "publicDistributionPermission": "not_confirmed"
+      },
+      "remaining": [
+        "逐文の網羅性と訳語の統一を確認する",
+        "節の境界、図・式・表・脚注・ページ参照を確認する",
+        "4択問題と全選択肢の理由を作成・確認する",
+        "確認後にローカル教材パックへ取り込む"
+      ]
+    },
+    {
+      "id": "5.2",
+      "chapter": "ch5",
+      "title": "集中熱容量の解",
+      "pdfStart": 208,
+      "pdfEndCandidate": 216,
+      "bookStart": 194,
+      "bookEndRecorded": 202,
+      "extraction": {
+        "status": "page_text_extracted",
+        "pages": 9,
+        "sourceSha256": "d318176a9cac997d415ec5ee95b30979dcdaed0392705185393735c7d59a447a",
+        "sectionBoundary": "needs_review",
+        "formulaFidelity": "not_verified"
+      },
+      "translation": {
+        "status": "draft_exists",
+        "japaneseBlocks": 96,
+        "englishDraftExists": true,
+        "fullCoverage": "not_verified"
+      },
+      "sourceReview": {
+        "recordedStatus": "not_recorded",
+        "record": null,
+        "expertReviewed": false
+      },
+      "visualChecks": {
+        "figures": 5,
+        "equations": 37,
+        "tables": 0,
+        "completeCheck": "not_verified"
+      },
+      "questions": {
+        "count": 0,
+        "sourceCheckedCount": 0,
+        "expertReviewed": false
+      },
+      "app": {
+        "localReadable": false,
+        "file": null,
+        "publicDistributionPermission": "not_confirmed"
+      },
+      "remaining": [
+        "逐文の網羅性と訳語の統一を確認する",
+        "節の境界、図・式・表・脚注・ページ参照を確認する",
+        "4択問題と全選択肢の理由を作成・確認する",
+        "確認後にローカル教材パックへ取り込む"
+      ]
+    },
+    {
+      "id": "5.3",
+      "chapter": "ch5",
+      "title": "一次元平板の非定常熱伝導",
+      "pdfStart": 217,
+      "pdfEndCandidate": 221,
+      "bookStart": 203,
+      "bookEndRecorded": 207,
+      "extraction": {
+        "status": "page_text_extracted",
+        "pages": 5,
+        "sourceSha256": "d318176a9cac997d415ec5ee95b30979dcdaed0392705185393735c7d59a447a",
+        "sectionBoundary": "needs_review",
+        "formulaFidelity": "not_verified"
+      },
+      "translation": {
+        "status": "draft_exists",
+        "japaneseBlocks": 50,
+        "englishDraftExists": true,
+        "fullCoverage": "not_verified"
+      },
+      "sourceReview": {
+        "recordedStatus": "not_recorded",
+        "record": null,
+        "expertReviewed": false
+      },
+      "visualChecks": {
+        "figures": 1,
+        "equations": 20,
+        "tables": 1,
+        "completeCheck": "not_verified"
+      },
+      "questions": {
+        "count": 0,
+        "sourceCheckedCount": 0,
+        "expertReviewed": false
+      },
+      "app": {
+        "localReadable": false,
+        "file": null,
+        "publicDistributionPermission": "not_confirmed"
+      },
+      "remaining": [
+        "逐文の網羅性と訳語の統一を確認する",
+        "節の境界、図・式・表・脚注・ページ参照を確認する",
+        "4択問題と全選択肢の理由を作成・確認する",
+        "確認後にローカル教材パックへ取り込む"
+      ]
+    },
+    {
+      "id": "5.4",
+      "chapter": "ch5",
+      "title": "温度応答線図",
+      "pdfStart": 221,
+      "pdfEndCandidate": 230,
+      "bookStart": 207,
+      "bookEndRecorded": 216,
+      "extraction": {
+        "status": "page_text_extracted",
+        "pages": 10,
+        "sourceSha256": "d318176a9cac997d415ec5ee95b30979dcdaed0392705185393735c7d59a447a",
+        "sectionBoundary": "needs_review",
+        "formulaFidelity": "not_verified"
+      },
+      "translation": {
+        "status": "draft_exists",
+        "japaneseBlocks": 50,
+        "englishDraftExists": true,
+        "fullCoverage": "not_verified"
+      },
+      "sourceReview": {
+        "recordedStatus": "not_recorded",
+        "record": null,
+        "expertReviewed": false
+      },
+      "visualChecks": {
+        "figures": 6,
+        "equations": 12,
+        "tables": 0,
+        "completeCheck": "not_verified"
+      },
+      "questions": {
+        "count": 0,
+        "sourceCheckedCount": 0,
+        "expertReviewed": false
+      },
+      "app": {
+        "localReadable": false,
+        "file": null,
+        "publicDistributionPermission": "not_confirmed"
+      },
+      "remaining": [
+        "逐文の網羅性と訳語の統一を確認する",
+        "節の境界、図・式・表・脚注・ページ参照を確認する",
+        "4択問題と全選択肢の理由を作成・確認する",
+        "確認後にローカル教材パックへ取り込む"
+      ]
+    },
+    {
+      "id": "5.5",
+      "chapter": "ch5",
+      "title": "一項近似解",
+      "pdfStart": 230,
+      "pdfEndCandidate": 233,
+      "bookStart": 216,
+      "bookEndRecorded": 219,
+      "extraction": {
+        "status": "page_text_extracted",
+        "pages": 4,
+        "sourceSha256": "d318176a9cac997d415ec5ee95b30979dcdaed0392705185393735c7d59a447a",
+        "sectionBoundary": "needs_review",
+        "formulaFidelity": "not_verified"
+      },
+      "translation": {
+        "status": "draft_exists",
+        "japaneseBlocks": 9,
+        "englishDraftExists": true,
+        "fullCoverage": "not_verified"
+      },
+      "sourceReview": {
+        "recordedStatus": "not_recorded",
+        "record": null,
+        "expertReviewed": false
+      },
+      "visualChecks": {
+        "figures": 0,
+        "equations": 2,
+        "tables": 1,
+        "completeCheck": "not_verified"
+      },
+      "questions": {
+        "count": 0,
+        "sourceCheckedCount": 0,
+        "expertReviewed": false
+      },
+      "app": {
+        "localReadable": false,
+        "file": null,
+        "publicDistributionPermission": "not_confirmed"
+      },
+      "remaining": [
+        "逐文の網羅性と訳語の統一を確認する",
+        "節の境界、図・式・表・脚注・ページ参照を確認する",
+        "4択問題と全選択肢の理由を作成・確認する",
+        "確認後にローカル教材パックへ取り込む"
+      ]
+    },
+    {
+      "id": "5.6",
+      "chapter": "ch5",
+      "title": "半無限領域への非定常熱伝導",
+      "pdfStart": 234,
+      "pdfEndCandidate": 249,
+      "bookStart": 220,
+      "bookEndRecorded": 235,
+      "extraction": {
+        "status": "page_text_extracted",
+        "pages": 16,
+        "sourceSha256": "d318176a9cac997d415ec5ee95b30979dcdaed0392705185393735c7d59a447a",
+        "sectionBoundary": "needs_review",
+        "formulaFidelity": "not_verified"
+      },
+      "translation": {
+        "status": "draft_exists",
+        "japaneseBlocks": 91,
+        "englishDraftExists": true,
+        "fullCoverage": "not_verified"
+      },
+      "sourceReview": {
+        "recordedStatus": "not_recorded",
+        "record": null,
+        "expertReviewed": false
+      },
+      "visualChecks": {
+        "figures": 7,
+        "equations": 26,
+        "tables": 1,
+        "completeCheck": "not_verified"
+      },
+      "questions": {
+        "count": 0,
+        "sourceCheckedCount": 0,
+        "expertReviewed": false
+      },
+      "app": {
+        "localReadable": false,
+        "file": null,
+        "publicDistributionPermission": "not_confirmed"
+      },
+      "remaining": [
+        "逐文の網羅性と訳語の統一を確認する",
+        "節の境界、図・式・表・脚注・ページ参照を確認する",
+        "4択問題と全選択肢の理由を作成・確認する",
+        "確認後にローカル教材パックへ取り込む"
+      ]
+    },
+    {
+      "id": "5.7",
+      "chapter": "ch5",
+      "title": "定常多次元熱伝導",
+      "pdfStart": 249,
+      "pdfEndCandidate": 261,
+      "bookStart": 235,
+      "bookEndRecorded": 247,
+      "extraction": {
+        "status": "page_text_extracted",
+        "pages": 13,
+        "sourceSha256": "d318176a9cac997d415ec5ee95b30979dcdaed0392705185393735c7d59a447a",
+        "sectionBoundary": "needs_review",
+        "formulaFidelity": "not_verified"
+      },
+      "translation": {
+        "status": "draft_exists",
+        "japaneseBlocks": 78,
+        "englishDraftExists": true,
+        "fullCoverage": "not_verified"
+      },
+      "sourceReview": {
+        "recordedStatus": "not_recorded",
+        "record": null,
+        "expertReviewed": false
+      },
+      "visualChecks": {
+        "figures": 7,
+        "equations": 18,
+        "tables": 1,
+        "completeCheck": "not_verified"
+      },
+      "questions": {
+        "count": 0,
+        "sourceCheckedCount": 0,
+        "expertReviewed": false
+      },
+      "app": {
+        "localReadable": false,
+        "file": null,
+        "publicDistributionPermission": "not_confirmed"
+      },
+      "remaining": [
+        "逐文の網羅性と訳語の統一を確認する",
+        "節の境界、図・式・表・脚注・ページ参照を確認する",
+        "4択問題と全選択肢の理由を作成・確認する",
+        "確認後にローカル教材パックへ取り込む"
+      ]
+    },
+    {
+      "id": "5.8",
+      "chapter": "ch5",
+      "title": "非定常多次元熱伝導",
+      "pdfStart": 262,
+      "pdfEndCandidate": 266,
+      "bookStart": 248,
+      "bookEndRecorded": 252,
+      "extraction": {
+        "status": "page_text_extracted",
+        "pages": 5,
+        "sourceSha256": "d318176a9cac997d415ec5ee95b30979dcdaed0392705185393735c7d59a447a",
+        "sectionBoundary": "needs_review",
+        "formulaFidelity": "not_verified"
+      },
+      "translation": {
+        "status": "draft_exists",
+        "japaneseBlocks": 34,
+        "englishDraftExists": true,
+        "fullCoverage": "not_verified"
+      },
+      "sourceReview": {
+        "recordedStatus": "not_recorded",
+        "record": null,
+        "expertReviewed": false
+      },
+      "visualChecks": {
+        "figures": 1,
+        "equations": 13,
+        "tables": 0,
+        "completeCheck": "not_verified"
+      },
+      "questions": {
+        "count": 0,
+        "sourceCheckedCount": 0,
+        "expertReviewed": false
+      },
+      "app": {
+        "localReadable": false,
+        "file": null,
+        "publicDistributionPermission": "not_confirmed"
+      },
+      "remaining": [
+        "逐文の網羅性と訳語の統一を確認する",
+        "節の境界、図・式・表・脚注・ページ参照を確認する",
+        "4択問題と全選択肢の理由を作成・確認する",
+        "確認後にローカル教材パックへ取り込む"
+      ]
+    },
+    {
+      "id": "6.1",
+      "chapter": "ch6",
+      "title": "導入となる考え方",
+      "pdfStart": 285,
+      "pdfEndCandidate": 291,
+      "bookStart": 271,
+      "bookEndRecorded": 277,
+      "extraction": {
+        "status": "page_text_extracted",
+        "pages": 7,
+        "sourceSha256": "d318176a9cac997d415ec5ee95b30979dcdaed0392705185393735c7d59a447a",
+        "sectionBoundary": "needs_review",
+        "formulaFidelity": "not_verified"
+      },
+      "translation": {
+        "status": "draft_exists",
+        "japaneseBlocks": 48,
+        "englishDraftExists": true,
+        "fullCoverage": "not_verified"
+      },
+      "sourceReview": {
+        "recordedStatus": "not_recorded",
+        "record": null,
+        "expertReviewed": false
+      },
+      "visualChecks": {
+        "figures": 6,
+        "equations": 8,
+        "tables": 0,
+        "completeCheck": "not_verified"
+      },
+      "questions": {
+        "count": 0,
+        "sourceCheckedCount": 0,
+        "expertReviewed": false
+      },
+      "app": {
+        "localReadable": false,
+        "file": null,
+        "publicDistributionPermission": "not_confirmed"
+      },
+      "remaining": [
+        "逐文の網羅性と訳語の統一を確認する",
+        "節の境界、図・式・表・脚注・ページ参照を確認する",
+        "4択問題と全選択肢の理由を作成・確認する",
+        "確認後にローカル教材パックへ取り込む"
+      ]
+    },
+    {
+      "id": "6.2",
+      "chapter": "ch6",
+      "title": "平板上の非圧縮性層流境界層",
+      "pdfStart": 292,
+      "pdfEndCandidate": 307,
+      "bookStart": 278,
+      "bookEndRecorded": 293,
+      "extraction": {
+        "status": "page_text_extracted",
+        "pages": 16,
+        "sourceSha256": "d318176a9cac997d415ec5ee95b30979dcdaed0392705185393735c7d59a447a",
+        "sectionBoundary": "needs_review",
+        "formulaFidelity": "not_verified"
+      },
+      "translation": {
+        "status": "draft_exists",
+        "japaneseBlocks": 120,
+        "englishDraftExists": true,
+        "fullCoverage": "not_verified"
+      },
+      "sourceReview": {
+        "recordedStatus": "not_recorded",
+        "record": null,
+        "expertReviewed": false
+      },
+      "visualChecks": {
+        "figures": 6,
+        "equations": 42,
+        "tables": 1,
+        "completeCheck": "not_verified"
+      },
+      "questions": {
+        "count": 5,
+        "sourceCheckedCount": 0,
+        "expertReviewed": false
+      },
+      "app": {
+        "localReadable": false,
+        "file": null,
+        "publicDistributionPermission": "not_confirmed"
+      },
+      "remaining": [
+        "逐文の網羅性と訳語の統一を確認する",
+        "節の境界、図・式・表・脚注・ページ参照を確認する",
+        "確認後にローカル教材パックへ取り込む"
+      ]
+    },
+    {
+      "id": "6.3",
+      "chapter": "ch6",
+      "title": "エネルギー方程式",
+      "pdfStart": 307,
+      "pdfEndCandidate": 312,
+      "bookStart": 293,
+      "bookEndRecorded": 298,
+      "extraction": {
+        "status": "page_text_extracted",
+        "pages": 6,
+        "sourceSha256": "d318176a9cac997d415ec5ee95b30979dcdaed0392705185393735c7d59a447a",
+        "sectionBoundary": "needs_review",
+        "formulaFidelity": "not_verified"
+      },
+      "translation": {
+        "status": "draft_exists",
+        "japaneseBlocks": 44,
+        "englishDraftExists": true,
+        "fullCoverage": "not_verified"
+      },
+      "sourceReview": {
+        "recordedStatus": "not_recorded",
+        "record": null,
+        "expertReviewed": false
+      },
+      "visualChecks": {
+        "figures": 1,
+        "equations": 15,
+        "tables": 0,
+        "completeCheck": "not_verified"
+      },
+      "questions": {
+        "count": 5,
+        "sourceCheckedCount": 0,
+        "expertReviewed": false
+      },
+      "app": {
+        "localReadable": false,
+        "file": null,
+        "publicDistributionPermission": "not_confirmed"
+      },
+      "remaining": [
+        "逐文の網羅性と訳語の統一を確認する",
+        "節の境界、図・式・表・脚注・ページ参照を確認する",
+        "確認後にローカル教材パックへ取り込む"
+      ]
+    },
+    {
+      "id": "6.4",
+      "chapter": "ch6",
+      "title": "プラントル数と境界層厚さ",
+      "pdfStart": 312,
+      "pdfEndCandidate": 315,
+      "bookStart": 298,
+      "bookEndRecorded": 301,
+      "extraction": {
+        "status": "page_text_extracted",
+        "pages": 4,
+        "sourceSha256": "d318176a9cac997d415ec5ee95b30979dcdaed0392705185393735c7d59a447a",
+        "sectionBoundary": "needs_review",
+        "formulaFidelity": "not_verified"
+      },
+      "translation": {
+        "status": "draft_exists",
+        "japaneseBlocks": 33,
+        "englishDraftExists": true,
+        "fullCoverage": "not_verified"
+      },
+      "sourceReview": {
+        "recordedStatus": "not_recorded",
+        "record": null,
+        "expertReviewed": false
+      },
+      "visualChecks": {
+        "figures": 1,
+        "equations": 9,
+        "tables": 0,
+        "completeCheck": "not_verified"
+      },
+      "questions": {
+        "count": 5,
+        "sourceCheckedCount": 0,
+        "expertReviewed": false
+      },
+      "app": {
+        "localReadable": false,
+        "file": null,
+        "publicDistributionPermission": "not_confirmed"
+      },
+      "remaining": [
+        "逐文の網羅性と訳語の統一を確認する",
+        "節の境界、図・式・表・脚注・ページ参照を確認する",
+        "確認後にローカル教材パックへ取り込む"
+      ]
+    },
+    {
+      "id": "6.5",
+      "chapter": "ch6",
+      "title": "平板上の層流・非圧縮流の熱伝達係数",
+      "pdfStart": 316,
+      "pdfEndCandidate": 326,
+      "bookStart": 302,
+      "bookEndRecorded": 312,
+      "extraction": {
+        "status": "page_text_extracted",
+        "pages": 11,
+        "sourceSha256": "d318176a9cac997d415ec5ee95b30979dcdaed0392705185393735c7d59a447a",
+        "sectionBoundary": "needs_review",
+        "formulaFidelity": "not_verified"
+      },
+      "translation": {
+        "status": "draft_exists",
+        "japaneseBlocks": 118,
+        "englishDraftExists": true,
+        "fullCoverage": "not_verified"
+      },
+      "sourceReview": {
+        "recordedStatus": "not_recorded",
+        "record": null,
+        "expertReviewed": false
+      },
+      "visualChecks": {
+        "figures": 3,
+        "equations": 39,
+        "tables": 0,
+        "completeCheck": "not_verified"
+      },
+      "questions": {
+        "count": 5,
+        "sourceCheckedCount": 0,
+        "expertReviewed": false
+      },
+      "app": {
+        "localReadable": false,
+        "file": null,
+        "publicDistributionPermission": "not_confirmed"
+      },
+      "remaining": [
+        "逐文の網羅性と訳語の統一を確認する",
+        "節の境界、図・式・表・脚注・ページ参照を確認する",
+        "確認後にローカル教材パックへ取り込む"
+      ]
+    },
+    {
+      "id": "6.6",
+      "chapter": "ch6",
+      "title": "レイノルズ・コルバーンの類推",
+      "pdfStart": 327,
+      "pdfEndCandidate": 328,
+      "bookStart": 313,
+      "bookEndRecorded": 314,
+      "extraction": {
+        "status": "page_text_extracted",
+        "pages": 2,
+        "sourceSha256": "d318176a9cac997d415ec5ee95b30979dcdaed0392705185393735c7d59a447a",
+        "sectionBoundary": "needs_review",
+        "formulaFidelity": "not_verified"
+      },
+      "translation": {
+        "status": "draft_exists",
+        "japaneseBlocks": 19,
+        "englishDraftExists": true,
+        "fullCoverage": "not_verified"
+      },
+      "sourceReview": {
+        "recordedStatus": "not_recorded",
+        "record": null,
+        "expertReviewed": false
+      },
+      "visualChecks": {
+        "figures": 0,
+        "equations": 5,
+        "tables": 0,
+        "completeCheck": "not_verified"
+      },
+      "questions": {
+        "count": 4,
+        "sourceCheckedCount": 0,
+        "expertReviewed": false
+      },
+      "app": {
+        "localReadable": false,
+        "file": null,
+        "publicDistributionPermission": "not_confirmed"
+      },
+      "remaining": [
+        "逐文の網羅性と訳語の統一を確認する",
+        "節の境界、図・式・表・脚注・ページ参照を確認する",
+        "確認後にローカル教材パックへ取り込む"
+      ]
+    },
+    {
+      "id": "6.7",
+      "chapter": "ch6",
+      "title": "乱流境界層",
+      "pdfStart": 328,
+      "pdfEndCandidate": 336,
+      "bookStart": 314,
+      "bookEndRecorded": 322,
+      "extraction": {
+        "status": "page_text_extracted",
+        "pages": 9,
+        "sourceSha256": "d318176a9cac997d415ec5ee95b30979dcdaed0392705185393735c7d59a447a",
+        "sectionBoundary": "needs_review",
+        "formulaFidelity": "not_verified"
+      },
+      "translation": {
+        "status": "draft_exists",
+        "japaneseBlocks": 78,
+        "englishDraftExists": true,
+        "fullCoverage": "not_verified"
+      },
+      "sourceReview": {
+        "recordedStatus": "not_recorded",
+        "record": null,
+        "expertReviewed": false
+      },
+      "visualChecks": {
+        "figures": 2,
+        "equations": 28,
+        "tables": 0,
+        "completeCheck": "not_verified"
+      },
+      "questions": {
+        "count": 6,
+        "sourceCheckedCount": 0,
+        "expertReviewed": false
+      },
+      "app": {
+        "localReadable": false,
+        "file": null,
+        "publicDistributionPermission": "not_confirmed"
+      },
+      "remaining": [
+        "逐文の網羅性と訳語の統一を確認する",
+        "節の境界、図・式・表・脚注・ページ参照を確認する",
+        "確認後にローカル教材パックへ取り込む"
+      ]
+    },
+    {
+      "id": "6.8",
+      "chapter": "ch6",
+      "title": "乱流境界層の熱伝達",
+      "pdfStart": 336,
+      "pdfEndCandidate": 342,
+      "bookStart": 322,
+      "bookEndRecorded": 328,
+      "extraction": {
+        "status": "page_text_extracted",
+        "pages": 7,
+        "sourceSha256": "d318176a9cac997d415ec5ee95b30979dcdaed0392705185393735c7d59a447a",
+        "sectionBoundary": "needs_review",
+        "formulaFidelity": "not_verified"
+      },
+      "translation": {
+        "status": "draft_exists",
+        "japaneseBlocks": 55,
+        "englishDraftExists": true,
+        "fullCoverage": "not_verified"
+      },
+      "sourceReview": {
+        "recordedStatus": "not_recorded",
+        "record": null,
+        "expertReviewed": false
+      },
+      "visualChecks": {
+        "figures": 1,
+        "equations": 17,
+        "tables": 0,
+        "completeCheck": "not_verified"
+      },
+      "questions": {
+        "count": 6,
+        "sourceCheckedCount": 0,
+        "expertReviewed": false
+      },
+      "app": {
+        "localReadable": false,
+        "file": null,
+        "publicDistributionPermission": "not_confirmed"
+      },
+      "remaining": [
+        "逐文の網羅性と訳語の統一を確認する",
+        "節の境界、図・式・表・脚注・ページ参照を確認する",
+        "確認後にローカル教材パックへ取り込む"
+      ]
+    },
+    {
+      "id": "6.9",
+      "chapter": "ch6",
+      "title": "乱流への遷移と全体の熱伝達",
+      "pdfStart": 342,
+      "pdfEndCandidate": 350,
+      "bookStart": 328,
+      "bookEndRecorded": 336,
+      "extraction": {
+        "status": "page_text_extracted",
+        "pages": 9,
+        "sourceSha256": "d318176a9cac997d415ec5ee95b30979dcdaed0392705185393735c7d59a447a",
+        "sectionBoundary": "needs_review",
+        "formulaFidelity": "not_verified"
+      },
+      "translation": {
+        "status": "draft_exists",
+        "japaneseBlocks": 62,
+        "englishDraftExists": true,
+        "fullCoverage": "not_verified"
+      },
+      "sourceReview": {
+        "recordedStatus": "not_recorded",
+        "record": null,
+        "expertReviewed": false
+      },
+      "visualChecks": {
+        "figures": 3,
+        "equations": 14,
+        "tables": 0,
+        "completeCheck": "not_verified"
+      },
+      "questions": {
+        "count": 8,
+        "sourceCheckedCount": 0,
+        "expertReviewed": false
+      },
+      "app": {
+        "localReadable": false,
+        "file": null,
+        "publicDistributionPermission": "not_confirmed"
+      },
+      "remaining": [
+        "逐文の網羅性と訳語の統一を確認する",
+        "節の境界、図・式・表・脚注・ページ参照を確認する",
+        "確認後にローカル教材パックへ取り込む"
+      ]
+    },
+    {
+      "id": "7.1",
+      "chapter": "ch7",
+      "title": "導入",
+      "pdfStart": 365,
+      "pdfEndCandidate": 366,
+      "bookStart": 351,
+      "bookEndRecorded": 352,
+      "extraction": {
+        "status": "page_text_extracted",
+        "pages": 2,
+        "sourceSha256": "d318176a9cac997d415ec5ee95b30979dcdaed0392705185393735c7d59a447a",
+        "sectionBoundary": "needs_review",
+        "formulaFidelity": "not_verified"
+      },
+      "translation": {
+        "status": "draft_exists",
+        "japaneseBlocks": 11,
+        "englishDraftExists": true,
+        "fullCoverage": "not_verified"
+      },
+      "sourceReview": {
+        "recordedStatus": "not_recorded",
+        "record": null,
+        "expertReviewed": false
+      },
+      "visualChecks": {
+        "figures": 1,
+        "equations": 0,
+        "tables": 0,
+        "completeCheck": "not_verified"
+      },
+      "questions": {
+        "count": 4,
+        "sourceCheckedCount": 0,
+        "expertReviewed": false
+      },
+      "app": {
+        "localReadable": false,
+        "file": null,
+        "publicDistributionPermission": "not_confirmed"
+      },
+      "remaining": [
+        "逐文の網羅性と訳語の統一を確認する",
+        "節の境界、図・式・表・脚注・ページ参照を確認する",
+        "確認後にローカル教材パックへ取り込む"
+      ]
+    },
+    {
+      "id": "7.2",
+      "chapter": "ch7",
+      "title": "管内層流の加熱・冷却",
+      "pdfStart": 366,
+      "pdfEndCandidate": 378,
+      "bookStart": 352,
+      "bookEndRecorded": 364,
+      "extraction": {
+        "status": "page_text_extracted",
+        "pages": 13,
+        "sourceSha256": "d318176a9cac997d415ec5ee95b30979dcdaed0392705185393735c7d59a447a",
+        "sectionBoundary": "needs_review",
+        "formulaFidelity": "not_verified"
+      },
+      "translation": {
+        "status": "draft_exists",
+        "japaneseBlocks": 88,
+        "englishDraftExists": true,
+        "fullCoverage": "not_verified"
+      },
+      "sourceReview": {
+        "recordedStatus": "not_recorded",
+        "record": null,
+        "expertReviewed": false
+      },
+      "visualChecks": {
+        "figures": 4,
+        "equations": 34,
+        "tables": 0,
+        "completeCheck": "not_verified"
+      },
+      "questions": {
+        "count": 11,
+        "sourceCheckedCount": 0,
+        "expertReviewed": false
+      },
+      "app": {
+        "localReadable": false,
+        "file": null,
+        "publicDistributionPermission": "not_confirmed"
+      },
+      "remaining": [
+        "逐文の網羅性と訳語の統一を確認する",
+        "節の境界、図・式・表・脚注・ページ参照を確認する",
+        "確認後にローカル教材パックへ取り込む"
+      ]
+    },
+    {
+      "id": "7.3",
+      "chapter": "ch7",
+      "title": "管内乱流",
+      "pdfStart": 378,
+      "pdfEndCandidate": 393,
+      "bookStart": 364,
+      "bookEndRecorded": 379,
+      "extraction": {
+        "status": "page_text_extracted",
+        "pages": 16,
+        "sourceSha256": "d318176a9cac997d415ec5ee95b30979dcdaed0392705185393735c7d59a447a",
+        "sectionBoundary": "needs_review",
+        "formulaFidelity": "not_verified"
+      },
+      "translation": {
+        "status": "draft_exists",
+        "japaneseBlocks": 89,
+        "englishDraftExists": true,
+        "fullCoverage": "not_verified"
+      },
+      "sourceReview": {
+        "recordedStatus": "not_recorded",
+        "record": null,
+        "expertReviewed": false
+      },
+      "visualChecks": {
+        "figures": 5,
+        "equations": 34,
+        "tables": 3,
+        "completeCheck": "not_verified"
+      },
+      "questions": {
+        "count": 14,
+        "sourceCheckedCount": 0,
+        "expertReviewed": false
+      },
+      "app": {
+        "localReadable": false,
+        "file": null,
+        "publicDistributionPermission": "not_confirmed"
+      },
+      "remaining": [
+        "逐文の網羅性と訳語の統一を確認する",
+        "節の境界、図・式・表・脚注・ページ参照を確認する",
+        "確認後にローカル教材パックへ取り込む"
+      ]
+    },
+    {
+      "id": "7.4",
+      "chapter": "ch7",
+      "title": "熱交換器として見た熱伝達面",
+      "pdfStart": 394,
+      "pdfEndCandidate": 396,
+      "bookStart": 380,
+      "bookEndRecorded": 382,
+      "extraction": {
+        "status": "page_text_extracted",
+        "pages": 3,
+        "sourceSha256": "d318176a9cac997d415ec5ee95b30979dcdaed0392705185393735c7d59a447a",
+        "sectionBoundary": "needs_review",
+        "formulaFidelity": "not_verified"
+      },
+      "translation": {
+        "status": "draft_exists",
+        "japaneseBlocks": 30,
+        "englishDraftExists": true,
+        "fullCoverage": "not_verified"
+      },
+      "sourceReview": {
+        "recordedStatus": "not_recorded",
+        "record": null,
+        "expertReviewed": false
+      },
+      "visualChecks": {
+        "figures": 0,
+        "equations": 13,
+        "tables": 0,
+        "completeCheck": "not_verified"
+      },
+      "questions": {
+        "count": 5,
+        "sourceCheckedCount": 0,
+        "expertReviewed": false
+      },
+      "app": {
+        "localReadable": false,
+        "file": null,
+        "publicDistributionPermission": "not_confirmed"
+      },
+      "remaining": [
+        "逐文の網羅性と訳語の統一を確認する",
+        "節の境界、図・式・表・脚注・ページ参照を確認する",
+        "確認後にローカル教材パックへ取り込む"
+      ]
+    },
+    {
+      "id": "7.5",
+      "chapter": "ch7",
+      "title": "非円形ダクトの熱伝達係数",
+      "pdfStart": 396,
+      "pdfEndCandidate": 401,
+      "bookStart": 382,
+      "bookEndRecorded": 387,
+      "extraction": {
+        "status": "page_text_extracted",
+        "pages": 6,
+        "sourceSha256": "d318176a9cac997d415ec5ee95b30979dcdaed0392705185393735c7d59a447a",
+        "sectionBoundary": "needs_review",
+        "formulaFidelity": "not_verified"
+      },
+      "translation": {
+        "status": "draft_exists",
+        "japaneseBlocks": 37,
+        "englishDraftExists": true,
+        "fullCoverage": "not_verified"
+      },
+      "sourceReview": {
+        "recordedStatus": "not_recorded",
+        "record": null,
+        "expertReviewed": false
+      },
+      "visualChecks": {
+        "figures": 1,
+        "equations": 13,
+        "tables": 1,
+        "completeCheck": "not_verified"
+      },
+      "questions": {
+        "count": 7,
+        "sourceCheckedCount": 0,
+        "expertReviewed": false
+      },
+      "app": {
+        "localReadable": false,
+        "file": null,
+        "publicDistributionPermission": "not_confirmed"
+      },
+      "remaining": [
+        "逐文の網羅性と訳語の統一を確認する",
+        "節の境界、図・式・表・脚注・ページ参照を確認する",
+        "確認後にローカル教材パックへ取り込む"
+      ]
+    },
+    {
+      "id": "7.6",
+      "chapter": "ch7",
+      "title": "円柱横流れの熱伝達",
+      "pdfStart": 401,
+      "pdfEndCandidate": 411,
+      "bookStart": 387,
+      "bookEndRecorded": 397,
+      "extraction": {
+        "status": "page_text_extracted",
+        "pages": 11,
+        "sourceSha256": "d318176a9cac997d415ec5ee95b30979dcdaed0392705185393735c7d59a447a",
+        "sectionBoundary": "needs_review",
+        "formulaFidelity": "not_verified"
+      },
+      "translation": {
+        "status": "text_available",
+        "japaneseBlocks": 65,
+        "englishDraftExists": true,
+        "fullCoverage": "not_verified"
+      },
+      "sourceReview": {
+        "recordedStatus": "source_checked",
+        "record": "docs/reviews/2026-10-20-ch7-source-audit.md",
+        "expertReviewed": false
+      },
+      "visualChecks": {
+        "figures": 8,
+        "equations": 20,
+        "tables": 0,
+        "completeCheck": "not_verified"
+      },
+      "questions": {
+        "count": 10,
+        "sourceCheckedCount": 10,
+        "expertReviewed": false
+      },
+      "app": {
+        "localReadable": true,
+        "file": "./data/local/sections/7.6-ja.json",
+        "publicDistributionPermission": "not_confirmed"
+      },
+      "remaining": [
+        "逐文の網羅性と訳語の統一を確認する",
+        "節の境界、図・式・表・脚注・ページ参照を確認する"
+      ]
+    },
+    {
+      "id": "7.7",
+      "chapter": "ch7",
+      "title": "その他の形状に対する相関式の選定と評価",
+      "pdfStart": 411,
+      "pdfEndCandidate": 413,
+      "bookStart": 397,
+      "bookEndRecorded": 399,
+      "extraction": {
+        "status": "page_text_extracted",
+        "pages": 3,
+        "sourceSha256": "d318176a9cac997d415ec5ee95b30979dcdaed0392705185393735c7d59a447a",
+        "sectionBoundary": "needs_review",
+        "formulaFidelity": "not_verified"
+      },
+      "translation": {
+        "status": "text_available",
+        "japaneseBlocks": 11,
+        "englishDraftExists": true,
+        "fullCoverage": "not_verified"
+      },
+      "sourceReview": {
+        "recordedStatus": "source_checked",
+        "record": "docs/reviews/2026-10-20-ch7-source-audit.md",
+        "expertReviewed": false
+      },
+      "visualChecks": {
+        "figures": 0,
+        "equations": 1,
+        "tables": 0,
+        "completeCheck": "not_verified"
+      },
+      "questions": {
+        "count": 8,
+        "sourceCheckedCount": 8,
+        "expertReviewed": false
+      },
+      "app": {
+        "localReadable": true,
+        "file": "./data/local/sections/7.7-ja.json",
+        "publicDistributionPermission": "not_confirmed"
+      },
+      "remaining": [
+        "逐文の網羅性と訳語の統一を確認する",
+        "節の境界、図・式・表・脚注・ページ参照を確認する"
+      ]
+    },
+    {
+      "id": "8.1",
+      "chapter": "ch8",
+      "title": "対象範囲",
+      "pdfStart": 427,
+      "pdfEndCandidate": 427,
+      "bookStart": 413,
+      "bookEndRecorded": 413,
+      "extraction": {
+        "status": "page_text_extracted",
+        "pages": 1,
+        "sourceSha256": "d318176a9cac997d415ec5ee95b30979dcdaed0392705185393735c7d59a447a",
+        "sectionBoundary": "needs_review",
+        "formulaFidelity": "not_verified"
+      },
+      "translation": {
+        "status": "text_available",
+        "japaneseBlocks": 10,
+        "englishDraftExists": true,
+        "fullCoverage": "not_verified"
+      },
+      "sourceReview": {
+        "recordedStatus": "source_checked",
+        "record": "docs/reviews/2026-10-20-ch8-opening-source-audit.md",
+        "expertReviewed": false
+      },
+      "visualChecks": {
+        "figures": 0,
+        "equations": 0,
+        "tables": 0,
+        "completeCheck": "not_verified"
+      },
+      "questions": {
+        "count": 2,
+        "sourceCheckedCount": 2,
+        "expertReviewed": false
+      },
+      "app": {
+        "localReadable": true,
+        "file": "./data/local/sections/8.1-ja.json",
+        "publicDistributionPermission": "not_confirmed"
+      },
+      "remaining": [
+        "逐文の網羅性と訳語の統一を確認する",
+        "節の境界、図・式・表・脚注・ページ参照を確認する"
+      ]
+    },
+    {
+      "id": "8.2",
+      "chapter": "ch8",
+      "title": "膜状凝縮と自然対流の性質",
+      "pdfStart": 428,
+      "pdfEndCandidate": 430,
+      "bookStart": 414,
+      "bookEndRecorded": 416,
+      "extraction": {
+        "status": "page_text_extracted",
+        "pages": 3,
+        "sourceSha256": "d318176a9cac997d415ec5ee95b30979dcdaed0392705185393735c7d59a447a",
+        "sectionBoundary": "needs_review",
+        "formulaFidelity": "not_verified"
+      },
+      "translation": {
+        "status": "text_available",
+        "japaneseBlocks": 31,
+        "englishDraftExists": true,
+        "fullCoverage": "not_verified"
+      },
+      "sourceReview": {
+        "recordedStatus": "source_checked",
+        "record": "docs/reviews/2026-10-20-ch8-opening-source-audit.md",
+        "expertReviewed": false
+      },
+      "visualChecks": {
+        "figures": 1,
+        "equations": 8,
+        "tables": 1,
+        "completeCheck": "not_verified"
+      },
+      "questions": {
+        "count": 6,
+        "sourceCheckedCount": 6,
+        "expertReviewed": false
+      },
+      "app": {
+        "localReadable": true,
+        "file": "./data/local/sections/8.2-ja.json",
+        "publicDistributionPermission": "not_confirmed"
+      },
+      "remaining": [
+        "逐文の網羅性と訳語の統一を確認する",
+        "節の境界、図・式・表・脚注・ページ参照を確認する"
+      ]
+    },
+    {
+      "id": "8.3",
+      "chapter": "ch8",
+      "title": "等温垂直面上の層流自然対流",
+      "pdfStart": 431,
+      "pdfEndCandidate": 443,
+      "bookStart": 417,
+      "bookEndRecorded": 429,
+      "extraction": {
+        "status": "page_text_extracted",
+        "pages": 13,
+        "sourceSha256": "d318176a9cac997d415ec5ee95b30979dcdaed0392705185393735c7d59a447a",
+        "sectionBoundary": "needs_review",
+        "formulaFidelity": "not_verified"
+      },
+      "translation": {
+        "status": "text_available",
+        "japaneseBlocks": 116,
+        "englishDraftExists": true,
+        "fullCoverage": "not_verified"
+      },
+      "sourceReview": {
+        "recordedStatus": "source_checked",
+        "record": "docs/reviews/2026-10-20-ch8-3-source-audit.md",
+        "expertReviewed": false
+      },
+      "visualChecks": {
+        "figures": 4,
+        "equations": 41,
+        "tables": 0,
+        "completeCheck": "not_verified"
+      },
+      "questions": {
+        "count": 10,
+        "sourceCheckedCount": 10,
+        "expertReviewed": false
+      },
+      "app": {
+        "localReadable": true,
+        "file": "./data/local/sections/8.3-ja.json",
+        "publicDistributionPermission": "not_confirmed"
+      },
+      "remaining": [
+        "逐文の網羅性と訳語の統一を確認する",
+        "節の境界、図・式・表・脚注・ページ参照を確認する"
+      ]
+    },
+    {
+      "id": "8.4",
+      "chapter": "ch8",
+      "title": "その他の状況における自然対流",
+      "pdfStart": 444,
+      "pdfEndCandidate": 455,
+      "bookStart": 430,
+      "bookEndRecorded": null,
+      "extraction": {
+        "status": "page_text_extracted",
+        "pages": 12,
+        "sourceSha256": "d318176a9cac997d415ec5ee95b30979dcdaed0392705185393735c7d59a447a",
+        "sectionBoundary": "needs_review",
+        "formulaFidelity": "not_verified"
+      },
+      "translation": {
+        "status": "not_started",
+        "japaneseBlocks": 0,
+        "englishDraftExists": false,
+        "fullCoverage": "not_verified"
+      },
+      "sourceReview": {
+        "recordedStatus": "not_recorded",
+        "record": null,
+        "expertReviewed": false
+      },
+      "visualChecks": {
+        "figures": 0,
+        "equations": 0,
+        "tables": 0,
+        "completeCheck": "not_verified"
+      },
+      "questions": {
+        "count": 0,
+        "sourceCheckedCount": 0,
+        "expertReviewed": false
+      },
+      "app": {
+        "localReadable": false,
+        "file": null,
+        "publicDistributionPermission": "not_confirmed"
+      },
+      "remaining": [
+        "日本語訳を作成する",
+        "逐文の網羅性と訳語の統一を確認する",
+        "節の境界、図・式・表・脚注・ページ参照を確認する",
+        "4択問題と全選択肢の理由を作成・確認する",
+        "確認後にローカル教材パックへ取り込む"
+      ]
+    },
+    {
+      "id": "8.5",
+      "chapter": "ch8",
+      "title": "膜状凝縮",
+      "pdfStart": 455,
+      "pdfEndCandidate": 484,
+      "bookStart": 441,
+      "bookEndRecorded": null,
+      "extraction": {
+        "status": "page_text_extracted",
+        "pages": 30,
+        "sourceSha256": "d318176a9cac997d415ec5ee95b30979dcdaed0392705185393735c7d59a447a",
+        "sectionBoundary": "needs_review",
+        "formulaFidelity": "not_verified"
+      },
+      "translation": {
+        "status": "not_started",
+        "japaneseBlocks": 0,
+        "englishDraftExists": false,
+        "fullCoverage": "not_verified"
+      },
+      "sourceReview": {
+        "recordedStatus": "not_recorded",
+        "record": null,
+        "expertReviewed": false
+      },
+      "visualChecks": {
+        "figures": 0,
+        "equations": 0,
+        "tables": 0,
+        "completeCheck": "not_verified"
+      },
+      "questions": {
+        "count": 0,
+        "sourceCheckedCount": 0,
+        "expertReviewed": false
+      },
+      "app": {
+        "localReadable": false,
+        "file": null,
+        "publicDistributionPermission": "not_confirmed"
+      },
+      "remaining": [
+        "日本語訳を作成する",
+        "逐文の網羅性と訳語の統一を確認する",
+        "節の境界、図・式・表・脚注・ページ参照を確認する",
+        "4択問題と全選択肢の理由を作成・確認する",
+        "確認後にローカル教材パックへ取り込む"
+      ]
+    },
+    {
+      "id": "9.1",
+      "chapter": "ch9",
+      "title": "ヌキヤマの実験とプール沸騰曲線",
+      "pdfStart": 485,
+      "pdfEndCandidate": 492,
+      "bookStart": 471,
+      "bookEndRecorded": null,
+      "extraction": {
+        "status": "page_text_extracted",
+        "pages": 8,
+        "sourceSha256": "d318176a9cac997d415ec5ee95b30979dcdaed0392705185393735c7d59a447a",
+        "sectionBoundary": "needs_review",
+        "formulaFidelity": "not_verified"
+      },
+      "translation": {
+        "status": "not_started",
+        "japaneseBlocks": 0,
+        "englishDraftExists": false,
+        "fullCoverage": "not_verified"
+      },
+      "sourceReview": {
+        "recordedStatus": "not_recorded",
+        "record": null,
+        "expertReviewed": false
+      },
+      "visualChecks": {
+        "figures": 0,
+        "equations": 0,
+        "tables": 0,
+        "completeCheck": "not_verified"
+      },
+      "questions": {
+        "count": 6,
+        "sourceCheckedCount": 6,
+        "publicQuestionIds": [
+          "book-9-1-transition-flux",
+          "book-9-1-before-inception",
+          "book-9-1-film-flux",
+          "book-9-1-peak-flux-risk",
+          "book-9-1-wire-flux",
+          "book-9-1-wire-temperature"
+        ],
+        "expertReviewed": false
+      },
+      "app": {
+        "localReadable": false,
+        "file": null,
+        "publicDistributionPermission": "not_confirmed"
+      },
+      "remaining": [
+        "日本語訳を作成する",
+        "逐文の網羅性と訳語の統一を確認する",
+        "節の境界、図・式・表・脚注・ページ参照を確認する",
+        "節全体を学べる十分な4択問題と全選択肢の理由を追加・確認する",
+        "確認後にローカル教材パックへ取り込む"
+      ]
+    },
+    {
+      "id": "9.2",
+      "chapter": "ch9",
+      "title": "核沸騰",
+      "pdfStart": 492,
+      "pdfEndCandidate": 499,
+      "bookStart": 478,
+      "bookEndRecorded": null,
+      "extraction": {
+        "status": "page_text_extracted",
+        "pages": 8,
+        "sourceSha256": "d318176a9cac997d415ec5ee95b30979dcdaed0392705185393735c7d59a447a",
+        "sectionBoundary": "needs_review",
+        "formulaFidelity": "not_verified"
+      },
+      "translation": {
+        "status": "not_started",
+        "japaneseBlocks": 0,
+        "englishDraftExists": false,
+        "fullCoverage": "not_verified"
+      },
+      "sourceReview": {
+        "recordedStatus": "not_recorded",
+        "record": null,
+        "expertReviewed": false
+      },
+      "visualChecks": {
+        "figures": 0,
+        "equations": 0,
+        "tables": 0,
+        "completeCheck": "not_verified"
+      },
+      "questions": {
+        "count": 1,
+        "sourceCheckedCount": 1,
+        "publicQuestionIds": [
+          "book-9-2-bubble-radius"
+        ],
+        "expertReviewed": false
+      },
+      "app": {
+        "localReadable": false,
+        "file": null,
+        "publicDistributionPermission": "not_confirmed"
+      },
+      "remaining": [
+        "日本語訳を作成する",
+        "逐文の網羅性と訳語の統一を確認する",
+        "節の境界、図・式・表・脚注・ページ参照を確認する",
+        "節全体を学べる十分な4択問題と全選択肢の理由を追加・確認する",
+        "確認後にローカル教材パックへ取り込む"
+      ]
+    },
+    {
+      "id": "9.3",
+      "chapter": "ch9",
+      "title": "プール沸騰の限界熱流束",
+      "pdfStart": 499,
+      "pdfEndCandidate": 514,
+      "bookStart": 485,
+      "bookEndRecorded": null,
+      "extraction": {
+        "status": "page_text_extracted",
+        "pages": 16,
+        "sourceSha256": "d318176a9cac997d415ec5ee95b30979dcdaed0392705185393735c7d59a447a",
+        "sectionBoundary": "needs_review",
+        "formulaFidelity": "not_verified"
+      },
+      "translation": {
+        "status": "not_started",
+        "japaneseBlocks": 0,
+        "englishDraftExists": false,
+        "fullCoverage": "not_verified"
+      },
+      "sourceReview": {
+        "recordedStatus": "not_recorded",
+        "record": null,
+        "expertReviewed": false
+      },
+      "visualChecks": {
+        "figures": 0,
+        "equations": 0,
+        "tables": 0,
+        "completeCheck": "not_verified"
+      },
+      "questions": {
+        "count": 0,
+        "sourceCheckedCount": 0,
+        "expertReviewed": false
+      },
+      "app": {
+        "localReadable": false,
+        "file": null,
+        "publicDistributionPermission": "not_confirmed"
+      },
+      "remaining": [
+        "日本語訳を作成する",
+        "逐文の網羅性と訳語の統一を確認する",
+        "節の境界、図・式・表・脚注・ページ参照を確認する",
+        "4択問題と全選択肢の理由を作成・確認する",
+        "確認後にローカル教材パックへ取り込む"
+      ]
+    },
+    {
+      "id": "9.4",
+      "chapter": "ch9",
+      "title": "膜沸騰",
+      "pdfStart": 514,
+      "pdfEndCandidate": 516,
+      "bookStart": 500,
+      "bookEndRecorded": null,
+      "extraction": {
+        "status": "page_text_extracted",
+        "pages": 3,
+        "sourceSha256": "d318176a9cac997d415ec5ee95b30979dcdaed0392705185393735c7d59a447a",
+        "sectionBoundary": "needs_review",
+        "formulaFidelity": "not_verified"
+      },
+      "translation": {
+        "status": "not_started",
+        "japaneseBlocks": 0,
+        "englishDraftExists": false,
+        "fullCoverage": "not_verified"
+      },
+      "sourceReview": {
+        "recordedStatus": "not_recorded",
+        "record": null,
+        "expertReviewed": false
+      },
+      "visualChecks": {
+        "figures": 0,
+        "equations": 0,
+        "tables": 0,
+        "completeCheck": "not_verified"
+      },
+      "questions": {
+        "count": 0,
+        "sourceCheckedCount": 0,
+        "expertReviewed": false
+      },
+      "app": {
+        "localReadable": false,
+        "file": null,
+        "publicDistributionPermission": "not_confirmed"
+      },
+      "remaining": [
+        "日本語訳を作成する",
+        "逐文の網羅性と訳語の統一を確認する",
+        "節の境界、図・式・表・脚注・ページ参照を確認する",
+        "4択問題と全選択肢の理由を作成・確認する",
+        "確認後にローカル教材パックへ取り込む"
+      ]
+    },
+    {
+      "id": "9.5",
+      "chapter": "ch9",
+      "title": "最小熱流束",
+      "pdfStart": 516,
+      "pdfEndCandidate": 517,
+      "bookStart": 502,
+      "bookEndRecorded": null,
+      "extraction": {
+        "status": "page_text_extracted",
+        "pages": 2,
+        "sourceSha256": "d318176a9cac997d415ec5ee95b30979dcdaed0392705185393735c7d59a447a",
+        "sectionBoundary": "needs_review",
+        "formulaFidelity": "not_verified"
+      },
+      "translation": {
+        "status": "not_started",
+        "japaneseBlocks": 0,
+        "englishDraftExists": false,
+        "fullCoverage": "not_verified"
+      },
+      "sourceReview": {
+        "recordedStatus": "not_recorded",
+        "record": null,
+        "expertReviewed": false
+      },
+      "visualChecks": {
+        "figures": 0,
+        "equations": 0,
+        "tables": 0,
+        "completeCheck": "not_verified"
+      },
+      "questions": {
+        "count": 0,
+        "sourceCheckedCount": 0,
+        "expertReviewed": false
+      },
+      "app": {
+        "localReadable": false,
+        "file": null,
+        "publicDistributionPermission": "not_confirmed"
+      },
+      "remaining": [
+        "日本語訳を作成する",
+        "逐文の網羅性と訳語の統一を確認する",
+        "節の境界、図・式・表・脚注・ページ参照を確認する",
+        "4択問題と全選択肢の理由を作成・確認する",
+        "確認後にローカル教材パックへ取り込む"
+      ]
+    },
+    {
+      "id": "9.6",
+      "chapter": "ch9",
+      "title": "遷移沸騰",
+      "pdfStart": 517,
+      "pdfEndCandidate": 520,
+      "bookStart": 503,
+      "bookEndRecorded": null,
+      "extraction": {
+        "status": "page_text_extracted",
+        "pages": 4,
+        "sourceSha256": "d318176a9cac997d415ec5ee95b30979dcdaed0392705185393735c7d59a447a",
+        "sectionBoundary": "needs_review",
+        "formulaFidelity": "not_verified"
+      },
+      "translation": {
+        "status": "not_started",
+        "japaneseBlocks": 0,
+        "englishDraftExists": false,
+        "fullCoverage": "not_verified"
+      },
+      "sourceReview": {
+        "recordedStatus": "not_recorded",
+        "record": null,
+        "expertReviewed": false
+      },
+      "visualChecks": {
+        "figures": 0,
+        "equations": 0,
+        "tables": 0,
+        "completeCheck": "not_verified"
+      },
+      "questions": {
+        "count": 0,
+        "sourceCheckedCount": 0,
+        "expertReviewed": false
+      },
+      "app": {
+        "localReadable": false,
+        "file": null,
+        "publicDistributionPermission": "not_confirmed"
+      },
+      "remaining": [
+        "日本語訳を作成する",
+        "逐文の網羅性と訳語の統一を確認する",
+        "節の境界、図・式・表・脚注・ページ参照を確認する",
+        "4択問題と全選択肢の理由を作成・確認する",
+        "確認後にローカル教材パックへ取り込む"
+      ]
+    },
+    {
+      "id": "9.7",
+      "chapter": "ch9",
+      "title": "その他の系の影響",
+      "pdfStart": 520,
+      "pdfEndCandidate": 526,
+      "bookStart": 506,
+      "bookEndRecorded": null,
+      "extraction": {
+        "status": "page_text_extracted",
+        "pages": 7,
+        "sourceSha256": "d318176a9cac997d415ec5ee95b30979dcdaed0392705185393735c7d59a447a",
+        "sectionBoundary": "needs_review",
+        "formulaFidelity": "not_verified"
+      },
+      "translation": {
+        "status": "not_started",
+        "japaneseBlocks": 0,
+        "englishDraftExists": false,
+        "fullCoverage": "not_verified"
+      },
+      "sourceReview": {
+        "recordedStatus": "not_recorded",
+        "record": null,
+        "expertReviewed": false
+      },
+      "visualChecks": {
+        "figures": 0,
+        "equations": 0,
+        "tables": 0,
+        "completeCheck": "not_verified"
+      },
+      "questions": {
+        "count": 0,
+        "sourceCheckedCount": 0,
+        "expertReviewed": false
+      },
+      "app": {
+        "localReadable": false,
+        "file": null,
+        "publicDistributionPermission": "not_confirmed"
+      },
+      "remaining": [
+        "日本語訳を作成する",
+        "逐文の網羅性と訳語の統一を確認する",
+        "節の境界、図・式・表・脚注・ページ参照を確認する",
+        "4択問題と全選択肢の理由を作成・確認する",
+        "確認後にローカル教材パックへ取り込む"
+      ]
+    },
+    {
+      "id": "9.8",
+      "chapter": "ch9",
+      "title": "管内強制対流沸騰",
+      "pdfStart": 526,
+      "pdfEndCandidate": 535,
+      "bookStart": 512,
+      "bookEndRecorded": null,
+      "extraction": {
+        "status": "page_text_extracted",
+        "pages": 10,
+        "sourceSha256": "d318176a9cac997d415ec5ee95b30979dcdaed0392705185393735c7d59a447a",
+        "sectionBoundary": "needs_review",
+        "formulaFidelity": "not_verified"
+      },
+      "translation": {
+        "status": "not_started",
+        "japaneseBlocks": 0,
+        "englishDraftExists": false,
+        "fullCoverage": "not_verified"
+      },
+      "sourceReview": {
+        "recordedStatus": "not_recorded",
+        "record": null,
+        "expertReviewed": false
+      },
+      "visualChecks": {
+        "figures": 0,
+        "equations": 0,
+        "tables": 0,
+        "completeCheck": "not_verified"
+      },
+      "questions": {
+        "count": 0,
+        "sourceCheckedCount": 0,
+        "expertReviewed": false
+      },
+      "app": {
+        "localReadable": false,
+        "file": null,
+        "publicDistributionPermission": "not_confirmed"
+      },
+      "remaining": [
+        "日本語訳を作成する",
+        "逐文の網羅性と訳語の統一を確認する",
+        "節の境界、図・式・表・脚注・ページ参照を確認する",
+        "4択問題と全選択肢の理由を作成・確認する",
+        "確認後にローカル教材パックへ取り込む"
+      ]
+    },
+    {
+      "id": "9.9",
+      "chapter": "ch9",
+      "title": "強制対流凝縮熱伝達",
+      "pdfStart": 535,
+      "pdfEndCandidate": 536,
+      "bookStart": 521,
+      "bookEndRecorded": null,
+      "extraction": {
+        "status": "page_text_extracted",
+        "pages": 2,
+        "sourceSha256": "d318176a9cac997d415ec5ee95b30979dcdaed0392705185393735c7d59a447a",
+        "sectionBoundary": "needs_review",
+        "formulaFidelity": "not_verified"
+      },
+      "translation": {
+        "status": "not_started",
+        "japaneseBlocks": 0,
+        "englishDraftExists": false,
+        "fullCoverage": "not_verified"
+      },
+      "sourceReview": {
+        "recordedStatus": "not_recorded",
+        "record": null,
+        "expertReviewed": false
+      },
+      "visualChecks": {
+        "figures": 0,
+        "equations": 0,
+        "tables": 0,
+        "completeCheck": "not_verified"
+      },
+      "questions": {
+        "count": 0,
+        "sourceCheckedCount": 0,
+        "expertReviewed": false
+      },
+      "app": {
+        "localReadable": false,
+        "file": null,
+        "publicDistributionPermission": "not_confirmed"
+      },
+      "remaining": [
+        "日本語訳を作成する",
+        "逐文の網羅性と訳語の統一を確認する",
+        "節の境界、図・式・表・脚注・ページ参照を確認する",
+        "4択問題と全選択肢の理由を作成・確認する",
+        "確認後にローカル教材パックへ取り込む"
+      ]
+    },
+    {
+      "id": "9.10",
+      "chapter": "ch9",
+      "title": "滴状凝縮",
+      "pdfStart": 536,
+      "pdfEndCandidate": 539,
+      "bookStart": 522,
+      "bookEndRecorded": null,
+      "extraction": {
+        "status": "page_text_extracted",
+        "pages": 4,
+        "sourceSha256": "d318176a9cac997d415ec5ee95b30979dcdaed0392705185393735c7d59a447a",
+        "sectionBoundary": "needs_review",
+        "formulaFidelity": "not_verified"
+      },
+      "translation": {
+        "status": "not_started",
+        "japaneseBlocks": 0,
+        "englishDraftExists": false,
+        "fullCoverage": "not_verified"
+      },
+      "sourceReview": {
+        "recordedStatus": "not_recorded",
+        "record": null,
+        "expertReviewed": false
+      },
+      "visualChecks": {
+        "figures": 0,
+        "equations": 0,
+        "tables": 0,
+        "completeCheck": "not_verified"
+      },
+      "questions": {
+        "count": 0,
+        "sourceCheckedCount": 0,
+        "expertReviewed": false
+      },
+      "app": {
+        "localReadable": false,
+        "file": null,
+        "publicDistributionPermission": "not_confirmed"
+      },
+      "remaining": [
+        "日本語訳を作成する",
+        "逐文の網羅性と訳語の統一を確認する",
+        "節の境界、図・式・表・脚注・ページ参照を確認する",
+        "4択問題と全選択肢の理由を作成・確認する",
+        "確認後にローカル教材パックへ取り込む"
+      ]
+    },
+    {
+      "id": "9.11",
+      "chapter": "ch9",
+      "title": "ヒートパイプ",
+      "pdfStart": 539,
+      "pdfEndCandidate": 556,
+      "bookStart": 525,
+      "bookEndRecorded": null,
+      "extraction": {
+        "status": "page_text_extracted",
+        "pages": 18,
+        "sourceSha256": "d318176a9cac997d415ec5ee95b30979dcdaed0392705185393735c7d59a447a",
+        "sectionBoundary": "needs_review",
+        "formulaFidelity": "not_verified"
+      },
+      "translation": {
+        "status": "not_started",
+        "japaneseBlocks": 0,
+        "englishDraftExists": false,
+        "fullCoverage": "not_verified"
+      },
+      "sourceReview": {
+        "recordedStatus": "not_recorded",
+        "record": null,
+        "expertReviewed": false
+      },
+      "visualChecks": {
+        "figures": 0,
+        "equations": 0,
+        "tables": 0,
+        "completeCheck": "not_verified"
+      },
+      "questions": {
+        "count": 0,
+        "sourceCheckedCount": 0,
+        "expertReviewed": false
+      },
+      "app": {
+        "localReadable": false,
+        "file": null,
+        "publicDistributionPermission": "not_confirmed"
+      },
+      "remaining": [
+        "日本語訳を作成する",
+        "逐文の網羅性と訳語の統一を確認する",
+        "節の境界、図・式・表・脚注・ページ参照を確認する",
+        "4択問題と全選択肢の理由を作成・確認する",
+        "確認後にローカル教材パックへ取り込む"
+      ]
+    },
+    {
+      "id": "10.1",
+      "chapter": "ch10",
+      "title": "放射交換の問題",
+      "pdfStart": 557,
+      "pdfEndCandidate": 565,
+      "bookStart": 543,
+      "bookEndRecorded": null,
+      "extraction": {
+        "status": "page_text_extracted",
+        "pages": 9,
+        "sourceSha256": "d318176a9cac997d415ec5ee95b30979dcdaed0392705185393735c7d59a447a",
+        "sectionBoundary": "needs_review",
+        "formulaFidelity": "not_verified"
+      },
+      "translation": {
+        "status": "not_started",
+        "japaneseBlocks": 0,
+        "englishDraftExists": false,
+        "fullCoverage": "not_verified"
+      },
+      "sourceReview": {
+        "recordedStatus": "not_recorded",
+        "record": null,
+        "expertReviewed": false
+      },
+      "visualChecks": {
+        "figures": 0,
+        "equations": 0,
+        "tables": 0,
+        "completeCheck": "not_verified"
+      },
+      "questions": {
+        "count": 0,
+        "sourceCheckedCount": 0,
+        "expertReviewed": false
+      },
+      "app": {
+        "localReadable": false,
+        "file": null,
+        "publicDistributionPermission": "not_confirmed"
+      },
+      "remaining": [
+        "日本語訳を作成する",
+        "逐文の網羅性と訳語の統一を確認する",
+        "節の境界、図・式・表・脚注・ページ参照を確認する",
+        "4択問題と全選択肢の理由を作成・確認する",
+        "確認後にローカル教材パックへ取り込む"
+      ]
+    },
+    {
+      "id": "10.2",
+      "chapter": "ch10",
+      "title": "キルヒホッフの法則",
+      "pdfStart": 565,
+      "pdfEndCandidate": 569,
+      "bookStart": 551,
+      "bookEndRecorded": null,
+      "extraction": {
+        "status": "page_text_extracted",
+        "pages": 5,
+        "sourceSha256": "d318176a9cac997d415ec5ee95b30979dcdaed0392705185393735c7d59a447a",
+        "sectionBoundary": "needs_review",
+        "formulaFidelity": "not_verified"
+      },
+      "translation": {
+        "status": "not_started",
+        "japaneseBlocks": 0,
+        "englishDraftExists": false,
+        "fullCoverage": "not_verified"
+      },
+      "sourceReview": {
+        "recordedStatus": "not_recorded",
+        "record": null,
+        "expertReviewed": false
+      },
+      "visualChecks": {
+        "figures": 0,
+        "equations": 0,
+        "tables": 0,
+        "completeCheck": "not_verified"
+      },
+      "questions": {
+        "count": 0,
+        "sourceCheckedCount": 0,
+        "expertReviewed": false
+      },
+      "app": {
+        "localReadable": false,
+        "file": null,
+        "publicDistributionPermission": "not_confirmed"
+      },
+      "remaining": [
+        "日本語訳を作成する",
+        "逐文の網羅性と訳語の統一を確認する",
+        "節の境界、図・式・表・脚注・ページ参照を確認する",
+        "4択問題と全選択肢の理由を作成・確認する",
+        "確認後にローカル教材パックへ取り込む"
+      ]
+    },
+    {
+      "id": "10.3",
+      "chapter": "ch10",
+      "title": "有限な二つの黒体間の放射熱交換",
+      "pdfStart": 569,
+      "pdfEndCandidate": 581,
+      "bookStart": 555,
+      "bookEndRecorded": null,
+      "extraction": {
+        "status": "page_text_extracted",
+        "pages": 13,
+        "sourceSha256": "d318176a9cac997d415ec5ee95b30979dcdaed0392705185393735c7d59a447a",
+        "sectionBoundary": "needs_review",
+        "formulaFidelity": "not_verified"
+      },
+      "translation": {
+        "status": "not_started",
+        "japaneseBlocks": 0,
+        "englishDraftExists": false,
+        "fullCoverage": "not_verified"
+      },
+      "sourceReview": {
+        "recordedStatus": "not_recorded",
+        "record": null,
+        "expertReviewed": false
+      },
+      "visualChecks": {
+        "figures": 0,
+        "equations": 0,
+        "tables": 0,
+        "completeCheck": "not_verified"
+      },
+      "questions": {
+        "count": 0,
+        "sourceCheckedCount": 0,
+        "expertReviewed": false
+      },
+      "app": {
+        "localReadable": false,
+        "file": null,
+        "publicDistributionPermission": "not_confirmed"
+      },
+      "remaining": [
+        "日本語訳を作成する",
+        "逐文の網羅性と訳語の統一を確認する",
+        "節の境界、図・式・表・脚注・ページ参照を確認する",
+        "4択問題と全選択肢の理由を作成・確認する",
+        "確認後にローカル教材パックへ取り込む"
+      ]
+    },
+    {
+      "id": "10.4",
+      "chapter": "ch10",
+      "title": "灰色体間の熱移動",
+      "pdfStart": 581,
+      "pdfEndCandidate": 595,
+      "bookStart": 567,
+      "bookEndRecorded": null,
+      "extraction": {
+        "status": "page_text_extracted",
+        "pages": 15,
+        "sourceSha256": "d318176a9cac997d415ec5ee95b30979dcdaed0392705185393735c7d59a447a",
+        "sectionBoundary": "needs_review",
+        "formulaFidelity": "not_verified"
+      },
+      "translation": {
+        "status": "not_started",
+        "japaneseBlocks": 0,
+        "englishDraftExists": false,
+        "fullCoverage": "not_verified"
+      },
+      "sourceReview": {
+        "recordedStatus": "not_recorded",
+        "record": null,
+        "expertReviewed": false
+      },
+      "visualChecks": {
+        "figures": 0,
+        "equations": 0,
+        "tables": 0,
+        "completeCheck": "not_verified"
+      },
+      "questions": {
+        "count": 0,
+        "sourceCheckedCount": 0,
+        "expertReviewed": false
+      },
+      "app": {
+        "localReadable": false,
+        "file": null,
+        "publicDistributionPermission": "not_confirmed"
+      },
+      "remaining": [
+        "日本語訳を作成する",
+        "逐文の網羅性と訳語の統一を確認する",
+        "節の境界、図・式・表・脚注・ページ参照を確認する",
+        "4択問題と全選択肢の理由を作成・確認する",
+        "確認後にローカル教材パックへ取り込む"
+      ]
+    },
+    {
+      "id": "10.5",
+      "chapter": "ch10",
+      "title": "気体の放射",
+      "pdfStart": 595,
+      "pdfEndCandidate": 608,
+      "bookStart": 581,
+      "bookEndRecorded": null,
+      "extraction": {
+        "status": "page_text_extracted",
+        "pages": 14,
+        "sourceSha256": "d318176a9cac997d415ec5ee95b30979dcdaed0392705185393735c7d59a447a",
+        "sectionBoundary": "needs_review",
+        "formulaFidelity": "not_verified"
+      },
+      "translation": {
+        "status": "not_started",
+        "japaneseBlocks": 0,
+        "englishDraftExists": false,
+        "fullCoverage": "not_verified"
+      },
+      "sourceReview": {
+        "recordedStatus": "not_recorded",
+        "record": null,
+        "expertReviewed": false
+      },
+      "visualChecks": {
+        "figures": 0,
+        "equations": 0,
+        "tables": 0,
+        "completeCheck": "not_verified"
+      },
+      "questions": {
+        "count": 0,
+        "sourceCheckedCount": 0,
+        "expertReviewed": false
+      },
+      "app": {
+        "localReadable": false,
+        "file": null,
+        "publicDistributionPermission": "not_confirmed"
+      },
+      "remaining": [
+        "日本語訳を作成する",
+        "逐文の網羅性と訳語の統一を確認する",
+        "節の境界、図・式・表・脚注・ページ参照を確認する",
+        "4択問題と全選択肢の理由を作成・確認する",
+        "確認後にローカル教材パックへ取り込む"
+      ]
+    },
+    {
+      "id": "10.6",
+      "chapter": "ch10",
+      "title": "太陽エネルギー",
+      "pdfStart": 608,
+      "pdfEndCandidate": 634,
+      "bookStart": 594,
+      "bookEndRecorded": null,
+      "extraction": {
+        "status": "page_text_extracted",
+        "pages": 27,
+        "sourceSha256": "d318176a9cac997d415ec5ee95b30979dcdaed0392705185393735c7d59a447a",
+        "sectionBoundary": "needs_review",
+        "formulaFidelity": "not_verified"
+      },
+      "translation": {
+        "status": "not_started",
+        "japaneseBlocks": 0,
+        "englishDraftExists": false,
+        "fullCoverage": "not_verified"
+      },
+      "sourceReview": {
+        "recordedStatus": "not_recorded",
+        "record": null,
+        "expertReviewed": false
+      },
+      "visualChecks": {
+        "figures": 0,
+        "equations": 0,
+        "tables": 0,
+        "completeCheck": "not_verified"
+      },
+      "questions": {
+        "count": 0,
+        "sourceCheckedCount": 0,
+        "expertReviewed": false
+      },
+      "app": {
+        "localReadable": false,
+        "file": null,
+        "publicDistributionPermission": "not_confirmed"
+      },
+      "remaining": [
+        "日本語訳を作成する",
+        "逐文の網羅性と訳語の統一を確認する",
+        "節の境界、図・式・表・脚注・ページ参照を確認する",
+        "4択問題と全選択肢の理由を作成・確認する",
+        "確認後にローカル教材パックへ取り込む"
+      ]
+    },
+    {
+      "id": "11.1",
+      "chapter": "ch11",
+      "title": "導入",
+      "pdfStart": 635,
+      "pdfEndCandidate": 638,
+      "bookStart": 621,
+      "bookEndRecorded": null,
+      "extraction": {
+        "status": "page_text_extracted",
+        "pages": 4,
+        "sourceSha256": "d318176a9cac997d415ec5ee95b30979dcdaed0392705185393735c7d59a447a",
+        "sectionBoundary": "needs_review",
+        "formulaFidelity": "not_verified"
+      },
+      "translation": {
+        "status": "not_started",
+        "japaneseBlocks": 0,
+        "englishDraftExists": false,
+        "fullCoverage": "not_verified"
+      },
+      "sourceReview": {
+        "recordedStatus": "not_recorded",
+        "record": null,
+        "expertReviewed": false
+      },
+      "visualChecks": {
+        "figures": 0,
+        "equations": 0,
+        "tables": 0,
+        "completeCheck": "not_verified"
+      },
+      "questions": {
+        "count": 0,
+        "sourceCheckedCount": 0,
+        "expertReviewed": false
+      },
+      "app": {
+        "localReadable": false,
+        "file": null,
+        "publicDistributionPermission": "not_confirmed"
+      },
+      "remaining": [
+        "日本語訳を作成する",
+        "逐文の網羅性と訳語の統一を確認する",
+        "節の境界、図・式・表・脚注・ページ参照を確認する",
+        "4択問題と全選択肢の理由を作成・確認する",
+        "確認後にローカル教材パックへ取り込む"
+      ]
+    },
+    {
+      "id": "11.2",
+      "chapter": "ch11",
+      "title": "混合物の組成と成分流束",
+      "pdfStart": 638,
+      "pdfEndCandidate": 646,
+      "bookStart": 624,
+      "bookEndRecorded": null,
+      "extraction": {
+        "status": "page_text_extracted",
+        "pages": 9,
+        "sourceSha256": "d318176a9cac997d415ec5ee95b30979dcdaed0392705185393735c7d59a447a",
+        "sectionBoundary": "needs_review",
+        "formulaFidelity": "not_verified"
+      },
+      "translation": {
+        "status": "not_started",
+        "japaneseBlocks": 0,
+        "englishDraftExists": false,
+        "fullCoverage": "not_verified"
+      },
+      "sourceReview": {
+        "recordedStatus": "not_recorded",
+        "record": null,
+        "expertReviewed": false
+      },
+      "visualChecks": {
+        "figures": 0,
+        "equations": 0,
+        "tables": 0,
+        "completeCheck": "not_verified"
+      },
+      "questions": {
+        "count": 0,
+        "sourceCheckedCount": 0,
+        "expertReviewed": false
+      },
+      "app": {
+        "localReadable": false,
+        "file": null,
+        "publicDistributionPermission": "not_confirmed"
+      },
+      "remaining": [
+        "日本語訳を作成する",
+        "逐文の網羅性と訳語の統一を確認する",
+        "節の境界、図・式・表・脚注・ページ参照を確認する",
+        "4択問題と全選択肢の理由を作成・確認する",
+        "確認後にローカル教材パックへ取り込む"
+      ]
+    },
+    {
+      "id": "11.3",
+      "chapter": "ch11",
+      "title": "二成分混合物におけるフィックの拡散法則",
+      "pdfStart": 646,
+      "pdfEndCandidate": 652,
+      "bookStart": 632,
+      "bookEndRecorded": null,
+      "extraction": {
+        "status": "page_text_extracted",
+        "pages": 7,
+        "sourceSha256": "d318176a9cac997d415ec5ee95b30979dcdaed0392705185393735c7d59a447a",
+        "sectionBoundary": "needs_review",
+        "formulaFidelity": "not_verified"
+      },
+      "translation": {
+        "status": "not_started",
+        "japaneseBlocks": 0,
+        "englishDraftExists": false,
+        "fullCoverage": "not_verified"
+      },
+      "sourceReview": {
+        "recordedStatus": "not_recorded",
+        "record": null,
+        "expertReviewed": false
+      },
+      "visualChecks": {
+        "figures": 0,
+        "equations": 0,
+        "tables": 0,
+        "completeCheck": "not_verified"
+      },
+      "questions": {
+        "count": 0,
+        "sourceCheckedCount": 0,
+        "expertReviewed": false
+      },
+      "app": {
+        "localReadable": false,
+        "file": null,
+        "publicDistributionPermission": "not_confirmed"
+      },
+      "remaining": [
+        "日本語訳を作成する",
+        "逐文の網羅性と訳語の統一を確認する",
+        "節の境界、図・式・表・脚注・ページ参照を確認する",
+        "4択問題と全選択肢の理由を作成・確認する",
+        "確認後にローカル教材パックへ取り込む"
+      ]
+    },
+    {
+      "id": "11.4",
+      "chapter": "ch11",
+      "title": "成分保存方程式",
+      "pdfStart": 652,
+      "pdfEndCandidate": 661,
+      "bookStart": 638,
+      "bookEndRecorded": null,
+      "extraction": {
+        "status": "page_text_extracted",
+        "pages": 10,
+        "sourceSha256": "d318176a9cac997d415ec5ee95b30979dcdaed0392705185393735c7d59a447a",
+        "sectionBoundary": "needs_review",
+        "formulaFidelity": "not_verified"
+      },
+      "translation": {
+        "status": "not_started",
+        "japaneseBlocks": 0,
+        "englishDraftExists": false,
+        "fullCoverage": "not_verified"
+      },
+      "sourceReview": {
+        "recordedStatus": "not_recorded",
+        "record": null,
+        "expertReviewed": false
+      },
+      "visualChecks": {
+        "figures": 0,
+        "equations": 0,
+        "tables": 0,
+        "completeCheck": "not_verified"
+      },
+      "questions": {
+        "count": 0,
+        "sourceCheckedCount": 0,
+        "expertReviewed": false
+      },
+      "app": {
+        "localReadable": false,
+        "file": null,
+        "publicDistributionPermission": "not_confirmed"
+      },
+      "remaining": [
+        "日本語訳を作成する",
+        "逐文の網羅性と訳語の統一を確認する",
+        "節の境界、図・式・表・脚注・ページ参照を確認する",
+        "4択問題と全選択肢の理由を作成・確認する",
+        "確認後にローカル教材パックへ取り込む"
+      ]
+    },
+    {
+      "id": "11.5",
+      "chapter": "ch11",
+      "title": "静止媒体中の物質移動",
+      "pdfStart": 661,
+      "pdfEndCandidate": 669,
+      "bookStart": 647,
+      "bookEndRecorded": null,
+      "extraction": {
+        "status": "page_text_extracted",
+        "pages": 9,
+        "sourceSha256": "d318176a9cac997d415ec5ee95b30979dcdaed0392705185393735c7d59a447a",
+        "sectionBoundary": "needs_review",
+        "formulaFidelity": "not_verified"
+      },
+      "translation": {
+        "status": "not_started",
+        "japaneseBlocks": 0,
+        "englishDraftExists": false,
+        "fullCoverage": "not_verified"
+      },
+      "sourceReview": {
+        "recordedStatus": "not_recorded",
+        "record": null,
+        "expertReviewed": false
+      },
+      "visualChecks": {
+        "figures": 0,
+        "equations": 0,
+        "tables": 0,
+        "completeCheck": "not_verified"
+      },
+      "questions": {
+        "count": 0,
+        "sourceCheckedCount": 0,
+        "expertReviewed": false
+      },
+      "app": {
+        "localReadable": false,
+        "file": null,
+        "publicDistributionPermission": "not_confirmed"
+      },
+      "remaining": [
+        "日本語訳を作成する",
+        "逐文の網羅性と訳語の統一を確認する",
+        "節の境界、図・式・表・脚注・ページ参照を確認する",
+        "4択問題と全選択肢の理由を作成・確認する",
+        "確認後にローカル教材パックへ取り込む"
+      ]
+    },
+    {
+      "id": "11.6",
+      "chapter": "ch11",
+      "title": "低速の対流物質移動",
+      "pdfStart": 669,
+      "pdfEndCandidate": 676,
+      "bookStart": 655,
+      "bookEndRecorded": null,
+      "extraction": {
+        "status": "page_text_extracted",
+        "pages": 8,
+        "sourceSha256": "d318176a9cac997d415ec5ee95b30979dcdaed0392705185393735c7d59a447a",
+        "sectionBoundary": "needs_review",
+        "formulaFidelity": "not_verified"
+      },
+      "translation": {
+        "status": "not_started",
+        "japaneseBlocks": 0,
+        "englishDraftExists": false,
+        "fullCoverage": "not_verified"
+      },
+      "sourceReview": {
+        "recordedStatus": "not_recorded",
+        "record": null,
+        "expertReviewed": false
+      },
+      "visualChecks": {
+        "figures": 0,
+        "equations": 0,
+        "tables": 0,
+        "completeCheck": "not_verified"
+      },
+      "questions": {
+        "count": 0,
+        "sourceCheckedCount": 0,
+        "expertReviewed": false
+      },
+      "app": {
+        "localReadable": false,
+        "file": null,
+        "publicDistributionPermission": "not_confirmed"
+      },
+      "remaining": [
+        "日本語訳を作成する",
+        "逐文の網羅性と訳語の統一を確認する",
+        "節の境界、図・式・表・脚注・ページ参照を確認する",
+        "4択問題と全選択肢の理由を作成・確認する",
+        "確認後にローカル教材パックへ取り込む"
+      ]
+    },
+    {
+      "id": "11.7",
+      "chapter": "ch11",
+      "title": "低速における熱・物質同時移動",
+      "pdfStart": 676,
+      "pdfEndCandidate": 684,
+      "bookStart": 662,
+      "bookEndRecorded": null,
+      "extraction": {
+        "status": "page_text_extracted",
+        "pages": 9,
+        "sourceSha256": "d318176a9cac997d415ec5ee95b30979dcdaed0392705185393735c7d59a447a",
+        "sectionBoundary": "needs_review",
+        "formulaFidelity": "not_verified"
+      },
+      "translation": {
+        "status": "not_started",
+        "japaneseBlocks": 0,
+        "englishDraftExists": false,
+        "fullCoverage": "not_verified"
+      },
+      "sourceReview": {
+        "recordedStatus": "not_recorded",
+        "record": null,
+        "expertReviewed": false
+      },
+      "visualChecks": {
+        "figures": 0,
+        "equations": 0,
+        "tables": 0,
+        "completeCheck": "not_verified"
+      },
+      "questions": {
+        "count": 0,
+        "sourceCheckedCount": 0,
+        "expertReviewed": false
+      },
+      "app": {
+        "localReadable": false,
+        "file": null,
+        "publicDistributionPermission": "not_confirmed"
+      },
+      "remaining": [
+        "日本語訳を作成する",
+        "逐文の網羅性と訳語の統一を確認する",
+        "節の境界、図・式・表・脚注・ページ参照を確認する",
+        "4択問題と全選択肢の理由を作成・確認する",
+        "確認後にローカル教材パックへ取り込む"
+      ]
+    },
+    {
+      "id": "11.8",
+      "chapter": "ch11",
+      "title": "クエット流れ、または停滞膜モデル",
+      "pdfStart": 684,
+      "pdfEndCandidate": 690,
+      "bookStart": 670,
+      "bookEndRecorded": null,
+      "extraction": {
+        "status": "page_text_extracted",
+        "pages": 7,
+        "sourceSha256": "d318176a9cac997d415ec5ee95b30979dcdaed0392705185393735c7d59a447a",
+        "sectionBoundary": "needs_review",
+        "formulaFidelity": "not_verified"
+      },
+      "translation": {
+        "status": "not_started",
+        "japaneseBlocks": 0,
+        "englishDraftExists": false,
+        "fullCoverage": "not_verified"
+      },
+      "sourceReview": {
+        "recordedStatus": "not_recorded",
+        "record": null,
+        "expertReviewed": false
+      },
+      "visualChecks": {
+        "figures": 0,
+        "equations": 0,
+        "tables": 0,
+        "completeCheck": "not_verified"
+      },
+      "questions": {
+        "count": 0,
+        "sourceCheckedCount": 0,
+        "expertReviewed": false
+      },
+      "app": {
+        "localReadable": false,
+        "file": null,
+        "publicDistributionPermission": "not_confirmed"
+      },
+      "remaining": [
+        "日本語訳を作成する",
+        "逐文の網羅性と訳語の統一を確認する",
+        "節の境界、図・式・表・脚注・ページ参照を確認する",
+        "4択問題と全選択肢の理由を作成・確認する",
+        "確認後にローカル教材パックへ取り込む"
+      ]
+    },
+    {
+      "id": "11.9",
+      "chapter": "ch11",
+      "title": "高速の物質移動における熱伝達",
+      "pdfStart": 690,
+      "pdfEndCandidate": 700,
+      "bookStart": 676,
+      "bookEndRecorded": null,
+      "extraction": {
+        "status": "page_text_extracted",
+        "pages": 11,
+        "sourceSha256": "d318176a9cac997d415ec5ee95b30979dcdaed0392705185393735c7d59a447a",
+        "sectionBoundary": "needs_review",
+        "formulaFidelity": "not_verified"
+      },
+      "translation": {
+        "status": "not_started",
+        "japaneseBlocks": 0,
+        "englishDraftExists": false,
+        "fullCoverage": "not_verified"
+      },
+      "sourceReview": {
+        "recordedStatus": "not_recorded",
+        "record": null,
+        "expertReviewed": false
+      },
+      "visualChecks": {
+        "figures": 0,
+        "equations": 0,
+        "tables": 0,
+        "completeCheck": "not_verified"
+      },
+      "questions": {
+        "count": 0,
+        "sourceCheckedCount": 0,
+        "expertReviewed": false
+      },
+      "app": {
+        "localReadable": false,
+        "file": null,
+        "publicDistributionPermission": "not_confirmed"
+      },
+      "remaining": [
+        "日本語訳を作成する",
+        "逐文の網羅性と訳語の統一を確認する",
+        "節の境界、図・式・表・脚注・ページ参照を確認する",
+        "4択問題と全選択肢の理由を作成・確認する",
+        "確認後にローカル教材パックへ取り込む"
+      ]
+    },
+    {
+      "id": "11.10",
+      "chapter": "ch11",
+      "title": "混合物の輸送物性",
+      "pdfStart": 700,
+      "pdfEndCandidate": 713,
+      "bookStart": 686,
+      "bookEndRecorded": null,
+      "extraction": {
+        "status": "page_text_extracted",
+        "pages": 14,
+        "sourceSha256": "d318176a9cac997d415ec5ee95b30979dcdaed0392705185393735c7d59a447a",
+        "sectionBoundary": "needs_review",
+        "formulaFidelity": "not_verified"
+      },
+      "translation": {
+        "status": "not_started",
+        "japaneseBlocks": 0,
+        "englishDraftExists": false,
+        "fullCoverage": "not_verified"
+      },
+      "sourceReview": {
+        "recordedStatus": "not_recorded",
+        "record": null,
+        "expertReviewed": false
+      },
+      "visualChecks": {
+        "figures": 0,
+        "equations": 0,
+        "tables": 0,
+        "completeCheck": "not_verified"
+      },
+      "questions": {
+        "count": 0,
+        "sourceCheckedCount": 0,
+        "expertReviewed": false
+      },
+      "app": {
+        "localReadable": false,
+        "file": null,
+        "publicDistributionPermission": "not_confirmed"
+      },
+      "remaining": [
+        "日本語訳を作成する",
+        "逐文の網羅性と訳語の統一を確認する",
+        "節の境界、図・式・表・脚注・ページ参照を確認する",
+        "4択問題と全選択肢の理由を作成・確認する",
+        "確認後にローカル教材パックへ取り込む"
+      ]
+    },
+    {
+      "id": "11.11",
+      "chapter": "ch11",
+      "title": "多成分・非理想混合物の拡散",
+      "pdfStart": 713,
+      "pdfEndCandidate": 744,
+      "bookStart": 699,
+      "bookEndRecorded": null,
+      "extraction": {
+        "status": "page_text_extracted",
+        "pages": 32,
+        "sourceSha256": "d318176a9cac997d415ec5ee95b30979dcdaed0392705185393735c7d59a447a",
+        "sectionBoundary": "needs_review",
+        "formulaFidelity": "not_verified"
+      },
+      "translation": {
+        "status": "not_started",
+        "japaneseBlocks": 0,
+        "englishDraftExists": false,
+        "fullCoverage": "not_verified"
+      },
+      "sourceReview": {
+        "recordedStatus": "not_recorded",
+        "record": null,
+        "expertReviewed": false
+      },
+      "visualChecks": {
+        "figures": 0,
+        "equations": 0,
+        "tables": 0,
+        "completeCheck": "not_verified"
+      },
+      "questions": {
+        "count": 0,
+        "sourceCheckedCount": 0,
+        "expertReviewed": false
+      },
+      "app": {
+        "localReadable": false,
+        "file": null,
+        "publicDistributionPermission": "not_confirmed"
+      },
+      "remaining": [
+        "日本語訳を作成する",
+        "逐文の網羅性と訳語の統一を確認する",
+        "節の境界、図・式・表・脚注・ページ参照を確認する",
+        "4択問題と全選択肢の理由を作成・確認する",
+        "確認後にローカル教材パックへ取り込む"
+      ]
+    }
+  ],
+  "independentAuthoringCheckpoint": {
+    "date": "2026-10-30",
+    "snapshot": "docs/AUTHORING_SNAPSHOT_20261030.json",
+    "detailedDrafts": 76,
+    "questionsInBank": 741,
+    "draftMinimumMet": 76,
+    "formalApproval": 0,
+    "note": "下の旧PC翻訳・照合・取り込み記録を新規原稿の完成記録へ置換しない。旧原稿発見時に照合する。"
+  }
+}

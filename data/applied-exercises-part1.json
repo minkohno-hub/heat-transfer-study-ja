@@ -1,0 +1,534 @@
+{
+  "kind": "independent_applied_exercises",
+  "version": 1,
+  "questions": [
+    {
+      "id": "supp-applied-1-1-v1",
+      "prompt": "面積0.08 m²の領域を200 W、別の0.02 m²の領域を80 Wが同方向へ通過しています。両領域を合算した0.10 m²に対する面積平均熱流束はいくらですか。",
+      "choices": [
+        "3,500 W/m²",
+        "2,800 W/m²",
+        "2,000 W/m²",
+        "280 W/m²"
+      ],
+      "answer": 1,
+      "distractors": [
+        "小さい面積を過度に重視した平均で、総熱率を総面積で割っていません。",
+        "正解。総熱移動率は200+80=280 W。 全体の面積は0.08+0.02=0.10 m²。 平均熱流束は280/0.10=2,800 W/m²。",
+        "200 Wだけを使い、もう一方の80 Wを無視しています。",
+        "熱移動率280 Wを熱流束と混同し、面積0.10 m²で割っていません。"
+      ],
+      "explanation": "面内で異なる熱流束の平均。総熱移動率は200+80=280 W。 全体の面積は0.08+0.02=0.10 m²。 平均熱流束は280/0.10=2,800 W/m²。 適用条件：面全体で流束が一様でなくても面積平均は総熱移動率÷総面積で求まります。各領域で同一方向の定常的な熱流があると仮定します。",
+      "hints": [
+        "使用するモデル：面内で異なる熱流束の平均。",
+        "適切な式と定義を確認する：総熱移動率は200+80=280 W。"
+      ],
+      "solutionSteps": [
+        "総熱移動率は200+80=280 W。",
+        "全体の面積は0.08+0.02=0.10 m²。",
+        "平均熱流束は280/0.10=2,800 W/m²。"
+      ],
+      "beginnerPitfall": "面全体で流束が一様でなくても面積平均は総熱移動率÷総面積で求まります。各領域で同一方向の定常的な熱流があると仮定します。",
+      "field": "応用・数値計算",
+      "difficulty": "標準〜発展・独立応用演習",
+      "prerequisites": [
+        "面内で異なる熱流束の平均",
+        "物理量の単位・モデル適用条件"
+      ],
+      "source": {
+        "type": "supplement",
+        "reference": "アプリ独立作問。関連：第1.1節の独自補助ノート。原本の問題や図の転載ではありません。",
+        "chapterId": "ch1",
+        "focusSectionId": "1.1",
+        "guideId": "chapter1-energy-balance"
+      },
+      "questionGroup": "original_independent_applied_v1",
+      "questionKind": "numerical",
+      "createdStatus": "作成済み",
+      "reviewStatus": "独立手計算・内部整合チェック済み／外部専門家校閲前",
+      "expertReviewed": false,
+      "revision": "v1",
+      "reportHistory": []
+    },
+    {
+      "id": "supp-applied-1-2-v1",
+      "prompt": "比熱750 J/(kg·K)、質量2.0 kgの固体へ、100 Wのヒーターで10分間加熱します。入力電力量の75%が固体の顕熱増加に寄与したとき、温度上昇は何Kですか。",
+      "choices": [
+        "30 K",
+        "40 K",
+        "22.5 K",
+        "0.05 K"
+      ],
+      "answer": 0,
+      "distractors": [
+        "正解。投入エネルギー100 W×600 s=60,000 J。 固体への顕熱は0.75×60,000=45,000 J。 ΔT=45,000/(2.0×750)=30 K。",
+        "75%の効率を無視して全入力熱量を使っています。",
+        "効率を二重に掛けるなど、熱量を過小評価しています。",
+        "10分を600秒に換算せずに計算しています。"
+      ],
+      "explanation": "加熱効率を含む顕熱収支。投入エネルギー100 W×600 s=60,000 J。 固体への顕熱は0.75×60,000=45,000 J。 ΔT=45,000/(2.0×750)=30 K。 適用条件：比熱は一定、相変化・内部発熱・機械仕事は無視し、指定された75%を正味の顕熱寄与率として扱います。",
+      "hints": [
+        "使用するモデル：加熱効率を含む顕熱収支。",
+        "適切な式と定義を確認する：投入エネルギー100 W×600 s=60,000 J。"
+      ],
+      "solutionSteps": [
+        "投入エネルギー100 W×600 s=60,000 J。",
+        "固体への顕熱は0.75×60,000=45,000 J。",
+        "ΔT=45,000/(2.0×750)=30 K。"
+      ],
+      "beginnerPitfall": "比熱は一定、相変化・内部発熱・機械仕事は無視し、指定された75%を正味の顕熱寄与率として扱います。",
+      "field": "応用・数値計算",
+      "difficulty": "標準〜発展・独立応用演習",
+      "prerequisites": [
+        "加熱効率を含む顕熱収支",
+        "物理量の単位・モデル適用条件"
+      ],
+      "source": {
+        "type": "supplement",
+        "reference": "アプリ独立作問。関連：第1.2節の独自補助ノート。原本の問題や図の転載ではありません。",
+        "chapterId": "ch1",
+        "focusSectionId": "1.2",
+        "guideId": "chapter1-energy-balance"
+      },
+      "questionGroup": "original_independent_applied_v1",
+      "questionKind": "numerical",
+      "createdStatus": "作成済み",
+      "reviewStatus": "独立手計算・内部整合チェック済み／外部専門家校閲前",
+      "expertReviewed": false,
+      "revision": "v1",
+      "reportHistory": []
+    },
+    {
+      "id": "supp-applied-2-2-v1",
+      "prompt": "厚さ0.05 m、熱伝導率0.50 W/(m·K)、面積2.0 m²の均質な平板の両表面温度差が20 Kです。一次元定常の伝導熱移動率はいくらですか。",
+      "choices": [
+        "40 W",
+        "200 W",
+        "800 W",
+        "400 W"
+      ],
+      "answer": 3,
+      "distractors": [
+        "厚さを0.5 mと取り違えた桁の誤りです。",
+        "厚さを0.10 mと取り違えたときの値です。",
+        "面積または厚みの係数を二重計上しています。",
+        "正解。Q̇=kAΔT/L を用います。 分子は0.50×2.0×20=20 W·m。 Q̇=20/0.05=400 W。"
+      ],
+      "explanation": "平板断熱材の熱移動率。Q̇=kAΔT/L を用います。 分子は0.50×2.0×20=20 W·m。 Q̇=20/0.05=400 W。 適用条件：側面からの熱漏れ・内部発熱を無視し、kと両表面温度を一定とします。",
+      "hints": [
+        "使用するモデル：平板断熱材の熱移動率。",
+        "適切な式と定義を確認する：Q̇=kAΔT/L を用います。"
+      ],
+      "solutionSteps": [
+        "Q̇=kAΔT/L を用います。",
+        "分子は0.50×2.0×20=20 W·m。",
+        "Q̇=20/0.05=400 W。"
+      ],
+      "beginnerPitfall": "側面からの熱漏れ・内部発熱を無視し、kと両表面温度を一定とします。",
+      "field": "応用・数値計算",
+      "difficulty": "標準〜発展・独立応用演習",
+      "prerequisites": [
+        "平板断熱材の熱移動率",
+        "物理量の単位・モデル適用条件"
+      ],
+      "source": {
+        "type": "supplement",
+        "reference": "アプリ独立作問。関連：第2.2節の独自補助ノート。原本の問題や図の転載ではありません。",
+        "chapterId": "ch2",
+        "focusSectionId": "2.2",
+        "guideId": "chapter2-cylindrical-conduction"
+      },
+      "questionGroup": "original_independent_applied_v1",
+      "questionKind": "numerical",
+      "createdStatus": "作成済み",
+      "reviewStatus": "独立手計算・内部整合チェック済み／外部専門家校閲前",
+      "expertReviewed": false,
+      "revision": "v1",
+      "reportHistory": []
+    },
+    {
+      "id": "supp-applied-2-3-v1",
+      "prompt": "定常直列系で三つの抵抗が0.02、0.03、0.05 K/W、両端温度差は25 Kです。中央の抵抗0.03 K/Wの温度降下は何Kですか。",
+      "choices": [
+        "2.5 K",
+        "12.5 K",
+        "7.5 K",
+        "25 K"
+      ],
+      "answer": 2,
+      "distractors": [
+        "総抵抗だけを過大評価して中央の抵抗に配分していません。",
+        "中央の抵抗の割合を全抵抗の半分と混同しています。",
+        "正解。R_total=0.02+0.03+0.05=0.10 K/W。 Q̇=25/0.10=250 W。 中央層の温度降下は250×0.03=7.5 K。",
+        "全体の温度差を1つの層に割り当てています。"
+      ],
+      "explanation": "直列抵抗中の層内温度降下。R_total=0.02+0.03+0.05=0.10 K/W。 Q̇=25/0.10=250 W。 中央層の温度降下は250×0.03=7.5 K。 適用条件：熱流率が各抵抗で同じ定常直列系に限ります。並列熱橋がある場合は別のモデルを使います。",
+      "hints": [
+        "使用するモデル：直列抵抗中の層内温度降下。",
+        "適切な式と定義を確認する：R_total=0.02+0.03+0.05=0.10 K/W。"
+      ],
+      "solutionSteps": [
+        "R_total=0.02+0.03+0.05=0.10 K/W。",
+        "Q̇=25/0.10=250 W。",
+        "中央層の温度降下は250×0.03=7.5 K。"
+      ],
+      "beginnerPitfall": "熱流率が各抵抗で同じ定常直列系に限ります。並列熱橋がある場合は別のモデルを使います。",
+      "field": "応用・数値計算",
+      "difficulty": "標準〜発展・独立応用演習",
+      "prerequisites": [
+        "直列抵抗中の層内温度降下",
+        "物理量の単位・モデル適用条件"
+      ],
+      "source": {
+        "type": "supplement",
+        "reference": "アプリ独立作問。関連：第2.3節の独自補助ノート。原本の問題や図の転載ではありません。",
+        "chapterId": "ch2",
+        "focusSectionId": "2.3",
+        "guideId": "chapter2-cylindrical-conduction"
+      },
+      "questionGroup": "original_independent_applied_v1",
+      "questionKind": "numerical",
+      "createdStatus": "作成済み",
+      "reviewStatus": "独立手計算・内部整合チェック済み／外部専門家校閲前",
+      "expertReviewed": false,
+      "revision": "v1",
+      "reportHistory": []
+    },
+    {
+      "id": "supp-applied-3-2-v1",
+      "prompt": "熱交換器の二端で流体間温度差が60 Kと30 Kです。補正なしの対数平均温度差ΔT_lmを、ln2≈0.6931として求めると何Kですか。",
+      "choices": [
+        "45.0 K",
+        "43.3 K",
+        "30.0 K",
+        "60.0 K"
+      ],
+      "answer": 1,
+      "distractors": [
+        "算術平均(60+30)/2を使っています。",
+        "正解。ΔT_lm=(ΔT1−ΔT2)/ln(ΔT1/ΔT2)。 (60−30)/ln(60/30)=30/ln2。 30/0.6931≈43.3 K。",
+        "小さい端点温度差だけで代表させています。",
+        "大きい端点温度差だけで代表させています。"
+      ],
+      "explanation": "非等温端の対数平均温度差。ΔT_lm=(ΔT1−ΔT2)/ln(ΔT1/ΔT2)。 (60−30)/ln(60/30)=30/ln2。 30/0.6931≈43.3 K。 適用条件：両端の温度差が正で、流動配置と温度差の定義がLMTDモデルに整合していると仮定します。",
+      "hints": [
+        "使用するモデル：非等温端の対数平均温度差。",
+        "適切な式と定義を確認する：ΔT_lm=(ΔT1−ΔT2)/ln(ΔT1/ΔT2)。"
+      ],
+      "solutionSteps": [
+        "ΔT_lm=(ΔT1−ΔT2)/ln(ΔT1/ΔT2)。",
+        "(60−30)/ln(60/30)=30/ln2。",
+        "30/0.6931≈43.3 K。"
+      ],
+      "beginnerPitfall": "両端の温度差が正で、流動配置と温度差の定義がLMTDモデルに整合していると仮定します。",
+      "field": "応用・数値計算",
+      "difficulty": "標準〜発展・独立応用演習",
+      "prerequisites": [
+        "非等温端の対数平均温度差",
+        "物理量の単位・モデル適用条件"
+      ],
+      "source": {
+        "type": "supplement",
+        "reference": "アプリ独立作問。関連：第3.2節の独自補助ノート。原本の問題や図の転載ではありません。",
+        "chapterId": "ch3",
+        "focusSectionId": "3.2",
+        "guideId": "chapter3-effectiveness-ntu"
+      },
+      "questionGroup": "original_independent_applied_v1",
+      "questionKind": "numerical",
+      "createdStatus": "作成済み",
+      "reviewStatus": "独立手計算・内部整合チェック済み／外部専門家校閲前",
+      "expertReviewed": false,
+      "revision": "v2",
+      "reportHistory": []
+    },
+    {
+      "id": "supp-applied-3-3-v1",
+      "prompt": "熱容量流量C_h=400 W/K、C_c=700 W/K、入口温度が高温側90℃・低温側20℃です。熱交換率が14 kWのとき、有効度εと冷側出口温度の組合せはどれですか。",
+      "choices": [
+        "ε=0.50、40℃",
+        "ε=0.50、55℃",
+        "ε=0.71、40℃",
+        "ε=0.71、55℃"
+      ],
+      "answer": 0,
+      "distractors": [
+        "正解。C_min=400 W/K、Q_max=400×(90−20)=28,000 W。 ε=14,000/28,000=0.50。 T_c,out=20+14,000/700=40℃。",
+        "冷側の温度変化に高温側C_hを誤用しています。",
+        "最大熱移動率の計算に大きい側C_cを使うなど、定義を誤っています。",
+        "有効度と冷側熱収支の両方で熱容量流量を取り違えています。"
+      ],
+      "explanation": "有効度と冷側出口温度。C_min=400 W/K、Q_max=400×(90−20)=28,000 W。 ε=14,000/28,000=0.50。 T_c,out=20+14,000/700=40℃。 適用条件：熱損失・相変化を無視し、両側の比熱を一定とします。熱容量流量の小さい側をC_minとします。",
+      "hints": [
+        "使用するモデル：有効度と冷側出口温度。",
+        "適切な式と定義を確認する：C_min=400 W/K、Q_max=400×(90−20)=28,000 W。"
+      ],
+      "solutionSteps": [
+        "C_min=400 W/K、Q_max=400×(90−20)=28,000 W。",
+        "ε=14,000/28,000=0.50。",
+        "T_c,out=20+14,000/700=40℃。"
+      ],
+      "beginnerPitfall": "熱損失・相変化を無視し、両側の比熱を一定とします。熱容量流量の小さい側をC_minとします。",
+      "field": "応用・数値計算",
+      "difficulty": "標準〜発展・独立応用演習",
+      "prerequisites": [
+        "有効度と冷側出口温度",
+        "物理量の単位・モデル適用条件"
+      ],
+      "source": {
+        "type": "supplement",
+        "reference": "アプリ独立作問。関連：第3.3節の独自補助ノート。原本の問題や図の転載ではありません。",
+        "chapterId": "ch3",
+        "focusSectionId": "3.3",
+        "guideId": "chapter3-effectiveness-ntu"
+      },
+      "questionGroup": "original_independent_applied_v1",
+      "questionKind": "numerical",
+      "createdStatus": "作成済み",
+      "reviewStatus": "独立手計算・内部整合チェック済み／外部専門家校閲前",
+      "expertReviewed": false,
+      "revision": "v1",
+      "reportHistory": []
+    },
+    {
+      "id": "supp-applied-4-3-v1",
+      "prompt": "固体の熱伝導率k_s=10 W/(m·K)、対流熱伝達率h=100 W/(m²·K)、特性長さL_c=0.005 mです。Biはいくらですか。",
+      "choices": [
+        "0.50",
+        "5.0",
+        "0.0050",
+        "0.050"
+      ],
+      "answer": 3,
+      "distractors": [
+        "特性長さを0.05 mとして計算しています。",
+        "Biの式で単位換算や除算を誤り、100倍しています。",
+        "hを10 W/(m²·K)と誤認した場合の値です。",
+        "正解。Bi=hL_c/k_s。 hL_c=100×0.005=0.50 W/(m·K)。 Bi=0.50/10=0.050。"
+      ],
+      "explanation": "集中熱容量近似におけるBiの計算。Bi=hL_c/k_s。 hL_c=100×0.005=0.50 W/(m·K)。 Bi=0.50/10=0.050。 適用条件：L_cは同一モデルで定めた特性長さとします。Bi<0.1は集中熱容量近似の検討目安であり普遍的な精度保証ではありません。",
+      "hints": [
+        "使用するモデル：集中熱容量近似におけるBiの計算。",
+        "適切な式と定義を確認する：Bi=hL_c/k_s。"
+      ],
+      "solutionSteps": [
+        "Bi=hL_c/k_s。",
+        "hL_c=100×0.005=0.50 W/(m·K)。",
+        "Bi=0.50/10=0.050。"
+      ],
+      "beginnerPitfall": "L_cは同一モデルで定めた特性長さとします。Bi<0.1は集中熱容量近似の検討目安であり普遍的な精度保証ではありません。",
+      "field": "応用・数値計算",
+      "difficulty": "標準〜発展・独立応用演習",
+      "prerequisites": [
+        "集中熱容量近似におけるBiの計算",
+        "物理量の単位・モデル適用条件"
+      ],
+      "source": {
+        "type": "supplement",
+        "reference": "アプリ独立作問。関連：第4.3節の独自補助ノート。原本の問題や図の転載ではありません。",
+        "chapterId": "ch4",
+        "focusSectionId": "4.3",
+        "guideId": "chapter4-fin-design"
+      },
+      "questionGroup": "original_independent_applied_v1",
+      "questionKind": "numerical",
+      "createdStatus": "作成済み",
+      "reviewStatus": "独立手計算・内部整合チェック済み／外部専門家校閲前",
+      "expertReviewed": false,
+      "revision": "v1",
+      "reportHistory": []
+    },
+    {
+      "id": "supp-applied-4-5-v1",
+      "prompt": "一定断面・断熱先端の直線フィンでmL=1.5、tanh(1.5)≈0.9051です。η_f=tanh(mL)/(mL)から求めるフィン効率はいくらですか。",
+      "choices": [
+        "約0.905",
+        "約1.657",
+        "約0.603",
+        "約0.402"
+      ],
+      "answer": 2,
+      "distractors": [
+        "tanh(1.5)の値をmLで割らず、効率そのものと誤認しています。",
+        "tanhに対して逆数を取り、効率1以下という検算にも反します。",
+        "正解。η_f=tanh(1.5)/1.5。 0.9051/1.5≈0.6034。 無次元で0<η_f<1を確認します。",
+        "mLを2倍と取り違えたときの過小評価です。"
+      ],
+      "explanation": "直線フィンの断熱先端効率。η_f=tanh(1.5)/1.5。 0.9051/1.5≈0.6034。 無次元で0<η_f<1を確認します。 適用条件：一定k・h、一定断面、側面対流・先端断熱、軸方向一次元伝導という近似条件に限ります。",
+      "hints": [
+        "使用するモデル：直線フィンの断熱先端効率。",
+        "適切な式と定義を確認する：η_f=tanh(1.5)/1.5。"
+      ],
+      "solutionSteps": [
+        "η_f=tanh(1.5)/1.5。",
+        "0.9051/1.5≈0.6034。",
+        "無次元で0<η_f<1を確認します。"
+      ],
+      "beginnerPitfall": "一定k・h、一定断面、側面対流・先端断熱、軸方向一次元伝導という近似条件に限ります。",
+      "field": "応用・数値計算",
+      "difficulty": "標準〜発展・独立応用演習",
+      "prerequisites": [
+        "直線フィンの断熱先端効率",
+        "物理量の単位・モデル適用条件"
+      ],
+      "source": {
+        "type": "supplement",
+        "reference": "アプリ独立作問。関連：第4.5節の独自補助ノート。原本の問題や図の転載ではありません。",
+        "chapterId": "ch4",
+        "focusSectionId": "4.5",
+        "guideId": "chapter4-fin-design"
+      },
+      "questionGroup": "original_independent_applied_v1",
+      "questionKind": "numerical",
+      "createdStatus": "作成済み",
+      "reviewStatus": "独立手計算・内部整合チェック済み／外部専門家校閲前",
+      "expertReviewed": false,
+      "revision": "v1",
+      "reportHistory": []
+    },
+    {
+      "id": "supp-applied-5-1-v1",
+      "prompt": "熱拡散率α=2.0×10⁻⁶ m²/s、代表長さL=0.010 m、経過時間50 sです。フーリエ数Fo=αt/L²はいくらですか。",
+      "choices": [
+        "0.10",
+        "1.0",
+        "10",
+        "0.010"
+      ],
+      "answer": 1,
+      "distractors": [
+        "時間または長さの換算を10倍小さく扱っています。",
+        "正解。分子αt=2.0×10⁻⁶×50=1.0×10⁻⁴ m²。 分母L²=(0.010)²=1.0×10⁻⁴ m²。 Fo=1.0。",
+        "分母L²を誤って小さくした値です。",
+        "Foの二乗長さを含む定義を取り違えています。"
+      ],
+      "explanation": "温度拡散の無次元時間Fo。分子αt=2.0×10⁻⁶×50=1.0×10⁻⁴ m²。 分母L²=(0.010)²=1.0×10⁻⁴ m²。 Fo=1.0。 適用条件：同じ特性長さLと熱拡散率で定義されたFoを使います。Foだけでは中心温度は決まりません。",
+      "hints": [
+        "使用するモデル：温度拡散の無次元時間Fo。",
+        "適切な式と定義を確認する：分子αt=2.0×10⁻⁶×50=1.0×10⁻⁴ m²。"
+      ],
+      "solutionSteps": [
+        "分子αt=2.0×10⁻⁶×50=1.0×10⁻⁴ m²。",
+        "分母L²=(0.010)²=1.0×10⁻⁴ m²。",
+        "Fo=1.0。"
+      ],
+      "beginnerPitfall": "同じ特性長さLと熱拡散率で定義されたFoを使います。Foだけでは中心温度は決まりません。",
+      "field": "応用・数値計算",
+      "difficulty": "標準〜発展・独立応用演習",
+      "prerequisites": [
+        "温度拡散の無次元時間Fo",
+        "物理量の単位・モデル適用条件"
+      ],
+      "source": {
+        "type": "supplement",
+        "reference": "アプリ独立作問。関連：第5.1節の独自補助ノート。原本の問題や図の転載ではありません。",
+        "chapterId": "ch5",
+        "focusSectionId": "5.1",
+        "guideId": "chapter5-semi-infinite"
+      },
+      "questionGroup": "original_independent_applied_v1",
+      "questionKind": "numerical",
+      "createdStatus": "作成済み",
+      "reviewStatus": "独立手計算・内部整合チェック済み／外部専門家校閲前",
+      "expertReviewed": false,
+      "revision": "v1",
+      "reportHistory": []
+    },
+    {
+      "id": "supp-applied-5-6-v1",
+      "prompt": "初期100℃の半無限固体の表面を20℃に保ちます。x/(2√(αt))=1.0でerfc(1)≈0.1573なら、T=T_i+(T_s−T_i)erfc[... ]により内部の温度は約何℃ですか。",
+      "choices": [
+        "87.4℃",
+        "32.6℃",
+        "20.0℃",
+        "100.0℃"
+      ],
+      "answer": 0,
+      "distractors": [
+        "正解。温度差T_s−T_i=20−100=−80 K。 温度変化は−80×0.1573=−12.584 K。 T≈100−12.584=87.4℃。",
+        "erfcの寄与を新しい表面温度基準で逆向きに解釈しています。",
+        "表面温度と内部の位置x>0における温度を混同しています。",
+        "時間経過に伴う内部冷却を0と誤認しています。"
+      ],
+      "explanation": "半無限体の表面温度固定時の温度。温度差T_s−T_i=20−100=−80 K。 温度変化は−80×0.1573=−12.584 K。 T≈100−12.584=87.4℃。 適用条件：半無限体、初期温度一様、境界の表面温度が一定、物性一定というモデルの値です。",
+      "hints": [
+        "使用するモデル：半無限体の表面温度固定時の温度。",
+        "適切な式と定義を確認する：温度差T_s−T_i=20−100=−80 K。"
+      ],
+      "solutionSteps": [
+        "温度差T_s−T_i=20−100=−80 K。",
+        "温度変化は−80×0.1573=−12.584 K。",
+        "T≈100−12.584=87.4℃。"
+      ],
+      "beginnerPitfall": "半無限体、初期温度一様、境界の表面温度が一定、物性一定というモデルの値です。",
+      "field": "応用・数値計算",
+      "difficulty": "標準〜発展・独立応用演習",
+      "prerequisites": [
+        "半無限体の表面温度固定時の温度",
+        "物理量の単位・モデル適用条件"
+      ],
+      "source": {
+        "type": "supplement",
+        "reference": "アプリ独立作問。関連：第5.6節の独自補助ノート。原本の問題や図の転載ではありません。",
+        "chapterId": "ch5",
+        "focusSectionId": "5.6",
+        "guideId": "chapter5-semi-infinite"
+      },
+      "questionGroup": "original_independent_applied_v1",
+      "questionKind": "numerical",
+      "createdStatus": "作成済み",
+      "reviewStatus": "独立手計算・内部整合チェック済み／外部専門家校閲前",
+      "expertReviewed": false,
+      "revision": "v1",
+      "reportHistory": []
+    },
+    {
+      "id": "supp-applied-6-4-v1",
+      "prompt": "流体の粘度μ=0.001 Pa·s、比熱c_p=4000 J/(kg·K)、熱伝導率k_f=0.50 W/(m·K)です。Pr=μc_p/k_fはいくらですか。",
+      "choices": [
+        "0.125",
+        "0.80",
+        "80",
+        "8.0"
+      ],
+      "answer": 3,
+      "distractors": [
+        "Prを逆数にして計算しています。",
+        "μの桁と比熱の換算を誤っています。",
+        "熱伝導率の値または粘度の桁を取り違えています。",
+        "正解。μc_p=0.001×4000=4.0 W/(m·K)。 Pr=4.0/0.50。 Pr=8.0で無次元です。"
+      ],
+      "explanation": "運動量と熱拡散率の比Pr。μc_p=0.001×4000=4.0 W/(m·K)。 Pr=4.0/0.50。 Pr=8.0で無次元です。 適用条件：同一の流体温度・圧力条件で評価した物性値を用い、通常の単相流体モデルとします。",
+      "hints": [
+        "使用するモデル：運動量と熱拡散率の比Pr。",
+        "適切な式と定義を確認する：μc_p=0.001×4000=4.0 W/(m·K)。"
+      ],
+      "solutionSteps": [
+        "μc_p=0.001×4000=4.0 W/(m·K)。",
+        "Pr=4.0/0.50。",
+        "Pr=8.0で無次元です。"
+      ],
+      "beginnerPitfall": "同一の流体温度・圧力条件で評価した物性値を用い、通常の単相流体モデルとします。",
+      "field": "応用・数値計算",
+      "difficulty": "標準〜発展・独立応用演習",
+      "prerequisites": [
+        "運動量と熱拡散率の比Pr",
+        "物理量の単位・モデル適用条件"
+      ],
+      "source": {
+        "type": "supplement",
+        "reference": "アプリ独立作問。関連：第6.4節の独自補助ノート。原本の問題や図の転載ではありません。",
+        "chapterId": "ch6",
+        "focusSectionId": "6.4",
+        "guideId": "chapter6-flat-boundary"
+      },
+      "questionGroup": "original_independent_applied_v1",
+      "questionKind": "numerical",
+      "createdStatus": "作成済み",
+      "reviewStatus": "独立手計算・内部整合チェック済み／外部専門家校閲前",
+      "expertReviewed": false,
+      "revision": "v1",
+      "reportHistory": []
+    }
+  ]
+}

@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 1260" width="900" height="1260" role="img" aria-labelledby="heat-title heat-desc" style="max-width:100%" data-origin="original-app-diagram" data-lesson="1.1" data-width="0.5" data-length="1" data-flux-intercept="100" data-flux-slope-per-m="200" data-flux-start="100" data-flux-end="300" data-flux-average="200" data-area="0.5" data-heat-rate-out="100" data-duration="20" data-energy-out="2000" data-internal-energy-change="-2000" data-curve-points="41" data-boundary-convention="outward-positive" data-heat-time-dependence="constant">
+<title id="heat-title">§1.1 熱移動量・熱移動率・熱流束：面積積分と時間積分</title>
+<desc id="heat-desc">アプリ独自図解。面の外向き法線方向の熱流束は位置xによって100から300ワット毎平方メートルへ線形増加する。長さ1.00メートル、幅0.50メートルの面積0.50平方メートルを通る正味外向き熱移動率は100ワットで、平均熱流束は200ワット毎平方メートル。熱流束を各点の値ではなく面積で積分する。分布が20秒間変化しないとき外向き移動エネルギーは2000ジュール。仕事、他境界からの熱、質量出入りがない閉じた系なら内部エネルギー変化はマイナス2000ジュール。熱Qは境界を通る過程量、Uは状態量。熱流束が時間変化する場合は熱移動率も時間積分する必要がある。単位J、W、W毎平方メートルを区別する。</desc>
+<style>
+text{font-family:'Noto Sans CJK JP','Hiragino Kaku Gothic ProN',system-ui,sans-serif;font-size:21px}
+.bg{fill:#fff}.panel{fill:#f2f7fa;stroke:#bed0db;stroke-width:2}.ink{fill:#16334a}.muted{fill:#4d6575}
+.title{font-size:32px;font-weight:750}.section{font-size:26px;font-weight:700}.value{font-size:27px;font-weight:700}
+.small{font-size:19px}.tiny{font-size:17px}.axis{stroke:#516d82;stroke-width:2.4;fill:none;stroke-linejoin:round}
+.gridline{stroke:#bdcdd7;stroke-width:1.4;stroke-dasharray:6 7}.filled{fill:#c6e5f1;fill-opacity:.75;stroke:none}
+.profile{fill:none;stroke:#146c92;stroke-width:4.5;stroke-linejoin:round;stroke-linecap:round}
+.heat{stroke:#c26738;stroke-width:3.4;stroke-linecap:round;stroke-linejoin:round;fill:none}
+.underline{stroke:#b44c79;stroke-width:3.5}.hot{fill:#a95528}.note{fill:#a34a6f}
+.bar{fill:#4b8d9d}.bararea{fill:#d8e8ec}.white{fill:#fff}
+@media(prefers-color-scheme:dark){.bg{fill:#101b27}.panel{fill:#1a2c3b;stroke:#647e92}.ink{fill:#f0f7fa}.muted{fill:#c5d7e3}.axis{stroke:#c5dce8}.gridline{stroke:#638194}.filled{fill:#174b65;fill-opacity:.65}.profile{stroke:#7dd2ef}.heat{stroke:#ffac7f}.underline{stroke:#ffabd0}.hot{fill:#ffc193}.note{fill:#ffbcd8}.bar{fill:#73c5da}.bararea{fill:#375869}.white{fill:#112b3b}}
+</style>
+<rect class="bg" width="900" height="1260"/>
+<text class="title ink" x="32" y="56">§1.1 熱流束 → 熱移動率 → 熱移動量</text>
+<text class="small muted" x="34" y="96">境界・向き・面積・時間を指定して、J・W・W/m²を区別する</text>
+<rect class="panel" x="22" y="122" width="856" height="476" rx="18"/>
+<text class="section ink" x="42" y="165">① 面の場所により熱流束は異なる</text>
+<text class="small ink" x="42" y="199">q″(x) = 100 + 200 (x / 1 m)　[W/m²]</text>
+<text class="tiny muted" x="42" y="229">長さ L = 1.00 m、幅 b = 0.50 m（面積 A = 0.50 m²）</text>
+<text class="tiny muted" x="43" y="258">縦軸：外向き熱流束 q″ [W/m²]</text>
+<path class="axis" d="M152 268 V482 H776 M143 279 L152 268 L161 279 M765 474 L776 482 L765 490"/>
+<path class="gridline" d="M152 305 H760 M152 364 H760 M152 423 H760"/>
+<text class="tiny ink" x="134" y="311" text-anchor="end">300</text>
+<text class="tiny ink" x="134" y="370" text-anchor="end">200</text>
+<text class="tiny ink" x="134" y="429" text-anchor="end">100</text>
+<text class="tiny ink" x="134" y="488" text-anchor="end">0</text>
+<path id="flux-under-curve" class="filled" d="M152 482 L152 423  L167.200,420.050 L182.400,417.100 L197.600,414.150 L212.800,411.200 L228.000,408.250 L243.200,405.300 L258.400,402.350 L273.600,399.400 L288.800,396.450 L304.000,393.500 L319.200,390.550 L334.400,387.600 L349.600,384.650 L364.800,381.700 L380.000,378.750 L395.200,375.800 L410.400,372.850 L425.600,369.900 L440.800,366.950 L456.000,364.000 L471.200,361.050 L486.400,358.100 L501.600,355.150 L516.800,352.200 L532.000,349.250 L547.200,346.300 L562.400,343.350 L577.600,340.400 L592.800,337.450 L608.000,334.500 L623.200,331.550 L638.400,328.600 L653.600,325.650 L668.800,322.700 L684.000,319.750 L699.200,316.800 L714.400,313.850 L729.600,310.900 L744.800,307.950 L760.000,305.000 L760 482 Z"/>
+<path id="flux-profile" class="profile" d="M152.000,423.000 L167.200,420.050 L182.400,417.100 L197.600,414.150 L212.800,411.200 L228.000,408.250 L243.200,405.300 L258.400,402.350 L273.600,399.400 L288.800,396.450 L304.000,393.500 L319.200,390.550 L334.400,387.600 L349.600,384.650 L364.800,381.700 L380.000,378.750 L395.200,375.800 L410.400,372.850 L425.600,369.900 L440.800,366.950 L456.000,364.000 L471.200,361.050 L486.400,358.100 L501.600,355.150 L516.800,352.200 L532.000,349.250 L547.200,346.300 L562.400,343.350 L577.600,340.400 L592.800,337.450 L608.000,334.500 L623.200,331.550 L638.400,328.600 L653.600,325.650 L668.800,322.700 L684.000,319.750 L699.200,316.800 L714.400,313.850 L729.600,310.900 L744.800,307.950 L760.000,305.000"/>
+<text class="tiny ink" x="152" y="515" text-anchor="middle">0</text>
+<text class="tiny ink" x="456" y="515" text-anchor="middle">0.50</text>
+<text class="tiny ink" x="760" y="515" text-anchor="middle">1.00</text>
+<text class="tiny muted" x="436" y="545" text-anchor="middle">表面上の位置 x [m] →</text>
+<text class="tiny hot" x="43" y="580">面の各点から、外向き法線方向へ流出</text>
+
+<rect class="panel" x="22" y="616" width="856" height="261" rx="18"/>
+<text class="section ink" x="43" y="659">② 面積で積分すると「1秒当たりのエネルギー」</text>
+<text class="small ink" x="44" y="702">Q̇_out = ∫ q″(x) b dx = 0.50 × 200 = 100 W</text>
+<text class="small muted" x="44" y="738">q″_avg = Q̇_out / A = 200 W/m²（最大300とは違う）</text>
+<path class="underline" d="M43 769 H827"/>
+<text class="value ink" x="44" y="813">熱移動率　Q̇_out = 100 W</text>
+<text class="tiny muted" x="44" y="849">同じ向きの局所流束を面積積分。一般には q″·n を積分。</text>
+
+<rect class="panel" x="22" y="895" width="856" height="234" rx="18"/>
+<text class="section ink" x="43" y="935">③ 時間で積分すると「移動エネルギー」</text>
+<rect class="bararea" x="58" y="969" width="504" height="84" rx="6"/>
+<rect class="bar" x="58" y="969" width="504" height="84" rx="6"/>
+<text class="small white" x="307" y="1003" text-anchor="middle">一定100 W × 20 s</text>
+<text class="small white" x="307" y="1033" text-anchor="middle">時間積分 = 2,000 J</text>
+<text class="tiny muted" x="575" y="1003">時間 0–20 s</text>
+<text class="tiny muted" x="575" y="1033">Q_out = ∫Q̇ dt</text>
+<text class="value ink" x="44" y="1096">移動熱量　Q_out = 2,000 J</text>
+<rect class="panel" x="22" y="1144" width="856" height="73" rx="12"/>
+<text class="small ink" x="40" y="1175">閉じた系・仕事なし・他の流出入なし：</text>
+<text class="small note" x="40" y="1204">ΔU = −2,000 J（内部エネルギーUは状態量）</text>
+<text class="tiny muted" x="450" y="1246" text-anchor="middle">独自計算・作図｜原著図版の転載やトレースなし</text>
+</svg>

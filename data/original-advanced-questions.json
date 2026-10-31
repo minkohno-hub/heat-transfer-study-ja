@@ -1,0 +1,514 @@
+{
+  "schemaVersion": 1,
+  "kind": "original_numeric_practice",
+  "expertReviewed": false,
+  "questionCount": 11,
+  "questions": [
+    {
+      "id": "supp-advanced-ch1-calc",
+      "prompt": "均一な面積0.080 m²の壁面を240 Wが150秒間通過します。平均熱流束と移動した熱量の正しい組合せは？",
+      "choices": [
+        "3,000 W/m² と36,000 J",
+        "30,000 W/m² と36,000 J",
+        "3,000 W/m² と1,600 J",
+        "19.2 W/m² と36,000 J"
+      ],
+      "answer": 0,
+      "distractors": [
+        "正解。240/0.080=3000 W/m²、240×150=36000 J。",
+        "面積0.080 m²を0.0080 m²と読み違え、熱流束だけを10倍にしています。",
+        "熱移動時間を熱移動率で割るなど、量と率を混同しています。",
+        "面積で割らずに掛けています。"
+      ],
+      "explanation": "正解。240/0.080=3000 W/m²、240×150=36000 J。 q″=Q̇/A=240/0.080=3000 W/m²。 Q=Q̇t=240×150=36000 J。 両方の単位を確認して答える。",
+      "hints": [
+        "関連する物理モデル：熱流束と総熱量の同時計算。与えられた単位を統一する。",
+        "計算の最初の段階：q″=Q̇/A=240/0.080=3000 W/m²。"
+      ],
+      "solutionSteps": [
+        "q″=Q̇/A=240/0.080=3000 W/m²。",
+        "Q=Q̇t=240×150=36000 J。",
+        "両方の単位を確認して答える。"
+      ],
+      "beginnerPitfall": "数値を代入する前にモデルの適用条件と単位を確認し、熱流束と熱移動率、局所と平均を混同しない。",
+      "field": "熱移動基礎",
+      "difficulty": "発展・独立数値演習",
+      "prerequisites": [
+        "熱流束と総熱量の同時計算",
+        "単位・熱収支・無次元数"
+      ],
+      "source": {
+        "type": "supplement",
+        "reference": "アプリ独立作問。原本の転載・翻訳・原図を使用しない。",
+        "guideId": "chapter1-energy-balance",
+        "chapterId": "ch1"
+      },
+      "createdStatus": "作成済み",
+      "reviewStatus": "AIによる独立数値照合・外部専門家校閲前",
+      "expertReviewed": false,
+      "reportHistory": [],
+      "questionGroup": "original_independent_numerical_v1",
+      "revision": "v2"
+    },
+    {
+      "id": "supp-advanced-ch2-calc",
+      "prompt": "一次元定常の直列系で熱抵抗0.05、0.10、0.05 K/W、両端温度差30 Kです。熱移動率と中央の0.10 K/Wの温度降下の組合せは？",
+      "choices": [
+        "100 W と10 K",
+        "150 W と15 K",
+        "300 W と15 K",
+        "150 W と30 K"
+      ],
+      "answer": 1,
+      "distractors": [
+        "全抵抗0.20 K/Wを過大に計算しています。",
+        "正解。R_total=0.20 K/W、Q̇=30/0.20=150 W、中央ΔT=150×0.10=15 K。",
+        "熱移動率を2倍に見積もっています。",
+        "中央だけで両端の温度差を全て使ってしまっています。"
+      ],
+      "explanation": "正解。R_total=0.20 K/W、Q̇=30/0.20=150 W、中央ΔT=150×0.10=15 K。 R_total=0.05+0.10+0.05=0.20 K/W。 Q̇=30/0.20=150 W。 中央ΔT=150×0.10=15 K。",
+      "hints": [
+        "関連する物理モデル：直列熱抵抗と層内温度降下。与えられた単位を統一する。",
+        "計算の最初の段階：R_total=0.05+0.10+0.05=0.20 K/W。"
+      ],
+      "solutionSteps": [
+        "R_total=0.05+0.10+0.05=0.20 K/W。",
+        "Q̇=30/0.20=150 W。",
+        "中央ΔT=150×0.10=15 K。"
+      ],
+      "beginnerPitfall": "数値を代入する前にモデルの適用条件と単位を確認し、熱流束と熱移動率、局所と平均を混同しない。",
+      "field": "熱抵抗",
+      "difficulty": "発展・独立数値演習",
+      "prerequisites": [
+        "直列熱抵抗と層内温度降下",
+        "単位・熱収支・無次元数"
+      ],
+      "source": {
+        "type": "supplement",
+        "reference": "アプリ独立作問。原本の転載・翻訳・原図を使用しない。",
+        "guideId": "chapter2-cylindrical-conduction",
+        "chapterId": "ch2"
+      },
+      "createdStatus": "作成済み",
+      "reviewStatus": "AIによる独立数値照合・外部専門家校閲前",
+      "expertReviewed": false,
+      "reportHistory": [],
+      "questionGroup": "original_independent_numerical_v1",
+      "revision": "v1"
+    },
+    {
+      "id": "supp-advanced-ch3-calc",
+      "prompt": "理想的な向流熱交換器で両端温度差が60 Kと20 K、U=100 W/(m²·K)、A=2.0 m²、補正係数F=1です。LMTD法で求めるQ̇は約何kW？",
+      "choices": [
+        "4.00 kW",
+        "12.0 kW",
+        "7.28 kW",
+        "8.00 kW"
+      ],
+      "answer": 2,
+      "distractors": [
+        "小さい端点温度差だけを使っています。",
+        "大きい端点温度差だけを使っています。",
+        "正解。LMTD=40/ln3≈36.41 K、UA=200 W/K、Q̇≈7.28 kW。",
+        "算術平均(60+20)/2=40 KをLMTDと混同しています。"
+      ],
+      "explanation": "正解。LMTD=40/ln3≈36.41 K、UA=200 W/K、Q̇≈7.28 kW。 ΔT_lm=(60−20)/ln(60/20)=40/ln3≈36.41 K。 UA=100×2.0=200 W/K。 Q̇=UA F ΔT_lm≈7282 W≈7.28 kW。",
+      "hints": [
+        "関連する物理モデル：対数平均温度差から熱負荷を求める。与えられた単位を統一する。",
+        "計算の最初の段階：ΔT_lm=(60−20)/ln(60/20)=40/ln3≈36.41 K。"
+      ],
+      "solutionSteps": [
+        "ΔT_lm=(60−20)/ln(60/20)=40/ln3≈36.41 K。",
+        "UA=100×2.0=200 W/K。",
+        "Q̇=UA F ΔT_lm≈7282 W≈7.28 kW。"
+      ],
+      "beginnerPitfall": "数値を代入する前にモデルの適用条件と単位を確認し、熱流束と熱移動率、局所と平均を混同しない。",
+      "field": "熱交換器",
+      "difficulty": "発展・独立数値演習",
+      "prerequisites": [
+        "対数平均温度差から熱負荷を求める",
+        "単位・熱収支・無次元数"
+      ],
+      "source": {
+        "type": "supplement",
+        "reference": "アプリ独立作問。原本の転載・翻訳・原図を使用しない。",
+        "guideId": "chapter3-effectiveness-ntu",
+        "chapterId": "ch3"
+      },
+      "createdStatus": "作成済み",
+      "reviewStatus": "AIによる独立数値照合・外部専門家校閲前",
+      "expertReviewed": false,
+      "reportHistory": [],
+      "questionGroup": "original_independent_numerical_v1",
+      "revision": "v1"
+    },
+    {
+      "id": "supp-advanced-ch4-calc",
+      "prompt": "一定断面・先端断熱の直線フィンでmL=2.0です。tanh(2)≈0.9640としてη_f=tanh(mL)/(mL)を計算すると？",
+      "choices": [
+        "0.964",
+        "2.07",
+        "0.500",
+        "0.482"
+      ],
+      "answer": 3,
+      "distractors": [
+        "mLで割る操作を忘れています。",
+        "逆数を取ると通常のフィン効率の範囲を超えます。",
+        "tanh(2)を1と近似しすぎています。",
+        "正解。η_f≈0.9640/2.0=0.4820。"
+      ],
+      "explanation": "正解。η_f≈0.9640/2.0=0.4820。 mL=2.0、tanh(2)≈0.9640。 η_f=0.9640/2.0=0.4820。 効率は無次元で1以下になることを確かめる。",
+      "hints": [
+        "関連する物理モデル：断熱先端フィン効率の計算。与えられた単位を統一する。",
+        "計算の最初の段階：mL=2.0、tanh(2)≈0.9640。"
+      ],
+      "solutionSteps": [
+        "mL=2.0、tanh(2)≈0.9640。",
+        "η_f=0.9640/2.0=0.4820。",
+        "効率は無次元で1以下になることを確かめる。"
+      ],
+      "beginnerPitfall": "数値を代入する前にモデルの適用条件と単位を確認し、熱流束と熱移動率、局所と平均を混同しない。",
+      "field": "フィン",
+      "difficulty": "発展・独立数値演習",
+      "prerequisites": [
+        "断熱先端フィン効率の計算",
+        "単位・熱収支・無次元数"
+      ],
+      "source": {
+        "type": "supplement",
+        "reference": "アプリ独立作問。原本の転載・翻訳・原図を使用しない。",
+        "guideId": "chapter4-fin-design",
+        "chapterId": "ch4"
+      },
+      "createdStatus": "作成済み",
+      "reviewStatus": "AIによる独立数値照合・外部専門家校閲前",
+      "expertReviewed": false,
+      "reportHistory": [],
+      "questionGroup": "original_independent_numerical_v1",
+      "revision": "v1"
+    },
+    {
+      "id": "supp-advanced-ch5-calc",
+      "prompt": "集中熱容量近似が妥当でT₀=100 ℃、周囲T∞=20 ℃、時定数τ=100 sです。物体温度が40 ℃になる時刻は約何秒？（ln4≈1.386）",
+      "choices": [
+        "69.3 s",
+        "138.6 s",
+        "100.0 s",
+        "200.0 s"
+      ],
+      "answer": 1,
+      "distractors": [
+        "ln2を用いた半減時間に相当します。",
+        "正解。温度差の比(40−20)/(100−20)=1/4、t=τ ln4≈138.6 s。",
+        "時定数時の温度差比は1/eであり1/4ではありません。",
+        "指数の対数を使わず時間を単純に2倍しています。"
+      ],
+      "explanation": "正解。温度差の比(40−20)/(100−20)=1/4、t=τ ln4≈138.6 s。 温度差比Θ=(40−20)/(100−20)=0.25。 Θ=exp(−t/τ)よりt=−τln(0.25)=100ln4。 t≈138.6 s。",
+      "hints": [
+        "関連する物理モデル：集中熱容量法の指定温度到達時間。与えられた単位を統一する。",
+        "計算の最初の段階：温度差比Θ=(40−20)/(100−20)=0.25。"
+      ],
+      "solutionSteps": [
+        "温度差比Θ=(40−20)/(100−20)=0.25。",
+        "Θ=exp(−t/τ)よりt=−τln(0.25)=100ln4。",
+        "t≈138.6 s。"
+      ],
+      "beginnerPitfall": "数値を代入する前にモデルの適用条件と単位を確認し、熱流束と熱移動率、局所と平均を混同しない。",
+      "field": "非定常伝導",
+      "difficulty": "発展・独立数値演習",
+      "prerequisites": [
+        "集中熱容量法の指定温度到達時間",
+        "単位・熱収支・無次元数"
+      ],
+      "source": {
+        "type": "supplement",
+        "reference": "アプリ独立作問。原本の転載・翻訳・原図を使用しない。",
+        "guideId": "chapter5-semi-infinite",
+        "chapterId": "ch5"
+      },
+      "createdStatus": "作成済み",
+      "reviewStatus": "AIによる独立数値照合・外部専門家校閲前",
+      "expertReviewed": false,
+      "reportHistory": [],
+      "questionGroup": "original_independent_numerical_v1",
+      "revision": "v2"
+    },
+    {
+      "id": "supp-advanced-ch6-calc",
+      "prompt": "全長層流の等温平板でRe_L=4.0×10⁴、Pr=1、流体熱伝導率k_f=0.030 W/(m·K)、L=1.0 mです。平均Nū_L=0.664√Re_L Pr^(1/3)から平均hはいくら？",
+      "choices": [
+        "3.984 W/(m²·K)",
+        "1.992 W/(m²·K)",
+        "13.28 W/(m²·K)",
+        "0.3984 W/(m²·K)"
+      ],
+      "answer": 0,
+      "distractors": [
+        "正解。√40000=200、Nū_L=132.8、h̄=132.8×0.030/1.0=3.984。",
+        "局所の0.332を使って平均を半分にしています。",
+        "熱伝導率やNuの換算で誤っています。",
+        "計算した熱伝達率をさらに10で割っています。"
+      ],
+      "explanation": "正解。√40000=200、Nū_L=132.8、h̄=132.8×0.030/1.0=3.984。 Re_Lの平方根は200。 Nū_L=0.664×200=132.8。 h̄=Nū_L k_f/L=132.8×0.030/1.0=3.984 W/(m²·K)。",
+      "hints": [
+        "関連する物理モデル：平板層流の平均熱伝達率。与えられた単位を統一する。",
+        "計算の最初の段階：Re_Lの平方根は200。"
+      ],
+      "solutionSteps": [
+        "Re_Lの平方根は200。",
+        "Nū_L=0.664×200=132.8。",
+        "h̄=Nū_L k_f/L=132.8×0.030/1.0=3.984 W/(m²·K)。"
+      ],
+      "beginnerPitfall": "数値を代入する前にモデルの適用条件と単位を確認し、熱流束と熱移動率、局所と平均を混同しない。",
+      "field": "外部対流",
+      "difficulty": "発展・独立数値演習",
+      "prerequisites": [
+        "平板層流の平均熱伝達率",
+        "単位・熱収支・無次元数"
+      ],
+      "source": {
+        "type": "supplement",
+        "reference": "アプリ独立作問。原本の転載・翻訳・原図を使用しない。",
+        "guideId": "chapter6-flat-boundary",
+        "chapterId": "ch6"
+      },
+      "createdStatus": "作成済み",
+      "reviewStatus": "AIによる独立数値照合・外部専門家校閲前",
+      "expertReviewed": false,
+      "reportHistory": [],
+      "questionGroup": "original_independent_numerical_v1",
+      "revision": "v1"
+    },
+    {
+      "id": "supp-advanced-ch7-calc",
+      "prompt": "十分に速度・熱的に発達した円管層流の壁面熱流束が一様でNu_D=4.36、k_f=0.60 W/(m·K)、D=0.010 mです。hは？",
+      "choices": [
+        "219.6 W/(m²·K)",
+        "4.36 W/(m²·K)",
+        "261.6 W/(m²·K)",
+        "26.16 W/(m²·K)"
+      ],
+      "answer": 2,
+      "distractors": [
+        "壁温一定のNu=3.66と混同しています。",
+        "Nuは無次元なのでhと同じ数値とは限りません。",
+        "正解。h=Nu_D k_f/D=4.36×0.60/0.010=261.6 W/(m²·K)。",
+        "直径を0.10 mと取り違える桁誤りです。"
+      ],
+      "explanation": "正解。h=Nu_D k_f/D=4.36×0.60/0.010=261.6 W/(m²·K)。 一定熱流束・円管・完全発達層流のNu_D=4.36。 h=Nu_D k_f/D。 4.36×0.60/0.010=261.6 W/(m²·K)。",
+      "hints": [
+        "関連する物理モデル：一定熱流束円管層流のh。与えられた単位を統一する。",
+        "計算の最初の段階：一定熱流束・円管・完全発達層流のNu_D=4.36。"
+      ],
+      "solutionSteps": [
+        "一定熱流束・円管・完全発達層流のNu_D=4.36。",
+        "h=Nu_D k_f/D。",
+        "4.36×0.60/0.010=261.6 W/(m²·K)。"
+      ],
+      "beginnerPitfall": "数値を代入する前にモデルの適用条件と単位を確認し、熱流束と熱移動率、局所と平均を混同しない。",
+      "field": "管内対流",
+      "difficulty": "発展・独立数値演習",
+      "prerequisites": [
+        "一定熱流束円管層流のh",
+        "単位・熱収支・無次元数"
+      ],
+      "source": {
+        "type": "supplement",
+        "reference": "アプリ独立作問。原本の転載・翻訳・原図を使用しない。",
+        "guideId": "chapter7-internal-flow",
+        "chapterId": "ch7"
+      },
+      "createdStatus": "作成済み",
+      "reviewStatus": "AIによる独立数値照合・外部専門家校閲前",
+      "expertReviewed": false,
+      "reportHistory": [],
+      "questionGroup": "original_independent_numerical_v1",
+      "revision": "v1"
+    },
+    {
+      "id": "supp-advanced-ch8-calc",
+      "prompt": "自然対流Ra=gβ|ΔT|L³/(να)で流体物性・重力一定です。代表長さLを2倍、温度差を2倍にするとRaは何倍になりますか。",
+      "choices": [
+        "8倍",
+        "4倍",
+        "32倍",
+        "16倍"
+      ],
+      "answer": 3,
+      "distractors": [
+        "長さによる8倍だけを計算し温度差の2倍を忘れています。",
+        "L³ではなくLを一次として計算した誤りです。",
+        "長さを四乗してしまっています。",
+        "正解。L³により8倍、温度差により2倍、合計16倍。"
+      ],
+      "explanation": "正解。L³により8倍、温度差により2倍、合計16倍。 Ra∝|ΔT|L³。 Lの倍率2³=8、温度差の倍率2。 積8×2=16倍。",
+      "hints": [
+        "関連する物理モデル：自然対流Raの長さと温度差の影響。与えられた単位を統一する。",
+        "計算の最初の段階：Ra∝|ΔT|L³。"
+      ],
+      "solutionSteps": [
+        "Ra∝|ΔT|L³。",
+        "Lの倍率2³=8、温度差の倍率2。",
+        "積8×2=16倍。"
+      ],
+      "beginnerPitfall": "数値を代入する前にモデルの適用条件と単位を確認し、熱流束と熱移動率、局所と平均を混同しない。",
+      "field": "自然対流",
+      "difficulty": "発展・独立数値演習",
+      "prerequisites": [
+        "自然対流Raの長さと温度差の影響",
+        "単位・熱収支・無次元数"
+      ],
+      "source": {
+        "type": "supplement",
+        "reference": "アプリ独立作問。原本の転載・翻訳・原図を使用しない。",
+        "guideId": "chapter8-buoyancy",
+        "chapterId": "ch8"
+      },
+      "createdStatus": "作成済み",
+      "reviewStatus": "AIによる独立数値照合・外部専門家校閲前",
+      "expertReviewed": false,
+      "reportHistory": [],
+      "questionGroup": "original_independent_numerical_v1",
+      "revision": "v1"
+    },
+    {
+      "id": "supp-advanced-ch9-calc",
+      "prompt": "ある液体の蒸発質量流量が0.030 kg/s、潜熱2.0×10⁶ J/kgで、加熱面積が0.020 m²です。顕熱・損失を無視した平均熱流束は？",
+      "choices": [
+        "3.0×10⁶ W/m²",
+        "6.0×10⁴ W/m²",
+        "1.5×10⁶ W/m²",
+        "3.0×10⁴ W/m²"
+      ],
+      "answer": 0,
+      "distractors": [
+        "正解。Q̇_latent=0.030×2.0×10⁶=60000 W、q″=60000/0.020=3.0×10⁶ W/m²。",
+        "熱移動率Wを面積当たりに換算していません。",
+        "面積を0.040 m²と誤認した計算です。",
+        "熱流束と熱移動率の数値を混同しています。"
+      ],
+      "explanation": "正解。Q̇_latent=0.030×2.0×10⁶=60000 W、q″=60000/0.020=3.0×10⁶ W/m²。 潜熱率Q̇=ṁh_fg=60000 W。 平均熱流束q″=Q̇/A。 60000/0.020=3.0×10⁶ W/m²。この負荷が安全かはCHF等の条件別検証が必要。",
+      "hints": [
+        "関連する物理モデル：蒸発潜熱の熱流束。与えられた単位を統一する。",
+        "計算の最初の段階：潜熱率Q̇=ṁh_fg=60000 W。"
+      ],
+      "solutionSteps": [
+        "潜熱率Q̇=ṁh_fg=60000 W。",
+        "平均熱流束q″=Q̇/A。",
+        "60000/0.020=3.0×10⁶ W/m²。この負荷が安全かはCHF等の条件別検証が必要。"
+      ],
+      "beginnerPitfall": "数値を代入する前にモデルの適用条件と単位を確認し、熱流束と熱移動率、局所と平均を混同しない。",
+      "field": "沸騰",
+      "difficulty": "発展・独立数値演習",
+      "prerequisites": [
+        "蒸発潜熱の熱流束",
+        "単位・熱収支・無次元数"
+      ],
+      "source": {
+        "type": "supplement",
+        "reference": "アプリ独立作問。原本の転載・翻訳・原図を使用しない。",
+        "guideId": "chapter9-latent-boiling",
+        "chapterId": "ch9"
+      },
+      "createdStatus": "作成済み",
+      "reviewStatus": "AIによる独立数値照合・外部専門家校閲前",
+      "expertReviewed": false,
+      "reportHistory": [],
+      "questionGroup": "original_independent_numerical_v1",
+      "revision": "v1"
+    },
+    {
+      "id": "supp-advanced-ch10-calc",
+      "prompt": "広い黒体周囲300 Kへ向いた面積1 m²の灰色拡散面が400 K、放射率0.80とします。σ=5.67×10⁻⁸ W/(m²·K⁴)、他の熱移動を無視すると正味放射熱率の大きさは約何W？",
+      "choices": [
+        "992 W",
+        "794 W",
+        "1,162 W",
+        "460 W"
+      ],
+      "answer": 1,
+      "distractors": [
+        "放射率0.80を掛け忘れています。",
+        "正解。Q̇≈εσA(T_s⁴−T_sur⁴)=0.8×5.67×10⁻⁸×(400⁴−300⁴)≈794 W。",
+        "周囲からの入射放射を差し引かず表面の放出に近い量を使っています。",
+        "温度の四乗差や放射率を誤計算しています。"
+      ],
+      "explanation": "正解。Q̇≈εσA(T_s⁴−T_sur⁴)=0.8×5.67×10⁻⁸×(400⁴−300⁴)≈794 W。 400⁴−300⁴=17.5×10⁹ K⁴。 σAΔ(T⁴)=5.67×10⁻⁸×17.5×10⁹≈992.25 W。 ε=0.80を掛けQ̇≈793.8 W≃794 W。",
+      "hints": [
+        "関連する物理モデル：灰色面の正味放射交換。与えられた単位を統一する。",
+        "計算の最初の段階：400⁴−300⁴=17.5×10⁹ K⁴。"
+      ],
+      "solutionSteps": [
+        "400⁴−300⁴=17.5×10⁹ K⁴。",
+        "σAΔ(T⁴)=5.67×10⁻⁸×17.5×10⁹≈992.25 W。",
+        "ε=0.80を掛けQ̇≈793.8 W≃794 W。"
+      ],
+      "beginnerPitfall": "数値を代入する前にモデルの適用条件と単位を確認し、熱流束と熱移動率、局所と平均を混同しない。",
+      "field": "放射",
+      "difficulty": "発展・独立数値演習",
+      "prerequisites": [
+        "灰色面の正味放射交換",
+        "単位・熱収支・無次元数"
+      ],
+      "source": {
+        "type": "supplement",
+        "reference": "アプリ独立作問。原本の転載・翻訳・原図を使用しない。",
+        "guideId": "chapter10-view-factors",
+        "chapterId": "ch10"
+      },
+      "createdStatus": "作成済み",
+      "reviewStatus": "AIによる独立数値照合・外部専門家校閲前",
+      "expertReviewed": false,
+      "reportHistory": [],
+      "questionGroup": "original_independent_numerical_v1",
+      "revision": "v1"
+    },
+    {
+      "id": "supp-advanced-ch11-calc",
+      "prompt": "二成分系でD_AB=2.0×10⁻⁹ m²/s、dC_A/dx=−200 mol/m⁴、モル分率y_A=0.25、全モル流束N_total=+8.0×10⁻⁷ mol/(m²·s)です。モル平均基準でN_A=J_A+y_A N_totalの値は？",
+      "choices": [
+        "+4.0×10⁻⁷ mol/(m²·s)",
+        "+2.0×10⁻⁷ mol/(m²·s)",
+        "−6.0×10⁻⁷ mol/(m²·s)",
+        "+6.0×10⁻⁷ mol/(m²·s)"
+      ],
+      "answer": 3,
+      "distractors": [
+        "拡散成分J_Aだけを計算し、バルク移動を忘れています。",
+        "バルク移動の寄与だけを計算し、濃度勾配による拡散を忘れています。",
+        "濃度勾配の符号とバルク移動の向きを誤っています。",
+        "正解。J_A=−2×10⁻⁹×(−200)=4×10⁻⁷、y_A N_total=2×10⁻⁷、和は+6×10⁻⁷。"
+      ],
+      "explanation": "正解。J_A=−2×10⁻⁹×(−200)=4×10⁻⁷、y_A N_total=2×10⁻⁷、和は+6×10⁻⁷。 拡散成分J_A=−D_AB(dC_A/dx)=+4.0×10⁻⁷。 バルク成分y_A N_total=0.25×8.0×10⁻⁷=+2.0×10⁻⁷。 全モル流束N_A=J_A+y_A N_total=+6.0×10⁻⁷ mol/(m²·s)。",
+      "hints": [
+        "関連する物理モデル：拡散流束とバルク流束の加算。与えられた単位を統一する。",
+        "計算の最初の段階：拡散成分J_A=−D_AB(dC_A/dx)=+4.0×10⁻⁷。"
+      ],
+      "solutionSteps": [
+        "拡散成分J_A=−D_AB(dC_A/dx)=+4.0×10⁻⁷。",
+        "バルク成分y_A N_total=0.25×8.0×10⁻⁷=+2.0×10⁻⁷。",
+        "全モル流束N_A=J_A+y_A N_total=+6.0×10⁻⁷ mol/(m²·s)。"
+      ],
+      "beginnerPitfall": "数値を代入する前にモデルの適用条件と単位を確認し、熱流束と熱移動率、局所と平均を混同しない。",
+      "field": "物質移動",
+      "difficulty": "発展・独立数値演習",
+      "prerequisites": [
+        "拡散流束とバルク流束の加算",
+        "単位・熱収支・無次元数"
+      ],
+      "source": {
+        "type": "supplement",
+        "reference": "アプリ独立作問。原本の転載・翻訳・原図を使用しない。",
+        "guideId": "chapter11-fick-mass",
+        "chapterId": "ch11"
+      },
+      "createdStatus": "作成済み",
+      "reviewStatus": "AIによる独立数値照合・外部専門家校閲前",
+      "expertReviewed": false,
+      "reportHistory": [],
+      "questionGroup": "original_independent_numerical_v1",
+      "revision": "v1"
+    }
+  ]
+}

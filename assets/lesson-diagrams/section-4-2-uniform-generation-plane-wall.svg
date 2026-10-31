@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="680" height="1090" viewBox="0 0 680 1090" role="img" aria-labelledby="lesson42-title lesson42-desc" style="max-width:100%" data-lesson="4.2" data-origin="original-app-diagram" data-qvol="20000" data-k="10" data-half-thickness="0.05" data-area="1" data-surface-temperature="20">
+  <title id="lesson42-title">§4.2 発熱のある対称平板と放物線温度分布</title>
+  <desc id="lesson42-desc">アプリ作成の独自図解。左右両面を20℃に保ち、内部で一様に発熱する厚さ0.10mの平板。中心は22.5℃、両面の外向き熱流束は各1000 W毎平方メートル。定常一次元、熱伝導率一定、体積発熱20000 W毎立方メートルの例。横軸は中心からの位置で、温度は中心が最高の放物線となる。図は模式的であり、実寸を表さない。</desc>
+  <style>
+    .background{fill:#ffffff}.panel{fill:#f4f7fb;stroke:#bdccda;stroke-width:2}.ink{fill:#14283a}.muted{fill:#41596b}.hot{fill:#b64521}.flux{fill:#176b58}
+    text{font-family:"Noto Sans CJK JP","Hiragino Kaku Gothic ProN",system-ui,sans-serif;font-size:25px}
+    .heading{font-size:34px;font-weight:700}.section{font-size:27px;font-weight:700}.minor{font-size:22px}.formula{font-size:24px;font-weight:600}
+    .wall{fill:#cde4f5;stroke:#37648a;stroke-width:3}.axis{stroke:#14283a;stroke-width:3;fill:none}.guide{stroke:#bdccda;stroke-width:2;stroke-dasharray:7 6}.heat{stroke:#b64521;stroke-width:5;fill:none}.flow{stroke:#176b58;stroke-width:5;fill:none}.point{fill:#b64521}
+    @media (prefers-color-scheme:dark){.background{fill:#101a27}.panel{fill:#182738;stroke:#60768a}.ink{fill:#f0f6fc}.muted{fill:#c4d5e3}.hot{fill:#ffb58f}.flux{fill:#82e2be}.wall{fill:#244968;stroke:#91caef}.axis{stroke:#f0f6fc}.guide{stroke:#60768a}.heat{stroke:#ffb58f}.flow{stroke:#82e2be}.point{fill:#ffb58f}}
+  </style>
+  <rect class="background" width="680" height="1090"/>
+  <text x="36" y="64" class="heading ink">§4.2 内部発熱をもつ平板</text>
+  <text x="36" y="107" class="minor muted">定常・一次元・一定 k・左右同じ表面温度</text>
+  <rect x="24" y="137" width="632" height="397" rx="20" class="panel"/>
+  <text x="44" y="183" class="section ink">① 内部で発熱し、両面から放熱</text>
+  <path d="M200 216 V229 M200 219 H480 M480 216 V229" class="axis"/>
+  <text x="340" y="209" text-anchor="middle" class="minor ink">全厚 2L = 0.10 m</text>
+  <rect x="200" y="252" width="280" height="172" rx="4" class="wall"/>
+  <path d="M340 252 V424" class="guide"/>
+  <g class="point"><circle cx="250" cy="309" r="5"/><circle cx="295" cy="309" r="5"/><circle cx="385" cy="309" r="5"/><circle cx="430" cy="309" r="5"/><circle cx="250" cy="382" r="5"/><circle cx="295" cy="382" r="5"/><circle cx="385" cy="382" r="5"/><circle cx="430" cy="382" r="5"/></g>
+  <text x="340" y="342" text-anchor="middle" class="formula hot">q''' ＞ 0</text>
+  <path d="M199 349 H100 M111 338 L100 349 L111 360 M481 349 H580 M569 338 L580 349 L569 360" class="flow"/>
+  <text x="114" y="278" text-anchor="middle" class="minor ink">左面</text>
+  <text x="114" y="308" text-anchor="middle" class="minor ink">20 ℃</text>
+  <text x="566" y="278" text-anchor="middle" class="minor ink">右面</text>
+  <text x="566" y="308" text-anchor="middle" class="minor ink">20 ℃</text>
+  <text x="340" y="399" text-anchor="middle" class="minor ink">中心 x = 0</text>
+  <text x="171" y="464" text-anchor="middle" class="minor flux">q_x = −1,000</text>
+  <text x="509" y="464" text-anchor="middle" class="minor flux">q_x = +1,000</text>
+  <text x="340" y="497" text-anchor="middle" class="minor muted">W/m²（x 正方向 →）</text>
+  <rect x="24" y="550" width="632" height="313" rx="20" class="panel"/>
+  <text x="44" y="594" class="section ink">② 中心が最高温度の放物線</text>
+  <path d="M115 808 V618 M115 781 H594 M582 773 L594 781 L582 789" class="axis"/>
+  <path d="M145 781 Q340 511 535 781" class="heat"/>
+  <path d="M340 646 V781 M115 646 H340" class="guide"/>
+  <circle cx="145" cy="781" r="6" class="point"/><circle cx="340" cy="646" r="7" class="point"/><circle cx="535" cy="781" r="6" class="point"/>
+  <text x="126" y="637" class="minor muted">22.5 ℃</text>
+  <text x="346" y="628" class="minor hot">中心 22.5 ℃</text>
+  <text x="145" y="816" text-anchor="middle" class="minor ink">−L</text>
+  <text x="340" y="816" text-anchor="middle" class="minor ink">0</text>
+  <text x="535" y="816" text-anchor="middle" class="minor ink">+L</text>
+  <text x="46" y="786" class="minor muted">20 ℃</text>
+  <text x="603" y="790" class="minor ink">x</text>
+  <text x="90" y="612" class="minor ink">T</text>
+  <text x="340" y="848" text-anchor="middle" class="minor muted">左・右表面とも 20 ℃（T_s）</text>
+  <rect x="24" y="879" width="632" height="195" rx="20" class="panel"/>
+  <text x="44" y="912" class="minor ink">q''' = 20,000 W/m³　 k = 10 W/(m·K)</text>
+  <text x="44" y="947" class="formula ink">T(x) = T_s + q'''(L² − x²)/(2k)</text>
+  <text x="44" y="982" class="minor ink">各面の外向き流束 = q'''L = 1,000 W/m²</text>
+  <text x="44" y="1008" class="minor muted">A = 1 m²：発熱 2,000 W = 両面流出の合計</text>
+  <text x="340" y="1053" text-anchor="middle" class="minor muted">アプリ作成の図・模式図（寸法比は非実寸）</text>
+</svg>

@@ -1,0 +1,19 @@
+{
+  "name": "heat-transfer-study-ja",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "node scripts/serve.mjs",
+    "test": "node --test tests/*.test.mjs",
+    "test:browser:public": "node tests/browser-distribution.mjs",
+    "test:browser:distribution": "node tests/browser-distribution.mjs",
+    "build:public": "node scripts/build-public-site.mjs",
+    "audit": "node scripts/audit-content.mjs",
+    "audit:readiness": "node scripts/readiness-audit.mjs",
+    "audit:readiness:strict": "node scripts/readiness-audit.mjs --strict",
+    "audit:authoring": "node scripts/authoring-queue.mjs"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}
