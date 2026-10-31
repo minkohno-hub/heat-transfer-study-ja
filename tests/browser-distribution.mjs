@@ -46,7 +46,7 @@ try {
     assert.match(workerSource,/const PDF_CACHE_NAME='heat-study-ja-pdf-v1';/,
       'PDF explicitly cached by learners must survive ordinary app revisions');
   }
-  assert.match(await page.locator('.app-footer').innerText(),/0節/);
+  assert.match(await page.locator('.app-footer').innerText(),/76節に独自日本語ノート・発展教材・図解を収録/);
   await nav('reader');
   await page.locator('.reader-toc .toc-item.selected').waitFor({state:'attached'});
   assert.ok((await readerContrast()).every(value=>value>=4.5),'目次の選択行の文字コントラスト');
