@@ -135,7 +135,8 @@ test('batch4 R3-I-06: new §6.8 question uses (6.112), totals become 751',()=>{
 });
 
 test('batch4 FC-47: glossary gains Raoult and Henry terms (468 -> 470)',()=>{
-  assert.equal(glossary.length,470);
+  // 470 at batch-4 time; B-4 added five source-verified terms (475).
+  assert.equal(glossary.length,475);
   for(const id of ['raoults-law','henrys-law']){
     const term=glossary.find(g=>g.id===id);
     assert.ok(term,`${id} exists`);

@@ -2,6 +2,15 @@
 const escapeText=value=>String(value??'').replace(/[&<>"']/g,ch=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]));
 const ambiguous=new Set(['熱','W','J','K','℃','m','s','比','流れ','密度','傾き']);
 const latin=/[A-Za-z0-9_]/;
+// Japanese labels have no word boundaries, so a label that is merely the head
+// of a longer, different compound must not be linked: 比熱 inside 比熱比
+// (specific-heat ratio, a distinct quantity) or 対流 inside 対流圏
+// (troposphere) misleads the learner. A blanket "next character is kanji"
+// exclusion was measured against the shipped corpus and rejected: it would
+// have removed 2,152 of 17,905 legitimate links (黒体放射, 対流境界層,
+// 非定常伝導, …) where linking the head term is semantically correct. Only
+// compounds whose meaning actually diverges from the head label are listed.
+const falseCompounds=['比熱比','対流圏'];
 const shortLabels=new Set(['比熱','積分','対流','黒体','潜熱','顕熱','層流','乱流','向流','並流','射度',
   'bi','fo','re','pr','nu','ra','gr','sc','sh','pe']);
 export function termCandidates(terms){
@@ -44,6 +53,8 @@ function compiledMatches(text,candidates,maxMatches){
       if(/^[A-Za-z]/.test(item.label)){
           if(index>0&&latin.test(text[index-1]))valid=false;
           if(text[stop]&&latin.test(text[stop]))valid=false;
+        }else if(falseCompounds.some(compound=>compound.length>item.label.length&&compound.startsWith(item.label)&&text.startsWith(compound,index))){
+          valid=false;
         }
         if(valid){found=item;at=index;break;}
         if(stable)index=folded.indexOf(item.key,index+1);

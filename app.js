@@ -346,6 +346,19 @@ async function startApp() {
           showStatus(event.data.ok?'原本PDFをオフライン用に保存しました。このブラウザーの保存領域が消えると再取得が必要です。':'原本PDFのオフライン保存が完了しませんでした。空き容量とネット接続を確認してください。');
         }
       });
+      // A newly deployed service worker activates immediately (skipWaiting +
+      // clients.claim), which would leave this already-open page running the
+      // previous generation's code against the new generation's cached data.
+      // Reload once into the new generation instead of mixing generations.
+      // Pages not yet controlled (first install) skip the listener entirely.
+      if (navigator.serviceWorker.controller) {
+        let generationReloaded = false;
+        navigator.serviceWorker.addEventListener('controllerchange', () => {
+          if (generationReloaded) return;
+          generationReloaded = true;
+          location.reload();
+        });
+      }
       navigator.serviceWorker.register('./sw.js').then(()=>navigator.serviceWorker.ready).then(registration=>{
         registration.active?.postMessage({type:'CACHE_CONTENT',urls:ui.localCacheFiles||[]});
         registration.active?.postMessage({type:'CHECK_PDF_CACHE'});
@@ -362,6 +375,7 @@ async function startApp() {
     root.addEventListener('submit', onSubmit);
     root.addEventListener('change', onChange);
     root.addEventListener('input', onInput);
+    root.addEventListener('keydown', onSimTabKeyDown);
     window.addEventListener('online', render);
     window.addEventListener('offline', render);
     window.addEventListener('storage',event=>{
@@ -388,8 +402,35 @@ async function startApp() {
   }
 }
 
+// A full re-render (connectivity change, system theme change, tick updates)
+// rebuilds the DOM and would silently discard transient UI state: an open
+// term sheet and the unsaved mistake-note draft. Snapshot both before the
+// rebuild and restore them afterwards, but only when the route did not
+// change — navigation must not resurrect a sheet or a draft (audit A2-UXS-13).
+function captureTransientUi(){
+  const snapshot={route:ui.renderedRoute,termId:null,note:null};
+  if(ui.termId&&document.getElementById('term-overlay'))snapshot.termId=ui.termId;
+  const form=document.getElementById('mistake-note-form');
+  if(form&&ui.quiz&&!ui.quizResult){
+    const data=new FormData(form);
+    const draft={reason:String(data.get('reason')||''),memory:String(data.get('memory')||''),nextTime:String(data.get('nextTime')||'')};
+    if(draft.reason||draft.memory||draft.nextTime)snapshot.note={questionId:ui.quiz.ids[ui.quiz.index],draft};
+  }
+  return snapshot;
+}
+function restoreTransientUi(snapshot){
+  if(!snapshot||snapshot.route!==ui.route)return;
+  if(snapshot.note&&ui.quiz&&!ui.quizResult&&ui.quiz.ids[ui.quiz.index]===snapshot.note.questionId){
+    const form=document.getElementById('mistake-note-form');
+    if(form)for(const [key,value] of Object.entries(snapshot.note.draft)){
+      const field=form.elements.namedItem(key);if(field)field.value=value;
+    }
+  }
+  if(snapshot.termId&&(glossary||[]).some(item=>item.id===snapshot.termId))openTermSheet(snapshot.termId,null);
+}
 function render() {
   if (!book) return;
+  const transientSnapshot=captureTransientUi();
   // Route/data re-render destroys the overlay; never leave a stale modal keyboard trap.
   ui.termId=null;ui.termReturnFocus=null;
   const theme = state.settings.theme === 'system' ? (systemDark?.matches ? 'dark' : 'light') : state.settings.theme;
@@ -400,6 +441,7 @@ function render() {
   const routeView = routeContent();
   root.innerHTML = `
     <div class="app-shell">
+      <a href="#main-content" class="skip-link" data-action="skip-content">本文へスキップ</a>
       <header class="topbar">
         <a href="#home" class="brand" aria-label="熱移動を学ぶ 読む・解く・ふり返る ホームへ">
           <span class="brand-mark" aria-hidden="true"><span></span><span></span><span></span></span>
@@ -421,6 +463,8 @@ function render() {
     </div>`;
   for(const block of root.querySelectorAll('.guide-body,.simulation-steps'))linkTermTextNodes(block,glossary||[]);
   if(ui.reportId)document.querySelector('.report-modal button')?.focus();
+  restoreTransientUi(transientSnapshot);
+  ui.renderedRoute=ui.route;
 }
 
 function routeContent() {
@@ -552,11 +596,11 @@ function linkedReaderText(value,limit=3){
 function renderDeepLesson(lesson) {
   const esc=escapeHTML, mark=value=>linkedReaderText(value);
   const paragraphs=lesson.blocks.map((b,i)=>'<section class="deep-lesson-block" id="reader-block-'+esc(lesson.sectionId+'-deep-'+i)+'"><h4>'+mark(b.heading)+'</h4><p>'+mark(b.text)+'</p></section>').join('');
-  const equations=lesson.equations.map((e,i)=>'<div class="deep-equation" id="reader-block-'+esc(lesson.sectionId+'-equation-'+i)+'"><strong>'+mark(e.label)+'</strong><p class="deep-expression">'+mark(e.expression)+'</p><p>'+mark(e.meaning)+'</p></div>').join('');
+  const equations=lesson.equations.map((e,i)=>'<div class="deep-equation" id="reader-block-'+esc(lesson.sectionId+'-equation-'+i)+'"><strong>'+mark(e.label)+'</strong><p class="deep-expression">'+renderMathText(e.expression,ui.readerQuery||'')+'</p><p>'+mark(e.meaning)+'</p></div>').join('');
   const example=lesson.workedExample;
   const steps=example.steps.map((line,i)=>'<li><strong>手順'+(i+1)+'</strong> '+mark(line)+'</li>').join('');
   const pitfalls=lesson.pitfalls.map(text=>'<li>'+mark(text)+'</li>').join('');
-  const sources=lesson.references.map(ref=>'<li><a class="text-link" target="_blank" rel="noopener noreferrer" href="'+esc(ref.url)+'">'+esc(ref.title)+'</a></li>').join('');
+  const sources=lesson.references.map(ref=>'<li><a class="text-link" target="_blank" rel="noopener noreferrer" href="'+esc(ref.url)+'" aria-label="'+esc(ref.title)+' ↗（別タブで開く）">'+esc(ref.title)+' ↗</a></li>').join('');
   return '<section class="reader-deep-lesson surface-card" id="reader-deep-lesson" lang="ja" aria-labelledby="deep-lesson-heading">'
     +'<p class="eyebrow">第'+esc(lesson.sectionId)+'節：独立作成の発展学習教材</p>'
     +'<h3 id="deep-lesson-heading"><span id="reader-block-'+esc(lesson.sectionId+'-deep-overview')+'"></span>'+mark(lesson.title)+'</h3>'
@@ -672,8 +716,8 @@ function renderBookBlock(block, language = 'ja') {
     const originalTitle = language === 'ja' && (block.titleJa || block.originalTitle) && block.titleJa !== original ? `<p class="reference-original">原題：<em>${escapeHTML(original)}</em></p>` : '';
     const note = language === 'en' ? block.noteEn : block.noteJa;
     const source = block.bookPage ? `${language === 'en' ? 'book p.' : '書籍 p.'}${block.bookPage} · PDF p.${block.pdfPage ?? (language === 'en' ? 'unrecorded' : '未記録')}` : '';
-    const url = /^https?:\/\//i.test(block.url || '') ? `<a href="${escapeHTML(block.url)}" rel="noreferrer noopener" target="_blank">${escapeHTML(block.url)}</a>` : '';
-    const doi = block.doi ? `<a href="https://doi.org/${escapeHTML(block.doi)}" rel="noreferrer noopener" target="_blank">doi:${escapeHTML(block.doi)}</a>` : '';
+    const url = /^https?:\/\//i.test(block.url || '') ? `<a href="${escapeHTML(block.url)}" rel="noreferrer noopener" target="_blank" aria-label="${escapeHTML(block.url)} ↗（別タブで開く）">${escapeHTML(block.url)} ↗</a>` : '';
+    const doi = block.doi ? `<a href="https://doi.org/${escapeHTML(block.doi)}" rel="noreferrer noopener" target="_blank" aria-label="doi:${escapeHTML(block.doi)} ↗（別タブで開く）">doi:${escapeHTML(block.doi)} ↗</a>` : '';
     return `<article class="book-reference"><h4>[${escapeHTML(block.number || '')}] ${escapeHTML(block.authors || '')}</h4><p class="reference-title"><em>${escapeHTML(title || '')}</em></p>${originalTitle}${block.publication ? `<p>${escapeHTML(block.publication)}</p>` : ''}${note ? `<p>${escapeHTML(note)}</p>` : ''}${url || doi ? `<p class="reference-links">${[url, doi].filter(Boolean).join(' · ')}</p>` : ''}${source ? `<small>${escapeHTML(source)}</small>` : ''}</article>`;
   }
   if (block.type === 'paragraph') return `<p class="book-paragraph">${text}</p>`;
@@ -800,8 +844,8 @@ function renderSearch() {
     <form id="search-form" class="search-form surface-card"><label for="search-query">検索語</label><div class="search-input-row"><div class="search-input-wrap"><span aria-hidden="true">⌕</span><input id="search-query" name="query" type="search" value="${escapeHTML(ui.search.query)}" placeholder="例：温度勾配、対流、熱抵抗" autocomplete="off"/><button type="button" class="clear-search" data-action="clear-search" aria-label="検索語を消去">×</button></div><button class="button primary" type="submit">検索</button></div>
       <div class="filter-row"><label>対象<select name="kind"><option value="all" ${ui.search.kind === 'all' ? 'selected' : ''}>すべて</option><option value="book" ${ui.search.kind === 'book' ? 'selected' : ''}>本文・見出し</option><option value="glossary" ${ui.search.kind === 'glossary' ? 'selected' : ''}>用語集</option><option value="guide" ${ui.search.kind === 'guide' ? 'selected' : ''}>学習ガイド</option><option value="original-note" ${ui.search.kind === 'original-note' ? 'selected' : ''}>独自の日本語節別ノート</option><option value="deep-lesson" ${ui.search.kind === 'deep-lesson' ? 'selected' : ''}>独立発展日本語講義</option><option value="question" ${ui.search.kind === 'question' ? 'selected' : ''}>問題・解説</option><option value="memo" ${ui.search.kind === 'memo' ? 'selected' : ''}>メモ・しおり</option></select></label><label>章<select name="chapter"><option value="all">すべての章</option>${book.chapters.map(ch => `<option value="${ch.id}" ${ui.search.chapter === ch.id ? 'selected' : ''}>第${ch.id.slice(2)}章 ${escapeHTML(ch.title)}</option>`).join('')}<option value="supplement" ${ui.search.chapter === 'supplement' ? 'selected' : ''}>補足説明</option></select></label><label>分野<select name="field"><option value="all">すべての分野</option>${[...new Set(buildSearchIndex().map(e=>e.field).filter(Boolean))].map(field=>`<option value="${escapeHTML(field)}" ${ui.search.field===field?'selected':''}>${escapeHTML(field)}</option>`).join('')}</select></label><span class="search-hint">日本語の一部だけでも検索できます</span></div>
     </form>
-    <section class="search-results"><div class="results-heading"><h2>${ui.search.query ? `「${escapeHTML(ui.search.query)}」の検索結果` : '検索結果'}</h2>${ui.search.query ? `<span>${results.length}件</span>` : ''}</div>
-      ${!ui.search.query ? `<div class="empty-state"><span class="empty-mark">⌕</span><h3>見つけたい言葉を入力してください</h3><p>原本の節見出し、独立学習ガイド、用語、問題、保存したメモを検索できます。</p></div>` : !results.length ? `<div class="empty-state"><span class="empty-mark">…</span><h3>一致する内容がありません</h3><p>別の言葉や短い表現で検索してみてください。未翻訳本文は検索対象に含まれません。</p></div>` : `<div class="result-list">${shownResults.map(entry => `<article class="result-card"><div class="result-meta">${statusPill(entry.kindLabel, entry.kind === 'book' ? 'blue' : entry.kind === 'memo' ? 'amber' : 'green')}<span>${escapeHTML(entry.chapterTitle || '')}</span></div><h3><button type="button" class="result-link" data-search-target='${escapeHTML(JSON.stringify(entry.target))}'>${highlight(entry.title, ui.search.query)}</button></h3><p>${highlight(searchSnippet(entry.text, ui.search.query), ui.search.query)}</p><small>${escapeHTML(entry.source)}</small></article>`).join('')}</div>${results.length>shownResults.length?`<div class="search-more"><p>全${results.length}件中 ${shownResults.length}件を表示しています。</p><button type="button" class="button secondary" data-action="search-more">もっと見る（次の100件）</button></div>`:''}`}
+    <section class="search-results"><div class="results-heading"><h2>${ui.search.query ? `「${escapeHTML(ui.search.query)}」の検索結果` : '検索結果'}</h2>${ui.search.query ? `<span role="status" aria-live="polite">${results.length}件</span>` : ''}</div>
+      ${!ui.search.query ? `<div class="empty-state"><span class="empty-mark">⌕</span><h3>見つけたい言葉を入力してください</h3><p>原本の節見出し、独立学習ガイド、用語、問題、保存したメモを検索できます。</p></div>` : !results.length ? `<div class="empty-state"><span class="empty-mark">…</span><h3>一致する内容がありません</h3><p>別の言葉や短い表現で検索してみてください。未翻訳本文は検索対象に含まれません。</p></div>` : `<div class="result-list">${shownResults.map(entry => `<article class="result-card"><div class="result-meta">${statusPill(entry.kindLabel, entry.kind === 'book' ? 'blue' : entry.kind === 'memo' ? 'amber' : 'green')}<span>${escapeHTML(entry.chapterTitle || '')}</span></div><h3><button type="button" class="result-link" data-search-target='${escapeHTML(JSON.stringify(entry.target))}'>${highlight(entry.title, ui.search.query)}</button></h3><p>${highlight(searchSnippet(entry.text, ui.search.query), ui.search.query)}</p><small>${escapeHTML(entry.source)}</small></article>`).join('')}</div>${results.length>shownResults.length?`<div class="search-more"><p aria-live="polite">全${results.length}件中 ${shownResults.length}件を表示しています。</p><button type="button" class="button secondary" data-action="search-more">もっと見る（次の100件）</button></div>`:''}`}
     </section>`;
 }
 
@@ -980,7 +1024,26 @@ const SIM_META = {
 };
 const SIM_ICONS = {transient:'◷',conduction:'▥',convection:'↝',radiation:'☼',resistance:'▤',fin:'⊥',exchanger:'⇄',slab:'▭',enclosure:'◎',cylinder:'○',halfspace:'◒',flatplate:'⇉',pipe:'⇒',crossflow:'⊕',natural:'↑',laminarpipe:'→',condensation:'≋',diffusion:'⇌',nucleate:'∴',chf:'△'};
 function renderSimTabs(mode) {
-  return `<div class="sim-tabs" role="tablist" aria-label="熱移動の種類">${Object.entries(SIM_META).map(([key,item])=>`<button type="button" role="tab" aria-selected="${mode===key}" class="sim-tab ${mode===key?'selected':''}" data-sim-mode="${key}"><span aria-hidden="true">${SIM_ICONS[key]||'●'}</span>${item.title}</button>`).join('')}</div>`;
+  return `<div class="sim-tabs" role="tablist" aria-label="熱移動の種類">${Object.entries(SIM_META).map(([key,item])=>`<button type="button" role="tab" id="sim-tab-${key}" aria-controls="sim-panel" aria-selected="${mode===key}" tabindex="${mode===key?0:-1}" class="sim-tab ${mode===key?'selected':''}" data-sim-mode="${key}"><span aria-hidden="true">${SIM_ICONS[key]||'●'}</span>${item.title}</button>`).join('')}</div>`;
+}
+// WAI-ARIA tabs pattern: arrow keys move between simulator tabs (with
+// automatic activation, matching the click behaviour), Home/End jump.
+function onSimTabKeyDown(event) {
+  const tab = event.target.closest?.('[role="tab"][data-sim-mode]');
+  if (!tab) return;
+  const tabs = [...tab.closest('[role="tablist"]').querySelectorAll('[role="tab"][data-sim-mode]')];
+  const index = tabs.indexOf(tab);
+  if (index < 0) return;
+  let next = null;
+  if (event.key === 'ArrowRight') next = tabs[(index + 1) % tabs.length];
+  else if (event.key === 'ArrowLeft') next = tabs[(index - 1 + tabs.length) % tabs.length];
+  else if (event.key === 'Home') next = tabs[0];
+  else if (event.key === 'End') next = tabs[tabs.length - 1];
+  else return;
+  event.preventDefault();
+  ui.simMode = next.dataset.simMode;
+  render();
+  root.querySelector(`[role="tab"][data-sim-mode="${ui.simMode}"]`)?.focus();
 }
 const simNum = value => value===null||value===undefined||!Number.isFinite(Number(value)) ? '—' : Number(value).toLocaleString('ja-JP',{maximumSignificantDigits:7});
 // Registry for the simulator models added after the original five. Each model
@@ -1053,7 +1116,7 @@ function renderExtendedSimulator(mode) {
   const savedView = compare ? ext.headline(compare) : null;
   return `${pageHeading('簡易シミュレーター', '条件を変えて、熱の動きを見る。', '入力値を変えると計算結果とグラフが更新されます。設計値を決めるためのものではなく、基本式の動きを試す学習用モデルです。')}
     ${renderSimTabs(mode)}
-    <div class="sim-layout"><section class="surface-card sim-input-card"><div class="sim-intro"><p class="eyebrow">${meta.title}</p><h2>${linkedQuizText(meta.description,4)}</h2>${ext.renderDiagram(result)}<a class="text-link" href="#guide/sim-${mode}">このモデルの理論・単位・手計算例 →</a></div><form id="sim-form" class="sim-form"><div class="sim-fields">${ext.renderFields(values)}</div></form><div class="formula-card"><span>使用する式</span><strong>${meta.formula}</strong><p>正の値は、各モデルで定義した基準方向への移動を表します。負の値なら向きが逆です。</p></div><div class="assumption-card"><strong>前提と適用範囲</strong><p>${linkedQuizText(meta.note,5)}</p></div></section>
+    <div class="sim-layout" role="tabpanel" id="sim-panel" aria-labelledby="sim-tab-${mode}"><section class="surface-card sim-input-card"><div class="sim-intro"><p class="eyebrow">${meta.title}</p><h2>${linkedQuizText(meta.description,4)}</h2>${ext.renderDiagram(result)}<a class="text-link" href="#guide/sim-${mode}">このモデルの理論・単位・手計算例 →</a></div><form id="sim-form" class="sim-form"><div class="sim-fields">${ext.renderFields(values)}</div></form><div class="formula-card"><span>使用する式</span><strong>${meta.formula}</strong><p>正の値は、各モデルで定義した基準方向への移動を表します。負の値なら向きが逆です。</p></div><div class="assumption-card"><strong>前提と適用範囲</strong><p>${linkedQuizText(meta.note,5)}</p></div></section>
       <section class="surface-card sim-output-card"><div class="card-heading"><div><p class="eyebrow">現在の条件</p><h2>計算結果</h2></div>${statusPill('追加モデル', 'blue')}</div>${resultView}${!result.error ? ext.renderSteps(result) : ''}
         ${!result.error ? ext.graphs.map(graph => { const svg = graph.render(result, compare); return svg ? `<div class="chart-heading"><h3>${graph.title}</h3><span>${graph.note}</span></div>${svg}${compare ? '<div class="chart-legend"><span><i class="legend-current"></i>現在の条件</span><span><i class="legend-baseline"></i>保存した比較条件</span></div>' : ''}` : ''; }).join('') : ''}
         <div class="comparison-controls"><button type="button" class="button secondary" data-action="save-comparison">この条件を比較用に保存</button>${baseline ? '<button type="button" class="text-button" data-action="clear-comparison">比較条件を削除</button>' : ''}${savedView ? `<small>保存条件の結果：${savedView.label} ${savedView.value} ${savedView.unit}</small>` : ''}</div>
@@ -1133,7 +1196,7 @@ function renderTransientSimulator(){
        <div class="assumption-card" role="status"><strong>適用性：ビオ数 Bi = ${x.biot.toPrecision(4)}</strong><p>${escapeHTML(x.applicability)}</p></div>`;
   return `${pageHeading('簡易シミュレーター','時間とともに変わる物体温度','物体・周囲の条件を変えて、非定常の冷却と加熱を比較します。')}
     ${renderSimTabs(mode)}
-    <div class="sim-layout"><section class="surface-card sim-input-card">
+    <div class="sim-layout" role="tabpanel" id="sim-panel" aria-labelledby="sim-tab-${mode}"><section class="surface-card sim-input-card">
       <div class="sim-intro"><p class="eyebrow">${meta.title}</p><h2>${linkedQuizText(meta.description,4)}</h2>${renderSimulationDiagram(mode,v,x)}
       <a class="text-link" href="#guide/sim-transient">物理的背景・単位・手計算例 →</a></div>
       <form id="sim-form" class="sim-form"><div class="sim-fields">${renderTransientFields(v)}</div></form>
@@ -1167,7 +1230,7 @@ function renderSimulator() {
   const related=getSection(['conduction','resistance'].includes(mode)?'2.2':mode==='convection'?'6.1':'10.1');
   return `${pageHeading('簡易シミュレーター', '条件を変えて、熱の動きを見る。', '入力値を変えると計算結果とグラフが更新されます。設計値を決めるためのものではなく、基本式の動きを試す学習用モデルです。')}
     ${renderSimTabs(mode)}
-    <div class="sim-layout"><section class="surface-card sim-input-card"><div class="sim-intro"><p class="eyebrow">${meta.title}</p><h2>${linkedQuizText(meta.description,4)}</h2>${renderSimulationDiagram(mode,values,result)}<a class="text-link" href="#guide/sim-${mode}">このモデルの理論・単位・手計算例 →</a></div><form id="sim-form" class="sim-form"><div class="sim-fields">${renderSimInputs(mode, values)}</div></form><div class="formula-card"><span>使用する式</span><strong>${meta.formula}</strong><p>正の値は、入力欄の「高温側」または「表面」から反対側へ移る向きを表します。負の値なら向きが逆です。</p></div><div class="assumption-card"><strong>前提と適用範囲</strong><p>${linkedQuizText(meta.note,5)}</p></div></section>
+    <div class="sim-layout" role="tabpanel" id="sim-panel" aria-labelledby="sim-tab-${mode}"><section class="surface-card sim-input-card"><div class="sim-intro"><p class="eyebrow">${meta.title}</p><h2>${linkedQuizText(meta.description,4)}</h2>${renderSimulationDiagram(mode,values,result)}<a class="text-link" href="#guide/sim-${mode}">このモデルの理論・単位・手計算例 →</a></div><form id="sim-form" class="sim-form"><div class="sim-fields">${renderSimInputs(mode, values)}</div></form><div class="formula-card"><span>使用する式</span><strong>${meta.formula}</strong><p>正の値は、入力欄の「高温側」または「表面」から反対側へ移る向きを表します。負の値なら向きが逆です。</p></div><div class="assumption-card"><strong>前提と適用範囲</strong><p>${linkedQuizText(meta.note,5)}</p></div></section>
       <section class="surface-card sim-output-card"><div class="card-heading"><div><p class="eyebrow">現在の条件</p><h2>熱移動率</h2></div>${statusPill(mode === 'radiation' ? '℃からKへ換算' : '定常モデル', 'blue')}</div>${resultView}${!result.error?renderSimulationSteps(mode,result):''}
         ${!result.error ? `<div class="chart-heading"><h3>温度差を変えたとき</h3><span>現在・保存条件の温度差を含む範囲${mode==='radiation'?'。各曲線は表面温度が0 Kより高い範囲のみ表示':''}</span></div>${simGraph(mode, result, baseline)}<div class="chart-legend"><span><i class="legend-current"></i>現在の条件</span>${baseline ? '<span><i class="legend-baseline"></i>保存した比較条件</span>' : ''}</div>` : ''}
         <div class="comparison-controls"><button type="button" class="button secondary" data-action="save-comparison">この条件を比較用に保存</button>${baseline ? '<button type="button" class="text-button" data-action="clear-comparison">比較条件を削除</button>' : ''}${comparison && !comparison.error ? `<small>保存条件の結果：${comparison.watts.toLocaleString('ja-JP', { maximumFractionDigits: 3 })} W</small>` : ''}</div>
@@ -1194,14 +1257,20 @@ function openTermSheet(id,trigger){
   root.append(overlay);
   ui.termId=id;
   ui.termReturnFocus=returnFocus;
+  // Keep background content out of the tab order and the accessibility tree
+  // while the modal sheet is open; the Tab trap alone leaves it reachable
+  // for switch-style navigation and some screen readers (audit A2-UXS-11).
+  root.querySelector('.app-shell')?.setAttribute('inert','');
   overlay.querySelector('[data-close-term]')?.focus();
 }
 function closeTermSheet(){
   if(!ui.termId)return;
   const returnTo=ui.termReturnFocus;
   document.getElementById('term-overlay')?.remove();
+  root.querySelector('.app-shell')?.removeAttribute('inert');
   ui.termId=null;ui.termReturnFocus=null;
   if(returnTo?.isConnected)returnTo.focus();
+  else document.querySelector('#main-content')?.focus();
 }
 function renderQuiz() {
   if (ui.quizResult) return renderQuizResult();
@@ -1427,6 +1496,7 @@ function onClick(event) {
   const simMode = event.target.closest('[data-sim-mode]'); if (simMode) { ui.simMode=simMode.dataset.simMode; render(); return; }
   const actionButton = event.target.closest('[data-action]'); if (!actionButton) return;
   const action = actionButton.dataset.action;
+  if(action==='skip-content'){event.preventDefault();const main=document.querySelector('#main-content');if(main){main.focus({preventScroll:true});main.scrollIntoView();}return;}
   if(action==='prepare-bookmark'){ui.bookmarkPosition=readerPosition();document.querySelector('#bookmark-note')?.focus();showStatus(sectionIsTranslated(getSection(ui.readerSection))?'この位置をしおりにします。メモを入力して「しおりを付ける」を押してください。':'この節の開始ページをしおりにします。必要ならメモを入力してください。');return;}
   if (action === 'toggle-theme') { const effective = state.settings.theme === 'system' ? (systemDark?.matches?'dark':'light') : state.settings.theme; state.settings.theme=effective==='dark'?'light':'dark'; saveState(); render(); }
   else if (action === 'reader-font-up') { state.settings.fontScale=Math.min(1.4,Number((state.settings.fontScale+0.05).toFixed(2))); saveState(); render(); }
