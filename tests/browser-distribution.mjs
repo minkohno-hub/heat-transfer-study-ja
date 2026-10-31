@@ -691,7 +691,7 @@ try {
   // A vocabulary tap must leave the answer draft and persisted learning state intact.
   const pending=await page.evaluate(async()=>
     (await (await fetch('./data/questions.json')).json()).filter(q=>q.reportHistory?.some(r=>['internal_independent_check','authored_with_internal_check','internal_audit_followup'].includes(r.type))));
-  assert.equal(pending.length,423);
+  assert.equal(pending.length,438);
   const replaceSuspended=dialog=>dialog.accept();
   page.on('dialog',replaceSuspended);
   for(const q of pending){
