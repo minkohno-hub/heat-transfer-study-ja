@@ -43,8 +43,8 @@ try {
     const workerSource=await workerResponse.text();
     assert.match(workerSource,/const CACHE_NAME='heat-study-ja-app-[0-9a-f]{16}';/,
       'newly published text and questions must give existing offline users a new worker version');
-    assert.match(workerSource,/const PDF_CACHE_NAME='heat-study-ja-pdf-v1';/,
-      'PDF explicitly cached by learners must survive ordinary app revisions');
+    assert.match(workerSource,/const PDF_CACHE_NAME='heat-study-ja-pdf-[0-9a-f]{16}';/,
+      'PDF cache name must derive from the shipped PDF hash: unchanged PDFs keep the learner-saved cache across app revisions, replaced PDFs get a fresh cache');
   }
   assert.match(await page.locator('.app-footer').innerText(),/76節に独自日本語ノート・発展教材・図解を収録/);
   await nav('reader');
@@ -549,7 +549,7 @@ try {
   await page.locator('[data-action="cache-pdf"]').click();
   assert.equal(await pdfSaved,true);
   assert.match(await page.locator('#pdf-cache-status').innerText(),/保存済み/);
-  assert.ok(await page.evaluate(async()=>Boolean(await(await caches.open('heat-study-ja-pdf-v1')).match('./book/AHTTv600.pdf'))));
+  assert.ok(await page.evaluate(async()=>{const name=(await caches.keys()).find(k=>k.startsWith('heat-study-ja-pdf-'));return Boolean(name&&await (await caches.open(name)).match('./book/AHTTv600.pdf'));}));
   if(engine==='webkit'){
     const cachedRange=await page.evaluate(async()=>{const response=await fetch('./book/AHTTv600.pdf',{headers:{Range:'bytes=0-3'}});return {status:response.status,signature:await response.text()};});
     assert.deepEqual(cachedRange,{status:206,signature:'%PDF'});
@@ -582,14 +582,14 @@ try {
   await nav('guide');
   await page.locator('#guide-sim-radiation').waitFor({state:'visible'});
   assert.match(await page.locator('#guide-sim-radiation').innerText(),/熱放射/);
-  await page.evaluate(async()=>{const cache=await caches.open('heat-study-ja-pdf-v1');await cache.delete('./book/AHTTv600.pdf');});
+  await page.evaluate(async()=>{const name=(await caches.keys()).find(k=>k.startsWith('heat-study-ja-pdf-'));if(name)await (await caches.open(name)).delete('./book/AHTTv600.pdf');});
   await page.goto(new URL('./?offline-check=2#reader',base).href,{waitUntil:'domcontentloaded'});
   await page.locator('.app-shell').waitFor();
   await nav('reader');
   await page.waitForFunction(()=>document.querySelector('#pdf-cache-status')?.textContent.includes('未保存'));
   // Explicit Cache Storage was deleted. Chromium may still serve the PDF
   // from its separate HTTP cache offline; a 503 is not universally guaranteed.
-  assert.equal(await page.evaluate(async()=>Boolean(await (await caches.open('heat-study-ja-pdf-v1')).match('./book/AHTTv600.pdf'))),false);
+  assert.equal(await page.evaluate(async()=>{const name=(await caches.keys()).find(k=>k.startsWith('heat-study-ja-pdf-'));return Boolean(name&&await (await caches.open(name)).match('./book/AHTTv600.pdf'));}),false);
   const missingPdf=await page.evaluate(async()=>{
     try{
       const response=await fetch('./book/AHTTv600.pdf',{headers:{Range:'bytes=0-3'},cache:'no-store'});

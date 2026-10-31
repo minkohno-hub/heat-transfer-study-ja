@@ -78,6 +78,27 @@ const attemptOK = a => record(a) && text(a.questionId) && a.questionId.length>0 
   && optional(a,'id',text) && optional(a,'selected',v=>Number.isInteger(v)&&v>=0&&v<4)
   && optional(a,'confidence',v=>['high','medium','low','unsure'].includes(v)) && optional(a,'mode',text)
   && optional(a,'questionRevision',v=>text(v)&&/^[A-Za-z0-9][A-Za-z0-9._-]{0,47}$/.test(v));
+// Two attempt rows describe the same answer when every answer-bearing field
+// agrees. Derived display text (selectedText/correctText) is excluded: a
+// backup written by another build may phrase it differently for one answer.
+function attemptKey(a) {
+  return JSON.stringify([a.questionId,a.correct,instant(a.at),a.selected??null,a.confidence??null,a.mode??null,a.questionRevision??'initial']);
+}
+function dedupeAttempts(rows) {
+  const byId=new Map(),byKey=new Map(),out=[];
+  for (const a of rows) {
+    const key=attemptKey(a);
+    const existing=(a.id?byId.get(a.id):undefined)||byKey.get(key);
+    if (existing) {
+      // Keep a single row per answer; when only one copy carries an id, the
+      // id-bearing copy wins so references to it stay meaningful.
+      if (!existing.id&&a.id) { out[out.indexOf(existing)]=a; byId.set(a.id,a); byKey.set(key,a); }
+      continue;
+    }
+    out.push(a); if (a.id) byId.set(a.id,a); byKey.set(key,a);
+  }
+  return out;
+}
 export function validateLearningData(data, {stored=false}={}) {
   const invalid = message => `${message}現在の記録は変更していません。`;
   if (!record(data) || data.schemaVersion!==1 || (!stored && data.format!==DATA_FORMAT)) return invalid('対応する学習データ形式ではありません。');
@@ -104,6 +125,34 @@ export function validateLearningData(data, {stored=false}={}) {
   if (!optional(data,'simComparisons',v=>record(v)&&Object.entries(v).every(([mode,values])=>record(values)&&!calculateSimulationModel(mode,values).error))) return invalid('比較用シミュレーター条件が正しくありません。');
   if (!optional(data,'activities',v=>Array.isArray(v)&&v.length<=100000&&v.every(a=>record(a)&&text(a.id)&&validDay(a.date)&&['reading','practice','review','simulation','glossary'].includes(a.kind)&&finite(a.seconds)&&a.seconds>=0&&a.seconds<=86400&&time(a.updatedAt)&&['sectionId','sessionId','field'].every(k=>optional(a,k,text))))) return invalid('学習時間の記録の形式が正しくありません。');
   if (!optional(data,'quizDraft',v=>v===null||quizDraftOK(v))) return invalid('中断した演習の形式が正しくありません。');
+  if (!stored) {
+    // Restore/import only: reject records the app itself would never write
+    // (duplicate answers, unbounded strings, unbounded collections) and name
+    // the cause. Stored data skips these checks so a learner can never be
+    // locked out of their own record; loading heals duplicates instead.
+    const seenAttempts=new Set();
+    for (const a of data.attempts) { const k=attemptKey(a); if (seenAttempts.has(k)) return invalid('回答履歴に重複した記録が含まれています。'); seenAttempts.add(k); }
+    const tooLong=v=>typeof v==='string'&&v.length>10000;
+    if ((Array.isArray(data.notes)&&data.notes.some(n=>tooLong(n.text)||tooLong(n.title)))
+      || data.bookmarks.some(b=>tooLong(b.note))
+      || Object.values(data.mistakeNotes).some(n=>['reason','memory','nextTime'].some(k=>tooLong(n[k])))
+      || tooLong(data.plan.goal)
+      || (record(data.questionReports)&&Object.values(data.questionReports).some(list=>list.some(r=>tooLong(r.category)||tooLong(r.message)))))
+      return invalid('メモやノートの文字数が長すぎます（1項目あたり10,000文字まで）。');
+    const entryCount=v=>record(v)?Object.keys(v).length:0;
+    if ((Array.isArray(data.notes)&&data.notes.length>20000)
+      || entryCount(data.mistakeNotes)>20000 || entryCount(data.reviews)>20000
+      || entryCount(data.completedReviews)>20000 || entryCount(data.readerPositions)>20000
+      || entryCount(data.readSections)>20000)
+      return invalid('メモ・復習記録などの件数が上限を超えています。');
+    if (record(data.questionReports)) {
+      const lists=Object.values(data.questionReports);
+      if (lists.some(list=>list.length>1000)||lists.reduce((n,list)=>n+list.length,0)>20000)
+        return invalid('問題報告の件数が上限を超えています。');
+    }
+    let size=0; try { size=JSON.stringify(data).length; } catch { return invalid('データの形式が正しくありません。'); }
+    if (size>16000000) return invalid('データ全体の容量が上限を超えています。');
+  }
   return '';
 }
 export function normalizeLearningData(data) {
@@ -111,6 +160,8 @@ export function normalizeLearningData(data) {
   for (const k of Object.keys(out)) if (data[k]!==undefined) out[k]=structuredClone(data[k]);
   out.settings={...createEmptyState().settings,...out.settings}; out.plan={...createEmptyState().plan,...out.plan};
   out.attempts.sort((a,b)=>instant(a.at)-instant(b.at));
+  out.attempts=dedupeAttempts(out.attempts);
+  out.questionBookmarks=[...new Set(out.questionBookmarks)];
   out.sessions.sort((a,b)=>instant(a.finishedAt??a.startedAt)-instant(b.finishedAt??b.startedAt));
   return out;
 }
@@ -127,6 +178,9 @@ export function mergeLearningData(current, incoming) {
   const out={...a,settings:{...a.settings,...incoming.settings},plan:{...a.plan,...incoming.plan}};
   for(const k of ['attempts','sessions','bookmarks','notes']) out[k]=mergeRows(a[k],b[k]);
   out.attempts.sort((x,y)=>instant(x.at)-instant(y.at));
+  // mergeRows keys rows by id when one exists, so an id-bearing row and an
+  // id-less copy of the same answer survive it as two rows; collapse them.
+  out.attempts=dedupeAttempts(out.attempts);
   out.sessions.sort((x,y)=>instant(x.finishedAt??x.startedAt)-instant(y.finishedAt??y.startedAt));
   out.questionBookmarks=[...new Set([...a.questionBookmarks,...b.questionBookmarks])];
   for(const k of ['mistakeNotes','readerPositions','reviews']) out[k]=mergeMap(a[k],b[k]);
@@ -225,12 +279,14 @@ export function searchSnippet(value, query, limit=240) {
   return `${start?'…':''}${s.slice(start,end)}${end<s.length?'…':''}`;
 }
 export function searchEntries(entries,{query='',kind='all',chapter='all',field='all'}={}) {
-  const q=normalizedText(query); if(!q.trim())return [];
-  return entries.filter(e=>(kind==='all'||e.kind===kind)&&(chapter==='all'||chapterKey(e.chapter)===chapterKey(chapter))&&(field==='all'||e.field===field)&&normalizedText(`${e.title} ${e.text}`).includes(q));
+  const terms=normalizedText(query).split(/\s+/).filter(Boolean); if(!terms.length)return [];
+  return entries.filter(e=>(kind==='all'||e.kind===kind)&&(chapter==='all'||chapterKey(e.chapter)===chapterKey(chapter))&&(field==='all'||e.field===field)&&terms.every(term=>normalizedText(`${e.title} ${e.text}`).includes(term)));
 }
 export function nextReviewDays(attempts,answer) {
   if(!answer.correct || ['low','unsure'].includes(answer.confidence))return 1;
-  let streak=0; for(const a of [...attempts].reverse()) {if(!a.correct||['low','unsure'].includes(a.confidence))break;streak++;}
+  // The streak is a property of answer times, not of storage order: restored
+  // or merged histories may list attempts out of chronological order.
+  let streak=0; for(const a of [...attempts].sort((x,y)=>instant(x.at)-instant(y.at)).reverse()) {if(!a.correct||['low','unsure'].includes(a.confidence))break;streak++;}
   return (answer.confidence==='high'?[7,14,30,60]:[4,7,14,30])[Math.min(streak,3)];
 }
 export function planMinutes(total) {

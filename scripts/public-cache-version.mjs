@@ -19,10 +19,26 @@ export function publicCacheName(assets,pdfSha256) {
   return 'heat-study-ja-app-'+hash.digest('hex').slice(0,16);
 }
 
-export function stampServiceWorker(source,cacheName) {
+export function pdfCacheName(pdfSha256) {
+  if(typeof pdfSha256!=='string'||!/^[0-9a-f]{64}$/.test(pdfSha256))
+    throw new Error('PDFキャッシュの版計算に必要なPDFハッシュが不正です。');
+  return 'heat-study-ja-pdf-'+pdfSha256.slice(0,16);
+}
+
+export function stampServiceWorker(source,cacheName,pdfName) {
   const marker=/^const CACHE_NAME='heat-study-ja-(?:v\d+|app-[0-9a-f]{16})';$/gm;
   const matches=[...source.matchAll(marker)];
   if(matches.length!==1||!/^heat-study-ja-app-[0-9a-f]{16}$/.test(cacheName))
     throw new Error('サービスワーカーのキャッシュ版を一意に設定できません。');
-  return source.replace(marker,`const CACHE_NAME='${cacheName}';`);
+  const stamped=source.replace(marker,`const CACHE_NAME='${cacheName}';`);
+  // The PDF cache is versioned separately: it must survive ordinary app
+  // revisions (learners explicitly saved a 32 MB file) yet be replaced when
+  // the shipped PDF itself changes. Callers that pass no PDF name are not
+  // changing the PDF, so the existing cache name is left untouched.
+  if(pdfName===undefined)return stamped;
+  const pdfMarker=/^const PDF_CACHE_NAME='heat-study-ja-pdf-(?:v\d+|[0-9a-f]{16})';$/gm;
+  const pdfMatches=[...stamped.matchAll(pdfMarker)];
+  if(pdfMatches.length!==1||!/^heat-study-ja-pdf-[0-9a-f]{16}$/.test(pdfName))
+    throw new Error('サービスワーカーのPDFキャッシュ版を一意に設定できません。');
+  return stamped.replace(pdfMarker,`const PDF_CACHE_NAME='${pdfName}';`);
 }

@@ -3,7 +3,7 @@ import {resolve,dirname,join} from 'node:path';
 import {fileURLToPath} from 'node:url';
 import {createHash} from 'node:crypto';
 import {checkPublicContent} from '../public-content-contract.mjs';
-import {publicCacheName,stampServiceWorker} from './public-cache-version.mjs';
+import {publicCacheName,pdfCacheName,stampServiceWorker} from './public-cache-version.mjs';
 import {GUIDE_SECTIONS} from '../guide.mjs';
 import {LESSON_DIAGRAM_PATHS} from '../lesson-diagrams.mjs';
 
@@ -54,7 +54,7 @@ const cacheAssets=await Promise.all(publicAssets.map(async path=>({
 })));
 const workerPath=join(output,'sw.js');
 const cacheName=publicCacheName(cacheAssets,pdfHash);
-await writeFile(workerPath,stampServiceWorker(await readFile(workerPath,'utf8'),cacheName));
+await writeFile(workerPath,stampServiceWorker(await readFile(workerPath,'utf8'),cacheName,pdfCacheName(pdfHash)));
 // A build that silently omits an imported module will crash for every user.
 // Fail before publishing instead of relying on browsers to discover a 404.
 for(const entry of files.filter(path=>/\.m?js$/.test(path))){
@@ -65,6 +65,30 @@ for(const entry of files.filter(path=>/\.m?js$/.test(path))){
     if(!target.startsWith(output+'/'))throw new Error('公開JSのimportが配信ディレクトリ外を参照しています: '+entry+' -> '+imported);
     try{await stat(target);}catch{throw new Error('公開JSの依存モジュールが配信ファイルから欠けています: '+entry+' -> '+imported);}
   }
+}
+// The precache list is the offline-start guarantee: the transitive import
+// closure of the entry module must be listed in APP_SHELL, and every listed
+// file must actually ship. A missing entry only surfaces on a learner's
+// first offline launch, so verify it here instead.
+const workerSource=await readFile(workerPath,'utf8');
+const shellDefinition=workerSource.match(/const APP_SHELL=\[([\s\S]*?)\];/);
+if(!shellDefinition)throw new Error('サービスワーカーのAPP_SHELL定義を確認できません。');
+const appShell=new Set([...shellDefinition[1].matchAll(/'([^']+)'/g)].map(m=>m[1]));
+const closure=new Set(),queue=['app.js'];
+while(queue.length){
+  const current=queue.pop();
+  if(closure.has(current))continue;
+  closure.add(current);
+  const code=await readFile(join(output,current),'utf8');
+  for(const match of code.matchAll(/^\s*import\s+(?:[^;\n]*?\s+from\s+)?['"](\.[^'"]+)['"]/gm)){
+    const relative=match[1].replace(/^\.\//,'');
+    if(!closure.has(relative))queue.push(relative);
+  }
+}
+for(const path of closure)if(!appShell.has('./'+path))throw new Error('サービスワーカーのAPP_SHELLに起動時依存モジュールが欠けています: '+path);
+for(const entry of appShell){
+  if(entry==='./')continue;
+  try{await stat(join(output,entry));}catch{throw new Error('APP_SHELLの記載ファイルが配信物にありません: '+entry);}
 }
 await writeFile(marker,'公開対象だけを列挙して作成した配信物です。\n');
 console.log('公開配信物：許諾済みの原本PDF、アプリ・独自ガイド・問題・用語・書籍の目次情報。翻訳・原図・抽出本文は含めていません。');

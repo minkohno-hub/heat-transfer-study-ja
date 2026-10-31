@@ -1,4 +1,4 @@
-import { createEmptyState, validateLearningData, normalizeLearningData, mergeLearningData, calculateHeatTransfer, calculateLumpedCooling, calculateSimulationModel, chapterKey, searchEntries, searchSnippet, searchRanges, localDay, validDay, shiftMonth, nextReviewDays, planMinutes, validateQuestion, safeLocalFigurePath, speechChunks, questionFingerprint, quizChoiceOrder, quizResumeIssue, recordStudyActivity, fieldProgress, studyDuration, isCurrentQuestionAnswer } from './study-core.mjs';
+import { createEmptyState, validateLearningData, normalizeLearningData, mergeLearningData, calculateHeatTransfer, calculateLumpedCooling, calculateSimulationModel, chapterKey, normalizedText, searchEntries, searchSnippet, searchRanges, localDay, validDay, shiftMonth, nextReviewDays, planMinutes, validateQuestion, safeLocalFigurePath, speechChunks, questionFingerprint, quizChoiceOrder, quizResumeIssue, recordStudyActivity, fieldProgress, studyDuration, isCurrentQuestionAnswer } from './study-core.mjs';
 import { FIN_DEFAULTS, finFieldNames, renderFinFields, renderFinSteps, renderFinDiagram, finTemperatureGraph } from './fin-efficiency.mjs';
 import { EXCHANGER_DEFAULTS, exchangerFieldNames, renderExchangerFields, renderExchangerSteps, renderExchangerDiagram, exchangerEffectivenessGraph } from './heat-exchanger.mjs';
 import { SLAB_DEFAULTS, slabFieldNames, renderSlabFields, renderSlabSteps, renderSlabDiagram, slabProfileGraph, slabHistoryGraph } from './transient-slab.mjs';
@@ -60,6 +60,7 @@ let ui = {
   termReturnFocus: null,
   reportMessage: '',
   searchResults: null,
+  searchLimit: 100,
   calendarDate: todayISO(),
   importDraft: null,
   simMode: 'conduction',
@@ -484,18 +485,34 @@ function reviewCandidates() {
   for (const q of questionBank) {
     const { attempts, accuracy } = getAttemptStats(q.id);
     const hasOutdatedAnswer=state.attempts.some(a=>a.questionId===q.id&&!isCurrentQuestionAnswer(q,a));
-    const wrong = attempts.filter(a => !a.correct);
-    const recent = attempts.at(-1);
+    // "Latest" is defined by answer time everywhere in the app (field map,
+    // field progress); storage order must not change the outcome.
+    const ordered=[...attempts].sort((a,b)=>new Date(a.at).getTime()-new Date(b.at).getTime());
+    const recent = ordered.at(-1);
     const review = state.reviews[q.id];
     const recentAt=recent?new Date(recent.at).getTime():null;
-    const due = !recent && hasOutdatedAnswer ? todayISO() : review?.dueDate || (recent ? todayISO(new Date(recentAt + (recent.correct ? 3 : 1) * 86400000)) : '9999-12-31');
+    // The fallback due date follows the same interval table as a fresh
+    // answer (nextReviewDays over the attempts before the latest one).
+    const due = !recent && hasOutdatedAnswer ? todayISO() : review?.dueDate || (recent ? addDaysISO(localDay(new Date(recentAt)), nextReviewDays(ordered.slice(0,-1), recent)) : '9999-12-31');
     const reasons = [];
     if(!recent&&hasOutdatedAnswer)reasons.push('問題改訂後の再回答が必要');
     const reviewedAfterLastAttempt = Boolean(review?.lastReviewedAt && recent && new Date(review.lastReviewedAt).getTime() >= recentAt);
-    if (!reviewedAfterLastAttempt && recent && !recent.correct) reasons.push('直近の誤答');
-    if (!reviewedAfterLastAttempt && wrong.length >= 2) reasons.push(`誤答${wrong.length}回`);
-    if (!reviewedAfterLastAttempt && attempts.length >= 3 && accuracy !== null && accuracy < 0.6) reasons.push(`正答率${Math.round(accuracy * 100)}%（3回以上）`);
-    if (!reviewedAfterLastAttempt && recent && (recent.confidence === 'low' || recent.confidence === 'unsure')) reasons.push(recent.correct ? '正解したが自信が低い' : '自信が低い・迷った');
+    if (!reviewedAfterLastAttempt && recent) {
+      if (!recent.correct) reasons.push('直近の誤答');
+      // Mistake-based reasons describe the current state since the last
+      // completed review, not the whole history: two or more solid correct
+      // answers in a row mean the weakness is recovered, and answers given
+      // before a completed review must not revive old reasons.
+      const windowStart=review?.lastReviewedAt?new Date(review.lastReviewedAt).getTime():-Infinity;
+      const window=ordered.filter(a=>new Date(a.at).getTime()>windowStart);
+      let streak=0; for(const a of [...window].reverse()) {if(!a.correct||a.confidence==='low'||a.confidence==='unsure')break;streak++;}
+      if (streak<2) {
+        const wrongCount=window.filter(a=>!a.correct).length;
+        if (wrongCount>=2) reasons.push(`誤答${wrongCount}回`);
+        if (window.length>=3) { const windowAccuracy=window.filter(a=>a.correct).length/window.length; if (windowAccuracy<0.6) reasons.push(`正答率${Math.round(windowAccuracy*100)}%（3回以上）`); }
+      }
+      if (recent.confidence === 'low' || recent.confidence === 'unsure') reasons.push(recent.correct ? '正解したが自信が低い' : '自信が低い・迷った');
+    }
     if (due <= todayISO() && attempts.length) reasons.push('復習予定日を過ぎている');
     if (!reasons.length) continue;
     items.push({ question: q, reasons: [...new Set(reasons)], due, attempts: attempts.length, accuracy });
@@ -507,7 +524,7 @@ function renderHome() {
   const recentWrong=(recentSession?.answers||[]).filter(a=>!a.correct).map(a=>a.questionId);
   const plan = state.plan;
   const readPercent = allSections().length ? Math.round(countReadSections() / allSections().length * 100) : 0;
-  const todayAttempts = state.attempts.filter(attempt => localDay(attempt.at) === todayISO()).length;
+  const todayAttempts = new Set(state.attempts.filter(attempt => localDay(attempt.at) === todayISO()).map(attempt=>attempt.questionId)).size;
   const contentPercent = translatedSectionCount() / allSections().length * 100;
   return `${pageHeading('学習ホーム', '次に進むことが、ひと目でわかる。', '読んで、問題を解いて、あとで振り返る。今日のペースで始めましょう。')}
     <section class="hero-card">
@@ -700,6 +717,16 @@ function openReader(section, options={}) {
       window.scrollTo({top:Math.max(0,window.scrollY+marked.getBoundingClientRect().top-110),behavior:'instant'});
       return;
     }
+    // Original-note hits carry no <mark> (the note renders term links, not
+    // search highlights), so reveal the note section itself instead of
+    // restoring a saved position that can hide it below the fold.
+    if(options.query&&options.note){
+      const noteElement=document.querySelector('#reader-original-note');
+      if(noteElement){
+        window.scrollTo({top:Math.max(0,window.scrollY+noteElement.getBoundingClientRect().top-110),behavior:'instant'});
+        return;
+      }
+    }
     restoreReaderPosition(position);
   },100);
 }
@@ -724,7 +751,7 @@ function buildSearchIndex() {
       title:note.sectionId+' '+note.title+' · '+note.objective,
       text:[note.explanation,note.relation,note.example,note.limits,note.selfCheck,note.answer].join(' '),
       source:'節別の独立執筆教材 · 原本PDF p.'+note.pdfStart+'から関連事項を確認可能（原本の訳文ではない）',
-      target:{route:'reader',section:note.sectionId,language:'ja'}});
+      target:{route:'reader',section:note.sectionId,language:'ja',note:true}});
   }
   // Independent advanced lectures are searchable only when actually shipped.
   // Do not index untranslated source-book text or non-published local drafts.
@@ -758,26 +785,27 @@ function buildSearchIndex() {
     const n=state.mistakeNotes[q.id];
     if(n)entries.push({...base,kind:'memo',kindLabel:'間違いノート',title:`問題メモ：${q.prompt}`,text:`${n.reason||''} ${n.memory||''} ${n.nextTime||''}`});
   }
-  for(const n of state.notes)entries.push({kind:'memo',kindLabel:'学習メモ',chapter:chapterKey(n.sectionId),field:'メモ',title:n.title||'学習メモ',text:n.text,source:`第${n.sectionId}節`,target:{route:'reader',section:n.sectionId,blockId:n.blockId}});
-  for(const b of state.bookmarks)entries.push({kind:'memo',kindLabel:'本文のしおり',chapter:chapterKey(b.sectionId),field:'しおり',title:`しおり：第${b.sectionId}節`,text:b.note,source:'利用者のしおり',target:{route:'reader',section:b.sectionId,blockId:b.blockId,position:b.position,language:b.language}});
+  for(const n of state.notes)if(getSection(n.sectionId))entries.push({kind:'memo',kindLabel:'学習メモ',chapter:chapterKey(n.sectionId),field:'メモ',title:n.title||'学習メモ',text:n.text,source:`第${n.sectionId}節`,target:{route:'reader',section:n.sectionId,blockId:n.blockId}});
+  for(const b of state.bookmarks)if(getSection(b.sectionId))entries.push({kind:'memo',kindLabel:'本文のしおり',chapter:chapterKey(b.sectionId),field:'しおり',title:`しおり：第${b.sectionId}節`,text:b.note,source:'利用者のしおり',target:{route:'reader',section:b.sectionId,blockId:b.blockId,position:b.position,language:b.language}});
   for(const id of state.questionBookmarks){const q=getQuestion(id);if(q)entries.push({kind:'memo',kindLabel:'問題ブックマーク',chapter:questionChapter(q,GUIDE_SECTIONS)||'supplement',field:q.field,title:q.prompt,text:q.explanation,source:sourceLabel(q.source),target:{route:'quiz',question:id}});}
   return entries;
 }
 function renderSearch() {
   const results = ui.searchResults || [];
+  const shownResults = results.slice(0, ui.searchLimit || 100);
   return `${pageHeading('横断検索', '探したい言葉から、学びへ。', '収録済みの目次見出し、独自の日本語節別ノート76項目、収録済みの独立発展講義、学習ガイド、用語、問題、メモを検索します。未収録の原本訳文は検索できません。')}
     <form id="search-form" class="search-form surface-card"><label for="search-query">検索語</label><div class="search-input-row"><div class="search-input-wrap"><span aria-hidden="true">⌕</span><input id="search-query" name="query" type="search" value="${escapeHTML(ui.search.query)}" placeholder="例：温度勾配、対流、熱抵抗" autocomplete="off"/><button type="button" class="clear-search" data-action="clear-search" aria-label="検索語を消去">×</button></div><button class="button primary" type="submit">検索</button></div>
       <div class="filter-row"><label>対象<select name="kind"><option value="all" ${ui.search.kind === 'all' ? 'selected' : ''}>すべて</option><option value="book" ${ui.search.kind === 'book' ? 'selected' : ''}>本文・見出し</option><option value="glossary" ${ui.search.kind === 'glossary' ? 'selected' : ''}>用語集</option><option value="guide" ${ui.search.kind === 'guide' ? 'selected' : ''}>学習ガイド</option><option value="original-note" ${ui.search.kind === 'original-note' ? 'selected' : ''}>独自の日本語節別ノート</option><option value="deep-lesson" ${ui.search.kind === 'deep-lesson' ? 'selected' : ''}>独立発展日本語講義</option><option value="question" ${ui.search.kind === 'question' ? 'selected' : ''}>問題・解説</option><option value="memo" ${ui.search.kind === 'memo' ? 'selected' : ''}>メモ・しおり</option></select></label><label>章<select name="chapter"><option value="all">すべての章</option>${book.chapters.map(ch => `<option value="${ch.id}" ${ui.search.chapter === ch.id ? 'selected' : ''}>第${ch.id.slice(2)}章 ${escapeHTML(ch.title)}</option>`).join('')}<option value="supplement" ${ui.search.chapter === 'supplement' ? 'selected' : ''}>補足説明</option></select></label><label>分野<select name="field"><option value="all">すべての分野</option>${[...new Set(buildSearchIndex().map(e=>e.field).filter(Boolean))].map(field=>`<option value="${escapeHTML(field)}" ${ui.search.field===field?'selected':''}>${escapeHTML(field)}</option>`).join('')}</select></label><span class="search-hint">日本語の一部だけでも検索できます</span></div>
     </form>
     <section class="search-results"><div class="results-heading"><h2>${ui.search.query ? `「${escapeHTML(ui.search.query)}」の検索結果` : '検索結果'}</h2>${ui.search.query ? `<span>${results.length}件</span>` : ''}</div>
-      ${!ui.search.query ? `<div class="empty-state"><span class="empty-mark">⌕</span><h3>見つけたい言葉を入力してください</h3><p>原本の節見出し、独立学習ガイド、用語、問題、保存したメモを検索できます。</p></div>` : !results.length ? `<div class="empty-state"><span class="empty-mark">…</span><h3>一致する内容がありません</h3><p>別の言葉や短い表現で検索してみてください。未翻訳本文は検索対象に含まれません。</p></div>` : `<div class="result-list">${results.map(entry => `<article class="result-card"><div class="result-meta">${statusPill(entry.kindLabel, entry.kind === 'book' ? 'blue' : entry.kind === 'memo' ? 'amber' : 'green')}<span>${escapeHTML(entry.chapterTitle || '')}</span></div><h3><button type="button" class="result-link" data-search-target='${escapeHTML(JSON.stringify(entry.target))}'>${highlight(entry.title, ui.search.query)}</button></h3><p>${highlight(searchSnippet(entry.text, ui.search.query), ui.search.query)}</p><small>${escapeHTML(entry.source)}</small></article>`).join('')}</div>`}
+      ${!ui.search.query ? `<div class="empty-state"><span class="empty-mark">⌕</span><h3>見つけたい言葉を入力してください</h3><p>原本の節見出し、独立学習ガイド、用語、問題、保存したメモを検索できます。</p></div>` : !results.length ? `<div class="empty-state"><span class="empty-mark">…</span><h3>一致する内容がありません</h3><p>別の言葉や短い表現で検索してみてください。未翻訳本文は検索対象に含まれません。</p></div>` : `<div class="result-list">${shownResults.map(entry => `<article class="result-card"><div class="result-meta">${statusPill(entry.kindLabel, entry.kind === 'book' ? 'blue' : entry.kind === 'memo' ? 'amber' : 'green')}<span>${escapeHTML(entry.chapterTitle || '')}</span></div><h3><button type="button" class="result-link" data-search-target='${escapeHTML(JSON.stringify(entry.target))}'>${highlight(entry.title, ui.search.query)}</button></h3><p>${highlight(searchSnippet(entry.text, ui.search.query), ui.search.query)}</p><small>${escapeHTML(entry.source)}</small></article>`).join('')}</div>${results.length>shownResults.length?`<div class="search-more"><p>全${results.length}件中 ${shownResults.length}件を表示しています。</p><button type="button" class="button secondary" data-action="search-more">もっと見る（次の100件）</button></div>`:''}`}
     </section>`;
 }
 
 function renderGlossary() {
   const query = ui.glossaryQuery || '';
   const language = state.settings.contentLanguage === 'en' ? 'en' : 'ja';
-  const filtered = glossary.filter(item => !query || [item.ja,item.en,item.meaning,item.detail,item.brief,item.beginner,item.example,item.unit,item.formula,...(item.aliases||[])].filter(Boolean).join(' ').toLowerCase().includes(query.toLowerCase()));
+  const filtered = glossary.filter(item => !query || normalizedText([item.ja,item.en,item.meaning,item.detail,item.brief,item.beginner,item.example,item.unit,item.formula,...(item.aliases||[])].filter(Boolean).join(' ')).includes(normalizedText(query)));
   const termCards = filtered.map(term => {
     const primary = language === 'en' ? (term.en || term.ja) : term.ja;
     const secondary = language === 'en' ? term.ja : term.en;
@@ -803,6 +831,7 @@ function searchNow(form) {
   const data=new FormData(form);
   ui.search={query:String(data.get('query')||'').trim(),kind:String(data.get('kind')||'all'),chapter:String(data.get('chapter')||'all'),field:String(data.get('field')||'all')};
   ui.searchResults=searchEntries(buildSearchIndex(),ui.search);
+  ui.searchLimit=100;
   render();
 }
 function renderSettings() {
@@ -1404,7 +1433,8 @@ function onClick(event) {
   else if (action === 'toggle-read') { state.readSections[ui.readerSection]=!state.readSections[ui.readerSection]; saveState(); render(); }
   else if (action === 'speak') speakSection();
   else if (action === 'stop-speech') stopSpeech();
-  else if (action === 'clear-search') { ui.search.query=''; ui.searchResults=[]; render(); document.querySelector('#search-query')?.focus(); }
+  else if (action === 'clear-search') { ui.search.query=''; ui.searchResults=[]; ui.searchLimit=100; render(); document.querySelector('#search-query')?.focus(); }
+  else if (action === 'search-more') { ui.searchLimit=(ui.searchLimit||100)+100; render(); }
   else if (action === 'reveal-hint') { if (ui.quiz) { const q=getQuestion(ui.quiz.ids[ui.quiz.index]); const max=(q.solutionSteps||q.hints||[]).length; ui.quiz.hintCount=Math.min(max,ui.quiz.hintCount+1);persistQuiz();saveState();render(); } }
   else if (action === 'next-question') moveToNextQuestion();
   else if (action === 'open-report') { ui.reportId=actionButton.dataset.reportId || getQuestion(ui.quiz?.ids[ui.quiz.index])?.id; render(); }
