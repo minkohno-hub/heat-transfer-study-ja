@@ -529,3 +529,20 @@ input[type="range"] { width: 100%; accent-color: var(--accent); }
   html { scroll-behavior: auto; }
   *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
 }
+
+/* Audit B-11 (round 2 own-check findings A2-R2-01..03).
+   R2-01: the question-bank badge now shows a sequential number instead of the
+   internal question id; give the digits a legible size and weight.
+   R2-02: reader note form labels were display:block, so the caption text and
+   its control flowed inline and the textarea label drifted away from its
+   field. Use the same grid label layout as the other forms (caption above
+   the control, control stretched to the column width).
+   R2-03: the glossary language toolbar reused .reader-toolbar, whose negative
+   side margins are designed to bleed into .reader-panel padding. On the
+   glossary page there is no such padding, so at exactly 768px the toolbar
+   stuck out past the viewport and caused page-wide horizontal scrolling.
+   Zero the side margins for the glossary toolbar only. */
+.bank-item-index { font-size: 12px; font-weight: 700; }
+.reader-personal-note .form-two label { display: grid; gap: 5px; }
+.reader-personal-note .form-two input, .reader-personal-note .form-two textarea { width: 100%; }
+.reader-toolbar.glossary-language-toolbar { margin: 0 0 18px; }
