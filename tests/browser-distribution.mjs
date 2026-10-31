@@ -506,7 +506,7 @@ try {
       await nav(route);
       assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth)<=width+2,`${route}@${width}`);
       if(route==='reader'){
-        const status=page.locator('.reader-toc .toc-item i').filter({hasText:'下書き記録・未移行'}).first();
+        const status=page.locator('.reader-toc .toc-item i').filter({hasText:'翻訳下書き・未移行'}).first();
         assert.ok(await status.evaluate(element=>element.getBoundingClientRect().height<=20&&element.scrollWidth<=element.clientWidth+1&&parseFloat(getComputedStyle(element).fontSize)>=10),`目次の進捗表示@${width}`);
         assert.ok(await page.locator('.reader-toc .toc-item').first().evaluate(element=>element.getBoundingClientRect().height>=44),`目次のタップ領域@${width}`);
       }

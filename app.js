@@ -197,7 +197,7 @@ function allSections() { return book.chapters.flatMap(chapter => chapter.section
 function getSection(id) { return allSections().find(section => section.id === id); }
 function getQuestion(id) { return questionBank.find(question => question.id === id); }
 function sectionIsTranslated(section) { return Array.isArray(section?.blocks) && section.blocks.length > 0; }
-function sectionProgressLabel(section) { return section?.localDraft ? '訳文下書き・未照合' : sectionIsTranslated(section) ? '訳文あり' : section?.translationStatus === 'private_only' ? '訳文未収録' : section?.translationStatus === 'draft_complete' ? '下書き記録・未移行' : section?.translationStatus === 'in_progress' ? '作業記録・未移行' : '訳文未着手'; }
+function sectionProgressLabel(section) { return section?.localDraft ? '訳文下書き・未照合' : sectionIsTranslated(section) ? '訳文あり' : section?.translationStatus === 'private_only' ? '訳文未収録' : section?.translationStatus === 'draft_complete' ? '翻訳下書き・未移行' : section?.translationStatus === 'in_progress' ? '翻訳作業記録・未移行' : '訳文未着手'; }
 function blockSourceLabel(block){
   const range=(first,last)=>`${first??'未記録'}${last&&last!==first?'–'+last:''}`;
   return `書籍 p.${range(block.bookPage,block.endBookPage)} · PDF p.${range(block.pdfPage,block.endPdfPage)}`;
@@ -416,7 +416,7 @@ function render() {
         </nav>
         <main class="main-content" id="main-content" tabindex="-1">${storageIssue ? `<aside class="notice-card storage-warning" role="alert"><p>${escapeHTML(storageIssue)}</p><button type="button" class="button secondary" data-action="export-data">学習データを書き出す</button>${recoveryRaw ? '<button type="button" class="button secondary" data-action="export-recovery">保管した元データを書き出す</button>' : ''}</aside>` : ''}${ui.contentWarning ? `<aside class="notice-card" role="alert"><p>${escapeHTML(ui.contentWarning)}</p></aside>` : ''}${routeView}</main>
       </div>
-      <footer class="app-footer"><span>学習データはこのブラウザー内に保存されます。</span><span>教材進捗：${translatedSectionCount()}節の日本語訳・下書きを収録</span></footer>
+      <footer class="app-footer"><span>学習データはこのブラウザー内に保存されます。</span><span>教材進捗：${originalMaterialSectionCount()}節に独自日本語ノート・発展教材・図解を収録（原書の翻訳本文は未収録）</span></footer>
     </div>`;
   for(const block of root.querySelectorAll('.guide-body,.simulation-steps'))linkTermTextNodes(block,glossary||[]);
   if(ui.reportId)document.querySelector('.report-modal button')?.focus();
@@ -473,6 +473,7 @@ function renderGuide() {
 }
 function statusPill(text, tone = 'neutral') { return `<span class="status-pill tone-${tone}">${text}</span>`; }
 function translatedSectionCount() { return allSections().filter(sectionIsTranslated).length; }
+function originalMaterialSectionCount() { return allSections().filter(section => independentNoteForSection(originalNotes, section.id) || deepLessonForSection(deepLessons, section.id)).length; }
 function countReadSections() { return allSections().filter(s=>state.readSections[s.id]).length; }
 function lastSectionLabel() { const section = getSection(state.lastSection); return section ? `第${section.id}節「${escapeHTML(section.title)}」` : '第1章1.1節「熱移動」'; }
 function getAttemptStats(id) { const question=getQuestion(id); const attempts = state.attempts.filter(attempt => attempt.questionId === id && isCurrentQuestionAnswer(question,attempt)); const correct = attempts.filter(attempt => attempt.correct).length; return { attempts, correct, accuracy: attempts.length ? correct / attempts.length : null }; }
@@ -524,7 +525,7 @@ function renderHome() {
       <section class="surface-card recent-card"><div class="card-heading"><div><p class="eyebrow">最近の学習</p><h2>${recentSession ? '前回のふり返り' : '記録がここに並びます'}</h2></div><a href="#calendar" class="text-link">すべて見る →</a></div>
         ${recentSession ? `<p class="recent-date">${formatDate(recentSession.date)}</p><div class="recent-stats"><div><strong>${recentSession.total}</strong><span>問</span></div><div><strong>${recentSession.correct}</strong><span>正解</span></div><div><strong>${recentSession.total ? Math.round(recentSession.correct / recentSession.total * 100) : 0}%</strong><span>正答率</span></div></div>${recentWrong.length?`<button class="text-link" type="button" data-start-ids='${escapeHTML(JSON.stringify(recentWrong))}'>間違えた問題にもう一度挑戦 →</button>`:'<a class="text-link" href="#quiz">次の演習を始める →</a>'}` : '<div class="empty-state compact"><span class="empty-mark">✦</span><p>学習を始めると、取り組んだ分野や復習予定をここで振り返れます。</p></div>'}
       </section>
-    <section class="surface-card focus-card"><div class="card-heading"><div><p class="eyebrow">教材の進み具合</p><h2>全訳までの道のり</h2></div><a href="#reader" class="text-link">目次を見る →</a></div><div class="progress-line"><span style="width:${contentPercent}%"></span></div><p class="progress-caption"><strong>${translatedSectionCount()}節 / ${allSections().length}節</strong>の本文を収録。未翻訳の本文は表示していません。</p><p class="small-note">収録節数の比率です。ページ全体の翻訳・確認完了率ではありません。専門家校閲は未実施です。</p></section>
+    <section class="surface-card focus-card"><div class="card-heading"><div><p class="eyebrow">教材の進み具合</p><h2>全訳までの道のり</h2></div><a href="#reader" class="text-link">目次を見る →</a></div><div class="progress-line"><span style="width:${contentPercent}%"></span></div><p class="progress-caption"><strong>${translatedSectionCount()}節 / ${allSections().length}節</strong>の翻訳本文を収録。翻訳本文が未収録の節では、独自日本語ノート・発展教材・図解と英語原本PDFで学習できます。</p><p class="small-note">収録節数の比率です。ページ全体の翻訳・確認完了率ではありません。専門家校閲は未実施です。</p></section>
     </div>`;
 }
 
@@ -561,6 +562,7 @@ function renderReader() {
   const independentQuestion=questionBank.find(q=>q.source?.sectionNoteId===section.id);
   const independentApplications=questionBank.filter(q=>q.source?.focusSectionId===section.id);
   const available = sectionIsTranslated(section);
+  const hasOriginalMaterials = Boolean(independentNote || deepLesson);
   const hasEnglish = Array.isArray(section.blocksEn);
   const contentLanguage = hasEnglish && state.settings.contentLanguage === 'en' ? 'en' : 'ja';
   const displayTitle = contentLanguage === 'en' ? (section.sourceTitle || section.title) : section.title;
@@ -568,9 +570,9 @@ function renderReader() {
   const inProgress = section.translationStatus === 'in_progress';
   const draftComplete = section.translationStatus === 'draft_complete';
   const privateOnly = section.translationStatus === 'private_only';
-  const draftLabel = privateOnly ? '日本語訳は未収録' : draftComplete ? '下書き記録・未移行' : inProgress ? '作業記録・未移行' : '日本語訳は未着手';
+  const draftLabel = privateOnly ? '日本語訳は未収録' : draftComplete ? '原書の翻訳下書きは未移行' : inProgress ? '原書の翻訳作業記録は未移行' : '日本語訳は未着手';
   const draftHeading = privateOnly ? '日本語訳・再構成した本文は公開していません' : draftComplete ? '旧PCに翻訳下書きの作成記録があります' : inProgress ? '旧PCに翻訳作業中の記録があります' : 'この節の日本語訳は、まだ用意されていません';
-  const draftDescription = privateOnly ? '英語の原本PDFは下のリンクから読めます。日本語訳、アプリ用に抽出した原文と原図の再配布は別に管理し、この画面には未収録です。' : draftComplete || inProgress ? `記録上の範囲は書籍 pp.${escapeHTML(progress?.draftBookPages || '確認中')}（PDF pp.${escapeHTML(progress?.draftPdfPages || '確認中')}）です。下書きの実物はこのクラウド環境に未移行で、本文の網羅性や確認状態は再検証できていません。英語原本PDFは下から読めます。` : '原本PDFの対応ページを開いて読めます。日本語訳を推測して表示することはしていません。';
+  const draftDescription = (privateOnly ? '英語の原本PDFは下のリンクから読めます。日本語訳、アプリ用に抽出した原文と原図の再配布は別に管理し、この画面には未収録です。' : draftComplete || inProgress ? `記録上の範囲は書籍 pp.${escapeHTML(progress?.draftBookPages || '確認中')}（PDF pp.${escapeHTML(progress?.draftPdfPages || '確認中')}）です。下書きの実物はこのクラウド環境に未移行で、本文の網羅性や確認状態は再検証できていません。英語原本PDFは下から読めます。` : '原本PDFの対応ページを開いて読めます。日本語訳を推測して表示することはしていません。') + (hasOriginalMaterials ? 'なお、この節については独自作成の日本語ノート・発展教材・図解を、このページ内の上の欄に収録しています（原書の翻訳本文ではありません）。' : '');
   const pdfPage=Number(section.pdfStart);
   const pdfHref=`./book/AHTTv600.pdf#page=${Number.isInteger(pdfPage)&&pdfPage>=1&&pdfPage<=810?pdfPage:1}`;
   const pdfLink=`<a class="button primary" href="${pdfHref}" target="_blank" rel="noopener" aria-label="原本PDFを開く · PDF p.${Number.isInteger(pdfPage)?pdfPage:1} ↗（別タブ）">原本PDFを開く · PDF p.${Number.isInteger(pdfPage)?pdfPage:1} ↗</a>`;
@@ -580,7 +582,7 @@ function renderReader() {
   const prevNext = allSections(); const index = prevNext.findIndex(item => item.id === section.id);
   const prev = prevNext[index-1];
   const next = prevNext[index+1];
-  return `${pageHeading('読書モード', '章・節をたどって読む', '原本PDFの対応ページを開けます。アプリ内に訳文がある節では段落や式を表示します。読了・しおり・メモはこの端末に保存します。', '<a class="button secondary" href="#search">本文を検索</a>')}
+  return `${pageHeading('読書モード', '章・節をたどって読む', '原本PDFの対応ページを開けます。アプリ内に訳文がある節では段落や式を表示します。全節に独自作成の日本語ノート・発展教材・図解を収録しています。読了・しおり・メモはこの端末に保存します。', '<a class="button secondary" href="#search">本文を検索</a>')}
     <div class="reader-layout">
       <aside class="reader-toc surface-card"><div class="toc-heading"><span class="eyebrow">目次</span><strong>A Heat Transfer Textbook</strong></div>
         ${book.chapters.map(item => `<details ${item.id === section.chapterId ? 'open' : ''}><summary><span>${escapeHTML(item.title)}</span><small>第${item.id.slice(2)}章</small></summary><div class="toc-items">${item.sections.map(sec => `<button class="toc-item ${sec.id === section.id ? 'selected' : ''} ${sectionIsTranslated(sec) ? '' : 'not-ready'}" type="button" data-section="${escapeHTML(sec.id)}"><span class="toc-number">${escapeHTML(sec.id)}</span><span>${escapeHTML(sec.title)}</span><i>${sectionProgressLabel(sec)}</i></button>`).join('')}${(item.backMatter || []).map(entry => `<div class="toc-item not-ready" aria-label="${escapeHTML(entry.title)}、${sectionProgressLabel(entry)}"><span class="toc-number">—</span><span>${escapeHTML(entry.title)}</span><i>${sectionProgressLabel(entry)}</i></div>`).join('')}</div></details>`).join('')}
@@ -592,7 +594,7 @@ function renderReader() {
         <div class="reader-pdf-actions">${available?pdfLink:''}<a class="button secondary" href="./book/AHTTv600.pdf" download="AHTTv600.pdf">原本PDFをダウンロード · 約31MB</a><button class="button secondary" type="button" data-action="cache-pdf" ${ui.pdfCacheStatus==='saving'?'disabled':''}>原本PDFをオフライン保存</button></div><p class="small-note" id="pdf-cache-status" role="status">${pdfCacheStatusLabel()}</p>
         <p class="small-note">原本PDFは英語版です。翻訳本文・原図の再利用とは権利を分けて扱います。PDFビューアーによっては指定ページへ自動移動しません。オフライン保存には空き容量と対応ブラウザーが必要です。</p>
         <h2 class="reader-title">${escapeHTML(section.id)}　${escapeHTML(displayTitle)}</h2>
-        <div class="reader-status-row">${statusPill(available ? (section.localDraft ? '訳文下書き・未照合' : section.localSourceChecked ? '原本照合済み（作業者）' : '翻訳済み') : draftLabel, available ? section.localDraft ? 'amber' : 'green' : 'neutral')}${statusPill(available ? section.localDraft ? '文章・式・図表の照合待ち' : '専門家校閲待ち' : privateOnly ? '訳文等の公開範囲を確認中' : draftComplete ? '確認待ち・アプリ未収録' : inProgress ? '下書きはアプリ未収録' : '日本語訳は未収録', 'amber')}</div>
+        <div class="reader-status-row">${statusPill(available ? (section.localDraft ? '訳文下書き・未照合' : section.localSourceChecked ? '原本照合済み（作業者）' : '翻訳済み') : draftLabel, available ? section.localDraft ? 'amber' : 'green' : 'neutral')}${statusPill(available ? section.localDraft ? '文章・式・図表の照合待ち' : '専門家校閲待ち' : hasOriginalMaterials ? '独自日本語教材を収録' : privateOnly ? '訳文等の公開範囲を確認中' : draftComplete ? '確認待ち・アプリ未収録' : inProgress ? '下書きはアプリ未収録' : '日本語訳は未収録', available ? 'amber' : hasOriginalMaterials ? 'blue' : 'amber')}</div>
         ${section.localDraft ? '<aside class="notice-card compact-notice"><p>この訳文は以前のPCで作成した下書きです。原本との文章・数式・図表・ページの網羅性を再確認していません。学習時は英語原本PDFと照らし合わせてください。</p></aside>' : ''}
         ${independentNote ? `<section class="reader-original-note surface-card" id="reader-original-note" aria-labelledby="original-note-heading" lang="ja">
         <p class="eyebrow">第${escapeHTML(section.chapterId.slice(2))}章 · 第${escapeHTML(section.id)}節に関連する独自日本語ノート</p>
@@ -784,7 +786,7 @@ function renderGlossary() {
     const meaningLanguage=language==='en'&&term.meaningEn?'en':'ja';
     const section=getSection(term.source.section);
     const guideId=term.source.guideId;
-    const sourceLink = term.source.type === 'supplement' ? `<div class="term-links">${statusPill('補足説明', 'violet')}${GUIDE_SECTIONS.some(item=>item.id===guideId)?`<a class="text-link" href="#guide/${escapeHTML(guideId)}">詳しい説明を読む →</a>`:''}</div>` : `<div class="term-links">${sectionIsTranslated(section)&&term.availableInApp!==false?`<button type="button" class="text-link" data-section="${escapeHTML(term.source.section)}">アプリ内の本文を開く →</button>`:'<small>アプリ内の日本語訳は未収録です。</small>'}${sourcePdfLink(term.source,section)}</div>`;
+    const sourceLink = term.source.type === 'supplement' ? `<div class="term-links">${statusPill('補足説明', 'violet')}${GUIDE_SECTIONS.some(item=>item.id===guideId)?`<a class="text-link" href="#guide/${escapeHTML(guideId)}">詳しい説明を読む →</a>`:''}</div>` : `<div class="term-links">${sectionIsTranslated(section)&&term.availableInApp!==false?`<button type="button" class="text-link" data-section="${escapeHTML(term.source.section)}">アプリ内の本文を開く →</button>`:`<small>アプリ内の日本語訳は未収録です。</small>${independentNoteForSection(originalNotes,term.source.section)?`<button type="button" class="text-link" data-section="${escapeHTML(term.source.section)}">関連する独自日本語節別ノートを読む →</button>`:''}`}${sourcePdfLink(term.source,section)}</div>`;
     const relatedQuestions=(Array.isArray(term.relatedQuestions)?term.relatedQuestions:[]).filter(item=>item&&typeof item.id==='string'&&typeof item.label==='string'&&getQuestion(item.id));
     const questionLinks=relatedQuestions.length?`<div class="term-related"><strong>関連する問題</strong>${relatedQuestions.map(item=>`<button type="button" class="text-link" data-start-question="${escapeHTML(item.id)}">${escapeHTML(item.label)} →</button>`).join('')}</div>`:'';
     const reviewTag = term.reviewStatus === 'needs_review' ? statusPill('校閲前', 'amber') : '';
@@ -794,7 +796,7 @@ function renderGlossary() {
     <div class="reader-toolbar glossary-language-toolbar"><div class="language-toggle" role="group" aria-label="用語の表示言語"><button type="button" class="${language === 'ja' ? 'selected' : ''}" data-language="ja" aria-pressed="${language === 'ja'}">日本語</button><button type="button" class="${language === 'en' ? 'selected' : ''}" data-language="en" aria-pressed="${language === 'en'}">英語</button></div><span class="language-note">${language === 'ja' ? '日本語の用語名' : '英語名を優先・説明は収録言語で表示'}</span></div>
     <div class="glossary-search surface-card"><label for="glossary-query">用語を探す</label><input id="glossary-query" type="search" value="${escapeHTML(query)}" placeholder="用語や英語名を入力"/></div>
     <div class="glossary-grid">${termCards}</div>
-    <div class="notice-card"><span class="notice-icon">i</span><p>用語集は収録済みの教材範囲をもとに作成しています。全文翻訳に合わせて追加・校閲します。</p></div>`;
+    <div class="notice-card"><span class="notice-icon">i</span><p>用語集は全${allSections().length}節の収録教材（独自日本語ノート・発展教材）をもとに作成しています。原書の翻訳本文は未収録です。</p></div>`;
 }
 
 function searchNow(form) {
@@ -1227,7 +1229,7 @@ function renderAnswerFeedback(question, answer, existingNote, choiceOrder) {
   const correct = answer.correct;
   const sourceSection=getSection(question.source.section);
   const guideId=question.source.guideId;
-  const sourceAction = question.source.type === 'book' ? `<div class="source-ref">出典：${sourceLabel(question.source)}。${sectionIsTranslated(sourceSection)?`<button type="button" class="text-link" data-section="${escapeHTML(question.source.section)}">アプリ内の本文を開く →</button>`:'アプリ内の日本語訳は未収録です。'}</div>${sourcePdfLink(question.source,sourceSection)}` : `<div class="source-ref">${sourceLabel(question.source)}。書籍本文ではなくアプリ作成の説明です。${GUIDE_SECTIONS.some(section=>section.id===guideId)?`<a class="text-link" href="#guide/${guideId}">関連する学習ガイドへ →</a>`:''}${(question.source.sectionNoteId||question.source.focusSectionId) && independentNoteForSection(originalNotes,question.source.sectionNoteId||question.source.focusSectionId)?`<button type="button" class="text-link" data-section="${escapeHTML(question.source.sectionNoteId||question.source.focusSectionId)}">関連する独自日本語節別ノートを読む →</button>`:''}</div>`;
+  const sourceAction = question.source.type === 'book' ? `<div class="source-ref">出典：${sourceLabel(question.source)}。${sectionIsTranslated(sourceSection)?`<button type="button" class="text-link" data-section="${escapeHTML(question.source.section)}">アプリ内の本文を開く →</button>`:`アプリ内の日本語訳は未収録です。${independentNoteForSection(originalNotes,question.source.section)?`<button type="button" class="text-link" data-section="${escapeHTML(question.source.section)}">関連する独自日本語節別ノートを読む →</button>`:''}`}</div>${sourcePdfLink(question.source,sourceSection)}` : `<div class="source-ref">${sourceLabel(question.source)}。書籍本文ではなくアプリ作成の説明です。${GUIDE_SECTIONS.some(section=>section.id===guideId)?`<a class="text-link" href="#guide/${guideId}">関連する学習ガイドへ →</a>`:''}${(question.source.sectionNoteId||question.source.focusSectionId) && independentNoteForSection(originalNotes,question.source.sectionNoteId||question.source.focusSectionId)?`<button type="button" class="text-link" data-section="${escapeHTML(question.source.sectionNoteId||question.source.focusSectionId)}">関連する独自日本語節別ノートを読む →</button>`:''}</div>`;
   const reasons = choiceOrder.map((index,position) => `<li class="${index === question.answer ? 'is-correct' : ''}"><strong>${String.fromCharCode(65 + position)} ${index === question.answer ? '正解' : '誤答'}</strong><p>${linkedQuizText(question.distractors[index],4)}</p></li>`).join('');
   return `<section class="answer-feedback ${correct ? 'feedback-correct' : 'feedback-wrong'}" aria-live="polite"><div class="feedback-title"><span class="feedback-symbol">${correct ? '✓' : '!'}</span><div><strong>${correct ? '正解です' : '今回は不正解です'}</strong><small>自信度：${confidenceLabel(answer.confidence)} · ${formatTime(answer.at)}</small></div></div>
     <div class="explanation-block"><h3>何を問う問題だった？</h3><p>${linkedQuizText(question.prompt,5)}</p><h3>正解へ至る考え方</h3><p>${linkedQuizText(question.explanation,6)}</p></div>

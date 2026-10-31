@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="840" height="1370" viewBox="0 0 840 1370" role="img" aria-labelledby="oneterm-title oneterm-desc" style="max-width:100%" data-origin="original-app-diagram" data-lesson="5.5" data-biot="1" data-lambda-1="0.860333589019" data-lambda-2="3.42561845948" data-coefficient-a1="1.11913200841" data-fourier="0.5" data-center-theta="0.772955693333" data-position-theta="0.702536496512" data-mean-theta="0.681069447035">
+  <title id="oneterm-title">§5.5 一項近似：固有値・係数・境界条件で精度を考える</title>
+  <desc id="oneterm-desc">アプリ作成の独自図解。両面対流平板でBiイコール1のとき、固有値条件ラムダ・タンジェント・ラムダ・イコールBiの最小根は0.860333589、係数A1は1.119132008。Foイコール0.5では一項近似の中心の無次元温度は0.772955693で中心81.84度、半分の位置で76.20度、平均74.49度。級数の全項と一項近似はFoが0.2を超えるとほぼ重なり、短時間では一項をtイコール0へ外挿するとA1が1を超える限界も示す。</desc>
+  <style>
+    .background{fill:#fff}.panel{fill:#f4f7fb;stroke:#bbccd9;stroke-width:2}
+    .ink{fill:#193043}.secondary{fill:#465b6c}.cold{fill:#1c7194}.later{fill:#8b4eae}.hot{fill:#b3402f}.warn{fill:#b3402f}
+    .slab{fill:#d6e9ef;stroke:#528096;stroke-width:3}.axis{stroke:#304c60;stroke-width:2.4;fill:none}
+    .guide{stroke:#aebfcc;stroke-width:1.4;stroke-dasharray:6 7}.initial{stroke:#5c6e7c;stroke-width:3.4;fill:none;stroke-dasharray:10 6}
+    .quarter{stroke:#1c7194;stroke-width:4.6;fill:none;stroke-linejoin:round}.one{stroke:#8b4eae;stroke-width:4.6;fill:none;stroke-linejoin:round}
+    .hotline{stroke:#b3402f;stroke-width:4.6;fill:none;stroke-linejoin:round}.dashline{stroke:#5c6e7c;stroke-width:3.2;fill:none;stroke-dasharray:9 7}
+    .arrow{stroke:#1c7194;stroke-width:4.4;fill:none;stroke-linecap:round;stroke-linejoin:round}
+    .bar-cold{fill:#1c7194}.bar-later{fill:#8b4eae}.bar-warn{fill:#c98a8a}.bar-hot{fill:#b3402f}
+    .edge-hot{stroke:#b3402f;stroke-width:7}.edge-cold{stroke:#528096;stroke-width:5}
+    text{font-family:'Noto Sans CJK JP','Hiragino Kaku Gothic ProN',system-ui,sans-serif;font-size:25px}.title{font-size:35px;font-weight:700}.section{font-size:27px;font-weight:700}.small{font-size:22px}.formula{font-size:25px;font-weight:600}
+    @media(prefers-color-scheme:dark){.background{fill:#111a24}.panel{fill:#1c2c3b;stroke:#60798a}.ink{fill:#eef6ff}.secondary{fill:#cad9e4}.cold{fill:#89d8f4}.later{fill:#dbb4ff}.hot{fill:#ff9d8f}.warn{fill:#ff9d8f}.slab{fill:#22485f;stroke:#91c2dc}.axis{stroke:#d3e4ef}.guide{stroke:#647e90}.initial{stroke:#bed0da}.quarter,.arrow{stroke:#89d8f4}.one{stroke:#dbb4ff}.hotline{stroke:#ff9d8f}.dashline{stroke:#bed0da}.bar-warn{fill:#8a5a5a}}
+  </style>
+  <rect class="background" width="840" height="1370"/>
+  <text x="36" y="58" class="title ink">§5.5 一項近似：固有値 λ₁ と係数 A₁</text>
+  <text x="36" y="100" class="small secondary">λ₁tanλ₁ = Bi を解き、第一項で中心・局所・平均を読む。</text>
+  <rect x="24" y="123" width="792" height="340" rx="19" class="panel"/>
+  <text x="48" y="166" class="section ink">① 固有値条件 λ tan λ = Bi（Bi = 1）</text>
+  <path class="guide" d="M338 180 V420 M774 180 V420 M120 372.00 H800"/>
+  <path class="axis" d="M107 168 V422 H806 M793 414 L806 422 L793 430"/>
+  <path id="eigen-curve-1" class="quarter" d="M122.78,419.98 L127.22,419.87 L131.66,419.66 L136.10,419.35 L140.54,418.94 L144.98,418.43 L149.42,417.81 L153.86,417.08 L158.30,416.25 L162.74,415.30 L167.18,414.23 L171.62,413.03 L176.07,411.71 L180.51,410.25 L184.95,408.65 L189.39,406.89 L193.83,404.97 L198.27,402.88 L202.71,400.60 L207.15,398.11 L211.59,395.41 L216.03,392.47 L220.47,389.27 L224.91,385.79 L229.36,381.98 L233.80,377.82 L238.24,373.26 L242.68,368.25 L247.12,362.74 L251.56,356.64 L256.00,349.87 L260.44,342.31 L264.88,333.84 L269.32,324.28 L273.76,313.41 L278.20,300.94 L282.64,286.49 L287.09,269.57 L291.53,249.46 L295.97,225.17 L300.41,195.23"/>
+  <path id="eigen-curve-2" class="quarter" d="M577.96,394.70 L580.21,391.91 L582.47,389.09 L584.72,386.22 L586.98,383.30 L589.23,380.34 L591.49,377.33 L593.74,374.27 L596.00,371.15 L598.26,367.98 L600.51,364.76 L602.77,361.47 L605.02,358.11 L607.28,354.70 L609.53,351.21 L611.79,347.65 L614.04,344.02 L616.30,340.30 L618.55,336.51 L620.81,332.63 L623.06,328.66 L625.32,324.59 L627.57,320.43 L629.83,316.17 L632.08,311.79 L634.34,307.31 L636.59,302.70 L638.85,297.97 L641.10,293.11 L643.36,288.11 L645.61,282.97 L647.87,277.67 L650.12,272.21 L652.38,266.58 L654.63,260.76 L656.89,254.76 L659.14,248.56 L661.40,242.14 L663.65,235.50 L665.91,228.61 L668.16,221.47"/>
+  <circle cx="239.39" cy="372.00" r="8" class="bar-cold"/>
+  <circle cx="595.39" cy="372.00" r="8" class="bar-later"/>
+  <text x="181.39" y="352" class="small cold">λ₁ = 0.860</text>
+  <text x="537.39" y="352" class="small later">λ₂ = 3.426</text>
+  <text x="700" y="205" class="small ink">λ tan λ</text>
+  <text x="346" y="448" class="small secondary">π/2</text>
+  <text x="748" y="448" class="small secondary">3π/2</text>
+  <text x="120" y="448" class="small ink">λ = 0</text>
+  <text x="700" y="400" class="small secondary">Bi = 1 の線</text>
+  <rect x="24" y="481" width="792" height="340" rx="19" class="panel"/>
+  <text x="48" y="524" class="section ink">② 級数解（全項）と一項近似の差</text>
+  <path class="quarter" d="M452 549 H492"/><text x="501" y="556" class="small ink">級数（15項）</text>
+  <path class="dashline" d="M620 549 H660"/><text x="669" y="556" class="small ink">一項近似</text>
+  <path class="guide" d="M150 604.80 H790 M278 580 V770"/>
+  <path class="axis" d="M137 568 V772 H796 M783 764 L796 772 L783 780"/>
+  <path id="series-full" class="quarter" d="M150.00,604.72 L166.00,604.80 L182.00,604.84 L198.00,605.16 L214.00,605.94 L230.00,607.19 L246.00,608.84 L262.00,610.79 L278.00,612.95 L294.00,615.27 L310.00,617.68 L326.00,620.16 L342.00,622.68 L358.00,625.20 L374.00,627.73 L390.00,630.24 L406.00,632.73 L422.00,635.19 L438.00,637.62 L454.00,640.02 L470.00,642.38 L486.00,644.70 L502.00,646.99 L518.00,649.23 L534.00,651.44 L550.00,653.61 L566.00,655.74 L582.00,657.83 L598.00,659.88 L614.00,661.90 L630.00,663.88 L646.00,665.83 L662.00,667.74 L678.00,669.61 L694.00,671.45 L710.00,673.26 L726.00,675.03 L742.00,676.77 L758.00,678.48 L774.00,680.16 L790.00,681.81"/>
+  <path id="series-one-term" class="dashline" d="M150.00,585.12 L166.00,588.51 L182.00,591.84 L198.00,595.10 L214.00,598.31 L230.00,601.46 L246.00,604.55 L262.00,607.58 L278.00,610.56 L294.00,613.48 L310.00,616.35 L326.00,619.17 L342.00,621.93 L358.00,624.65 L374.00,627.31 L390.00,629.93 L406.00,632.50 L422.00,635.02 L438.00,637.49 L454.00,639.92 L470.00,642.31 L486.00,644.65 L502.00,646.95 L518.00,649.20 L534.00,651.42 L550.00,653.59 L566.00,655.73 L582.00,657.82 L598.00,659.88 L614.00,661.90 L630.00,663.88 L646.00,665.82 L662.00,667.73 L678.00,669.61 L694.00,671.45 L710.00,673.26 L726.00,675.03 L742.00,676.77 L758.00,678.48 L774.00,680.16 L790.00,681.81"/>
+  <circle cx="470.00" cy="642.31" r="8" class="bar-cold"/>
+  <text x="486" y="626.31" class="small cold">Fo = 0.5：Θ₀ = 0.773</text>
+  <text x="170" y="600" class="small ink">Θ₀</text>
+  <text x="286" y="800" class="small secondary">目安 Fo ≳ 0.2</text>
+  <text x="560" y="700" class="small secondary">Fo が大きいとほぼ一致</text>
+  <text x="150" y="800" text-anchor="middle" class="small ink">Fo = 0</text>
+  <text x="790" y="800" text-anchor="middle" class="small ink">1</text>
+  <rect x="24" y="839" width="792" height="320" rx="19" class="panel"/>
+  <text x="48" y="882" class="section ink">③ 位置分布と平均（Fo = 0.5・一項）</text>
+  <path class="guide" d="M150 967.19 H790"/>
+  <path class="axis" d="M137 893 V1102 H796 M783 1094 L796 1102 L783 1110"/>
+  <path id="theta-profile" class="quarter" d="M150.00,949.27 L166.00,949.31 L182.00,949.41 L198.00,949.59 L214.00,949.83 L230.00,950.14 L246.00,950.53 L262.00,950.98 L278.00,951.50 L294.00,952.09 L310.00,952.75 L326.00,953.47 L342.00,954.27 L358.00,955.13 L374.00,956.06 L390.00,957.05 L406.00,958.11 L422.00,959.24 L438.00,960.43 L454.00,961.69 L470.00,963.01 L486.00,964.39 L502.00,965.84 L518.00,967.34 L534.00,968.91 L550.00,970.54 L566.00,972.23 L582.00,973.98 L598.00,975.79 L614.00,977.66 L630.00,979.58 L646.00,981.55 L662.00,983.59 L678.00,985.67 L694.00,987.81 L710.00,990.00 L726.00,992.24 L742.00,994.54 L758.00,996.88 L774.00,999.26 L790.00,1001.70"/>
+  <circle cx="470" cy="963.01" r="8" class="bar-later"/>
+  <text x="486" y="949.01" class="small later">ξ = 0.5 で 0.703 → 76.20℃</text>
+  <text x="600" y="955.19" class="small ink">平均 Θ̄ = 0.681</text>
+  <text x="150" y="1130" text-anchor="middle" class="small ink">中心 ξ = 0</text>
+  <text x="470" y="1130" text-anchor="middle" class="small ink">0.5</text>
+  <text x="790" y="1130" text-anchor="middle" class="small ink">表面 ξ = 1</text>
+  <rect x="24" y="1177" width="792" height="130" rx="19" class="panel"/>
+  <text x="48" y="1217" class="small ink">Bi = ha/k = 1.0 ｜ λ₁ = 0.860334 ｜ A₁ = 1.119132</text>
+  <text x="48" y="1254" class="small ink">Θ₀ = 0.772956 → 中心 81.84℃ ｜ 平均 Θ̄ で 74.49℃</text>
+  <text x="48" y="1291" class="small secondary">A₁ &gt; 1 は t = 0 への外挿値。短時間は級数や半無限解で確認する。</text>
+  <text x="420" y="1355" text-anchor="middle" class="small secondary">アプリ作成の独自図・原書図版の転載ではない</text>
+</svg>

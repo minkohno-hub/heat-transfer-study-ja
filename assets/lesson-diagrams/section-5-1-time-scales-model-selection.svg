@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="840" height="1340" viewBox="0 0 840 1340" role="img" aria-labelledby="timescale-title timescale-desc" style="max-width:100%" data-origin="original-app-diagram" data-lesson="5.1" data-alpha="1.0e-6" data-half-thickness="0.010" data-k="1.0" data-h="5.0" data-rho-cp="1000000" data-diffusion-time="100.0" data-external-time-constant="2000.0" data-biot="0.05" data-eval-time="200" data-fourier="2.0" data-lumped-theta="0.904837418036" data-lumped-temperature="92.3869934429">
+  <title id="timescale-title">§5.1 非定常伝導の導入：二つの時間尺度とモデル選択</title>
+  <desc id="timescale-desc">アプリ作成の独自図解。両面対流の広い平板で半厚さ0.010メートル、熱伝導率1.0ワット毎メートルケルビン、体積熱容量10の6乗ジュール毎立方メートルケルビン、両面の熱伝達率5.0。熱拡散率は10のマイナス6乗平方メートル毎秒、内部拡散の時間尺度は100秒、外部熱交換の時定数は2000秒、Biは0.050。内部のならしが外部交換より速いため集中近似が候補になり、集中モデルでは200秒後の温度は約92.39度。時間尺度の対数軸比較、集中応答曲線、モデル選択の目安を示す。</desc>
+  <style>
+    .background{fill:#fff}.panel{fill:#f4f7fb;stroke:#bbccd9;stroke-width:2}
+    .ink{fill:#193043}.secondary{fill:#465b6c}.cold{fill:#1c7194}.later{fill:#8b4eae}.hot{fill:#b3402f}.warn{fill:#b3402f}
+    .slab{fill:#d6e9ef;stroke:#528096;stroke-width:3}.axis{stroke:#304c60;stroke-width:2.4;fill:none}
+    .guide{stroke:#aebfcc;stroke-width:1.4;stroke-dasharray:6 7}.initial{stroke:#5c6e7c;stroke-width:3.4;fill:none;stroke-dasharray:10 6}
+    .quarter{stroke:#1c7194;stroke-width:4.6;fill:none;stroke-linejoin:round}.one{stroke:#8b4eae;stroke-width:4.6;fill:none;stroke-linejoin:round}
+    .hotline{stroke:#b3402f;stroke-width:4.6;fill:none;stroke-linejoin:round}.dashline{stroke:#5c6e7c;stroke-width:3.2;fill:none;stroke-dasharray:9 7}
+    .arrow{stroke:#1c7194;stroke-width:4.4;fill:none;stroke-linecap:round;stroke-linejoin:round}
+    .bar-cold{fill:#1c7194}.bar-later{fill:#8b4eae}.bar-warn{fill:#c98a8a}.bar-hot{fill:#b3402f}
+    .edge-hot{stroke:#b3402f;stroke-width:7}.edge-cold{stroke:#528096;stroke-width:5}
+    text{font-family:'Noto Sans CJK JP','Hiragino Kaku Gothic ProN',system-ui,sans-serif;font-size:25px}.title{font-size:35px;font-weight:700}.section{font-size:27px;font-weight:700}.small{font-size:22px}.formula{font-size:25px;font-weight:600}
+    @media(prefers-color-scheme:dark){.background{fill:#111a24}.panel{fill:#1c2c3b;stroke:#60798a}.ink{fill:#eef6ff}.secondary{fill:#cad9e4}.cold{fill:#89d8f4}.later{fill:#dbb4ff}.hot{fill:#ff9d8f}.warn{fill:#ff9d8f}.slab{fill:#22485f;stroke:#91c2dc}.axis{stroke:#d3e4ef}.guide{stroke:#647e90}.initial{stroke:#bed0da}.quarter,.arrow{stroke:#89d8f4}.one{stroke:#dbb4ff}.hotline{stroke:#ff9d8f}.dashline{stroke:#bed0da}.bar-warn{fill:#8a5a5a}}
+  </style>
+  <rect class="background" width="840" height="1340"/>
+  <text x="36" y="58" class="title ink">§5.1 時間尺度でモデルを選ぶ</text>
+  <text x="36" y="100" class="small secondary">内部拡散は 100 s、外部交換は 2000 s。速い方が内部をならす。</text>
+  <rect x="24" y="123" width="792" height="359" rx="19" class="panel"/>
+  <text x="48" y="166" class="section ink">① 両面対流の平板と二つの時間尺度</text>
+  <rect x="340" y="196" width="160" height="70" rx="3" class="slab"/>
+  <path class="guide" d="M420 188 V274"/>
+  <path class="arrow" d="M325 231 H240 M253 218 L240 231 L253 244 M515 231 H600 M587 218 L600 231 L587 244"/>
+  <text x="180" y="205" class="small cold" text-anchor="middle">周囲 20℃</text>
+  <text x="180" y="262" class="small ink" text-anchor="middle">h = 5.0</text>
+  <text x="660" y="205" class="small cold" text-anchor="middle">周囲 20℃</text>
+  <text x="660" y="262" class="small ink" text-anchor="middle">h = 5.0</text>
+  <text x="420" y="224" text-anchor="middle" class="small ink">初期 100℃</text>
+  <text x="420" y="252" text-anchor="middle" class="small ink">一様</text>
+  <text x="420" y="296" text-anchor="middle" class="small secondary">平板（両面対流）・半厚さ a = 0.010 m</text>
+  <text x="90" y="332" class="small ink">内部拡散 a²/α = 100 s</text><rect id="bar-diffusion" x="90" y="338" width="330.00" height="15" class="bar-cold"/><text x="90" y="368" class="small ink">評価時刻 t = 200 s</text><rect id="bar-eval" x="90" y="374" width="379.67" height="15" class="bar-later"/><text x="90" y="404" class="small ink">外部交換 τ_ext = 2000 s</text><rect id="bar-external" x="90" y="410" width="544.67" height="15" class="bar-hot"/>
+  <path class="axis" d="M90 440 H756"/>
+  <path class="axis" d="M90.00 440 V452"/><text x="90.00" y="474" class="small secondary" text-anchor="middle">1</text><path class="axis" d="M255.00 440 V452"/><text x="255.00" y="474" class="small secondary" text-anchor="middle">10</text><path class="axis" d="M420.00 440 V452"/><text x="420.00" y="474" class="small secondary" text-anchor="middle">100</text><path class="axis" d="M585.00 440 V452"/><text x="585.00" y="474" class="small secondary" text-anchor="middle">1000</text><path class="axis" d="M750.00 440 V452"/><text x="750.00" y="474" class="small secondary" text-anchor="middle">10000</text><text x="762" y="474" class="small secondary">s</text>
+  <rect x="24" y="500" width="792" height="430" rx="19" class="panel"/>
+  <text x="48" y="543" class="section ink">② 集中モデルの応答 Θ = exp(−t/τ_ext)</text>
+  <path class="quarter" d="M150 575 H190"/><text x="199" y="582" class="small ink">Θ = (T − 20)/80</text>
+  <path class="guide" d="M150 720 H790 M150 590 H790"/>
+  <path class="axis" d="M137 570 V852 H796 M783 844 L796 852 L783 860"/>
+  <path id="theta-exp" class="quarter" d="M150.00,590.00 L166.00,596.42 L182.00,602.68 L198.00,608.79 L214.00,614.74 L230.00,620.55 L246.00,626.22 L262.00,631.74 L278.00,637.13 L294.00,642.39 L310.00,647.51 L326.00,652.51 L342.00,657.39 L358.00,662.14 L374.00,666.78 L390.00,671.30 L406.00,675.72 L422.00,680.02 L438.00,684.22 L454.00,688.31 L470.00,692.30 L486.00,696.20 L502.00,699.99 L518.00,703.70 L534.00,707.31 L550.00,710.83 L566.00,714.27 L582.00,717.62 L598.00,720.89 L614.00,724.08 L630.00,727.18 L646.00,730.22 L662.00,733.17 L678.00,736.06 L694.00,738.87 L710.00,741.62 L726.00,744.29 L742.00,746.90 L758.00,749.45 L774.00,751.93 L790.00,754.35"/>
+  <circle cx="214.00" cy="614.74" r="8" class="bar-later"/>
+  <text x="228" y="600" class="small later">t = 200 s で Θ = 0.9048</text>
+  <text x="228" y="634" class="small later">T ≈ 92.39℃</text>
+  <text x="86" y="597" class="small secondary">1.0</text>
+  <text x="86" y="727" class="small secondary">0.5</text>
+  <text x="86" y="857" class="small secondary">0</text>
+  <text x="150" y="885" text-anchor="middle" class="small ink">0</text>
+  <text x="310" y="885" text-anchor="middle" class="small ink">500</text>
+  <text x="470" y="885" text-anchor="middle" class="small ink">1000</text>
+  <text x="630" y="885" text-anchor="middle" class="small ink">1500</text>
+  <text x="790" y="885" text-anchor="middle" class="small ink">2000</text>
+  <text x="470" y="916" text-anchor="middle" class="small secondary">時間 t [s]（τ_ext = 2000 s まで）</text>
+  <rect x="24" y="948" width="792" height="210" rx="19" class="panel"/>
+  <text x="48" y="991" class="section ink">③ モデル選択の目安</text>
+  <text x="48" y="1032" class="small ink">Bi ≲ 0.1 が目安 → 集中モデル（§5.2）。本例は Bi = 0.050</text>
+  <text x="48" y="1070" class="small ink">内部の分布が必要 → 級数・線図（§5.4・§5.5）</text>
+  <text x="48" y="1108" class="small ink">短時間で片側だけ変化 → 半無限固体（§5.6）</text>
+  <text x="48" y="1146" class="small ink">二方向以上から変化 → 積解（§5.8）</text>
+  <rect x="24" y="1176" width="792" height="120" rx="19" class="panel"/>
+  <text x="48" y="1216" class="small ink">α = k/(ρc_p) = 1.0×10⁻⁶ m²/s</text>
+  <text x="48" y="1253" class="small ink">t_D = a²/α = 100 s ｜ τ_ext = ρc_p a/h = 2000 s</text>
+  <text x="48" y="1290" class="small ink">Bi = ha/k = 0.050 ｜ Fo(200 s) = 2.0 ｜ t/τ_ext = 0.10</text>
+  <text x="420" y="1330" text-anchor="middle" class="small secondary">アプリ作成の独自図・原書図版の転載ではない</text>
+</svg>

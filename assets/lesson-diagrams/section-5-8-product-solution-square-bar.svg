@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="840" height="1368" viewBox="0 0 840 1368" role="img" aria-labelledby="product-title product-desc" style="max-width:100%" data-origin="original-app-diagram" data-lesson="5.8" data-biot="1" data-fourier="0.5" data-lambda-1="0.860333589019" data-center-1d="0.772955693333" data-mean-1d="0.681069447035" data-center-product="0.597460503856" data-mean-product="0.463855591685" data-heat-fraction="0.536144408315" data-naive-sum="0.63786110593">
+  <title id="product-title">§5.8 積解：二方向の冷却は積で合成する</title>
+  <desc id="product-desc">アプリ作成の独自図解。長い正方形柱の断面を二方向から冷却する。半寸法0.010メートル、各面の熱伝達率100、熱伝導率1.0でBiは1、50秒でFoは0.50。一次元の一項値は中心0.772955693、平均0.681069447。積解では中心はその二乗0.597460504で67.80度、平均は二乗0.463855592で57.11度、放出顕熱は53.6パーセント。一次元の放出割合を単純に2倍する0.637861106は誤りで、顕熱は残っている分への上乗せで合成される。</desc>
+  <style>
+    .background{fill:#fff}.panel{fill:#f4f7fb;stroke:#bbccd9;stroke-width:2}
+    .ink{fill:#193043}.secondary{fill:#465b6c}.cold{fill:#1c7194}.later{fill:#8b4eae}.hot{fill:#b3402f}.warn{fill:#b3402f}
+    .slab{fill:#d6e9ef;stroke:#528096;stroke-width:3}.axis{stroke:#304c60;stroke-width:2.4;fill:none}
+    .guide{stroke:#aebfcc;stroke-width:1.4;stroke-dasharray:6 7}.initial{stroke:#5c6e7c;stroke-width:3.4;fill:none;stroke-dasharray:10 6}
+    .quarter{stroke:#1c7194;stroke-width:4.6;fill:none;stroke-linejoin:round}.one{stroke:#8b4eae;stroke-width:4.6;fill:none;stroke-linejoin:round}
+    .hotline{stroke:#b3402f;stroke-width:4.6;fill:none;stroke-linejoin:round}.dashline{stroke:#5c6e7c;stroke-width:3.2;fill:none;stroke-dasharray:9 7}
+    .arrow{stroke:#1c7194;stroke-width:4.4;fill:none;stroke-linecap:round;stroke-linejoin:round}
+    .bar-cold{fill:#1c7194}.bar-later{fill:#8b4eae}.bar-warn{fill:#c98a8a}.bar-hot{fill:#b3402f}
+    .edge-hot{stroke:#b3402f;stroke-width:7}.edge-cold{stroke:#528096;stroke-width:5}
+    text{font-family:'Noto Sans CJK JP','Hiragino Kaku Gothic ProN',system-ui,sans-serif;font-size:25px}.title{font-size:35px;font-weight:700}.section{font-size:27px;font-weight:700}.small{font-size:22px}.formula{font-size:25px;font-weight:600}
+    @media(prefers-color-scheme:dark){.background{fill:#111a24}.panel{fill:#1c2c3b;stroke:#60798a}.ink{fill:#eef6ff}.secondary{fill:#cad9e4}.cold{fill:#89d8f4}.later{fill:#dbb4ff}.hot{fill:#ff9d8f}.warn{fill:#ff9d8f}.slab{fill:#22485f;stroke:#91c2dc}.axis{stroke:#d3e4ef}.guide{stroke:#647e90}.initial{stroke:#bed0da}.quarter,.arrow{stroke:#89d8f4}.one{stroke:#dbb4ff}.hotline{stroke:#ff9d8f}.dashline{stroke:#bed0da}.bar-warn{fill:#8a5a5a}}
+  </style>
+  <rect class="background" width="840" height="1368"/>
+  <text x="36" y="58" class="title ink">§5.8 積解：二方向は積で合成</text>
+  <text x="36" y="100" class="small secondary">中心は 0.773²、平均は 0.681²。足し算ではない。</text>
+  <rect x="24" y="123" width="792" height="300" rx="19" class="panel"/>
+  <text x="48" y="166" class="section ink">① 正方形断面（半寸法 a = b = 0.010 m）</text>
+  <rect x="320" y="185" width="200" height="200" rx="3" class="slab"/>
+  <path class="arrow" d="M420 178 V140 M413 152 L420 140 L427 152 M420 392 V430 M413 418 L420 430 L427 418 M313 285 H275 M287 272 L275 285 L287 298 M527 285 H565 M553 272 L565 285 L553 298"/>
+  <text x="48" y="240" class="small ink">初期 100℃・一様</text>
+  <text x="48" y="280" class="small ink">Fo_x = Fo_y = 0.50</text>
+  <text x="48" y="320" class="small ink">長い柱・軸方向なし</text>
+  <text x="545" y="290" class="small ink">Bi_x = Bi_y = 1</text>
+  <circle cx="420" cy="285" r="8" class="bar-hot"/>
+  <text x="420" y="262" text-anchor="middle" class="small ink">中心</text>
+  <text x="420" y="412" text-anchor="middle" class="small secondary">全周囲 20℃・各面 h = 100</text>
+  <rect x="24" y="441" width="792" height="340" rx="19" class="panel"/>
+  <text x="48" y="484" class="section ink">② 中心線プロファイル：一方向だけ vs 積解</text>
+  <path class="dashline" d="M452 511 H492"/><text x="501" y="518" class="small ink">一方向だけ Θ(ξ)</text>
+  <path class="quarter" d="M452 541 H492"/><text x="501" y="548" class="small ink">積解 Θ(ξ, 0)</text>
+  <path class="axis" d="M137 533 V727 H796 M783 719 L796 727 L783 735"/>
+  <path id="profile-1d" class="dashline" d="M150.00,570.41 L166.00,570.44 L182.00,570.55 L198.00,570.73 L214.00,570.98 L230.00,571.30 L246.00,571.69 L262.00,572.16 L278.00,572.69 L294.00,573.30 L310.00,573.97 L326.00,574.72 L342.00,575.53 L358.00,576.41 L374.00,577.36 L390.00,578.38 L406.00,579.47 L422.00,580.63 L438.00,581.85 L454.00,583.14 L470.00,584.49 L486.00,585.91 L502.00,587.40 L518.00,588.94 L534.00,590.55 L550.00,592.22 L566.00,593.96 L582.00,595.75 L598.00,597.61 L614.00,599.52 L630.00,601.49 L646.00,603.52 L662.00,605.60 L678.00,607.74 L694.00,609.94 L710.00,612.18 L726.00,614.48 L742.00,616.83 L758.00,619.23 L774.00,621.68 L790.00,624.18"/>
+  <path id="profile-product" class="quarter" d="M150.00,605.51 L166.00,605.54 L182.00,605.62 L198.00,605.76 L214.00,605.95 L230.00,606.20 L246.00,606.50 L262.00,606.86 L278.00,607.27 L294.00,607.74 L310.00,608.26 L326.00,608.84 L342.00,609.47 L358.00,610.15 L374.00,610.88 L390.00,611.67 L406.00,612.51 L422.00,613.41 L438.00,614.35 L454.00,615.35 L470.00,616.39 L486.00,617.49 L502.00,618.64 L518.00,619.83 L534.00,621.08 L550.00,622.37 L566.00,623.71 L582.00,625.10 L598.00,626.53 L614.00,628.01 L630.00,629.53 L646.00,631.10 L662.00,632.71 L678.00,634.36 L694.00,636.06 L710.00,637.80 L726.00,639.57 L742.00,641.39 L758.00,643.25 L774.00,645.14 L790.00,647.07"/>
+  <circle cx="150" cy="570.41" r="8" class="bar-later"/>
+  <circle cx="150" cy="605.51" r="8" class="bar-cold"/>
+  <text x="170" y="558.41" class="small later">中心 0.773</text>
+  <text x="170" y="635.51" class="small cold">中心 0.597</text>
+  <text x="150" y="756" text-anchor="middle" class="small ink">中心 ξ = 0</text>
+  <text x="470" y="756" text-anchor="middle" class="small ink">0.5</text>
+  <text x="790" y="756" text-anchor="middle" class="small ink">表面 ξ = 1</text>
+  <rect x="24" y="799" width="792" height="290" rx="19" class="panel"/>
+  <text x="48" y="842" class="section ink">③ 放出顕熱 Φ の合成</text>
+  <text x="48" y="880" class="small secondary">Φ = Φ₁ + Φ₂(1 − Φ₁)：残っている分への上乗せ</text>
+  <text x="48" y="924" class="small ink">一方向だけ</text>
+  <rect id="bar-one-dir" x="250" y="902" width="153.09" height="20" class="bar-later"/>
+  <text x="417.09" y="924" class="small ink">Φ₁ = 0.319</text>
+  <text x="48" y="984" class="small ink">単純和（誤り）</text>
+  <rect id="bar-naive" x="250" y="962" width="306.17" height="20" class="bar-warn"/>
+  <text x="570.17" y="984" class="small warn">0.638 ✗</text>
+  <text x="48" y="1044" class="small ink">積解</text>
+  <rect id="bar-product" x="250" y="1022" width="257.35" height="20" class="bar-cold"/>
+  <text x="521.35" y="1044" class="small ink">Φ = 0.536</text>
+  <rect x="24" y="1107" width="792" height="140" rx="19" class="panel"/>
+  <text x="48" y="1147" class="small ink">中心 Θ = 0.597461 → 67.80℃（一方向だけなら 81.84℃）</text>
+  <text x="48" y="1184" class="small ink">平均 Θ̄ = 0.463856 → 57.11℃ ｜ 放出顕熱 53.6%</text>
+  <text x="48" y="1221" class="small secondary">摂氏温度そのものは掛けない。条件は共通周囲・線形境界。</text>
+  <text x="420" y="1353" text-anchor="middle" class="small secondary">アプリ作成の独自図・原書図版の転載ではない</text>
+</svg>
