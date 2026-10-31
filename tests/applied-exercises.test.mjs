@@ -48,7 +48,7 @@ test('22 practical numericals are scientifically labeled, unique and correctly l
   perChapter.set(q.source.chapterId,(perChapter.get(q.source.chapterId)||0)+1);
   assert.equal(q.id,'supp-applied-'+sid.replace('.','-')+'-v1');
   assert.equal(validateQuestion(q),'',q.id);
-  assert.equal(q.revision,['supp-applied-3-2-v1','supp-applied-10-4-v1'].includes(q.id)?'v2':'v1');
+  assert.equal(q.revision,['supp-applied-3-2-v1','supp-applied-10-4-v1','supp-applied-6-5-v1'].includes(q.id)?'v2':'v1');
   assert.equal(q.source.type,'supplement');
   assert.equal(q.questionKind,'numerical');
   assert.equal(q.expertReviewed,false);
