@@ -74,7 +74,8 @@ test('plate segments and comparison bars are proportional',()=>{
 
 test('transition caveats are stated',()=>{
   for(const s of ['Re_c は主流乱れ・粗さ・圧力勾配で変わり、普遍定数ではない',
-    'C′ は Re_c と Pr の両方で変わる。条件が違えば 871 のような別の値になり、固定しない',
+    'C′ は Re_c と Pr の両方で変わる。',
+    '条件が違えば 871 のような別の値になり、固定しない',
     'Re_L ≤ Re_c なら混合式を使わず、層流の平均相関を使う',
     '実際の遷移は有限の幅を持つ'])
     assert.ok(svg.includes(s),s);

@@ -54,7 +54,7 @@ test('capillary pressure budget independently closes',()=>{
 test('stacked pressure bar segments are proportional and contiguous',()=>{
   const m=svg.match(/<g id="pressure-stack">([\s\S]*?)<\/g>/);
   assert.ok(m);
-  const segs=[...m[1].matchAll(/<rect class="seg\w" x="([\d.]+)" y="730" width="([\d.]+)" height="34"\/>/g)];
+  const segs=[...m[1].matchAll(/<rect class="seg\w" x="([\d.]+)" y="760" width="([\d.]+)" height="34"\/>/g)];
   assert.equal(segs.length,4);
   const parts=[p.dpL,p.dpV,p.dpG,p.margin];
   let cursor=150;

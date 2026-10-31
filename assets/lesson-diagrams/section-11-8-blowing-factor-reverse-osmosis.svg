@@ -49,7 +49,7 @@
 <text x="114" y="916" class="small ink">−0.9</text>
 <text x="245" y="916" class="small ink">0</text>
 <text x="666" y="916" class="small ink">3</text>
-<text x="400" y="916" text-anchor="middle" class="small secondary">駆動力 B_m,2 →（正が吹き出し）</text>
+<text x="460" y="916" text-anchor="middle" class="small secondary">駆動力 B_m,2 →（正が吹き出し）</text>
 <rect x="24" y="972" width="712" height="466" rx="18" class="panel"/>
 <text x="46" y="1019" class="heading ink">濃度分極 CP = exp(|n|/g_m*) − 1</text>
 <text x="46" y="1064" class="small ink">g_m* = 4×10^(-2) kg/(m²·s)、海水の塩質量分率 3.5%</text>

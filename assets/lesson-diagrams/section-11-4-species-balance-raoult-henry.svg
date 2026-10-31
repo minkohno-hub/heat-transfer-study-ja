@@ -23,7 +23,8 @@
 <text x="420" y="338" class="small ink">液相：ほぼ純水</text>
 <text x="420" y="382" class="small ink">温度は連続でも濃度は跳びうる</text>
 <text x="420" y="420" class="small secondary">界面の組成は相平衡が決める</text>
-<text x="66" y="420" class="small secondary">全成分で和を取ると連続の式（式(11.41)）</text>
+<text x="66" y="412" class="small secondary">全成分で和を取ると</text>
+<text x="66" y="444" class="small secondary">連続の式（式(11.41)）</text>
 <rect x="24" y="484" width="712" height="356" rx="18" class="panel"/>
 <text x="46" y="531" class="heading ink">平衡の簡易則と炭酸飲料（例題11.5）</text>
 <text x="46" y="580" class="small ink">Raoult の法則：p_i = p_sat,i x_i（液に富む成分、式(11.45)）</text>
@@ -49,7 +50,7 @@
 <text x="60" y="990" class="small secondary">m_H2O,s</text>
 <text x="392" y="1326" class="small ink">50</text>
 <text x="664" y="1326" class="small ink">100°C</text>
-<text x="400" y="1326" text-anchor="middle" class="small secondary">表面温度 T →</text>
+<text x="545" y="1326" text-anchor="middle" class="small secondary">表面温度 T →</text>
 <text x="436" y="1245" class="small ink">54°C で約0.097</text>
 <text x="46" y="1362" class="small ink">54°C 未満では 10% 未満（本書）。100°C では純蒸気で 1</text>
 <text x="46" y="1396" class="small secondary">飽和圧は Antoine 式による近似（蒸気表値と 1% 以内）</text>

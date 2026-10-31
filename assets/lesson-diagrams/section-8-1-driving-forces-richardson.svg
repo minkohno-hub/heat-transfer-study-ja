@@ -26,14 +26,15 @@ text{font-family:'Noto Sans CJK JP','Hiragino Kaku Gothic ProN',sans-serif;font-
 <path class="push" d="M600 350 H760 M746 339 L762 350 L746 361"/>
 <path class="push" d="M600 420 H760 M746 409 L762 420 L746 431"/>
 <text class="small ink" x="520" y="510">強制対流：ファン等の外部駆動</text>
-<text class="small muted" x="520" y="540">膜状凝縮は液膜が重力で流下（§8.2・§8.5）</text>
+<text class="small muted" x="520" y="540">膜状凝縮は液膜が重力で</text>
+<text class="small muted" x="520" y="572">流下する（§8.2・§8.5）</text>
 <rect class="panel" x="23" y="621" width="794" height="293" rx="18"/>
 <text class="section ink" x="43" y="662">② 混合対流の尺度 Ri = Gr/Re²（目安）</text>
 <rect class="zone0" x="110.000" y="700" width="206.667" height="46"/><rect class="zone1" x="316.667" y="700" width="206.667" height="46"/><rect class="zone2" x="523.333" y="700" width="206.667" height="46"/>
 <path class="axis" d="M110 746 H730"/>
 <text x="110.0" y="782" text-anchor="middle" class="micro ink">10^(-3)</text><text x="213.3" y="782" text-anchor="middle" class="micro ink">10^(-2)</text><text x="316.7" y="782" text-anchor="middle" class="micro ink">10^(-1)</text><text x="420.0" y="782" text-anchor="middle" class="micro ink">10^(0)</text><text x="523.3" y="782" text-anchor="middle" class="micro ink">10^(1)</text><text x="626.7" y="782" text-anchor="middle" class="micro ink">10^(2)</text><text x="730.0" y="782" text-anchor="middle" class="micro ink">10^(3)</text>
 <path id="ri-marker" class="marker" d="M 307.155 668 L 307.155 700"/>
-<text class="small ink" x="307.2" y="655" text-anchor="middle">Ri ≈ 0.0809</text>
+<text class="small ink" x="307.2" y="692" text-anchor="middle">Ri ≈ 0.0809</text>
 <text class="micro ink" x="213" y="722" text-anchor="middle">強制対流が優勢な目安</text>
 <text class="micro ink" x="420" y="722" text-anchor="middle">混合対流の目安</text>
 <text class="micro ink" x="627" y="722" text-anchor="middle">自然対流が優勢な目安</text>

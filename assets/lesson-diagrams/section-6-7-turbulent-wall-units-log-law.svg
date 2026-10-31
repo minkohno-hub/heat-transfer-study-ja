@@ -31,7 +31,7 @@
 <circle class="accent2" cx="563.20" cy="249.15" r="7"/>
 <text class="small accent" x="52" y="240">粘性底層 u⁺ ≈ y⁺（y⁺ ≲ 7、原書 6.96）</text>
 <text class="small accent2" x="330" y="212">対数則 u⁺ ≈ (1/κ) ln y⁺ + B（y⁺ ≳ 30）</text>
-<text class="micro muted" x="404" y="590">緩衝層</text>
+<text class="micro muted" x="404" y="380">緩衝層</text>
 <text class="micro muted" x="140" y="600">y⁺ = 0.1</text>
 <text class="micro muted" x="400" y="600">y⁺ = 10</text>
 <text class="micro muted" x="660" y="600">y⁺ = 1000</text>

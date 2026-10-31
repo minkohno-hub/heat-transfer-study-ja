@@ -31,7 +31,7 @@
 <text x="530" y="330" class="small b">冷却ガスが</text>
 <text x="530" y="368" class="small b">吹き出す</text>
 <text x="90" y="404" class="small ink">多孔質壁（冷却材は貯蔵温度 T_r）で q_s = q_u（式(11.93)）</text>
-<rect x="24" y="450" width="712" height="492" rx="18" class="panel"/>
+<rect x="24" y="450" width="712" height="504" rx="18" class="panel"/>
 <text x="46" y="497" class="heading ink">補正比 h/h*（式(11.88)、h* は質量移動ゼロの極限）</text>
 <path d="M120 538 V886 H686" class="axis" fill="none"/>
 <path d="M120 740.0 H680 M344.0 544 V880" class="guide"/>
@@ -51,7 +51,7 @@
 <text x="112" y="916" class="small ink">−2</text>
 <text x="340" y="916" class="small ink">0</text>
 <text x="672" y="916" class="small ink">3</text>
-<text x="400" y="916" text-anchor="middle" class="small secondary">X = n_i,s c_p,i / h* →（正が吹き出し）</text>
+<text x="400" y="946" text-anchor="middle" class="small secondary">X = n_i,s c_p,i / h* →（正が吹き出し）</text>
 <rect x="24" y="962" width="712" height="476" rx="18" class="panel"/>
 <text x="46" y="1009" class="heading ink">壁温は貯蔵温度へ指数的に近づく（式(11.98)）</text>
 <text x="46" y="1054" class="small ink">仮想例：T_e = 1200 K、T_r = 300 K、T_s − T_r の棒</text>
