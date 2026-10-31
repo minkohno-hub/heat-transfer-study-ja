@@ -5,6 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#f7f5ef" />
     <meta name="description" content="熱移動を初めて学ぶ人向けの日本語学習アプリ" />
+    <!-- All scripts, data and assets are same-origin files shipped with the
+         app; inline styles are required by the rendered progress/score
+         widgets, so style-src keeps 'unsafe-inline' while scripts stay
+         self-only (audit A2-UXS-16). -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self'; worker-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'" />
     <link rel="manifest" href="manifest.json" />
     <link rel="stylesheet" href="styles.css" />
     <title>熱移動を学ぶ</title>

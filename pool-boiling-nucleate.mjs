@@ -52,7 +52,8 @@ export function calculateNucleateBoiling(raw){
  if(!Number.isFinite(flux)||!Number.isFinite(criticalFlux)||!Number.isFinite(formalCrossing)||formalCrossing<=0)return {error:"計算可能な数値範囲外です。"};
  if(chfRatio>=1)return {error:`Rohsenow推算q″=${fmtNucleate(flux)} W/m²がZuber CHF推算値=${fmtNucleate(criticalFlux)} W/m²以上です。核沸騰式をその領域に外挿できません。壁面過熱度を下げてください。`};
  const watts=flux*v.area,h=flux/v.superheat,idealVaporMassRate=watts/v.latent;
- const formalWarning=chfRatio>=.8?"CHF推定値の80%以上です。モデル誤差を考慮し、安全な核沸騰の持続を保証しません。":"核沸騰開始点はこの式からは分かりません。実験・表面状態に対するCsfとnの選定が重要です。";
+ const lowSuperheatWarning=v.superheat<1?"壁面過熱度が1 K未満です。この領域では気泡の核生成（沸騰開始点）に達していない可能性があり、実際は核沸騰ではなく自然対流が支配的な場合があります。Rohsenow式は十分に発達した核沸騰の経験相関なので、この計算値を核沸騰の結果として扱わないでください。1 Kは表示上の目安であり、沸騰開始点そのものではありません。":null;
+ const formalWarning=chfRatio>=.8?"CHF推定値の80%以上です。モデル誤差を考慮し、安全な核沸騰の持続を保証しません。":(lowSuperheatWarning||"核沸騰開始点はこの式からは分かりません。実験・表面状態に対するCsfとnの選定が重要です。");
  const values=[flux,criticalFlux,formalCrossing,chfRatio,watts,h,idealVaporMassRate,pr];
  if(values.some(x=>!Number.isFinite(x)))return {error:"計算結果が数値範囲を超えました。"};
  return {values:v,pr,flux,watts,h,criticalFlux,chfRatio,formalCrossing,idealVaporMassRate,
