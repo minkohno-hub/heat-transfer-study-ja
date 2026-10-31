@@ -266,8 +266,8 @@ test('R5-11-005: lesson 11.6 marks the Sc upper bound as an app operational rang
   assert.ok(lessonText('11.6').includes('物理的な上限ではない'));
 });
 test('batch3 guards: totals unchanged and changed section questions are versioned consistently in both files',()=>{
-  assert.equal(questions.length,750);
-  assert.equal(glossary.length,468);
+  assert.equal(questions.length,751);
+  assert.equal(glossary.length,470);
   const changed=['supp-section-5-6','supp-section-6-2','supp-section-6-6','supp-section-7-6','supp-section-9-4','supp-section-10-5','supp-section-11-8'];
   for(const id of changed){
     assert.equal(q(id).revision,sq(id).revision,id);

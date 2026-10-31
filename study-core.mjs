@@ -161,6 +161,21 @@ export function normalizeLearningData(data) {
   out.settings={...createEmptyState().settings,...out.settings}; out.plan={...createEmptyState().plan,...out.plan};
   out.attempts.sort((a,b)=>instant(a.at)-instant(b.at));
   out.attempts=dedupeAttempts(out.attempts);
+  // Bookmarks are addressed by id everywhere they are listed, edited, or
+  // deleted, so collapse duplicate ids (keeping the newest copy) instead of
+  // letting a restored file surface the same bookmark twice. Merge already
+  // keyed rows by id; this extends the same healing to plain loads/imports.
+  const bookmarkById=new Map();
+  for (const b of out.bookmarks) {
+    const key=b&&b.id?b.id:JSON.stringify(b);
+    const prev=bookmarkById.get(key);
+    if (!prev||instant(b&&b.createdAt)>=instant(prev&&prev.createdAt)) bookmarkById.set(key,b);
+  }
+  out.bookmarks=[...bookmarkById.values()];
+  // Session records embed a snapshot of their answers. Heal duplicate rows
+  // inside a snapshot with the same content key as attempts; the session
+  // totals are stored separately and are deliberately not recomputed here.
+  for (const s of out.sessions) if (s&&Array.isArray(s.answers)) s.answers=dedupeAttempts(s.answers);
   out.questionBookmarks=[...new Set(out.questionBookmarks)];
   out.sessions.sort((a,b)=>instant(a.finishedAt??a.startedAt)-instant(b.finishedAt??b.startedAt));
   return out;

@@ -13388,7 +13388,7 @@
   },
   {
     "id": "supp-batch2-bi-number-v1",
-    "revision": "v1",
+    "revision": "v2",
     "field": "次元解析・相似条件",
     "prerequisites": [
       "熱移動の構成則",
@@ -13406,7 +13406,14 @@
     "createdStatus": "独立作問",
     "reviewStatus": "内部で算術と単位を確認／外部専門家校閲前",
     "expertReviewed": false,
-    "reportHistory": [],
+    "reportHistory": [
+      {
+        "date": "2026-10-31",
+        "type": "internal_audit_followup",
+        "issue": "監査B-3 R3-I-10残件対応（再監査CH6-7の対象範囲外だった第4章分）",
+        "details": "放射と無関係な定型文だった注意書きを、問題の主題（Bi・Fo・相似条件）に合う内容へ差し替え。設問・正答は変更なし。外部専門家承認ではない。"
+      }
+    ],
     "prompt": "固体側k_s=8 W/(m·K)、h=40 W/(m²·K)、代表長さL=.020 mでBi=hL/k_sはいくつか。",
     "choices": [
       "0.020",
@@ -13432,11 +13439,11 @@
       "Bi=hL/k_sを計算。",
       "Bi=40×.020/8=.10。hとk_s、Lの単位は相殺し無次元になる。"
     ],
-    "beginnerPitfall": "無次元数・流路の発達・黒体と灰色体など、それぞれのモデルの成立条件を確認する。"
+    "beginnerPitfall": "Biは固体内部の伝導抵抗と表面の対流抵抗の比。代表長さLの取り方（平板なら半厚さなど）を変えると値が変わるため、どの長さで定義したかを確認する。hと固体のk_sを取り違えない。"
   },
   {
     "id": "supp-batch2-fo-number-v1",
-    "revision": "v1",
+    "revision": "v2",
     "field": "次元解析・相似条件",
     "prerequisites": [
       "熱移動の構成則",
@@ -13454,7 +13461,14 @@
     "createdStatus": "独立作問",
     "reviewStatus": "内部で算術と単位を確認／外部専門家校閲前",
     "expertReviewed": false,
-    "reportHistory": [],
+    "reportHistory": [
+      {
+        "date": "2026-10-31",
+        "type": "internal_audit_followup",
+        "issue": "監査B-3 R3-I-10残件対応（再監査CH6-7の対象範囲外だった第4章分）",
+        "details": "放射と無関係な定型文だった注意書きを、問題の主題（Bi・Fo・相似条件）に合う内容へ差し替え。設問・正答は変更なし。外部専門家承認ではない。"
+      }
+    ],
     "prompt": "α_s=2.0×10⁻⁶ m²/s、L=.020 m、t=100 sのFourier数Foはいくつか。",
     "choices": [
       "0.125",
@@ -13480,11 +13494,11 @@
       "Fo=αt/L²を使用。",
       "Fo=αt/L²=(2×10⁻⁶×100)/(.020)²=.0002/.0004=.50。"
     ],
-    "beginnerPitfall": "無次元数・流路の発達・黒体と灰色体など、それぞれのモデルの成立条件を確認する。"
+    "beginnerPitfall": "Foは経過時間を熱拡散の時間尺度L²/αで測った無次元時間。tをそのまま代入したり、αの10⁻⁶の指数を落としたりしない。"
   },
   {
     "id": "supp-batch2-length-double-fo-v1",
-    "revision": "v1",
+    "revision": "v2",
     "field": "次元解析・相似条件",
     "prerequisites": [
       "熱移動の構成則",
@@ -13502,7 +13516,14 @@
     "createdStatus": "独立作問",
     "reviewStatus": "内部で算術と単位を確認／外部専門家校閲前",
     "expertReviewed": false,
-    "reportHistory": [],
+    "reportHistory": [
+      {
+        "date": "2026-10-31",
+        "type": "internal_audit_followup",
+        "issue": "監査B-3 R3-I-10残件対応（再監査CH6-7の対象範囲外だった第4章分）",
+        "details": "放射と無関係な定型文だった注意書きを、問題の主題（Bi・Fo・相似条件）に合う内容へ差し替え。設問・正答は変更なし。外部専門家承認ではない。"
+      }
+    ],
     "prompt": "αと経過時間は一定のまま、平板の代表長さをLから2Lへ変更した。元のFo=.50なら新しいFoは？",
     "choices": [
       "0.125",
@@ -13528,11 +13549,11 @@
       "元の値を4で割る。",
       "Fo∝1/L²であり、長さ2倍はFoを1/4にする。新Fo=.50/4=.125。"
     ],
-    "beginnerPitfall": "無次元数・流路の発達・黒体と灰色体など、それぞれのモデルの成立条件を確認する。"
+    "beginnerPitfall": "FoはL²に反比例する。長さを2倍にするとFoは1/2ではなく1/4になる点を取り違えやすい。"
   },
   {
     "id": "supp-batch2-bi-scale-h-v1",
-    "revision": "v1",
+    "revision": "v2",
     "field": "次元解析・相似条件",
     "prerequisites": [
       "熱移動の構成則",
@@ -13550,7 +13571,14 @@
     "createdStatus": "独立作問",
     "reviewStatus": "内部で算術と単位を確認／外部専門家校閲前",
     "expertReviewed": false,
-    "reportHistory": [],
+    "reportHistory": [
+      {
+        "date": "2026-10-31",
+        "type": "internal_audit_followup",
+        "issue": "監査B-3 R3-I-10残件対応（再監査CH6-7の対象範囲外だった第4章分）",
+        "details": "放射と無関係な定型文だった注意書きを、問題の主題（Bi・Fo・相似条件）に合う内容へ差し替え。設問・正答は変更なし。外部専門家承認ではない。"
+      }
+    ],
     "prompt": "同じ材質kと初期Bi=.10を保持したまま代表長さLを.020 mから.040 mにする。元h=40 W/(m²K)なら新hは？",
     "choices": [
       "10 W/(m²K)",
@@ -13576,11 +13604,11 @@
       "hとLの積を一定にする。",
       "Bi=hL/kを一定にするにはh_new=h_old×L_old/L_new=40×.020/.040=20 W/(m²K)。"
     ],
-    "beginnerPitfall": "無次元数・流路の発達・黒体と灰色体など、それぞれのモデルの成立条件を確認する。"
+    "beginnerPitfall": "Bi=hL/kを一定に保つ条件では、hはLに反比例する。Lを2倍にしたからhも2倍、と比例で考えない。"
   },
   {
     "id": "supp-batch2-fo-scale-t-v1",
-    "revision": "v1",
+    "revision": "v2",
     "field": "次元解析・相似条件",
     "prerequisites": [
       "熱移動の構成則",
@@ -13598,7 +13626,14 @@
     "createdStatus": "独立作問",
     "reviewStatus": "内部で算術と単位を確認／外部専門家校閲前",
     "expertReviewed": false,
-    "reportHistory": [],
+    "reportHistory": [
+      {
+        "date": "2026-10-31",
+        "type": "internal_audit_followup",
+        "issue": "監査B-3 R3-I-10残件対応（再監査CH6-7の対象範囲外だった第4章分）",
+        "details": "放射と無関係な定型文だった注意書きを、問題の主題（Bi・Fo・相似条件）に合う内容へ差し替え。設問・正答は変更なし。外部専門家承認ではない。"
+      }
+    ],
     "prompt": "元L=.020 m、t=100 s、同じ熱拡散率の相似平板をL=.040 mにした。同じFoにする経過時間は？",
     "choices": [
       "100 s",
@@ -13624,11 +13659,11 @@
       "長さの倍率を二乗。",
       "Fo=αt/L²。長さが2倍ならtを4倍にして400 sで一致。"
     ],
-    "beginnerPitfall": "無次元数・流路の発達・黒体と灰色体など、それぞれのモデルの成立条件を確認する。"
+    "beginnerPitfall": "同じFoを保つには、経過時間tはLの2乗に比例させる必要がある。長さ2倍で時間も2倍、ではなく4倍にする。"
   },
   {
     "id": "supp-batch2-similarity-condition-v1",
-    "revision": "v1",
+    "revision": "v2",
     "field": "次元解析・相似条件",
     "prerequisites": [
       "熱移動の構成則",
@@ -13646,7 +13681,14 @@
     "createdStatus": "独立作問",
     "reviewStatus": "内部で算術と単位を確認／外部専門家校閲前",
     "expertReviewed": false,
-    "reportHistory": [],
+    "reportHistory": [
+      {
+        "date": "2026-10-31",
+        "type": "internal_audit_followup",
+        "issue": "監査B-3 R3-I-10残件対応（再監査CH6-7の対象範囲外だった第4章分）",
+        "details": "放射と無関係な定型文だった注意書きを、問題の主題（Bi・Fo・相似条件）に合う内容へ差し替え。設問・正答は変更なし。外部専門家承認ではない。"
+      }
+    ],
     "prompt": "固体kとαが同じ相似な二つの平板で、代表長さを2倍にする。BiとFoを元と同じに保つ操作として適切なのは？",
     "choices": [
       "hを2倍、時間を1/4倍とする",
@@ -13672,7 +13714,7 @@
       "Foはt/L²に比例。",
       "Bi=hL/kを保つにはhを1/2、Fo=αt/L²を保つにはtを4倍にする。初期・無次元境界条件も揃える必要がある。"
     ],
-    "beginnerPitfall": "無次元数・流路の発達・黒体と灰色体など、それぞれのモデルの成立条件を確認する。"
+    "beginnerPitfall": "相似ではBi（=hL/k）とFo（=αt/L²）を同時に保つ必要がある。片方の無次元数だけを合わせても、温度分布の相似にはならない。"
   },
   {
     "id": "supp-batch2-pipe-h-wall-temperature-v1",
@@ -19912,6 +19954,12 @@
         "date": "2026-10-29",
         "type": "authored_with_internal_check",
         "details": "独立執筆と別計算を実施。原本の包括的照合・外部専門家校閲ではない。"
+      },
+      {
+        "date": "2026-10-31",
+        "type": "internal_audit_followup",
+        "issue": "監査B-3 所見対応（記録のみ）",
+        "details": "節目2で正答選択肢のテキストに欠けていた否定を修正した際、revisionはv1のままで履歴にも残らなかった。現行内容は修正済みであり、現行内容に対して蓄積された回答履歴を復習判定から外さないためrevisionは変更せず、経緯をここに記録する。設問・正答は変更なし。外部専門家承認ではない。"
       }
     ],
     "prompt": "二帯の吸収率を逆算するため、表面温度を一定に保ち、スペクトルの形を変えず照射強度だけを2倍にした二試験を行った。線形吸収で帯内特性が変わらないとする。適切な判断はどれか。",
@@ -39079,5 +39127,60 @@
       "よってΓとδの関係は形状によらず成り立つ。"
     ],
     "beginnerPitfall": "Γ∝δ³の関係と、δ(x)そのものの形状依存性を混同しない。"
+  },
+  {
+    "answer": 3,
+    "beginnerPitfall": "気体用 (6.112) と液体用 (6.113) の係数・Pr 指数を取り違えない。層流式の 0.332 と指数 1/2 とも混同しない。",
+    "choices": [
+      "約1743",
+      "約1666",
+      "約296",
+      "約1521"
+    ],
+    "createdStatus": "独立作問原稿",
+    "difficulty": "標準・数値計算",
+    "distractors": [
+      "液体用 (6.113)（0.032 Re_x^0.8 Pr^0.43）で計算した値（約1742.6）。流体は空気（気体）なので (6.113) は使わない。",
+      "係数と Re 指数は (6.112) のままで Pr 指数だけを 1/3 に取り違えた値（約1666.1）。気体用の Pr 指数は 0.6 である。",
+      "層流の局所式 0.332 Re_x^(1/2) Pr^(1/3) で計算した値（約296.2）。Re_x=1.0×10⁶ の乱流域の評価に層流式は使わない。",
+      "正解。(6.112) で 0.0296×(1.0×10⁶)^0.8×0.71^0.6≈1520.7 となり、根拠は気体用の係数 0.0296 と Pr 指数 0.6 の組合せである。"
+    ],
+    "expertReviewed": false,
+    "explanation": "気体なので (6.112) を使う。Re_x^0.8=(1.0×10⁶)^0.8=10^4.8≈63096、Pr^0.6=0.71^0.6≈0.814 だから、Nu_x=0.0296×63096×0.814≈1520.7 で、最も近いのは約1521。(6.112) と (6.113) は等温壁・等熱流束壁のどちらにも適用できるが、(6.112) は気体用、(6.113) は非金属液体用であり、流体で使い分ける。",
+    "field": "境界層・外部対流",
+    "hints": [
+      "気体か液体かで使う冪乗式が変わる。",
+      "Re の指数は 0.8、Pr の指数は式ごとに確認する。"
+    ],
+    "id": "supp-turbulent-local-powerlaw-v1",
+    "prerequisites": [
+      "境界層の運動量・熱輸送",
+      "係数の定義",
+      "相関の条件"
+    ],
+    "prompt": "平板上の乱流境界層で、空気（気体）について Re_x=1.0×10⁶、Pr=0.71 の位置の局所 Nusselt 数 Nu_x を、気体用の冪乗相関 Nu_x=0.0296 Re_x^0.8 Pr^0.6（式 (6.112)）で求めると、最も近い値はどれか。",
+    "questionGroup": "original_independent_applied_v1",
+    "questionKind": "numerical",
+    "reportHistory": [
+      {
+        "date": "2026-10-31",
+        "type": "audit2_batch4_authorship",
+        "details": "監査B-3 R3-I-06（再監査CH6-7）。原典 (6.112) を使う新規作問。原典テキストで式を確認し、選択肢の数値を独立再検算した。外部専門家校閲ではない。"
+      }
+    ],
+    "reviewStatus": "執筆原稿・基本算術と構造を確認／包括的品質監査待ち・外部専門家校閲前",
+    "revision": "v1",
+    "solutionSteps": [
+      "流体は空気（気体）なので (6.112) を選ぶ。",
+      "Re_x^0.8=(10⁶)^0.8=10^4.8≈63096、Pr^0.6=0.71^0.6≈0.814 を計算する。",
+      "Nu_x=0.0296×63096×0.814≈1520.7 で、約1521 が最も近い。"
+    ],
+    "source": {
+      "chapterId": "ch6",
+      "focusSectionId": "6.8",
+      "guideId": "chapter6-flat-boundary",
+      "reference": "独立作問。原典 §6.8 の気体用局所冪乗相関 (6.112)（Reynolds ら）を用いる計算問題で、原典の例題・章末問題の転用ではない。",
+      "type": "supplement"
+    }
   }
 ]
