@@ -912,8 +912,23 @@ function renderBackupControls(){
 }
 function exportBackup(kind){
   const raw=storedBackup(kind);if(!raw){showStatus('書き出せる控えがありません。');return;}
-  if(downloadJSON(raw,`heat-study-${kind}-${todayISO()}.json`))showStatus('控えの書き出しを開始しました。ダウンロードを確認してください。');
-  else offerManualExport(raw);
+  let text=raw;
+  if(kind==='before-import'){
+    // The stored copy is the app's internal state, which carries no export
+    // envelope, so writing it verbatim produced a file the importer itself
+    // rejected as a foreign format (phase D finding D-01). Wrap it in the
+    // same envelope as a normal export so the copy the settings screen
+    // recommends saving can be imported back on any device. If the copy
+    // cannot be parsed (it is snapshotted from live state, so this should
+    // not happen), keep the verbatim bytes rather than lose the only copy.
+    try{const data=JSON.parse(raw);if(data&&typeof data==='object'&&!Array.isArray(data))text=JSON.stringify({...data,schemaVersion:1,exportedAt:new Date().toISOString(),format:'heat-study-ja-learning-data'},null,2);}catch{/* keep the raw copy */}
+  }
+  // kind==='recovery' stays byte-for-byte verbatim on purpose: it preserves
+  // data the app could not read, and rewriting it could destroy the only
+  // evidence available for manual repair. It is an inspection copy, not a
+  // restorable backup, and its button label (元データを書き出す) says so.
+  if(downloadJSON(text,`heat-study-${kind}-${todayISO()}.json`))showStatus('控えの書き出しを開始しました。ダウンロードを確認してください。');
+  else offerManualExport(text);
 }
 function previewBackup(){
   try{const data=JSON.parse(storedBackup('before-import')),issue=validateLearningData(data,{stored:true});if(issue)throw new Error(issue);ui.importDraft={data:{...data,format:'heat-study-ja-learning-data'}};}
