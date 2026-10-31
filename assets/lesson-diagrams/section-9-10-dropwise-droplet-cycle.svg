@@ -35,7 +35,8 @@ text{font-family:'Noto Sans CJK JP','Hiragino Kaku Gothic ProN',sans-serif;font-
 <text class="section ink" x="43" y="973">③ 実効係数と被覆の連成（仮想例）</text>
 <text class="eq ink" x="43" y="1032">θ=4 K：実効 h ≈ 1.64×10^5 W/(m²·K)</text>
 <text class="eq ink" x="43" y="1062">（微分勾配 ≈ 1.96×10^5 とは別）</text>
-<text class="eq ink" x="43" y="1110">被覆 R″=2.00×10^(-6) m²·K/W では表面 θ≈3.05 K、q″≈4.77×10^5</text>
+<text class="eq ink" x="43" y="1110">被覆 R″=2.00×10^(-6) m²·K/W では</text>
+<text class="eq ink" x="43" y="1140">表面 θ≈3.05 K、q″≈4.77×10^5</text>
 <text class="micro muted" x="43" y="1175">被覆の温度降下 ≈ 0.953 K と表面の θ の合計が全体の 4.00 K に閉じる。</text>
 <text class="micro muted" x="43" y="1201">促進処理の持続性は別問題。</text>
 
