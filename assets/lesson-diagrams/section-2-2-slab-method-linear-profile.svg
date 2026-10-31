@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="840" height="1210" viewBox="0 0 840 1210" style="max-width:100%" role="img" aria-labelledby="title2-2 desc2-2" data-lesson="2.2" data-origin="original-app-diagram" data-l="0.2" data-k="4" data-area="2" data-t1="60" data-t2="20" data-slope="-200" data-qflux="800" data-q="1600" data-r="0.025" data-plot-x0="100" data-plot-x1="740" data-plot-y-t1="560" data-plot-yscale="7.5">
+<title id="title2-2">§2.2 平板の定常熱伝導：解法の8ステップと線形分布</title>
+<desc id="desc2-2">アプリ独自作成の模式図。熱伝導方程式を解く標準手順の8ステップと、両面温度を指定した発熱なし平板の例を示す。厚さ0.20メートル、熱伝導率4、面積2.0平方メートル、両面60度と20度では温度分布は60から毎メートル200ケルビン下がる直線となり、熱流束800ワット毎平方メートル、伝熱量1600ワット、熱抵抗0.025ケルビン毎ワットになる。原著の図版の転載ではない。</desc>
+<style>
+text{font-family:system-ui,'Noto Sans CJK JP','Hiragino Kaku Gothic ProN',sans-serif;font-size:23px}
+.bg{fill:#ffffff}.panel{fill:#f4f7fa;stroke:#c2d1dd;stroke-width:2}.ink{fill:#173044}.muted{fill:#43596c}.warm{fill:#a84429}.cool{fill:#146b83}
+.curve{stroke:#a84429;stroke-width:4;fill:none;stroke-linejoin:round;stroke-linecap:round}
+.axis{stroke:#43596c;stroke-width:2}.arrow{stroke:#a84429;stroke-width:3.6;fill:none;stroke-linejoin:round;stroke-linecap:round}
+.title{font-size:34px;font-weight:750}.section{font-size:27px;font-weight:700}.small{font-size:20px}.tiny{font-size:19px}.equation{font-size:23px;font-weight:650}
+@media(prefers-color-scheme:dark){.bg{fill:#101b26}.panel{fill:#1d2d3d;stroke:#657d91}.ink{fill:#f1f7fb}.muted{fill:#c8d8e5}.warm{fill:#ffb599}.cool{fill:#8fdaef}.curve{stroke:#ffb599}.axis{stroke:#c8d8e5}.arrow{stroke:#ffb599}}
+</style>
+<rect class="bg" width="840" height="1210"/>
+<text class="title ink" x="31" y="58">§2.2 平板の定常熱伝導：解法の型</text>
+<text class="small muted" x="33" y="97">まず T を求め、必要なら Fourier の法則で q を得る</text>
+<rect class="panel" x="23" y="119" width="794" height="330" rx="19"/>
+<text class="section ink" x="43" y="161">① 解法の8ステップ（§2.2）</text>
+<text class="small ink" x="43" y="203">1. 座標系と独立変数を決める　2. 微分方程式を選ぶ</text>
+<text class="small ink" x="43" y="243">3. 一般解を書く　4. 境界・初期条件を設定する</text>
+<text class="small ink" x="43" y="283">5. 定数を決める　6. 特殊解を得る</text>
+<text class="small ink" x="43" y="323">7. 解を吟味する（境界条件・対称性・物理的妥当性）</text>
+<text class="small ink" x="43" y="363">8. Fourier の法則に戻して熱流束を計算する</text>
+<text class="small muted" x="43" y="413">Step 4 が最も難しい。境界条件に「その場で知り得ない情報」を入れない</text>
+<rect class="panel" x="23" y="467" width="794" height="420" rx="19"/>
+<text class="section ink" x="43" y="509">② 例：発熱なし平板は線形分布（例題2.2）</text>
+<line class="axis" x1="100" y1="530" x2="100" y2="860"/>
+<line class="axis" x1="100" y1="860" x2="740" y2="860"/>
+<path id="temp-line" class="curve" d="M100.0,560.0 L132.0,575.0 L164.0,590.0 L196.0,605.0 L228.0,620.0 L260.0,635.0 L292.0,650.0 L324.0,665.0 L356.0,680.0 L388.0,695.0 L420.0,710.0 L452.0,725.0 L484.0,740.0 L516.0,755.0 L548.0,770.0 L580.0,785.0 L612.0,800.0 L644.0,815.0 L676.0,830.0 L708.0,845.0 L740.0,860.0"/>
+<text class="small ink" x="112" y="548">T₁ = 60 ℃（x = 0）</text>
+<text class="small ink" x="728" y="838" text-anchor="end">T₂ = 20 ℃（x = L）</text>
+<path class="arrow" d="M270 600 H400 M384 586 L400 600 L384 614"/>
+<text class="small warm" x="420" y="608">q″ = +800 W/m²（右向き）</text>
+<rect class="panel" x="23" y="905" width="794" height="216" rx="19"/>
+<text class="section ink" x="43" y="947">③ 数値と抵抗への接続</text>
+<text class="small ink" x="43" y="989">T(x) = 60 − 200x ℃（L = 0.20 m、k = 4.0 W/(m·K)）</text>
+<text class="small ink" x="43" y="1029">dT/dx = −200 K/m → q″ = −k dT/dx = +800 W/m²</text>
+<text class="small ink" x="43" y="1069">Q = q″A = 1600 W（A = 2.0 m²）、R = L/(kA) = 0.025 K/W</text>
+<text class="small muted" x="43" y="1105">検算： ΔT/R = 40/0.025 = 1600 W で一致 → §2.3 の熱抵抗へ</text>
+<text class="tiny muted" x="420" y="1192" text-anchor="middle">アプリ作成の独自模式図｜原著の図版・描画の転載なし</text>
+</svg>

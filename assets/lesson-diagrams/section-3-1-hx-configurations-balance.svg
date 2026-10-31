@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="840" height="1130" viewBox="0 0 840 1130" style="max-width:100%" role="img" aria-labelledby="title3-1 desc3-1" data-lesson="3.1" data-origin="original-app-diagram" data-mh="0.6" data-mc="0.8" data-cp="4000" data-ch="2400" data-cc="3200" data-th-in="70" data-th-out="50" data-tc-in="20" data-tc-out="35" data-q="48000" data-qmax="120000" data-eps="0.4">
+<title id="title3-1">§3.1 熱交換器の基本形式とエネルギー収支</title>
+<desc id="desc3-1">アプリ独自作成の模式図。商用熱交換器の三つの基本形式（単純な並流・向流、シェル・アンド・チューブ、直交流）と、気体側にフィンを付ける理由を示す。例として高温水70度から50度（熱容量流量2400ワット毎ケルビン）と低温水20度（3200ワット毎ケルビン）の収支では、伝熱量48キロワット、冷側出口35度、理論最大120キロワット、有効度0.40になる。原著の図版の転載ではない。</desc>
+<style>
+text{font-family:system-ui,'Noto Sans CJK JP','Hiragino Kaku Gothic ProN',sans-serif;font-size:23px}
+.bg{fill:#ffffff}.panel{fill:#f4f7fa;stroke:#c2d1dd;stroke-width:2}.ink{fill:#173044}.muted{fill:#43596c}.warm{fill:#a84429}.cool{fill:#146b83}
+.pipe{fill:none;stroke:#43596c;stroke-width:3;stroke-linejoin:round;stroke-linecap:round}
+.hotarrow{stroke:#a84429;stroke-width:4;fill:none;stroke-linejoin:round;stroke-linecap:round}
+.coldarrow{stroke:#146b83;stroke-width:4;fill:none;stroke-linejoin:round;stroke-linecap:round}
+.barq{fill:#d98a16}.barqmax{fill:#b9cdd8}
+.title{font-size:34px;font-weight:750}.section{font-size:27px;font-weight:700}.small{font-size:20px}.tiny{font-size:19px}.equation{font-size:23px;font-weight:650}
+@media(prefers-color-scheme:dark){.bg{fill:#101b26}.panel{fill:#1d2d3d;stroke:#657d91}.ink{fill:#f1f7fb}.muted{fill:#c8d8e5}.warm{fill:#ffb599}.cool{fill:#8fdaef}.pipe{stroke:#c8d8e5}.hotarrow{stroke:#ffb599}.coldarrow{stroke:#8fdaef}.barq{fill:#b97e22}.barqmax{fill:#3c5568}}
+</style>
+<rect class="bg" width="840" height="1130"/>
+<text class="title ink" x="31" y="58">§3.1 熱交換器の基本：形式と収支</text>
+<text class="small muted" x="33" y="97">原型は「壁で隔てられた2流体の間でエネルギーを移す」装置</text>
+<rect class="panel" x="23" y="119" width="794" height="330" rx="19"/>
+<text class="section ink" x="43" y="161">① 商用熱交換器の3つの基本形式</text>
+<text class="small warm" x="43" y="203">（a）単純な並流・向流</text>
+<path class="hotarrow" d="M330 182 H560 M544 168 L560 182 L544 196"/>
+<path class="coldarrow" d="M330 224 H560 M544 210 L560 224 L544 238"/>
+<text class="small muted" x="580" y="211">同じ向き＝並流</text>
+<text class="small warm" x="43" y="269">（b）シェル＆チューブ</text>
+<text class="small muted" x="330" y="269">大きな装置の主流。バッフルで管を横切らせる</text>
+<text class="small warm" x="43" y="311">（c）直交流</text>
+<text class="small muted" x="330" y="311">ラジエーター等。流れが混じるか否かでも区別</text>
+<text class="small ink" x="43" y="359">気体の h は液体よりはるかに小さい → 気体側にフィンを付け面積で補う</text>
+<text class="small muted" x="43" y="399">分離壁をなくす直接接触式もある（壁の抵抗そのものを消す）</text>
+<text class="tiny muted" x="43" y="435">図は形式の模式であり、流路の実寸・圧力損失は表さない</text>
+<rect class="panel" x="23" y="467" width="794" height="290" rx="19"/>
+<text class="section ink" x="43" y="509">② 例：まずエネルギー収支で検算する</text>
+<text class="small ink" x="43" y="551">C_h = 0.60×4000 = 2400 W/K、C_c = 0.80×4000 = 3200 W/K</text>
+<text class="small ink" x="43" y="591">温側の失熱 Q = 2400×(70 − 50) = 48.0 kW</text>
+<text class="small ink" x="43" y="631">冷側は同じ Q を受け T_c,out = 20 + 48000/3200 = 35 ℃</text>
+<text class="small muted" x="43" y="671">出口同士の大小も並流として矛盾しない（50 ℃ ＞ 35 ℃）</text>
+<text class="small muted" x="43" y="711">収支だけでは必要面積は決まらない（UA と配置が要る → §3.2・§3.3）</text>
+<rect class="panel" x="23" y="775" width="794" height="216" rx="19"/>
+<text class="section ink" x="43" y="817">③ 理論最大との比 ＝ 有効度 ε</text>
+<text class="small ink" x="43" y="859">実際の Q = 48 kW</text>
+<rect class="barq" id="bar-q" x="330" y="838" width="184" height="20"/>
+<text class="small ink" x="43" y="907">Q_max = 120 kW</text>
+<rect class="barqmax" id="bar-qmax" x="330" y="886" width="460" height="20"/>
+<text class="small ink" x="560" y="859">ε = 0.40</text>
+<text class="small muted" x="43" y="955">Q_max = C_min×入口温度差 = 2400×50。ε は必ず 0〜1 の範囲で検算</text>
+<text class="tiny muted" x="420" y="1112" text-anchor="middle">アプリ作成の独自模式図｜原著の図版・描画の転載なし</text>
+</svg>
