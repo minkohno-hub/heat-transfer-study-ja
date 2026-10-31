@@ -21,7 +21,7 @@
 <text x="66" y="397" class="small ink">0</text>
 <text x="52" y="497" class="small ink">−ε</text>
 <text x="52" y="247" class="small ink">1.5ε</text>
-<text x="46" y="240" class="small secondary">φ/ε</text>
+<text x="46" y="360" class="small secondary">φ/ε</text>
 <text x="135" y="530" class="small ink">σ</text>
 <text x="186" y="530" class="small ink">2^(1/6) σ</text>
 <text x="664" y="530" class="small ink">3σ</text>

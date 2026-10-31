@@ -29,7 +29,7 @@
 <text x="66" y="856" class="small ink">0</text>
 <text x="52" y="737" class="small ink">0.20</text>
 <text x="52" y="617" class="small ink">0.40</text>
-<text x="60" y="612" class="small secondary">m_2</text>
+<text x="60" y="556" class="small secondary">m_2</text>
 <text x="118" y="886" class="small ink">0</text><text x="664" y="886" class="small ink">L</text>
 <text x="400" y="886" text-anchor="middle" class="small secondary">位置 x →</text>
 <text x="430" y="640" class="small a">濃厚：式(11.61) の指数型</text>

@@ -20,14 +20,14 @@ text{font-family:'Noto Sans CJK JP','Hiragino Kaku Gothic ProN',sans-serif;font-
 <path class="guide" d="M170 758.0 H660"/>
 <path id="factor-curve" class="graph" d="M 170.000 698.278 L 193.500 705.850 L 217.000 713.255 L 240.500 720.493 L 264.000 727.566 L 287.500 734.477 L 311.000 741.227 L 334.500 747.819 L 358.000 754.253 L 381.500 760.533 L 405.000 766.659 L 428.500 772.634 L 452.000 778.459 L 475.500 784.138 L 499.000 789.670 L 522.500 795.059 L 546.000 800.306 L 569.500 805.413 L 593.000 810.382 L 616.500 815.215 L 640.000 819.914"/>
 <circle id="factor-point" class="point" cx="405.000" cy="766.659" r="9"/>
-<text class="small ink" x="423" y="755">β=20° で係数 ≈ 0.949</text>
+<text class="small ink" x="490" y="745">β=20° で係数 ≈ 0.949</text>
 <text x="60" y="700" class="micro ink">1.4</text><text x="60" y="765" class="micro ink">1.0</text><text x="60" y="831" class="micro ink">0.6</text>
 <text x="180" y="852" class="micro ink">0°</text><text x="640" y="852" class="micro ink">40°</text>
-<text x="400" y="580" class="micro muted">適用範囲：2 ≦ r ≦ 12 μm、0 ≦ β ≦ 40°。範囲外へ外挿しない。</text>
+<text x="797" y="545" text-anchor="end" class="micro muted">適用範囲：2 ≦ r ≦ 12 μm、0 ≦ β ≦ 40°。範囲外へ外挿しない。</text>
 <text class="small muted" x="45" y="584">粗さは上げる方向、接触角は下げる方向に働き、倍率は常に1以上とは限らない。</text>
 <rect class="panel" x="23" y="621" width="794" height="293" rx="18"/>
 <text class="section ink" x="43" y="662">② 強制対流と核沸騰の結合（原書 9.37）［kW/m²］</text>
-<rect class="barA" x="200" y="690" width="180.0" height="30"/><text class="small ink" x="50" y="713">単相 q″_FC</text><text class="small ink" x="390.0" y="713">30</text><rect class="barB" x="200" y="740" width="240.0" height="30"/><text class="small ink" x="50" y="763">沸騰増分</text><text class="small ink" x="450.0" y="763">40</text><rect class="barC" x="200" y="790" width="300.0" height="30"/><text class="small ink" x="50" y="813">結合式</text><text class="small ink" x="510.0" y="813">50</text><rect class="barD" x="200" y="840" width="480.0" height="30"/><text class="small ink" x="50" y="863">単純加算</text><text class="small ink" x="690.0" y="863">80（採用しない）</text>
+<rect class="barA" x="200" y="690" width="180.0" height="30"/><text class="small ink" x="92" y="713">単相 q″_FC</text><text class="small ink" x="390.0" y="713">30</text><rect class="barB" x="200" y="740" width="240.0" height="30"/><text class="small ink" x="92" y="763">沸騰増分</text><text class="small ink" x="450.0" y="763">40</text><rect class="barC" x="200" y="790" width="300.0" height="30"/><text class="small ink" x="92" y="813">結合式</text><text class="small ink" x="510.0" y="813">50</text><rect class="barD" x="200" y="840" width="480.0" height="30"/><text class="small ink" x="92" y="863">単純加算</text><text class="small ink" x="210" y="863">80（採用しない）</text>
 <text class="micro muted" x="43" y="900">結合式 q″ = [q″_FC² + (q″_B − q″_i)²]^(1/2)。二乗和の平方根であり単純加算ではない。</text>
 <rect class="panel" x="23" y="932" width="794" height="291" rx="18"/>
 <text class="section ink" x="43" y="973">③ 仮想例の結果</text>

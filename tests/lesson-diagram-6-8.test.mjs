@@ -34,7 +34,8 @@ test('original, accessible, responsive and offline-safe SVG',()=>{
 
 test('book correlations use fluid-specific Pr exponents (FC-18: no uniform Pr^(1/3))',()=>{
   assert.ok(svg.includes('気体：Nu_x ≈ 0.0296 Re_x^0.8 Pr^0.6（6.112）'));
-  assert.ok(svg.includes('非金属液体：Nu_x ≈ 0.032 Re_x^0.8 Pr^0.43（6.113、Pr ≤ 85 で ±15%程度）'));
+  assert.ok(svg.includes('非金属液体：Nu_x ≈ 0.032 Re_x^0.8 Pr^0.43'));
+  assert.ok(svg.includes('（6.113、Pr ≤ 85 で ±15%程度）'));
   assert.ok(svg.includes('Pr の指数は 1/3 ではなく流体種で異なる'));
   assert.ok(svg.includes('Pr^(1/3) を一律に使う形は他系統の式で、原書の2式とは一致しない'));
   // the turbulent correlations themselves must not be written with Pr^(1/3)
