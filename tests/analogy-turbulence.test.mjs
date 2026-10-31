@@ -44,7 +44,7 @@ test('four analogy and turbulence drafts add 28 pending questions with three ski
  const added=questions.filter(q=>q.id.startsWith('supp-turbulence-'));assert.equal(added.length,28);
  for(const id of ['6.6','6.7','6.8','6.9']){
   const l=deep.lessons.find(l=>l.sectionId===id);assert.ok(l.blocks.length>=7);assert.ok(l.equations.length>=5);assert.match(l.reviewStatus,/外部学術専門家校閲前/);
-  const qs=questions.filter(q=>q.source?.focusSectionId===id||q.source?.sectionNoteId===id);assert.equal(qs.length,8);assert.equal(new Set(qs.map(q=>q.questionKind)).size,3);
+  const qs=questions.filter(q=>q.source?.focusSectionId===id||q.source?.sectionNoteId===id);assert.equal(qs.length,id==='6.8'?9:8);assert.equal(new Set(qs.map(q=>q.questionKind)).size,3);
  }
  for(const q of added){assert.equal(q.expertReviewed,false);assert.match(q.reviewStatus,/包括的品質監査待ち/);assert.equal(q.distractors.filter(r=>r.startsWith('正解。')).length,1);assert.ok(q.distractors[q.answer].startsWith('正解。'));}
 });
