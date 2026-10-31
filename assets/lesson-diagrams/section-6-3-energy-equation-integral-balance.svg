@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="820" height="1090" viewBox="0 0 820 1090" style="max-width:100%" role="img" aria-labelledby="title63 desc63" data-lesson="6.3" data-origin="original-app-diagram" data-rho="1.2" data-cp="1000" data-integral="0.04" data-width="0.2" data-length="0.5" data-dt="60" data-t-wall="80" data-t-inf="20" data-q-per-width="48" data-q-total="9.6" data-qbar="96" data-hbar="1.6">
+<title id="title63">§6.3 境界層のエネルギー方程式と積分熱収支</title>
+<desc id="desc63">アプリ独自の図。一般の顕熱保存式から境界層のエネルギー方程式（原書6.40）への省略と、壁面では熱がFourierの伝導で流体へ入ることを示す。積分収支の独立例では、単位幅の顕熱輸送48ワット毎メートル、全入熱9.6ワット、平均熱流束96ワット毎平方メートル、平均熱伝達率1.6ワット毎平方メートルケルビンが釣り合う。局所の熱伝達率は積分値だけでは決まらない。</desc>
+<style>
+ text{font-family:system-ui,'Noto Sans CJK JP','Hiragino Kaku Gothic ProN',sans-serif;font-size:24px}
+ .bg{fill:#ffffff}.panel{fill:#f3f7fa;stroke:#bfd0dc;stroke-width:2}.ink{fill:#173147}.muted{fill:#456076}
+ .accent{fill:#176c94}.accent2{fill:#a5522b}
+ .line1{stroke:#176c94;stroke-width:4;fill:none;stroke-linejoin:round;stroke-linecap:round}
+ .line2{stroke:#a5522b;stroke-width:4;fill:none;stroke-linejoin:round;stroke-linecap:round}
+ .wall{stroke:#274556;stroke-width:7;stroke-linecap:round}.axis{stroke:#274556;stroke-width:2.7;fill:none}
+ .dash{stroke:#456076;stroke-width:2.2;fill:none;stroke-dasharray:9 7}
+ .barA{fill:#176c94}.barB{fill:#a5522b}.barC{fill:#7a9bb0}
+ .zone{fill:#dcebf4}
+ .heading{font-size:34px;font-weight:750}.section{font-size:27px;font-weight:700}.small{font-size:21px}.micro{font-size:19px}.result{font-size:25px;font-weight:700}
+ @media(prefers-color-scheme:dark){
+ .bg{fill:#101925}.panel{fill:#1b2c3b;stroke:#627f92}.ink{fill:#eff7fc}.muted{fill:#c3d8e5}
+ .accent{fill:#8bd7f5}.accent2{fill:#f6bb92}
+ .line1{stroke:#8bd7f5}.line2{stroke:#f6bb92}.wall{stroke:#d1e7f5}.axis{stroke:#d1e7f5}.dash{stroke:#c3d8e5}
+ .barA{fill:#2e7ca6}.barB{fill:#c97e4e}.barC{fill:#5d7f95}.zone{fill:#234860}
+ }
+</style>
+<rect class="bg" width="820" height="1090"/>
+<text class="heading ink" x="32" y="59">§6.3 エネルギー方程式と熱収支</text>
+<text class="small muted" x="33" y="101">壁を横切るのは伝導、層内を運ぶのは流れ</text>
+<rect class="panel" x="23" y="124" width="774" height="330" rx="19"/>
+<text class="section ink" x="44" y="168">① 省略の流れ（薄層・散逸と内部発熱を除く）</text>
+<text class="result ink" x="43" y="216">ρc_p DT/Dt = k_f∇²T + Φ + q‴（一般形）</text>
+<text class="result accent" x="43" y="262">↓ 境界層近似</text>
+<text class="result ink" x="43" y="308">u∂T/∂x + v∂T/∂y = α_f ∂²T/∂y²（原書 6.40）</text>
+<text class="small ink" x="43" y="356">壁面では q_w″ = −k_f (∂T/∂y)_w（Fourier則。h_x はこの勾配で定義）</text>
+<text class="small muted" x="43" y="394">壁が静止・不透過でも、対流熱伝達でFourier則が消えるわけではない</text>
+<text class="small muted" x="43" y="428">高速度・大粘度では粘性散逸 Φ、低Peでは軸方向伝導を再検討する</text>
+<rect class="panel" x="23" y="472" width="774" height="330" rx="19"/>
+<text class="section ink" x="44" y="516">② 積分収支：入熱と下流の顕熱増加は一致する</text>
+<text class="small ink" x="43" y="560">壁（80 ℃）から入る熱 Q̇</text>
+<rect id="bar-in" class="barA" x="43" y="576" width="480" height="34"/>
+<text class="result ink" x="540" y="602">9.60 W</text>
+<text class="small ink" x="43" y="652">下流断面の顕熱増加 ρc_p∫u(T−T∞)dy × 幅</text>
+<rect id="bar-out" class="barB" x="43" y="668" width="480" height="34"/>
+<text class="result ink" x="540" y="694">9.60 W</text>
+<text class="small muted" x="43" y="742">∫u(T−T∞)dy = 0.040 m²·K/s（与えた測定値）、ρ = 1.2、c_p = 1000</text>
+<text class="small muted" x="43" y="774">単位幅では 48.0 W/m。主流・入口は 20 ℃、面積は片面 0.10 m²</text>
+<rect class="panel" x="23" y="820" width="774" height="170" rx="19"/>
+<text class="section ink" x="44" y="864">③ 平均は出るが、局所は出ない</text>
+<text class="result ink" x="43" y="908">平均 q̄_w″ = 96.0 W/m²、平均 h̄ = 96.0/60 = 1.60 W/(m²·K)</text>
+<text class="small muted" x="43" y="950">局所 h_x は壁面勾配が必要で、この積分値だけからは決まらない</text>
+<text class="micro muted" x="410" y="1058" text-anchor="middle">アプリ作成の独自模式図｜非実寸・原著図版の転載なし</text>
+</svg>
