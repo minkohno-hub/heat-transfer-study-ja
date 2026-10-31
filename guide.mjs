@@ -155,7 +155,7 @@ export const GUIDE_SECTIONS = [
 ];
 
 export function searchGuide(query, sections=GUIDE_SECTIONS) {
-  const normalized=String(query||'').normalize('NFKC').toLocaleLowerCase('ja').trim();
-  if(!normalized)return sections;
-  return sections.filter(section=>`${section.title} ${section.summary} ${section.html.replace(/<[^>]*>/g,' ')}`.normalize('NFKC').toLocaleLowerCase('ja').includes(normalized));
+  const terms=String(query||'').normalize('NFKC').toLocaleLowerCase('ja').trim().split(/\s+/).filter(Boolean);
+  if(!terms.length)return sections;
+  return sections.filter(section=>{const text=`${section.title} ${section.summary} ${section.html.replace(/<[^>]*>/g,' ')}`.normalize('NFKC').toLocaleLowerCase('ja');return terms.every(term=>text.includes(term));});
 }
