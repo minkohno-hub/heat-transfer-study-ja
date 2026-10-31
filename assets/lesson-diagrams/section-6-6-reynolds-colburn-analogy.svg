@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="820" height="1100" viewBox="0 0 820 1100" style="max-width:100%" role="img" aria-labelledby="title66 desc66" data-lesson="6.6" data-origin="original-app-diagram" data-cf="0.004" data-rho="1.2" data-cp="1000" data-uinf="5" data-pr="0.7" data-dt="50" data-jh="0.002" data-st="0.00253686857641" data-h="15.2212114584" data-q="761.060572922" data-h-pr1="12" data-bar-scale="30">
+<title id="title66">§6.6 Reynolds–Colburnの類推</title>
+<desc id="desc66">アプリ独自の図。摩擦係数0.004からColburn因子0.002、Prandtl数0.7の補正でStanton数0.00253687、熱伝達率15.2212ワット毎平方メートルケルビンを得る手順を示す。Prを1と無条件に置くと12.0となり一致しない。類似は等温壁で成立し、等熱流束壁・圧力勾配・液体金属では崩れる。</desc>
+<style>
+ text{font-family:system-ui,'Noto Sans CJK JP','Hiragino Kaku Gothic ProN',sans-serif;font-size:24px}
+ .bg{fill:#ffffff}.panel{fill:#f3f7fa;stroke:#bfd0dc;stroke-width:2}.ink{fill:#173147}.muted{fill:#456076}
+ .accent{fill:#176c94}.accent2{fill:#a5522b}
+ .line1{stroke:#176c94;stroke-width:4;fill:none;stroke-linejoin:round;stroke-linecap:round}
+ .line2{stroke:#a5522b;stroke-width:4;fill:none;stroke-linejoin:round;stroke-linecap:round}
+ .wall{stroke:#274556;stroke-width:7;stroke-linecap:round}.axis{stroke:#274556;stroke-width:2.7;fill:none}
+ .dash{stroke:#456076;stroke-width:2.2;fill:none;stroke-dasharray:9 7}
+ .barA{fill:#176c94}.barB{fill:#a5522b}.barC{fill:#7a9bb0}
+ .zone{fill:#dcebf4}
+ .heading{font-size:34px;font-weight:750}.section{font-size:27px;font-weight:700}.small{font-size:21px}.micro{font-size:19px}.result{font-size:25px;font-weight:700}
+ @media(prefers-color-scheme:dark){
+ .bg{fill:#101925}.panel{fill:#1b2c3b;stroke:#627f92}.ink{fill:#eff7fc}.muted{fill:#c3d8e5}
+ .accent{fill:#8bd7f5}.accent2{fill:#f6bb92}
+ .line1{stroke:#8bd7f5}.line2{stroke:#f6bb92}.wall{stroke:#d1e7f5}.axis{stroke:#d1e7f5}.dash{stroke:#c3d8e5}
+ .barA{fill:#2e7ca6}.barB{fill:#c97e4e}.barC{fill:#5d7f95}.zone{fill:#234860}
+ }
+</style>
+<rect class="bg" width="820" height="1100"/>
+<text class="heading ink" x="32" y="59">§6.6 Reynolds–Colburn の類推</text>
+<text class="small muted" x="33" y="101">摩擦の測定から熱伝達を推定する、条件付きの橋渡し</text>
+<rect class="panel" x="23" y="124" width="774" height="360" rx="19"/>
+<text class="section ink" x="44" y="168">① 手順（原書 6.74〜6.77）</text>
+<text class="result ink" x="43" y="216">C_f = 0.0040（同じ位置の局所摩擦）</text>
+<text class="result accent" x="43" y="258">↓ j_H = St Pr^(2/3) = C_f/2</text>
+<text class="result ink" x="43" y="300">j_H = 0.0020 → St = j_H Pr^(−2/3) ≈ 0.0025369</text>
+<text class="result accent" x="43" y="342">↓ h = ρc_pU・St（ρc_pU = 6000 W/(m²·K)）</text>
+<text class="result ink" x="43" y="384">h ≈ 15.22 W/(m²·K)、q_w″ = h ΔT ≈ 761 W/m²（ΔT = 50 K）</text>
+<text class="small muted" x="43" y="428">St = Nu/(Re Pr) = h/(ρc_pU)。h = C_f という次元の違う等置ではない</text>
+<text class="small muted" x="43" y="458">St ≈ C_f/2 そのものは Pr = 1・等温壁などの対応条件でのみ成立</text>
+<rect class="panel" x="23" y="502" width="774" height="252" rx="19"/>
+<text class="section ink" x="44" y="546">② Pr補正の有無で変わる</text>
+<text class="small ink" x="43" y="592">Colburn補正あり（Pr = 0.7）</text>
+<rect id="bar-corrected" class="barA" x="43" y="606" width="456.64" height="32"/>
+<text class="result ink" x="516" y="630">15.22</text>
+<text class="small ink" x="43" y="676">Pr = 1 と無条件に置いた場合</text>
+<rect id="bar-naive" class="barB" x="43" y="690" width="360" height="32"/>
+<text class="result ink" x="420" y="714">12.0</text>
+<rect class="panel" x="23" y="772" width="774" height="228" rx="19"/>
+<text class="section ink" x="44" y="816">③ 崩れる場合（原書の明示）</text>
+<text class="small ink" x="43" y="856">等熱流束壁では熱境界層の成長率自体が違い、成立しない（6.78）</text>
+<text class="small ink" x="43" y="890">圧力勾配のある流れ、液体金属（極低Pr）でも崩れる</text>
+<text class="small muted" x="43" y="924">管の摩擦係数（Darcy／Fanning）を定義確認なしに代入しない</text>
+<text class="small muted" x="43" y="956">局所と平均、速度基準（主流U）を混ぜない</text>
+<text class="micro muted" x="410" y="1068" text-anchor="middle">アプリ作成の独自模式図｜非実寸・原著図版の転載なし</text>
+</svg>

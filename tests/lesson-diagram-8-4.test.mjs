@@ -48,18 +48,18 @@ test('independently recomputed Gr, Pr, and Ra match the values embedded in the d
   assert.ok(p.Ra>=p.low && p.Ra<=p.high);
 });
 
-test('vertical isothermal plate example uses the stated restricted correlation', () => {
-  const nuAvg=.59*p.Ra**.25;
+test('vertical isothermal plate example uses the stated Churchill-Chu correlation', () => {
+  const nuAvg=.68+.670*p.Ra**.25/(1+(.492/p.Pr)**(9/16))**(4/9);
   const hAvg=nuAvg*p.k/p.L;
   const q=hAvg*p.A*p.dT;
   near(p.Nu,nuAvg,1e-7);
   near(p.h,hAvg,1e-7);
   near(p.Q,q,1e-7);
-  near(p.Q,20.298087339546434,1e-7);
-  for(const token of ['7.848×10⁶','31.23','4.06 W/(m²·K)','20.30 W']) {
+  near(p.Q,18.2420036,1e-7);
+  for(const token of ['7.848×10⁶','28.06','3.65 W/(m²·K)','18.24 W']) {
     assert.ok(svg.includes(token),token);
   }
-  assert.ok(svg.includes('10⁴ ≲ Ra ≲ 10⁹'));
+  assert.ok(svg.includes('Ra ≲ 10⁹（層流）'));
 });
 
 test('geometries are distinguished and a vertical-plate Nu is not transferred to horizontal faces', () => {

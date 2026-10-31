@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="1560" viewBox="0 0 760 1560" role="img" aria-labelledby="coffee-title coffee-desc" style="max-width:100%" data-origin="original-app-diagram" data-lesson="11.7" data-psat-surface-pa="19940" data-psat-room-pa="3169" data-relative-humidity="0.50" data-t-surface-k="333" data-t-room-k="298" data-gas-constant-kmol="8314.5" data-m-h2o-kg-kmol="18.02" data-m-air-kg-kmol="28.96" data-pressure-pa="101325" data-diameter-m="0.09" data-h-w-m2k="6.89" data-gm-kg-m2s="0.00727" data-emissivity="0.9" data-sigma="5.67e-8" data-hfg-j-kg="2359000" data-wet-bulb-c="15" data-psat-wetbulb-pa="1705" data-m-wetbulb="0.01054" data-cp-air="1006" data-hfg-wetbulb-j-kg="2466000" data-lewis="0.847">
+<title id="coffee-title">§11.7 熱・物質同時移動：コーヒーカップの熱損失（例題11.12）と湿球</title>
+<desc id="coffee-desc">アプリ独自作成の学習図。直径9センチ、60度のコーヒー上面からの熱損失の例題11.12。表面の水蒸気質量分率0.1323、周囲0.00980、駆動力0.1412で低移動率。損失は蒸発13.4ワット、自然対流1.53ワット、放射1.43ワット、合計16.33ワットで蒸発が約82パーセントを占める。湿球温度はLewis関係式で装置に依らなくなり、例題11.13では湿球15度・相対湿度0パーセントで乾球は43.9度になる。図は模式図。</desc>
+<style>
+  .bg{fill:#fff}.panel{fill:#f4f7fb;stroke:#bdcad8;stroke-width:2}.ink{fill:#142b3f}.secondary{fill:#415b6f}.a{fill:#a43f24}.b{fill:#176f77}.solid{fill:#d5eaf4;stroke:#39728c;stroke-width:2}.a-stroke{stroke:#a43f24}.b-stroke{stroke:#176f77}.axis{stroke:#415b6f;stroke-width:2.5}.guide{stroke:#bac8d4;stroke-width:2;stroke-dasharray:6 6}.plot-a{fill:none;stroke:#a43f24;stroke-width:5;stroke-linecap:round;stroke-linejoin:round}.plot-b{fill:none;stroke:#176f77;stroke-width:5;stroke-linecap:round;stroke-linejoin:round}.arrow-a{fill:none;stroke:#a43f24;stroke-width:5;stroke-linecap:round;stroke-linejoin:round}.arrow-b{fill:none;stroke:#176f77;stroke-width:5;stroke-linecap:round;stroke-linejoin:round}.arrow-ink{fill:none;stroke:#415b6f;stroke-width:4;stroke-linecap:round;stroke-linejoin:round}.shape{fill:none;stroke:#39728c;stroke-width:3}.marker-a{fill:#a43f24}.marker-b{fill:#176f77}
+  text{font-family:'Noto Sans CJK JP','Hiragino Kaku Gothic ProN',system-ui,sans-serif;font-size:24px}.title{font-size:33px;font-weight:700}.heading{font-size:28px;font-weight:700}.small{font-size:21px}.equation{font-size:25px;font-weight:600}
+  @media(prefers-color-scheme:dark){.bg{fill:#111b27}.panel{fill:#192a3a;stroke:#5b7891}.ink{fill:#eff6ff}.secondary{fill:#c4d7e4}.a{fill:#ffb494}.b{fill:#8fdfdf}.solid{fill:#23475e;stroke:#8ccde9}.a-stroke{stroke:#ffb494}.b-stroke{stroke:#8fdfdf}.axis{stroke:#c4d7e4}.guide{stroke:#617c91}.plot-a{stroke:#ffb494}.plot-b{stroke:#8fdfdf}.arrow-a{stroke:#ffb494}.arrow-b{stroke:#8fdfdf}.arrow-ink{stroke:#c4d7e4}.shape{stroke:#8ccde9}.marker-a{fill:#ffb494}.marker-b{fill:#8fdfdf}}
+</style>
+<rect class="bg" width="760" height="1560"/>
+<text x="34" y="62" class="title ink">§11.7 熱・物質同時移動（低移動率）</text>
+<text x="36" y="104" class="small secondary">蒸発は潜熱 × 蒸発速度で効く。収支は経路ごとに分けて取る</text>
+<rect x="24" y="128" width="712" height="312" rx="18" class="panel"/>
+<text x="46" y="173" class="heading ink">コーヒーカップの熱損失（例題11.12）</text>
+<path d="M110 250 L126 372 Q128 388 146 388 L234 388 Q252 388 254 372 L270 250" class="shape"/>
+<path d="M110 250 H270" class="axis"/>
+<path d="M150 232 q6 -14 0 -26 M190 232 q6 -14 0 -26 M230 232 q6 -14 0 -26" class="arrow-b"/>
+<text x="190" y="416" text-anchor="middle" class="small ink">上面 直径 9 cm</text>
+<text x="330" y="222" class="small ink">コーヒー 60°C、室温 25°C・相対湿度 50%</text>
+<text x="330" y="262" class="small ink">m_H2O,s = 0.1323、m_H2O,e = 0.00980</text>
+<text x="330" y="302" class="small ink">B_m = 0.1412 &lt; 0.2（低移動率）</text>
+<text x="330" y="342" class="small ink">h = 6.89 W/(m²·K)（Nu_D = 22.7）</text>
+<text x="330" y="382" class="small ink">g_m = 7.27×10^(-3) kg/(m²·s)</text>
+<text x="330" y="420" class="small secondary">Gr_D = 2.756×10^6（密度差から）</text>
+<rect x="24" y="460" width="712" height="316" rx="18" class="panel"/>
+<text x="46" y="507" class="heading ink">熱損失の内訳（合計 16.33 W）</text>
+<text x="46" y="582" class="small ink">蒸発</text>
+<rect id="bar-q-evap" x="150" y="556" width="440.000" height="32" class="a"/>
+<text x="602.0" y="582" class="small ink">13.4 W・81.8%</text>
+<text x="46" y="650" class="small ink">自然対流</text>
+<rect id="bar-q-conv" x="150" y="624" width="50.508" height="32" class="b"/>
+<text x="212.5" y="650" class="small ink">1.53 W・9.4%</text>
+<text x="46" y="718" class="small ink">放射</text>
+<rect id="bar-q-rad" x="150" y="692" width="47.137" height="32" class="b"/>
+<text x="209.1" y="718" class="small ink">1.43 W・8.8%</text>
+<text x="46" y="762" class="small secondary">蒸発が1桁大きい。蓋をすれば長く温かい</text>
+<rect x="24" y="796" width="712" height="606" rx="18" class="panel"/>
+<text x="46" y="843" class="heading ink">湿球温度：Lewis 関係式が装置依存を消す</text>
+<circle cx="130" cy="960" r="26" class="shape"/>
+<path d="M130 934 V880" class="shape"/>
+<text x="130" y="1012" text-anchor="middle" class="small ink">乾球</text>
+<circle cx="240" cy="960" r="26" class="solid"/>
+<path d="M240 934 V880" class="shape"/>
+<path d="M222 972 q9 10 18 0 q9 -10 18 0" class="arrow-b"/>
+<text x="240" y="1012" text-anchor="middle" class="small ink">湿球（濡れ芯）</text>
+<path d="M70 880 H300 M284 869 L300 880 L284 891" class="arrow-ink"/>
+<text x="330" y="900" class="small ink">蒸発と対流加熱の釣り合い（式(11.72b)）</text>
+<text x="330" y="940" class="small ink">n_H2O,s h_fg = h(T_e − T_wet)</text>
+<text x="46" y="1064" class="small ink">Lewis 関係式：h/(g_m c_p) = Le^(2/3) = 0.895（Le = 0.847）</text>
+<text x="46" y="1108" class="small secondary">比は形状・流速に依らず Le と c_p だけで決まる（式(11.73)）</text>
+<text x="46" y="1156" class="heading ink">例題11.13：湿球 15°C のとき</text>
+<text x="46" y="1204" class="small ink">p_sat(15°C) = 1705 Pa → m_H2O,s = 0.01054</text>
+<text x="46" y="1248" class="small ink">相対湿度 0%：T_e − 15 = 28.86 K → 乾球 43.9°C（式(11.74)）</text>
+<text x="46" y="1292" class="small ink">相対湿度 100%：蒸発が起こらず 乾球 = 湿球 = 15°C</text>
+<text x="46" y="1336" class="small secondary">h_fg = 2.466 MJ/kg、c_p,air = 1006 J/(kg·K)（15°C の値）</text>
+<text x="46" y="1374" class="small secondary">液滴蒸発の D^2 則（例題11.14）も湿球温度が前提になる</text>
+<text x="380" y="1540" text-anchor="middle" class="small secondary">アプリ作成の独自図・模式図（原書図版ではない）</text>
+</svg>

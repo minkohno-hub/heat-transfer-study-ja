@@ -6,11 +6,11 @@ import { LESSON_DIAGRAMS, LESSON_DIAGRAM_PATHS, lessonDiagramPath } from '../les
 const root = new URL('../', import.meta.url);
 const read = rel => readFileSync(new URL(rel, root), 'utf8');
 
-test('lesson diagram registry covers the 28 integrated sections exactly once', () => {
+test('lesson diagram registry covers the 71 integrated sections exactly once', () => {
   const ids = Object.keys(LESSON_DIAGRAMS);
-  assert.equal(ids.length, 28);
-  assert.equal(new Set(Object.values(LESSON_DIAGRAMS)).size, 28);
-  assert.equal(LESSON_DIAGRAM_PATHS.length, 28);
+  assert.equal(ids.length, 71);
+  assert.equal(new Set(Object.values(LESSON_DIAGRAMS)).size, 71);
+  assert.equal(LESSON_DIAGRAM_PATHS.length, 71);
   for (const id of ['10.2', '10.5', '10.6']) assert.ok(LESSON_DIAGRAMS[id], `chapter 10 addition missing: ${id}`);
 });
 
@@ -23,7 +23,7 @@ test('every registered diagram asset and its dedicated test exist on disk', () =
     assert.match(svg, new RegExp(`data-lesson="${sectionId.replace('.', '\\.')}"`));
     assert.equal(lessonDiagramPath(sectionId), `./assets/lesson-diagrams/${file}`);
   }
-  assert.equal(lessonDiagramPath('1.3'), null);
+  assert.equal(lessonDiagramPath('12.1'), null);
 });
 
 test('reader UI, public build allowlist and service worker all reference the diagrams', () => {

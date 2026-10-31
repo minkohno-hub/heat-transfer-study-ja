@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="840" height="1162" viewBox="0 0 840 1162" style="max-width:100%" role="img" aria-labelledby="title1-3 desc1-3" data-lesson="1.3" data-origin="original-app-diagram" data-sigma="5.670374419e-8" data-area="0.5" data-dt="20" data-k="2" data-l="0.1" data-qcond-flux="400" data-qcond="200" data-h="10" data-qconv-flux="200" data-qconv="100" data-eps="0.8" data-t="320" data-tsur="300" data-qrad-flux="108.22521979098752" data-qrad="54.11260989549376">
+<title id="title1-3">§1.3 伝熱の3モード：伝導・対流・放射の法則と大きさ</title>
+<desc id="desc1-3">アプリ独自作成の模式図。面積0.50平方メートルを共通条件として、伝導はFourierの法則（熱伝導率2ワット毎メートル毎ケルビン、厚さ0.10メートル、温度差20ケルビン）で200ワット、対流はNewtonの冷却法則（熱伝達率10、温度差20ケルビン）で100ワット、放射は放射率0.8の灰色面（320ケルビン、周囲300ケルビン）で約54.11ワットになることを示す。三つは境界条件の異なる独立したモデルであり、一つの壁の収支として合計はできない。原著の図版の転載ではない。</desc>
+<style>
+text{font-family:system-ui,'Noto Sans CJK JP','Hiragino Kaku Gothic ProN',sans-serif;font-size:23px}
+.bg{fill:#ffffff}.panel{fill:#f4f7fa;stroke:#c2d1dd;stroke-width:2}.ink{fill:#173044}.muted{fill:#43596c}.warm{fill:#a84429}.cool{fill:#146b83}.rad{fill:#6d4fa1}
+.barcond{fill:#d98a16}.barconv{fill:#5396b4}.barrad{fill:#9a7bc0}
+.arrow{stroke:#a84429;stroke-width:4;fill:none;stroke-linejoin:round;stroke-linecap:round}
+.title{font-size:34px;font-weight:750}.section{font-size:27px;font-weight:700}.small{font-size:20px}.tiny{font-size:19px}.equation{font-size:23px;font-weight:650}
+@media(prefers-color-scheme:dark){.bg{fill:#101b26}.panel{fill:#1d2d3d;stroke:#657d91}.ink{fill:#f1f7fb}.muted{fill:#c8d8e5}.warm{fill:#ffb599}.cool{fill:#8fdaef}.rad{fill:#cdbcf0}.barcond{fill:#b97e22}.barconv{fill:#2c6d88}.barrad{fill:#6d559e}.arrow{stroke:#ffb599}}
+</style>
+<rect class="bg" width="840" height="1162"/>
+<text class="title ink" x="31" y="58">§1.3 伝熱の3モードを見分ける</text>
+<text class="small muted" x="33" y="97">駆動力はどれも温度差。ただし法則・単位・温度の基準が違う</text>
+<rect class="panel" x="23" y="119" width="794" height="236" rx="19"/>
+<text class="section ink" x="43" y="161">① 伝導 Fourier の法則（式1.8・1.9）</text>
+<text class="equation ink" x="43" y="203">q″ = −k dT/dx ／ 定常1次元では Q = kAΔT/L</text>
+<text class="small ink" x="43" y="243">例： k = 2 W/(m·K)、L = 0.10 m、A = 0.50 m²、ΔT = 20 K</text>
+<text class="small ink" x="43" y="283">→ q″ = 400 W/m²、Q = 200 W</text>
+<text class="small muted" x="43" y="323">k は材料の物性値。熱は温度が下がる向きに流れる（負号）</text>
+<rect class="panel" x="23" y="373" width="794" height="236" rx="19"/>
+<text class="section ink" x="43" y="415">② 対流 Newton の冷却法則（式1.17）</text>
+<text class="equation ink" x="43" y="457">q″ = h(T_s − T∞) ／ Q = hAΔT</text>
+<text class="small ink" x="43" y="497">例： h = 10 W/(m²·K)、A = 0.50 m²、ΔT = 20 K</text>
+<text class="small ink" x="43" y="537">→ q″ = 200 W/m²、Q = 100 W</text>
+<text class="small muted" x="43" y="577">h は物性値ではなく流れの状況で決まる（本書 Part III の主題）</text>
+<rect class="panel" x="23" y="627" width="794" height="236" rx="19"/>
+<text class="section ink" x="43" y="669">③ 放射 Stefan–Boltzmann の法則（式1.28・1.33）</text>
+<text class="equation ink" x="43" y="711">Q = εσA(T⁴ − T_surr⁴) （T は必ず絶対温度 K）</text>
+<text class="small ink" x="43" y="751">例： ε = 0.8、面 320 K、黒体周囲 300 K、A = 0.50 m²</text>
+<text class="small ink" x="43" y="791">→ q″ = 108.2 W/m²、Q = 54.11 W</text>
+<text class="small muted" x="43" y="831">σ = 5.670374419×10^(-8) W/(m²·K⁴)。媒体がなくても伝わる</text>
+<rect class="panel" x="23" y="881" width="794" height="234" rx="19"/>
+<text class="section ink" x="43" y="923">④ 大きさの比較（A = 0.50 m² 共通）</text>
+<text class="small ink" x="43" y="965">伝導 200 W</text>
+<rect class="barcond" id="bar-cond" x="215" y="944" width="460" height="20"/>
+<text class="small ink" x="43" y="1013">対流 100 W</text>
+<rect class="barconv" id="bar-conv" x="215" y="992" width="230" height="20"/>
+<text class="small ink" x="43" y="1061">放射 54.11 W</text>
+<rect class="barrad" id="bar-rad" x="215" y="1040" width="124.5" height="20"/>
+<text class="tiny muted" x="43" y="1099">三つは温度境界条件の異なる独立モデル。合計して一つの壁の収支にはできない</text>
+<text class="tiny muted" x="420" y="1144" text-anchor="middle">アプリ作成の独自模式図｜原著の図版・描画の転載なし</text>
+</svg>

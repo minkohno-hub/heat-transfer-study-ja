@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="820" height="1180" viewBox="0 0 820 1180" style="max-width:100%" role="img" aria-labelledby="title67 desc67" data-lesson="6.7" data-origin="original-app-diagram" data-tau-w="0.12" data-rho="1.2" data-nu="0.000015" data-u-tau="0.316227766017" data-kappa="0.41" data-b="5" data-y1="0.0001" data-y1plus="2.10818510678" data-u1="0.666666666667" data-y2="0.005" data-y2plus="105.409255339" data-u2="5.17367941615">
+<title id="title67">§6.7 乱流の壁単位：粘性底層と対数則</title>
+<desc id="desc67">アプリ独自の図。壁面せん断応力0.12パスカルから摩擦速度0.316メートル毎秒を求め、壁単位で整理すると粘性底層ではu+イコールy+、中間領域では対数則になることを示す。壁から0.10ミリメートルはy+約2.11で平均速度約0.667、5.0ミリメートルはy+約105で対数則による平均速度約5.17。渦粘性は分子の物性ではない。</desc>
+<style>
+ text{font-family:system-ui,'Noto Sans CJK JP','Hiragino Kaku Gothic ProN',sans-serif;font-size:24px}
+ .bg{fill:#ffffff}.panel{fill:#f3f7fa;stroke:#bfd0dc;stroke-width:2}.ink{fill:#173147}.muted{fill:#456076}
+ .accent{fill:#176c94}.accent2{fill:#a5522b}
+ .line1{stroke:#176c94;stroke-width:4;fill:none;stroke-linejoin:round;stroke-linecap:round}
+ .line2{stroke:#a5522b;stroke-width:4;fill:none;stroke-linejoin:round;stroke-linecap:round}
+ .wall{stroke:#274556;stroke-width:7;stroke-linecap:round}.axis{stroke:#274556;stroke-width:2.7;fill:none}
+ .dash{stroke:#456076;stroke-width:2.2;fill:none;stroke-dasharray:9 7}
+ .barA{fill:#176c94}.barB{fill:#a5522b}.barC{fill:#7a9bb0}
+ .zone{fill:#dcebf4}
+ .heading{font-size:34px;font-weight:750}.section{font-size:27px;font-weight:700}.small{font-size:21px}.micro{font-size:19px}.result{font-size:25px;font-weight:700}
+ @media(prefers-color-scheme:dark){
+ .bg{fill:#101925}.panel{fill:#1b2c3b;stroke:#627f92}.ink{fill:#eff7fc}.muted{fill:#c3d8e5}
+ .accent{fill:#8bd7f5}.accent2{fill:#f6bb92}
+ .line1{stroke:#8bd7f5}.line2{stroke:#f6bb92}.wall{stroke:#d1e7f5}.axis{stroke:#d1e7f5}.dash{stroke:#c3d8e5}
+ .barA{fill:#2e7ca6}.barB{fill:#c97e4e}.barC{fill:#5d7f95}.zone{fill:#234860}
+ }
+</style>
+<rect class="bg" width="820" height="1180"/>
+<text class="heading ink" x="32" y="59">§6.7 壁単位と対数則</text>
+<text class="small muted" x="33" y="101">u_τ = √(τ_w/ρ)、y⁺ = yu_τ/ν、u⁺ = ū/u_τ で壁近傍を整理する</text>
+<rect class="panel" x="23" y="124" width="774" height="520" rx="19"/>
+<text class="section ink" x="44" y="168">① u⁺–y⁺ 分布（横軸は対数）</text>
+<rect class="zone" x="398.31" y="196" width="88.48" height="364"/>
+<path id="viscous-line" class="line1" d="M140.00 558.10 L237.86 550.50 L280.00 541.00 L322.14 522.00 L346.80 503.00 L364.29 484.00 L377.86 465.00 L388.94 446.00 L398.31 427.00"/>
+<path id="log-law" class="line2" d="M486.80 307.38 L492.63 302.94 L498.46 298.49 L504.30 294.05 L510.13 289.60 L515.96 285.15 L521.80 280.71 L527.63 276.26 L533.46 271.82 L539.30 267.37 L545.13 262.92 L550.96 258.48 L556.80 254.03 L562.63 249.58 L568.46 245.14 L574.30 240.69 L580.13 236.25 L585.96 231.80 L591.80 227.35 L597.63 222.91 L603.46 218.46 L609.30 214.02 L615.13 209.57 L620.96 205.12 L626.80 200.68"/>
+<circle class="accent" cx="325.35" cy="519.94" r="7"/>
+<circle class="accent2" cx="563.20" cy="249.15" r="7"/>
+<text class="small accent" x="52" y="240">粘性底層 u⁺ ≈ y⁺（y⁺ ≲ 7、原書 6.96）</text>
+<text class="small accent2" x="330" y="212">対数則 u⁺ ≈ (1/κ) ln y⁺ + B（y⁺ ≳ 30）</text>
+<text class="micro muted" x="404" y="590">緩衝層</text>
+<text class="micro muted" x="140" y="600">y⁺ = 0.1</text>
+<text class="micro muted" x="400" y="600">y⁺ = 10</text>
+<text class="micro muted" x="660" y="600">y⁺ = 1000</text>
+<text class="micro muted" x="44" y="628">縦軸 u⁺ 0〜20。κ ≈ 0.41、B ≈ 5 は平滑壁・付着流の目安</text>
+<rect class="panel" x="23" y="662" width="774" height="252" rx="19"/>
+<text class="section ink" x="44" y="706">② 例：τ_w = 0.12 Pa の壁</text>
+<text class="result ink" x="43" y="750">u_τ = √(0.12/1.2) ≈ 0.316 m/s（主流速度ではない）</text>
+<text class="result ink" x="43" y="788">y = 0.10 mm → y⁺ ≈ 2.11、粘性近似で ū ≈ 0.667 m/s</text>
+<text class="result ink" x="43" y="826">y = 5.0 mm → y⁺ ≈ 105、対数則で ū ≈ 5.17 m/s</text>
+<text class="small muted" x="43" y="866">二つの式を同じ点へ無条件に使わない。対数域の成立は別に確認する</text>
+<rect class="panel" x="23" y="932" width="774" height="148" rx="19"/>
+<text class="section ink" x="44" y="976">③ 壁では分子粘性が効く</text>
+<text class="small ink" x="43" y="1016">無滑り壁で乱流せん断は 0 へ向かい、τ_w は分子粘性の勾配から決まる</text>
+<text class="small muted" x="43" y="1050">渦粘性 ν_t は流れに依存するモデル量で、物性 ν とは別</text>
+<text class="micro muted" x="410" y="1148" text-anchor="middle">アプリ作成の独自模式図｜非実寸・原著図版の転載なし</text>
+</svg>

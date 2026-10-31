@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="840" height="1126" viewBox="0 0 840 1126" style="max-width:100%" role="img" aria-labelledby="title2-5 desc2-5" data-lesson="2.5" data-origin="original-app-diagram" data-area="1" data-thot="40" data-tcold="0" data-r1="0.1" data-r2="0.1" data-r3="0.01" data-r4="0.02" data-r5="0.05" data-rtot="0.28" data-q="142.85714285714283" data-t-a="25.714285714285715" data-t-b="11.428571428571432" data-t-c="10.000000000000004" data-t-d="7.142857142857147">
+<title id="title2-5">§2.5 第2章のまとめ：複合壁の直列抵抗で総検算</title>
+<desc id="desc2-5">アプリ独自作成の模式図。第2章の到達点（熱伝導方程式、電気的類似と熱抵抗、総括熱伝達係数U、汚れなどの実務的問題）をまとめ、複合平板壁の例で総検算する。内側対流・層1・接触・層2・外側対流の抵抗が0.100、0.100、0.010、0.020、0.050ケルビン毎ワット、合計0.280で、流体40度から0度へ伝熱量は約142.86ワット、界面温度は25.71度、11.43度、接触後10.00度、7.14度となる。原著の図版の転載ではない。</desc>
+<style>
+text{font-family:system-ui,'Noto Sans CJK JP','Hiragino Kaku Gothic ProN',sans-serif;font-size:23px}
+.bg{fill:#ffffff}.panel{fill:#f4f7fa;stroke:#c2d1dd;stroke-width:2}.ink{fill:#173044}.muted{fill:#43596c}.warm{fill:#a84429}.cool{fill:#146b83}
+.seg1{fill:#e8a13a}.seg2{fill:#c96a4a}.seg3{fill:#8a97a3}.seg4{fill:#7ba05b}.seg5{fill:#5396b4}
+.wall1{fill:#d9c9a8;stroke:#43596c;stroke-width:2}.wall2{fill:#b9cdd8;stroke:#43596c;stroke-width:2}.contact{fill:#6d7c88}
+.title{font-size:34px;font-weight:750}.section{font-size:27px;font-weight:700}.small{font-size:20px}.tiny{font-size:19px}.equation{font-size:23px;font-weight:650}
+@media(prefers-color-scheme:dark){.bg{fill:#101b26}.panel{fill:#1d2d3d;stroke:#657d91}.ink{fill:#f1f7fb}.muted{fill:#c8d8e5}.warm{fill:#ffb599}.cool{fill:#8fdaef}.seg1{fill:#b97e22}.seg2{fill:#a04e30}.seg3{fill:#5a6d7d}.seg4{fill:#55703c}.seg5{fill:#2c6d88}.wall1{fill:#6b5f42;stroke:#c8d8e5}.wall2{fill:#3c5568;stroke:#c8d8e5}.contact{fill:#93a5b3}}
+</style>
+<rect class="bg" width="840" height="1126"/>
+<text class="title ink" x="31" y="58">§2.5 第2章のまとめと総検算</text>
+<text class="small muted" x="33" y="97">到達点は4つ。残る課題（h の決定など）は後の章へ先送り</text>
+<rect class="panel" x="23" y="119" width="794" height="216" rx="19"/>
+<text class="section ink" x="43" y="161">① 第2章の到達点（§2.5）</text>
+<text class="small ink" x="43" y="203">1. 熱伝導方程式を確立し、単純な問題の解法と結果を示した</text>
+<text class="small ink" x="43" y="243">2. 定常熱流の電気的類似（熱抵抗）を掘り下げた</text>
+<text class="small ink" x="43" y="283">3. 総括熱伝達係数 U を定義し、抵抗から組み立てる方法を示した</text>
+<text class="small ink" x="43" y="323">4. U の評価に伴う実務的問題（汚れ係数など）を扱った</text>
+<rect class="panel" x="23" y="353" width="794" height="300" rx="19"/>
+<text class="section ink" x="43" y="395">② 例：複合壁の構成（A = 1.0 m²、定常・一次元）</text>
+<rect class="wall1" x="330" y="440" width="120" height="100"/>
+<rect class="contact" x="450" y="440" width="10" height="100"/>
+<rect class="wall2" x="460" y="440" width="70" height="100"/>
+<text class="small warm" x="90" y="482">内流体 40 ℃</text>
+<text class="small warm" x="90" y="516">h_i = 10</text>
+<text class="small ink" x="390" y="575" text-anchor="middle">層1 k₁ = 0.20</text>
+<text class="small ink" x="390" y="605" text-anchor="middle">L₁ = 0.020 m</text>
+<text class="small ink" x="495" y="575" text-anchor="middle">層2 k₂ = 0.50</text>
+<text class="small ink" x="495" y="605" text-anchor="middle">L₂ = 0.010 m</text>
+<text class="small cool" x="560" y="516">外流体 0 ℃、h_o = 20</text>
+<text class="small muted" x="43" y="640">層の間の帯は接触部（r_c″ = 0.010 m²·K/W）。幅は模式的で実寸比ではない</text>
+<rect class="panel" x="23" y="671" width="794" height="330" rx="19"/>
+<text class="section ink" x="43" y="713">③ 温度降下の内訳（合計40 K、Q = 142.86 W）</text>
+<g id="drop-bar">
+<rect class="seg1" x="120" y="745" width="185.7" height="26"/>
+<rect class="seg2" x="305.7" y="745" width="185.7" height="26"/>
+<rect class="seg3" x="491.4" y="745" width="18.6" height="26"/>
+<rect class="seg4" x="510" y="745" width="37.1" height="26"/>
+<rect class="seg5" x="547.1" y="745" width="92.9" height="26"/>
+</g>
+<text class="small ink" x="43" y="813">抵抗 R： 0.100 ＋ 0.100 ＋ 0.010 ＋ 0.020 ＋ 0.050 = 0.280 K/W</text>
+<text class="small ink" x="43" y="853">界面温度： 40 → 25.71 → 11.43 →（接触）→ 10.00 → 7.14 → 0 ℃</text>
+<text class="small ink" x="43" y="893">接触部だけで 1.43 K 落ちる。界面の両側の温度を区別する</text>
+<text class="small muted" x="43" y="933">各部を流れる Q は同じ142.86 W（蓄積なし）。降下の和 = 40 K ✓</text>
+<text class="small muted" x="43" y="973">先送り： h の決定は Part III、温度差が流れ方向に変わる扱いは第3章</text>
+<text class="tiny muted" x="420" y="1108" text-anchor="middle">アプリ作成の独自模式図｜原著の図版・描画の転載なし</text>
+</svg>

@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="1520" viewBox="0 0 760 1520" role="img" aria-labelledby="naph-title naph-desc" style="max-width:100%" data-origin="original-app-diagram" data-lesson="11.6" data-antoine-a="11.450" data-antoine-b="3729.3" data-temperature-k="303" data-mmhg-pa="133.322" data-pressure-pa="101325" data-m-nap-kg-kmol="128.2" data-m-air-kg-kmol="28.96" data-velocity-m-s="5" data-length-m="0.05" data-nu-m2-s="0.00001867" data-diffusivity-m2-s="0.0000086" data-density-kg-m3="1.166">
+<title id="naph-title">§11.6 低移動率の対流物質移動：ナフタレンの昇華（例題11.11）</title>
+<desc id="naph-desc">アプリ独自作成の学習図。駆動力の絶対値が0.2程度以下なら熱伝達との類似で物質伝達係数が求まる。ナフタレンの昇華の例題11.11では、303ケルビンで蒸気圧18.49パスカル、表面質量分率8.074×10のマイナス4乗、駆動力は8.08×10のマイナス4乗で類似が使える。レイノルズ数1.339×10の4乗、シュミット数2.17から質量ヌッセルト数99.5、物質伝達係数0.0200、平均損失流束は1.61×10のマイナス5乗キログラム毎平方メートル毎秒、58.0グラム毎平方メートル時。図は模式図。</desc>
+<style>
+  .bg{fill:#fff}.panel{fill:#f4f7fb;stroke:#bdcad8;stroke-width:2}.ink{fill:#142b3f}.secondary{fill:#415b6f}.a{fill:#a43f24}.b{fill:#176f77}.solid{fill:#d5eaf4;stroke:#39728c;stroke-width:2}.a-stroke{stroke:#a43f24}.b-stroke{stroke:#176f77}.axis{stroke:#415b6f;stroke-width:2.5}.guide{stroke:#bac8d4;stroke-width:2;stroke-dasharray:6 6}.plot-a{fill:none;stroke:#a43f24;stroke-width:5;stroke-linecap:round;stroke-linejoin:round}.plot-b{fill:none;stroke:#176f77;stroke-width:5;stroke-linecap:round;stroke-linejoin:round}.arrow-a{fill:none;stroke:#a43f24;stroke-width:5;stroke-linecap:round;stroke-linejoin:round}.arrow-b{fill:none;stroke:#176f77;stroke-width:5;stroke-linecap:round;stroke-linejoin:round}.arrow-ink{fill:none;stroke:#415b6f;stroke-width:4;stroke-linecap:round;stroke-linejoin:round}.shape{fill:none;stroke:#39728c;stroke-width:3}.marker-a{fill:#a43f24}.marker-b{fill:#176f77}
+  text{font-family:'Noto Sans CJK JP','Hiragino Kaku Gothic ProN',system-ui,sans-serif;font-size:24px}.title{font-size:33px;font-weight:700}.heading{font-size:28px;font-weight:700}.small{font-size:21px}.equation{font-size:25px;font-weight:600}
+  @media(prefers-color-scheme:dark){.bg{fill:#111b27}.panel{fill:#192a3a;stroke:#5b7891}.ink{fill:#eff6ff}.secondary{fill:#c4d7e4}.a{fill:#ffb494}.b{fill:#8fdfdf}.solid{fill:#23475e;stroke:#8ccde9}.a-stroke{stroke:#ffb494}.b-stroke{stroke:#8fdfdf}.axis{stroke:#c4d7e4}.guide{stroke:#617c91}.plot-a{stroke:#ffb494}.plot-b{stroke:#8fdfdf}.arrow-a{stroke:#ffb494}.arrow-b{stroke:#8fdfdf}.arrow-ink{stroke:#c4d7e4}.shape{stroke:#8ccde9}.marker-a{fill:#ffb494}.marker-b{fill:#8fdfdf}}
+</style>
+<rect class="bg" width="760" height="1520"/>
+<text x="34" y="62" class="title ink">§11.6 低移動率の対流物質移動</text>
+<text x="36" y="104" class="small secondary">|B_m| ≲ 0.2 のとき熱伝達の相関式が転用できる（式(11.65)）</text>
+<rect x="24" y="128" width="712" height="296" rx="18" class="panel"/>
+<text x="46" y="173" class="heading ink">熱伝達 ↔ 物質移動の対応（表11.2）</text>
+<text x="60" y="224" class="small ink">Nu = hL/k</text>
+<text x="300" y="224" class="small secondary">↔</text>
+<text x="350" y="224" class="small ink">Num = g_m L/(ρD)</text>
+<text x="60" y="254" class="small secondary">質量 Nusselt 数（Sherwood 数）</text>
+<text x="60" y="276" class="small ink">Pr = ν/α</text>
+<text x="300" y="276" class="small secondary">↔</text>
+<text x="350" y="276" class="small ink">Sc = ν/D</text>
+<text x="60" y="306" class="small secondary">式(11.69) の類似形を使う</text>
+<text x="60" y="328" class="small ink">一様壁温</text>
+<text x="300" y="328" class="small secondary">↔</text>
+<text x="350" y="328" class="small ink">一様表面濃度</text>
+<text x="60" y="358" class="small secondary">境界条件も対応させる</text>
+<text x="60" y="380" class="small ink">一様熱流束</text>
+<text x="300" y="380" class="small secondary">↔</text>
+<text x="350" y="380" class="small ink">一様質量流束</text>
+<rect x="24" y="444" width="712" height="272" rx="18" class="panel"/>
+<text x="46" y="491" class="heading ink">ナフタレン平板の昇華（例題11.11）</text>
+<path d="M70 540 H300 M284 529 L300 540 L284 551" class="arrow-ink"/>
+<path d="M70 576 H300 M284 565 L300 576 L284 587" class="arrow-ink"/>
+<path d="M70 612 H300 M284 601 L300 612 L284 623" class="arrow-ink"/>
+<text x="70" y="524" class="small ink">主流 5 m/s、303 K 等温</text>
+<polyline points="120.0,648.0 147.0,640.4 174.0,637.2 201.0,634.8 228.0,632.8 255.0,631.0 282.0,629.4 309.0,627.9 336.0,626.5 363.0,625.2 390.0,624.0 417.0,622.8 444.0,621.7 471.0,620.6 498.0,619.6 525.0,618.6 552.0,617.6 579.0,616.7 606.0,615.7 633.0,614.9 660.0,614.0" class="plot-b"/>
+<rect x="120" y="648" width="540" height="16" class="solid"/>
+<text x="120" y="700" class="small ink">先端から L = 0.05 m の平板部が昇華する</text>
+<text x="470" y="600" class="small b">濃度境界層</text>
+<rect x="24" y="736" width="712" height="622" rx="18" class="panel"/>
+<text x="46" y="783" class="heading ink">計算のつながり</text>
+<text x="46" y="834" class="small ink">蒸気圧 p_v = 18.49 Pa（蒸気圧式、T = 303 K）</text>
+<text x="46" y="890" class="small ink">x_nap,s = 1.825×10^(-4)、m_nap,s = 8.074×10^(-4)</text>
+<text x="46" y="946" class="small ink">B_m = 8.08×10^(-4) ≪ 0.2（低移動率の条件、式(11.65)）</text>
+<text x="46" y="1002" class="small ink">Re_L = UL/ν = 1.339×10^4（層流）</text>
+<text x="46" y="1058" class="small ink">Sc = ν/D = 2.17（D = 0.86×10^(-5) m²/s、表11.1）</text>
+<text x="46" y="1114" class="small ink">Num,L = 0.664 Re^(1/2) Sc^(1/3) = 99.5</text>
+<text x="46" y="1170" class="small ink">g_m = ρD Num/L = 0.0200 kg/(m²·s)</text>
+<text x="46" y="1226" class="small ink">平均損失流束 = 1.61×10^(-5) kg/(m²·s) = 58.0 g/(m²·h)</text>
+<text x="46" y="1300" class="small secondary">昇華法は h を推定する実験法。ただし Sc ≠ Pr のため</text>
+<text x="46" y="1338" class="small secondary">Pr 依存性（Nu ∝ Pr^n、1/3 ≲ n ≲ 0.4）の補正が要る</text>
+<text x="380" y="1500" text-anchor="middle" class="small secondary">アプリ作成の独自図・模式図（原書図版ではない）</text>
+</svg>

@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="840" height="1180" viewBox="0 0 840 1180" style="max-width:100%" role="img" aria-labelledby="title76 desc76" data-origin="original-app-diagram" data-lesson="7.6" data-diameter="0.020" data-length="0.50" data-u="5.0" data-visc="0.000015" data-pr="0.70" data-kf="0.026" data-ts="60" data-tinf="20" data-re="6666.6666666666667" data-nu="42.7391695534454" data-h="55.5609204194789" data-aside="0.0314159265358979" data-aproj="0.010" data-q="69.8199117666089">
+<title id="title76">§7.6 円柱横流れ：Churchill–Bernstein相関と周平均熱伝達</title>
+<desc id="desc76">アプリ独自作図。外径0.020メートル、長さ0.50メートルの単独の長い円柱へ、主流速度5.0メートル毎秒が横切る。表面60度、主流20度、膜温度で評価した動粘度1.5×10⁻⁵、プラントル数0.70、熱伝導率0.026の仮想条件で、レイノルズ数6667、Churchill–Bernstein式による周平均ヌセルト数42.74、平均熱伝達率55.56ワット毎平方メートルケルビン。伝熱面積は投影面積0.010平方メートルではなく側面積0.03142平方メートルで、対流熱流は69.82ワット。周平均は局所熱伝達率とは異なる。</desc>
+<style>
+text{font-family:'Noto Sans CJK JP','Hiragino Kaku Gothic ProN',sans-serif;font-size:23px}
+.bg{fill:#fff}.panel{fill:#f4f7fb;stroke:#bfd0df;stroke-width:2}.ink{fill:#193148}.muted{fill:#476074}
+.cyl{fill:#dceaf3;stroke:#56809a;stroke-width:3}.flow{stroke:#287da4;stroke-width:3.7;fill:none;stroke-linecap:round;stroke-linejoin:round}
+.wake{stroke:#b66837;stroke-width:2.5;fill:none;stroke-dasharray:8 6}.pt{fill:#a04677}
+.side{fill:#287b9e}.proj{fill:#b6cbd9}
+.title{font-size:34px;font-weight:750}.section{font-size:27px;font-weight:700}.small{font-size:21px}.micro{font-size:18px}.formula{font-size:25px;font-weight:650}
+@media(prefers-color-scheme:dark){.bg{fill:#111b26}.panel{fill:#1c2b3b;stroke:#617c91}.ink{fill:#edf6fe}.muted{fill:#c6d8e5}.cyl{fill:#26475e;stroke:#9ac5de}.flow{stroke:#9fdaf7}.wake{stroke:#e0995c}.pt{fill:#f6a7da}.side{fill:#3688ac}.proj{fill:#576d7e}}
+</style>
+<rect class="bg" width="840" height="1180"/>
+<text x="30" y="59" class="title ink">§7.6 円柱横流れの周平均熱伝達</text>
+<text x="31" y="100" class="small muted">主流・外径・側面積の定義を、内部流と取り違えない</text>
+<rect class="panel" x="24" y="122" width="792" height="404" rx="18"/>
+<text x="44" y="164" class="section ink">① 配置：単独円柱への横流れ（模式図）</text>
+<text x="60" y="222" class="small ink">主流 U = 5.0 m/s</text>
+<path class="flow" d="M60 262 H205 M192 250 L205 262 L192 274"/>
+<path class="flow" d="M60 330 H205 M192 318 L205 330 L192 342"/>
+<path class="flow" d="M60 398 H205 M192 386 L205 398 L192 410"/>
+<circle class="cyl" cx="330" cy="330" r="85"/>
+<text x="330" y="322" text-anchor="middle" class="small ink">T_s = 60 ℃</text>
+<text x="330" y="352" text-anchor="middle" class="micro ink">D = 0.020 m</text>
+<circle class="pt" cx="245" cy="330" r="6"/>
+<text x="238" y="306" text-anchor="end" class="micro ink">よどみ点</text>
+<path class="wake" d="M408 272 Q570 296 716 276 M408 388 Q570 364 716 384"/>
+<text x="580" y="428" text-anchor="middle" class="small ink">後流（剥離の下流）</text>
+<text x="45" y="472" class="small ink">主流 T_∞ = 20 ℃。物性は膜温度（(60 + 20)/2 = 40 ℃）で評価</text>
+<text x="45" y="502" class="micro muted">ν = 1.5×10⁻⁵ m²/s、Pr = 0.70、k_f = 0.026 W/(m·K)（仮想の代表状態）</text>
+<rect class="panel" x="24" y="544" width="792" height="270" rx="18"/>
+<text x="44" y="588" class="section ink">② Churchill–Bernstein 式（式7.65）</text>
+<text x="45" y="632" class="small ink">Nū_D = 0.3 + 0.62 Re^(1/2) Pr^(1/3) / (1 + (0.4/Pr)^(2/3))^(1/4)</text>
+<text x="45" y="666" class="small ink">　　　 × [1 + (Re_D / 282000)^(5/8)]^(4/5)</text>
+<text x="45" y="710" class="small ink">Re_D = U D / ν = 6667、Re_D Pr = 4667 ＞ 0.2（適用目安を満たす）</text>
+<text x="45" y="748" class="formula ink">Nū_D = 42.74、h̄ = 55.56 W/(m²·K)</text>
+<text x="45" y="782" class="micro muted">周平均の値。よどみ点や後流部の局所 h と同じではない。</text>
+<rect class="panel" x="24" y="832" width="792" height="250" rx="18"/>
+<text x="44" y="876" class="section ink">③ 伝熱面積を取り違えない</text>
+<text x="45" y="928" class="small ink">側面積 π D L_z</text>
+<rect id="area-side" class="side" x="300" y="906" width="376.99" height="28" rx="3"/>
+<text x="686.99" y="928" class="small ink">0.03142 m²</text>
+<text x="45" y="988" class="small ink">投影面積 D L_z</text>
+<rect id="area-proj" class="proj" x="300" y="966" width="120" height="28" rx="3"/>
+<text x="430" y="988" class="small ink">0.010 m²</text>
+<text x="45" y="1032" class="small ink">Q̇_conv = h̄ × 側面積 × (T_s − T_∞) = 69.82 W</text>
+<text x="45" y="1064" class="micro muted">端面・放射・支持部伝導は含まない。管群や閉塞へ単独円柱の式を使わない。</text>
+<text x="420" y="1128" text-anchor="middle" class="micro muted">アプリ作成の独自模式図｜原著図版の転載・翻訳なし</text>
+</svg>

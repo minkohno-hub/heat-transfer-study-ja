@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="840" height="1280" viewBox="0 0 840 1280" role="img" aria-labelledby="drop-title drop-desc" style="max-width:100%" data-origin="original-app-diagram" data-lesson="9.10" data-t-steam-c="60" data-dtheta="4" data-q-rose="656103.993429" data-h-eff="164025.998357" data-slope="195772.965781" data-r-coat="2e-06" data-dtheta-surface="3.04664654375" data-q-coated="476676.728123" data-coat-drop="0.953353456245" data-t-surface="56.9533534562" data-model="rose-dropwise-empirical">
+<title id="drop-title">§9.10 滴状凝縮：液滴の循環と Rose の経験式</title>
+<desc id="drop-desc">アプリが独自に作図した模式図。滴状凝縮では、液滴が核生成サイトから成長し、合体し、十分に大きくなると滑り落ちて通り道を拭い、乾いた帯で新しい液滴が育つ循環が繰り返される。Rose の経験式（蒸気温度60度）では、温度差4ケルビンで熱流束は約6.56かける10の5乗ワット毎平方メートル、実効熱伝達率は約1.64かける10の5乗ワット毎平方メートルケルビンとなる。薄い被覆の熱抵抗を連成させると、凝縮表面の温度差は約3.05ケルビンに下がり、熱流束は約4.77かける10の5乗になる。</desc>
+<style>
+text{font-family:'Noto Sans CJK JP','Hiragino Kaku Gothic ProN',sans-serif;font-size:22px}
+.bg{fill:#fff}.panel{fill:#f4f8fb;stroke:#c2d1de;stroke-width:2}.ink{fill:#1b3247}.muted{fill:#455f70}
+.axis{fill:none;stroke:#466176;stroke-width:2}.guide{fill:none;stroke:#b7cbd9;stroke-width:1.3;stroke-dasharray:6 5}
+.graph{fill:none;stroke:#1680a3;stroke-width:4;stroke-linecap:round;stroke-linejoin:round}
+.title{font-size:34px;font-weight:750}.section{font-size:27px;font-weight:700}.small{font-size:20px}.micro{font-size:18px}.eq{font-size:24px;font-weight:650}
+.drop{fill:#8bd0e2;stroke:#167d9c;stroke-width:2}.push{fill:none;stroke:#6d7587;stroke-width:3;stroke-linecap:round}.point{fill:#ac542f;stroke:#fff;stroke-width:2}
+@media(prefers-color-scheme:dark){.bg{fill:#111b27}.panel{fill:#1e2e3e;stroke:#69869a}.ink{fill:#edf5fc}.muted{fill:#c7d9e6}.axis{stroke:#c0dbea}.guide{stroke:#627c8e}.graph{stroke:#8bdcf4}.drop{fill:#285d74;stroke:#9fdef4}.push{stroke:#c9d0df}.point{fill:#ffb38c}}
+</style>
+<rect class="bg" width="840" height="1280"/>
+
+<text class="title ink" x="30" y="59">§9.10 滴状凝縮：液滴の生成・成長・離脱の循環</text>
+<text class="small muted" x="30" y="101">膜状より桁違いに効率的だが、工業的に持続させる方法は確立していない</text>
+<rect class="panel" x="23" y="126" width="794" height="477" rx="18"/>
+<text class="section ink" x="43" y="169">① 液滴は育ち、合体し、滑り落ちて面を拭う</text>
+<g id="droplet-row"><circle class="drop" cx="150" cy="380" r="6"/><circle class="drop" cx="215" cy="380" r="10"/><circle class="drop" cx="295" cy="380" r="16"/><circle class="drop" cx="395" cy="380" r="24"/><circle class="drop" cx="520" cy="380" r="34"/></g>
+<circle class="drop" cx="660" cy="470" r="40"/>
+<path class="push" d="M120 470 H560 M546 459 L562 470 L546 481"/>
+<text class="small ink" x="120" y="330">核生成 → 成長 → 合体</text>
+<text class="small ink" x="560" y="560">離脱して滑落</text>
+<text class="small muted" x="45" y="584">滑落した通り道は乾いた帯となり、新しい液滴がすぐに育ち始める。</text>
+<rect class="panel" x="23" y="621" width="794" height="293" rx="18"/>
+<text class="section ink" x="43" y="662">② Rose の経験式（原書 9.57）：蒸気 60 ℃ の水</text>
+<path class="axis" d="M170 690 V826 H660 M649 818 L660 826 L649 834"/>
+<path id="rose-curve" class="graph" d="M 170.000 826.000 L 199.375 820.209 L 228.750 814.082 L 258.125 807.617 L 287.500 800.814 L 316.875 793.674 L 346.250 786.197 L 375.625 778.383 L 405.000 770.231 L 434.375 761.742 L 463.750 752.916 L 493.125 743.752 L 522.500 734.251 L 551.875 724.413 L 581.250 714.237 L 610.625 703.725 L 640.000 692.874"/>
+<circle id="rose-point" class="point" cx="405.000" cy="770.231" r="9"/>
+<text class="small ink" x="421" y="762">θ=4 K で q″ ≈ 6.56×10^5 W/m²</text>
+<text x="52" y="700" class="micro ink">1.6×10^6</text><text x="120" y="765" class="micro ink">0.8×10^6</text><text x="140" y="831" class="micro ink">0</text>
+<text x="180" y="852" class="micro ink">θ=0</text><text x="610" y="852" class="micro ink">8 K</text>
+<text class="micro muted" x="43" y="900">q″[kW/m²] = T^0.8 (5θ + 0.3θ²)。純水蒸気・短い垂直面・接触角約90°、データは主に θ＜8 K。</text>
+<rect class="panel" x="23" y="932" width="794" height="291" rx="18"/>
+<text class="section ink" x="43" y="973">③ 実効係数と被覆の連成（仮想例）</text>
+<text class="eq ink" x="43" y="1040">θ=4 K：実効 h ≈ 1.64×10^5 W/(m²·K)（微分勾配 ≈ 1.96×10^5 とは別）</text>
+<text class="eq ink" x="43" y="1090">被覆 R″=2.00×10^(-6) m²·K/W では表面 θ≈3.05 K、q″≈4.77×10^5</text>
+<text class="micro muted" x="43" y="1181">被覆の温度降下 ≈ 0.953 K と表面の θ の合計が全体の 4.00 K に閉じる。促進処理の持続性は別問題。</text>
+
+<text class="micro muted" x="420" y="1255" text-anchor="middle">アプリ作成の独自模式図｜原著図版の転載・トレースなし</text>
+</svg>

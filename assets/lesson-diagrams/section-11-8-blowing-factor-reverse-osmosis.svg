@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="1520" viewBox="0 0 760 1520" role="img" aria-labelledby="film-title film-desc" style="max-width:100%" data-origin="original-app-diagram" data-lesson="11.8" data-gm-star="0.04" data-density-kg-m3="998" data-flux-1-l-m2h="15" data-flux-2-l-m2h="35" data-salt-bulk="0.035" data-bm-ro="-0.217">
+<title id="film-title">§11.8 クエット・停滞膜モデル：吹き出し因子と濃度分極</title>
+<desc id="film-desc">アプリ独自作成の学習図。静止膜モデルでは低移動率係数に吹き出し因子 ln(1+B_m)/B_m を掛けて高移動率へ補正する。吹き出しでは因子は1未満、吸い込みでは1より大きい。逆浸透の例題11.15では低移動率係数0.04、水流束15と35リットル毎平方メートル時で濃度分極は約10.9パーセントと約27.5パーセントになり、膜面の塩質量分率は3.5パーセントから3.88、4.46パーセントへ上がる。図は模式図。</desc>
+<style>
+  .bg{fill:#fff}.panel{fill:#f4f7fb;stroke:#bdcad8;stroke-width:2}.ink{fill:#142b3f}.secondary{fill:#415b6f}.a{fill:#a43f24}.b{fill:#176f77}.solid{fill:#d5eaf4;stroke:#39728c;stroke-width:2}.a-stroke{stroke:#a43f24}.b-stroke{stroke:#176f77}.axis{stroke:#415b6f;stroke-width:2.5}.guide{stroke:#bac8d4;stroke-width:2;stroke-dasharray:6 6}.plot-a{fill:none;stroke:#a43f24;stroke-width:5;stroke-linecap:round;stroke-linejoin:round}.plot-b{fill:none;stroke:#176f77;stroke-width:5;stroke-linecap:round;stroke-linejoin:round}.arrow-a{fill:none;stroke:#a43f24;stroke-width:5;stroke-linecap:round;stroke-linejoin:round}.arrow-b{fill:none;stroke:#176f77;stroke-width:5;stroke-linecap:round;stroke-linejoin:round}.arrow-ink{fill:none;stroke:#415b6f;stroke-width:4;stroke-linecap:round;stroke-linejoin:round}.shape{fill:none;stroke:#39728c;stroke-width:3}.marker-a{fill:#a43f24}.marker-b{fill:#176f77}
+  text{font-family:'Noto Sans CJK JP','Hiragino Kaku Gothic ProN',system-ui,sans-serif;font-size:24px}.title{font-size:33px;font-weight:700}.heading{font-size:28px;font-weight:700}.small{font-size:21px}.equation{font-size:25px;font-weight:600}
+  @media(prefers-color-scheme:dark){.bg{fill:#111b27}.panel{fill:#192a3a;stroke:#5b7891}.ink{fill:#eff6ff}.secondary{fill:#c4d7e4}.a{fill:#ffb494}.b{fill:#8fdfdf}.solid{fill:#23475e;stroke:#8ccde9}.a-stroke{stroke:#ffb494}.b-stroke{stroke:#8fdfdf}.axis{stroke:#c4d7e4}.guide{stroke:#617c91}.plot-a{stroke:#ffb494}.plot-b{stroke:#8fdfdf}.arrow-a{stroke:#ffb494}.arrow-b{stroke:#8fdfdf}.arrow-ink{stroke:#c4d7e4}.shape{stroke:#8ccde9}.marker-a{fill:#ffb494}.marker-b{fill:#8fdfdf}}
+</style>
+<rect class="bg" width="760" height="1520"/>
+<text x="34" y="62" class="title ink">§11.8 クエット・停滞膜モデル</text>
+<text x="36" y="104" class="small secondary">膜モデルで低移動率係数を高移動率へ補正する（式(11.81)(11.82)）</text>
+<rect x="24" y="128" width="712" height="312" rx="18" class="panel"/>
+<text x="46" y="173" class="heading ink">逆浸透膜の濃度分極（例題11.15 の系）</text>
+<path d="M380 210 V392" class="axis"/>
+<text x="380" y="200" text-anchor="middle" class="small ink">半透膜</text>
+<path d="M392 248 H520 M504 237 L520 248 L504 259" class="arrow-b"/>
+<path d="M392 300 H520 M504 289 L520 300 L504 311" class="arrow-b"/>
+<path d="M392 352 H520 M504 341 L520 352 L504 363" class="arrow-b"/>
+<text x="530" y="306" class="small b">水は通る</text>
+<circle cx="352" cy="240" r="6" class="marker-a"/>
+<circle cx="352" cy="282" r="6" class="marker-a"/>
+<circle cx="352" cy="324" r="6" class="marker-a"/>
+<circle cx="352" cy="366" r="6" class="marker-a"/>
+<path d="M330 262 H262 M278 251 L262 262 L278 273" class="arrow-a"/>
+<path d="M330 340 H262 M278 329 L262 340 L278 351" class="arrow-a"/>
+<text x="70" y="240" class="small ink">塩水が膜に沿って流れる</text>
+<text x="70" y="300" class="small a">塩は通れない（n_salt = 0）</text>
+<text x="70" y="340" class="small a">対流で来た塩が膜面にたまり</text>
+<text x="70" y="380" class="small a">拡散で戻る分と釣り合う</text>
+<text x="470" y="420" class="small secondary">浸透圧が上がり水流束が減る</text>
+<rect x="24" y="460" width="712" height="492" rx="18" class="panel"/>
+<text x="46" y="507" class="heading ink">吹き出し因子 ln(1 + B_m)/B_m</text>
+<path d="M120 586 V886 H686" class="axis" fill="none"/>
+<path d="M120 770.0 H680" class="guide"/>
+<path d="M249.2 592 V880" class="guide"/>
+<polyline id="blowing-curve-11-8" points="120.000,598.573 134.359,658.702 148.718,690.804 163.077,712.013 177.436,727.508 191.795,739.523 206.154,749.219 220.513,757.271 234.872,764.103 249.231,770.000 263.590,775.159 277.949,779.723 292.308,783.800 306.667,787.470 321.026,790.798 335.385,793.833 349.744,796.616 364.103,799.179 378.462,801.551 392.821,803.754 407.179,805.806 421.538,807.725 435.897,809.523 450.256,811.213 464.615,812.805 478.974,814.309 493.333,815.731 507.692,817.079 522.051,818.359 536.410,819.576 550.769,820.736 565.128,821.842 579.487,822.899 593.846,823.910 608.205,824.878 622.564,825.807 636.923,826.698 651.282,827.554 665.641,828.377 680.000,829.169" class="plot-a"/>
+<circle id="marker-bm-m0p217" cx="218.072" cy="755.998" r="7" class="marker-a"/>
+<circle id="marker-bm-0p2" cx="277.949" cy="779.723" r="7" class="marker-a"/>
+<circle id="marker-bm-1p0" cx="392.821" cy="803.754" r="7" class="marker-a"/>
+<circle id="marker-bm-2p0" cx="536.410" cy="819.576" r="7" class="marker-a"/>
+<text x="68" y="740" class="small ink">−0.217 → 1.127</text>
+<text x="290" y="766" class="small ink">0.2 → 0.912</text>
+<text x="405" y="790" class="small ink">1 → 0.693</text>
+<text x="548" y="806" class="small ink">2 → 0.549</text>
+<text x="66" y="886" class="small ink">0</text>
+<text x="66" y="777" class="small ink">1.0</text>
+<text x="66" y="667" class="small ink">2.0</text>
+<text x="46" y="640" class="small secondary">因子</text>
+<text x="114" y="916" class="small ink">−0.9</text>
+<text x="245" y="916" class="small ink">0</text>
+<text x="666" y="916" class="small ink">3</text>
+<text x="400" y="916" text-anchor="middle" class="small secondary">駆動力 B_m,2 →（正が吹き出し）</text>
+<rect x="24" y="972" width="712" height="466" rx="18" class="panel"/>
+<text x="46" y="1019" class="heading ink">濃度分極 CP = exp(|n|/g_m*) − 1</text>
+<text x="46" y="1064" class="small ink">g_m* = 4×10^(-2) kg/(m²·s)、海水の塩質量分率 3.5%</text>
+<rect id="bar-cp-15" x="150" y="1092" width="175.287" height="32" class="b"/>
+<text x="46" y="1117" class="small ink">15 L/m²h</text>
+<text x="337.3" y="1117" class="small ink">CP 約10.9%</text>
+<rect id="bar-cp-35" x="150" y="1140" width="439.232" height="32" class="a"/>
+<text x="46" y="1165" class="small ink">35</text>
+<text x="601.2" y="1165" class="small ink">CP 約27.5%</text>
+<text x="46" y="1212" class="small ink">膜面の塩質量分率は 3.5% から 3.88% / 4.46% へ上がる</text>
+<text x="46" y="1256" class="small ink">高流束では B_m,H2O = −0.217 と低移動率条件をわずかに超える</text>
+<text x="46" y="1300" class="small ink">低溶解度塩（CaCO_3 など）の析出を避けるため設計者は避ける条件</text>
+<text x="46" y="1344" class="small secondary">n_2,s = g_m* ln(1 + B_m,2)（式(11.82)）が膜モデルの一般形</text>
+<text x="46" y="1382" class="small secondary">乱流では渦拡散率を加える（式(11.79)）。精度は層流より乱流でよい</text>
+<text x="46" y="1420" class="small secondary">|B_m| ≲ 0.2 では因子は 1 の約10%以内で、低移動率条件と整合する</text>
+<text x="380" y="1500" text-anchor="middle" class="small secondary">アプリ作成の独自図・模式図（原書図版ではない）</text>
+</svg>
