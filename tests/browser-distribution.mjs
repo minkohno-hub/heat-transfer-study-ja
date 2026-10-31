@@ -2,11 +2,14 @@
 import assert from 'node:assert/strict';
 import {createRequire} from 'node:module';
 import {existsSync} from 'node:fs';
+import {readFile} from 'node:fs/promises';
 import {join,dirname} from 'node:path';
 import {fileURLToPath} from 'node:url';
 import {startServer} from '../scripts/serve.mjs';
+import {GUIDE_SECTIONS} from '../guide.mjs';
 
 const require=createRequire(import.meta.url);
+const questionCount=JSON.parse(await readFile(new URL('../data/questions.json',import.meta.url),'utf8')).length;
 const engines=require(process.env.PLAYWRIGHT_MODULE||'playwright');
 const engine=process.env.BROWSER_ENGINE||'chromium';
 assert.ok(['chromium','firefox','webkit'].includes(engine),`未対応ブラウザー: ${engine}`);
@@ -101,7 +104,7 @@ try {
   }
   await nav('guide');
   await page.locator('.guide-section').first().waitFor();
-  assert.equal(await page.locator('.guide-section').count(),33);
+  assert.equal(await page.locator('.guide-section').count(),GUIDE_SECTIONS.length);
   const guideTerm=page.locator('#guide-sim-conduction .guide-body [data-term-id]').first();
   await guideTerm.click();await page.locator('#term-overlay [role="dialog"]').waitFor();
   await page.keyboard.press('Escape');
@@ -221,7 +224,7 @@ try {
   await page.locator('[data-action="exit-quiz"]').click();
   await page.locator('[data-action="discard-quiz"]').click();
   await page.locator('#quiz-start-form select[name="chapter"]').selectOption('ch9');
-  await page.locator('#quiz-start-form select[name="count"]').selectOption('741');
+  await page.locator('#quiz-start-form select[name="count"]').selectOption(String(questionCount));
   await page.locator('#quiz-start-form button[type="submit"]').click();
   await page.locator('.question-card').waitFor({state:'visible'});
   assert.match(await page.locator('.page-heading h1').innerText(),/1 \/ 135 問/);
