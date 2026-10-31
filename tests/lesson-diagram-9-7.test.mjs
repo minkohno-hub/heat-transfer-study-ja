@@ -54,13 +54,36 @@ test('factor curve follows the correlation over the stated angle range',()=>{
   for(let i=0;i<=20;i++){
     const b=2*i;
     approximately(curve[i][0],170+470*(b/40),0.0012);
-    approximately(curve[i][1],826-136*(fAt(b)-0.6)/0.8,0.0012);
+    approximately(curve[i][1],366-136*(fAt(b)-0.6)/0.8,0.0012);
     if(i>0) assert.ok(curve[i][1]>curve[i-1][1]);
   }
   const pt=svg.match(/<circle id="factor-point"[^>]*cx="([\d.]+)" cy="([\d.]+)"/);
   assert.ok(pt);
   approximately(Number(pt[1]),170+470*(20/40),0.01);
-  approximately(Number(pt[2]),826-136*(p.factor-0.6)/0.8,0.01);
+  approximately(Number(pt[2]),366-136*(p.factor-0.6)/0.8,0.01);
+});
+
+test('factor plot lies inside panel 1 and is not painted over by later panels (A2-PE-24)',()=>{
+  const panels=[...svg.matchAll(/<rect class="panel" x="([\d.]+)" y="([\d.]+)" width="([\d.]+)" height="([\d.]+)"/g)]
+    .map(m=>({x:Number(m[1]),y:Number(m[2]),w:Number(m[3]),h:Number(m[4])}));
+  assert.equal(panels.length,3);
+  const [p1,p2,p3]=panels;
+  const inside=(x,y,r)=>x>=r.x&&x<=r.x+r.w&&y>=r.y&&y<=r.y+r.h;
+  for(const [x,y] of coordinates('factor-curve')){
+    assert.ok(inside(x,y,p1),`curve point ${x},${y} outside panel 1`);
+    assert.ok(!inside(x,y,p2)&&!inside(x,y,p3),`curve point ${x},${y} inside a later panel`);
+  }
+  const pt=svg.match(/<circle id="factor-point"[^>]*cx="([\d.]+)" cy="([\d.]+)"/);
+  assert.ok(pt&&inside(Number(pt[1]),Number(pt[2]),p1),'factor point outside panel 1');
+  const axis=svg.match(/<path class="axis" d="M170 ([\d.]+) V([\d.]+)/);
+  assert.ok(axis,'axis path not found');
+  assert.ok(Number(axis[1])>=p1.y&&Number(axis[2])<=p1.y+p1.h,'axis outside panel 1 vertically');
+  for(const label of ['1.4','1.0','0.6','0°','40°','β=20° で係数 ≈ 0.949']){
+    const t=svg.match(new RegExp('<text[^>]*y="([\\d.]+)"[^>]*>'+label.replace(/[.]/g,'\\.')+'</text>'));
+    assert.ok(t,'label not found: '+label);
+    const y=Number(t[1]);
+    assert.ok(y>=p1.y&&y<=p1.y+p1.h,`label ${label} at y=${y} outside panel 1`);
+  }
 });
 
 test('Bergles-Rohsenow combination is the root-sum-square, not the naive sum',()=>{

@@ -58,7 +58,27 @@ test('vapor interface is a sine wave with the stated pixel wavelength',()=>{
     approximately(wave[i][1],740+14*Math.sin(2*Math.PI*(10*i)/120),0.0012);
   }
   const pt=svg.match(/<circle id="qmin-point"[^>]*cx="([\d.]+)" cy="([\d.]+)"/);
-  assert.ok(pt); approximately(Number(pt[1]),555,0.01); approximately(Number(pt[2]),440,0.01);
+  assert.ok(pt); approximately(Number(pt[1]),555,0.01); approximately(Number(pt[2]),290.5,0.01);
+});
+
+test('boiling-curve plot lies inside panel 1 and is not painted over by later panels (A2-PE-25)',()=>{
+  const panels=[...svg.matchAll(/<rect class="panel" x="([\d.]+)" y="([\d.]+)" width="([\d.]+)" height="([\d.]+)"/g)]
+    .map(m=>({x:Number(m[1]),y:Number(m[2]),w:Number(m[3]),h:Number(m[4])}));
+  assert.equal(panels.length,3);
+  const [p1,p2,p3]=panels;
+  const inside=(x,y,r)=>x>=r.x&&x<=r.x+r.w&&y>=r.y&&y<=r.y+r.h;
+  const curve=coordinates('boiling-curve');
+  for(const [x,y] of curve){
+    assert.ok(inside(x,y,p1),`curve point ${x},${y} outside panel 1`);
+    assert.ok(!inside(x,y,p2)&&!inside(x,y,p3),`curve point ${x},${y} inside a later panel`);
+  }
+  const pt=svg.match(/<circle id="qmin-point"[^>]*cx="([\d.]+)" cy="([\d.]+)"/);
+  assert.ok(pt);
+  assert.ok(curve.some(([x,y])=>Math.abs(x-Number(pt[1]))<0.01&&Math.abs(y-Number(pt[2]))<0.01),
+    'q_min point is not on the boiling curve');
+  const cap=svg.match(/<text[^>]*y="([\d.]+)"[^>]*>壁面過熱度/);
+  assert.ok(cap,'axis caption not found');
+  assert.ok(Number(cap[1])<=p1.y+p1.h,'axis caption outside panel 1');
 });
 
 test('curve is declared schematic and q_min is a practical lower bound, not CHF',()=>{
