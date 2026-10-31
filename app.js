@@ -33,7 +33,7 @@ const STORAGE_KEY = activeProfileId === 'legacy' ? LEGACY_STORAGE_KEY : `heat-st
 const root = document.querySelector('#app');
 const systemDark = window.matchMedia?.('(prefers-color-scheme: dark)');
 const emptyState = createEmptyState;
-let storageIssue = '', recoveryRaw = '', storageBlocked = false, lastSavedRaw = null;
+let storageIssue = '', recoveryRaw = '', storageBlocked = false, lastSavedRaw = null, storageConflict = false;
 let state = loadState();
 let book;
 let questionBank;
@@ -55,6 +55,7 @@ let ui = {
   search: { query: '', kind: 'all', chapter: 'all' },
   quiz: null,
   quizResult: null,
+  pendingQuizStart: null,
   reportId: null,
   termId: null,
   termReturnFocus: null,
@@ -159,6 +160,7 @@ function loadState() {
   try {
     raw = localStorage.getItem(STORAGE_KEY);
     lastSavedRaw = raw;
+    storageConflict = false;
     if (!raw) return emptyState();
     const parsed = JSON.parse(raw);
     if (validateLearningData(parsed, { stored: true })) throw new Error('invalid');
@@ -178,11 +180,13 @@ function saveState(next = state) {
     if (storageBlocked) throw new Error('recovery-not-preserved');
     if (localStorage.getItem(STORAGE_KEY) !== lastSavedRaw) {
       storageIssue = '別のタブで学習記録が更新されました。このタブの変更は保存していません。必要ならJSONを書き出し、再読み込みしてから続けてください。';
+      storageConflict = true;
       return false;
     }
     const raw=JSON.stringify(next);
     localStorage.setItem(STORAGE_KEY, raw);
     lastSavedRaw = raw;
+    storageConflict = false;
     if (!recoveryRaw) storageIssue = '';
     return true;
   } catch {
@@ -380,6 +384,7 @@ async function startApp() {
     window.addEventListener('offline', render);
     window.addEventListener('storage',event=>{
       if(event.key===STORAGE_KEY&&event.newValue!==lastSavedRaw){
+        storageConflict=true;
         storageIssue='別のタブで学習記録が更新されました。このタブの変更は保存していません。必要ならJSONを書き出し、再読み込みしてから続けてください。';
         showStatus('別のタブで学習記録が更新されました。再読み込み前に、このタブで必要な記録をJSONに書き出してください。');
       }
@@ -457,12 +462,13 @@ function render() {
         <nav class="main-nav" aria-label="メインメニュー">
           ${NAV_ITEMS.map(([id, label, icon]) => `<a class="nav-link ${ui.route === id ? 'active' : ''}" href="#${id}" ${ui.route === id ? 'aria-current="page"' : ''}><span class="nav-icon" aria-hidden="true">${icon}</span><span>${label}</span>${id === 'review' && dueReviewCount() ? `<b class="nav-badge">${dueReviewCount()}</b>` : ''}</a>`).join('')}
         </nav>
-        <main class="main-content" id="main-content" tabindex="-1">${storageIssue ? `<aside class="notice-card storage-warning" role="alert"><p>${escapeHTML(storageIssue)}</p><button type="button" class="button secondary" data-action="export-data">学習データを書き出す</button>${recoveryRaw ? '<button type="button" class="button secondary" data-action="export-recovery">保管した元データを書き出す</button>' : ''}</aside>` : ''}${ui.contentWarning ? `<aside class="notice-card" role="alert"><p>${escapeHTML(ui.contentWarning)}</p></aside>` : ''}${routeView}</main>
+        <main class="main-content" id="main-content" tabindex="-1">${storageIssue ? `<aside class="notice-card storage-warning" role="alert"><p>${escapeHTML(storageIssue)}</p><button type="button" class="button secondary" data-action="export-data">学習データを書き出す</button>${storageConflict ? '<button type="button" class="button secondary" data-action="force-save">このタブの内容で上書き保存する</button><p class="small-note">上書きすると、別のタブで新しく記録された内容は失われます。このタブの変更を残したい場合だけ使ってください。</p>' : ''}${recoveryRaw ? '<button type="button" class="button secondary" data-action="export-recovery">保管した元データを書き出す</button>' : ''}</aside>` : ''}${ui.contentWarning ? `<aside class="notice-card" role="alert"><p>${escapeHTML(ui.contentWarning)}</p></aside>` : ''}${routeView}</main>
       </div>
       <footer class="app-footer"><span>学習データはこのブラウザー内に保存されます。</span><span>教材進捗：${originalMaterialSectionCount()}節に独自日本語ノート・発展教材・図解を収録（原書の翻訳本文は未収録）</span></footer>
-    </div>`;
+    </div>${ui.pendingQuizStart ? renderQuizStartConfirm() : ''}`;
   for(const block of root.querySelectorAll('.guide-body,.simulation-steps'))linkTermTextNodes(block,glossary||[]);
   if(ui.reportId)document.querySelector('.report-modal button')?.focus();
+  if(ui.pendingQuizStart)document.querySelector('.quiz-start-modal [data-action="confirm-quiz-start"]')?.focus();
   restoreTransientUi(transientSnapshot);
   ui.renderedRoute=ui.route;
 }
@@ -491,7 +497,17 @@ function persistQuiz(){
   const q=ui.quiz;
   q.id ||= makeId();q.startedAt ||= Date.now();q.hintCount ||= 0;q.confidence ||= 'medium';
   q.signatures ||= Object.fromEntries(q.ids.map(id=>[id,questionFingerprint(getQuestion(id)||{id})]));
-  state.quizDraft={...structuredClone(q),updatedAt:new Date().toISOString()};
+  const draft=structuredClone(q);
+  delete draft.updatedAt;
+  const previous=state.quizDraft;
+  if(previous){
+    // An idle in-progress tab re-persists on a timer; if the draft content is
+    // unchanged, keep the existing stamp so storage is not rewritten (which
+    // would make every other open tab look stale and block its saves).
+    const {updatedAt:_previousStamp,...previousBody}=previous;
+    if(JSON.stringify(previousBody)===JSON.stringify(draft))return;
+  }
+  state.quizDraft={...draft,updatedAt:new Date().toISOString()};
 }
 function resumeQuiz(){
   const issue=quizResumeIssue(state.quizDraft,questionBank);
@@ -572,7 +588,7 @@ function renderHome() {
   const contentPercent = translatedSectionCount() / allSections().length * 100;
   return `${pageHeading('学習ホーム', '次に進むことが、ひと目でわかる。', '読んで、問題を解いて、あとで振り返る。今日のペースで始めましょう。')}
     <section class="hero-card">
-      <div class="hero-copy"><p class="eyebrow">学習の続き</p><h2>${lastSectionLabel()}</h2><p>節の目次から原本PDFの対応ページを開けます。日本語訳が収録された節では、前回の読書位置から再開できます。</p>
+      <div class="hero-copy"><p class="eyebrow">学習の続き</p><h2>${lastSectionLabel()}</h2><p>節の目次から原本PDFの対応ページを開けます。読書位置は節ごとに保存されるので、前回の続きから再開できます。</p>
         <div class="hero-actions"><a class="button primary" href="#reader" data-open-section="${escapeHTML(state.lastSection)}">原本と目次を開く <span aria-hidden="true">→</span></a><a class="button secondary" href="#quiz">問題を解く</a></div>
       </div><div class="hero-side"><div class="ring-progress" style="--progress:${readPercent}%"><div><strong>${readPercent}%</strong><span>読了した節</span></div></div><small>${countReadSections()} / ${allSections().length} 節を読了（自己記録）</small></div>
     </section>
@@ -643,7 +659,7 @@ function renderReader() {
   const prevNext = allSections(); const index = prevNext.findIndex(item => item.id === section.id);
   const prev = prevNext[index-1];
   const next = prevNext[index+1];
-  return `${pageHeading('読書モード', '章・節をたどって読む', '原本PDFの対応ページを開けます。アプリ内に訳文がある節では段落や式を表示します。全節に独自作成の日本語ノート・発展教材・図解を収録しています。読了・しおり・メモはこの端末に保存します。', '<a class="button secondary" href="#search">本文を検索</a>')}
+  return `${pageHeading('読書モード', '章・節をたどって読む', '原本PDFの対応ページを開けます。書籍の日本語訳は公開版に収録していません。自分の訳稿などをローカル教材として追加した場合は、その本文を段落や式とともに表示します。全節に独自作成の日本語ノート・発展教材・図解を収録しています。読了・しおり・メモはこの端末に保存します。', '<a class="button secondary" href="#search">本文を検索</a>')}
     <div class="reader-layout">
       <aside class="reader-toc surface-card"><div class="toc-heading"><span class="eyebrow">目次</span><strong>A Heat Transfer Textbook</strong></div>
         ${book.chapters.map(item => `<details ${item.id === section.chapterId ? 'open' : ''}><summary><span>${escapeHTML(item.title)}</span><small>第${item.id.slice(2)}章</small></summary><div class="toc-items">${item.sections.map(sec => `<button class="toc-item ${sec.id === section.id ? 'selected' : ''} ${sectionIsTranslated(sec) ? '' : 'not-ready'}" type="button" data-section="${escapeHTML(sec.id)}"><span class="toc-number">${escapeHTML(sec.id)}</span><span>${escapeHTML(sec.title)}</span><i>${sectionProgressLabel(sec)}</i></button>`).join('')}${(item.backMatter || []).map(entry => `<div class="toc-item not-ready" aria-label="${escapeHTML(entry.title)}、${sectionProgressLabel(entry)}"><span class="toc-number">—</span><span>${escapeHTML(entry.title)}</span><i>${sectionProgressLabel(entry)}</i></div>`).join('')}</div></details>`).join('')}
@@ -1327,7 +1343,7 @@ function renderQuizSetup() {
       <p class="small-note">候補が少ないときは、条件を広げて問題を選びます。回答数の少なさだけで苦手と判定しません。</p>
     </form></section>
     <aside class="surface-card quick-session-card"><p class="eyebrow">短時間学習</p><h2>5分・10分だけ取り組む</h2><p>未回答や復習候補から、短い問題セットを作ります。回答のたびに履歴が保存されます。</p><div class="quick-buttons"><button type="button" class="button secondary" data-short-session="5">5分 · 3問まで</button><button type="button" class="button secondary" data-short-session="10">10分 · 6問まで</button></div><div class="quick-divider"></div><p class="eyebrow">今の復習候補</p><div class="quick-stat"><strong>${due.length}</strong><span>問</span><small>${due.length ? '直近の誤答・自信度・予定日をもとに抽出' : '回答後に候補が表示されます'}</small></div><a class="text-link" href="#review">抽出理由を見る →</a></aside></div>
-    <section class="surface-card question-bank-card"><div class="card-heading"><div><p class="eyebrow">収録中の問題</p><h2>${questionBank.length}問</h2></div>${statusPill('専門家校閲なし', 'amber')}</div><div class="question-bank-list">${questionBank.map(q => `<button type="button" class="bank-item" data-start-question="${escapeHTML(q.id)}"><span class="bank-item-index">${escapeHTML(q.id.replace('q-',''))}</span><span><strong>${escapeHTML(q.prompt)}</strong><small>${escapeHTML(q.field)} · ${escapeHTML(q.difficulty)} · ${sourceLabel(q.source)}</small></span><b>→</b></button>`).join('')}</div><p class="small-note">独自の補足問題と書籍を出典に持つ問題は、各問題の出典欄で区別します。英語原本PDFは読書画面から閲覧できます。アプリ内に再構成した日本語訳や原図は公開版に未収録です。</p></section>`;
+    <section class="surface-card question-bank-card"><div class="card-heading"><div><p class="eyebrow">収録中の問題</p><h2>${questionBank.length}問</h2></div>${statusPill('専門家校閲なし', 'amber')}</div><div class="question-bank-list">${questionBank.map((q, bankIndex) => `<button type="button" class="bank-item" data-start-question="${escapeHTML(q.id)}"><span class="bank-item-index">${bankIndex + 1}</span><span><strong>${escapeHTML(q.prompt)}</strong><small>${escapeHTML(q.field)} · ${escapeHTML(q.difficulty)} · ${sourceLabel(q.source)}</small></span><b>→</b></button>`).join('')}</div><p class="small-note">独自の補足問題と書籍を出典に持つ問題は、各問題の出典欄で区別します。英語原本PDFは読書画面から閲覧できます。アプリ内に再構成した日本語訳や原図は公開版に未収録です。</p></section>`;
 }
 
 function renderQuestionFigure(figure) {
@@ -1347,12 +1363,17 @@ function renderAnswerFeedback(question, answer, existingNote, choiceOrder) {
   const guideId=question.source.guideId;
   const sourceAction = question.source.type === 'book' ? `<div class="source-ref">出典：${sourceLabel(question.source)}。${sectionIsTranslated(sourceSection)?`<button type="button" class="text-link" data-section="${escapeHTML(question.source.section)}">アプリ内の本文を開く →</button>`:`アプリ内の日本語訳は未収録です。${independentNoteForSection(originalNotes,question.source.section)?`<button type="button" class="text-link" data-section="${escapeHTML(question.source.section)}">関連する独自日本語節別ノートを読む →</button>`:''}`}</div>${sourcePdfLink(question.source,sourceSection)}` : `<div class="source-ref">${sourceLabel(question.source)}。書籍本文ではなくアプリ作成の説明です。${GUIDE_SECTIONS.some(section=>section.id===guideId)?`<a class="text-link" href="#guide/${guideId}">関連する学習ガイドへ →</a>`:''}${(question.source.sectionNoteId||question.source.focusSectionId) && independentNoteForSection(originalNotes,question.source.sectionNoteId||question.source.focusSectionId)?`<button type="button" class="text-link" data-section="${escapeHTML(question.source.sectionNoteId||question.source.focusSectionId)}">関連する独自日本語節別ノートを読む →</button>`:''}</div>`;
   const reasons = choiceOrder.map((index,position) => `<li class="${index === question.answer ? 'is-correct' : ''}"><strong>${String.fromCharCode(65 + position)} ${index === question.answer ? '正解' : '誤答'}</strong><p>${linkedQuizText(question.distractors[index],4)}</p></li>`).join('');
-  return `<section class="answer-feedback ${correct ? 'feedback-correct' : 'feedback-wrong'}" aria-live="polite"><div class="feedback-title"><span class="feedback-symbol">${correct ? '✓' : '!'}</span><div><strong>${correct ? '正解です' : '今回は不正解です'}</strong><small>自信度：${confidenceLabel(answer.confidence)} · ${formatTime(answer.at)}</small></div></div>
+  return `<section class="answer-feedback ${correct ? 'feedback-correct' : 'feedback-wrong'}" id="answer-feedback" tabindex="-1" aria-live="polite"><div class="feedback-title"><span class="feedback-symbol">${correct ? '✓' : '!'}</span><div><strong>${correct ? '正解です' : '今回は不正解です'}</strong><small>自信度：${confidenceLabel(answer.confidence)} · ${formatTime(answer.at)}</small></div></div>
     <div class="explanation-block"><h3>何を問う問題だった？</h3><p>${linkedQuizText(question.prompt,5)}</p><h3>正解へ至る考え方</h3><p>${linkedQuizText(question.explanation,6)}</p></div>
     ${question.beginnerPitfall ? `<aside class="notice-card"><p><strong>間違えやすい点：</strong> ${linkedQuizText(question.beginnerPitfall,4)}</p></aside>` : ''}${question.solutionSteps?.length?`<details class="solution-steps" open><summary>式と計算を順に確認する</summary><ol>${question.solutionSteps.map(step=>`<li>${linkedQuizText(step,4)}</li>`).join('')}</ol></details>`:''}<details class="distractor-details" open><summary>4つの選択肢を確認する</summary><ol>${reasons}</ol></details><div class="answer-source"><strong>関連する出典</strong>${sourceAction}</div>
     <form class="mistake-note-form" id="mistake-note-form"><p class="eyebrow">間違いノート</p><h3>次に同じ問題を解くときのために</h3><div class="form-two"><label>間違えた理由（任意）<textarea name="reason" rows="2" maxlength="500" placeholder="例：分母にある量を見落とした">${escapeHTML(existingNote.reason || '')}</textarea></label><label>自分向けの覚え方（任意）<textarea name="memory" rows="2" maxlength="500" placeholder="例：厚さが増えると熱の通り道が長くなる">${escapeHTML(existingNote.memory || '')}</textarea></label></div><label>次に注意すること（任意）<textarea name="nextTime" rows="2" maxlength="500" placeholder="例：式を書いてから選択肢を見る">${escapeHTML(existingNote.nextTime || '')}</textarea></label><button type="submit" class="button secondary">間違いノートを保存</button>${existingNote.updatedAt ? `<small>保存済み · ${formatDate(existingNote.updatedAt.slice(0,10))}</small>` : ''}</form></section>`;
 }
 function confidenceLabel(value) { return ({ high: '自信あり', medium: '少し迷う', low: '自信が低い', unsure: '迷った' })[value] || '未記録'; }
+function renderQuizStartConfirm() {
+  const draft = state.quizDraft;
+  const progress = draft && Array.isArray(draft.ids) ? `（${draft.index + 1} / ${draft.ids.length}問目）` : '';
+  return `<div class="modal-backdrop" role="presentation"><section class="report-modal quiz-start-modal surface-card" role="dialog" aria-modal="true" aria-labelledby="quiz-start-confirm-title"><p class="eyebrow">演習の開始確認</p><h2 id="quiz-start-confirm-title">中断している演習があります</h2><p>新しい問題セットを始めると、中断中の演習${progress}は置き換えられます。すでに保存された回答履歴は保持します。</p><div class="button-row"><button type="button" class="button primary" data-action="confirm-quiz-start">中断を置き換えて始める</button><button type="button" class="button secondary" data-action="cancel-quiz-start">やめる</button></div></section></div>`;
+}
 function renderReportForm(question) {
   const history = state.questionReports[question.id] || [];
   return `<div class="modal-backdrop" role="presentation"><section class="report-modal surface-card" role="dialog" aria-modal="true" aria-labelledby="report-title"><button class="modal-close" type="button" data-action="close-report" aria-label="閉じる">×</button><p class="eyebrow">問題の品質報告</p><h2 id="report-title">気になるところを教えてください</h2><p class="report-question-preview">${escapeHTML(question.prompt)}</p><form id="report-form"><label>報告内容<select name="category"><option value="ambiguous">条件が不足・曖昧</option><option value="answer">正解や解説に誤りがある</option><option value="source">出典やページが違う</option><option value="figure">図・代替説明に問題がある</option><option value="other">その他</option></select></label><label>具体的な内容<textarea name="message" rows="4" maxlength="1000" placeholder="どの箇所が、なぜ問題かを書いてください" required></textarea></label><button class="button primary" type="submit">この端末に報告を保存</button></form>${history.length ? `<div class="report-history"><strong>この端末での報告履歴：${history.length}件</strong>${history.slice(-3).reverse().map(item => `<small>${formatDate(localDay(item.at))} · ${escapeHTML(({ambiguous:'条件が不足・曖昧',answer:'正解・解説',source:'出典・ページ',figure:'図・代替説明',other:'その他'})[item.category]||'その他')} · ${escapeHTML(item.message)}</small>`).join('')}</div>` : '<p class="small-note">報告はこの端末にだけ保存され、外部へ送信されません。</p>'}</section></div>`;
@@ -1406,7 +1427,7 @@ function startQuiz(options = {}) {
   const count = Math.max(1, Math.min(Number(options.count || candidates.length || 1), candidates.length));
   const selected = candidates.slice(0, count).map(q => q.id);
   if (!selected.length) { showStatus('この条件に合う問題はありません。対象や分野を広げてください。'); return; }
-  if(state.quizDraft&&!window.confirm('中断している演習を新しいセットに置き換えます。保存済みの回答履歴は保持します。続けますか？'))return;
+  if(state.quizDraft&&!options.replaceDraft){ui.pendingQuizStart={...options};render();return;}
   flushLearningTime();ui.quizResult = null;
   ui.quiz = { id:makeId(),ids: selected, index: 0, mode, field: options.field || 'all', difficulty: options.difficulty || 'all', startedAt: Date.now(), answers: [], selected: null, confidence: 'medium', hintCount: 0, quickMinutes: options.quickMinutes || null };
   persistQuiz();saveState();setRoute('quiz');
@@ -1431,7 +1452,7 @@ function submitQuizAnswer(form) {
   session.answers[session.index] = answer;
   state.attempts.push({ ...answer, id: makeId() });
   state.reviews[question.id] = { ...(state.reviews[question.id] || {}), dueDate: addDaysISO(todayISO(), interval), suggestedDays: interval, lastAnsweredAt: answer.at };
-  persistQuiz();saveState(); ui.reportMessage = ''; render();
+  persistQuiz();saveState(); ui.reportMessage = ''; render(); document.querySelector('#answer-feedback')?.focus({ preventScroll: true });
 }
 function moveToNextQuestion() {
   if (!ui.quiz || !ui.quiz.answers[ui.quiz.index]) return;
@@ -1527,6 +1548,9 @@ function onClick(event) {
   else if (action === 'next-question') moveToNextQuestion();
   else if (action === 'open-report') { ui.reportId=actionButton.dataset.reportId || getQuestion(ui.quiz?.ids[ui.quiz.index])?.id; render(); }
   else if (action === 'close-report') closeReport();
+  else if (action === 'confirm-quiz-start') confirmQuizStart();
+  else if (action === 'cancel-quiz-start') cancelQuizStart();
+  else if (action === 'force-save') forceSave();
   else if (action === 'exit-quiz') { flushLearningTime();persistQuiz();const saved=saveState();ui.quiz=null;ui.quizResult=null;setRoute('quiz');showStatus(saved?'中断した演習を保存しました。再読み込み後も再開できます。':'中断した演習を端末に保存できませんでした。JSONを書き出してください。'); }
   else if(action==='resume-quiz')resumeQuiz();
   else if(action==='discard-quiz'){state.quizDraft=null;const saved=saveState();render();showStatus(saved?'中断セットを破棄しました。回答履歴は保持しています。':'中断セットの破棄を端末に保存できませんでした。JSONを書き出してください。');}
@@ -1736,7 +1760,7 @@ function importData(replace) {
     ui.importDraft={error:`端末に保存できないため復元を中止しました。現在の記録は変更していません。先にJSONを書き出し、空き容量を確認してください。${backupRollbackFailed?'復元前の控えも変更された可能性があります。控えを確認してください。':''}`};
     render(); return;
   }
-  state=next; storageIssue=''; storageBlocked=false; ui.importDraft=null;ui.quiz=null;ui.quizResult=null;render();
+  state=next; storageIssue=''; storageBlocked=false; storageConflict=false; ui.importDraft=null;ui.quiz=null;ui.quizResult=null;render();
   showStatus(replace?'学習データを復元しました。復元前の控えも端末内に保存しました。':'既存の履歴を保持して学習データを追加しました。');
 }
 function mergeById(existing,incoming) { const map=new Map(); for(const item of [...existing,...incoming]) map.set(item.id||JSON.stringify(item),item); return [...map.values()]; }
@@ -1752,6 +1776,15 @@ function onKeyDown(event) {
   }
   const trigger=event.target?.closest?.('[data-term-id]');
   if(trigger&&(event.key==='Enter'||event.key===' ')){event.preventDefault();openTermSheet(trigger.dataset.termId,trigger);return;}
+  if(ui.pendingQuizStart){
+    if(event.key==='Escape'){event.preventDefault();cancelQuizStart();return;}
+    if(event.key==='Tab'){
+      const focusable=[...document.querySelectorAll('.quiz-start-modal button')].filter(el=>!el.disabled);
+      const first=focusable[0],last=focusable.at(-1);
+      if((event.shiftKey&&document.activeElement===first)||(!event.shiftKey&&document.activeElement===last)){event.preventDefault();(event.shiftKey?last:first)?.focus();}
+    }
+    return;
+  }
   if(ui.reportId){
     if(event.key==='Escape'){event.preventDefault();closeReport();return;}
     if(event.key==='Tab'){
@@ -1770,6 +1803,17 @@ function onKeyDown(event) {
 }
 
 function closeReport(){ui.reportId=null;render();document.querySelector('[data-action="open-report"]')?.focus();}
+
+function confirmQuizStart(){const pending=ui.pendingQuizStart;ui.pendingQuizStart=null;if(pending)startQuiz({...pending,replaceDraft:true});}
+function cancelQuizStart(){ui.pendingQuizStart=null;render();showStatus('新しいセットの開始をやめました。中断した演習はそのまま残っています。');focusPageHeading();}
+function forceSave(){
+  if(storageBlocked){showStatus('保存済みデータを読み取れなかったため、上書き保存はできません。元データを書き出して確認してください。');return;}
+  try{lastSavedRaw=localStorage.getItem(STORAGE_KEY);}catch{showStatus('保存状態を確認できませんでした。JSONを書き出してください。');return;}
+  storageConflict=false;
+  const saved=saveState();
+  render();
+  showStatus(saved?'このタブの内容で上書き保存しました。':'上書き保存できませんでした。JSONを書き出してください。');
+}
 
 function reviewStatusLabel(status) {
   return ({source_checked:'原本照合済み（作業者）',needs_review:'確認中',reviewed:'確認済み',draft:'下書き'})[status] || String(status || '確認中');
