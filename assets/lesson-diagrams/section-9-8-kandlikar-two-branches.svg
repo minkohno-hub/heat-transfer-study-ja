@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="840" height="1280" viewBox="0 0 840 1280" role="img" aria-labelledby="flow-title flow-desc" style="max-width:100%" data-origin="original-app-diagram" data-lesson="9.8" data-g-mass="500" data-diameter="0.02" data-mu-l="0.0002" data-k-l="0.2" data-cp-l="4000" data-rho-l="800" data-rho-v="4" data-h-fg="1000000" data-quality="0.25" data-q-wall="40000" data-friction="0.021" data-fluid-factor="1" data-re-lo="50000" data-pr="4" data-nu-lo="258.681420729" data-h-lo="2586.81420729" data-co="0.170287200558" data-boi="8e-05" data-r-nbd="1.89591298234" data-r-cbd="5.15836960305" data-h-fb="13343.7437756" data-delta-t-wall="2.99765947793" data-model="kandlikar-two-branch">
+<title id="flow-title">§9.8 管内強制対流沸騰：流動様式と Kandlikar の二つの枝</title>
+<desc id="flow-desc">アプリが独自に作図した模式図。加熱管内では乾き度が下流で増え、過冷核沸騰、飽和核沸騰、スラグ流、環状流へと流動様式が発達し、壁がドライアウトすると壁温が急上昇する。Kandlikar 相関は核沸騰支配の枝と対流沸騰支配の枝を両方計算して大きい方を取る。仮想例（質量流束500、乾き度0.250）では対流数が約0.170、沸騰数が8.00かける10のマイナス5乗、対流枝の比が約5.16で採用され、流れ沸騰熱伝達率は約1.334かける10の4乗ワット毎平方メートルケルビン、壁面過熱度は約3.00ケルビンとなる。</desc>
+<style>
+text{font-family:'Noto Sans CJK JP','Hiragino Kaku Gothic ProN',sans-serif;font-size:22px}
+.bg{fill:#fff}.panel{fill:#f4f8fb;stroke:#c2d1de;stroke-width:2}.ink{fill:#1b3247}.muted{fill:#455f70}
+.axis{fill:none;stroke:#466176;stroke-width:2}.guide{fill:none;stroke:#b7cbd9;stroke-width:1.3;stroke-dasharray:6 5}
+.graph{fill:none;stroke:#1680a3;stroke-width:4;stroke-linecap:round;stroke-linejoin:round}
+.title{font-size:34px;font-weight:750}.section{font-size:27px;font-weight:700}.small{font-size:20px}.micro{font-size:18px}.eq{font-size:24px;font-weight:650}
+.seg0{fill:#dcebf5}.seg1{fill:#bcd9ec}.seg2{fill:#9cc4e0}.seg3{fill:#7babd2}.seg4{fill:#f0b9a0}.barN{fill:#57a8c9}.barC{fill:#ac542f}
+@media(prefers-color-scheme:dark){.bg{fill:#111b27}.panel{fill:#1e2e3e;stroke:#69869a}.ink{fill:#edf5fc}.muted{fill:#c7d9e6}.axis{stroke:#c0dbea}.guide{stroke:#627c8e}.graph{stroke:#8bdcf4}.seg0{fill:#274b63}.seg1{fill:#2b5878}.seg2{fill:#2f648c}.seg3{fill:#35719f}.seg4{fill:#6e4630}.barN{fill:#2b6c8c}.barC{fill:#ffb38c}}
+</style>
+<rect class="bg" width="840" height="1280"/>
+
+<text class="title ink" x="30" y="59">§9.8 管内沸騰：流動様式の発達と Kandlikar 相関</text>
+<text class="small muted" x="30" y="101">下流ほど乾き度 x が増え、様式が移る。壁が乾くと壁温が急上昇する</text>
+<rect class="panel" x="23" y="126" width="794" height="477" rx="18"/>
+<text class="section ink" x="43" y="169">① 加熱管内の流動様式の発達（均一熱流束・垂直管）</text>
+<g id="regime-segments"><rect class="seg0" x="90" y="330" width="126" height="90"/><text class="micro ink" x="153" y="300" text-anchor="middle">過冷核沸騰</text><rect class="seg1" x="218" y="330" width="126" height="90"/><text class="micro ink" x="281" y="300" text-anchor="middle">飽和核沸騰</text><rect class="seg2" x="346" y="330" width="126" height="90"/><text class="micro ink" x="409" y="300" text-anchor="middle">スラグ流</text><rect class="seg3" x="474" y="330" width="126" height="90"/><text class="micro ink" x="537" y="300" text-anchor="middle">環状流</text><rect class="seg4" x="602" y="330" width="126" height="90"/><text class="micro ink" x="665" y="300" text-anchor="middle">ドライアウト</text></g>
+<path class="axis" d="M90 470 H730 M719 462 L730 470 L719 478"/>
+<text class="small ink" x="410" y="505" text-anchor="middle">流れ方向 → 乾き度 x が定常的に増加</text>
+<text class="small muted" x="45" y="560">環状流では壁の液膜が界面で気化する。ドライアウト前にバーンアウトも起こりうる。</text>
+<text class="small muted" x="45" y="584">様式の境界は鋭くない。水平管では重力で上下に分かれる。</text>
+<rect class="panel" x="23" y="621" width="794" height="293" rx="18"/>
+<text class="section ink" x="43" y="662">② 二つの枝を計算し、大きい方を取る（h_fb/h_lo）</text>
+<rect class="barN" x="200" y="700" width="170.6" height="34"/><text class="small ink" x="50" y="725">核沸騰枝 R_n</text><text class="small ink" x="382.6" y="725">≈1.90</text><rect class="barC" x="200" y="770" width="464.3" height="34"/><text class="small ink" x="50" y="795">対流枝 R_c</text><text class="small ink" x="676.3" y="795">≈5.16（採用）</text>
+<text class="micro muted" x="43" y="870">Co≈0.170（高クオリティ側）では対流沸騰枝が支配的になる。</text>
+<text class="micro muted" x="43" y="900">和・平均・最小値ではない。適用は飽和沸騰域、0 ＜ x ≦ 0.8、乾き前。</text>
+<rect class="panel" x="23" y="932" width="794" height="291" rx="18"/>
+<text class="section ink" x="43" y="973">③ 仮想例：G=500 kg/(m²·s)、x=0.250、q″_w=4.00×10^4 W/m²</text>
+<text class="micro muted" x="43" y="1005">Re_lo=50000、Pr_l=4.00、Gnielinski 式で Nu_lo≈258.7、h_lo≈2587 W/(m²·K)</text>
+<text class="micro muted" x="43" y="1034">Co≈0.170、Boi=8.00×10^(-5)、流体係数 F=1.00、垂直管 f_o=1</text>
+<text class="eq ink" x="43" y="1104">h_fb ≈ 1.334×10^4 W/(m²·K)　 壁面過熱度 ≈ 3.00 K</text>
+<text class="eq ink" x="43" y="1141">飽和温度 100 ℃ なら壁温 ≈ 103.0 ℃</text>
+<text class="micro muted" x="43" y="1181">これは局所の伝熱評価であり、限界熱流束や安全性の評価ではない。</text>
+
+<text class="micro muted" x="420" y="1255" text-anchor="middle">アプリ作成の独自模式図｜原著図版の転載・トレースなし</text>
+</svg>

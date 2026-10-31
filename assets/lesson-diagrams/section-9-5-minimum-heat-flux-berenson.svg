@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="840" height="1280" viewBox="0 0 840 1280" role="img" aria-labelledby="min-title min-desc" style="max-width:100%" data-origin="original-app-diagram" data-lesson="9.5" data-rho-l="800" data-rho-v="4" data-h-fg="1000000" data-sigma="0.02" data-g="10" data-u-sigma="0.125273076029" data-q-min="45098.3073703" data-area="0.012" data-q-rate="541.179688444" data-q-min-16g="90196.6147407" data-capillary-length="0.00158510656237" data-model="berenson-large-flat-plate">
+<title id="min-title">§9.5 最小熱流束 q_min：Berenson の式と沸騰曲線の谷</title>
+<desc id="min-desc">アプリが独自に作図した模式図。膜沸騰域で壁面過熱度を下げていくと、蒸気膜を維持する Taylor 波作用が保てなくなる点が最小熱流束である。仮想の飽和物性（液体密度800、蒸気密度4.00キログラム毎立方メートル、潜熱1.00かける10の6乗ジュール毎キログラム、表面張力0.0200ニュートン毎メートル、重力10.0）では、Berenson の式から速度尺度は約0.1253メートル毎秒、最小熱流束は約45.1キロワット毎平方メートルとなり、重力を16倍にすると2倍になる。沸騰曲線の形は模式的であり、最小熱流束の点以外は数値を表さない。</desc>
+<style>
+text{font-family:'Noto Sans CJK JP','Hiragino Kaku Gothic ProN',sans-serif;font-size:22px}
+.bg{fill:#fff}.panel{fill:#f4f8fb;stroke:#c2d1de;stroke-width:2}.ink{fill:#1b3247}.muted{fill:#455f70}
+.axis{fill:none;stroke:#466176;stroke-width:2}.guide{fill:none;stroke:#b7cbd9;stroke-width:1.3;stroke-dasharray:6 5}
+.graph{fill:none;stroke:#1680a3;stroke-width:4;stroke-linecap:round;stroke-linejoin:round}
+.title{font-size:34px;font-weight:750}.section{font-size:27px;font-weight:700}.small{font-size:20px}.micro{font-size:18px}.eq{font-size:24px;font-weight:650}
+.point{fill:#ac542f;stroke:#fff;stroke-width:2}.heater{fill:#516b7e;stroke:#304e64;stroke-width:2}
+@media(prefers-color-scheme:dark){.bg{fill:#111b27}.panel{fill:#1e2e3e;stroke:#69869a}.ink{fill:#edf5fc}.muted{fill:#c7d9e6}.axis{stroke:#c0dbea}.guide{stroke:#627c8e}.graph{stroke:#8bdcf4}.point{fill:#ffb38c}.heater{fill:#526c80;stroke:#a1c1d5}}
+</style>
+<rect class="bg" width="840" height="1280"/>
+
+<text class="title ink" x="30" y="59">§9.5 最小熱流束：蒸気膜が維持できる下限</text>
+<text class="small muted" x="30" y="101">Berenson の式（原書 9.34）：大きな水平平板の実用的な下限</text>
+<rect class="panel" x="23" y="126" width="794" height="477" rx="18"/>
+<text class="section ink" x="43" y="169">① 沸騰曲線の谷が q_min（ライデンフロスト点）</text>
+<path class="axis" d="M130 830 V300 M130 830 H770 M759 822 L770 830 L759 838 M122 311 L130 295 L138 311"/>
+<path id="boiling-curve" class="graph" d="M 150.000 800.000 L 240.000 720.000 L 330.000 640.000 L 420.000 560.000 L 470.000 520.000 L 520.000 470.000 L 555.000 440.000 L 590.000 470.000 L 640.000 560.000 L 700.000 700.000 L 745.000 790.000"/>
+<circle id="qmin-point" class="point" cx="555" cy="440" r="9"/>
+<text class="small ink" x="575" y="425">q_min ≈ 45.1 kW/m²</text>
+<text class="small ink" x="180" y="345">核沸騰</text>
+<text class="small ink" x="430" y="345">CHF</text>
+<text class="small ink" x="620" y="620">膜沸騰</text>
+<text class="micro muted" x="400" y="880" text-anchor="middle">壁面過熱度 ΔT_e → ／ 縦：熱流束 q″（模式図。q_min の点以外は数値を表さない）</text>
+<text class="micro muted" x="45" y="584">ΔT を下げると蒸気発生が減り、Taylor 波作用が維持できなくなる。</text>
+<rect class="panel" x="23" y="621" width="794" height="293" rx="18"/>
+<text class="section ink" x="43" y="662">② 蒸気膜と毛管長：界面は波長をもって不安定になる</text>
+<path id="vapor-interface" class="graph" d="M 120.000 740.000 L 130.000 747.000 L 140.000 752.124 L 150.000 754.000 L 160.000 752.124 L 170.000 747.000 L 180.000 740.000 L 190.000 733.000 L 200.000 727.876 L 210.000 726.000 L 220.000 727.876 L 230.000 733.000 L 240.000 740.000 L 250.000 747.000 L 260.000 752.124 L 270.000 754.000 L 280.000 752.124 L 290.000 747.000 L 300.000 740.000 L 310.000 733.000 L 320.000 727.876 L 330.000 726.000 L 340.000 727.876 L 350.000 733.000 L 360.000 740.000 L 370.000 747.000 L 380.000 752.124 L 390.000 754.000 L 400.000 752.124 L 410.000 747.000 L 420.000 740.000 L 430.000 733.000 L 440.000 727.876 L 450.000 726.000 L 460.000 727.876 L 470.000 733.000 L 480.000 740.000 L 490.000 747.000 L 500.000 752.124 L 510.000 754.000 L 520.000 752.124 L 530.000 747.000 L 540.000 740.000 L 550.000 733.000 L 560.000 727.876 L 570.000 726.000 L 580.000 727.876 L 590.000 733.000 L 600.000 740.000 L 610.000 747.000 L 620.000 752.124 L 630.000 754.000 L 640.000 752.124 L 650.000 747.000 L 660.000 740.000 L 670.000 733.000 L 680.000 727.876 L 690.000 726.000 L 700.000 727.876 L 710.000 733.000 L 720.000 740.000 L 730.000 747.000 L 740.000 752.124"/>
+<rect class="heater" x="110" y="800" width="640" height="26"/>
+<text class="small ink" x="430" y="700" text-anchor="middle">液体</text>
+<text class="small ink" x="430" y="790" text-anchor="middle">蒸気膜</text>
+<text class="micro muted" x="43" y="900">毛管長 ℓ_c = [σ/(g(ρ_l−ρ_v))]^(1/2) ≈ 1.59 mm が界面の長さ尺度。</text>
+<rect class="panel" x="23" y="932" width="794" height="291" rx="18"/>
+<text class="section ink" x="43" y="973">③ 仮想例：大きな水平平板、飽和物性を与える</text>
+<text class="micro muted" x="43" y="1005">ρ_l=800、ρ_v=4.00 kg/m³、h_fg=1.00×10^6 J/kg、σ=0.0200 N/m、g=10.0 m/s²</text>
+<text class="micro muted" x="43" y="1034">速度尺度 u_σ = [σg(ρ_l−ρ_v)/(ρ_l+ρ_v)²]^(1/4) ≈ 0.1253 m/s</text>
+<text class="eq ink" x="43" y="1104">q″_min,B = 0.09 ρ_v h_fg u_σ ≈ 45.1 kW/m²</text>
+<text class="eq ink" x="43" y="1141">A=0.0120 m² では Q ≈ 541 W。g を16倍にすると q_min は2倍</text>
+<text class="micro muted" x="43" y="1181">実測は上に外れることが多く、定数は実用的な下限。CHF と混同しない。</text>
+
+<text class="micro muted" x="420" y="1255" text-anchor="middle">アプリ作成の独自模式図｜原著図版の転載・トレースなし</text>
+</svg>

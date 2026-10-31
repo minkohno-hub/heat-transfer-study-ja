@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="840" height="1280" viewBox="0 0 840 1280" role="img" aria-labelledby="scope-title scope-desc" style="max-width:100%" data-origin="original-app-diagram" data-lesson="8.1" data-beta="0.00329869701468" data-dt="20" data-length="0.5" data-nu="1.6e-05" data-alpha="2.2e-05" data-velocity="2" data-gr="316017751.113" data-pr="0.727272727273" data-ra="229831091.719" data-re="62500" data-ri="0.080900544285" data-beta-dt="0.0659739402936" data-model="dimensionless-scale-comparison">
+<title id="scope-title">§8.1 自然対流と膜状凝縮の対象範囲：流れを生む力</title>
+<desc id="scope-desc">アプリが独自に作図した模式図。第8章では、駆動力が流体内部に働く浮力である自然対流、外部から与えられる強制対流、その両方が働く混合対流、そして冷壁にできた液膜が重力で流下する膜状凝縮を見分ける。仮想の垂直温壁（高さ0.50メートル、温度差20ケルビン）ではグラスホフ数が約3.16かける10の8乗、レイリー数が約2.30かける10の8乗となり、同方向の主流2.0メートル毎秒を重ねるとリチャードソン数は約0.0809で、浮力が強制慣性より小さい尺度になる。ただしこの数値だけで混合対流の効果をゼロとは判定しない。</desc>
+<style>
+text{font-family:'Noto Sans CJK JP','Hiragino Kaku Gothic ProN',sans-serif;font-size:22px}
+.bg{fill:#fff}.panel{fill:#f4f8fb;stroke:#c2d1de;stroke-width:2}.ink{fill:#1b3247}.muted{fill:#455f70}
+.axis{fill:none;stroke:#466176;stroke-width:2}.guide{fill:none;stroke:#b7cbd9;stroke-width:1.3;stroke-dasharray:6 5}
+.graph{fill:none;stroke:#1680a3;stroke-width:4;stroke-linecap:round;stroke-linejoin:round}
+.title{font-size:34px;font-weight:750}.section{font-size:27px;font-weight:700}.small{font-size:20px}.micro{font-size:18px}.eq{font-size:24px;font-weight:650}
+.wall{fill:#516b7e;stroke:#304e64;stroke-width:2}.rise{fill:none;stroke:#ac542f;stroke-width:3;stroke-linecap:round}.push{fill:none;stroke:#167d9c;stroke-width:3;stroke-linecap:round}.zone0{fill:#dcebf5}.zone1{fill:#fdeeda}.zone2{fill:#fbe3e3}.marker{fill:none;stroke:#ac542f;stroke-width:4}
+@media(prefers-color-scheme:dark){.bg{fill:#111b27}.panel{fill:#1e2e3e;stroke:#69869a}.ink{fill:#edf5fc}.muted{fill:#c7d9e6}.axis{stroke:#c0dbea}.guide{stroke:#627c8e}.graph{stroke:#8bdcf4}.wall{fill:#526c80;stroke:#a1c1d5}.rise{stroke:#ffb38c}.push{stroke:#8bdcf4}.zone0{fill:#274b63}.zone1{fill:#5d4a26}.zone2{fill:#5d3232}.marker{stroke:#ffb38c}}
+</style>
+<rect class="bg" width="840" height="1280"/>
+
+<text class="title ink" x="30" y="59">§8.1 流れを生む力：浮力か、外部駆動か</text>
+<text class="small muted" x="30" y="101">第8章の範囲：自然対流・混合対流・膜状凝縮を力の出どころで見分ける</text>
+<rect class="panel" x="23" y="126" width="794" height="477" rx="18"/>
+<text class="section ink" x="43" y="169">① 駆動力の出どころが違う</text>
+<rect class="wall" x="120" y="230" width="30" height="240" rx="3"/>
+<path class="rise" d="M196 440 C 176 380, 216 340, 196 280 M185 292 L196 272 L207 292"/>
+<path class="rise" d="M262 440 C 242 380, 282 340, 262 280 M251 292 L262 272 L273 292"/>
+<text class="small ink" x="90" y="510">温壁：軽くなった流体が浮力で上昇</text>
+<text class="small muted" x="90" y="540">冷壁では密度が増して下降する</text>
+<rect class="wall" x="520" y="230" width="30" height="240" rx="3"/>
+<path class="push" d="M600 280 H760 M746 269 L762 280 L746 291"/>
+<path class="push" d="M600 350 H760 M746 339 L762 350 L746 361"/>
+<path class="push" d="M600 420 H760 M746 409 L762 420 L746 431"/>
+<text class="small ink" x="520" y="510">強制対流：ファン等の外部駆動</text>
+<text class="small muted" x="520" y="540">膜状凝縮は液膜が重力で流下（§8.2・§8.5）</text>
+<rect class="panel" x="23" y="621" width="794" height="293" rx="18"/>
+<text class="section ink" x="43" y="662">② 混合対流の尺度 Ri = Gr/Re²（目安）</text>
+<rect class="zone0" x="110.000" y="700" width="206.667" height="46"/><rect class="zone1" x="316.667" y="700" width="206.667" height="46"/><rect class="zone2" x="523.333" y="700" width="206.667" height="46"/>
+<path class="axis" d="M110 746 H730"/>
+<text x="110.0" y="782" text-anchor="middle" class="micro ink">10^(-3)</text><text x="213.3" y="782" text-anchor="middle" class="micro ink">10^(-2)</text><text x="316.7" y="782" text-anchor="middle" class="micro ink">10^(-1)</text><text x="420.0" y="782" text-anchor="middle" class="micro ink">10^(0)</text><text x="523.3" y="782" text-anchor="middle" class="micro ink">10^(1)</text><text x="626.7" y="782" text-anchor="middle" class="micro ink">10^(2)</text><text x="730.0" y="782" text-anchor="middle" class="micro ink">10^(3)</text>
+<path id="ri-marker" class="marker" d="M 307.155 668 L 307.155 700"/>
+<text class="small ink" x="307.2" y="655" text-anchor="middle">Ri ≈ 0.0809</text>
+<text class="micro ink" x="213" y="722" text-anchor="middle">強制対流が優勢な目安</text>
+<text class="micro ink" x="420" y="722" text-anchor="middle">混合対流の目安</text>
+<text class="micro ink" x="627" y="722" text-anchor="middle">自然対流が優勢な目安</text>
+<text class="micro muted" x="43" y="852">Ri は尺度の比較。一つの数値だけで全ての混合対流を判定しない。</text>
+<text class="micro muted" x="43" y="882">流れの向き（助長／対向）・幾何・境界条件も効く。</text>
+<rect class="panel" x="23" y="932" width="794" height="291" rx="18"/>
+<text class="section ink" x="43" y="973">③ 仮想例：垂直温壁 L=0.50 m、ΔT=20 K</text>
+<text class="micro muted" x="43" y="1005">代表温度 303.15 K、β=1/303.15 K^(-1)、ν=1.6×10^(-5) m²/s</text>
+<text class="micro muted" x="43" y="1034">α_f=2.2×10^(-5) m²/s、g=9.81 m/s²、|βΔT|≈0.0660</text>
+<text class="eq ink" x="43" y="1104">Gr_L ≈ 3.16×10^8　 Ra_L ≈ 2.30×10^8　 Pr ≈ 0.727</text>
+<text class="eq ink" x="43" y="1141">U=2.0 m/s では Re_L = 62500、Ri ≈ 0.0809</text>
+<text class="micro muted" x="43" y="1181">理想気体β近似・一定物性の尺度計算。h はまだ予測していない。</text>
+
+<text class="micro muted" x="420" y="1255" text-anchor="middle">アプリ作成の独自模式図｜原著図版の転載・トレースなし</text>
+</svg>
