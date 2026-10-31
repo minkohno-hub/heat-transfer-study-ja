@@ -1,6 +1,6 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="820" height="1260" viewBox="0 0 820 1260" role="img" aria-labelledby="natural-title natural-desc" data-origin="original-app-diagram" data-lesson="8.4" data-g="9.81" data-beta="0.003" data-dt="10" data-length="0.2" data-nu="0.000015" data-alpha="0.00002" data-fluid-k="0.026" data-area="0.5" data-gr="10464000.000000002" data-pr="0.75" data-ra="7848000.000000002" data-nusselt="31.22782668" data-h="4.05961747" data-q="20.29808734" data-correlation-min-ra="10000" data-correlation-max-ra="1000000000">
+<svg xmlns="http://www.w3.org/2000/svg" width="820" height="1260" viewBox="0 0 820 1260" role="img" aria-labelledby="natural-title natural-desc" data-origin="original-app-diagram" data-lesson="8.4" data-g="9.81" data-beta="0.003" data-dt="10" data-length="0.2" data-nu="0.000015" data-alpha="0.00002" data-fluid-k="0.026" data-area="0.5" data-gr="10464000.000000002" data-pr="0.75" data-ra="7848000.000000002" data-nusselt="28.06462092" data-h="3.64840072" data-q="18.24200360" data-correlation-min-ra="0" data-correlation-max-ra="1000000000">
 <title id="natural-title">§8.4 自然対流：面の向きと浮力の違い、Rayleigh数の例題</title>
-<desc id="natural-desc">アプリ独自の自然対流模式図。周囲流体が静かで物体表面の方が熱いとき、加熱垂直面の近傍の流体は壁に沿って上昇しやすい。水平板の上面が熱いと軽い流体が上に発達しやすく、下面が熱いと暖かい流体は下側に滞留しやすく対流が相対的に抑えられることがある。三つの図は定性的な説明であり、速度場を解いた結果ではない。数値例は等温垂直平板のみに適用し、重力加速度9.81、体膨張係数0.003、温度差10ケルビン、高さ0.20メートル、動粘度1.5かける10のマイナス5乗、熱拡散率2.0かける10のマイナス5乗、流体熱伝導率0.026、面積0.50平方メートルの条件でRaが7848000、Nu約31.23、h約4.06、対流熱量約20.30ワットとなる。Nuと熱量は経験相関式0.59掛けるRaの4分の1乗から推定したもので、放射損失は含めない。垂直平板の式を水平板や円柱などに転用しない。</desc>
+<desc id="natural-desc">アプリ独自の自然対流模式図。周囲流体が静かで物体表面の方が熱いとき、加熱垂直面の近傍の流体は壁に沿って上昇しやすい。水平板の上面が熱いと軽い流体が上に発達しやすく、下面が熱いと暖かい流体は下側に滞留しやすく対流が相対的に抑えられることがある。三つの図は定性的な説明であり、速度場を解いた結果ではない。数値例は等温垂直平板のみに適用し、重力加速度9.81、体膨張係数0.003、温度差10ケルビン、高さ0.20メートル、動粘度1.5かける10のマイナス5乗、熱拡散率2.0かける10のマイナス5乗、流体熱伝導率0.026、面積0.50平方メートルの条件でRaが7848000、Nu約28.06、h約3.65、対流熱量約18.24ワットとなる。Nuと熱量はChurchill–Chuの経験相関式（主教材(8.13a)）から推定したもので、放射損失は含めない。垂直平板の式を水平板や円柱などに転用しない。</desc>
 <style>
 text{font-family:'Noto Sans CJK JP','Hiragino Kaku Gothic ProN',sans-serif;font-size:24px}
 .bg{fill:#fff}.panel{fill:#f4f7fb;stroke:#c0d0db;stroke-width:2}.ink{fill:#183047}.muted{fill:#455e72}
@@ -43,9 +43,9 @@ text{font-family:'Noto Sans CJK JP','Hiragino Kaku Gothic ProN',sans-serif;font-
 <text class="small muted" x="43" y="937">g = 9.81 m/s²、β = 0.003 K⁻¹、ν = 1.5×10⁻⁵ m²/s</text>
 <text class="small muted" x="43" y="972">α_f = 2.0×10⁻⁵ m²/s、k_f = 0.026 W/(m·K)</text>
 <text class="formula ink" x="43" y="1014">Ra = gβΔTL³/(ν α_f) = 7.848×10⁶</text>
-<text class="formula ink" x="43" y="1055">平均Nu = 0.59 Ra^(1/4) ≈ 31.23</text>
-<text class="formula ink" x="43" y="1096">平均h = Nu k_f/L ≈ 4.06 W/(m²·K)</text>
-<text class="formula ink" x="43" y="1137">Q = h A ΔT ≈ 20.30 W（対流成分のみ）</text>
-<text class="tiny muted" x="43" y="1182">適用：等温垂直面、静穏流体、10⁴ ≲ Ra ≲ 10⁹、近似相関</text>
+<text class="formula ink" x="43" y="1055">平均Nu = Churchill–Chu (8.13a) ≈ 28.06</text>
+<text class="formula ink" x="43" y="1096">平均h = Nu k_f/L ≈ 3.65 W/(m²·K)</text>
+<text class="formula ink" x="43" y="1137">Q = h A ΔT ≈ 18.24 W（対流成分のみ）</text>
+<text class="tiny muted" x="43" y="1182">適用：等温垂直面、静穏流体、Ra ≲ 10⁹（層流）、近似相関</text>
 <text class="tiny muted" x="410" y="1243" text-anchor="middle">アプリ作成の独自模式図｜水平板・円柱に上式を流用しない</text>
 </svg>

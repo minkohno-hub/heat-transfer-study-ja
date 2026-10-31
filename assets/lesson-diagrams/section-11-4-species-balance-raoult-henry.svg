@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="1560" viewBox="0 0 760 1560" role="img" aria-labelledby="species-title species-desc" style="max-width:100%" data-origin="original-app-diagram" data-lesson="11.4" data-co2-g-per-l="7" data-water-g-per-l="997" data-m-co2-kg-kmol="44.01" data-m-h2o-kg-kmol="18.02" data-henry-pa="163000000" data-m-air-kg-kmol="28.97" data-antoine-a="8.07131" data-antoine-b="1730.63" data-antoine-c="233.426" data-mmhg-pa="133.322" data-pressure-pa="101325">
+<title id="species-title">§11.4 成分保存方程式：界面の平衡が境界条件になる</title>
+<desc id="species-desc">アプリ独自作成の学習図。成分保存の収支は蓄積イコール対流と拡散の出入りプラス反応生成で、和を取ると混合物の連続の式になる。温度は界面で連続でも濃度は相平衡のために跳ぶことがある。炭酸飲料の例題11.5では水1リットルあたり二酸化炭素7グラムからモル分率0.00287、Henry定数1.63×10の8乗パスカルで分圧は467キロパスカルになる。液体水の上の蒸気質量分率は、54度で約0.097と10パーセント未満で、100度で1になる。飽和圧はAntoine式の近似。図は模式図。</desc>
+<style>
+  .bg{fill:#fff}.panel{fill:#f4f7fb;stroke:#bdcad8;stroke-width:2}.ink{fill:#142b3f}.secondary{fill:#415b6f}.a{fill:#a43f24}.b{fill:#176f77}.solid{fill:#d5eaf4;stroke:#39728c;stroke-width:2}.a-stroke{stroke:#a43f24}.b-stroke{stroke:#176f77}.axis{stroke:#415b6f;stroke-width:2.5}.guide{stroke:#bac8d4;stroke-width:2;stroke-dasharray:6 6}.plot-a{fill:none;stroke:#a43f24;stroke-width:5;stroke-linecap:round;stroke-linejoin:round}.plot-b{fill:none;stroke:#176f77;stroke-width:5;stroke-linecap:round;stroke-linejoin:round}.arrow-a{fill:none;stroke:#a43f24;stroke-width:5;stroke-linecap:round;stroke-linejoin:round}.arrow-b{fill:none;stroke:#176f77;stroke-width:5;stroke-linecap:round;stroke-linejoin:round}.arrow-ink{fill:none;stroke:#415b6f;stroke-width:4;stroke-linecap:round;stroke-linejoin:round}.shape{fill:none;stroke:#39728c;stroke-width:3}.marker-a{fill:#a43f24}.marker-b{fill:#176f77}
+  text{font-family:'Noto Sans CJK JP','Hiragino Kaku Gothic ProN',system-ui,sans-serif;font-size:24px}.title{font-size:33px;font-weight:700}.heading{font-size:28px;font-weight:700}.small{font-size:21px}.equation{font-size:25px;font-weight:600}
+  @media(prefers-color-scheme:dark){.bg{fill:#111b27}.panel{fill:#192a3a;stroke:#5b7891}.ink{fill:#eff6ff}.secondary{fill:#c4d7e4}.a{fill:#ffb494}.b{fill:#8fdfdf}.solid{fill:#23475e;stroke:#8ccde9}.a-stroke{stroke:#ffb494}.b-stroke{stroke:#8fdfdf}.axis{stroke:#c4d7e4}.guide{stroke:#617c91}.plot-a{stroke:#ffb494}.plot-b{stroke:#8fdfdf}.arrow-a{stroke:#ffb494}.arrow-b{stroke:#8fdfdf}.arrow-ink{stroke:#c4d7e4}.shape{stroke:#8ccde9}.marker-a{fill:#ffb494}.marker-b{fill:#8fdfdf}}
+</style>
+<rect class="bg" width="760" height="1560"/>
+<text x="34" y="62" class="title ink">§11.4 成分保存方程式</text>
+<text x="36" y="104" class="small secondary">蓄積 = 出入り（対流+拡散）+ 反応生成（式(11.38)–(11.40)）</text>
+<rect x="24" y="128" width="712" height="336" rx="18" class="panel"/>
+<text x="46" y="173" class="heading ink">収支の構造と界面の不連続</text>
+<rect x="66" y="216" width="240" height="130" rx="6" class="solid"/>
+<path d="M30 252 H62 M50 241 L64 252 L50 263" class="arrow-ink"/>
+<path d="M310 310 H348 M334 299 L348 310 L334 321" class="arrow-ink"/>
+<text x="186" y="262" text-anchor="middle" class="small ink">蓄積 ∂ρ_i/∂t</text>
+<text x="186" y="300" text-anchor="middle" class="small ink">反応生成 r_i</text>
+<text x="186" y="332" text-anchor="middle" class="small secondary">Σ r_i = 0</text>
+<text x="66" y="382" class="small ink">検査体積への出入りは対流+拡散</text>
+<path d="M420 300 H706" class="axis"/>
+<text x="420" y="282" class="small ink">気相：水蒸気は数 %</text>
+<text x="420" y="338" class="small ink">液相：ほぼ純水</text>
+<text x="420" y="382" class="small ink">温度は連続でも濃度は跳びうる</text>
+<text x="420" y="420" class="small secondary">界面の組成は相平衡が決める</text>
+<text x="66" y="420" class="small secondary">全成分で和を取ると連続の式（式(11.41)）</text>
+<rect x="24" y="484" width="712" height="356" rx="18" class="panel"/>
+<text x="46" y="531" class="heading ink">平衡の簡易則と炭酸飲料（例題11.5）</text>
+<text x="46" y="580" class="small ink">Raoult の法則：p_i = p_sat,i x_i（液に富む成分、式(11.45)）</text>
+<text x="46" y="622" class="small ink">Henry の法則：p_i = H x_i（希薄成分、式(11.46)）</text>
+<text x="46" y="664" class="small ink">CO_2 7 g/L → x_CO2 = 0.00287 → p_CO2 = H x = 467 kPa</text>
+<rect id="bar-pco2" x="150" y="692" width="467.248" height="32" class="a"/>
+<text x="46" y="717" class="small ink">缶内</text>
+<text x="629.2" y="717" class="small ink">467 kPa</text>
+<rect id="bar-atm" x="150" y="740" width="101.325" height="32" class="b"/>
+<text x="46" y="765" class="small ink">大気</text>
+<text x="263.3" y="765" class="small ink">101 kPa</text>
+<text x="46" y="812" class="small secondary">本書は x の丸めで 468 kPa。開封すると過飽和になり泡出する</text>
+<rect x="24" y="860" width="712" height="542" rx="18" class="panel"/>
+<text x="46" y="907" class="heading ink">液体水の上の蒸気質量分率（例題11.3）</text>
+<path d="M120 950 V1296 H686" class="axis" fill="none"/>
+<path d="M120 1120.0 H680 M120 950.0 H680" class="guide"/>
+<polyline id="vapor-curve-11-4" points="120.000,1288.733 148.000,1288.186 176.000,1287.440 204.000,1286.434 232.000,1285.095 260.000,1283.330 288.000,1281.026 316.000,1278.043 344.000,1274.208 372.000,1269.309 400.000,1263.080 428.000,1255.187 456.000,1245.206 484.000,1232.587 512.000,1216.603 540.000,1196.271 568.000,1170.224 596.000,1136.498 624.000,1092.147 652.000,1032.542 680.000,950.000" class="plot-a"/>
+<path d="M422.4 1290 V1256.9 H120" class="guide"/>
+<circle id="marker-54c" cx="422.400" cy="1256.918" r="7" class="marker-a"/>
+<text x="66" y="1294" class="small ink">0</text>
+<text x="52" y="1127" class="small ink">0.5</text>
+<text x="52" y="957" class="small ink">1.0</text>
+<text x="60" y="990" class="small secondary">m_H2O,s</text>
+<text x="392" y="1326" class="small ink">50</text>
+<text x="664" y="1326" class="small ink">100°C</text>
+<text x="400" y="1326" text-anchor="middle" class="small secondary">表面温度 T →</text>
+<text x="436" y="1245" class="small ink">54°C で約0.097</text>
+<text x="46" y="1362" class="small ink">54°C 未満では 10% 未満（本書）。100°C では純蒸気で 1</text>
+<text x="46" y="1396" class="small secondary">飽和圧は Antoine 式による近似（蒸気表値と 1% 以内）</text>
+<text x="380" y="1540" text-anchor="middle" class="small secondary">アプリ作成の独自図・模式図（原書図版ではない）</text>
+</svg>

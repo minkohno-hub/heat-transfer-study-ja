@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="1500" viewBox="0 0 760 1500" role="img" aria-labelledby="intro-title intro-desc" style="max-width:100%" data-origin="original-app-diagram" data-lesson="11.1" data-c-mol-m3="50" data-diffusivity-m2-s="0.00002" data-length-m="0.010" data-y-a-left="0.30" data-y-a-right="0.10" data-area-m2="0.020" data-molar-mass-a-kg-mol="0.020" data-d-liquid-m2-s="1e-9">
+<title id="intro-title">§11.1 物質移動の導入：流束・移動率・時間尺度</title>
+<desc id="intro-desc">アプリ独自作成の学習図。物質移動の代表例は冷却塔で、自然通風式は高く機械通風式はファンで通風する。熱伝導のFourierの法則と拡散のFickの法則、エネルギー方程式と成分保存方程式は同形で、温度差と組成差がそれぞれの駆動力になる。独立例題の二成分層では全モル濃度50モル毎立方メートル、拡散係数2.0×10のマイナス5乗、厚さ0.010メートル、モル分率が0.30から0.10へ変わり、拡散流束は0.020モル毎平方メートル毎秒、面積0.020平方メートルで移動率は4.0×10のマイナス4乗モル毎秒、質量移動率は8.0×10のマイナス6乗キログラム毎秒。拡散の時間尺度は気体で5.0秒、液体では10の5乗秒にもなる。図は模式図で実寸ではない。</desc>
+<style>
+  .bg{fill:#fff}.panel{fill:#f4f7fb;stroke:#bdcad8;stroke-width:2}.ink{fill:#142b3f}.secondary{fill:#415b6f}.a{fill:#a43f24}.b{fill:#176f77}.solid{fill:#d5eaf4;stroke:#39728c;stroke-width:2}.a-stroke{stroke:#a43f24}.b-stroke{stroke:#176f77}.axis{stroke:#415b6f;stroke-width:2.5}.guide{stroke:#bac8d4;stroke-width:2;stroke-dasharray:6 6}.plot-a{fill:none;stroke:#a43f24;stroke-width:5;stroke-linecap:round;stroke-linejoin:round}.plot-b{fill:none;stroke:#176f77;stroke-width:5;stroke-linecap:round;stroke-linejoin:round}.arrow-a{fill:none;stroke:#a43f24;stroke-width:5;stroke-linecap:round;stroke-linejoin:round}.arrow-b{fill:none;stroke:#176f77;stroke-width:5;stroke-linecap:round;stroke-linejoin:round}.arrow-ink{fill:none;stroke:#415b6f;stroke-width:4;stroke-linecap:round;stroke-linejoin:round}.shape{fill:none;stroke:#39728c;stroke-width:3}.marker-a{fill:#a43f24}.marker-b{fill:#176f77}
+  text{font-family:'Noto Sans CJK JP','Hiragino Kaku Gothic ProN',system-ui,sans-serif;font-size:24px}.title{font-size:33px;font-weight:700}.heading{font-size:28px;font-weight:700}.small{font-size:21px}.equation{font-size:25px;font-weight:600}
+  @media(prefers-color-scheme:dark){.bg{fill:#111b27}.panel{fill:#192a3a;stroke:#5b7891}.ink{fill:#eff6ff}.secondary{fill:#c4d7e4}.a{fill:#ffb494}.b{fill:#8fdfdf}.solid{fill:#23475e;stroke:#8ccde9}.a-stroke{stroke:#ffb494}.b-stroke{stroke:#8fdfdf}.axis{stroke:#c4d7e4}.guide{stroke:#617c91}.plot-a{stroke:#ffb494}.plot-b{stroke:#8fdfdf}.arrow-a{stroke:#ffb494}.arrow-b{stroke:#8fdfdf}.arrow-ink{stroke:#c4d7e4}.shape{stroke:#8ccde9}.marker-a{fill:#ffb494}.marker-b{fill:#8fdfdf}}
+</style>
+<rect class="bg" width="760" height="1500"/>
+<text x="34" y="62" class="title ink">§11.1 物質移動の導入</text>
+<text x="36" y="104" class="small secondary">組成差が拡散を駆動し、蒸気は潜熱も運ぶ</text>
+<rect x="24" y="128" width="712" height="322" rx="18" class="panel"/>
+<text x="46" y="173" class="heading ink">代表例：冷却塔と熱との類似</text>
+<path d="M96 400 L112 250 Q114 232 132 232 L158 232 Q176 232 178 250 L194 400" class="shape"/>
+<path d="M92 400 H198" class="axis"/>
+<text x="145" y="282" text-anchor="middle" class="small ink">煙突</text>
+<text x="145" y="428" text-anchor="middle" class="small ink">自然通風式</text>
+<rect x="238" y="318" width="120" height="82" class="shape"/>
+<circle cx="298" cy="345" r="20" class="shape"/>
+<path d="M298 345 L298 327 M298 345 L314 354 M298 345 L282 354" class="shape"/>
+<text x="298" y="428" text-anchor="middle" class="small ink">機械通風式</text>
+<text x="298" y="300" text-anchor="middle" class="small secondary">ファンで通風・低い</text>
+<path d="M430 220 V330 M419 316 L430 332 L441 316" class="arrow-b"/>
+<text x="452" y="248" class="small ink">水滴を降らせ</text>
+<text x="452" y="282" class="small ink">一部が蒸発して</text>
+<text x="452" y="316" class="small ink">残りの水が冷える</text>
+<text x="452" y="362" class="small secondary">ほか：結露・乾燥・発汗冷却</text>
+<text x="452" y="398" class="small secondary">Fourier ↔ Fick、保存式も同形</text>
+<rect x="24" y="470" width="712" height="442" rx="18" class="panel"/>
+<text x="46" y="517" class="heading ink">二成分層の拡散流束（レッスンの独立例題）</text>
+<path d="M120 556 V682 H365" class="axis" fill="none"/>
+<path d="M120 560 H352 M120 675 H352" class="guide"/>
+<polyline id="profile-11-1" points="120.000,560.000 131.600,565.750 143.200,571.500 154.800,577.250 166.400,583.000 178.000,588.750 189.600,594.500 201.200,600.250 212.800,606.000 224.400,611.750 236.000,617.500 247.600,623.250 259.200,629.000 270.800,634.750 282.400,640.500 294.000,646.250 305.600,652.000 317.200,657.750 328.800,663.500 340.400,669.250 352.000,675.000" class="plot-a"/>
+<text x="72" y="571" class="small ink">0.30</text>
+<text x="72" y="686" class="small ink">0.10</text>
+<text x="60" y="600" class="small secondary">y_A</text>
+<text x="118" y="713" class="small ink">0</text><text x="342" y="713" class="small ink">L</text>
+<text x="246" y="740" text-anchor="middle" class="small secondary">位置 x →</text>
+<text x="400" y="580" class="small ink">c = 50 mol/m³、L = 0.010 m</text>
+<text x="400" y="618" class="small ink">D_AB = 2.0×10^(-5) m²/s</text>
+<path d="M408 668 H640 M624 655 L640 668 L624 681" class="arrow-a"/>
+<text x="408" y="652" class="small a">A：右向き J_A = +0.020</text>
+<path d="M640 716 H408 M424 703 L408 716 L424 729" class="arrow-b"/>
+<text x="408" y="700" class="small b">B：左向き N_B = −0.020</text>
+<text x="46" y="800" class="equation ink">J_A = −cD_AB (0.10 − 0.30)/L = +0.020 mol/(m²·s)</text>
+<text x="46" y="845" class="small ink">全モル流束 N_t = N_A + N_B = 0 でも、各成分は移動している</text>
+<text x="46" y="882" class="small secondary">等モル逆拡散・定常。単位は mol/(m²·s)、符号は x 正方向を正とする</text>
+<rect x="24" y="932" width="712" height="486" rx="18" class="panel"/>
+<text x="46" y="979" class="heading ink">流束 → 移動率 → 質量移動率、時間尺度</text>
+<text x="46" y="1028" class="small ink">移動率 n_A = A × N_A = 0.020 m² × 0.020 = 4.0×10^(-4) mol/s</text>
+<text x="46" y="1066" class="small ink">質量移動率 = M_A × n_A = 0.020 kg/mol × 4.0×10^(-4)</text>
+<text x="170" y="1104" class="small ink">= 8.0×10^(-6) kg/s</text>
+<text x="46" y="1152" class="small ink">拡散の時間尺度 t_D ∼ L²/D（L = 0.010 m）</text>
+<rect id="bar-td-gas" x="150" y="1180" width="78.285" height="34" class="a"/>
+<text x="46" y="1206" class="small ink">気体</text>
+<text x="242.3" y="1206" class="small ink">5.0 s（D = 2.0×10^(-5)）</text>
+<rect id="bar-td-liquid" x="150" y="1232" width="560.000" height="34" class="b"/>
+<text x="46" y="1258" class="small ink">液体</text>
+<text x="46" y="1308" class="small ink">液体は 1.0×10^5 s（約27.8時間）。横軸は対数（10倍ごとに112 px）</text>
+<text x="46" y="1352" class="small secondary">時間尺度は厳密な完了時間ではない</text>
+<text x="46" y="1390" class="small secondary">攪拌は輸送を促すが分子拡散係数そのものは変えない</text>
+<text x="380" y="1480" text-anchor="middle" class="small secondary">アプリ作成の独自図・模式図（原書図版ではない）</text>
+</svg>

@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="840" height="1160" viewBox="0 0 840 1160" style="max-width:100%" role="img" aria-labelledby="title77 desc77" data-origin="original-app-diagram" data-lesson="7.7" data-q="100" data-area="0.20" data-dt="25" data-hobs="20.0" data-uq="0.02" data-ua="0.01" data-udt="0.03" data-urel="0.0374165738677394" data-uh="0.7483314773547883" data-pred1="18" data-pred2="24" data-r1="-0.1" data-r2="0.2">
+<title id="title77">§7.7 相関式の評価：測定不確かさの伝播と残差</title>
+<desc id="desc77">アプリ独自作図。対流熱流100ワット、面積0.20平方メートル、温度差25ケルビンの仮想実験では、観測熱伝達率は20.0ワット毎平方メートルケルビン。熱流2パーセント、面積1パーセント、温度差3パーセントの独立な相対標準不確かさを二乗和の平方根で合成すると3.74パーセントとなり、標準不確かさは0.748。候補の18は残差マイナス10パーセント、24はプラス20パーセント。一点の近さは全範囲での優劣や真値を証明しない。</desc>
+<style>
+text{font-family:'Noto Sans CJK JP','Hiragino Kaku Gothic ProN',sans-serif;font-size:23px}
+.bg{fill:#fff}.panel{fill:#f4f7fb;stroke:#bfd0df;stroke-width:2}.ink{fill:#193148}.muted{fill:#476074}
+.axis{stroke:#647b8e;stroke-width:2}.band{fill:#eec9a3}.pt{fill:#a04677}.pred{fill:#287b9e}
+.uq{fill:#287b9e}.ua{fill:#4d9e6b}.udt{fill:#7a9e43}.rss{fill:#b66837}
+.title{font-size:34px;font-weight:750}.section{font-size:27px;font-weight:700}.small{font-size:21px}.micro{font-size:18px}.formula{font-size:25px;font-weight:650}
+@media(prefers-color-scheme:dark){.bg{fill:#111b26}.panel{fill:#1c2b3b;stroke:#617c91}.ink{fill:#edf6fe}.muted{fill:#c6d8e5}.axis{stroke:#8198ac}.band{fill:#7a5a38}.pt{fill:#f6a7da}.pred{fill:#9fdaf7}.uq{fill:#3688ac}.ua{fill:#5fae7d}.udt{fill:#93b45e}.rss{fill:#ad6d47}}
+</style>
+<rect class="bg" width="840" height="1160"/>
+<text x="30" y="59" class="title ink">§7.7 相関の評価：不確かさと残差</text>
+<text x="31" y="100" class="small muted">一点の近さだけで、相関の優劣や真値を決めない</text>
+<rect class="panel" x="24" y="122" width="792" height="330" rx="18"/>
+<text x="44" y="164" class="section ink">① 観測 h と2候補の位置 [W/(m²·K)]</text>
+<text x="333.33" y="214" text-anchor="middle" class="small ink">候補A：18</text>
+<text x="653.33" y="214" text-anchor="middle" class="small ink">候補B：24</text>
+<text x="440" y="252" text-anchor="middle" class="small ink">観測：20.0 ± 0.75</text>
+<rect id="uh-band" class="band" x="400.09" y="283" width="79.82" height="34"/>
+<path class="axis" d="M120 300 H760"/>
+<circle class="pred" cx="333.33" cy="300" r="7"/>
+<circle class="pt" cx="440" cy="300" r="7"/>
+<circle class="pred" cx="653.33" cy="300" r="7"/>
+<text x="120" y="338" text-anchor="middle" class="micro ink">14</text>
+<text x="333.33" y="338" text-anchor="middle" class="micro ink">18</text>
+<text x="440" y="338" text-anchor="middle" class="micro ink">20</text>
+<text x="653.33" y="338" text-anchor="middle" class="micro ink">24</text>
+<text x="760" y="338" text-anchor="middle" class="micro ink">26</text>
+<text x="45" y="384" class="small ink">帯は測定の標準不確かさ u_h = 0.748。残差は A −10%／B +20%</text>
+<text x="45" y="418" class="micro muted">帯への出入りと、相関自体のモデル誤差・偏りは別の評価。</text>
+<rect class="panel" x="24" y="470" width="792" height="356" rx="18"/>
+<text x="44" y="514" class="section ink">② 不確かさの伝播（独立入力の一次近似）</text>
+<text x="45" y="556" class="small ink">(u_h/h)² ≈ (u_Q/Q̇)² + (u_A/A)² + (u_ΔT/ΔT)²</text>
+<text x="45" y="604" class="small ink">熱流 Q̇</text>
+<rect id="u-q" class="uq" x="330" y="584" width="180" height="26" rx="3"/>
+<text x="522" y="604" class="small ink">2%</text>
+<text x="45" y="670" class="small ink">面積 A</text>
+<rect id="u-a" class="ua" x="330" y="650" width="90" height="26" rx="3"/>
+<text x="432" y="670" class="small ink">1%</text>
+<text x="45" y="736" class="small ink">温度差 ΔT</text>
+<rect id="u-dt" class="udt" x="330" y="716" width="270" height="26" rx="3"/>
+<text x="612" y="736" class="small ink">3%</text>
+<text x="45" y="802" class="small ink">合成（RSS）</text>
+<rect id="u-rss" class="rss" x="330" y="782" width="336.75" height="26" rx="3"/>
+<text x="678.75" y="802" class="small ink">3.74%</text>
+<rect class="panel" x="24" y="844" width="792" height="210" rx="18"/>
+<text x="44" y="888" class="section ink">③ この図から言えること・言えないこと</text>
+<text x="45" y="932" class="small ink">言える：この一点では候補Aの方が観測に近い</text>
+<text x="45" y="968" class="small ink">言えない：全範囲での優劣、観測が真値であること</text>
+<text x="45" y="1004" class="micro muted">適用条件・独立データ・感度をそろえて、初めて選定の根拠になる。</text>
+<text x="420" y="1108" text-anchor="middle" class="micro muted">アプリ作成の独自模式図｜原著図版の転載・翻訳なし</text>
+</svg>

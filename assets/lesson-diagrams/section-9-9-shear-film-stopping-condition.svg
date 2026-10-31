@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="840" height="1280" viewBox="0 0 840 1280" role="img" aria-labelledby="shear-title shear-desc" style="max-width:100%" data-origin="original-app-diagram" data-lesson="9.9" data-mu="0.00028" data-k="0.68" data-delta-t="10" data-x="0.1" data-h-fg-prime="2250000" data-rho-f="950" data-rho-g="0.6" data-g="9.81" data-rhs="3.82562658885e-17" data-delta-noshear="7.8645819881e-05" data-tau-stop="-0.549357606814" data-tau-down="0.5" data-delta-down="6.53702470166e-05" data-model="shear-film-eq-9-53">
+<title id="shear-title">§9.9 強制対流凝縮：界面せん断と停止条件（原書 9.54）</title>
+<desc id="shear-desc">アプリが独自に作図した模式図。外部面の強制対流凝縮では、蒸気の流れが液膜に界面せん断を及ぼし、下向きなら膜を薄くし、上向きの逆せん断なら膜を厚くする。原書の停止条件は、与えられた膜厚に対してせん断が重力項をちょうど打ち消す特定値であり、固定の閾値ではない。仮想例（位置0.10メートル）では、せん断なしの膜厚は約7.86かける10のマイナス5乗メートル、その膜厚での停止せん断は約マイナス0.549パスカル、下向き0.50パスカルのせん断では膜は薄くなる。停止はその膜厚における一瞬の条件であり、膜が成長すれば流れは再開する。</desc>
+<style>
+text{font-family:'Noto Sans CJK JP','Hiragino Kaku Gothic ProN',sans-serif;font-size:22px}
+.bg{fill:#fff}.panel{fill:#f4f8fb;stroke:#c2d1de;stroke-width:2}.ink{fill:#1b3247}.muted{fill:#455f70}
+.axis{fill:none;stroke:#466176;stroke-width:2}.guide{fill:none;stroke:#b7cbd9;stroke-width:1.3;stroke-dasharray:6 5}
+.graph{fill:none;stroke:#1680a3;stroke-width:4;stroke-linecap:round;stroke-linejoin:round}
+.title{font-size:34px;font-weight:750}.section{font-size:27px;font-weight:700}.small{font-size:20px}.micro{font-size:18px}.eq{font-size:24px;font-weight:650}
+.wall{fill:#516b7e;stroke:#304e64;stroke-width:2}.film9{fill:#8bd0e2;stroke:#167d9c;stroke-width:2}.push{fill:none;stroke:#167d9c;stroke-width:3;stroke-linecap:round}.point{fill:#ac542f;stroke:#fff;stroke-width:2}
+@media(prefers-color-scheme:dark){.bg{fill:#111b27}.panel{fill:#1e2e3e;stroke:#69869a}.ink{fill:#edf5fc}.muted{fill:#c7d9e6}.axis{stroke:#c0dbea}.guide{stroke:#627c8e}.graph{stroke:#8bdcf4}.wall{fill:#526c80;stroke:#a1c1d5}.film9{fill:#285d74;stroke:#9fdef4}.push{stroke:#8bdcf4}.point{fill:#ffb38c}}
+</style>
+<rect class="bg" width="840" height="1280"/>
+
+<text class="title ink" x="30" y="59">§9.9 界面せん断と液膜の停止条件</text>
+<text class="small muted" x="30" y="101">外部面の強制対流凝縮：せん断 τ_δ が膜厚の式（原書 9.53）に入る</text>
+<rect class="panel" x="23" y="126" width="794" height="477" rx="18"/>
+<text class="section ink" x="43" y="169">① 蒸気の流れ向きで液膜の運命が変わる</text>
+<rect class="wall" x="150" y="250" width="24" height="250" rx="3"/>
+<rect class="film9" x="174" y="250" width="34" height="250"/>
+<path class="push" d="M250 300 H360 M346 289 L362 300 L346 311"/>
+<path class="push" d="M250 380 H360 M346 369 L362 380 L346 391"/>
+<text class="small ink" x="90" y="540">下向き蒸気：膜を引きずり薄くする</text>
+<rect class="wall" x="520" y="250" width="24" height="250" rx="3"/>
+<rect class="film9" x="544" y="250" width="58" height="250"/>
+<path class="push" d="M700 460 H610 M624 449 L608 460 L624 471"/>
+<path class="push" d="M700 380 H610 M624 369 L608 380 L624 391"/>
+<text class="small ink" x="470" y="540">上向き蒸気：逆せん断で膜が厚くなる</text>
+<text class="small muted" x="45" y="584">τ_δ は下向きを正とする界面せん断。膜厚は (9.53) の δ⁴＋せん断項 δ³ で決まる。</text>
+<rect class="panel" x="23" y="621" width="794" height="293" rx="18"/>
+<text class="section ink" x="43" y="662">② 停止条件 τ_δ = −(3/4)g(ρ_f−ρ_g)δ（原書 9.54）</text>
+<path class="axis" d="M170 700 V826 H660 M649 818 L660 826 L649 834"/>
+<path id="tau-stop-line" class="graph" d="M 170.000 700.000 L 640.000 810.017"/>
+<circle id="tau-stop-point" class="point" cx="354.818" cy="743.262" r="9"/>
+<text class="small ink" x="371" y="733">δ₀ の点：τ ≈ −0.549 Pa</text>
+<text x="60" y="705" class="micro ink">0</text><text x="60" y="770" class="micro ink">−0.8</text><text x="60" y="831" class="micro ink">−1.6 Pa</text>
+<text x="180" y="852" class="micro ink">0</text><text x="600" y="852" class="micro ink">δ = 2.0×10^(-4) m</text>
+<text class="micro muted" x="43" y="900">停止せん断は δ に比例する特定値であり、固定の閾値ではない。</text>
+<rect class="panel" x="23" y="932" width="794" height="291" rx="18"/>
+<text class="section ink" x="43" y="973">③ 仮想例：x=0.10 m の位置、液体物性は §8.5 と同じ系</text>
+<text class="micro muted" x="43" y="1005">μ=2.8×10^(-4) Pa·s、k=0.68 W/(m·K)、ΔT=10 K、h_fg'=2.25×10^6 J/kg</text>
+<text class="micro muted" x="43" y="1034">ρ_f=950、ρ_g=0.60 kg/m³、g=9.81 m/s²</text>
+<text class="eq ink" x="43" y="1104">せん断なしの膜厚 δ₀ ≈ 7.86×10^(-5) m</text>
+<text class="eq ink" x="43" y="1141">τ_δ=+0.50 Pa（下向き）では δ ≈ 65.4 μm へ薄くなる</text>
+<text class="micro muted" x="43" y="1181">停止は「その δ における一瞬」の条件。凝縮が続いて δ が育てば流れは再開する。</text>
+
+<text class="micro muted" x="420" y="1255" text-anchor="middle">アプリ作成の独自模式図｜原著図版の転載・トレースなし</text>
+</svg>

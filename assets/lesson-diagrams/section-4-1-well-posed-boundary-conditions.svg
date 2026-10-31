@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="840" height="1180" viewBox="0 0 840 1180" style="max-width:100%" role="img" aria-labelledby="title4-1 desc4-1" data-lesson="4.1" data-origin="original-app-diagram" data-l="0.1" data-k="2" data-t0="100" data-qout="200" data-slope="-100" data-tl="90" data-plot-x0="100" data-plot-x1="740" data-plot-y-t0="700" data-plot-yscale="12">
+<title id="title4-1">§4.1 適正問題：方程式・初期条件・境界条件の組み立て</title>
+<desc id="desc4-1">アプリ独自作成の模式図。一意な解を得るために必要な情報（領域内の熱伝導方程式、初期条件1つ、各座標につき境界条件2つ）と、境界条件の代表的な3種（温度指定、熱流束指定、対流境界）を示す。例として左面100度の温度指定と右面の外向き熱流束200ワット毎平方メートルの指定を受けた平板（厚さ0.10メートル、熱伝導率2）では、温度分布は100から毎メートル100ケルビン下がる直線で右面は90度になる。原著の図版の転載ではない。</desc>
+<style>
+text{font-family:system-ui,'Noto Sans CJK JP','Hiragino Kaku Gothic ProN',sans-serif;font-size:23px}
+.bg{fill:#ffffff}.panel{fill:#f4f7fa;stroke:#c2d1dd;stroke-width:2}.ink{fill:#173044}.muted{fill:#43596c}.warm{fill:#a84429}.cool{fill:#146b83}
+.curve{stroke:#a84429;stroke-width:4;fill:none;stroke-linejoin:round;stroke-linecap:round}
+.axis{stroke:#43596c;stroke-width:2}.arrow{stroke:#146b83;stroke-width:3.6;fill:none;stroke-linejoin:round;stroke-linecap:round}
+.box{fill:#e7eef4;stroke:#c2d1dd;stroke-width:2}
+.title{font-size:34px;font-weight:750}.section{font-size:27px;font-weight:700}.small{font-size:20px}.tiny{font-size:19px}.equation{font-size:23px;font-weight:650}
+@media(prefers-color-scheme:dark){.bg{fill:#101b26}.panel{fill:#1d2d3d;stroke:#657d91}.ink{fill:#f1f7fb}.muted{fill:#c8d8e5}.warm{fill:#ffb599}.cool{fill:#8fdaef}.curve{stroke:#ffb599}.axis{stroke:#c8d8e5}.arrow{stroke:#8fdaef}.box{fill:#24384c;stroke:#657d91}}
+</style>
+<rect class="bg" width="840" height="1180"/>
+<text class="title ink" x="31" y="58">§4.1 適正問題を組み立てる</text>
+<text class="small muted" x="33" y="97">一意解に必要な情報が「すべて」そろった問題が適正問題</text>
+<rect class="panel" x="23" y="119" width="794" height="216" rx="19"/>
+<text class="section ink" x="43" y="161">① 定式化の部品</text>
+<text class="small ink" x="43" y="203">領域 R 内で熱伝導方程式 ∇·(k∇T) + q̇ = ρc ∂T/∂t を満たす T を求める</text>
+<text class="small ink" x="43" y="243">初期条件（i.c.）： t = 0 の温度分布を1つ（定常問題では不要）</text>
+<text class="small ink" x="43" y="283">境界条件（b.c.）： 各座標につき2つずつ必要</text>
+<text class="small muted" x="43" y="319">初期分布は境界条件に従う必要はない（方程式は t = 0 には課されない）</text>
+<rect class="panel" x="23" y="353" width="794" height="232" rx="19"/>
+<text class="section ink" x="43" y="395">② 境界条件の代表的な3種</text>
+<rect class="box" x="43" y="420" width="238" height="120" rx="10"/>
+<text class="small ink" x="60" y="458">第1種（Dirichlet）</text>
+<text class="small ink" x="60" y="494">境界で T を指定</text>
+<text class="small muted" x="60" y="526">例： 等温面に保持</text>
+<rect class="box" x="301" y="420" width="238" height="120" rx="10"/>
+<text class="small ink" x="318" y="458">第2種（Neumann）</text>
+<text class="small ink" x="318" y="494">法線微分＝流束を指定</text>
+<text class="small muted" x="318" y="526">断熱なら微分 = 0</text>
+<rect class="box" x="559" y="420" width="238" height="120" rx="10"/>
+<text class="small ink" x="576" y="458">第3種（対流境界）</text>
+<text class="small ink" x="570" y="494">−k ∂T/∂x = h(T−T∞)</text>
+<text class="small muted" x="576" y="526">微分が境界温度に比例</text>
+<text class="small muted" x="43" y="571">この3種で重要例の大半をカバーするが、完全なリストではない</text>
+<rect class="panel" x="23" y="603" width="794" height="420" rx="19"/>
+<text class="section ink" x="43" y="645">③ 例：第1種＋第2種の平板（定常・発熱なし）</text>
+<line class="axis" x1="100" y1="660" x2="100" y2="820"/>
+<line class="axis" x1="100" y1="820" x2="740" y2="820"/>
+<path id="temp-line-4-1" class="curve" d="M100.0,700.0 L132.0,706.0 L164.0,712.0 L196.0,718.0 L228.0,724.0 L260.0,730.0 L292.0,736.0 L324.0,742.0 L356.0,748.0 L388.0,754.0 L420.0,760.0 L452.0,766.0 L484.0,772.0 L516.0,778.0 L548.0,784.0 L580.0,790.0 L612.0,796.0 L644.0,802.0 L676.0,808.0 L708.0,814.0 L740.0,820.0"/>
+<text class="small ink" x="112" y="688">T(0) = 100 ℃（第1種）</text>
+<text class="small cool" x="728" y="700" text-anchor="end">外向き流束 +200 W/m²（第2種）</text>
+<path class="arrow" d="M600 745 H725 M709 731 L725 745 L709 759"/>
+<text class="small ink" x="728" y="852" text-anchor="end">T(L) = 90 ℃</text>
+<text class="small muted" x="43" y="890">縦軸は 100 ℃ を基準に 12 px/K で表示</text>
+<rect class="panel" x="23" y="1041" width="794" height="90" rx="19"/>
+<text class="small ink" x="43" y="1080">解： T(x) = 100 − 100x ℃ → T(L) = 90 ℃（L = 0.10 m、k = 2.0）</text>
+<text class="small muted" x="43" y="1114">左面から入る流束も +200 で、発熱・蓄熱なしの収支が閉じる</text>
+<text class="tiny muted" x="420" y="1168" text-anchor="middle">アプリ作成の独自模式図｜原著の図版・描画の転載なし</text>
+</svg>

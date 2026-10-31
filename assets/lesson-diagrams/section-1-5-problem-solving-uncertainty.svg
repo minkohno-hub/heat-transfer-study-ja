@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="840" height="1054" viewBox="0 0 840 1054" style="max-width:100%" role="img" aria-labelledby="title1-5 desc1-5" data-lesson="1.5" data-origin="original-app-diagram" data-q="20" data-l="0.01" data-area="0.02" data-dt="20" data-k="0.5" data-rel="0.05" data-rss="0.1" data-uk="0.05" data-worst="0.2" data-dk-worst="0.1">
+<title id="title1-5">§1.5 章末問題への取り組み方：手順と不確かさの伝播</title>
+<desc id="desc1-5">アプリ独自作成の模式図。問題に取り組む手順（既知と未知の整理、法則の選択、単位の検算、極限での吟味）と、単位はSIを原則とする本書の方針を示す。例として伝熱量20ワット、厚さ0.010メートル、面積0.020平方メートル、温度差20ケルビンの平板実験では熱伝導率は0.50ワット毎メートル毎ケルビンになり、4量それぞれ5パーセントの独立な標準不確かさは二乗和平方根で10パーセント、上限として線形に足す最悪幅評価では20パーセントになる。原著の図版の転載ではない。</desc>
+<style>
+text{font-family:system-ui,'Noto Sans CJK JP','Hiragino Kaku Gothic ProN',sans-serif;font-size:23px}
+.bg{fill:#ffffff}.panel{fill:#f4f7fa;stroke:#c2d1dd;stroke-width:2}.ink{fill:#173044}.muted{fill:#43596c}.warm{fill:#a84429}.cool{fill:#146b83}
+.barrss{fill:#5396b4}.barworst{fill:#d98a16}
+.step{fill:#e7eef4;stroke:#c2d1dd;stroke-width:2}
+.title{font-size:34px;font-weight:750}.section{font-size:27px;font-weight:700}.small{font-size:20px}.tiny{font-size:19px}.equation{font-size:23px;font-weight:650}
+@media(prefers-color-scheme:dark){.bg{fill:#101b26}.panel{fill:#1d2d3d;stroke:#657d91}.ink{fill:#f1f7fb}.muted{fill:#c8d8e5}.warm{fill:#ffb599}.cool{fill:#8fdaef}.barrss{fill:#2c6d88}.barworst{fill:#b97e22}.step{fill:#24384c;stroke:#657d91}}
+</style>
+<rect class="bg" width="840" height="1054"/>
+<text class="title ink" x="31" y="58">§1.5 章末問題への取り組み方</text>
+<text class="small muted" x="33" y="97">単位は SI が原則。一部の問題だけ英米単位の換算練習を含む</text>
+<rect class="panel" x="23" y="119" width="794" height="216" rx="19"/>
+<text class="section ink" x="43" y="161">① 解く手順（本書の型）</text>
+<text class="small ink" x="43" y="203">1. 既知・未知・仮定を書き分け、系の境界を決める</text>
+<text class="small ink" x="43" y="243">2. 支配法則と収支式を選び、記号のまま式を立てる</text>
+<text class="small ink" x="43" y="283">3. 数値を代入し、単位がそろうか必ず検算する</text>
+<text class="small ink" x="43" y="323">4. 極限・符号・大きさの吟味をする（「理論的」問題も学習の一部）</text>
+<rect class="panel" x="23" y="353" width="794" height="330" rx="19"/>
+<text class="section ink" x="43" y="395">② 例：測定から k を求める</text>
+<text class="equation ink" x="43" y="437">k = Q L/(A ΔT) = 20×0.010/(0.020×20) = 0.50 W/(m·K)</text>
+<text class="small ink" x="43" y="479">単位検算： W·m/(m²·K) = W/(m·K) ✓（面積と長さを逆にしない）</text>
+<text class="small ink" x="43" y="519">Q・L・A・ΔT の4量に、それぞれ相対標準不確かさ 5.0%</text>
+<text class="small ink" x="43" y="559">独立なら相対分散は 4×0.05² の和 → u(k)/k = 10%</text>
+<text class="small ink" x="43" y="599">→ u(k) = 0.050 W/(m·K)（1標準不確かさ。自動的に95%区間ではない）</text>
+<text class="small muted" x="43" y="647">共通の校正誤差など相関がある場合は独立の式をそのまま使えない</text>
+<rect class="panel" x="23" y="701" width="794" height="206" rx="19"/>
+<text class="section ink" x="43" y="743">③ 二つの評価は意味が違う</text>
+<text class="small ink" x="43" y="785">伝播（独立）10%</text>
+<rect class="barrss" id="bar-rss" x="300" y="764" width="190" height="20"/>
+<text class="small ink" x="43" y="833">最悪幅（上限）20%</text>
+<rect class="barworst" id="bar-worst" x="300" y="812" width="380" height="20"/>
+<text class="small muted" x="43" y="881">各5%を「標準不確かさ」と「偏差の上限」のどちらとみなすかで結論が変わる</text>
+<text class="tiny muted" x="43" y="958">物性値表は Appendix A、単位換算は Appendix B（本書の案内）</text>
+<text class="tiny muted" x="420" y="1036" text-anchor="middle">アプリ作成の独自模式図｜原著の図版・描画の転載なし</text>
+</svg>

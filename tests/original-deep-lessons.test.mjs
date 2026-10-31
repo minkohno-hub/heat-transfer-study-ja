@@ -26,9 +26,9 @@ test('advanced original Japanese instruction includes 1.1 and 3.1 alongside the 
 });
 test('natural convection and film condensation independently recompute the two worked examples',()=>{
  const Ra=(9.81*.003*10*.2**3)/(1.5e-5*2e-5);
- const Nu=.59*Ra**.25,h=Nu*.026/.2,Q=h*.5*10;
+ const Pr=1.5e-5/2e-5;const Nu=.68+.670*Ra**.25/(1+(.492/Pr)**(9/16))**(4/9),h=Nu*.026/.2,Q=h*.5*10;
  const close=(x,y,tol)=>assert.ok(Math.abs(x-y)<tol,x+' vs '+y);
- close(Ra,7.848e6,1e-4);close(Nu,31.23,.01);close(h,4.06,.01);close(Q,20.3,.03);
+ close(Ra,7.848e6,1e-4);close(Nu,28.06,.01);close(h,3.65,.01);close(Q,18.24,.03);
  const rho=950,rhov=.60,k=.68,mu=2.8e-4,g=9.81,latent=2.25e6,L=.020,b=.50,dT=10;
  const hc=.943*(rho*(rho-rhov)*g*latent*k**3/(mu*L*dT))**.25;
  const heat=hc*(L*b)*dT,m=heat/latent,filmRe=4*m/(b*mu);
