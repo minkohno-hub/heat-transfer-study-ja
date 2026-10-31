@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="840" height="1270" viewBox="0 0 840 1270" role="img" aria-labelledby="chart-title chart-desc" style="max-width:100%" data-origin="original-app-diagram" data-lesson="5.4" data-biot="1" data-fourier="0.5" data-lambda-1="0.860333589019" data-coefficient-a1="1.11913200841" data-center-theta="0.772955693333" data-position-xi="0.5" data-position-ratio="0.90889620527" data-position-theta="0.702536496512" data-mean-theta="0.681069447035" data-heat-fraction="0.318930552965">
+  <title id="chart-title">§5.4 温度応答線図：中心・位置・平均の読み方</title>
+  <desc id="chart-desc">アプリ作成の独自図解。温度応答線図の読み方を、平板のBiイコール1、Foイコール0.5の一項近似の照合値で示す。中心の無次元温度は0.772956、中心から半分の位置では位置比0.908896を掛けて0.702536、体積平均は0.681069。摂氏では中心81.84度、指定位置76.20度、平均74.49度で、放出顕熱の割合は約31.9パーセント。線図そのものの転載ではなく、形状と特性長さと境界条件をそろえて読む手順を示す。</desc>
+  <style>
+    .background{fill:#fff}.panel{fill:#f4f7fb;stroke:#bbccd9;stroke-width:2}
+    .ink{fill:#193043}.secondary{fill:#465b6c}.cold{fill:#1c7194}.later{fill:#8b4eae}.hot{fill:#b3402f}.warn{fill:#b3402f}
+    .slab{fill:#d6e9ef;stroke:#528096;stroke-width:3}.axis{stroke:#304c60;stroke-width:2.4;fill:none}
+    .guide{stroke:#aebfcc;stroke-width:1.4;stroke-dasharray:6 7}.initial{stroke:#5c6e7c;stroke-width:3.4;fill:none;stroke-dasharray:10 6}
+    .quarter{stroke:#1c7194;stroke-width:4.6;fill:none;stroke-linejoin:round}.one{stroke:#8b4eae;stroke-width:4.6;fill:none;stroke-linejoin:round}
+    .hotline{stroke:#b3402f;stroke-width:4.6;fill:none;stroke-linejoin:round}.dashline{stroke:#5c6e7c;stroke-width:3.2;fill:none;stroke-dasharray:9 7}
+    .arrow{stroke:#1c7194;stroke-width:4.4;fill:none;stroke-linecap:round;stroke-linejoin:round}
+    .bar-cold{fill:#1c7194}.bar-later{fill:#8b4eae}.bar-warn{fill:#c98a8a}.bar-hot{fill:#b3402f}
+    .edge-hot{stroke:#b3402f;stroke-width:7}.edge-cold{stroke:#528096;stroke-width:5}
+    text{font-family:'Noto Sans CJK JP','Hiragino Kaku Gothic ProN',system-ui,sans-serif;font-size:25px}.title{font-size:35px;font-weight:700}.section{font-size:27px;font-weight:700}.small{font-size:22px}.formula{font-size:25px;font-weight:600}
+    @media(prefers-color-scheme:dark){.background{fill:#111a24}.panel{fill:#1c2c3b;stroke:#60798a}.ink{fill:#eef6ff}.secondary{fill:#cad9e4}.cold{fill:#89d8f4}.later{fill:#dbb4ff}.hot{fill:#ff9d8f}.warn{fill:#ff9d8f}.slab{fill:#22485f;stroke:#91c2dc}.axis{stroke:#d3e4ef}.guide{stroke:#647e90}.initial{stroke:#bed0da}.quarter,.arrow{stroke:#89d8f4}.one{stroke:#dbb4ff}.hotline{stroke:#ff9d8f}.dashline{stroke:#bed0da}.bar-warn{fill:#8a5a5a}}
+  </style>
+  <rect class="background" width="840" height="1270"/>
+  <text x="36" y="58" class="title ink">§5.4 線図は条件をそろえて読む</text>
+  <text x="36" y="100" class="small secondary">中心・位置・平均は別の量。照合値は平板 Bi=1・Fo=0.5 の一項計算。</text>
+  <rect x="24" y="123" width="792" height="390" rx="19" class="panel"/>
+  <text x="48" y="166" class="section ink">① 中心応答 Θ₀(Fo)：Bi ごとの曲線（一項近似）</text>
+  <path class="dashline" d="M452 196 H492"/><text x="501" y="203" class="small ink">Bi = 0.05</text>
+  <path class="quarter" d="M452 226 H492"/><text x="501" y="233" class="small ink">Bi = 1</text>
+  <path class="one" d="M620 196 H660"/><text x="669" y="203" class="small ink">Bi → ∞</text>
+  <path class="guide" d="M150 345 H790 M278 230 V460"/>
+  <path class="axis" d="M137 218 V462 H796 M783 454 L796 462 L783 470"/>
+  <path id="theta0-bi-005" class="dashline" d="M150.00,228.12 L166.00,228.40 L182.00,228.69 L198.00,228.97 L214.00,229.25 L230.00,229.54 L246.00,229.82 L262.00,230.10 L278.00,230.39 L294.00,230.67 L310.00,230.95 L326.00,231.23 L342.00,231.51 L358.00,231.79 L374.00,232.07 L390.00,232.35 L406.00,232.63 L422.00,232.91 L438.00,233.19 L454.00,233.47 L470.00,233.75 L486.00,234.03 L502.00,234.30 L518.00,234.58 L534.00,234.86 L550.00,235.14 L566.00,235.41 L582.00,235.69 L598.00,235.96 L614.00,236.24 L630.00,236.51 L646.00,236.79 L662.00,237.06 L678.00,237.34 L694.00,237.61 L710.00,237.88 L726.00,238.16 L742.00,238.43 L758.00,238.70 L774.00,238.97 L790.00,239.24"/>
+  <path id="theta0-bi-1" class="quarter" d="M150.00,202.60 L166.00,207.32 L182.00,211.95 L198.00,216.50 L214.00,220.96 L230.00,225.35 L246.00,229.65 L262.00,233.87 L278.00,238.02 L294.00,242.09 L310.00,246.08 L326.00,250.00 L342.00,253.85 L358.00,257.63 L374.00,261.34 L390.00,264.99 L406.00,268.56 L422.00,272.07 L438.00,275.52 L454.00,278.90 L470.00,282.22 L486.00,285.48 L502.00,288.68 L518.00,291.82 L534.00,294.90 L550.00,297.93 L566.00,300.90 L582.00,303.82 L598.00,306.68 L614.00,309.49 L630.00,312.25 L646.00,314.96 L662.00,317.62 L678.00,320.23 L694.00,322.79 L710.00,325.31 L726.00,327.78 L742.00,330.20 L758.00,332.58 L774.00,334.92 L790.00,337.21"/>
+  <path id="theta0-bi-inf" class="one" d="M150.00,167.15 L166.00,184.67 L182.00,201.14 L198.00,216.63 L214.00,231.19 L230.00,244.88 L246.00,257.74 L262.00,269.84 L278.00,281.22 L294.00,291.91 L310.00,301.97 L326.00,311.42 L342.00,320.31 L358.00,328.67 L374.00,336.52 L390.00,343.91 L406.00,350.85 L422.00,357.38 L438.00,363.52 L454.00,369.29 L470.00,374.72 L486.00,379.82 L502.00,384.62 L518.00,389.13 L534.00,393.37 L550.00,397.35 L566.00,401.10 L582.00,404.62 L598.00,407.94 L614.00,411.05 L630.00,413.98 L646.00,416.73 L662.00,419.32 L678.00,421.75 L694.00,424.04 L710.00,426.19 L726.00,428.22 L742.00,430.12 L758.00,431.90 L774.00,433.59 L790.00,435.17"/>
+  <circle cx="470.00" cy="282.22" r="8" class="bar-cold"/>
+  <text x="486" y="262" class="small cold">Fo = 0.5 で Θ₀ = 0.773</text>
+  <text x="286" y="252" class="small secondary">目安 Fo ≳ 0.2</text>
+  <text x="128" y="237" class="small secondary">1.0</text>
+  <text x="128" y="352" class="small secondary">0.5</text>
+  <text x="128" y="467" class="small secondary">0</text>
+  <text x="150" y="492" text-anchor="middle" class="small ink">0</text>
+  <text x="310" y="492" text-anchor="middle" class="small ink">0.25</text>
+  <text x="470" y="492" text-anchor="middle" class="small ink">0.5</text>
+  <text x="630" y="492" text-anchor="middle" class="small ink">0.75</text>
+  <text x="790" y="492" text-anchor="middle" class="small ink">Fo = 1</text>
+  <rect x="24" y="531" width="792" height="360" rx="19" class="panel"/>
+  <text x="48" y="574" class="section ink">② 位置の読み方：Θ(ξ) = Θ₀·cos(λ₁ξ)</text>
+  <path class="guide" d="M150 659.95 H790 M150 680.16 H790"/>
+  <path class="axis" d="M137 598 V832 H796 M783 824 L796 832 L783 840"/>
+  <path id="theta-profile" class="quarter" d="M150.00,659.95 L166.00,659.99 L182.00,660.11 L198.00,660.30 L214.00,660.58 L230.00,660.93 L246.00,661.36 L262.00,661.87 L278.00,662.46 L294.00,663.13 L310.00,663.87 L326.00,664.69 L342.00,665.58 L358.00,666.55 L374.00,667.60 L390.00,668.72 L406.00,669.92 L422.00,671.19 L438.00,672.54 L454.00,673.95 L470.00,675.44 L486.00,677.00 L502.00,678.63 L518.00,680.34 L534.00,682.11 L550.00,683.95 L566.00,685.85 L582.00,687.83 L598.00,689.87 L614.00,691.97 L630.00,694.14 L646.00,696.37 L662.00,698.66 L678.00,701.02 L694.00,703.43 L710.00,705.90 L726.00,708.43 L742.00,711.01 L758.00,713.65 L774.00,716.35 L790.00,719.10"/>
+  <circle cx="470" cy="675.44" r="8" class="bar-later"/>
+  <text x="486" y="661.44" class="small later">ξ = 0.5 で Θ = 0.703</text>
+  <text x="640" y="649.95" class="small ink">中心 Θ₀ = 0.773</text>
+  <text x="640" y="708.16" class="small ink">平均 Θ̄ = 0.681</text>
+  <text x="150" y="862" text-anchor="middle" class="small ink">中心 ξ = 0</text>
+  <text x="470" y="862" text-anchor="middle" class="small ink">0.5</text>
+  <text x="790" y="862" text-anchor="middle" class="small ink">表面 ξ = 1</text>
+  <rect x="24" y="909" width="792" height="230" rx="19" class="panel"/>
+  <text x="48" y="952" class="section ink">③ 読み値の組立て（Ti = 100℃・T∞ = 20℃）</text>
+  <text x="48" y="994" class="small ink">中心</text>
+  <rect id="bar-center" x="210" y="972" width="386.48" height="20" class="bar-cold"/>
+  <text x="610.48" y="994" class="small ink">Θ₀ = 0.773 → 81.84℃</text>
+  <text x="48" y="1044" class="small ink">位置 ξ=0.5</text>
+  <rect id="bar-position" x="210" y="1022" width="351.27" height="20" class="bar-later"/>
+  <text x="575.27" y="1044" class="small ink">Θ = 0.703 → 76.20℃</text>
+  <text x="48" y="1094" class="small ink">平均</text>
+  <rect id="bar-mean" x="210" y="1072" width="340.53" height="20" class="bar-hot"/>
+  <text x="564.53" y="1094" class="small ink">Θ̄ = 0.681 → 74.49℃</text>
+  <text x="48" y="1185" class="small secondary">放出顕熱の割合 = 1 − Θ̄ = 0.319（約31.9%）。中心値を平均へ流用しない。</text>
+  <text x="420" y="1252" text-anchor="middle" class="small secondary">アプリ作成の独自図・原書図版の転載ではない</text>
+</svg>

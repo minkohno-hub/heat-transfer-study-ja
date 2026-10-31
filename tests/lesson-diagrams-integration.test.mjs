@@ -6,11 +6,11 @@ import { LESSON_DIAGRAMS, LESSON_DIAGRAM_PATHS, lessonDiagramPath } from '../les
 const root = new URL('../', import.meta.url);
 const read = rel => readFileSync(new URL(rel, root), 'utf8');
 
-test('lesson diagram registry covers the 71 integrated sections exactly once', () => {
+test('lesson diagram registry covers the 76 integrated sections exactly once', () => {
   const ids = Object.keys(LESSON_DIAGRAMS);
-  assert.equal(ids.length, 71);
-  assert.equal(new Set(Object.values(LESSON_DIAGRAMS)).size, 71);
-  assert.equal(LESSON_DIAGRAM_PATHS.length, 71);
+  assert.equal(ids.length, 76);
+  assert.equal(new Set(Object.values(LESSON_DIAGRAMS)).size, 76);
+  assert.equal(LESSON_DIAGRAM_PATHS.length, 76);
   for (const id of ['10.2', '10.5', '10.6']) assert.ok(LESSON_DIAGRAMS[id], `chapter 10 addition missing: ${id}`);
 });
 
